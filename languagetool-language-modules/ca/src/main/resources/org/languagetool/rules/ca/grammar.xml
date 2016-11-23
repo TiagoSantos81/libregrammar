@@ -10325,6 +10325,36 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rulegroup>
     </category>
     <category id="CONFUSIONS" name="Z1) Confusions" type="grammar">
+        <rule id="RENCONTRE" name="rencontre/reencontre">
+            <pattern>
+                <token regexp="yes">rencontres?</token>
+            </pattern>
+            <message>¿Volíeu dir <suggestion><match no="1" regexp_match="(?iu)rencontre(s?)" regexp_replace="reencontre$1"/></suggestion>? "Recontre" és un terme d'heràldica</message>
+            <example correction="reencontre">Va ser el nostre <marker>rencontre</marker>.</example>
+        </rule>
+        <rule id="REVERENT_REVEREND" name="revrent/reverend">
+            <pattern>
+                <token>reverent<exception scope="previous" postag="N.[MC]S.*" postag_regexp="yes"/></token>
+            </pattern>
+            <message>¿Volíeu dir <suggestion>reverend</suggestion> (digne de reverència) en comptes de "reverent" (que mostra reverència)?</message>
+            <example correction="reverend">El <marker>reverent</marker> mestre Martí.</example>
+            <example>Un silenci reverent.</example>
+        </rule>
+        <rule id="SEMBLAT_SEMBLANT" name="semblat/semblant">
+            <pattern>
+                <token>semblat<exception postag="_GV_"/></token>
+            </pattern>
+            <message>¿Volíeu dir <suggestion>semblant</suggestion>?</message>
+            <example correction="semblant">És bastant <marker>semblat</marker>.</example>
+            <example>No m'ha semblat bé.</example>
+        </rule>
+        <rule id="SEMBLATS_SEMBLANTS" name="semblats/semblants">
+            <pattern>
+                <token>semblats<exception postag="_GV_"/></token>
+            </pattern>
+            <message>¿Volíeu dir <suggestion>semblants</suggestion>?</message>
+            <example correction="semblants">Són bastant <marker>semblats</marker>.</example>
+        </rule>
         <rule id="EL_CAPDAVALL" name="el/al capdavall">
             <pattern>
                 <token>el</token>
@@ -30931,7 +30961,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
     </category>
     <category id="DISPUTED_FORMS" name="C5) Formes normatives discutides: coresponsable, ressituar, termostable" type="style">
         <rulegroup id="FORMES_NORMATIVES" name="Usa formes normatives (AVL, IEC): coresponsable, ressituar" default="on">
-            <rule id="CORRESPONSABLE" name="Exigeix 'coresponsable' (i derivats)">
+            <!--<rule id="CORRESPONSABLE" name="Exigeix 'coresponsable' (i derivats)">
                 <pattern>
                     <token regexp="yes" inflected="yes">corresponsable|corresponsabilitat|corresponsabilitzar|corresponsabilització</token>
                 </pattern>
@@ -30942,7 +30972,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="coresponsabilitzà"><marker>corresponsabilitzà</marker></example>
                 <example correction="coresponsabilitats"><marker>corresponsabilitats</marker></example>
                 <example>La coresponsabilitat.</example>
-            </rule>
+            </rule>-->
             <rule id="RESITUAR" name="Exigeix 'ressituar'">
                 <pattern>
                     <token inflected="yes">resituar</token>
@@ -30964,7 +30994,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             </rule>
         </rulegroup>
         <rulegroup id="FORMES_NO_NORMATIVES" name="Usa formes no normatives: corresponsable, resituar, termostable" default="on">
-            <rule id="CORESPONSABLE" name="Exigeix 'corresponsable' (i derivats)">
+            <!--<rule id="CORESPONSABLE" name="Exigeix 'corresponsable' (i derivats)">
                 <pattern>
                     <token regexp="yes" inflected="yes">coresponsable|coresponsabilitat|coresponsabilitzar|coresponsabilització</token>
                 </pattern>
@@ -30975,7 +31005,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="corresponsabilitzà"><marker>coresponsabilitzà</marker></example>
                 <example correction="corresponsabilitats"><marker>coresponsabilitats</marker></example>
                 <example>La corrsponsabilitat.</example>
-            </rule>
+            </rule>-->
             <rule id="RESSITUAR" name="Exigeix 'resituar'">
                 <pattern>
                     <token inflected="yes">ressituar</token>
@@ -32314,16 +32344,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>Van apujar les taxes.</example>
             </rule>
         </rulegroup>
-        <rule id="RAIL" name="raïl/rail">
-            <pattern>
-                <token inflected="yes">raïl<exception postag="_GN_.*" postag_regexp="yes"/></token>
-            </pattern>
-            <message>¿Volíeu dir <suggestion><match no="1" postag="NC.(.).*" postag_regexp="yes" postag_replace="NCM$1000">rail</match></suggestion> (=carril)? Raïl és sinònim d'arrel.</message>
-            <short>Possible confusió</short>
-            <example correction="rails">Rodes i <marker>raïls</marker>.</example>
-            <example correction="rails">Les rodes i els <marker>raïls</marker>.</example>
-            <example>Les raïls de l'abre</example>
-        </rule>
         <rule id="DESAFORAT" name="confusion of bed/bad">
             <pattern>
                 <token postag="V.P.*" postag_regexp="yes" inflected="yes">desaforar<exception postag="_GV_" /></token>
