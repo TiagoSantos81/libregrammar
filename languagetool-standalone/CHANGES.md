@@ -29,8 +29,37 @@
     added. Technically, the new data has its own Maven and git project now
     (https://github.com/languagetool-org/german-pos-dict)
 
+#### Lithuanian
+  * The `Lithuanian` class has been deprecated. Lithuanian in LT hasn't been maintained
+    for years and there's no new maintainer in sight. It has also very low usage
+    on languagetool.org and very few error detection rules anyway, so we'll remove its
+    support from LT in the next release.
+
+#### Malayalam
+  * The `Malayalam` class has been deprecated. Malayalam in LT hasn't been maintained
+    for years and there's no new maintainer in sight. It has also very low usage
+    on languagetool.org and very few error detection rules anyway, so we'll remove its
+    support from LT in the next release.
+  
 #### Portuguese
-  * added and improved many rules
+  * general agreement rules added
+    * number and gender words agreement
+    * general subject-verb agreement
+    * accentuated form confusion, 'dequeísmos' and many more
+  * new compound form detection (in pt-PT recognizes all compound verbal derivations)
+  * duplications, redundancies, typography and semantics categories added
+  * style category rules added
+    * new word repetitions rules, fragment detection, verbosity checks, passive voice and many other
+  * new sentence disambiguator and new word tokenizer
+  * sentence segmentation improvements
+  * former rules and messages revision, improvement and classification
+  * post-reform agreement support added and pre-reform components updated
+    * European Portuguese specific rule group added
+      * post-reform agreement by default
+      * compound verbs, possessive pronouns, reflexive forms placement, gerund and more
+    * pre-reform agreement locales support added
+      * Angola, Cape Verde, East Timor, Guinea Bissau, Macau, Mozambique and São Tomé e Principe
+  * various dictionary and part-of-speech fixes
 
 #### Russian
   * added and improved many rules
@@ -49,6 +78,24 @@
     `Language.getShortCodeWithCountryAndVariant()` instead
   * `Languages.getLanguageForShortName()` has been deprecated, use
     `Languages.getLanguageForShortCode()` instead
+  * The following languages have been unmaintained for a long time. A warning has been
+    shown for some time on languagetool.org and in the stand-alone GUI for these
+    languages. This warning has now been extended to Java in the form of a deprecation,
+    i.e. the constructors of the following languages have been deprecated. That does
+    *not* mean they are going to be removed in the next version, but it's a warning
+    that we cannot offer support for them or guarantee they will be included in the
+    future:
+    * Belarusian
+    * Swedish
+    * Khmer
+    * Icelandic
+    * Tagalog
+    * Asturian
+    * Danish
+    * Slovenian
+    
+    If you're interested in contributing to one of these languages, please post to
+    our forum at http://forum.languagetool.org.
   
 #### Command-line
   * Added a `--json` option as an alternative to `--api` (deprecated XML output)

@@ -31,6 +31,8 @@ import org.languagetool.tagging.disambiguation.pt.PortugueseHybridDisambiguator;
 import org.languagetool.tagging.pt.PortugueseTagger;
 import org.languagetool.tokenizers.SRXSentenceTokenizer;
 import org.languagetool.tokenizers.SentenceTokenizer;
+import org.languagetool.tokenizers.Tokenizer;
+import org.languagetool.tokenizers.pt.PortugueseWordTokenizer;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -46,6 +48,7 @@ public class Portuguese extends Language {
   
   private Tagger tagger;
   private Disambiguator disambiguator;
+  private Tokenizer wordTokenizer;
   private Synthesizer synthesizer;
   private SentenceTokenizer sentenceTokenizer;
 
@@ -66,7 +69,7 @@ public class Portuguese extends Language {
 
   @Override
   public String[] getCountries() {
-    return new String[]{"CV"};
+    return new String[]{"", "CV", "GW", "MO", "ST", "TL"};
   }
 
   @Override
@@ -91,12 +94,26 @@ public class Portuguese extends Language {
     return tagger;
   }
 
+  /**
+   * @since 3.6
+   */
   @Override
   public Disambiguator getDisambiguator() {
     if (disambiguator == null) {
       disambiguator = new PortugueseHybridDisambiguator();
     }
     return disambiguator;
+  }
+
+  /**
+   * @since 3.6
+   */
+  @Override
+  public Tokenizer getWordTokenizer() {
+    if (wordTokenizer == null) {
+      wordTokenizer = new PortugueseWordTokenizer();
+    }
+    return wordTokenizer;
   }
 
   @Override
@@ -118,18 +135,24 @@ public class Portuguese extends Language {
   @Override
   public List<Rule> getRelevantRules(ResourceBundle messages) throws IOException {
     return Arrays.asList(
-            new CommaWhitespaceRule(messages),
+            new CommaWhitespaceRule(messages,
+                Example.wrong("Tomamos café<marker> ,</marker> queijo, bolachas e uvas."),
+                Example.fixed("Tomamos café<marker>,</marker> queijo, bolachas e uvas")),
             new DoublePunctuationRule(messages),
             new GenericUnpairedBracketsRule(messages),
             new HunspellNoSuggestionRule(messages, this),
             new LongSentenceRule(messages),
-            new UppercaseSentenceStartRule(messages, this),
+            new UppercaseSentenceStartRule(messages, this,
+                Example.wrong("Esta casa é velha. <marker>foi</marker> construida em 1950."),
+                Example.fixed("Esta casa é velha. <marker>Foi</marker> construida em 1950.")),
             new MultipleWhitespaceRule(messages, this),
             new SentenceWhitespaceRule(messages),
             new WordRepeatBeginningRule(messages, this),
             //Specific to Portuguese:
             new PostReformPortugueseCompoundRule(messages),
             new PortugueseReplaceRule(messages),
+            new PortugueseReplaceRule2(messages),
+            new PortugueseClicheRule(messages),
             new PortugueseWordRepeatRule(messages, this)
             //new PortugueseWrongWordInContextRule(messages)
     );
