@@ -760,7 +760,7 @@ USA
 
 	<rule>	 
 		<pattern>
-		<marker><token inlfected='yes'>آونة</token>
+		<marker><token inflected='yes'>آونة</token>
 		</marker>
 		</pattern>
 		<message>
@@ -1406,7 +1406,7 @@ USA
 		</rule>
 	</rulegroup>
 	<rulegroup id="Number_M" name="تذكير العدد">
-	<rule>
+هى	<rule>
 		<pattern>
 		<marker><token>ثلاثة</token></marker>
 		<token postag='NFP'/>			
