@@ -1,242 +1,144 @@
-A
-C
-C coor
-C sub
-D e p
-D e s
-D f p
-D f s
-D m p
-D m s
-I
-J e p
-J e s
-J e sp
-J f p
-J f s
-J m p
-J m s
-J m sp
-K
-M fin
-M fin excl
-M fin inte
-M nonfin
-N e p
-N e s
-N e sp
-N f p
-N f s
-N f sp
-N m p
-N m s
-N m sp
-P
-R 2 s
-R 3 s
-R dem e s
-R dem f p
-R dem f s
-R dem m p
-R dem m s
-R e p
-R e s
-R f p
-R f s
-R inte
-R m p
-R m s
-R pers obj 1 p
-R pers obj 1 s
-R pers obj 2 p
-R pers obj 2 s
-R pers obj 3 f s
-R pers obj 3 m p
-R pers obj 3 m s
-R pers obj 3 p
-R pers obj 3 s
-R pers obj 3 sp
-R pers obj e sp
-R pers suj 1 p
-R pers suj 1 s
-R pers suj 2 p
-R pers suj 2 s
-R pers suj 3 e s
-R pers suj 3 f p
-R pers suj 3 f s
-R pers suj 3 m p
-R pers suj 3 m s
-R refl 1 e p
-R refl 1 e s
-R refl 2 e p
-R refl 2 e s
-R refl 3 e s
-R refl 3 f p
-R refl 3 f s
-R refl 3 m p
-R refl 3 m s
-R rel e sp
-R rel f p
-R rel f s
-R rel m p
-R rel m s
-S
-V avoir con pres 1 p
-V avoir con pres 1 s
-V avoir con pres 2 p
-V avoir con pres 2 s
-V avoir con pres 3 p
-V avoir con pres 3 s
-V avoir imp pres 1 p
-V avoir imp pres 2 p
-V avoir imp pres 2 s
-V avoir ind futu 1 p
-V avoir ind futu 1 s
-V avoir ind futu 2 p
-V avoir ind futu 2 s
-V avoir ind futu 3 p
-V avoir ind futu 3 s
-V avoir ind impa 1 p
-V avoir ind impa 1 s
-V avoir ind impa 2 p
-V avoir ind impa 2 s
-V avoir ind impa 3 p
-V avoir ind impa 3 s
-V avoir ind pres 1 p
-V avoir ind pres 1 s
-V avoir ind pres 2 p
-V avoir ind pres 2 s
-V avoir ind pres 3 p
-V avoir ind pres 3 s
-V avoir ind psim 1 p
-V avoir ind psim 1 s
-V avoir ind psim 2 p
-V avoir ind psim 2 s
-V avoir ind psim 3 p
-V avoir ind psim 3 s
-V avoir inf
-V avoir ppa f p
-V avoir ppa f s
-V avoir ppa m p
-V avoir ppa m s
-V avoir ppr
-V avoir sub impa 1 p
-V avoir sub impa 1 s
-V avoir sub impa 2 p
-V avoir sub impa 2 s
-V avoir sub impa 3 p
-V avoir sub impa 3 s
-V avoir sub pres 1 p
-V avoir sub pres 1 s
-V avoir sub pres 2 p
-V avoir sub pres 2 s
-V avoir sub pres 3 p
-V avoir sub pres 3 s
-V con pres 1 p
-V con pres 1 s
-V con pres 2 p
-V con pres 2 s
-V con pres 3 p
-V con pres 3 s
-V etre con pres 1 p
-V etre con pres 1 s
-V etre con pres 2 p
-V etre con pres 2 s
-V etre con pres 3 p
-V etre con pres 3 s
-V etre imp pres 1 p
-V etre imp pres 2 p
-V etre imp pres 2 s
-V etre ind futu 1 p
-V etre ind futu 1 s
-V etre ind futu 2 p
-V etre ind futu 2 s
-V etre ind futu 3 p
-V etre ind futu 3 s
-V etre ind impa 1 p
-V etre ind impa 1 s
-V etre ind impa 2 p
-V etre ind impa 2 s
-V etre ind impa 3 p
-V etre ind impa 3 s
-V etre ind pres 1 p
-V etre ind pres 1 s
-V etre ind pres 2 p
-V etre ind pres 2 s
-V etre ind pres 3 p
-V etre ind pres 3 s
-V etre ind psim 1 p
-V etre ind psim 1 s
-V etre ind psim 2 p
-V etre ind psim 2 s
-V etre ind psim 3 p
-V etre ind psim 3 s
-V etre inf
-V etre ppa e sp
-V etre ppr
-V etre sub impa 1 p
-V etre sub impa 1 s
-V etre sub impa 2 p
-V etre sub impa 2 s
-V etre sub impa 3 p
-V etre sub impa 3 s
-V etre sub pres 1 p
-V etre sub pres 1 s
-V etre sub pres 2 p
-V etre sub pres 2 s
-V etre sub pres 3 p
-V etre sub pres 3 s
-V imp pres 1 p
-V imp pres 2 p
-V imp pres 2 s
-V ind futu 1 p
-V ind futu 1 s
-V ind futu 2 p
-V ind futu 2 s
-V ind futu 3 p
-V ind futu 3 s
-V ind impa 1 p
-V ind impa 1 s
-V ind impa 2 p
-V ind impa 2 s
-V ind impa 3 p
-V ind impa 3 s
-V ind pres 1 p
-V ind pres 1 s
-V ind pres 2 p
-V ind pres 2 s
-V ind pres 3 p
-V ind pres 3 s
-V ind psim 1 p
-V ind psim 1 s
-V ind psim 2 p
-V ind psim 2 s
-V ind psim 3 p
-V ind psim 3 s
-V inf
-V ppa e sp
-V ppa f p
-V ppa f s
-V ppa m p
-V ppa m s
-V ppa m sp
-V ppr
-V sub impa 1 p
-V sub impa 1 s
-V sub impa 2 p
-V sub impa 2 s
-V sub impa 3 p
-V sub impa 3 s
-V sub pres 1 p
-V sub pres 1 s
-V sub pres 2 p
-V sub pres 2 s
-V sub pres 3 p
-V sub pres 3 s
-Z e p
-Z e s
-Z e sp
-Z f p
-Z f s
-Z f sp
-Z m sp
+Description of Arabic tag sets
+=============================
+The arabic tag sytax for grammar check is composed of 4 parts
+
+The tag starts by word class
+for example 
+V: Verb
+N: Noun
+P: tool or partical
+
+Nouns
+======
+
+3 parts:
+======
+* word class and category
+* Conjugation ( suffixes used to conjugate words in dual form, feminin form).
+* Affixes ( prefixes and encletics)
+
+
+
+Word class and category:
+======
+ define the attributes of word in dictionary, for example,
+contains 2 parts
+- Word type:
+	N: noun,
+	V: verb,
+	P: particle
+- Word sub class:
+	Masdr
+	Adj : adjective 
+	comparative
+	Jamed:
+	...
+	-: not defined
+
+Noun conjugation  :
+======
+	- Gender suffix:
+		M: masculine ( ون is a mark of masculine)
+		F: feminine (ة or ات)
+		-: none
+	- Number suffix:
+		1: single
+		2: dual
+		3: plural ( regular masculine or feminine plural, or irregular plural)
+		3I: irregular plural form
+	- Case ( إعراب)
+		U: marfou3
+		I: Majzoum/ Majrour
+		A: Mansoub
+		B: Mabni
+Noun prefixes and encletic :
+=============
+contains 3 parts
+W: conjonction: starts by WAW or FEH, take 3 values: W: for waw, F; for Feh, -: none.
+B: preposition: B: for Beh, K: for Kaf, L: for Lam, by default we use B, -: none.
+L: definite article, L: for AL,  -: none.
+
+example:
+الخياري	خيار	N.jamed.;-1-;--L-
+الخيار	خيار	N.jamed.;-1Y;--L-
+الخيارية	خيار	N.jamed.;F1A;--L-
+الخيارية	خيار	N.jamed.;F1U;--L-
+الخياريتين	خيار	N.jamed.;-2Y;--L-
+الخياريتان	خيار	N.jamed.;-2-;--L-
+الخياريات	خيار	N.jamed.;-3U;--L-
+الخيارية	خيار	N.jamed.;F1Y;--L-
+الخياريتين	خيار	N.jamed.;-2Y;--L-
+الخياريات	خيار	N.jamed.;-3Y;--L-
+الخياريات	خيار	N.jamed.;-3-;--L-
+الخيارتان	خيار	N.jamed.;-2-;--L-
+الخيارات	خيار	N.jamed.;-3Y;--L-
+الخيارين	خيار	N.jamed.;-2A;--L-
+الخياران	خيار	N.jamed.;-2U;--L-
+الخيارة	خيار	N.jamed.;F1-;--L-
+الخياريتان	خيار	N.jamed.;-2-;--L-
+الخيارة	خيار	N.jamed.;F1A;--L-
+الخيارة	خيار	N.jamed.;F1U;--L-
+الخيار	خيار	N.jamed.;-1U;--L-
+
+Ecletic
+======
+define the extended words added to the lexem: الضمائر المضافة
+	H: if have encletic
+
+
+Verbs
+=====
+Word class + conjugation + affixes 
+
+verb Word class  :
+=============
+	Word type: V
+	verb class:
+		W: weak verb
+		Wa: ajwaf
+		Wn: naqis
+		Wm: mithal
+		D: doubled مضعّف
+	weak letter origin;
+		Y: yeh weak letter
+		W: waw weak letter
+
+	transitivity: 
+		T: transitivity/ commun, 
+		I: intransitivity
+	length: verb length 
+	3-6: indicate length
+
+verb conjugation  :
+=============
+	tense:
+		P: past
+		F: present
+		I:  Imperative
+	voice:
+		P: passive
+		A: active
+	case:
+		R: marfou3
+		J: Majzoum
+		N: Mansoub
+		B: Mabni
+	Ponoun:
+		Person: 
+			I: 1st person
+			Y: 2nd person
+			H: 3rd person
+		gender: 
+			M/F
+		Number: 1/2/3
+Affixes ( Procletic + Ecletic)
+======
+Verb procletic :
+=============
+	W: conjonction: starts by WAW or FEH, take 3 values: W: for waw, F; for Feh, -: none.
+	S: future prefix, س+يتعلم
+Verb encletic :
+=============
+define the extended words added to the lexem: الضمائر المضافة
+	H: if have encletic
+

@@ -651,7 +651,7 @@ USA
 		ويفضل أن يقال: 
 		<suggestion>عمود</suggestion>
 		</message>
-		<example correction='عمود'>  
+pos		<example correction='عمود'>  
 		يدل تغير الماء
 		<marker>عامود</marker> الماء </example>
 	</rule>
@@ -760,7 +760,8 @@ USA
 
 	<rule>	 
 		<pattern>
-		<marker><token inflected='yes'>آونة</token>
+		<marker><token infl
+ected='yes'>آونة</token>
 		</marker>
 		</pattern>
 		<message>

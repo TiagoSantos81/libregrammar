@@ -18,7 +18,7 @@ then
   MODULE="languagetool-language-modules/$MODULE"
 fi
 
-COMMAND="mvn --projects $MODULE --also-make ${@:2}"
+COMMAND="mvn3 --projects $MODULE --also-make ${@:2}"
 echo "Running: $COMMAND"
 
 $COMMAND
