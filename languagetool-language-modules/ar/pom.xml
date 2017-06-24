@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.languagetool</groupId>
         <artifactId>languagetool-parent</artifactId>
-        <version>3.7-SNAPSHOT</version>
+        <version>3.8-SNAPSHOT</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
     
@@ -24,35 +24,26 @@
     <packaging>jar</packaging>
 
     <developers>
-        <developer>
+
+	<developer>
             <name>Taha Zerrouki</name>
             <roles><role>Maintainer</role></roles>
         </developer>
         <developer>
-            <name>KALI Imen</name>
+            <name>Imen Kali</name>
             <roles><role>Maintainer</role></roles>
         </developer>
         <developer>
-            <name>TCHOKETCH Karima</name>
+            <name>Karima Tchoketch</name>
+            <roles><role>Maintainer</role></roles>
+        </developer>
+        <developer>
+            <name>Sohaib Afifi</name>
             <roles><role>Maintainer</role></roles>
         </developer>
     </developers>
     
     <build>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <excludes>
-                 <!--   <exclude>org/languagetool/resource/ar/manually_added.txt</exclude>
-                    <exclude>org/languagetool/resource/ar/partlycountable.txt</exclude>
-                    <exclude>org/languagetool/resource/ar/uncountable.txt</exclude>
-                    <exclude>org/languagetool/resource/ar/filter*.txt</exclude>
-                    <exclude>org/languagetool/resource/ar/*.awk</exclude> 
-				-->
-                    <exclude>org/languagetool/resource/ar/numbers.txt</exclude>
-                </excludes>
-            </resource>
-        </resources>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -69,28 +60,6 @@
             <artifactId>languagetool-core</artifactId>
             <version>${languagetool.version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.apache.opennlp</groupId>
-            <artifactId>opennlp-tools</artifactId>
-            <version>1.7.2</version>
-        </dependency>
-        <dependency>
-            <groupId>edu.washington.cs.knowitall</groupId>
-            <artifactId>opennlp-tokenize-models</artifactId>
-            <version>1.5</version>
-        </dependency>
-        <dependency>
-            <groupId>edu.washington.cs.knowitall</groupId>
-            <artifactId>opennlp-postag-models</artifactId>
-            <version>1.5</version>
-        </dependency>
-        <dependency>
-            <groupId>edu.washington.cs.knowitall</groupId>
-            <artifactId>opennlp-chunk-models</artifactId>
-            <version>1.5</version>
-        </dependency>
-
         <dependency>
             <!-- see http://stackoverflow.com/questions/174560/sharing-test-code-in-maven#174670 -->
             <groupId>org.languagetool</groupId>

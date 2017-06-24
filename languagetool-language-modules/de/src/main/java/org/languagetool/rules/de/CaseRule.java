@@ -47,7 +47,7 @@ import java.util.regex.Pattern;
  *   
  * @author Daniel Naber
  */
-public class CaseRule extends GermanRule {
+public class CaseRule extends Rule {
 
   private static final Pattern NUMERALS_EN =
           Pattern.compile("[a-z]|[0-9]+|(m{0,4}(cm|cd|d?c{0,3})(xc|xl|l?x{0,3})(ix|iv|v?i{0,3}))$");
@@ -396,11 +396,12 @@ public class CaseRule extends GermanRule {
     "St",   // Paris St. Germain
     "Stereotyp",
     "Störe",
-    "Tausend",   // je nach Kontext groß (TODO) 
+    "Tausend",   // je nach Kontext groß (TODO)
     "Toter",
     "tun",   // "Sie müssen das tun"
-    "Übrigen",   // je nach Kontext groß (TODO), z.B. "im Übrigen" 
-    "Unvorhergesehenes",   // je nach Kontext groß (TODO), z.B. "etwas Unvorhergesehenes" 
+    "Übrigen",   // je nach Kontext groß (TODO), z.B. "im Übrigen"
+    "Unentschieden",
+    "Unvorhergesehenes",   // je nach Kontext groß (TODO), z.B. "etwas Unvorhergesehenes"
     "Verantwortlicher",
     "Verlass",
     "Verwandter",
@@ -490,6 +491,7 @@ public class CaseRule extends GermanRule {
     languages.add("Hochdeutsch");
     languages.add("Holländisch");
     languages.add("Indonesisch");
+    languages.add("Irisch");
     languages.add("Isländisch");
     languages.add("Italienisch");
     languages.add("Japanisch");
@@ -799,13 +801,13 @@ public class CaseRule extends GermanRule {
         !sentenceStartExceptions.contains(tokens[i - 1].getToken()) &&
         !exceptions.contains(token) &&
         !StringTools.isAllUppercase(token) &&
-        !isLanguage(i, tokens) &&
-        !isProbablyCity(i, tokens) &&
+        !isLanguage(i, tokens, token) &&
+        !isProbablyCity(i, tokens, token) &&
         !GermanHelper.hasReadingOfType(analyzedToken, POSType.PROPER_NOUN) &&
         !analyzedToken.isSentenceEnd() &&
         !isEllipsis(i, tokens) &&
         !isNumbering(i, tokens) &&
-        !isNominalization(i, tokens) &&
+        !isNominalization(i, tokens, token, lowercaseReadings) &&
         !isAdverbAndNominalization(i, tokens) &&
         !isSpecialCase(i, tokens) &&
         !isAdjectiveAsNoun(i, tokens, lowercaseReadings) &&
@@ -825,7 +827,8 @@ public class CaseRule extends GermanRule {
   private boolean isNumbering(int i, AnalyzedTokenReadings[] tokens) {
     return i >= 2
             && (tokens[i-1].getToken().equals(")") || tokens[i-1].getToken().equals("]"))
-            && NUMERALS_EN.matcher(tokens[i-2].getToken()).matches();
+            && NUMERALS_EN.matcher(tokens[i-2].getToken()).matches()
+            && !(i > 3 && tokens[i-3].getToken().equals("(") && tokens[i-4].hasPartialPosTag("SUB:")); // no numbering "Der Vater (51) fuhr nach Rom."
   }
 
   private boolean isEllipsis(int i, AnalyzedTokenReadings[] tokens) {
@@ -833,37 +836,39 @@ public class CaseRule extends GermanRule {
            ((i == 4 && tokens[i-2].getToken().equals("…")) || (i == 6 && tokens[i-2].getToken().equals(".")));
   }
 
-  private boolean isNominalization(int i, AnalyzedTokenReadings[] tokens) {
-    String token = tokens[i].getToken();
-    AnalyzedTokenReadings lookupLowerCase = null;
-    try {
-      lookupLowerCase = tagger.lookup(StringTools.lowercaseFirstChar(token));
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
+  private boolean isNominalization(int i, AnalyzedTokenReadings[] tokens, String token, AnalyzedTokenReadings lowercaseReadings) {
     AnalyzedTokenReadings nextReadings = i < tokens.length-1 ? tokens[i+1] : null;
     // TODO: "vor Schlimmerem", "Er hatte Schlimmes zu befürchten"
     // TODO: wir finden den Fehler in "Die moderne Wissenschaftlich" nicht, weil nicht alle
     // Substantivierungen in den Morphy-Daten stehen (z.B. "Größte" fehlt) und wir deshalb nur
     // eine Abfrage machen, ob der erste Buchstabe groß ist.
     if (StringTools.startsWithUppercase(token) && !isNumber(token) && !hasNounReading(nextReadings) && !token.matches("Alle[nm]")) {
+      if (lowercaseReadings != null && lowercaseReadings.hasPosTag("PRP:LOK+TMP+CAU:DAT+AKK")) {
+        return false;
+      }
       // Ignore "das Dümmste, was je..." but not "das Dümmste Kind"
       AnalyzedTokenReadings prevToken = i > 0 ? tokens[i-1] : null;
       AnalyzedTokenReadings prevPrevToken = i >= 2 ? tokens[i-2] : null;
       AnalyzedTokenReadings prevPrevPrevToken = i >= 3 ? tokens[i-3] : null;
       String prevTokenStr = prevToken != null ? prevToken.getToken() : "";
       if (prevToken != null && ("und".equals(prevTokenStr) || "oder".equals(prevTokenStr) || "beziehungsweise".equals(prevTokenStr))) {
-        if (prevPrevToken != null &&
-            ((tokens[i].hasPartialPosTag("SUB") && tokens[i].hasPartialPosTag(":ADJ")) || // "das dabei Erlernte und Erlebte ist ..." -> 'Erlebte' is correct here
-             (prevPrevToken.hasPartialPosTag("SUB") && !hasNounReading(nextReadings) && lookupLowerCase != null && lookupLowerCase.hasPartialPosTag("ADJ")))) { // "die Ausgaben für Umweltschutz und Soziales"
-          return true;
+        if (prevPrevToken != null) {
+          if (tokens[i].hasPartialPosTag("SUB") && tokens[i].hasPartialPosTag(":ADJ")) {
+            // "das dabei Erlernte und Erlebte ist ..." -> 'Erlebte' is correct here
+            return true;
+          } else if (prevPrevToken.hasPartialPosTag("SUB") && !hasNounReading(nextReadings)) {
+            if (lowercaseReadings != null && lowercaseReadings.hasPartialPosTag("ADJ")) {
+              // "die Ausgaben für Umweltschutz und Soziales"
+              return true;
+            }
+          }
         }
       }
       return (prevToken != null && ("irgendwas".equals(prevTokenStr) || "aufs".equals(prevTokenStr) || "als".equals(prevTokenStr) || isNumber(prevTokenStr))) ||
-         (hasPartialTag(prevToken, "ART", "PRO:") && !(prevToken.getReadings().size() == 1 && prevToken.hasPartialPosTag("PRO:PER:NOM:"))) ||  // "die Verurteilten", "etwas Verrücktes", "ihr Bestes"
+         (hasPartialTag(prevToken, "ART", "PRO:") && !(prevToken.getReadings().size() == 1 && prevToken.hasPartialPosTag("PRO:PER:NOM:"))  && !prevToken.hasPartialPosTag(":STD")) ||  // "die Verurteilten", "etwas Verrücktes", "ihr Bestes"
          (hasPartialTag(prevPrevPrevToken, "ART") && hasPartialTag(prevPrevToken, "PRP") && hasPartialTag(prevToken, "SUB")) || // "die zum Tode Verurteilten"
-         (hasPartialTag(prevPrevToken, "PRO", "PRP") && hasPartialTag(prevToken, "ADJ", "ADV", "PA2", "PA1")) ||  // "etwas schön Verrücktes", "mit aufgewühltem Innerem"
-         (hasPartialTag(prevPrevPrevToken, "PRO", "PRP") && hasPartialTag(prevPrevToken, "ADJ", "ADV") && hasPartialTag(prevToken, "ADJ", "ADV", "PA2"));  // "etwas ganz schön Verrücktes"
+         (hasPartialTag(prevPrevToken, "PRO:", "PRP") && hasPartialTag(prevToken, "ADJ", "ADV", "PA2", "PA1")) ||  // "etwas schön Verrücktes", "mit aufgewühltem Innerem"
+         (hasPartialTag(prevPrevPrevToken, "PRO:", "PRP") && hasPartialTag(prevPrevToken, "ADJ", "ADV") && hasPartialTag(prevToken, "ADJ", "ADV", "PA2"));  // "etwas ganz schön Verrücktes"
     }
     return false;
   }
@@ -912,6 +917,15 @@ public class CaseRule extends GermanRule {
   private boolean isAdjectiveAsNoun(int i, AnalyzedTokenReadings[] tokens, AnalyzedTokenReadings lowercaseReadings) {
     AnalyzedTokenReadings prevToken = i > 0 ? tokens[i-1] : null;
     AnalyzedTokenReadings nextReadings = i < tokens.length-1 ? tokens[i+1] : null;
+    AnalyzedTokenReadings prevLowercaseReadings = null;
+
+    if (i > 1 && sentenceStartExceptions.contains(tokens[i-2].getToken())) {
+      try {
+        prevLowercaseReadings = tagger.lookup(prevToken.getToken().toLowerCase());
+      } catch (IOException e) {
+        throw new RuntimeException(e);
+      }
+    }
 
     // ignore "Der Versuch, Neues zu lernen / Gutes zu tun / Spannendes auszuprobieren"
     boolean isPossiblyFollowedByInfinitive = nextReadings != null && nextReadings.getToken().equals("zu");
@@ -919,13 +933,18 @@ public class CaseRule extends GermanRule {
     boolean isFollowedByPossessiveIndicator = nextReadings != null && POSSESSIVE_INDICATORS.contains(nextReadings.getToken());
 
     boolean isUndefQuantifier = prevToken != null && UNDEFINED_QUANTIFIERS.contains(prevToken.getToken().toLowerCase());
-    boolean isPrevDeterminer = prevToken != null && (prevToken.hasPartialPosTag("ART") || prevToken.hasPartialPosTag("PRP") || prevToken.hasPartialPosTag("ZAL"));
+    boolean isPrevDeterminer = prevToken != null
+                               && (hasPartialTag(prevToken, "ART", "PRP", "ZAL") || hasPartialTag(prevLowercaseReadings, "ART", "PRP", "ZAL"))
+                               && !prevToken.hasPartialPosTag(":STD");
+    boolean isPrecededByVerb = prevToken != null && prevToken.matchesPosTagRegex("VER:(MOD:|AUX:)?[1-3]:.*") && !prevToken.hasLemma("sein");
     if (!isPrevDeterminer && !isUndefQuantifier && !(isPossiblyFollowedByInfinitive || isFollowedByInfinitive)
+        && !(isPrecededByVerb && lowercaseReadings != null && hasPartialTag(lowercaseReadings, "ADJ:", "PA") && nextReadings != null &&
+             !nextReadings.getToken().equals("und") && !nextReadings.getToken().equals("oder") && !nextReadings.getToken().equals(","))
         && !(isFollowedByPossessiveIndicator && hasPartialTag(lowercaseReadings, "ADJ", "VER")) // "Wacht auf, Verdammte dieser Welt!"
         && !(prevToken != null && prevToken.hasPosTag("KON:UNT") && nextReadings != null && !hasNounReading(nextReadings) && !nextReadings.hasPosTag("KON:NEB"))) {
       AnalyzedTokenReadings prevPrevToken = i > 1 && prevToken.hasPartialPosTag("ADJ") ? tokens[i-2] : null;
       // Another check to avoid false alarms for "ein politischer Revolutionär"
-      if (prevPrevToken == null || !(prevPrevToken.hasPartialPosTag("ART") || prevPrevToken.hasPartialPosTag("PRP") || prevToken.hasPartialPosTag("ZAL"))) {
+      if (!hasPartialTag(prevPrevToken, "ART", "PRP", "ZAL")) {
         return false;
       }
     }
@@ -942,8 +961,7 @@ public class CaseRule extends GermanRule {
     return false;
   }
 
-  private boolean isLanguage(int i, AnalyzedTokenReadings[] tokens) {
-    String token = tokens[i].getToken();
+  private boolean isLanguage(int i, AnalyzedTokenReadings[] tokens, String token) {
     boolean maybeLanguage = languages.contains(token) ||
                             languages.contains(StringUtils.removeEnd(token, "e")) ||  // z.B. "ins Japanische übersetzt"
                             languages.contains(StringUtils.removeEnd(token, "en"));   // z.B. "im Japanischen"
@@ -953,8 +971,7 @@ public class CaseRule extends GermanRule {
                              (prevToken != null && prevToken.getToken().equals("auf")));
   }
 
-  private boolean isProbablyCity(int i, AnalyzedTokenReadings[] tokens) {
-    String token = tokens[i].getToken();
+  private boolean isProbablyCity(int i, AnalyzedTokenReadings[] tokens, String token) {
     boolean hasCityPrefix = "Klein".equals(token) || "Groß".equals(token) || "Neu".equals(token);
     if (hasCityPrefix) {
       AnalyzedTokenReadings nextReadings = i < tokens.length-1 ? tokens[i+1] : null;
@@ -1001,11 +1018,6 @@ public class CaseRule extends GermanRule {
       i++;
     }
     return true;
-  }
-
-  @Override
-  public void reset() {
-    // nothing
   }
 
 }

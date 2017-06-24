@@ -1,6 +1,6 @@
-/* LanguageTool, a natural language style checker
- * Copyright (C) 2007 Daniel Naber (http://www.danielnaber.de)
- * 
+/* LanguageTool, a natural language style checker 
+ * Copyright (C) 2014 Daniel Naber (http://www.danielnaber.de)
+* 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
@@ -17,68 +17,34 @@
  * USA
  */
 package org.languagetool.language;
+import org.languagetool.Language;
+import org.languagetool.rules.*;
+import org.languagetool.rules.ar.ArabicCommaWhitespaceRule;
+import org.languagetool.rules.ar.ArabicContractionSpellingRule;
+import org.languagetool.rules.ar.ArabicDoublePunctuationRule;
+import org.languagetool.rules.ar.ArabicLongSentenceRule;
+import org.languagetool.rules.ar.ArabicWordRepeatRule;
+import org.languagetool.rules.spelling.hunspell.HunspellNoSuggestionRule;
+import org.languagetool.tagging.Tagger;
+import org.languagetool.tagging.ar.ArabicTagger;
+import org.languagetool.tokenizers.SentenceTokenizer;
+import org.languagetool.tokenizers.WordTokenizer;
+import org.languagetool.tokenizers.ArabicSentenceTokenizer;
+import org.languagetool.tokenizers.ArabicWordTokenizer;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import org.languagetool.Language;
-import org.languagetool.LanguageMaintainedState;
-//import org.languagetool.chunking.Chunker;
-//import org.languagetool.chunking.ArabicChunker;
-import org.languagetool.languagemodel.LanguageModel;
-import org.languagetool.languagemodel.LuceneLanguageModel;
-import org.languagetool.rules.*;
-import org.languagetool.rules.ar.*;
-import org.languagetool.synthesis.Synthesizer;
-import org.languagetool.synthesis.ar.ArabicSynthesizer;
-import org.languagetool.tagging.Tagger;
-import org.languagetool.tagging.disambiguation.Disambiguator;
-import org.languagetool.tagging.disambiguation.rules.XmlRuleDisambiguator;
-import org.languagetool.tagging.ar.ArabicTagger;
-import org.languagetool.tokenizers.SRXSentenceTokenizer;
-import org.languagetool.tokenizers.SentenceTokenizer;
-import org.languagetool.tokenizers.WordTokenizer;
-import org.languagetool.tokenizers.ar.ArabicWordTokenizer;
-import org.languagetool.rules.spelling.hunspell.HunspellNoSuggestionRule;
 /**
- * Support for Arabic - use the sub classes {@link BritishArabic}, {@link AmericanArabic},
- * etc. if you need spell checking.
- * Make sure to call {@link #close()} after using this (currently only relevant if you make
- * use of {@link ArabicConfusionProbabilityRule}).
+ * Support for Arabic.
  */
-public class Arabic extends Language implements AutoCloseable {
+public class Arabic extends Language {
 
-  private Tagger tagger;
-  //private Chunker chunker;
   private SentenceTokenizer sentenceTokenizer;
-  private Synthesizer synthesizer;
-  private Disambiguator disambiguator;
   private WordTokenizer wordTokenizer;
-  private LuceneLanguageModel languageModel;
-
-  /**
-   * @deprecated use {@link AmericanArabic} or {@link BritishArabic} etc. instead -
-   *  they have rules for spell checking, this class doesn't (deprecated since 3.2)
-   
-  @Deprecated
-  public Arabic() {
-  }
-
-  @Override
-  public Language getDefaultLanguageVariant() {
-    return this.Arabic(); 
-  }
-*/
-  @Override
-  public SentenceTokenizer getSentenceTokenizer() {
-    if (sentenceTokenizer == null) {
-      sentenceTokenizer = new SRXSentenceTokenizer(this);
-    }
-    return sentenceTokenizer;
-  }
+  private Tagger tagger;
 
   @Override
   public String getName() {
@@ -92,42 +58,16 @@ public class Arabic extends Language implements AutoCloseable {
 
   @Override
   public String[] getCountries() {
-    return new String[]{"DZ","EG","TN","SA"};
+    return new String[]{"", "DZ", "SA", "TN", "EG"};
   }
-
+  
   @Override
-  public Tagger getTagger() {
-    if (tagger == null) {
-      tagger = new ArabicTagger();
+  public SentenceTokenizer getSentenceTokenizer() {
+    if (sentenceTokenizer == null) {
+      sentenceTokenizer =  new ArabicSentenceTokenizer(this);
     }
-    return tagger;
-  }
+    return sentenceTokenizer;
 
-  /**
-   * @since 2.3
-   */
- /* @Override
-  public Chunker getChunker() {
-    if (chunker == null) {
-      chunker = new ArabicChunker();
-    }
-    return chunker;
-  }
-*/
-  @Override
-  public Synthesizer getSynthesizer() {
-    if (synthesizer == null) {
-      synthesizer = new ArabicSynthesizer();
-    }
-    return synthesizer;
-  }
-
-  @Override
-  public Disambiguator getDisambiguator() {
-    if (disambiguator == null) {
-      disambiguator = new XmlRuleDisambiguator(new Arabic());
-    }
-    return disambiguator;
   }
 
   @Override
@@ -139,60 +79,42 @@ public class Arabic extends Language implements AutoCloseable {
   }
 
   @Override
-  public synchronized LanguageModel getLanguageModel(File indexDir) throws IOException {
-    if (languageModel == null) {
-      languageModel = new LuceneLanguageModel(new File(indexDir, getShortCode()));
-    }
-    return languageModel;
-  }
 
+  public Tagger getTagger() {
+    if (tagger == null) {
+      tagger = new ArabicTagger();
+    }
+    return tagger;
+  }
+  
   @Override
   public Contributor[] getMaintainers() {
-    return new Contributor[] { new Contributor("Taha Zerrouki"), new Contributor("Kali Imen"), new Contributor("TCHOKETCH Karima") };
-  }
+    return new Contributor[] {
+            new Contributor("Taha Zerrouki"),
+            new Contributor("Sohaib Afifi"),
+            new Contributor("Imen Kali"),
+            new Contributor("Karima Tchoketch"),
+    };
 
-  @Override
-  public LanguageMaintainedState getMaintainedState() {
-    return LanguageMaintainedState.ActivelyMaintained;
   }
 
   @Override
   public List<Rule> getRelevantRules(ResourceBundle messages) throws IOException {
     return Arrays.asList(
-        new CommaWhitespaceRule(messages,
-                Example.wrong("نعم<marker> ,</marker> لقد نجحنا."),
-                Example.fixed("نعم<marker>,</marker> لقد نجحنا.")),
-        new DoublePunctuationRule(messages),
         new MultipleWhitespaceRule(messages, this),
-        new LongSentenceRule(messages),
         new SentenceWhitespaceRule(messages),
-        // specific to Arabic:
-        new ArabicUnpairedBracketsRule(messages, this),
+        new GenericUnpairedBracketsRule(messages,
+                Arrays.asList("[", "(", "{" , "«", "﴾"), 
+                Arrays.asList("]", ")", "}" , "»", "﴿")),
+        // specific to Arabic :
+        new HunspellNoSuggestionRule(messages, this),
+        new ArabicCommaWhitespaceRule(messages),
+        new ArabicDoublePunctuationRule(messages),
+        new ArabicLongSentenceRule(messages, 40),
         new ArabicWordRepeatRule(messages, this),
-        new HunspellNoSuggestionRule(messages, this, Example.wrong("هذا <marker>الانسان</marker> رائع"), Example.fixed("هذا <marker>الإنسان</marker> رائع"))
-        //new AvsAnRule(messages),
-        //new ArabicWordRepeatBeginningRule(messages, this),
-        //new CompoundRule(messages),
-        //new ContractionSpellingRule(messages)
+        new ArabicContractionSpellingRule(messages)
     );
   }
 
-  @Override
-  public List<Rule> getRelevantLanguageModelRules(ResourceBundle messages, LanguageModel languageModel) throws IOException {
-    return Arrays.<Rule>asList(
-        new ArabicConfusionProbabilityRule(messages, languageModel, this)
-        //new ArabicNgramProbabilityRule(messages, languageModel, this)
-    );
-  }
 
-  /**
-   * Closes the language model, if any. 
-   * @since 2.7 
-   */
-  @Override
-  public void close() throws Exception {
-    if (languageModel != null) {
-      languageModel.close();
-    }
-  }
 }

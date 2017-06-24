@@ -22,26 +22,14 @@ import java.util.Locale;
 
 import org.languagetool.tagging.BaseTagger;
 
-/**
- * Arabic Part-of-speech tagger.
- * The POS tagset is described in
- * <a href="https://github.com/languagetool-org/languagetool/blob/master/languagetool-language-modules/ar/src/main/resources/org/languagetool/resource/ar/tagset.txt">tagset.txt</a>
- * 
- * @author Taha Zerrouki
- */
 public class ArabicTagger extends BaseTagger {
 
   @Override
   public String getManualAdditionsFileName() {
     return "/ar/added.txt";
   }
-
-  @Override
-  public String getManualRemovalsFileName() {
-    return "/ar/removed.txt";
-  }
-
+ 
   public ArabicTagger() {
-    super("/ar/arabic.dict");
+    super("/ar/arabic.dict", new Locale("ar"));
   }
 }
