@@ -19,10 +19,7 @@
 package org.languagetool.rules;
 
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
-import java.util.Scanner;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -51,6 +48,7 @@ import org.languagetool.JLanguageTool;
 public abstract class WrongWordInContextRule extends Rule {
 
   private final List<ContextWords> contextWordsSet;
+  private boolean matchLemmas = false;
 
   public WrongWordInContextRule(ResourceBundle messages) {
     super.setCategory(new Category(CategoryIds.CONFUSED_WORDS, getCategoryString()));
@@ -73,12 +71,20 @@ public abstract class WrongWordInContextRule extends Rule {
   public String getDescription() {
     return "Confusion of words";
   }
+  
+  /*
+   *  Match lemmas instead of word forms
+   */
+  public void setMatchLemmmas() {
+    matchLemmas = true;
+  }
+  
 
   @Override
   public RuleMatch[] match(AnalyzedSentence sentence) {
     List<RuleMatch> ruleMatches = new ArrayList<>();
     AnalyzedTokenReadings[] tokens = sentence.getTokensWithoutWhitespace();
-    for (ContextWords contextWords: contextWordsSet) {
+    for (ContextWords contextWords : contextWordsSet) {
       boolean[] matchedWord = {false, false};
       Matcher[] matchers = {null, null};
       matchers[0] = contextWords.words[0].matcher("");
@@ -128,12 +134,30 @@ public abstract class WrongWordInContextRule extends Rule {
         //ignoring token 0, i.e., SENT_START
         String token;
         for (i = 1; i < tokens.length && !matchedContext[foundWord]; i++) {
-          token = tokens[i].getToken();
-          matchedContext[foundWord] = matchers[foundWord].reset(token).find();
+          if (matchLemmas) {
+            for (j = 0; j < tokens[i].getReadingsLength() && !matchedContext[foundWord]; j++) {
+              String lemma = tokens[i].getAnalyzedToken(j).getLemma();
+              if (lemma != null && !lemma.isEmpty()) {
+                matchedContext[foundWord] = matchers[foundWord].reset(lemma).find();
+              }
+            }
+          } else {
+            token = tokens[i].getToken();
+            matchedContext[foundWord] = matchers[foundWord].reset(token).find();
+          }
         }
         for (i = 1; i < tokens.length && !matchedContext[notFoundWord]; i++) {
-          token = tokens[i].getToken();
-          matchedContext[notFoundWord] = matchers[notFoundWord].reset(token).find();
+          if (matchLemmas) {
+            for (j = 0; j < tokens[i].getReadingsLength() && !matchedContext[notFoundWord]; j++) {
+              String lemma = tokens[i].getAnalyzedToken(j).getLemma();
+              if (lemma != null && !lemma.isEmpty()) {
+                matchedContext[notFoundWord] = matchers[notFoundWord].reset(lemma).find();
+              }
+            }
+          } else {
+            token = tokens[i].getToken();
+            matchedContext[notFoundWord] = matchers[notFoundWord].reset(token).find();
+          }
         }
         if (matchedContext[notFoundWord] && !matchedContext[foundWord]) {
           String msg = getMessage(matchedToken, matchedToken.replaceFirst(contextWords.matches[foundWord],contextWords.matches[notFoundWord]),
@@ -201,7 +225,7 @@ public abstract class WrongWordInContextRule extends Rule {
         } // if (column.length >= 6)
       }
     }
-    return set;
+    return Collections.unmodifiableList(set);
   }
   
   static class ContextWords {
@@ -225,18 +249,14 @@ public abstract class WrongWordInContextRule extends Rule {
       return ignoreCase + "\\b(" + str + ")\\b";
     }
     
-    public void setWord(int i, String word) {
+    void setWord(int i, String word) {
       words[i] = Pattern.compile(addBoundaries(word));
     }
     
-    public void setContext(int i, String context) {
+    void setContext(int i, String context) {
       contexts[i] = Pattern.compile(addBoundaries(context));
     }
     
-  }
-
-  @Override
-  public void reset() {
   }
 
 }

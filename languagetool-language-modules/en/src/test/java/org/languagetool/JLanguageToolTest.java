@@ -24,6 +24,8 @@ import org.languagetool.JLanguageTool.ParagraphHandling;
 import org.languagetool.language.AmericanEnglish;
 import org.languagetool.language.BritishEnglish;
 import org.languagetool.language.English;
+import org.languagetool.markup.AnnotatedText;
+import org.languagetool.markup.AnnotatedTextBuilder;
 import org.languagetool.rules.*;
 import org.languagetool.rules.patterns.PatternRule;
 import org.languagetool.rules.patterns.PatternToken;
@@ -34,6 +36,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class JLanguageToolTest {
@@ -111,7 +114,7 @@ public class JLanguageToolTest {
       assertOneError("A test test that should give errors.", lt);
       assertOneError("I can give you more a detailed description.", lt);
       assertTrue(lt.getAllRules().size() > 1000);
-      assertNoError("The sea ice is highly variable - frozen solid during cold, calm weather and broke...", lt);
+      assertNoError("The sea ice is highly variable — frozen solid during cold, calm weather and broke...", lt);
       assertTrue(lt.getAllRules().size() > 3);
       assertOneError("I can give you more a detailed description.", lt);
       lt.disableRule("MORE_A_JJ");
@@ -160,7 +163,7 @@ public class JLanguageToolTest {
     //test soft-hyphen ignoring:
     assertEquals("<S> This[this/DT,B-NP-singular|E-NP-singular] " +
         "is[be/VBZ,B-VP] a[a/DT,B-NP-singular] " +
-        "test­ed[tested/JJ,test/VBD,test/VBN,test­ed/null,I-NP-singular] " +
+        "test­ed[tested/JJ,I-NP-singular] " +
         "sentence[sentence/NN,E-NP-singular].[./.,</S>,O]",
         tool.getAnalyzedSentence("This is a test\u00aded sentence.").toString());
     //test paragraph ends adding
@@ -174,25 +177,21 @@ public class JLanguageToolTest {
     //run normally
     List<RuleMatch> matches1 = tool.check("(This is an quote.\n It ends in the second sentence.");
     assertEquals(2, matches1.size());
-    assertEquals(2, tool.getSentenceCount());
 
     //run in a sentence-only mode
     List<RuleMatch> matches2 = tool.check("(This is an quote.\n It ends in the second sentence.", false, ParagraphHandling.ONLYNONPARA);
     assertEquals(1, matches2.size());
     assertEquals("EN_A_VS_AN", matches2.get(0).getRule().getId());
-    assertEquals(1, tool.getSentenceCount());
 
     //run in a paragraph mode - single sentence
     List<RuleMatch> matches3 = tool.check("(This is an quote.\n It ends in the second sentence.", false, ParagraphHandling.ONLYPARA);
     assertEquals(1, matches3.size());
     assertEquals("EN_UNPAIRED_BRACKETS", matches3.get(0).getRule().getId());
-    assertEquals(1, tool.getSentenceCount());
 
     //run in a paragraph mode - many sentences
     List<RuleMatch> matches4 = tool.check("(This is an quote.\n It ends in the second sentence.", true, ParagraphHandling.ONLYPARA);
     assertEquals(1, matches4.size());
     assertEquals("EN_UNPAIRED_BRACKETS", matches4.get(0).getRule().getId());
-    assertEquals(2, tool.getSentenceCount());
   }
 
   @Test
@@ -236,8 +235,40 @@ public class JLanguageToolTest {
     String sentence = "And one two three.";
     AnalyzedSentence analyzedSentence = tool.getAnalyzedSentence(sentence);
     List<Rule> bothRules = new ArrayList<>(Arrays.asList(rule1, rule2));
-    List<RuleMatch> ruleMatches2 = tool.checkAnalyzedSentence(ParagraphHandling.NORMAL, bothRules, 0, 0, 0, sentence, analyzedSentence);
+    List<RuleMatch> ruleMatches2 = tool.checkAnalyzedSentence(ParagraphHandling.NORMAL, bothRules, analyzedSentence);
     assertEquals("one overlapping rule must be filtered out", 1, ruleMatches2.size());
     assertEquals("msg1", ruleMatches2.get(0).getMessage());
+  }
+  
+  @Test
+  public void testTextLevelRuleWithGlobalData() throws IOException {
+    JLanguageTool tool = new JLanguageTool(new English());
+    tool.addRule(new MyTextLevelRule());
+    AnnotatedText text1 = new AnnotatedTextBuilder().addGlobalMetaData(AnnotatedText.MetaDataKey.EmailToAddress, "Foo Bar <foo@foo.de>").build();
+    assertThat(tool.check(text1).size(), is(1));
+    AnnotatedText text2 = new AnnotatedTextBuilder().addGlobalMetaData(AnnotatedText.MetaDataKey.EmailToAddress, "blah blah <foo@foo.de>").build();
+    assertThat(tool.check(text2).size(), is(0));
+  }
+  
+  class MyTextLevelRule extends TextLevelRule {
+    @Override
+    public RuleMatch[] match(List<AnalyzedSentence> sentences, AnnotatedText text) throws IOException {
+      if (text.getGlobalMetaData(AnnotatedText.MetaDataKey.EmailToAddress, "").contains("Foo Bar")) {
+        return new RuleMatch[]{new RuleMatch(this, 0, 1, "test message")};
+      }
+      return new RuleMatch[0];
+    }
+    @Override
+    public RuleMatch[] match(List<AnalyzedSentence> sentences) throws IOException {
+      throw new RuntimeException("not implemented");
+    }
+    @Override
+    public String getId() {
+      return null;
+    }
+    @Override
+    public String getDescription() {
+      return null;
+    }
   }
 }

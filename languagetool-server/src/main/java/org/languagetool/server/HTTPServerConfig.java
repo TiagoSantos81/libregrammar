@@ -18,9 +18,8 @@
  */
 package org.languagetool.server;
 
+import org.apache.commons.lang3.ArrayUtils;
 import org.jetbrains.annotations.Nullable;
-import org.languagetool.Language;
-import org.languagetool.Languages;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -32,12 +31,14 @@ import java.util.Properties;
  */
 public class HTTPServerConfig {
 
-  enum Mode { LanguageTool, AfterTheDeadline }
+  enum Mode { LanguageTool }
 
   public static final String DEFAULT_HOST = "localhost";
 
   /** The default port on which the server is running (8081). */
   public static final int DEFAULT_PORT = 8081;
+  
+  static final String LANGUAGE_MODEL_OPTION = "--languageModel";
 
   protected boolean verbose = false;
   protected boolean publicAccess = false;
@@ -47,13 +48,14 @@ public class HTTPServerConfig {
   protected long maxCheckTimeMillis = -1;
   protected int maxCheckThreads = 10;
   protected Mode mode;
-  protected Language atdLanguage;
   protected File languageModelDir = null;
   protected int requestLimit;
   protected int requestLimitPeriodInSeconds;
   protected boolean trustXForwardForHeader;
   protected int maxWorkQueueSize;
   protected File rulesConfigFile = null;
+  protected int cacheSize = 0;
+  protected boolean warmUp = false;
 
   /**
    * Create a server configuration for the default port ({@link #DEFAULT_PORT}).
@@ -84,9 +86,12 @@ public class HTTPServerConfig {
    */
   HTTPServerConfig(String[] args) {
     for (int i = 0; i < args.length; i++) {
+      if (args[i].matches("--[a-zA-Z]+=.+")) {
+        System.err.println("WARNING: use `--option value`, not `--option=value`, parameters will be ignored otherwise: " + args[i]);
+      }
       switch (args[i]) {
         case "--config":
-          parseConfigFile(new File(args[++i]));
+          parseConfigFile(new File(args[++i]), !ArrayUtils.contains(args, LANGUAGE_MODEL_OPTION));
           break;
         case "-p":
         case "--port":
@@ -105,11 +110,14 @@ public class HTTPServerConfig {
             throw new IllegalArgumentException("Missing argument for '--allow-origin'");
           }
           break;
+        case LANGUAGE_MODEL_OPTION:
+          setLanguageModelDirectory(args[++i]);
+          break;
       }
     }
   }
 
-  private void parseConfigFile(File file) {
+  private void parseConfigFile(File file, boolean loadLangModel) {
     try {
       Properties props = new Properties();
       try (FileInputStream fis = new FileInputStream(file)) {
@@ -121,22 +129,19 @@ public class HTTPServerConfig {
         trustXForwardForHeader = Boolean.valueOf(getOptionalProperty(props, "trustXForwardForHeader", "false"));
         maxWorkQueueSize = Integer.parseInt(getOptionalProperty(props, "maxWorkQueueSize", "0"));
         if (maxWorkQueueSize < 0) {
-          throw new IllegalArgumentException("Max queue size must be >= 0: " + maxWorkQueueSize);
+          throw new IllegalArgumentException("maxWorkQueueSize must be >= 0: " + maxWorkQueueSize);
         }
         String langModel = getOptionalProperty(props, "languageModel", null);
-        if (langModel != null) {
-          languageModelDir = new File(langModel);
-          if (!languageModelDir.exists() || !languageModelDir.isDirectory()) {
-            throw new RuntimeException("LanguageModel directory not found or is not a directory: " + languageModelDir);
-          }
+        if (langModel != null && loadLangModel) {
+          setLanguageModelDirectory(langModel);
         }
         maxCheckThreads = Integer.parseInt(getOptionalProperty(props, "maxCheckThreads", "10"));
         if (maxCheckThreads < 1) {
-          throw new IllegalArgumentException("Invalid value for maxCheckThreads: " + maxCheckThreads);
+          throw new IllegalArgumentException("Invalid value for maxCheckThreads, must be >= 1: " + maxCheckThreads);
         }
-        mode = getOptionalProperty(props, "mode", "LanguageTool").equalsIgnoreCase("AfterTheDeadline") ? Mode.AfterTheDeadline : Mode.LanguageTool;
-        if (mode == Mode.AfterTheDeadline) {
-          atdLanguage = Languages.getLanguageForShortCode(getProperty(props, "afterTheDeadlineLanguage", file));
+        boolean atdMode = getOptionalProperty(props, "mode", "LanguageTool").equalsIgnoreCase("AfterTheDeadline");
+        if (atdMode) {
+          throw new IllegalArgumentException("The AfterTheDeadline mode is not supported anymore in LanguageTool 3.8 or later");
         }
         String rulesConfigFilePath = getOptionalProperty(props, "rulesFile", null);
         if (rulesConfigFilePath != null) {
@@ -145,9 +150,28 @@ public class HTTPServerConfig {
             throw new RuntimeException("Rules Configuration file can not be found: " + rulesConfigFile);
           }
         }
+        cacheSize = Integer.parseInt(getOptionalProperty(props, "cacheSize", "0"));
+        if (cacheSize < 0) {
+          throw new IllegalArgumentException("Invalid value for cacheSize: " + cacheSize + ", use 0 to deactivate cache");
+        }
+        String warmUpStr = getOptionalProperty(props, "warmUp", "false");
+        if (warmUpStr.equals("true")) {
+          warmUp = true;
+        } else if (warmUpStr.equals("false")) {
+          warmUp = false;
+        } else {
+          throw new IllegalArgumentException("Invalid value for warmUp: '" + warmUpStr + "', use 'true' or 'false'");
+        }
       }
     } catch (IOException e) {
       throw new RuntimeException("Could not load properties from '" + file + "'", e);
+    }
+  }
+
+  private void setLanguageModelDirectory(String langModelDir) {
+    languageModelDir = new File(langModelDir);
+    if (!languageModelDir.exists() || !languageModelDir.isDirectory()) {
+      throw new RuntimeException("LanguageModel directory not found or is not a directory: " + languageModelDir);
     }
   }
 
@@ -225,15 +249,6 @@ public class HTTPServerConfig {
   }
 
   /**
-   * @return the language used, or {@code null} if not in AtD mode
-   * @since 2.7 
-   */
-  @Nullable
-  Language getAfterTheDeadlineLanguage() {
-    return atdLanguage;
-  }
-
-  /**
    * @param maxCheckThreads The maximum number of threads serving requests running at the same time.
    * If there are more requests, they will be queued until a thread can work on them.
    * @since 2.7
@@ -265,6 +280,16 @@ public class HTTPServerConfig {
   /** @since 2.9 */
   int getMaxWorkQueueSize() {
     return maxWorkQueueSize;
+  }
+
+  /** @since 3.7 */
+  int getCacheSize() {
+    return cacheSize;
+  }
+
+  /** @since 3.7 */
+  boolean getWarmUp() {
+    return warmUp;
   }
 
   /**

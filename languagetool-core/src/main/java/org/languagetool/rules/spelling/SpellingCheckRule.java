@@ -33,6 +33,7 @@ import org.languagetool.tools.StringTools;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * An abstract rule for spellchecking rules.
@@ -49,6 +50,7 @@ public abstract class SpellingCheckRule extends Rule {
   /**
    * The name of the LanguageTool Firefox extension, {@code LanguageToolFx}.
    * @since 2.3
+   * @deprecated not needed anymore, the add-on is now just called 'LanguageTool' 
    */
   public static final String LANGUAGETOOL_FX = "LanguageToolFx";
 
@@ -57,7 +59,9 @@ public abstract class SpellingCheckRule extends Rule {
   private static final String SPELLING_IGNORE_FILE = "/hunspell/ignore.txt";
   private static final String SPELLING_FILE = "/hunspell/spelling.txt";
   private static final String SPELLING_PROHIBIT_FILE = "/hunspell/prohibit.txt";
-
+  private static final Comparator<String> STRING_LENGTH_COMPARATOR = Comparator.comparingInt(String::length);
+  private Map<String,Set<String>> wordsToBeIgnoredDictionary = new HashMap<>();
+  private Map<String,Set<String>> wordsToBeIgnoredDictionaryIgnoreCase = new HashMap<>();
   private final Set<String> wordsToBeIgnored = new HashSet<>();
   private final Set<String> wordsToBeProhibited = new HashSet<>();
   private final CachingWordListLoader wordListLoader = new CachingWordListLoader();
@@ -86,10 +90,6 @@ public abstract class SpellingCheckRule extends Rule {
     return true;
   }
 
-  @Override
-  public void reset() {
-  }
-
   /**
    * Add the given words to the list of words to be ignored during spell check.
    * You might want to use {@link #acceptPhrases(List)} instead, as only that
@@ -97,6 +97,19 @@ public abstract class SpellingCheckRule extends Rule {
    */
   public void addIgnoreTokens(List<String> tokens) {
     wordsToBeIgnored.addAll(tokens);
+    updateIgnoredWordDictionary();
+  }
+
+  //(re)create a Map<String, Set<String>> of all words to be ignored:
+  // The words' first char serves as key, and the Set<String> contains all Strings starting with this char
+  private void updateIgnoredWordDictionary() {
+    wordsToBeIgnoredDictionary = wordsToBeIgnored
+                                   .stream()
+                                   .collect(Collectors.groupingBy(s -> s.substring(0,1), Collectors.toSet()));
+    wordsToBeIgnoredDictionaryIgnoreCase = wordsToBeIgnored
+                                             .stream()
+                                             .map(s -> s.toLowerCase())
+                                             .collect(Collectors.groupingBy(s -> s.substring(0,1), Collectors.toSet()));
   }
 
   /**
@@ -108,7 +121,8 @@ public abstract class SpellingCheckRule extends Rule {
 
   /**
    * Get additional suggestions added before other suggestions (note the rule may choose to
-   * re-order the suggestions anyway).
+   * re-order the suggestions anyway). Only add suggestions here that you know are spelled correctly,
+   * they will not be checked again before being shown to the user.
    */
   protected List<String> getAdditionalTopSuggestions(List<String> suggestions, String word) throws IOException {
     List<String> moreSuggestions = new ArrayList<>();
@@ -170,6 +184,7 @@ public abstract class SpellingCheckRule extends Rule {
    * spell checking.
    * @return true if the dictionary converts case
    * @since 2.5
+   * @deprecated deprecated as there's no internal use in LT, complain and describe your use case if you need this (deprecated since 3.9)
    */
   public boolean isConvertsCase() {
     return convertsCase;
@@ -196,11 +211,12 @@ public abstract class SpellingCheckRule extends Rule {
   
   protected void init() throws IOException {
     for (String ignoreWord : wordListLoader.loadWords(getIgnoreFileName())) {
-      addIgnoreWords(ignoreWord, wordsToBeIgnored);
+      addIgnoreWords(ignoreWord);
     }
     for (String ignoreWord : wordListLoader.loadWords(getSpellingFileName())) {
-      addIgnoreWords(ignoreWord, wordsToBeIgnored);
+      addIgnoreWords(ignoreWord);
     }
+    updateIgnoredWordDictionary();
     for (String prohibitedWord : wordListLoader.loadWords(getProhibitFileName())) {
       wordsToBeProhibited.addAll(expandLine(prohibitedWord));
     }
@@ -258,11 +274,26 @@ public abstract class SpellingCheckRule extends Rule {
 
   /**
    * @param line the line as read from {@code spelling.txt}.
-   * @param wordsToBeIgnored the set of words to be ignored
-   * @since 2.9
+   * @since 2.9, signature modified in 3.9
    */
-  protected void addIgnoreWords(String line, Set<String> wordsToBeIgnored) {
-    wordsToBeIgnored.add(line);
+  protected void addIgnoreWords(String line) {
+    // if line consists of several words (separated by " "), a DisambiguationPatternRule
+    // will be created where each words serves as a case-sensitive and non-inflected PatternToken
+    // so that the entire multi-word entry is ignored by the spell checker
+    if (line.contains(" ")) {
+      List<String> tokens = language.getWordTokenizer().tokenize(line);
+      List<PatternToken> patternTokens = new ArrayList<>(tokens.size());
+      for(String token : tokens) {
+        if (token.trim().isEmpty()) {
+          continue;
+        }
+        patternTokens.add(new PatternToken(token, true, false, false));
+      }
+      antiPatterns.add(new DisambiguationPatternRule("INTERNAL_ANTIPATTERN", "(no description)", language,
+        patternTokens, null, null, DisambiguationPatternRule.DisambiguatorAction.IGNORE_SPELLING));
+    } else {
+      wordsToBeIgnored.add(line);
+    }
   }
 
   /**
@@ -332,7 +363,9 @@ public abstract class SpellingCheckRule extends Rule {
   }
   
   /**
-   * Checks whether a <code>word</code> starts with an ignored word
+   * Checks whether a <code>word</code> starts with an ignored word.
+   * Note that a minimum <code>word</code>-length of 4 characters is expected.
+   * (This is for better performance. Moreover, such short words are most likely contained in the dictionary.)
    * @param word - entire word
    * @param caseSensitive - determines whether the check is case-sensitive
    * @return length of the ignored word (i.e., return value is 0, if the word does not start with an ignored word).
@@ -340,14 +373,23 @@ public abstract class SpellingCheckRule extends Rule {
    * @since 3.5
    */
   protected int startsWithIgnoredWord(String word, boolean caseSensitive) {
-    Optional<String> match;
+    if (word.length() < 4) {
+      return 0;
+    }
+    Optional<String> match = null;
     if(caseSensitive) {
-      match = wordsToBeIgnored.stream().filter(s -> word.startsWith(s)).max(Comparator.naturalOrder()); 
+      Set<String> subset = wordsToBeIgnoredDictionary.get(word.substring(0, 1));
+      if (subset != null) {
+        match = subset.stream().filter(s -> word.startsWith(s)).max(STRING_LENGTH_COMPARATOR);
+      }
     } else {
       String lowerCaseWord = word.toLowerCase();
-      match = wordsToBeIgnored.stream().filter(s -> lowerCaseWord.startsWith(s.toLowerCase())).max(Comparator.naturalOrder());
+      Set<String> subset = wordsToBeIgnoredDictionaryIgnoreCase.get(lowerCaseWord.substring(0, 1));
+      if (subset != null) {
+        match = subset.stream().filter(s -> lowerCaseWord.startsWith(s)).max(STRING_LENGTH_COMPARATOR);
+      }
     }
-    return match.isPresent() ? match.get().length() : 0;
+    return match != null && match.isPresent() ? match.get().length() : 0;
   }
 
 }

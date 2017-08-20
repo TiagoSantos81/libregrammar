@@ -35,14 +35,14 @@ public abstract class CompoundAwareHunspellRule extends HunspellRule {
 
   private static final int MAX_SUGGESTIONS = 20;
   
-  private final CompoundWordTokenizer wordSplitter;
+  private final CompoundWordTokenizer compoundSplitter;
   private final MorfologikMultiSpeller morfoSpeller;
 
   protected abstract void filterForLanguage(List<String> suggestions);
 
-  public CompoundAwareHunspellRule(ResourceBundle messages, Language language, CompoundWordTokenizer wordSplitter, MorfologikMultiSpeller morfoSpeller) {
+  public CompoundAwareHunspellRule(ResourceBundle messages, Language language, CompoundWordTokenizer compoundSplitter, MorfologikMultiSpeller morfoSpeller) {
     super(messages, language);
-    this.wordSplitter = wordSplitter;
+    this.compoundSplitter = compoundSplitter;
     this.morfoSpeller = morfoSpeller;
   }
 
@@ -58,30 +58,51 @@ public abstract class CompoundAwareHunspellRule extends HunspellRule {
       init();
     }
     List<String> candidates = getCandidates(word);
-    List<String> suggestions = getCorrectWords(candidates);
+    List<String> simpleSuggestions = getCorrectWords(candidates);
 
     List<String> noSplitSuggestions = morfoSpeller.getSuggestions(word);  // after getCorrectWords() so spelling.txt is considered
+    handleWordEndPunctuation(".", word, noSplitSuggestions);
+    handleWordEndPunctuation("...", word, noSplitSuggestions);
     if (StringTools.startsWithUppercase(word) && !StringTools.isAllUppercase(word)) {
       // almost all words can be uppercase because they can appear at the start of a sentence:
       List<String> noSplitLowercaseSuggestions = morfoSpeller.getSuggestions(word.toLowerCase());
-      int pos = noSplitSuggestions.size() == 0 ? 0 : 1;  // first item comes from getSuggestion() above, if any
       for (String suggestion : noSplitLowercaseSuggestions) {
-        noSplitSuggestions.add(pos, StringTools.uppercaseFirstChar(suggestion));
-        // we don't know about the quality of the results here, so mix both lists together,
-        // taking elements from both lists on a rotating basis:
-        pos = Math.min(pos + 2, noSplitSuggestions.size());
+        noSplitSuggestions.add(StringTools.uppercaseFirstChar(suggestion));
       }
     }
-    suggestions.addAll(0, noSplitSuggestions);
+    // We don't know about the quality of the results here, so mix both lists together,
+    // taking elements from both lists on a rotating basis:
+    List<String> suggestions = new ArrayList<>();
+    for (int i = 0; i < Math.max(simpleSuggestions.size(), noSplitSuggestions.size()); i++) {
+      if (i < simpleSuggestions.size()) {
+        suggestions.add(simpleSuggestions.get(i));
+      }
+      if (i < noSplitSuggestions.size()) {
+        suggestions.add(noSplitSuggestions.get(i));
+      }
+    }
 
     filterDupes(suggestions);
     filterForLanguage(suggestions);
     List<String> sortedSuggestions = sortSuggestionByQuality(word, suggestions);
+    // This is probably be the right place to sort suggestions by probability:
+    //SuggestionSorter sorter = new SuggestionSorter(new LuceneLanguageModel(new File("/home/dnaber/data/google-ngram-index/de")));
+    //sortedSuggestions = sorter.sortSuggestions(sortedSuggestions);
     return sortedSuggestions.subList(0, Math.min(MAX_SUGGESTIONS, sortedSuggestions.size()));
   }
 
+  private void handleWordEndPunctuation(String punct, String word, List<String> noSplitSuggestions) {
+    if (word.endsWith(punct)) {
+      // e.g. "informationnen." - the dot is a word char in hunspell, so it needs special treatment here
+      List<String> tmp = morfoSpeller.getSuggestions(word.substring(0, word.length()-punct.length()));
+      for (String s : tmp) {
+        noSplitSuggestions.add(s + punct);
+      }
+    }
+  }
+
   protected List<String> getCandidates(String word) {
-    return wordSplitter.tokenize(word);
+    return compoundSplitter.tokenize(word);
   }
 
   protected List<String> getCandidates(List<String> parts) {
@@ -108,10 +129,19 @@ public abstract class CompoundAwareHunspellRule extends HunspellRule {
           if (!isMisspelled(candidate)) {
             candidates.add(candidate);
           }
+          // Arbeidszimmer -> Arbeitszimmer:
+          if (partCount < parts.size()-1 && part.endsWith("s") && suggestion.endsWith("-")) {
+            partsCopy.set(partCount, suggestion.substring(0, suggestion.length()-1));
+            String infixCandidate = String.join("", partsCopy);
+            if (!isMisspelled(infixCandidate)) {
+              candidates.add(infixCandidate);
+            }
+          }
         }
       }
-      // TODO: what if there's no misspelled parts like for Arbeitamt = Arbeit+Amt ??
+      // What if there's no misspelled parts like for Arbeitamt = Arbeit+Amt ??
       // -> morfologik must be extended to return similar words even for known words
+      // But GermanSpellerRule.getCandidates() has a solution for the cases with infix "s".
       partCount++;
     }
     return candidates;
@@ -119,18 +149,6 @@ public abstract class CompoundAwareHunspellRule extends HunspellRule {
 
   protected List<String> sortSuggestionByQuality(String misspelling, List<String> suggestions) {
     return suggestions;
-  }
-
-  private void filterDupes(List<String> words) {
-    Set<String> seen = new HashSet<>();
-    Iterator<String> iterator = words.iterator();
-    while (iterator.hasNext()) {
-      String word = iterator.next();
-      if (seen.contains(word)) {
-        iterator.remove();
-      }
-      seen.add(word);
-    }
   }
 
   // avoid over-accepting words, as the Morfologik approach above might construct

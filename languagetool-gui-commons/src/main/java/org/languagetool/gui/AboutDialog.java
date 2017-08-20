@@ -64,9 +64,9 @@ public class AboutDialog {
 
     aboutPane.setText(String.format("<html>"
             + "<p>LanguageTool %s (%s)<br>"
-            + "Copyright (C) 2005-2016 the LanguageTool community and Daniel Naber<br>"
+            + "Copyright (C) 2005-2017 the LanguageTool community and Daniel Naber<br>"
             + "This software is licensed under the GNU Lesser General Public License.<br>"
-            + "<a href=\"http://www.languagetool.org\">http://www.languagetool.org</a><br>"
+            + "<a href=\"https://www.languagetool.org\">https://www.languagetool.org</a><br>"
             + "Java max/total/free memory: %sMB, %sMB, %sMB</p>"
             + "<p>Maintainers or former maintainers of the language modules -<br>"
             + "(*) means language is unmaintained in LanguageTool:</p><br>"
@@ -87,11 +87,10 @@ public class AboutDialog {
 
     maintainersPane.setText(getMaintainers());
 
+    int prefWidth = Math.max(520, maintainersPane.getPreferredSize().width);
     int maxHeight = Toolkit.getDefaultToolkit().getScreenSize().height / 2;
-    if (maintainersPane.getPreferredSize().height > maxHeight) {
-      maintainersPane.setPreferredSize(
-                new Dimension(maintainersPane.getPreferredSize().width, maxHeight));
-    }
+    maxHeight = Math.min(maintainersPane.getPreferredSize().height, maxHeight);
+    maintainersPane.setPreferredSize(new Dimension(prefWidth, maxHeight));
 
     JScrollPane scrollPane = new JScrollPane(maintainersPane);
     scrollPane.setBorder(BorderFactory.createEmptyBorder());

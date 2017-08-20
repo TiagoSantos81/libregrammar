@@ -28,6 +28,8 @@ public final class Categories {
   /** Words that are easily confused, like 'there' and 'their' in English. */
   public static final Categories CONFUSED_WORDS = make("CONFUSED_WORDS", "category_confused_words");
 
+  public static final Categories REPETITIONS = make("REPETITIONS", "category_repetitions");
+
   public static final Categories REDUNDANCY = make("REDUNDANCY", "category_redundancy");
 
   /** General style issues not covered by other categories, like overly verbose wording. */
@@ -40,6 +42,9 @@ public final class Categories {
 
   /** Colloquial style. */
   public static final Categories COLLOQUIALISMS = make("COLLOQUIALISMS", "category_colloquialism");
+
+  /** Regionalisms: words used only in another language variant or used with different meanings. */
+  public static final Categories REGIONALISMS = make("REGIONALISMS", "category_regionalisms");
 
   /** False friends: words easily confused by language learners because a similar word exists in their native language. */
   public static final Categories FALSE_FRIENDS = make("FALSE_FRIENDS", "category_false_friend");

@@ -74,6 +74,9 @@ public class HTTPSServer extends Server {
       server.createContext("/", httpHandler);
       executorService = getExecutorService(workQueue, config);
       server.setExecutor(executorService);
+      if (config.getWarmUp()) {
+        warmUp();
+      }
     } catch (BindException e) {
       ResourceBundle messages = JLanguageTool.getMessageBundle();
       String message = Tools.i18n(messages, "https_server_start_failed", host, Integer.toString(port));
@@ -135,6 +138,7 @@ public class HTTPSServer extends Server {
     try {
       HTTPSServerConfig config = new HTTPSServerConfig(args);
       try {
+        checkForNonRootUser();
         HTTPSServer server;
         if (config.isPublicAccess()) {
           System.out.println("WARNING: running in public mode, LanguageTool API can be accessed without restrictions!");

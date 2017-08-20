@@ -34,18 +34,19 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Test HTTP server access from multiple threads with multiple languages.
+ * Sends random texts but doesn't really check the results.
  */
 @Ignore("for interactive use; requires local Tatoeba data")
 public class HTTPServerMultiLangLoadTest extends HTTPServerLoadTest {
 
   private static final String DATA_PATH = "/media/Data/tatoeba/";
   private static final int MIN_TEXT_LENGTH = 1;
-  private static final int MAX_TEXT_LENGTH = 60_000;
+  private static final int MAX_TEXT_LENGTH = 5_000;
   private static final int MAX_SLEEP_MILLIS = 10;
 
-  private final Map<Language, String> langCodeToText = new HashMap<>();
-  private final Random random = new Random(1234);
-  private final AtomicInteger counter = new AtomicInteger();
+  protected final Map<Language, String> langCodeToText = new HashMap<>();
+  protected final Random random = new Random(1234);
+  protected final AtomicInteger counter = new AtomicInteger();
 
   @Test
   @Override
@@ -63,6 +64,9 @@ public class HTTPServerMultiLangLoadTest extends HTTPServerLoadTest {
         langCodeToText.put(language, content);
         System.err.println("Using " + content.length() + " bytes of data for " + language);
       }
+    }
+    if (langCodeToText.size() == 0) {
+      throw new RuntimeException("No input data found in " + dir);
     }
     System.out.println("Testing " + langCodeToText.keySet().size() + " languages and variants");
     //super.testHTTPServer();  // start server in this JVM
@@ -84,7 +88,7 @@ public class HTTPServerMultiLangLoadTest extends HTTPServerLoadTest {
     Language language = getRandomLanguage();
     String text = langCodeToText.get(language);
     int fromPos = random.nextInt(text.length());
-    int toPos = fromPos + random.nextInt(MAX_TEXT_LENGTH) + MIN_TEXT_LENGTH;
+    int toPos = fromPos + random.nextInt(MAX_TEXT_LENGTH-MIN_TEXT_LENGTH) + MIN_TEXT_LENGTH;
     String textSubstring = text.substring(fromPos, Math.min(toPos, text.length()));
     long sleepTime = random.nextInt(MAX_SLEEP_MILLIS);
     try {
@@ -99,7 +103,7 @@ public class HTTPServerMultiLangLoadTest extends HTTPServerLoadTest {
             + ", Length: " + textSubstring.length() + ", Time: " + (System.currentTimeMillis()-startTime) + "ms");
   }
 
-  private Language getRandomLanguage() {
+  protected Language getRandomLanguage() {
     int randomNumber = random.nextInt(langCodeToText.size());
     int i = 0;
     for (Language lang : langCodeToText.keySet()) {

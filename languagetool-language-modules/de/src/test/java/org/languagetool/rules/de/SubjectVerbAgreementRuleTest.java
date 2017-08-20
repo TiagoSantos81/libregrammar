@@ -296,7 +296,9 @@ public class SubjectVerbAgreementRuleTest {
         "Einer seiner bedeutendsten Kämpfe war gegen den späteren Weltmeister.",
         "Aufgrund stark schwankender Absatzmärkte war die GEFA-Flug Mitte der 90er Jahre gezwungen, ...",
         "Der Abzug der Besatzungssoldaten und deren mittlerweile ansässigen Angehörigen der Besatzungsmächte war vereinbart.",
-        "Das Bündnis zwischen der Sowjetunion und Kuba war für beide vorteilhaft."
+        "Das Bündnis zwischen der Sowjetunion und Kuba war für beide vorteilhaft.",
+        "Knapp acht Monate ist die Niederlage nun her.",
+        "Vier Monate ist die Niederlage nun her."
     );
     for (String sentence : sentences) {
       assertGood(sentence);
@@ -405,7 +407,8 @@ public class SubjectVerbAgreementRuleTest {
         "Er ahnt nicht, dass sie und sein Sohn ein Paar sind.",
         "Die Ursachen der vorliegenden Durchblutungsstörung sind noch unbekannt.",
         "Der See und das Marschland sind ein Naturschutzgebiet",
-        "Details, Dialoge, wie auch die Typologie der Charaktere sind frei erfunden."
+        "Details, Dialoge, wie auch die Typologie der Charaktere sind frei erfunden.",
+        "Die internen Ermittler und auch die Staatsanwaltschaft sind nun am Zug."
     );
     for (String sentence : sentences) {
       assertGood(sentence);

@@ -2,8 +2,160 @@ SET UTF-8
 LANG pt_PT
 TRY aerisontcdmlupvgbfzáhçqjíxãóéêâúõACMPSBTELGRIFVDkHJONôywUKXZWQÁYÍÉàÓèÂÚ
 KEY qwertyuiop|asdfghjkl|zxcvbnm
+
+ICONV 66
+ICONV ’ '
+ICONV ʼ '
+ICONV Ꜳ AA
+ICONV ꜳ aa
+ICONV Æ AE
+ICONV æ ae
+ICONV Ꜵ AO
+ICONV ꜵ ao
+ICONV Ꜷ AU
+ICONV ꜷ au
+ICONV Ꜹ AV
+ICONV ꜹ av
+ICONV Ꜽ AY
+ICONV ꜽ ay
+ICONV 🙰 et
+ICONV ﬃ ffi
+ICONV ﬄ ffl
+ICONV ﬀ ff
+ICONV ﬅ ft
+ICONV ﬁ fi
+ICONV ﬂ fl
+ICONV Œ OE
+ICONV œ oe
+ICONV Ꝏ OO
+ICONV ꝏ oo
+ICONV ẞ ſs
+ICONV ß ſz
+ICONV ﬅ ſt
+ICONV ﬆ st
+ICONV Ꜩ TZ
+ICONV ꜩ tz
+ICONV ᵫ ue
+ICONV Ꝡ VY
+ICONV ꝡ vy
+ICONV à à
+ICONV â â
+ICONV ä ä
+ICONV é é
+ICONV è è
+ICONV ê ê
+ICONV ë ë
+ICONV î î
+ICONV ï ï
+ICONV ô ô
+ICONV ö ö
+ICONV ù ù
+ICONV û û
+ICONV ü ü
+ICONV ÿ ÿ
+ICONV ç ç
+ICONV À À
+ICONV Â Â
+ICONV Ä Ä
+ICONV É É
+ICONV È È
+ICONV Ê Ê
+ICONV Ë Ë
+ICONV Î Î
+ICONV Ï Ï
+ICONV Ô Ô
+ICONV Ö Ö
+ICONV Ù Ù
+ICONV Û Û
+ICONV Ü Ü
+ICONV Ÿ Ÿ
+ICONV Ç Ç
+
 WORDCHARS -
 
+NOSUGGEST Ý
+
+PFX 0 Y 80
+PFX 0   0               atto            [^rsho]           PFSEM=atto+
+PFX 0   0               atto-           [ho]              PFSEM=atto+
+PFX 0   0               attor           r                 PFSEM=atto+
+PFX 0   0               attos           s                 PFSEM=atto+
+PFX 0   0               centi           [^rshi]           PFSEM=centi+
+PFX 0   0               centi-          [hi]              PFSEM=centi+
+PFX 0   0               centir          r                 PFSEM=centi+
+PFX 0   0               centis          s                 PFSEM=centi+
+PFX 0   0               deca            [^rsha]           PFSEM=deca+
+PFX 0   0               deca-           [ha]              PFSEM=deca+
+PFX 0   0               decar           r                 PFSEM=deca+
+PFX 0   0               decas           s                 PFSEM=deca+
+PFX 0   0               deci            [^rshi]           PFSEM=deci+
+PFX 0   0               deci-           [hi]              PFSEM=deci+
+PFX 0   0               decir           r                 PFSEM=deci+
+PFX 0   0               decis           s                 PFSEM=deci+
+PFX 0   0               exa             [^rsha]           PFSEM=exa+
+PFX 0   0               exa-            [ha]              PFSEM=exa+
+PFX 0   0               exar            r                 PFSEM=exa+
+PFX 0   0               exas            s                 PFSEM=exa+
+PFX 0   0               femto           [^rsho]           PFSEM=femto+
+PFX 0   0               femto-          [ho]              PFSEM=femto+
+PFX 0   0               femtor          r                 PFSEM=femto+
+PFX 0   0               femtos          s                 PFSEM=femto+
+PFX 0   0               giga            [^rsha]           PFSEM=giga+
+PFX 0   0               giga-           [ha]              PFSEM=giga+
+PFX 0   0               gigar           r                 PFSEM=giga+
+PFX 0   0               gigas           s                 PFSEM=giga+
+PFX 0   0               hecto           [^rsho]           PFSEM=hecto+
+PFX 0   0               hecto-          [ho]              PFSEM=hecto+
+PFX 0   0               hector          r                 PFSEM=hecto+
+PFX 0   0               hectos          s                 PFSEM=hecto+
+PFX 0   0               mega            [^rsha]           PFSEM=mega+
+PFX 0   0               mega-           [ha]              PFSEM=mega+
+PFX 0   0               megar           r                 PFSEM=mega+
+PFX 0   0               megas           s                 PFSEM=mega+
+PFX 0   0               micro           [^rsho]           PFSEM=micro+
+PFX 0   0               micro-          [ho]              PFSEM=micro+
+PFX 0   0               micror          r                 PFSEM=micro+
+PFX 0   0               micros          s                 PFSEM=micro+
+PFX 0   0               mili            [^rshi]           PFSEM=mili+
+PFX 0   0               mili-           [hi]              PFSEM=mili+
+PFX 0   0               milir           r                 PFSEM=mili+
+PFX 0   0               milis           s                 PFSEM=mili+
+PFX 0   0               nano            [^rsho]           PFSEM=nano+
+PFX 0   0               nano-           [ho]              PFSEM=nano+
+PFX 0   0               nanor           r                 PFSEM=nano+
+PFX 0   0               nanos           s                 PFSEM=nano+
+PFX 0   0               peta            [^rsha]           PFSEM=peta+
+PFX 0   0               peta-           [ha]              PFSEM=peta+
+PFX 0   0               petar           r                 PFSEM=peta+
+PFX 0   0               petas           s                 PFSEM=peta+
+PFX 0   0               pico            [^rsho]           PFSEM=mega+
+PFX 0   0               pico-           [ho]              PFSEM=mega+
+PFX 0   0               picor           r                 PFSEM=mega+
+PFX 0   0               picos           s                 PFSEM=mega+
+PFX 0   0               quilo           [^rsho]           PFSEM=quilo+
+PFX 0   0               quilo-          [ho]              PFSEM=quilo+
+PFX 0   0               quilor          r                 PFSEM=quilo+
+PFX 0   0               quilos          s                 PFSEM=quilo+
+PFX 0   0               tera            [^rsha]           PFSEM=tera+
+PFX 0   0               tera-           [ha]              PFSEM=tera+
+PFX 0   0               terar           r                 PFSEM=tera+
+PFX 0   0               teras           s                 PFSEM=tera+
+PFX 0   0               yocto           [^rsho]           PFSEM=yocto+
+PFX 0   0               yocto-          [ho]              PFSEM=yocto+
+PFX 0   0               yoctor          r                 PFSEM=yocto+
+PFX 0   0               yoctos          s                 PFSEM=yocto+
+PFX 0   0               yota            [^rsha]           PFSEM=yotta+
+PFX 0   0               yota-           [ha]              PFSEM=yotta+
+PFX 0   0               yotar           r                 PFSEM=yotta+
+PFX 0   0               yotas           s                 PFSEM=yotta+
+PFX 0   0               zepto           [^rsho]           PFSEM=zepto+
+PFX 0   0               zepto-          [ho]              PFSEM=zepto+
+PFX 0   0               zeptor          r                 PFSEM=zepto+
+PFX 0   0               zeptos          s                 PFSEM=zepto+
+PFX 0   0               zetta           [^rsha]           PFSEM=zetta+
+PFX 0   0               zetta-          [ha]              PFSEM=zetta+
+PFX 0   0               zettar          r                 PFSEM=zetta+
+PFX 0   0               zettas          s                 PFSEM=zetta+
 
 PFX A Y 4
 PFX A   0               anti            [^hirs]         PFSEM=anti+
@@ -390,16 +542,15 @@ SFX t   a               uistas          ga              +CAT=a_nc,N=p,FSEM=ista
 SFX t   e               istas           e               +CAT=a_nc,N=p,FSEM=ista
 SFX t   0               istas           [lr]            +CAT=a_nc,N=p,FSEM=ista
 
-SFX l Y 28
+SFX l Y 38
 SFX l   o               inho            [^cgçãi]o       +GR=dim
 SFX l   co              quinho          co              +GR=dim
 SFX l   ço              cinho           ço              +GR=dim
 SFX l   o               uinho           go              +GR=dim
 SFX l   0               zinho           ão              +GR=dim
-SFX l   e               inho            e               +G=m,GR=dim
 SFX l   0               inho            [^ê][sz]        +G=m,GR=dim
 SFX l   ês              esinho          ês              +GR=dim
-SFX l   0               zinho           [irunl]         +G=m,GR=dim
+SFX l   0               zinho           [eirunl]         +G=m,GR=dim
 SFX l   ó               ozinho          ó               +GR=dim
 SFX l   ô               ozinho          ô               +GR=dim
 SFX l   é               ezinho          é               +G=m,GR=dim
@@ -410,19 +561,31 @@ SFX l   co              quinhos         co              +N=p,N=P,GR=dim
 SFX l   ço              cinhos          ço              +N=p,N=P,GR=dim
 SFX l   o               uinhos          go              +N=p,N=P,GR=dim
 SFX l   ão              õezinhos        ão              +N=p,N=P,GR=dim
-SFX l   e               inhos           e               +G=m,N=p,GR=dim
 SFX l   0               inhos           [^ê][sz]        +G=m,N=p,GR=dim
 SFX l   ês              esinhos         ês              +N=p,N=P,GR=dim
-SFX l   0               zinhos          [irunl]         +G=m,N=p,GR=dim
+SFX l   0               zinhos          [eirunl]        +G=m,N=p,GR=dim
 SFX l   ó               ozinhos         ó               +N=p,N=P,GR=dim
 SFX l   ô               ozinhos         ô               +N=p,N=P,GR=dim
 SFX l   é               ezinhos         é               +G=m,N=p,GR=dim
 SFX l   ú               uzinhos         ú               +N=p,N=P,GR=dim
 SFX l   m               nzinhos         m               +G=m,N=p,GR=dim
+SFX l   0               zão             [^ãõ][^áâéêíîôóûúms]  +G=m,GR=aum
+SFX l   m               nzão            [^áâéêíîôóûú]m        +G=m,GR=aum
+SFX l   s               são             [^áâéêíîôóûú]s        +G=m,GR=aum
+SFX l   o               ão              [^ã]o                 +G=m,GR=aum
+SFX l   a               ão              a                     +G=m,GR=aum
+SFX l   0               ão              [lsz]                 +G=m,GR=aum
+SFX l   0               zãos            [^ãõ][^áâéêíîôóûúms]  +G=m,N=p,GR=aum
+SFX l   m               nzãos           [^áâéêíîôóûú]m        +G=m,N=p,GR=aum
+SFX l   s               sãos            [^áâéêíîôóûú]s        +G=m,N=p,GR=aum
+SFX l   o               ãos             [^ã]o                 +G=m,N=p,GR=aum
+SFX l   a               ãos             a                     +G=m,N=p,GR=aum
+SFX l   0               ãos             [lsz]                 +G=m,N=p,GR=aum
 
-SFX h Y 30
+SFX h Y 46
 SFX h   o               inha            [^cgçãi]o       +G=f,GR=dim
-SFX h   a               inha            [^çg]a          +G=f,GR=dim
+SFX h   a               inha            [^çgçi]a        +G=f,GR=dim
+SFX h   ia              iazinha         ia              +G=f,GR=dim
 SFX h   co              quinha          co              +G=f,GR=dim
 SFX h   ço              cinha           ço              +G=f,GR=dim
 SFX h   o               uinha           go              +G=f,GR=dim
@@ -433,11 +596,12 @@ SFX h   á               azinha          á               +G=f,GR=dim
 SFX h   ã               azinha          ã               +G=f,GR=dim
 SFX h   0               zinha           ãe              +G=f,GR=dim
 SFX h   0               zinha           ão              +G=f,GR=dim
-SFX h   e               inha            [^ã]e           +G=f,GR=dim
+SFX h   e               ezinha          [^ã]e           +G=f,GR=dim
 SFX h   0               zinha           [irunl]         +G=f,GR=dim
 SFX h   m               nzinha          m               +G=f,GR=dim
 SFX h   o               inhas           [^cgçãi]o       +G=f,N=p,GR=dim
-SFX h   a               inhas           [^çg]a          +G=f,N=p,GR=dim
+SFX h   a               inhas           [^çgçi]a        +G=f,N=p,GR=dim
+SFX h   ia              iazinhas        ia              +G=f,GR=dim
 SFX h   ca              quinhas         ca              +G=f,N=p,GR=dim
 SFX h   ça              cinhas          ça              +G=f,N=p,GR=dim
 SFX h   a               uinhas          ga              +G=f,N=p,GR=dim
@@ -448,9 +612,23 @@ SFX h   á               azinhas         á               +G=f,N=p,GR=dim
 SFX h   ã               azinhas         ã               +G=f,N=p,GR=dim
 SFX h   0               zinhas          ãe              +G=f,N=p,GR=dim
 SFX h   ão              õezinhas        ão              +G=f,N=P,GR=dim
-SFX h   e               inhas           [^ã]e           +G=f,N=p,GR=dim
+SFX h   e               ezinhas         [^ã]e           +G=f,N=p,GR=dim
 SFX h   0               zinhas          [irunl]         +G=f,N=p,GR=dim
 SFX h   m               nzinhas         m               +G=m,N=p,GR=dim
+SFX h   0               zona            [^ãõ][^áâéêíîoôóûúms] +G=f,GR=aum
+SFX h   m               nzona           [^áâéêíîôóûú]m        +G=f,GR=aum
+SFX h   s               sona            [^áâéêíîôóûú]s        +G=f,GR=aum
+SFX h   o               azona           [^ã]o                 +G=f,GR=aum
+SFX h   a               ona             a                     +G=f,GR=aum
+SFX h   o               ona             o                     +G=f,GR=aum
+SFX h   0               ona             [lsz]                +G=f,GR=aum
+SFX h   0               zonas           [^ãõ][^áâéêíîoôóûúms]  +G=f,N=p,GR=aum
+SFX h   m               nzonas          [^áâéêíîôóûú]m        +G=f,N=p,GR=aum
+SFX h   s               sonas           [^áâéêíîôóûú]s        +G=f,N=p,GR=aum
+SFX h   o               azonas          [^ã]o                 +G=f,N=p,GR=aum
+SFX h   a               onas            a                     +G=f,N=p,GR=aum
+SFX h   o               onas            o                     +G=f,N=p,GR=aum
+SFX h   0               onas            [lsz]                +G=f,N=p,GR=aum
 
 SFX z Y 8
 SFX z   0               zinho           [^ã][eo]        +GR=dim
@@ -1395,7 +1573,7 @@ SFX J   e               ito             [^ã]e           +CAT=nc,GR=dimito
 SFX J   o               ito             [^ã]o           +CAT=nc,GR=dimito
 SFX J   0               zito            ão              +CAT=nc,GR=dimito
 
-REP 25
+REP 945
 REP por pro
 REP pre per
 REP damente mente
@@ -1421,16 +1599,950 @@ REP ifí ífi
 REP nume mune
 REP coen quen
 REP concerteza com_certeza
+REP s ss
+REP ss s
+REP r rr
+REP rr r
+REP ct t
+REP t ct
+REP cç ç
+REP çc c
+REP pt t
+REP t pt
+REP pc c
+REP c pc
+REP êem eem
+REP eem êem
+REP nao não
+REP -a- _a_
+REP -com- _com_
+REP -da- _da_
+REP -de- _de_
+REP a á
+REP a ã
+REP a â
+REP ã â
+REP â ã
+REP a a-
+REP a á-
+REP á á-
+REP ã ã-
+REP a a-h
+REP a- a
+REP á- á
+REP ã- ã
+REP a- o-
+REP a-h a
+REP abesse oubesse
+REP abeu oube
+REP abera oubera
+REP aberam ouberam
+REP ad izad
+REP ada ável
+REP adas áveis
+REP ado ável
+REP ados áveis
+REP ãe ão
+REP ãe õe
+REP agu águ
+REP ala á-la
+REP ala á-las
+REP alh áli
+REP all ol
+REP alo á-lo
+REP alos á-los
+REP am ã
+REP am an
+REP âm ân
+REP am ão
+REP an ã
+REP an am
+REP ân âm
+REP ânio anio
+REP ão ãe
+REP ao ão
+REP ão am
+REP ão õe
+REP aqu áqu
+REP ára- ara
+REP áre ári
+REP ás az
+REP athlon átlon
+REP ásticamente asticamente
+REP áticamente aticamente
+REP az ás
+REP azinh inh
+REP b b-
+REP b- b
+REP ben bem-
+REP bilidade lidade
+REP brid bert
+REP btâ bstâ
+REP bta bstâ
+REP c ç
+REP c s
+REP c sc
+REP ç c
+REP ç ce
+REP ç ss
+REP cao ção
+REP cão ção
+REP cc c
+REP cç x
+REP ce sse
+REP ch x
+REP chi qui
+REP ci ssi
+REP cinss sinc
+REP ck que
+REP cõ çõ
+REP çõe mento
+REP cs x
+REP dent tend
+REP des dis
+REP difissi difíci
+REP dis des
+REP e ê
+REP e é
+REP éi ei
+REP é ê
+REP ê é
+REP e e-
+REP e ê-
+REP é é-
+REP ê ê-
+REP e- e
+REP é- é
+REP é- e
+REP ê- ê
+REP ebã ibã
+REP ebam ibã
+REP eban ibã
+REP eem êm
+REP el éis
+REP elh éli
+REP em en
+REP ém én
+REP êm ên
+REP en em
+REP én ém
+REP ên êm
+REP ensi ênci
+REP épit ept
+REP ereo eoro
+REP erug irurg
+REP es ex
+REP es ez
+REP ês ez
+REP ês ez
+REP este éster
+REP ex es
+REP ez es
+REP ez és
+REP ez ês
+REP ezinh inh
+REP g gue
+REP g j
+REP i e
+REP i í
+REP í i
+REP i i-
+REP i í-
+REP í í-
+REP i- i
+REP í- í
+REP i-h i
+REP ida ível
+REP idas íveis
+REP ideo ídeo
+REP ido ível
+REP idos íveis
+REP ifem ífen
+REP ilh íli
+REP im in
+REP impecíli empecilh
+REP ím ín
+REP in im
+REP ín ím
+REP in não_
+REP inh azinh
+REP inh ezinh
+REP inh ilzinh
+REP inh ozinh
+REP it inh
+REP ítim itm
+REP izad ad
+REP j g
+REP j gi
+REP je ge
+REP jê gê
+REP ji gi
+REP jí gí
+REP jing ji
+REP ka ca
+REP ká cá
+REP ke que
+REP kê quê
+REP Khmer Cambojano
+REP ki qui
+REP kilo quilo
+REP kilo quiló
+REP kiwi quiuí
+REP ko co
+REP ku cu
+REP l is
+REP l l-
+REP l u
+REP l u
+REP l- l
+REP la -la-
+REP las -las-
+REP lç ls
+REP leb reb
+REP lg l_G
+REP lhe -lhe-
+REP lhes -lhes-
+REP li lh
+REP lidade bilidade
+REP lo -lo-
+REP los -los-
+REP ls lç
+REP m m-
+REP m- m
+REP me -me-
+REP mento ção
+REP mento çõe
+REP metragens s-metragens
+REP n n-
+REP n- n
+REP não- in
+REP não- ir
+REP ne nde 
+REP nhe in
+REP nhi in
+REP no-a-ma no_a_ma
+REP nos -nos-
+REP o ó
+REP o õ
+REP o ô
+REP ó ô
+REP ói oi
+REP ô ó
+REP o o-
+REP o ó-
+REP ó ó-
+REP ô ô-
+REP o o-h
+REP ó ó-h
+REP o-eletrô oeletro
+REP o-eletró oeletro
+REP o- o
+REP ó- o
+REP ó- ó
+REP ô- ô
+REP o-h o
+REP ó-h ó
+REP obr robl
+REP õe ãe
+REP õe ão
+REP ós-s oss
+REP ografista ógrafo
+REP oi ói
+REP ok O.K.
+REP oky óqui
+REP olh óli
+REP ologista ólogo
+REP om on
+REP óm ón
+REP ôm ôn
+REP on om
+REP ón óm
+REP ôn ôm
+REP otopo oto-pô
+REP otopô oto-pô
+REP oto-po oto-pô
+REP ouquet uquê
+REP outo outro
+REP ozinh inh
+REP pára-quedas paraquedas
+REP perdo perco
+REP ph f
+REP ping pingue-pongue
+REP ping-pong pingue-pongue
+REP pong pingue-pongue
+REP pre pré-
+REP quadri tetra
+REP Quait Kuwait
+REP quinque quinquê
+REP quinquê quinquê
+REP quinqui quinquí
+REP quinquí quinquí
+REP q que
+REP qs ques
+REP qtde quant
+REP qtdes quant
+REP qu c
+REP r -
+REP r r-
+REP r rr
+REP r- r
+REP r-bombas res-bombas
+REP r-cond res-cond
+REP rádio- radio
+REP razesse rouxesse
+REP razeu rouxe
+REP razera rouxera
+REP razeram rouxeram
+REP rça rsa
+REP res-de r-de
+REP revigoração revitalização
+REP ridão ridade
+REP ridõe ridade
+REP rsa rça
+REP ria-se r-se-ia
+REP ria-me r-me-ia
+REP ria-te r-te-ia
+REP ria-lhe r-lhe-ia
+REP ria-lhes r-lhes-ia
+REP ria-nos r-nos-ia
+REP ria-vos r-vos-ia
+REP riam-me r-me-iam
+REP riam-te r-te-iam
+REP riam-lhe r-lhe-iam
+REP riam-lhes r-lhes-iam
+REP riam-nos r-nos-iam
+REP riam-vos r-vos-iam
+REP roma Roma
+REP s -
+REP s c
+REP s ç
+REP s s-
+REP s z
+REP s- -
+REP s-chuvas -chuvas
+REP s- s
+REP s-papel -papéis
+REP sc c
+REP escân scan
+REP escâneres scaners
+REP escâneres scanners
+REP se -se-
+REP selofa celofa
+REP septec septing
+REP septic septing
+REP seromano ser_humano
+REP serumano ser_humano
+REP setec septing
+REP sh ch
+REP sh che
+REP sie sciê
+REP sócio- socio
+REP ss ç
+REP ss rs
+REP sse ce
+REP ssi ci
+REP stu estú
+REP te -te-
+REP tic-tac tique-taque
+REP tid di
+REP tiv tativ
+REP tiva ta
+REP tivide tividade
+REP tm tmic
+REP u l
+REP u o
+REP u ú
+REP ú u
+REP ü u
+REP u u-
+REP u- u
+REP uait uwait
+REP ubjúdice ub_judice
+REP uç lç
+REP uç ls
+REP ulh úli
+REP um un
+REP úm ún
+REP un um
+REP ún úm
+REP utoa lto-a
+REP utob lto-b
+REP utoc lto-c
+REP utod lto-d
+REP utoe lto-e
+REP utof lto-f
+REP utog lto-g
+REP utoh lto-h
+REP utoi lto-i
+REP utol lto-l
+REP utom lto-m
+REP uton lto-n
+REP utop lto-p
+REP utor lto-r
+REP utos lto-s
+REP utov lto-v
+REP v env
+REP vídeo- video
+REP vídeos- video
+REP vigoração vigência
+REP vos -vos-
+REP x cç
+REP x ch
+REP ykjavík iquiavique
+REP yongyang ionguiangue
+REP z s
+REP z z-
+REP z- z
+REP g gu
+REP - _
+REP a a_
+REP á á_
+REP ã ã_
+REP e e_
+REP é é_
+REP é e_
+REP ê ê_
+REP i i_
+REP í í_
+REP l l_
+REP m m_
+REP n m_
+REP o o_
+REP ó o_
+REP ó ó_
+REP ô ô_
+REP r r_
+REP s s_
+REP u u_
+REP ú ú_
+REP x x_
+REP z z_
+REP f f.
+REP s s.
+REP v v.
+REP x x.
+REP -a á
+REP -a â
+REP -abunda abundâ
+REP -aça açã
+REP -acade acadé
+REP -adapta adaptá
+REP -adere aderê
+REP -adiça adiçã
+REP -administra administrá
+REP -ae aé
+REP -aerodina aerodinâ
+REP -afrodi afrodí
+REP -afrodisi afrodisí
+REP -agra agrá
+REP -ajusta ajustá
+REP -alcooli alcoolí
+REP -ale alé
+REP -alego alegó
+REP -alge algé
+REP -ali alí
+REP -alieni aliení
+REP -amadori amadorí
+REP -amari amarí
+REP -ame amé
+REP -ana aná
+REP -anafila anafilá
+REP -androge androgé
+REP -ane ané
+REP -antipa antipá
+REP -anu anú
+REP -aplica aplicá
+REP -apo apó
+REP -aqua aquá
+REP -arabi arabí
+REP -aristocra aristocrá
+REP -arqueo arqueó
+REP -arri arrí
+REP -arti artí
+REP -artri artrí
+REP -asci ascí
+REP -asfi asfí
+REP -asma asmá
+REP -aste astê
+REP -ata atá
+REP -ato ató
+REP -audi audí
+REP -audie audiê
+REP -auto autô
+REP -automa automá
+REP -autorita autoritá
+REP -autoritari autoritarí
+REP -auxi auxí
+REP -avia aviã
+REP -avita avitá
+REP -ba bá
+REP -bacte bacté
+REP -bacteriofa bacteriofá
+REP -bali balí
+REP -baqui baquí
+REP -be bé
+REP -be bê
+REP -bença bênçã
+REP -beribe beribé
+REP -bi bí
+REP -bio bió
+REP -biogra biográ
+REP -biotera bioterá
+REP -blenorra blenorrá
+REP -bo bô
+REP -bola bolã
+REP -brita britâ
+REP -burgue burguê
+REP -burocra burocrá
+REP -ca cá
+REP -ca câ
+REP -ca cã
+REP -cacogra cacográ
+REP -cada cadá
+REP -cadave cadavé
+REP -cade cadê
+REP -cafe café
+REP -calca calcá
+REP -calcula calculá
+REP -campea campeã
+REP -canceri cancerí
+REP -capitali capitalí
+REP -caque caqué
+REP -cara cará
+REP -carto cartó
+REP -cartogra cartográ
+REP -cata catá
+REP -catali catalí
+REP -cato cató
+REP -catolici catolicí
+REP -ce cé
+REP -ce cê
+REP -cefa cefá
+REP -cefala cefalá
+REP -centri centrí
+REP -cesa cesá
+REP -cetoge cetogê
+REP -ci cí
+REP -cicloge ciclogê
+REP -ciclogene ciclogené
+REP -cie ciê
+REP -cienti cientí
+REP -cili cilí
+REP -cine ciné
+REP -circunfere circunferê
+REP -citoto citotó
+REP -civi civí
+REP -cla clá
+REP -cli clí
+REP -clori clorí
+REP -co có
+REP -co cô
+REP -cocai cocaí
+REP -coincide coincidê
+REP -cole colé
+REP -coleça coleçã
+REP -coleri colerí
+REP -coline coliné
+REP -coloniali colonialí
+REP -combusti combustí
+REP -come comé
+REP -compati compatí
+REP -complace complacê
+REP -comuni comuní
+REP -conci concí
+REP -concorre concorrê
+REP -conexa conexã
+REP -configura configurá
+REP -conforta confortá
+REP -conscie consciê
+REP -conti contí
+REP -corolo coroló
+REP -corpo corpó
+REP -corporativi corporativí
+REP -cosme cosmé
+REP -cra crá
+REP -cre cré
+REP -creta cretá
+REP -cri crí
+REP -criptoga criptogâ
+REP -cro crô
+REP -croma cromá
+REP -croni croní
+REP -cu cú
+REP -da dá
+REP -de dé
+REP -deci decí
+REP -defensa defensá
+REP -deli delí
+REP -deme demê
+REP -democra democrá
+REP -demoni demoní
+REP -demonstra demonstrá
+REP -dese desé
+REP -desperdi desperdí
+REP -destrui destruí
+REP -determina determiná
+REP -di dí
+REP -dia diá
+REP -dia diâ
+REP -diabe diabé
+REP -diafore diaforé
+REP -diagno diagnó
+REP -diate diaté
+REP -dida didá
+REP -diege diegé
+REP -difi difí
+REP -difte difté
+REP -digeri digerí
+REP -dimensiona dimensioná
+REP -dina diná
+REP -dina dinâ
+REP -discine disciné
+REP -disente disenté
+REP -dispe dispé
+REP -disri disrí
+REP -distrai distraí
+REP -diure diuré
+REP -do dó
+REP -documenta documentá
+REP -dogma dogmá
+REP -dogmati dogmatí
+REP -dome domé
+REP -domestica domesticá
+REP -domi domí
+REP -domina dominâ
+REP -dormito dormitó
+REP -drama dramá
+REP -du dú
+REP -duali dualí
+REP -dueli duelí
+REP -dura durá
+REP -e é
+REP -eclesia eclesiá
+REP -eclesias eclesiás
+REP -econo econó
+REP -efica eficá
+REP -ela elá
+REP -elapi elapí
+REP -ele elé
+REP -elega elegâ
+REP -eletrodome eletrodomé
+REP -eli elí
+REP -eliti elití
+REP -eloque eloquê
+REP -embriona embrioná
+REP -eme emé
+REP -emine eminê
+REP -emulsiona emulsioná
+REP -enciclope enciclopé
+REP -endireita endireitá
+REP -eneae eneaé
+REP -energe energé
+REP -enigma enigmá
+REP -enzima enzimá
+REP -epice epicê
+REP -epide epidê
+REP -epile epilé
+REP -episo episó
+REP -eremi eremí
+REP -ero eró
+REP -esfe esfé
+REP -espeta espetá
+REP -espia espiã
+REP -esquema esquemá
+REP -esta está
+REP -estabiliza estabilizá
+REP -este esté
+REP -estereosco estereoscó
+REP -esteriliza esterilizá
+REP -estetosco estetoscó
+REP -estrutura estruturá
+REP -estu estú
+REP -eti etí
+REP -europei europeí
+REP -evange evangé
+REP -excele excelê
+REP -excita excitá
+REP -executa executá
+REP -experie experiê
+REP -explicato explicató
+REP -explora explorá
+REP -exponi exponí
+REP -fa fá
+REP -fami famí
+REP -fanta fantá
+REP -fasci fascí
+REP -fe fé
+REP -femini feminí
+REP -ferroele ferroelé
+REP -ferromagne ferromagné
+REP -fi fí
+REP -ficia ficiá
+REP -ficti fictí
+REP -filoso filosó
+REP -financia financiá
+REP -fise fisé
+REP -flexi flexí
+REP -flo fló
+REP -fo fó
+REP -fo fô
+REP -fone foné
+REP -fonema fonemá
+REP -foto fotó
+REP -fotoge fotogé
+REP -fotogra fotográ
+REP -fra frá
+REP -france francê
+REP -fundi fundí
+REP -ga gá
+REP -ga gâ
+REP -gala galá
+REP -gaso gasó
+REP -gasoge gasogê
+REP -ge gê
+REP -gene gené
+REP -geome geomé
+REP -germa germâ
+REP -gestiona gestioná
+REP -gina giná
+REP -glo gló
+REP -gno gnó
+REP -gra grá
+REP -grafo grafó
+REP -grafo grafô
+REP -grama gramá
+REP -he hé
+REP -hemofi hemofí
+REP -hemorra hemorrá
+REP -hepa hepá
+REP -heroi heroí
+REP -herpe herpé
+REP -hidrofo hidrofó
+REP -hidroge hidrogê
+REP -higie higié
+REP -histe histé
+REP -hora horá
+REP -humani humaní
+REP -i í
+REP -ibe ibé
+REP -iberi iberí
+REP -igualita igualitá
+REP -igualitari igualitarí
+REP -ilumini iluminí
+REP -imobilia imobiliá
+REP -imputa imputá
+REP -incri incrí
+REP -indone indoné
+REP -indulge indulgê
+REP -induta indutâ
+REP -inflaciona inflacioná
+REP -inicializa inicializá
+REP -inocula inoculá
+REP -intelige inteligê
+REP -intoxica intoxicá
+REP -inu inú
+REP -iro irô
+REP -jornali jornalí
+REP -jui juí
+REP -juri jurí
+REP -la lá
+REP -laborato laborató
+REP -larva larvá
+REP -le lé
+REP -le lê
+REP -lenda lendá
+REP -leta letá
+REP -leuce leucê
+REP -li lí
+REP -litera literá
+REP -litu litú
+REP -lo ló
+REP -logari logarí
+REP -logi logí
+REP -lu lú
+REP -lue lué
+REP -luna luná
+REP -luterani luteraní
+REP -ma má
+REP -ma mã
+REP -magne magné
+REP -mala malá
+REP -marxi marxí
+REP -mate maté
+REP -me mé
+REP -me mê
+REP -meca mecâ
+REP -memo memó
+REP -meta metá
+REP -metafi metafí
+REP -mi mí
+REP -miliona milioná
+REP -ministe ministé
+REP -mne mné
+REP -mo mó
+REP -mona moná
+REP -monitora monitorá
+REP -monopo monopó
+REP -monopoli monopolí
+REP -mu mú
+REP -mutage mutagé
+REP -na ná
+REP -nacionali nacionalí
+REP -narco narcó
+REP -nazi nazí
+REP -ne nê
+REP -nego negó
+REP -neopla neoplá
+REP -neura neurá
+REP -ni ní
+REP -nivela nivelá
+REP -no nó
+REP -no nô
+REP -nobilia nobiliá
+REP -noti notí
+REP -nu nú
+REP -numera numerá
+REP -o ó
+REP -obrigata obrigatá
+REP -observato observató
+REP -obsta obstá
+REP -oculta ocultá
+REP -ocupa ocupá
+REP -ofi ofí
+REP -ofta oftá
+REP -oli olí
+REP -oliga oligá
+REP -orga orgá
+REP -orga orgâ
+REP -ota otá
+REP -oxida oxidá
+REP -oxige oxigê
+REP -pa pá
+REP -pa pá
+REP -paradisi paradisí
+REP -parali paralí
+REP -parasi parasí
+REP -parasita parasitá
+REP -parlamentari parlamentarí
+REP -parti partí
+REP -paupe paupé
+REP -pe pé
+REP -peri perí
+REP -perio perió
+REP -permea permeá
+REP -pestile pestilê
+REP -pioge piogê
+REP -pire piré
+REP -pla plá
+REP -po pó
+REP -poe poé
+REP -pole polé
+REP -poli polí
+REP -porta portá
+REP -pote poté
+REP -pra prá
+REP -pre pré
+REP -pro pró
+REP -programa programá
+REP -propaga propagá
+REP -psicana psicaná
+REP -psicanali psicanalí
+REP -psico psicó
+REP -psiquia psiquiá
+REP -pu pú
+REP -publicita publicitá
+REP -qui quí
+REP -ra rá
+REP -radiogra radiográ
+REP -refere referê
+REP -regenera regenerá
+REP -renova renová
+REP -renu renú
+REP -reproduto reprodutó
+REP -resfria resfriá
+REP -salda saldã
+REP -sarca sarcá
+REP -sate saté
+REP -sauda saudá
+REP -se sé
+REP -seleciona selecioná
+REP -sensi sensí
+REP -sime simé
+REP -simpa simpá
+REP -so sô
+REP -soma somá
+REP -sovie sovié
+REP -suficie suficiê
+REP -sugestiona sugestioná
+REP -sustenta sustentá
+REP -ta tá
+REP -te té
+REP -te tê
+REP -tei teí
+REP -telesco telescó
+REP -teocra teocrá
+REP -tera terá
+REP -terna terná
+REP -terrori terrorí
+REP -teta tetâ
+REP -ti tí
+REP -to tó
+REP -to tô
+REP -torpe torpé
+REP -totalita totalitá
+REP -tra trá
+REP -translu translú
+REP -transpare transparê
+REP -trigonome trigonomé
+REP -tro tró
+REP -tu tú
+REP -u ú
+REP -unita unitá
+REP -universita universitá
+REP -urbani urbaní
+REP -usua usuá
+REP -utilita utilitá
+REP -va vá
+REP -ve vé
+REP -vei veí
+REP -velo veló
+REP -vene vené
+REP -vi ví
+REP -vila vilã
+REP -viole violê
+REP -visa visã
+REP -viso visó
+REP -vive vivê
+REP -voca vocá
+REP -vulca vulcã
+REP -vulnera vulnerá
+REP -zi zí
+REP -zigo zigó
+REP -zinco zincó
 
-MAP 11
-MAP aá
-MAP aã
-MAP aâ
-MAP eé
-MAP eê
-MAP ií
-MAP cç
-MAP oó
-MAP oô
-MAP oõ
-MAP uú
+MAP 25
+MAP aáàâãäAÁÀÂÃÄ
+MAP eéèêẽëEÉÈÊẼË
+MAP iíìîĩïyIÍÌÎĨÏY
+MAP oóòôõöOÓÒÔÕÖ
+MAP uúùûũüUÚÙÛŨÜ
+MAP cçCÇ
+MAP bB
+MAP dD
+MAP fF
+MAP gG
+MAP hH
+MAP jJ
+MAP kK
+MAP lL
+MAP mM
+MAP nN
+MAP pP
+MAP qQ
+MAP rR
+MAP sS
+MAP tT
+MAP vV
+MAP wW
+MAP xX
+MAP zZ

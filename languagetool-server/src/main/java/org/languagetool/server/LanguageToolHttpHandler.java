@@ -22,33 +22,28 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.Nullable;
-import org.languagetool.Language;
-import org.languagetool.Languages;
 import org.languagetool.tools.StringTools;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.UnsupportedEncodingException;
 import java.net.*;
 import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeoutException;
 
 import static org.languagetool.server.ServerTools.print;
-import static org.languagetool.tools.StringTools.escapeForXmlContent;
 
 class LanguageToolHttpHandler implements HttpHandler {
 
-  private static final String XML_CONTENT_TYPE = "text/xml; charset=UTF-8";
   private static final String ENCODING = "utf-8";
-
-  private static int handleCount = 0;
 
   private final Set<String> allowedIps;  
   private final RequestLimiter requestLimiter;
   private final LinkedBlockingQueue<Runnable> workQueue;
-  private final TextChecker textCheckerV1;
   private final TextChecker textCheckerV2;
   private final HTTPServerConfig config;
-  private final boolean afterTheDeadlineMode;
   private final Set<String> ownIps;
   
   LanguageToolHttpHandler(HTTPServerConfig config, Set<String> allowedIps, boolean internal, RequestLimiter requestLimiter, LinkedBlockingQueue<Runnable> workQueue) {
@@ -61,23 +56,17 @@ class LanguageToolHttpHandler implements HttpHandler {
     } else {
       this.ownIps = new HashSet<>();
     }
-    afterTheDeadlineMode = config.getMode() == HTTPServerConfig.Mode.AfterTheDeadline;
-    this.textCheckerV1 = new V1EOLTextChecker(config, internal);
     this.textCheckerV2 = new V2TextChecker(config, internal);
   }
 
   /** @since 2.6 */
   void shutdown() {
-    textCheckerV1.shutdownNow();
   }
 
   @Override
   public void handle(HttpExchange httpExchange) throws IOException {
-    synchronized (this) {
-      handleCount++;
-    }
-    String text = null;
     String remoteAddress = null;
+    Map<String, String> parameters = new HashMap<>();
     try {
       URI requestedUri = httpExchange.getRequestURI();
       String origAddress = httpExchange.getRemoteAddress().getAddress().getHostAddress();
@@ -86,9 +75,12 @@ class LanguageToolHttpHandler implements HttpHandler {
       // According to the Javadoc, "Closing an exchange without consuming all of the request body is
       // not an error but may make the underlying TCP connection unusable for following exchanges.",
       // so we consume the request now, even before checking for request limits:
-      Map<String, String> parameters = getRequestQuery(httpExchange, requestedUri);
+      parameters = getRequestQuery(httpExchange, requestedUri);
       if (requestLimiter != null && !requestLimiter.isAccessOkay(remoteAddress)) {
+        String text = parameters.get("text");
+        String textSizeMessage = text != null ? " Text size: " + text.length() + "." :  "";
         String errorMessage = "Error: Access from " + remoteAddress + " denied - too many requests." +
+                textSizeMessage +
                 " Allowed maximum requests: " + requestLimiter.getRequestLimit() +
                 " requests per " + requestLimiter.getRequestLimitPeriodInSeconds() + " seconds";
         sendError(httpExchange, HttpURLConnection.HTTP_FORBIDDEN, errorMessage);
@@ -108,26 +100,12 @@ class LanguageToolHttpHandler implements HttpHandler {
           String pathWithoutVersion = requestedUri.getRawPath().substring("/v2/".length());
           apiV2.handleRequest(pathWithoutVersion, httpExchange, parameters);
         } else if (requestedUri.getRawPath().endsWith("/Languages")) {
-          // request type: list known languages
-          printListOfLanguages(httpExchange);
+          throw new IllegalArgumentException("You're using an old version of our API that's not supported anymore. Please see https://languagetool.org/http-api/migration.php");
         } else {
-          // request type: text checking
-          if (afterTheDeadlineMode) {
-            text = parameters.get("data");
-            if (text == null) {
-              throw new IllegalArgumentException("Missing 'data' parameter");
-            }
-            text = text.replaceAll("</p>", "\n\n").replaceAll("<.*?>", "");  // clean up HTML, position changes don't matter for AtD
-          } else {
-            if (requestedUri.getRawPath().contains("/v2/")) {
-              throw new IllegalArgumentException("You have '/v2/' in your path, but not at the root. Try an URL like 'http://server/v2/...' ");
-            }
-            text = parameters.get("text");
-            if (text == null) {
-              throw new IllegalArgumentException("Missing 'text' parameter");
-            }
+          if (requestedUri.getRawPath().contains("/v2/")) {
+            throw new IllegalArgumentException("You have '/v2/' in your path, but not at the root. Try an URL like 'http://server/v2/...' ");
           }
-          textCheckerV1.checkText(text, httpExchange, parameters);
+          throw new IllegalArgumentException("You're using an old version of our API that's not supported anymore. Please see https://languagetool.org/http-api/migration.php");
         }
       } else {
         String errorMessage = "Error: Access from " + StringTools.escapeXML(origAddress) + " denied";
@@ -137,6 +115,7 @@ class LanguageToolHttpHandler implements HttpHandler {
     } catch (Exception e) {
       String response;
       int errorCode;
+      boolean textLoggingAllowed = false;
       if (e instanceof TextTooLongException) {
         errorCode = HttpURLConnection.HTTP_ENTITY_TOO_LARGE;
         response = e.getMessage();
@@ -148,33 +127,34 @@ class LanguageToolHttpHandler implements HttpHandler {
         response = "Checking took longer than " + config.getMaxCheckTimeMillis()/1000 + " seconds, which is this server's limit. " +
                    "Please make sure you have selected the proper language or consider submitting a shorter text.";
       } else {
-        response = "Internal Error. Please contact the site administrator.";
+        response = "Internal Error: " + e.getMessage();
         errorCode = HttpURLConnection.HTTP_INTERNAL_ERROR;
+        textLoggingAllowed = true;
       }
-      logError(text, remoteAddress, e, errorCode, httpExchange);
+      logError(remoteAddress, e, errorCode, httpExchange, parameters, textLoggingAllowed);
       sendError(httpExchange, errorCode, "Error: " + response);
     } finally {
-      synchronized (this) {
-        handleCount--;
-      }
       httpExchange.close();
     }
   }
 
-  private void logError(String text, String remoteAddress, Exception e, int errorCode, HttpExchange httpExchange) {
+  private void logError(String remoteAddress, Exception e, int errorCode, HttpExchange httpExchange, Map<String, String> params, boolean textLoggingAllowed) {
     String message = "An error has occurred, sending HTTP code " + errorCode + ". ";
-    if (text != null && remoteAddress != null) {
-      message += "Access from " + remoteAddress + ", text length " + text.length() + ". ";
-    }
+    message += "Access from " + remoteAddress + ", ";
     message += "HTTP user agent: " + getHttpUserAgent(httpExchange) + ", ";
+    message += "language: " + params.get("language") + ", ";
+    String text = params.get("text");
+    if (text != null) {
+      message += "text length: " + text.length() + ", ";
+    }
     message += "Stacktrace follows:";
     print(message, System.err);
-    if (config.isVerbose() && text != null) {
+    //noinspection CallToPrintStackTrace
+    e.printStackTrace();
+    if (config.isVerbose() && text != null && textLoggingAllowed) {
       print("Exception was caused by this text (" + text.length() + " chars, showing up to 500):\n" +
               StringUtils.abbreviate(text, 500), System.err);
     }
-    //noinspection CallToPrintStackTrace
-    e.printStackTrace();
   }
 
   private String getHttpUserAgent(HttpExchange httpExchange) {
@@ -195,7 +175,7 @@ class LanguageToolHttpHandler implements HttpHandler {
         }
       }
     } catch (SocketException e1) {
-      throw new RuntimeException("Could not get the servers own IP addresses", e1);
+      throw new RuntimeException("Could not get the server's own IP addresses", e1);
     }
     return ownIps;
   }
@@ -235,15 +215,9 @@ class LanguageToolHttpHandler implements HttpHandler {
   }
 
   private void sendError(HttpExchange httpExchange, int httpReturnCode, String response) throws IOException {
-    if (afterTheDeadlineMode) {
-      String xmlResponse = "<results><message>" + escapeForXmlContent(response) + "</message></results>";
-      httpExchange.sendResponseHeaders(httpReturnCode, xmlResponse.getBytes(ENCODING).length);
-      httpExchange.getResponseBody().write(xmlResponse.getBytes(ENCODING));
-    } else {
-      ServerTools.setAllowOrigin(httpExchange, config.getAllowOriginUrl());
-      httpExchange.sendResponseHeaders(httpReturnCode, response.getBytes(ENCODING).length);
-      httpExchange.getResponseBody().write(response.getBytes(ENCODING));
-    }
+    ServerTools.setAllowOrigin(httpExchange, config.getAllowOriginUrl());
+    httpExchange.sendResponseHeaders(httpReturnCode, response.getBytes(ENCODING).length);
+    httpExchange.getResponseBody().write(response.getBytes(ENCODING));
   }
 
   private Map<String, String> getRequestQuery(HttpExchange httpExchange, URI requestedUri) throws IOException {
@@ -267,7 +241,7 @@ class LanguageToolHttpHandler implements HttpHandler {
       if (readBytes <= 0) {
         break;
       }
-      int generousMaxLength = maxTextLength * 2;
+      int generousMaxLength = maxTextLength * 3 + 1000;  // once character can be encoded as e.g. "%D8" plus space for other parameters
       if (generousMaxLength < 0) {  // might happen as it can overflow
         generousMaxLength = Integer.MAX_VALUE;
       }
@@ -281,12 +255,6 @@ class LanguageToolHttpHandler implements HttpHandler {
     return sb.toString();
   }
 
-  private void printListOfLanguages(HttpExchange httpExchange) throws IOException {
-    ServerTools.setCommonHeaders(httpExchange, XML_CONTENT_TYPE, config.getAllowOriginUrl());
-    String response = getSupportedLanguagesAsXML();
-    httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, response.getBytes(ENCODING).length);
-    httpExchange.getResponseBody().write(response.getBytes(ENCODING));
-  }
 
   private Map<String, String> parseQuery(String query, HttpExchange httpExchange) throws UnsupportedEncodingException {
     Map<String, String> parameters = new HashMap<>();
@@ -315,30 +283,6 @@ class LanguageToolHttpHandler implements HttpHandler {
       }
     }
     return parameters;
-  }
-
-  /**
-   * Construct an XML string containing all supported languages. <br/>The XML format looks like this:<br/><br/>
-   * &lt;languages&gt;<br/>
-   *    &nbsp;&nbsp;&lt;language name="Catalan" abbr="ca" abbrWithVariant="ca-ES"/&gt;<br/>
-   *    &nbsp;&nbsp;&lt;language name="German" abbr="de" abbrWithVariant="de"/&gt;<br/>
-   *    &nbsp;&nbsp;&lt;language name="German (Germany)" abbr="de" abbrWithVariant="de-DE"/&gt;<br/>
-   *  &lt;/languages&gt;<br/><br/>
-   *  The languages are sorted alphabetically by their name.
-   * @return an XML document listing all supported languages
-   */
-  public static String getSupportedLanguagesAsXML() {
-    List<Language> languages = new ArrayList<>(Languages.get());
-    Collections.sort(languages, (o1, o2) -> o1.getName().compareTo(o2.getName()));
-    StringBuilder xmlBuffer = new StringBuilder("<?xml version='1.0' encoding='" + ENCODING + "'?>\n");
-    xmlBuffer.append(V1TextChecker.getDeprecationWarning());
-    xmlBuffer.append("\n<languages>\n");
-    for (Language lang : languages) {
-      xmlBuffer.append(String.format("\t<language name=\"%s\" abbr=\"%s\" abbrWithVariant=\"%s\"/> \n", lang.getName(),
-              lang.getShortCode(), lang.getShortCodeWithCountryAndVariant()));
-    }
-    xmlBuffer.append("</languages>\n");
-    return xmlBuffer.toString();
   }
 
 }

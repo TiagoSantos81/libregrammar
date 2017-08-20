@@ -99,13 +99,6 @@ public abstract class Rule {
   public abstract RuleMatch[] match(AnalyzedSentence sentence) throws IOException;
 
   /**
-   * If a rule keeps its state over more than the check of one sentence, this
-   * must be implemented so the internal state is reset. It will be called
-   * before a new text is going to be checked.
-   */
-  public abstract void reset();
-
-  /**
    * Overwrite this to avoid false alarms by ignoring these patterns -
    * note that your {@link #match(AnalyzedSentence)} method needs to
    * call {@link #getSentenceWithImmunization} for this to be used

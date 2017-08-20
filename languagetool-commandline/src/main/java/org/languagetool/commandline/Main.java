@@ -77,6 +77,7 @@ class Main {
     srcLt = null;
     bRules = null;
     lt = new MultiThreadedJLanguageTool(options.getLanguage(), options.getMotherTongue());
+    lt.setCleanOverlappingMatches(false);
     if (options.getRuleFile() != null) {
       addExternalRules(options.getRuleFile());
     }
@@ -229,9 +230,6 @@ class Main {
     StringBuilder sb = new StringBuilder();
     for (int ruleIndex = 0; !rules.isEmpty() && ruleIndex < runCount; ruleIndex++) {
       currentRule = rules.get(ruleIndex);
-      int matches = 0;
-      long sentences = 0;
-      long startTime = System.currentTimeMillis();
       try (
           InputStreamReader isr = getInputStreamReader(filename, encoding);
           BufferedReader br = new BufferedReader(isr)
@@ -257,10 +255,9 @@ class Main {
           tmpLineOffset++;
 
           if (isBreakPoint(line)) {
-            matches += handleLine(ApiPrintMode.CONTINUE_API, lineOffset, sb);
-            sentences += lt.getSentenceCount();
+            handleLine(ApiPrintMode.CONTINUE_API, lineOffset, sb);
             if (profileRules) {
-              sentences += lt.sentenceTokenize(sb.toString()).size();
+              lt.sentenceTokenize(sb.toString()).size();
             }
             sb = new StringBuilder();
             lineOffset = tmpLineOffset;
@@ -268,31 +265,28 @@ class Main {
         }
       } finally {
         if (sb.length() > 0) {
-          sentences += lt.getSentenceCount();
           if (profileRules) {
-            sentences += lt.sentenceTokenize(sb.toString()).size();
+            lt.sentenceTokenize(sb.toString()).size();
           }
         }
-        matches += handleLine(ApiPrintMode.END_API, tmpLineOffset - 1, sb);
-        // printTimingInformation(rules, ruleIndex, matches, sentences, startTime);
+        handleLine(ApiPrintMode.END_API, tmpLineOffset - 1, sb);
       }
     }
   }
 
-  private int handleLine(ApiPrintMode mode, int lineOffset, StringBuilder sb) throws IOException {
+  private void handleLine(ApiPrintMode mode, int lineOffset, StringBuilder sb) throws IOException {
     int matches = 0;
     String s = filterXML(sb.toString());
     if (options.isApplySuggestions()) {
-        System.out.print(Tools.correctText(s, lt));
-      } else if (profileRules) {
-        matches += Tools.profileRulesOnLine(s, lt, currentRule);
-      } else if (!options.isTaggerOnly()) {
-        matches += CommandLineTools.checkText(s, lt, options.isXmlFormat(), options.isJsonFormat(), -1, 
-            lineOffset, matches, mode, options.isListUnknown(), Collections.<String>emptyList());
-      } else {
-        CommandLineTools.tagText(s, lt);
-      }
-    return matches;
+      System.out.print(Tools.correctText(s, lt));
+    } else if (profileRules) {
+      Tools.profileRulesOnLine(s, lt, currentRule);
+    } else if (!options.isTaggerOnly()) {
+      CommandLineTools.checkText(s, lt, options.isXmlFormat(), options.isJsonFormat(), -1, 
+          lineOffset, matches, mode, options.isListUnknown(), Collections.emptyList());
+    } else {
+      CommandLineTools.tagText(s, lt);
+    }
   }
 
   private boolean isBreakPoint(String line) {

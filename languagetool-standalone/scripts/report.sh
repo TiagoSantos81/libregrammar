@@ -15,8 +15,14 @@ OUTFILE=/tmp/statusmail.txt
 echo "Daily LanguageTool API Report $DATE2" >$OUTFILE
 echo "" >>$OUTFILE
 
-grep -h "$DATE2 " log-[0-9]-$DATE1*.txt log-1.txt log-2.txt >$TMPFILE
+grep --text -h "^$DATE2 " log-[0-9]-$DATE1*.txt log-1.txt log-2.txt | sort >$TMPFILE
 cat log-[0-9]-$DATE1*.txt log-1.txt log-2.txt >$TMPFILE_ALL
+
+echo "From" >>$OUTFILE
+head -n 1 $TMPFILE >>$OUTFILE
+echo "To" >>$OUTFILE
+tail -n 1 $TMPFILE >>$OUTFILE
+echo "" >>$OUTFILE
 
 TOTAL=`grep -c "Check done:" $TMPFILE`
 printf "Total text checks : %'d\n" $TOTAL >>$OUTFILE
@@ -45,26 +51,34 @@ printf "Google Docs       : %'d\n" $GOOGLEAPP >>$OUTFILE
 SUBLIME=`grep -c ":sublime" $TMPFILE`
 printf "Sublime Requests  : %'d\n" $SUBLIME >>$OUTFILE
 
-echo "$DATE2;$TOTAL;$FF;$CHROME;$ANDROID;$CLIENT;$SUBLIME;$WEBEXT" >>/home/languagetool/api/api-log.csv
+MSWORD=`grep -c ":msword" $TMPFILE`
+printf "MS-Word Requests  : %'d\n" $MSWORD >>$OUTFILE
+
+# when adding items, add only at the end so scripts don't get confused:
+echo "$DATE2;$TOTAL;$FF;$CHROME;$ANDROID;$CLIENT;$SUBLIME;$WEBEXT;$MSWORD;$WEBEXTFF;$WEBEXTCHROME;$TOTALHOME;$GOOGLEAPP" >>/home/languagetool/api/api-log.csv
+cp /home/languagetool/api/api-log.csv /home/languagetool/languagetool.org/languagetool-website/www/analytics
+
+echo "" >>$OUTFILE
+echo "OutOfMemoryError           : `grep -c 'OutOfMemoryError' $TMPFILE`" >>$OUTFILE
+echo "too many parallel requests : `grep -c 'too many parallel requests' $TMPFILE`" >>$OUTFILE
+echo "Incomplete results sent    : `grep -c  "matches found so far" $TMPFILE`" >>$OUTFILE
 
 echo "" >>$OUTFILE
 echo "An error has occurred      : `grep -c 'An error has occurred' $TMPFILE`" >>$OUTFILE
-echo "too many parallel requests : `grep -c 'too many parallel requests' $TMPFILE`" >>$OUTFILE
 echo "too many requests          : `grep -c 'too many requests' $TMPFILE`" >>$OUTFILE
 echo "too many requests (Android): `grep -c 'too many requests.*androidspell' $TMPFILE`" >>$OUTFILE
-#echo "TextTooLongException : `grep -c 'TextTooLongException' $TMPFILE`" >>$OUTFILE
-#echo "TimeoutException     : `grep -c 'java.util.concurrent.TimeoutException' $TMPFILE`" >>$OUTFILE
 
+echo "" >>$OUTFILE
 echo "Top HTTP error codes:" >>$OUTFILE
 grep "An error has occurred" /tmp/log.temp|sed 's/.*HTTP code \([0-9]\+\)..*/HTTP code \1/'|sort |uniq -c| sort -r -n >>$OUTFILE
 
 echo "" >>$OUTFILE
-echo "Top 10 Errors:" >>$OUTFILE
-grep 'Could not check sentence' $TMPFILE_ALL | grep -v "Caused by:" | uniq -c | sort -n -r | head -n 10 >>$OUTFILE
+echo "Top API blocks:" >>$OUTFILE
+grep "too many requests" $TMPFILE | cut -c 21-59 | sort | uniq -c | sort -r -n | head -n 10  >>$OUTFILE
 
 echo "" >>$OUTFILE
-echo "v1 API                     : `grep -c 'V1TextChecker' $TMPFILE`" >>$OUTFILE
-echo "v2 API                     : `grep -c 'V2TextChecker' $TMPFILE`" >>$OUTFILE
+echo "Top 10 Errors:" >>$OUTFILE
+grep 'Could not check sentence' $TMPFILE_ALL | grep -v "Caused by:" | uniq -c | sort -n -r | head -n 10 >>$OUTFILE
 
 #echo "" >>$OUTFILE
 #echo "Up to 50 client errors sent to the server:" >>$OUTFILE
@@ -96,10 +110,16 @@ YEAR=`date +"%Y"`
 # note: requires a root cronjob to copy the error.log file to ~/api/apache_error.log:
 echo "" >>$OUTFILE
 echo "Apache errors (max. 30):" >>$OUTFILE
-grep "$DATE_APACHE" /home/languagetool/api/apache_error.log | grep $YEAR | tail -n 30 >>$OUTFILE
+grep "$DATE_APACHE" /home/languagetool/api/apache_error.log | grep -v "log.php" | grep $YEAR | tail -n 30 >>$OUTFILE
 
 echo "" >>$OUTFILE
 echo "Apache not found errors (filtered, max. 10):" >>$OUTFILE
 grep "$DATE_APACHE" /home/languagetool/api/apache_not_found.log | grep $YEAR | tail -n 10 >>$OUTFILE
+
+echo "" >>$OUTFILE
+echo -n "Number of client-side errors: " >>$OUTFILE
+grep "$DATE_APACHE" /home/languagetool/api/apache_error.log | grep -c $YEAR >>$OUTFILE
+echo "Client-side errors (max. 20):" >>$OUTFILE
+grep "$DATE_APACHE" /home/languagetool/api/apache_error.log | grep $YEAR | tail -n 20 >>$OUTFILE
 
 cat $OUTFILE | mail -a 'Content-Type: text/plain; charset=utf-8' -s "LanguageTool API Report" daniel.naber@languagetool.org

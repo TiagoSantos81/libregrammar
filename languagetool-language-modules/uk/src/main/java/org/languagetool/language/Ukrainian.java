@@ -38,8 +38,9 @@ import org.languagetool.rules.uk.MixedAlphabetsRule;
 import org.languagetool.rules.uk.MorfologikUkrainianSpellerRule;
 import org.languagetool.rules.uk.SimpleReplaceRule;
 import org.languagetool.rules.uk.SimpleReplaceSoftRule;
-import org.languagetool.rules.uk.TokenAgreementRule;
-import org.languagetool.rules.uk.TokenInflectionAgreementRule;
+import org.languagetool.rules.uk.TokenAgreementPrepNounRule;
+import org.languagetool.rules.uk.TokenAgreementAdjNounRule;
+import org.languagetool.rules.uk.TokenAgreementNounVerbRule;
 import org.languagetool.rules.uk.UkrainianWordRepeatRule;
 import org.languagetool.synthesis.Synthesizer;
 import org.languagetool.synthesis.uk.UkrainianSynthesizer;
@@ -82,11 +83,6 @@ public class Ukrainian extends Language {
   @Override
   public String getName() {
     return "Ukrainian";
-  }
-
-  @Override
-  public String getShortName() {
-    return "uk";
   }
 
   @Override
@@ -153,19 +149,25 @@ public class Ukrainian extends Language {
         new CommaWhitespaceRule(messages,
             Example.wrong("Ми обідали борщем<marker> ,</marker> пловом і салатом."),
             Example.fixed("Ми обідали борщем<marker>,</marker> пловом і салатом")),
-        // TODO: does not handle !.. and ?..
-        //            new DoublePunctuationRule(messages),
-        new MorfologikUkrainianSpellerRule(messages, this),
-        new MixedAlphabetsRule(messages),
+
         // TODO: does not handle dot in abbreviations in the middle of the sentence, and also !.., ?..          
         //            new UppercaseSentenceStartRule(messages),
         new MultipleWhitespaceRule(messages, this),
         new UkrainianWordRepeatRule(messages, this),
-        // specific to Ukrainian:
+
+        // TODO: does not handle !.. and ?..
+        //            new DoublePunctuationRule(messages),
+        new MorfologikUkrainianSpellerRule(messages, this),
+
+        new TokenAgreementNounVerbRule(messages),
+        new TokenAgreementAdjNounRule(messages),
+        new TokenAgreementPrepNounRule(messages),
+
+        new MixedAlphabetsRule(messages),
+
         new SimpleReplaceRule(messages),
         new SimpleReplaceSoftRule(messages),
-        new TokenAgreementRule(messages),
-        new TokenInflectionAgreementRule(messages),
+
         new HiddenCharacterRule(messages)
     );
   }

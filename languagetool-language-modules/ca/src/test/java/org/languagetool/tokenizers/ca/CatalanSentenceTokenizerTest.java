@@ -48,8 +48,9 @@ public class CatalanSentenceTokenizerTest {
     testSplit("Us explicaré com va anar: ",
             "»La Maria va engegar el cotxe");
     testSplit("diu que va dir. ", "A mi em feia estrany.");
+    testSplit("Són del s. III dC. ", "Són importants les pintures.");
     
-    // N.
+    // N., t.
     testSplit("Vés-te’n. ", "A mi em feia estrany.");  
     testSplit("Vés-te'n. ", "A mi em feia estrany.");
     testSplit("VÉS-TE'N. ", "A mi em feia estrany.");
@@ -59,6 +60,8 @@ public class CatalanSentenceTokenizerTest {
     testSplit(" n. 3");
     testSplit("n. 3");
     testSplit("(\"n. 3\".");
+    testSplit("En el t. 2 de la col·lecció");
+    testSplit("Llança't. ", "Fes-ho.");
     
     // Initials
     testSplit("A l'atenció d'A. Comes.");

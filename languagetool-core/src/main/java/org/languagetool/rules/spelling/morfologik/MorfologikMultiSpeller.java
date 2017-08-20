@@ -84,7 +84,7 @@ public class MorfologikMultiSpeller {
   @Nullable
   private MorfologikSpeller getPlainTextDictSpellerOrNull(BufferedReader plainTextReader, String dictPath, int maxEditDistance) throws IOException {
     List<byte[]> lines = getLines(plainTextReader);
-    if (lines.size() == 0) {
+    if (lines.isEmpty()) {
       return null;
     }
     Dictionary dictionary = getDictionary(lines, dictPath);
@@ -141,7 +141,7 @@ public class MorfologikMultiSpeller {
     for (MorfologikSpeller speller : spellers) {
       List<String> suggestions = speller.getSuggestions(word);
       for (String suggestion : suggestions) {
-        if (!result.contains(suggestion)) {
+        if (!result.contains(suggestion) && !suggestion.equals(word)) {
           result.add(suggestion);
         }
       }

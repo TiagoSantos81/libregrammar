@@ -57,6 +57,7 @@ public class MultipleWhitespaceRule extends Rule {
     List<RuleMatch> ruleMatches = new ArrayList<>();
     AnalyzedTokenReadings[] tokens = sentence.getTokens();
     boolean prevWhite = false;
+    boolean isLineBreakContinuation = false;
     int prevLen = 0;
     int prevPos = 0;
     //note: we start from token 1
@@ -65,8 +66,9 @@ public class MultipleWhitespaceRule extends Rule {
     while (i < tokens.length) {
       boolean tokenIsTab = tokens[i].getToken().equals("\t");
       boolean prevTokenIsLinebreak = tokens[i -1].isLinebreak();
+      isLineBreakContinuation = (prevTokenIsLinebreak || isLineBreakContinuation) && tokens[i].isWhitespace() && !tokenIsTab;
       if ((tokens[i].isWhitespace() ||
-          StringTools.isNonBreakingWhitespace(tokens[i].getToken())) && prevWhite && !tokenIsTab && !prevTokenIsLinebreak) {
+          StringTools.isNonBreakingWhitespace(tokens[i].getToken())) && prevWhite && !tokenIsTab && !prevTokenIsLinebreak && !isLineBreakContinuation) {
         int pos = tokens[i -1].getStartPos();
         while (i < tokens.length && (tokens[i].isWhitespace() ||
             StringTools.isNonBreakingWhitespace(tokens[i].getToken()))) {
@@ -75,6 +77,10 @@ public class MultipleWhitespaceRule extends Rule {
         }
         String message = messages.getString("whitespace_repetition");
         if (prevLen > 0) {
+          if (prevPos >= 2 && sentence.getText().substring(prevPos-2, pos + prevLen).equals("-- \n")) {
+            // no match for typical email signature delimiter
+            continue;
+          }
           RuleMatch ruleMatch = new RuleMatch(this, prevPos, pos + prevLen, message);
           ruleMatch.setSuggestedReplacement(" ");
           ruleMatches.add(ruleMatch);
@@ -88,11 +94,6 @@ public class MultipleWhitespaceRule extends Rule {
       }
     }
     return toRuleMatchArray(ruleMatches);
-  }
-
-  @Override
-  public void reset() {
-    // nothing
   }
 
 }

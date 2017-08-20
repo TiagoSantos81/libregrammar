@@ -2846,7 +2846,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 												<token><exception regexp="yes" scope="previous">[\.\?!…:,;–\-—„”]+|bądź|i</exception><match no="0"></match></token>
 										</marker>
 								</pattern>
-								<message>Prawdopodobnie brakuje przecinka. Powinno być: <suggestion>, \3</suggestion>.</message>
+								<message>Prawdopodobnie brakuje przecinka. Powinno być: <suggestion>, \2</suggestion>.</message>
 								<short>Błąd interpunkcyjny</short>
 								<example>Spytał, czy się dobrze czuję i czy mam lekarstwa.</example>
 								<example>Nie kupiłem gruszek ani jabłek.</example>
@@ -15570,6 +15570,17 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             </rulegroup>
 		</category>
 		<category id="SPELLING" name="Błędy ortograficzne" type="misspelling">
+		      <rule id="PUKI_CO_NA_RAZIE" name="„puki co” (na razie)">
+           <pattern>
+            <token>puki</token>
+            <token>co</token>
+           </pattern>
+           <message>Dwa błędy w jednym: rusycyzm (póki co) i błąd ortograficzny. Powinno być: <suggestion>na razie</suggestion></message>
+           <url>http://sjp.pwn.pl/poradnia/haslo/poki-co;8475.html</url>
+           <short>Błąd ortograficzny i rusycyzm</short>
+           <example correction='na razie'>Ale <marker>puki co</marker> to nam wystarczy.</example>
+           <example>Ale na razie to nam wystarczy.</example>
+          </rule>
           <rule id="KOD_MORSA_KOD_MORSEA" name="„kod Morsa” (kod Morse’a)">
            <pattern>
             <token inflected='yes' regexp='yes'>kod|alfabet</token>
@@ -19800,6 +19811,46 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <example>On jest tłumaczem.</example>
           <example correction="tłumaczem">On jest <marker>tłomaczem</marker>.</example>          
         </rule>
+        <rule id="DOPOTY_DOPOTY" name="„dopóty, dopóty” (dopóty, dopóki)">
+         <pattern>
+          <token>dopóty</token>
+          <token>,</token>
+          <marker>
+          <token>dopóty</token>
+          </marker>
+         </pattern>
+         <message>Prawdopodobne przejęzyczenie. Czy chodziło o <suggestion>dopóki</suggestion>?</message>
+         <short>Przejęzyczenie</short>
+         <example correction='dopóki'>Ostrz łańcuch dopóty, <marker>dopóty</marker> wszystkie uszkodzenia krawędzi tnących zęba nie zostaną usunięte.</example>
+        </rule>
+        <rule id="W_POROWNANIA_DO" name="„w porównania do” (w porównaniu do)">
+         <pattern>
+          <token>w</token>
+          <marker>
+          <token>porównania</token>
+          </marker>
+          <token>do</token>
+         </pattern>
+         <message>Prawdopodobna literówka. Czy chodziło o <suggestion>porównaniu</suggestion>?</message>
+         <short>Prawdopodobna literówka</short>
+         <example correction='porównaniu'>Różnica dla użytkownika może wynosić nawet 1000 euro netto miesięcznie w <marker>porównania</marker> do np. diesla.</example>
+        </rule>
+        <rule id="strona_internatowa" name="„strona internatowa” (strona internetowa)">
+          <pattern>
+          <unify>
+                  <feature id="number"></feature>
+										<feature id="gender"><type id="f"/></feature>
+										<feature id="case"></feature>										
+										<token inflected="yes">strona</token>
+										<marker>
+										<token inflected="yes">internatowy</token>
+										</marker>
+          </unify>
+          </pattern>        
+          <message>Prawdopodobna literówka. Czy chodziło o <suggestion><match no="2" regexp_match="internat" regexp_replace="internet"></match></suggestion>?</message>
+          <short>Prawdopodobna literówka</short>
+          <example correction="internetowej">Więcej informacji na naszej stronie <marker>internatowej</marker>.</example>
+        </rule>
         <rule id="MAS_MEDIA_MASS_MEDIA" name="„mas media” (mass media)">
          <pattern>
           <token>mas</token>
@@ -23082,7 +23133,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 								<pattern>
 										<token>czele<exception regexp="yes" scope="previous">[nw]aszym|na|jej|ich|jego|której|których|którego</exception></token>
 								</pattern>
-								<message>Prawdopodobna literówka; powinno być: <suggestion>na \2</suggestion>.</message>
+								<message>Prawdopodobna literówka; powinno być: <suggestion>na \1</suggestion>.</message>
 								<short>Prawdopodobna literówka</short>
 								<example>On stanął na jego czele.</example>
 								<example correction="na czele">On stanął <marker>czele</marker>.</example>

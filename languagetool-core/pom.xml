@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.languagetool</groupId>
         <artifactId>languagetool-parent</artifactId>
-        <version>3.6-SNAPSHOT</version>
+        <version>3.9-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     
@@ -92,9 +92,14 @@
             <version>3.5</version>
         </dependency>
         <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>21.0</version>
+        </dependency>
+        <dependency>
             <groupId>net.java.dev.jna</groupId>
             <artifactId>jna</artifactId>
-            <version>4.1.0</version>
+            <version>4.4.0</version>
         </dependency>
         <dependency>
             <groupId>org.carrot2</groupId>
@@ -120,7 +125,7 @@
             <!-- needed for building the Morfologik dict at runtime (for ignore.txt) -->
             <groupId>com.carrotsearch</groupId>
             <artifactId>hppc</artifactId>
-            <version>0.7.1</version>
+            <version>0.7.2</version>
         </dependency>
         <dependency>
             <groupId>net.loomchild</groupId>

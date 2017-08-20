@@ -29,7 +29,7 @@ import org.languagetool.rules.*;
  *   
  * @author Daniel Naber
  */
-public class DashRule extends GermanRule {
+public class DashRule extends Rule {
 
   public DashRule(ResourceBundle messages) {
     super.setCategory(Categories.COMPOUNDING.getCategory(messages));
@@ -54,9 +54,6 @@ public class DashRule extends GermanRule {
     String prevToken = null;
     for (int i = 0; i < tokens.length; i++) {
       String token = tokens[i].getToken();
-      if (tokens[i].isWhitespace()) {
-        continue;
-      } 
       if (prevToken != null && !prevToken.equals("-") && !prevToken.contains("--") 
           && !prevToken.contains("–-")    // first char is some special kind of dash, found in Wikipedia
           && prevToken.endsWith("-")) {
@@ -75,10 +72,6 @@ public class DashRule extends GermanRule {
       prevToken = token;
     }
     return toRuleMatchArray(ruleMatches);
-  }
-
-  @Override
-  public void reset() {
   }
 
 }

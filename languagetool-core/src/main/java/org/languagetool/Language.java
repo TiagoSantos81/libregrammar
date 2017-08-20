@@ -69,15 +69,6 @@ public abstract class Language {
 
   /**
    * Get this language's character code, e.g. <code>en</code> for English.
-   * The country parameter (e.g. "US"), if any, is not returned.
-   * @return language code
-   * @deprecated use {@link #getShortCode()} instead, deprecated since 3.6 
-   */
-  @Deprecated
-  public abstract String getShortName();
-
-  /**
-   * Get this language's character code, e.g. <code>en</code> for English.
    * For most languages this is a two-letter code according to ISO 639-1,
    * but for those languages that don't have a two-letter code, a three-letter
    * code according to ISO 639-2 is returned.
@@ -338,18 +329,6 @@ public abstract class Language {
   }
   
   /**
-   * Get the short name of the language with country and variant (if any), if it is
-   * a single-country language. For generic language classes, get only a two- or
-   * three-character code.
-   * @since 1.8
-   * @deprecated use {@link #getShortCodeWithCountryAndVariant()} instead (deprecated since 3.6)
-   */
-  @Deprecated
-  public final String getShortNameWithCountryAndVariant() {
-    return getShortCodeWithCountryAndVariant();
-  }
-  
-  /**
    * Get the pattern rules as defined in the files returned by {@link #getRuleFileNames()}.
    * @since 2.7
    */
@@ -473,5 +452,30 @@ public abstract class Language {
     }
     return false;
   }
+  
+  /**
+   * Returns a priority for Rule or Category Id (default: 0).
+   * Positive integers have higher priority.
+   * Negative integers have lower priority.
+   * @since 3.6
+   */
+  public int getPriorityForId(String id) {
+    return 0;
+  }
 
+  /**
+   * Considers languages as equal if their language code, including the country and variant codes are equal.
+   */
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Language other = (Language) o;
+    return Objects.equals(getShortCodeWithCountryAndVariant(), other.getShortCodeWithCountryAndVariant());
+  }
+
+  @Override
+  public int hashCode() {
+    return getShortCodeWithCountryAndVariant().hashCode();
+  }
 }

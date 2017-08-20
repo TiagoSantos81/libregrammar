@@ -20,9 +20,14 @@ package org.languagetool.rules.pt;
 
 import org.languagetool.rules.AbstractCompoundRule;
 import org.languagetool.rules.CompoundRuleData;
+import org.languagetool.rules.Categories;
+import org.languagetool.rules.ITSIssueType;
 
 import java.io.IOException;
 import java.util.ResourceBundle;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 /**
  * Checks that compounds (if in the list) are not written as separate words.
@@ -38,6 +43,8 @@ public class PostReformPortugueseCompoundRule extends AbstractCompoundRule {
             "Esta palavra é composta por justaposição.",
             "Esta palavra pode ser composta por justaposição ou hifenizada.",
             "Este conjunto forma uma palavra composta.");
+    super.setCategory(Categories.COMPOUNDING.getCategory(messages));
+    setLocQualityIssueType(ITSIssueType.Grammar);
   }
 
   @Override
@@ -47,7 +54,16 @@ public class PostReformPortugueseCompoundRule extends AbstractCompoundRule {
 
   @Override
   public String getDescription() {
-    return "Palavras compostas, por exemplo 'CD-ROM' em vez de 'CD ROM'";
+    return "Palavras compostas";
+  }
+
+  @Override
+  public URL getUrl() {
+    try {
+      return new URL("https://pt.wikipedia.org/wiki/Lista_das_alterações_previstas_pelo_acordo_ortográfico_de_1990");
+    } catch (MalformedURLException e) {
+      throw new RuntimeException(e);
+    }
   }
 
   @Override

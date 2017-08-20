@@ -48,6 +48,7 @@ import org.languagetool.gui.AboutDialog;
 import org.languagetool.gui.Configuration;
 import org.languagetool.markup.AnnotatedText;
 import org.languagetool.markup.AnnotatedTextBuilder;
+import org.languagetool.rules.CategoryId;
 import org.languagetool.rules.Rule;
 import org.languagetool.rules.RuleMatch;
 import org.languagetool.tools.StringTools;
@@ -125,8 +126,7 @@ public class Main extends WeakBase implements XJobExecutor,
 
   private void prepareConfig(Language lang) {
     try {
-      File homeDir = getHomeDir();
-      config = new Configuration(homeDir, CONFIG_FILE, lang);
+      config = new Configuration(getHomeDir(), CONFIG_FILE, lang);
       disabledRules = config.getDisabledRuleIds();
       if (disabledRules == null) {
         disabledRules = new HashSet<>();
@@ -297,7 +297,7 @@ public class Main extends WeakBase implements XJobExecutor,
         // copy as the config thread may access this as well
         List<String> list = new ArrayList<>(disabledCategories);
         for (String categoryName : list) {
-          langTool.disableCategory(categoryName);
+          langTool.disableCategory(new CategoryId(categoryName));
         }
       }
       Set<String> enabledRuleIds = config.getEnabledRuleIds();
@@ -318,8 +318,7 @@ public class Main extends WeakBase implements XJobExecutor,
           AnnotatedText annotatedText = getAnnotatedText(sentence, footnotePositions, paRes);
           List<RuleMatch> ruleMatches = langTool.check(annotatedText, false,
               JLanguageTool.ParagraphHandling.ONLYNONPARA);
-          SingleProofreadingError[] pErrors = checkParaRules(paraText,
-                  paRes.nStartOfSentencePosition,
+          SingleProofreadingError[] pErrors = checkParaRules(paraText, paRes.nStartOfSentencePosition,
               paRes.nStartOfNextSentencePosition, paRes.aDocumentIdentifier);
           int pErrorCount = 0;
           if (pErrors != null) {
@@ -483,12 +482,9 @@ public class Main extends WeakBase implements XJobExecutor,
     } else {
       aError.aShortComment = aError.aFullComment;
     }
-    aError.aShortComment = org.languagetool.gui.Tools
-        .shortenComment(aError.aShortComment);
-
+    aError.aShortComment = org.languagetool.gui.Tools.shortenComment(aError.aShortComment);
     int numSuggestions = ruleMatch.getSuggestedReplacements().size();
-    String[] allSuggestions = ruleMatch.getSuggestedReplacements().toArray(
-        new String[numSuggestions]);
+    String[] allSuggestions = ruleMatch.getSuggestedReplacements().toArray(new String[numSuggestions]);
     if (numSuggestions > MAX_SUGGESTIONS) {
       aError.aSuggestions = Arrays.copyOfRange(allSuggestions, 0, MAX_SUGGESTIONS);
     } else {
@@ -715,13 +711,9 @@ public class Main extends WeakBase implements XJobExecutor,
       // do not set look and feel for on Mac OS X as it causes the following error:
       // soffice[2149:2703] Apple AWT Java VM was loaded on first thread -- can't start AWT.
       if (!System.getProperty("os.name").contains("OS X")) {
-        for (UIManager.LookAndFeelInfo info : UIManager
-            .getInstalledLookAndFeels()) {
-          if ("Nimbus".equals(info.getName())) {
-            UIManager.setLookAndFeel(info.getClassName());
-            break;
-          }
-        }
+         // Cross-Platform Look And Feel @since 3.7
+         UIManager.setLookAndFeel(
+            UIManager.getSystemLookAndFeelClassName());
       }
     } catch (Exception ignored) {
       // Well, what can we do...

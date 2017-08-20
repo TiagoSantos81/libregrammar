@@ -20,6 +20,7 @@ package org.languagetool.rules.pt;
 
 import org.languagetool.rules.AbstractSimpleReplaceRule;
 import org.languagetool.rules.Example;
+import org.languagetool.rules.Categories;
 import org.languagetool.rules.ITSIssueType;
 
 import java.io.IOException;
@@ -27,6 +28,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 /**
  * A rule that matches words or phrases which should not be used and suggests
@@ -48,6 +52,7 @@ public class PortugueseReplaceRule extends AbstractSimpleReplaceRule {
 
   public PortugueseReplaceRule(ResourceBundle messages) throws IOException {
     super(messages);
+    super.setCategory(Categories.STYLE.getCategory(messages));
     setLocQualityIssueType(ITSIssueType.LocaleViolation);
     addExamplePair(Example.wrong("<marker>device</marker>"),
                    Example.fixed("<marker>dispositivo</marker>"));
@@ -72,6 +77,15 @@ public class PortugueseReplaceRule extends AbstractSimpleReplaceRule {
   public String getMessage(String tokenStr, List<String> replacements) {
     return tokenStr + " é um estrangeirismo. Em Português é mais comum usar: "
         + String.join(", ", replacements) + ".";
+  }
+
+  @Override
+  public URL getUrl() {
+    try {
+      return new URL("https://pt.wikipedia.org/wiki/Estrangeirismo");
+    } catch (MalformedURLException e) {
+      throw new RuntimeException(e);
+    }
   }
 
   @Override

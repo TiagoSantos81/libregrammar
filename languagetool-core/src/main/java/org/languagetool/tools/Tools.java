@@ -73,11 +73,7 @@ public final class Tools {
     AnalyzedSentence srcText = srcLt.getAnalyzedSentence(src);
     AnalyzedSentence trgText = trgLt.getAnalyzedSentence(trg);
     List<Rule> nonBitextRules = trgLt.getAllRules();
-    for (Rule rule : nonBitextRules) {
-      rule.reset();
-    }
-    List<RuleMatch> ruleMatches = trgLt.checkAnalyzedSentence(JLanguageTool.ParagraphHandling.NORMAL,
-            nonBitextRules, 0, 0, 1, trg, trgText, null);
+    List<RuleMatch> ruleMatches = trgLt.checkAnalyzedSentence(JLanguageTool.ParagraphHandling.NORMAL, nonBitextRules, trgText);
     for (BitextRule bRule : bRules) {
       RuleMatch[] curMatch = bRule.match(srcText, trgText);
       if (curMatch != null && curMatch.length > 0) {
@@ -283,17 +279,6 @@ public final class Tools {
    * @param lt LanguageTool object
    * @param disabledRuleIds ids of the rules to be disabled
    * @param enabledRuleIds ids of the rules to be enabled
-   * @deprecated use {@link #selectRules(JLanguageTool, List, List, boolean)} instead (deprecated since 3.4)
-   */
-  public static void selectRules(JLanguageTool lt, String[] disabledRuleIds, String[] enabledRuleIds) {
-    selectRules(lt, disabledRuleIds, enabledRuleIds, true);
-  }
-
-  /**
-   * Enable and disable rules of the given LanguageTool instance.
-   * @param lt LanguageTool object
-   * @param disabledRuleIds ids of the rules to be disabled
-   * @param enabledRuleIds ids of the rules to be enabled
    * @param useEnabledOnly if set to {@code true}, disable all rules except those enabled explicitly
    */
   public static void selectRules(JLanguageTool lt, List<String> disabledRuleIds, List<String> enabledRuleIds, boolean useEnabledOnly) {
@@ -302,19 +287,6 @@ public final class Tools {
     Set<String> enabledRuleIdsSet = new HashSet<>();
     enabledRuleIdsSet.addAll(enabledRuleIds);
     selectRules(lt, Collections.emptySet(), Collections.emptySet(), disabledRuleIdsSet, enabledRuleIdsSet, useEnabledOnly);
-  }
-
-  /**
-   * Enable and disable rules of the given LanguageTool instance.
-   * @param lt LanguageTool object
-   * @param disabledRules ids of the rules to be disabled
-   * @param enabledRules ids of the rules to be enabled
-   * @param useEnabledOnly if set to {@code true}, disable all rules except those enabled explicitly
-   * @deprecated use {@link #selectRules(JLanguageTool, List, List, boolean)} instead (deprecated since 3.3)
-   */
-  public static void selectRules(JLanguageTool lt, String[] disabledRules, String[] enabledRules, boolean useEnabledOnly) {
-    selectRules(lt, Collections.emptySet(), Collections.emptySet(), new HashSet<>(Arrays.asList(disabledRules)),
-            new HashSet<>(Arrays.asList(enabledRules)), useEnabledOnly);
   }
 
   /**

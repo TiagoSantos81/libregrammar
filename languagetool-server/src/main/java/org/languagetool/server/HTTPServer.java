@@ -100,6 +100,9 @@ public class HTTPServer extends Server {
       server.createContext("/", httpHandler);
       executorService = getExecutorService(workQueue, config);
       server.setExecutor(executorService);
+      if (config.getWarmUp()) {
+        warmUp();
+      }
     } catch (Exception e) {
       ResourceBundle messages = JLanguageTool.getMessageBundle();
       String message = Tools.i18n(messages, "http_server_start_failed", host, Integer.toString(port));
@@ -125,6 +128,7 @@ public class HTTPServer extends Server {
     }
     HTTPServerConfig config = new HTTPServerConfig(args);
     try {
+      checkForNonRootUser();
       HTTPServer server;
       System.out.println("WARNING: running in HTTP mode, consider using " + HTTPSServer.class.getName() + " for encrypted connections");
       if (config.isPublicAccess()) {

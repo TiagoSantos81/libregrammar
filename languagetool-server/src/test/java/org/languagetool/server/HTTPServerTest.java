@@ -48,6 +48,7 @@ public class HTTPServerTest {
       server.run();
       assertTrue(server.isRunning());
       runTestsV2();
+      runDataTests();
     } finally {
       server.stop();
       assertFalse(server.isRunning());
@@ -83,13 +84,13 @@ public class HTTPServerTest {
     // test http POST
     assertTrue(checkByPOST(new Romanian(), "greșit greșit").contains("greșit"));
     // test supported language listing
-    URL url = new URL("http://localhost:" + HTTPTools.getDefaultPort() + "/Languages");
-    String languagesXML = StringTools.streamToString((InputStream) url.getContent(), "UTF-8");
-    if (!languagesXML.contains("Romanian") || !languagesXML.contains("English")) {
-      fail("Error getting supported languages: " + languagesXML);
+    URL url = new URL("http://localhost:" + HTTPTools.getDefaultPort() + "/v2/languages");
+    String languagesJson = StringTools.streamToString((InputStream) url.getContent(), "UTF-8");
+    if (!languagesJson.contains("Romanian") || !languagesJson.contains("English")) {
+      fail("Error getting supported languages: " + languagesJson);
     }
-    if (!languagesXML.contains("abbr=\"de\"") || !languagesXML.contains("abbrWithVariant=\"de-DE\"")) {
-      fail("Error getting supported languages: " + languagesXML);
+    if (!languagesJson.contains("\"de\"") || !languagesJson.contains("\"de-DE\"")) {
+      fail("Error getting supported languages: " + languagesJson);
     }
     // tests for "&" character
     English english = new English();
@@ -99,10 +100,6 @@ public class HTTPServerTest {
     assertTrue(checkV2(german, english, "Man sollte ihn nicht so beraten.").contains("BERATE"));
     assertTrue(checkV2(polish, english, "To jest frywolne.").contains("FRIVOLOUS"));
       
-    //tests for bitext - not supported by V2 of the API yet
-    //assertTrue(bitextCheck(polish, english, "This is frivolous.", "To jest frywolne.").contains("FRIVOLOUS"));
-    //assertTrue(!bitextCheck(polish, english, "This is something else.", "To jest frywolne.").contains("FRIVOLOUS"));
-    
     //test for no changed if no options set
     String[] nothing = {};
     assertEquals(checkV2(english, german, "We will berate you"), 
@@ -152,6 +149,20 @@ public class HTTPServerTest {
 
     String result7 = checkV2(null, "x");  // too short for auto-fallback, will use fallback
     assertTrue("Result: " + result7, result7.contains("\"en-US\""));
+  }
+
+  private void runDataTests() throws IOException {
+    English english = new English();
+    assertTrue(dataTextCheck(english, null,
+            "{\"text\": \"This is an test.\"}", "").contains("EN_A_VS_AN"));
+    assertTrue(dataTextCheck(english, null,
+            "{\"text\": \"This is an test.\", \"metaData\": {}}", "").contains("EN_A_VS_AN"));
+    assertTrue(dataTextCheck(english, null,
+            "{\"text\": \"This is an test.\", \"metaData\": {\"key\": \"val\"}}", "").contains("EN_A_VS_AN"));
+    assertTrue(dataTextCheck(english, null,
+            "{\"text\": \"This is an test.\", \"metaData\": {\"key\": \"val\", \"EmailToAddress\": \"My name <foo@bar.org>\"}}", "").contains("EN_A_VS_AN"));
+    assertFalse(dataTextCheck(english, null,
+            "{\"text\": \"This is a test.\"}", "").contains("EN_A_VS_AN"));
   }
 
   @Test
@@ -243,31 +254,6 @@ public class HTTPServerTest {
     }
   }
 
-  private String bitextCheck(Language lang, Language motherTongue, String sourceText, String text) throws IOException {
-    String urlOptions = "/?language=" + lang.getShortCode();
-    urlOptions += "&srctext=" + URLEncoder.encode(sourceText, "UTF-8");
-    urlOptions += "&text=" + URLEncoder.encode(text, "UTF-8"); // latin1 is not enough for languages like polish, romanian, etc
-    if (motherTongue != null) {
-      urlOptions += "&motherTongue=" + motherTongue.getShortCode();
-    }
-    URL url = new URL("http://localhost:" + HTTPTools.getDefaultPort() + urlOptions);
-    return HTTPTools.checkAtUrl(url);
-  }
-
-  private String bitextCheckDisabled(Language lang, Language motherTongue, String sourceText, String text, String[] disabled) throws IOException {
-    String urlOptions = "/?language=" + lang.getShortCode();
-    urlOptions += "&srctext=" + URLEncoder.encode(sourceText, "UTF-8");
-    urlOptions += "&text=" + URLEncoder.encode(text, "UTF-8"); // latin1 is not enough for languages like polish, romanian, etc
-    if (motherTongue != null) {
-      urlOptions += "&motherTongue=" + motherTongue.getShortCode();
-    }
-    if (disabled.length > 0) {
-      urlOptions += "&disabled=" + StringUtils.join(disabled, ",");
-    }
-    URL url = new URL("http://localhost:" + HTTPTools.getDefaultPort() + urlOptions);
-    return HTTPTools.checkAtUrl(url);
-  }
-
   private String checkV1(Language lang, String text) throws IOException {
     return checkV1(lang, null, text);
   }
@@ -277,20 +263,28 @@ public class HTTPServerTest {
   }
 
   protected String checkV1(Language lang, Language motherTongue, String text) throws IOException {
-    return check("/", lang, motherTongue, text, "");
+    return plainTextCheck("/", lang, motherTongue, text, "");
   }
 
   protected String checkV2(Language lang, Language motherTongue, String text) throws IOException {
-    return check("/v2/check", lang, motherTongue, text, "");
+    return plainTextCheck("/v2/check", lang, motherTongue, text, "");
   }
 
   private String checkV2(Language lang, String text, String parameters) throws IOException {
-    return check("/v2/check", lang, null, text, parameters);
+    return plainTextCheck("/v2/check", lang, null, text, parameters);
   }
 
-  private String check(String urlPrefix, Language lang, Language motherTongue, String text, String parameters) throws IOException {
+  private String plainTextCheck(String urlPrefix, Language lang, Language motherTongue, String text, String parameters) throws IOException {
+    return check("text", urlPrefix, lang, motherTongue, text, parameters);
+  }
+
+  private String dataTextCheck(Language lang, Language motherTongue, String jsonData, String parameters) throws IOException {
+    return check("data", "/v2/check", lang, motherTongue, jsonData, parameters);
+  }
+
+  private String check(String typeName, String urlPrefix, Language lang, Language motherTongue, String text, String parameters) throws IOException {
     String urlOptions = urlPrefix + "?language=" + (lang == null ? "auto" : lang.getShortCode());
-    urlOptions += "&disabledRules=HUNSPELL_RULE&text=" + URLEncoder.encode(text, "UTF-8"); // latin1 is not enough for languages like polish, romanian, etc
+    urlOptions += "&disabledRules=HUNSPELL_RULE&" + typeName + "=" + URLEncoder.encode(text, "UTF-8"); // latin1 is not enough for languages like polish, romanian, etc
     if (motherTongue != null) {
       urlOptions += "&motherTongue=" + motherTongue.getShortCode();
     }
@@ -323,8 +317,8 @@ public class HTTPServerTest {
    * Same as {@link #checkV1(Language, String)} but using HTTP POST method instead of GET
    */
   protected String checkByPOST(Language lang, String text) throws IOException {
-    String postData = "language=" + lang.getShortCode() + "&text=" + URLEncoder.encode(text, "UTF-8"); // latin1 is not enough for languages like Polish, Romanian, etc
-    URL url = new URL("http://localhost:" + HTTPTools.getDefaultPort());
+    String postData = "language=" + lang.getShortCodeWithCountryAndVariant() + "&text=" + URLEncoder.encode(text, "UTF-8"); // latin1 is not enough for languages like Polish, Romanian, etc
+    URL url = new URL("http://localhost:" + HTTPTools.getDefaultPort() + "/v2/check");
     try {
       return HTTPTools.checkAtUrlByPost(url, postData);
     } catch (IOException e) {
@@ -333,7 +327,8 @@ public class HTTPServerTest {
         System.err.println("Got expected error on long text (" + text.length() + " chars): " + e.getMessage());
         return "";
       } else {
-        System.err.println("Got error from server (" + lang.getShortCodeWithCountryAndVariant() + ", " + text.length() + " chars): " + e.getMessage());
+        System.err.println("Got error from " + url + " (" + lang.getShortCodeWithCountryAndVariant() + ", " +
+                           text.length() + " chars): " + e.getMessage() + ", text was (" + text.length() +  " chars): '" + StringUtils.abbreviate(text, 100) + "'");
         return "";
       }
     }

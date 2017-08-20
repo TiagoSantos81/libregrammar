@@ -18,9 +18,7 @@
  */
 package org.languagetool.rules.patterns;
 
-import org.languagetool.JLanguageTool;
-import org.languagetool.Languages;
-import org.languagetool.MultiThreadedJLanguageTool;
+import org.languagetool.*;
 import org.languagetool.tools.StringTools;
 
 import java.io.File;
@@ -31,6 +29,8 @@ import java.io.IOException;
  * Check performance per sentence. Not a unit test, for interactive use only.
  */
 final class PerformanceTest {
+  
+  private static final long RUNS = 1;
 
   private PerformanceTest() {
   }
@@ -50,11 +50,17 @@ final class PerformanceTest {
     System.out.printf("Check time on first run: " + runTime1 + "ms = %.1fms per sentence\n", timePerSentence1);
 
     System.out.println("Checking text...");
-    long startTime2 = System.currentTimeMillis();
-    langTool.check(text);
-    long runTime2 = System.currentTimeMillis() - startTime2;
-    float timePerSentence2 = (float)runTime2 / sentenceCount;
-    System.out.printf("Check time after warmup: " + runTime2 + "ms = %.1fms per sentence\n", timePerSentence2);
+    long totalTime = 0;
+    for (int i = 0; i < RUNS; i++) {
+      long startTime2 = System.currentTimeMillis();
+      langTool.check(text);
+      long runTime2 = System.currentTimeMillis() - startTime2;
+      float timePerSentence2 = (float)runTime2 / sentenceCount;
+      System.out.printf("Check time after warmup: " + runTime2 + "ms = %.1fms per sentence\n", timePerSentence2);
+      totalTime += timePerSentence2;
+    }
+    float avg = totalTime / (float)RUNS;
+    System.out.printf("Average time per sentence = %.1fms\n", avg);
   }
 
   public static void main(String[] args) throws IOException {
@@ -65,8 +71,11 @@ final class PerformanceTest {
     PerformanceTest test = new PerformanceTest();
     String languageCode = args[0];
     File textFile = new File(args[1]);
-    //JLanguageTool langTool = new JLanguageTool(Languages.getLanguageForShortName(languageCode));
+    //ResultCache cache = new ResultCache(1000, 5, TimeUnit.MINUTES);
+    //JLanguageTool langTool = new JLanguageTool(Languages.getLanguageForShortCode(languageCode));
+    //JLanguageTool langTool = new JLanguageTool(Languages.getLanguageForShortCode(languageCode), null, cache);
     MultiThreadedJLanguageTool langTool = new MultiThreadedJLanguageTool(Languages.getLanguageForShortCode(languageCode));
+    //MultiThreadedJLanguageTool langTool = new MultiThreadedJLanguageTool(Languages.getLanguageForShortCode(languageCode), null, cache);
     test.run(langTool, textFile);
     langTool.shutdown();
   }

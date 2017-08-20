@@ -28,13 +28,16 @@ import java.io.IOException;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+
 /**
  * A rule that matches words which should not be used and suggests correct ones instead. 
  * Romanian implementations. Loads the list of words from
  * <code>/ro/replace.txt</code>.
  *
  * @author Tiago F. Santos (localized from romanian)
- * since 3.6
+ * @since 3.6
  */
 public class PortugueseReplaceRule2 extends AbstractSimpleReplaceRule2 {
 
@@ -50,7 +53,7 @@ public class PortugueseReplaceRule2 extends AbstractSimpleReplaceRule2 {
 
   public PortugueseReplaceRule2(ResourceBundle messages) throws IOException {
     super(messages, new Portuguese());
-    super.setCategory(Categories.MISC.getCategory(messages));
+    super.setCategory(Categories.STYLE.getCategory(messages));
     setLocQualityIssueType(ITSIssueType.LocaleViolation);
     addExamplePair(Example.wrong("<marker>curriculum vitae</marker>"),
                    Example.fixed("<marker>currículo</marker>"));
@@ -79,6 +82,15 @@ public class PortugueseReplaceRule2 extends AbstractSimpleReplaceRule2 {
   @Override
   public String getSuggestionsSeparator() {
     return " ou ";
+  }
+
+  @Override
+  public URL getUrl() {
+    try {
+      return new URL("https://pt.wikipedia.org/wiki/Estrangeirismo");
+    } catch (MalformedURLException e) {
+      throw new RuntimeException(e);
+    }
   }
 
   @Override

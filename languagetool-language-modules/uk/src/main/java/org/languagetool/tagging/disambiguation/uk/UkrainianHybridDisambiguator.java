@@ -21,24 +21,34 @@ package org.languagetool.tagging.disambiguation.uk;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 
 import org.languagetool.AnalyzedSentence;
 import org.languagetool.AnalyzedToken;
 import org.languagetool.AnalyzedTokenReadings;
+import org.languagetool.JLanguageTool;
 import org.languagetool.language.Ukrainian;
+import org.languagetool.rules.uk.LemmaHelper;
+import org.languagetool.tagging.disambiguation.AbstractDisambiguator;
 import org.languagetool.tagging.disambiguation.Disambiguator;
 import org.languagetool.tagging.disambiguation.MultiWordChunker;
 import org.languagetool.tagging.disambiguation.rules.XmlRuleDisambiguator;
+import org.languagetool.tagging.uk.PosTagHelper;
 
 /**
  * Hybrid chunker-disambiguator for Ukrainian.
  */
 
-public class UkrainianHybridDisambiguator implements Disambiguator {
+public class UkrainianHybridDisambiguator extends AbstractDisambiguator {
   private static final String LAST_NAME_TAG = ":lname";
   private static final Pattern INITIAL_REGEX = Pattern.compile("[А-ЯІЇЄҐ]\\.");
+  private static final Pattern INANIM_VKLY = Pattern.compile("noun:inanim:.:v_kly.*");
+  private static final Pattern PLURAL_NAME = Pattern.compile("noun:anim:p:.*:fname.*");
+//  private static final Pattern PLURAL_LNAME_OR_PATR = Pattern.compile("noun:anim:p:.*:lname.*");
+  private static final String PLURAL_LNAME = "noun:anim:p:.*:(lname|patr).*";
+  
   private final Disambiguator chunker = new MultiWordChunker("/uk/multiwords.txt", true);
   private final Disambiguator disambiguator = new XmlRuleDisambiguator(new Ukrainian());
 
@@ -47,9 +57,108 @@ public class UkrainianHybridDisambiguator implements Disambiguator {
    */
   @Override
   public final AnalyzedSentence disambiguate(AnalyzedSentence input) throws IOException {
-    retagInitials(input);
+    preDisambiguate(input);
     
     return disambiguator.disambiguate(chunker.disambiguate(input));
+  }
+
+  @Override
+  public AnalyzedSentence preDisambiguate(AnalyzedSentence input) {
+    retagInitials(input);
+    removeIanimVKly(input);
+    removePluralForNames(input);
+
+    return input;
+  }
+
+
+  private void removeIanimVKly(AnalyzedSentence input) {
+    AnalyzedTokenReadings[] tokens = input.getTokensWithoutWhitespace();
+    for (int i = 1; i < tokens.length; i++) {
+      List<AnalyzedToken> analyzedTokens = tokens[i].getReadings();
+      
+      if( i < tokens.length -1 
+          && Arrays.asList(",", "!", "»").contains(tokens[i+1].getToken()) 
+          && PosTagHelper.hasPosTag(tokens[i-1], "adj.*v_kly.*") )
+        continue;
+      
+      ArrayList<AnalyzedToken> inanimVklyReadings = new ArrayList<>();
+      boolean otherFound = false;
+      for(int j=0; j<analyzedTokens.size(); j++) {
+        String posTag = analyzedTokens.get(j).getPOSTag();
+        if( posTag == null )
+          break;
+        if( posTag.equals(JLanguageTool.SENTENCE_END_TAGNAME) )
+          continue;
+          
+        if( INANIM_VKLY.matcher(posTag).matches() ) {
+          inanimVklyReadings.add(analyzedTokens.get(j));
+        }
+        else {
+          otherFound = true;
+        }
+      }
+      if( inanimVklyReadings.size() > 0 && otherFound ) {
+//        System.err.println("====================1 " + tokens[i]);
+        for(AnalyzedToken analyzedToken: inanimVklyReadings) {
+          tokens[i].removeReading(analyzedToken);
+//          System.err.println("===== Removing: " + analyzedToken);
+//          System.err.println("====================2 " + tokens[i]);
+        }
+      }
+    }
+  }
+
+  private void removePluralForNames(AnalyzedSentence input) {
+    AnalyzedTokenReadings[] tokens = input.getTokensWithoutWhitespace();
+    for (int i = 1; i < tokens.length; i++) {
+      List<AnalyzedToken> analyzedTokens = tokens[i].getReadings();
+      
+      if( i > 1
+          && (PosTagHelper.hasPosTag(tokens[i-1], "adj:p:.*")
+              //TODO: unify adj and noun
+              || PosTagHelper.hasPosTag(tokens[i-1], ".*num.*")
+              || LemmaHelper.hasLemma(tokens[i-1], Arrays.asList("багато", "мало", "півсотня", "сотня"))) )
+        continue;
+
+      // Юріїв Луценків
+      if( i<tokens.length-1 
+          && PosTagHelper.hasPosTag(tokens[i+1], PLURAL_LNAME) )
+        continue;
+      
+      // Андріїв Фартушняка й Варанкова
+      if( i<tokens.length-3
+          && PosTagHelper.hasPosTagPart(tokens[i+1], ":lname")
+          && PosTagHelper.hasPosTagPart(tokens[i+3], ":lname") )
+        continue;
+
+      
+      ArrayList<AnalyzedToken> pluralNameReadings = new ArrayList<>();
+      boolean otherFound = false;
+      for(int j=0; j<analyzedTokens.size(); j++) {
+        String posTag = analyzedTokens.get(j).getPOSTag();
+        if( posTag == null )
+          break;
+        if( posTag.equals(JLanguageTool.SENTENCE_END_TAGNAME) )
+          continue;
+          
+//        System.err.println("-- " + analyzedTokens.get(j));
+        if( PLURAL_NAME.matcher(posTag).matches() ) {
+          pluralNameReadings.add(analyzedTokens.get(j));
+        }
+        else {
+          otherFound = true;
+        }
+      }
+      if( pluralNameReadings.size() > 0 && otherFound ) {
+//        System.err.println("====================1 " + tokens[i]);
+        for(AnalyzedToken analyzedToken: pluralNameReadings) {
+          tokens[i].removeReading(analyzedToken);
+//          System.err.println("===== Removing: " + analyzedToken);
+//          System.err.println("====================2 " + tokens[i]);
+        }
+      }
+    }
   }
 
   private void retagInitials(AnalyzedSentence input) {

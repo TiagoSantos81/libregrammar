@@ -31,6 +31,7 @@ import org.languagetool.AnalyzedToken;
 import org.languagetool.AnalyzedTokenReadings;
 import org.languagetool.rules.Categories;
 import org.languagetool.rules.ITSIssueType;
+import org.languagetool.rules.Rule;
 import org.languagetool.rules.RuleMatch;
 import org.languagetool.tools.StringTools;
 
@@ -41,7 +42,7 @@ import org.languagetool.tools.StringTools;
  * 
  * @author Jaume Ortolà i Font
  */
-public class AccentuationCheckRule extends CatalanRule {
+public class AccentuationCheckRule extends Rule {
 
   /**
    * Patterns
@@ -161,6 +162,15 @@ public class AccentuationCheckRule extends CatalanRule {
         // amb renuncies
         if (tokens[i - 1].hasPosTag("SPS00") && !tokens[i - 1].hasPosTag("RG")
             && !matchPostagRegexp(tokens[i - 1], DETERMINANT)
+            && !matchPostagRegexp(tokens[i], INFINITIU)) {
+          replacement = relevantWords.get(token).getToken();
+        }
+        else if (i > 2 && tokens[i - 2].hasPosTag("SPS00") 
+            && !tokens[i - 2].hasPosTag("RG")
+            && !matchPostagRegexp(tokens[i - 2], DETERMINANT)
+            && (matchPostagRegexp(tokens[i - 1], DETERMINANT) 
+                || mArticleELMS.matches() || mArticleELFS.matches() 
+                || mArticleELMP.matches() || mArticleELFP.matches() )
             && !matchPostagRegexp(tokens[i], INFINITIU)) {
           replacement = relevantWords.get(token).getToken();
         }
@@ -361,11 +371,6 @@ public class AccentuationCheckRule extends CatalanRule {
       }
     }
     return matches;
-  }
-
-  @Override
-  public void reset() {
-    // nothing
   }
 
 }

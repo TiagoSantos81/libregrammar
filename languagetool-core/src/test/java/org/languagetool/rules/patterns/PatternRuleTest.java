@@ -29,11 +29,14 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.junit.Test;
@@ -68,6 +71,7 @@ public class PatternRuleTest {
   private static final boolean CHECK_WITH_SENTENCE_SPLITTING = false;
   private static final Pattern PATTERN_MARKER_START = Pattern.compile(".*<pattern[^>]*>\\s*<marker>.*", Pattern.DOTALL);
   private static final Pattern PATTERN_MARKER_END = Pattern.compile(".*</marker>\\s*</pattern>.*", Pattern.DOTALL);
+  private static final Comparator<Match> MATCH_COMPARATOR = (m1, m2) -> Integer.compare( m1.getTokenRef(), m2.getTokenRef());
 
   public void testFake() {
     // there's no test here - the languages are supposed to extend this class and call runGrammarRulesFromXmlTest() 
@@ -90,9 +94,13 @@ public class PatternRuleTest {
   }
   
   @Test
-  public void shortMessageIsSmallerThanErrorMessage() throws IOException {
+  public void shortMessageIsLongerThanErrorMessage() throws IOException {
     for (Language lang : Languages.get()) {
-      MultiThreadedJLanguageTool languageTool = new MultiThreadedJLanguageTool(lang);
+      if (skipCountryVariant(lang)) {
+        // Skipping because there are no specific rules for this variant
+        return;
+      }
+      JLanguageTool languageTool = new JLanguageTool(lang);
       for (AbstractPatternRule rule : getAllPatternRules(lang, languageTool)) {
         warnIfShortMessageLongerThanErrorMessage(rule);
       }
@@ -100,27 +108,27 @@ public class PatternRuleTest {
   }
 
   private void warnIfShortMessageLongerThanErrorMessage(AbstractPatternRule rule) {
-      if (rule instanceof PatternRule) {
-        String shortMessage = ((PatternRule) rule).getShortMessage();
-        int sizeOfShortMessage = shortMessage.length();
-        int sizeOfErrorMessage = rule.getMessage().length();
-        if (sizeOfShortMessage >= sizeOfErrorMessage) {
-          if (shortMessage.equals(rule.getMessage())) {
-            System.err.println("Warning: The content of <short> and <message> are identical. No need for <short> tag in that case. "
-                    + "<message>. Language: " + rule.language.getName() + ". Rule: " + rule.getFullId() + ":\n"
-                    + "  Short: " + shortMessage + "\n"
-                    + "  Long:  " + rule.getMessage());
-          } else {
-            System.err.println("Warning: The content of <short> should be smaller than the content of "
-                    + "<message>. Language: " + rule.language.getName() + ". Rule: " + rule.getFullId() + ":\n"
-                    + "  Short: " + shortMessage + "\n"
-                    + "  Long:  " + rule.getMessage());
-          }
+    if (rule instanceof PatternRule) {
+      String shortMessage = ((PatternRule) rule).getShortMessage();
+      int sizeOfShortMessage = shortMessage.length();
+      int sizeOfErrorMessage = rule.getMessage().length();
+      if (sizeOfShortMessage >= sizeOfErrorMessage) {
+        if (shortMessage.equals(rule.getMessage())) {
+          System.err.println("Warning: The content of <short> and <message> are identical. No need for <short> tag in that case. "
+                  + "<message>. Language: " + rule.language.getName() + ". Rule: " + rule.getFullId() + ":\n"
+                  + "  <short>:   " + shortMessage + "\n"
+                  + "  <message>: " + rule.getMessage());
+        } else {
+          System.err.println("Warning: The content of <short> should be shorter than the content of "
+                  + "<message>. Language: " + rule.language.getName() + ". Rule: " + rule.getFullId() + ":\n"
+                  + "  <short>:   " + shortMessage + "\n"
+                  + "  <message>: " + rule.getMessage());
         }
+      }
     }
   }
   
-  private List<AbstractPatternRule> getAllPatternRules(Language language, MultiThreadedJLanguageTool languageTool) throws IOException {
+  private List<AbstractPatternRule> getAllPatternRules(Language language, JLanguageTool languageTool) throws IOException {
     List<AbstractPatternRule> rules = new ArrayList<>();
     for (String patternRuleFileName : language.getRuleFileNames()) {
       rules.addAll(languageTool.loadPatternRules(patternRuleFileName));
@@ -396,6 +404,17 @@ public class PatternRuleTest {
                   + "Errors found   : " + matches.size() + "\n"
                   + "Message: " + rule.getMessage() + "\n" + sb + "\nMatches: " + matches + info);
         }
+
+        int maxReference = 0;
+        if (rule.getSuggestionMatches() != null) {
+          Optional<Match> opt = rule.getSuggestionMatches().stream().max(MATCH_COMPARATOR);
+          maxReference = opt.isPresent() ? opt.get().getTokenRef() : 0;
+        }
+        maxReference = Math.max( rule.getMessage() != null ? findLargestReference(rule.getMessage()) : 0, maxReference);
+        if (rule.getPatternTokens() != null && maxReference > rule.getPatternTokens().size()) {
+          System.err.println("Warning: Rule "+rule.getFullId()+" refers to token \\"+(maxReference)+" but has only "+rule.getPatternTokens().size()+" tokens.");
+        }
+
         assertEquals(lang
                 + ": Incorrect match position markup (start) for rule " + rule.getFullId() + ", sentence: " + badSentence,
                 expectedMatchStart, matches.get(0).getFromPos());
@@ -450,13 +469,23 @@ public class PatternRuleTest {
       /*matches = getMatches(rule, badSentence, languageTool);
       List<RuleMatch> matchesAllRules = allRulesLanguageTool.check(badSentence);
       for (RuleMatch match : matchesAllRules) {
-        if (!match.getRule().getId().equals(rule.getId()) && matches.length != 0
-            && rangeIsOverlapping(matches[0].getFromPos(), matches[0].getToPos(), match.getFromPos(), match.getToPos()))
+        if (!match.getRule().getId().equals(rule.getId()) && !matches.isEmpty()
+            && rangeIsOverlapping(matches.get(0).getFromPos(), matches.get(0).getToPos(), match.getFromPos(), match.getToPos()))
           System.err.println("WARN: " + lang.getShortCode() + ": '" + badSentence + "' in "
                   + rule.getId() + " also matched " + match.getRule().getId());
       }*/
 
     }
+  }
+
+  private int findLargestReference (String message) {
+    Pattern pattern = Pattern.compile("\\\\[0-9]+");
+    Matcher matcher = pattern.matcher(message);
+    int max = 0;
+    while (matcher.find()) {
+      max = Math.max(max, Integer.parseInt(matcher.group().replace("\\", "")));
+    }
+    return max;
   }
 
   private void testErrorTriggeringSentences(JLanguageTool languageTool, Language lang,

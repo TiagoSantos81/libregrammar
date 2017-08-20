@@ -101,11 +101,6 @@ public class German extends Language implements AutoCloseable {
   }
 
   @Override
-  public String getShortName() {
-    return "de";
-  }
-
-  @Override
   public String getShortCode() {
     return "de";
   }
@@ -150,7 +145,6 @@ public class German extends Language implements AutoCloseable {
   public Contributor[] getMaintainers() {
     return new Contributor[] {
         new Contributor("Jan Schreiber"),
-        new Contributor("Markus Brenneis"),
         Contributors.DANIEL_NABER,
     };
   }
@@ -169,6 +163,7 @@ public class German extends Language implements AutoCloseable {
                     Example.fixed("Das Haus ist alt. <marker>Es</marker> wurde 1950 gebaut.")),
             new MultipleWhitespaceRule(messages, this),
             // specific to German:
+            new OldSpellingRule(messages),
             new SentenceWhitespaceRule(messages),
             new GermanDoublePunctuationRule(messages),
             new MissingVerbRule(messages, this),
@@ -230,7 +225,7 @@ public class German extends Language implements AutoCloseable {
   /** @since 3.1 */
   @Override
   public List<Rule> getRelevantLanguageModelRules(ResourceBundle messages, LanguageModel languageModel) throws IOException {
-    return Arrays.<Rule>asList(
+    return Arrays.asList(
             new GermanConfusionProbabilityRule(messages, languageModel, this)
     );
   }
@@ -249,6 +244,16 @@ public class German extends Language implements AutoCloseable {
   @Override
   public LanguageMaintainedState getMaintainedState() {
     return LanguageMaintainedState.ActivelyMaintained;
+  }
+
+  @Override
+  public int getPriorityForId(String id) {
+    switch (id) {
+      case "KOMMA_ZWISCHEN_HAUPT_UND_NEBENSATZ": return -10;
+      case "OLD_SPELLING_INTERNAL": return 10;
+      case "CONFUSION_RULE": return -1;  // probably less specific than the rules from grammar.xml
+    }
+    return 0;
   }
 
 }

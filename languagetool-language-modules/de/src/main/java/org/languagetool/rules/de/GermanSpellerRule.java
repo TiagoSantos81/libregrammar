@@ -35,57 +35,26 @@ import org.languagetool.tools.StringTools;
 import java.io.*;
 import java.util.*;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class GermanSpellerRule extends CompoundAwareHunspellRule {
 
   public static final String RULE_ID = "GERMAN_SPELLER_RULE";
-  
+
+  // according to http://www.spiegel.de/kultur/zwiebelfisch/zwiebelfisch-der-gebrauch-des-fugen-s-im-ueberblick-a-293195.html
+  private static final Pattern ENDINGS_NEEDING_FUGENS = Pattern.compile(".*(tum|ling|ion|tät|keit|schaft|sicht|ung|en)");
   private static final int MAX_EDIT_DISTANCE = 2;
-  private static final int SUGGESTION_MIN_LENGTH = 2;
-  private static final List<Replacement> REPL = Arrays.asList(
-      // see de_DE.aff:
-      new Replacement("f", "ph"),
-      new Replacement("ph", "f"),
-      new Replacement("ß", "ss"),
-      new Replacement("ss", "ß"),
-      new Replacement("s", "ss"),
-      new Replacement("ss", "s"),
-      new Replacement("i", "ie"),
-      new Replacement("ie", "i"),
-      new Replacement("ee", "e"),
-      new Replacement("o", "oh"),
-      new Replacement("oh", "o"),
-      new Replacement("a", "ah"),
-      new Replacement("ah", "a"),
-      new Replacement("e", "eh"),
-      new Replacement("eh", "e"),
-      new Replacement("ae", "ä"),
-      new Replacement("oe", "ö"),
-      new Replacement("ue", "ü"),
-      new Replacement("Ae", "Ä"),
-      new Replacement("Oe", "Ö"),
-      new Replacement("Ue", "Ü"),
-      new Replacement("d", "t"),
-      new Replacement("t", "d"),
-      new Replacement("th", "t"),
-      new Replacement("t", "th"),
-      new Replacement("r", "rh"),
-      new Replacement("ch", "k"),
-      new Replacement("k", "ch"),
-      // not in de_DE.aff (not clear what uppercase replacement we need...):
-      new Replacement("F", "Ph"),
-      new Replacement("Ph", "F")
-  );
+  
+  // some exceptions for changes to the spelling in 2017 - just a workaround so we don't have to touch the binary dict:
+  private static final Pattern PREVENT_SUGGESTION = Pattern.compile(
+          ".*(?i:Majonäse|Bravur|Anschovis|Belkanto|Campagne|Frotté|Grisli|Jokei|Joga|Kalvinismus|Kanossa|Kargo|Ketschup|" +
+          "Kollier|Kommunikee|Masurka|Negligee|Nessessär|Poulard|Varietee|Wandalismus|kalvinist).*");
 
   private final LineExpander lineExpander = new LineExpander();
   private final GermanCompoundTokenizer compoundTokenizer;
   private final GermanWordSplitter splitter;
   private final Synthesizer synthesizer;
   private final Tagger tagger;
-
-  // according to http://www.spiegel.de/kultur/zwiebelfisch/zwiebelfisch-der-gebrauch-des-fugen-s-im-ueberblick-a-293195.html
-  private static final Set<String> ENDINGS_NEEDING_FUGEN_S = new HashSet<>(Arrays.asList(
-      "tum", "ling", "ion", "tät", "keit", "schaft", "sicht", "ung", "en" ));
 
   public GermanSpellerRule(ResourceBundle messages, German language) {
     super(messages, language, language.getNonStrictCompoundSplitter(), getSpeller(language));
@@ -104,7 +73,7 @@ public class GermanSpellerRule extends CompoundAwareHunspellRule {
   @Override
   protected void init() throws IOException {
     super.init();
-    String pattern = "(" + nonWordPattern.pattern() + "|(?<=\\d)\\-|\\-(?=\\d+))";
+    String pattern = "(" + nonWordPattern.pattern() + "|(?<=\\d)-|-(?=\\d+))";
     nonWordPattern = Pattern.compile(pattern);
     needsInit = false;
   }
@@ -116,14 +85,22 @@ public class GermanSpellerRule extends CompoundAwareHunspellRule {
 
   @Override
   public List<String> getCandidates(String word) {
-    List<String> suggestions = new ArrayList<>();
     List<List<String>> partList = splitter.getAllSplits(word);
     List<String> candidates = new ArrayList<>();
     for (List<String> parts : partList) {
       candidates.addAll(super.getCandidates(parts));
+      if (parts.size() == 2 && !parts.get(0).endsWith("s")) {
+        // so we get e.g. Einzahlungschein -> Einzahlungsschein
+        candidates.add(parts.get(0) + "s" + parts.get(1));
+      }
+      if (parts.size() == 2 && parts.get(1).startsWith("s")) {
+        // so we get e.g. Ordnungshütter -> Ordnungshüter (Ordnungshütter is split as Ordnung + shütter)
+        String firstPart = parts.get(0);
+        String secondPart = parts.get(1);
+        candidates.addAll(super.getCandidates(Arrays.asList(firstPart + "s", secondPart.substring(1))));
+      }
     }
-    suggestions.addAll(candidates);
-    return suggestions;
+    return candidates;
   }
 
   @Override
@@ -132,7 +109,7 @@ public class GermanSpellerRule extends CompoundAwareHunspellRule {
   }
 
   @Override
-  protected void addIgnoreWords(String origLine, Set<String> wordsToBeIgnored) {
+  protected void addIgnoreWords(String origLine) {
     String line;
     if (language.getShortCodeWithCountryAndVariant().equals("de-CH")) {
       // hack: Swiss German doesn't use "ß" but always "ss" - replace this, otherwise
@@ -141,7 +118,10 @@ public class GermanSpellerRule extends CompoundAwareHunspellRule {
     } else {
       line = origLine;
     }
-    wordsToBeIgnored.addAll(expandLine(line));
+    List<String> words = expandLine(line);
+    for (String word : words) {
+      super.addIgnoreWords(word);
+    }
   }
 
   @Override
@@ -155,7 +135,8 @@ public class GermanSpellerRule extends CompoundAwareHunspellRule {
   @Override
   public List<String> getSuggestions(String word) throws IOException {
     List<String> suggestions = super.getSuggestions(word);
-    if(word.endsWith(".")) {
+    suggestions = suggestions.stream().filter(k -> !PREVENT_SUGGESTION.matcher(k).matches() && !k.endsWith("roulett")).collect(Collectors.toList());
+    if (word.endsWith(".")) {
       // To avoid losing the "." of "word" if it is at the end of a sentence.
       suggestions.replaceAll(s -> s.endsWith(".") ? s : s + ".");
     }
@@ -191,25 +172,29 @@ public class GermanSpellerRule extends CompoundAwareHunspellRule {
         suggestions.set(i, s.replace("ß", "ss"));
       }
     }
+    // Remove suggestions like "Mafiosi s" and "Mafiosi s.":
+    suggestions.removeIf(s -> Arrays.stream(s.split(" ")).anyMatch(k -> k.matches("\\w\\p{Punct}?")));
     // This is not quite correct as it might remove valid suggestions that start with "-",
     // but without this we get too many strange suggestions that start with "-" for no apparent reason
     // (e.g. for "Gratifikationskrisem" -> "-Gratifikationskrisen"):
-    Iterator<String> iterator = suggestions.iterator();
-    while (iterator.hasNext()) {
-      String suggestion = iterator.next();
-      if (suggestion.length() > 1 && suggestion.startsWith("-")) {
-        iterator.remove();
-      }
-    }
+    suggestions.removeIf(s -> s.length() > 1 && s.startsWith("-"));
   }
 
-  // Use hunspell-style replacements to get good suggestions for "heisse", namely "heiße" etc
-  // TODO: remove this when the Morfologik speller can do this directly during tree iteration:
   @Override
   protected List<String> sortSuggestionByQuality(String misspelling, List<String> suggestions) {
-    List<String> sorted1 = sortByReplacements(misspelling, suggestions);
-    List<String> sorted2 = sortByCase(misspelling, sorted1);
-    return sorted2;
+    List<String> result = new ArrayList<>();
+    for (String suggestion : suggestions) {
+      if (misspelling.equalsIgnoreCase(suggestion)) {
+        // this should be preferred - only case differs:
+        result.add(0, suggestion);
+      } else if (suggestion.contains(" ")) {
+        // prefer e.g. "vor allem":
+        result.add(0, suggestion);
+      } else {
+        result.add(suggestion);
+      }
+    }
+    return result;
   }
 
   @Override
@@ -218,37 +203,90 @@ public class GermanSpellerRule extends CompoundAwareHunspellRule {
     boolean ignoreUncapitalizedWord = !ignore && idx == 0 && super.ignoreWord(StringUtils.uncapitalize(words.get(0)));
     boolean ignoreByHyphen = false, ignoreHyphenatedCompound = false;
     if (!ignore && !ignoreUncapitalizedWord) {
-      if(words.get(idx).contains("-")) {
+      if (words.get(idx).contains("-")) {
         ignoreByHyphen = words.get(idx).endsWith("-") && ignoreByHangingHyphen(words, idx);
       }
       ignoreHyphenatedCompound = !ignoreByHyphen && ignoreCompoundWithIgnoredWord(words.get(idx));
     }
     return ignore || ignoreUncapitalizedWord || ignoreByHyphen || ignoreHyphenatedCompound;
   }
-  
+
   @Override
   protected List<String> getAdditionalTopSuggestions(List<String> suggestions, String word) throws IOException {
-    String w = word.replaceFirst("\\.$", "");
-    if ("unzwar".equals(w)) {
-      return Collections.singletonList("und zwar");
-    } else if ("desweiteren".equals(w)) {
-      return Collections.singletonList("des Weiteren");
-    } else if ("wieviel".equals(w)) {
-      return Collections.singletonList("wie viel");
-    } else if ("wieviele".equals(w)) {
-      return Collections.singletonList("wie viele");
-    } else if ("wievielen".equals(w)) {
-      return Collections.singletonList("wie vielen");
-    } else if ("vorteilen".equals(w)) {
-      return Collections.singletonList("Vorteilen");
+    String w = StringUtils.removeEnd(word, ".");
+    String suggestion;
+    if ("WIFI".equals(w) || "wifi".equals(w)) {
+      return Collections.singletonList("Wi-Fi");
+    } else if ("ausversehen".equals(w)) {
+      return Collections.singletonList("aus Versehen");
+    } else if ("getz".equals(w)) {
+      return Arrays.asList("jetzt", "geht's");
     } else if ("Trons".equals(w)) {
       return Collections.singletonList("Trance");
-    } else if ("einzigste".equals(w)) {
-      return Collections.singletonList("einzige");
+    } else if (w.matches("desweitere[nm]")) {
+      return Collections.singletonList("des Weiteren");
+    } else if (word.matches("einzigste[mnrs]?")) {
+      return Collections.singletonList(word.replaceFirst("^einzigst", "einzig"));
     } else if (word.endsWith("standart")) {
-      return Collections.singletonList(word.replaceFirst("standart$", "standard"));
+      suggestion = word.replaceFirst("standart$", "standard");
+      if (!hunspellDict.misspelled(suggestion)) {
+        return Collections.singletonList(suggestion);
+      }
     } else if (word.endsWith("standarts")) {
-      return Collections.singletonList(word.replaceFirst("standarts$", "standards"));
+      suggestion = word.replaceFirst("standarts$", "standards");
+      if (!hunspellDict.misspelled(suggestion)) {
+        return Collections.singletonList(suggestion);
+      }
+    } else if (word.endsWith("parties")) {
+      suggestion = word.replaceFirst("parties$", "partys");
+      if (!hunspellDict.misspelled(suggestion)) {
+        return Collections.singletonList(suggestion);
+      }
+    } else if (word.endsWith("derbies")) {
+      suggestion = word.replaceFirst("derbies$", "derbys");
+      if (!hunspellDict.misspelled(suggestion)) {
+        return Collections.singletonList(suggestion);
+      }
+    } else if (word.endsWith("stories")) {
+      suggestion = word.replaceFirst("stories$", "storys");
+      if (!hunspellDict.misspelled(suggestion)) {
+        return Collections.singletonList(suggestion);
+      }
+    } else if (word.endsWith("tip")) {
+      suggestion = word.replaceFirst("tip$", "tipp");
+      if (!hunspellDict.misspelled(suggestion)) {
+        return Collections.singletonList(suggestion);
+      }
+    } else if (word.endsWith("tips")) {
+      suggestion = word.replaceFirst("tips$", "tipps");
+      if (!hunspellDict.misspelled(suggestion)) {
+        return Collections.singletonList(suggestion);
+      }
+    } else if (word.endsWith("oullie")) {
+      suggestion = word.replaceFirst("oullie$", "ouille");
+      if (!hunspellDict.misspelled(suggestion)) {
+        return Collections.singletonList(suggestion);
+      }
+    } else if (word.startsWith("Bundstift")) {
+      suggestion = word.replaceFirst("^Bundstift", "Buntstift");
+      if (!hunspellDict.misspelled(suggestion)) {
+        return Collections.singletonList(suggestion);
+      }
+    } else if (word.matches(".*[mM]ajonäse.*")) {
+      suggestion = word.replaceFirst("ajonäse", "ayonnaise");
+      if (!hunspellDict.misspelled(suggestion)) {
+        return Collections.singletonList(suggestion);
+      }
+    } else if (word.equals("halo")) {
+      return Collections.singletonList("hallo");
+    } else if (word.equals("zuende")) {
+      return Collections.singletonList("zu Ende");
+    } else if (word.equals("zumindestens")) {
+      return Collections.singletonList("zumindest");
+    } else if (word.equals("ca")) {
+      return Collections.singletonList("ca.");
+    } else if (word.equals("Jezt")) {
+      return Collections.singletonList("Jetzt");
     } else if (word.equals("Rolladen")) {
       return Collections.singletonList("Rollladen");
     } else if (word.equals("Maßname")) {
@@ -257,8 +295,87 @@ public class GermanSpellerRule extends CompoundAwareHunspellRule {
       return Collections.singletonList("Maßnahmen");
     } else if (word.equals("nanten")) {
       return Collections.singletonList("nannten");
+    } else if (word.equals("Stories")) {
+      return Collections.singletonList("Storys");
+    } else if (word.equals("Lobbies")) {
+      return Collections.singletonList("Lobbys");
     } else if (word.equals("Hobbies")) {
       return Collections.singletonList("Hobbys");
+    } else if (word.equals("Parties")) {
+      return Collections.singletonList("Partys");
+    } else if (word.equals("Babies")) {
+      return Collections.singletonList("Babys");
+    } else if (word.equals("Ladies")) {
+      return Collections.singletonList("Ladys");
+    } else if (word.equals("Hallochen")) {
+      return Arrays.asList("Hallöchen", "hallöchen");
+    } else if (word.equals("hallochen")) {
+      return Collections.singletonList("hallöchen");
+    } else if (word.matches("[mM]issionarie?sie?rung")) {
+      return Collections.singletonList("Missionierung");
+    } else if (word.matches("[sS]chee?selonge?")) {
+      return Collections.singletonList("Chaiselongue");
+    } else if (word.matches("Re[kc]amiere")) {
+      return Collections.singletonList("Récamière");
+    } else if (word.matches("legen[td]lich")) {
+      return Collections.singletonList("lediglich");
+    } else if (word.matches("[mM]illion(en)?mal")) {
+      suggestion = word.replaceFirst("^million", "Million");
+      suggestion = suggestion.replaceFirst("mal$", "");
+      return Collections.singletonList(suggestion + " Mal");
+    } else if (word.equals("ok")) {
+      return Arrays.asList("okay", "O.\u202fK."); // Duden-like suggestion with no-break space
+    } else if (word.equals("Germanistiker")) {
+      return Arrays.asList("Germanist", "Germanisten");
+    } else if (word.matches("Germanistiker[ns]")) {
+      return Collections.singletonList("Germanisten");
+    } else if (word.matches("Germanistikerin(nen)?")) {
+      return Collections.singletonList(word.replaceFirst("Germanistiker", "Germanist"));
+    } else if (word.matches("[eE]rhöherung")) {
+      return Collections.singletonList("Erhöhung");
+    } else if (word.matches("[eE]rhöherungen")) {
+      return Collections.singletonList("Erhöhungen");
+    } else if (word.matches("[aA]ufjedenfall")) {
+      suggestion = word.replaceFirst("jedenfall$", "");
+      return Collections.singletonList(suggestion + " jeden Fall");
+    } else if (word.matches("^funk?z[ou]nier.+")) {
+      suggestion = word.replaceFirst("funk?z[ou]nier", "funktionier");
+      return Collections.singletonList(suggestion);
+    } else if (word.equals("Wöruber")) {
+      return Collections.singletonList("Worüber");
+    } else if (word.equals("par")) {
+      return Collections.singletonList("paar");
+    } else if (word.equals("vllt")) {
+      return Collections.singletonList("vielleicht");
+    } else if (word.equals("iwie")) {
+      return Collections.singletonList("irgendwie");
+    } else if (word.equals("sry")) {
+      return Collections.singletonList("sorry");
+    } else if (word.equals("Zynik")) {
+      return Collections.singletonList("Zynismus");
+    } else if (word.matches("[aA]wa")) {
+      return Arrays.asList("AWA", "ach was", "aber");
+    } else if (word.equals("ch")) {
+      return Collections.singletonList("ich");
+    } else if (word.matches("aufgehangen(e[mnrs]?)?$")) {
+      return Collections.singletonList(word.replaceFirst("hangen", "hängt"));
+    } else if (word.matches("rosane[mnrs]?$")) {
+      return Arrays.asList("rosa", word.replaceFirst("^rosan", "rosafarben"));
+    } else if (word.matches("geupdate[dt]$")) {
+      return Collections.singletonList("upgedatet");
+    } else if (word.matches("näste[mnrs]?$")) {
+      return Collections.singletonList(word.replaceFirst("^näs", "nächs"));
+    } else if (word.matches("Erdogans?$")) {
+      return Collections.singletonList(word.replaceFirst("^Erdogan", "Erdoğan"));
+    } else if (word.matches("Email[a-zäöü]{5,}")) {
+      String suffix = word.substring(5);
+      if (hunspellDict.misspelled(suffix)) {
+        List<String> suffixSuggestions = hunspellDict.suggest(suffix);
+        suffix = suffixSuggestions.isEmpty() ? suffix : suffixSuggestions.get(0);
+      }
+      return Collections.singletonList("E-Mail-"+Character.toUpperCase(suffix.charAt(0))+suffix.substring(1));
+    } else if (word.equals("wiederspiegeln")) {
+      return Collections.singletonList("widerspiegeln");
     } else if (!StringTools.startsWithUppercase(word)) {
       String ucWord = StringTools.uppercaseFirstChar(word);
       if (!suggestions.contains(ucWord) && !hunspellDict.misspelled(ucWord)) {
@@ -300,18 +417,20 @@ public class GermanSpellerRule extends CompoundAwareHunspellRule {
         if (stopAt < words.length-1) {
           suggestionLists.add(Collections.singletonList(words[words.length-2] + "-" + words[words.length-1]));
         }
-        List<String> additionalSuggestions = suggestionLists.get(0);
-        for (int idx = 1; idx < suggestionLists.size(); idx++) {
-          List<String> suggestionList = suggestionLists.get(idx);
-          List<String> newList = new ArrayList<>(additionalSuggestions.size() * suggestionList.size());
-          for (String additionalSuggestion : additionalSuggestions) {
-            for (String aSuggestionList : suggestionList) {
-              newList.add(additionalSuggestion + "-" + aSuggestionList);
+        if (suggestionLists.size() <= 3) {  // avoid OOM on words like "free-and-open-source-and-cross-platform"
+          List<String> additionalSuggestions = suggestionLists.get(0);
+          for (int idx = 1; idx < suggestionLists.size(); idx++) {
+            List<String> suggestionList = suggestionLists.get(idx);
+            List<String> newList = new ArrayList<>(additionalSuggestions.size() * suggestionList.size());
+            for (String additionalSuggestion : additionalSuggestions) {
+              for (String aSuggestionList : suggestionList) {
+                newList.add(additionalSuggestion + "-" + aSuggestionList);
+              }
             }
+            additionalSuggestions = newList;
           }
-          additionalSuggestions = newList;
+          return additionalSuggestions;
         }
-        return additionalSuggestions;
       }
     }
     return Collections.emptyList();
@@ -322,7 +441,8 @@ public class GermanSpellerRule extends CompoundAwareHunspellRule {
   @Nullable
   private String getPastTenseVerbSuggestion(String word) {
     if (word.endsWith("e")) {
-      String wordStem = word.replaceFirst("e$", "");
+      // strip trailing "e"
+      String wordStem = word.substring(0, word.length()-1);
       try {
         String lemma = baseForThirdPersonSingularVerb(wordStem);
         if (lemma != null) {
@@ -355,7 +475,8 @@ public class GermanSpellerRule extends CompoundAwareHunspellRule {
   @Nullable
   private String getParticipleSuggestion(String word) {
     if (word.startsWith("ge") && word.endsWith("t")) {
-      String baseform = word.replaceFirst("^ge", "").replaceFirst("t$", "en");
+      // strip leading "ge" and replace trailing "t" with "en":
+      String baseform = word.substring(2, word.length()-1) + "en";
       try {
         String participle = getParticipleForBaseform(baseform);
         if (participle != null) {
@@ -380,10 +501,13 @@ public class GermanSpellerRule extends CompoundAwareHunspellRule {
 
   private boolean ignoreByHangingHyphen(List<String> words, int idx) {
     String word = words.get(idx);
-    String nextWord = getWordAfterEnumerationOrNull(words, idx);
+    String nextWord = getWordAfterEnumerationOrNull(words, idx+1);
+    if (nextWord != null) {
+      nextWord = StringUtils.removeEnd(nextWord, ".");
+    }
     boolean isCompound = nextWord != null && compoundTokenizer.tokenize(nextWord).size() > 1;
     if (isCompound) {
-      return !hunspellDict.misspelled(word.replaceFirst("-$", ""));  // "Stil- und Grammatikprüfung" or "Stil-, Text- und Grammatikprüfung"
+      return !hunspellDict.misspelled(StringUtils.removeEnd(word, "-"));  // "Stil- und Grammatikprüfung" or "Stil-, Text- und Grammatikprüfung"
     }
     return false;
   }
@@ -401,29 +525,46 @@ public class GermanSpellerRule extends CompoundAwareHunspellRule {
     return null;
   }
 
+  // check whether a <code>word<code> is a valid compound (e.g., "Feynmandiagramm" or "Feynman-Diagramm")
+  // that contains an ignored word from spelling.txt (e.g., "Feynman")
   private boolean ignoreCompoundWithIgnoredWord(String word) throws IOException{
+    if (!StringTools.startsWithUppercase(word) && !word.matches("(nord|ost|süd|west).*")) {
+      // otherwise stuff like "rumfangreichen" gets accepted
+      return false;
+    }
     String[] words = word.split("-");
     if (words.length < 2) {
+      // non-hyphenated compound (e.g., "Feynmandiagramm"):
+      // only search for compounds that start(!) with a word from spelling.txt
       int end = super.startsWithIgnoredWord(word, true);
-      if(end < 3) {
-        return false;
+      if (end < 3) {
+    	// support for geographical adjectives - although "süd/ost/west/nord" are not in spelling.txt 
+    	// to accept sentences such as
+    	// "Der westperuanische Ferienort, das ostargentinische Städtchen, das südukrainische Brauchtum, der nordägyptische Staudamm."
+    	if (word.startsWith("ost") || word.startsWith("süd")) {
+          end = 3;
+    	} else if (word.startsWith("west") || word.startsWith("nord")) {
+    	  end = 4;
+    	} else {
+    	  return false;
+    	}
       }
       String ignoredWord = word.substring(0, end);
       String partialWord = word.substring(end);
-      boolean needFugenS = ENDINGS_NEEDING_FUGEN_S.stream().anyMatch(ending -> ignoredWord.endsWith(ending));
-      if(!needFugenS && partialWord.length() > 1) {
-          return !hunspellDict.misspelled(partialWord) || !hunspellDict.misspelled(StringUtils.capitalize(partialWord));
-      } else if(needFugenS && partialWord.startsWith("s") && partialWord.length() > 2) {
-          partialWord = partialWord.substring(1);
-          return !hunspellDict.misspelled(partialWord) || !hunspellDict.misspelled(StringUtils.capitalize(partialWord));
+      boolean needFugenS = ENDINGS_NEEDING_FUGENS.matcher(ignoredWord).matches();
+      if (!needFugenS && partialWord.length() > 1) {
+        return !hunspellDict.misspelled(partialWord) || !hunspellDict.misspelled(StringUtils.capitalize(partialWord));
+      } else if (needFugenS && partialWord.length() > 2) {
+        partialWord = partialWord.startsWith("s") ? partialWord.substring(1) : partialWord;
+        return !hunspellDict.misspelled(partialWord) || !hunspellDict.misspelled(StringUtils.capitalize(partialWord));
       }
       return false;
     }
-
+    // hyphenated compound (e.g., "Feynman-Diagramm"):
     boolean hasIgnoredWord = false;
     List<String> toSpellCheck = new ArrayList<>(3);
-    String stripFirst = word.substring(words[0].length()+1);
-    String stripLast  = word.substring(0, word.length()-words[words.length-1].length()-1);
+    String stripFirst = word.substring(words[0].length()+1); // everything after the first "-"
+    String stripLast  = word.substring(0, word.length()-words[words.length-1].length()-1); // everything up to the last "-"
 
     if (super.ignoreWord(stripFirst)) { // e.g., "Senioren-Au-pair"
       hasIgnoredWord = true;
@@ -453,64 +594,6 @@ public class GermanSpellerRule extends CompoundAwareHunspellRule {
       }
     }
     return hasIgnoredWord;
-  }
-
-  private List<String> sortByReplacements(String misspelling, List<String> suggestions) {
-    List<String> result = new ArrayList<>();
-    for (String suggestion : suggestions) {
-      boolean moveSuggestionToTop = false;
-      for (Replacement replacement : REPL) {
-        String modifiedMisspelling = misspelling.replace(replacement.key, replacement.value);
-        boolean equalsAfterReplacement = modifiedMisspelling.equals(suggestion);
-        if (equalsAfterReplacement) {
-          moveSuggestionToTop = true;
-          break;
-        }
-      }
-      if (!ignoreSuggestion(suggestion)) {
-        if (moveSuggestionToTop) {
-          // this should be preferred, as the replacements make it equal to the suggestion:
-          result.add(0, suggestion);
-        } else {
-          result.add(suggestion);
-        }
-      }
-    }
-    return result;
-  }
-
-  private List<String> sortByCase(String misspelling, List<String> suggestions) {
-    List<String> result = new ArrayList<>();
-    for (String suggestion : suggestions) {
-      if (misspelling.equalsIgnoreCase(suggestion)) {
-        // this should be preferred - only case differs:
-        result.add(0, suggestion);
-      } else {
-        result.add(suggestion);
-      }
-    }
-    return result;
-  }
-
-  private boolean ignoreSuggestion(String suggestion) {
-    String[] parts = suggestion.split(" ");
-    if (parts.length > 1) {
-      for (String part : parts) {
-        if (part.length() < SUGGESTION_MIN_LENGTH) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
-
-  private static class Replacement {
-    final String key;
-    final String value;
-    private Replacement(String key, String value) {
-      this.key = key;
-      this.value = value;
-    }
   }
 
   static class ExpandingReader extends BufferedReader {
