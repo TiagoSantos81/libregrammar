@@ -144,8 +144,8 @@ public class EnglishUnpairedBracketsRuleTest {
     assertEquals(0, getMatches("This is multiple sentence text that contains a bracket. "
                              + "(This is a bracket. \n\n With some text.) and this continues.", lt));
 
-    assertEquals(1, getMatches("This is multiple sentence text that contains a bracket: "
-                             + "[This is a bracket. With some text. And this continues.\n\n", lt));
+    assertEquals(2, getMatches("This is multiple sentence text that contains a bracket: "
+                             + "[This is a bracket. With some text. And this continues.\n\n", lt)); // Style AND_SENT_START
   }
 
   private int getMatches(String input, JLanguageTool lt) throws IOException {

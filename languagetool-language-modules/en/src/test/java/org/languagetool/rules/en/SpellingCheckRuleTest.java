@@ -43,7 +43,8 @@ public class SpellingCheckRuleTest {
     JLanguageTool lt = new JLanguageTool(new AmericanEnglish());
 
     assertThat(lt.check("This is anArtificialTestWordForLanguageTool.").size(), is(0));   // no error, as this word is in ignore.txt
-    assertThat(lt.check("How an ab initio calculation works.").size(), is(0));   // As a multi-word entry in spelling.txt "ab initio" must be accepted
+    assertThat(lt.check("How an ab initio calculation works.").size(), is(1));   // As a multi-word entry in spelling.txt "ab initio" must be accepted
+                                                                                 // PLAIN_ENGLISH suggests translation afterwards
     assertThat(lt.check("Test adjoint").size(), is(0));   // in spelling.txt
     assertThat(lt.check("Test Adjoint").size(), is(0));   // in spelling.txt (lowercase)
 

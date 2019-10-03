@@ -102,19 +102,19 @@ public class JLanguageToolTest {
       assertNoError("Making ingroup membership more noticeable increases cooperativeness.", lt);
       assertNoError("Dog mushing is more of a sport than a true means of transportation.", lt);
       assertNoError("No one trusts him any more.", lt);
-      assertNoError("A member of the United Nations since 1992, Azerbaijan was elected to membership in the newly established Human Rights Council by the United Nations General Assembly on May 9, 2006 (the term of office began on June 19, 2006).", lt);
-      assertNoError("Anatomy and geometry are fused in one, and each does something to the other.", lt);
+      assertOneError("A member of the United Nations since 1992, Azerbaijan was elected to membership in the newly established Human Rights Council by the United Nations General Assembly on May 9, 2006 (the term of office began on June 19, 2006).", lt); // PASSIVE_VOICE
+      assertOneError("Anatomy and geometry are fused in one, and each does something to the other.", lt); // PASSIVE_VOICE
       assertNoError("Certain frogs that lay eggs underground have unpigmented eggs.", lt);
       assertNoError("It's a kind of agreement in which each party gives something to the other, Jack said.", lt);
       assertNoError("Later, you shall know it better.", lt);
-      assertNoError("And the few must win what the many lose, for the opposite arrangement would not support markets as we know them at all, and is, in fact, unimaginable.", lt);
-      assertNoError("He explained his errand, but without bothering much to make it plausible, for he felt something well up in him which was the reason he had fled the army.", lt);
+      assertOneError("And the few must win what the many lose, for the opposite arrangement would not support markets as we know them at all, and is, in fact, unimaginable.", lt); // PASSIVE_VOICE
+      assertOneError("He explained his errand, but without bothering much to make it plausible, for he felt something well up in him which was the reason he had fled the army.", lt); // PASSIVE_VOICE
       assertNoError("I think it's better, and it's not a big deal.", lt);
 
       assertOneError("A test test that should give errors.", lt);
       assertOneError("I can give you more a detailed description.", lt);
       assertTrue(lt.getAllRules().size() > 1000);
-      assertNoError("The sea ice is highly variable — frozen solid during cold, calm weather and broke...", lt);
+      assertNoError("The sea ice is highly variable — frozen solid during cold, calm weather and broke…", lt);
       assertTrue(lt.getAllRules().size() > 3);
       assertOneError("I can give you more a detailed description.", lt);
       lt.disableRule("MORE_A_JJ");
