@@ -24757,7 +24757,8 @@ The accident victim died from her injuries.
                 <example>After they had finished their homework, Peter and his friends played soccer.</example>
             </rule>
         </rulegroup>
-        <rulegroup default="on" name="Warn when the serial comma is not used (incomplete)" id="SERIAL_COMMA_ON">
+        <rulegroup default="off" name="Warn when the serial comma is not used (incomplete)" id="SERIAL_COMMA_ON">
+           <!-- add antipattern and re-enable after sorting out commanline test -->
               <rule>
                 <antipattern>
                     <token postag="NN.*" postag_regexp="yes"><exception postag="VBG"/></token>
