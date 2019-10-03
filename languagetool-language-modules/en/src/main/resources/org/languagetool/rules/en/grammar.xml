@@ -24715,7 +24715,8 @@ The accident victim died from her injuries.
                 <example correction="o'clock">They meet at 2 <marker>o' clock</marker>.</example>
             </rule>
         </rulegroup>
-        <rulegroup default="on" id="COMMA_BEFORE_AND" name="Missing comma before 'and, or, nor, yet, so, but' (incomplete)">
+        <rulegroup default="off" id="COMMA_BEFORE_AND" name="Missing comma before 'and, or, nor, yet, so, but' (incomplete)">
+           <!-- add antipattern and re-enable after sorting out commandline test -->
             <rule>
                 <antipattern>
                     <token regexp="yes">I|you|s?he|it|we|they|my|your|his|her|our|their</token>
@@ -24758,7 +24759,7 @@ The accident victim died from her injuries.
             </rule>
         </rulegroup>
         <rulegroup default="off" name="Warn when the serial comma is not used (incomplete)" id="SERIAL_COMMA_ON">
-           <!-- add antipattern and re-enable after sorting out commanline test -->
+           <!-- add antipattern and re-enable after sorting out commandline test -->
               <rule>
                 <antipattern>
                     <token postag="NN.*" postag_regexp="yes"><exception postag="VBG"/></token>
