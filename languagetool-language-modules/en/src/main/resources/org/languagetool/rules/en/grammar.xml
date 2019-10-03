@@ -21141,7 +21141,7 @@ USA
       <message>The usual preposition for "passionate" is "about" not "by".  Revise: <suggestion>passionate about</suggestion>.</message>
       <example correction='passionate about'>I am very <marker>passionated by</marker> my job.</example>
     </rule>
-    <rule id='PASSIONATE_BY_ABOUT_2' name='Collocation: passionate by/about (stricter)' default='off'>
+    <rule id='PASSIONATE_BY_ABOUT_2' name='Collocation: passionate by/about (stricter)' default='on'>
     <!-- Created by Nicholas Walker (Bokomaru), 2017-11-14 -->
       <pattern>
       <marker>
@@ -22749,8 +22749,8 @@ The accident victim died from her injuries.
       <message>You are missing the word 'for' between "\5" and '\6'. Did you mean <suggestion>\1 \2 that \4 \5 for \6</suggestion>.</message>
       <example correction='The company that I work for is'><marker>The company that I work is</marker> Cosme Inc...</example>
     </rule>
-    <rule id="WAITING_MY_PATIENT" name="waiting (for) a patient" default='off'>
-      <!-- works better with multiword chinking, if adverbial expressions are added to the database -->
+    <rule id="WAITING_MY_PATIENT" name="waiting (for) a patient" default='on'>
+      <!-- works better with multiword chunking, if adverbial expressions are added to the database -->
     <!-- Created by Nicholas Walker (Bokomaru), 2017-11-14 -->
       <pattern>
           <token inflected="yes">wait</token>
@@ -29861,7 +29861,7 @@ The accident victim died from her injuries.
             <short>Incorrect phrase</short>
             <example correction="very well-known|well-known">He is a <marker>very known</marker> actor.</example>
         </rule>
-        <rulegroup default='off' id="I_VE_A" name="Non-standard contractions '(I've a...)'">
+        <rulegroup default='on' id="I_VE_A" name="Non-standard contractions '(I've a...)'">
           <url>https://en.wikipedia.org/wiki/English_auxiliaries_and_contractions#Contracted_auxiliaries</url>
           <!-- https://www.quora.com/Is-Ive-a-gramatically-correct
                https://painintheenglish.com/case/4840
@@ -29874,7 +29874,7 @@ The accident victim died from her injuries.
                     <token>ve</token>
                     <token regexp="yes">an?</token>
                 </pattern>
-                <message>This is a non-standard contraction. Use <suggestion>\1 have \4</suggestion> or <suggestion>\1've got \4</suggestion> to express possession.</message>
+                <message>This is a non-standard contraction. In formal texts, it is preferable to use <suggestion>\1 have \4</suggestion> or <suggestion>\1've got \4</suggestion> to express possession.</message>
                 <short>Non-standard contraction</short>
                 <example>I've got a new car.</example>
                 <example correction="I have a|I've got a"><marker>I've a</marker> new car.</example>
