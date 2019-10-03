@@ -1,0 +1,44 @@
+# Words to be marked as spelling errors even if the spell checker
+# accepts them. Useful to improve the spell checker without touching
+# its files (which are usually not from LT).
+# Lines ending with ".*" will prohibit all words starting with that string
+# (this is identical to the regular expression)
+# For the opposite (accept words), see ignore.txt.
+#-----------------------------------------------------------------------------------------------------------
+aftar
+bijenen
+duizendmalen
+geblind
+hallo's
+hallootje
+hallootjes
+honderdmalen
+ledenmaat
+ledenmaten
+leerwerkbedrijf
+leerwerkbedrijfje
+leerwerkbedrijfjes
+leerwerkbedrijven
+leverteen
+meestak
+muisspel
+muisspelen
+muisspelletje
+muisspelletjes
+neetjes
+non-stops
+omhoogs
+palmblaren
+prijspijl
+tienmalen
+tweemalen
+vanavonden
+vanmorgens
+vermeen
+vermenen
+viermalen
+volledigde
+volledigden
+volledigt
+wakkergeschud
+zesmalen

@@ -65,7 +65,7 @@ public class LuceneSingleIndexLanguageModel extends BaseLanguageModel {
         dirs.add(name);
       }
     }
-    if (dirs.size() == 0) {
+    if (dirs.isEmpty()) {
       throw new RuntimeException("Directory must contain at least '1grams', '2grams', and '3grams': " + topIndexDir.getAbsolutePath());
     }
     if (dirs.size() < 3) {
@@ -94,7 +94,7 @@ public class LuceneSingleIndexLanguageModel extends BaseLanguageModel {
     addIndex(topIndexDir, 2);
     addIndex(topIndexDir, 3);
     addIndex(topIndexDir, 4);
-    if (luceneSearcherMap.size() == 0) {
+    if (luceneSearcherMap.isEmpty()) {
       throw new RuntimeException("No directories '1grams' ... '3grams' found in " + topIndexDir);
     }
     maxNgram = Collections.<Integer>max(luceneSearcherMap.keySet());
@@ -154,7 +154,12 @@ public class LuceneSingleIndexLanguageModel extends BaseLanguageModel {
       } else {
         long result = 0;
         for (ScoreDoc scoreDoc : docs.scoreDocs) {
-          result += Long.parseLong(luceneSearcher.reader.document(scoreDoc.doc).get("totalTokenCount"));
+          long tmp = Long.parseLong(luceneSearcher.reader.document(scoreDoc.doc).get("totalTokenCount"));
+          if (tmp > result) {
+            // due to the way FrequencyIndexCreator adds these totalTokenCount fields, we must not sum them,
+            // but take the largest one:
+            result = tmp;
+          }
         }
         return result;
       }

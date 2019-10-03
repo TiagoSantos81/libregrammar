@@ -91,15 +91,16 @@ public class OpenNMTRule extends Rule {
       }
       // TODO: whitespace is introduced and needs to be properly removed - we should use the 'src'
       // key for comparison, but we'll still need to clean up when using the suggestion...
+      translation = detokenize(translation);
       String cleanTranslation = translation.replaceAll(" ([.,;:])", "$1");
       String sentenceText = sentence.getText();
-      if (!cleanTranslation.equals(sentenceText)) {
+      if (!cleanTranslation.trim().equals(sentenceText.trim())) {
         List<RuleMatch> ruleMatches = new ArrayList<>();
         int from = getLeftWordBoundary(sentenceText, getFirstDiffPosition(sentenceText, cleanTranslation));
         int to = getRightWordBoundary(sentenceText, getLastDiffPosition(sentenceText, cleanTranslation));
         int replacementTo = getRightWordBoundary(cleanTranslation, getLastDiffPosition(cleanTranslation, sentenceText));
         String message = "OpenNMT suggests that this might(!) be better phrased differently, please check.";
-        RuleMatch ruleMatch = new RuleMatch(this, from, to, message);
+        RuleMatch ruleMatch = new RuleMatch(this, sentence, from, to, message);
         ruleMatch.setSuggestedReplacement(cleanTranslation.substring(from, replacementTo)); 
         ruleMatches.add(ruleMatch);
         return toRuleMatchArray(ruleMatches);
@@ -110,6 +111,15 @@ public class OpenNMTRule extends Rule {
       String error = CharStreams.toString(new InputStreamReader(inputStr, Charsets.UTF_8));
       throw new RuntimeException("Got error " + responseCode + " from " + url + ": " + error);
     }
+  }
+
+  private String detokenize(String translation) {
+    return translation
+                    .replaceAll(" 's", "'s")
+                    .replaceAll(" ' s", "'s")
+                    .replaceAll(" ' t", "'t")
+                    .replace(" .", ".")
+                    .replace(" ,", ",");
   }
 
   int getFirstDiffPosition(String text1, String text2) {

@@ -1,6 +1,6 @@
-/* LanguageTool, a natural language style checker 
+/* LanguageTool, a natural language style checker
  * Copyright (C) 2005 Daniel Naber (http://www.danielnaber.de)
- * 
+ *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
@@ -39,13 +39,23 @@ public class AgreementRuleTest {
 
   private AgreementRule rule;
   private JLanguageTool lt;
-  
+
   @Before
   public void setUp() throws IOException {
     rule = new AgreementRule(TestTools.getMessages("de"), new GermanyGerman());
     lt = new JLanguageTool(new GermanyGerman());
   }
 
+  @Test
+  public void testCompoundMatch() throws IOException {
+    assertBad("Das ist die Original Mail", "die Originalmail", "die Original-Mail");
+    assertBad("Das ist die neue Original Mail", "die neue Originalmail", "die neue Original-Mail");
+    assertBad("Die Standard Priorität ist 5.", "Die Standardpriorität", "Die Standard-Priorität");
+    assertBad("Die derzeitige Standard Priorität ist 5.", "Die derzeitige Standardpriorität", "Die derzeitige Standard-Priorität");
+    //assertBad("Die Bad Taste Party von Susi", "Die Bad-Taste-Party");   // not supported yet
+    //assertBad("Die Update Liste.", "Die Updateliste");  // not accepted by speller
+  }
+  
   @Test
   public void testDetNounRule() throws IOException {
     // correct sentences:
@@ -86,9 +96,34 @@ public class AgreementRuleTest {
     assertGood("Meistens sind das Frauen, die damit besser umgehen können.");
     assertGood("Er fragte, ob das Spaß macht.");
     assertGood("Das viele Geld wird ihr helfen.");
-
+    assertGood("Er verspricht jedem hohe Gewinne.");
+    assertGood("Er versprach allen Renditen jenseits von 15 Prozent.");
+    assertGood("Sind das Eier aus Bodenhaltung?");
+    assertGood("Dir macht doch irgendwas Sorgen.");
+    assertGood("Sie fragte, ob das wirklich Kunst sei.");
+    assertGood("Für ihn ist das Alltag.");
+    assertGood("Für die Religiösen ist das Blasphemie und führt zu Aufständen.");
+    assertGood("Das Orange ist schön.");
+    assertGood("Dieses rötliche Orange gefällt mir am besten.");
+    assertGood("Das ist ein super Tipp.");
+    assertGood("Er nahm allen Mut zusammen und ging los.");
+    assertGood("Sie kann einem Angst einjagen.");
+    assertGood("Damit sollten zum einen neue Energien gefördert werden, zum anderen der Sozialbereich.");
+    assertGood("Nichts ist mit dieser einen Nacht zu vergleichen.");
+    assertGood("dann muss Schule dem Rechnung tragen.");
     assertGood("Das Dach von meinem Auto.");
     assertGood("Das Dach von meinen Autos.");
+    assertGood("Da stellt sich die Frage: Ist das Science-Fiction oder moderne Mobilität?");
+    assertGood("Er hat einen Post veröffentlicht.");
+
+    assertGood("Wir machen das Januar.");
+    assertGood("Wir teilen das Morgen mit.");
+    assertGood("Wir präsentierten das vorletzten Sonnabend.");
+    assertGood("Ich release das Vormittags.");
+    assertGood("Sie aktualisieren das Montags.");
+    assertGood("Kannst du das Mittags machen?");
+    assertGood("Können Sie das nächsten Monat erledigen?");
+    assertGood("Können Sie das auch nächsten Monat erledigen?");
 
     assertGood("Das Dach meines Autos.");
     assertGood("Das Dach meiner Autos.");
@@ -124,7 +159,7 @@ public class AgreementRuleTest {
 
     assertGood("... wo Krieg den Unschuldigen Leid und Tod bringt.");
     assertGood("Der Abschuss eines Papageien.");
-    
+
     assertGood("Die Beibehaltung des Art. 1 ist geplant.");
     assertGood("Die Verschiebung des bisherigen Art. 1 ist geplant.");
 
@@ -138,6 +173,7 @@ public class AgreementRuleTest {
 
     assertGood("Das erfordert Können.");
     assertGood("Ist das Kunst?");
+    assertGood("Ist das Kunst oder Abfall?");
     assertGood("Die Zeitdauer, während der Wissen nützlich bleibt, wird kürzer.");
     assertGood("Es sollte nicht viele solcher Bilder geben");
     assertGood("In den 80er Jahren.");
@@ -179,8 +215,33 @@ public class AgreementRuleTest {
     assertGood("Er hat einen 34-jährigen Sohn.");
     assertGood("Die Polizei erwischte die Diebin, weil diese Ausweis und Visitenkarte hinterließ.");
     assertGood("Dieses Versäumnis soll vertuscht worden sein - es wurde Anzeige erstattet.");
+    assertGood("Die Firmen - nicht nur die ausländischen, auch die katalanischen - treibt diese Frage um.");
+    // TODO: assertGood("Der Obst und Getränke führende Fachmarkt.");
+    assertGood("Stell dich dem Leben lächelnd!");
+    assertGood("Die Messe wird auf das vor der Stadt liegende Ausstellungsgelände verlegt.");
+    assertGood("Sie sind ein den Frieden liebendes Volk.");
+    //assertGood("Zum Teil sind das Krebsvorstufen.");
+    assertGood("Er sagt, dass das Rache bedeutet.");
+    assertGood("Wenn das Kühe sind, bin ich ein Elefant.");
+    assertGood("Karl sagte, dass sie niemandem Bescheid gegeben habe.");
+    assertGood("Es blieb nur dieser eine Satz.");
+    assertGood("Oder ist das Mathematikern vorbehalten?");
+    assertGood("Wenn hier einer Fragen stellt, dann ich.");
+    assertGood("Wenn einer Katzen mag, dann meine Schwester.");
+    assertGood("Ergibt das Sinn?");
+    assertGood("Sie ist über die Maßen schön.");
+    assertGood("Ich vertraue ganz auf die Meinen.");
+    assertGood("Was nützt einem Gesundheit, wenn man sonst ein Idiot ist?");
+    assertGood("Auch das hatte sein Gutes.");
+    assertGood("Auch wenn es sein Gutes hatte, war es doch traurig.");
+    assertGood("Er wollte doch nur jemandem Gutes tun.");
+    assertGood("und das erst Jahrhunderte spätere Auftauchen der Legende");
+    assertGood("Texas und New Mexico, beides spanische Kolonien, sind...");
+    assertGood("Unser Hund vergräbt seine Knochen im Garten.");
 
     // incorrect sentences:
+    assertBad("Ein Buch mit einem ganz ähnlichem Titel.");
+    assertBad("Meiner Chef raucht.");
     assertBad("Er hat eine 34-jährigen Sohn.");
     assertBad("Es sind die Tisch.", "dem Tisch", "den Tisch", "der Tisch", "die Tische");
     assertBad("Es sind das Tisch.", "dem Tisch", "den Tisch", "der Tisch");
@@ -194,17 +255,21 @@ public class AgreementRuleTest {
     assertBad("Das Auto einem Mannes.", "einem Mann", "einem Manne", "eines Mannes");
     assertBad("Das Auto einer Mannes.", "eines Mannes");
     assertBad("Das Auto einen Mannes.", "einen Mann", "eines Mannes");
-    
+
+    //assertBad("Das erwähnt Auto bog nach rechts ab.");    // TODO
+    assertGood("Das erlaubt Forschern, neue Versuche durchzuführen.");
+    assertGood("Dies ermöglicht Forschern, neue Versuche durchzuführen.");
     assertBad("Die erwähnt Konferenz ist am Samstag.");
     assertBad("Die erwähntes Konferenz ist am Samstag.");
     assertBad("Die erwähnten Konferenz ist am Samstag.");
     assertBad("Die erwähnter Konferenz ist am Samstag.");
-    
+    assertBad("Die erwähntem Konferenz ist am Samstag.");
+
     assertBad("Des großer Mannes.");
 
     assertBad("Das Dach von meine Auto.", "mein Auto", "meine Autos", "meinem Auto");
     assertBad("Das Dach von meinen Auto.", "mein Auto", "meinem Auto", "meinen Autos");
-    
+
     assertBad("Das Dach mein Autos.", "mein Auto", "meine Autos", "meinen Autos", "meiner Autos", "meines Autos");
     assertBad("Das Dach meinem Autos.", "meine Autos", "meinem Auto", "meinen Autos", "meiner Autos", "meines Autos");
 
@@ -216,7 +281,7 @@ public class AgreementRuleTest {
 
     assertBad("Der Haus ist groß", "Das Haus", "Dem Haus", "Der Häuser");
     assertBad("Aber der Haus ist groß", "das Haus", "dem Haus", "der Häuser");
-    
+
     assertBad("Ich habe einen Feder gefunden.", "eine Feder", "einer Feder");
 
     assertGood("Wenn die Gott zugeschriebenen Eigenschaften stimmen, dann...");
@@ -224,7 +289,11 @@ public class AgreementRuleTest {
     assertGood("Außerdem unterstützt mich Herr Müller beim abheften");
     assertGood("Außerdem unterstützt mich Frau Müller beim abheften");
     assertBad("Der Zustand meiner Gehirns.");
-    
+
+    assertBad("Lebensmittel sind da, um den menschliche Körper zu ernähren.");
+    assertBad("Geld ist da, um den menschliche Überleben sicherzustellen.");
+    assertBad("Sie hatte das kleinen Kaninchen.");
+    assertBad("Frau Müller hat das wichtigen Dokument gefunden.");
     assertBad("Ich gebe dir ein kleine Kaninchen.");
     assertBad("Ich gebe dir ein kleinen Kaninchen.");
     assertBad("Ich gebe dir ein kleinem Kaninchen.");
@@ -242,9 +311,16 @@ public class AgreementRuleTest {
     assertGood("Dein Vorschlag befindet sich unter meinen Top 5.");
     assertGood("Unter diesen rief das großen Unmut hervor.");
     assertGood("Bei mir löste das Panik aus.");
-    
+
     assertBad("Hier steht Ihre Text.");
     assertBad("Hier steht ihre Text.");
+
+    assertBad("Ich weiß nicht mehr, was unser langweiligen Thema war.");
+    assertGood("Aber mein Wissen über die Antike ist ausbaufähig.");
+    assertBad("Er ging ins Küche.");
+    assertBad("Er ging ans Luft.");
+    assertBad("Eine Niereninsuffizienz führt zur Störungen des Wasserhaushalts.");
+    assertBad("Er stieg durchs Fensters.");
 
     // TODO: not yet detected:
     //assertBad("Erst recht wir fleißiges Arbeiter.");
@@ -309,7 +385,7 @@ public class AgreementRuleTest {
     assertGood("Der riesigen Tische wegen.");
     assertGood("An der roten Ampel.");
     assertGood("Dann hat das natürlich Nachteile.");
-    
+
     // incorrect sentences:
     assertBad("Es sind die riesigen Tisch.");
     //assertBad("Dort, die riesigen Tischs!");    // TODO: error not detected because of comma
@@ -350,5 +426,5 @@ public class AgreementRuleTest {
     assertTrue("Got error '" + errorMessage + "', expected substring '" + expectedErrorSubstring + "'",
             errorMessage.contains(expectedErrorSubstring));
   }
-  
+
 }

@@ -18,23 +18,24 @@
  */
 package org.languagetool.tagging.nl;
 
+import java.io.IOException;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.languagetool.TestTools;
 import org.languagetool.language.Dutch;
 import org.languagetool.tokenizers.WordTokenizer;
-
-import java.io.IOException;
+import org.languagetool.tokenizers.nl.DutchWordTokenizer;
 
 public class DutchTaggerTest {
-    
+
   private DutchTagger tagger;
   private WordTokenizer tokenizer;
-      
+
   @Before
   public void setUp() {
     tagger = new DutchTagger();
-    tokenizer = new WordTokenizer();
+    tokenizer = new DutchWordTokenizer();
   }
 
   @Test
@@ -44,9 +45,17 @@ public class DutchTaggerTest {
 
   @Test
   public void testTagger() throws IOException {
-    TestTools.myAssert("Dit is een Nederlandse zin om het programma'tje te testen.",
-        "Dit/[null]null -- is/[is]ZNW:EKV|is/[zijn]WKW:TGW:3EP -- een/[een]GET|een/[een]ZNW:EKV:DE_ -- Nederlandse/[Nederlandse]ZNW:EKV -- zin/[zin]ZNW:EKV:DE_|zin/[zinnen]WKW:TGW:1EP -- om/[om]VRZ -- het/[null]null -- programma/[programma]ZNW:EKV:HET -- tje/[null]null -- te/[te]VRZ -- testen/[test]ZNW:MRV:DE_|testen/[testen]WKW:TGW:INF", tokenizer, tagger);        
-    TestTools.myAssert("zwijnden", "zwijnden/[zwijnen]WKW:VLT:INF", tokenizer, tagger);        
-  }
 
+    TestTools.myAssert("Aardappels koken.", "Aardappels/[aardappel]ZNW:MRV:DE_ -- koken/[koken]WKW:TGW:INF", tokenizer,
+        tagger);
+    TestTools.myAssert("zwijnden", "zwijnden/[zwijnen]WKW:VLT:INF", tokenizer, tagger);
+    TestTools.myAssert("geen", "geen/[geen]BYW", tokenizer, tagger);
+    TestTools.myAssert("géen", "géen/[geen]BYW", tokenizer, tagger);
+    TestTools.myAssert("déúr", "déúr/[deur]ZNW:EKV:DE_", tokenizer, tagger);
+    TestTools.myAssert("kómen", "kómen/[komen]WKW:TGW:INF", tokenizer, tagger);
+    TestTools.myAssert("kán", "kán/[kan]ZNW:EKV:DE_|kán/[kunnen]WKW:TGW:1EP|kán/[kunnen]WKW:TGW:3EP", tokenizer,
+        tagger);
+    TestTools.myAssert("ín", "ín/[in]FOREIGN|ín/[in]VRZ|ín/[innen]WKW:TGW:1EP", tokenizer, tagger);
+    TestTools.myAssert("deur-knop", "deur-knop/[deurknop]ZNW:EKV:DE_", tokenizer, tagger);
+  }
 }

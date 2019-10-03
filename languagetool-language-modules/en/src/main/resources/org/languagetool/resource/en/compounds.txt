@@ -6,17 +6,32 @@
 # "+" at the end of the line will turn off the suggestion that
 # uses a hyphen
 # "*" at the end of the line will only suggest hyphenated words.
-
-
-back-drop+
+### The following two extensions are probably irrelevant:
+# "?" at the end of the line will turn off the suggestion that
+# uses a hyphen and offers lower-cased joined suggestions.
+# "$" at the end of the line will allow the hyphenated and non-
+# hyphenated variants, but will suggest a lower-cased non-hyphenated
+# variant
+an-other+
+back-fire+
+back-fired+
+back-fires+
+back-firing+
+bed-room+
 bee-keeper+
 bee-keepers+
 bee-keeping+
+before-hand+
 bell-hop+
 bell-hops+
+bottle-neck+
+bottle-necks+
 breech-loader+
-cut-throats+
+cork-screw+
+cork-screws+
 die-hards+
+down-side+
+down-sides+
 drop-head+
 ego-centric+
 eye-liner+
@@ -27,8 +42,6 @@ fire-bomb+
 fire-bombed+
 fire-bombing+
 fire-bombs+
-fire-brick+
-fire-bricks+
 fire-bug+
 fire-bugs+
 fire-guard+
@@ -39,10 +52,8 @@ fire-power+
 fire-storm+
 fire-storms+
 fire-trap+
-fire-water+
 first-born+
 first-borns+
-first-hand+
 fish-bowl+
 fish-bowls+
 fish-hook+
@@ -55,15 +66,13 @@ flame-proof+
 flame-proofed+
 flame-proofing+
 fly-paper+
+fore-ground+
 fountain-head+
 fountain-heads+
-fox-hunting+
 free-born+
 free-standing+
-free-wheel+
 free-wheeled+
 free-wheeling+
-free-wheels+
 glass-blower+
 glass-blowers+
 glass-blowing+
@@ -96,6 +105,7 @@ home-grown+
 home-maker+
 home-makers+
 home-schooling+
+honey-moon+
 house-mother+
 house-mothers+
 house-parent+
@@ -111,18 +121,20 @@ loud-mouthed+
 loud-mouths+
 love-bird+
 lunch-time+
-master-stroke+
-master-strokes+
-master-work+
-master-works+
 micro-organism+
 micro-organisms+
+micro-wave+
+micro-waves+
 mid-air+
 mid-airs+
 mid-life+
 multi-national+
 multi-purpose+
 never-the-less+
+new-comer+
+new-comers+
+news-paper+
+news-papers+
 news-stand+
 news-stands+
 night-mare+
@@ -132,6 +144,9 @@ non-custodial+
 none-the-less+
 non-verbal+
 non-verbally+
+note-book+
+note-books+
+over-whelmed+
 paper-boy+
 paper-boys+
 pay-offs+
@@ -166,15 +181,19 @@ side-swipe+
 side-swiped+
 side-swipes+
 side-swiping+
+snow-flake+
+snow-flakes+
 stable-mate+
 stage-hand+
 stage-hands+
 step-parent+
 step-parents+
+story-teller+
 strait-jacket+
 strait-jacketed+
 strait-jacketing+
 strait-jackets+
+strike-outs+
 sub-group+
 sub-groups+
 sub-headings+
@@ -187,6 +206,7 @@ there-after+
 there-fore+
 toll-gate+
 toll-gates+
+tool-bar+
 under-go+
 under-goes+
 under-going+
@@ -197,7 +217,6 @@ under-stood+
 under-take+
 under-went+
 water-proof+
-
 
 # "*" at end of line = only offer hyphen suggestion:
 
@@ -248,7 +267,7 @@ award-winning*
 Award-winning*
 awe-inspiring*
 awe-inspiringly*
-back-to-back*
+# back-to-back* The two houses stand back to back. www.lexico.com/en/definition/back-to-back
 back-ups*
 bad-tempered*
 bandy-legged*
@@ -267,19 +286,15 @@ best-selling*
 big-boned*
 big-hearted*
 bi-level*
-billy-goat*
 bitter-sweet*
 bitter-sweetly*
 bitter-sweetness*
 black-hearted*
 bleary-eyed*
 blood-curdling*
-blood-heat*
 blood-letting*
 blood-lettings*
 blood-lust*
-blood-money*
-blood-poisoning*
 blow-by-blow*
 blow-dried*
 blow-drier*
@@ -289,7 +304,6 @@ blue-black*
 blue-blooded*
 blue-eyed*
 blue-green*
-blue-pencils*
 Bosnia-Herzegovina*
 bottle-fed*
 bottle-feed*
@@ -303,7 +317,7 @@ break-ups*
 breech-loaded*
 breech-loading*
 bric-a-brac*
-brick-red*
+bride-elect*
 bright-eyed*
 brim-full*
 broad-minded*
@@ -311,8 +325,6 @@ broken-hearted*
 brother-in-law*
 brothers-in-law*
 brush-offs*
-buck-passing*
-bug-eyed*
 butt-end*
 butt-ends*
 bye-bye*
@@ -321,7 +333,6 @@ calf-length*
 call-boy*
 call-girl*
 candy-striped*
-card-carrying*
 case-harden*
 case-hardened*
 case-hardening*
@@ -335,6 +346,7 @@ cha-cha*
 chain-smoke*
 chain-smoked*
 chain-smoking*
+chairman-elect*
 Chester-le-Street*
 chicken-hearted*
 chicken-livered*
@@ -364,7 +376,6 @@ club-footed*
 clued-up*
 coal-black*
 coal-fired*
-coast-to-coast*
 co-channel*
 cock-a-hoop*
 cock-and-bull*
@@ -385,7 +396,6 @@ computer-literate*
 conscience-stricken*
 co-occurrence*
 cool-headed*
-cooling-off*
 co-op*
 co-operant*
 co-optation*
@@ -405,7 +415,6 @@ counter-claimed*
 counter-claiming*
 court-martial*
 cover-ups*
-cow-parsley*
 crash-land*
 crash-landed*
 Creutzfeldt-Jakob*
@@ -440,7 +449,6 @@ cruelty-free*
 cul-de-sac*
 custom-built*
 custom-made*
-cut-and-paste*
 cut-price*
 daisy-cutter*
 daisy-cutters*
@@ -484,11 +492,11 @@ dog-legged*
 do-gooder*
 do-gooders*
 doom-laden*
-do-or-die*
 double-barrelled*
 double-blind*
 double-breasted*
 double-checked*
+#double-click* # the noun is spelled as two words, see https://www.merriam-webster.com/dictionary/double-click
 double-cross*
 double-crossing*
 double-dealing*
@@ -501,8 +509,6 @@ double-jointed*
 double-parked*
 double-sided*
 Douglas-Home*
-down-and-out*
-down-and-outs*
 down-hearted*
 drink-driving*
 drip-dry*
@@ -510,12 +516,8 @@ drive-ins*
 drop-forging*
 dry-cleaned*
 dry-eyed*
-dual-purpose*
 duck-billed*
-duty-bound*
-duty-free*
 Dyfed-Powys*
-eagle-eyed*
 ear-piercing*
 ear-splitting*
 ear-stud*
@@ -527,11 +529,14 @@ Editor-At-Large*
 elbow-work*
 empty-handed*
 empty-headed*
-English-speaking*
 ever-changing*
 ever-increasing*
 ex-communist*
 ex-communists*
+ex-girlfriend*
+ex-girlfriends*
+ex-husband*
+ex-husbands*
 ex-mayor*
 ex-partners*
 ex-president*
@@ -539,7 +544,6 @@ ex-students*
 extra-curricular*
 ex-wife*
 ex-wives*
-eye-catching*
 eye-opener*
 eye-openers*
 eye-opening*
@@ -566,9 +570,6 @@ fault-finders*
 fault-finding*
 feather-headed*
 feeble-minded*
-fellow-traveller*
-fellow-travellers*
-felt-tips*
 filter-tipped*
 fine-grained*
 fine-tuned*
@@ -589,13 +590,11 @@ flip-flop*
 flip-flops*
 floating-point*
 flue-cured*
-fly-by-night*
 fly-by-wire*
 fly-drive*
 folk-ways*
 follow-ons*
 follow-ups*
-force-fed*
 force-feed*
 force-feeding*
 forget-me-not*
@@ -626,7 +625,6 @@ full-grown*
 full-timer*
 full-timers*
 fun-loving*
-Gaelic-speaking*
 gap-toothed*
 gas-permeable*
 gee-gee*
@@ -662,24 +660,6 @@ good-oh*
 good-tempered*
 go-slow*
 grant-maintained*
-great-aunt*
-great-aunts*
-great-grandaunt*
-great-grandchild*
-great-grandchildren*
-great-granddaughter*
-great-grandfather*
-great-grandmother*
-great-grandmothers*
-great-grandnephew*
-great-grandniece*
-great-grandparent*
-great-grandparents*
-great-grandson*
-great-granduncle*
-great-nephew*
-great-niece*
-great-uncle*
 green-eyed*
 grown-ups*
 G-string*
@@ -706,8 +686,6 @@ half-heartedness*
 half-heartednesses*
 half-length*
 half-life*
-half-light*
-half-lives*
 half-marathon*
 half-marathons*
 half-mast*
@@ -723,8 +701,7 @@ half-way*
 half-yearly*
 halter-neck*
 hand-me-downs*
-hand-to-hand*
-hand-to-mouth*
+# hand-to-mouth* The refugees in that camp have been living from hand to mouth for a month. www.lexico.com/en/definition/(from)_hand_to_mouth
 hanky-panky*
 happy-go-lucky*
 hard-boiled*
@@ -740,14 +717,12 @@ hard-heartednesses*
 hard-nosed*
 hard-pressed*
 have-nots*
-head-to-head*
 heart-rending*
 heart-rendingly*
 heart-searching*
 heart-to-heart*
 heart-warming*
 heat-resistant*
-heavy-duty*
 heavy-handed*
 heigh-ho*
 hell-bent*
@@ -794,8 +769,6 @@ hunter-gatherer*
 hunter-gatherers*
 hurly-burly*
 ice-cold*
-ice-skate*
-ice-skating*
 ill-advised*
 ill-assorted*
 ill-behaved*
@@ -861,7 +834,6 @@ knick-knack*
 knick-knackery*
 knick-knackish*
 knick-knacks*
-knife-edge*
 knight-errantry*
 knocking-shop*
 knock-kneed*
@@ -874,7 +846,6 @@ latter-day*
 law-abiding*
 lay-bys*
 lay-offs*
-lead-free*
 lean-burn*
 Lee-Enfield*
 Lee-Metford*
@@ -927,8 +898,6 @@ low-downs*
 low-lying*
 low-pitched*
 low-spirited*
-mace-bearer*
-mace-bearers*
 machine-gunned*
 machine-gunning*
 machine-readable*
@@ -970,7 +939,6 @@ mind-numbingly*
 mischief-makers*
 mischief-making*
 mock-ups*
-mom-and-pop*
 moss-grown*
 moth-eaten*
 mother-in-law*
@@ -1008,7 +976,6 @@ ne'er-do-wells*
 Newcastle-under-Lyme*
 new-found*
 new-laid*
-new-look*
 newly-weds*
 news-gathering*
 news-sheet*
@@ -1111,7 +1078,7 @@ off-putting*
 off-road*
 off-roading*
 off-screen*
-off-season*
+# off-season* Hotels are cheaper in the off season. www.lexico.com/en/definition/off_season
 off-street*
 off-white*
 old-fashioned*
@@ -1136,8 +1103,6 @@ opt-outs*
 orang-utan*
 orang-utans*
 out-and-out*
-out-of-body*
-out-of-date*
 out-of-pocket*
 over-anxious*
 over-anxiously*
@@ -1226,7 +1191,6 @@ pre-privatisation*
 pre-record*
 pre-recording*
 pre-records*
-president-elect*
 press-gang*
 press-ganged*
 press-stud*
@@ -1260,7 +1224,6 @@ quick-witted*
 rabble-rouser*
 rabble-rousing*
 radio-controlled*
-rags-to-riches*
 rat-catcher*
 re-adapt*
 re-adapts*
@@ -1348,8 +1311,6 @@ run-of-the-mill*
 run-outs*
 run-ups*
 sabre-toothed*
-sailing-master*
-sailing-masters*
 sailing-vessel*
 Saint-Denis*
 salt-cat*
@@ -1358,7 +1319,6 @@ school-leaver*
 school-leavers*
 school-leaving*
 scot-free*
-second-rate*
 seed-cord*
 seed-eater*
 seed-eaters*
@@ -1416,6 +1376,7 @@ self-determination*
 self-determined*
 self-discipline*
 self-doubt*
+self-efficacy*
 self-effacing*
 self-employed*
 self-esteem*
@@ -1659,7 +1620,6 @@ sub-clause*
 sub-clauses*
 Sub-Lt.*
 sub-Saharan*
-such-and-such*
 super-dooper*
 surface-active*
 surface-to-air*
@@ -1667,7 +1627,6 @@ surface-to-surface*
 sweet-talking*
 sweet-tempered*
 switch-blade*
-switch-blades*
 sylph-like*
 table-top*
 take-offs*
@@ -1735,7 +1694,6 @@ T-junctions*
 toil-worn*
 tom-tom*
 tone-deaf*
-tongue-in-cheek*
 tongue-tied*
 top-heavy*
 top-level*
@@ -1766,7 +1724,6 @@ two-edged*
 two-sided*
 two-step*
 two-stroke*
-two-timer*
 two-tone*
 two-way*
 two-wheeler*
@@ -1798,7 +1755,6 @@ volte-face*
 wage-earning*
 walkie-talkie*
 walkie-talkies*
-wall-to-wall*
 Walton-on-Thames*
 warm-hearted*
 warm-heartedly*
@@ -1830,14 +1786,14 @@ well-earned*
 well-educated*
 well-endowed*
 well-equipped*
-well-established*
+# well-established* ...the La Tène culture was well established in the region... www.lexico.com/en/definition/well_established
 well-fed*
 well-formed*
 well-founded*
 well-informed*
 well-intentioned*
 well-kept*
-well-known*
+# well-known* That writer is well known all over the world.
 well-loved*
 well-made*
 well-mannered*
@@ -1848,7 +1804,7 @@ well-meant*
 well-nigh*
 well-ordered*
 well-organised*
-well-paid*
+# well-paid* ...not very interesting, but on the other hand it was well paid.
 well-placed*
 well-prepared*
 well-preserved*
@@ -2344,10 +2300,10 @@ feather-light
 feather-stitch
 fly-fishing
 fold-outs
-folk-singer
-folk-singers
-folk-tale
-folk-tales
+# folk-singer https://www.lexico.com/en/definition/folk_singer
+# folk-singers
+# folk-tale https://www.lexico.com/en/definition/folk_tale
+# folk-tales
 free-form
 fund-raiser
 fund-raisers
@@ -2362,8 +2318,6 @@ hand-picked
 hand-picking
 hand-picks
 hara-kiri
-hard-liner
-hard-liners
 hard-wire
 hard-wired
 hard-wires
@@ -2918,7 +2872,7 @@ roll-overs
 room-mate
 room-mates
 saw-horse
-school-day
+#school-day # only plural noun "schooldays" exists as compound in lexico
 school-days
 school-time
 scrum-half

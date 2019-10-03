@@ -54,12 +54,39 @@ public class AnnotatedText {
   }
 
   /**
-   * Get the plain text, without markup.
+   * Get the plain text, without markup and content from {@code interpretAs}.
+   * @since 4.3
+   */
+  public String getOriginalText() {
+    StringBuilder sb = new StringBuilder();
+    for (TextPart part : parts) {
+      if (part.getType() == TextPart.Type.TEXT) {
+        sb.append(part.getPart());
+      }
+    }
+    return sb.toString();
+  }
+
+  /**
+   * Get the plain text, without markup but with content from {@code interpretAs}.
    */
   public String getPlainText() {
     StringBuilder sb = new StringBuilder();
     for (TextPart part : parts) {
-      if (part.getType() == TextPart.Type.TEXT) {
+      if (part.getType() == TextPart.Type.TEXT || part.getType() == TextPart.Type.FAKE_CONTENT) {
+        sb.append(part.getPart());
+      }
+    }
+    return sb.toString();
+  }
+
+  /**
+   * @since 4.3
+   */
+  public String getTextWithMarkup() {
+    StringBuilder sb = new StringBuilder();
+    for (TextPart part : parts) {
+      if (part.getType() != TextPart.Type.FAKE_CONTENT) {
         sb.append(part.getPart());
       }
     }
@@ -74,7 +101,7 @@ public class AnnotatedText {
    */
   public int getOriginalTextPositionFor(int plainTextPosition) {
     if (plainTextPosition < 0) {
-      throw new RuntimeException("plainTextPosition must be >= 0: " + plainTextPosition);
+      throw new IllegalArgumentException("plainTextPosition must be >= 0: " + plainTextPosition);
     }
     Integer origPosition = mapping.get(plainTextPosition);
     if (origPosition != null) {
