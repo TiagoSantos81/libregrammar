@@ -229,8 +229,8 @@ public class JLanguageToolTest {
     tool.addRule(rule2);
 
     List<RuleMatch> ruleMatches1 = tool.check("And one two three.");
-    assertEquals("one overlapping rule must be filtered out", 1, ruleMatches1.size());
-    assertEquals("msg1", ruleMatches1.get(0).getMessage());
+    assertEquals("one overlapping rule must be filtered out", 2, ruleMatches1.size());
+    assertEquals("While it is not exactly wrong, stylistically 'And' should only be used to start a sentence for dramatic effect and even then rarely.", ruleMatches1.get(0).getMessage());
 
     String sentence = "And one two three.";
     AnalyzedSentence analyzedSentence = tool.getAnalyzedSentence(sentence);
