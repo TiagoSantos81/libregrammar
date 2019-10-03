@@ -30069,9 +30069,12 @@ The accident victim died from her injuries.
             <url>https://s3.wp.wsu.edu/uploads/sites/1350/2017/05/errorsRTF.txt</url>
             <example correction='of'>He was the worst <marker>of any of</marker> the dancers</example>
         </rule>
-        <rule id="USELESS_THAT" name="Possibly needless 'that'" default="on">
+        <rule id="USELESS_THAT" name="Possibly needless 'that'" default="off">
+           <!-- Java final tests trigger this. remake rule with negate_pos -->
             <pattern>
-                <token postag='JJ'><exception postag_regexp="yes" postag='VBN|RP'/><exception regexp='yes'>say|like|then|so|though|.*?ble</exception></token>
+                <token postag='JJ'>
+                  <exception postag_regexp="yes" postag='VBN|RP'/>
+                  <exception regexp='yes'>say|like|then|so|though|.*?ble</exception></token>
                 <marker>
                     <token>that</token>
                 </marker>
@@ -30082,6 +30085,7 @@ The accident victim died from her injuries.
             <example correction="">I am pretty sure <marker>that</marker> this is right.</example>
             <example>I am pretty sure this is right.</example>
             <example>It has grown way beyond that.</example>
+            <!-- TODO example>A test that should not give errors.</example-->
         </rule>
         <rule id="SEND_AN_EMAIL" name="send an email to (email)">
             <pattern>
