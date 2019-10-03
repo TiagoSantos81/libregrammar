@@ -23565,14 +23565,14 @@ The accident victim died from her injuries.
 
   <rulegroup id='ATD_VERBS_TO_COLLOCATION' name='Collocation: Word + to + PRP|NNP|DT'>
      <!-- Based on AtD by Tiago F. Santos, 2019-09-13 -->
-     <rule default="off"><!-- See examples, why turned off, new less aggressive rule: MISSING_PREPOSITION  -->
+     <rule>
       <antipattern>
           <token regexp="yes">adds?|adding|prepares?|refuse|regard|tendenc(y|ies)</token>
           <token postag='PRP'/>
       </antipattern>
       <antipattern>
           <token regexp="yes">adds?|adding|dedicated|prepares?|refuse|regards?|relates?</token>
-          <token regexp="yes">an?|the|some|any</token>
+          <token regexp="yes">an?|the|some</token>
       </antipattern>
       <antipattern>
           <token postag_regexp="yes" postag='PRP|NNP|DT'/>
@@ -23595,7 +23595,7 @@ The accident victim died from her injuries.
       <antipattern>
           <token>thanks</token>
           <token>a</token>
-          <token regexp="yes">lot|bunch|ton|mill</token>
+          <token regexp="yes">lot|bunch</token>
       </antipattern>
       <antipattern>
           <token inflected='yes'>go</token>
@@ -23691,7 +23691,6 @@ The accident victim died from her injuries.
       <example type='triggers_error'>Though we cannot perfect the endeavour we should strive for it: the will-to-live constantly...</example><!-- XXX missing comma -->
       <example type='triggers_error'>In addition the races can last several hours, with heartrates com...</example><!-- XXX missing comma -->
       <example>Thanks a lot!</example>
-      <example>Thanks a ton!</example>
       <example>He couldn't go any further.</example>
       <example>...sing is possible by "blowing" the product: namely reacting it with oxygen.</example>
       <example>The Sealab 2021 character Jodene Sparks references A Modest Proposal when trying to convince Debbie Du...</example>
@@ -23725,35 +23724,6 @@ The accident victim died from her injuries.
       <example>The five enterprises which passed to 100 percent Russian state ownership are:</example>
       <example>...e has a fictional daughter named Jody Crowley who continues her father's search for the Scarlet Woman.</example>
       <example>While listening the radio, I fell asleep.</example>
-      <!-- False positives/negatives collected by user feedback and regression test
-      <example correction="According to his"><marker>According his</marker> friend, they were outside playing basketball.</example>
-      <example>I didn't know if I was coming or going the week before I got married.</example>
-      <example>I have not asked for help, nor do I desire it.</example>
-      <example>It'll serve him right if he fails the exam; he doesn't study at all.</example>
-      <example>The desire he has had for years has been fulfilled.</example>
-      <example>He also "gallantly stepped forward" to contribute a quarter of the costs of dramatising.</example>
-      <example>They were able to add another $3 credit.</example>
-      <example>He's currently owing them a total of 10 USD.</example>
-      <example>As far as going the traditional way, ...</example>
-      <example>Click the button to add another line.</example>
-      <example>I'm going to add those finishing touches.</example>
-      <example>I would want to add each SKU as param.</example>
-      <example>He had a strong opinion regarding letters.</example>
-      <example>Please show how able you are and what qualifies you.</example>
-      <example>He's your dedicated Shopify Guru.</example>
-      <example>I think he's going a bit loopy.</example>
-      <example>He might be adding those employees sooner.</example>
-      <example>Learn more about adding HTML content.</example>
-      <example>Most references do not follow.</example>
-      <example>You have to subscribe every week.</example>
-      <example>He thanks me again.</example>
-      <example>We try to respond a.s.a.p.</example>
-      <example>Life Is Going On</example>
-      <example>Is it possible to add Google Maps API features?</example>
-      <example>The Commitment Fee must be paid.</example>
-      <example>Add these search fields.</example>
-      <example>Welcome home.</example>
-      <example>Refer a friend.</example> -->
     </rule>
      <rule>
       <antipattern>
@@ -23829,7 +23799,7 @@ The accident victim died from her injuries.
     <!-- XXX Beware/couple OF rules have too many obvious exceptions -->
   </rulegroup>
 
-  <rule id="MISSING_PREPOSITION" name='Missing preposition'><!-- off to see regression test results first -->
+  <rule id="MISSING_PREPOSITION" name='Missing preposition'>
         <antipattern>
             <token>thanks</token>
             <token>a</token>
