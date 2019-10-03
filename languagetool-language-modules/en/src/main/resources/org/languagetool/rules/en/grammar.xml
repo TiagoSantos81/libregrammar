@@ -30546,7 +30546,7 @@ The accident victim died from her injuries.
         </rule>
         <rule default="on" id="BLEND_TOGETHER" name="blend together (blend)">
             <pattern>
-                <token inflected="yes" regexp="yes">attach|assemble|blend|co(mbine|llaborate|nfer|ngregate)|join|me(rge|sh)|mix|gather|meet|share
+                <token inflected="yes" regexp="yes">attach|assemble|blend|co(mbine|llaborate|nfer|ngregate)|join|me(rge|sh)|mix|gather|share
                   <!-- XXX consider removing |gather|meet|share https://forum.wordreference.com/threads/gather-together-redundant.232952/
                             https://www.quora.com/Is-it-correct-to-use-either-We-are-gathered-together-or-We-have-gathered-together-in-the-sentence-We-are-have-gathered-together-to-celebrate
                             https://www.merriam-webster.com/words-at-play/usage-exact-same --></token>
