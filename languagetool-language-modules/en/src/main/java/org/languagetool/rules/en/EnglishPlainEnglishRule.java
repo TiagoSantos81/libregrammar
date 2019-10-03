@@ -51,7 +51,7 @@ public class EnglishPlainEnglishRule extends AbstractSimpleReplaceRule2 {
 
   public EnglishPlainEnglishRule(ResourceBundle messages) throws IOException {
     super(messages, new English());
-    setDefaultOff();  // reactivate after feature freeze
+    // setDefaultOff(); 
     super.setCategory(Categories.PLAIN_ENGLISH.getCategory(messages));
     setLocQualityIssueType(ITSIssueType.Style);
     addExamplePair(Example.wrong("<marker>fatal outcome</marker>"),
@@ -75,7 +75,7 @@ public class EnglishPlainEnglishRule extends AbstractSimpleReplaceRule2 {
 
   @Override
   public String getSuggestion() {
-    return "'$match' is a wordy or complex expression. It is preferable to say $suggestions";
+    return "'$match' is a wordy or complex expression. It is preferable to use $suggestions";
   }
 
   @Override
