@@ -32073,8 +32073,8 @@ The accident victim died from her injuries.
 
   <rulegroup id='ATD_CLICHES' name="Cliches">
     <!-- Created by Tiago F. Santos, Portuguese rule, 2019-09-09 -->
-      <url>https://en.wiktionary.org/wiki/Category:English_childish_terms</url>
-      <short>Childish language</short>
+      <url>https://en.wikipedia.org/wiki/Cliché</url>
+      <short>Cliché</short>
     <rule id='ATD_CLICHES_MULTIWORDS' name="Cliches (phrases)">
       <regexp>\b(&ATD_cliches_multiwords;)\b</regexp>
       <message>This expression is a cliché. Consider alternatives.</message>
@@ -32250,7 +32250,7 @@ The accident victim died from her injuries.
             <message>'Irregardless' is acceptable in casual and nonstandard writing at best. In formal style you should use <suggestion>regardless</suggestion>.</message>
             <example correction="Regardless"><marker>Irregardless</marker> of what he says, do it!</example>
         </rule>
-        <rule default="on" id="And" name="Sentence starting with 'And' or 'But'">
+        <rule id="SENT_START_AND" name="Sentence starting with 'And' or 'But'" default="on">
             <pattern>
                 <token postag='SENT_START'/>
                 <marker>
@@ -32259,7 +32259,7 @@ The accident victim died from her injuries.
             </pattern>
             <message>While it is not exactly wrong, stylistically '\2' should only be used to start a sentence for dramatic effect and even then rarely.</message>
             <url>https://blog.oxforddictionaries.com/2012/01/can-i-start-a-sentence-with-a-conjunction/</url>
-            <short>Bad style</short>
+            <short>Possibly improvable style</short>
             <example correction=""><marker>And</marker> yes, it shows a lack of style to start a sentence with 'and'.</example>
             <example>Yes, it shows a lack of style to start a sentence with 'and'.</example>
             <example correction=""><marker>But</marker> it is not a great writing style to start a sentence with 'but'.</example>
