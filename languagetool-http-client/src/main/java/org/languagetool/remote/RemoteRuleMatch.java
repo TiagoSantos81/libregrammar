@@ -30,7 +30,6 @@ import java.util.Optional;
 public class RemoteRuleMatch {
 
   private final String ruleId;
-  private final String ruleDescription;
   private final String msg;
   private final String context;
   private final int contextOffset;
@@ -45,9 +44,8 @@ public class RemoteRuleMatch {
   private String categoryId;
   private String locQualityIssueType;
 
-  RemoteRuleMatch(String ruleId, String ruleDescription, String msg, String context, int contextOffset, int offset, int errorLength) {
+  RemoteRuleMatch(String ruleId, String msg, String context, int contextOffset, int offset, int errorLength) {
     this.ruleId = Objects.requireNonNull(ruleId);
-    this.ruleDescription = ruleDescription;
     this.msg = Objects.requireNonNull(msg);
     this.context = Objects.requireNonNull(context);
     this.contextOffset = contextOffset;
@@ -58,11 +56,6 @@ public class RemoteRuleMatch {
   /** Unique (per language) identifier for the error. */
   public String getRuleId() {
     return ruleId;
-  }
-
-  /** Description of the rule. */
-  public String getRuleDescription() {
-    return ruleDescription;
   }
 
   /** Optional sub id (rule groups have a sub id for each rule). */
