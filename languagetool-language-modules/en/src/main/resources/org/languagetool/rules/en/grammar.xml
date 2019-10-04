@@ -23536,7 +23536,7 @@ The accident victim died from her injuries.
       <antipattern>
           <token>thanks</token>
           <token>a</token>
-          <token regexp="yes">lot|bunch</token>
+          <token regexp="yes">lot|bunch|ton</token>
       </antipattern>
       <antipattern>
           <token inflected='yes'>go</token>
