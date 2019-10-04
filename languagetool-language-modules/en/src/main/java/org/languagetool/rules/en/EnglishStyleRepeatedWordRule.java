@@ -89,7 +89,7 @@ public class EnglishStyleRepeatedWordRule extends AbstractStyleRepeatedWordRule 
   protected boolean isTokenToCheck(AnalyzedTokenReadings token) {
     return (token.matchesPosTagRegex("[VNJRW].+|FW") 
         && !token.matchesPosTagRegex("NNPS?|MD|IN|DT|P.+")
-        && !StringUtils.equalsAny(token.getToken(), "is", "isn", "was", "wasn", "have", "haven", "has", "hasn", "am", "did", "didn"))
+        && !StringUtils.equalsAny(token.getToken(), "is", "isn", "was", "wasn", "been", "have", "haven", "has", "hasn", "had", "hadn", "am", "did", "didn", "say", "says", "said"))
         || isUnknownWord(token);
   }
 
