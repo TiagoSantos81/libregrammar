@@ -24,7 +24,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import org.languagetool.JLanguageTool;
@@ -65,7 +64,6 @@ public class SwJLanguageTool {
     isRemote = config.doRemoteCheck();
     useServerConfig = config.useServerConfiguration();
     serverUrl = config.getServerUrl();
-    configurableValues = config.getConfigurableValues();
     if(isRemote) {
       rlt = new LORemoteLanguageTool(language, motherTongue, userConfig);
     } else if(isMultiThread) {
@@ -197,20 +195,11 @@ public class SwJLanguageTool {
         allRules = lt.getAllActiveOfficeRules();
         textRules = getAllTextRules();
         nonTextRules = getAllNonTextRules();
-        if(!useServerConfig) {
-          configBuilder.enabledOnly();
-          if(paraMode == ParagraphHandling.ONLYPARA) {
-            configBuilder.enabledRuleIds(textRules);
-          } else {
-            configBuilder.enabledRuleIds(nonTextRules);
-          }
-          configBuilder.ruleValues(getRuleValues());
+        configBuilder.enabledOnly();
+        if(paraMode == ParagraphHandling.ONLYPARA) {
+          configBuilder.enabledRuleIds(textRules);
         } else {
-          if(paraMode == ParagraphHandling.ONLYPARA) {
-            configBuilder.mode("textLevelOnly");
-          } else {
-            configBuilder.mode("allButTextLevelOnly");
-          }
+          configBuilder.enabledRuleIds(nonTextRules);
         }
         remoteConfig = configBuilder.build();
       }

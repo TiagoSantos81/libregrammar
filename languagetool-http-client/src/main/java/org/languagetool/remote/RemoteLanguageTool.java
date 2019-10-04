@@ -89,9 +89,6 @@ public class RemoteLanguageTool {
     if (config.getDisabledRuleIds().size() > 0) {
       append(params, "disabledRules", String.join(",", config.getDisabledRuleIds()));
     }
-    if (config.getMode() != null) {
-      append(params, "mode", config.getMode());
-    }
     append(params, "useragent", "java-http-client");
     return params.toString();
   }
