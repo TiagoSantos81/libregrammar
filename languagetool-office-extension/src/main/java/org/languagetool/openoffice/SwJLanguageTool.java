@@ -54,7 +54,7 @@ import org.languagetool.rules.RuleMatch;
 public class SwJLanguageTool {
   
   private static final ResourceBundle MESSAGES = JLanguageTool.getMessageBundle();
-  private boolean isMultiThread;
+  private final boolean isMultiThread;
   private boolean isRemote;
   private final boolean useServerConfig;
   private final String serverUrl;
@@ -202,7 +202,6 @@ public class SwJLanguageTool {
     private CheckConfiguration remoteConfig;
     private CheckConfigurationBuilder configBuilder;
     private List<Rule> extraRemoteRules;
-    private int maxTextLength;
     
     LORemoteLanguageTool(Language language, Language motherTongue, UserConfig userConfig
         , List<Rule> extraRemoteRules) throws MalformedURLException {
@@ -210,7 +209,7 @@ public class SwJLanguageTool {
       configBuilder = new CheckConfigurationBuilder(language.getShortCodeWithCountryAndVariant());
       configBuilder.setMotherTongueLangCode(motherTongue.getShortCodeWithCountryAndVariant());
       serverBaseUrl = new URL(serverUrl == null ? SERVER_URL : serverUrl);
-      remoteLanguageTool = new RemoteLanguageTool(serverBaseUrl);
+      remoteLanguageTool = new RemoteLanguageTool(serverBaseUrl) ;
       lt = new JLanguageTool(language, motherTongue, null, userConfig);
       this.extraRemoteRules = extraRemoteRules; 
       allRules.addAll(lt.getAllRules());
@@ -219,14 +218,6 @@ public class SwJLanguageTool {
     
     List<RuleMatch> check(String text, ParagraphHandling paraMode) throws IOException {
       if(!initDone) {
-        try {
-          maxTextLength = remoteLanguageTool.getMaxTextLength();
-          MessageHandler.printToLogFile("Server Limit text length: " + maxTextLength);
-        } catch (Throwable t) {
-          MessageHandler.printException(t);
-          maxTextLength = SERVER_LIMIT;
-          MessageHandler.printToLogFile("Server doesn't support maxTextLength, Limit text length set to: " + maxTextLength);
-        }
         if(!useServerConfig) {
           configBuilder.enabledRuleIds(enabledRules);
           configBuilder.disabledRuleIds(disabledRules);
@@ -240,12 +231,12 @@ public class SwJLanguageTool {
         remoteConfig = configBuilder.build();
       }
       List<RuleMatch> ruleMatches = new ArrayList<>();
-      int limit = maxTextLength;
+      int limit = SERVER_LIMIT;
       for (int nStart = 0; text.length() > nStart; nStart += limit) {
         String subText;
-        if(text.length() <= nStart + maxTextLength) {
+        if(text.length() <= nStart + SERVER_LIMIT) {
           subText = text.substring(nStart);
-          limit = maxTextLength;
+          limit = SERVER_LIMIT;
         } else {
           int nEnd = text.lastIndexOf(SingleDocument.END_OF_PARAGRAPH, nStart + SERVER_LIMIT) + SingleDocument.NUMBER_PARAGRAPH_CHARS;
           if(nEnd <= nStart) {
@@ -263,7 +254,6 @@ public class SwJLanguageTool {
         } catch (Throwable t) {
           MessageHandler.showMessage(MESSAGES.getString("loRemoteSwitchToLocal"));
           isRemote = false;
-          isMultiThread = false;
           return lt.check(text, true, paraMode);
         }
         ruleMatches.addAll(toRuleMatches(remoteResult.getMatches(), nStart));
