@@ -62,17 +62,17 @@ public class FalseFriendRuleTest {
   public void testHintsForDemoLanguage() throws IOException {
     JLanguageTool lt1 = new JLanguageTool(new BritishEnglish(), new Italian());
     lt1.disableRule(MorfologikBritishSpellerRule.RULE_ID);
-    List<RuleMatch> matches1 = assertErrors(1, "And forDemoOnly.", lt1);
+    List<RuleMatch> matches1 = assertErrors(1, "The forDemoOnly.", lt1);
     assertEquals("DEMO_ENTRY", matches1.get(0).getRule().getId());
 
     JLanguageTool lt2 = new JLanguageTool(new English(), new Italian());
     lt2.disableRule(MorfologikBritishSpellerRule.RULE_ID);
-    List<RuleMatch> matches2 = assertErrors(1, "And forDemoOnly.", lt2);
+    List<RuleMatch> matches2 = assertErrors(1, "The forDemoOnly.", lt2);
     assertEquals("DEMO_ENTRY", matches2.get(0).getRule().getId());
 
     JLanguageTool lt3 = new JLanguageTool(new AmericanEnglish(), new Italian());
     lt3.disableRule(MorfologikAmericanSpellerRule.RULE_ID);
-    assertErrors(0, "And forDemoOnly.", lt3);
+    assertErrors(1, "And forDemoOnly.", lt3);
   }
 
   @Test

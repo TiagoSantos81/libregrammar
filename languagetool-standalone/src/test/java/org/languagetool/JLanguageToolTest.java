@@ -157,11 +157,11 @@ public class JLanguageToolTest {
             .addText(" a error.")
             .build();
     List<RuleMatch> matches = lt.check(annotatedText);
-    assertThat(matches.size(), is(2));
+    assertThat(matches.size(), is(3));
     assertThat(matches.get(0).getFromPos(), is(3));
     assertThat(matches.get(0).getToPos(), is(7));
-    assertThat(matches.get(1).getFromPos(), is(60));
-    assertThat(matches.get(1).getToPos(), is(61));
+    assertThat(matches.get(1).getFromPos(), is(25));
+    assertThat(matches.get(1).getToPos(), is(28));
   }
 
   @Test
@@ -178,11 +178,11 @@ public class JLanguageToolTest {
             .addText(" error.")
             .build();
     List<RuleMatch> matches = lt.check(annotatedText);
-    assertThat(matches.size(), is(2));
+    assertThat(matches.size(), is(3));
     assertThat(matches.get(0).getFromPos(), is(0));
     assertThat(matches.get(0).getToPos(), is(4));
-    assertThat(matches.get(1).getFromPos(), is(53));
-    assertThat(matches.get(1).getToPos(), is(54));
+    assertThat(matches.get(1).getFromPos(), is(18));
+    assertThat(matches.get(1).getToPos(), is(21));
   }
 
   @Test
@@ -191,9 +191,9 @@ public class JLanguageToolTest {
     AnnotatedText annotatedText = new AnnotatedTextBuilder()
             .addText("A good sentence. But here's a error.").build();
     List<RuleMatch> matches = lt.check(annotatedText);
-    assertThat(matches.size(), is(1));
-    assertThat(matches.get(0).getFromPos(), is(28));
-    assertThat(matches.get(0).getToPos(), is(29));
+    assertThat(matches.size(), is(2));
+    assertThat(matches.get(0).getFromPos(), is(17));
+    assertThat(matches.get(0).getToPos(), is(20));
   }
 
   @Test
