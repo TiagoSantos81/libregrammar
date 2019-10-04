@@ -20903,7 +20903,7 @@ USA
   <rulegroup id="COLLOCATION_ERRORS_BOKOMARU" name="Common collocation errors">
     <!-- Created by Nicholas Walker (Bokomaru), 2017-11-14 -->
     <!-- https://forum.languagetool.org/t/en-english-collocation-rules-to-contribute-to-lt/2318 -->
-      <url>https://www.dailywritingtips.com/apply-to-apply-for-and-apply-with/</url>
+      <url>http://www.kentlee7.com/writ/collocation.errors.typical.pdf</url>
       <short>Collocation error</short>
     <rule id='APPLY_TO' name='Collocation: apply to/for'>
     <!-- Created by Nicholas Walker (Bokomaru), 2017-11-14 -->
@@ -23259,7 +23259,7 @@ The accident victim died from her injuries.
 
   <rulegroup id="DO_A_PARTY" name="Collocation: do/throw/have a party">
     <!-- Created by Nicholas Walker (Bokomaru), 2017-11-14 -->
-      <url>https://7esl.com/collocations/</url>
+      <url>http://www.kentlee7.com/writ/collocation.errors.typical.pdf</url>
       <short>Collocation error</short>
     <rule>
       <pattern>
@@ -23420,7 +23420,7 @@ The accident victim died from her injuries.
   <rulegroup id='LISTEN_TO_MOVIES' name='Collocation: listen to/watch movies'>
     <!-- Created by Nicholas Walker (Bokomaru), 2017-11-14 -->
     <!-- https://forum.languagetool.org/t/en-english-collocation-rules-to-contribute-to-lt/2318 -->
-      <url>https://dictionary.cambridge.org/us/dictionary/english/watch</url>
+      <url>http://www.kentlee7.com/writ/collocation.errors.typical.pdf</url>
       <short>Collocation error</short>
     <rule>
       <pattern>
@@ -23459,7 +23459,7 @@ The accident victim died from her injuries.
   <rulegroup id='IN_ON_THE_TEAM' name='Collocation: in/on the team'>
     <!-- Created by Nicholas Walker (Bokomaru), 2017-11-14 -->
     <!-- https://forum.languagetool.org/t/en-english-collocation-rules-to-contribute-to-lt/2318 -->
-    <!-- <url>http://www.kentlee7.com/writ/collocation.errors.typical.pdf</url> -->
+      <url>http://www.kentlee7.com/writ/collocation.errors.typical.pdf</url>
       <short>Collocation error</short>
     <rule>
       <pattern>
@@ -23505,7 +23505,7 @@ The accident victim died from her injuries.
   <rulegroup id='ARRIVAL_TO_THE_HOUSE' name='Collocation: arrival to/in the house'>
     <!-- Created by Nicholas Walker (Bokomaru), 2017-11-14 -->
     <!-- https://forum.languagetool.org/t/en-english-collocation-rules-to-contribute-to-lt/2318 -->
-      <url>http://www.englishcollocation.com/how-to-use/arrival</url>
+      <url>http://www.kentlee7.com/writ/collocation.errors.typical.pdf</url>
       <short>Collocation error</short>
     <rule>
       <pattern>
@@ -23533,7 +23533,7 @@ The accident victim died from her injuries.
   <rulegroup id='COME_IN_CAR' name='Collocation: come in/by car'>
     <!-- Created by Nicholas Walker (Bokomaru), 2017-11-14 -->
     <!-- https://forum.languagetool.org/t/en-english-collocation-rules-to-contribute-to-lt/2318 -->
-    <!-- <url>http://www.kentlee7.com/writ/collocation.errors.typical.pdf</url> -->
+      <url>http://www.kentlee7.com/writ/collocation.errors.typical.pdf</url>
       <short>Collocation error</short>
     <rule>
       <pattern>
@@ -23860,7 +23860,7 @@ The accident victim died from her injuries.
   <rulegroup id='GOOD_IN_AT' name='Collocation: Good in/at'>
     <!-- Created by Nicholas Walker (Bokomaru), 2017-11-14 -->
     <!-- https://forum.languagetool.org/t/en-english-collocation-rules-to-contribute-to-lt/2318 -->
-      <url>https://7esl.com/collocations/</url>
+      <url>http://www.kentlee7.com/writ/collocation.errors.typical.pdf</url>
       <short>Collocation error</short>
     <rule>
       <pattern>
@@ -29920,8 +29920,8 @@ The accident victim died from her injuries.
             <pattern>
                 <token regexp="yes">([0-9]+-)(yotta|zetta|exa|peta|tera|giga|mega|kilo|hecto|deca|deka|deci|centi|milli|micro|nano|pico|femto|atto|zepto|yocto)?(amperes|becquerels|candelas|coulombs|farads|grams|grammes|grays|henries|hertz|joules|katals|kelvins|liters|litres|lumens|lux|meters|metres|moles|newtons|ohms|pascals|radians|siemens|sieverts|steradians|teslas|volts|watts|webers)<exception postag="NNP"/></token>
             </pattern>
-            <message>The word '<match no="1"/>' is an adjective (SI unit of measurement), but the spelling is not correct. Do not use a plural adjective. Refer to section 5.4.3 in 'SI Brochure: The International System of Units (SI)'.</message>
-            <url>https://www.bipm.org/en/publications/si-brochure/</url>
+            <message>The word '<match no="1"/>' is an adjective (SI unit of measurement), but the spelling is not correct. Do not use a plural adjective. Refer to section 5.3.3 in 'The International System of Units (SI)'.</message>
+            <url>https://www.bipm.org/utils/common/pdf/si_brochure_8_en.pdf</url>
             <short>SI units, plural adjectives</short>
             <example type="incorrect">Use a <marker>6-microfarads</marker> capacitor.</example>
             <example type="correct">Use a <marker>6-microfarad</marker> capacitor.</example>
