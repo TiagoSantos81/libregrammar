@@ -8459,7 +8459,12 @@ USA
                     </and>
                 </antipattern>
                 <pattern>
-                    <token regexp='yes'>th(?:is|at)<exception scope="previous" postag='IN'/><exception postag='W.+' postag_regexp='yes'/><exception scope="previous">let</exception></token>
+                    <token regexp='yes'>th(?:is|at)
+                        <exception scope="previous" postag='IN'/>
+                        <exception postag='W.+' postag_regexp='yes'/>
+                        <exception postag='MD' scope='previous' regexp='yes'>will|would|shall|should|may|might|can|could|must</exception><!-- https://www.englishgrammar.org/bare-infinitive-2/ -->
+                        <exception postag='VB.*' postag_regexp='yes' scope='previous' regexp='yes' inflected='yes'>let|make|see|hear|need</exception>
+                        </token>
                     <token min='0' postag_regexp='yes' postag='NN(:U|P)?'><exception regexp='yes'>can|one</exception></token>
                     <token postag='VBP?' postag_regexp='yes'><exception negate_pos='yes' postag='VBP?' postag_regexp='yes'/><exception>be</exception></token>
                 </pattern>
@@ -8530,6 +8535,10 @@ USA
                 <example>Does this extend to the test?</example>
                 <example>What does all this add up to?</example>
                 <example>"Will this do now?", she asked.</example>
+                <example>I don't see this happen anymore.</example>
+                <example>... but would this happen if the ...</example>
+                <example>... but letting this occur was not my intention.</example>
+                <example>... by making this disambiguate correctly.</example>
            </rule>
         </rulegroup>
         <rulegroup id="THIS_NNS_VB" name="this + plural noun + verb (these)">
@@ -9023,6 +9032,10 @@ USA
                 <token case_sensitive="yes">AM</token>
                 <token postag="NN:U"/>
             </antipattern>
+            <antipattern>
+                <token postag="CD" />
+                <token>am</token>
+            </antipattern>
             <pattern>
                 <marker>
                     <token>am<exception scope="previous">I</exception></token>
@@ -9033,6 +9046,7 @@ USA
             <example correction="am I">Whom <marker>am</marker> talking with?</example>
             <example>Whom <marker>am I</marker> talking with?</example>
             <example>AM broadcasting (radio broadcasting using amplitude modulation)...</example>
+            <example>The 8 AM meeting is being held in the big conference room.</example>
         </rule>
         <rulegroup id="SHOULD_BE_DO" name="should be do (done)"> 
             <rule>
@@ -9530,6 +9544,21 @@ USA
             <example>How do I get a <marker>redeem code</marker>?</example>
             <example>Okay, so I guess we add "merchandize" to the <marker>prohibit.txt</marker>?</example><!-- #489 -->
         </rule>
+        <rulegroup id="CC_VERB" name="Correct use of 'cc'">
+            <url>https://www.merriam-webster.com/dictionary/cc</url>
+            <rule>
+                <pattern>
+                    <token regexp="yes">
+                        cc(e?d|ing)
+                        <exception case_sensitive="yes">CCD</exception>
+                    </token>
+                </pattern>
+                <message>The correct form of the verb 'to cc' here is <suggestion><match no="1" regexp_match="cce?" regexp_replace="cc'" /></suggestion>.</message>
+                <example correction="cc'd">I <marker>cced</marker> you on the mail.</example>
+                <example correction="cc'ing">I am <marker>ccing</marker> you on the mail I'm about to send.</example>
+                <example>The Palomar-Quest large-area CCD camera.</example>
+            </rule>
+        </rulegroup>
         <rulegroup id="MUST_HAVE" name="Hyphen in 'must have/see'">
             <rule>
                 <pattern>
@@ -9617,14 +9646,16 @@ USA
         <rule id="HE_SEAS" name="seas vs. sees" default="on">
             <pattern>
                 <token regexp="yes">he|she|it</token>
+                <token postag="RB" min="0" />
                 <token>seas</token>
             </pattern>
-            <message>Did you mean <suggestion>\1 sees</suggestion>?</message>
-            <example correction="He sees"><marker>He seas</marker> the sun.</example>
+            <message>Did you mean <suggestion>\1 \2 sees</suggestion>?</message>
+            <example correction="He usually sees"><marker>He usually seas</marker> the sun when he opens his window in the morning.</example>
         </rule>
         <rule id="YOU_HAV" name="you hav (have)" default="on">
             <pattern>
                 <token regexp="yes">you|they|I</token>
+                <token postag="RB" min="0" />
                 <marker>
                     <token>hav</token>
                 </marker>
@@ -9645,6 +9676,20 @@ USA
             <example correction="they are|there are">And <marker>the are</marker> beautiful!</example>
             <example correction="They aren|There aren"><marker>The aren</marker>'t ready yet.</example>
             <example><marker>There are</marker> different places to see.</example>
+        </rule>
+        <rule id="AN_ARE" name="an + are">
+            <pattern>
+                <marker>
+                    <token>an
+                        <exception postag="NNP"/>
+                        </token>
+                    <token regexp="yes">aren?</token>
+                </marker>
+            </pattern>
+            <message>Did you mean <suggestion>and \2</suggestion>?</message>
+            <example correction="and are">They are great <marker>an are</marker> very responsive.</example>
+            <example>They are great <marker>and are</marker> very responsive.</example>
+            <example>Among Non-Arab Muslims, translations of the <marker>Qur'an</marker> are most often accompanied by the original text.</example>
         </rule>
         <rulegroup id="THE_THEY" name="the (they)">
             <rule>
@@ -9767,6 +9812,35 @@ USA
                 <example correction="begging">He is <marker>bagging</marker> for mercy.</example>
                 <example correction="begged">They <marker>bagged</marker> for his attention.</example>
                 <example>He <marker>begged</marker> for money when he was young.</example>
+            </rule>
+        </rulegroup>
+        <rulegroup id="HEAVE_USE_OF" name="make heave (heavy) use of" default="off">
+            <rule>
+                <pattern>
+                    <token inflected="yes">make</token>
+                    <token min="0" />
+                    <marker>
+                        <token>heave</token>
+                    </marker>
+                    <token regexp="yes">use|usage</token>
+                </pattern>
+                <message>Did you mean <suggestion>heavy</suggestion>?</message>
+                <example correction="heavy">I'm looking at code that makes <marker>heave</marker> use of UFCS.</example>
+                <example correction="heavy">He's making a <marker>heave</marker> use of them.</example>
+                <example>He's making such <marker>heavy</marker> use of it.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <marker>
+                        <token>heave</token>
+                    </marker>
+                    <token regexp="yes">use|usage</token>
+                    <token regexp="yes">of|at</token>
+                </pattern>
+                <message>Did you mean <suggestion>heavy</suggestion>?</message>
+                <example correction="heavy">There's fairly <marker>heave</marker> use of java.</example>
+                <example correction="heavy">You can witness a <marker>heave</marker> use of social media in the last decade.</example>
+                <example correction="heavy">Java is in <marker>heave</marker> use at LanguageTool.</example>
             </rule>
         </rulegroup>
         <rule id="A_COMPLAIN" name="a + complain">
@@ -16206,165 +16280,7 @@ USA
                 <message>This adjective uses the short comparatives form.</message>
                   <suggestion><match no='3' postag='(.+)' postag_regexp='yes' postag_replace='JJS'/></suggestion>
                 <example correction="silliest">This example is <marker>the most silly</marker> I have read.</example>
-          </rule>
-        <rulegroup id="EXTREME_ADJECTIVES" name="Extreme adjectives">
-            <!--      Created by Tiago F. Santos, 2018-07-20      -->
-            <url>https://www.espressoenglish.net/extreme-adjectives-in-english/</url>
-            <short>Use the extreme adjective instead.</short>
-        <rule>
-            <pattern>
-                <token regexp='yes'>&extreme_qualifiers;</token>
-                <token inflected="yes">angry</token>
-            </pattern>
-            <message>The extreme adjective for angry is <suggestion><match no="2">furious</match></suggestion>.</message>
-            <example correction="furious">This is <marker>extremely angry</marker>.</example>
-        </rule>
-        <rule>
-            <pattern>
-                <token regexp='yes'>&extreme_qualifiers;</token>
-                <token inflected="yes">bad</token>
-            </pattern>
-            <message>The extreme adjective for bad is <suggestion><match no="2">awful</match></suggestion>, or <suggestion><match no="2">terrible</match></suggestion>, or <suggestion><match no="2">horrible</match></suggestion>.</message>
-            <example correction="awful|terrible|horrible">This is <marker>extremely bad</marker>.</example>
-        </rule>
-        <rule>
-            <pattern>
-                <token regexp='yes'>&extreme_qualifiers;</token>
-                <token inflected="yes">big</token>
-            </pattern>
-            <message>The extreme adjective for big is <suggestion><match no="2">huge</match></suggestion>, or <suggestion><match no="2">gigantic</match></suggestion>, or <suggestion><match no="2">giant</match></suggestion>.</message>
-            <example correction="huge|gigantic|giant">This is <marker>extremely big</marker>.</example>
-        </rule>
-        <rule>
-            <pattern>
-                <token regexp='yes'>&extreme_qualifiers;</token>
-                <token inflected="yes">clean</token>
-            </pattern>
-            <message>The extreme adjective for clean is <suggestion><match no="2">spotless</match></suggestion>.</message>
-            <example correction="spotless">This is <marker>extremely clean</marker>.</example>
-        </rule>
-        <rule>
-            <pattern>
-                <token regexp='yes'>&extreme_qualifiers;</token>
-                <token inflected="yes">cold</token>
-            </pattern>
-            <message>The extreme adjective for cold is <suggestion><match no="2">freezing</match></suggestion>.</message>
-            <example correction="freezing">This is <marker>extremely cold</marker>.</example>
-        </rule>
-        <rule>
-            <pattern>
-                <token regexp='yes'>&extreme_qualifiers;</token>
-                <token inflected="yes">crowded</token>
-            </pattern>
-            <message>The extreme adjective for crowded is <suggestion><match no="2">packed</match></suggestion>.</message>
-            <example correction="packed">This is <marker>extremely crowded</marker>.</example>
-        </rule>
-        <rule>
-            <pattern>
-                <token regexp='yes'>&extreme_qualifiers;</token>
-                <token inflected="yes">dirty</token>
-            </pattern>
-            <message>The extreme adjective for dirty is <suggestion><match no="2">filthy</match></suggestion>.</message>
-            <example correction="filthy">This is <marker>extremely dirty</marker>.</example>
-        </rule>
-        <rule>
-            <pattern>
-                <token regexp='yes'>&extreme_qualifiers;</token>
-                <token inflected="yes">funny</token>
-            </pattern>
-            <message>The extreme adjective for funny is <suggestion><match no="2">hilarious</match></suggestion>.</message>
-            <example correction="hilarious">This is <marker>extremely funny</marker>.</example>
-        </rule>
-        <rule>
-            <pattern>
-                <token regexp='yes'>&extreme_qualifiers;</token>
-                <token inflected="yes">good</token>
-            </pattern>
-            <message>The extreme adjective for good is <suggestion><match no="2">wonderful</match></suggestion>, or <suggestion><match no="2">fantastic</match></suggestion>, or <suggestion><match no="2">excellent</match></suggestion>.</message>
-            <example correction="wonderful|fantastic|excellent">This is <marker>extremely good</marker>.</example>
-        </rule>
-        <rule>
-            <pattern>
-                <token regexp='yes'>&extreme_qualifiers;</token>
-                <token inflected="yes">hot</token>
-            </pattern>
-            <message>The extreme adjective for hot is <suggestion><match no="2">boiling</match></suggestion>.</message>
-            <example correction="boiling">This is <marker>extremely hot</marker>.</example>
-        </rule>
-        <rule>
-            <pattern>
-                <token regexp='yes'>&extreme_qualifiers;</token>
-                <token inflected="yes">hungry</token>
-            </pattern>
-            <message>The extreme adjective for hungry is <suggestion><match no="2">starving</match></suggestion>.</message>
-            <example correction="starving">This is <marker>extremely hungry</marker>.</example>
-        </rule>
-        <rule>
-            <pattern>
-                <token regexp='yes'>&extreme_qualifiers;</token>
-                <token inflected="yes">interesting</token>
-            </pattern>
-            <message>The extreme adjective for interesting is <suggestion><match no="2">fascinating</match></suggestion>.</message>
-            <example correction="fascinating">This is <marker>extremely interesting</marker>.</example>
-        </rule>
-        <rule>
-            <pattern>
-                <token regexp='yes'>&extreme_qualifiers;</token>
-                <token inflected="yes">old</token>
-            </pattern>
-            <message>The extreme adjective for old is <suggestion><match no="2">ancient</match></suggestion>.</message>
-            <example correction="ancient">This is <marker>extremely old</marker>.</example>
-        </rule>
-        <rule>
-            <pattern>
-                <token regexp='yes'>&extreme_qualifiers;</token>
-                <token inflected="yes">pretty</token>
-            </pattern>
-            <message>The extreme adjective for pretty is <suggestion><match no="2">gorgeous</match></suggestion>.</message>
-            <example correction="gorgeous">This is <marker>extremely pretty</marker>.</example>
-        </rule>
-        <rule>
-            <pattern>
-                <token regexp='yes'>&extreme_qualifiers;</token>
-                <token inflected="yes">scary</token>
-            </pattern>
-            <message>The extreme adjective for scary is <suggestion><match no="2">terrifying</match></suggestion>.</message>
-            <example correction="terrifying">This is <marker>extremely scary</marker>.</example>
-        </rule>
-        <rule>
-            <pattern>
-                <token regexp='yes'>&extreme_qualifiers;</token>
-                <token inflected="yes">small</token>
-            </pattern>
-            <message>The extreme adjective for small is <suggestion><match no="2">tiny</match></suggestion>.</message>
-            <example correction="tiny">This is <marker>extremely small</marker>.</example>
-            <example>Many cities, especially small ones, will not be able to meet the costs.</example>
-        </rule>
-        <rule>
-            <pattern>
-                <token regexp='yes'>&extreme_qualifiers;</token>
-                <token inflected="yes">surprising</token>
-            </pattern>
-            <message>The extreme adjective for surprising is <suggestion><match no="2">astounding</match></suggestion>.</message>
-            <example correction="astounding">This is <marker>extremely surprising</marker>.</example>
-        </rule>
-        <rule>
-            <pattern>
-                <token regexp='yes'>&extreme_qualifiers;</token>
-                <token inflected="yes">tired</token>
-            </pattern>
-            <message>The extreme adjective for tired is <suggestion><match no="2">exhausted</match></suggestion>.</message>
-            <example correction="exhausted">This is <marker>extremely tired</marker>.</example>
-        </rule>
-        <rule>
-            <pattern>
-                <token regexp='yes'>&extreme_qualifiers;</token>
-                <token inflected="yes">ugly</token>
-            </pattern>
-            <message>The extreme adjective for ugly is <suggestion><match no="2">hideous</match></suggestion>.</message>
-            <example correction="hideous">This is <marker>extremely ugly</marker>.</example>
-        </rule>
-        </rulegroup>          
+          </rule>       
 
         <rulegroup id="DID_BASEFORM" name="Non-infinitive verb after modal verbs">
             <rule>
@@ -17104,6 +17020,23 @@ USA
             <example correction="Does"><marker>Do</marker> she have dinner alone?</example>
             <example>If you do it at all, try to do it well.</example>
         </rule>
+        <rule id="WHEN_IS_NNP_AND_NNP" name="Incorrect use of 'is' vs. 'are'">
+            <pattern>
+                <token postag="SENT_START|CC" postag_regexp="yes" />
+                <token postag="WRB|WP" postag_regexp="yes" />
+                <marker>
+                    <token>is</token>
+                </marker>
+                <token postag="NNP" />
+                <token postag="NNP|UNKNOWN" postag_regexp="yes" min="0" />
+                <token regexp="yes">and|&amp;|,</token>
+                <token postag="NNP" />
+            </pattern>
+            <message>Did you mean <suggestion>are</suggestion></message>
+            <example correction="are">When <marker>is</marker> Sylvester Stallone and Arnold Schwarzenegger back in cinema?</example>
+            <example correction="are">It's exciting but when <marker>is</marker> Christmas and New Years finally over?</example>
+            <example>What is Carl's and Peter's favorite meal?</example>
+        </rule>
         <rulegroup id="HE_VERB_AGR" name="Agreement error: Non-third person/past tense verb with 'he/she/it' or a pronoun">
             <short>Agreement error</short>
             <antipattern><!-- nobody having any question. Applicable to rule 1 and rule 7. -->
@@ -17146,6 +17079,13 @@ USA
                     <token postag="VBG"/>
                     <token>to</token>
                     <token postag_regexp="yes" postag="VBP?"/>
+                </antipattern>
+                <antipattern>
+                    <token postag="WRB|WP" postag_regexp="yes" />
+                    <token>are</token>
+                    <token postag="NNP" />
+                    <token postag="NNP|UNKNOWN" postag_regexp="yes" min="0" />
+                    <token regexp="yes">and|&amp;|,</token>
                 </antipattern>
                 <antipattern><!--  Somebody considering the new job must think about these: -->
                     <token regexp="yes">(any|every|no|some)(one|body)</token>
@@ -17217,6 +17157,8 @@ USA
                 <example>Will everybody talking please just listen for a moment?</example>
                 <example>... and not someone possessing legal responsibility for the process of its...</example>
                 <example>... and anyone possessing information is asked to contact the police.</example>
+                <example>Where are Carl and Laura?</example>
+                <example>When are Carl, Joseph and Laura back?</example>
             </rule>
             <rule>
                 <pattern>
@@ -18292,6 +18234,11 @@ USA
                 <token postag="CD"/>
                 <token>page</token>
                 <token>survey</token>
+            </antipattern>
+            <antipattern>
+                <token>need</token>
+                <token>4</token>
+                <token>speed</token>
             </antipattern>
             <antipattern> <!-- two week's time - there's another rule for this mistake: CD_WEEK_S -->
                 <token postag="CD"><exception regexp="yes">one|1</exception></token>
@@ -23685,6 +23632,7 @@ The accident victim died from her injuries.
       <example type='triggers_error'>Though we cannot perfect the endeavour we should strive for it: the will-to-live constantly...</example><!-- XXX missing comma -->
       <example type='triggers_error'>In addition the races can last several hours, with heartrates com...</example><!-- XXX missing comma -->
       <example>Thanks a lot!</example>
+      <example>Thanks a ton!</example>
       <example>He couldn't go any further.</example>
       <example>...sing is possible by "blowing" the product: namely reacting it with oxygen.</example>
       <example>The Sealab 2021 character Jodene Sparks references A Modest Proposal when trying to convince Debbie Du...</example>
@@ -23718,6 +23666,35 @@ The accident victim died from her injuries.
       <example>The five enterprises which passed to 100 percent Russian state ownership are:</example>
       <example>...e has a fictional daughter named Jody Crowley who continues her father's search for the Scarlet Woman.</example>
       <example>While listening the radio, I fell asleep.</example>
+      <!-- False positives/negatives collected by user feedback and regression test
+      <example correction="According to his"><marker>According his</marker> friend, they were outside playing basketball.</example>
+      <example>I didn't know if I was coming or going the week before I got married.</example>
+      <example>I have not asked for help, nor do I desire it.</example>
+      <example>It'll serve him right if he fails the exam; he doesn't study at all.</example>
+      <example>The desire he has had for years has been fulfilled.</example>
+      <example>He also "gallantly stepped forward" to contribute a quarter of the costs of dramatising.</example>
+      <example>They were able to add another $3 credit.</example>
+      <example>He's currently owing them a total of 10 USD.</example>
+      <example>As far as going the traditional way, ...</example>
+      <example>Click the button to add another line.</example>
+      <example>I'm going to add those finishing touches.</example>
+      <example>I would want to add each SKU as param.</example>
+      <example>He had a strong opinion regarding letters.</example>
+      <example>Please show how able you are and what qualifies you.</example>
+      <example>He's your dedicated Shopify Guru.</example>
+      <example>I think he's going a bit loopy.</example>
+      <example>He might be adding those employees sooner.</example>
+      <example>Learn more about adding HTML content.</example>
+      <example>Most references do not follow.</example>
+      <example>You have to subscribe every week.</example>
+      <example>He thanks me again.</example>
+      <example>We try to respond a.s.a.p.</example>
+      <example>Life Is Going On</example>
+      <example>Is it possible to add Google Maps API features?</example>
+      <example>The Commitment Fee must be paid.</example>
+      <example>Add these search fields.</example>
+      <example>Welcome home.</example>
+      <example>Refer a friend.</example> -->
     </rule>
      <rule>
       <antipattern>
@@ -27011,7 +26988,7 @@ The accident victim died from her injuries.
                         <token>advise</token>
                     </marker>
                 </pattern>
-                <message>Did you mean <suggestion>advice</suggestion> (a noun)?</message>
+                <message>The word 'advise' is a verb. Did you mean <suggestion>advice</suggestion> (noun)?</message>
                 <short>Possible typo</short>
                 <example correction="advice">Please give me <marker>advise</marker>, I don't know what to do.</example>
                 <example correction="advice">Could someone give <marker>advise</marker> on a better way to do this.</example>
@@ -27023,7 +27000,7 @@ The accident victim died from her injuries.
                         <token>advise</token>
                     </marker>
                 </pattern>
-                <message>Did you mean <suggestion>advice</suggestion> (a noun)?</message>
+                <message>Did you mean <suggestion>advice</suggestion> (noun)?</message>
                 <short>Possible typo</short>
                 <example correction="advice">Any <marker>advise</marker> is welcome!</example>
                 <example>Any advice is welcome.</example>
@@ -27035,7 +27012,7 @@ The accident victim died from her injuries.
                         <token>advise</token>
                     </marker>
                 </pattern>
-                <message>Did you mean <suggestion>advice</suggestion> (a noun)?</message>
+                <message>The word 'advise' is a verb. Did you mean <suggestion>advice</suggestion> (noun)?</message>
                 <short>Possible typo</short>
                 <example correction="advice">What was the best piece of <marker>advise</marker> that you ever got?</example>
                 <example correction="advice">He didn't listen to my <marker>advise</marker>.</example>
@@ -27047,7 +27024,7 @@ The accident victim died from her injuries.
                         <token>advice</token>
                     </marker>
                 </pattern>
-                <message>Did you mean <suggestion>advise</suggestion> (a verb)?</message>
+                <message>The word 'advise' is a noun. Did you mean <suggestion>advise</suggestion> (verb)?</message>
                 <short>Possible typo</short>
                 <example correction="advise">I must <marker>advice</marker> you to go.</example>
                 <example>I cannot advise you anything.</example>
@@ -31745,6 +31722,165 @@ The accident victim died from her injuries.
     <!-- Style -->
     <!-- ====================================================================== -->
     <category id="STYLE" name="Style" type="style">
+        <rulegroup id="EXTREME_ADJECTIVES" name="Extreme adjectives">
+            <!--      Created by Tiago F. Santos, 2018-07-20      -->
+            <url>https://www.espressoenglish.net/extreme-adjectives-in-english/</url>
+            <short>Use the extreme adjective instead.</short>
+            <rule>
+                <pattern>
+                    <token regexp='yes'>&extreme_qualifiers;</token>
+                    <token inflected="yes">angry</token>
+                </pattern>
+                <message>The extreme adjective for angry is <suggestion><match no="2">furious</match></suggestion>.</message>
+                <example correction="furious">This is <marker>extremely angry</marker>.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp='yes'>&extreme_qualifiers;</token>
+                    <token inflected="yes">bad</token>
+                </pattern>
+                <message>The extreme adjective for bad is <suggestion><match no="2">awful</match></suggestion>, <suggestion><match no="2">terrible</match></suggestion>, <suggestion><match no="2">evil</match></suggestion> or <suggestion><match no="2">horrible</match></suggestion>.</message>
+                <example correction="awful|terrible|evil|horrible">This is <marker>extremely bad</marker>.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp='yes'>&extreme_qualifiers;</token>
+                    <token inflected="yes">big</token>
+                </pattern>
+                <message>The extreme adjective for big is <suggestion><match no="2">huge</match></suggestion>, <suggestion><match no="2">massive</match></suggestion>, <suggestion><match no="2">colossal</match></suggestion>, <suggestion><match no="2">gigantic</match></suggestion>, or <suggestion><match no="2">giant</match></suggestion>.</message>
+                <example correction="huge|massive|colossal|gigantic|giant">This is <marker>extremely big</marker>.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp='yes'>&extreme_qualifiers;</token>
+                    <token inflected="yes">clean</token>
+                </pattern>
+                <message>The extreme adjective for clean is <suggestion><match no="2">spotless</match></suggestion>.</message>
+                <example correction="spotless">This is <marker>extremely clean</marker>.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp='yes'>&extreme_qualifiers;</token>
+                    <token inflected="yes">cold</token>
+                </pattern>
+                <message>The extreme adjective for cold is <suggestion><match no="2">freezing</match></suggestion>, or <suggestion><match no="2">icy</match></suggestion>.</message>
+                <example correction="freezing|icy">This is <marker>extremely cold</marker>.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp='yes'>&extreme_qualifiers;</token>
+                    <token inflected="yes">crowded</token>
+                </pattern>
+                <message>The extreme adjective for crowded is <suggestion><match no="2">packed</match></suggestion>.</message>
+                <example correction="packed">This is <marker>extremely crowded</marker>.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp='yes'>&extreme_qualifiers;</token>
+                    <token inflected="yes">dirty</token>
+                </pattern>
+                <message>The extreme adjective for dirty is <suggestion><match no="2">filthy</match></suggestion>.</message>
+                <example correction="filthy">This is <marker>extremely dirty</marker>.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp='yes'>&extreme_qualifiers;</token>
+                    <token inflected="yes">funny</token>
+                </pattern>
+                <message>The extreme adjective for funny is <suggestion><match no="2">hilarious</match></suggestion>, or <suggestion><match no="2">amusing</match></suggestion>.</message>
+                <example correction="hilarious|amusing">This is <marker>extremely funny</marker>.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp='yes'>&extreme_qualifiers;</token>
+                    <token inflected="yes">good</token>
+                </pattern>
+                <message>The extreme adjective for good is <suggestion><match no="2">wonderful</match></suggestion>, <suggestion><match no="2">fantastic</match></suggestion>, <suggestion><match no="2">superb</match></suggestion>, <suggestion><match no="2">perfect</match></suggestion>, or <suggestion><match no="2">excellent</match></suggestion>.</message>
+                <example correction="wonderful|fantastic|superb|perfect|excellent">This is <marker>extremely good</marker>.</example>
+            </rule>
+            <!-- <rule>
+                <pattern>
+                    <token regexp='yes'>&extreme_qualifiers;</token>
+                    <token inflected="yes">hot</token>
+                </pattern>
+                <message>The extreme adjective for hot is <suggestion><match no="2">boiling</match></suggestion>.</message>
+                <example correction="boiling">This is <marker>extremely hot</marker>.</example>
+                <example>Megan Fox is <marker>really hot</marker>.</exampe>
+            </rule> -->
+            <rule>
+                <pattern>
+                    <token regexp='yes'>&extreme_qualifiers;</token>
+                    <token inflected="yes">hungry</token>
+                </pattern>
+                <message>The extreme adjective for hungry is <suggestion><match no="2">starving</match></suggestion>.</message>
+                <example correction="starving">This is <marker>extremely hungry</marker>.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp='yes'>&extreme_qualifiers;</token>
+                    <token inflected="yes">interesting</token>
+                </pattern>
+                <message>The extreme adjective for interesting is <suggestion><match no="2">fascinating</match></suggestion>, or <suggestion><match no="2">exciting</match></suggestion>.</message>
+                <example correction="fascinating|exciting">This is <marker>extremely interesting</marker>.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp='yes'>&extreme_qualifiers;</token>
+                    <token inflected="yes">old</token>
+                </pattern>
+                <message>The extreme adjective for old is <suggestion><match no="2">ancient</match></suggestion>.</message>
+                <example correction="ancient">This is <marker>extremely old</marker>.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp='yes'>&extreme_qualifiers;</token>
+                    <token inflected="yes">pretty</token>
+                </pattern>
+                <message>The extreme adjective for pretty is <suggestion><match no="2">gorgeous</match></suggestion>.</message>
+                <example correction="gorgeous">This is <marker>extremely pretty</marker>.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp='yes'>&extreme_qualifiers;</token>
+                    <token inflected="yes">scary</token>
+                </pattern>
+                <message>The extreme adjective for scary is <suggestion><match no="2">terrifying</match></suggestion>.</message>
+                <example correction="terrifying">This is <marker>extremely scary</marker>.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp='yes'>&extreme_qualifiers;</token>
+                    <token inflected="yes">small</token>
+                </pattern>
+                <message>The extreme adjective for small is <suggestion><match no="2">tiny</match></suggestion>, or <suggestion><match no="2">minimal</match></suggestion>.</message>
+                <example correction="tiny|minimal">This is <marker>extremely small</marker>.</example>
+                <example>Many cities, especially small ones, will not be able to meet the costs.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp='yes'>&extreme_qualifiers;</token>
+                    <token inflected="yes">surprising</token>
+                </pattern>
+                <message>The extreme adjective for surprising is <suggestion><match no="2">astounding</match></suggestion>.</message>
+                <example correction="astounding">This is <marker>extremely surprising</marker>.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp='yes'>&extreme_qualifiers;</token>
+                    <token inflected="yes">tired</token>
+                </pattern>
+                <message>The extreme adjective for tired is <suggestion><match no="2">exhausted</match></suggestion>.</message>
+                <example correction="exhausted">This is <marker>extremely tired</marker>.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp='yes'>&extreme_qualifiers;</token>
+                    <token inflected="yes">ugly</token>
+                </pattern>
+                <message>The extreme adjective for ugly is <suggestion><match no="2">hideous</match></suggestion>.</message>
+                <example correction="hideous">This is <marker>extremely ugly</marker>.</example>
+            </rule>
+        </rulegroup>
         <rule id="DIFFERENT_THAN" name="different than (from)">
             <pattern>
                 <token>different</token>
@@ -32005,9 +32141,9 @@ The accident victim died from her injuries.
             <token>papa</token>
             <token regexp="yes">johns?|roach</token>
         </antipattern>
-        <antipattern><!-- Popular Musician, spider -->
+        <antipattern><!-- Popular Musician, spider, movie -->
             <token>daddy</token>
-            <token regexp="yes">yankee|fox|long(legs)?</token>
+            <token regexp="yes">yankee|fox|long(legs)?|day.*</token>
         </antipattern>
         <antipattern>
             <token regexp="yes">puff|fox|sugar</token>
@@ -32036,6 +32172,14 @@ The accident victim died from her injuries.
         <suggestion>puppy</suggestion>
         <suggestion>pup</suggestion>
         <example correction="dog|puppy|pup">My <marker>doggy</marker> is barking.</example>
+    </rule>
+    <rule>
+        <pattern>
+            <token>sowwy</token>
+        </pattern>
+        <message>In some contexts, this is childish language. Consider using <suggestion>sorry</suggestion>.</message>
+        <suggestion>sorry</suggestion>
+        <example correction="Sorry"><marker>Sowwy</marker>, I made a mistake.</example>
     </rule>
   </rulegroup>
 
