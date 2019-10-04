@@ -195,7 +195,6 @@ public class SwJLanguageTool {
     private boolean initDone = false;
     private URL serverBaseUrl;
     private Language language;
-    private Language motherTongue;
     private RemoteLanguageTool remoteLanguageTool;
     private List<String> enabledRules = new ArrayList<>();
     private List<String> disabledRules = new ArrayList<>();
@@ -208,7 +207,8 @@ public class SwJLanguageTool {
     LORemoteLanguageTool(Language language, Language motherTongue, UserConfig userConfig
         , List<Rule> extraRemoteRules) throws MalformedURLException {
       this.language = language;
-      this.motherTongue = motherTongue;
+      configBuilder = new CheckConfigurationBuilder(language.getShortCodeWithCountryAndVariant());
+      configBuilder.setMotherTongueLangCode(motherTongue.getShortCodeWithCountryAndVariant());
       serverBaseUrl = new URL(serverUrl == null ? SERVER_URL : serverUrl);
       remoteLanguageTool = new RemoteLanguageTool(serverBaseUrl);
       lt = new JLanguageTool(language, motherTongue, null, userConfig);
@@ -227,25 +227,18 @@ public class SwJLanguageTool {
           maxTextLength = SERVER_LIMIT;
           MessageHandler.printToLogFile("Server doesn't support maxTextLength, Limit text length set to: " + maxTextLength);
         }
-      }
-      configBuilder = new CheckConfigurationBuilder(language.getShortCodeWithCountryAndVariant());
-      configBuilder.setMotherTongueLangCode(motherTongue.getShortCodeWithCountryAndVariant());
-      if(paraMode == ParagraphHandling.ONLYPARA) {
-        if(!useServerConfig) {
-          configBuilder.enabledRuleIds(enabledRules);
-          configBuilder.ruleValues(getRuleValues());
-          configBuilder.enabledOnly();
-        }
-        configBuilder.mode("textLevelOnly");
-      } else {
         if(!useServerConfig) {
           configBuilder.enabledRuleIds(enabledRules);
           configBuilder.disabledRuleIds(disabledRules);
           configBuilder.ruleValues(getRuleValues());
         }
-        configBuilder.mode("allButTextLevelOnly");
+        if(paraMode == ParagraphHandling.ONLYPARA) {
+          configBuilder.mode("textLevelOnly");
+        } else {
+          configBuilder.mode("allButTextLevelOnly");
+        }
+        remoteConfig = configBuilder.build();
       }
-      remoteConfig = configBuilder.build();
       List<RuleMatch> ruleMatches = new ArrayList<>();
       int limit = maxTextLength;
       for (int nStart = 0; text.length() > nStart; nStart += limit) {
