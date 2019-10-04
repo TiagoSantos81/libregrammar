@@ -174,7 +174,7 @@ public class English extends Language implements AutoCloseable {
 
   @Override
   public Contributor[] getMaintainers() {
-    return new Contributor[] { new Contributor("Mike Unwalla"), Contributors.MARCIN_MILKOWSKI, Contributors.DANIEL_NABER };
+    return new Contributor[] { new Contributor("Christopher Blum"), Contributors.DANIEL_NABER, new Contributor("Florian Knorr"), Contributors.MARCIN_MILKOWSKI, new Contributor("Mike Unwalla"), new Contributor("Tiago Santos") };
   }
 
   @Override
