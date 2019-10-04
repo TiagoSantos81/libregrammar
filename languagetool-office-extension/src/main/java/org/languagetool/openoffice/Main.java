@@ -154,10 +154,6 @@ public class Main extends WeakBase implements XJobExecutor,
     }
     return new int[]{};  // e.g. for LO/OO < 4.3 and the 'FootnotePositions' property
   }
-  
-  public SwJLanguageTool getJLanguageTool () {
-    return documents.getLanguageTool();
-  }
 
   /**
    * We leave spell checking to OpenOffice/LibreOffice.

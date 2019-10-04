@@ -120,11 +120,6 @@
         </dependency>
         <dependency>
             <groupId>org.languagetool</groupId>
-            <artifactId>languagetool-http-client</artifactId>
-            <version>${languagetool.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.languagetool</groupId>
             <artifactId>language-all</artifactId>
             <version>${languagetool.version}</version>
         </dependency>

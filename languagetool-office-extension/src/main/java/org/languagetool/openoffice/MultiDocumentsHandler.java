@@ -89,7 +89,6 @@ public class MultiDocumentsHandler {
   private LinguisticServices linguServices = null;
   private SortedTextRules sortedTextRules;
   private Set<String> disabledRulesUI;      //  Rules disabled by context menu or spell dialog
-  private final List<Rule> extraRemoteRules;      //  store of rules supported by remote server but not locally
   
   private XComponentContext xContext;       //  The context of the document
   private List<SingleDocument> documents;   //  The List of LO documents to be checked
@@ -119,7 +118,6 @@ public class MultiDocumentsHandler {
     this.mainThread = mainThread;
     documents = new ArrayList<>();
     disabledRulesUI = new HashSet<>();
-    extraRemoteRules = new ArrayList<Rule>();
   }
   
   ProofreadingResult getCheckResults(String paraText, Locale locale, ProofreadingResult paRes, 
@@ -131,12 +129,8 @@ public class MultiDocumentsHandler {
     if(fixedLanguage == null || langForShortName == null) {
       langForShortName = getLanguage(locale);
     }
-    boolean isSameLanguage = langForShortName.equals(docLanguage);
-    if (!isSameLanguage || langTool == null || recheck) {
-      if (!isSameLanguage) {
-        docLanguage = langForShortName;
-        extraRemoteRules.clear();
-      }
+    if (!langForShortName.equals(docLanguage) || langTool == null || recheck) {
+      docLanguage = langForShortName;
       initLanguageTool();
       initCheck();
     }
@@ -470,7 +464,7 @@ public class MultiDocumentsHandler {
       switchOff = config.isSwitchedOff();
       // not using MultiThreadedSwJLanguageTool here fixes "osl::Thread::Create failed", see https://bugs.documentfoundation.org/show_bug.cgi?id=90740:
       langTool = new SwJLanguageTool(docLanguage, config.getMotherTongue(),
-          new UserConfig(config.getConfigurableValues(), linguServices), config, extraRemoteRules, testMode);
+          new UserConfig(config.getConfigurableValues(), linguServices), config.isMultiThread());
       config.initStyleCategories(langTool.getAllRules());
       /* The next row is only for a single line break marks a paragraph
       docLanguage.getSentenceTokenizer().setSingleLineBreaksMarksParagraph(true);
@@ -480,13 +474,6 @@ public class MultiDocumentsHandler {
         File ngramLangDir = new File(config.getNgramDirectory(), docLanguage.getShortCode());
         if (ngramLangDir.exists()) {  // user might have ngram data only for some languages and that's okay
           langTool.activateLanguageModelRules(ngramDirectory);
-        }
-      }
-      File word2VecDirectory = config.getWord2VecDirectory();
-      if (word2VecDirectory != null) {
-        File word2VecLangDir = new File(config.getWord2VecDirectory(), docLanguage.getShortCode());
-        if (word2VecLangDir.exists()) {  // user might have ngram data only for some languages and that's okay
-          langTool.activateWord2VecModelRules(word2VecDirectory);
         }
       }
       for (Rule rule : langTool.getAllActiveOfficeRules()) {
@@ -755,21 +742,23 @@ public class MultiDocumentsHandler {
 
         @Override
         public void itemHighlighted(MenuEvent event) {
+//          MessageHandler.printToLogFile("highlighted ID: " + event.MenuId + " (" + toolsId + ")");
           if(event.MenuId == ltId) {
             setLtMenu();
+//            MessageHandler.printToLogFile("Tools highlighted: Lt Menu set");
           }
         }
 
         @Override
         public void itemSelected(MenuEvent event) {
+//          MessageHandler.printToLogFile("selected ID: " + event.MenuId + " (" + toolsId + ")");
           if(event.MenuId == ltId) {
             setLtMenu();
+//            MessageHandler.printToLogFile("Tools selected: Lt Menu set");
           }
         }
       });
-      if (debugMode) {
-        MessageHandler.printToLogFile("Menu listener set");
-      }
+      MessageHandler.printToLogFile("Menu listener set");
 
     }
     

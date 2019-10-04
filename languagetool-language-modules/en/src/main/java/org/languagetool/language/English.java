@@ -223,6 +223,7 @@ public class English extends Language implements AutoCloseable {
         new EnglishDiacriticsRule(messages),
         new EnglishPlainEnglishRule(messages),
         new EnglishRedundancyRule(messages),
+        new EnglishStyleRepeatedWordRule(messages, this, userConfig),
         new ReadabilityRule(messages, this, userConfig, false),
         new ReadabilityRule(messages, this, userConfig, true)
     ));
@@ -294,6 +295,7 @@ public class English extends Language implements AutoCloseable {
       case "SENTENCE_FRAGMENT_SINGLE_WORDS": return -51;  // prefer other more important sentence start corrections.
       case "EN_REDUNDANCY_REPLACE":     return -510;  // style rules should always have the lowest priority.
       case "EN_PLAIN_ENGLISH_REPLACE":  return -511;  // style rules should always have the lowest priority.
+      case "STYLE_REPEATED_WORD_RULE_EN":  return -900;  // style rules should always have the lowest priority.
       case LongSentenceRule.RULE_ID:    return -997;
       case LongParagraphRule.RULE_ID:   return -998;
     }

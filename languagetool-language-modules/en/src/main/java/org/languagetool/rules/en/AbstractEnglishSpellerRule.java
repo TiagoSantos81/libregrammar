@@ -216,6 +216,8 @@ public abstract class AbstractEnglishSpellerRule extends MorfologikSpellerRule {
       return Arrays.asList("ice cream");
     } else if ("fora".equals(word)) {
       return Arrays.asList("for a");
+    } else if ("Boing".equals(word)) {
+      return Arrays.asList("Boeing");
     } else if ("te".equals(word)) {
       return Arrays.asList("the");
     } else if ("todays".equals(word)) {
@@ -291,6 +293,8 @@ public abstract class AbstractEnglishSpellerRule extends MorfologikSpellerRule {
       return Arrays.asList("After-party");
     } else if ("wellbeing".equals(word)) {
       return Arrays.asList("well-being");
+    } else if ("cuz".equals(word)) {
+      return Arrays.asList("because");
       // AtD irregular plurals - START
     } else if ("addendums".equals(word)) {
       return Arrays.asList("addenda");
