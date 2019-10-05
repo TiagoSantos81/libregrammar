@@ -2,6 +2,7 @@
 
 ## 4.8X-SNAPSHOT (release planned for 2019-XX-XX)
 
+#### English
   * Rules added:
      - EnglishStyleRepeatedWordRule;
      - Cliches detection (AtD);
