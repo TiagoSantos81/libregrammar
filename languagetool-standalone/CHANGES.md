@@ -5,7 +5,7 @@
   * Rules added:
      - EnglishStyleRepeatedWordRule;
      - Cliches detection (AtD);
-     - added 323 pairs of easily confused words - active only with
+     - added 533 pairs of easily confused words - active only with
     ngram data (see http://wiki.languagetool.org/finding-errors-using-n-gram-data)
 
   * English rules re-activated:
