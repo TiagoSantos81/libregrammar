@@ -38,10 +38,11 @@
      - Typographical ellipsis;
      - Several adjustments to rules with wide-spectrum antipatterns.
 
+#### Chinese
+  * Now using https://github.com/hankcs/HanLP for tokenization (PR 1981)
+
 #### General
   * Server and HTTP API connection commits for LibreOffice plug-in reverted.
-
-
 
 ## 4.7 (2019-09-28)
 
