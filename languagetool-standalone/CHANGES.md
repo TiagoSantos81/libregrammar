@@ -1,8 +1,45 @@
 # LanguageTool Change Log
 
-## 4.8-SNAPSHOT (release planned for 2019-12-27)
+## 4.8X-SNAPSHOT (release planned for 2019-XX-XX)
 
-* ...
+  * Rules added:
+     - EnglishStyleRepeatedWordRule;
+     - Cliches detection (AtD);
+     - added 323 pairs of easily confused words - active only with
+    ngram data (see http://wiki.languagetool.org/finding-errors-using-n-gram-data)
+
+  * English rules re-activated:
+     - EnglishPlainEnglishRule (AtD) and Plain English (AtD) category;
+     - EnglishRedundancyRule (AtD);
+     - LongSentenceRule;
+     - Passive voice;
+     - Tired intensifiers;
+     - Number at sentence start;
+     - Sentence starting with 'And' or 'But'
+     - Several collocation rules;
+     - Articles: article missing before a countable noun;
+     - Articles: article missing before a countable noun;
+     - Non-standard contractions '(I've a...)';
+     - wold vs. would;
+     - seas vs. sees;
+     - hav vs. have;
+     - complaint vs. complained;
+     - handover vs. hand over;
+     - shutdown vs. shut down;
+     - can't help but (can't help + gerund);
+     - 'e.g.' without a comma;
+     - 'i.e.' without a comma;
+     - Missing comma before 'and, or, nor, yet, so, but';
+     - Warn when the serial comma is not used;
+     - No comma before 'which';
+     - Several special redundancy rules;
+     - Readability: Three nouns in a row;
+     - Word order: 'Hopefully' starting a sentence;
+     - Typographical ellipsis;
+     - Several adjustments to rules with wide-spectrum antipatterns.
+
+#### General
+  * Server and HTTP API connection commits for LibreOffice plug-in reverted.
 
 
 
