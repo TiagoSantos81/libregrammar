@@ -44,6 +44,7 @@
 
 #### General
   * Server and HTTP API connection commits for LibreOffice plug-in reverted.
+  * Restored some languagetool-dev and languagetool-standalone scripts
 
 ## 4.7 (2019-09-28)
 
