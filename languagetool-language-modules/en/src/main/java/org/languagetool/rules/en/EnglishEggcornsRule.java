@@ -53,7 +53,7 @@ public class EnglishEggcornsRule extends AbstractSimpleReplaceRule2 {
     super(messages, new English());
     // setDefaultOff(); 
     super.setCategory(Categories.CONFUSED_WORDS.getCategory(messages));
-    setLocQualityIssueType(ITSIssueType.Style);
+    setLocQualityIssueType(ITSIssueType.Misspelling);
     addExamplePair(Example.wrong("<marker>statue of limitations</marker>"),
                    Example.fixed("<marker>statute of limitations</marker>"));
   }
@@ -75,7 +75,7 @@ public class EnglishEggcornsRule extends AbstractSimpleReplaceRule2 {
 
   @Override
   public String getSuggestion() {
-    return "'$match' is a misheard expression. The correct phrase is $suggestions";
+    return "'$match' probably is a misheard expression. The correct phrase is $suggestions";
   }
 
   @Override
