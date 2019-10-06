@@ -5,7 +5,8 @@
 #### English
   * Rules added:
      - EnglishStyleRepeatedWordRule;
-     - Cliches detection (AtD);
+     - EnglishEggcornRule (197 entries from AtD and Grammark);
+     - Cliches detection (691 entries from AtD);
      - added 533 pairs of easily confused words - active only with
     ngram data (see http://wiki.languagetool.org/finding-errors-using-n-gram-data)
 

@@ -223,6 +223,7 @@ public class English extends Language implements AutoCloseable {
         new EnglishDiacriticsRule(messages),
         new EnglishPlainEnglishRule(messages),
         new EnglishRedundancyRule(messages),
+        new EnglishEggcornsRule(messages),
         new EnglishStyleRepeatedWordRule(messages, this, userConfig),
         new ReadabilityRule(messages, this, userConfig, false),
         new ReadabilityRule(messages, this, userConfig, true)
