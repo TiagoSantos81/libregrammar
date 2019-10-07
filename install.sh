@@ -91,19 +91,19 @@ done
 display_help() {
     echo
     echo "Script version $VERSION"
-    echo 'A tool for installing or building LanguageTool.'
+    echo 'A tool for installing or building LanguageTool fork.'
     echo 'Usage: install.sh <option> <package>'
     echo 'Options:'
     echo '   -h --help                   Show help'
-    echo '   -b --build                  Builds packages from the bleeding edge development copy of LanguageTool'
+    echo '   -b --build                  Builds packages from the bleeding edge development copy of LanguageTool fork'
     echo '   -c --command <command>      Specifies post-installation command to run (default gui when screen is detected)'
-    echo '   -q --quiet                  Shut up LanguageTool installer! Only tell me important stuff!'
-    echo '   -t --text <file>            Specifies what text to be spellchecked by LanguageTool command line (default spellcheck.txt)'
-    echo '   -d --depth <value>          Specifies the depth to clone when building LanguageTool yourself (default 1).'
+    echo '   -q --quiet                  Shut up LanguageTool fork installer! Only tell me important stuff!'
+    echo '   -t --text <file>            Specifies what text to be spellchecked by LanguageTool fork command line (default spellcheck.txt)'
+    echo '   -d --depth <value>          Specifies the depth to clone when building LanguageTool fork yourself (default 1).'
     echo '   -p --package <package>      Specifies package to install when building (default all)'
     echo '   -o --override <OS>          Override automatic OS detection with <OS>'
     echo '   -a --accept                 Agree to all downloading and installing prompts.'
-    echo '   -r --remove <all/partial>   Removes LanguageTool install. <all> uninstalls the dependencies that were auto-installed. (default partial)'
+    echo '   -r --remove <all/partial>   Removes LanguageTool fork install. <all> uninstalls the dependencies that were auto-installed. (default partial)'
     echo
     echo 'Packages(only if -b is specified):'
     echo '   standalone                  Installs standalone package'
@@ -111,9 +111,9 @@ display_help() {
     echo '   office-extension            Installs the LibreOffice/OpenOffice extension package'
     echo
     echo 'Commands:'
-    echo '   GUI                         Runs GUI version of LanguageTool'
-    echo '   commandline                 Runs command line version of LanguageTool'
-    echo '   server                      Runs server version of LanguageTool'
+    echo '   GUI                         Runs GUI version of LanguageTool fork'
+    echo '   commandline                 Runs command line version of LanguageTool fork'
+    echo '   server                      Runs server version of LanguageTool fork'
     echo
     echo 'Submit a GitHub issue if you are encountering problems or want to suggest new features'
     echo
@@ -121,12 +121,12 @@ display_help() {
 }
 
 install() {
-    echo "Removing any old copy of LanguageTools Stable in this directory"
+    echo "Removing any old copy of Original LanguageTools Stable in this directory"
     rm LanguageTool-stable.zip # maybe switch with 2> /dev/null XXX here removals should be verbose
 
     detect_unzip
 
-    echo "Installing LanguageTools Stable"
+    echo "Installing Original LanguageTools Stable"
     version=stable
     RELEASE_URL="https://languagetool.org/download/LanguageTool-stable.zip"
     curl -l $RELEASE_URL -o LanguageTool-stable.zip
@@ -146,13 +146,13 @@ install() {
 }
 
 install_quiet() {
-    # Removing any old copy of LanguageTools Stable in this directory
+    # Removing any old copy of Original LanguageTools Stable in this directory
     rm LanguageTool-stable.zip &>/dev/null
 
     # Detecting unzip
     detect_unzip
 
-    # Installing LanguageTools Stable
+    # Installing Original LanguageTools Stable
     version=stable
     RELEASE_URL="https://languagetool.org/download/LanguageTool-stable.zip"
     curl -s -l $RELEASE_URL -o LanguageTool-stable.zip
@@ -179,7 +179,7 @@ build () {
     fi
 
     # Cloning from GitHub
-    git clone --depth "$clone_depth" https://github.com/languagetool-org/languagetool.git
+    git clone --depth "$clone_depth" https://github.com/TiagoSantos81/languagetool.git
     cd languagetool || exit 2
 
     # Seeing if maven is installed, and installing it if not
@@ -203,7 +203,7 @@ build_quiet () {
     fi
 
     # Cloning from GitHub
-    git clone -q --depth "$clone_depth" https://github.com/languagetool-org/languagetool.git
+    git clone -q --depth "$clone_depth" https://github.com/TiagoSantos81/languagetool.git
     cd languagetool || exit 2
 
     # Seeing if maven is installed, and installing it if not
@@ -229,7 +229,7 @@ uninstall_loud () {
         bash /etc/languagetool/uninstall.sh
         rm /etc/languagetool/uninstall.sh
     fi
-    echo "LanguageTool uninstalled!"
+    echo "LanguageTool fork uninstalled!"
     exit
 }
 
