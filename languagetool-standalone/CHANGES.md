@@ -2,13 +2,14 @@
 
 ## 4.8X-SNAPSHOT (release planned for 2019-XX-XX)
 
-#### English
+#### English (Fork differences)
   * Rules added:
+     - eggcorn detection (216 entries from AtD and Grammark);
+     - cliche detection (691 entries from AtD);
+     - 727 entries to wordiness database (from Grammark);
      - EnglishStyleRepeatedWordRule;
-     - EnglishEggcornRule (216 entries from AtD and Grammark);
-     - Cliches detection (691 entries from AtD);
      - added 533 pairs of easily confused words - active only with
-    ngram data (see http://wiki.languagetool.org/finding-errors-using-n-gram-data)
+    ngram data (see http://wiki.languagetool.org/finding-errors-using-n-gram-data).
 
   * English rules re-activated:
      - EnglishPlainEnglishRule (AtD) and Plain English (AtD) category;
@@ -19,7 +20,6 @@
      - Number at sentence start;
      - Sentence starting with 'And' or 'But'
      - Several collocation rules;
-     - Articles: article missing before a countable noun;
      - Articles: article missing before a countable noun;
      - Non-standard contractions '(I've a...)';
      - wold vs. would;
