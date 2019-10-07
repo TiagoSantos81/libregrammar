@@ -1,39 +1,37 @@
-**LanguageTool** is an Open Source proofreading software for English, French, German,
-Polish, Russian, and [more than 20 other languages](https://languagetool.org/languages/).
-It finds many errors that a simple spell checker cannot detect.
+This is a **LanguageTool** fork, an Open Source proofreading software for English, French, German,
+Polish, Portuguese, Russian, and [more than 20 other languages](https://languagetool.org/languages/).
 
-* [How to run your own LanguageTool server](http://wiki.languagetool.org/http-server)
-* [HTTP API documentation](https://languagetool.org/http-api/swagger-ui/#!/default/post_check)
-* [How to use our public server via HTTP](http://wiki.languagetool.org/public-http-api)
-* [How to use LanguageTool from Java](http://wiki.languagetool.org/java-api) ([Javadoc](https://languagetool.org/development/api/index.html?org/languagetool/JLanguageTool.html))
+Due to increased hostility related to development divergences, the need for another fork arose. 
+Since late 2017, LanguageTool has had its development constrained by several factors, namely the 
+conflict of interests inherent to the existence of a Freemium sister project and the integration 
+of contributors owning other derivative commercial projects.
 
-For more information, please see our homepage at https://languagetool.org,
-[this README](https://github.com/languagetool-org/languagetool/blob/master/languagetool-standalone/README.md),
-and [CHANGES](https://github.com/languagetool-org/languagetool/blob/master/languagetool-standalone/CHANGES.md).
+This fork intends to be a **pure free and open-source software** 'editor', developed for [end-users](https://en.wikipedia.org/wiki/End_user), so, 
+it enables several rules that were not allowed to be enabled by default in the open-source component, 
+and adds rules that could be disabled on the grounds of being 'too picky' by some elements of the 
+former team.
+
+Future work may also involve rolling back Freemium API bindings, making the add-ons work entirely 
+offline, and replacing n-gram rules by faster and lighter XML or word2vec alternatives that can be 
+shipped with the main package.
+
+Everyone is still welcome to use and comment on this code according to the licencing terms, but feedback 
+will only be considered if it has the end-users best interests in mind.
+
+___
+
+## [README](https://github.com/TiagoSantos81/languagetool/blob/master/languagetool-standalone/README.md)
+
+## [CHANGES](https://github.com/TiagoSantos81/languagetool/blob/master/languagetool-standalone/CHANGES.md).
 
 LanguageTool is freely available under the LGPL 2.1 or later.
 
-## Docker
-
-Try one of the following projects for a community-contributed Docker file:
-
-- https://github.com/silvio/docker-languagetool ([Docker Hub](https://hub.docker.com/r/silviof/docker-languagetool))
-- https://github.com/Erikvl87/docker-languagetool ([Docker Hub](https://hub.docker.com/r/erikvl87/languagetool))
-
-## Contributions
-
-[The development overview](http://wiki.languagetool.org/development-overview) describes
-how you can contribute error detection rules.
-
-See ['easy fix' issues](https://github.com/languagetool-org/languagetool/issues?q=is%3Aopen+is%3Aissue+label%3A%22easy+fix%22)
-for issues to get started.
-
-For more technical details, see [our wiki](http://wiki.languagetool.org).
+___
 
 ## Scripted installation and building
 To install or build using a script, simply type:
 ```
-curl -L https://raw.githubusercontent.com/languagetool-org/languagetool/master/install.sh | sudo bash <options>
+curl -L https://raw.githubusercontent.com/TiagoSantos81/languagetool/master/install.sh | sudo bash <options>
 ```
 
 If you wish to have more options, download the install.sh script. Usage options follow:
@@ -73,7 +71,7 @@ Warning: a complete clone requires downloading more than 360 MB and needs more t
 This can be reduced if you only need the last few revisions of the master branch
 by creating a shallow clone:
 
-    git clone --depth 5 https://github.com/languagetool-org/languagetool.git
+    git clone --depth 5 https://github.com/TiagoSantos81/languagetool.git
 
 A shallow clone downloads less than 60 MB and needs less than 200 MB on disk.
 
@@ -99,4 +97,4 @@ Now you can use the bleeding edge development copy of LanguageTool `*.jar` files
 
 ### License
 
-Unless otherwise noted, this software is distributed under the LGPL, see file [COPYING.txt](https://github.com/languagetool-org/languagetool/blob/master/COPYING.txt).
+Unless otherwise noted, this software is distributed under the LGPL, see file [COPYING.txt](https://github.com/TiagoSantos81/languagetool/blob/master/COPYING.txt).
