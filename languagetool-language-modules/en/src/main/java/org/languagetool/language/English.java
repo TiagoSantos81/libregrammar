@@ -277,10 +277,10 @@ public class English extends Language implements AutoCloseable {
       case "DO_HE_VERB":                return 1;   // prefer over HE_VERB_AGR
       case "LIGATURES":                 return 1;   // prefer over spell checker
       case "APPSTORE":                  return 1;   // prefer over spell checker
-      case "PROFANITY":                 return 5;   // prefer over spell checker
-      case "RUDE_SARCASTIC":            return 6;   // prefer over spell checker
-      case "CHILDISH_LANGUAGE":         return 8;   // prefer over spell checker
-      case "EN_DIACRITICS_REPLACE":     return 9;   // prefer over spell checker
+      case "PROFANITY":                 return -5;  // prefer over spell checker
+      case "RUDE_SARCASTIC":            return -6;  // prefer over spell checker
+      case "CHILDISH_LANGUAGE":         return -8;  // prefer over spell checker
+      case "EN_DIACRITICS_REPLACE":     return -9;  // prefer over spell checker
       case "A_INFINITIVE":              return -1;  // prefer other more specific rules (with suggestions)
       case "PRP_VB":                    return -1;  // prefer other more specific rules (with suggestions)
       case "CD_NN":                     return -1;  // prefer other more specific rules (with suggestions)
