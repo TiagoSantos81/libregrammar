@@ -220,6 +220,7 @@ public class English extends Language implements AutoCloseable {
         new EnglishWrongWordInContextRule(messages),
         new EnglishDashRule(),
         new WordCoherencyRule(messages),
+        new EnglishSimpleGrammarRule(messages),
         new EnglishDiacriticsRule(messages),
         new EnglishPlainEnglishRule(messages),
         new EnglishRedundancyRule(messages),
@@ -297,6 +298,7 @@ public class English extends Language implements AutoCloseable {
       case "SENTENCE_FRAGMENT_SINGLE_WORDS": return -51;  // prefer other more important sentence start corrections.
       case "EN_REDUNDANCY_REPLACE":     return -510;  // style rules should always have the lowest priority.
       case "EN_PLAIN_ENGLISH_REPLACE":  return -511;  // style rules should always have the lowest priority.
+      case "EN_SIMPLE_GRAMMAR_REPLACE": return -600;  // prefer specific rules to this catch-all rule
       case "STYLE_REPEATED_WORD_RULE_EN":  return -900;  // style rules should always have the lowest priority.
       case LongSentenceRule.RULE_ID:    return -997;
       case LongParagraphRule.RULE_ID:   return -998;
