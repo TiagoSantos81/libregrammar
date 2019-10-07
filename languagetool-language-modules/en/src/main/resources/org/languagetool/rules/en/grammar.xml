@@ -33625,7 +33625,7 @@ The accident victim died from her injuries.
                 <token postag_regexp='yes' postag="J.*"/>
                 <token>one</token>
             </pattern>
-            <message>Might <suggestion>\1 \3</suggestion> convey the same?</message>
+            <message>You can make this sentence easier to read. Might <suggestion>\1 \3</suggestion> convey the same?</message>
             <short>Possible wordiness</short>
             <example correction="is easy">This test <marker>is an easy one</marker>.</example>
         </rule>
@@ -33634,7 +33634,7 @@ The accident victim died from her injuries.
             <pattern>
                 <token>abundance</token>
             </pattern>
-            <message>Use <suggestion>enough</suggestion> or <suggestion>plenty</suggestion>, or give specific amount.</message>
+            <message>You can make this sentence easier to read by replacing with <suggestion>enough</suggestion> or <suggestion>plenty</suggestion>, or give specific amount.</message>
             <example correction="enough|plenty">There is an <marker>abundance</marker> of flowers in the meadow.</example>
             <example>The meadow of full of flowers.</example>
         </rule>
@@ -33644,7 +33644,7 @@ The accident victim died from her injuries.
                 <token inflected="yes">accede</token>
                 <token>to</token>
             </pattern>
-            <message>Unless it is a throne that is acceded to, change into <suggestion>allow, agree to or give in to</suggestion>.</message>
+            <message>You can make this sentence easier to read. Unless it is a throne that is acceded to, change into <suggestion>allow, agree to or give in to</suggestion>.</message>
             <example correction="allow, agree to or give in to">He <marker>acceded to</marker> our demands.</example>
             <example>He gave in to our demands.</example>
         </rule>
@@ -33653,7 +33653,7 @@ The accident victim died from her injuries.
             <pattern>
                 <token inflected="yes">accelerate</token>
             </pattern>
-            <message>Technical. Elsewhere replace with <suggestion>speed up</suggestion>.</message>
+            <message>You can make this sentence easier to read. If the technical term is not needed replace with <suggestion>speed up</suggestion>.</message>
             <example correction="speed up">The car <marker>accelerated</marker> from traffic lights</example>
             <example>The car <marker>sped up</marker> from traffic lights</example>
         </rule>
@@ -33662,7 +33662,7 @@ The accident victim died from her injuries.
             <pattern>
                 <token inflected="yes">accentuate</token>
             </pattern>
-            <message>Replace with <suggestion>stress</suggestion> or <suggestion>emphasize</suggestion>.</message>
+            <message>You can make this sentence easier to read by replacing with <suggestion>stress</suggestion> or <suggestion>emphasize</suggestion>.</message>
             <example correction="stress|emphasize">The harsh light <marker>accentuated</marker> the ruggedness of the landscape.</example>
             <example>The harsh light <marker>emphasized</marker> the ruggedness of the landscape.</example>
         </rule>
@@ -33671,7 +33671,7 @@ The accident victim died from her injuries.
             <pattern>
                 <token inflected="yes">accommodation</token>
             </pattern>
-            <message><suggestion>room</suggestion>.</message>
+            <message>You can make this sentence easier to read. <suggestion>room</suggestion>.</message>
             <example correction="Room"><marker>Accommodation</marker> available.</example>
             <example><marker>Room</marker> available.</example>
         </rule>
@@ -33680,7 +33680,7 @@ The accident victim died from her injuries.
             <pattern>
                 <token inflected="yes">accompany</token>
             </pattern>
-            <message>If not in musical context, use <suggestion>go with</suggestion> or <suggestion>with</suggestion>.</message>
+            <message>You can make this sentence easier to read. If not in musical context, use <suggestion>go with</suggestion> or <suggestion>with</suggestion>.</message>
             <example correction="go with|with">You need to <marker>accompany</marker> him.</example>
             <example>You need to <marker>go with</marker> him.</example>
         </rule>
@@ -33689,7 +33689,7 @@ The accident victim died from her injuries.
             <pattern>
                 <token postag="[^J][^J]" postag_regexp="yes" inflected="yes">accomplish</token>
             </pattern>
-            <message>Try one of: <suggestion>do</suggestion> or <suggestion>achieve</suggestion> or <suggestion>finish</suggestion>.</message>
+            <message>You can make this sentence easier to read by replacing with <suggestion>do</suggestion> or <suggestion>achieve</suggestion> or <suggestion>finish</suggestion>.</message>
             <example correction="Do|Achieve|Finish"><marker>Accomplish</marker> your work!</example>
             <!-- <example correction="done">This work is <marker>accomplished</marker>.</example> -->
             <example>He is an accomplished musician.</example>
@@ -33702,7 +33702,7 @@ The accident victim died from her injuries.
             <pattern>
                 <token postag="V.*" postag_regexp="yes" inflected="yes">accrue</token>
             </pattern>
-            <message>Use <suggestion>add</suggestion> or <suggestion>gain</suggestion>.</message>
+            <message>You can make this sentence easier to read by replacing with <suggestion>add</suggestion> or <suggestion>gain</suggestion>.</message>
             <example correction="add|gain">The deposit <marker>accrued</marker> interest.</example>
             <example>The deposit gained interest.</example>
         </rule>
@@ -33711,7 +33711,7 @@ The accident victim died from her injuries.
             <pattern>
                 <token>accurate</token>
             </pattern>
-            <message>If it is not about aiming, use <suggestion>right</suggestion>; also <suggestion>detailed</suggestion> or <suggestion>correct</suggestion>.</message>
+            <message>You can make this sentence easier to read. If it is not about aiming, use <suggestion>right</suggestion>; also <suggestion>detailed</suggestion> or <suggestion>correct</suggestion>.</message>
             <example correction="right|detailed|correct">We need <marker>accurate</marker> information.</example>
             <example>We need right and detailed information.</example>
         </rule>
@@ -33723,7 +33723,7 @@ The accident victim died from her injuries.
             <pattern>
                 <token postag="V.*" postag_regexp="yes" inflected="yes">acquire</token>
             </pattern>
-            <message>A simple <suggestion>get</suggestion> is enough most of the time, sometimes <suggestion>develop</suggestion>.</message>
+            <message>You can make this sentence easier to read. A simple <suggestion>get</suggestion> is enough most of the time, sometimes <suggestion>develop</suggestion>.</message>
             <example correction="get|develop">He <marker>acquired</marker> all the tools he needed.</example>
             <example>He <marker>got</marker> all the tools he needed.</example>
         </rule>
@@ -33751,7 +33751,7 @@ The accident victim died from her injuries.
                 <token>considered</token>
                 <token>,</token>
             </pattern>
-            <message>Remove as unnecessary.</message>
+            <message>You can make this sentence easier to read. Remove as unnecessary.</message>
             <url>http://grammar.ccc.commnet.edu/grammar/concise.htm</url>
             <example correction=""><marker>All things considered,</marker> Connecticut's woodlands are in better shape now than ever before.</example>
             <example><marker/>Connecticut's woodlands are in better shape now than ever before.</example>
@@ -33766,7 +33766,7 @@ The accident victim died from her injuries.
                 <token>lines</token>
                 <token>of</token>
             </pattern>
-            <message>Did you mean <suggestion>like</suggestion>?</message>
+            <message>You can make this sentence easier to read by replacing with <suggestion>like</suggestion>.</message>
             <example correction="like">I think my point is very much <marker>along the lines of</marker> his.</example>
             <example>I think my point is very much <marker>like</marker> his.</example>
         </rule>
@@ -33796,7 +33796,7 @@ The accident victim died from her injuries.
                 <token>of</token>
                 <token>fact</token>
             </pattern>
-            <message>Replace with less wordy <suggestion>in fact</suggestion> or <suggestion>actually</suggestion>, or remove completely.</message>
+            <message>You can make this sentence easier to read by replacing with less wordy <suggestion>in fact</suggestion> or <suggestion>actually</suggestion>, or remove completely.</message>
             <example correction="In fact|Actually"><marker>As a matter of fact</marker>, dry-bulb temperature indicates the amount of heat in the air.</example>
             <example>Actually, dry-bulb temperature indicates the amount of heat in the air.</example>
         </rule>
@@ -33810,7 +33810,7 @@ The accident victim died from her injuries.
                 <token>as</token>
                 <token>per</token>
             </pattern>
-            <message>Business jargon meaning <suggestion>in accordance with</suggestion>. Replace with <suggestion>as</suggestion> or modify the sentence.</message>
+            <message>You can make this sentence easier to read. Business jargon meaning <suggestion>in accordance with</suggestion>. Replace with <suggestion>as</suggestion> or modify the sentence.</message>
             <url>https://grammarist.com/usage/as-per/</url>
             <example correction="In accordance with|As"><marker>As per</marker> usual, he came late to work.</example>
             <example><marker>As</marker> usual, he came late to work.</example>
@@ -33832,7 +33832,7 @@ The accident victim died from her injuries.
         <!-- <token>concerned</token> -->
         <!-- <token min="0">,</token> -->
         <!-- </pattern> -->
-        <!-- <message>Remove as unnecessary.</message> -->
+        <!-- <message>You can make this sentence easier to read. Remove as unnecessary.</message> -->
         <!-- <url>http://grammar.ccc.commnet.edu/grammar/concise.htm</url> -->
         <!-- <example correction=""><marker>As far as I am concerned,</marker> there is no need for further protection of woodlands.</example> -->
         <!-- <example>There is no need for further protection of woodlands.</example> -->
@@ -33848,7 +33848,7 @@ The accident victim died from her injuries.
         <!-- <token min="0">of</token> -->
         <!-- <token>yet</token> -->
         <!-- </pattern> -->
-        <!-- <message>Wordy. Consider <suggestion>yet</suggestion>, <suggestion>still</suggestion>, or <suggestion>so far</suggestion>.</message> -->
+        <!-- <message>You can make this sentence easier to read. Wordy. Consider <suggestion>yet</suggestion>, <suggestion>still</suggestion>, or <suggestion>so far</suggestion>.</message> -->
         <!-- <url>https://grammarist.com/usage/as-yet-as-of-yet/</url> -->
         <!-- <example correction="yet">The place was sold for an <marker>as of yet</marker> unknown sum.</example> -->
         <!-- <example>The place was sold for a <marker>still</marker> unknown sum.</example> -->
@@ -33859,7 +33859,7 @@ The accident victim died from her injuries.
             <pattern>
                 <token inflected="yes" regexp="yes">assist|assistance</token>
             </pattern>
-            <message>Did you mean simpler <suggestion>help</suggestion>?</message>
+            <message>You can make this sentence easier to read by replacing with simpler <suggestion>help</suggestion>.</message>
             <example correction="help">Do you need any <marker>assistance</marker>?</example>
             <example>Do you need any <marker>help</marker>?</example>
             <example correction="help">May I <marker>assist</marker> you?</example>
@@ -33873,7 +33873,7 @@ The accident victim died from her injuries.
                 <token>all</token>
                 <token>times</token>
             </pattern>
-            <message>Simply, <suggestion>always</suggestion>. Pay attention to place in the sentence.</message>
+            <message>You can make this sentence easier to read. Simply, <suggestion>always</suggestion>. Pay attention to place in the sentence.</message>
             <example correction="always">Kingfisher can be found near water <marker>at all times</marker></example>
             <example>Kingfisher can always be found near water.</example>
         </rule>
@@ -33891,7 +33891,7 @@ The accident victim died from her injuries.
                     <token>present</token>
                     <token>time</token>
                 </pattern>
-                <message>Use <suggestion>now</suggestion>, <suggestion>for now</suggestion>, or if you really must, <suggestion>currently</suggestion></message>
+                <message>You can make this sentence easier to read by replacing with <suggestion>now</suggestion>, <suggestion>for now</suggestion>, or if you really must, <suggestion>currently</suggestion></message>
                 <example correction="Now|For now|Currently"><marker>At the present time</marker>, this Wiki is experimental.</example>
                 <example><marker>For now</marker>, this Wiki is experimental.</example>
             </rule>
@@ -33901,7 +33901,7 @@ The accident victim died from her injuries.
                     <token>this</token>
                     <token>time</token>
                 </pattern>
-                <message>Use "now", or if you really must "currently". Sometimes a specific time is meant and "then" is better.</message>
+                <message>You can make this sentence easier to read by replacing with "now", or if you really must "currently". Sometimes a specific time is meant and "then" is better.</message>
                 <example correction=""><marker>At this time</marker>, Churchill was serving as Chancellor of the Exchequer</example>
                 <example>Churchill was then serving as Chancellor of the Exchequer</example>
             </rule>
@@ -33913,7 +33913,7 @@ The accident victim died from her injuries.
                     <token>in</token>
                     <token>time</token>
                 </pattern>
-                <message>Use <suggestion>now</suggestion>, or if you really must <suggestion>currently</suggestion></message>
+                <message>You can make this sentence easier to read by replacing with <suggestion>now</suggestion>, or if you really must <suggestion>currently</suggestion></message>
                 <example correction="now|currently">This document has no formal standing <marker>at this point in time</marker>.</example>
                 <example>This document has no formal standing now.</example>
             </rule>
@@ -33923,7 +33923,7 @@ The accident victim died from her injuries.
                     <token>the</token>
                     <token>moment</token>
                 </pattern>
-                <message>Use <suggestion>now</suggestion>, or if you really must <suggestion>currently</suggestion></message>
+                <message>You can make this sentence easier to read by replacing with <suggestion>now</suggestion>, or if you really must <suggestion>currently</suggestion></message>
                 <example correction="Now|Currently"><marker>At the moment</marker>, I am taking a leave of absence from my work.</example>
                 <example><marker>Now</marker>, I am taking a leave of absence from my work.</example>
             </rule>
@@ -33938,7 +33938,7 @@ The accident victim died from her injuries.
                 <token>earliest</token>
                 <token>convenience</token>
             </pattern>
-            <message>Overly formal. Did you mean <suggestion>as soon as you can</suggestion>?</message>
+            <message>You can make this sentence easier to read. Overly formal. Did you mean <suggestion>as soon as you can</suggestion>?</message>
             <example correction="as soon as you can">Please come <marker>at your earliest convenience</marker>.</example>
             <example>Please come <marker>as soon as you can</marker>.</example>
         </rule>
@@ -33956,7 +33956,7 @@ The accident victim died from her injuries.
                 <token/>
                 <token>basis</token>
             </pattern>
-            <message>Replace with the proper adverbial form of <suggestion>\3ly</suggestion>.</message>
+            <message>You can make this sentence easier to read by replacing with the proper adverbial form of <suggestion>\3ly</suggestion>.</message>
             <url>https://grammarist.com/usage/basis/</url>
             <example correction="regularly">We have been coming here <marker>on a regular basis</marker> for years.</example>
             <example>We have been coming here <marker>regularly</marker> for years.</example>
@@ -33970,7 +33970,7 @@ The accident victim died from her injuries.
                 <token postag="VB.?" postag_regexp="yes" inflected="yes">be</token>
                 <token>advised</token>
             </pattern>
-            <message>Remove wordy "\1 \2"</message>
+            <message>You can make this sentence easier to read. Remove wordy "\1 \2"</message>
             <example correction="">You <marker>are advised</marker> look after your belongings.</example>
             <example>Look after your belongings.</example>
         </rule>
@@ -33988,7 +33988,7 @@ The accident victim died from her injuries.
                 <token>fact</token>
                 <token>that</token>
             </pattern>
-            <message>Remove wordy "\1 \2 \3 \4 \5"</message>
+            <message>You can make this sentence easier to read. Remove wordy "\1 \2 \3 \4 \5"</message>
             <suggestion>because</suggestion>
             <url>https://brians.wsu.edu/2016/05/25/due-to-the-fact-that/</url>
             <short>Wordy phrase</short>
@@ -34004,7 +34004,7 @@ The accident victim died from her injuries.
                     <token>attributable</token>
                     <token>to</token>
                 </pattern>
-                <message>Did you mean <suggestion>because of</suggestion>?</message>
+                <message>You can make this sentence easier to read by replacing with <suggestion>because of</suggestion>.</message>
                 <example correction="because of">His lack of conversation is <marker>attributable to</marker> his shyness.</example>
                 <example>His lack of conversation is <marker>because of</marker> his shyness.</example>
             </rule>
@@ -34017,7 +34017,7 @@ The accident victim died from her injuries.
             <!-- <token>fact</token> -->
             <!-- <token>that</token> -->
             <!-- </pattern> -->
-            <!-- <message>Did you mean <suggestion>because</suggestion> or <suggestion>since</suggestion>?</message> -->
+            <!-- <message>You can make this sentence easier to read by replacing with <suggestion>because</suggestion> or <suggestion>since</suggestion>.</message> -->
             <!-- <example correction="because|since">Snape disliked them. This could be <marker>because of the fact that</marker> the Weasley twins were trouble-makers.</example> -->
             <!-- <example>Snape disliked them. This could be <marker>because</marker> the Weasley twins were trouble-makers.</example> -->
             <!-- </rule> -->
@@ -34030,7 +34030,7 @@ The accident victim died from her injuries.
                     <token>fact</token>
                     <token>that</token>
                 </pattern>
-                <message>Did you mean <suggestion>because</suggestion> or <suggestion>since</suggestion>?</message>
+                <message>You can make this sentence easier to read by replacing with <suggestion>because</suggestion> or <suggestion>since</suggestion>.</message>
                 <example correction="because|since">Nader had to cancel his planned invasion <marker>in light of the fact that</marker> the Abdali Afghans had rebelled and invaded Khorasan.</example>
                 <example>Nader had to cancel his planned invasion <marker>because</marker> the Abdali Afghans had rebelled and invaded Khorasan.</example>
             </rule>
@@ -34046,7 +34046,7 @@ The accident victim died from her injuries.
                     <token>reason</token>
                     <token>of</token>
                 </pattern>
-                <message>Legal term "by reason of insanity" is influencing the use. Did you mean <suggestion>because of</suggestion>?</message>
+                <message>You can make this sentence easier to read. Legal term "by reason of insanity" is influencing the use. Did you mean <suggestion>because of</suggestion>?</message>
                 <example correction="because of">A national emergency exists <marker>by reason of</marker> the terrorist attacks.</example>
                 <example>A national emergency exists <marker>because of</marker> the terrorist attacks.</example>
             </rule>
@@ -34058,7 +34058,7 @@ The accident victim died from her injuries.
                     <token>fact</token>
                     <token>that</token>
                 </pattern>
-                <message>Did you mean <suggestion>because</suggestion>?</message>
+                <message>You can make this sentence easier to read by replacing with <suggestion>because</suggestion>.</message>
                 <example correction="because">These two syndromes are usually referred to under one name, Wernicke–Korsakoff syndrome, <marker>due to the fact that</marker> they are part of the same etiology.</example>
                 <example>These two syndromes are usually referred to under one name, Wernicke–Korsakoff syndrome, <marker>because</marker> they are part of the same etiology.</example>
             </rule>
@@ -34070,7 +34070,7 @@ The accident victim died from her injuries.
                     <token>fact</token>
                     <token>that</token>
                 </pattern>
-                <message>Did you mean <suggestion>because</suggestion>?</message>
+                <message>You can make this sentence easier to read by replacing with <suggestion>because</suggestion>.</message>
                 <example correction="because">The Stoors also had their own dialect of Hobbitish, <marker>owing to the fact that</marker> they spent some time in Dunland.</example>
                 <example>The Stoors also had their own dialect of Hobbitish, <marker>because</marker> they spent some time in Dunland.</example>
             </rule>
@@ -34083,7 +34083,7 @@ The accident victim died from her injuries.
             <!-- <token>is</token> -->
             <!-- <token>because</token> -->
             <!-- </pattern> -->
-            <!-- <message>Did you mean <suggestion>because</suggestion>?</message> -->
+            <!-- <message>You can make this sentence easier to read by replacing with <suggestion>because</suggestion>.</message> -->
             <!-- <example type="incorrect"><marker>The reason</marker> there’s a hole in the screen door is because I tripped over the cat on my way out.</example> -->
             <!-- <example>There’s a hole in the screen door because I tripped over the cat on my way out.</example> -->
             <!-- </rule> -->
@@ -34098,7 +34098,7 @@ The accident victim died from her injuries.
             <pattern>
                 <token>belated</token>
             </pattern>
-            <message>Outdated. Did you mean <suggestion>late</suggestion>?</message>
+            <message>You can make this sentence easier to read. Outdated. Did you mean <suggestion>late</suggestion>?</message>
             <example correction="late">They are on a <marker>belated</marker> honeymoon.</example>
             <example>They are on a <marker>late</marker> honeymoon.</example>
         </rule>
@@ -34113,7 +34113,7 @@ The accident victim died from her injuries.
                 <token>means</token>
                 <token>of</token>
             </pattern>
-            <message>Did you mean <suggestion>by</suggestion>, <suggestion>with</suggestion> or <suggestion>through</suggestion>?</message>
+            <message>You can make this sentence easier to read by replacing with <suggestion>by</suggestion>, <suggestion>with</suggestion> or <suggestion>through</suggestion>.</message>
             <url>http://grammar.ccc.commnet.edu/grammar/concise.htm</url>
             <example correction="by|with|through">Major forest areas are coming back <marker>by means of</marker> natural processes.</example>
             <example>Major forest areas are coming back <marker>through</marker> natural processes.</example>
@@ -34133,7 +34133,7 @@ The accident victim died from her injuries.
             <pattern>
                 <token regexp="yes">clearly|obviously|doubtlessly</token>
             </pattern>
-            <message>Something that is clear to you is not always clear to the reader. Remove "\1" unless it is necessary.</message>
+            <message>You can make this sentence easier to read. Something that is clear to you is not always clear to the reader. Remove "\1" unless it is necessary.</message>
             <url>https://cgi.duke.edu/web/sciwriting/index.php?action=lesson3</url>
             <short>Possibly demeaning adverb</short>
             <example correction=""><marker>Obviously</marker>, this is important.</example>
@@ -34165,7 +34165,7 @@ The accident victim died from her injuries.
             <pattern>
                 <token>currently</token>
             </pattern>
-            <message>Omit or replace with <suggestion>now</suggestion></message>
+            <message>You can make this sentence easier to read. Omit or replace with <suggestion>now</suggestion></message>
             <example correction="now">I am <marker>currently</marker> employed.</example>
             <example>I am now employed.</example>
         </rule>
@@ -34195,7 +34195,7 @@ The accident victim died from her injuries.
                 <token>every</token>
                 <token postag="N.*" postag_regexp="yes"/>
             </pattern>
-            <message>Replace with <suggestion>\3 \4</suggestion></message>
+            <message>You can make this sentence easier to read by replacing with <suggestion>\3 \4</suggestion></message>
             <example correction="every door">You better check <marker>each and every door</marker>.</example>
             <example>You better check <marker>every door</marker>.</example>
         </rule>
@@ -34258,7 +34258,7 @@ The accident victim died from her injuries.
                 <token>purposes</token>
                 <!-- <token min="0">,</token> -->
             </pattern>
-            <message>See if you could remove this phrase.</message>
+            <message>You can make this sentence easier to read. See if you can remove this phrase.</message>
             <url>http://grammar.ccc.commnet.edu/grammar/concise.htm</url>
             <example correction="">The era in which we must aggressively defend our woodlands has, <marker>for all intents and purposes</marker>, passed.</example>
             <example>The era in which we must aggressively defend our woodlands has<marker/> passed.</example>
@@ -34274,7 +34274,7 @@ The accident victim died from her injuries.
                 <token>part</token>
                 <!-- <token min="0">,</token> xxx-->
             </pattern>
-            <message>See if you could remove this phrase.</message>
+            <message>You can make this sentence easier to read. See if you can remove this phrase.</message>
             <url>http://grammar.ccc.commnet.edu/grammar/concise.htm</url>
             <example correction=""><marker>For the most part</marker> people's suspicions are based on a misunderstanding of the facts.</example>
             <example><marker/>People's suspicions are based on a misunderstanding of the facts.</example>
@@ -34289,7 +34289,7 @@ The accident victim died from her injuries.
                 <token>purpose</token>
                 <token>of</token>
             </pattern>
-            <message>Did you mean <suggestion>to</suggestion> or <suggestion>for</suggestion>?</message>
+            <message>You can make this sentence easier to read by replacing with <suggestion>to</suggestion> or <suggestion>for</suggestion>.</message>
             <url>https://grammarist.com/usage/for-the-purpose-of/</url>
             <example correction="to|for">Commercial shows are one-off projects put on <marker>for the purpose of</marker> making money.</example>
             <example>Commercial shows are one-off projects put on <marker>to</marker> make money.</example>
@@ -34312,7 +34312,7 @@ The accident victim died from her injuries.
                 <token>ability</token>
                 <token>to</token>
             </pattern>
-            <message>Did you mean <suggestion>can</suggestion>?</message>
+            <message>You can make this sentence easier to read by replacing with <suggestion>can</suggestion>.</message>
             <example correction="can">The toddle <marker>has the ability to</marker> walk.</example>
             <example>The toddle <marker>can</marker> walk.</example>
         </rule>
@@ -34324,7 +34324,7 @@ The accident victim died from her injuries.
                 <token>a</token>
                 <token>tendency</token>
             </pattern>
-            <message>Did you mean <suggestion>tends</suggestion>?</message>
+            <message>You can make this sentence easier to read by replacing with <suggestion>tends</suggestion>.</message>
             <example correction="tends">This policy <marker>has a tendency</marker> to isolate some communities.</example>
             <example>This policy <marker>tends</marker> to isolate some communities.</example>
         </rule>
@@ -34358,7 +34358,7 @@ The accident victim died from her injuries.
                 <token>speaking</token>
                 <!-- <token min="0">,</token> xxx-->
             </pattern>
-            <message>See if you could remove this phrase.</message>
+            <message>You can make this sentence easier to read. See if you can remove this phrase.</message>
             <url>http://grammar.ccc.commnet.edu/grammar/concise.htm</url>
             <example correction="">The policy has, <marker>in a manner of speaking</marker>, begun to Balkanize the more rural parts of our state.</example>
             <example>The policy has<marker/> begun to Balkanize the more rural parts of our state.</example>
@@ -34377,7 +34377,7 @@ The accident victim died from her injuries.
                 <token>sense</token>
                 <!-- <token min="0">,</token> xxx-->
             </pattern>
-            <message>See if you could remove this phrase.</message>
+            <message>You can make this sentence easier to read. See if you can remove this phrase.</message>
             <url>http://grammar.ccc.commnet.edu/grammar/concise.htm</url>
             <example correction=""><marker>In a very real sense</marker>, this policy works to the detriment of those it is supposed to help.</example>
             <example><marker/>This policy works to the detriment of those it is supposed to help.</example>
@@ -34398,7 +34398,7 @@ The accident victim died from her injuries.
                 <token>excess</token>
                 <token>of</token>
             </pattern>
-            <message>Better with <suggestion>more than</suggestion>, <suggestion>over</suggestion>, or <suggestion>exceeding</suggestion></message>
+            <message>You can make this sentence easier to read. Better with <suggestion>more than</suggestion>, <suggestion>over</suggestion>, or <suggestion>exceeding</suggestion></message>
             <url>https://grammarist.com/usage/in-excess-of/</url>
             <example correction="more than|over|exceeding">Her three albums have sold <marker>in excess of</marker> 17 million copies worldwide</example>
             <example>Her three albums have sold <marker>more than</marker> 17 million copies worldwide</example>
@@ -34420,7 +34420,7 @@ The accident victim died from her injuries.
                 <token>opinion</token>
                 <!-- <token min="0">,</token> xxx-->
             </pattern>
-            <message>See if you could remove this phrase.</message>
+            <message>You can make this sentence easier to read. See if you can remove this phrase.</message>
             <url>http://grammar.ccc.commnet.edu/grammar/concise.htm</url>
             <example correction=""><marker>In my opinion</marker>, this wasteful policy ought to be revoked.</example>
             <example><marker/>This wasteful policy ought to be revoked.</example>
@@ -34436,7 +34436,7 @@ The accident victim died from her injuries.
         <!-- <token>order</token> -->
         <!-- <token>to</token> -->
         <!-- </pattern> -->
-        <!-- <message>Did you mean <suggestion>to</suggestion>?</message> -->
+        <!-- <message>You can make this sentence easier to read by replacing with <suggestion>to</suggestion>.</message> -->
         <!-- <example correction="to">She stood <marker>in order to</marker> see over the crowd.</example> -->
         <!-- <example>She stood <marker>to</marker> see over the crowd.</example> -->
         <!-- </rule> -->
@@ -34460,7 +34460,7 @@ The accident victim died from her injuries.
                 <token>term</token>
                 <token>of</token>
             </pattern>
-            <message>The phrase is always written <suggestion>in terms of</suggestion>.</message>
+            <message>You can make this sentence easier to read. The phrase is always written <suggestion>in terms of</suggestion>.</message>
             <url>http://xaivierchia.blogspot.com/2011/02/common-mistakes-in-terms-of-vs-in-term.html</url>
             <example correction="in terms of">Femininity is still defined <marker>in term of</marker> beauty.</example>
             <example>Femininity is still defined in terms of beauty.</example>
@@ -34473,7 +34473,7 @@ The accident victim died from her injuries.
                 <token>terms</token>
                 <token>of</token>
             </pattern>
-            <message>Change to <suggestion>in</suggestion> or <suggestion>for</suggestion>.</message>
+            <message>You can make this sentence easier to read. Change to <suggestion>in</suggestion> or <suggestion>for</suggestion>.</message>
             <url>https://www.e-education.psu.edu/styleforstudents/c3_p35.html</url>
             <example correction="in|for">Disclaimers vary <marker>in terms of</marker> their uniformity.</example>
             <example>Disclaimers vary <marker>in</marker> their uniformity.</example>
@@ -34491,7 +34491,7 @@ The accident victim died from her injuries.
                     <token>fact</token>
                     <token>that</token>
                 </pattern>
-                <message>Did you mean <suggestion>although</suggestion>, <suggestion>even though</suggestion> or <suggestion>though</suggestion>?</message>
+                <message>You can make this sentence easier to read by replacing with <suggestion>although</suggestion>, <suggestion>even though</suggestion> or <suggestion>though</suggestion>.</message>
                 <example correction="although|even though|though">He still loves her <marker>despite the fact that</marker> she cheated on him.</example>
                 <example>He still loves her <marker>even though</marker> she cheated on him.</example>
             </rule>
@@ -34505,7 +34505,7 @@ The accident victim died from her injuries.
                     <token>fact</token>
                     <token>that</token>
                 </pattern>
-                <message>Did you mean <suggestion>although</suggestion>, <suggestion>even though</suggestion> or <suggestion>though</suggestion>?</message>
+                <message>You can make this sentence easier to read by replacing with <suggestion>although</suggestion>, <suggestion>even though</suggestion> or <suggestion>though</suggestion>.</message>
                 <example correction="although|even though|though">He still loves her <marker>in spite of the fact that</marker> she cheated on him.</example>
                 <example>He still loves her <marker>even though</marker> she cheated on him.</example>
             </rule>
@@ -34519,7 +34519,7 @@ The accident victim died from her injuries.
                 <token>the</token>
                 <token>affirmative</token>
             </pattern>
-            <message>Change to <suggestion>yes</suggestion> or <suggestion>affirmatively</suggestion>.</message>
+            <message>You can make this sentence easier to read. Change to <suggestion>yes</suggestion> or <suggestion>affirmatively</suggestion>.</message>
             <url>https://grammarist.com/usage/in-the-affirmative/</url>
             <example correction="yes|affirmatively">The poll asked average Israelis if they support such a program, and 82 percent responded <marker>in the affirmative</marker>.</example>
             <example>The poll asked average Israelis if they support such a program, and 82 percent responded <marker>yes</marker>.</example>
@@ -34538,7 +34538,7 @@ The accident victim died from her injuries.
                 <token>of</token>
                 <!-- <token min="0">,</token> -->
             </pattern>
-            <message>Change to <suggestion>about</suggestion> or <suggestion>to</suggestion> and change the word order of the sentence.</message>
+            <message>You can make this sentence easier to read. Change to <suggestion>about</suggestion> or <suggestion>to</suggestion> and change the word order of the sentence.</message>
             <url>http://grammar.ccc.commnet.edu/grammar/concise.htm</url>
             <example correction="About|To"><marker>In the case of</marker> this particular policy, citizens of northeast Connecticut became very upset.</example>
             <example>Citizens of northeast Connecticut became very upset <marker>about</marker> this particular policy.</example>
@@ -34556,7 +34556,7 @@ The accident victim died from her injuries.
                 <token>event</token>
                 <token regexp="yes">of|that</token>
             </pattern>
-            <message>Did you mean <suggestion>if</suggestion> or <suggestion>in case of</suggestion>?</message>
+            <message>You can make this sentence easier to read by replacing with <suggestion>if</suggestion> or <suggestion>in case of</suggestion>.</message>
             <example correction="If|In case of"><marker>In the event that</marker> I can't come back by seven, you can eat without me.</example>
             <example><marker>If</marker> I can't come back by seven, you can eat without me.</example>
 
@@ -34573,7 +34573,7 @@ The accident victim died from her injuries.
                 <token regexp="yes">final|last|ultimate</token>
                 <token>analysis</token>
             </pattern>
-            <message>Did you mean <suggestion>finally</suggestion> or <suggestion>in conclusion</suggestion>? You could remove the phase, too.</message>
+            <message>You can make this sentence easier to read by replacing with <suggestion>finally</suggestion> or <suggestion>in conclusion</suggestion>. You could remove the phase, too.</message>
             <example correction="Finally|In conclusion"><marker>In the final analysis</marker>, it is their war.</example>
             <example><marker>Finally</marker>, it is their war.</example>
             <example correction="Finally|In conclusion"><marker>In the ultimate analysis</marker>, only the jury can strip a man of his liberty or his life.</example>
@@ -34588,7 +34588,7 @@ The accident victim died from her injuries.
                 <token>nature</token>
                 <token>of</token>
             </pattern>
-            <message>Did you mean <suggestion>like</suggestion>?</message>
+            <message>You can make this sentence easier to read by replacing with <suggestion>like</suggestion>.</message>
             <url>http://grammar.ccc.commnet.edu/grammar/concise.htm</url>
             <example correction="like">Something <marker>in the nature of</marker> a repeal may soon take place.</example>
             <example>Something <marker>like</marker> a repeal may soon take place.</example>
@@ -34604,7 +34604,7 @@ The accident victim died from her injuries.
                 <token>neighborhood</token>
                 <token>of</token>
             </pattern>
-            <message>Can be used as <suggestion>almost</suggestion>, <suggestion>approximately</suggestion>, <suggestion>more or less</suggestion>, <suggestion>around</suggestion>. Often <suggestion>about</suggestion>.</message>
+            <message>You can make this sentence easier to read. Can be used as <suggestion>almost</suggestion>, <suggestion>approximately</suggestion>, <suggestion>more or less</suggestion>, <suggestion>around</suggestion>. Often <suggestion>about</suggestion>.</message>
             <example correction="almost|approximately|more or less|around|about">They searched for the keys <marker>in the neighborhood of</marker> the playground.</example>
             <example>They searched for the keys <marker>around</marker> the playground.</example>
             <example correction="almost|approximately|more or less|around|about">Residents planted 1200 trees in one day <marker>in the neighborhood of</marker> Ballard.</example>
@@ -34620,7 +34620,7 @@ The accident victim died from her injuries.
                 <token>process</token>
                 <token>of</token>
             </pattern>
-            <message>Possibly empty phrase "\1 \2 \3 \4" when it means "currently".</message>
+            <message>You can make this sentence easier to read. Possibly empty phrase "\1 \2 \3 \4" when it means "currently".</message>
             <url>https://grammarist.com/usage/in-the-process-of/</url>
             <example correction="">The work is <marker>in the process of</marker> getting done.</example>
             <example>The work is getting done.</example>
@@ -34648,7 +34648,7 @@ The accident victim died from her injuries.
                 <token regexp="yes">seems|appears</token>
                 <token>that</token>
             </pattern>
-            <message>Possibly empty phrase "\1 \2 \3"</message>
+            <message>You can make this sentence easier to read. Possibly empty phrase "\1 \2 \3"</message>
             <url>http://grammar.ccc.commnet.edu/grammar/concise.htm</url>
             <example correction=""><marker>It seems that</marker> they can't wait to get rid of this one.</example>
             <example><marker/>They can't wait to get rid of this one.</example>
@@ -34667,7 +34667,7 @@ The accident victim died from her injuries.
                 <!-- <token min="0">the</token> -->
                 <token>majority</token>
             </pattern>
-            <message>Majority in the sense of "more than half" is used with countable nouns only (esp. when voting); for uncountable nouns, use <suggestion>most</suggestion> or <suggestion>usually</suggestion>.</message>
+            <message>You can make this sentence easier to read. Majority in the sense of "more than half" is used with countable nouns only (esp. when voting); for uncountable nouns, use <suggestion>most</suggestion> or <suggestion>usually</suggestion>.</message>
             <example correction="Most|Usually"><marker>Majority</marker> of the world is covered with water.</example>
             <example><marker>Most</marker> of the world is covered with water.</example>
         </rule>
@@ -34681,7 +34681,7 @@ The accident victim died from her injuries.
                 <token inflected="yes">decision</token>
                 <token>about</token>
             </pattern>
-            <message>Did you mean <suggestion>decide on</suggestion>?</message>
+            <message>You can make this sentence easier to read by replacing with <suggestion>decide on</suggestion>.</message>
             <example correction="decide on">The school board will <marker>make decision about</marker> the first day of school.</example>
             <example>The school board will <marker>decide on</marker> the first day of school.</example>
         </rule>
@@ -34693,7 +34693,7 @@ The accident victim died from her injuries.
                 <token regexp="yes">an?</token>
                 <token regexp="yes">attempt|effort|try</token>
             </pattern>
-            <message>Can you write <suggestion><match no="1" postag_regexp="yes" postag="(VB.*)" postag_replace="$1">try</match></suggestion> and still be correct?</message>
+            <message>You can make this sentence easier to read. Can you write <suggestion><match no="1" postag_regexp="yes" postag="(VB.*)" postag_replace="$1">try</match></suggestion> and still be correct?</message>
             <short>Possible wordiness</short>
             <example correction="try">We should <marker>make an effort</marker> to win.</example>
             <example>We should <marker>try</marker> to win.</example>
@@ -34726,7 +34726,7 @@ The accident victim died from her injuries.
                 <token>not</token>
                 <token>able</token>
             </pattern>
-            <message>Avoid using "not". Did you mean <suggestion>unable</suggestion>?</message>
+            <message>You can make this sentence easier to read. Avoid using "not". Did you mean <suggestion>unable</suggestion>?</message>
             <example correction="unable">He was <marker>not able</marker> to join the meeting.</example>
             <example>He was <marker>unable</marker> to join the meeting.</example>
         </rule>
@@ -34737,7 +34737,7 @@ The accident victim died from her injuries.
                 <token>not</token>
                 <token inflected="yes">accept</token>
             </pattern>
-            <message>Avoid using "not". Did you mean <suggestion>reject</suggestion>?</message>
+            <message>You can make this sentence easier to read. Avoid using "not". Did you mean <suggestion>reject</suggestion>?</message>
             <example correction="reject">He does <marker>not accept</marker> the proposal.</example>
             <example>He <marker>rejects</marker> the proposal.</example>
         </rule>
@@ -34748,7 +34748,7 @@ The accident victim died from her injuries.
                 <token>not</token>
                 <token>certain</token>
             </pattern>
-            <message>Avoid using "not". Did you mean <suggestion>uncertain</suggestion>?</message>
+            <message>You can make this sentence easier to read. Avoid using "not". Did you mean <suggestion>uncertain</suggestion>?</message>
             <example correction="uncertain">Future is <marker>not certain</marker>.</example>
             <example>Future is <marker>uncertain</marker>.</example>
         </rule>
@@ -34759,7 +34759,7 @@ The accident victim died from her injuries.
                 <token>not</token>
                 <token>unlike</token>
             </pattern>
-            <message>Avoid using "not". Did you mean <suggestion>similar</suggestion> or <suggestion>alike</suggestion>?</message>
+            <message>You can make this sentence easier to read. Avoid using "not". Did you mean <suggestion>similar</suggestion> or <suggestion>alike</suggestion>?</message>
             <example correction="similar|alike">Sisters were <marker>not unlike</marker>.</example>
             <example>Sisters were <marker>alike</marker>.</example>
         </rule>
@@ -34771,7 +34771,7 @@ The accident victim died from her injuries.
                 <token>not</token>
                 <token>many</token>
             </pattern>
-            <message>Avoid using "not". Did you mean <suggestion>few</suggestion>?</message>
+            <message>You can make this sentence easier to read. Avoid using "not". Did you mean <suggestion>few</suggestion>?</message>
             <example correction="Few"><marker>Not many</marker> people know this.</example>
             <example><marker>Few</marker> people know this.</example>
         </rule>
@@ -34783,7 +34783,7 @@ The accident victim died from her injuries.
                 <token min="0">very</token>
                 <token>often</token>
             </pattern>
-            <message>Avoid using "not". Did you mean <suggestion>seldom</suggestion>, <suggestion>rare</suggestion> or <suggestion>rarely</suggestion>?</message>
+            <message>You can make this sentence easier to read. Avoid using "not". Did you mean <suggestion>seldom</suggestion>, <suggestion>rare</suggestion> or <suggestion>rarely</suggestion>?</message>
             <example correction="seldom|rare|rarely">It is <marker>not very often</marker> that a hotel exceeds your expectations.</example>
             <example>It is <marker>rare</marker> that a hotel exceeds your expectations.</example>
         </rule>
@@ -34795,7 +34795,7 @@ The accident victim died from her injuries.
                 <token>the</token>
                 <token>same</token>
             </pattern>
-            <message>Avoid using "not". Did you mean <suggestion>different</suggestion>?</message>
+            <message>You can make this sentence easier to read. Avoid using "not". Did you mean <suggestion>different</suggestion>?</message>
             <example correction="different">The taste is <marker>not the same</marker>.</example>
             <example>The taste is <marker>different</marker>.</example>
         </rule>
@@ -34816,7 +34816,7 @@ The accident victim died from her injuries.
             <pattern>
                 <token inflected="yes">obtain</token>
             </pattern>
-            <message>Did you mean simpler <suggestion>get</suggestion>?</message>
+            <message>You can make this sentence easier to read by replacing with simpler <suggestion>get</suggestion>.</message>
             <example correction="get">We need to <marker>obtain</marker> visas.</example>
             <example>We need to <marker>get</marker> visas.</example>
         </rule>
@@ -34834,7 +34834,7 @@ The accident victim died from her injuries.
                 <token>occasion</token>
                 <token>of</token>
             </pattern>
-            <message>Did you mean <suggestion>on</suggestion>? Try also <suggestion>when</suggestion> and <suggestion>because of</suggestion>.</message>
+            <message>You can make this sentence easier to read by replacing with <suggestion>on</suggestion>. Try also <suggestion>when</suggestion> and <suggestion>because of</suggestion>.</message>
             <example correction="on|when|because of">I was congratulated <marker>on the occasion of</marker> my son's birthday.</example>
             <example>I was congratulated <marker>on</marker> my son's birthday.</example>
         </rule>
@@ -34847,7 +34847,7 @@ The accident victim died from her injuries.
                 <token>other</token>
                 <token>hand</token>
             </pattern>
-            <message>Avoid completely or try <suggestion>but</suggestion>, <suggestion>yet</suggestion></message>
+            <message>You can make this sentence easier to read. Avoid completely or try <suggestion>but</suggestion>, <suggestion>yet</suggestion></message>
             <example correction="But|Yet">It was quite a good bargain. <marker>On the other hand</marker>, do we really need one?</example>
             <example>It was quite a good bargain, <marker>but</marker> do we really need one?</example>
         </rule>
@@ -34862,7 +34862,7 @@ The accident victim died from her injuries.
                 <token>separate</token>
                 <token>occasions</token>
             </pattern>
-            <message>Did you mean <suggestion>twice</suggestion>?</message>
+            <message>You can make this sentence easier to read by replacing with <suggestion>twice</suggestion>.</message>
             <example correction="twice">I stayed here <marker>on two separate occasions</marker>.</example>
             <example>I stayed here <marker>twice</marker>.</example>
         </rule>
@@ -34880,7 +34880,7 @@ The accident victim died from her injuries.
         <!-- <pattern> -->
         <!-- <token postag="BB" postag_regexp="yes">overall</token> -->
         <!-- </pattern> -->
-        <!-- <message>Remove wordy \1</message> -->
+        <!-- <message>You can make this sentence easier to read. Remove wordy \1</message> -->
         <!-- <example type="incorrect"><marker>Overall</marker>, we are happy.</example> -->
         <!-- <example>We are happy.</example> -->
         <!-- </rule> -->
@@ -34933,7 +34933,7 @@ The accident victim died from her injuries.
                     <token>to</token>
                     <token>whether</token>
                 </pattern>
-                <message>Verbose. Use <suggestion>whether</suggestion>.</message>
+                <message>You can make this sentence easier to read. Verbose. Use <suggestion>whether</suggestion>.</message>
                 <example correction="Whether"><marker>The question as to whether</marker> it will do any good hasn’t been determined.</example>
                 <example><marker>Whether</marker> it will do any good hasn’t been determined.</example>
             </rule>
@@ -34944,7 +34944,7 @@ The accident victim died from her injuries.
                     <token>of</token>
                     <token>whether</token>
                 </pattern>
-                <message>Verbose. Use <suggestion>question whether</suggestion>.</message>
+                <message>You can make this sentence easier to read. Verbose. Use <suggestion>question whether</suggestion>.</message>
                 <example correction="question whether">There is <marker>a question of whether</marker> we need to be there or not.</example>
                 <example>There is <marker>question whether</marker> we need to be there or not.</example>
             </rule>
@@ -34954,7 +34954,7 @@ The accident victim died from her injuries.
             <!-- <token>or</token> -->
             <!-- <token>not</token> -->
             <!-- </pattern> -->
-            <!-- <message>Verbose. Use <suggestion>whether</suggestion>.</message> -->
+            <!-- <message>You can make this sentence easier to read. Verbose. Use <suggestion>whether</suggestion>.</message> -->
             <!-- <example correction="whether">We do not know <marker>whether or not</marker> we need to be there.</example> -->
             <!-- <example>We do not know <marker>whether</marker> we need to be there.</example> -->
             <!-- </rule> -->
@@ -34971,7 +34971,7 @@ The accident victim died from her injuries.
                 <token>as</token>
                 <token>being</token>
             </pattern>
-            <message>Word "being" is redundant. Use <suggestion>\1 \2</suggestion>.</message>
+            <message>You can make this sentence easier to read. Word "being" is redundant. Use <suggestion>\1 \2</suggestion>.</message>
             <example correction="regard as">What industries do you <marker>regard as being</marker> highly competitive?</example>
             <example>What industries do you <marker>regard as</marker> highly competitive?</example>
         </rule>
@@ -35006,7 +35006,7 @@ The accident victim died from her injuries.
                 <token postag="V.*" postag_regexp="yes" inflected="yes">solicit</token>
                 <token>for</token>
             </pattern>
-            <message>Avoid. Use <suggestion>asking for</suggestion>.</message>
+            <message>You can make this sentence easier to read. Avoid. Use <suggestion>asking for</suggestion>.</message>
             <example correction="asking for">We are <marker>soliciting for</marker> suggestions.</example>
             <example>We are <marker>asking for</marker> suggestions.</example>
         </rule>
@@ -35019,7 +35019,7 @@ The accident victim died from her injuries.
                 <token>than</token>
                 <token>later</token>
             </pattern>
-            <message>Try <suggestion>soon</suggestion> or <suggestion>now</suggestion> meaning <suggestion>sooner than expected</suggestion>.</message>
+            <message>You can make this sentence easier to read. Try <suggestion>soon</suggestion> or <suggestion>now</suggestion> meaning <suggestion>sooner than expected</suggestion>.</message>
             <url>https://grammarist.com/usage/sooner-rather-than-later/</url>
             <example correction="soon|now|sooner than expected">I believe that spring will be here <marker>sooner rather than later</marker>.</example>
             <example>I believe that spring will be here <marker>soon</marker>.</example>
@@ -35031,7 +35031,7 @@ The accident victim died from her injuries.
                 <pattern>
                     <token>state-of-the-art</token>
                 </pattern>
-                <message>Use <suggestion>latest</suggestion>.</message>
+                <message>You can make this sentence easier to read by replacing with <suggestion>latest</suggestion>.</message>
                 <example correction="latest">Many covet for a <marker>state-of-the-art</marker> cell phone.</example>
                 <example>Many covet for a <marker>latest</marker> cell phone.</example>
             </rule>
@@ -35042,7 +35042,7 @@ The accident victim died from her injuries.
                     <token>the</token>
                     <token>art</token>
                 </pattern>
-                <message>Use <suggestion>latest</suggestion>.</message>
+                <message>You can make this sentence easier to read by replacing with <suggestion>latest</suggestion>.</message>
                 <example correction="latest">Many covet for a <marker>state of the art</marker> cell phone.</example>
                 <example>Many covet for a <marker>latest</marker> cell phone.</example>
             </rule>
@@ -35060,7 +35060,7 @@ The accident victim died from her injuries.
             <pattern>
                 <token>sufficient</token>
             </pattern>
-            <message>Use <suggestion>enough</suggestion>.</message>
+            <message>You can make this sentence easier to read by replacing with <suggestion>enough</suggestion>.</message>
             <example correction="enough">That is <marker>sufficient</marker> reason.</example>
             <example>That is reason <marker>enough</marker>.</example>
             <example correction="enough">He was adding more until it was <marker>sufficient</marker>.</example>
@@ -35074,7 +35074,7 @@ The accident victim died from her injuries.
                 <token>action</token>
                 <token>to</token>
             </pattern>
-            <message>Remove as verbose.</message>
+            <message>You can make this sentence easier to read. Remove as verbose.</message>
             <example correction=""><marker>Take action to</marker> fight climate change.</example>
             <example>Fight climate change.</example>
         </rule>
@@ -35088,7 +35088,7 @@ The accident victim died from her injuries.
                 <token>that</token>
                 <token>exists</token>
             </pattern>
-            <message>Try removing the phrase.</message>
+            <message>You can make this sentence easier to read. Try removing the phrase.</message>
             <url>http://grammar.ccc.commnet.edu/grammar/concise.htm</url>
             <example correction="">The fear <marker>that exists</marker> among many people that we are losing our woodlands is uncalled for.</example>
             <example>The fear <marker/> among many people that we are losing our woodlands is uncalled for.</example>
@@ -35107,7 +35107,7 @@ The accident victim died from her injuries.
         <!-- <token>located</token> -->
         <!-- <token>in</token> -->
         <!-- </pattern> -->
-        <!-- <message>Use <suggestion>in</suggestion>.</message> -->
+        <!-- <message>You can make this sentence easier to read by replacing with <suggestion>in</suggestion>.</message> -->
         <!-- <example correction="in">Can I accept orders from buyers <marker>who are located in</marker> other countries?</example> -->
         <!-- <example>Can I accept orders from buyers <marker>in</marker> other countries?</example> -->
         <!-- <example correction="in">Acn9 is a novel protein of gluconeogenesis <marker>that is located in</marker> the mitochondrial intermembrane space.</example> -->
@@ -35126,7 +35126,7 @@ The accident victim died from her injuries.
                 <token>the</token>
                 <token>undersigned</token>
             </pattern>
-            <message>Legalese. Did you mean <suggestion>I</suggestion>, <suggestion>me</suggestion> or <suggestion>we</suggestion>?</message>
+            <message>You can make this sentence easier to read. Legalese. Did you mean <suggestion>I</suggestion>, <suggestion>me</suggestion> or <suggestion>we</suggestion>?</message>
             <url>https://www.businesswritingblog.com/business_writing/2009/02/who-is-the-undersigned-me-.html</url>
             <example correction="I|me|we">Please contact <marker>the undersigned</marker>.</example>
             <example>Please call <marker>me</marker> on this number.</example>
@@ -35148,7 +35148,7 @@ The accident victim died from her injuries.
                 <token>type</token>
                 <token>of</token>
             </pattern>
-            <message>Try removing the phrase "\1 \2".</message>
+            <message>You can make this sentence easier to read. Try removing the phrase "\1 \2".</message>
             <url>http://grammar.ccc.commnet.edu/grammar/concise.htm</url>
             <example correction="">Legislators need to be more careful of the <marker>type of</marker> policy they propose.</example>
             <example>Legislators need to be more careful of the <marker/> policy they propose.</example>
@@ -35164,7 +35164,7 @@ The accident victim died from her injuries.
                 <token>time</token>
                 <token>as</token>
             </pattern>
-            <message>Use <suggestion>until</suggestion>.</message>
+            <message>You can make this sentence easier to read by replacing with <suggestion>until</suggestion>.</message>
             <example correction="until">He may keep the key <marker>until such time as</marker> he resigns.</example>
             <example>He may keep the key <marker>until</marker> he resigns.</example>
         </rule>
@@ -35195,7 +35195,7 @@ The accident victim died from her injuries.
                 <token>that</token>
                 <!-- <token min="0">that</token> xxx-->
             </pattern>
-            <message>Try removing the phrase.</message>
+            <message>You can make this sentence easier to read. Try removing the phrase.</message>
             <url>http://grammar.ccc.commnet.edu/grammar/concise.htm</url>
             <example correction=""><marker>What I mean to say is that</marker> well intentioned lawmakers sometimes make fools of themselves.</example>
             <example><marker/>Well intentioned lawmakers sometimes make fools of themselves.</example>
@@ -35210,7 +35210,7 @@ The accident victim died from her injuries.
                 <token regexp="yes">reference|regard</token>
                 <token>to</token>
             </pattern>
-            <message>Replace with shorter <suggestion>about</suggestion>, <suggestion>of</suggestion>, <suggestion>on</suggestion>, <suggestion>for</suggestion>, <suggestion>concerning</suggestion>, or <suggestion>regarding</suggestion>.</message>
+            <message>You can make this sentence easier to read by replacing with shorter <suggestion>about</suggestion>, <suggestion>of</suggestion>, <suggestion>on</suggestion>, <suggestion>for</suggestion>, <suggestion>concerning</suggestion>, or <suggestion>regarding</suggestion>.</message>
             <example correction="about|of|on|for|concerning|regarding">Statement <marker>in reference to</marker> the book.</example>
             <example>Statement <marker>on</marker> the book.</example>
             <example correction="about|of|on|for|concerning|regarding">What shall we do <marker>in regard to</marker> the dinner?</example>
@@ -35245,7 +35245,7 @@ The accident victim died from her injuries.
             <pattern>
                 <token postag="JJ">worthwhile</token>
             </pattern>
-            <message>Weak word. Use something stronger like <suggestion>valuable</suggestion>.</message>
+            <message>You can make this sentence easier to read. Weak word. Use something stronger like <suggestion>valuable</suggestion>.</message>
             <example correction="valuable">It was a <marker>worthwhile</marker> endeavor.</example>
             <example>It was a valuable endeavor.</example>
         </rule>
@@ -35258,7 +35258,7 @@ The accident victim died from her injuries.
                 <token>requested</token>
                 <token>to</token>
             </pattern>
-            <message>Replace with <suggestion>please</suggestion></message>
+            <message>You can make this sentence easier to read by replacing with <suggestion>please</suggestion></message>
             <example correction="please"><marker>you are requested to</marker> sit down.</example>
             <example>Please sit down.</example>
         </rule>
@@ -35274,7 +35274,7 @@ The accident victim died from her injuries.
                     <token>drawn</token>
                     <token/>
                 </pattern>
-                <message>Replace with <suggestion>please see</suggestion> or <suggestion>please note</suggestion></message>
+                <message>You can make this sentence easier to read by replacing with <suggestion>please see</suggestion> or <suggestion>please note</suggestion></message>
                 <example correction="Please see|Please note"><marker>Your attention is drawn to</marker> the last page.</example>
                 <example><marker>Please see</marker> the last page.</example>
             </rule>
@@ -35285,7 +35285,7 @@ The accident victim died from her injuries.
                     <token>attention</token>
                     <token>to</token>
                 </pattern>
-                <message>Replace with <suggestion>point out</suggestion>.</message>
+                <message>You can make this sentence easier to read by replacing with <suggestion>point out</suggestion>.</message>
                 <example correction="point out">We'd like to <marker>draw your attention to</marker> the last picture.</example>
                 <example>We'd like to <marker>point out</marker> the last picture.</example>
             </rule>
@@ -35298,7 +35298,7 @@ The accident victim died from her injuries.
             <pattern>
                 <token regexp="yes">above-mentioned|abovementioned|above-listed|abovelisted|beforementioned|before-mentioned|aforementioned|afore-mentioned</token>
             </pattern>
-            <message>Legalese. Bad style in any normal text. Remove and explain. Use <suggestion>this</suggestion> or <suggestion>these</suggestion>.</message>
+            <message>You can make this sentence easier to read. Legalese. Bad style in any normal text. Remove and explain. Use <suggestion>this</suggestion> or <suggestion>these</suggestion>.</message>
             <example correction="this|these">The <marker>above-mentioned</marker> fact is important.</example>
             <example correction="this|these">The <marker>abovementioned</marker> fact is important.</example>
             <example correction="this|these">The <marker>above-listed</marker> points must not be forgotten.</example>
@@ -35321,7 +35321,7 @@ The accident victim died from her injuries.
                     <token>is</token>
                 </marker>
             </pattern>
-            <message>Remove. Just say what the truth or fact is.</message>
+            <message>You can make this sentence easier to read. Remove. Just say what the truth or fact is.</message>
             <example correction=""><marker>The truth is</marker>, this is annoying.</example>
             <example>This is annoying.</example>
             <example correction=""><marker>The fact is</marker>, they are not here.</example>
@@ -35334,7 +35334,7 @@ The accident victim died from her injuries.
             <pattern>
                 <token regexp="yes">really|very|quite|extremely|severely</token>
             </pattern>
-            <message>Usually, the word "\1" is not necessary, and it is often overused. Remove it unless it is necessary.</message>
+            <message>You can make this sentence easier to read. Usually, the word "\1" is not necessary, and it is often overused. Remove it unless it is necessary.</message>
             <url>http://grammar.ccc.commnet.edu/grammar/concise.htm#intensifiers</url>
             <example correction="">The band is <marker>very</marker> irritating.</example>
             <example>The band is irritating.</example>
@@ -35348,7 +35348,7 @@ The accident victim died from her injuries.
                     <token>I</token>
                     <token regexp="yes">myself|personally</token>
                 </pattern>
-                <message>Although '\1 \2' is correct, it is not always necessary. If possible, use only <suggestion>\1</suggestion>.</message>
+                <message>You can make this sentence easier to read. Although '\1 \2' is correct, it is not always necessary. If possible, use only <suggestion>\1</suggestion>.</message>
                 <example correction="I">There are no biscuits. <marker>I myself</marker> ate the last one.</example>
             </rule>
             <rule>
@@ -35356,7 +35356,7 @@ The accident victim died from her injuries.
                     <token>you</token>
                     <token regexp="yes">yoursel(f|ves)</token>
                 </pattern>
-                <message>Although '\1 \2' is correct, it is not always necessary. If possible, use only <suggestion>\1</suggestion>.</message>
+                <message>You can make this sentence easier to read. Although '\1 \2' is correct, it is not always necessary. If possible, use only <suggestion>\1</suggestion>.</message>
                 <example correction="you">I cannot do it for you. Only <marker>you yourself</marker> can do it.</example>
                 <example correction="you">I cannot do it for you. Only <marker>you yourselves</marker> can do it.</example>
             </rule>
@@ -35365,7 +35365,7 @@ The accident victim died from her injuries.
                     <token>we</token>
                     <token>ourselves</token>
                 </pattern>
-                <message>Although '\1 \2' is correct, it is not always necessary. If possible, use only <suggestion>\1</suggestion>.</message>
+                <message>You can make this sentence easier to read. Although '\1 \2' is correct, it is not always necessary. If possible, use only <suggestion>\1</suggestion>.</message>
                 <example correction="We">They cannot do it for us. <marker>We ourselves</marker> must do it.</example>
             </rule>
             <rule>
@@ -35373,7 +35373,7 @@ The accident victim died from her injuries.
                     <token>he</token>
                     <token>himself</token>
                 </pattern>
-                <message>Although '\1 \2' is correct, it is not always necessary. If possible, use only <suggestion>\1</suggestion>.</message>
+                <message>You can make this sentence easier to read. Although '\1 \2' is correct, it is not always necessary. If possible, use only <suggestion>\1</suggestion>.</message>
                 <example correction="he">You cannot do it for him. Only <marker>he himself</marker> can do it.</example>
             </rule>
             <rule>
@@ -35381,7 +35381,7 @@ The accident victim died from her injuries.
                     <token>she</token>
                     <token>herself</token>
                 </pattern>
-                <message>Although '\1 \2' is correct, it is not always necessary. If possible, use only <suggestion>\1</suggestion>.</message>
+                <message>You can make this sentence easier to read. Although '\1 \2' is correct, it is not always necessary. If possible, use only <suggestion>\1</suggestion>.</message>
                 <example correction="she">You cannot do it for her. Only <marker>she herself</marker> can do it.</example>
             </rule>
             <rule>
@@ -35389,7 +35389,7 @@ The accident victim died from her injuries.
                     <token>it</token>
                     <token>itself</token>
                 </pattern>
-                <message>Although '\1 \2' is correct, it is not always necessary. If possible, use only <suggestion>\1</suggestion>.</message>
+                <message>You can make this sentence easier to read. Although '\1 \2' is correct, it is not always necessary. If possible, use only <suggestion>\1</suggestion>.</message>
                 <example correction="It">The software update is not correct. <marker>It itself</marker> causes more problems than in solves.</example>
             </rule>
             <rule>
@@ -35397,7 +35397,7 @@ The accident victim died from her injuries.
                     <token>they</token>
                     <token>themselves</token>
                 </pattern>
-                <message>Although '\1 \2' is correct, it is not always necessary. If possible, use only <suggestion>\1</suggestion>.</message>
+                <message>You can make this sentence easier to read. Although '\1 \2' is correct, it is not always necessary. If possible, use only <suggestion>\1</suggestion>.</message>
                 <example correction="they">You cannot do it them. Only <marker>they themselves</marker> can do it.</example>
             </rule>
         </rulegroup>
