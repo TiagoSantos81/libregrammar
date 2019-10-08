@@ -610,7 +610,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rule>
         <rule id="DAS_BEST" name="das Best (Beste)">
             <pattern>
-                <token>das</token>
+                <token regexp="yes">der|die|das</token>
                 <token>best<exception scope="next">of</exception></token>
             </pattern>
             <message>Meinten Sie <suggestion>\1 \2e</suggestion>?</message>
@@ -8239,6 +8239,26 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <message><suggestion>\1\2</suggestion> wird zusammengeschrieben.</message>
             <short>&getrennt;.</short>
             <example correction="WhatsApp">Wir schrieben per <marker>Whats App</marker>.</example>
+        </rule>
+        <rule id="COPY_AND_PASTE" name="Copy-and-paste">
+            <pattern>
+                <token>Copy</token>
+                <token regexp="yes">[au]nd</token>
+                <token regexp="yes">Pastes?</token>
+            </pattern>
+            <message>Dieses Wort wird im Deutschen mit Bindestrichen geschrieben.</message>
+            <suggestion>Copy-and-<match case_conversion="alllower" no="3" /></suggestion>
+            <example correction="Copy-and-paste">Ich mache einfach <marker>Copy and Paste</marker>, um die Texte in mein Dokument zu übernehmen.</example>
+        </rule>
+        <rule id="DRAG_AND_DROP" name="Drag-and-drop">
+            <pattern>
+                <token>Drag</token>
+                <token regexp="yes">[au]nd</token>
+                <token regexp="yes">Drops?</token>
+            </pattern>
+            <message>Dieses Wort wird im Deutschen mit Bindestrichen geschrieben.</message>
+            <suggestion>Drag-and-<match case_conversion="alllower" no="3" /></suggestion>
+            <example correction="Drag-and-drop">Ich mache einfach <marker>Drag and Drop</marker>, um die Dateien zwischen den Ordnern zu verschieben.</example>
         </rule>
         <rule id="N_EINHALB" name="zwei einhalb (zweieinhalb)">
             <pattern>
