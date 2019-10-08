@@ -20,11 +20,12 @@ will only be considered if it has the end-users best interests in mind.
 
 ___
 
-<p align="center">
-## [README](https://github.com/TiagoSantos81/languagetool/blob/master/languagetool-standalone/README.md) [CHANGES](https://github.com/TiagoSantos81/languagetool/blob/master/languagetool-standalone/CHANGES.md)
+## [README](https://github.com/TiagoSantos81/languagetool/blob/master/languagetool-standalone/README.md)
+
+## [CHANGES](https://github.com/TiagoSantos81/languagetool/blob/master/languagetool-standalone/CHANGES.md)
 
 LanguageTool is freely available under the LGPL 2.1 or later.
-</p>
+
 ___
 
 ## Scripted installation and building
