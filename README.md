@@ -6,7 +6,7 @@ Since late 2017, LanguageTool has had its development constrained by several fac
 conflict of interests inherent to the existence of a Freemium sister project and the integration 
 of contributors owning other derivative commercial projects.
 
-This fork intends to be a **pure free and open-source software** 'editor', developed for [end-users](https://en.wikipedia.org/wiki/End_user), so, 
+This fork intends to be a **pure free and open-source software** 'editor', developed for [end users](https://en.wikipedia.org/wiki/End_user), so, 
 it enables several rules that were not allowed to be enabled by default in the open-source component, 
 and adds rules that could be disabled on the grounds of being 'too picky' by some elements of the 
 former team.
@@ -20,12 +20,11 @@ will only be considered if it has the end-users best interests in mind.
 
 ___
 
-## [README](https://github.com/TiagoSantos81/languagetool/blob/master/languagetool-standalone/README.md)
-
-## [CHANGES](https://github.com/TiagoSantos81/languagetool/blob/master/languagetool-standalone/CHANGES.md).
+<p align="center">
+## [README](https://github.com/TiagoSantos81/languagetool/blob/master/languagetool-standalone/README.md) [CHANGES](https://github.com/TiagoSantos81/languagetool/blob/master/languagetool-standalone/CHANGES.md)
 
 LanguageTool is freely available under the LGPL 2.1 or later.
-
+</p>
 ___
 
 ## Scripted installation and building

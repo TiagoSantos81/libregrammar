@@ -4,16 +4,18 @@
 
 #### English (Fork differences)
   * Rules added:
-     - eggcorn detection (216 entries from AtD and Grammark);
-     - cliche detection (691 entries from AtD);
-     - 727 entries to wordiness database (from Grammark);
+     - EnglishSimpleGrammarRule for simple replacement rule creation - 870 entries added from Wikipedia;
+     - eggcorn detection - 216 entries from Grammark and After the Dealine (AtD);
+     - cliche detection - 691 entries from AtD;
+     - 727 entries to wordiness database, retrieved from Grammark;
      - EnglishStyleRepeatedWordRule;
      - added 533 pairs of easily confused words - active only with
     ngram data (see http://wiki.languagetool.org/finding-errors-using-n-gram-data).
 
   * English rules re-activated:
-     - EnglishPlainEnglishRule (AtD) and Plain English (AtD) category;
-     - EnglishRedundancyRule (AtD);
+     - EnglishPlainEnglishRule - 697 entries from AtD;
+     - Plain English category - 107 rules;
+     - EnglishRedundancyRule (AtD) - 731 entries from AtD;
      - LongSentenceRule;
      - Passive voice;
      - Tired intensifiers;
@@ -22,12 +24,12 @@
      - Several collocation rules;
      - Articles: article missing before a countable noun;
      - Non-standard contractions '(I've a...)';
-     - wold vs. would;
-     - seas vs. sees;
-     - hav vs. have;
-     - complaint vs. complained;
-     - handover vs. hand over;
-     - shutdown vs. shut down;
+     - wold vs. would (see 9a1bdd5 and 3a851cb);
+     - seas vs. sees (see 9a1bdd5 and 3a851cb);
+     - hav vs. have (see 9a1bdd5 and 3a851cb);
+     - complaint vs. complained (see 9a1bdd5 and 3a851cb);
+     - handover vs. hand over (see 9a1bdd5 and 3a851cb);
+     - shutdown vs. shut down (see 9a1bdd5 and 3a851cb);
      - can't help but (can't help + gerund);
      - 'e.g.' without a comma;
      - 'i.e.' without a comma;

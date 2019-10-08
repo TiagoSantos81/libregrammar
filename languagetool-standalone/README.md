@@ -1,8 +1,7 @@
 # LanguageTool
 
-**A proof-reading tool for English, Spanish, German,
-Polish, Chinese, French, Russian, Italian, Dutch
-and [more languages](https://www.languagetool.org/languages/)**
+**A proof-reading tool for Catalan, Dutch, English, French, German,
+Polish, Portuguese, Russian, and [more languages](https://www.languagetool.org/languages/)**
 
 Version 4.8-SNAPSHOT, 2019-xx-xx  
 Copyright (C) 2005-2019 the LanguageTool community and Daniel Naber (www.danielnaber.de)  
