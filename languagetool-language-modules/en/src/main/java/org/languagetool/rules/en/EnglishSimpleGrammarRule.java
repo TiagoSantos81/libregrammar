@@ -51,7 +51,6 @@ public class EnglishSimpleGrammarRule extends AbstractSimpleReplaceRule2 {
 
   public EnglishSimpleGrammarRule(ResourceBundle messages) throws IOException {
     super(messages, new English());
-    setDefaultOff();
     super.setCategory(Categories.GRAMMAR.getCategory(messages));
     setLocQualityIssueType(ITSIssueType.Grammar);
     addExamplePair(Example.wrong("<marker>their had</marker>"),
@@ -65,7 +64,7 @@ public class EnglishSimpleGrammarRule extends AbstractSimpleReplaceRule2 {
 
   @Override
   public String getDescription() {
-    return "Common grammar mistakes";
+    return "'1. Common grammar mistakes'";
   }
 
   @Override
