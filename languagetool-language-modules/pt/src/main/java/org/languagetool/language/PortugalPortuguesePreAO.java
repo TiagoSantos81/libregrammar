@@ -29,7 +29,7 @@ import org.languagetool.rules.*;
 import org.languagetool.rules.pt.*;
 
 /**
- * @since 3.6
+ * @since 4.8
  */
 public class PortugalPortuguesePreAO  extends Portuguese {
   
