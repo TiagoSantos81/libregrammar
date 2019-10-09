@@ -1861,6 +1861,7 @@ title="Easy editing stylesheet" ?>
   </rulegroup>
 
   <rulegroup id='AO45_CARDINAL_POINTS_CASING' type='grammar' name='AO45: Capitalização de Pontos Cardeais'>
+    <!-- Created by  Tiago F. Santos , Portuguese rule, 2017-XX-XX -->
     <rule>
       <pattern case_sensitive='yes'>
         <marker>
@@ -1902,12 +1903,11 @@ title="Easy editing stylesheet" ?>
     <rule id="MUITO_PELO_É" name="AO45: Confusão: pelo - pêlo">
     <!-- Created by Marco A.G. Pinto   -->
       <pattern>
-          <token>muito</token>
           <token>pelo</token>
           <token inflected='yes'>ser</token>
       </pattern>
-      <message>Substitua por <suggestion>muito pêlo \3</suggestion>.</message>
-      <example correction="muito pêlo é">Para quem tem animais com <marker>muito pelo é</marker> bom.</example>
+      <message>'Pelo' é uma forma verbal do verbo 'pelar'. Pretende dizer <suggestion>pêlo \3</suggestion>?</message>
+      <example correction="pêlo é">Para quem tem animais com muito <marker>pelo é</marker> bom.</example>
     </rule>
  </category>
 
