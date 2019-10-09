@@ -2,7 +2,9 @@
 
 ## 4.8X-SNAPSHOT (release planned for 2019-XX-XX)
 
-#### English (Fork differences)
+### This fork differences
+
+#### English
   * Rules added:
      - EnglishSimpleGrammarRule for simple replacement rule creation - 870 entries added from Wikipedia;
      - eggcorn detection - 216 entries from Grammark and After the Dealine (AtD);
@@ -42,12 +44,22 @@
      - Typographical ellipsis;
      - Several adjustments to rules with wide-spectrum antipatterns.
 
-#### Chinese
-  * Now using https://github.com/hankcs/HanLP for tokenization (PR 1981)
+#### Portuguese
+  * Portugal Portuguese former orthographic agreement locale added (Portugal 
+  pre-AO) with support for:
+     - [pt-PT pre-AO] Dicionários Portugueses Complementares 1.2
+     - common Portuguese rules;
+     - pre-AO hyphenation rules;
+     - capitalization rules.
 
 #### General
   * Server and HTTP API connection commits for LibreOffice plug-in reverted.
   * Restored some languagetool-dev and languagetool-standalone scripts
+
+### Other changes common to both projects
+
+#### Chinese
+  * Now using https://github.com/hankcs/HanLP for tokenization (PR 1981)
 
 ## 4.7 (2019-09-28)
 
