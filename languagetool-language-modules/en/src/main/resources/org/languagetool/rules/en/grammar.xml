@@ -10244,6 +10244,16 @@ USA
             <example>The <marker>Chevy</marker> Impala is a beautiful car.</example>
             <example>Let's google life.</example>
         </rule>
+        <rule id="A_WINDOWS" name="Windows (proper noun)">
+            <pattern>
+                <marker>
+                    <token case_sensitive="yes">windows</token>
+                </marker>
+                <token regexp="yes">\d{1,2}|updates?|xp|vista|servers?|apps?|phones?|desktops?|drivers?|explorer|errors?|folders?|firewalls?|installers?|kernel|keys?|keyboards?|logos?|licenses?|media|terminals?|registry|version|usb|upgrades?|games?|files?</token>
+            </pattern>
+            <message><suggestion><match no="1" case_conversion="startupper" /></suggestion> (operating system by Microsoft) is a proper noun and needs to be capitalized.</message>
+            <example correction="Windows">The <marker>windows</marker> 10 update failed.</example>
+        </rule>
         <rulegroup id="A_ATTACH" name="a/the attach">
             <rule>
                 <antipattern>
@@ -18455,9 +18465,14 @@ USA
                 <token>sigma</token>
             </antipattern>
             <antipattern> <!-- "As a year 10 student, ..." -->
-                <token>year</token>
+                <token regexp="yes">year|grade|semester</token>
                 <token regexp="yes">\d+</token>
                 <token>student</token>
+            </antipattern>
+            <antipattern> <!-- "A level 7 diploma ..." -->
+                <token regexp="yes">level</token>
+                <token regexp="yes">\d+</token>
+                <token postag="NN.*" postag_regexp="yes" />
             </antipattern>
             <antipattern>
                 <token postag="CD"/>
@@ -18625,6 +18640,7 @@ USA
             <example>Go to slide 8 and click on the link.</example><!-- #1903 -->
             <example>1 turn = 360° = 2π rad = 400 grad = 4 right angles.</example>
             <example>You two hurry up.</example><!--  #2005 -->
+            <example>A level 7 diploma is a vocational certification focused on professional skills.</example>
             <!-- FP: <example>But then he got 502 bad gateway.</example> -->
         </rule>
         <rule id="INCORRECT_POSSESSIVE_FORM_AFTER_A_NUMBER" name="Incorrect possessive form after a number">
