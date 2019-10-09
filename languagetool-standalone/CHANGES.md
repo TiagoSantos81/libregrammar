@@ -58,8 +58,31 @@
 
 ### Other changes common to both projects
 
+#### Catalan
+  * improved rules
+
 #### Chinese
   * Now using https://github.com/hankcs/HanLP for tokenization (PR 1981)
+
+#### Dutch
+  * improved rules
+  * disambiguation improvements
+  * POS and spelling improvements
+
+#### English
+  * added and improved rules
+  * disambiguation improvements
+  * POS and spelling improvements
+
+#### French
+  * POS and spelling improvements
+
+#### German
+  * added and improved rules
+  * POS and spelling improvements
+
+#### Russian
+  * improved rules
 
 ## 4.7 (2019-09-28)
 
