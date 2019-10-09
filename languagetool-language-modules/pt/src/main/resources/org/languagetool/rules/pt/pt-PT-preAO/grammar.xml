@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="../print.xsl" 
+<?xml-stylesheet type="text/xsl" href="../print.xsl"
 title="Pretty print" ?>
-<?xml-stylesheet type="text/css" href="../rules.css" 
+<?xml-stylesheet type="text/css" href="../rules.css"
 title="Easy editing stylesheet" ?>
 
-<!--
+    <!--
  Portuguese (Portugal - prereform + postreform) - Grammar and Typo Rules for LanguageTool.
 
  Copyright (C) 2019 Tiago F. Santos (tiagofsantos81@sapo.pt)
@@ -285,7 +285,7 @@ title="Easy editing stylesheet" ?>
       <example>Quem lhe contou essa notícia?</example>
       <example>Só te tirei o brinquedo, porque te portaste mal</example>
       <example>Nenhum lugar te recorda daquelas férias?</example>
-      <example>...que eu vos peça expressamente...</example>
+      <example>…que eu vos peça expressamente…</example>
       <example>Deus me livre!</example>
     </rule>
     <rule>
@@ -563,7 +563,7 @@ title="Easy editing stylesheet" ?>
       <message>Se possível, evite o gerúndio.</message>
         <suggestion>\1 a <match no='2' postag='VMN0000' case_conversion="alllower"/></suggestion>
       <example correction='continua a ser'>O processo básico <marker>continua sendo</marker> o mesmo.</example>
-      <example correction='está a soprar'>...ventos do oeste, <marker>está soprando</marker> por cima das águas...</example>
+      <example correction='está a soprar'>...ventos do oeste, <marker>está soprando</marker> por cima das águas…</example>
       <example>As regras foram sendo melhoradas ao longo do tempo.</example>
       <example correction='Vou a olhar'><marker>Vou olhando</marker> para o que acontece.</example><!-- TODO This may be correct in some circunstances. REVIEW -->
     </rule>
@@ -579,7 +579,7 @@ title="Easy editing stylesheet" ?>
       <message>Se possível, evite o gerúndio.</message>
         <suggestion>a <match no='1' postag='VMN0000' case_conversion="alllower"/></suggestion>
       <url>https://pt.wikipedia.org/wiki/Gerundismo</url>
-      <example correction='a soprar'>...ventos do oeste, está <marker>soprando</marker> por cima das águas...</example>
+      <example correction='a soprar'>...ventos do oeste, está <marker>soprando</marker> por cima das águas…</example>
       <example correction='a acender'>As luzes iam-se <marker>acendendo</marker> à medida que ela passava.</example>
     </rule>
 
@@ -900,7 +900,7 @@ title="Easy editing stylesheet" ?>
       <message>Se não se está a referir à constelação, esta é uma expressão de Português do Brasil.</message>
       <example type='incorrect'>O <marker>câncer</marker> é um problema grave de saúde pública.</example>
       <example type='correct'>O <marker>cancro</marker> é um problema grave de saúde pública.</example>
-      <example>...mais resistentes são as células cancerígenas...</example>
+      <example>…mais resistentes são as células cancerígenas…</example>
     </rule>
     <rule id='BRASILEIRISMO_19_TIMES' name='Brasileirismo: time - equipa'>
       <antipattern>
@@ -981,15 +981,15 @@ title="Easy editing stylesheet" ?>
       <example correction="Dirá"><marker>Dirás</marker> a opção correcta.</example>
       <example>—Dirás a opção correcta.</example>
       <example>“Dirás a opção correcta.”</example>
-      <example>Ela está preocupada com a evolução, a física, a química, e...</example>
+      <example>Ela está preocupada com a evolução, a física, a química, e…</example>
       <example>A Astronomia é uma ciência natural que estuda corpos celestes.</example>
       <example correction="Está"><marker>Estás</marker> bem?</example>
       <example>Está bem.</example>
-      <example>Nas Antilhas existem também ilhas que são possessões (britânicas, francesas, holand...</example>
-      <example>...elevadas altitudes, que ocasionam temperaturas mais baixas e pluviosidade reduzida.</example>
-      <example>Além das dezenas de danças regionais, estilo folclórico nacional argentino s...</example>
-      <example>...estruturas de repetição tais como laços, ou ainda estruturas de dados adicionais tais como pilhas, para resolv...</example>
-      <example>A era nazista produziu principalmente filmes de propaganda, embora a obra de Leni Riefenstahl ...</example>
+      <example>Nas Antilhas existem também ilhas que são possessões (britânicas, francesas, holand…</example>
+      <example>…elevadas altitudes, que ocasionam temperaturas mais baixas e pluviosidade reduzida.</example>
+      <example>Além das dezenas de danças regionais, estilo folclórico nacional argentino s…</example>
+      <example>…estruturas de repetição tais como laços, ou ainda estruturas de dados adicionais tais como pilhas, para resolv…</example>
+      <example>A era nazista produziu principalmente filmes de propaganda, embora a obra de Leni Riefenstahl …</example>
     </rule>
     <rule>
       <pattern>
@@ -1106,7 +1106,7 @@ title="Easy editing stylesheet" ?>
         <suggestion><match no="2" postag="(V...)2S(.+)" postag_replace='$13S$2' postag_regexp="yes"/></suggestion>
       <example correction="Escolha"><marker>Escolhe</marker> um bom projeto.</example>
       <example correction="Diga"><marker>Diz</marker> a opção correcta.</example>
-      <example>Ela está preocupada com a evolução, a física, a química, e...</example>
+      <example>Ela está preocupada com a evolução, a física, a química, e…</example>
       <example>A Astronomia é uma ciência natural que estuda corpos celestes.</example>
       <example>Está tudo bem.</example>
     </rule>-->
