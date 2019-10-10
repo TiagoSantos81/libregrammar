@@ -18,9 +18,13 @@
  */
 package org.languagetool.language;
 
+/*
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
+*/
+import java.io.ByteArrayInputStream;
+
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.languagetool.Language;
@@ -59,6 +63,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class English extends Language implements AutoCloseable {
 
+/*
   private static final LoadingCache<String, List<Rule>> cache = CacheBuilder.newBuilder()
       .expireAfterWrite(30, TimeUnit.MINUTES)
       .build(new CacheLoader<String, List<Rule>>() {
@@ -72,6 +77,8 @@ public class English extends Language implements AutoCloseable {
           return rules;
         }
       });
+*/
+
   private static final Language AMERICAN_ENGLISH = new AmericanEnglish();
 
   private Tagger tagger;
@@ -186,10 +193,11 @@ public class English extends Language implements AutoCloseable {
   public List<Rule> getRelevantRules(ResourceBundle messages, UserConfig userConfig, Language motherTongue, List<Language> altLanguages) throws IOException {
     List<Rule> allRules = new ArrayList<>();
     if (motherTongue != null) {
+      PatternRuleLoader loader = new PatternRuleLoader();
       if ("de".equals(motherTongue.getShortCode())) {
-        allRules.addAll(cache.getUnchecked("/org/languagetool/rules/en/grammar-l2-de.xml"));
+        allRules.addAll(loader.getRules(this.getClass().getResourceAsStream("/org/languagetool/rules/en/grammar-l2-de.xml"), "/org/languagetool/rules/en/grammar-l2-de.xml"));
       } else if ("fr".equals(motherTongue.getShortCode())) {
-        allRules.addAll(cache.getUnchecked("/org/languagetool/rules/en/grammar-l2-fr.xml"));
+        allRules.addAll(loader.getRules(this.getClass().getResourceAsStream("/org/languagetool/rules/en/grammar-l2-fr.xml"), "/org/languagetool/rules/fr/grammar-l2-de.xml"));
       }
     }
     allRules.addAll(Arrays.asList(

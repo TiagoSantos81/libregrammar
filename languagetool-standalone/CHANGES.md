@@ -13,7 +13,6 @@
      - EnglishStyleRepeatedWordRule;
      - added 533 pairs of easily confused words - active only with
     ngram data (see http://wiki.languagetool.org/finding-errors-using-n-gram-data).
-
   * English rules re-activated:
      - EnglishPlainEnglishRule - 697 entries from AtD;
      - Plain English category - 107 rules;
@@ -43,6 +42,7 @@
      - Word order: 'Hopefully' starting a sentence;
      - Typographical ellipsis;
      - Several adjustments to rules with wide-spectrum antipatterns.
+  * remove specific Google cache dependencies from English.java
 
 #### Portuguese
   * Portugal Portuguese former orthographic agreement locale added (Portugal 

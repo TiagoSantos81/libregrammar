@@ -20,9 +20,7 @@ will only be considered if it has the end-users best interests in mind.
 
 ___
 
-## [README](https://github.com/TiagoSantos81/languagetool/blob/master/languagetool-standalone/README.md)
-
-## [CHANGES](https://github.com/TiagoSantos81/languagetool/blob/master/languagetool-standalone/CHANGES.md)
+## [README](https://github.com/TiagoSantos81/languagetool/blob/master/languagetool-standalone/README.md)   |   [CHANGES](https://github.com/TiagoSantos81/languagetool/blob/master/languagetool-standalone/CHANGES.md)   |   [DOWNLOAD](https://github.com/TiagoSantos81/languagetool/releases)
 
 LanguageTool is freely available under the LGPL 2.1 or later.
 
