@@ -91,7 +91,7 @@ Matches: [STYLE_REPEATED_WORD_RULE_EN:2-4:Possible style problem: The word is al
    * Is a unknown word (has only letters and no PosTag) 
    */
   private static boolean isUnknownWord(AnalyzedTokenReadings token) {
-    return token.isPosTagUnknown() && token.getToken().length() > 2 && token.getToken().matches("^[A-Za-zÄÖÜäöüß]+$");
+    return token.isPosTagUnknown() && token.getToken().length() > 2 && token.getToken().matches("^[A-Za-záéààèêôûãõçāūÄÖÜäöüß]+$");
   }
 
   /*
@@ -99,8 +99,16 @@ Matches: [STYLE_REPEATED_WORD_RULE_EN:2-4:Possible style problem: The word is al
    */
   protected boolean isTokenToCheck(AnalyzedTokenReadings token) {
     return (token.matchesPosTagRegex("[VNJRW].+|FW") 
-        && !token.matchesPosTagRegex("NNPS?|MD|IN|DT|P.+")
-        && !StringUtils.equalsAny(token.getToken(), "is", "s", "isn", "be", "been", "have", "haven", "has", "hasn", "had", "hadn", "am", "did", "didn", "say", "says", "said", "says", "not", "t", "n", "was", "wasn", "were", "weren", "x", "y"))
+        && !token.matchesPosTagRegex("NNPS?|MD|IN|DT|CC|P.+")
+        && !StringUtils.equalsAny(token.getToken(), 
+           "am", "is", "s", "isn", "are", "re", "be", "been",
+           "was", "wasn", "were", "weren",
+           "have", "haven", "has", "hasn", "had", "hadn",
+           "did", "didn",
+           "say", "says", "said", "says",
+           "not", "t",
+           "more", "less",
+           "n", "x", "y"))
         || isUnknownWord(token);
   }
 
