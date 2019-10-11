@@ -41,8 +41,10 @@ public class GermanStyleRepeatedWordRuleTest {
     JLanguageTool lt = new JLanguageTool(lang);
     setUpRule(lt);
 
-    assertEquals(2, lt.check("Der alte Mann wohnte in einem großen Haus. Es stand in einem großen Garten.").size());
-    assertEquals(0, lt.check("Der alte Mann wohnte in einem großen Haus. Es stand in einem weitläufigen Garten.").size());
+    assertEquals(2, lt.check("Der alte Mann wohnte in einem großen Haus, und es stand in einem großen Garten.").size());
+      // AbstractStyleRepeatedWordRuleTest default behaviour changed to check only in the same sentence.
+    assertEquals(0, lt.check("Der alte Mann wohnte in einem großen Haus, und es stand in einem weitläufigen Garten.").size());
+    assertEquals(0, lt.check("Der alte Mann wohnte in einem großen Haus. Es stand in einem großen Garten.").size());
   }
 
   private void setUpRule(JLanguageTool lt) {

@@ -102,12 +102,12 @@ public class JLanguageToolTest {
       assertNoError("Making ingroup membership more noticeable increases cooperativeness.", lt);
       assertNoError("Dog mushing is more of a sport than a true means of transportation.", lt);
       assertNoError("No one trusts him any more.", lt);
-      assertOneError("A member of the United Nations since 1992, Azerbaijan was elected to membership in the newly established Human Rights Council by the United Nations General Assembly on May 9, 2006 (the term of office began on June 19, 2006).", lt); // PASSIVE_VOICE
+      assertEquals(3, getMatches("A member of the United Nations since 1992, Azerbaijan was elected to membership in the newly established Human Rights Council by the United Nations General Assembly on May 9, 2006 (the term of office began on June 19, 2006).", lt)); // PASSIVE_VOICE + 2x STYLE_REPEATED_WORD_RULE_EN 'United'
       assertOneError("Anatomy and geometry are fused in one, and each does something to the other.", lt); // PASSIVE_VOICE
-      assertNoError("Certain frogs that lay eggs underground have unpigmented eggs.", lt);
-      // assertOneError("It's a kind of agreement in which each party gives something to the other, Jack said.", lt); Two errors: PLAIN_ENGLISH 'a kind of' and 'in which'
+      assertEquals(2, getMatches("Certain frogs that lay eggs underground have unpigmented eggs.", lt)); // PASSIVE_VOICE + 2x STYLE_REPEATED_WORD_RULE_EN 'eggs'
+      assertEquals(2, getMatches("It's a kind of agreement in which each party gives something to the other, Jack said.", lt)); // Two errors: PLAIN_ENGLISH 'a kind of' and 'in which'
       assertNoError("Later, you shall know it better.", lt);
-      // assertOneError("And the few must win what the many lose, for the opposite arrangement would not support markets as we know them at all, and is, in fact, unimaginable.", lt); // SENT_START_AND + PLAIN_ENGLISH 'in fact'
+      assertEquals(2, getMatches("And the few must win what the many lose, for the opposite arrangement would not support markets as we know them at all, and is, in fact, unimaginable.", lt)); // SENT_START_AND + PLAIN_ENGLISH 'in fact'
       assertOneError("He explained his errand, but without bothering much to make it plausible, for he felt something well up in him which was the reason he had fled the army.", lt); // PASSIVE_VOICE
       assertNoError("I think it's better, and it's not a big deal.", lt);
 
@@ -139,11 +139,11 @@ public class JLanguageToolTest {
   public void testPositionsWithEnglish() throws IOException {
     JLanguageTool tool = new JLanguageTool(new AmericanEnglish());
     List<RuleMatch> matches = tool.check("A sentence with no period\n" +
-        "A sentence. A typoh.");
+        "A phrase. A typoh.");
     assertEquals(1, matches.size());
     RuleMatch match = matches.get(0);
     assertEquals(1, match.getLine());
-    assertEquals(15, match.getColumn());
+    assertEquals(13, match.getColumn());
   }
 
   @Test
@@ -250,6 +250,10 @@ public class JLanguageToolTest {
     assertThat(tool.check(text2).size(), is(0));
   }
   
+  private int getMatches(String input, JLanguageTool lt) throws IOException {
+    return lt.check(input).size();
+  }
+
   class MyTextLevelRule extends TextLevelRule {
     @Override
     public RuleMatch[] match(List<AnalyzedSentence> sentences, AnnotatedText text) throws IOException {

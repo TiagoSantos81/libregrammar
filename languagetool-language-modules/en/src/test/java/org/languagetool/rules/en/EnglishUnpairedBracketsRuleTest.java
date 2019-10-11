@@ -138,14 +138,16 @@ public class EnglishUnpairedBracketsRuleTest {
   public void testMultipleSentences() throws IOException {
     JLanguageTool lt = new JLanguageTool(new English());
 
-    assertEquals(0, getMatches("This is multiple sentence text that contains a bracket: "
+    assertEquals(2, getMatches("This is multiple sentence text that contains a bracket: "
                              + "[This is a bracket. With some text.] and this continues.\n", lt));
+                             // Two errors from EnglishStyleRepeatedWordRule on 'text'
 
     assertEquals(0, getMatches("This is multiple sentence text that contains a bracket. "
                              + "(This is a bracket. \n\n With some text.) and this continues.", lt));
 
-    assertEquals(2, getMatches("This is multiple sentence text that contains a bracket: "
-                             + "[This is a bracket. With some text. And this continues.\n\n", lt)); // Style AND_SENT_START
+    assertEquals(4, getMatches("This is multiple sentence text that contains a bracket: "
+                             + "[This is a bracket. With some text. And this continues.\n\n", lt));
+                             // Second error is style AND_SENT_START and two errors from EnglishStyleRepeatedWordRule on 'text'
   }
 
   private int getMatches(String input, JLanguageTool lt) throws IOException {

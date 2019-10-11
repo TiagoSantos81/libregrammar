@@ -39,7 +39,7 @@ import org.languagetool.rules.TextLevelRule;
 /**
  * An abstract rule checks the appearance of same words in a sentence or in two consecutive sentences.
  * The isTokenToCheck method can be used to check only specific words (e.g. substantive, verbs and adjectives).
- * This rule detects no grammar error but a stylistic problem (default off)
+ * This rule detects no grammar error but a stylistic problem
  * @author Fred Kruse
  * @since 4.1
  */
@@ -50,13 +50,13 @@ public abstract class AbstractStyleRepeatedWordRule  extends TextLevelRule {
   private final LinguServices linguServices;
   private final Language lang;
   
-  protected int maxDistanceOfSentences = 1;
+  protected int maxDistanceOfSentences = 0;
 
   public AbstractStyleRepeatedWordRule(ResourceBundle messages, Language lang, UserConfig userConfig) {
     super(messages);
     super.setCategory(Categories.STYLE.getCategory(messages));
     setLocQualityIssueType(ITSIssueType.Style);
-    setDefaultOff();
+    // setDefaultOff();
     this.lang = lang;
     if (userConfig != null) {
       linguServices = userConfig.getLinguServices();
