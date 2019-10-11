@@ -36,7 +36,7 @@ import org.languagetool.rules.Example;
 /**
  * A rule checks the appearance of same words in a sentence or in two consecutive sentences.
  * Only substantive, verbs and adjectives are checked.
- * This rule detects no grammar error but a stylistic problem (default off)
+ * This rule detects no grammar error but a stylistic problem
  * @author Fred Kruse
  * Localized from German by Tiago F. Santos
  */
@@ -100,7 +100,7 @@ Matches: [STYLE_REPEATED_WORD_RULE_EN:2-4:Possible style problem: The word is al
   protected boolean isTokenToCheck(AnalyzedTokenReadings token) {
     return (token.matchesPosTagRegex("[VNJRW].+|FW") 
         && !token.matchesPosTagRegex("NNPS?|MD|IN|DT|P.+")
-        && !StringUtils.equalsAny(token.getToken(), "is", "isn", "was", "wasn", "been", "have", "haven", "has", "hasn", "had", "hadn", "am", "did", "didn", "say", "says", "said", "says", "t"))
+        && !StringUtils.equalsAny(token.getToken(), "is", "s", "isn", "be", "been", "have", "haven", "has", "hasn", "had", "hadn", "am", "did", "didn", "say", "says", "said", "says", "not", "t", "n", "was", "wasn", "were", "weren", "x", "y"))
         || isUnknownWord(token);
   }
 
@@ -124,15 +124,6 @@ Matches: [STYLE_REPEATED_WORD_RULE_EN:2-4:Possible style problem: The word is al
       }
     }
     return false;
-  }
-
-  @Override
-  protected boolean isPartOfWord(String testTokenText, String tokenText) {
-    return ((testTokenText.startsWith(tokenText) || testTokenText.endsWith(tokenText)
-        || tokenText.startsWith(testTokenText) || tokenText.endsWith(testTokenText))
-        && (testTokenText.length() == tokenText.length() || testTokenText.length() < tokenText.length() - 3
-        || testTokenText.length() > tokenText.length() + 3)
-        || testTokenText.equals(tokenText + "s") || tokenText.equals(testTokenText + "s"));
   }
 
   /* 
