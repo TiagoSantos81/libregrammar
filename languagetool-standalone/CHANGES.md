@@ -44,6 +44,9 @@
      - Several adjustments to rules with wide-spectrum antipatterns.
   * remove specific Google cache dependencies from English.java
 
+#### German
+  * GermanStyleRepeatedWordRule active by default;
+
 #### Portuguese
   * Portugal Portuguese former orthographic agreement locale added (Portugal 
   pre-AO) with support for:
