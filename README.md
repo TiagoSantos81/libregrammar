@@ -12,7 +12,7 @@ and adds rules that could be disabled on the grounds of being 'too picky' by som
 former team.
 
 Future work may also involve rolling back Freemium API bindings, making the add-ons work entirely 
-offline, and replacing n-gram rules by faster and lighter XML or word2vec alternatives that can be 
+offline, and replacing n-gram rules by faster and lighter XML or [word2vec](https://github.com/gulp21/languagetool-neural-network) alternatives that can be 
 shipped with the main package.
 
 Everyone is still welcome to use and comment on this code according to the licencing terms, but feedback 
