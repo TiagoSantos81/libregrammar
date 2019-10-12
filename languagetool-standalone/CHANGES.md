@@ -21,7 +21,7 @@
      - Passive voice;
      - Tired intensifiers;
      - Number at sentence start;
-     - Sentence starting with 'And' or 'But'
+     - Sentence starting with 'And' or 'But';
      - Several collocation rules;
      - Articles: article missing before a countable noun;
      - Non-standard contractions '(I've a...)';
@@ -42,7 +42,7 @@
      - Word order: 'Hopefully' starting a sentence;
      - Typographical ellipsis;
      - Several adjustments to rules with wide-spectrum antipatterns.
-  * remove Google dependencies from English.java
+  * remove Google dependencies from English.java.
 
 #### German
   * GermanStyleRepeatedWordRule active by default;
@@ -50,7 +50,7 @@
 #### Portuguese
   * Portugal Portuguese former orthographic agreement locale added (Portugal 
   pre-AO) with support for:
-     - [pt-PT pre-AO] Dicionários Portugueses Complementares 1.2
+     - [pt-PT pre-AO] Dicionários Portugueses Complementares 1.2;
      - common Portuguese rules;
      - pre-AO hyphenation rules;
      - wrong spelling agreement errors (PortuguesePreAgreementReplaceRule);
@@ -58,7 +58,7 @@
 
 #### General
   * Server and HTTP API connection commits for LibreOffice plug-in reverted.
-  * Restored some languagetool-dev and languagetool-standalone scripts
+  * Restored some languagetool-dev and languagetool-standalone scripts.
 
 ### Other changes common to both projects
 
