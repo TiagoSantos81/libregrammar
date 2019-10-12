@@ -34108,7 +34108,7 @@ The accident victim died from her injuries.
     <!-- Plain English -->
     <!-- ====================================================================== -->
     <category id="PLAIN_ENGLISH" name="Plain English" type="style" default="on">
-        <!-- main source https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases -->
+        <!-- main source https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases -->
         <!-- some rules belonging to other categories included -->
         <!-- xxx marks optional edge tokens that cause an error if uncommented -->
 
@@ -34129,6 +34129,8 @@ The accident victim died from her injuries.
                 <token>abundance</token>
             </pattern>
             <message>You can make this sentence easier to read by replacing with <suggestion>enough</suggestion> or <suggestion>plenty</suggestion>, or give specific amount.</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="enough|plenty">There is an <marker>abundance</marker> of flowers in the meadow.</example>
             <example>The meadow of full of flowers.</example>
         </rule>
@@ -34139,6 +34141,8 @@ The accident victim died from her injuries.
                 <token>to</token>
             </pattern>
             <message>You can make this sentence easier to read. Unless it is a throne that is acceded to, change into <suggestion>allow, agree to or give in to</suggestion>.</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="allow, agree to or give in to">He <marker>acceded to</marker> our demands.</example>
             <example>He gave in to our demands.</example>
         </rule>
@@ -34148,6 +34152,8 @@ The accident victim died from her injuries.
                 <token inflected="yes">accelerate</token>
             </pattern>
             <message>You can make this sentence easier to read. If the technical term is not needed replace with <suggestion>speed up</suggestion>.</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="speed up">The car <marker>accelerated</marker> from traffic lights</example>
             <example>The car <marker>sped up</marker> from traffic lights</example>
         </rule>
@@ -34157,6 +34163,8 @@ The accident victim died from her injuries.
                 <token inflected="yes">accentuate</token>
             </pattern>
             <message>You can make this sentence easier to read by replacing with <suggestion>stress</suggestion> or <suggestion>emphasize</suggestion>.</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="stress|emphasize">The harsh light <marker>accentuated</marker> the ruggedness of the landscape.</example>
             <example>The harsh light <marker>emphasized</marker> the ruggedness of the landscape.</example>
         </rule>
@@ -34165,7 +34173,8 @@ The accident victim died from her injuries.
             <pattern>
                 <token inflected="yes">accommodation</token>
             </pattern>
-            <message>You can make this sentence easier to read. <suggestion>room</suggestion>.</message>
+            <message>You can make this sentence easier to read.</message>
+              <suggestion>room</suggestion>
             <example correction="Room"><marker>Accommodation</marker> available.</example>
             <example><marker>Room</marker> available.</example>
         </rule>
@@ -34175,6 +34184,8 @@ The accident victim died from her injuries.
                 <token inflected="yes">accompany</token>
             </pattern>
             <message>You can make this sentence easier to read. If not in musical context, use <suggestion>go with</suggestion> or <suggestion>with</suggestion>.</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="go with|with">You need to <marker>accompany</marker> him.</example>
             <example>You need to <marker>go with</marker> him.</example>
         </rule>
@@ -34184,6 +34195,8 @@ The accident victim died from her injuries.
                 <token postag="[^J][^J]" postag_regexp="yes" inflected="yes">accomplish</token>
             </pattern>
             <message>You can make this sentence easier to read by replacing with <suggestion>do</suggestion> or <suggestion>achieve</suggestion> or <suggestion>finish</suggestion>.</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="Do|Achieve|Finish"><marker>Accomplish</marker> your work!</example>
             <!-- <example correction="done">This work is <marker>accomplished</marker>.</example> -->
             <example>He is an accomplished musician.</example>
@@ -34197,6 +34210,8 @@ The accident victim died from her injuries.
                 <token postag="V.*" postag_regexp="yes" inflected="yes">accrue</token>
             </pattern>
             <message>You can make this sentence easier to read by replacing with <suggestion>add</suggestion> or <suggestion>gain</suggestion>.</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="add|gain">The deposit <marker>accrued</marker> interest.</example>
             <example>The deposit gained interest.</example>
         </rule>
@@ -34205,7 +34220,9 @@ The accident victim died from her injuries.
             <pattern>
                 <token>accurate</token>
             </pattern>
-            <message>You can make this sentence easier to read. If it is not about aiming, use <suggestion>right</suggestion>; also <suggestion>detailed</suggestion> or <suggestion>correct</suggestion>.</message>
+            <message>You can make this sentence easier to read. If it is not about aiming, nor technical, use <suggestion>right</suggestion>; also <suggestion>detailed</suggestion> or <suggestion>correct</suggestion>.</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="right|detailed|correct">We need <marker>accurate</marker> information.</example>
             <example>We need right and detailed information.</example>
         </rule>
@@ -34218,6 +34235,8 @@ The accident victim died from her injuries.
                 <token postag="V.*" postag_regexp="yes" inflected="yes">acquire</token>
             </pattern>
             <message>You can make this sentence easier to read. A simple <suggestion>get</suggestion> is enough most of the time, sometimes <suggestion>develop</suggestion>.</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="get|develop">He <marker>acquired</marker> all the tools he needed.</example>
             <example>He <marker>got</marker> all the tools he needed.</example>
         </rule>
@@ -34261,6 +34280,8 @@ The accident victim died from her injuries.
                 <token>of</token>
             </pattern>
             <message>You can make this sentence easier to read by replacing with <suggestion>like</suggestion>.</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="like">I think my point is very much <marker>along the lines of</marker> his.</example>
             <example>I think my point is very much <marker>like</marker> his.</example>
         </rule>
@@ -34291,6 +34312,8 @@ The accident victim died from her injuries.
                 <token>fact</token>
             </pattern>
             <message>You can make this sentence easier to read by replacing with less wordy <suggestion>in fact</suggestion> or <suggestion>actually</suggestion>, or remove completely.</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="In fact|Actually"><marker>As a matter of fact</marker>, dry-bulb temperature indicates the amount of heat in the air.</example>
             <example>Actually, dry-bulb temperature indicates the amount of heat in the air.</example>
         </rule>
@@ -34354,6 +34377,8 @@ The accident victim died from her injuries.
                 <token inflected="yes" regexp="yes">assist|assistance</token>
             </pattern>
             <message>You can make this sentence easier to read by replacing with simpler <suggestion>help</suggestion>.</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="help">Do you need any <marker>assistance</marker>?</example>
             <example>Do you need any <marker>help</marker>?</example>
             <example correction="help">May I <marker>assist</marker> you?</example>
@@ -34368,6 +34393,8 @@ The accident victim died from her injuries.
                 <token>times</token>
             </pattern>
             <message>You can make this sentence easier to read. Simply, <suggestion>always</suggestion>. Pay attention to place in the sentence.</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="always">Kingfisher can be found near water <marker>at all times</marker></example>
             <example>Kingfisher can always be found near water.</example>
         </rule>
@@ -34433,6 +34460,8 @@ The accident victim died from her injuries.
                 <token>convenience</token>
             </pattern>
             <message>You can make this sentence easier to read. Overly formal. Did you mean <suggestion>as soon as you can</suggestion>?</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="as soon as you can">Please come <marker>at your earliest convenience</marker>.</example>
             <example>Please come <marker>as soon as you can</marker>.</example>
         </rule>
@@ -34465,6 +34494,8 @@ The accident victim died from her injuries.
                 <token>advised</token>
             </pattern>
             <message>You can make this sentence easier to read. Remove wordy "\1 \2"</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="">You <marker>are advised</marker> look after your belongings.</example>
             <example>Look after your belongings.</example>
         </rule>
@@ -34593,6 +34624,8 @@ The accident victim died from her injuries.
                 <token>belated</token>
             </pattern>
             <message>You can make this sentence easier to read. Outdated. Did you mean <suggestion>late</suggestion>?</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="late">They are on a <marker>belated</marker> honeymoon.</example>
             <example>They are on a <marker>late</marker> honeymoon.</example>
         </rule>
@@ -34660,6 +34693,8 @@ The accident victim died from her injuries.
                 <token>currently</token>
             </pattern>
             <message>You can make this sentence easier to read. Omit or replace with <suggestion>now</suggestion></message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="now">I am <marker>currently</marker> employed.</example>
             <example>I am now employed.</example>
         </rule>
@@ -34690,6 +34725,8 @@ The accident victim died from her injuries.
                 <token postag="N.*" postag_regexp="yes"/>
             </pattern>
             <message>You can make this sentence easier to read by replacing with <suggestion>\3 \4</suggestion></message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="every door">You better check <marker>each and every door</marker>.</example>
             <example>You better check <marker>every door</marker>.</example>
         </rule>
@@ -34807,6 +34844,8 @@ The accident victim died from her injuries.
                 <token>to</token>
             </pattern>
             <message>You can make this sentence easier to read by replacing with <suggestion>can</suggestion>.</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="can">The toddle <marker>has the ability to</marker> walk.</example>
             <example>The toddle <marker>can</marker> walk.</example>
         </rule>
@@ -34819,6 +34858,8 @@ The accident victim died from her injuries.
                 <token>tendency</token>
             </pattern>
             <message>You can make this sentence easier to read by replacing with <suggestion>tends</suggestion>.</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="tends">This policy <marker>has a tendency</marker> to isolate some communities.</example>
             <example>This policy <marker>tends</marker> to isolate some communities.</example>
         </rule>
@@ -35051,6 +35092,8 @@ The accident victim died from her injuries.
                 <token regexp="yes">of|that</token>
             </pattern>
             <message>You can make this sentence easier to read by replacing with <suggestion>if</suggestion> or <suggestion>in case of</suggestion>.</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="If|In case of"><marker>In the event that</marker> I can't come back by seven, you can eat without me.</example>
             <example><marker>If</marker> I can't come back by seven, you can eat without me.</example>
 
@@ -35068,6 +35111,8 @@ The accident victim died from her injuries.
                 <token>analysis</token>
             </pattern>
             <message>You can make this sentence easier to read by replacing with <suggestion>finally</suggestion> or <suggestion>in conclusion</suggestion>. You could remove the phase, too.</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="Finally|In conclusion"><marker>In the final analysis</marker>, it is their war.</example>
             <example><marker>Finally</marker>, it is their war.</example>
             <example correction="Finally|In conclusion"><marker>In the ultimate analysis</marker>, only the jury can strip a man of his liberty or his life.</example>
@@ -35099,6 +35144,8 @@ The accident victim died from her injuries.
                 <token>of</token>
             </pattern>
             <message>You can make this sentence easier to read. Can be used as <suggestion>almost</suggestion>, <suggestion>approximately</suggestion>, <suggestion>more or less</suggestion>, <suggestion>around</suggestion>. Often <suggestion>about</suggestion>.</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="almost|approximately|more or less|around|about">They searched for the keys <marker>in the neighborhood of</marker> the playground.</example>
             <example>They searched for the keys <marker>around</marker> the playground.</example>
             <example correction="almost|approximately|more or less|around|about">Residents planted 1200 trees in one day <marker>in the neighborhood of</marker> Ballard.</example>
@@ -35162,6 +35209,8 @@ The accident victim died from her injuries.
                 <token>majority</token>
             </pattern>
             <message>You can make this sentence easier to read. Majority in the sense of "more than half" is used with countable nouns only (esp. when voting); for uncountable nouns, use <suggestion>most</suggestion> or <suggestion>usually</suggestion>.</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="Most|Usually"><marker>Majority</marker> of the world is covered with water.</example>
             <example><marker>Most</marker> of the world is covered with water.</example>
         </rule>
@@ -35176,6 +35225,8 @@ The accident victim died from her injuries.
                 <token>about</token>
             </pattern>
             <message>You can make this sentence easier to read by replacing with <suggestion>decide on</suggestion>.</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="decide on">The school board will <marker>make decision about</marker> the first day of school.</example>
             <example>The school board will <marker>decide on</marker> the first day of school.</example>
         </rule>
@@ -35221,6 +35272,8 @@ The accident victim died from her injuries.
                 <token>able</token>
             </pattern>
             <message>You can make this sentence easier to read. Avoid using "not". Did you mean <suggestion>unable</suggestion>?</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="unable">He was <marker>not able</marker> to join the meeting.</example>
             <example>He was <marker>unable</marker> to join the meeting.</example>
         </rule>
@@ -35232,6 +35285,8 @@ The accident victim died from her injuries.
                 <token inflected="yes">accept</token>
             </pattern>
             <message>You can make this sentence easier to read. Avoid using "not". Did you mean <suggestion>reject</suggestion>?</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="reject">He does <marker>not accept</marker> the proposal.</example>
             <example>He <marker>rejects</marker> the proposal.</example>
         </rule>
@@ -35243,6 +35298,8 @@ The accident victim died from her injuries.
                 <token>certain</token>
             </pattern>
             <message>You can make this sentence easier to read. Avoid using "not". Did you mean <suggestion>uncertain</suggestion>?</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="uncertain">Future is <marker>not certain</marker>.</example>
             <example>Future is <marker>uncertain</marker>.</example>
         </rule>
@@ -35254,6 +35311,8 @@ The accident victim died from her injuries.
                 <token>unlike</token>
             </pattern>
             <message>You can make this sentence easier to read. Avoid using "not". Did you mean <suggestion>similar</suggestion> or <suggestion>alike</suggestion>?</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="similar|alike">Sisters were <marker>not unlike</marker>.</example>
             <example>Sisters were <marker>alike</marker>.</example>
         </rule>
@@ -35266,6 +35325,8 @@ The accident victim died from her injuries.
                 <token>many</token>
             </pattern>
             <message>You can make this sentence easier to read. Avoid using "not". Did you mean <suggestion>few</suggestion>?</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="Few"><marker>Not many</marker> people know this.</example>
             <example><marker>Few</marker> people know this.</example>
         </rule>
@@ -35278,6 +35339,8 @@ The accident victim died from her injuries.
                 <token>often</token>
             </pattern>
             <message>You can make this sentence easier to read. Avoid using "not". Did you mean <suggestion>seldom</suggestion>, <suggestion>rare</suggestion> or <suggestion>rarely</suggestion>?</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="seldom|rare|rarely">It is <marker>not very often</marker> that a hotel exceeds your expectations.</example>
             <example>It is <marker>rare</marker> that a hotel exceeds your expectations.</example>
         </rule>
@@ -35290,6 +35353,8 @@ The accident victim died from her injuries.
                 <token>same</token>
             </pattern>
             <message>You can make this sentence easier to read. Avoid using "not". Did you mean <suggestion>different</suggestion>?</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="different">The taste is <marker>not the same</marker>.</example>
             <example>The taste is <marker>different</marker>.</example>
         </rule>
@@ -35311,6 +35376,8 @@ The accident victim died from her injuries.
                 <token inflected="yes">obtain</token>
             </pattern>
             <message>You can make this sentence easier to read by replacing with simpler <suggestion>get</suggestion>.</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="get">We need to <marker>obtain</marker> visas.</example>
             <example>We need to <marker>get</marker> visas.</example>
         </rule>
@@ -35329,6 +35396,8 @@ The accident victim died from her injuries.
                 <token>of</token>
             </pattern>
             <message>You can make this sentence easier to read by replacing with <suggestion>on</suggestion>. Try also <suggestion>when</suggestion> and <suggestion>because of</suggestion>.</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="on|when|because of">I was congratulated <marker>on the occasion of</marker> my son's birthday.</example>
             <example>I was congratulated <marker>on</marker> my son's birthday.</example>
         </rule>
@@ -35342,6 +35411,8 @@ The accident victim died from her injuries.
                 <token>hand</token>
             </pattern>
             <message>You can make this sentence easier to read. Avoid completely or try <suggestion>but</suggestion>, <suggestion>yet</suggestion></message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="But|Yet">It was quite a good bargain. <marker>On the other hand</marker>, do we really need one?</example>
             <example>It was quite a good bargain, <marker>but</marker> do we really need one?</example>
         </rule>
@@ -35357,6 +35428,8 @@ The accident victim died from her injuries.
                 <token>occasions</token>
             </pattern>
             <message>You can make this sentence easier to read by replacing with <suggestion>twice</suggestion>.</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="twice">I stayed here <marker>on two separate occasions</marker>.</example>
             <example>I stayed here <marker>twice</marker>.</example>
         </rule>
@@ -35466,6 +35539,8 @@ The accident victim died from her injuries.
                 <token>being</token>
             </pattern>
             <message>You can make this sentence easier to read. Word "being" is redundant. Use <suggestion>\1 \2</suggestion>.</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="regard as">What industries do you <marker>regard as being</marker> highly competitive?</example>
             <example>What industries do you <marker>regard as</marker> highly competitive?</example>
         </rule>
@@ -35501,6 +35576,8 @@ The accident victim died from her injuries.
                 <token>for</token>
             </pattern>
             <message>You can make this sentence easier to read. Avoid. Use <suggestion>asking for</suggestion>.</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="asking for">We are <marker>soliciting for</marker> suggestions.</example>
             <example>We are <marker>asking for</marker> suggestions.</example>
         </rule>
@@ -35555,6 +35632,8 @@ The accident victim died from her injuries.
                 <token>sufficient</token>
             </pattern>
             <message>You can make this sentence easier to read by replacing with <suggestion>enough</suggestion>.</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="enough">That is <marker>sufficient</marker> reason.</example>
             <example>That is reason <marker>enough</marker>.</example>
             <example correction="enough">He was adding more until it was <marker>sufficient</marker>.</example>
@@ -35569,6 +35648,8 @@ The accident victim died from her injuries.
                 <token>to</token>
             </pattern>
             <message>You can make this sentence easier to read. Remove as verbose.</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction=""><marker>Take action to</marker> fight climate change.</example>
             <example>Fight climate change.</example>
         </rule>
@@ -35659,6 +35740,8 @@ The accident victim died from her injuries.
                 <token>as</token>
             </pattern>
             <message>You can make this sentence easier to read by replacing with <suggestion>until</suggestion>.</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="until">He may keep the key <marker>until such time as</marker> he resigns.</example>
             <example>He may keep the key <marker>until</marker> he resigns.</example>
         </rule>
@@ -35705,6 +35788,8 @@ The accident victim died from her injuries.
                 <token>to</token>
             </pattern>
             <message>You can make this sentence easier to read by replacing with shorter <suggestion>about</suggestion>, <suggestion>of</suggestion>, <suggestion>on</suggestion>, <suggestion>for</suggestion>, <suggestion>concerning</suggestion>, or <suggestion>regarding</suggestion>.</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="about|of|on|for|concerning|regarding">Statement <marker>in reference to</marker> the book.</example>
             <example>Statement <marker>on</marker> the book.</example>
             <example correction="about|of|on|for|concerning|regarding">What shall we do <marker>in regard to</marker> the dinner?</example>
@@ -35740,6 +35825,8 @@ The accident victim died from her injuries.
                 <token postag="JJ">worthwhile</token>
             </pattern>
             <message>You can make this sentence easier to read. Weak word. Use something stronger like <suggestion>valuable</suggestion>.</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="valuable">It was a <marker>worthwhile</marker> endeavor.</example>
             <example>It was a valuable endeavor.</example>
         </rule>
@@ -35753,6 +35840,8 @@ The accident victim died from her injuries.
                 <token>to</token>
             </pattern>
             <message>You can make this sentence easier to read by replacing with <suggestion>please</suggestion></message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="please"><marker>you are requested to</marker> sit down.</example>
             <example>Please sit down.</example>
         </rule>
@@ -35793,6 +35882,8 @@ The accident victim died from her injuries.
                 <token regexp="yes">above-mentioned|abovementioned|above-listed|abovelisted|beforementioned|before-mentioned|aforementioned|afore-mentioned</token>
             </pattern>
             <message>You can make this sentence easier to read. Legalese. Bad style in any normal text. Remove and explain. Use <suggestion>this</suggestion> or <suggestion>these</suggestion>.</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction="this|these">The <marker>above-mentioned</marker> fact is important.</example>
             <example correction="this|these">The <marker>abovementioned</marker> fact is important.</example>
             <example correction="this|these">The <marker>above-listed</marker> points must not be forgotten.</example>
@@ -35816,6 +35907,8 @@ The accident victim died from her injuries.
                 </marker>
             </pattern>
             <message>You can make this sentence easier to read. Remove. Just say what the truth or fact is.</message>
+            <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
+            <short>Wordiness</short>
             <example correction=""><marker>The truth is</marker>, this is annoying.</example>
             <example>This is annoying.</example>
             <example correction=""><marker>The fact is</marker>, they are not here.</example>
