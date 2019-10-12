@@ -42,7 +42,7 @@
      - Word order: 'Hopefully' starting a sentence;
      - Typographical ellipsis;
      - Several adjustments to rules with wide-spectrum antipatterns.
-  * remove specific Google cache dependencies from English.java
+  * remove Google dependencies from English.java
 
 #### German
   * GermanStyleRepeatedWordRule active by default;
@@ -53,6 +53,7 @@
      - [pt-PT pre-AO] Dicionários Portugueses Complementares 1.2
      - common Portuguese rules;
      - pre-AO hyphenation rules;
+     - wrong spelling agreement errors (PortuguesePreAgreementReplaceRule);
      - capitalization rules.
 
 #### General
