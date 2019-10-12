@@ -23552,6 +23552,11 @@ The accident victim died from her injuries.
     </rule>
     <rule id='CONSEQUENCES_OF_FOR' name='Collocation: consequences on/for/of'>
     <!-- Created by Nicholas Walker (Bokomaru), 2018-05-16 -->
+      <antipattern>
+          <token regexp="yes">consequences?</token>
+          <token>to</token>
+          <token>happen</token>
+      </antipattern>
       <antipattern><!-- MFU 2019-08-25. www.lexico.com/en/definition/to preposition #3 -->
           <token regexp="yes">consequences?</token>
           <token>to</token>
@@ -24261,7 +24266,7 @@ The accident victim died from her injuries.
           <token regexp="yes">&ATD_to_collocation;</token>
             <!-- |wishing|seeks|pretending|pretend|correspond|access|continues -->
           <token postag_regexp="yes" postag='PRP|NNP|DT'>
-            <exception regexp='yes'>both|.+self|some|this|that</exception>
+            <exception regexp='yes'>both|.+self|much|some|this|that</exception>
             <exception postag_regexp="yes" postag='PRP|DT' regexp='yes'>\p{Lu}.+</exception></token>
       </pattern>
       <message>Probably a preposition is missing after '\1'.</message>
