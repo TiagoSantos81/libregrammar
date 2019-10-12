@@ -38,7 +38,7 @@ public class PortugalPortuguesePreAO  extends Portuguese {
   
   @Override
   public String[] getCountries() {
-    return new String[]{"PT-preAO"};
+    return new String[]{"PO"};
   }
 
   @Override
