@@ -26,7 +26,10 @@ import java.util.ResourceBundle;
 import org.languagetool.Language;
 import org.languagetool.UserConfig;
 import org.languagetool.rules.*;
-import org.languagetool.rules.pt.*;
+import org.languagetool.rules.pt.PreReformPortugueseCompoundRule;
+import org.languagetool.rules.pt.PreReformPortugueseDashRule;
+import org.languagetool.rules.pt.PortugalPortugueseReplaceRule;
+import org.languagetool.rules.pt.PortuguesePreAgreementReplaceRule;
 
 /**
  * @since 4.8
@@ -50,14 +53,15 @@ public class PortugalPortuguesePreAO  extends Portuguese {
     rules.add(new PreReformPortugueseCompoundRule(messages));
     rules.add(new PreReformPortugueseDashRule());
     rules.add(new PortugalPortugueseReplaceRule(messages));
+    rules.add(new PortuguesePreAgreementReplaceRule(messages));
     return rules;
   }
 
   @Override
   public int getPriorityForId(String id) {
     switch (id) {
-      case "PT_COMPOUNDS_PRE_REFORM":         return  1;
-      // case "PORTUGUESE_OLD_SPELLING_INTERNAL": return -9;
+      case "PT_COMPOUNDS_PRE_REFORM":               return  1;
+      case "PORTUGUESE_PRE_AGREEMENT_REPLACE_RULE": return -8;
     }
     return super.getPriorityForId(id);
   }

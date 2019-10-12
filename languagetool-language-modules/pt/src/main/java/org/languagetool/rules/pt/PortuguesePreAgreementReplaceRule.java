@@ -37,11 +37,11 @@ import java.net.URL;
  *
  * @author Marco A.G.Pinto
  */
-public class PortugueseAgreementReplaceRule extends AbstractSimpleReplaceRule {
+public class PortuguesePreAgreementReplaceRule extends AbstractSimpleReplaceRule {
 
-  public static final String PORTUGUESE_AGREEMENT_REPLACE_RULE = "PT_AGREEMENT_REPLACE";
+  public static final String PORTUGUESE_PRE_AGREEMENT_REPLACE_RULE = "PT_PRE_AGREEMENT_REPLACE";
 
-  private static final Map<String, List<String>> wrongWords = loadFromPath("/pt/AOreplace.txt");
+  private static final Map<String, List<String>> wrongWords = loadFromPath("/pt/preAOreplace.txt");
   private static final Locale PT_LOCALE = new Locale("pt");
 
   @Override
@@ -49,18 +49,18 @@ public class PortugueseAgreementReplaceRule extends AbstractSimpleReplaceRule {
     return wrongWords;
   }
 
-  public PortugueseAgreementReplaceRule(ResourceBundle messages) throws IOException {
+  public PortuguesePreAgreementReplaceRule(ResourceBundle messages) throws IOException {
     super(messages);
     super.setCategory(Categories.TYPOS.getCategory(messages));
     setLocQualityIssueType(ITSIssueType.Misspelling);
     // setDefaultOff();
-    addExamplePair(Example.wrong("<marker>abstracto</marker>"),
-                   Example.fixed("<marker>abstrato</marker>"));
+    addExamplePair(Example.wrong("<marker>abstrato</marker>"),
+                   Example.fixed("<marker>abstracto</marker>"));
   }
 
   @Override
   public final String getId() {
-    return PORTUGUESE_AGREEMENT_REPLACE_RULE;
+    return PORTUGUESE_PRE_AGREEMENT_REPLACE_RULE;
   }
 
   @Override
@@ -70,12 +70,12 @@ public class PortugueseAgreementReplaceRule extends AbstractSimpleReplaceRule {
 
   @Override
   public String getShort() {
-    return "Forma do Acordo Ortográfico de 45.";
+    return "Forma do Acordo Ortográfico de 90.";
   }
   
   @Override
   public String getMessage(String tokenStr, List<String> replacements) {
-    return tokenStr + " é uma forma do antigo acordo ortográfico. No novo acordo ortográfico, a palavra escreve-se assim: "
+    return tokenStr + " é uma forma do novo acordo ortográfico. No acordo ortográfico de 45, a palavra escreve-se assim: "
         + String.join(", ", replacements) + ".";
   }
 
