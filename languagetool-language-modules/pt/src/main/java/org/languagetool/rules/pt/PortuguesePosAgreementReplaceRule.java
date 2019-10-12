@@ -35,7 +35,7 @@ import java.net.URL;
  * A rule that matches words or phrases which should not be used and suggests
  * correct ones instead.
  *
- * @author Marco A.G.Pinto
+ * @author Tiago F. Santos
  */
 public class PortuguesePosAgreementReplaceRule extends AbstractSimpleReplaceRule {
 
