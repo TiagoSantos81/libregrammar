@@ -6,11 +6,13 @@
 
 #### English
   * Rules added:
-     - EnglishSimpleGrammarRule for simple replacement rule creation - 870 entries added from Wikipedia;
-     - eggcorn detection - 216 entries from Grammark and After the Dealine (AtD);
+     - EnglishSimpleGrammarRule for simple replacement rule creation - 877 entries added from Wikipedia;
+     - eggcorn detection - 227 entries from Grammark and After the Dealine (AtD);
      - cliche detection - 691 entries from AtD;
      - 727 entries to wordiness database, retrieved from Grammark;
      - EnglishStyleRepeatedWordRule;
+     - split infinitive detection;
+     - comma splice partial detection;
      - added 533 pairs of easily confused words - active only with
     ngram data (see http://wiki.languagetool.org/finding-errors-using-n-gram-data).
   * English rules re-activated:
