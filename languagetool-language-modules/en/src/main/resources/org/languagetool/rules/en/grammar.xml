@@ -26262,7 +26262,7 @@ The accident victim died from her injuries.
         <!--url>https://en.wikipedia.org/wiki/Comma_splice</url-->
         <short>Comma splice</short>
         <example correction="; however|. However">I already asked Tom where he lives<marker>, however</marker>, we were not able to visit him yet.</example>
-        <example correction="; moreover|. Moreover">Tom said is still married to Jill<marker>, moreover</marker>, he said he is still dazzled by her.</example>
+        <example correction="; moreover|. Moreover">Tom said he is still married to Jill<marker>, moreover</marker>, he said he is still dazzled by her.</example>
         <example>I do know, however, that I am the president’s lawyer along...</example>
         <example>On Friday, however, he appeared to distance himseld...</example>
     </rule>
@@ -33241,7 +33241,7 @@ The accident victim died from her injuries.
                         </token>
                     <token>that</token>
                 </pattern>
-                <message>The text seems to be passive voice. To make the text clearer and easier to read, you can often use the active voice.</message>
+                <message>The text seems to be in the passive voice. To make the text clearer and easier to read, try to use the active voice as much as possible.</message>
                 <example correction=""><marker>It is also thought that</marker> tests are satisfactory.</example>
                 <example correction="">On 31 May 2013, <marker>it was announced that</marker> Andorra intended to legislate for the...</example>
                 <example correction="">While <marker>it was previously thought that</marker> the heavier alkali metals also...</example>
@@ -33264,7 +33264,7 @@ The accident victim died from her injuries.
                     <token min="0" max="2" postag="RB"/>
                     <token>been</token>
                 </pattern>
-                <message>The text seems to be passive voice. To make the text clearer and easier to read, you can often use the active voice.</message>
+                <message>The text seems to be in the passive voice. To make the text clearer and easier to read, try to use the active voice as much as possible.</message>
                 <example correction="">He <marker>is said to have been</marker> happy.</example>
                 <example correction="">He <marker>is said to have not always been</marker> happy.</example>
                 <example correction="">He <marker>is not thought to have been</marker> happy.</example>
@@ -33291,7 +33291,7 @@ The accident victim died from her injuries.
                     <token>to</token>
                     <token>be</token>
                 </pattern>
-                <message>The text seems to be passive voice. To make the text clearer and easier to read, you can often use the active voice.</message>
+                <message>The text seems to be in the passive voice. To make the text clearer and easier to read, try to use the active voice as much as possible.</message>
                 <example correction="">He <marker>is said to be</marker> happy.</example>
                 <example correction="">They <marker>were not usually considered to be</marker> satisfactory.</example>
                 <example correction="">... forming the negative hydride ion, and <marker>is very occasionally considered to be</marker> a halogen on that basis.</example>
@@ -33318,7 +33318,7 @@ The accident victim died from her injuries.
                         <token postag="VBN"/>
                     </marker>
                 </pattern>
-                <message>The text seems to be passive voice. To make the text clearer and easier to read, you can often use the active voice.</message>
+                <message>The text seems to be in the passive voice. To make the text clearer and easier to read, try to use the active voice as much as possible.</message>
                 <example correction="">He insisted that red should <marker>be used</marker> by the designers.</example>
                 <example correction="">She suggests the designers might not always <marker>be considered</marker> the experts (by the managers), and that other people have much to offer.</example>
                 <example>He insisted that the designers <marker>should use</marker> red.</example>
@@ -33335,7 +33335,7 @@ The accident victim died from her injuries.
                         <exception postag="JJ"/>
                         </token>
                 </pattern>
-                <message>The text seems to be passive voice. To make the text clearer and easier to read, you can often use the active voice.</message>
+                <message>The text seems to be in the passive voice. To make the text clearer and easier to read, try to use the active voice as much as possible.</message>
                 <example correction="">By now, the work <marker>will have been completed</marker> by the engineers.</example>
                 <example correction="">Her work <marker>will not have been finished</marker> by tonight.</example>
                 <example correction="">Are you sure the carpets <marker>will not already have been cleaned</marker>?</example>
@@ -33353,7 +33353,7 @@ The accident victim died from her injuries.
                         <token postag="VBN"/>
                     </marker>
                 </pattern>
-                <message>The text seems to be passive voice. To make the text clearer and easier to read, you can often use the active voice.</message>
+                <message>The text seems to be in the passive voice. To make the text clearer and easier to read, try to use the active voice as much as possible.</message>
                 <example correction="">A cake <marker>is being baked</marker> by him.</example>
                 <example correction="">Tests <marker>are also usually being done</marker> during the night.</example>
                 <example correction="">Those engineers <marker>were unfortunately not actually being considered</marker> by management for the project.</example>
