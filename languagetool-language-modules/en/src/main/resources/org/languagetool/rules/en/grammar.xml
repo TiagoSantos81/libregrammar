@@ -33343,6 +33343,33 @@ The accident victim died from her injuries.
                 <example>He <marker>is baking</marker> a cake.</example>
             </rule>
         </rulegroup> <!-- end passive voice rule -->
+
+        <rule id="SPLIT_INFITIVES" name="Style: split infinitives" type='misspelling'>
+        <!-- Created by Tiago F. Santos, 2019-10-11 -->
+            <!--antipattern>
+                <token regexp='yes' inflected='yes'>&ATD_to_collocation;</token>
+                <token>to</token>
+            </antipattern>
+            <antipattern>
+                <token inflected='yes'>turn</token>
+                <token>out</token>
+                <token>to</token>
+            </antipattern-->
+            <pattern>
+                <token postag='TO'>to</token>
+                <token>
+                  <exception postag_regexp='yes' postag='PCT|VB'/></token>
+                <token postag='VB'>
+                  <exception negate_pos='yes' postag_regexp='yes' postag='V.+'/></token>
+            </pattern>
+            <message>Some people still frown upon split infinitive constructions. Try to rephrase the sentence, as long as it doesn't change the meaning nor place the emphasis in the wrong place.</message>
+            <url>https://web.archive.org/web/20171228170323/https://authority.pub/common-grammar-mistakes/</url>
+            <short>Split infinitive</short>
+            <example correction="">This is <marker>to really do</marker> a good job.</example>
+            <example>This is <marker>to do</marker> a really good job.</example>
+            <!--example>He is proud to not be like everybody else.</example>
+            <example>Try to not ruin the party.</example-->
+        </rule>
     </category>
 
     <!-- ====================================================================== -->
