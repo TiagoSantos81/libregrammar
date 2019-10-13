@@ -33,7 +33,13 @@ import static java.lang.Character.isLowerCase;
 import static java.lang.Character.isUpperCase;
 
 public class CompoundFilter extends RuleFilter {
-  
+
+  private final static Set<String> spelledWords = new HashSet<>(Arrays.asList((
+           "abc|adv|aed|apk|b2b|bh|bhv|bso|btw|bv|cao|cd|cfk|ckv|cv|dc|dj|dtp|dvd|fte|gft|ggo|ggz|gm|gmo|gps|gsm|hbo|" +
+           "hd|hiv|hr|hrm|hst|ic|ivf|kmo|lcd|lp|lpg|lsd|mbo|mdf|mkb|mms|msn|mt|ngo|nv|ob|ov|ozb|p2p|pc|pcb|pdf|pk|pps|" +
+           "pr|pvc|roc|rvs|sms|tbc|tbs|tl|tv|uv|vbo|vj|vmbo|vsbo|vwo|wc|wo|xtc|zzp")
+           .split("\\|")));
+
   @Nullable
   @Override
   public RuleMatch acceptRuleMatch(RuleMatch match, Map<String, String> arguments, int patternTokenPos, AnalyzedTokenReadings[] patternTokens) {
@@ -41,7 +47,6 @@ public class CompoundFilter extends RuleFilter {
     String word2 = arguments.get("word2");
     char lastChar = word1.charAt(word1.length()-1);
     char firstChar = word2.charAt(0);
-    Set<String> spelledWords = new HashSet<>(Arrays.asList("abc","adv","aed","apk","b2b","bh","bhv","bso","btw","bv","cao","cd","cfk","ckv","cv","dc","dj","dtp","dvd","fte","gft","ggo","ggz","gm","gmo","gps","gsm","hbo","hd","hiv","hr","hrm","hst","ic","ivf","kmo","lcd","lp","lpg","lsd","mbo","mdf","mkb","mms","msn","mt","ngo","nv","ob","ov","ozb","p2p","pc","pcb","pdf","pk","pps","pr","pvc","roc","rvs","sms","tbc","tbs","tl","tv","uv","vbo","vj","vmbo","vsbo","vwo","wc","wo","xtc","zzp"));
     String connection = lastChar + String.valueOf(firstChar);
     String repl;
     if (StringUtils.containsAny(connection, "aa", "ae", "ai", "ao", "au", "ee", "ei", "eu", "ie", "ii", "oe", "oi", "oo", "ou", "ui", "uu", "ij")) {

@@ -280,6 +280,10 @@ public class AgreementRule extends Rule {
       token("Song"),
       token("Contest")
     ),
+    Arrays.asList(
+      token("Junge"),
+      tokenRegex("Union|Freiheit|Welt|Europäische|Alternative|Volkspartei|Akademie")
+    ),
     Arrays.asList( // "Das Holocaust Memorial Museum."
       posRegex("ART:.+"),
       posRegex("SUB:.+"),
@@ -504,7 +508,9 @@ public class AgreementRule extends Rule {
     ));
 
   private static final Set<String> VIELE_WENIGE_LOWERCASE = new HashSet<>(Arrays.asList(
+    "sämtlicher",
     "etliche",
+    "etlicher",
     "viele",
     "vieler",
     "wenige",

@@ -1505,7 +1505,7 @@ USA
                     <token postag="RB" min="0" />
                     <token postag="V.+" postag_regexp="yes"></token>
                 </pattern>
-                <message>Is this the personal pronoun '<suggestion>I</suggestion>'? It is spelled uppercase.</message>
+                <message>Is this the personal pronoun <suggestion>I</suggestion>? It is spelled uppercase.</message>
                 <example correction="I">Way back in the day, I had no tonality whatsoever when <marker>i</marker> talked.</example>
                 <example>The table of contents can be found on page i.</example>
                 <example>Items i) and j) support this point of view.</example>
@@ -1547,7 +1547,7 @@ USA
                         <token case_sensitive="yes">i</token>
                     </marker>
                 </pattern>
-                <message>Is this the personal pronoun '<suggestion>I</suggestion>'? It is spelled uppercase.</message>
+                <message>Is this the personal pronoun <suggestion>I</suggestion>? It is spelled uppercase.</message>
                 <short>Possible typo</short>
                 <example correction="I">Am <marker>i</marker> happy? Yes I am.</example>
                 <example correction="I">Am <marker>i</marker>?</example>
@@ -10479,7 +10479,7 @@ USA
                     </marker>
                     <token regexp="yes">(file|document|doc|book|form|device|song|archive|package|cv|copy|email)s?</token>
                 </pattern>
-                <message>Did you mean '<suggestion>attached</suggestion>'?</message>
+                <message>Did you mean <suggestion>attached</suggestion>?</message>
                 <example correction="attached">Have you clicked on the <marker>attach</marker> file?</example>
                 <example correction="attached">Please open one of the <marker>attach</marker> documents.</example>
                 <example>The <marker>attached</marker> archive contains all photos from last weekend.</example>
@@ -10492,7 +10492,7 @@ USA
                         <token regexp="yes">attach(es)?</token>
                     </marker>
                 </pattern>
-                <message>Did you mean '<suggestion><match no="2" regexp_match="attach(e)?(s)?" regexp_replace="attachment$2" /></suggestion>'?</message>
+                <message>Did you mean <suggestion><match no="2" regexp_match="attach(e)?(s)?" regexp_replace="attachment$2" /></suggestion>?</message>
                 <example correction="attachment">Have you clicked on the <marker>attach</marker>?</example>
                 <example correction="attachments">By clicking on the <marker>attaches</marker> you will experience what a wonderful weekend I had.</example>
                 <example>The <marker>attachment</marker> is not opening.</example>

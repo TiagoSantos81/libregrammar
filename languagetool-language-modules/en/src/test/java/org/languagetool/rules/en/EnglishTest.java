@@ -32,7 +32,8 @@ public class EnglishTest extends LanguageSpecificTest {
   public void testLanguage() throws IOException {
     // NOTE: this text needs to be kept in sync with WelcomeController.php's getDefaultDemoTexts():
     String s = "LanguageTool offers spell and grammar checking. Just paste your text here and click the 'Check Text' button. Click the colored phrases for details on potential errors. or use this text too see an few of of the problems that LanguageTool can detecd. What do you thinks of grammar checkers? Please not that they are not perfect. Style issues get a blue marker: It's 5 P.M. in the afternoon. The weather was nice on Thursday, 27 June 2017.";
-    testDemoText(new AmericanEnglish(), s,
+    AmericanEnglish lang = new AmericanEnglish();
+    testDemoText(lang, s,
       Arrays.asList("STYLE_REPEATED_WORD_RULE_EN",
                     "STYLE_REPEATED_WORD_RULE_EN",
                     "UPPERCASE_SENTENCE_START",
@@ -45,6 +46,6 @@ public class EnglishTest extends LanguageSpecificTest {
                     "PM_IN_THE_EVENING",
                     "DATE_WEEKDAY")
     );
-    new WordListValidatorTest().testWordListValidity();
+    runTests(lang);
   }
 }
