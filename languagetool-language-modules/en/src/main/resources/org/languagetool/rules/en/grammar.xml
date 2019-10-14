@@ -21554,7 +21554,7 @@ USA
       <example>... went on to star in the <marker>TV series</marker> Murder, She Wrote as Jessica Fletcher.</example>
       <example>There are many jobs available in the <marker>computer industry</marker>.</example>
     </rule>
-    <rule id='ACCOMPANY_WITH' name='Collocation: accompany with/by'>
+    <rule id='ACCOMPANY_WITH' name='Collocation: accompany with/by' default='off'>
     <!-- Created by Nicholas Walker (Bokomaru), 2017-11-14 -->
       <pattern>
           <token inflected="yes">accompany</token>
@@ -26255,7 +26255,7 @@ The accident victim died from her injuries.
         <example correction="; however|. However">I already asked Tom where he lives<marker>, however</marker>, we were not able to visit him yet.</example>
         <example correction="; moreover|. Moreover">Tom said he is still married to Jill<marker>, moreover</marker>, he said he is still dazzled by her.</example>
         <example>I do know, however, that I am the president’s lawyer along...</example>
-        <example>On Friday, however, he appeared to distance himseld...</example>
+        <example>On Friday, however, he appeared to distance himself...</example>
     </rule>
     </category>
 
@@ -34193,10 +34193,10 @@ The accident victim died from her injuries.
                 <token inflected="yes">accede</token>
                 <token>to</token>
             </pattern>
-            <message>You can make this sentence easier to read. Unless it is a throne that is acceded to, change into <suggestion>allow, agree to or give in to</suggestion>.</message>
+            <message>You can make this sentence easier to read. Unless it is a throne that is acceded to, change into <suggestion><match no='1' postag_regexp='yes' postag='V.+'>allow</match> \2</suggestion>, <suggestion><match no='1' postag_regexp='yes' postag='V.+'>allow</match> \2</suggestion> or <suggestion><match no='1' postag_regexp='yes' postag='V.+'>give</match> in to</suggestion>.</message>
             <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
             <short>Wordiness</short>
-            <example correction="allow, agree to or give in to">He <marker>acceded to</marker> our demands.</example>
+            <example correction="allow to|agree to| give in to">He <marker>acceded to</marker> our demands.</example>
             <example>He gave in to our demands.</example>
         </rule>
 
@@ -34204,7 +34204,7 @@ The accident victim died from her injuries.
             <pattern>
                 <token inflected="yes">accelerate</token>
             </pattern>
-            <message>You can make this sentence easier to read. If the technical term is not needed replace with <suggestion>speed up</suggestion>.</message>
+            <message>You can make this sentence easier to read. If the technical term is not needed replace with <suggestion><match no='1' postag_regexp='yes' postag='V.+'>speed</match> up</suggestion>.</message>
             <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
             <short>Wordiness</short>
             <example correction="speed up">The car <marker>accelerated</marker> from traffic lights</example>
@@ -34215,7 +34215,7 @@ The accident victim died from her injuries.
             <pattern>
                 <token inflected="yes">accentuate</token>
             </pattern>
-            <message>You can make this sentence easier to read by replacing with <suggestion>stress</suggestion> or <suggestion>emphasize</suggestion>.</message>
+            <message>You can make this sentence easier to read by replacing with <suggestion><match no='1' postag_regexp='yes' postag='V.+'>stress</match></suggestion> or <suggestion><match no='1' postag_regexp='yes' postag='V.+'>emphasize</match></suggestion>.</message>
             <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
             <short>Wordiness</short>
             <example correction="stress|emphasize">The harsh light <marker>accentuated</marker> the ruggedness of the landscape.</example>
@@ -34227,7 +34227,7 @@ The accident victim died from her injuries.
                 <token inflected="yes">accommodation</token>
             </pattern>
             <message>You can make this sentence easier to read.</message>
-              <suggestion>room</suggestion>
+              <suggestion><match no='1' postag_regexp='yes' postag='N.+'>room</match></suggestion>
             <example correction="Room"><marker>Accommodation</marker> available.</example>
             <example><marker>Room</marker> available.</example>
         </rule>
@@ -34236,10 +34236,11 @@ The accident victim died from her injuries.
             <pattern>
                 <token inflected="yes">accompany</token>
             </pattern>
-            <message>You can make this sentence easier to read. If not in musical context, use <suggestion>go with</suggestion> or <suggestion>with</suggestion>.</message>
+            <message>You can make this sentence easier to read. If not in musical context, use <suggestion><match no='1' postag_regexp='yes' postag='V.+'>go</match> with</suggestion> or <suggestion>with</suggestion>.</message>
             <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
             <short>Wordiness</short>
             <example correction="go with|with">You need to <marker>accompany</marker> him.</example>
+            <example correction="went with|with">You need to <marker>accompanied</marker> him.</example>
             <example>You need to <marker>go with</marker> him.</example>
         </rule>
 
@@ -34247,7 +34248,7 @@ The accident victim died from her injuries.
             <pattern>
                 <token postag="[^J][^J]" postag_regexp="yes" inflected="yes">accomplish</token>
             </pattern>
-            <message>You can make this sentence easier to read by replacing with <suggestion>do</suggestion> or <suggestion>achieve</suggestion> or <suggestion>finish</suggestion>.</message>
+            <message>You can make this sentence easier to read by replacing with <suggestion><match no='1' postag_regexp='yes' postag='V.+'>do</match></suggestion> or <suggestion><match no='1' postag_regexp='yes' postag='V.+'>achieve</match></suggestion> or <suggestion><match no='1' postag_regexp='yes' postag='V.+'>finish</match></suggestion>.</message>
             <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
             <short>Wordiness</short>
             <example correction="Do|Achieve|Finish"><marker>Accomplish</marker> your work!</example>
@@ -34262,7 +34263,7 @@ The accident victim died from her injuries.
             <pattern>
                 <token postag="V.*" postag_regexp="yes" inflected="yes">accrue</token>
             </pattern>
-            <message>You can make this sentence easier to read by replacing with <suggestion>add</suggestion> or <suggestion>gain</suggestion>.</message>
+            <message>You can make this sentence easier to read by replacing with <suggestion><match no='1' postag_regexp='yes' postag='V.+'>add</match></suggestion> or <suggestion><match no='1' postag_regexp='yes' postag='V.+'>gain</match></suggestion>.</message>
             <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
             <short>Wordiness</short>
             <example correction="add|gain">The deposit <marker>accrued</marker> interest.</example>
@@ -34287,7 +34288,7 @@ The accident victim died from her injuries.
             <pattern>
                 <token postag="V.*" postag_regexp="yes" inflected="yes">acquire</token>
             </pattern>
-            <message>You can make this sentence easier to read. A simple <suggestion>get</suggestion> is enough most of the time, sometimes <suggestion>develop</suggestion>.</message>
+            <message>You can make this sentence easier to read. A simple <suggestion><match no='1' postag_regexp='yes' postag='V.+'>get</match></suggestion> is enough most of the time, sometimes <suggestion><match no='1' postag_regexp='yes' postag='V.+'>develop</match></suggestion>.</message>
             <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
             <short>Wordiness</short>
             <example correction="get|develop">He <marker>acquired</marker> all the tools he needed.</example>
@@ -35428,7 +35429,7 @@ The accident victim died from her injuries.
             <pattern>
                 <token inflected="yes">obtain</token>
             </pattern>
-            <message>You can make this sentence easier to read by replacing with simpler <suggestion>get</suggestion>.</message>
+            <message>You can make this sentence easier to read by replacing with simpler <suggestion><match no='1' postag_regexp='yes' postag='V.+'>get</match></suggestion>.</message>
             <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
             <short>Wordiness</short>
             <example correction="get">We need to <marker>obtain</marker> visas.</example>
@@ -35776,7 +35777,7 @@ The accident victim died from her injuries.
                 <token>type</token>
                 <token>of</token>
             </pattern>
-            <message>You can make this sentence easier to read. Try removing the phrase "\1 \2".</message>
+            <message>You can make this sentence easier to read. Try removing the phrase "\1 \2" and see if the sentence still has the same meaning.</message>
             <url>http://grammar.ccc.commnet.edu/grammar/concise.htm</url>
             <example correction="">Legislators need to be more careful of the <marker>type of</marker> policy they propose.</example>
             <example>Legislators need to be more careful of the <marker/> policy they propose.</example>
