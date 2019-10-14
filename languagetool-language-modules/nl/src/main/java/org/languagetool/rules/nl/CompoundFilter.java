@@ -24,21 +24,16 @@ import org.languagetool.AnalyzedTokenReadings;
 import org.languagetool.rules.RuleMatch;
 import org.languagetool.rules.patterns.RuleFilter;
 
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 import static java.lang.Character.isLowerCase;
 import static java.lang.Character.isUpperCase;
 
 public class CompoundFilter extends RuleFilter {
 
-  private final static Set<String> spelledWords = new HashSet<>(Arrays.asList((
-           "abc|adv|aed|apk|b2b|bh|bhv|bso|btw|bv|cao|cd|cfk|ckv|cv|dc|dj|dtp|dvd|fte|gft|ggo|ggz|gm|gmo|gps|gsm|hbo|" +
+  private final static String spelledWords = "(abc|adv|aed|apk|b2b|bh|bhv|bso|btw|bv|cao|cd|cfk|ckv|cv|dc|dj|dtp|dvd|fte|gft|ggo|ggz|gm|gmo|gps|gsm|hbo|" +
            "hd|hiv|hr|hrm|hst|ic|ivf|kmo|lcd|lp|lpg|lsd|mbo|mdf|mkb|mms|msn|mt|ngo|nv|ob|ov|ozb|p2p|pc|pcb|pdf|pk|pps|" +
-           "pr|pvc|roc|rvs|sms|tbc|tbs|tl|tv|uv|vbo|vj|vmbo|vsbo|vwo|wc|wo|xtc|zzp")
-           .split("\\|")));
+           "pr|pvc|roc|rvs|sms|tbc|tbs|tl|tv|uv|vbo|vj|vmbo|vsbo|vwo|wc|wo|xtc|zzp)";
 
   @Nullable
   @Override
@@ -55,15 +50,15 @@ public class CompoundFilter extends RuleFilter {
       repl = word1 + '-' + word2;
     } else if (isUpperCase(lastChar) && isLowerCase(firstChar)) {
       repl = word1 + '-' + word2;
-    } else if (spelledWords.contains(word1) || spelledWords.contains(word2)) {
+    } else if (word1.matches("(^|.+-)?"+spelledWords) || word2.matches(spelledWords+"(-.+|$)?")) {
       repl = word1 + '-' + word2;
-    } else if (word1.matches(".*-[a-z].+$") || word2.matches("^[a-z]+-.*")) {
+    } else if (word1.matches(".+-[a-z]$") || word2.matches("^[a-z]-.+")) {
       repl = word1 + '-' + word2;
     } else {
       repl = word1 + word2;
     }
-    String message = match.getMessage().replaceAll("<suggestion>.*?</suggestion>", repl);
-    String shortMessage = match.getShortMessage().replaceAll("<suggestion>.*?</suggestion>", repl);
+    String message = match.getMessage().replaceAll("<suggestion>.*?</suggestion>", "<suggestion>" + repl + "</suggestion>");
+    String shortMessage = match.getShortMessage().replaceAll("<suggestion>.*?</suggestion>", "<suggestion>" + repl + "</suggestion>");
     RuleMatch newMatch = new RuleMatch(match.getRule(), match.getSentence(), match.getFromPos(), match.getToPos(), message, shortMessage);
     newMatch.setSuggestedReplacement(repl);
     return newMatch;
