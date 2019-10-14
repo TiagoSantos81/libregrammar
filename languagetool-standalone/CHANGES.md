@@ -1,4 +1,4 @@
-# LanguageTool Change Log
+# LibreGrammar Change Log
 
 ## 4.8X-SNAPSHOT (release planned for 2019-XX-XX)
 
@@ -13,11 +13,12 @@
      - EnglishStyleRepeatedWordRule;
      - split infinitive detection;
      - comma splice partial detection;
+     - weasel word and thought-terminating clichés detection - 87 entries added from Wikipedia;
      - added 533 pairs of easily confused words - active only with
     ngram data (see http://wiki.languagetool.org/finding-errors-using-n-gram-data).
   * English rules re-activated:
      - EnglishPlainEnglishRule - 697 entries from AtD;
-     - Plain English category - 107 rules;
+     - Plain English category - 105 rules;
      - EnglishRedundancyRule (AtD) - 731 entries from AtD;
      - LongSentenceRule;
      - Passive voice;
@@ -44,7 +45,6 @@
      - Word order: 'Hopefully' starting a sentence;
      - Typographical ellipsis;
      - Several adjustments to rules with wide-spectrum antipatterns.
-  * remove Google dependencies from English.java.
 
 #### German
   * GermanStyleRepeatedWordRule active by default;
@@ -60,6 +60,7 @@
 
 #### General
   * Server and HTTP API connection commits for LibreOffice plug-in reverted.
+  * remove Google dependencies from English and Catalan language modules.
   * Restored some languagetool-dev and languagetool-standalone scripts.
 
 ### Other changes common to both projects
@@ -89,6 +90,8 @@
 
 #### Russian
   * improved rules
+
+# LanguageTool Change Log
 
 ## 4.7 (2019-09-28)
 
