@@ -21554,7 +21554,7 @@ USA
       <example>... went on to star in the <marker>TV series</marker> Murder, She Wrote as Jessica Fletcher.</example>
       <example>There are many jobs available in the <marker>computer industry</marker>.</example>
     </rule>
-    <rule id='ACCOMPANY_WITH' name='Collocation: accompany with/by' default='off'>
+    <rule id='ACCOMPANY_WITH' name='Collocation: accompany with/by'>
     <!-- Created by Nicholas Walker (Bokomaru), 2017-11-14 -->
       <pattern>
           <token inflected="yes">accompany</token>
@@ -34193,10 +34193,10 @@ The accident victim died from her injuries.
                 <token inflected="yes">accede</token>
                 <token>to</token>
             </pattern>
-            <message>You can make this sentence easier to read. Unless it is a throne that is acceded to, change into <suggestion><match no='1' postag_regexp='yes' postag='V.+'>allow</match> \2</suggestion>, <suggestion><match no='1' postag_regexp='yes' postag='V.+'>allow</match> \2</suggestion> or <suggestion><match no='1' postag_regexp='yes' postag='V.+'>give</match> in to</suggestion>.</message>
+            <message>You can make this sentence easier to read. Unless it is a throne that is acceded to, change into <suggestion><match no='1' postag_regexp='yes' postag='V.+'>allow</match> \2</suggestion>, <suggestion><match no='1' postag_regexp='yes' postag='V.+'>allow</match> \2</suggestion> or <suggestion><match no='1' postag_regexp='yes' postag='V.+'>agree</match> \2</suggestion> or <suggestion><match no='1' postag_regexp='yes' postag='V.+'>give</match> in to</suggestion>.</message>
             <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
             <short>Wordiness</short>
-            <example correction="allow to|agree to| give in to">He <marker>acceded to</marker> our demands.</example>
+            <example correction="allowed to|agreed to|gave in to">He <marker>acceded to</marker> our demands.</example>
             <example>He gave in to our demands.</example>
         </rule>
 
@@ -34207,7 +34207,7 @@ The accident victim died from her injuries.
             <message>You can make this sentence easier to read. If the technical term is not needed replace with <suggestion><match no='1' postag_regexp='yes' postag='V.+'>speed</match> up</suggestion>.</message>
             <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
             <short>Wordiness</short>
-            <example correction="speed up">The car <marker>accelerated</marker> from traffic lights</example>
+            <example correction="sped up|speeded up">The car <marker>accelerated</marker> from traffic lights</example>
             <example>The car <marker>sped up</marker> from traffic lights</example>
         </rule>
 
@@ -34218,7 +34218,7 @@ The accident victim died from her injuries.
             <message>You can make this sentence easier to read by replacing with <suggestion><match no='1' postag_regexp='yes' postag='V.+'>stress</match></suggestion> or <suggestion><match no='1' postag_regexp='yes' postag='V.+'>emphasize</match></suggestion>.</message>
             <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
             <short>Wordiness</short>
-            <example correction="stress|emphasize">The harsh light <marker>accentuated</marker> the ruggedness of the landscape.</example>
+            <example correction="stressed|emphasized">The harsh light <marker>accentuated</marker> the ruggedness of the landscape.</example>
             <example>The harsh light <marker>emphasized</marker> the ruggedness of the landscape.</example>
         </rule>
 
@@ -34240,7 +34240,7 @@ The accident victim died from her injuries.
             <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
             <short>Wordiness</short>
             <example correction="go with|with">You need to <marker>accompany</marker> him.</example>
-            <example correction="went with|with">You need to <marker>accompanied</marker> him.</example>
+            <example correction="gone with|with">She has <marker>accompanied</marker> him.</example>
             <example>You need to <marker>go with</marker> him.</example>
         </rule>
 
@@ -34266,7 +34266,7 @@ The accident victim died from her injuries.
             <message>You can make this sentence easier to read by replacing with <suggestion><match no='1' postag_regexp='yes' postag='V.+'>add</match></suggestion> or <suggestion><match no='1' postag_regexp='yes' postag='V.+'>gain</match></suggestion>.</message>
             <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
             <short>Wordiness</short>
-            <example correction="add|gain">The deposit <marker>accrued</marker> interest.</example>
+            <example correction="added|gained">The deposit <marker>accrued</marker> interest.</example>
             <example>The deposit gained interest.</example>
         </rule>
 
@@ -34291,7 +34291,7 @@ The accident victim died from her injuries.
             <message>You can make this sentence easier to read. A simple <suggestion><match no='1' postag_regexp='yes' postag='V.+'>get</match></suggestion> is enough most of the time, sometimes <suggestion><match no='1' postag_regexp='yes' postag='V.+'>develop</match></suggestion>.</message>
             <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
             <short>Wordiness</short>
-            <example correction="get|develop">He <marker>acquired</marker> all the tools he needed.</example>
+            <example correction="got|developed">He <marker>acquired</marker> all the tools he needed.</example>
             <example>He <marker>got</marker> all the tools he needed.</example>
         </rule>
 
@@ -35257,17 +35257,50 @@ The accident victim died from her injuries.
 
         <!-- in the majority of instances – usually -->
         <!-- majority – most (except for voting) -->
-        <rule id="MAJORITY" name="majority (most, usually) when not voting">
-            <pattern>
-                <!-- <token min="0">the</token> -->
-                <token>majority</token>
-            </pattern>
-            <message>You can make this sentence easier to read. Majority in the sense of "more than half" is used with countable nouns only (esp. when voting); for uncountable nouns, use <suggestion>most</suggestion> or <suggestion>usually</suggestion>.</message>
+      <rulegroup id="MAJORITY" name="majority (most, usually) when not voting">
             <url>https://web.archive.org/web/20190615172952/https://en.wikipedia.org/wiki/List_of_plain_English_words_and_phrases</url>
             <short>Wordiness</short>
-            <example correction="Most|Usually"><marker>Majority</marker> of the world is covered with water.</example>
+        <rule>
+            <pattern>
+              <marker>
+                <token regexp='yes'>a|the</token>
+                <token>majority</token>
+                <token>of</token>
+                <token>the</token>
+                <token postag='NN:UN?' postag_regexp='yes'>
+                  <exception regexp='yes'>electorate|people|voters</exception></token>
+              </marker>
+            </pattern>
+            <message>You can make this sentence easier to read. Majority in the sense of "more than half" is used with countable nouns only (esp. when voting); for uncountable nouns, use <suggestion>most \3 \4 \5</suggestion> or <suggestion>usually \3 \4 \5</suggestion>.</message>
+            <example correction="Most|Usually"><marker>The majority of the world</marker> is covered with water.</example>
             <example><marker>Most</marker> of the world is covered with water.</example>
         </rule>
+        <rule>
+            <pattern>
+                <!--token min="0">the</token-->
+                <token>
+                  <exception regexp='yes'>a|the</exception></token>
+              <marker>
+                <token>majority</token>
+                <token>of</token>
+                <token>the</token>
+                <token postag='NN:UN?' postag_regexp='yes'>
+                  <exception regexp='yes'>electorate|people|voters</exception></token>
+              </marker>
+            </pattern>
+            <message>You can make this sentence easier to read. Majority in the sense of "more than half" is used with countable nouns only (esp. when voting); for uncountable nouns, use <suggestion>most \3 \4 \5</suggestion> or <suggestion>usually \3 \4 \5</suggestion>.</message>
+            <example correction="Most of the world|Usually of the world"><marker>Majority of the world</marker> is covered with water.</example>
+            <example><marker>Most</marker> of the world is covered with water.</example>
+        </rule>
+        <rule>
+            <pattern>
+                <token>majority</token>
+                <token postag='N.+' postag_regexp='yes'/>
+            </pattern>
+            <message>You can make this sentence easier to read. Majority in the sense of "more than half" is used with countable nouns only (esp. when voting); for uncountable nouns, use <suggestion>most \3 \4 \5</suggestion> or <suggestion>usually \3 \4 \5</suggestion>.</message>
+            <example correction="Most people|Usually people"><marker>Majority people</marker> like water.</example>
+        </rule>
+      </rulegroup>
 
         <!-- make a mockery of – (omit) -->
 
