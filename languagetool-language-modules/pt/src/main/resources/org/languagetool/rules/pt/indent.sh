@@ -16,5 +16,7 @@ sed -ri 's/" >/">/' $@
 sed -ri 's/ \/>/\/>/' $@
 sed -ri 's/\.\.\.<\/example>/…<\/example>/' $@
 sed -ri 's/<example>\.\.\./<example>…/' $@
+sed -ri "s/«(<suggestion.+?<\/suggestion>)»/\1/" $@
+sed -ri "s/'(<suggestion.+?<\/suggestion>)'/\1/" $@
 
 echo $@' indented'
