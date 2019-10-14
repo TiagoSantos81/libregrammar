@@ -64,8 +64,8 @@ public class Main extends WeakBase implements XJobExecutor,
           "com.sun.star.linguistic2.Proofreader",
           "org.languagetool.openoffice.Main" };
 
-  private static final String VENDOR_ID = "languagetool.org";
-  private static final String APPLICATION_ID = "LanguageTool";
+  private static final String VENDOR_ID = "NULL";
+  private static final String APPLICATION_ID = "LibreGrammar";
   private static final String OFFICE_EXTENSION_ID = "LibreOffice";
   private static final String CONFIG_FILE = "Languagetool.cfg";
   private static final String OLD_CONFIG_FILE = ".languagetool-ooo.cfg";
@@ -526,7 +526,7 @@ public class Main extends WeakBase implements XJobExecutor,
 
   @Override
   public String getServiceDisplayName(Locale locale) {
-    return "LanguageTool";
+    return "LibreGrammar";
   }
 
   /**

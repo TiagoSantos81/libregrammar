@@ -164,7 +164,7 @@ abstract class TextChecker {
           List<Pipeline> pipelines = new ArrayList<>();
           for (int i = 0; i < numPipelines; i++) {
             Pipeline p = pipelinePool.getPipeline(setting);
-            p.check("LanguageTool");
+            p.check("LibreGrammar");
             pipelines.add(p);
           }
           for (Pipeline p : pipelines) {

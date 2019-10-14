@@ -37,8 +37,8 @@ import org.apache.commons.lang3.SystemUtils;
  */
 class LocalStorage {
 
-  private static final String VENDOR_ID = "languagetool.org";
-  private static final String APPLICATION_ID = "LanguageTool";
+  private static final String VENDOR_ID = "NULL";
+  private static final String APPLICATION_ID = "LibreGrammar";
   
   private final File directory;
 

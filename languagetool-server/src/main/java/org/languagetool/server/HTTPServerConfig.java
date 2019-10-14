@@ -224,7 +224,7 @@ public class HTTPServerConfig {
         if (maxCheckThreads < 1) {
           throw new IllegalArgumentException("Invalid value for maxCheckThreads, must be >= 1: " + maxCheckThreads);
         }
-        boolean atdMode = getOptionalProperty(props, "mode", "LanguageTool").equalsIgnoreCase("AfterTheDeadline");
+        boolean atdMode = getOptionalProperty(props, "mode", "LibreGrammar").equalsIgnoreCase("AfterTheDeadline");
         if (atdMode) {
           throw new IllegalArgumentException("The AfterTheDeadline mode is not supported anymore in LanguageTool 3.8 or later");
         }

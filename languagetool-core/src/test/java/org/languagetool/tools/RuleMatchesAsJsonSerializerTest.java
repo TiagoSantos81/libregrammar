@@ -51,7 +51,7 @@ public class RuleMatchesAsJsonSerializerTest {
     DetectedLanguage lang = new DetectedLanguage(Languages.getLanguageForShortCode("xx-XX"), Languages.getLanguageForShortCode("xx-XX")) ;
     String json = serializer.ruleMatchesToJson(matches, "This is an text.", 5, lang);
     // Software:
-    assertContains("\"LanguageTool\"", json);
+    assertContains("\"LibreGrammar\"", json);
     assertContains(JLanguageTool.VERSION, json);
     // Language:
     assertContains("\"Testlanguage\"", json);

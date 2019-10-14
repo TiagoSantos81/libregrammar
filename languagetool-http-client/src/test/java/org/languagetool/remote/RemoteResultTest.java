@@ -27,7 +27,7 @@ public class RemoteResultTest {
 
   @Test
   public void testGetLanguageDetectedCodeOutput() {
-    final RemoteServer remoteServer = new RemoteServer("LanguageTool", "", "");
+    final RemoteServer remoteServer = new RemoteServer("LibreGrammar", "", "");
     final List matches = new ArrayList();
     final RemoteResult objectUnderTest = new RemoteResult("English", "en", "en", "English", matches, remoteServer);
     Assert.assertEquals(objectUnderTest.getLanguageDetectedCode(), "en");

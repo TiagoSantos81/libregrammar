@@ -108,7 +108,7 @@ public class RuleMatchesAsJsonSerializer {
       return;
     }
     g.writeObjectFieldStart("software");
-    g.writeStringField("name", "LanguageTool");
+    g.writeStringField("name", "LibreGrammar");
     g.writeStringField("version", JLanguageTool.VERSION);
     g.writeStringField("buildDate", JLanguageTool.BUILD_DATE);
     g.writeNumberField("apiVersion", API_VERSION);

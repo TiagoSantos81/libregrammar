@@ -50,7 +50,7 @@ public class RemoteLanguageToolTest {
   private void runAsserts(RemoteResult result) {
     assertThat(result.getLanguage(), is("English (US)"));
     assertThat(result.getLanguageCode(), is("en-US"));
-    assertThat(result.getRemoteServer().getSoftware(), is("LanguageTool"));
+    assertThat(result.getRemoteServer().getSoftware(), is("LibreGrammar"));
     assertThat(result.getRemoteServer().getVersion(), is("3.4-SNAPSHOT"));
     assertThat(result.getRemoteServer().getBuildDate().get(), is("2016-05-27 12:04"));
     assertThat(result.getMatches().size(), is(1));

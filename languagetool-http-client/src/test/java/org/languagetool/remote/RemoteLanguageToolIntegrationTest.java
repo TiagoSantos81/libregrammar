@@ -69,7 +69,7 @@ public class RemoteLanguageToolIntegrationTest {
       RemoteResult result1 = lt.check("A sentence with a error, and and another one", "en");
       assertThat(result1.getLanguage(), is("English"));
       assertThat(result1.getLanguageCode(), is("en"));
-      assertThat(result1.getRemoteServer().getSoftware(), is("LanguageTool"));
+      assertThat(result1.getRemoteServer().getSoftware(), is("LibreGrammar"));
       assertNotNull(result1.getRemoteServer().getVersion());
       assertThat(result1.getMatches().size(), is(2));
       assertThat(result1.getMatches().get(0).getRuleId(), is("EN_A_VS_AN"));

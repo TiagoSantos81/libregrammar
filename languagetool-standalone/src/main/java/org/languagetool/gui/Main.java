@@ -152,7 +152,7 @@ public final class Main {
   private static final String TRAY_SERVER_ICON = "/TrayIconWithServer.png";
   private static final String TRAY_SMALL_ICON = "/TrayIconSmall.png";
   private static final String TRAY_SMALL_SERVER_ICON = "/TrayIconSmallWithServer.png";
-  private static final String TRAY_TOOLTIP = "LanguageTool";
+  private static final String TRAY_TOOLTIP = "LibreGrammar";
   private static final String TAG_COLOR = "#888888";
   private static final String GUI_STATE = "gui.state";
 
@@ -333,13 +333,13 @@ public final class Main {
       }
       sb.append(" - ");
     }
-    sb.append("LanguageTool ").append(JLanguageTool.VERSION);
+    sb.append("LibreGrammar ").append(JLanguageTool.VERSION);
     frame.setTitle(sb.toString());
   }
 
   private void createGUI() {
     loadRecentFiles();
-    frame = new JFrame("LanguageTool " + JLanguageTool.VERSION);
+    frame = new JFrame("LibreGrammar " + JLanguageTool.VERSION);
 
     setLookAndFeel();
     openAction = new OpenAction();
