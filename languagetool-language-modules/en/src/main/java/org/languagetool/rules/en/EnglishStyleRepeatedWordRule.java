@@ -74,17 +74,17 @@ Matches: [STYLE_REPEATED_WORD_RULE_EN:2-4:Possible style problem: The word is al
   
   @Override
   protected String messageSameSentence() {
-    return "Possible style problem. The word is already used in the same sentence.";
+    return "Possible style problem. This word is repeated in the same sentence.";
   }
   
   @Override
   protected String messageSentenceBefore() {
-    return "Possible style problem. The word is already used in a previous sentence.";
+    return "Possible style problem. This word is already used in a previous sentence.";
   }
   
   @Override
   protected String messageSentenceAfter() {
-    return "Possible style problem. The word is already used in a subsequent sentence.";
+    return "Possible style problem. This word is also used in a subsequent sentence.";
   }
 
   /*
@@ -108,6 +108,7 @@ Matches: [STYLE_REPEATED_WORD_RULE_EN:2-4:Possible style problem: The word is al
            "say", "says", "said", "says",
            "not", "t",
            "more", "less",
+           "day", "days", "week", "weeks", "month", "months", "year", "years", "hour", "hours", "minute", "minutes", "second", "seconds",
            "n", "x", "y"))
         || isUnknownWord(token);
   }
