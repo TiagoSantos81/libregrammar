@@ -17,11 +17,12 @@
  * USA
  */
 package org.languagetool.rules.ca;
-
+/*
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import org.jetbrains.annotations.NotNull;
+*/
 import org.languagetool.Language;
 import org.languagetool.rules.Categories;
 import org.languagetool.rules.ITSIssueType;
@@ -43,6 +44,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class SimpleReplaceDNVRule extends AbstractSimpleReplaceLemmasRule {
 
+/*
   private static final LoadingCache<String, Map<String, List<String>>> cache = CacheBuilder.newBuilder()
           .expireAfterWrite(30, TimeUnit.MINUTES)
           .build(new CacheLoader<String, Map<String, List<String>>>() {
@@ -51,12 +53,13 @@ public class SimpleReplaceDNVRule extends AbstractSimpleReplaceLemmasRule {
               return loadFromPath(path);
             }
           });
+*/
 
   public SimpleReplaceDNVRule(final ResourceBundle messages, Language language) throws IOException {
     super(messages, language);
     super.setCategory(Categories.REGIONALISMS.getCategory(messages));
     super.setLocQualityIssueType(ITSIssueType.Style);
-    wrongLemmas = cache.getUnchecked("/ca/replace_dnv.txt");
+    wrongLemmas = loadFromPath("/ca/replace_dnv.txt");
   }  
 
   @Override
