@@ -35272,7 +35272,7 @@ The accident victim died from her injuries.
               </marker>
             </pattern>
             <message>You can make this sentence easier to read. Majority in the sense of "more than half" is used with countable nouns only (esp. when voting); for uncountable nouns, use <suggestion>most \3 \4 \5</suggestion> or <suggestion>usually \3 \4 \5</suggestion>.</message>
-            <example correction="Most|Usually"><marker>The majority of the world</marker> is covered with water.</example>
+            <example correction="Most of the world|Usually of the world"><marker>The majority of the world</marker> is covered with water.</example>
             <example><marker>Most</marker> of the world is covered with water.</example>
         </rule>
         <rule>
@@ -35297,7 +35297,7 @@ The accident victim died from her injuries.
                 <token>majority</token>
                 <token postag='N.+' postag_regexp='yes'/>
             </pattern>
-            <message>You can make this sentence easier to read. Majority in the sense of "more than half" is used with countable nouns only (esp. when voting); for uncountable nouns, use <suggestion>most \3 \4 \5</suggestion> or <suggestion>usually \3 \4 \5</suggestion>.</message>
+            <message>You can make this sentence easier to read. Majority in the sense of "more than half" is used with countable nouns only (esp. when voting); for uncountable nouns, use <suggestion>most \2</suggestion> or <suggestion>usually \2</suggestion>.</message>
             <example correction="Most people|Usually people"><marker>Majority people</marker> like water.</example>
         </rule>
       </rulegroup>
