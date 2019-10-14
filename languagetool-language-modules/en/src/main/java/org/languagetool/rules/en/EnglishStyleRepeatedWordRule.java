@@ -74,17 +74,17 @@ Matches: [STYLE_REPEATED_WORD_RULE_EN:2-4:Possible style problem: The word is al
   
   @Override
   protected String messageSameSentence() {
-    return "Possible style problem: The word is already used in the same sentence.";
+    return "Possible style problem. The word is already used in the same sentence.";
   }
   
   @Override
   protected String messageSentenceBefore() {
-    return "Possible style problem: The word is already used in a previous sentence.";
+    return "Possible style problem. The word is already used in a previous sentence.";
   }
   
   @Override
   protected String messageSentenceAfter() {
-    return "Possible style problem: The word is already used in a subsequent sentence.";
+    return "Possible style problem. The word is already used in a subsequent sentence.";
   }
 
   /*
