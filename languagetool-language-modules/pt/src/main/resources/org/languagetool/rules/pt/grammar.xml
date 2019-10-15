@@ -33317,6 +33317,14 @@ TODO Write better examples
       <example correction="anúncio">O <marker>núncio</marker> foi pago ao jornal ontem.</example>
     </rule>
     <rule>
+      <pattern>
+          <token regexp='yes'>olas?</token>
+      </pattern>
+      <message>Se se pretende referir à saudação escreva <suggestion><match no='1' regexp_match='a' regexp_replace='á'/></suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/anúncio</url>
+      <example correction="anúncio">O <marker>núncio</marker> foi pago ao jornal ontem.</example>
+    </rule>
+    <rule>
       <antipattern>
           <token inflected='yes' skip='-1'>concertar</token>
           <token regexp='yes'>(?:bloquistas|comunista|democrata|republicano|socialista|sindica(?:to|lista)|BE|CDS|CGTP|PAN|PCP|PP|PSD?)s?|líder(?:es)?</token>
