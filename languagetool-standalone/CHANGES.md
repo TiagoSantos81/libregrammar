@@ -9,12 +9,12 @@
      - EnglishSimpleGrammarRule for simple replacement rule creation - 877 entries added from Wikipedia;
      - eggcorn detection - 227 entries from Grammark and After the Dealine (AtD);
      - cliche detection - 691 entries from AtD;
-     - 727 entries to wordiness database, retrieved from Grammark;
+     - wordiness database enhancements - 727 entries from Grammark;
      - EnglishStyleRepeatedWordRule;
      - split infinitive detection;
      - comma splice partial detection;
      - weasel word and thought-terminating clichés detection - 87 entries added from Wikipedia;
-     - added 533 pairs of easily confused words - active only with
+     - easily confused words - 533 pairs add - active only with
     ngram data (see http://wiki.languagetool.org/finding-errors-using-n-gram-data).
   * English rules re-activated:
      - EnglishPlainEnglishRule - 697 entries from AtD;
@@ -58,10 +58,14 @@
      - wrong spelling agreement errors (PortuguesePreAgreementReplaceRule);
      - capitalization rules.
 
+#### Spanish
+  * re-activated subject-predicate agreement category.
+
 #### General
   * Server and HTTP API connection commits for LibreOffice plug-in reverted.
   * remove Google dependencies from English and Catalan language modules.
   * Restored some languagetool-dev and languagetool-standalone scripts.
+  * [WIP] remove or comment out Freemium server bindings.
 
 ### Other changes common to both projects
 
