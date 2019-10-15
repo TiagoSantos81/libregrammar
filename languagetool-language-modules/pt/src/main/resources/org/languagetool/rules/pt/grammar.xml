@@ -33296,7 +33296,7 @@ TODO Write better examples
           <token regexp='yes'>mandalas?</token>
       </pattern>
       <message>'Mandala' é um símbolo da tradição hindi. O verbo escreve-se <suggestion><match no='1' regexp_match='andal' regexp_replace='andá-l'/></suggestion>.</message>
-      <url>https://pt.wiktionary.org/wiki/mandála</url>
+      <url>https://pt.wiktionary.org/wiki/mandala</url>
       <example correction="mandá-las">Vou <marker>mandalas</marker> por correio registado.</example>
     </rule>
     <rule>
@@ -33318,7 +33318,8 @@ TODO Write better examples
     </rule>
     <rule>
       <pattern>
-          <token regexp='yes'>olas?</token>
+          <token regexp='yes'>olas?
+            <exception scope='previous' regexp='yes'>(?:[dn]?(?:um|algum)?)?as?</exception></token>
       </pattern>
       <message>Se se pretende referir à saudação escreva <suggestion><match no='1' regexp_match='a' regexp_replace='á'/></suggestion>.</message>
       <url>https://pt.wiktionary.org/wiki/olá</url>
