@@ -47,7 +47,10 @@
      - Several adjustments to rules with wide-spectrum antipatterns.
 
 #### German
-  * GermanStyleRepeatedWordRule active by default;
+  * GermanStyleRepeatedWordRule active by default.
+
+#### Irish
+  * Support added thanks to Jim Regan, Emily Barnes, Mícheál J. Ó Meachair, and Seanán Ó Coistín.
 
 #### Portuguese
   * Portugal Portuguese former orthographic agreement locale added (Portugal 
