@@ -98,7 +98,7 @@ class UserLimits {
   }
 
   /**
-   * Special case that checks user on languagetoolplus.com.
+   * Special case that checks user on e.g. languagetoolplus.com.
    */
   static UserLimits getLimitsFromUserAccount(HTTPServerConfig config, String username, String password) {
     Objects.requireNonNull(username);
@@ -109,7 +109,10 @@ class UserLimits {
 
   @NotNull
   private static String getTokenFromServer(String username, String password) {
+    /* Replace by custom service. E.g.:
     String url = "https://languagetoolplus.com/token";
+     */
+    String url = "127.0.0.1";
     try {
       Map<String,Object> params = new LinkedHashMap<>();
       params.put("username", username);
