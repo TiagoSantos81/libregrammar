@@ -98,6 +98,10 @@
 #### Russian
   * improved rules
 
+#### Internal
+  * Experimental: the new `default="temp_off"` attribute in `grammar.xml` files will
+    turn off a rule/rulegroup, but keep it activated for our nightly regression tests.
+
 # LanguageTool Change Log
 
 ## 4.7 (2019-09-28)

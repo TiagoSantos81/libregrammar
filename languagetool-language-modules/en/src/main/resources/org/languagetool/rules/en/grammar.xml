@@ -7699,6 +7699,9 @@ USA
             <example>Are you <marker>au fait</marker> the LanguageTool?</example>
             <example>...Jonas or the Artist at Work" ("Jonas ou l’artiste au travail")</example>
             <example>... text, see also: Michot, Yahya, Ibn Sînâ: Lettre au vizir Abû Sa'd.</example>
+            <example type="triggers_error">An astronomical unit (abbreviated as AU, au, a.u., or ua) is a unit of length equal to ...</example>
+            <example type="triggers_error">..., and the international standard ISO 80000, while au is recommended by the International Astronomical ...</example>
+            <example type="triggers_error">... are named after individual scientists, while au or a.u. can also mean atomic unit or even...</example>
         </rule>
         <rule id="IT_S_EVENT_JJ" name="it's event (even) possible">
             <pattern>
@@ -8768,7 +8771,9 @@ USA
             </antipattern>
             <pattern>
                 <token regexp="yes">th[eo]se</token>
-                <marker><token postag="NN(:UN?)?" postag_regexp="yes"><exception postag_regexp="yes" postag="VB[GP]|NNS|CD|JJ.?|MD"/></token></marker>
+                <marker><token postag="NN(:UN?)?" postag_regexp="yes">
+                    <exception postag_regexp="yes" postag="VB[GP]|NNP?S|CD|JJ.?|MD"/>
+                    </token></marker>
                 <token inflected="yes" regexp="yes">\W+|be</token>
             </pattern>
             <message>Please check whether a plural form of '\2' should be used.</message>
@@ -8780,6 +8785,7 @@ USA
             <example>I collected one of these yesterday.</example>
             <example>Decorative motifs for <marker>these sandstone/mortar constructions</marker>, both cliff dwellings and...</example>
             <example>Explaining the behavior of these electron "orbits" was one of the...</example>
+            <example>Of the venues used for these Olympics, the Kallimarmaro Stadium...</example>
         </rule>
         <rulegroup id="ONE_OF" name="one of the JJR + plural">
             <rule>
@@ -8853,6 +8859,13 @@ USA
                 <token postag="JJ" min="0" max="1"/>
                 <token>people</token>
             </antipattern>
+            <antipattern><!-- one out of five people -->
+                <token regexp="yes">one|1</token>
+                <token>out</token>
+                <token>of</token>
+                <token postag="CD"/>
+                <token>people</token>
+            </antipattern>
             <pattern>
                 <token>people<exception scope="previous" regexp="yes">no|of</exception></token>
                 <token min="0">who</token>
@@ -8875,6 +8888,7 @@ USA
             <example>And that no people has a greater claim to that flag than us.</example>
             <example>... believed that <marker>the freedom given to people</marker> leaves the human in a constant fear of failing his/her ...</example>
             <example><marker>Anxiety when meeting or interacting with unknown people</marker> is a common stage of development in young people.</example>
+            <example>It will not be long before <marker>one out of five people</marker> owns a car.</example>
         </rule>
         <rule id="WE_RB_ARE_VB" name="we + ... + are + base form verb (gerund)">
             <pattern>
@@ -11938,6 +11952,8 @@ USA
             <example>The picture is done in a <marker>masterly</marker> style.</example>
             <example><marker>Once in a while</marker> everything goes wrong.</example>
             <example correction="">This is a <marker>philosophically question</marker>.</example>
+            <example type="triggers_error">Some Low Church Anglicans take a strictly memorialist view of the sacrament.</example>
+            <example type="triggers_error">Some Low Church Anglicans take a strictly memorialist (Zwinglian) view of the sacrament.</example>
         </rule>
         <rulegroup id="WANT_THAT_I" name="want that I (want me to)">
             <!-- TODO: extend this rule to cover more than personal pronouns. This is actually a very common error for German speakers. -->
@@ -13848,6 +13864,12 @@ USA
                     <token postag_regexp="yes" postag="NN(:UN?)?"/>
                     <token postag_regexp="yes" postag="VB[DZ]"/>
                 </antipattern>
+                <antipattern><!-- are host to [www.collinsdictionary.com/dictionary/english/host] -->
+                    <token inflected="yes">be</token>
+                    <token min="0" max="1" postag="RB"/>
+                    <token postag="NN">host</token>
+                    <token>to</token>
+                </antipattern>
                 <pattern>
                     <token inflected="yes">be
                         <exception scope="previous" postag_regexp="yes" postag="VBP?" negate="yes" regexp="yes">ha(?:ve|s)</exception>
@@ -13878,6 +13900,7 @@ USA
                 <example>There's little water in the tank, if any.</example>
                 <example>This was before people knew how to record voices, so we don't know...</example>
                 <example>...small role and the fact that the island is mostly bog means that its potential...</example>
+                <example>... these churches are generally <marker>host to</marker> staunch Anglicans who are ...</example>
             </rule>
         </rulegroup>
         <rulegroup id="MASS_AGREEMENT" name="Agreement: Mass/singular noun + non-third person verb">
@@ -14165,6 +14188,13 @@ USA
                     <token postag="NNS"/>
                     <token>who</token>
                 </antipattern>
+                <antipattern><!-- someone in priestly orders who -->
+                    <token postag_regexp="yes" postag="NN(:UN?)?"/>
+                    <token postag="IN"/>
+                    <token postag_regexp="yes" postag="JJR?"/>
+                    <token postag="NNS"/>
+                    <token>who</token>
+                </antipattern>
                 <pattern>
                     <token postag="NNS"><exception postag="RB|NN" postag_regexp="yes"/></token>
                     <token>who</token>
@@ -14184,6 +14214,7 @@ USA
                 <example>People who win the lottery are lucky.</example>
                 <example>They gave to him the name 'agyieus' as the protector god of public places and houses who wards off evil, and his symbol was a tapered stone or column.</example>
                 <example>Tom is one of those rare individuals who has had a clear idea of his career path since he was a teenager.</example><!-- #2011 -->
+                <example>... can only be held by someone in priestly orders who has been ordained for at least six years.</example>
             </rule>
         </rulegroup>
         <rulegroup id="PERS_PRONOUN_AGREEMENT_SENT_START" name="Agreement: 'I is / you is / ... ' (at sentence start only)">
@@ -15952,7 +15983,10 @@ USA
                 <pattern>
                     <marker>
                         <token regexp="yes">th[eo]se</token>
-                        <token postag="NN(:.+)?" postag_regexp="yes"><exception postag="VB[ZGN]|NNS|JJ.*|VBP|MD|CD|RP|DT" postag_regexp="yes"/><exception>are</exception></token>
+                        <token postag="NN(:.+)?" postag_regexp="yes">
+                            <exception postag="VB[ZGN]|NNP?S|JJ.*|VBP|MD|CD|RP|DT" postag_regexp="yes"/>
+                            <exception>are</exception>
+                            </token>
                     </marker>
                     <token><exception postag="NNP?S" postag_regexp="yes"/></token>
                 </pattern>
@@ -15969,6 +16003,7 @@ USA
                 <example>I collected one of these yesterday.</example>
                 <example>Decorative motifs for <marker>these sandstone/mortar constructions</marker>, both cliff dwellings and...</example>
                 <example>Explaining the behavior of these electron "orbits" was one of the...</example>
+                <example>Of the venues used for these Olympics, the Kallimarmaro Stadium...</example>
             </rule>
             <rule>
                 <pattern>
@@ -16274,6 +16309,7 @@ USA
                 <example correction="the least">The guy is <marker>least</marker> funny friend.</example>
                 <example>The guy <marker>is the least</marker> funny friend.</example>
                 <example>He is least likely to come.</example>
+                <example type="triggers_error">Given a wire contour, the surface of least area spanning ("filling") it is a minimal surface...</example><!-- possible technical term: https://cordis.europa.eu/project/rcn/104357/factsheet/en -->
             </rule>
             <rule>
                 <pattern>
@@ -17351,6 +17387,7 @@ USA
             <example>What language do you two use to communicate?</example>
             <example>This is a process doctors use to educate their patients.</example>
             <example type="triggers_error">This is the laptop that I <marker>use to</marker> code on.</example><!-- #1700 -->
+            <example type="triggers_error">...by some methanogenic archaea in enzymes that they use to produce methane.</example>
         </rule>
         <rule id="MORE_A_JJ" name="Word order: 'more a ...' instead of 'a more ...'">
             <pattern>
@@ -17893,6 +17930,7 @@ USA
                 <example correction="enters|entered">Somebody else usually <marker>enter</marker> the building.</example>
                 <example>Nobody else usually <marker>walks</marker> to the building.</example>
                 <example>Somebody else occasionally <marker>walked</marker> to the building.</example>
+                <example type="triggers_error">... Cromwell, had banished "makers", or anyone else demonstrating "knacks" (an ability to perform seemingly ...</example>
             </rule>
             <!--  subjunctive with 'that' -->
             <rule>
@@ -18791,6 +18829,7 @@ USA
             <example>I would recommend this <marker>5-star</marker> restaurant.</example>
             <example>My 2 step daughters hate me.</example>
             <example>I received 5 stars on GitHub.</example>
+            <example type="triggers_error">Let Q be a set enclosed between two <marker>step regions</marker> S and T. A step region is formed from a ...</example><!-- 'step region' is a 2-word technical term www.cambridge.org/core/journals/robotica/article/increase-the-feasible-step-region-of-biped-robots-through-active-vertical-flexion-and-extension-motions/063AF130B5E3F0A1BA689FF18321C3A0 -->
         </rule>
         <rulegroup id="TEN_FOLD" name="'ten fold' written as one word">
             <rule>
@@ -19714,6 +19753,7 @@ USA
                 <example>After returning home, I will inquire into the matter.</example>
                 <example><!-- formula + line end -->where C is an arbitrary constant of integration.</example>
                 <!--example>If only we'd stop trying to be happy we could have a...</example> XXX This would be a valid correction -->
+                <example type="triggers_error">As if you could kill time without injuring eternity.</example>
             </rule>
             <!-- Note: 
                 The following are too useful not to be declared as phrases, unfortunately I want to make progress and I can't find a decent tutorial on 'phrases' and 'unify' 
@@ -26119,6 +26159,8 @@ The accident victim died from her injuries.
                 <example type="triggers_error">Still others simply travel around America in recreation...</example><!-- Comma is also correct. -->
                 <example type="triggers_error"><marker>Currently under construction in Edmonton</marker> is the new...</example>
                 <example type="triggers_error"><marker>Further progress in the understanding of atoms</marker> did not occur until 1913.</example><!-- Comma is also correct, depends on the intended meaning. -->
+                <example type="triggers_error">Still higher values of n further increase the number of errors.</example><!-- Comma is also correct. -->
+                <example type="triggers_error">Also from that general era, Martin Cruz Smith, in his ...</example><!-- MFU 2019-10-15: Incomplete sentence. Thus probably should be out of scope. -->
             </rule>
             <rule>
                 <pattern>
