@@ -1744,7 +1744,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             </rule>
         </rulegroup>
     </category>
-    <category default="off" id="CAT3" name="Concordancia predicativa" type="inconsistency">
+    <category default="on" id="CAT3" name="Concordancia predicativa" type="inconsistency">
         <!-- SUJ_PRED_ATRIB_SINGULAR Concordancia (pavo es rojos) -->
         <rule id="SUJ_PRED_ATRIB_SINGULAR" name="Concordancia de sujeto y predicado en singular en oraciones atributivas">
             <pattern case_sensitive="yes">
