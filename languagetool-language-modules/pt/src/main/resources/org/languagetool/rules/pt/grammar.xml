@@ -33202,11 +33202,13 @@ TODO Write better examples
 
   <rulegroup id='EASILY_CONFUSED_RARE_WORDS' name="Palavras raras facilmente confundidas">
     <!--      Created by Tiago F. Santos, Portuguese rule, 2017-08-20      -->
+
     <rule>
       <pattern>
           <token>alem</token>
       </pattern>
       <message>'Alem' é uma forma do verbo 'alar'. O advérbio escreve-se <suggestion>além</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/além</url>
       <example correction="além">O Mário <marker>alem</marker> de ter pedido uma indemnização, exigiu um pedido de desculpas.</example>
     </rule>
     <rule>
@@ -33214,6 +33216,7 @@ TODO Write better examples
           <token>alias</token>
       </pattern>
       <message>'Alias' é uma forma do verbo 'aliar'. O advérbio escreve-se <suggestion>aliás</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/Aliás</url>
       <example correction="Aliás"><marker>Alias</marker>, envie por correio registado.</example>
     </rule>
     <rule>
@@ -33226,6 +33229,7 @@ TODO Write better examples
           <token regexp='yes'>avos?</token>
       </pattern>
       <message>'Avo' é uma porção de algo. Os graus de parentesco escrevem-se <suggestion><match no='1' regexp_match='o' regexp_replace='ó'/></suggestion> ou <suggestion><match no='1' regexp_match='o' regexp_replace='ô'/></suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/avó</url>
       <example correction="avó|avô">O <marker>avo</marker> foi de férias.</example>
       <example>Restara um três <marker>avo</marker>.</example>
     </rule>
@@ -33247,6 +33251,7 @@ TODO Write better examples
           <token regexp='yes'>bateiras?</token>
       </pattern>
       <message>'Bateira' é um tipo de barco. O modo de alimentação escreve-se <suggestion>bateria</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/bateria</url>
       <example correction="bateria">Acabou a <marker>bateira</marker>.</example>
     </rule>
     <rule>
@@ -33255,6 +33260,7 @@ TODO Write better examples
             <exception scope='next' regexp='yes'>estat(?:al|ais)|pol[ií]t.+</exception></token>
       </pattern>
       <message>'Censor' é uma pessoa que censura. Refere-se ao componente eletrónico <suggestion><match no='1' regexp_match='censor' regexp_replace='sensor'/></suggestion>?</message>
+      <url>https://pt.wiktionary.org/wiki/sensores</url>
       <example correction="sensores">O olho é composto por inúmeros <marker>censores</marker> de luz.</example>
     </rule>
     <rule>
@@ -33273,6 +33279,7 @@ TODO Write better examples
       <message>'\1' é um tipo de veneno tribal. Confirme.</message>
         <suggestion>curar e</suggestion>
         <suggestion>curar</suggestion>
+      <url>https://pt.wiktionary.org/wiki/curare</url>
       <example correction="curar e|curar">No hospital vão-te <marker>curare</marker> fazer-te descontrair.</example>
       <example>Aquela tribo era perita em caça, graças ao curare.</example>
     </rule>
@@ -33281,6 +33288,7 @@ TODO Write better examples
           <token regexp='yes'>furaç(?:ão|ões)</token>
       </pattern>
       <message>'Furação' é o ato de perfurar. O fenómeno meteorológico escreve-se <suggestion><match no='1' regexp_match='ç' regexp_replace='c'/></suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/furacão</url>
       <example correction="Furacões">Centro Nacional de <marker>Furações</marker>.</example>
     </rule>
     <rule>
@@ -33288,6 +33296,7 @@ TODO Write better examples
           <token regexp='yes'>mandalas?</token>
       </pattern>
       <message>'Mandala' é um símbolo da tradição hindi. O verbo escreve-se <suggestion><match no='1' regexp_match='andal' regexp_replace='andá-l'/></suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/mandála</url>
       <example correction="mandá-las">Vou <marker>mandalas</marker> por correio registado.</example>
     </rule>
     <rule>
@@ -33295,6 +33304,7 @@ TODO Write better examples
           <token regexp='yes'>minutes?</token>
       </pattern>
       <message>'\1' é um verbo referente a fazer uma minuta. A unidade de tempo escreve-se <suggestion><match no='1' regexp_match='ute' regexp_replace='uto'/></suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/minutos</url>
       <example correction="minutos">Demora de 10 a 15 <marker>minutes</marker> a ler.</example>
     </rule>
     <rule>
@@ -33303,6 +33313,7 @@ TODO Write better examples
             <exception scope='next' regexp='yes'>apostólicos?|papa(?:l|is)</exception></token>
       </pattern>
       <message>'\1' é um título eclesiástico. A forma de divulgação de algo escreve-se <suggestion>a\1</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/anúncio</url>
       <example correction="anúncio">O <marker>núncio</marker> foi pago ao jornal ontem.</example>
     </rule>
     <rule>
@@ -33315,6 +33326,7 @@ TODO Write better examples
             <exception regexp='yes'>concertos?</exception></token>
       </pattern>
       <message>'\1' refere-se a estar em acordo ou sintonia com algo. O sinónimo de reparar escreve-se <suggestion><match no='1' regexp_match='once' regexp_replace='onse'/></suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/consertar</url>
       <example correction="consertá">Para <marker>concertá</marker>-lo terá de gastar 100€.</example>
       <example>…concertado na especialidade entre socialistas, bloquistas e comunistas,…</example>
     </rule>
