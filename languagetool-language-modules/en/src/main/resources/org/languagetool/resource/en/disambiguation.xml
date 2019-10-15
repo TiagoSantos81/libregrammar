@@ -3445,6 +3445,18 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <example type="untouched">What are you doing?</example>
     </rule>
     <rulegroup name="Quotation marks" id="QUOT">
+        <!--rule>      XXX PCT, '', `` messes up interaction with punctuation rules. 
+            <pattern> TODO '' messes up SMART_QUOTES rule. Adapt that rule first.
+                <token regexp="yes">[“‘«]</token>
+            </pattern>
+            <disambig postag="``"/>
+        </rule>
+        <rule> 
+            <pattern>
+                <token regexp="yes">[”’»]</token>
+            </pattern>
+            <disambig postag="''"/> 
+        </rule-->
         <rule>
             <pattern>
                 <token postag="SENT_START"/>

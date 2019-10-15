@@ -14887,6 +14887,11 @@ USA
                 <token>in</token>
                 <token regexp="yes">bud|season|session</token>
             </antipattern>
+            <antipattern>
+                <token postag="DT|WDT|JJ|NN.*" postag_regexp="yes"/>
+                <token regexp="yes">&quot;|[“‘]</token>
+                <token spacebefore='no'><exception postag="DT|WDT|JJ|NN.*" postag_regexp="yes"/></token>
+            </antipattern>
             <rule>
                 <pattern>
                     <token><exception postag="DT|WDT|JJ|NN.*" postag_regexp="yes"/></token>
@@ -15072,6 +15077,8 @@ USA
                 <example>He is <marker>an extremely experienced soldier</marker>.</example>
                 <example>Nearby Foggy Bottom is ousting Negroes.</example>
                 <example>Cousin Emma is alone in that big old house and won't hear to parting from it.</example>
+                <example>Such a “totally new concept”!</example>
+                <example>Such a "totally new concept"!</example>
             </rule>
             <!--  this rule needs to be expanded to all prepositions
                   so that exceptions could be accounted for properly, i.e.,
@@ -22203,7 +22210,7 @@ USA
           <marker>
           <token regexp="yes" inflected="yes">do|play</token>
           <token postag="VBG">
-            <exception regexp="yes">training|marketing|lapping|engineering|nursing|weightlifting|boarding</exception></token>
+            <exception regexp="yes">having|training|marketing|lapping|engineering|nursing|weightlifting|boarding</exception></token>
           </marker>
           <token>
             <exception postag_regexp="yes" postag="NN(:UN?|S)?"/></token>
@@ -33497,7 +33504,8 @@ The accident victim died from her injuries.
             <pattern>
                 <token postag='TO'>to</token>
                 <token>
-                  <exception postag_regexp='yes' postag='PCT|VB'/></token>
+                  <exception regexp='yes'>[&quot;“”‘’«»]</exception>
+                  <exception postag_regexp='yes' postag="PCT|VB|''|``"/></token>
                 <token postag='VB'>
                   <exception negate_pos='yes' postag_regexp='yes' postag='V.+'/></token>
             </pattern>
@@ -33506,6 +33514,7 @@ The accident victim died from her injuries.
             <short>Split infinitive</short>
             <example correction="">This is <marker>to really do</marker> a good job.</example>
             <example>This is <marker>to do</marker> a really good job.</example>
+            <example>This is <marker>to “do”</marker> a really good job.</example>
             <!--example>He is proud to not be like everybody else.</example>
             <example>Try to not ruin the party.</example-->
         </rule>
@@ -35357,6 +35366,7 @@ The accident victim died from her injuries.
                 <token>that</token>
             </pattern>
             <message>You can make this sentence easier to read. Possibly empty phrase "\1 \2 \3"</message>
+              <suggestion></suggestion>
             <url>http://grammar.ccc.commnet.edu/grammar/concise.htm</url>
             <example correction=""><marker>It seems that</marker> they can't wait to get rid of this one.</example>
             <example><marker/>They can't wait to get rid of this one.</example>
