@@ -798,7 +798,9 @@ back-up	back-up	NN
 backup	backup	NN:U
 back-ups	back-up	NNS
 bacterisation	bacterisation	NN:UN
+baffled	baffled	JJ
 balkanisation	balkanisation	NN:UN
+bamboozled	bamboozled	JJ
 banalisation	banalisation	NN:U
 banalise	banalise	VB
 banalise	banalise	VBP
@@ -838,6 +840,7 @@ Baumgartner	Baumgartner	NNP
 Bechtle	Bechtle	NNP
 Bedford	Bedford	NNP
 before	before	RB
+befuddled	befuddled	JJ
 beguiling	beguiling	JJ
 Behance	Behance	NNP
 behind	behind	RB
@@ -1568,6 +1571,7 @@ connaturalized	connaturalize	VBD
 connaturalized	connaturalize	VBN
 connaturalizes	connaturalize	VBZ
 connaturalizing	connaturalize	VBG
+ConnectedDrive	ConnectedDrive	NNP
 conscientisation	conscientisation	NN:U
 conscientise	conscientise	VB
 conscientise	conscientise	VBP
@@ -1826,6 +1830,7 @@ darmstadtium	darmstadtium	NN:U
 Darnley	Darnley	NNP
 dataset	dataset	NN
 datasets	dataset	NNS
+dazed	dazed	JJ
 DAZN	DAZN	NNP
 deaerate	deaerate	VB
 deaerated	deaerate	VBD
@@ -5005,6 +5010,8 @@ iodiser	iodiser	NN
 iodisers	iodiser	NNS
 ionisers	ioniser	NNS
 IoT	IoT	NN
+IP	IP	NN
+IPs	IP	NNS
 iPad	iPad	NNP
 iPads	iPad	NNPS
 iPhone	iPhone	NNP
@@ -5585,6 +5592,7 @@ maderized	maderize	VBD
 maderized	maderize	VBN
 maderizes	maderize	VBZ
 maderizing	maderize	VBG
+Maersk	Maersk	NNP
 Magento	Magento	NNP
 magnetisability	magnetisability	NN:UN
 magnetisable	magnetisable	JJ
@@ -7582,6 +7590,7 @@ peptonizers	peptonizer	NNS
 peptonizes	peptonize	VBZ
 peptonizing	peptonize	VBG
 percent	percent	RB
+Perdomo	Perdomo	NNP
 perennialise	perennialise	VB
 perennialise	perennialise	VBP
 perennialised	perennialise	VBD
@@ -7827,6 +7836,7 @@ photosynthesise	photosynthesise	VBP
 photosynthesised	photosynthesise	VBD
 photosynthesised	photosynthesise	VBN
 photosynthesises	photosynthesise	VBZ
+PhpMyAdmin	PhpMyAdmin	NNP
 physicalise	physicalise	VB
 physicalise	physicalise	VBP
 physicalised	physicalise	VBD
@@ -8192,6 +8202,7 @@ powerlifter	powerlifter	NN
 powerlifters	powerlifter	NN
 PowerPoint	PowerPoint	NNP
 PowerPoints	PowerPoint	NNPS
+PPPoE	PPPoE	NNP
 pragmatisation	pragmatisation	NN:U
 pragmatise	pragmatise	VB
 pragmatise	pragmatise	VBP
@@ -8828,6 +8839,12 @@ reconceptualized	reconceptualize	VBD
 reconceptualized	reconceptualize	VBN
 reconceptualizes	reconceptualize	VBZ
 reconceptualizing	reconceptualize	VBG
+reconfigure	reconfigure	VB
+reconfigure	reconfigure	VBP
+reconfigured	reconfigure	VBD
+reconfigured	reconfigure	VBN
+reconfigures	reconfigure	VBZ
+reconfiguring	reconfigure	VBG
 recontextualise	recontextualise	VB
 recontextualise	recontextualise	VBP
 recontextualised	recontextualise	VBD
@@ -10285,6 +10302,8 @@ standalone	standalone	JJ
 standardisable	standardisable	JJ
 standing	standing	JJ
 Stannington	Stannington	NNP
+startle	startle	NN
+startles	startle	NNS
 startled	startled	JJ
 statin	statin	NN:UN
 statins	statin	NNS
@@ -11069,6 +11088,7 @@ trypsinized	trypsinize	VBD
 trypsinized	trypsinize	VBN
 trypsinizes	trypsinize	VBZ
 trypsinizing	trypsinize	VBG
+Tsubasa	Tsubasa	NNP
 TUESDAY	Tuesday	NNP
 Tuscan-Emilian	Tuscan-Emilian	JJ
 tutorise	tutorise	VB
@@ -11529,6 +11549,7 @@ verticalizing	verticalize	VBG
 viewport	viewport	NN
 viewports	viewport	NNS
 Vijay	Vijay	NNP
+Villeroy	Villeroy	NNP
 villainize	villainize	VB
 villainize	villainize	VBP
 villainized	villainize	VBD
@@ -11566,6 +11587,7 @@ virtualizing	virtualize	VBG
 vis-à-vis	vis-à-vis	JJ
 vis-à-vis	vis-à-vis	NN
 vis-à-vis	vis-à-vis	RB
+Vishal	Vishal	NNP
 Vistaprint	Vistaprint	NNP
 Viterbo	Viterbo	NNP
 Vivek	Vivek	NNP
@@ -11871,6 +11893,8 @@ yottawebers	yottaweber	NNS
 Youssef	Youssef	NNP
 YouTube	YouTube	NNP
 yucca	yucca	NN:U
+Yury	Yury	NNP
+Yuriy	Yuriy	NNP
 Yusuf	Yusuf	NNP
 Zach	Zach	NNP
 Zack	Zack	NNP
