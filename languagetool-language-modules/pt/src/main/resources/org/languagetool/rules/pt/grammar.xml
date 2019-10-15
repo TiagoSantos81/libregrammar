@@ -33321,8 +33321,8 @@ TODO Write better examples
           <token regexp='yes'>olas?</token>
       </pattern>
       <message>Se se pretende referir à saudação escreva <suggestion><match no='1' regexp_match='a' regexp_replace='á'/></suggestion>.</message>
-      <url>https://pt.wiktionary.org/wiki/anúncio</url>
-      <example correction="anúncio">O <marker>núncio</marker> foi pago ao jornal ontem.</example>
+      <url>https://pt.wiktionary.org/wiki/olá</url>
+      <example correction="Olá"><marker>Ola</marker>!</example>
     </rule>
     <rule>
       <antipattern>
