@@ -71,11 +71,11 @@ public class LogainmRule extends AbstractSimpleReplaceRule {
   public String getShort() {
     return "Logainm Béarla";
   }
-
+ 
   @Override
   public String getMessage(String tokenStr, List<String> replacements) {
-    return tokenStr + " Is logainm Béarla é "
-        + String.join(" ar ", replacements) + ".";
+    return "Is logainm Béarla é " + tokenStr + " ar "
+        + String.join(", ", replacements) + ".";
   }
 
   @Override
