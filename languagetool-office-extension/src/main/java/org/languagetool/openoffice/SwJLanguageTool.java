@@ -20,7 +20,9 @@ package org.languagetool.openoffice;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.languagetool.JLanguageTool;
 import org.languagetool.Language;
@@ -85,7 +87,7 @@ public class SwJLanguageTool {
   }
 
   public Set<String> getDisabledRules() {
-    if(isMultiThread && !isRemote) {
+    if(isMultiThread) {
       return mlt.getDisabledRules(); 
     } else {
       return lt.getDisabledRules(); 
