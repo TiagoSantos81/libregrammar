@@ -32813,6 +32813,19 @@ The accident victim died from her injuries.
                 <example correction=" got a">You<marker>'ve gotta</marker> new car.</example>
             </rule>
         </rulegroup>
+        <rule id="GONNA" name="gonna (going to)">
+            <pattern>
+                <marker>
+                    <token>gonna</token>
+                </marker>
+                <token postag="VB" />
+            </pattern>
+            <message>The word 'gonna' is informal. Consider an alternative.</message>
+            <suggestion>going to</suggestion>
+            <example correction="Going to"><marker>Gonna</marker> be there.</example>
+            <example correction="going to">I'm <marker>gonna</marker> let you finish.</example>
+            <example>They call me Gonna.</example>
+        </rule>
         <rulegroup id="EXTREME_ADJECTIVES" name="Extreme adjectives">
             <!--      Created by Tiago F. Santos, 2018-07-20      -->
             <url>https://www.espressoenglish.net/extreme-adjectives-in-english/</url>
@@ -33172,39 +33185,6 @@ The accident victim died from her injuries.
           <url>https://en.wiktionary.org/wiki/Jim_Crow#English</url>
           <example type="incorrect"><marker>Jim Crow</marker>.</example>
           <example type="correct"><marker>Jim Crow</marker> laws.</example>
-        </rule>
-        <rule>
-          <pattern>
-              <token>toilet</token>
-              <token regexp='yes' min="0">rooms?</token>
-          </pattern>
-          <message>This expression can be considered mildly offensive (especially in Canadian and American English).</message>
-        <suggestion>rest\2</suggestion>
-          <suggestion>wash\2</suggestion>
-          <suggestion>bath\2</suggestion>
-          <suggestion>powder \2</suggestion>
-          <url>http://www.englishteachermelanie.com/vocabulary-do-not-call-it-toilet/</url>
-          <example correction="restrooms|washrooms|bathrooms|powder rooms">Have you seen the <marker>toilet rooms</marker>?</example>
-        </rule>
-        <rule>
-          <pattern>
-              <token regexp="yes">go|visit|on</token>
-              <token min="0">to</token>
-              <token regexp="yes">the|a</token>
-              <marker>
-                <token>
-                    toilet
-                    <exception scope="next" regexp="yes">game|song|paper|bowls?|bar|store|seat|plunger|flange|water</exception>
-                </token>
-              </marker>
-          </pattern>
-          <message>This expression can be considered mildly offensive (especially in Canadian and American English).</message>
-          <suggestion>restroom</suggestion>
-          <suggestion>washroom</suggestion>
-          <suggestion>bathroom</suggestion>
-          <suggestion>powder room</suggestion>
-          <url>http://www.englishteachermelanie.com/vocabulary-do-not-call-it-toilet/</url>
-          <example correction="restroom|washroom|bathroom|powder room">I need to go to the <marker>toilet</marker>.</example>
         </rule>
   </rulegroup>
 
