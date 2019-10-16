@@ -84,6 +84,14 @@ public class SwJLanguageTool {
     }
   }
 
+  public Set<String> getDisabledRules() {
+    if(isMultiThread && !isRemote) {
+      return mlt.getDisabledRules(); 
+    } else {
+      return lt.getDisabledRules(); 
+    }
+  }
+
   public void disableCategory(CategoryId id) {
     if(isMultiThread) {
       mlt.disableCategory(id); 
