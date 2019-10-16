@@ -44,6 +44,7 @@
      - Readability: Three nouns in a row;
      - Word order: 'Hopefully' starting a sentence;
      - Typographical ellipsis;
+     - 'also' at the end of the sentence
      - Several adjustments to rules with wide-spectrum antipatterns.
 
 #### German
@@ -89,6 +90,7 @@
   * POS and spelling improvements
 
 #### French
+  * added and improved rules
   * POS and spelling improvements
 
 #### German
