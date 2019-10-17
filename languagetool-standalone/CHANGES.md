@@ -51,12 +51,18 @@
   * GermanStyleRepeatedWordRule active by default.
 
 #### Irish
-  * Support added thanks to Jim Regan, Emily Barnes, Mícheál J. Ó Meachair, and Seanán Ó Coistín.
+  * Support added thanks to Jim Regan, Emily Barnes, Mícheál J. Ó Meachair, 
+  and Seanán Ó Coistín. Support includes:
+     - 606 grammar rules;
+     - generic typographical rules (e.g., spacing rules);
+     - generic style rules (e.g., sentence length);
+     - [spell checking](https://github.com/jimregan/languagetool-ga-dicts);
+     - [part-of-speech dictionary and synthesiser](https://github.com/jimregan/languagetool-ga-dicts).
 
 #### Portuguese
   * Portugal Portuguese former orthographic agreement locale added (Portugal 
   pre-AO) with support for:
-     - [pt-PT pre-AO] Dicionários Portugueses Complementares 1.2;
+     - [pt-PT pre-AO] [Dicionários Portugueses Complementares 1.2](https://github.com/TiagoSantos81/PortugueseLibreOfficeExtension);
      - common Portuguese rules;
      - pre-AO hyphenation rules;
      - wrong spelling agreement errors (PortuguesePreAgreementReplaceRule);
