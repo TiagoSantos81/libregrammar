@@ -49,3 +49,5 @@ For the dictionaries that are used for spell checking, see
 ./org/languagetool/resource/<xx>/hunspell/README*
 and
 ./org/languagetool/resource/<xx>/spelling/README* (<xx> = language code).
+For the dictionaries that are used for part-of-speech tagging and synthesising, see
+./org/languagetool/resource/<xx>/README*.
