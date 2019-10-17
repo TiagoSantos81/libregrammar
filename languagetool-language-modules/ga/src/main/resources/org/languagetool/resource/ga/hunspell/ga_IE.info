@@ -10,9 +10,9 @@ fsa.dict.encoder=none
 fsa.dict.frequency-included=true
 
 fsa.dict.speller.locale=ga_IE
-fsa.dict.speller.ignore-diacritics=true
+fsa.dict.speller.ignore-diacritics=false
 fsa.dict.speller.ignore-all-uppercase=false
 fsa.dict.speller.ignore-numbers=false
 fsa.dict.speller.ignore-punctuation=true
-fsa.dict.speller.equivalent-chars=a á, á a, e é, é e, i í, í i, o ó, ó o, u ú, ú u, - —, - –, 0 O
+# fsa.dict.speller.equivalent-chars=a á, á a, e é, é e, i í, í i, o ó, ó o, u ú, ú u, - —, - –, 0 O
 fsa.dict.speller.replacement-pairs=uigh aigh, uith aith, idhth ith, ighth ith, sb sp, sd st, sg sc, dn nn, eu éa, chd cht, tch t, idhea ío, ighea ío, idhe í, ighe í, uím aím, uít aít, uío aío, aghadh ú, adha ú, ádh á, mhth f, bhth f, thmh f, thbh f, thch ch, tht t, ghaí aí, llr lr, lls ls, llt lt, nd nn, nnc nc, nnd nd, nnl nl, nnr nr, nns ns, nnt nt, aingc aing, éagc éag, éigc éig, iargc iarg, éadt éad, éidt éid, domb dom, díomb díom, dhomb dhom, dhíomb dhíom, anbhf anbh, ainbhf ainbh, ighim ím, ighidh í, ighinn ínn, éá éa, áí ái, éí éi, óí ói, úí úi, íó ío, íá iá, íú iú, ḃ bh, ċ ch, ḋ dh, ḟ fh, ġ gh, ṁ mh, ṗ ph, ṡ sh, ṫ th
