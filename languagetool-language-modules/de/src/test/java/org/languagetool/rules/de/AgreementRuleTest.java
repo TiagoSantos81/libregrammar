@@ -242,6 +242,8 @@ public class AgreementRuleTest {
     assertGood("und das erst Jahrhunderte spätere Auftauchen der Legende");
     assertGood("Texas und New Mexico, beides spanische Kolonien, sind...");
     assertGood("Unser Hund vergräbt seine Knochen im Garten.");
+    assertGood("Ob das Mehrwert bringt?");
+    assertGood("Warum das Sinn macht?");
 
     // incorrect sentences:
     assertBad("Ein Buch mit einem ganz ähnlichem Titel.");
@@ -315,6 +317,10 @@ public class AgreementRuleTest {
     assertGood("Dein Vorschlag befindet sich unter meinen Top 5.");
     assertGood("Unter diesen rief das großen Unmut hervor.");
     assertGood("Bei mir löste das Panik aus.");
+
+    assertGood("Dann wird das Konsequenzen haben.");
+    assertGood("Dann hat das Konsequenzen.");
+    assertGood("Sollte das Konsequenzen nach sich ziehen?");
 
     assertBad("Hier steht Ihre Text.");
     assertBad("Hier steht ihre Text.");

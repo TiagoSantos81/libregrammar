@@ -281,6 +281,10 @@ public class AgreementRule extends Rule {
       token("Contest")
     ),
     Arrays.asList(
+      token("Account"),
+      tokenRegex("Managers?")
+    ),
+    Arrays.asList(
       token("Junge"),
       tokenRegex("Union|Freiheit|Welt|Europäische|Alternative|Volkspartei|Akademie")
     ),
@@ -470,6 +474,17 @@ public class AgreementRule extends Rule {
     Arrays.asList(
       tokenRegex("(all|je(d|glich))en"),
       csToken("Reiz")
+    ),
+    Arrays.asList(
+      tokenRegex("wieso|ob|warum|w[ae]nn"),
+      token("das"),
+      tokenRegex("sinn|mehrwert"),
+      tokenRegex("macht|ergibt|stiftet|bringt")
+    ),
+    Arrays.asList(
+      tokenRegex("hat|hätte|kann|wird|dürfte|muss|sollte|soll|könnte|müsste|würde"),
+      token("das"),
+      token("Konsequenzen")
     ),
     Arrays.asList(
       new PatternTokenBuilder().posRegex("VER:.*[1-3]:.+").setSkip(1).build(),
