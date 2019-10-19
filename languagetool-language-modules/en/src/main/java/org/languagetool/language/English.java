@@ -179,7 +179,12 @@ public class English extends Language implements AutoCloseable {
 
   @Override
   public Contributor[] getMaintainers() {
-    return new Contributor[] { new Contributor("Christopher Blum"), Contributors.DANIEL_NABER, new Contributor("Florian Knorr"), Contributors.MARCIN_MILKOWSKI, new Contributor("Mike Unwalla"), new Contributor("Tiago F. Santos") };
+    return new Contributor[] { new Contributor("Christopher Blum"),
+                               Contributors.DANIEL_NABER,
+                               new Contributor("Florian Knorr"),
+                               Contributors.MARCIN_MILKOWSKI,
+                               new Contributor("Mike Unwalla"),
+                               new Contributor("Tiago F. Santos") };
   }
 
   @Override
@@ -228,6 +233,7 @@ public class English extends Language implements AutoCloseable {
         new WordCoherencyRule(messages),
         new EnglishSimpleGrammarRule(messages),
         new EnglishDiacriticsRule(messages),
+        new EnglishInformalRule(messages),
         new EnglishPlainEnglishRule(messages),
         new EnglishRedundancyRule(messages),
         new EnglishEggcornsRule(messages),
@@ -308,6 +314,7 @@ public class English extends Language implements AutoCloseable {
       case "CONFUSION_RULE":            return -20;
       case "SENTENCE_FRAGMENT":         return -50; // prefer other more important sentence start corrections.
       case "SENTENCE_FRAGMENT_SINGLE_WORDS": return -51;  // prefer other more important sentence start corrections.
+      case "EN_INFORMAL_REPLACE":       return -508;  // prefer other more important sentence start corrections.
       case "EN_WEASELWORDS_REPLACE":    return -509;  // prefer other more important sentence start corrections.
       case "EN_REDUNDANCY_REPLACE":     return -510;  // style rules should always have the lowest priority.
       case "EN_PLAIN_ENGLISH_REPLACE":  return -511;  // style rules should always have the lowest priority.
