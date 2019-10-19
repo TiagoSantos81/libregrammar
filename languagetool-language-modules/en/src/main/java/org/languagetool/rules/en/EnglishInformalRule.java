@@ -54,8 +54,8 @@ public class EnglishInformalRule extends AbstractSimpleReplaceRule2 {
     super(messages, new English());
     super.setCategory(Categories.STYLE.getCategory(messages));
     setLocQualityIssueType(ITSIssueType.Style);
-    addExamplePair(Example.wrong("<marker>tuna fish</marker>"),
-                   Example.fixed("<marker>tuna</marker>"));
+    addExamplePair(Example.wrong("Can you confirm this? <marker>No worries.</marker>."),
+                   Example.fixed("Can you confirm this? <marker>Certainly.</marker>"));
   }
 
   @Override
