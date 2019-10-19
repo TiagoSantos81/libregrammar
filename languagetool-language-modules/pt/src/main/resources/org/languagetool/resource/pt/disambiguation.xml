@@ -1365,7 +1365,7 @@
           <token>cerca</token>
         </marker>
           <token>de</token>
-          <token regexp='yes'>&numero_por_extenso_CP;|&numero_por_extenso_FS;|&numero_por_extenso_FP;|&numero_por_extenso_MS;|&numero_por_extenso_MP;|mei[ao]</token>
+          <token regexp='yes'>&numero_por_extenso_CP;|&numero_por_extenso_FS;|&numero_por_extenso_FP;|&numero_por_extenso_MS;|&numero_por_extenso_MP;|mei[ao]|metade</token>
       </pattern>
       <disambig action="replace" postag="RG"/>
     </rule>
@@ -1376,7 +1376,7 @@
         </marker>
           <token>de</token>
           <token postag_regexp='yes' postag='NC.+'>
-            <exception regexp='yes'>&numero_por_extenso_CP;|&numero_por_extenso_FS;|&numero_por_extenso_FP;|&numero_por_extenso_MS;|&numero_por_extenso_MP;|mei[ao]</exception></token>
+            <exception regexp='yes'>&numero_por_extenso_CP;|&numero_por_extenso_FS;|&numero_por_extenso_FP;|&numero_por_extenso_MS;|&numero_por_extenso_MP;|mei[ao]|metade</exception></token>
       </pattern>
       <disambig action="filter" postag="N.+"/>
     </rule>
