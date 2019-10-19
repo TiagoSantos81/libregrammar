@@ -66,7 +66,7 @@ public class EnglishRedundancyRule extends AbstractSimpleReplaceRule2 {
 
   @Override
   public String getDescription() {
-    return "1. Redundancy (General)";
+    return "1. Redundancy - General rule";
   }
 
   @Override
