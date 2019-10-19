@@ -94,14 +94,6 @@
             <groupId>com.auth0</groupId>
             <artifactId>java-jwt</artifactId>
             <version>3.8.3</version>
-            <!-- XXX uses jackson-databind 2.9.10.pr3, so it should work better together,
-                     converging dependencies exclusion still needed with this pair -->
-            <exclusions>
-                <exclusion>
-                    <groupId>com.fasterxml.jackson.core</groupId>
-                    <artifactId>jackson-databind</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.mybatis</groupId>
