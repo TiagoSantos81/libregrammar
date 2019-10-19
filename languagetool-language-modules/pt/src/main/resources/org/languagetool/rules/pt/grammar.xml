@@ -2455,7 +2455,7 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes' inflected='yes'>ter|haver</token><!-- TODO testar chegar -->
           <token min="0" max="3" postag_regexp='yes' postag='R.+'/>
           <token regexp='yes'>(?:(?:a(?:bsort|ces|nex|ntepag)|bent|ch(?:ei|go|onclus|ult)|d(?:efes|esenvolt|espert|ispers|issoluto|istint)|e(?:leit|mers|nxut|nvolt|ret|xaust|xpress|xpuls|xtint)|f(?:ind|ix|rit)|g(?:anh|ast)|i(?:mers|mpress|ncurs|nsert|sent)|limp|m(?:algast|alquist|anifest|ort)|o(?:cult|miss|press)|p(?:ag|asm|eg)|r(?:eeleit|epuls|evolt|ot)|s(?:alvo|egur|epult|olt|ubmers|uj|ujeit|upress|urpres|uspens)|v(?:ag|olt))[ao]|a(?:ceit[aoe]|ssente)|entregue)s?
-            <exception regexp='yes'>(?:aces|ganh|gast|mort|pag|salv|eleit|expuls)[ao]s?|entregues?|aceites?|oculto|vagas?</exception></token><!-- XXX significado distintos. Removidos: incluso|tinto -->
+            <exception regexp='yes'>(?:aces|ganh|gast|mort|pag|salv|eleit|expuls)[ao]s?|entregues?|aceites?|oculto|(?:surpres|vag)as?</exception></token><!-- XXX significado distintos. Removidos: incluso|tinto -->
       </pattern>
       <message>Com o verbo '<match no='1' postag='VMN0000'/>' deve utilizar-se o particípio passado regular.</message>
     <!--suggestion>\1 <match no='2' include_skipped='all'/> <match no='3' postag_match='VMP00(.)(.)' postag_replace='VMIP1$20' suppress_misspelled='yes'/></suggestion-->
@@ -2535,6 +2535,15 @@ title="Easy editing stylesheet" ?>
       <example>…leia-se superstições…</example>
     </rule>
     <rule>
+      <antipattern>
+          <token inflected='yes'>reservar</token>
+          <token regexp='yes' spacebefore='no'>&hifen;</token>
+          <token spacebefore='no'>se</token>
+          <token min="0" max="3" postag_regexp='yes' postag='R.'/>
+          <token>o</token>
+          <token>direito</token>
+          <token>de</token>
+      </antipattern>
       <pattern>
         <marker>
           <token postag_regexp='yes' postag='V....P.+'>
