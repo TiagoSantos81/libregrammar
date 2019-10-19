@@ -10,6 +10,7 @@
      - eggcorn detection - 227 entries from Grammark and After the Dealine (AtD);
      - cliche detection - 691 entries from AtD;
      - wordiness database enhancements - 727 entries from Grammark;
+     - informal expressions detection - 176 entries from Wikipedia;
      - EnglishStyleRepeatedWordRule;
      - split infinitive detection;
      - comma splice partial detection;
@@ -54,6 +55,7 @@
   * Support added thanks to Jim Regan, Emily Barnes, Mícheál J. Ó Meachair, 
   and Seanán Ó Coistín. Support includes:
      - 606 grammar rules;
+     - Irish naming conventions converter;
      - generic typographical rules (e.g., spacing rules);
      - generic style rules (e.g., sentence length);
      - [spell checking](https://github.com/jimregan/languagetool-ga-dicts);
