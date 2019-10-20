@@ -9,8 +9,8 @@
      - EnglishSimpleGrammarRule for simple replacement rule creation - 877 entries added from Wikipedia;
      - eggcorn detection - 227 entries from Grammark and After the Dealine (AtD);
      - cliche detection - 691 entries from AtD;
-     - wordiness database enhancements - 727 entries from Grammark;
-     - informal expressions detection - 176 entries from Wikipedia;
+     - wordiness database enhancements - 725 entries from Grammark;
+     - informal expressions detection - 228 entries from Wikipedia;
      - EnglishStyleRepeatedWordRule;
      - split infinitive detection;
      - comma splice partial detection;
@@ -48,8 +48,13 @@
      - 'also' at the end of the sentence
      - Several adjustments to rules with wide-spectrum antipatterns.
 
+#### French
+  * activated generic Java rules, including:
+     - LongSentenceRule, LongParagraphRule, SentenceWhitespaceRule, WhiteSpaceAtBeginOfParagraph, EmptyLineRule, ParagraphRepeatBeginningRule, PunctuationMarkAtParagraphEnd.
+
 #### German
-  * GermanStyleRepeatedWordRule active by default.
+  * activated generic Java rules, including:
+     - GermanStyleRepeatedWordRule, LongSentenceRule.
 
 #### Irish
   * Support added thanks to Jim Regan, Emily Barnes, Mícheál J. Ó Meachair, 
@@ -60,6 +65,10 @@
      - generic style rules (e.g., sentence length);
      - [spell checking](https://github.com/jimregan/languagetool-ga-dicts);
      - [part-of-speech dictionary and synthesiser](https://github.com/jimregan/languagetool-ga-dicts).
+
+#### Italian
+  * activated generic Java rules, including:
+     - LongSentenceRule, LongParagraphRule, SentenceWhitespaceRule, WhiteSpaceAtBeginOfParagraph, EmptyLineRule, ParagraphRepeatBeginningRule, PunctuationMarkAtParagraphEnd.
 
 #### Portuguese
   * Portugal Portuguese former orthographic agreement locale added (Portugal 
@@ -72,12 +81,15 @@
 
 #### Spanish
   * re-activated subject-predicate agreement category.
+  * activated generic Java rules, including:
+     - LongSentenceRule, LongParagraphRule, SentenceWhitespaceRule, WhiteSpaceAtBeginOfParagraph, EmptyLineRule, ParagraphRepeatBeginningRule, PunctuationMarkAtParagraphEnd.
 
 #### General
-  * Server and HTTP API connection commits for LibreOffice plug-in reverted.
-  * remove Google dependencies from English and Catalan language modules.
-  * Restored some languagetool-dev and languagetool-standalone scripts.
-  * [WIP] remove or comment out Freemium server bindings.
+  * server and HTTP API connection commits for LibreOffice plug-in reverted.
+  * removed Google dependencies from English and Catalan language modules, as well as from several Java rules.
+  * dependencies security updates.
+  * restored some languagetool-dev and languagetool-standalone scripts.
+  * [WIP] removed or comment out Freemium server bindings.
 
 ### Other changes common to both projects
 
@@ -117,4 +129,6 @@
   * Experimental: the new `default="temp_off"` attribute in `grammar.xml` files will
     turn off a rule/rulegroup, but keep it activated for our nightly regression tests.
 
+#### General
+  * dependencies security updates.
 
