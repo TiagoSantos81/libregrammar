@@ -108,6 +108,11 @@
 #### Russian
   * improved rules
 
+#### General
+  * The unmaintained code from package `org.languagetool.dev.wikipedia.atom`
+    has been removed. It hadn't been maintained for years and didn't work properly
+    anymore.
+
 #### Internal
   * Experimental: the new `default="temp_off"` attribute in `grammar.xml` files will
     turn off a rule/rulegroup, but keep it activated for our nightly regression tests.
