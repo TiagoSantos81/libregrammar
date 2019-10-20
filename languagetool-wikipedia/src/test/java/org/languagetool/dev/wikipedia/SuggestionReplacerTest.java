@@ -148,6 +148,7 @@ public class SuggestionReplacerTest {
     langTool.disableRule("OLD_SPELLING");
     langTool.disableRule("DE_TOO_LONG_SENTENCE_40");
     langTool.disableRule("PUNCTUATION_PARAGRAPH_END");
+    langTool.disableRule("TOO_LONG_SENTENCE_DE");
     langTool.disableRule("STYLE_REPEATED_WORD_RULE_DE");
     PlainTextMapping mapping = filter.filter(origMarkup);
     List<RuleMatch> matches = langTool.check(mapping.getPlainText());
