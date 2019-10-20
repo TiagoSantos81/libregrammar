@@ -129,7 +129,7 @@
         </dependency>
 
         <dependency>
-        <!-- XXX unsafe dependency (org.carrot2:morfologik-tools@2.1.6 › com.beust:jcommander@1.48) 
+        <!-- XXX unsafe dependency (org.carrot2:morfologik-tools@2.1.6 › com.beust:jcommander@1.48)
              at the moment, 2019-10-20, no upgrade path for morfologyk -->
             <groupId>org.carrot2</groupId>
             <artifactId>morfologik-tools</artifactId>
