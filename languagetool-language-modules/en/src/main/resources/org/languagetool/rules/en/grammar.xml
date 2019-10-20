@@ -4272,7 +4272,7 @@ USA
                 <example correction="Maybe"><marker>May be</marker> I don't understand.</example>
                 <example>That they all may be one...</example>
             </rule>
-            <rule default="temp_off">
+            <rule>
                 <pattern>
                     <token postag="SENT_START" />
                     <marker>
@@ -4714,30 +4714,42 @@ USA
             <example correction="overrated">The movie was highly <marker>over rated</marker>.</example>
         </rule>
         <!-- over seas::word=overseas -->
-        <rule id="OVER_SEAS" name="over seas (overseas)">
-            <pattern>
-                <token>over</token>
-                <token>seas</token>
-            </pattern>
-            <message>Did you mean <suggestion>overseas</suggestion>?</message>
-            <example correction="overseas">He was stationed <marker>over seas</marker>.</example>
-        </rule>
+        <rulegroup id="OVER_SEAS" name="over seas (overseas)">
+            <rule>
+                <pattern>
+                    <token>over</token>
+                    <token>seas</token>
+                </pattern>
+                <message>Did you mean <suggestion>overseas</suggestion>?</message>
+                <example correction="overseas">He was stationed <marker>over seas</marker>.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token>over</token>
+                    <token>sea</token>
+                    <token regexp="yes">&apostrophe;</token>
+                    <token>s</token>
+                </pattern>
+                <message>Did you mean <suggestion>overseas</suggestion>?</message>
+                <example correction="overseas">He was stationed <marker>over sea's</marker>.</example>
+            </rule>
+        </rulegroup>
         <!-- short coming::word=shortcoming -->
         <rule id="SHORT_COMING" name="short coming (shortcoming)">
             <pattern>
                 <token>short</token>
-                <token>coming</token>
+                <token regexp="yes">comings?</token>
             </pattern>
-            <message>Did you mean <suggestion>shortcoming</suggestion>?</message>
+            <message>Did you mean <suggestion>short<match no="2" case_conversion="alllower" /></suggestion>?</message>
             <example correction="shortcoming">Being on time was his biggest <marker>short coming</marker>.</example>
         </rule>
         <!-- short cut::word=shortcut -->
         <rule id="SHORT_CUT" name="short cut (shortcut)">
             <pattern>
                 <token>short</token>
-                <token>cut</token>
+                <token regexp="yes">cuts?</token>
             </pattern>
-            <message>Did you mean <suggestion>shortcut</suggestion>?</message>
+            <message>Did you mean <suggestion>short<match no="2" case_conversion="alllower" /></suggestion>?</message>
             <example correction="shortcut">I know a <marker>short cut</marker>.</example>
             <example type="triggers_error">If you won't like your short cut, you can return to your long hair.</example><!-- FP -->
         </rule>
@@ -4745,9 +4757,9 @@ USA
         <rule id="SIDE_KICK" name="side kick (sidekick)">
             <pattern>
                 <token>side</token>
-                <token>kick</token>
+                <token regexp="yes">kicks?</token>
             </pattern>
-            <message>Did you mean <suggestion>sidekick</suggestion>?</message>
+            <message>Did you mean <suggestion>side<match no="2" case_conversion="alllower" /></suggestion>?</message>
             <example correction="sidekick">He had a zany <marker>side kick</marker>.</example>
         </rule>
         <!-- sky diving::word=skydiving -->
@@ -9808,7 +9820,7 @@ USA
                 <example>The Palomar-Quest large-area CCD camera.</example>
             </rule>
         </rulegroup>
-        <rulegroup id="THE_BUILT" name="'the built'" default="temp_off">
+        <rulegroup id="THE_BUILT" name="'the built'">
             <!-- developer speech: "The built (build) is failing" -->
             <rule>
                 <pattern>
@@ -10819,7 +10831,7 @@ USA
             <message><suggestion><match no="1" case_conversion="startupper" /></suggestion> (operating system by Microsoft) is a proper noun and needs to be capitalized.</message>
             <example correction="Windows">The <marker>windows</marker> 10 update failed.</example>
         </rule>
-        <rule id="ROYAL_MAIL" name="royal mail (Royal Mail)" default="temp_off">
+        <rule id="ROYAL_MAIL" name="royal mail (Royal Mail)">
             <antipattern>
                 <token case_sensitive="yes">Royal</token>
                 <token case_sensitive="yes" regexp="yes">Mail|Canin|Bank</token>
@@ -10832,7 +10844,7 @@ USA
             <example correction="Royal Mail">The <marker>royal mail</marker> is a postal service and courier company in the United Kingdom.</example>
             <example correction="Royal Bank">The <marker>Royal bank</marker> of Canada</example>
         </rule>
-        <rule id="ROYAL_AIR_FORCE" name="royal air force (Royal Air Force)" default="temp_off">
+        <rule id="ROYAL_AIR_FORCE" name="royal air force (Royal Air Force)">
             <antipattern>
                 <token case_sensitive="yes">Royal</token>
                 <token case_sensitive="yes">Air</token>
@@ -10955,7 +10967,7 @@ USA
             <suggestion>\1-\2</suggestion>
             <example correction="logged-in">Only <marker>logged in</marker> users can see this feature.</example>
         </rule>
-        <rulegroup id="BUILT_IN_HYPHEN" name="missing hyphen in 'built in'" default="temp_off">
+        <rulegroup id="BUILT_IN_HYPHEN" name="missing hyphen in 'built in'">
             <rule>
                 <pattern>
                     <marker>
@@ -18114,7 +18126,7 @@ USA
             <example correction="are">It's exciting but when <marker>is</marker> Christmas and New Years finally over?</example>
             <example>What is Carl's and Peter's favorite meal?</example>
         </rule>
-        <rule id="HOW_YOU_DOING" name="how (are) you doing'" default="temp_off">
+        <rule id="HOW_YOU_DOING" name="how (are) you doing'">
             <pattern>
                 <token regexp="yes">how|what|when|where|which</token>
                 <token regexp="yes">you|u|ya</token>
@@ -19463,7 +19475,7 @@ USA
             <example correction="16-bit">He was playing <marker>16 bit</marker> games on his old video console.</example>
             <example>The encryption strength was only <marker>512 bit</marker>.</example>
         </rule>
-        <rule id="ROOM_APARTMENT_HYPHEN" name="missing hyphen in '2 room apartment'" default="temp_off">
+        <rule id="ROOM_APARTMENT_HYPHEN" name="missing hyphen in '2 room apartment'">
             <pattern>
                 <marker>
                     <token regexp="yes">[1-6]|one|two|three|four|five|six</token>
@@ -19476,7 +19488,7 @@ USA
             <example correction="2-room">He lives in a small <marker>2 room</marker> apartment.</example>
             <example correction="3-bedroom">The old woman lived in a <marker>3 bedroom</marker> house by herself.</example>
         </rule>
-        <rule id="BUY_TWO_GET_ONE_FREE" name="missing comma in 'buy two get one free'" default="temp_off">
+        <rule id="BUY_TWO_GET_ONE_FREE" name="missing comma in 'buy two get one free'">
             <pattern>
                 <marker>
                     <token regexp="yes">buy|purchase|order</token>
@@ -34417,7 +34429,7 @@ The accident victim died from her injuries.
     <!-- Semantic -->
     <!-- ====================================================================== -->
     <category id="SEMANTICS" name="Semantics" type="inconsistency">
-        <rulegroup id="PH_D" name="abbreviation of 'philosophiae doctor' (PhD)" default="temp_off">
+        <rulegroup id="PH_D" name="abbreviation of 'philosophiae doctor' (PhD)">
             <antipattern case_sensitive="yes">
                 <token>Ph</token>
                 <token spacebefore="no">.</token>
@@ -34482,7 +34494,7 @@ The accident victim died from her injuries.
                 <example>He has a PhD.</example>
             </rule>
         </rulegroup>
-        <rulegroup id="BACHELOR_ABBR" name="abbreviation for bachelor's degree" default="temp_off">
+        <rulegroup id="BACHELOR_ABBR" name="abbreviation for bachelor's degree">
             <antipattern case_sensitive="yes">
                 <token>B</token>
                 <token spacebefore="no">.</token>
