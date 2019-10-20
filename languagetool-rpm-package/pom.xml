@@ -463,11 +463,14 @@
 									<file>../${parent.project.name}-standalone/target/${parent.project.camelcase}-${project.version}/${parent.project.camelcase}-${project.version}/libs/commons-logging.jar</file>
 									<ruleset>default-ruleset</ruleset>
 								</entry>
+								<!-- XXX temporary disable to debug messy clean-up languagetool-wikipedia 
+								         in merge 27e8b805e603d6948e76e423c80a42e715d624aa
 								<entry>
 									<name>/usr/share/java/${parent.project.name}-${project.version}/libs/wiki/diffutils.jar</name>
 									<file>../${parent.project.name}-wikipedia/target/${parent.project.camelcase}-wikipedia-${project.version}/${parent.project.camelcase}-wikipedia-${project.version}/libs/diffutils.jar</file>
 									<ruleset>default-ruleset</ruleset>
 								</entry>
+								-->
 								<entry>
 									<name>/usr/share/java/${parent.project.name}-${project.version}/libs/german-pos-dict.jar</name>
 									<file>../${parent.project.name}-standalone/target/${parent.project.camelcase}-${project.version}/${parent.project.camelcase}-${project.version}/libs/german-pos-dict.jar</file>
