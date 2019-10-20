@@ -95,9 +95,18 @@ public class Italian extends Language implements AutoCloseable {
                     Arrays.asList("[", "(", "{", "»", "«" /*"‘"*/),
                     Arrays.asList("]", ")", "}", "«", "»" /*"’"*/)),
             new MorfologikItalianSpellerRule(messages, this, userConfig, altLanguages),
+            new LongSentenceRule(messages, userConfig, -1, true),
+            new LongParagraphRule(messages, this, userConfig),
             new UppercaseSentenceStartRule(messages, this),
-            new ItalianWordRepeatRule(messages, this),
-            new MultipleWhitespaceRule(messages, this)
+            new MultipleWhitespaceRule(messages, this),
+            new SentenceWhitespaceRule(messages),
+            new WhiteSpaceBeforeParagraphEnd(messages, this),
+            new WhiteSpaceAtBeginOfParagraph(messages),
+            new EmptyLineRule(messages, this),
+            new ParagraphRepeatBeginningRule(messages, this),
+            new PunctuationMarkAtParagraphEnd(messages, this, true),
+            // specific to Italian:
+            new ItalianWordRepeatRule(messages, this)
     );
   }
 
