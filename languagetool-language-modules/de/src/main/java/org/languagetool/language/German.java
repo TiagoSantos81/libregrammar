@@ -149,8 +149,11 @@ public class German extends Language implements AutoCloseable {
   @Override
   public Contributor[] getMaintainers() {
     return new Contributor[] {
-        new Contributor("Jan Schreiber"),
+        new Contributor("Christopher Blum"),
         Contributors.DANIEL_NABER,
+        new Contributor("Florian Knorr"),
+        new Contributor("Fred Kruse"),
+        new Contributor("Jan Schreiber"),
     };
   }
 
@@ -189,7 +192,7 @@ public class German extends Language implements AutoCloseable {
             new EmptyLineRule(messages, this),
             new GermanStyleRepeatedWordRule(messages, this, userConfig),
             new CompoundCoherencyRule(messages),
-            new LongSentenceRule(messages, userConfig),
+            new LongSentenceRule(messages, userConfig, -1, true),
             new LongParagraphRule(messages, this, userConfig),
             new GermanFillerWordsRule(messages, this, userConfig),
             new GermanParagraphRepeatBeginningRule(messages, this),
