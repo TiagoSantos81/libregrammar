@@ -34641,7 +34641,7 @@ The accident victim died from her injuries.
             </rule>
         </rulegroup> <!-- end passive voice rule -->
 
-        <rule id="SPLIT_INFITIVES" name="Style: split infinitives" type='misspelling'>
+        <rule id="SPLIT_INFITIVES" name="Style: split infinitives">
         <!-- Created by Tiago F. Santos, 2019-10-11 -->
             <!--antipattern>
                 <token regexp='yes' inflected='yes'>&ATD_to_collocation;</token>
