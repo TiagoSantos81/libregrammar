@@ -31663,6 +31663,65 @@ Andere Projekte</example>
           <suggestion>einer</suggestion>
           <example correction="einer">Sie kommt in <marker>eine</marker> Stunde.</example>
         </rule>
+        <rulegroup id="TODO" name="Die Todos (To-dos)" default="temp_off">
+            <rule>
+                <pattern>
+                    <token regexp="yes">to-?do</token>
+                    <token regexp="yes">liste?</token>
+                </pattern>
+                <message>Meinten Sie das Substantiv <suggestion>To-do-Liste</suggestion> (= Aufgabenliste)?</message>
+                <url>https://www.duden.de/rechtschreibung/To_do_Liste</url>
+                <example correction="To-do-Liste">Die <marker>Todo Liste</marker> ist noch nicht fertig.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp="yes">to-?do</token>
+                    <token regexp="yes">list(s|en)</token>
+                </pattern>
+                <message>Meinten Sie das Substantiv <suggestion>To-do-Listen</suggestion> (= Aufgabenlisten)?</message>
+                <url>https://www.duden.de/rechtschreibung/To_do_Liste</url>
+                <example correction="To-do-Listen">Die <marker>Todo Lists</marker> sind abgearbeitet.</example>
+            </rule>
+            <rule>
+                <antipattern case_sensitive="yes">
+                    <token regexp="yes">To-do-Listen?</token>
+                </antipattern>
+                <pattern>
+                    <token regexp="yes">to-?do-?liste?</token>
+                </pattern>
+                <message>Meinten Sie das Substantiv <suggestion>To-do-Liste</suggestion> (= Aufgabenliste)?</message>
+                <url>https://www.duden.de/rechtschreibung/To_do_Liste</url>
+                <example correction="To-do-Liste">Die <marker>Todolist</marker> ist abgearbeitet.</example>
+            </rule>
+            <rule>
+                <antipattern case_sensitive="yes">
+                    <token regexp="yes">To-do-Listen?</token>
+                </antipattern>
+                <pattern>
+                    <token regexp="yes">to-?do-?list(en|s)</token>
+                </pattern>
+                <message>Meinten Sie das Substantiv <suggestion>To-do-Listen</suggestion> (= Aufgabenlisten)?</message>
+                <url>https://www.duden.de/rechtschreibung/To_do_Liste</url>
+                <example correction="To-do-Listen">Die <marker>Todolists</marker> sind abgearbeitet.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp="yes">todos?</token>
+                </pattern>
+                <message>Meinten Sie das Substantiv <suggestion><match no="1" regexp_match="(?i)todo" regexp_replace="To-do" case_conversion="startupper" /></suggestion> (= Aufgabe(n))?</message>
+                <url>https://www.duden.de/rechtschreibung/To_do</url>
+                <example correction="To-dos">Die <marker>Todos</marker> sind noch nicht abgearbeitet.</example>
+                <example correction="To-do">Das <marker>TODO</marker> ist abgehakt.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp="yes" case_sensitive="yes">To-Dos?</token>
+                </pattern>
+                <message>Meinten Sie das Substantiv <suggestion><match no="1" regexp_match="(?i)D" regexp_replace="d" case_conversion="startupper" /></suggestion> (= Aufgabe(n))?</message>
+                <url>https://www.duden.de/rechtschreibung/To_do</url>
+                <example correction="To-dos">Die <marker>To-Dos</marker> sind noch nicht abgearbeitet.</example>
+            </rule>
+        </rulegroup>
         <rulegroup id="ALL_INCLUSIVE" name="'all-inclusive'">
             <rule>
                 <pattern>
@@ -39612,11 +39671,11 @@ Andere Projekte</example>
                 </antipattern>
                 <pattern>
                     <marker>
-                    <token>
-                        <exception postag="SENT_START"/>
-                        <exception regexp="yes">,|;|:|\.|\?|!|-|–|\)|\(|„|“|»|«|"|und|oder</exception>
-                    </token>
-                    <token regexp="yes" case_sensitive="yes">weil|ob(gleich|wohl)?|so(dass|bald)|dass|indem|wenn|falls|sofern|nachdem</token>
+                        <token>
+                            <exception postag="SENT_START"/>
+                            <exception regexp="yes">,|;|:|\.|\?|!|-|–|\)|\(|„|“|»|«|"|und|oder</exception>
+                        </token>
+                        <token regexp="yes" case_sensitive="yes">weil|ob(gleich|wohl)?|so(dass|bald)|dass|indem|wenn|falls|sofern|nachdem</token>
                     </marker>
                     <token>
                         <exception regexp="yes">,|;|:|\.|\?|!|-|–|\)|\(|und|oder</exception>
@@ -39699,14 +39758,19 @@ Andere Projekte</example>
                     <token>wie</token>
                     <token>vor</token>
                 </antipattern>
+                <antipattern>
+                    <token>Komme</token>
+                    <token>was</token>
+                    <token>wolle</token>
+                </antipattern>
                 <pattern>
                     <marker>
-                    <token postag="VER:[1-3]:.*|VER:.*:[1-3]:.*|VER:IMP:.*" postag_regexp="yes" skip="-1">
-                        <exception postag="VER:INF:.*|VER:AUX:.*:KJ[12]|PA1:.*|SUB:.*|EIG:.*|PR[OP]:.*|AD[JV]:.*|ART:.*|NEG:.*|ABK:.*|ZUS.*|ZAL.*" postag_regexp="yes"/>
-                        <exception  inflected="yes" regexp="yes">bleiben|lassen|versuchen|bemühen</exception>
-                        <exception regexp="yes" scope="next">,|;|:|-|–|—|\.|\)|\(|„|“|»|«|"|und|oder</exception>
-                       </token>
-                    <token regexp="yes" skip="-1" case_sensitive="yes">da|als|wie|bis|wer|wo(hin)?|dann|damit|während|aber|bevor|was|solange|seitdem<exception regexp="yes" scope="next">,|;|:|-|–|—|\.|\)|\(|„|“|»|«|"|und|oder</exception></token>
+                        <token postag="VER:[1-3]:.*|VER:.*:[1-3]:.*|VER:IMP:.*" postag_regexp="yes" skip="-1">
+                            <exception postag="VER:INF:.*|VER:AUX:.*:KJ[12]|PA1:.*|SUB:.*|EIG:.*|PR[OP]:.*|AD[JV]:.*|ART:.*|NEG:.*|ABK:.*|ZUS.*|ZAL.*" postag_regexp="yes"/>
+                            <exception  inflected="yes" regexp="yes">bleiben|lassen|versuchen|bemühen</exception>
+                            <exception regexp="yes" scope="next">,|;|:|-|–|—|\.|\)|\(|„|“|»|«|"|und|oder</exception>
+                        </token>
+                        <token regexp="yes" skip="-1" case_sensitive="yes">da|als|wie|bis|wer|wo(hin)?|dann|damit|während|aber|bevor|was|solange|seitdem<exception regexp="yes" scope="next">,|;|:|-|–|—|\.|\)|\(|„|“|»|«|"|und|oder</exception></token>
                     </marker>
                     <token postag="VER:[1-3]:.*|VER:.*:[1-3]:.*|VER:IMP:.*" postag_regexp="yes">
                         <exception postag="VER:INF:.*|PA[12]:.*|SUB:.*|EIG:.*|PR[OP]:.*|AD[JV]:.*|ART:.*|NEG:.*|ABK:.*|ZUS.*|ZAL.*" postag_regexp="yes"/>
@@ -39723,6 +39787,7 @@ Andere Projekte</example>
                 <example>Für ein gutes Drittel der befragten 16- bis 29-Jährigen ist Wohnen extrem wichtig.</example>
                 <example>Einmal falsch überwiesenes Geld kann dadurch aber auch nicht durch eine zentrale Instanz zurücküberwiesen werden.</example>
                 <example>Es war besonders hinderlich, dass die bereits erreichten Einbrüche nach wie vor im Osten von den Sinjawino-Höhen flankiert wurden.</example>
+                <example>Komme was wolle, aber ich werde meine Entscheidung nicht ändern.</example>
             </rule>
 <!-- Komma nach Nebensatz   -->
             <rule>
@@ -39936,6 +40001,15 @@ Andere Projekte</example>
                     <token postag="(VER:[1-3]:.*|VER.*:[1-3]:.*|VER:IMP:.*)" postag_regexp="yes" skip="-1"/>
                     <token postag="VER:[1-3]:.*|VER.*:[1-3]:.*|VER:IMP:.*" postag_regexp="yes" regexp="yes" case_sensitive="yes">[a-zäöü]+</token>
                 </antipattern>
+                <antipattern>
+                    <token postag="PA2:.+" postag_regexp="yes"/>
+                    <token postag="VER:[1-3]:.*|VER.*:[1-3]:.*|VER:IMP:.*" postag_regexp="yes" regexp="yes" case_sensitive="yes">[a-zäöü]+</token>
+                </antipattern>
+                <antipattern>
+                    <token postag="VER:.+" postag_regexp="yes"/>
+                    <token postag="VER:MOD:.+" postag_regexp="yes"/>
+                    <token postag="PKT"/>
+                </antipattern>
                 <pattern>
                     <token postag="(VER:[1-3]:.*|VER.*:[1-3]:.*|VER:IMP:.*)" postag_regexp="yes" skip="-1">
                         <exception postag="VER:(INF|MOD):.*|VER:AUX:.*:KJ[12]|PA[12]:.*|SUB:.*|EIG:.*|ADJ:.*|ART:.*|PRO:.*|ADV.*|PRP:.*|NEG:.*|ABK:.*|ZUS.*|ZAL.*" postag_regexp="yes"/>
@@ -39984,6 +40058,10 @@ Andere Projekte</example>
                 <example>Da die für Schmucksteine begehrteste Farbe nur selten zu finden ist, wird mindere Qualität durch Brennen verbessert.</example>
                 <example>Um sage und schreibe 190 Prozent war der Preis im Laufe des Jahres in die Höhe geschossen.</example>
                 <example>Hallo, da die Nachfrage nach diesem Produkt sehr hoch ist, möchten wir gerne noch weitere bestellen.</example>
+                <example>Verdächtigt sind vier Männer.</example>
+                <example>Sie dachte nicht, dass ihre Träume wahr werden könnten.</example>
+                <example>Ich frage mich, ob Sie mir bitte sagen könnten, ob es ein Postamt in der Nähe gibt.</example>
+                <example>Wir waren so aufgeregt, dass wir nicht still sitzen konnten.</example>
             </rule>
         </rulegroup>
         <rulegroup id="FEHLERHAFTES_KOMMA_ALLG" name="Fehlerhaftes Komma">
