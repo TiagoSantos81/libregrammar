@@ -52,7 +52,7 @@ public class AbstractSimpleReplaceRule2Test {
   }
   
   static class MyCaseSensitiveRule extends AbstractSimpleReplaceRule2 {
-    MyCaseSensitiveRule(ResourceBundle messages, Language language) {
+    MyCaseSensitiveRule(ResourceBundle messages, Language language) throws IOException {
       super(messages, language);
     }
     @Override
@@ -90,7 +90,7 @@ public class AbstractSimpleReplaceRule2Test {
   }
 
   static class MyCaseInsensitiveRule extends MyCaseSensitiveRule {
-    MyCaseInsensitiveRule(ResourceBundle messages, Language language) {
+    MyCaseInsensitiveRule(ResourceBundle messages, Language language) throws IOException {
       super(messages, language);
     }
     @Override
