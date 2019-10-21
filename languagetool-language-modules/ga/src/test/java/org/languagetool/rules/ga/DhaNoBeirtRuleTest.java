@@ -43,9 +43,9 @@ public class DhaNoBeirtRuleTest {
   public void testRule() throws IOException {
     assertCorrect("Seo abairt bheag.");
     assertCorrect("Tá beirt dheartháireacha agam.");
-    assertIncorrect("Tá dhá dheartháireacha agam.");
+    assertIncorrectMessage("Tá dhá dheartháireacha agam.", "Ba chóir duit <suggestion>beirt</suggestion> a scríobh");
     // this next sentence is incorrect, just want a list of words between dhá and déag
-    assertIncorrect("Tá dhá dheartháireacha níos aosta déag agam.");
+    assertIncorrectMessage("Tá dhá dheartháireacha níos aosta déag agam.", "Ba chóir duit <suggestion>dháréag dheartháireacha níos aosta</suggestion> a scríobh");
   }
 
   private void assertCorrect(String sentence) throws IOException {
@@ -53,13 +53,10 @@ public class DhaNoBeirtRuleTest {
     assertEquals(0, matches.length);
   }
 
-  private void assertIncorrect(String sentence) throws IOException {
+  private void assertIncorrectMessage(String sentence, String expected) throws IOException {
     RuleMatch[] matches = rule.match(langTool.getAnalyzedSentence(sentence));
-    System.out.println(matches.length);
-    for(RuleMatch m : matches) {
-      System.out.println(m.toString());
-    }
     assertEquals(1, matches.length);
+    assertEquals(expected, matches[0].getMessage());
   }
 
 }
