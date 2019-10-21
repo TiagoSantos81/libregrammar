@@ -128,6 +128,7 @@
 #### Internal
   * Experimental: the new `default="temp_off"` attribute in `grammar.xml` files will
     turn off a rule/rulegroup, but keep it activated for our nightly regression tests.
+  * Many external dependencies have been updated to new versions
 
 #### General
   * dependencies security updates.
