@@ -30162,14 +30162,15 @@ TODO Write better examples
     <rule id='DAR_À_SOLA' name="Ir embora">
     <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
       <pattern>
-          <token>dar</token>
+          <token inflected='yes'>dar</token>
           <token>à</token>
           <token>sola</token>
       </pattern>
       <message>Linguagem informal. Pondere usar uma expressão alternativa.</message>
-	  <suggestion>ir embora</suggestion>
-	  <suggestion>embora</suggestion>
-      <example correction="ir embora|embora">Posso <marker>dar à sola</marker>?</example>
+        <suggestion><match no='1' postag='V.+'>ir</match> embora</suggestion>
+        <suggestion>embora</suggestion>
+      <example correction="foi embora|embora">Ele <marker>deu à sola</marker>?</example>
+      <example correction="i embora|ir embora|embora">Posso <marker>dar à sola</marker>?</example>
       <example>Posso <marker>ir embora</marker>?</example>
     </rule>
 
@@ -30186,20 +30187,20 @@ TODO Write better examples
       <example>Sou um gestor <marker>com determinação</marker>.</example>
     </rule>
 
-    <rule id='É_IGUAL_AO_LITRO' name="É indiferente">
+    <rule id='SER_IGUAL_AO_LITRO' name="É indiferente">
     <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
       <pattern>
-		<marker>
-          <token>é</token>
+        <marker>
+          <token inflected='yes'>ser</token>
           <token>igual</token>
           <token>ao</token>
           <token>litro</token>
-		</marker>
+        </marker>
       </pattern>
       <message>Linguagem informal. Pondere usar uma expressão alternativa.</message>
-	  <suggestion>é indiferente</suggestion>
+        <suggestion>\1 indiferente</suggestion>
       <example correction="é indiferente">Tudo o que me diz <marker>é igual ao litro</marker>.</example>
-	  <example>Tudo o que me diz <marker>é indiferente</marker>.</example>
+      <example>Tudo o que me diz <marker>é indiferente</marker>.</example>
     </rule>
 
     <rule id='ENCRENCA_ENCRENCAS' name="Encrenca(s)">
@@ -30520,8 +30521,8 @@ TODO Write better examples
     <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
       <pattern>
           <token regexp="yes">estimativas?|estimação|estimações|estimador|estimadores</token>
-		  <token regexp="yes">de|da|por</token>
-		  <token>máxima</token>
+          <token regexp="yes">de|da|por</token>
+          <token>máxima</token>
         <marker>
           <token>semelhança</token>
         </marker>
