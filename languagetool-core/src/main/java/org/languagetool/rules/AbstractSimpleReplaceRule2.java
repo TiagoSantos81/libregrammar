@@ -92,7 +92,7 @@ public abstract class AbstractSimpleReplaceRule2 extends Rule {
     super(messages);
     this.language = Objects.requireNonNull(language);
     super.setCategory(Categories.MISC.getCategory(messages));
-    wrongWords = loadWords(JLanguageTool.getDataBroker().getFromRulesDirAsStream(getFileName()));
+    wrongWords = loadWords(JLanguageTool.getDataBroker().getFromRulesDirAsStream(getFileName()), isCaseSensitive());
   }
 
   /**
@@ -122,7 +122,7 @@ public abstract class AbstractSimpleReplaceRule2 extends Rule {
    * @param filename the file from classpath to load
    * @return the list of maps containing the error-corrections pairs. The n-th map contains key strings of (n+1) words.
    */
-  private List<Map<String, String>> loadWords(InputStream stream)
+  private List<Map<String, String>> loadWords(InputStream stream, boolean caseSensitive)
   /*
   private static List<Map<String, String>> loadWords(String filename, Language lang, boolean caseSensitive)
    */
