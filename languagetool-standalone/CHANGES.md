@@ -111,7 +111,9 @@
 
 #### French
   * added and improved rules
-  * POS and spelling improvements
+  * POS and spelling improvements, including:
+    - updated part-of-speech dictionaries to dicollecte-6.4.1
+    (https://github.com/languagetool-org/languagetool/pull/1963)
 
 #### German
   * added and improved rules
