@@ -49,6 +49,11 @@ public class EnglishDiacriticsRule extends AbstractSimpleReplaceRule2 {
     return FILE_NAME;
   }
 
+  @Override
+  public boolean isCaseSensitive() {
+    return true;
+  }
+
   public EnglishDiacriticsRule(ResourceBundle messages) throws IOException {
     super(messages, new English());
     // setDefaultOff();

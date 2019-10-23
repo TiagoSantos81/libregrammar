@@ -49,6 +49,11 @@ public class PortugueseDiacriticsRule extends AbstractSimpleReplaceRule2 {
     return FILE_NAME;
   }
 
+  @Override
+  public boolean isCaseSensitive() {
+    return true;
+  }
+
   public PortugueseDiacriticsRule(ResourceBundle messages) throws IOException {
     super(messages, new Portuguese());
     // setDefaultOff();
