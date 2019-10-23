@@ -127,11 +127,13 @@
     has been removed. It hadn't been maintained for years and didn't work properly
     anymore.
 
+#### Java API
+  * `AbstractSimpleReplaceRule2` has been fixed so that it's now case-insensitive.
+    If you implement a sub class of it and you want the old behavior, please implement
+    `isCaseSensitive()` and have it return `true`. (Issue #2051)
+    
 #### Internal
   * Experimental: the new `default="temp_off"` attribute in `grammar.xml` files will
     turn off a rule/rulegroup, but keep it activated for our nightly regression tests.
   * Many external dependencies have been updated to new versions
-
-#### General
-  * dependencies security updates.
 
