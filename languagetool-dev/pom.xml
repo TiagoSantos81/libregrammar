@@ -32,7 +32,7 @@
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>${maven.assemby.plugin}</version>
                 <configuration>
-                    <descriptor>src/main/assembly/zip.xml</descriptor>
+                    <descriptors>src/main/assembly/zip.xml</descriptors>
                 </configuration>
             </plugin>
             <plugin>

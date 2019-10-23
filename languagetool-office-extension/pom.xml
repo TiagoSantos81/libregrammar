@@ -72,7 +72,7 @@
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>${maven.assemby.plugin}</version>
                 <configuration>
-                    <descriptor>src/main/assembly/oxt.xml</descriptor>
+                    <descriptors>src/main/assembly/oxt.xml</descriptors>
                     <finalName>LanguageTool-${project.version}</finalName>
                     <appendAssemblyId>false</appendAssemblyId>
                     <archive>
