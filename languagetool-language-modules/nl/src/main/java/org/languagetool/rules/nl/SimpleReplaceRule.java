@@ -40,6 +40,11 @@ public class SimpleReplaceRule extends AbstractSimpleReplaceRule2 {
   
   private static final Locale NL_LOCALE = new Locale("nl");
 
+  @Override
+  public boolean isCaseSensitive() {
+    return true;
+  }
+
   public SimpleReplaceRule(ResourceBundle messages) throws IOException {
     super(messages, new Dutch());
     setLocQualityIssueType(ITSIssueType.Misspelling);

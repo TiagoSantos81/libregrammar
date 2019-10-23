@@ -51,6 +51,11 @@ public class PortugueseBarbarismsRule extends AbstractSimpleReplaceRule2 {
     return FILE_NAME;
   }
 
+  @Override
+  public boolean isCaseSensitive() {
+    return true;
+  }
+
   public PortugueseBarbarismsRule(ResourceBundle messages) throws IOException {
     super(messages, new Portuguese());
     super.setCategory(Categories.STYLE.getCategory(messages));

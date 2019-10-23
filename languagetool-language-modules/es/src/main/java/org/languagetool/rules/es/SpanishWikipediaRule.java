@@ -50,6 +50,11 @@ public class SpanishWikipediaRule extends AbstractSimpleReplaceRule2 {
     return FILE_NAME;
   }
 
+  @Override
+  public boolean isCaseSensitive() {
+    return true;
+  }
+
   public SpanishWikipediaRule(ResourceBundle messages) throws IOException {
     super(messages, new Spanish());
     super.setCategory(Categories.WIKIPEDIA.getCategory(messages));
