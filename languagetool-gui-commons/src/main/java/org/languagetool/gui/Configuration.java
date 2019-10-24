@@ -152,7 +152,7 @@ public class Configuration {
   private String lookAndFeelName;
   private boolean switchOff = false;
   private boolean useDocLanguage = true;
-  private boolean isMultiThreadLO = false;
+  private boolean isMultiThreadLO = true;
   private String currentProfile = null;
 
   /**

@@ -91,6 +91,9 @@
   * restored some languagetool-dev and languagetool-standalone scripts.
   * [WIP] removed or comment out Freemium server bindings.
 
+#### LibreOffice / Apache OpenOffice Integration
+ * Multiple core CPU support active by default.
+
 ### Other changes common to both projects
 
 #### Catalan
@@ -127,6 +130,9 @@
     has been removed. It hadn't been maintained for years and didn't work properly
     anymore.
 
+#### LibreOffice / Apache OpenOffice Integration
+ * 'Disable Rule' option added to context menu 
+ 
 #### Java API
   * `AbstractSimpleReplaceRule2` has been fixed so that it's now case-insensitive.
     If you implement a sub class of it and you want the old behavior, please implement
