@@ -15184,25 +15184,93 @@ USA
                 <example>... can only be held by someone in priestly orders who has been ordained for at least six years.</example>
             </rule>
         </rulegroup>
-        <rulegroup id="PERS_PRONOUN_AGREEMENT_SENT_START" name="Agreement: 'I is / you is / ... ' (at sentence start only)">
+        <rule id="AS_WILL_AS" name="as will (well) as" default="temp_off">
+            <pattern>
+                <token>as</token>
+                <token>will</token>
+                <token>as</token>
+            </pattern>
+            <message>Did you mean <suggestion>as well as</suggestion>?</message>
+            <example correction="as well as">He, <marker>as will as</marker> her, were ready for it.</example>
+        </rule>
+        <rulegroup id="PERS_PRONOUN_AGREEMENT" name="Agreement: 'I is / you is / ... '">
             <rule>
-                <pattern>
-                    <token postag="SENT_START"/>
+                <antipattern>
+                    <token postag="PRP|UNKNOWN|NN.*" postag_regexp="yes" />
+                    <token postag="CC" />
                     <token>I</token>
+                </antipattern>
+                <antipattern>
+                    <token>as</token>
+                    <token>well</token>
+                    <token>as</token>
+                    <token>I</token>
+                </antipattern>
+                <antipattern><!-- A.I is future technology (missing dot) -->
+                    <token>A</token>
+                    <token spacebefore="no">.</token>
+                    <token spacebefore="no">I</token>
+                </antipattern>
+                <pattern>
+                    <token postag="SENT_START|CC|PCT" postag_regexp="yes" />
+                    <token>I</token>
+                    <token min="0" postag="RB">
+                        <exception>rather</exception>
+                    </token>
                     <marker>
                         <token regexp="yes">is|be</token>
                     </marker>
                 </pattern>
-                <message>Did you mean <suggestion>am</suggestion>?</message>
+                <message>Did you mean <suggestion>am</suggestion> or <suggestion>will be</suggestion>?</message>
                 <short>Possible agreement error</short>
                 <example>I <marker>am</marker> at the restaurant.</example>
                 <example>I <marker>ate</marker> at the restaurant.</example>
-                <example correction="am">I <marker>is</marker> at the restaurant.</example>
+                <example correction="am|will be">I <marker>is</marker> at the restaurant.</example>
+                <example correction="am|will be">However, I <marker>be</marker> at the restaurant.</example>
+                <example>Can you and I be friends again?</example>
+                <example>He as well as I is a member of the club.</example>
+                <example>I rather be aware.</example>
+                <example>A.I is future technology.</example>
             </rule>
             <rule>
-                <pattern>
-                    <token postag="SENT_START"/>
+                <antipattern>
+                    <token>as</token>
+                    <token>well</token>
+                    <token>as</token>
                     <token>I</token>
+                </antipattern>
+                <pattern>
+                    <token postag="SENT_START|CC|PCT" postag_regexp="yes" />
+                    <token>I</token>
+                    <token min="0" postag="RB"/>
+                    <marker>
+                        <token>isn</token>
+                        <token regexp="yes">&apostrophe;</token>
+                        <token>t</token>
+                    </marker>
+                </pattern>
+                <message>Did you mean <suggestion>am not</suggestion>?</message>
+                <short>Possible agreement error</short>
+                <example>I <marker>am not</marker> at the restaurant.</example>
+                <example correction="am not">I <marker>isn't</marker> at the restaurant.</example>
+                <example correction="am not">Howver, I really <marker>isn't</marker> happy.</example>
+            </rule>
+            <rule>
+                <antipattern>
+                    <token regexp="yes">and|&amp;|or</token>
+                    <token>I</token>
+                    <token>are</token>
+                </antipattern>
+                <antipattern>
+                    <token>as</token>
+                    <token>well</token>
+                    <token>as</token>
+                    <token>I</token>
+                </antipattern>
+                <pattern>
+                    <token postag="SENT_START|CC|PCT" postag_regexp="yes" />
+                    <token>I</token>
+                    <token min="0" postag="RB"/>
                     <marker>
                         <token>are</token>
                     </marker>
@@ -15210,11 +15278,61 @@ USA
                 <message>Did you mean <suggestion>am</suggestion> or <suggestion>ate</suggestion>?</message>
                 <short>Possible agreement error</short>
                 <example correction="am|ate">I <marker>are</marker> at the restaurant.</example>
+                <example>Tom and I are quicker than you are.</example>
+                <example>Right now my youngest and I are taking a Netflix break from studying.</example>
             </rule>
             <rule>
-                <pattern>
-                    <token postag="SENT_START"/>
+                <antipattern>
+                    <token regexp="yes">and|&amp;|or</token>
                     <token>I</token>
+                </antipattern>
+                <antipattern>
+                    <token>as</token>
+                    <token>well</token>
+                    <token>as</token>
+                    <token>I</token>
+                </antipattern>
+                <pattern>
+                    <token postag="SENT_START|CC|PCT" postag_regexp="yes" />
+                    <token>I</token>
+                    <token min="0" postag="RB"/>
+                    <marker>
+                        <token>aren</token>
+                        <token regexp="yes">&apostrophe;</token>
+                        <token>t</token>
+                    </marker>
+                </pattern>
+                <message>Did you mean <suggestion>am not</suggestion>?</message>
+                <short>Possible agreement error</short>
+                <example correction="am not">I <marker>aren't</marker> at the restaurant.</example>
+            </rule>
+            <rule>
+                <antipattern>
+                    <token regexp="yes">and|&amp;|or</token>
+                    <token>I</token>
+                </antipattern>
+                <antipattern>
+                    <token inflected="yes">wish</token>
+                    <token>I</token>
+                </antipattern>
+                <antipattern>
+                    <token>if</token>
+                    <token skip="5">,</token>
+                    <token>,</token>
+                    <token>I</token>
+                </antipattern>
+                <antipattern>
+                    <token>as</token>
+                    <token>well</token>
+                    <token>as</token>
+                    <token>I</token>
+                </antipattern>
+                <pattern>
+                    <token postag="SENT_START|CC|PCT" postag_regexp="yes">
+                        <exception regexp="yes">if|though</exception>
+                    </token>
+                    <token>I</token>
+                    <token min="0" postag="RB"/>
                     <marker>
                         <token>were</token>
                     </marker>
@@ -15224,12 +15342,75 @@ USA
                 <example>I <marker>was</marker> at the restaurant.</example>
                 <example>I <marker>ate</marker> at the restaurant.</example>
                 <example>I <marker>am</marker> at the restaurant.</example>
+                <example>If I were a girl.</example>
+                <example>If only I were happy.</example>
+                <example>I wish I were a millionaire.</example>
+                <example>I felt as though I were plunging into something new and quite abnormal.</example>
+                <example>… but if, by any evil chance, I were not, then …</example>
                 <example correction="was">I <marker>were</marker> at the restaurant.</example>
             </rule>
             <rule>
+                <antipattern>
+                    <token regexp="yes">and|&amp;|or</token>
+                    <token>I</token>
+                </antipattern>
+                <antipattern>
+                    <token inflected="yes">wish</token>
+                    <token>I</token>
+                </antipattern>
+                <antipattern>
+                    <token>if</token>
+                    <token skip="5">,</token>
+                    <token>,</token>
+                    <token>I</token>
+                </antipattern>
+                <antipattern>
+                    <token>as</token>
+                    <token>well</token>
+                    <token>as</token>
+                    <token>I</token>
+                </antipattern>
                 <pattern>
-                    <token postag="SENT_START"/>
-                    <token>You</token>
+                    <token postag="SENT_START|CC|PCT" postag_regexp="yes">
+                        <exception regexp="yes">if|though</exception>
+                    </token>
+                    <token>I</token>
+                    <token min="0" postag="RB"/>
+                    <marker>
+                        <token>weren</token>
+                        <token regexp="yes">&apostrophe;</token>
+                        <token>t</token>
+                    </marker>
+                </pattern>
+                <message>Did you mean <suggestion>wasn\5t</suggestion>?</message>
+                <short>Possible agreement error</short>
+                <example>I <marker>wasn't</marker> at the restaurant.</example>
+                <example>I wish I weren't so poor.</example>
+                <example>… but if, by any evil chance, I weren't, then …</example>
+                <example>I <marker>am not</marker> at the restaurant.</example>
+                <example correction="wasn't">I <marker>weren't</marker> at the restaurant.</example>
+            </rule>
+            <rule>
+                <antipattern>
+                    <token>as</token>
+                    <token>well</token>
+                    <token>as</token>
+                    <token>you</token>
+                </antipattern>
+                <antipattern>
+                    <token>you</token>
+                    <token>am</token>
+                    <token>I</token>
+                </antipattern>
+                <pattern>
+                    <token postag="SENT_START|CC|PCT" postag_regexp="yes">
+                        <exception postag="IN" />
+                    </token>
+                    <token>you</token>
+                    <token min="0" postag="RB">
+                        <exception postag="VB.*" postag_regexp="yes" />
+                        <exception>provided</exception><!-- provided is CC -->
+                    </token>
                     <marker>
                         <token regexp="yes">am|is|was</token>
                     </marker>
@@ -15237,26 +15418,151 @@ USA
                 <message>Use second person verb with 'you': <suggestion>are</suggestion> or <suggestion>were</suggestion>.</message>
                 <short>Possible agreement error</short>
                 <example correction="are|were">You <marker>is</marker> too old for that.</example>
+                <example correction="are|were">Me and you <marker>is</marker> too old for that.</example>
+                <example>The important thing for you is not how much you know.</example>
+                <example>I as well as you am to blame.</example>
+                <example>Wherever you live is the best place.</example>
+                <example>The API you provided me is fully working.</example>
+                <example>You Am I are an Australian alternative rock band.</example>
+                <example>The glass fronted building before you is the rose garden.</example>
             </rule>
             <rule>
+                <antipattern>
+                    <token>as</token>
+                    <token>well</token>
+                    <token>as</token>
+                    <token>you</token>
+                </antipattern>
                 <pattern>
-                    <token postag="SENT_START"/>
+                    <token postag="SENT_START|CC|PCT" postag_regexp="yes">
+                        <exception postag="IN" />
+                        <exception>provided</exception><!-- provided is CC -->
+                    </token>
+                    <token>you</token>
+                    <token min="0" postag="RB">
+                        <exception postag="VB.*" postag_regexp="yes" />
+                    </token>
+                    <marker>
+                        <token regexp="yes">isn|wasn</token>
+                        <token regexp="yes">&apostrophe;</token>
+                        <token>t</token>
+                    </marker>
+                </pattern>
+                <message>Use second person verb with 'you': <suggestion>aren\5t</suggestion> or <suggestion>weren\5t</suggestion>.</message>
+                <short>Possible agreement error</short>
+                <example correction="aren't|weren't">You <marker>isn't</marker> too old for that.</example>
+                <example>Wherever you live isn't necessary the best place.</example>
+                <example>The API I provided you isn't working.</example>
+            </rule>
+            <rule>
+                <antipattern>
+                    <token regexp="yes">and|&amp;|or</token>
                     <token regexp="yes">s?he</token>
+                </antipattern>
+                <antipattern>
+                    <token inflected="yes">wish</token>
+                    <token regexp="yes">s?he</token>
+                    <token>were</token>
+                </antipattern>
+                <antipattern>
+                    <token>if</token>
+                    <token skip="5">,</token>
+                    <token>,</token>
+                    <token regexp="yes">s?he</token>
+                    <token>were</token>
+                </antipattern>
+                <antipattern>
+                    <token regexp="yes">if|though</token>
+                    <token regexp="yes">s?he</token>
+                    <token>were</token>
+                </antipattern>
+                <antipattern>
+                    <token>as</token>
+                    <token>well</token>
+                    <token>as</token>
+                    <token regexp="yes">s?he</token>
+                </antipattern>
+                <antipattern>
+                    <token>whether</token>
+                    <token regexp="yes">s?he</token>
+                    <token>be</token>
+                </antipattern>
+                <pattern>
+                    <token postag="SENT_START|CC|PCT" postag_regexp="yes">
+                        <exception>lest</exception>
+                    </token>
+                    <token regexp="yes">s?he</token>
+                    <token min="0" postag="RB"/>
                     <marker>
                         <token regexp="yes">were|be|a(?:m|re)</token>
                     </marker>
                 </pattern>
-                <message>Use third-person verb with '<match no="2"/>': <suggestion><match no="3" postag="VBZ"/></suggestion> or <suggestion>was</suggestion>.</message>
+                <message>Use third-person verb with '<match no="2"/>': <suggestion><match no="4" postag="VBZ"/></suggestion> or <suggestion>was</suggestion>.</message>
                 <short>Possible agreement error</short>
                 <example correction="is|was">He <marker>were</marker> too old for that.</example>
                 <example correction="is|was">She <marker>were</marker> too old for that.</example>
+                <example>Not sure of the status if she were to return at this point.</example>
+                <example>… but if, by any evil chance, he were not, then …</example>
+                <example>It is unclear if Tom and she were married.</example>
+                <example>His sisters as well as he are now living in Tokio.</example>
+                <example>He fled the country lest he be captured and imprisoned.</example>
+                <example>… whether he be a stranger or not.</example>
+                <example>If I were eighty and she were still alive.</example><!-- TODO-->
+            </rule>
+            <rule>
+                <antipattern>
+                    <token regexp="yes">and|&amp;|or</token>
+                    <token regexp="yes">s?he</token>
+                </antipattern>
+                <antipattern>
+                    <token inflected="yes">wish</token>
+                    <token regexp="yes">s?he</token>
+                    <token>weren</token>
+                </antipattern>
+                <antipattern>
+                    <token>if</token>
+                    <token skip="5">,</token>
+                    <token>,</token>
+                    <token regexp="yes">s?he</token>
+                    <token>weren</token>
+                </antipattern>
+                <antipattern>
+                    <token regexp="yes">if|though</token>
+                    <token regexp="yes">s?he</token>
+                    <token>weren</token>
+                </antipattern>
+                <antipattern>
+                    <token>as</token>
+                    <token>well</token>
+                    <token>as</token>
+                    <token regexp="yes">s?he</token>
+                </antipattern>
+                <pattern>
+                    <token postag="SENT_START|CC|PCT" postag_regexp="yes" />
+                    <token regexp="yes">s?he</token>
+                    <token min="0" max="1" postag="RB"/>
+                    <marker>
+                        <token regexp="yes">weren|aren</token>
+                        <token regexp="yes">&apostrophe;</token>
+                        <token>t</token>
+                    </marker>
+                </pattern>
+                <message>Use third-person verb with '<match no="2"/>': <suggestion>isn\5t</suggestion> or <suggestion>wasn\5t</suggestion>.</message>
+                <short>Possible agreement error</short>
+                <example correction="isn't|wasn't">He <marker>weren't</marker> too old for that.</example>
+                <example correction="isn't|wasn't">She <marker>weren't</marker> too old for that.</example>
+                <example>… but if, by any evil chance, he weren´t, then …</example>
+                <example>It is unclear if Tom and she weren't married.</example>
+                <example>His sisters as well as he aren't living in Tokio anymore.</example>
             </rule>
             <rule>
                 <pattern>
                     <token>We</token>
-                    <token min="0" max="1" postag="RB"/>
+                    <token min="0" postag="RB">
+                        <exception postag="VB.*" postag_regexp="yes" />
+                    </token>
                     <marker>
-                        <token regexp="yes">am|is|was</token>
+                        <token regexp="yes">am|is|was</token><!-- TODO add 'be' -->
                     </marker>
                 </pattern>
                 <message>Use first person plural verb with 'we': <suggestion>are</suggestion>, <suggestion>were</suggestion>.</message>
@@ -15264,13 +15570,35 @@ USA
                 <example correction="are|were">We <marker>is</marker> too old for that.</example>
                 <example correction="are|were">I feel we <marker>is</marker> healthy.</example><!-- https://github.com/languagetool-org/languagetool/issues/1154 -->
                 <example correction="are|were">He thinks that we usually <marker>is</marker> lazy.</example>
+                <example>The world in which we live is constantly changing and so are we.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token>We</token>
+                    <token min="0" postag="RB">
+                        <exception postag="VB.*" postag_regexp="yes" />
+                    </token>
+                    <marker>
+                        <token regexp="yes">isn|wasn</token>
+                        <token regexp="yes">&apostrophe;</token>
+                        <token>t</token>
+                    </marker>
+                </pattern>
+                <message>Use first person plural verb with 'we': <suggestion>aren\4t</suggestion>, <suggestion>weren\4t</suggestion>.</message>
+                <short>Possible agreement error</short>
+                <example correction="aren't|weren't">We <marker>isn't</marker> too old for that.</example>
+                <example correction="aren't|weren't">I feel we <marker>isn't</marker> healthy.</example>
+                <example correction="aren't|weren't">He thinks that we usually <marker>isn't</marker> lazy.</example>
+                <example>The world in which we live isn't constantly changing.</example>
             </rule>
             <rule>
                 <pattern>
                     <token>They</token>
-                    <token min="0" max="1" postag="RB"/>
+                    <token min="0" postag="RB">
+                        <exception postag="VB.*" postag_regexp="yes" />
+                    </token>
                     <marker>
-                        <token regexp="yes">am|is|was</token>
+                        <token regexp="yes">am|is|was</token><!-- TODO add 'be' -->
                     </marker>
                 </pattern>
                 <message>Use third-person plural verb with 'they': <suggestion>are</suggestion>, <suggestion>were</suggestion>.</message>
@@ -15278,6 +15606,26 @@ USA
                 <example correction="are|were">They <marker>is</marker> too old for that.</example>
                 <example correction="are|were">I feel they <marker>is</marker> ready to use.</example>
                 <example correction="are|were">He thinks that they usually <marker>is</marker> lazy.</example>
+                <example>The world in which they live is constantly changing.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token>They</token>
+                    <token min="0" postag="RB">
+                        <exception postag="VB.*" postag_regexp="yes" />
+                    </token>
+                    <marker>
+                        <token regexp="yes">isn|wasn</token>
+                        <token regexp="yes">&apostrophe;</token>
+                        <token>t</token>
+                    </marker>
+                </pattern>
+                <message>Use third-person plural verb with 'they': <suggestion>aren\4t</suggestion>, <suggestion>weren\4t</suggestion>.</message>
+                <short>Possible agreement error</short>
+                <example correction="aren't|weren't">They <marker>isn't</marker> too old for that.</example>
+                <example correction="aren't|weren't">I feel they <marker>isn't</marker> ready to use.</example>
+                <example correction="aren't|weren't">He thinks that they usually <marker>isn't</marker> lazy.</example>
+                <example>The world in which they live isn't constantly changing.</example>
             </rule>
         </rulegroup>
         <!-- XXX: is this really an error? see http://www.ef.com/english-resources/english-grammar/adverbs/
@@ -18530,7 +18878,14 @@ USA
                 </antipattern>
                 <antipattern><!-- to see you -->
                     <token>to</token>
-                    <token postag="VB"/>
+                    <token postag="VBG?" postag_regexp="yes" />
+                    <token>you</token>
+                </antipattern>
+                <antipattern><!-- the thing I provided you -->
+                    <token postag="NN.*|UNKNOWN" postag_regexp="yes" />
+                    <token regexp="yes">I|s?he|we|it|they</token>
+                    <token postag="MD|VB" postag_regexp="yes" min="0" />
+                    <token postag="VB.*" postag_regexp="yes" />
                     <token>you</token>
                 </antipattern>
                 <antipattern><!-- how much we pay you -->
@@ -18585,6 +18940,9 @@ USA
                 <example>"<marker>How many she gave you</marker> interests us very much," said the policeman.</example>
                 <example>The girl <marker>about whom I told you</marker> lives here.</example>
                 <example>The projects <marker>about which she tells you</marker> are confidential.</example>
+                <example>Next to seeing you is the pleasure of seeing your handwriting.</example>
+                <example>The API I provided you is only useful for capturing.</example>
+                <example>The API I will provide you is great.</example>
             </rule>
             <rule>
                 <pattern>
@@ -26473,8 +26831,7 @@ The accident victim died from her injuries.
             <url>http://www.chompchomp.com/terms/interjection.htm</url>
             <short>Missing punctuation</short>
             <antipattern>
-                <token regexp="yes">&interjections;</token>
-                <token skip="1" />
+                <token regexp="yes" skip="2">&interjections;</token>
                 <token>,</token>
             </antipattern>
             <rule>
