@@ -71,6 +71,7 @@
      - LongSentenceRule, LongParagraphRule, SentenceWhitespaceRule, WhiteSpaceAtBeginOfParagraph, EmptyLineRule, ParagraphRepeatBeginningRule, PunctuationMarkAtParagraphEnd.
 
 #### Portuguese
+  * re-activated diacritics rule;
   * Portugal Portuguese former orthographic agreement locale added (Portugal 
   pre-AO) with support for:
      - [pt-PT pre-AO] [Dicionários Portugueses Complementares 1.2](https://github.com/TiagoSantos81/PortugueseLibreOfficeExtension);
@@ -86,13 +87,13 @@
 
 #### General
   * server and HTTP API connection commits for LibreOffice plug-in reverted.
-  * removed Google dependencies from English and Catalan language modules, as well as from several Java rules.
   * dependencies security updates.
   * restored some languagetool-dev and languagetool-standalone scripts.
+  * [WIP] removed Google dependencies from English and Catalan language modules, as well as from several Java rules.
   * [WIP] removed or comment out Freemium server bindings.
 
 #### LibreOffice / Apache OpenOffice Integration
- * Multiple core CPU support active by default.
+  * multiple core CPU support active by default.
 
 ### Other changes common to both projects
 
@@ -131,7 +132,7 @@
     anymore.
 
 #### LibreOffice / Apache OpenOffice Integration
- * 'Disable Rule' option added to context menu 
+  * 'disable rule' option added to context menu.
  
 #### Java API
   * `AbstractSimpleReplaceRule2` has been fixed so that it's now case-insensitive.
