@@ -166,7 +166,7 @@ public class MorfologikMultiSpeller {
     return new MorfologikSpeller(dictionary, maxEditDistance);
   }
 
-  private MorfologikSpeller getBinaryDict(String binaryDictPath, int maxEditDistance) {
+  private MorfologikSpeller getBinaryDict(String binaryDictPath, int maxEditDistance) throws IOException {
     if (binaryDictPath.endsWith(JLanguageTool.DICTIONARY_FILENAME_EXTENSION)) {
       return new MorfologikSpeller(binaryDictPath, maxEditDistance);
     } else {
