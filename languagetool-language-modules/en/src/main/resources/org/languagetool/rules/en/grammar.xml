@@ -9899,6 +9899,10 @@ USA
                 <token>lynch</token>
                 <token regexp="yes">mobs?</token>
             </antipattern>
+            <antipattern><!-- https://www.rotary.org/en/get-involved/interact-clubs -->
+                <token>interact</token>
+                <token regexp="yes">clubs?</token>
+            </antipattern>
             <antipattern><!-- brexit term -->
                 <token>remain</token>
                 <token regexp="yes">campaigns?|people|movement|party|politicians?</token>
@@ -10047,6 +10051,16 @@ USA
                 <example>Freddy picked Harry up by his collar.</example>
             </rule>
         </rulegroup>
+        <rule id="A_BLESS_DAY" name="Have a bless (blessed) day" default="temp_off">
+            <pattern>
+                <token regexp="yes">an?|the</token>
+                <marker>
+                    <token>bless</token>
+                </marker>
+            </pattern>
+            <message>Did you mean <suggestion>blessed</suggestion> or <suggestion>blessing</suggestion>?</message>
+            <example correction="blessed|blessing">Have a <marker>bless</marker> day!</example>
+        </rule>
         <rulegroup id="CC_VERB" name="Correct use of 'cc'">
             <url>https://www.merriam-webster.com/dictionary/cc</url>
             <rule>
@@ -16965,6 +16979,10 @@ USA
                     <token postag="RB"/>
                     <token>understood</token>
                 </antipattern>
+                <antipattern><!-- #2060. I want to look up reports to see if -->
+                    <token chunk="E-NP-plural" postag="NNS"/>
+                    <token>to</token>
+                </antipattern>
                 <pattern>
                     <token inflected="yes" postag="VB.*" regexp="yes" postag_regexp="yes">consider|report|understand<exception scope="previous" regexp="yes" inflected="yes">be|,|war</exception></token>
                     <token>to</token>
@@ -16979,6 +16997,7 @@ USA
                 <example>"Anthropology" is from the Greek anthrōpos, "man", understood to mean humankind or humanity, and -logia (-λογία).</example>
                 <example>She had to master war reporting to understand the suffering.</example>
                 <example>"Amsterdam" <marker>is usually understood</marker> to refer to the municipality of Amsterdam.</example>
+                <example>I want to look up reports to see if the numbers increased.</example><!--  #2060 -->
             </rule>
             <rule>
                 <pattern>
@@ -20714,9 +20733,9 @@ USA
                         <token regexp="yes">\d+</token>
                         <token spacebefore="no">,</token>
                         <token spacebefore="no" regexp="yes">\d+</token>
-                        <token regexp="yes">word|letter|character</token>
+                        <token regexp="yes">word|character</token>
                     </marker>
-                    <token regexp="yes">limit|google|articles?|letters?|blog|thesis|doc(umentation)?|text|document|essays?|story|paragraphs?|poems?|abstract|papers?|sentences?</token>
+                    <token regexp="yes">limit|google|articles?|letters?|blog|thesis|doc(umentation)?|text|document|essays?|story|paragraphs?|poems?|abstract|papers?|sentences?|tweets|cv|message|description|memoir|biography|summary|vocabulary</token>
                 </pattern>
                 <message>It appears that a hyphen is missing.</message>
                 <suggestion>\1\2\3-\4</suggestion>
@@ -20726,9 +20745,9 @@ USA
                 <pattern>
                     <marker>
                         <token postag="CD" />
-                        <token regexp="yes">word|letter|character</token>
+                        <token regexp="yes">word|character</token>
                     </marker>
-                    <token regexp="yes">limit|google|articles?|letters?|blog|thesis|doc(umentation)?|text|document|essays?|story|paragraphs?|poems?|abstract|papers?|sentences?</token>
+                    <token regexp="yes">limit|google|articles?|letters?|blog|thesis|doc(umentation)?|text|document|essays?|story|paragraphs?|poems?|abstract|papers?|sentences?|cv|message|description|memoir|biography|summary|vocabulary</token>
                 </pattern>
                 <message>It appears that a hyphen is missing.</message>
                 <suggestion>\1-\2</suggestion>
@@ -20739,6 +20758,31 @@ USA
                 <example>Similar behavior is noticed when copying from one Word doc to another Word doc.</example>
                 <example>Four Word essays were stored in a separate folder.</example>
                 <example>Please complete one Word document first.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <marker>
+                        <token postag="CD" />
+                        <token>digit</token>
+                    </marker>
+                    <token regexp="yes">limit|numbers?|ids?|codes?|iso|phone|account|salary|salaries|zip|postal</token>
+                </pattern>
+                <message>It appears that a hyphen is missing.</message>
+                <suggestion>\1-\2</suggestion>
+                <example correction="6-digit">She earns a <marker>6 digit</marker> salary.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <marker>
+                        <token postag="CD" />
+                        <token>letter</token>
+                    </marker>
+                    <token regexp="yes">limit|words?|sentences?|codes?|iso|countr(y|ies)|scrabble</token>
+                </pattern>
+                <message>It appears that a hyphen is missing.</message>
+                <suggestion>\1-\2</suggestion>
+                <example correction="2-letter">He needed a <marker>2 letter</marker> scrabble word.</example>
+                <example correction="2-letter">The <marker>2 letter</marker> iso code for Germany is 'DE'.</example>
             </rule>
         </rulegroup>
         <rule id="BUY_TWO_GET_ONE_FREE" name="missing comma in 'buy two get one free'">
@@ -35036,6 +35080,22 @@ The accident victim died from her injuries.
             <suggestion>don't you</suggestion>
             <example correction="Don't you"><marker>Dontcha</marker> think this could be done easier?</example>
         </rule>
+        <rule id="WHATCHA" name="whatcha (what are you)" default="temp_off">
+            <pattern>
+                <token regexp="yes">wh?atcha</token>
+            </pattern>
+            <message>The word '\1' is informal. Consider replacing it.</message>
+            <suggestion>what are you</suggestion>
+            <example correction="What are you"><marker>Whatcha</marker> doing?</example>
+        </rule>
+        <rule id="OUTTA" name="outta (out of)" default="temp_off">
+            <pattern>
+                <token>outta</token>
+            </pattern>
+            <message>The word '\1' is informal. Consider replacing it.</message>
+            <suggestion>out of</suggestion>
+            <example correction="out of">I'm <marker>outta</marker> here.</example>
+        </rule>
         <rule id="LEMME" name="lemme (let me)">
             <pattern>
                 <token>lemme</token>
@@ -39200,6 +39260,7 @@ The accident victim died from her injuries.
             <example correction="…">This is important<marker>...</marker> as far as I know.</example>
             <example>1. Introduction .................................... 3</example>
         </rule>
+
         <rulegroup id="WRONG_APOSTROPHE" name="Wrong apostrophe character">
             <rule>
                 <pattern>
@@ -39250,6 +39311,33 @@ The accident victim died from her injuries.
                 <message>Did you mean <suggestion>\1'\3</suggestion> or <suggestion>\1’\3</suggestion>?</message>
                 <example correction="shouldn't|shouldn’t">You <marker>shouldn;t</marker> do it!</example>
                 <example correction="couldn't|couldn’t">I <marker>couldn t</marker> do it!</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token postag="WP"/>
+                    <token spacebefore="no" regexp="yes">[´`]</token>
+                    <token spacebefore="no" regexp="yes">d|ll|re|s</token>
+                </pattern>
+                <message>The character between '\1' and '\3' is an accent character, not a standard apostrophe character. Use <suggestion>\1’\3</suggestion> (curly apostrophe) or <suggestion>\1'\3</suggestion> (straight apostrophe).</message>
+                <short>Accent character misused as apostrophe</short>
+                <example correction="What’s|What's"><marker>What´s</marker> the problem?</example><!-- ANSI value 180. Also found by grammar-premium4 NON_STANDARD_WORD. This rule gives a more specific message. -->
+                <example correction="what’ll|what'll">... and <marker>what`ll</marker> you do?</example><!-- ANSI value 96. -->
+                <example correction="who’d|who'd">... but <marker>who´d</marker> do it?</example>
+                <example correction="that’d|that'd">... and <marker>that`d</marker> be a problem for us.</example>
+                <example><marker>What’s</marker> the problem?</example>
+                <example>... as follows: (`s, ´t, ...).</example>
+                <example>Sa`d ibn Abi Waqqas played a part in the...</example>
+            </rule>
+            <rule>
+                <pattern><!-- Possessive or abbreviation of 'is' -->
+                    <token postag_regexp="yes" postag="NN.*"/>
+                    <token spacebefore="no" regexp="yes">[´`]</token>
+                    <token spacebefore="no">s</token>
+                </pattern>
+                <message>The character between '\1' and '\3' is an accent character, not a standard apostrophe character. Use <suggestion>\1’\3</suggestion> (curly apostrophe) or <suggestion>\1'\3</suggestion> (straight apostrophe).</message>
+                <short>Accent character misused as apostrophe</short>
+                <example correction="book’s|book's">The <marker>book´s</marker> easy to read.</example>
+                <example correction="agent’s|agent's">Go to the travel <marker>agent`s</marker> office.</example>
             </rule>
         </rulegroup>   
         <rule id="APOSTROPHE_IN_DATES" name="Apostrophe in dates">
