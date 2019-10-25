@@ -27113,7 +27113,7 @@ The accident victim died from her injuries.
                      <token postag='IN'></token>
                      <marker>
                          <token postag='NN.*' postag_regexp='yes'></token>
-                         <token regexp="yes" case_sensitive="yes">I|you|s?he|it|we|they</token> <!-- not PRP: exclude 'me', 'himself...' -->
+                         <token regexp="yes" case_sensitive="yes">I|you|s?he|it|we|they|an?|the</token> <!-- not PRP: exclude 'me', 'himself...' -->
                      </marker>
                  </pattern>
                  <message>The comma is probably missing here: <suggestion><match no="3"/>, <match no="4"/></suggestion>.</message>
@@ -27129,6 +27129,19 @@ The accident victim died from her injuries.
                  <example><marker>As best I can</marker> tell, the rule does exactly what it should.</example>
                  <example>In Act I Scene 2 of Jacques Offenbach's Orpheus in the...</example>
                  <example>After everything she experienced, he finally paid her.</example>
+            </rule>
+            <rule>
+                <pattern>
+                     <token postag='SENT_START'/>
+                     <marker>
+                         <token regexp='yes'>now|today|yesterday|tomorrow</token>
+                         <token regexp="yes" case_sensitive="yes">I|you|s?he|it|we|they|an?|the</token> <!-- not PRP: exclude 'me', 'himself...' -->
+                     </marker>
+                 </pattern>
+                 <message>The comma is probably missing here: <suggestion><match no="2"/>, <match no="3"/></suggestion>.</message>
+                 <url>http://englishplus.com/grammar/00000074.htm</url>
+                 <short>Missing comma</short>
+                 <example correction='Now, the'><marker>Now the</marker> rains have stopped.</example>
             </rule>
         </rulegroup>
         <rulegroup id="INTERJECTIONS_PUNCTUATION" name="Missing puncutation after an interjection">
