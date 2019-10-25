@@ -123,8 +123,9 @@ public class Spanish extends Language implements AutoCloseable{
             new CommaWhitespaceRule(messages),
             new DoublePunctuationRule(messages),
             new GenericUnpairedBracketsRule(messages,
-                    Arrays.asList("[", "(", "{", "“", "«", "»", "¿", "¡"),
-                    Arrays.asList("]", ")", "}", "”", "»", "«", "?", "!")),
+                    Arrays.asList("[", "(", "{", "“", "«", "»", "¿", "¡"),  // TODO: remove ¿¡ once QuestionMarkRule is active
+                    Arrays.asList("]", ")", "}", "”", "»", "«", "?", "!")), // TODO: remove ¿¡ once QuestionMarkRule is active
+            new QuestionMarkRule(messages),
             new LongSentenceRule(messages, userConfig, -1, true),
             new LongParagraphRule(messages, this, userConfig),
             new MorfologikSpanishSpellerRule(messages, this, userConfig, altLanguages),
