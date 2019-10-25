@@ -2389,6 +2389,11 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
 
     <!-- for Bob Brown etc. -->
     <rule name="NNP/VB + NNP -&gt; NNP" id="NNP_VB_NNP">
+        <antipattern>
+            <token postag='SENT_START'/>
+            <token postag='IN'/>
+            <token postag='NN.*' postag_regexp='yes'/>
+        </antipattern>
         <pattern case_sensitive="yes">
             <marker>
                 <and>
@@ -2400,6 +2405,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         </pattern>
         <disambig postag="NNP"/>
         <example type="untouched">It is in many Caribbean and Latin American countries...</example>
+        <example type="untouched">On Tuesday, the rains will stop.</example>
     </rule>
     <rule name="Uppercase word/NNP|NN -&gt; NNP" id="UPPER_NNP">
         <antipattern><!-- What Will It Do? -->
