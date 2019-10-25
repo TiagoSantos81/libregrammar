@@ -585,7 +585,7 @@ USA
             <message><suggestion>which</suggestion> should not follow <suggestion>if</suggestion>. Choose either one. Or did you forget a comma?</message>
             <suggestion>if, which</suggestion>
             <example correction='which|if|if, which'>We cannot know <marker>if which</marker> functionality gets tested.</example>
-            <example correction='which|if|if, which'>If and only <marker>if which</marker> direction is which? </example>
+            <example correction='which|if|if, which'>If and only <marker>if which</marker> direction is which?</example> 
         </rule>
         <rule id="LOT_S" name="lot's of (lots of)">
             <pattern>
@@ -6023,7 +6023,7 @@ USA
                     <token postag="PRP" regexp="yes">I|you|he|she|it|we|they</token>
                 </pattern>
                 <message>Did you mean <suggestion><match no="2" regexp_match="ho" regexp_replace="hom"/></suggestion> instead of 'who'.</message>
-                <example correction="whom">Depending on <marker>who</marker> you like more... </example>
+                <example correction="whom">Depending on <marker>who</marker> you like more...</example> 
                 <example correction="whom">... they are not obligated to purchase from <marker>who</marker> they sold to, and vice-versa.</example>
                 <example correction="whom">I didn ' t know the performer, but eventually found out <marker>who</marker> she was.</example>
                 <example>Legion of Whom?</example>
@@ -7849,7 +7849,7 @@ USA
             </pattern>
             <message>Make sure that 'Th' is the chemical symbol for thorium, and not a typing error. Did you mean <suggestion>The</suggestion>?</message>
             <short>Possible typo</short>
-            <example correction="The"><marker>Th</marker> water is hot. </example>
+            <example correction="The"><marker>Th</marker> water is hot.</example> 
             <example correction="The"><marker>Th</marker> usually busy train was remarkably empty today.</example>
             <example correction="The">... but if <marker>Th</marker> water is hot, stop the test.</example>
             <example correction="The"><marker>Th</marker> is in my handbag. [Missing noun.]</example>
@@ -8153,7 +8153,7 @@ USA
             <example>That town is in <marker>NE</marker> England.</example>
             <example>Neon (<marker>Ne</marker>) is a gas</example>
             <example>Jean-Pierre Melville, <marker>né</marker> Grumbach, took his name from his favourite author.</example>
-            <example type="triggers_error">...сарын 6 nah:Tlanāuhti 6 nl:6 april nds-nl:6 april ne:६ अप्रिल new:अप्रिल ६ ja:4月6日 nap: </example><!-- Clearly not standard text. Thus, this rule is not applicable and should not trigger an error. -->
+            <example type="triggers_error">...сарын 6 nah:Tlanāuhti 6 nl:6 april nds-nl:6 april ne:६ अप्रिल new:अप्रिल ६ ja:4月6日 nap:</example> <!-- Clearly not standard text. Thus, this rule is not applicable and should not trigger an error. -->
         </rule>
         <rule id="OM" name="om (on)">
             <pattern>
@@ -8311,7 +8311,7 @@ USA
             </pattern>
             <message>Please check whether one of these words is redundant.</message>
             <suggestion>\1</suggestion>
-            <example correction="can">So you <marker>can able to</marker> download more apps regardless of the storage. </example>
+            <example correction="can">So you <marker>can able to</marker> download more apps regardless of the storage.</example> 
         </rule>
         <rule id="RELY_ON" name="rely on">
             <antipattern>
@@ -8532,7 +8532,7 @@ USA
             <suggestion>their \3</suggestion>
             <example correction="their demands">The workers have also threatened that if <marker>there demands</marker> are not met, they will go on strike again.</example>
             <example correction="their one">If <marker>there one</marker> who has influenced my thinking, it is my mother.</example>
-            <example>If <marker>there even are</marker> people more beautiful than you, there won't be many of them </example>
+            <example>If <marker>there even are</marker> people more beautiful than you, there won't be many of them</example> 
             <example>If <marker>there'</marker>s anything out of place then please take a closer look.</example>
             <example>I wanted to see if <marker>there really was</marker> someone out there.</example>
             <example>I wonder if <marker>there will</marker> be a man brave enough to fight him.</example>
@@ -15184,7 +15184,7 @@ USA
                 <example>... can only be held by someone in priestly orders who has been ordained for at least six years.</example>
             </rule>
         </rulegroup>
-        <rule id="AS_WILL_AS" name="as will (well) as" default="temp_off">
+        <rule id="AS_WILL_AS" name="as will (well) as">
             <pattern>
                 <token>as</token>
                 <token>will</token>
@@ -15206,6 +15206,11 @@ USA
                     <token>as</token>
                     <token>I</token>
                 </antipattern>
+                <antipattern>
+                    <token>I</token>
+                    <token>rather</token>
+                    <token>be</token>
+                </antipattern>
                 <antipattern><!-- A.I is future technology (missing dot) -->
                     <token>A</token>
                     <token spacebefore="no">.</token>
@@ -15214,9 +15219,7 @@ USA
                 <pattern>
                     <token postag="SENT_START|CC|PCT" postag_regexp="yes" />
                     <token>I</token>
-                    <token min="0" postag="RB">
-                        <exception>rather</exception>
-                    </token>
+                    <token min="0" postag="RB" />
                     <marker>
                         <token regexp="yes">is|be</token>
                     </marker>
@@ -15257,7 +15260,7 @@ USA
             </rule>
             <rule>
                 <antipattern>
-                    <token regexp="yes">and|&amp;|or</token>
+                    <token regexp="yes">and|&amp;|n?or</token>
                     <token>I</token>
                     <token>are</token>
                 </antipattern>
@@ -15280,10 +15283,11 @@ USA
                 <example correction="am|ate">I <marker>are</marker> at the restaurant.</example>
                 <example>Tom and I are quicker than you are.</example>
                 <example>Right now my youngest and I are taking a Netflix break from studying.</example>
+                <example>Neither you nor I are mistaken.</example>
             </rule>
             <rule>
                 <antipattern>
-                    <token regexp="yes">and|&amp;|or</token>
+                    <token regexp="yes">and|&amp;|n?or</token>
                     <token>I</token>
                 </antipattern>
                 <antipattern>
@@ -15305,10 +15309,11 @@ USA
                 <message>Did you mean <suggestion>am not</suggestion>?</message>
                 <short>Possible agreement error</short>
                 <example correction="am not">I <marker>aren't</marker> at the restaurant.</example>
+                <example>Neither you nor I aren't mistaken.</example>
             </rule>
             <rule>
                 <antipattern>
-                    <token regexp="yes">and|&amp;|or</token>
+                    <token regexp="yes">and|&amp;|n?or</token>
                     <token>I</token>
                 </antipattern>
                 <antipattern>
@@ -15348,10 +15353,11 @@ USA
                 <example>I felt as though I were plunging into something new and quite abnormal.</example>
                 <example>… but if, by any evil chance, I were not, then …</example>
                 <example correction="was">I <marker>were</marker> at the restaurant.</example>
+                <example>Neither you nor I were mistaken.</example>
             </rule>
             <rule>
                 <antipattern>
-                    <token regexp="yes">and|&amp;|or</token>
+                    <token regexp="yes">and|&amp;|n?or</token>
                     <token>I</token>
                 </antipattern>
                 <antipattern>
@@ -15389,6 +15395,7 @@ USA
                 <example>… but if, by any evil chance, I weren't, then …</example>
                 <example>I <marker>am not</marker> at the restaurant.</example>
                 <example correction="wasn't">I <marker>weren't</marker> at the restaurant.</example>
+                <example>Neither you nor I weren't mistaken.</example>
             </rule>
             <rule>
                 <antipattern>
@@ -23177,7 +23184,7 @@ USA
                 <example>True aspirated voiced stops, as opposed to murmured voiced stops such as are extremely rare, but have been described in the Kelabit language.</example>
                 <example>A lofty isolated ridge formed its acropolis.</example>
                 <example>Have you named your new born baby?</example>
-                <example>Its name has become a byword for any and all supposed advanced prehistoric lost civilizations </example>
+                <example>Its name has become a byword for any and all supposed advanced prehistoric lost civilizations</example> 
                 <example>Royal beef – deep-fried sliced beef, doused in a wine sauce and often served with steamed broccoli.</example>
                 <example>All representatives and senators listed represented Alabama except where noted.</example>
                 <example>The design is complemented by joinery windows set with <marker>multicolored stained</marker> glass.</example>
@@ -31501,7 +31508,28 @@ The accident victim died from her injuries.
                 <token>you</token>
                 <token regexp="yes">&apostrophe;</token>
                 <token>re</token>
-                <token regexp="yes">something|nuts|fools|wimps|nothing|geniuses</token>
+                <token regexp="yes">something|nuts|fools|wimps|nothing|geniuses|on|under|already|just|now</token>
+            </antipattern>
+            <antipattern>
+                <token>you</token>
+                <token regexp="yes">&apostrophe;</token>
+                <token>re</token>
+                <token>sort</token>
+                <token>of</token>
+            </antipattern>
+            <antipattern>
+                <token>you</token>
+                <token regexp="yes">&apostrophe;</token>
+                <token>re</token>
+                <token>way</token>
+                <token>too</token>
+            </antipattern>
+            <antipattern>
+                <token>you</token>
+                <token regexp="yes">&apostrophe;</token>
+                <token>re</token>
+                <token>way</token>
+                <token postag="JJR"/>
             </antipattern>
             <antipattern>
                 <token>you</token>
@@ -31510,13 +31538,21 @@ The accident victim died from her injuries.
                 <token>home</token>
                 <token regexp="yes">early|late</token>
             </antipattern>
+            <antipattern>
+                <token>you</token>
+                <token regexp="yes">&apostrophe;</token>
+                <token>re</token>
+                <token/>
+                <token regexp="yes">seconds|minutes|hours|days|years|decades|centuries</token>
+                <token regexp="yes">early|late</token>
+            </antipattern>
             <pattern>
                 <marker>
                     <token inflected="no">you</token>
                     <token spacebefore="no" regexp="yes">&apostrophe;</token>
                     <token>re</token>
                 </marker>
-                <token postag="JJ" min="0"/>
+                <token postag="JJ" min="0" max="2"/>
                 <token postag="NN(:UN?)?|NNP?S" postag_regexp="yes">
                     <exception postag="JJ"/>
                     <exception regexp="yes">one|still|right|in|kind|well</exception></token>
@@ -31531,9 +31567,10 @@ The accident victim died from her injuries.
             <example>You're old enough to know better.</example>
             <example>You're forever making mistakes.</example>
             <example>You're in perky form, aren't you?</example>
-            <example> You're man enough to let her play, she's experimental and confident enough to do it.</example>
+            <example>You're man enough to let her play, she's experimental and confident enough to do it.</example>
             <example correction="Your"><marker>You're</marker> optimization is a good example.</example>
             <example correction="Your"><marker>You're</marker> new optimization is a good example.</example>
+            <example correction="Your"><marker>You're</marker> clever new optimization is a good example.</example>
             <example>You're Arthur Willis.</example>
             <example>You're kind of amazed.</example>
             <example>You're in better shape than I am.</example>
@@ -31541,6 +31578,15 @@ The accident victim died from her injuries.
             <example>You're just making noise.</example>
             <example>You're home early.</example>
             <example>You're geniuses.</example>
+            <example>You’re already hurt.</example>
+            <example>You're on schedule.</example>
+            <example>You're just idiots.</example>
+            <example>You're ten minutes late.</example>
+            <example>You're way younger than me.</example>
+            <example>You're way too pessimistic.</example>
+            <example>No, you're on time.</example>
+            <example>You're now part of my life.</example>
+            <example>You're sort of rude.</example>
         </rule>
         <rule id="IN_YOU_RE_NN" name="you're (your)">
             <pattern>
@@ -38698,8 +38744,8 @@ The accident victim died from her injuries.
             <message>Wikipedia style. Replace "#" with <suggestion>No. </suggestion> or <suggestion>number </suggestion> when referring to numbers or rankings.</message>
             <url>https://en.wikipedia.org/wiki/Wikipedia:Manual_of_Style#Number_signs</url>
             <example correction='No. |number '>The <marker>#</marker>3</example>
-            <example>No. </example>
-            <example>number </example>
+            <example>No.</example> 
+            <example>number</example> 
         </rule>
 
         <rule id="WIKIPEDIA_12_PM" name="Replace '12 pm' with 'noon'">
@@ -40893,7 +40939,7 @@ The accident victim died from her injuries.
                 <url>https://euenglish.webs.com/</url>
                 <short>EU English: precise (to)</short>
                 <example correction="to specify">… there is a need <marker>to precise</marker> the objectives of the CFP.</example>
-                <example correction="To specify"><marker>To precise</marker> which period before confinement is meant, … </example>
+                <example correction="To specify"><marker>To precise</marker> which period before confinement is meant, …</example> 
             </rule>
             <rule>
                 <pattern>
