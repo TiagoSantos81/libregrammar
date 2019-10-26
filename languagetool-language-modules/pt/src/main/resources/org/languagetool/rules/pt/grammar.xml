@@ -441,7 +441,7 @@ title="Easy editing stylesheet" ?>
       <message>&MSG_ECG;</message>
         <suggestion><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' postag="(N.|[AD]..)F.(.+)" postag_replace='$1MS$2' postag_regexp="yes"/></suggestion>
       <example correction='no (hora)'>Foi resolvido <marker>no hora</marker> certa.</example>
-      <example type='correct'>Foi resolvido <marker>na hora</marker> certa.</example>
+      <example>Foi resolvido <marker>na hora</marker> certa.</example>
     </rule>
     <rule>
       <antipattern>
@@ -505,7 +505,7 @@ title="Easy editing stylesheet" ?>
       <example correction='As invasoras|Os invasores|Os, invasoras'><marker>Os invasoras</marker> holandeses decidiram ir em direção ao Rio Grande do Norte…</example>
       <example correction='As frases|Os (frases)|Os, frases'><marker>Os frases</marker> estão erradas.</example>
       <example correction='Umas cadelas|Uns cães|Uns, cadelas'><marker>Uns cadelas</marker> estão na rua.</example>
-      <example type='correct'><marker>Os bois</marker> estão no pasto.</example>
+      <example><marker>Os bois</marker> estão no pasto.</example>
       <example correction="umas terríveis dores|uns terríveis (dores)|uns terríveis, dores">Tenho <marker>uns terríveis dores</marker> na cabeça.</example>
       <example correction="umas mais terríveis dores|uns mais terríveis (dores)|uns mais terríveis, dores">Tenho <marker>uns mais terríveis dores</marker> na cabeça.</example>
       <example>Existe cada vez mais pressão nos média para que apresentem conteúdos de qualidade.</example>
@@ -533,7 +533,7 @@ title="Easy editing stylesheet" ?>
       <message>&MSG_ECG;</message>
         <suggestion><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' postag="(N.|[AD]..)F.(.+)" postag_replace='$1MP$2' postag_regexp="yes"/></suggestion>
       <example correction='Alguns (frases)'><marker>Alguns frases</marker> tem erros gramaticais.</example>
-      <example type='correct'><marker>Algumas frases</marker> tem erros gramaticais.</example>
+      <example><marker>Algumas frases</marker> tem erros gramaticais.</example>
       <example correction='Nos (mil)'><marker>Nos mil</marker> e uma noites.</example>
     </rule>
     <rule>
@@ -723,7 +723,7 @@ title="Easy editing stylesheet" ?>
         <suggestion><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' postag="(N.|[AD]..|Z.)M.(.+)" postag_replace='$1FP$2' postag_regexp="yes"/></suggestion>
         <suggestion><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/>, <match no='5' include_skipped='all'/></suggestion>
       <example correction='Uns bois|Umas vacas|Umas, bois'><marker>Umas bois</marker> estão no pasto.</example>
-      <example type='correct'><marker>Umas vacas</marker> estão no pasto.</example>
+      <example><marker>Umas vacas</marker> estão no pasto.</example>
       <example correction="uns terríveis inchaços|umas terríveis (inchaços)|umas terríveis, inchaços">Tenho <marker>umas terríveis inchaços</marker> na cabeça.</example>
       <example correction="os milhares|as (milhares)|as, milhares">Vejam <marker>as milhares</marker> de mulheres.</example>
     <!--example>Isso é nas escolas Álvaro de Campos, José Rodrigues dos Santos e Fernando Pessoa.</example--><!-- TODO Tokenize conjunctions -->
@@ -807,7 +807,7 @@ title="Easy editing stylesheet" ?>
       <url>https://pt.wikipedia.org/wiki/Artigo_(gram%C3%A1tica)</url>
       <example correction='O boi|A vaca'><marker>A boi</marker> está no pasto.</example>
       <example correction='O mais boi|A mais vaca'><marker>A mais boi</marker> está no pasto.</example>
-      <example type='correct'>A vaca está no pasto.</example>
+      <example>A vaca está no pasto.</example>
     </rule>
 
   <rulegroup default='on' id='A_WORD' name="Concordância de género e número: A + palavra">
@@ -1037,7 +1037,7 @@ title="Easy editing stylesheet" ?>
         <suggestion>o <match no='2' postag='(A..|N.|Z.)FS(.+)' postag_replace='$1MS$2' postag_regexp='yes'/></suggestion>
       <url>https://pt.wikipedia.org/wiki/Artigo_(gram%C3%A1tica)</url>
       <example correction='A cadela|O cão'><marker>O cadela</marker> está no pasto.</example>
-      <example type='correct'>A cadela está no pasto.</example>
+      <example>A cadela está no pasto.</example>
     </rule>
 
   <rulegroup id='GENERAL_NUMBER_AGREEMENT_ERRORS' name="Concordância de Número: Geral">
@@ -1828,10 +1828,10 @@ title="Easy editing stylesheet" ?>
       <message>Este nome geográfico não é precedido de um artigo.</message>
       <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/o-artigo-em-topoonimos-estrangeiros/12454</url>
       <example type='incorrect'>Vou <marker>ao Faro</marker>.</example>
-      <example type='correct'>Vou a <marker>Faro</marker>.</example>
+      <example>Vou a <marker>Faro</marker>.</example>
       <example type='incorrect'>Está <marker>na Lisboa</marker>.</example>
-      <example type='correct'>Está <marker>em Lisboa</marker>.</example>
-      <example type='correct'>A Coreia do Norte é vizinha da Coreira do Sul.</example>
+      <example>Está <marker>em Lisboa</marker>.</example>
+      <example>A Coreia do Norte é vizinha da Coreira do Sul.</example>
       <example>Faro</example>
       <example>Encontrei-a naquela Lisboa barulhenta e cosmopolita.</example>
     </rule>
@@ -1850,7 +1850,7 @@ title="Easy editing stylesheet" ?>
       <message>Este nome geográfico não é precedido de um artigo.</message>
       <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/o-artigo-em-topoonimos-estrangeiros/12454</url>
       <example type='incorrect'>Vou <marker>ao Cabo Verde</marker>.</example>
-      <example type='correct'>Vou a <marker>Cabo Verbe</marker>.</example>
+      <example>Vou a <marker>Cabo Verbe</marker>.</example>
       <example>Cabo Verde</example>
     </rule>
     <rule>
@@ -1867,7 +1867,7 @@ title="Easy editing stylesheet" ?>
       <message>Este nome geográfico não é precedido de um artigo.</message>
       <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/o-artigo-em-topoonimos-estrangeiros/12454</url>
       <example type='incorrect'>Vou <marker>à Nova Iorque</marker>.</example>
-      <example type='correct'>Vou a <marker>Nova Iorque</marker>.</example>
+      <example>Vou a <marker>Nova Iorque</marker>.</example>
       <example>Nova Iorque</example>
     </rule>
     <rule>
@@ -24725,7 +24725,7 @@ TODO Write better examples
     <!--suggestion><match no='2' regexp_match="(\d)(?=(\d{3})+(?!\d))" regexp_replace="$1 "/></suggestion-->
     <!-- TODO find a regexp that works here to activate suggestion-->
       <example type='incorrect'><marker>1034133,0000</marker> também não é um número redondo.</example>
-      <example type='correct'><marker>1 034 133,000 0</marker> também não é um número redondo.</example>
+      <example><marker>1 034 133,000 0</marker> também não é um número redondo.</example>
       <example>É o ano de <marker>1989</marker>.</example>
       <example>É o ano de <marker>1989</marker></example>
       <example>O ano tem exatamente 365,24219858156 dias.</example>
@@ -28154,7 +28154,7 @@ TODO Write better examples
       </pattern>
       <message>Esta palavra é uma palavra de português arcaico. Tente utilizar uma alternativa.</message>
       <example type='incorrect'>Pois <marker>vosmecês</marker> são uns sacanas!</example>
-      <example type='correct'>Pois <marker>vocês</marker> são uns sacanas!</example>
+      <example>Pois <marker>vocês</marker> são uns sacanas!</example>
     </rule>
     <rule>
       <pattern>
@@ -28167,7 +28167,7 @@ TODO Write better examples
       </pattern>
       <message>Esta palavra é uma palavra de português arcaico. Tente utilizar uma alternativa.</message>
       <example type='incorrect'><marker>Vosmecês</marker> são uns sacanas!</example>
-      <example type='correct'><marker>Vocês</marker> são uns sacanas!</example>
+      <example><marker>Vocês</marker> são uns sacanas!</example>
     </rule>
     <rule>
       <pattern>
@@ -29952,7 +29952,7 @@ TODO Write better examples
       </pattern>
       <message>Cacofonia. Estas palavras, quando ouvidas, podem ser mal interpretadas.</message>
       <example type='incorrect'><marker>Topei dando</marker> nela com a vara de toca gado.</example>
-      <example type='correct'><marker>Vi-a</marker> com a vara de toca gado.</example>
+      <example><marker>Vi-a</marker> com a vara de toca gado.</example>
     </rule>
     <rule>
       <pattern>
@@ -29961,7 +29961,7 @@ TODO Write better examples
       </pattern>
       <message>Cacofonia. Estas palavras, quando ouvidas, podem ser mal interpretadas.</message>
       <example type='incorrect'>Temas <marker>que agarram</marker> a atenção.</example>
-      <example type='correct'>Temas <marker>que prendem</marker> a atenção.</example>
+      <example>Temas <marker>que prendem</marker> a atenção.</example>
     </rule>
     <rule>
       <pattern>
@@ -29970,7 +29970,7 @@ TODO Write better examples
       </pattern>
       <message>Cacofonia. Estas palavras, quando ouvidas, podem ser mal interpretadas.</message>
       <example type='incorrect'>Topei dando nela com a vara de <marker>toca gado</marker>.</example>
-      <example type='correct'>Topei dando nela com a vara <marker>do gado</marker>.</example>
+      <example>Topei dando nela com a vara <marker>do gado</marker>.</example>
     </rule>
     <rule>
       <pattern>
@@ -29979,7 +29979,7 @@ TODO Write better examples
       </pattern>
       <message>Cacofonia. Estas palavras, quando ouvidas, podem ser mal interpretadas.</message>
       <example type='incorrect'><marker>Tipo tapioca</marker>, mas é melhor.</example>
-      <example type='correct'><marker>Parece tapioca</marker>, mas é melhor.</example>
+      <example><marker>Parece tapioca</marker>, mas é melhor.</example>
     </rule>
     <rule>
       <pattern>
@@ -30004,7 +30004,7 @@ TODO Write better examples
       </pattern>
       <message>Cacofonia. Estas palavras, quando ouvidas, podem ser mal interpretadas.</message>
       <example type='incorrect'>O bacalhau <marker>quer alho</marker>.</example>
-      <example type='correct'>O bacalhau <marker>sabe melhor com alho</marker>.</example>
+      <example>O bacalhau <marker>sabe melhor com alho</marker>.</example>
     </rule>
     <rule>
       <pattern>
@@ -30013,7 +30013,7 @@ TODO Write better examples
       </pattern>
       <message>Cacofonia. Estas palavras, quando ouvidas, podem ser mal interpretadas.</message>
       <example type='incorrect'>O <marker>garfo da</marker> esquerda é para peixe, e do direita é para carne.</example>
-      <example type='correct'>O garfo sem serrilhado é para peixe, o outro é para carne.</example>
+      <example>O garfo sem serrilhado é para peixe, o outro é para carne.</example>
     </rule>
     <rule>
       <pattern>
@@ -30022,7 +30022,7 @@ TODO Write better examples
       </pattern>
       <message>Cacofonia. Estas palavras, quando ouvidas, podem ser mal interpretadas.</message>
       <example type='incorrect'>Ao jantar <marker>comi javali</marker>.</example>
-      <example type='correct'>Jantei <marker>javali</marker>.</example>
+      <example>Jantei <marker>javali</marker>.</example>
     </rule>
     <rule>
       <pattern>
@@ -30031,7 +30031,7 @@ TODO Write better examples
       </pattern>
       <message>Cacofonia. Estas palavras, quando ouvidas, podem ser mal interpretadas.</message>
       <example type='incorrect'>Tirei as palavras da <marker>boca dela</marker>.</example>
-      <example type='correct'>Tirei-lhe as palavras da <marker>boca</marker>.</example>
+      <example>Tirei-lhe as palavras da <marker>boca</marker>.</example>
     </rule>
   </rulegroup>
 
@@ -30672,7 +30672,7 @@ TODO Write better examples
       <message>Formas verbais terminadas em r, s, z, quando seguidas por pronomes átonos, devem ser adapatadas.</message>
       <url>http://www.migalhas.com.br/Gramatigalhas/10,MI23518,41046-Verbo+seguido+de+pronome</url>
       <example type='incorrect'><marker>Fiz-las</marker> há minutos.</example>
-      <example type='correct'><marker>Fi-las</marker> há minutos.</example>
+      <example><marker>Fi-las</marker> há minutos.</example>
     </rule>
 
     <rule id='OLD_SPELLING_U' name="Acordo Ortográfico de 45: ü (uso de trema)" type="misspelling">
@@ -33670,7 +33670,7 @@ TODO Write better examples
       <url>http://www.portaldalinguaportuguesa.org/recursos.html?action=novoacordo</url>
     <!--example correction='rato-de-água'>Vi um <marker>rato-água</marker> na casa.</example-->
       <example type='incorrect'>Vi um <marker>rato-água</marker> na casa.</example>
-      <example type='correct'>Vi um <marker>rato-de-água</marker> na casa.</example>
+      <example>Vi um <marker>rato-de-água</marker> na casa.</example>
       <example>É um prato com feijão-frade.</example>
     </rule>
 
@@ -33751,7 +33751,7 @@ TODO Write better examples
       <example type='incorrect'>A <marker>realidade</marker>…</example>
       <example type='incorrect'>...é que as <marker>coisa</marker>!</example>
       <example type='incorrect'>...tem que ter em conta as <marker>situações</marker>…</example>
-      <example type='correct'>Aqui aplica-se o cliché "Cada caso é um caso".</example>
+      <example>Aqui aplica-se o cliché "Cada caso é um caso".</example>
     </rule>
   </rulegroup>
 
@@ -33763,7 +33763,7 @@ TODO Write better examples
       <regexp>\b(afortunadamente|alegremente|basicamente|certamente|claramente|claro|curiosamente|deve ser notado|deve-se ter em mente|é claro|essencialmente|felizmente|fundamentalmente|infelizmente|interessantemente|na realidade|naturalmente|notavelmente|obviamente|precocemente|sem dúvidas?|sem sombra para dúvidas?|tragicamente)\b</regexp>
       <message>Esta palavra é uma palavra de ostentação ou propaganda. Reconsidere o seu uso.</message>
       <example type='incorrect'><marker>Obviamente</marker> que é um bom negócio.</example>
-      <example type='correct'>Penso que é um bom negócio.</example>
+      <example>Penso que é um bom negócio.</example>
     </rule>
   </rulegroup>
 
@@ -33779,7 +33779,7 @@ TODO Write better examples
       <example type='incorrect'>...<marker>achado</marker>!</example>
       <example type='incorrect'>...<marker>Impossível</marker>…</example>
       <example type='incorrect'>...encontrar mais <marker>barato</marker>!</example>
-      <example type='correct'>Um bom jogador não é fácil de encontrar. Não há muitos negócios como este.</example>
+      <example>Um bom jogador não é fácil de encontrar. Não há muitos negócios como este.</example>
     </rule>
   </rulegroup>
 
@@ -33795,7 +33795,7 @@ TODO Write better examples
       <url>https://pt.wikipedia.org/wiki/Voz_verbal#Voz_passiva</url>
       <example type='incorrect'><marker>Era integrada</marker> por navegadores experientes, como Bartolomeu…</example>
       <example type='incorrect'>O trabalho <marker>foi feito</marker> por ele.</example>
-      <example type='correct'>Ele <marker>fez</marker> o trabalho.</example>
+      <example>Ele <marker>fez</marker> o trabalho.</example>
     </rule>
 
   <rulegroup id='AVOID_ALL_PASSIVE_VOICE' name='Escrita Criativa: Evitar a Passiva (todas a formas)' type='style' default='off'>
@@ -33811,7 +33811,7 @@ TODO Write better examples
       <message>Evite a voz passiva.</message>
       <url>https://pt.wikipedia.org/wiki/Voz_verbal#Voz_passiva</url>
       <example type='incorrect'>O trabalho <marker>fez-se</marker>.</example>
-      <example type='correct'>Alguém <marker>fez</marker> o trabalho.</example>
+      <example>Alguém <marker>fez</marker> o trabalho.</example>
     </rule>
     <!-- 		Analitic Passive Voice Complement	        -->
     <rule>
@@ -33821,7 +33821,7 @@ TODO Write better examples
       <message>Evite a voz passiva.</message>
       <url>https://portugues-fcr.blogspot.pt/2010/12/funcoes-sintacticas-complemento-agente.html</url>
       <example type='incorrect'>Caso <marker>conhecido</marker> de todos.</example>
-      <example type='correct'>Todos <marker>conhecem</marker> o caso.</example>
+      <example>Todos <marker>conhecem</marker> o caso.</example>
     </rule>
   </rulegroup>
 
@@ -33875,7 +33875,7 @@ TODO Write better examples
       <message>Palavra vazia em motores de pesquisa.</message>
         <suggestion/>
       <example type='incorrect'><marker>a</marker> pesquisa</example>
-      <example type='correct'>pesquisa</example>
+      <example>pesquisa</example>
     </rule>
   </rulegroup>
  </category>
