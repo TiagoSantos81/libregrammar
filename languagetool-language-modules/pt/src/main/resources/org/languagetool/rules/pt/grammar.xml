@@ -2238,7 +2238,7 @@ title="Easy editing stylesheet" ?>
         <suggestion><match no='1' include_skipped='all'/> <match no='2' include_skipped='all'/> <match no='3' include_skipped='all' postag='(V.[CIS].)..(.)' postag_replace='$1\1P$2' postag_regexp='yes'/></suggestion>
       <example correction='Nós não passeamo|Nós não passeamos'><marker>Nós não passeia</marker> na praia.</example>
     <!-- 	TODO 'Nós não passeamo' is a inflection for reflexive forms. Find a way to remove it from suggestions -->
-      <example type="correct"><marker>Nós ainda não passeamos</marker> na praia.</example>
+      <example><marker>Nós ainda não passeamos</marker> na praia.</example>
       <example>Nós preocupar-nos-iamos, talvez, com esta manifestação de ignorância.</example>
       <example>Um de nós passeia na praia.</example>
     </rule>
@@ -2256,7 +2256,7 @@ title="Easy editing stylesheet" ?>
       <message>&MSG_ECV;</message>
         <suggestion>\1 <match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' include_skipped='all'/> <match no='6' include_skipped='all' postag='(V.[CIS].)..(.)' postag_replace='$1\1P$2' postag_regexp='yes'/></suggestion>
       <example correction='Eu e Rita passeamo|Eu e Rita passeamos'><marker>Eu e Rita passeiam</marker> na praia.</example>
-      <example type="correct"><marker>Eu e Rita passeiamos</marker> na praia.</example>
+      <example><marker>Eu e Rita passeamos</marker> na praia.</example>
       <example>Eu e a Rita preocupar-nos-iamos, talvez, com esta manifestação de ignorância.</example>
     </rule>
     <rule>
@@ -2272,8 +2272,8 @@ title="Easy editing stylesheet" ?>
       <message>&MSG_ECV;</message>
         <suggestion>\1 \2 <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' include_skipped='all' postag='(V.[CIS].)..(.)' postag_replace='$1\1P$2' postag_regexp='yes'/></suggestion>
       <example correction='Tu e eu passeamo|Tu e eu passeamos'><marker>Tu e eu passeio</marker> na praia.</example>
-      <example type="correct">Tu e eu passeamos na praia.</example>
-      <example type="correct">Vós passeais na praia.</example>
+      <example>Tu e eu passeamos na praia.</example>
+      <example>Vós passeais na praia.</example>
       <example>Tu e eu preocupar-nos-iamos, talvez, com esta manifestação de ignorância.</example>
     </rule>
     <rule>
@@ -2295,7 +2295,7 @@ title="Easy editing stylesheet" ?>
       <message>&MSG_ECV;</message>
         <suggestion><match no='1' include_skipped='all'/> <match no='2' include_skipped='all'/> <match no='3' include_skipped='all' postag='(V.[CIS].)..(.)' postag_replace='$1\2P$2' postag_regexp='yes'/></suggestion>
       <example correction='Vós passeai|Vós passeais'><marker>Vós passeiam</marker> na praia.</example>
-      <example type="correct">Vós passeais na praia.</example>
+      <example>Vós passeais na praia.</example>
       <example>A maioria de vós passeia na praia.</example>
     </rule>
     <rule>
@@ -2325,8 +2325,8 @@ title="Easy editing stylesheet" ?>
       <example correction='elas passeiam'>Eles e <marker>elas passeamos</marker> na praia.</example>
       <example correction='Vocês não leram'><marker>Vocês não leu</marker> as notícias?</example>
       <example>Um de vocês não leu as notícias.</example>
-      <example type="correct">Eles e elas passeiam na praia.</example>
-      <example type="correct">Eu e elas vamos ao parque</example>
+      <example>Eles e elas passeiam na praia.</example>
+      <example>Eu e elas vamos ao parque</example>
       <example>Pobres e ricos preocupar-se-iam, talvez, com esta manifestação de ignorância.</example>
       <example>Vocês preocupar-se-iam, talvez, com esta manifestação de ignorância.</example>
       <example>Um de vocês não leu as notícias.</example>
@@ -2452,7 +2452,7 @@ title="Easy editing stylesheet" ?>
       <url>http://books.scielo.org/id/67y3k/pdf/lobo-9788523212308-15.pdf</url>
       <example correction='Cão e gato são'><marker>Cão e gato é</marker> animais.</example>
       <example correction='cão e o gato são'>O <marker>cão e o gato é</marker> animais.</example>
-      <example type="correct">Cão e gato são animais.</example>
+      <example>Cão e gato são animais.</example>
     </rule>
 
     <rule id='A_MAIORIA_SINGULAR' name='Concordância verbal: A maioria + plural'>
@@ -4722,11 +4722,11 @@ title="Easy editing stylesheet" ?>
       <short>Frase sem verbo</short>
       <example type="incorrect"><marker>Isto um exemplo.</marker></example>
     <!--example type="incorrect"><marker>Isto um exemplo!</marker></example-->
-      <example type="correct"><marker>Isto é um exemplo.</marker></example>
+      <example><marker>Isto é um exemplo.</marker></example>
       <example><marker>Isto -  Um exemplo</marker></example><!-- XXX Possível título -->
       <example>Tem marcação com o Dr. Mário?</example>
       <example type="incorrect"><marker>Não marcação com o Dr. Mário.</marker></example>
-      <example type="correct">Não tem marcação com o Dr. Mário.</example>
+      <example>Não tem marcação com o Dr. Mário.</example>
       <example>Temos muito tempo.</example>
       <example>Sim, senhor.</example>
       <example>— Sim, senhor Bastos.</example>
@@ -4734,7 +4734,7 @@ title="Easy editing stylesheet" ?>
       <example>Ó Meu Deus!</example>
       <example>Ó Deus do Céu!</example>
       <example type="incorrect"><marker>Este exemplo também.</marker></example>
-      <example type="correct"><marker>Este exemplo também está.</marker></example>
+      <example><marker>Este exemplo também está.</marker></example>
       <example>Tu tinhas um bocado de tempo.</example>
       <example>Quem compra este tipo de arte?</example>
       <example>Esses dois campos representam a união de disciplinas de astronomia e química.</example>
@@ -8296,7 +8296,7 @@ title="Easy editing stylesheet" ?>
       <example correction="grande, confortável e bem|grande e confortável, e bem">A casa é <marker>grande e confortável e bem</marker> desenhada.</example>
       <example correction="sala, um quarto e uma cozinha|sala e um quarto, e uma cozinha">A casa tem uma <marker>sala e um quarto e uma cozinha</marker>.</example>
       <example correction="sul, oeste e o Suriname|sul e oeste, e o Suriname">...esa a norte, o Oceano Atlântico a leste, o Pará a <marker>sul e oeste e o Suriname</marker> a noroeste.</example>
-      <example type="correct">Gostava de agradecer aos <marker>pais, presidente, e primeira</marker>-dama.</example>
+      <example>Gostava de agradecer aos <marker>pais, presidente, e primeira</marker>-dama.</example>
     <!--example>...inam climas desérticos e semi-desérticos, ao norte, e frios e temperados na regiões mais altas.</example-->
       <example>O processo demora entre mês e mês e meio, e os medicamentos…</example>
     </rule>
@@ -26114,13 +26114,13 @@ TODO Write better examples
       <example>Este é um <marker>caso-de-teste</marker> sem erro.</example>
       <example type="incorrect">Este é um <marker>caso_de</marker>-teste com hífens.</example>
       <example type="incorrect">Alguns testes <marker>são______desnecessários</marker>.</example><!-- The message does not show all the underscores. -->
-      <example type="correct">Escreva o seu nome aqui: <marker>______________________</marker></example>
-      <example type="correct">Teste de Idioma <marker>______________________</marker> 37</example>
-      <example type="correct">Mais tests de idioma <marker>_</marker> Appendix B</example>
-      <example type="correct">Este <marker>_teste_</marker> de sublinhado do LibreOffice.</example>
-      <example type="correct">Verifique primeiro o ficheiro <marker>country_codes.csv</marker>…</example>
-      <example type="correct">Mas <marker>este_</marker> não é como os outros testes…</example><!-- TODO -->
-      <example type="correct">Veja <marker>_TESTES</marker>' na página 33.</example><!-- TODO -->
+      <example>Escreva o seu nome aqui: <marker>______________________</marker></example>
+      <example>Teste de Idioma <marker>______________________</marker> 37</example>
+      <example>Mais tests de idioma <marker>_</marker> Appendix B</example>
+      <example>Este <marker>_teste_</marker> de sublinhado do LibreOffice.</example>
+      <example>Verifique primeiro o ficheiro <marker>country_codes.csv</marker>…</example>
+      <example>Mas <marker>este_</marker> não é como os outros testes…</example><!-- TODO -->
+      <example>Veja <marker>_TESTES</marker>' na página 33.</example><!-- TODO -->
     </rule>
 
   <rulegroup id='TRADEMARK' name="Tipografia: Trademark - ™">
@@ -28328,7 +28328,7 @@ TODO Write better examples
       </pattern>
       <message>Linguagem infantil. Considere as alternativas.</message>
       <example type="incorrect">O <marker>papá</marker> dele foi para o estrangeiro.</example>
-      <example type="correct">O <marker>pai</marker> dele foi para o estrangeiro.</example>
+      <example>O <marker>pai</marker> dele foi para o estrangeiro.</example>
     </rule>
     <rule>
       <pattern>
@@ -28336,8 +28336,8 @@ TODO Write better examples
       </pattern>
       <message>Linguagem infantil. Considere as alternativas.</message>
       <example type="incorrect">O cão fez <marker>ão</marker> para mim.</example>
-      <example type="correct">O cão <marker>latiu</marker> para mim.</example>
-      <example type="correct"> As restantes ter-se-ão recusado a sair, refere a nota.</example>
+      <example>O cão <marker>latiu</marker> para mim.</example>
+      <example> As restantes ter-se-ão recusado a sair, refere a nota.</example>
     </rule>
   </rulegroup>
 
@@ -28360,7 +28360,7 @@ TODO Write better examples
       </pattern>
       <message>Linguagem informal. Considere as alternativas.</message>
       <example type="incorrect">Passei o dia a <marker>anhar</marker>.</example>
-      <example type="correct">Passei o dia a <marker>procrastinar</marker>.</example>
+      <example>Passei o dia a <marker>procrastinar</marker>.</example>
       <example>Actua ao bloquear alguns metabólitos pró-inflamatórios que aceleram e agravam o processo.</example>
     </rule>
     <rule>
@@ -28374,7 +28374,7 @@ TODO Write better examples
       <message>Linguagem informal. Considere as alternativas.</message>
       <example type="incorrect">Oh <marker>pá</marker>!</example>
       <example type="incorrect">Os <marker>pás</marker> lá da terra passam o dia a fumar.</example>
-      <example type="correct">Os <marker>jovens</marker> lá da terra passam o dia a fumar.</example>
+      <example>Os <marker>jovens</marker> lá da terra passam o dia a fumar.</example>
       <example>Leva as pás, ao Sr. António.</example>
     </rule>
     <rule>
@@ -28393,10 +28393,10 @@ TODO Write better examples
       </pattern>
       <message>Linguagem informal. Considere as alternativas.</message>
       <example type="incorrect">O peixe era <marker>grandinho</marker>, mas não bati nenhum recorde.</example>
-      <example type="correct">O peixe era <marker>muito grande</marker>, mas não bati nenhum recorde.</example>
-      <example type="correct">água límpida da nascente brota entre as pedras e <marker>caminha</marker> por entre as árvores que agradecem.</example>
-      <example type="correct">Ele sustentou <marker>sozinho</marker> três crianças. por entre as árvores que agradecem.</example>
-      <example type="correct">A derrota <marker>canarinha</marker> não deixou repercussões apenas em terras brasileiras.</example>
+      <example>O peixe era <marker>muito grande</marker>, mas não bati nenhum recorde.</example>
+      <example>água límpida da nascente brota entre as pedras e <marker>caminha</marker> por entre as árvores que agradecem.</example>
+      <example>Ele sustentou <marker>sozinho</marker> três crianças. por entre as árvores que agradecem.</example>
+      <example>A derrota <marker>canarinha</marker> não deixou repercussões apenas em terras brasileiras.</example>
     </rule>
     <rule>
       <pattern>
@@ -29804,7 +29804,7 @@ TODO Write better examples
       <message>Esta palavra é de baixo calão. Considere as alternativas.</message>
         <suggestion>#¿$?%!¡</suggestion>
       <example correction="#¿$?%!¡"><marker>Merda</marker>!</example>
-      <example type="correct">Porra!</example>
+      <example>Porra!</example>
     </rule>
     <rule>
       <pattern>
@@ -30251,9 +30251,10 @@ TODO Write better examples
           <token>ao</token>
           <token>litro</token>
         </marker>
-		<token>
-			<exception regexp="yes">das?|de|dos?</exception>
-		</token>		
+          <token>
+
+            <exception regexp="yes">das?|de|dos?</exception>
+          </token>
       </pattern>
       <message>Linguagem informal. Pondere usar uma expressão alternativa.</message>
         <suggestion>\1 indiferente</suggestion>
@@ -31058,7 +31059,7 @@ TODO Write better examples
       </pattern>
       <message>Linguagem de Internet. Escreva por extenso.</message>
       <example type="incorrect"><marker>ñ</marker></example>
-      <example type="correct"><marker>não</marker></example>
+      <example><marker>não</marker></example>
       <example>p = q + r</example>
       <example>Será que não dá? ;)</example>
       <example>Angola é uma derivação portuguesa do termo bantu N’gola.</example>
