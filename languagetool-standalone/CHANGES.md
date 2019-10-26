@@ -29,12 +29,6 @@
      - Several collocation rules;
      - Articles: article missing before a countable noun;
      - Non-standard contractions '(I've a...)';
-     - wold vs. would (see 9a1bdd5 and 3a851cb);
-     - seas vs. sees (see 9a1bdd5 and 3a851cb);
-     - hav vs. have (see 9a1bdd5 and 3a851cb);
-     - complaint vs. complained (see 9a1bdd5 and 3a851cb);
-     - handover vs. hand over (see 9a1bdd5 and 3a851cb);
-     - shutdown vs. shut down (see 9a1bdd5 and 3a851cb);
      - can't help but (can't help + gerund);
      - 'e.g.' without a comma;
      - 'i.e.' without a comma;
@@ -72,6 +66,7 @@
 
 #### Portuguese
   * re-activated diacritics rule;
+  * add a few more subject-predicate agreement rules;
   * Portugal Portuguese former orthographic agreement locale added (Portugal 
   pre-AO) with support for:
      - [pt-PT pre-AO] [Dicionários Portugueses Complementares 1.2](https://github.com/TiagoSantos81/PortugueseLibreOfficeExtension);
