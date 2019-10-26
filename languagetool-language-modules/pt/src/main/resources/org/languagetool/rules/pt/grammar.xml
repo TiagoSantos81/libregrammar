@@ -920,6 +920,62 @@ title="Easy editing stylesheet" ?>
     </rule>
   </rulegroup>
 
+  <rulegroup id='CONCORDANCIA_GENERO_SUJEITO_VERBO_ADJETIVO' name="Concordância de género: Sujeito + Verbo + Adjetivo">
+    <!-- Created by Tiago F. Santos, Portuguese rule, 2019-10-26 -->
+      <url>https://web.archive.org/web/20180123191423/http://soportugues.com.br/secoes/sint/sint59.php</url>
+    <rule>
+      <pattern>
+          <token postag='D..FS.+' postag_regexp='yes'/>
+          <token postag='(?:[NZ].|A..)FS.+' postag_regexp='yes'>
+            <exception regexp='yes'>uma|e</exception></token>
+          <token postag="V...3S.+" postag_regexp='yes'/>
+          <token postag='A..M.+' postag_regexp='yes'>
+            <exception postag="R.+"/></token>
+      </pattern>
+      <message>&MSG_ECG;</message>
+        <suggestion>\1 \2 \3 <match no='4' postag='(A..)M.(.+)' postag_replace='$1FS$2' postag_regexp='yes'/></suggestion>
+      <example correction='A cadela é meiga'><marker>A cadela é meigo</marker>.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token postag='D..MS.+' postag_regexp='yes'/>
+          <token postag='(?:[NZ].|A..)MS.+' postag_regexp='yes'>
+            <exception regexp='yes'>um|e|ser|nome|termo</exception></token>
+          <token postag="V...3S.+" postag_regexp='yes'/>
+          <token postag='A..F.+' postag_regexp='yes'>
+            <exception postag="R.+"/></token>
+      </pattern>
+      <message>&MSG_ECG;</message>
+        <suggestion>\1 \2 \3 <match no='4' postag='(A..)F.(.+)' postag_replace='$1MS$2' postag_regexp='yes'/></suggestion>
+      <example correction='O cão é meigo'><marker>O cão é meiga</marker>.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token postag='D..FP.+' postag_regexp='yes'/>
+          <token postag='(?:[NZ].|A..)FP.+' postag_regexp='yes'>
+            <exception regexp='yes'>uma|e</exception></token>
+          <token postag="V...3P.+" postag_regexp='yes'/>
+          <token postag='A..M.+' postag_regexp='yes'>
+            <exception postag="R.+"/></token>
+      </pattern>
+      <message>&MSG_ECG;</message>
+        <suggestion>\1 \2 \3 <match no='4' postag='(A..)M.(.+)' postag_replace='$1FP$2' postag_regexp='yes'/></suggestion>
+      <example correction='As cadelas são meigas'><marker>As cadelas são meigo</marker>.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token postag='D..MP.+' postag_regexp='yes'/>
+          <token postag='(?:[NZ].|A..)MP.+' postag_regexp='yes'/>
+          <token postag="V...3P.+" postag_regexp='yes'/>
+          <token postag='A..F.+' postag_regexp='yes'>
+            <exception postag="R.+"/></token>
+      </pattern>
+      <message>&MSG_ECG;</message>
+        <suggestion>\1 \2 \3 <match no='4' postag='(A..)F.(.+)' postag_replace='$1MP$2' postag_regexp='yes'/></suggestion>
+      <example correction='Os cães são meigos'><marker>Os cães são meiga</marker>.</example>
+    </rule>
+  </rulegroup>
+
   <rulegroup id='AUXILIARY_VERB_INFINITIVE' name="Erro de concordância: Verbo auxiliar + verbo no infinitivo">
     <!--      Created by Tiago F. Santos, 2019-03-16      -->
       <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/o-conceito-de-verbo-auxiliar/24055</url>
