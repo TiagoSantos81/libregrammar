@@ -23290,6 +23290,11 @@ TODO Write better examples
     <!-- Based on Lightproof by Tiago F. Santos, 2017-07-03 -->
       <url>https://pt.wikipedia.org/wiki/Paron%C3%ADmia</url>
       <short>Nesta situação acentua-se a palavra</short>
+      <antipattern>
+          <token regexp='yes'>e|mas</token>
+          <token/>
+          <token regexp='yes'>(?:à|ao?)s?</token>
+      </antipattern>
     <rule>
       <pattern>
           <token regexp='yes'>(?:À|a(?:lguma|ntiga|quela)?|àquela|autêntica|c(?:ada|hamavam|om)|d(?:a|aquela|e|écima|essa|esta|ita|uma)|É|e(?:m|ssa|sta|studa|xtensa)?|fechar|f(?:oi|utura)|grande|g(?:rossa|rosseira)|histórica|i(?:mensa|mportante|nternacional)|m(?:aior|aravilhosa|elhor|esma|ortífera|últipla)|n(?:a|aquela|esta|ona|ossa|ova|uma)|o(?:itava|u|utra)|p(?:ela|equena|rimeira|rópria)|q(?:ualquer|uarta|uerem|uinta)|r(?:eal|ecente|eferida|ica)|s(?:egunda|em|étima|exta|ua)|tanta|t(?:enho|erá|erceira)|última|uma?|única|velha|verdadeira)s?</token>
@@ -25256,18 +25261,24 @@ TODO Write better examples
       <example>1 = 1</example>
       <example correction="≥|≧">1 <marker>&gt;=</marker> 0</example>
     </rule>
-    <!--rule> FIXME &lt; sequence is not being properly escaped. Verify interpreter.
+    <rule>
+      <antipattern>
+          <token>&lt;</token>
+          <token regexp="yes">\-|=</token>
+          <token>&gt;</token>
+      </antipattern>
       <pattern>
+        <marker>
           <token>&lt;</token>
           <token>=</token>
-          <token negate="yes">></token>
+        </marker>
+          <token/>
       </pattern>
       <message>Prefira o símbolo tipográfico.</message>
         <suggestion>≤</suggestion>
         <suggestion>≦</suggestion>
-      <example>1 ≤ 3</example>
-      <example type="incorrect">1 <marker>&gt;=</marker> 3</example>
-            </rule-->
+      <example correction="≤|≦">1 <marker>&lt;=</marker> 3</example>
+    </rule>
   </rulegroup>
 
   <rulegroup id="ARROWS" name="Setas: -&gt; (→)">
@@ -25290,7 +25301,7 @@ TODO Write better examples
         <suggestion>⇛</suggestion>
       <example correction="≥|→|⇾|⇉|⇒|⇨|⇛"><marker>-&gt;</marker> Ponto 1</example>
     </rule>
-    <!--rule> FIXME &lt; equence is not being properly escaped. Verify interpreter.
+    <rule>
       <pattern>
         <marker>
           <token>&lt;</token>
@@ -25325,7 +25336,7 @@ TODO Write better examples
         <suggestion>⇔</suggestion>
       <example correction="↔|⇿|⇄|⇆|⇋|⇌|⇔">A <marker>&lt;=></marker> B</example>
       <example>A ⇔ B</example>
-            </rule-->
+            </rule>
   </rulegroup>
 
   <rulegroup id='YEAR_NUMBER_FORMAT' name="Formatação de números: anos">

@@ -39458,13 +39458,18 @@ The accident victim died from her injuries.
         <suggestion>⇛</suggestion>
       <example correction="≥|→|⇾|⇉|⇒|⇨|⇛"><marker>-&gt;</marker> Point 1</example>
     </rule>
-    <!--rule> FIXME &lt; equence is not being properly escaped. Verify interpreter.
+    <rule>
+      <antipattern>
+          <token>&lt;</token>
+          <token regexp="yes">\-|=</token>
+          <token>&gt;</token>
+      </antipattern>
       <pattern>
         <marker>
           <token>&lt;</token>
           <token regexp="yes">(?:\-|=){1,2}</token>
         </marker>
-          <token negate="yes">&gt;</token>
+          <token/>
       </pattern>
       <message>Do you wish to insert an arrow?</message>
         <suggestion>≤</suggestion>
@@ -39493,7 +39498,7 @@ The accident victim died from her injuries.
         <suggestion>⇔</suggestion>
       <example correction="↔|⇿|⇄|⇆|⇋|⇌|⇔">A <marker>&lt;=></marker> B</example>
       <example>A ⇔ B</example>
-            </rule-->
+    </rule>
   </rulegroup>
 
   <rulegroup id='HYPOTHESIS_TYPOGRAPHY' name='Tipografia de Hipóteses'>
