@@ -28192,6 +28192,93 @@ though, and has since been slightly modified)-->
         <example correction="20 h">Il est <marker>20h</marker>.</example>
       </rule>
     </rulegroup>
+  <rulegroup id="EQUAL_OR_X" name="Matemático: &gt;= (≥)">
+    <!-- Localized from German grammar.xml, by Tiago F. Santos, 2019-10-27 -->
+    <rule>
+      <regexp>&gt;=</regexp>
+      <message>Préférez le symbole typographique.</message>
+        <suggestion>≥</suggestion>
+        <suggestion>≧</suggestion>
+      <example>1 = 1</example>
+      <example correction="≥|≧">1 <marker>&gt;=</marker> 0</example>
+    </rule>
+    <rule>
+      <pattern>
+        <marker>
+          <token>&lt;</token>
+          <token>=</token>
+        </marker>
+          <token negate="yes">></token>
+      </pattern>
+      <message>Préférez le symbole typographique.</message>
+        <suggestion>≤</suggestion>
+        <suggestion>≦</suggestion>
+      <example correction="≤|≦">1 <marker>&lt;=</marker> 3</example>
+    </rule>
+  </rulegroup>
+  <rulegroup id="ARROWS" name="Fléches: -&gt; (→)">
+    <!-- Localized from German grammar.xml, by Tiago F. Santos, 2019-10-27 -->
+    <rule>
+      <pattern>
+          <token negate="yes">&lt;</token>
+        <marker>
+          <token regexp="yes">(?:\-|=){1,2}</token>
+          <token>&gt;</token>
+        </marker>
+      </pattern>
+      <message>Voulez-vous insérer une flèche??</message>
+        <suggestion>≥</suggestion>
+        <suggestion>→</suggestion>
+        <suggestion>⇾</suggestion>
+        <suggestion>⇉</suggestion>
+        <suggestion>⇒</suggestion>
+        <suggestion>⇨</suggestion>
+        <suggestion>⇛</suggestion>
+      <example correction="≥|→|⇾|⇉|⇒|⇨|⇛"><marker>-&gt;</marker> Point 1</example>
+    </rule>
+    <rule>
+      <antipattern>
+          <token>&lt;</token>
+          <token regexp="yes">\-|=</token>
+          <token>&gt;</token>
+      </antipattern>
+      <pattern>
+        <marker>
+          <token>&lt;</token>
+          <token regexp="yes">(?:\-|=){1,2}</token>
+        </marker>
+          <token/>
+      </pattern>
+      <message>Voulez-vous insérer une flèche??</message>
+        <suggestion>≤</suggestion>
+        <suggestion>←</suggestion>
+        <suggestion>⇽</suggestion>
+        <suggestion>⇇</suggestion>
+        <suggestion>⇐</suggestion>
+        <suggestion>⇦</suggestion>
+        <suggestion>⇚</suggestion>
+      <example correction="≤|←|⇽|⇇|⇐|⇦|⇚">A <marker>&lt;-</marker> B</example>
+      <example >A ← B</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token>&lt;</token>
+          <token regexp="yes">\-|=</token>
+          <token>&gt;</token>
+      </pattern>
+      <message>Voulez-vous insérer une flèche??</message>
+        <suggestion>↔</suggestion>
+        <suggestion>⇿</suggestion>
+        <suggestion>⇄</suggestion>
+        <suggestion>⇆</suggestion>
+        <suggestion>⇋</suggestion>
+        <suggestion>⇌</suggestion>
+        <suggestion>⇔</suggestion>
+      <example correction="↔|⇿|⇄|⇆|⇋|⇌|⇔">A <marker>&lt;=></marker> B</example>
+      <example>A ⇔ B</example>
+    </rule>
+  </rulegroup>
+
   <rulegroup id='MULTIPLICATION_SIGN' name="Mathématiques: Multiplication: x - × ">
     <!-- Localised from Portuguese by Tiago F. Santos, 2019-09-09  -->
     <rule>
