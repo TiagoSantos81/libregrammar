@@ -28192,7 +28192,7 @@ though, and has since been slightly modified)-->
         <example correction="20 h">Il est <marker>20h</marker>.</example>
       </rule>
     </rulegroup>
-  <rulegroup id="EQUAL_OR_X" name="Matemático: &gt;= (≥)">
+  <rulegroup id="EQUAL_OR_X" name="Mathématique: &gt;= (≥)">
     <!-- Localized from German grammar.xml, by Tiago F. Santos, 2019-10-27 -->
     <rule>
       <regexp>&gt;=</regexp>
@@ -28226,7 +28226,7 @@ though, and has since been slightly modified)-->
           <token>&gt;</token>
         </marker>
       </pattern>
-      <message>Voulez-vous insérer une flèche??</message>
+      <message>Voulez-vous insérer une flèche?</message>
         <suggestion>≥</suggestion>
         <suggestion>→</suggestion>
         <suggestion>⇾</suggestion>
@@ -28249,7 +28249,7 @@ though, and has since been slightly modified)-->
         </marker>
           <token/>
       </pattern>
-      <message>Voulez-vous insérer une flèche??</message>
+      <message>Voulez-vous insérer une flèche?</message>
         <suggestion>≤</suggestion>
         <suggestion>←</suggestion>
         <suggestion>⇽</suggestion>
@@ -28266,7 +28266,7 @@ though, and has since been slightly modified)-->
           <token regexp="yes">\-|=</token>
           <token>&gt;</token>
       </pattern>
-      <message>Voulez-vous insérer une flèche??</message>
+      <message>Voulez-vous insérer une flèche?</message>
         <suggestion>↔</suggestion>
         <suggestion>⇿</suggestion>
         <suggestion>⇄</suggestion>

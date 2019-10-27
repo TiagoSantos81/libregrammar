@@ -1863,4 +1863,93 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rulegroup>
     </category>
 
+  <category id="TYPOGRAPHY" name="Typography" type="typographical">
+  <rulegroup id="EQUAL_OR_X" name="Matemático: &gt;= (≥)">
+    <!-- Localized from German grammar.xml, by Tiago F. Santos, 2019-10-27 -->
+    <rule>
+      <regexp>&gt;=</regexp>
+      <message>Preferisce il simbolo tipografico.</message>
+        <suggestion>≥</suggestion>
+        <suggestion>≧</suggestion>
+      <example>1 = 1</example>
+      <example correction="≥|≧">1 <marker>&gt;=</marker> 0</example>
+    </rule>
+    <rule>
+      <pattern>
+        <marker>
+          <token>&lt;</token>
+          <token>=</token>
+        </marker>
+          <token negate="yes">></token>
+      </pattern>
+      <message>Preferisce il simbolo tipografico.</message>
+        <suggestion>≤</suggestion>
+        <suggestion>≦</suggestion>
+      <example correction="≤|≦">1 <marker>&lt;=</marker> 3</example>
+    </rule>
+  </rulegroup>
+  <rulegroup id="ARROWS" name="Fléches: -&gt; (→)">
+    <!-- Localized from German grammar.xml, by Tiago F. Santos, 2019-10-27 -->
+    <rule>
+      <pattern>
+          <token negate="yes">&lt;</token>
+        <marker>
+          <token regexp="yes">(?:\-|=){1,2}</token>
+          <token>&gt;</token>
+        </marker>
+      </pattern>
+      <message>Desideri inserire una freccia?</message>
+        <suggestion>≥</suggestion>
+        <suggestion>→</suggestion>
+        <suggestion>⇾</suggestion>
+        <suggestion>⇉</suggestion>
+        <suggestion>⇒</suggestion>
+        <suggestion>⇨</suggestion>
+        <suggestion>⇛</suggestion>
+      <example correction="≥|→|⇾|⇉|⇒|⇨|⇛"><marker>-&gt;</marker> Punto 1</example>
+    </rule>
+    <rule>
+      <antipattern>
+          <token>&lt;</token>
+          <token regexp="yes">\-|=</token>
+          <token>&gt;</token>
+      </antipattern>
+      <pattern>
+        <marker>
+          <token>&lt;</token>
+          <token regexp="yes">(?:\-|=){1,2}</token>
+        </marker>
+          <token/>
+      </pattern>
+      <message>Desideri inserire una freccia?</message>
+        <suggestion>≤</suggestion>
+        <suggestion>←</suggestion>
+        <suggestion>⇽</suggestion>
+        <suggestion>⇇</suggestion>
+        <suggestion>⇐</suggestion>
+        <suggestion>⇦</suggestion>
+        <suggestion>⇚</suggestion>
+      <example correction="≤|←|⇽|⇇|⇐|⇦|⇚">A <marker>&lt;-</marker> B</example>
+      <example >A ← B</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token>&lt;</token>
+          <token regexp="yes">\-|=</token>
+          <token>&gt;</token>
+      </pattern>
+      <message>Desideri inserire una freccia?</message>
+        <suggestion>↔</suggestion>
+        <suggestion>⇿</suggestion>
+        <suggestion>⇄</suggestion>
+        <suggestion>⇆</suggestion>
+        <suggestion>⇋</suggestion>
+        <suggestion>⇌</suggestion>
+        <suggestion>⇔</suggestion>
+      <example correction="↔|⇿|⇄|⇆|⇋|⇌|⇔">A <marker>&lt;=></marker> B</example>
+      <example>A ⇔ B</example>
+    </rule>
+  </rulegroup>
+  </category>
+
 </rules>
