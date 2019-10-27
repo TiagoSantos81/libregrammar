@@ -133,7 +133,13 @@
   * `AbstractSimpleReplaceRule2` has been fixed so that it's now case-insensitive.
     If you implement a sub class of it and you want the old behavior, please implement
     `isCaseSensitive()` and have it return `true`. (Issue #2051)
-    
+
+#### HTTP API / LT server
+  * The dynamic languages feature (`lang-xx=...` and `lang-xx-dictPath=...`) now
+    also supports hunspell dictionaries. Just let `lang-xx-dictPath` point to the
+    absolute path of the `.dic` file. Note that hunspell is quite slow when it
+    comes to offering suggestions for misspelled words. 
+
 #### Internal
   * Experimental: the new `default="temp_off"` attribute in `grammar.xml` files will
     turn off a rule/rulegroup, but keep it activated for our nightly regression tests.
