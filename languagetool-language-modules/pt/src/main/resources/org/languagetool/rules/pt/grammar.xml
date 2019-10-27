@@ -4954,6 +4954,11 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes' spacebefore='no'>&hifen;</token>
           <token>a</token>
       </antipattern>
+      <antipattern>
+          <token>ponto</token>
+          <token>a</token>
+          <token>ao</token>
+      </antipattern>
       <pattern>
           <token regexp='yes'>a|às?|aos?</token>
           <token regexp='yes'>a|às?|aos?</token>
@@ -10254,7 +10259,7 @@ title="Easy editing stylesheet" ?>
 
  </category>
 
- <category id='REPETITIONS_STYLE' name='Repetições (estilo)' type='style'>
+ <category id='REPETITIONS_STYLE' name='Repetições (estilo)' type='duplication'>
 
     <rule id='REPEATED_WORDS' name="Palavras repetidas (2x)" default='on'>
     <!-- Created by Tiago F. Santos , Portuguese rule, 2016-12-03 		-->
@@ -10383,7 +10388,7 @@ title="Easy editing stylesheet" ?>
 
  </category>
 
- <category id='REDUNDANCY' name="Redundância">
+ <category id='REDUNDANCY' name="Redundância" type="duplication">
 
     <rule id='ANTES_PREFIRO' name="Prefiro">
     <!--      Created by Marco A.G.Pinto, Portuguese rule      -->

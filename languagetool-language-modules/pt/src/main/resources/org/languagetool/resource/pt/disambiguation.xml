@@ -2903,7 +2903,7 @@
     <rule>
       <pattern>
           <token regexp="yes" postag='UNKNOWN' case_sensitive='yes'>(?-i)(&ditongos_chineses;)(?i)(&ditongos_chineses;)
-            <exception>Time</exception></token>
+            <exception>Genie|Time</exception></token>
       </pattern>
       <disambig action="replace"><wd pos="NPCS000_"/></disambig>
     </rule>
