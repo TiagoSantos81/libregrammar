@@ -491,7 +491,7 @@ public final class PatternTestTools {
   }
   
   private static void warn(String s) {
-    System.err.println("*** WARNING: " + s);
+    System.err.println("[WARNING]: " + s);
   }
 
 }
