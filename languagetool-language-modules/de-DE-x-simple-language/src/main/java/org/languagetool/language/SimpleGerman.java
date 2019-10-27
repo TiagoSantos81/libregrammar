@@ -51,7 +51,8 @@ public class SimpleGerman extends GermanyGerman {
   @Override
   public Contributor[] getMaintainers() {
     return new Contributor[] {
-        new Contributor("Annika Nietzio")
+        new Contributor("Annika Nietzio"),
+        new Contributor("Florian Knorr")
     };
   }
 
