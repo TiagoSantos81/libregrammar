@@ -63,13 +63,14 @@ public class AboutDialog {
     aboutPane.setOpaque(false);
 
     aboutPane.setText(String.format("<html>"
-            + "<p>LanguageTool %s (%s, %s)<br>"
+            + "<p>LibreGrammar %s (%s, %s)<br>"
+            + "Copyright (C) 2019 the LibreGrammar community and Tiago F. Santos<br>"
             + "Copyright (C) 2005-2019 the LanguageTool community and Daniel Naber<br>"
             + "This software is licensed under the GNU Lesser General Public License.<br>"
-            + "<a href=\"https://www.languagetool.org\">https://www.languagetool.org</a><br>"
+            /*+ "<a href=\"https://www.languagetool.org\">https://www.languagetool.org</a><br>"*/
             + "Java max/total/free memory: %sMB, %sMB, %sMB</p>"
             + "<p>Maintainers or former maintainers of the language modules -<br>"
-            + "(*) means language is unmaintained in LanguageTool:</p><br>"
+            + "(*) means language is unmaintained:</p><br>"
             + "</html>", JLanguageTool.VERSION,
              JLanguageTool.BUILD_DATE,
              JLanguageTool.GIT_SHORT_ID,
