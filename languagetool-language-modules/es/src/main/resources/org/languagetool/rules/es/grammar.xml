@@ -2073,6 +2073,30 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 
         </rule>
     </rulegroup>
+  <rulegroup id="EQUAL_OR_X" name="Matemático: &gt;= (≥)">
+    <!-- Localized from German grammar.xml, by Tiago F. Santos, 2019-10-27 -->
+    <rule>
+      <regexp>&gt;=</regexp>
+      <message>Prefiere el símbolo tipográfico.</message>
+        <suggestion>≥</suggestion>
+        <suggestion>≧</suggestion>
+      <example>1 = 1</example>
+      <example correction="≥|≧">1 <marker>&gt;=</marker> 0</example>
+    </rule>
+    <rule>
+      <pattern>
+        <marker>
+          <token>&lt;</token>
+          <token>=</token>
+        </marker>
+          <token negate="yes">></token>
+      </pattern>
+      <message>Prefiere el símbolo tipográfico.</message>
+        <suggestion>≤</suggestion>
+        <suggestion>≦</suggestion>
+      <example correction="≤|≦">1 <marker>&lt;=</marker> 3</example>
+    </rule>
+  </rulegroup>
   <rulegroup id="ARROWS" name="Flechas: -&gt; (→)">
     <!-- Localized from German grammar.xml, by Tiago F. Santos, 2017-07-07 -->
     <rule>

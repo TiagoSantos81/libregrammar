@@ -39438,6 +39438,30 @@ The accident victim died from her injuries.
                 <example type="triggers_error">These <marker>byzantine</marker> rules are not easy to understand.</example>
             </rule>
         </rulegroup>
+  <rulegroup id="EQUAL_OR_X" name="Matemático: &gt;= (≥)">
+    <!-- Localized from German grammar.xml, by Tiago F. Santos, 2019-10-27 -->
+    <rule>
+      <regexp>&gt;=</regexp>
+      <message>Prefer the typographical symbol.</message>
+        <suggestion>≥</suggestion>
+        <suggestion>≧</suggestion>
+      <example>1 = 1</example>
+      <example correction="≥|≧">1 <marker>&gt;=</marker> 0</example>
+    </rule>
+    <rule>
+      <pattern>
+        <marker>
+          <token>&lt;</token>
+          <token>=</token>
+        </marker>
+          <token negate="yes">></token>
+      </pattern>
+      <message>Prefer the typographical symbol.</message>
+        <suggestion>≤</suggestion>
+        <suggestion>≦</suggestion>
+      <example correction="≤|≦">1 <marker>&lt;=</marker> 3</example>
+    </rule>
+  </rulegroup>
   <rulegroup id="ARROWS" name="Arrows: -&gt; (→)">
     <!-- Localized from German grammar.xml, by Tiago F. Santos, 2019-02-08 -->
     <rule>
