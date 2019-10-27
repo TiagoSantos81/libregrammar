@@ -27,11 +27,10 @@ import java.io.IOException;
 
 public class IrishPatternRuleTest extends PatternRuleTest {
 
-/*
   @Test
   public void testRules() throws IOException {
     runGrammarRulesFromXmlTest();
   }
-*/
+
 }
 

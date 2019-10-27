@@ -724,8 +724,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                         <token>sibh</token>
                     </marker>
                 </pattern>
-                <message>Ba chóir duit <suggestion>do bhúr <match no="2" postag="(Verbal:Noun:V(?:TI|I|T)|Verbal:Noun:NStem)" postag_regexp="yes" postag_replace="$1:Ecl"/></suggestion> a scríobh.</message>
-                <example correction="do bhúr mbualadh"><marker>ag bualadh sibh</marker></example>
+                <message>Ba chóir duit <suggestion>do bhur <match no="2" postag="(Verbal:Noun:V(?:TI|I|T)|Verbal:Noun:NStem)" postag_regexp="yes" postag_replace="$1:Ecl"/></suggestion> a scríobh.</message>
+                <example correction="do bhur mbualadh"><marker>ag bualadh sibh</marker></example>
             </rule>
             <rule>
                 <pattern>
@@ -735,8 +735,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                         <token>sibh</token>
                     </marker>
                 </pattern>
-		<message>Ba chóir duit <suggestion>do bhúr <match no="2" /></suggestion> a scríobh.</message>
-                <example correction="do bhúr lorg"><marker>ag lorg sibh</marker></example>
+		<message>Ba chóir duit <suggestion>do bhur <match no="2" /></suggestion> a scríobh.</message>
+                <example correction="do bhur lorg"><marker>ag lorg sibh</marker></example>
             </rule>
         </rulegroup>
     </category>
@@ -1904,7 +1904,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token spacebefore="no">mhaith</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>a mhaith</suggestion></message>
-            <example type='correct'>Go ndéana Dia a mhaith</example>
+	    <example correction="a mhaith">Go ndéana Dia <marker>'mhaith</marker></example>
         </rule>
         <rule id="MHORAN" name="'mhórán">
             <pattern>
@@ -2420,6 +2420,13 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <message>Foirm neamhchaighdeánach de <suggestion><match no="1" regexp_match="([1-9][0-9]*)adh" regexp_replace="$1ú"/></suggestion></message>
             <example correction="10ú"><marker>10adh</marker></example>
         </rule>
+        <rule id="NUM_THSTNDRD" name="-th">
+            <pattern>
+                    <token regexp="yes">[1-9][0-9]*(?:st|th|[rn]d)</token>
+            </pattern>
+            <message>An <suggestion><match no="1" regexp_match="([1-9][0-9]*)(?:th|st|[rn]d)" regexp_replace="$1ú"/></suggestion> a bhí i gceist agat?</message>
+            <example correction="10ú"><marker>10th</marker></example>
+        </rule>
         <rule id="DAR_BAINM" name="d'ar b'ainm">
             <pattern>
                     <token>d</token>
@@ -2503,7 +2510,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token regexp="yes">mé|sí|sibh|tú</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>sháigh</suggestion></message>
-            <example correction="sháigh"><marker>sháith mé</marker></example>
+            <example correction="sháigh"><marker>sháith</marker> mé</example>
         </rule>
         <rule id="A_D_APOST" name="a d'">
             <pattern>
@@ -2530,61 +2537,46 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <message>Foirm neamhchaighdeánach de <suggestion>an crá</suggestion></message>
             <example correction="an crá"><marker>an crádh</marker></example>
         </rule>
-        <rule id="ROIMHE_AN_ECLIPSED" name="roimhe an ECLIPSED">
-            <pattern>
-                <marker>
-                    <token>roimhe</token>
-                </marker>
-                <token>an</token>
-                <token postag="(?:C[UMC]:)?Noun:.*:Ecl" postag_regexp="yes"></token>
-            </pattern>
-            <message>Foirm neamhchaighdeánach de <suggestion>roimh</suggestion></message>
-            <example correction="roimh"><marker>roimhe</marker> an ngeata</example>
-        </rule>
-        <rule id="ROIMHE_AN_UNLENITEDBCFGMP" name="roimhe an UNLENITEDBCFGMP">
-            <pattern>
-                <marker>
-                    <token>roimhe</token>
-                </marker>
-                <token>an</token>
-                <token postag="(?:C[UMC]:)?Noun:.*" postag_regexp="yes" regexp="yes">bhf|[bcfgmp][^h']</token>
-            </pattern>
-            <message>Foirm neamhchaighdeánach de <suggestion>roimh</suggestion></message>
-            <example correction="roimh"><marker>roimhe</marker> an bhfuinneog</example>
-        </rule>
-        <rule id="ROIMHE_AN_INITIALVOWEL" name="roimhe an INITIALVOWEL">
-            <pattern>
-                <marker>
-                    <token>roimhe</token>
-                </marker>
-                <token>an</token>
-                <token postag="(?:C[UMC]:)?Noun:.*" postag_regexp="yes" regexp="yes">[aeiouáéíóú].*</token>
-            </pattern>
-            <message>Foirm neamhchaighdeánach de <suggestion>roimh</suggestion></message>
-            <example correction="roimh"><marker>roimhe</marker> an uisce</example>
-        </rule>
-        <rule id="ROIMHE_AN_INITIALS" name="roimhe an INITIALS">
-            <pattern>
-                <marker>
-                    <token>roimhe</token>
-                </marker>
-                <token>an</token>
-                <token postag="(?:C[UMC]:)?Noun:.*" postag_regexp="yes" regexp="yes">s[lnraeiouáéíóúh].*</token>
-            </pattern>
-            <message>Foirm neamhchaighdeánach de <suggestion>roimh</suggestion></message>
-            <example correction="roimh"><marker>roimhe</marker> an sneachta</example>
-        </rule>
-        <rule id="ROIMHE_AN_LENITED" name="roimhe an LENITED">
-            <pattern>
-                <marker>
-                    <token>roimhe</token>
-                </marker>
-                <token>an</token>
-                <token postag="(?:C[UMC]:)?Noun:.*:Len" postag_regexp="yes"></token>
-            </pattern>
-            <message>Foirm neamhchaighdeánach de <suggestion>roimh</suggestion></message>
-            <example correction="roimh"><marker>roimhe</marker> an bhean</example>
-        </rule>
+        <rulegroup id="ROIMHE_AN_NOUN" name="roimhe an NOUN">
+            <rule>
+                <pattern>
+                    <marker>
+                        <token>roimhe</token>
+                    </marker>
+                    <token>an</token>
+                    <token postag="(?:C[UMC]:)?Noun:.*(?::Ecl|:Len|:DefArt)" postag_regexp="yes"></token>
+                </pattern>
+                <message>Foirm neamhchaighdeánach de <suggestion>roimh</suggestion></message>
+                <example correction="roimh"><marker>roimhe</marker> an ngeata</example>
+                <example correction="roimh"><marker>roimhe</marker> an bhean</example>
+                <example correction="roimh"><marker>roimhe</marker> an uisce</example>
+                <example correction="roimh"><marker>roimhe</marker> an sneachta</example>
+            </rule>
+	    <!--
+            <rule>
+                <pattern>
+                    <marker>
+                        <token>roimhe</token>
+                    </marker>
+                    <token>an</token>
+		    <token postag="(?:C[UMC]:)?Noun:.*" postag_regexp="yes" regexp="yes"><exception postag="(?:C[UMC]:)?Noun:.*(?::Ecl|:Len|:DefArt)" postag_regexp="yes"/>[aeiouáéíóú].*|s[lnraeiouáéíóúh].*|bhf|[bcfgmp][^h]</token>
+                </pattern>
+                <message>Foirm neamhchaighdeánach de <suggestion>roimh</suggestion></message>
+                <example correction="roimh"><marker>roimhe</marker> an cathair</example>
+            </rule>
+	    -->
+            <rule>
+                <pattern>
+                    <marker>
+                        <token>roimhe</token>
+                    </marker>
+                    <token>an</token>
+                    <token postag="UNKNOWN" regexp="yes">[aeiouáéíóú].*|s[lnraeiouáéíóúh].*|bhf|[bcfgmp][^h]</token>
+                </pattern>
+                <message>Foirm neamhchaighdeánach de <suggestion>roimh</suggestion></message>
+                <example correction="roimh"><marker>roimhe</marker> an slibbity</example>
+            </rule>
+        </rulegroup>
         <rule id="AN_MOGHA" name="an mogha">
             <pattern>
                     <token>an</token>
@@ -2648,7 +2640,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token>críoch</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion><match no="1" regexp_match="(m?bh?)ail" regexp_replace="$1ailchríoch"/></suggestion></message>
-            <example correction="mbailchríoch"><marker>mbail</marker> is críoch</example>
+            <example correction="mbailchríoch"><marker>mbail is críoch</marker></example>
         </rule>
         <rule id="NUAIR_BHEAS" name="nuair bhéas">
             <pattern>
@@ -2706,7 +2698,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token>cionn</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion><match no="1" regexp_match="(m?bh?)un" regexp_replace="$1unoscionn"/></suggestion></message>
-            <example correction="bhunoscionn os cionn"><marker>bhun os cionn</marker></example>
+            <example correction="bhunoscionn"><marker>bhun os cionn</marker></example>
         </rule>
         <rule id="BUN_OS_TOLL" name="bun os toll">
             <pattern>
@@ -2715,7 +2707,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token>toll</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion><match no="1" regexp_match="(m?bh?)un" regexp_replace="$1unoscionn"/></suggestion></message>
-            <example correction="mbunoscionn os toll"><marker>mbun os toll</marker></example>
+            <example correction="mbunoscionn"><marker>mbun os toll</marker></example>
         </rule>
         <rule id="CE_MEID" name="cé méid">
             <pattern>
@@ -2723,7 +2715,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token regexp="yes">mh?éid</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>cé mhéad</suggestion></message>
-            <example correction='cé mhéad'><marker>Cé mhéid</marker> gealladh ar briseadh ar an Indiach bocht?</example>
+            <example correction='Cé mhéad'><marker>Cé mhéid</marker> gealladh ar briseadh ar an Indiach bocht?</example>
         </rule>
         <rule id="CA_MEID" name="cá méid">
             <pattern>
@@ -2898,7 +2890,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token postag="(?:C[UMC]:)?Verb:.*:Ecl" postag_regexp="yes"></token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>dá</suggestion></message>
-            <example correction=""><marker>dá</marker></example>
+            <example correction="dá"><marker>dhá</marker> mbeadh</example>
         </rule>
         <rule id="DURA_DARA" name="dúra dara">
             <pattern>
@@ -3022,33 +3014,26 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <message>Foirm neamhchaighdeánach de <suggestion>is gasta</suggestion></message>
             <example correction="is gasta"><marker>is gaiste</marker></example>
         </rule>
-        <rule id="GHA_LENITED" name="ghá LENITED">
+        <rule id="GHA_MUTATED" name="ghá MUTATED">
             <pattern>
                 <marker>
                     <token>ghá</token>
                 </marker>
-                <token postag="(?:C[UMC]:)?Noun:.*:Len" postag_regexp="yes"></token>
+                <token postag="(?:Verbal:Noun:V(?:TI|I|T)|Verbal:Noun:NStem.*):(?:Len|Ecl)" postag_regexp="yes"></token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>á</suggestion></message>
-            <example correction=""><marker>á</marker></example>
-        </rule>
-        <rule id="GHA_ECLIPSED" name="ghá ECLIPSED">
-            <pattern>
-                <marker>
-                    <token>ghá</token>
-                </marker>
-                <token postag="(?:C[UMC]:)?Noun:.*:Ecl" postag_regexp="yes"></token>
-            </pattern>
-            <message>Foirm neamhchaighdeánach de <suggestion>á</suggestion></message>
-            <example correction=""><marker>á</marker></example>
+            <example correction="á"><marker>ghá</marker> gceannach</example>
+            <example correction="á"><marker>ghá</marker> cheilt</example>
         </rule>
         <rule id="GHA_UNMUTATEDVNISH" name="ghá UNMUTATEDVNISH">
             <pattern>
+                <marker>
                     <token>ghá</token>
-                    <token>UNMUTATEDVNISH</token>
+                </marker>
+                <token regexp="yes">(?:[BbCcDdFfGgMmPpTt][^hHbBcCpPsStT']|[^BbCcDdFfGgMmPpTt]).*(?:a[dm]h|i[nr]t|áil|ú)</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>á</suggestion></message>
-            <example correction="á"><marker>ghá UNMUTATEDVNISH</marker></example>
+            <example correction="á"><marker>ghá</marker> flibertáil</example>
         </rule>
         <rule id="GHA_CEANNACH" name="ghá ceannach">
             <pattern>
@@ -3058,7 +3043,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token regexp="yes">ceannach|cur|díol|dul|foghlaim|íoc|iompar|oscailt|rá|roinnt|scríobh|soláthar|teacht</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>á</suggestion></message>
-            <example correction=""><marker>á</marker></example>
+            <example correction="á"><marker>ghá</marker> ceannach</example>
         </rule>
         <rule id="V_GOIR" name="V goir">
             <pattern>
@@ -3068,7 +3053,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 </marker>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>gair</suggestion></message>
-            <example correction=""><marker>gair</marker></example>
+            <example correction="gair">Níl <marker>goir</marker> aige a bheith chomh láidir leat</example>
         </rule>
         <rule id="AON_GHOIR" name="aon ghoir">
             <pattern>
@@ -3157,16 +3142,41 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <message>Foirm neamhchaighdeánach de <suggestion>níl</suggestion></message>
             <example correction="níl"><marker>ní fhuil</marker></example>
         </rule>
-        <rule id="NI_GAISTE" name="ní gaiste">
-            <pattern>
-                <token regexp="yes">ní ba|ní b&apost;|ní</token>
-                <marker>
-                    <token regexp="yes">gh?aiste</token>
-                </marker>
-            </pattern>
-            <message>Foirm neamhchaighdeánach de <suggestion><match no="1" regexp_match="(gh?)aiste" regexp_replace="$1asta"/></suggestion></message>
-            <example correction="">ní ba <marker>gaiste</marker></example>
-        </rule>
+        <rulegroup id="NI_GAISTE" name="ní gaiste">
+            <rule>
+                <pattern>
+                    <token>ní</token>
+                    <token>ba</token>
+                    <marker>
+                        <token regexp="yes">gh?aiste</token>
+                    </marker>
+                </pattern>
+                <message>Foirm neamhchaighdeánach de <suggestion><match no="3" regexp_match="(gh?)aiste" regexp_replace="$1asta"/></suggestion></message>
+                <example correction="gasta">ní ba <marker>gaiste</marker></example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token>ní</token>
+                    <token>b</token>
+                    <token spacebefore="no" regexp="yes">&apost;</token>
+                    <marker>
+                        <token regexp="yes">gh?aiste</token>
+                    </marker>
+                </pattern>
+                <message>Foirm neamhchaighdeánach de <suggestion><match no="4" regexp_match="(gh?)aiste" regexp_replace="$1asta"/></suggestion></message>
+                <example correction="ghasta">ní b&apos;<marker>ghaiste</marker></example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token>ní</token>
+                    <marker>
+                        <token regexp="yes">gh?aiste</token>
+                    </marker>
+                </pattern>
+                <message>Foirm neamhchaighdeánach de <suggestion><match no="2" regexp_match="(gh?)aiste" regexp_replace="$1asta"/></suggestion></message>
+                <example correction="gasta">ní <marker>gaiste</marker></example>
+            </rule>
+        </rulegroup>
         <rule id="NIOS_GAISTE" name="níos gaiste">
             <pattern>
                     <token>níos</token>
@@ -3268,10 +3278,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <marker>
                     <token>tonna</token>
                 </marker>
-                <token postag="Adj:.*Pl" postag_regexp="yes"></token>
+                <token postag="Adj:.*:Pl" postag_regexp="yes"></token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>tonnta</suggestion></message>
-            <example correction=""><marker>tonnta</marker></example>
+            <example correction="tonnta"><marker>tonna</marker> móra</example>
+            <example correction="tonnta"><marker>tonna</marker> dubha</example>
         </rule>
         <rule id="TRI_SNA" name="trí sna">
             <pattern>
@@ -3315,7 +3326,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token postag="(?:C[UMC]:)?Noun:(Masc|Fem):Gen.*" postag_regexp="yes"></token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>i gcomhair</suggestion></message>
-            <example correction=""><marker>i gcomhair</marker></example>
+            <example correction="i gcomhair"><marker>i gcóir</marker> an lae</example>
         </rule>
         <rule id="I_GCOIR_NG" name="i gcóir NG">
             <pattern>
@@ -3326,7 +3337,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token postag="(?:C[UMC]:)?Noun:(Masc|Fem):Gen.*" postag_regexp="yes"></token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>i gcomhair</suggestion></message>
-            <example correction=""><marker>i gcomhair</marker></example>
+            <example correction="i gcomhair"><marker>i gcóir</marker> lae</example>
         </rule>
         <rule id="AR_NDOIGH" name="ár ndóigh">
             <pattern>
@@ -3374,7 +3385,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token>éis</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>tar éis</suggestion></message>
-            <example correction="tar éis"><marker>thar|ar|in éis</marker></example>
+            <example correction="tar éis"><marker>thar éis</marker></example>
         </rule>
     </category>
     <category id="GRAMADOIR_INPHRASE" name="San abairtín" type="other">
@@ -3751,7 +3762,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token regexp="yes">mh?iste</token>
             </pattern>
             <message>Ní úsáidtear an focal seo ach san abairtín “is miste, ní miste” de ghnáth</message>
-            <example correction=""><marker>mh?iste</marker></example>
+            <example correction=""><marker>miste</marker></example>
+            <example correction=""><marker>mhiste</marker></example>
         </rule>
         <rule id="MITHID" name="mithid">
             <antipattern>
@@ -4494,7 +4506,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token>arú</token>
             </pattern>
             <message>Ní úsáidtear an focal seo ach san abairtín “arú amárach,anuraidh,aréir,inné” de ghnáth</message>
-            <example correction="arú amárach,anuraidh,aréir,inné"><marker>arú</marker></example>
+            <example correction=""><marker>arú</marker></example>
         </rule>
         <rule id="ATHLAIMH" name="athláimh">
             <antipattern>
@@ -4531,7 +4543,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token regexp="yes">m?bh?ith</token>
             </pattern>
             <message>Ní úsáidtear an focal seo ach san abairtín “ar bith, cár bith” de ghnáth</message>
-            <example correction="ar bith, cár bith"><marker>bith</marker></example>
+            <example correction=""><marker>bith</marker></example>
         </rule>
         <rule id="BITHIN" name="bíthin">
             <antipattern>
@@ -4546,7 +4558,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token regexp="yes">bh?íthin</token>
             </pattern>
             <message>Ní úsáidtear an focal seo ach san abairtín “trí bhíthin, de bhíthin” de ghnáth</message>
-            <example correction="trí bhíthin, de bhíthin"><marker>bhíthin</marker></example>
+            <example correction=""><marker>bhíthin</marker></example>
         </rule>
         <rule id="BOILEAGAR" name="bóiléagar">
             <antipattern>
@@ -4803,7 +4815,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token>éis</token>
             </pattern>
             <message>Ní úsáidtear an focal seo ach san abairtín “tar éis, dá éis” de ghnáth</message>
-            <example correction="tar éis, dá éis"><marker>éis</marker></example>
+            <example correction=""><marker>éis</marker></example>
         </rule>
         <rule id="BHFACH" name="bhfách">
             <antipattern>
@@ -4848,7 +4860,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token regexp="yes">(bh)?fh?aopach</token>
             </pattern>
             <message>Ní úsáidtear an focal seo ach san abairtín <suggestion>san fhaopach</suggestion> de ghnáth</message>
-            <example correction="san fhaopach"><marker>(bh)?fh?aopach</marker></example>
+            <example correction="san fhaopach"><marker>fhaopach</marker></example>
         </rule>
         <rule id="BHFEARR" name="bhfearr">
             <antipattern>
@@ -4920,7 +4932,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token regexp="yes">(bh)?fh?uaidreamh</token>
             </pattern>
             <message>Ní úsáidtear an focal seo ach san abairtín “ag fuaidreamh, ar fuaidreamh” de ghnáth</message>
-            <example correction="ag fuaidreamh, ar fuaidreamh"><marker>fuaidreamh</marker></example>
+            <example correction=""><marker>fuaidreamh</marker></example>
         </rule>
         <rule id="FOLUAIN" name="foluain">
             <antipattern>
@@ -4935,7 +4947,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token regexp="yes">(bh)?fh?oluain</token>
             </pattern>
             <message>Ní úsáidtear an focal seo ach san abairtín “ag foluain, ar foluain” de ghnáth</message>
-            <example correction="ag foluain, ar foluain"><marker>foluain</marker></example>
+            <example correction=""><marker>foluain</marker></example>
         </rule>
         <rule id="BHFUD" name="bhfud">
             <antipattern>
@@ -5029,7 +5041,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token>fud</token>
             </pattern>
             <message>Ní úsáidtear an focal seo ach san abairtín “ar fud, fud fad” de ghnáth</message>
-            <example correction="ar fud, fud fad"><marker>fud</marker></example>
+            <example correction=""><marker>fud</marker></example>
         </rule>
         <rule id="BHFUSA" name="bhfusa">
             <antipattern>
@@ -5198,7 +5210,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token>inn</token>
             </pattern>
             <message>Ní úsáidtear an focal seo ach san abairtín “ar inn ar ea, ar inn ar éigean” de ghnáth</message>
-            <example correction="ar inn ar ea, ar inn ar éigean"><marker>inn</marker></example>
+            <example correction=""><marker>inn</marker></example>
         </rule>
         <rule id="LANSEOL" name="lánseol">
             <antipattern>
@@ -5234,7 +5246,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token>leanas</token>
             </pattern>
             <message>Ní úsáidtear an focal seo ach san abairtín “mar a leanas, seo a leanas” de ghnáth</message>
-            <example correction="mar a leanas, seo a leanas"><marker>leanas</marker></example>
+            <example correction=""><marker>leanas</marker></example>
         </rule>
         <rule id="LEIG" name="léig">
             <antipattern>
@@ -5264,7 +5276,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token>leith</token>
             </pattern>
             <message>Ní úsáidtear an focal seo ach san abairtín “ar leith, faoi leith, i leith” de ghnáth</message>
-            <example correction="ar leith, faoi leith, i leith"><marker>leith</marker></example>
+            <example correction=""><marker>leith</marker></example>
         </rule>
         <rule id="LEITHLIGH" name="leithligh">
             <antipattern>
@@ -5846,7 +5858,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token>treis</token>
             </pattern>
             <message>Ní úsáidtear an focal seo ach san abairtín “go treis, sa treis” de ghnáth</message>
-            <example correction="go treis, sa treis"><marker>treis</marker></example>
+            <example correction=""><marker>treis</marker></example>
         </rule>
     </category>
 </rules>
