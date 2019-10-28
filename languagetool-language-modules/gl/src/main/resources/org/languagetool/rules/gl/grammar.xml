@@ -1380,17 +1380,18 @@
       <example>1 = 1</example>
       <example correction="≥|≧">1 <marker>&gt;=</marker> 0</example>
     </rule>
-    <rule>
+    <rule default="temp_off">
       <pattern>
-        <marker>
-          <token>&lt;</token>
-          <token>=</token>
-        </marker>
-          <token negate="yes">></token>
+          <marker>
+            <token>&lt;</token>
+            <token>=</token>
+          </marker>
+          <token negate="yes">&gt;</token>
       </pattern>
       <message>Prefira o símbolo tipográfico.</message>
         <suggestion>≤</suggestion>
         <suggestion>≦</suggestion>
+      <example>1 ≤ 3</example>
       <example correction="≤|≦">1 <marker>&lt;=</marker> 3</example>
     </rule>
   </rulegroup>
@@ -1415,18 +1416,13 @@
         <suggestion>⇛</suggestion>
       <example correction="≥|→|⇾|⇉|⇒|⇨|⇛"><marker>-&gt;</marker> Punto 1</example>
     </rule>
-    <rule>
-      <antipattern>
-          <token>&lt;</token>
-          <token regexp="yes">\-|=</token>
-          <token>&gt;</token>
-      </antipattern>
+    <rule default="temp_off">
       <pattern>
         <marker>
           <token>&lt;</token>
           <token regexp="yes">(?:\-|=){1,2}</token>
         </marker>
-          <token/>
+        <token negate="yes">&gt;</token>
       </pattern>
       <message>Pretende utilizar um seta?</message>
         <suggestion>≤</suggestion>

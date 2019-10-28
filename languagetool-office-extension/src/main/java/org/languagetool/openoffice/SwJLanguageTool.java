@@ -21,6 +21,7 @@ package org.languagetool.openoffice;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.net.MalformedURLException;
 import java.util.List;
 import java.util.Set;
 
@@ -143,7 +144,6 @@ public class SwJLanguageTool {
       return lt.getLanguage(); 
     }
   }
-
   
 
 }
