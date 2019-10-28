@@ -16,6 +16,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301
  * USA
  */
+ /*
 package org.languagetool.openoffice;
 
 import java.io.IOException;
@@ -44,12 +45,14 @@ import org.languagetool.rules.ITSIssueType;
 import org.languagetool.rules.Rule;
 import org.languagetool.rules.RuleMatch;
 import org.languagetool.rules.TextLevelRule;
+*/
 
 /**
  * Class to run LanguageTool in LO to use a remote server
  * @since 4.8
  * @author Fred Kruse
  */
+ /*
 class LORemoteLanguageTool {
   private static final String BLANK = " ";
   private static final String SERVER_URL = "https://languagetool.org/api";
@@ -144,6 +147,7 @@ class LORemoteLanguageTool {
         remoteResult = remoteLanguageTool.check(subText, remoteConfig);
       } catch (Throwable t) {
         MessageHandler.showError(t);
+*/
 /*
         MessageHandler.printException(t);
         MessageHandler.showMessage(MESSAGES.getString("loRemoteSwitchToLocal"));
@@ -151,6 +155,7 @@ class LORemoteLanguageTool {
         isMultiThread = false;
         return lt.check(text, true, paraMode);
 */
+/*
       }
       ruleMatches.addAll(toRuleMatches(remoteResult.getMatches(), nStart));
     }
@@ -440,3 +445,4 @@ class LORemoteLanguageTool {
   }
   
 }
+*/
