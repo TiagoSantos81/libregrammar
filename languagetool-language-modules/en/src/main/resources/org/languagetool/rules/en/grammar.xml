@@ -41855,4 +41855,26 @@ The accident victim died from her injuries.
         </rule>
     </category>
 
+  <category id="DEVELOPMENT" name="Development" type="style" default="off">
+
+    <rule id="UNKNOWN_WORD" name="Development: words without POS" default="off">
+    <!-- Localized by Tiago F. Santos, Portuguese rule, 2019-10-28 -->
+      <pattern>
+          <token postag='UNKNOWN'/>
+      </pattern>
+      <message>Word without POS.</message>
+      <example correction=''>According to the main theorem, the <marker>asymptotic</marker> curve never reaches the limit.</example>
+    </rule>
+
+    <rule id="TWO_NOUNS" name="Development: two nouns in a row" default="off">
+    <!-- Created by Tiago F. Santos, Portuguese rule, 2019-10-28 -->
+      <pattern raw_pos='yes'>
+          <token postag='N.+' postag_regexp='yes'/>
+          <token postag='N.+' postag_regexp='yes'/>
+      </pattern>
+      <message>Two nouns.</message>
+      <example correction=''>The <marker>vegetable soup</marker> is served.</example>
+    </rule>
+  </category>
+
 </rules>
