@@ -55,7 +55,7 @@ public abstract class AbstractStyleRepeatedWordRule  extends TextLevelRule {
   public AbstractStyleRepeatedWordRule(ResourceBundle messages, Language lang, UserConfig userConfig) {
     super(messages);
     super.setCategory(Categories.STYLE.getCategory(messages));
-    setLocQualityIssueType(ITSIssueType.Style);
+    setLocQualityIssueType(ITSIssueType.Duplication);
     // setDefaultOff();
     this.lang = lang;
     if (userConfig != null) {

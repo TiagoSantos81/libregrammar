@@ -15,6 +15,7 @@
      - split infinitive detection;
      - comma splice partial detection;
      - weasel word and thought-terminating clichés detection - 87 entries added from Wikipedia;
+     - typography of mathematical symbols and arrows;
      - easily confused words - 533 pairs add - active only with
     ngram data (see http://wiki.languagetool.org/finding-errors-using-n-gram-data).
   * English rules re-activated:
@@ -45,6 +46,7 @@
 #### French
   * activated generic Java rules, including:
      - LongSentenceRule, LongParagraphRule, SentenceWhitespaceRule, WhiteSpaceAtBeginOfParagraph, EmptyLineRule, ParagraphRepeatBeginningRule, PunctuationMarkAtParagraphEnd.
+  * add typography rules for mathematical symbols and arrows.
 
 #### German
   * activated generic Java rules, including:
@@ -63,6 +65,7 @@
 #### Italian
   * activated generic Java rules, including:
      - LongSentenceRule, LongParagraphRule, SentenceWhitespaceRule, WhiteSpaceAtBeginOfParagraph, EmptyLineRule, ParagraphRepeatBeginningRule, PunctuationMarkAtParagraphEnd.
+  * add typography rules for mathematical symbols and arrows.
 
 #### Portuguese
   * re-activated diacritics rule;
@@ -79,6 +82,7 @@
   * re-activated subject-predicate agreement category.
   * activated generic Java rules, including:
      - LongSentenceRule, LongParagraphRule, SentenceWhitespaceRule, WhiteSpaceAtBeginOfParagraph, EmptyLineRule, ParagraphRepeatBeginningRule, PunctuationMarkAtParagraphEnd.
+  * add typography rules for mathematical symbols and arrows.
 
 #### General
   * server and HTTP API connection commits for LibreOffice plug-in reverted.
@@ -86,6 +90,9 @@
   * restored some languagetool-dev and languagetool-standalone scripts.
   * [WIP] removed Google dependencies from English and Catalan language modules, as well as from several Java rules.
   * [WIP] removed or comment out Freemium server bindings.
+  * standalone default underline colors changed:
+    - grey: style repetitions and redundancies;
+    - cyan: typographical suggestions.
 
 #### LibreOffice / Apache OpenOffice Integration
   * multiple core CPU support active by default.

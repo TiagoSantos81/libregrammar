@@ -59,6 +59,8 @@ public class Configuration {
   static final int FONT_STYLE_INVALID = -1;
   static final int FONT_SIZE_INVALID = -1;
   static final Color STYLE_COLOR = new Color(0, 175, 0);
+  static final Color TYPOGRAPHY_COLOR = new Color(0, 175, 175);
+  static final Color REPETITION_COLOR = new Color(169, 169, 169);
 
   private static final String CONFIG_FILE = ".languagetool.cfg";
 
@@ -720,6 +722,8 @@ public class Configuration {
       if (rule.getLocQualityIssueType().toString().equalsIgnoreCase("STYLE")
               || rule.getLocQualityIssueType().toString().equalsIgnoreCase("REGISTER")
               || rule.getCategory().getId().toString().equals("STYLE")
+              || rule.getCategory().getId().toString().equals("REDUNDANCY")
+              || rule.getCategory().getId().toString().equals("REPETITIONS_STYLE")
               || rule.getCategory().getId().toString().equals("TYPOGRAPHY")) {
         if (!styleLikeCategories.contains(rule.getCategory().getName())) {
           styleLikeCategories.add(rule.getCategory().getName());
@@ -790,8 +794,14 @@ public class Configuration {
     if (underlineColors.containsKey(category)) {
       return underlineColors.get(category);
     }
-    if (styleLikeCategories.contains(category)) {
+    if (styleLikeCategories.contains(category) && !((category == "REDUNDANCY") || (category == "REPETITIONS_STYLE") || (category == "TYPOGRAPHY"))) {
       return STYLE_COLOR;
+    }
+    if (category == "TYPOGRAPHY") {
+      return TYPOGRAPHY_COLOR;
+    }
+    if ((category == "REDUNDANCY") || (category == "REPETITIONS_STYLE")) {
+      return REPETITION_COLOR;
     }
     return Color.blue;
   }
