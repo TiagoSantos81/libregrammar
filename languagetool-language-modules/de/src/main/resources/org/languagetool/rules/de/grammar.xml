@@ -8261,7 +8261,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
     <!-- Siehe auch ../../resource/de/compounds.txt -->
     <!-- ====================================================================== -->
     <category id="COMPOUNDING" name="Zusammen-/Getrenntschreibung">
-        <rule id="DESWEITEREN" name="desweiteren (des Weiteren)" default="temp_off">
+        <rule id="DESWEITEREN" name="desweiteren (des Weiteren)">
             <!-- Already covered by hunspell, a dedicated rule helps to be clearer -->
             <pattern>
                 <token regexp="yes">desweitere?n</token>
@@ -8271,7 +8271,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <url>https://www.duden.de/rechtschreibung/des_Weiteren</url>
             <example correction="Des Weiteren"><marker>Desweiteren</marker> werde ich eine Eilmeldung rausschicken.</example>
         </rule>
-        <rulegroup id="FOLLOW_UP" name="Follow up (Follow-up)" default="temp_off">
+        <rulegroup id="FOLLOW_UP" name="Follow up (Follow-up)">
             <antipattern case_sensitive="yes">
                 <token regexp="yes">Follow-ups?</token>
             </antipattern>
@@ -8293,7 +8293,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="Follow-ups">Mehrere <marker>FollowUps</marker> werden dafür nötig sein.</example>
             </rule>
         </rulegroup>
-        <rulegroup id="GO_LIVE" name="Go live (Go-live)" default="temp_off">
+        <rulegroup id="GO_LIVE" name="Go live (Go-live)">
             <antipattern case_sensitive="yes">
                 <token regexp="yes">Go-lives?</token>
             </antipattern>
@@ -8392,9 +8392,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token>Whats</token>
                 <token>App</token>
             </pattern>
-            <message><suggestion>\1\2</suggestion> wird zusammengeschrieben.</message>
+            <message><suggestion>WhatsApp</suggestion> wird zusammengeschrieben.</message>
+            <url>https://de.wikipedia.org/wiki/WhatsApp</url>
             <short>&getrennt;.</short>
-            <example correction="WhatsApp">Wir schrieben per <marker>Whats App</marker>.</example>
+            <example correction="WhatsApp">Wir schrieben per <marker>whats app</marker>.</example>
         </rule>
         <rule id="COPY_AND_PASTE" name="Copy-and-paste">
             <pattern>
@@ -36128,7 +36129,7 @@ Andere Projekte</example>
                     <token regexp="yes">“|»|«|"</token>
                     </marker>
                 </pattern>
-                <message>Eine Frage bitte mit einem '?' abschließen, eine Aufforderung mit einem '!'</message>
+                <message>Eine Frage bitte mit einem '?' abschließen, eine Aufforderung mit einem '!' oder '.'</message>
                 <suggestion>?\6</suggestion>
                 <suggestion>!\6</suggestion>
                 <example correction='?"|!"'>Ist der Mann schon nach Hause gegangen<marker>"</marker>, fragte sie.</example>
@@ -36200,7 +36201,7 @@ Andere Projekte</example>
                     <token regexp="yes">“|»|«|"</token>
                     </marker>
                 </pattern>
-                <message>Eine Frage bitte mit einem '?' abschließen, eine Aufforderung mit einem '!'</message>
+                <message>Eine Frage bitte mit einem '?' abschließen, eine Aufforderung mit einem '!' oder '.'</message>
                 <suggestion>?\6</suggestion>
                 <suggestion>!\6</suggestion>
                 <example correction='?"|!"'>Wohin ist er gegangen<marker>"</marker>, fragte sie.</example>
@@ -36584,7 +36585,7 @@ Andere Projekte</example>
                     <token>.</token>
                     </marker>
                 </pattern>
-                <message>Eine Frage bitte mit einem '?' abschließen, eine Aufforderung mit einem '!'</message>
+                <message>Eine Frage bitte mit einem '?' abschließen, eine Aufforderung mit einem '!' oder '.'</message>
                 <suggestion>?</suggestion>
                 <suggestion>!</suggestion>
                 <example correction="?|!">Wohin ist er gegangen<marker>.</marker></example>
@@ -36643,7 +36644,7 @@ Andere Projekte</example>
                     <token>.</token>
                     </marker>
                 </pattern>
-                <message>Eine Frage bitte mit einem '?' abschließen, eine Aufforderung mit einem '!'</message>
+                <message>Eine Frage bitte mit einem '?' abschließen, eine Aufforderung mit einem '!' oder '.'</message>
                 <suggestion>\2?</suggestion>
                 <suggestion>\2!</suggestion>
                 <example correction='richtig?|richtig!'>Er ist schon nach Hause, <marker>richtig.</marker></example>
