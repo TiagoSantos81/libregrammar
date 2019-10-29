@@ -111,6 +111,7 @@ class LORemoteLanguageTool {
         }
         MessageHandler.printToLogFile("Number of rule values: " + ruleValues.size());
 */
+/*
         configBuilder.ruleValues(ruleValues);
         configBuilder.enabledOnly();
       }
