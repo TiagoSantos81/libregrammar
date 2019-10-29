@@ -149,7 +149,9 @@ public class MultiDocumentsHandler {
     if(langTool.doReset()) {
       // langTool.doReset() == true: if server connection is broken ==> switch to internal check
       MessageHandler.showMessage(messages.getString("loRemoteSwitchToLocal"));
+      /*
       config.setRemoteCheck(false);
+      */
       try {
         config.saveConfiguration(docLanguage);
       } catch (IOException e) {

@@ -46,8 +46,8 @@ import org.languagetool.rules.RuleMatch;
 public class SwJLanguageTool {
   
   boolean isMultiThread = false;
-  private JLanguageTool lt lt = null;
-  private final MultiThreadedJLanguageTool mlt = null;
+  private JLanguageTool lt = null;
+  private MultiThreadedJLanguageTool mlt = null;
   private boolean doReset;
 
   public SwJLanguageTool(Language language, Language motherTongue, UserConfig userConfig, boolean isMulti) {
