@@ -146,12 +146,11 @@ public class MultiDocumentsHandler {
       return paRes;
     }
     paRes = documents.get(docNum).getCheckResults(paraText, locale, paRes, footnotePositions, isParallelThread, docReset, langTool);
+      /*
     if(langTool.doReset()) {
       // langTool.doReset() == true: if server connection is broken ==> switch to internal check
-      /*
       MessageHandler.showMessage(messages.getString("loRemoteSwitchToLocal"));
       config.setRemoteCheck(false);
-      */
       try {
         config.saveConfiguration(docLanguage);
       } catch (IOException e) {
@@ -159,6 +158,7 @@ public class MultiDocumentsHandler {
       }
       mainThread.resetDocument();
     }
+      */
     if(isParallelThread) {
       isParallelThread = false;
     } else {
