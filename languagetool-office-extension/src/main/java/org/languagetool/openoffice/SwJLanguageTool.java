@@ -55,6 +55,10 @@ public class SwJLanguageTool {
     }
   }
 
+  public boolean isRemote() {
+    return false;
+  }
+
   public List<Rule> getAllRules() {
     if(isMultiThread) {
       return mlt.getAllRules(); 
@@ -145,5 +149,4 @@ public class SwJLanguageTool {
     }
   }
   
-
 }
