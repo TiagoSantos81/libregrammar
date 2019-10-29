@@ -22,7 +22,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.net.MalformedURLException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 import java.util.Set;
 
 import org.languagetool.JLanguageTool;
@@ -30,6 +32,7 @@ import org.languagetool.Language;
 import org.languagetool.MultiThreadedJLanguageTool;
 import org.languagetool.UserConfig;
 import org.languagetool.JLanguageTool.ParagraphHandling;
+import org.languagetool.gui.Configuration;
 import org.languagetool.markup.AnnotatedText;
 import org.languagetool.rules.CategoryId;
 import org.languagetool.rules.Rule;
@@ -43,11 +46,13 @@ import org.languagetool.rules.RuleMatch;
 public class SwJLanguageTool {
   
   boolean isMultiThread = false;
-  JLanguageTool lt = null;
-  MultiThreadedJLanguageTool mlt = null;
+  private JLanguageTool lt lt = null;
+  private final MultiThreadedJLanguageTool mlt = null;
+  private boolean doReset;
 
   public SwJLanguageTool(Language language, Language motherTongue, UserConfig userConfig, boolean isMulti) {
     isMultiThread = isMulti;
+    doReset = false;
     if(isMultiThread) {
       mlt = new MultiThreadedJLanguageTool(language, motherTongue, userConfig); 
     } else {
@@ -124,6 +129,7 @@ public class SwJLanguageTool {
   }
 
   public List<RuleMatch> check(AnnotatedText annotatedText, boolean tokenizeText, ParagraphHandling paraMode) throws IOException {
+        doReset = true;
     if(isMultiThread) {
       synchronized(mlt) {
         return mlt.check(annotatedText, tokenizeText, paraMode);
@@ -149,4 +155,7 @@ public class SwJLanguageTool {
     }
   }
   
+  public boolean doReset() {
+    return doReset;
+  }
 }
