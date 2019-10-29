@@ -8,9 +8,9 @@ Irish Speech and Language Technology Research Centre
 Cóipcheart © 2016 Coláiste na Tríonóide, Baile Átha Cliath
 An tIonad taighde do Theicneolaíocht Urlabhra agus Teangeolaíochta na Gaeilge
 
-Copyright © 2016-2018 Jim O'Regan
+Copyright © 2016-2019 Jim O'Regan
 
-Based in part on the rules from An Gramadóir
+Based on the rules from An Gramadóir
 Copyright © 2003-2007 Kevin P. Scannell <kscanne@gmail.com>
 
 This library is free software; you can redistribute it and/or
@@ -31,10 +31,159 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 <!DOCTYPE rules [
         <!ENTITY nbsp " ">
         <!ENTITY apost "['`’]">
+        <!ENTITY lenitedfuture "gheo.*">
+        <!ENTITY abairpast "dú(?:irt|ra[dm]ar|radh)">
+        <!ENTITY abairprfu "d(?:eir|éar).*">
+        <!ENTITY faighfc "bhfaigh.*">
+        <!ENTITY abspastverb "(?:rinne.*|chonai?c.*|chua(?:igh|[md]ar|thas)|bhí(?:o[md]ar|othas)?)">
+        <!ENTITY absnonpastverb "(?:n?gh?eo[bf].+|d['`’]íosf.+|tá(?:im|imid|thar)?)">
+        <!ENTITY dependent "(?:rai?bh(?:a[md]ar|thas)?|bhfuil(?:im|imid|tear)?|n?dh?each(?:aigh|a[md]ar|thas)|íosf[aá].+|(?:bhf|fh)ac(?:a|a[dm]ar|thas)|(?:bhf|fh)aigh(?:idh|fear|inn|feá|eadh|imis|idís|fí)|n?dh?earn.+)">
+        <!ENTITY justta "tá(?:i[dm]|imid|thar)?">
+        <!ENTITY justata "atá(?:i[dm]|imid|thar)?">
+        <!ENTITY nonrformconj "(?:go|mura|sula)">
+        <!ENTITY nonrformprep "(?:faoi|i|le|ó|trí)na">
+        <!ENTITY rformconj "(?:gur|murar|sular)">
+        <!ENTITY rformprep "(?:dár|(?:faoi|i|le|ó|trí)nar)">
+        <!ENTITY ahnumber "a .+">
+        <!ENTITY cheadcompound "[^ ]+ chéad">
+        <!ENTITY noncompound "[^ ]+">
+        <!ENTITY compound "[^ ]+ .+">
+        <!ENTITY synthpast ".+[md]ar">
+        <!ENTITY allgenitivepreps "(?:chun|cois|dála|fearacht|timpeall|trasna)">
+        <!ENTITY genitiveprep "(?:cois|dála|fearacht|timpeall|trasna)">
+        <!ENTITY irregularpast "(?:raibh|dtáinig|dtug|ndearnadh|gcuala|bhfuair)">
+        <!ENTITY pastnorformlen "(?:(?:dúi?r|rai?bh|fuair|fhac|dheach|dhearna).*|fuarthas)">
+        <!ENTITY pastnorform "(?:ndúi?r|rai?bh|bhfuai?r|bhfac|ndeach|ndearna).*">
+        <!ENTITY pastafterni "(?:bhfuai?r|dúi?r|rai?bh|fhac|dheach|dhearna).*">
+        <!ENTITY faigheclipsed "bhfua(?:ir(?:ea[md]ar)?|rthas)">
+        <!ENTITY faightoeclipse "fua(?:ir(?:ea[md]ar)?|rthas)">
+        <!ENTITY positiveint "[0-9]+">
+        <!ENTITY twotonineteen "(?:[2-9]|1[0-9])">
+        <!ENTITY vowelnumeral "(?:[0-9]?[18]|1?8[0-9][0-9][0-9]*)">
+        <!ENTITY vowelordinal "(?:80|[0-9]?[18]|1?8[0-9][0-9][0-9]*)ú">
+        <!ENTITY vowelnumadj "(?:aonú?|ocht(?:[óú]|ódú)?)">
+        <!ENTITY nibs "ní(?: ?ba|b)">
+        <!ENTITY unleniteds "s[lnraeiouáéíóú].+">
+        <!ENTITY initialvowelorf "(?:[aeiouáéíóú]|fh?[aeiouáéíóú]).+">
+        <!ENTITY initialvowel "[aeiouáéíóú].*">
+        <!ENTITY initialconsonant "[^aeiouáéíóú].+">
+        <!ENTITY nonvowelnonf "(?:[^aeiouáéíóúf]|fh?[lr]).+">
+        <!ENTITY uneclipseddt "(?:t|d[^t'`’]).+">
+        <!ENTITY uneclipsedcons "(?:[cfpt]|d[^t'`’]|g[^c]|b[^ph]|bh[^f]).+">
+        <!ENTITY uneclipsed "(?:[aeiouáéíóúcfpt]|d[^t'`’]|g[^c]|b[^ph]|bh[^f]).*">
+        <!ENTITY eclipsedvowel "n(?:-[aeiouáéíóú]).*">
+        <!ENTITY eclipseddt "(?:dt|nd).+">
+        <!ENTITY eclipsedbcfgp "(?:gc|bp|mb|ng|bhf).+">
+        <!ENTITY eclipsed "(?:n(?:-[aeiouáéíóú])|dt|gc|bp|mb|n[dg]|bhf).*">
+        <!ENTITY maybeeclipsingnumber "(?:[1-9][0-9]*[789]|[0-9]*10)">
+        <!ENTITY eclipsingnumber "(?:n?dh?eich|naoi|(?:h|[mbd]['`’]|n-)?ocht|sh?eacht|[789]|10)">
+        <!ENTITY eclipsingposs "(?:(?:faoin|in|len|ón|trín)?(?:a|ár)|d?ár?|bhur|arna)">
+        <!ENTITY unboundadj "(?:.+th?[ae]|céad|cibé|cosúil|deich|dhá|gach|seacht|seo|sin|trí|úd|uile|.+ .+)">
+        <!ENTITY unpplike "(?:.+(?:[^ae]|[^th][ae]|[^t]h[ae]))">
+        <!ENTITY fakepp "(?:.*aimseartha|ch?athartha|ch?oitianta|gh?alánta|gh?inearálta|logánta|mh?íleata|nádúrtha|(?:idir)?náisiúnta|sóisialta|speisialta|th?raidisiúnta)">
+        <!ENTITY unlenitable "(?:[^bcdfgmpt]|s[^lnraeiouáéíóú]).*">
+        <!ENTITY unlenitedbcgmp "[bcgmp][^h'`’].*">
+        <!ENTITY unlenitedbcfgmp "(?:[bcfgmp][^h'`’]|bhf).*">
+        <!ENTITY unmutatedvnish "(?:[bcdfgmpt][^hbcpst'`’]|[^bcdfgmpt]).*(?:a[dm]h|i[nr]t|áil|ú)">
+        <!ENTITY unmutatedbcfgp "[bcfgp][^hcp'`’].*">
+        <!ENTITY unmutated "[bcdfgpt][^hcpt'`’].*">
+        <!ENTITY unlenitedf "f[aeiouáéíóú].*">
+        <!ENTITY unlenitedcdfgst "(?:[cdfgt][^h'`’]|s[lnraeiouáéíóú]|bhf).*">
+        <!ENTITY unlenited "(?:[bcdfgmpt][^h'`’]|s[lnraeiouáéíóú]|bhf).*">
+        <!ENTITY lenitedf "fh[aeiouáéíóú].*">
+        <!ENTITY ordinaladj "(?:[^<].*[^m]|[0-9]+)ú">
+        <!ENTITY prefixedt "t(?:[AEIOUÁÉÍÓÚ]|-[aeiouáéíóú]).+">
+        <!ENTITY eire "(?:[nh])?Éire(?:ann)?">
+        <!ENTITY lenitedngmperson "(?:(?:[cdfgmpst]h|bh[^fF]).+(?:[óú]ra|eora|éara|aí)|chailín|dhuine|fhir|pháiste|bhuachalla)">
+        <!ENTITY lenitedngfperson "(?:bhaintrí|chlainne|mhná|ghirsí)">
+        <!ENTITY ngmperson "(?:.+(?:[óú]ra|eora|éara|aí)|cailín|duine|fir|páiste|buachalla)">
+        <!ENTITY ngfperson "(?:baintrí|clainne|mná|girsí)">
+        <!ENTITY regularposs "(?:[md]o|a|ár|bhur)">
+        <!ENTITY fusedposs "(?:dár?|(?:faoi|i|le|trí)n(?:a|ár))">
+        <!ENTITY fusedprep "(?:d[eo]n|san?|faoin|ón)">
+        <!ENTITY dativeprep "(?:a[grs]|chuig|d[eo]|faoi|gan|go|le|ó|in?|roimh|thar|tríd?|um)">
+        <!ENTITY initialmordapost "[md]['`’].+">
+        <!ENTITY initialbigdapost "D['`’].+">
+        <!ENTITY initialdapostf "d['`’]f.+">
+        <!ENTITY initialdapost "d['`’].+">
+        <!ENTITY initialbapost "b['`’].+">
+        <!ENTITY initialmbapost "mb['`’].+">
+        <!ENTITY lenitedcapcg "[CG]h.+">
+        <!ENTITY lenitedbcfgmps "(?:[cfgmps]h|bh[^f]).+">
+        <!ENTITY lenitedbmp "(?:[mp]h|bh[^f]).+">
+        <!ENTITY mutateddst "(?:nd|dt|[dst]h).+">
+        <!ENTITY leniteddfst "[dfst]h.+">
+        <!ENTITY leniteddst "[dst]h.+">
+        <!ENTITY lenited "(?:[cdfgmpst]h|bh[^fF]).+">
+        <!ENTITY slenderfinalconsonant "[^ ]*[eéií][^aeiouáéíóú]+">
+        <!ENTITY broadfinalconsonant "[^ ]*[aáoóuú][^aeiouáéíóú]+">
+        <!ENTITY finalvowel ".*[^bcdfghjlmnprstvxz ]+">
+        <!ENTITY finala ".*[aá]">
+        <!ENTITY slenderfinaldlnst ".*[eéií][^aeiouáéíóú]*[dlnst]">
+        <!ENTITY finaldlnst ".+[DdLlNnSsTt]">
+        <!ENTITY dayoftheweek "Dé .+">
+        <!ENTITY nobeeapost "(?:[^b]|b[^'`’]).+">
+        <!ENTITY femvn "(?:.+i[lnr]t|.+áil|breith|foghlaim|iarraidh|obair|seilg)">
+        <!ENTITY subjectpronoun "s(?:[éí]|iad(?:san)?|ise|eisean)">
+        <!ENTITY notvnishunlen "(?:ceannach|cur|díol|dul|foghlaim|íoc|iompar|oscailt|rá|roinnt|scríobh|soláthar|teacht)">
+        <!ENTITY notvnishvn "(?:bheith|cheannach|chur|dhíol|dhul|fhoghlaim|íoc|iompar|oscailt|rá|roinnt|scríobh|sholáthar|theacht)">
+        <!ENTITY vnish ".*(?:a[dm]h|i[nr]t|áil|ú)">
+        <!ENTITY femabstractrestricted "(?:.+íl|h?acmhainn|h?airde|h?aois|g?ch?omhairle|h?[Éé]iric|(?:bh)?fh?(?:airsinge|earg|inne)|n?gh?éarchéim|h?[Íí](?:d|sl)e|laige|mh?aise|h?oiread|h?óige|t?sh?aoirse|d?th?itim)">
+        <!ENTITY femabstract "(?:.+[ao]cht|t?scéim)">
+        <!ENTITY quantityword "(?:ailp|(?:h?an-|g|n?gh?ann|mh?ór|g?ch?aol|leath)?ch?uid|m?bh?arraíocht|m?bh?reis|n?dh?íolaim|n?dh?íth|n?dh?óthain|h?[Éé]agmais|h?easpa|(?:bh)?fh?lúirse|h?iomarca|leath|raidhse|roinnt)">
+        <!ENTITY doword "(?:d[áió]|do[mn]|dár|duit|dúinn|daoibh|dóibh)">
+        <!ENTITY arword "(?:or[mt](?:sa)?|uirthi(?:se)?|air(?:sean)?|orainne?|oraibh(?:se)?|orthu(?:san)?)">
+        <!ENTITY initialc "c.*">
+        <!ENTITY initialdst "[dst].*">
+        <!ENTITY initialf "f.*">
+        <!ENTITY initialh "h.*">
+        <!ENTITY initiall "l.*">
+        <!ENTITY initialm "m.*">
+        <!ENTITY initialn "n.*">
+        <!ENTITY initials "s[lnraeiouáéíóúh].*">
+        <!ENTITY initialts "ts.*">
+        <!ENTITY notna "(?:...|[^n]|.[^á]).*">
+        <!ENTITY broadfirstpres ".+[^eé]ann">
+        <!ENTITY slenderfirstpres ".+[eé]ann">
+        <!ENTITY broadsecondpres ".+aíonn">
+        <!ENTITY slendersecondpres ".+[^a]íonn">
+        <!ENTITY broadfirstfuture ".+faidh">
+        <!ENTITY slenderfirstfuture ".+fidh">
+        <!ENTITY broadsecondfuture ".+óidh">
+        <!ENTITY slendersecondfuture ".+eoidh">
+        <!ENTITY broadfirstcond ".+fadh">
+        <!ENTITY slenderfirstcond ".+feadh">
+        <!ENTITY broadsecondcond ".+ódh">
+        <!ENTITY slendersecondcond ".+eodh">
+        <!ENTITY broadfirstimp ".+[^ée]adh">
+        <!ENTITY slenderfirstimp ".+[ée]adh">
+        <!ENTITY broadsecondimp ".+aíodh">
+        <!ENTITY slendersecondimp ".+[^a]íodh">
         ]>
 <rules lang="ga" xsi:noNamespaceSchemaLocation="../../../../../../../../../languagetool-core/src/main/resources/org/languagetool/rules/rules.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <phrases>
+        <phrase id="NI">
+            <token>ní</token>
+        </phrase>
+        <phrase id="NI_BA">
+            <token>ní</token>
+            <token>ba</token>
+        </phrase>
+        <phrase id="NI_BAPOS">
+            <token>ní</token>
+            <token>b</token>
+            <token spacebefore="no" regexp="yes">&apost;</token>
+        </phrase>
+        <phrase id="NIBS">
+            <includephrases>
+                <phraseref idref="NI"></phraseref>
+                <phraseref idref="NI_BA"></phraseref>
+                <phraseref idref="NI_BAPOS"></phraseref>
+            </includephrases>
+        </phrase>
+    </phrases>
     <category id="CONTRACTIONS" name="syntactical errors: contractions" type="grammar">
-        <rulegroup id="PREP_CONTRACTIONS" name="Preposition Contractions">
+        <rulegroup id="LE_CONTRACTIONS" name="le Contractions">
             <rule id="LE_ME_LIOM" name="le + mé = liom">
                 <pattern>
                     <marker>
@@ -61,7 +210,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <pattern>
                     <marker>
                         <token>le</token>
-                        <token regexp="yes">é|sé</token>
+                        <token>é</token>
                     </marker>
                 </pattern>
                 <message>Ba chóir duit <suggestion>leis</suggestion> a scríobh.</message>
@@ -189,6 +338,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction='leosan'>Dúirt sé <marker>le iadsan</marker></example>
                 <example>Dúirt sé leosan</example>
             </rule>
+        </rulegroup>
+        <rulegroup id="AG_CONTRACTIONS" name="ag Contractions">
             <rule id="AG_ME_AGAM" name="ag + mé = agam">
                 <pattern>
                     <marker>
@@ -215,7 +366,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <pattern>
                     <marker>
                         <token>ag</token>
-                        <token regexp="yes">é|sé</token>
+                        <token>é</token>
                     </marker>
                 </pattern>
                 <message>Ba chóir duit <suggestion>aige</suggestion> a scríobh.</message>
@@ -344,6 +495,2136 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>Bhí cáca milis acusan</example>
             </rule>
         </rulegroup>
+        <rulegroup id="AR_CONTRACTIONS" name="ar Contractions">
+            <rule id="AR_ME_ORM" name="ar + mé = orm">
+                <pattern>
+                    <marker>
+                        <token>ar</token>
+                        <token>mé</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>orm</suggestion> a scríobh.</message>
+                <example correction='orm'><marker>ar mé</marker></example>
+            </rule>
+            <rule id="AR_TU_ORT" name="ar + tú = ort">
+                <pattern>
+                    <marker>
+                        <token>ar</token>
+                        <token regexp="yes">tú|thú</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>ort</suggestion> a scríobh.</message>
+                <example correction='ort'><marker>ar tú</marker></example>
+            </rule>
+            <rule id="AR_E_AIR" name="ar + é = air">
+                <pattern>
+                    <marker>
+                        <token>ar</token>
+                        <token>é</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>air</suggestion> a scríobh.</message>
+                <example correction='air'><marker>ar é</marker></example>
+            </rule>
+            <rule id="AR_I_UIRTHI" name="ar + í = uirthi">
+                <pattern>
+                    <marker>
+                        <token>ar</token>
+                        <token regexp="yes">í|sí</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>uirthi</suggestion> a scríobh.</message>
+                <example correction='uirthi'><marker>ar í</marker></example>
+            </rule>
+            <rule id="AR_SINN_ORAINN" name="ar + sinn = orainn">
+                <pattern>
+                    <marker>
+                        <token>ar</token>
+                        <token regexp="yes">sinn|muid</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>orainn</suggestion> a scríobh.</message>
+                <example correction='orainn'><marker>ar sinn</marker></example>
+            </rule>
+            <rule id="AR_SIBH_ORAIBH" name="ar + sibh = oraibh">
+                <pattern>
+                    <marker>
+                        <token>ar</token>
+                        <token>sibh</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>oraibh</suggestion> a scríobh.</message>
+                <example correction='oraibh'><marker>ar sibh</marker></example>
+            </rule>
+            <rule id="AR_IAD_ORTHU" name="ar + iad = orthu">
+                <pattern>
+                    <marker>
+                        <token>ar</token>
+                        <token regexp="yes">iad|siad</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>orthu</suggestion> a scríobh.</message>
+                <example correction='orthu'><marker>ar iad</marker></example>
+            </rule>
+            <rule id="AR_MISE_ORMSA" name="ar + mise = ormsa">
+                <pattern>
+                    <marker>
+                        <token>ar</token>
+                        <token>mise</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>ormsa</suggestion> a scríobh.</message>
+                <example correction='ormsa'><marker>ar mise</marker></example>
+            </rule>
+            <rule id="AR_TUSA_ORTSA" name="ar + tusa = ortsa">
+                <pattern>
+                    <marker>
+                        <token>ar</token>
+                        <token regexp="yes">tusa|thusa</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>ortsa</suggestion> a scríobh.</message>
+                <example correction='ortsa'><marker>ar tusa</marker></example>
+            </rule>
+            <rule id="AR_EISEAN_AIRSEAN" name="ar + eisean = airsean">
+                <pattern>
+                    <marker>
+                        <token>ar</token>
+                        <token regexp="yes">eisean|seisean</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>airsean</suggestion> a scríobh.</message>
+                <example correction='airsean'><marker>ar eisean</marker></example>
+            </rule>
+            <rule id="AR_ISE_UIRTHISE" name="ar + ise = uirthise">
+                <pattern>
+                    <marker>
+                        <token>ar</token>
+                        <token regexp="yes">ise|sise</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>uirthise</suggestion> a scríobh.</message>
+                <example correction='uirthise'><marker>ar ise</marker></example>
+            </rule>
+            <rule id="AR_SINNE_ORAINNE" name="ar + sinne = orainne">
+                <pattern>
+                    <marker>
+                        <token>ar</token>
+                        <token regexp="yes">sinne|muidne|muide</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>orainne</suggestion> a scríobh.</message>
+                <example correction='orainne'><marker>ar sinne</marker></example>
+            </rule>
+            <rule id="AR_SIBHSE_ORAIBHSE" name="ar + sibhse = oraibhse">
+                <pattern>
+                    <marker>
+                        <token>ar</token>
+                        <token>sibhse</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>oraibhse</suggestion> a scríobh.</message>
+                <example correction='oraibhse'><marker>ar sibhse</marker></example>
+            </rule>
+            <rule id="AR_IADSAN_ORTHUSAN" name="ar + iadsan = orthusan">
+                <pattern>
+                    <marker>
+                        <token>ar</token>
+                        <token regexp="yes">iadsan|siadsan</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>orthusan</suggestion> a scríobh.</message>
+                <example correction='orthusan'><marker>ar iadsan</marker></example>
+            </rule>
+        </rulegroup>
+        <rulegroup id="I_CONTRACTIONS" name="i Contractions">
+            <rule id="I_ME_IONAM" name="i + mé = ionam">
+                <pattern>
+                    <marker>
+                        <token>i</token>
+                        <token>mé</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>ionam</suggestion> a scríobh.</message>
+                <example correction='ionam'><marker>i mé</marker></example>
+            </rule>
+            <rule id="I_TU_IONAT" name="i + tú = ionat">
+                <pattern>
+                    <marker>
+                        <token>i</token>
+                        <token regexp="yes">tú|thú</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>ionat</suggestion> a scríobh.</message>
+                <example correction='ionat'><marker>i tú</marker></example>
+            </rule>
+            <rule id="I_E_ANN" name="i + é = ann">
+                <pattern>
+                    <marker>
+                        <token>i</token>
+                        <token>é</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>ann</suggestion> a scríobh.</message>
+                <example correction='ann'><marker>i é</marker></example>
+            </rule>
+            <rule id="I_I_INTI" name="i + í = inti">
+                <pattern>
+                    <marker>
+                        <token>i</token>
+                        <token regexp="yes">í|sí</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>inti</suggestion> a scríobh.</message>
+                <example correction='inti'><marker>i í</marker></example>
+            </rule>
+            <rule id="I_SINN_IONAINN" name="i + sinn = ionainn">
+                <pattern>
+                    <marker>
+                        <token>i</token>
+                        <token regexp="yes">sinn|muid</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>ionainn</suggestion> a scríobh.</message>
+                <example correction='ionainn'><marker>i sinn</marker></example>
+            </rule>
+            <rule id="I_SIBH_IONAIBH" name="i + sibh = ionaibh">
+                <pattern>
+                    <marker>
+                        <token>i</token>
+                        <token>sibh</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>ionaibh</suggestion> a scríobh.</message>
+                <example correction='ionaibh'><marker>i sibh</marker></example>
+            </rule>
+            <rule id="I_IAD_IONTU" name="i + iad = iontu">
+                <pattern>
+                    <marker>
+                        <token>i</token>
+                        <token regexp="yes">iad|siad</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>iontu</suggestion> a scríobh.</message>
+                <example correction='iontu'><marker>i iad</marker></example>
+            </rule>
+            <rule id="I_MISE_IONAMSA" name="i + mise = ionamsa">
+                <pattern>
+                    <marker>
+                        <token>i</token>
+                        <token>mise</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>ionamsa</suggestion> a scríobh.</message>
+                <example correction='ionamsa'><marker>i mise</marker></example>
+            </rule>
+            <rule id="I_TUSA_IONATSA" name="i + tusa = ionatsa">
+                <pattern>
+                    <marker>
+                        <token>i</token>
+                        <token regexp="yes">tusa|thusa</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>ionatsa</suggestion> a scríobh.</message>
+                <example correction='ionatsa'><marker>i tusa</marker></example>
+            </rule>
+            <rule id="I_EISEAN_ANNSAN" name="i + eisean = annsan">
+                <pattern>
+                    <marker>
+                        <token>i</token>
+                        <token regexp="yes">eisean|seisean</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>annsan</suggestion> a scríobh.</message>
+                <example correction='annsan'><marker>i eisean</marker></example>
+            </rule>
+            <rule id="I_ISE_INTISE" name="i + ise = intise">
+                <pattern>
+                    <marker>
+                        <token>i</token>
+                        <token regexp="yes">ise|sise</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>intise</suggestion> a scríobh.</message>
+                <example correction='intise'><marker>i ise</marker></example>
+            </rule>
+            <rule id="I_SINNE_IONAINNE" name="i + sinne = ionainne">
+                <pattern>
+                    <marker>
+                        <token>i</token>
+                        <token regexp="yes">sinne|muidne|muide</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>ionainne</suggestion> a scríobh.</message>
+                <example correction='ionainne'><marker>i sinne</marker></example>
+            </rule>
+            <rule id="I_SIBHSE_IONAIBHSE" name="i + sibhse = ionaibhse">
+                <pattern>
+                    <marker>
+                        <token>i</token>
+                        <token>sibhse</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>ionaibhse</suggestion> a scríobh.</message>
+                <example correction='ionaibhse'><marker>i sibhse</marker></example>
+            </rule>
+            <rule id="I_IADSAN_IONTUSAN" name="i + iadsan = iontusan">
+                <pattern>
+                    <marker>
+                        <token>i</token>
+                        <token regexp="yes">iadsan|siadsan</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>iontusan</suggestion> a scríobh.</message>
+                <example correction='iontusan'><marker>i iadsan</marker></example>
+            </rule>
+        </rulegroup>
+        <rulegroup id="FARA_CONTRACTIONS" name="fara Contractions" default="off">
+            <rule id="FARA_ME_FARAM" name="fara + mé = faram">
+                <pattern>
+                    <marker>
+                        <token>fara</token>
+                        <token>mé</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>faram</suggestion> a scríobh.</message>
+                <example correction='faram'><marker>fara mé</marker></example>
+            </rule>
+            <rule id="FARA_TU_FARAT" name="fara + tú = farat">
+                <pattern>
+                    <marker>
+                        <token>fara</token>
+                        <token regexp="yes">tú|thú</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>farat</suggestion> a scríobh.</message>
+                <example correction='farat'><marker>fara tú</marker></example>
+            </rule>
+            <rule id="FARA_E_FAIRIS" name="fara + é = fairis">
+                <pattern>
+                    <marker>
+                        <token>fara</token>
+                        <token>é</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>fairis</suggestion> a scríobh.</message>
+                <example correction='fairis'><marker>fara é</marker></example>
+            </rule>
+            <rule id="FARA_I_FARAE" name="fara + í = farae">
+                <pattern>
+                    <marker>
+                        <token>fara</token>
+                        <token regexp="yes">í|sí</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>farae</suggestion> a scríobh.</message>
+                <example correction='farae'><marker>fara í</marker></example>
+            </rule>
+            <rule id="FARA_SINN_FARAINN" name="fara + sinn = farainn">
+                <pattern>
+                    <marker>
+                        <token>fara</token>
+                        <token regexp="yes">sinn|muid</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>farainn</suggestion> a scríobh.</message>
+                <example correction='farainn'><marker>fara sinn</marker></example>
+            </rule>
+            <rule id="FARA_SIBH_FARAIBH" name="fara + sibh = faraibh">
+                <pattern>
+                    <marker>
+                        <token>fara</token>
+                        <token>sibh</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>faraibh</suggestion> a scríobh.</message>
+                <example correction='faraibh'><marker>fara sibh</marker></example>
+            </rule>
+            <rule id="FARA_IAD_FARU" name="fara + iad = faru">
+                <pattern>
+                    <marker>
+                        <token>fara</token>
+                        <token regexp="yes">iad|siad</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>faru</suggestion> a scríobh.</message>
+                <example correction='faru'><marker>fara iad</marker></example>
+            </rule>
+            <rule id="FARA_MISE_FARAMSA" name="fara + mise = faramsa">
+                <pattern>
+                    <marker>
+                        <token>fara</token>
+                        <token>mise</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>faramsa</suggestion> a scríobh.</message>
+                <example correction='faramsa'><marker>fara mise</marker></example>
+            </rule>
+            <rule id="FARA_TUSA_FARATSA" name="fara + tusa = faratsa">
+                <pattern>
+                    <marker>
+                        <token>fara</token>
+                        <token regexp="yes">tusa|thusa</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>faratsa</suggestion> a scríobh.</message>
+                <example correction='faratsa'><marker>fara tusa</marker></example>
+            </rule>
+            <rule id="FARA_EISEAN_FAIRIS-SEAN" name="fara + eisean = fairis-sean">
+                <pattern>
+                    <marker>
+                        <token>fara</token>
+                        <token regexp="yes">eisean|seisean</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>fairis-sean</suggestion> a scríobh.</message>
+                <example correction='fairis-sean'><marker>fara eisean</marker></example>
+            </rule>
+            <rule id="FARA_ISE_FARAESE" name="fara + ise = faraese">
+                <pattern>
+                    <marker>
+                        <token>fara</token>
+                        <token regexp="yes">ise|sise</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>faraese</suggestion> a scríobh.</message>
+                <example correction='faraese'><marker>fara ise</marker></example>
+            </rule>
+            <rule id="FARA_SINNE_FARAINNE" name="fara + sinne = farainne">
+                <pattern>
+                    <marker>
+                        <token>fara</token>
+                        <token regexp="yes">sinne|muidne|muide</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>farainne</suggestion> a scríobh.</message>
+                <example correction='farainne'><marker>fara sinne</marker></example>
+            </rule>
+            <rule id="FARA_SIBHSE_FARAIBHSE" name="fara + sibhse = faraibhse">
+                <pattern>
+                    <marker>
+                        <token>fara</token>
+                        <token>sibhse</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>faraibhse</suggestion> a scríobh.</message>
+                <example correction='faraibhse'><marker>fara sibhse</marker></example>
+            </rule>
+            <rule id="FARA_IADSAN_FARUSAN" name="fara + iadsan = farusan">
+                <pattern>
+                    <marker>
+                        <token>fara</token>
+                        <token regexp="yes">iadsan|siadsan</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>farusan</suggestion> a scríobh.</message>
+                <example correction='farusan'><marker>fara iadsan</marker></example>
+            </rule>
+        </rulegroup>
+        <rulegroup id="DE_CONTRACTIONS" name="de Contractions">
+            <rule id="DE_ME_DIOM" name="de + mé = díom">
+                <pattern>
+                    <marker>
+                        <token>de</token>
+                        <token>mé</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>díom</suggestion> a scríobh.</message>
+                <example correction='díom'><marker>de mé</marker></example>
+            </rule>
+            <rule id="DE_TU_DIOT" name="de + tú = díot">
+                <pattern>
+                    <marker>
+                        <token>de</token>
+                        <token regexp="yes">tú|thú</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>díot</suggestion> a scríobh.</message>
+                <example correction='díot'><marker>de tú</marker></example>
+            </rule>
+            <rule id="DE_E_DE" name="de + é = de">
+                <pattern>
+                    <marker>
+                        <token>de</token>
+                        <token>é</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>de</suggestion> a scríobh.</message>
+                <example correction='de'><marker>de é</marker></example>
+            </rule>
+            <rule id="DE_I_DI" name="de + í = di">
+                <pattern>
+                    <marker>
+                        <token>de</token>
+                        <token regexp="yes">í|sí</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>di</suggestion> a scríobh.</message>
+                <example correction='di'><marker>de í</marker></example>
+            </rule>
+            <rule id="DE_SINN_DINN" name="de + sinn = dínn">
+                <pattern>
+                    <marker>
+                        <token>de</token>
+                        <token regexp="yes">sinn|muid</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>dínn</suggestion> a scríobh.</message>
+                <example correction='dínn'><marker>de sinn</marker></example>
+            </rule>
+            <rule id="DE_SIBH_DIBH" name="de + sibh = díbh">
+                <pattern>
+                    <marker>
+                        <token>de</token>
+                        <token>sibh</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>díbh</suggestion> a scríobh.</message>
+                <example correction='díbh'><marker>de sibh</marker></example>
+            </rule>
+            <rule id="DE_IAD_DIOBH" name="de + iad = díobh">
+                <pattern>
+                    <marker>
+                        <token>de</token>
+                        <token regexp="yes">iad|siad</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>díobh</suggestion> a scríobh.</message>
+                <example correction='díobh'><marker>de iad</marker></example>
+            </rule>
+            <rule id="DE_MISE_DIOMSA" name="de + mise = díomsa">
+                <pattern>
+                    <marker>
+                        <token>de</token>
+                        <token>mise</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>díomsa</suggestion> a scríobh.</message>
+                <example correction='díomsa'><marker>de mise</marker></example>
+            </rule>
+            <rule id="DE_TUSA_DIOTSA" name="de + tusa = díotsa">
+                <pattern>
+                    <marker>
+                        <token>de</token>
+                        <token regexp="yes">tusa|thusa</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>díotsa</suggestion> a scríobh.</message>
+                <example correction='díotsa'><marker>de tusa</marker></example>
+            </rule>
+            <rule id="DE_EISEAN_DESEAN" name="de + eisean = desean">
+                <pattern>
+                    <marker>
+                        <token>de</token>
+                        <token regexp="yes">eisean|seisean</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>desean</suggestion> a scríobh.</message>
+                <example correction='desean'><marker>de eisean</marker></example>
+            </rule>
+            <rule id="DE_ISE_DISE" name="de + ise = dise">
+                <pattern>
+                    <marker>
+                        <token>de</token>
+                        <token regexp="yes">ise|sise</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>dise</suggestion> a scríobh.</message>
+                <example correction='dise'><marker>de ise</marker></example>
+            </rule>
+            <rule id="DE_SINNE_DINNE" name="de + sinne = dínne">
+                <pattern>
+                    <marker>
+                        <token>de</token>
+                        <token regexp="yes">sinne|muidne|muide</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>dínne</suggestion> a scríobh.</message>
+                <example correction='dínne'><marker>de sinne</marker></example>
+            </rule>
+            <rule id="DE_SIBHSE_DIBHSE" name="de + sibhse = díbhse">
+                <pattern>
+                    <marker>
+                        <token>de</token>
+                        <token>sibhse</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>díbhse</suggestion> a scríobh.</message>
+                <example correction='díbhse'><marker>de sibhse</marker></example>
+            </rule>
+            <rule id="DE_IADSAN_DIOBHSAN" name="de + iadsan = díobhsan">
+                <pattern>
+                    <marker>
+                        <token>de</token>
+                        <token regexp="yes">iadsan|siadsan</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>díobhsan</suggestion> a scríobh.</message>
+                <example correction='díobhsan'><marker>de iadsan</marker></example>
+            </rule>
+        </rulegroup>
+        <rulegroup id="CHUIG_CONTRACTIONS" name="chuig Contractions">
+            <rule id="CHUIG_ME_CHUGAM" name="chuig + mé = chugam">
+                <pattern>
+                    <marker>
+                        <token>chuig</token>
+                        <token>mé</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>chugam</suggestion> a scríobh.</message>
+                <example correction='chugam'><marker>chuig mé</marker></example>
+            </rule>
+            <rule id="CHUIG_TU_CHUGAT" name="chuig + tú = chugat">
+                <pattern>
+                    <marker>
+                        <token>chuig</token>
+                        <token regexp="yes">tú|thú</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>chugat</suggestion> a scríobh.</message>
+                <example correction='chugat'><marker>chuig tú</marker></example>
+            </rule>
+            <rule id="CHUIG_E_CHUIGE" name="chuig + é = chuige">
+                <pattern>
+                    <marker>
+                        <token>chuig</token>
+                        <token>é</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>chuige</suggestion> a scríobh.</message>
+                <example correction='chuige'><marker>chuig é</marker></example>
+            </rule>
+            <rule id="CHUIG_I_CHUICI" name="chuig + í = chuici">
+                <pattern>
+                    <marker>
+                        <token>chuig</token>
+                        <token regexp="yes">í|sí</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>chuici</suggestion> a scríobh.</message>
+                <example correction='chuici'><marker>chuig í</marker></example>
+            </rule>
+            <rule id="CHUIG_SINN_CHUGAINN" name="chuig + sinn = chugainn">
+                <pattern>
+                    <marker>
+                        <token>chuig</token>
+                        <token regexp="yes">sinn|muid</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>chugainn</suggestion> a scríobh.</message>
+                <example correction='chugainn'><marker>chuig sinn</marker></example>
+            </rule>
+            <rule id="CHUIG_SIBH_CHUGHAIBH" name="chuig + sibh = chughaibh">
+                <pattern>
+                    <marker>
+                        <token>chuig</token>
+                        <token>sibh</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>chughaibh</suggestion> a scríobh.</message>
+                <example correction='chughaibh'><marker>chuig sibh</marker></example>
+            </rule>
+            <rule id="CHUIG_IAD_CHUCU" name="chuig + iad = chucu">
+                <pattern>
+                    <marker>
+                        <token>chuig</token>
+                        <token regexp="yes">iad|siad</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>chucu</suggestion> a scríobh.</message>
+                <example correction='chucu'><marker>chuig iad</marker></example>
+            </rule>
+            <rule id="CHUIG_MISE_CHUGAMSA" name="chuig + mise = chugamsa">
+                <pattern>
+                    <marker>
+                        <token>chuig</token>
+                        <token>mise</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>chugamsa</suggestion> a scríobh.</message>
+                <example correction='chugamsa'><marker>chuig mise</marker></example>
+            </rule>
+            <rule id="CHUIG_TUSA_CHUGATSA" name="chuig + tusa = chugatsa">
+                <pattern>
+                    <marker>
+                        <token>chuig</token>
+                        <token regexp="yes">tusa|thusa</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>chugatsa</suggestion> a scríobh.</message>
+                <example correction='chugatsa'><marker>chuig tusa</marker></example>
+            </rule>
+            <rule id="CHUIG_EISEAN_CHUIGESEAN" name="chuig + eisean = chuigesean">
+                <pattern>
+                    <marker>
+                        <token>chuig</token>
+                        <token regexp="yes">eisean|seisean</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>chuigesean</suggestion> a scríobh.</message>
+                <example correction='chuigesean'><marker>chuig eisean</marker></example>
+            </rule>
+            <rule id="CHUIG_ISE_CHUICISE" name="chuig + ise = chuicise">
+                <pattern>
+                    <marker>
+                        <token>chuig</token>
+                        <token regexp="yes">ise|sise</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>chuicise</suggestion> a scríobh.</message>
+                <example correction='chuicise'><marker>chuig ise</marker></example>
+            </rule>
+            <rule id="CHUIG_SINNE_CHUGAINNE" name="chuig + sinne = chugainne">
+                <pattern>
+                    <marker>
+                        <token>chuig</token>
+                        <token regexp="yes">sinne|muidne|muide</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>chugainne</suggestion> a scríobh.</message>
+                <example correction='chugainne'><marker>chuig sinne</marker></example>
+            </rule>
+            <rule id="CHUIG_SIBHSE_CHUGHAIBHSE" name="chuig + sibhse = chughaibhse">
+                <pattern>
+                    <marker>
+                        <token>chuig</token>
+                        <token>sibhse</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>chughaibhse</suggestion> a scríobh.</message>
+                <example correction='chughaibhse'><marker>chuig sibhse</marker></example>
+            </rule>
+            <rule id="CHUIG_IADSAN_CHUCUSAN" name="chuig + iadsan = chucusan">
+                <pattern>
+                    <marker>
+                        <token>chuig</token>
+                        <token regexp="yes">iadsan|siadsan</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>chucusan</suggestion> a scríobh.</message>
+                <example correction='chucusan'><marker>chuig iadsan</marker></example>
+            </rule>
+        </rulegroup>
+        <rulegroup id="DO_CONTRACTIONS" name="do Contractions">
+            <rule id="DO_ME_DOM" name="do + mé = dom">
+                <pattern>
+                    <marker>
+                        <token>do</token>
+                        <token>mé</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>dom</suggestion> a scríobh.</message>
+                <example correction='dom'><marker>do mé</marker></example>
+            </rule>
+            <rule id="DO_TU_DUIT" name="do + tú = duit">
+                <pattern>
+                    <marker>
+                        <token>do</token>
+                        <token regexp="yes">tú|thú</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>duit</suggestion> a scríobh.</message>
+                <example correction='duit'><marker>do tú</marker></example>
+            </rule>
+            <rule id="DO_E_DO" name="do + é = dó">
+                <pattern>
+                    <marker>
+                        <token>do</token>
+                        <token>é</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>dó</suggestion> a scríobh.</message>
+                <example correction='dó'><marker>do é</marker></example>
+            </rule>
+            <rule id="DO_I_DI" name="do + í = di">
+                <pattern>
+                    <marker>
+                        <token>do</token>
+                        <token regexp="yes">í|sí</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>di</suggestion> a scríobh.</message>
+                <example correction='di'><marker>do í</marker></example>
+            </rule>
+            <rule id="DO_SINN_DUINN" name="do + sinn = dúinn">
+                <pattern>
+                    <marker>
+                        <token>do</token>
+                        <token regexp="yes">sinn|muid</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>dúinn</suggestion> a scríobh.</message>
+                <example correction='dúinn'><marker>do sinn</marker></example>
+            </rule>
+            <rule id="DO_SIBH_DAOIBH" name="do + sibh = daoibh">
+                <pattern>
+                    <marker>
+                        <token>do</token>
+                        <token>sibh</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>daoibh</suggestion> a scríobh.</message>
+                <example correction='daoibh'><marker>do sibh</marker></example>
+            </rule>
+            <rule id="DO_IAD_DOIBH" name="do + iad = dóibh">
+                <pattern>
+                    <marker>
+                        <token>do</token>
+                        <token regexp="yes">iad|siad</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>dóibh</suggestion> a scríobh.</message>
+                <example correction='dóibh'><marker>do iad</marker></example>
+            </rule>
+            <rule id="DO_MISE_DOMSA" name="do + mise = domsa">
+                <pattern>
+                    <marker>
+                        <token>do</token>
+                        <token>mise</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>domsa</suggestion> a scríobh.</message>
+                <example correction='domsa'><marker>do mise</marker></example>
+            </rule>
+            <rule id="DO_TUSA_DUITSE" name="do + tusa = duitse">
+                <pattern>
+                    <marker>
+                        <token>do</token>
+                        <token regexp="yes">tusa|thusa</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>duitse</suggestion> a scríobh.</message>
+                <example correction='duitse'><marker>do tusa</marker></example>
+            </rule>
+            <rule id="DO_EISEAN_DOSAN" name="do + eisean = dósan">
+                <pattern>
+                    <marker>
+                        <token>do</token>
+                        <token regexp="yes">eisean|seisean</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>dósan</suggestion> a scríobh.</message>
+                <example correction='dósan'><marker>do eisean</marker></example>
+            </rule>
+            <rule id="DO_ISE_DISE" name="do + ise = dise">
+                <pattern>
+                    <marker>
+                        <token>do</token>
+                        <token regexp="yes">ise|sise</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>dise</suggestion> a scríobh.</message>
+                <example correction='dise'><marker>do ise</marker></example>
+            </rule>
+            <rule id="DO_SINNE_DUINNE" name="do + sinne = dúinne">
+                <pattern>
+                    <marker>
+                        <token>do</token>
+                        <token regexp="yes">sinne|muidne|muide</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>dúinne</suggestion> a scríobh.</message>
+                <example correction='dúinne'><marker>do sinne</marker></example>
+            </rule>
+            <rule id="DO_SIBHSE_DAOIBHSE" name="do + sibhse = daoibhse">
+                <pattern>
+                    <marker>
+                        <token>do</token>
+                        <token>sibhse</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>daoibhse</suggestion> a scríobh.</message>
+                <example correction='daoibhse'><marker>do sibhse</marker></example>
+            </rule>
+            <rule id="DO_IADSAN_DOIBHSEAN" name="do + iadsan = dóibhsean">
+                <pattern>
+                    <marker>
+                        <token>do</token>
+                        <token regexp="yes">iadsan|siadsan</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>dóibhsean</suggestion> a scríobh.</message>
+                <example correction='dóibhsean'><marker>do iadsan</marker></example>
+            </rule>
+        </rulegroup>
+        <rulegroup id="Ó_CONTRACTIONS" name="ó Contractions">
+            <rule id="Ó_ME_UAIM" name="ó + mé = uaim">
+                <pattern>
+                    <marker>
+                        <token>ó</token>
+                        <token>mé</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>uaim</suggestion> a scríobh.</message>
+                <example correction='uaim'><marker>ó mé</marker></example>
+            </rule>
+            <rule id="Ó_TU_UAIT" name="ó + tú = uait">
+                <pattern>
+                    <marker>
+                        <token>ó</token>
+                        <token regexp="yes">tú|thú</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>uait</suggestion> a scríobh.</message>
+                <example correction='uait'><marker>ó tú</marker></example>
+            </rule>
+            <rule id="Ó_E_UAIDH" name="ó + é = uaidh">
+                <pattern>
+                    <marker>
+                        <token>ó</token>
+                        <token>é</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>uaidh</suggestion> a scríobh.</message>
+                <example correction='uaidh'><marker>ó é</marker></example>
+            </rule>
+            <rule id="Ó_I_UAITHI" name="ó + í = uaithi">
+                <pattern>
+                    <marker>
+                        <token>ó</token>
+                        <token regexp="yes">í|sí</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>uaithi</suggestion> a scríobh.</message>
+                <example correction='uaithi'><marker>ó í</marker></example>
+            </rule>
+            <rule id="Ó_SINN_UAINN" name="ó + sinn = uainn">
+                <pattern>
+                    <marker>
+                        <token>ó</token>
+                        <token regexp="yes">sinn|muid</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>uainn</suggestion> a scríobh.</message>
+                <example correction='uainn'><marker>ó sinn</marker></example>
+            </rule>
+            <rule id="Ó_SIBH_UAIBH" name="ó + sibh = uaibh">
+                <pattern>
+                    <marker>
+                        <token>ó</token>
+                        <token>sibh</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>uaibh</suggestion> a scríobh.</message>
+                <example correction='uaibh'><marker>ó sibh</marker></example>
+            </rule>
+            <rule id="Ó_IAD_UATHU" name="ó + iad = uathu">
+                <pattern>
+                    <marker>
+                        <token>ó</token>
+                        <token regexp="yes">iad|siad</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>uathu</suggestion> a scríobh.</message>
+                <example correction='uathu'><marker>ó iad</marker></example>
+            </rule>
+            <rule id="Ó_MISE_UAIMSE" name="ó + mise = uaimse">
+                <pattern>
+                    <marker>
+                        <token>ó</token>
+                        <token>mise</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>uaimse</suggestion> a scríobh.</message>
+                <example correction='uaimse'><marker>ó mise</marker></example>
+            </rule>
+            <rule id="Ó_TUSA_UAITSE" name="ó + tusa = uaitse">
+                <pattern>
+                    <marker>
+                        <token>ó</token>
+                        <token regexp="yes">tusa|thusa</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>uaitse</suggestion> a scríobh.</message>
+                <example correction='uaitse'><marker>ó tusa</marker></example>
+            </rule>
+            <rule id="Ó_EISEAN_UAIDHSEAN" name="ó + eisean = uaidhsean">
+                <pattern>
+                    <marker>
+                        <token>ó</token>
+                        <token regexp="yes">eisean|seisean</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>uaidhsean</suggestion> a scríobh.</message>
+                <example correction='uaidhsean'><marker>ó eisean</marker></example>
+            </rule>
+            <rule id="Ó_ISE_UAITHISE" name="ó + ise = uaithise">
+                <pattern>
+                    <marker>
+                        <token>ó</token>
+                        <token regexp="yes">ise|sise</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>uaithise</suggestion> a scríobh.</message>
+                <example correction='uaithise'><marker>ó ise</marker></example>
+            </rule>
+            <rule id="Ó_SINNE_UAINNE" name="ó + sinne = uainne">
+                <pattern>
+                    <marker>
+                        <token>ó</token>
+                        <token regexp="yes">sinne|muidne|muide</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>uainne</suggestion> a scríobh.</message>
+                <example correction='uainne'><marker>ó sinne</marker></example>
+            </rule>
+            <rule id="Ó_SIBHSE_UAIBHSE" name="ó + sibhse = uaibhse">
+                <pattern>
+                    <marker>
+                        <token>ó</token>
+                        <token>sibhse</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>uaibhse</suggestion> a scríobh.</message>
+                <example correction='uaibhse'><marker>ó sibhse</marker></example>
+            </rule>
+            <rule id="Ó_IADSAN_UATHUSAN" name="ó + iadsan = uathusan">
+                <pattern>
+                    <marker>
+                        <token>ó</token>
+                        <token regexp="yes">iadsan|siadsan</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>uathusan</suggestion> a scríobh.</message>
+                <example correction='uathusan'><marker>ó iadsan</marker></example>
+            </rule>
+        </rulegroup>
+        <rulegroup id="TRÍ_CONTRACTIONS" name="trí Contractions">
+            <rule id="TRÍ_ME_TRIOM" name="trí + mé = tríom">
+                <pattern>
+                    <marker>
+                        <token>trí</token>
+                        <token>mé</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>tríom</suggestion> a scríobh.</message>
+                <example correction='tríom'><marker>trí mé</marker></example>
+            </rule>
+            <rule id="TRÍ_TU_TRIOT" name="trí + tú = tríot">
+                <pattern>
+                    <marker>
+                        <token>trí</token>
+                        <token regexp="yes">tú|thú</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>tríot</suggestion> a scríobh.</message>
+                <example correction='tríot'><marker>trí tú</marker></example>
+            </rule>
+            <rule id="TRÍ_E_TRID" name="trí + é = tríd">
+                <pattern>
+                    <marker>
+                        <token>trí</token>
+                        <token>é</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>tríd</suggestion> a scríobh.</message>
+                <example correction='tríd'><marker>trí é</marker></example>
+            </rule>
+            <rule id="TRÍ_I_TRITHI" name="trí + í = tríthi">
+                <pattern>
+                    <marker>
+                        <token>trí</token>
+                        <token regexp="yes">í|sí</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>tríthi</suggestion> a scríobh.</message>
+                <example correction='tríthi'><marker>trí í</marker></example>
+            </rule>
+            <rule id="TRÍ_SINN_TRINN" name="trí + sinn = trínn">
+                <pattern>
+                    <marker>
+                        <token>trí</token>
+                        <token regexp="yes">sinn|muid</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>trínn</suggestion> a scríobh.</message>
+                <example correction='trínn'><marker>trí sinn</marker></example>
+            </rule>
+            <rule id="TRÍ_SIBH_TRIBH" name="trí + sibh = tríbh">
+                <pattern>
+                    <marker>
+                        <token>trí</token>
+                        <token>sibh</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>tríbh</suggestion> a scríobh.</message>
+                <example correction='tríbh'><marker>trí sibh</marker></example>
+            </rule>
+            <rule id="TRÍ_IAD_TRIOTHU" name="trí + iad = tríothu">
+                <pattern>
+                    <marker>
+                        <token>trí</token>
+                        <token regexp="yes">iad|siad</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>tríothu</suggestion> a scríobh.</message>
+                <example correction='tríothu'><marker>trí iad</marker></example>
+            </rule>
+            <rule id="TRÍ_MISE_TRIOMSA" name="trí + mise = tríomsa">
+                <pattern>
+                    <marker>
+                        <token>trí</token>
+                        <token>mise</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>tríomsa</suggestion> a scríobh.</message>
+                <example correction='tríomsa'><marker>trí mise</marker></example>
+            </rule>
+            <rule id="TRÍ_TUSA_TRIOTSA" name="trí + tusa = tríotsa">
+                <pattern>
+                    <marker>
+                        <token>trí</token>
+                        <token regexp="yes">tusa|thusa</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>tríotsa</suggestion> a scríobh.</message>
+                <example correction='tríotsa'><marker>trí tusa</marker></example>
+            </rule>
+            <rule id="TRÍ_EISEAN_TRIDSEAN" name="trí + eisean = trídsean">
+                <pattern>
+                    <marker>
+                        <token>trí</token>
+                        <token regexp="yes">eisean|seisean</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>trídsean</suggestion> a scríobh.</message>
+                <example correction='trídsean'><marker>trí eisean</marker></example>
+            </rule>
+            <rule id="TRÍ_ISE_TRITHISE" name="trí + ise = tríthise">
+                <pattern>
+                    <marker>
+                        <token>trí</token>
+                        <token regexp="yes">ise|sise</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>tríthise</suggestion> a scríobh.</message>
+                <example correction='tríthise'><marker>trí ise</marker></example>
+            </rule>
+            <rule id="TRÍ_SINNE_TRINNE" name="trí + sinne = trínne">
+                <pattern>
+                    <marker>
+                        <token>trí</token>
+                        <token regexp="yes">sinne|muidne|muide</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>trínne</suggestion> a scríobh.</message>
+                <example correction='trínne'><marker>trí sinne</marker></example>
+            </rule>
+            <rule id="TRÍ_SIBHSE_TRIBHSE" name="trí + sibhse = tríbhse">
+                <pattern>
+                    <marker>
+                        <token>trí</token>
+                        <token>sibhse</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>tríbhse</suggestion> a scríobh.</message>
+                <example correction='tríbhse'><marker>trí sibhse</marker></example>
+            </rule>
+            <rule id="TRÍ_IADSAN_TRIOTHUSAN" name="trí + iadsan = tríothusan">
+                <pattern>
+                    <marker>
+                        <token>trí</token>
+                        <token regexp="yes">iadsan|siadsan</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>tríothusan</suggestion> a scríobh.</message>
+                <example correction='tríothusan'><marker>trí iadsan</marker></example>
+            </rule>
+        </rulegroup>
+        <rulegroup id="AS_CONTRACTIONS" name="as Contractions">
+            <rule id="AS_ME_ASAM" name="as + mé = asam">
+                <pattern>
+                    <marker>
+                        <token>as</token>
+                        <token>mé</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>asam</suggestion> a scríobh.</message>
+                <example correction='asam'><marker>as mé</marker></example>
+            </rule>
+            <rule id="AS_TU_ASAT" name="as + tú = asat">
+                <pattern>
+                    <marker>
+                        <token>as</token>
+                        <token regexp="yes">tú|thú</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>asat</suggestion> a scríobh.</message>
+                <example correction='asat'><marker>as tú</marker></example>
+            </rule>
+            <rule id="AS_E_AS" name="as + é = as">
+                <pattern>
+                    <marker>
+                        <token>as</token>
+                        <token>é</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>as</suggestion> a scríobh.</message>
+                <example correction='as'><marker>as é</marker></example>
+            </rule>
+            <rule id="AS_I_AISTI" name="as + í = aisti">
+                <pattern>
+                    <marker>
+                        <token>as</token>
+                        <token regexp="yes">í|sí</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>aisti</suggestion> a scríobh.</message>
+                <example correction='aisti'><marker>as í</marker></example>
+            </rule>
+            <rule id="AS_SINN_ASAINN" name="as + sinn = asainn">
+                <pattern>
+                    <marker>
+                        <token>as</token>
+                        <token regexp="yes">sinn|muid</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>asainn</suggestion> a scríobh.</message>
+                <example correction='asainn'><marker>as sinn</marker></example>
+            </rule>
+            <rule id="AS_SIBH_ASAIBH" name="as + sibh = asaibh">
+                <pattern>
+                    <marker>
+                        <token>as</token>
+                        <token>sibh</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>asaibh</suggestion> a scríobh.</message>
+                <example correction='asaibh'><marker>as sibh</marker></example>
+            </rule>
+            <rule id="AS_IAD_ASTU" name="as + iad = astu">
+                <pattern>
+                    <marker>
+                        <token>as</token>
+                        <token regexp="yes">iad|siad</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>astu</suggestion> a scríobh.</message>
+                <example correction='astu'><marker>as iad</marker></example>
+            </rule>
+            <rule id="AS_MISE_ASAMSA" name="as + mise = asamsa">
+                <pattern>
+                    <marker>
+                        <token>as</token>
+                        <token>mise</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>asamsa</suggestion> a scríobh.</message>
+                <example correction='asamsa'><marker>as mise</marker></example>
+            </rule>
+            <rule id="AS_TUSA_ASATSA" name="as + tusa = asatsa">
+                <pattern>
+                    <marker>
+                        <token>as</token>
+                        <token regexp="yes">tusa|thusa</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>asatsa</suggestion> a scríobh.</message>
+                <example correction='asatsa'><marker>as tusa</marker></example>
+            </rule>
+            <rule id="AS_EISEAN_AS-SAN" name="as + eisean = as-san">
+                <pattern>
+                    <marker>
+                        <token>as</token>
+                        <token regexp="yes">eisean|seisean</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>as-san</suggestion> a scríobh.</message>
+                <example correction='as-san'><marker>as eisean</marker></example>
+            </rule>
+            <rule id="AS_ISE_AISTISE" name="as + ise = aistise">
+                <pattern>
+                    <marker>
+                        <token>as</token>
+                        <token regexp="yes">ise|sise</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>aistise</suggestion> a scríobh.</message>
+                <example correction='aistise'><marker>as ise</marker></example>
+            </rule>
+            <rule id="AS_SINNE_ASAINNE" name="as + sinne = asainne">
+                <pattern>
+                    <marker>
+                        <token>as</token>
+                        <token regexp="yes">sinne|muidne|muide</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>asainne</suggestion> a scríobh.</message>
+                <example correction='asainne'><marker>as sinne</marker></example>
+            </rule>
+            <rule id="AS_SIBHSE_ASHAIBHSE" name="as + sibhse = ashaibhse">
+                <pattern>
+                    <marker>
+                        <token>as</token>
+                        <token>sibhse</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>ashaibhse</suggestion> a scríobh.</message>
+                <example correction='ashaibhse'><marker>as sibhse</marker></example>
+            </rule>
+            <rule id="AS_IADSAN_ASTUSAN" name="as + iadsan = astusan">
+                <pattern>
+                    <marker>
+                        <token>as</token>
+                        <token regexp="yes">iadsan|siadsan</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>astusan</suggestion> a scríobh.</message>
+                <example correction='astusan'><marker>as iadsan</marker></example>
+            </rule>
+        </rulegroup>
+        <rulegroup id="FAOI_CONTRACTIONS" name="faoi Contractions">
+            <rule id="FAOI_ME_FUM" name="faoi + mé = fúm">
+                <pattern>
+                    <marker>
+                        <token>faoi</token>
+                        <token>mé</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>fúm</suggestion> a scríobh.</message>
+                <example correction='fúm'><marker>faoi mé</marker></example>
+            </rule>
+            <rule id="FAOI_TU_FUT" name="faoi + tú = fút">
+                <pattern>
+                    <marker>
+                        <token>faoi</token>
+                        <token regexp="yes">tú|thú</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>fút</suggestion> a scríobh.</message>
+                <example correction='fút'><marker>faoi tú</marker></example>
+            </rule>
+            <rule id="FAOI_E_FAOI" name="faoi + é = faoi">
+                <pattern>
+                    <marker>
+                        <token>faoi</token>
+                        <token>é</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>faoi</suggestion> a scríobh.</message>
+                <example correction='faoi'><marker>faoi é</marker></example>
+            </rule>
+            <rule id="FAOI_I_FUITHI" name="faoi + í = fúithi">
+                <pattern>
+                    <marker>
+                        <token>faoi</token>
+                        <token regexp="yes">í|sí</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>fúithi</suggestion> a scríobh.</message>
+                <example correction='fúithi'><marker>faoi í</marker></example>
+            </rule>
+            <rule id="FAOI_SINN_FUINN" name="faoi + sinn = fúinn">
+                <pattern>
+                    <marker>
+                        <token>faoi</token>
+                        <token regexp="yes">sinn|muid</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>fúinn</suggestion> a scríobh.</message>
+                <example correction='fúinn'><marker>faoi sinn</marker></example>
+            </rule>
+            <rule id="FAOI_SIBH_FUIBH" name="faoi + sibh = fúibh">
+                <pattern>
+                    <marker>
+                        <token>faoi</token>
+                        <token>sibh</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>fúibh</suggestion> a scríobh.</message>
+                <example correction='fúibh'><marker>faoi sibh</marker></example>
+            </rule>
+            <rule id="FAOI_IAD_FUTHU" name="faoi + iad = fúthu">
+                <pattern>
+                    <marker>
+                        <token>faoi</token>
+                        <token regexp="yes">iad|siad</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>fúthu</suggestion> a scríobh.</message>
+                <example correction='fúthu'><marker>faoi iad</marker></example>
+            </rule>
+            <rule id="FAOI_MISE_FUMSA" name="faoi + mise = fúmsa">
+                <pattern>
+                    <marker>
+                        <token>faoi</token>
+                        <token>mise</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>fúmsa</suggestion> a scríobh.</message>
+                <example correction='fúmsa'><marker>faoi mise</marker></example>
+            </rule>
+            <rule id="FAOI_TUSA_FUTSA" name="faoi + tusa = fútsa">
+                <pattern>
+                    <marker>
+                        <token>faoi</token>
+                        <token regexp="yes">tusa|thusa</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>fútsa</suggestion> a scríobh.</message>
+                <example correction='fútsa'><marker>faoi tusa</marker></example>
+            </rule>
+            <rule id="FAOI_EISEAN_FAOISEAN" name="faoi + eisean = faoisean">
+                <pattern>
+                    <marker>
+                        <token>faoi</token>
+                        <token regexp="yes">eisean|seisean</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>faoisean</suggestion> a scríobh.</message>
+                <example correction='faoisean'><marker>faoi eisean</marker></example>
+            </rule>
+            <rule id="FAOI_ISE_FUITHISE" name="faoi + ise = fúithise">
+                <pattern>
+                    <marker>
+                        <token>faoi</token>
+                        <token regexp="yes">ise|sise</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>fúithise</suggestion> a scríobh.</message>
+                <example correction='fúithise'><marker>faoi ise</marker></example>
+            </rule>
+            <rule id="FAOI_SINNE_FUINNE" name="faoi + sinne = fúinne">
+                <pattern>
+                    <marker>
+                        <token>faoi</token>
+                        <token regexp="yes">sinne|muidne|muide</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>fúinne</suggestion> a scríobh.</message>
+                <example correction='fúinne'><marker>faoi sinne</marker></example>
+            </rule>
+            <rule id="FAOI_SIBHSE_FUIBHSE" name="faoi + sibhse = fúibhse">
+                <pattern>
+                    <marker>
+                        <token>faoi</token>
+                        <token>sibhse</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>fúibhse</suggestion> a scríobh.</message>
+                <example correction='fúibhse'><marker>faoi sibhse</marker></example>
+            </rule>
+            <rule id="FAOI_IADSAN_FUTHUSAN" name="faoi + iadsan = fúthusan">
+                <pattern>
+                    <marker>
+                        <token>faoi</token>
+                        <token regexp="yes">iadsan|siadsan</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>fúthusan</suggestion> a scríobh.</message>
+                <example correction='fúthusan'><marker>faoi iadsan</marker></example>
+            </rule>
+        </rulegroup>
+        <rulegroup id="UM_CONTRACTIONS" name="um Contractions">
+            <rule id="UM_ME_UMAM" name="um + mé = umam">
+                <pattern>
+                    <marker>
+                        <token>um</token>
+                        <token>mé</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>umam</suggestion> a scríobh.</message>
+                <example correction='umam'><marker>um mé</marker></example>
+            </rule>
+            <rule id="UM_TU_UMAT" name="um + tú = umat">
+                <pattern>
+                    <marker>
+                        <token>um</token>
+                        <token regexp="yes">tú|thú</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>umat</suggestion> a scríobh.</message>
+                <example correction='umat'><marker>um tú</marker></example>
+            </rule>
+            <rule id="UM_E_UIME" name="um + é = uime">
+                <pattern>
+                    <marker>
+                        <token>um</token>
+                        <token>é</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>uime</suggestion> a scríobh.</message>
+                <example correction='uime'><marker>um é</marker></example>
+            </rule>
+            <rule id="UM_I_UIMPI" name="um + í = uimpi">
+                <pattern>
+                    <marker>
+                        <token>um</token>
+                        <token regexp="yes">í|sí</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>uimpi</suggestion> a scríobh.</message>
+                <example correction='uimpi'><marker>um í</marker></example>
+            </rule>
+            <rule id="UM_SINN_UMAINN" name="um + sinn = umainn">
+                <pattern>
+                    <marker>
+                        <token>um</token>
+                        <token regexp="yes">sinn|muid</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>umainn</suggestion> a scríobh.</message>
+                <example correction='umainn'><marker>um sinn</marker></example>
+            </rule>
+            <rule id="UM_SIBH_UMAIBH" name="um + sibh = umaibh">
+                <pattern>
+                    <marker>
+                        <token>um</token>
+                        <token>sibh</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>umaibh</suggestion> a scríobh.</message>
+                <example correction='umaibh'><marker>um sibh</marker></example>
+            </rule>
+            <rule id="UM_IAD_UMPU" name="um + iad = umpu">
+                <pattern>
+                    <marker>
+                        <token>um</token>
+                        <token regexp="yes">iad|siad</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>umpu</suggestion> a scríobh.</message>
+                <example correction='umpu'><marker>um iad</marker></example>
+            </rule>
+            <rule id="UM_MISE_UMAMSA" name="um + mise = umamsa">
+                <pattern>
+                    <marker>
+                        <token>um</token>
+                        <token>mise</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>umamsa</suggestion> a scríobh.</message>
+                <example correction='umamsa'><marker>um mise</marker></example>
+            </rule>
+            <rule id="UM_TUSA_UMATSA" name="um + tusa = umatsa">
+                <pattern>
+                    <marker>
+                        <token>um</token>
+                        <token regexp="yes">tusa|thusa</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>umatsa</suggestion> a scríobh.</message>
+                <example correction='umatsa'><marker>um tusa</marker></example>
+            </rule>
+            <rule id="UM_EISEAN_UIMESEAN" name="um + eisean = uimesean">
+                <pattern>
+                    <marker>
+                        <token>um</token>
+                        <token regexp="yes">eisean|seisean</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>uimesean</suggestion> a scríobh.</message>
+                <example correction='uimesean'><marker>um eisean</marker></example>
+            </rule>
+            <rule id="UM_ISE_UIMPISE" name="um + ise = uimpise">
+                <pattern>
+                    <marker>
+                        <token>um</token>
+                        <token regexp="yes">ise|sise</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>uimpise</suggestion> a scríobh.</message>
+                <example correction='uimpise'><marker>um ise</marker></example>
+            </rule>
+            <rule id="UM_SINNE_UMAINNE" name="um + sinne = umainne">
+                <pattern>
+                    <marker>
+                        <token>um</token>
+                        <token regexp="yes">sinne|muidne|muide</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>umainne</suggestion> a scríobh.</message>
+                <example correction='umainne'><marker>um sinne</marker></example>
+            </rule>
+            <rule id="UM_SIBHSE_UMAIBHSE" name="um + sibhse = umaibhse">
+                <pattern>
+                    <marker>
+                        <token>um</token>
+                        <token>sibhse</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>umaibhse</suggestion> a scríobh.</message>
+                <example correction='umaibhse'><marker>um sibhse</marker></example>
+            </rule>
+            <rule id="UM_IADSAN_UMPUSAN" name="um + iadsan = umpusan">
+                <pattern>
+                    <marker>
+                        <token>um</token>
+                        <token regexp="yes">iadsan|siadsan</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>umpusan</suggestion> a scríobh.</message>
+                <example correction='umpusan'><marker>um iadsan</marker></example>
+            </rule>
+        </rulegroup>
+        <rulegroup id="THAR_CONTRACTIONS" name="thar Contractions">
+            <rule id="THAR_ME_THARAM" name="thar + mé = tharam">
+                <pattern>
+                    <marker>
+                        <token>thar</token>
+                        <token>mé</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>tharam</suggestion> a scríobh.</message>
+                <example correction='tharam'><marker>thar mé</marker></example>
+            </rule>
+            <rule id="THAR_TU_THARAT" name="thar + tú = tharat">
+                <pattern>
+                    <marker>
+                        <token>thar</token>
+                        <token regexp="yes">tú|thú</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>tharat</suggestion> a scríobh.</message>
+                <example correction='tharat'><marker>thar tú</marker></example>
+            </rule>
+            <rule id="THAR_E_THAIRIS" name="thar + é = thairis">
+                <pattern>
+                    <marker>
+                        <token>thar</token>
+                        <token>é</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>thairis</suggestion> a scríobh.</message>
+                <example correction='thairis'><marker>thar é</marker></example>
+            </rule>
+            <rule id="THAR_I_THAIRSTI" name="thar + í = thairsti">
+                <pattern>
+                    <marker>
+                        <token>thar</token>
+                        <token regexp="yes">í|sí</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>thairsti</suggestion> a scríobh.</message>
+                <example correction='thairsti'><marker>thar í</marker></example>
+            </rule>
+            <rule id="THAR_SINN_THARAINN" name="thar + sinn = tharainn">
+                <pattern>
+                    <marker>
+                        <token>thar</token>
+                        <token regexp="yes">sinn|muid</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>tharainn</suggestion> a scríobh.</message>
+                <example correction='tharainn'><marker>thar sinn</marker></example>
+            </rule>
+            <rule id="THAR_SIBH_THARAIBH" name="thar + sibh = tharaibh">
+                <pattern>
+                    <marker>
+                        <token>thar</token>
+                        <token>sibh</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>tharaibh</suggestion> a scríobh.</message>
+                <example correction='tharaibh'><marker>thar sibh</marker></example>
+            </rule>
+            <rule id="THAR_IAD_THARSTU" name="thar + iad = tharstu">
+                <pattern>
+                    <marker>
+                        <token>thar</token>
+                        <token regexp="yes">iad|siad</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>tharstu</suggestion> a scríobh.</message>
+                <example correction='tharstu'><marker>thar iad</marker></example>
+            </rule>
+            <rule id="THAR_MISE_THARAMSA" name="thar + mise = tharamsa">
+                <pattern>
+                    <marker>
+                        <token>thar</token>
+                        <token>mise</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>tharamsa</suggestion> a scríobh.</message>
+                <example correction='tharamsa'><marker>thar mise</marker></example>
+            </rule>
+            <rule id="THAR_TUSA_THARATSA" name="thar + tusa = tharatsa">
+                <pattern>
+                    <marker>
+                        <token>thar</token>
+                        <token regexp="yes">tusa|thusa</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>tharatsa</suggestion> a scríobh.</message>
+                <example correction='tharatsa'><marker>thar tusa</marker></example>
+            </rule>
+            <rule id="THAR_EISEAN_THAIRIS-SEAN" name="thar + eisean = thairis-sean">
+                <pattern>
+                    <marker>
+                        <token>thar</token>
+                        <token regexp="yes">eisean|seisean</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>thairis-sean</suggestion> a scríobh.</message>
+                <example correction='thairis-sean'><marker>thar eisean</marker></example>
+            </rule>
+            <rule id="THAR_ISE_THAIRSTISE" name="thar + ise = thairstise">
+                <pattern>
+                    <marker>
+                        <token>thar</token>
+                        <token regexp="yes">ise|sise</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>thairstise</suggestion> a scríobh.</message>
+                <example correction='thairstise'><marker>thar ise</marker></example>
+            </rule>
+            <rule id="THAR_SINNE_THARAINNE" name="thar + sinne = tharainne">
+                <pattern>
+                    <marker>
+                        <token>thar</token>
+                        <token regexp="yes">sinne|muidne|muide</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>tharainne</suggestion> a scríobh.</message>
+                <example correction='tharainne'><marker>thar sinne</marker></example>
+            </rule>
+            <rule id="THAR_SIBHSE_THARAIBHSE" name="thar + sibhse = tharaibhse">
+                <pattern>
+                    <marker>
+                        <token>thar</token>
+                        <token>sibhse</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>tharaibhse</suggestion> a scríobh.</message>
+                <example correction='tharaibhse'><marker>thar sibhse</marker></example>
+            </rule>
+            <rule id="THAR_IADSAN_THARSTUSAN" name="thar + iadsan = tharstusan">
+                <pattern>
+                    <marker>
+                        <token>thar</token>
+                        <token regexp="yes">iadsan|siadsan</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>tharstusan</suggestion> a scríobh.</message>
+                <example correction='tharstusan'><marker>thar iadsan</marker></example>
+            </rule>
+        </rulegroup>
+        <rulegroup id="IONSAR_CONTRACTIONS" name="ionsar Contractions">
+            <rule id="IONSAR_ME_IONSORM" name="ionsar + mé = ionsorm">
+                <pattern>
+                    <marker>
+                        <token>ionsar</token>
+                        <token>mé</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>ionsorm</suggestion> a scríobh.</message>
+                <example correction='ionsorm'><marker>ionsar mé</marker></example>
+            </rule>
+            <rule id="IONSAR_TU_IONSORT" name="ionsar + tú = ionsort">
+                <pattern>
+                    <marker>
+                        <token>ionsar</token>
+                        <token regexp="yes">tú|thú</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>ionsort</suggestion> a scríobh.</message>
+                <example correction='ionsort'><marker>ionsar tú</marker></example>
+            </rule>
+            <rule id="IONSAR_E_IONSAIR" name="ionsar + é = ionsair">
+                <pattern>
+                    <marker>
+                        <token>ionsar</token>
+                        <token>é</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>ionsair</suggestion> a scríobh.</message>
+                <example correction='ionsair'><marker>ionsar é</marker></example>
+            </rule>
+            <rule id="IONSAR_I_IONSUIRTHI" name="ionsar + í = ionsuirthi">
+                <pattern>
+                    <marker>
+                        <token>ionsar</token>
+                        <token regexp="yes">í|sí</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>ionsuirthi</suggestion> a scríobh.</message>
+                <example correction='ionsuirthi'><marker>ionsar í</marker></example>
+            </rule>
+            <rule id="IONSAR_SINN_IONSORAINN" name="ionsar + sinn = ionsorainn">
+                <pattern>
+                    <marker>
+                        <token>ionsar</token>
+                        <token regexp="yes">sinn|muid</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>ionsorainn</suggestion> a scríobh.</message>
+                <example correction='ionsorainn'><marker>ionsar sinn</marker></example>
+            </rule>
+            <rule id="IONSAR_SIBH_IONSORAIBH" name="ionsar + sibh = ionsoraibh">
+                <pattern>
+                    <marker>
+                        <token>ionsar</token>
+                        <token>sibh</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>ionsoraibh</suggestion> a scríobh.</message>
+                <example correction='ionsoraibh'><marker>ionsar sibh</marker></example>
+            </rule>
+            <rule id="IONSAR_IAD_IONSORTHU" name="ionsar + iad = ionsorthu">
+                <pattern>
+                    <marker>
+                        <token>ionsar</token>
+                        <token regexp="yes">iad|siad</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>ionsorthu</suggestion> a scríobh.</message>
+                <example correction='ionsorthu'><marker>ionsar iad</marker></example>
+            </rule>
+            <rule id="IONSAR_MISE_IONSORMSA" name="ionsar + mise = ionsormsa">
+                <pattern>
+                    <marker>
+                        <token>ionsar</token>
+                        <token>mise</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>ionsormsa</suggestion> a scríobh.</message>
+                <example correction='ionsormsa'><marker>ionsar mise</marker></example>
+            </rule>
+            <rule id="IONSAR_TUSA_IONSORTSA" name="ionsar + tusa = ionsortsa">
+                <pattern>
+                    <marker>
+                        <token>ionsar</token>
+                        <token regexp="yes">tusa|thusa</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>ionsortsa</suggestion> a scríobh.</message>
+                <example correction='ionsortsa'><marker>ionsar tusa</marker></example>
+            </rule>
+            <rule id="IONSAR_EISEAN_IONSAIRSEAN" name="ionsar + eisean = ionsairsean">
+                <pattern>
+                    <marker>
+                        <token>ionsar</token>
+                        <token regexp="yes">eisean|seisean</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>ionsairsean</suggestion> a scríobh.</message>
+                <example correction='ionsairsean'><marker>ionsar eisean</marker></example>
+            </rule>
+            <rule id="IONSAR_ISE_IONSUIRTHISE" name="ionsar + ise = ionsuirthise">
+                <pattern>
+                    <marker>
+                        <token>ionsar</token>
+                        <token regexp="yes">ise|sise</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>ionsuirthise</suggestion> a scríobh.</message>
+                <example correction='ionsuirthise'><marker>ionsar ise</marker></example>
+            </rule>
+            <rule id="IONSAR_SINNE_IONSORAINNE" name="ionsar + sinne = ionsorainne">
+                <pattern>
+                    <marker>
+                        <token>ionsar</token>
+                        <token regexp="yes">sinne|muidne|muide</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>ionsorainne</suggestion> a scríobh.</message>
+                <example correction='ionsorainne'><marker>ionsar sinne</marker></example>
+            </rule>
+            <rule id="IONSAR_SIBHSE_IONSORAIBHSE" name="ionsar + sibhse = ionsoraibhse">
+                <pattern>
+                    <marker>
+                        <token>ionsar</token>
+                        <token>sibhse</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>ionsoraibhse</suggestion> a scríobh.</message>
+                <example correction='ionsoraibhse'><marker>ionsar sibhse</marker></example>
+            </rule>
+            <rule id="IONSAR_IADSAN_IONSORTHUSAN" name="ionsar + iadsan = ionsorthusan">
+                <pattern>
+                    <marker>
+                        <token>ionsar</token>
+                        <token regexp="yes">iadsan|siadsan</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>ionsorthusan</suggestion> a scríobh.</message>
+                <example correction='ionsorthusan'><marker>ionsar iadsan</marker></example>
+            </rule>
+        </rulegroup>
+        <rulegroup id="ROIMH_CONTRACTIONS" name="roimh Contractions">
+            <rule id="ROIMH_ME_ROMHAM" name="roimh + mé = romham">
+                <pattern>
+                    <marker>
+                        <token>roimh</token>
+                        <token>mé</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>romham</suggestion> a scríobh.</message>
+                <example correction='romham'><marker>roimh mé</marker></example>
+            </rule>
+            <rule id="ROIMH_TU_ROMHAT" name="roimh + tú = romhat">
+                <pattern>
+                    <marker>
+                        <token>roimh</token>
+                        <token regexp="yes">tú|thú</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>romhat</suggestion> a scríobh.</message>
+                <example correction='romhat'><marker>roimh tú</marker></example>
+            </rule>
+            <rule id="ROIMH_E_ROIMHE" name="roimh + é = roimhe">
+                <pattern>
+                    <marker>
+                        <token>roimh</token>
+                        <token>é</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>roimhe</suggestion> a scríobh.</message>
+                <example correction='roimhe'><marker>roimh é</marker></example>
+            </rule>
+            <rule id="ROIMH_I_ROIMPI" name="roimh + í = roimpi">
+                <pattern>
+                    <marker>
+                        <token>roimh</token>
+                        <token regexp="yes">í|sí</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>roimpi</suggestion> a scríobh.</message>
+                <example correction='roimpi'><marker>roimh í</marker></example>
+            </rule>
+            <rule id="ROIMH_SINN_ROMHAINN" name="roimh + sinn = romhainn">
+                <pattern>
+                    <marker>
+                        <token>roimh</token>
+                        <token regexp="yes">sinn|muid</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>romhainn</suggestion> a scríobh.</message>
+                <example correction='romhainn'><marker>roimh sinn</marker></example>
+            </rule>
+            <rule id="ROIMH_SIBH_ROMHAIBH" name="roimh + sibh = romhaibh">
+                <pattern>
+                    <marker>
+                        <token>roimh</token>
+                        <token>sibh</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>romhaibh</suggestion> a scríobh.</message>
+                <example correction='romhaibh'><marker>roimh sibh</marker></example>
+            </rule>
+            <rule id="ROIMH_IAD_ROMPU" name="roimh + iad = rompu">
+                <pattern>
+                    <marker>
+                        <token>roimh</token>
+                        <token regexp="yes">iad|siad</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>rompu</suggestion> a scríobh.</message>
+                <example correction='rompu'><marker>roimh iad</marker></example>
+            </rule>
+            <rule id="ROIMH_MISE_ROMHAMSA" name="roimh + mise = romhamsa">
+                <pattern>
+                    <marker>
+                        <token>roimh</token>
+                        <token>mise</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>romhamsa</suggestion> a scríobh.</message>
+                <example correction='romhamsa'><marker>roimh mise</marker></example>
+            </rule>
+            <rule id="ROIMH_TUSA_ROMHATSA" name="roimh + tusa = romhatsa">
+                <pattern>
+                    <marker>
+                        <token>roimh</token>
+                        <token regexp="yes">tusa|thusa</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>romhatsa</suggestion> a scríobh.</message>
+                <example correction='romhatsa'><marker>roimh tusa</marker></example>
+            </rule>
+            <rule id="ROIMH_EISEAN_ROIMHESEAN" name="roimh + eisean = roimhesean">
+                <pattern>
+                    <marker>
+                        <token>roimh</token>
+                        <token regexp="yes">eisean|seisean</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>roimhesean</suggestion> a scríobh.</message>
+                <example correction='roimhesean'><marker>roimh eisean</marker></example>
+            </rule>
+            <rule id="ROIMH_ISE_ROIMPISE" name="roimh + ise = roimpise">
+                <pattern>
+                    <marker>
+                        <token>roimh</token>
+                        <token regexp="yes">ise|sise</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>roimpise</suggestion> a scríobh.</message>
+                <example correction='roimpise'><marker>roimh ise</marker></example>
+            </rule>
+            <rule id="ROIMH_SINNE_ROMHAINNE" name="roimh + sinne = romhainne">
+                <pattern>
+                    <marker>
+                        <token>roimh</token>
+                        <token regexp="yes">sinne|muidne|muide</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>romhainne</suggestion> a scríobh.</message>
+                <example correction='romhainne'><marker>roimh sinne</marker></example>
+            </rule>
+            <rule id="ROIMH_SIBHSE_ROMHAIBHSE" name="roimh + sibhse = romhaibhse">
+                <pattern>
+                    <marker>
+                        <token>roimh</token>
+                        <token>sibhse</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>romhaibhse</suggestion> a scríobh.</message>
+                <example correction='romhaibhse'><marker>roimh sibhse</marker></example>
+            </rule>
+            <rule id="ROIMH_IADSAN_ROMPUSAN" name="roimh + iadsan = rompusan">
+                <pattern>
+                    <marker>
+                        <token>roimh</token>
+                        <token regexp="yes">iadsan|siadsan</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>rompusan</suggestion> a scríobh.</message>
+                <example correction='rompusan'><marker>roimh iadsan</marker></example>
+            </rule>
+        </rulegroup>
+        <rulegroup id="CHUN_CONTRACTIONS" name="chun Contractions">
+            <rule id="CHUN_ME_CHUGAM" name="chun + mé = chugam">
+                <pattern>
+                    <marker>
+                        <token>chun</token>
+                        <token>mé</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>chugam</suggestion> a scríobh.</message>
+                <example correction='chugam'><marker>chun mé</marker></example>
+            </rule>
+            <rule id="CHUN_TU_CHUGAT" name="chun + tú = chugat">
+                <pattern>
+                    <marker>
+                        <token>chun</token>
+                        <token regexp="yes">tú|thú</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>chugat</suggestion> a scríobh.</message>
+                <example correction='chugat'><marker>chun tú</marker></example>
+            </rule>
+            <rule id="CHUN_E_CHUIGE" name="chun + é = chuige">
+                <pattern>
+                    <marker>
+                        <token>chun</token>
+                        <token>é</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>chuige</suggestion> a scríobh.</message>
+                <example correction='chuige'><marker>chun é</marker></example>
+            </rule>
+            <rule id="CHUN_I_CHUICI" name="chun + í = chuici">
+                <pattern>
+                    <marker>
+                        <token>chun</token>
+                        <token regexp="yes">í|sí</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>chuici</suggestion> a scríobh.</message>
+                <example correction='chuici'><marker>chun í</marker></example>
+            </rule>
+            <rule id="CHUN_SINN_CHUGAINN" name="chun + sinn = chugainn">
+                <pattern>
+                    <marker>
+                        <token>chun</token>
+                        <token regexp="yes">sinn|muid</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>chugainn</suggestion> a scríobh.</message>
+                <example correction='chugainn'><marker>chun sinn</marker></example>
+            </rule>
+            <rule id="CHUN_SIBH_CHUGHAIBH" name="chun + sibh = chughaibh">
+                <pattern>
+                    <marker>
+                        <token>chun</token>
+                        <token>sibh</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>chughaibh</suggestion> a scríobh.</message>
+                <example correction='chughaibh'><marker>chun sibh</marker></example>
+            </rule>
+            <rule id="CHUN_IAD_CHUCU" name="chun + iad = chucu">
+                <pattern>
+                    <marker>
+                        <token>chun</token>
+                        <token regexp="yes">iad|siad</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>chucu</suggestion> a scríobh.</message>
+                <example correction='chucu'><marker>chun iad</marker></example>
+            </rule>
+            <rule id="CHUN_MISE_CHUGAMSA" name="chun + mise = chugamsa">
+                <pattern>
+                    <marker>
+                        <token>chun</token>
+                        <token>mise</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>chugamsa</suggestion> a scríobh.</message>
+                <example correction='chugamsa'><marker>chun mise</marker></example>
+            </rule>
+            <rule id="CHUN_TUSA_CHUGATSA" name="chun + tusa = chugatsa">
+                <pattern>
+                    <marker>
+                        <token>chun</token>
+                        <token regexp="yes">tusa|thusa</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>chugatsa</suggestion> a scríobh.</message>
+                <example correction='chugatsa'><marker>chun tusa</marker></example>
+            </rule>
+            <rule id="CHUN_EISEAN_CHUIGESEAN" name="chun + eisean = chuigesean">
+                <pattern>
+                    <marker>
+                        <token>chun</token>
+                        <token regexp="yes">eisean|seisean</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>chuigesean</suggestion> a scríobh.</message>
+                <example correction='chuigesean'><marker>chun eisean</marker></example>
+            </rule>
+            <rule id="CHUN_ISE_CHUICISE" name="chun + ise = chuicise">
+                <pattern>
+                    <marker>
+                        <token>chun</token>
+                        <token regexp="yes">ise|sise</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>chuicise</suggestion> a scríobh.</message>
+                <example correction='chuicise'><marker>chun ise</marker></example>
+            </rule>
+            <rule id="CHUN_SINNE_CHUGAINNE" name="chun + sinne = chugainne">
+                <pattern>
+                    <marker>
+                        <token>chun</token>
+                        <token regexp="yes">sinne|muidne|muide</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>chugainne</suggestion> a scríobh.</message>
+                <example correction='chugainne'><marker>chun sinne</marker></example>
+            </rule>
+            <rule id="CHUN_SIBHSE_CHUGHAIBHSE" name="chun + sibhse = chughaibhse">
+                <pattern>
+                    <marker>
+                        <token>chun</token>
+                        <token>sibhse</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>chughaibhse</suggestion> a scríobh.</message>
+                <example correction='chughaibhse'><marker>chun sibhse</marker></example>
+            </rule>
+            <rule id="CHUN_IADSAN_CHUCUSAN" name="chun + iadsan = chucusan">
+                <pattern>
+                    <marker>
+                        <token>chun</token>
+                        <token regexp="yes">iadsan|siadsan</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>chucusan</suggestion> a scríobh.</message>
+                <example correction='chucusan'><marker>chun iadsan</marker></example>
+            </rule>
+        </rulegroup>
     </category>
     <category id="SYNTAX" name="syntactical errors" type="grammar">
         <rulegroup id="VBPERS_PRN" name="Personal verb + pronoun">
@@ -431,7 +2712,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 </marker>
             </pattern>
             <message>An <suggestion>ndóigh</suggestion> a bhí i gceist agat?</message>
-	    <!-- http://www.feasta.ie/bunus/cartlann.html -->
+            <!-- http://www.feasta.ie/bunus/cartlann.html -->
             <example correction="ndóigh">Ar <marker>ndoigh</marker>, tá athruithe as cuimsetagtha ar an saol i gcoitinne.</example>
         </rule>
         <rule id="GO_BRACH" name="go brách">
@@ -442,7 +2723,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 </marker>
             </pattern>
             <message>An <suggestion>brách</suggestion> a bhí i gceist agat?</message>
-	    <!-- http://www.rte.ie/news/nuacht/2015/1209/752352-comhairleoir-ag-machnamh-faoi-dhli-a-chur-ar-rte/ -->
+            <!-- http://www.rte.ie/news/nuacht/2015/1209/752352-comhairleoir-ag-machnamh-faoi-dhli-a-chur-ar-rte/ -->
             <example correction="brách">Dúirt Queenan go ndúirt sé rudaí ag an gcomhra úd nach ndéarfadh sé go <marker>brach</marker> arís ach nach raibh aon ní as bealach déanta aige.</example>
         </rule>
         <rule id="TAR_EIS" name="tar eis">
@@ -453,7 +2734,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                  </marker>
             </pattern>
             <message>An <suggestion>éis</suggestion> a bhí i gceist agat?</message>
-	    <!-- http://www.beo.ie/alt-an-11u-mean-fomhair-2001-deich-mbliana-dar-gcion.aspx -->
+            <!-- http://www.beo.ie/alt-an-11u-mean-fomhair-2001-deich-mbliana-dar-gcion.aspx -->
             <example correction="éis">Bhíothas ag fógairt go raibh eitleán tar <marker>eis</marker> dochar a dhéanamh d&apos;fhoirgneamh i Nua-Eabhrac.</example>
         </rule>
         <rulegroup id="CEAD_MILE_FAILTE" name="céad míle fáilte">
@@ -499,9 +2780,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                  </marker>
             </pattern>
             <message>An <suggestion>róshásta</suggestion> a bhí i gceist agat?</message>
-                <example correction="róshásta"><marker>ró shásta</marker></example>
-            </rule>
-     </category>
+            <example correction="róshásta"><marker>ró shásta</marker></example>
+        </rule>
+    </category>
     <category id="FOGHRAIOCHTA" name="Phonetic errors: all" type="misspelling">
         <rulegroup id="SAMH_SABH" name="sámh/sábh">
             <rule id="CODAIL_SABH" name="codail sábh">
@@ -1946,14 +4227,15 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <message>Foirm neamhchaighdeánach de <suggestion>murab</suggestion></message>
             <example correction="murab"><marker>murab'</marker></example>
         </rule>
-	<rule id="I_N" name="i n'"><!-- check -->
+        <rule id="I_N" name="i n'">
             <pattern>
                     <token regexp="yes">i|le</token>
                     <token>n</token>
                     <token regexp="yes" spacebefore="no">&apost;</token>
             </pattern>
-            <message>Foirm neamhchaighdeánach de <suggestion>ina</suggestion></message>
+            <message>Foirm neamhchaighdeánach de <suggestion><match no="1" regexp_match="(i|le)" regexp_replace="$1na"/></suggestion></message>
             <example correction="ina"><marker>i n'</marker></example>
+            <example correction="lena"><marker>le n'</marker></example>
         </rule>
         <rule id="N_INA" name="'n'">
             <pattern>
@@ -2569,10 +4851,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                         <token>roimhe</token>
                     </marker>
                     <token>an</token>
-                    <token postag="UNKNOWN" regexp="yes">[aeiouáéíóú].*|s[lnraeiouáéíóúh].*|bhf|[bcfgmp][^h]</token>
+                    <token postag="UNKNOWN" regexp="yes">(?:[aeiouáéíóú]|s[lnraeiouáéíóúh]|bhf|[bcfgmp][^h]).*</token>
                 </pattern>
                 <message>Foirm neamhchaighdeánach de <suggestion>roimh</suggestion></message>
                 <example correction="roimh"><marker>roimhe</marker> an slibbity</example>
+                <example correction="roimh"><marker>roimhe</marker> an bhfoobar</example>
             </rule>
         </rulegroup>
         <rule id="AN_MOGHA" name="an mogha">
@@ -4828,7 +7111,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rule>
         <rule id="FAILEACH" name="Fáileach">
             <antipattern>
-                <token>Fianna</token>
+                <token regexp="yes">(?:bhF|Fh|F)ianna</token>
                 <token>Fáileach</token>
             </antipattern>
             <pattern>
@@ -4886,7 +7169,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rule>
         <rule id="FEINEACH" name="Féineach">
             <antipattern>
-                <token>Sinn</token>
+                <token regexp="yes">Sh?inn</token>
                 <token>Féineach</token>
             </antipattern>
             <pattern>
@@ -4897,7 +7180,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rule>
         <rule id="FEIRSTEACH" name="Feirsteach">
             <antipattern>
-                <token>Béal</token>
+                <token regexp="yes">(?:mB|Bh|B)éal</token>
                 <token>Feirsteach</token>
             </antipattern>
             <pattern>
@@ -5857,6 +8140,1499 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             </pattern>
             <message>Ní úsáidtear an focal seo ach san abairtín “go treis, sa treis” de ghnáth</message>
             <example correction=""><marker>treis</marker></example>
+        </rule>
+    </category>
+    <category id="GRAMADOIR_UIMHREACHA" name="Ba chóir" type="grammar">
+        <rule id="TRI_UAIRE" name="trí uaire">
+            <pattern>
+                <token regexp="yes">trí|(?:gc|ch|c)eithre|(?:gc|ch|c)úig|sé</token>
+                <marker>
+                    <token regexp="yes">uaire?</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>huaire</suggestion> a scríobh.</message>
+            <example correction='huaire'>trí <marker>uaire</marker> ó shin</example>
+        </rule>
+        <rule id="SEACHT_MBLIAIN" name="seach mbliain">
+            <pattern>
+                <token regexp="yes">sh?eacht|h?ocht|n?dh?eich</token>
+                <marker>
+                    <token>mbliain</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>mbliana</suggestion> a scríobh.</message>
+            <example correction='mbliana'>seacht <marker>mbliain</marker> ó shin</example>
+        </rule>
+        <rule id="SEACHT_GCEANN" name="seach gceann">
+            <pattern>
+                <token regexp="yes">sh?eacht|h?ocht|n?dh?eich</token>
+                <marker>
+                    <token>gceann</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>gcinn</suggestion> a scríobh.</message>
+            <example correction='gcinn'>seacht <marker>gceann</marker></example>
+        </rule>
+        <rule id="SEACHT_GCLOIGEANN" name="seacht gcloigeann">
+            <pattern>
+                <token regexp="yes">sh?eacht|h?ocht|n?dh?eich</token>
+                <marker>
+                    <token>gcloigeann</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>gcloigne</suggestion> a scríobh.</message>
+            <example correction='gcloigne'>seacht <marker>gcloigeann</marker></example>
+        </rule>
+        <rule id="SEACHT_GCUAIRT" name="seacht gcuairt">
+            <pattern>
+                <token regexp="yes">sh?eacht|h?ocht|n?dh?eich</token>
+                <marker>
+                    <token>gcuairt</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>gcuarta</suggestion> a scríobh.</message>
+            <example correction='gcuarta'>seacht <marker>gcuairt</marker></example>
+        </rule>
+        <rule id="SEACHT_BHFICHE" name="seacht bhfiche">
+            <pattern>
+                <token regexp="yes">sh?eacht|h?ocht|n?dh?eich</token>
+                <marker>
+                    <token>bhfiche</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>bhfichid</suggestion> a scríobh.</message>
+            <example correction='bhfichid'>seacht <marker>bhfiche</marker></example>
+        </rule>
+        <rule id="SEACHT_N-ORLACH" name="seacht n-orlach">
+            <pattern>
+                <token regexp="yes">sh?eacht|h?ocht|n?dh?eich</token>
+                <marker>
+                    <token>n-orlach</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>n-orlaí</suggestion> a scríobh.</message>
+            <example correction='n-orlaí'>seacht <marker>n-orlach</marker></example>
+        </rule>
+        <rule id="SEACHT_BPINGIN" name="seacht bpingin">
+            <pattern>
+                <token regexp="yes">sh?eacht|h?ocht|n?dh?eich</token>
+                <marker>
+                    <token>bpingin</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>bpingine</suggestion> a scríobh.</message>
+            <example correction='bpingine'>seacht <marker>bpingin</marker></example>
+        </rule>
+        <rule id="SEACHT_SCILLING" name="seacht scilling">
+            <pattern>
+                <token regexp="yes">sh?eacht|h?ocht|n?dh?eich</token>
+                <marker>
+                    <token>scilling</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>scillinge</suggestion> a scríobh.</message>
+            <example correction='scillinge'>seacht <marker>scilling</marker></example>
+        </rule>
+        <rule id="SEACHT_SEACHTAIN" name="seacht seachtain">
+            <pattern>
+                <token regexp="yes">sh?eacht|h?ocht|n?dh?eich</token>
+                <marker>
+                    <token>seachtain</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>seachtaine</suggestion> a scríobh.</message>
+            <example correction='seachtaine'>seacht <marker>seachtain</marker></example>
+        </rule>
+        <rule id="SEACHT_DTROIGH" name="seacht dtroigh">
+            <pattern>
+                <token regexp="yes">sh?eacht|h?ocht|n?dh?eich</token>
+                <marker>
+                    <token>dtroigh</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>dtroithe</suggestion> a scríobh.</message>
+            <example correction='dtroithe'>seacht <marker>dtroigh</marker></example>
+        </rule>
+        <rule id="SEACHT_N-UBH" name="seacht n-ubh">
+            <pattern>
+                <token regexp="yes">sh?eacht|h?ocht|n?dh?eich</token>
+                <marker>
+                    <token>n-ubh</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>n-uibhe</suggestion> a scríobh.</message>
+            <example correction='n-uibhe'>seacht <marker>n-ubh</marker></example>
+        </rule>
+        <rule id="SEACHT_N-UAIR" name="seacht n-uair">
+            <pattern>
+                <token regexp="yes">sh?eacht|h?ocht|n?dh?eich</token>
+                <marker>
+                    <token>n-uair</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>n-uaire</suggestion> a scríobh.</message>
+            <example correction='n-uaire'>seacht <marker>n-uair</marker></example>
+        </rule>
+        <rule id="CÚIG_BHLIAIN" name="cúig bhliain">
+            <pattern>
+                <token regexp="yes">(gc|ch|c)(úig|eithre)|sh?é</token>
+                <marker>
+                    <token>bhliain</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>bliana</suggestion> a scríobh.</message>
+            <example correction='bliana'>cúig <marker>bhliain</marker></example>
+        </rule>
+        <rule id="CÚIG_CHEANN" name="cúig cheann">
+            <pattern>
+                <token regexp="yes">(gc|ch|c)(úig|eithre)|sh?é</token>
+                <marker>
+                    <token>cheann</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>cinn</suggestion> a scríobh.</message>
+            <example correction='cinn'>cúig <marker>cheann</marker></example>
+        </rule>
+        <rule id="CÚIG_CHLOIGEANN" name="cúig chloigeann">
+            <pattern>
+                <token regexp="yes">(gc|ch|c)(úig|eithre)|sh?é</token>
+                <marker>
+                    <token>chloigeann</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>cloigne</suggestion> a scríobh.</message>
+            <example correction='cloigne'>cúig <marker>chloigeann</marker></example>
+        </rule>
+        <rule id="CÚIG_CHUAIRT" name="cúig chuairt">
+            <pattern>
+                <token regexp="yes">(gc|ch|c)(úig|eithre)|sh?é</token>
+                <marker>
+                    <token>chuairt</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>cuarta</suggestion> a scríobh.</message>
+            <example correction='cuarta'>cúig <marker>chuairt</marker></example>
+        </rule>
+        <rule id="CÚIG_FHICHE" name="cúig fhiche">
+            <pattern>
+                <token regexp="yes">(gc|ch|c)(úig|eithre)|sh?é</token>
+                <marker>
+                    <token>fhiche</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>fichid</suggestion> a scríobh.</message>
+            <example correction='fichid'>cúig <marker>fhiche</marker></example>
+        </rule>
+        <rule id="CÚIG_ORLACH" name="cúig orlach">
+            <pattern>
+                <token regexp="yes">(gc|ch|c)(úig|eithre)|sh?é</token>
+                <marker>
+                    <token>orlach</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>horlaí</suggestion> a scríobh.</message>
+            <example correction='horlaí'>cúig <marker>orlach</marker></example>
+        </rule>
+        <rule id="CÚIG_PHINGIN" name="cúig phingin">
+            <pattern>
+                <token regexp="yes">(gc|ch|c)(úig|eithre)|sh?é</token>
+                <marker>
+                    <token>phingin</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>pingine</suggestion> a scríobh.</message>
+            <example correction='pingine'>cúig <marker>phingin</marker></example>
+        </rule>
+        <rule id="CÚIG_SCILLING" name="cúig scilling">
+            <pattern>
+                <token regexp="yes">(gc|ch|c)(úig|eithre)|sh?é</token>
+                <marker>
+                    <token>scilling</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>scillinge</suggestion> a scríobh.</message>
+            <example correction='scillinge'>cúig <marker>scilling</marker></example>
+        </rule>
+        <rule id="CÚIG_SHEACHTAIN" name="cúig sheachtain">
+            <pattern>
+                <token regexp="yes">(gc|ch|c)(úig|eithre)|sh?é</token>
+                <marker>
+                    <token>sheachtain</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>seachtaine</suggestion> a scríobh.</message>
+            <example correction='seachtaine'>cúig <marker>sheachtain</marker></example>
+        </rule>
+        <rule id="CÚIG_THROIGH" name="cúig throigh">
+            <pattern>
+                <token regexp="yes">(gc|ch|c)(úig|eithre)|sh?é</token>
+                <marker>
+                    <token>throigh</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>troithe</suggestion> a scríobh.</message>
+            <example correction='troithe'>cúig <marker>throigh</marker></example>
+        </rule>
+        <rule id="CÚIG_UBH" name="cúig ubh">
+            <pattern>
+                <token regexp="yes">(gc|ch|c)(úig|eithre)|sh?é</token>
+                <marker>
+                    <token>ubh</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>uibhe</suggestion> a scríobh.</message>
+            <example correction='uibhe'>cúig <marker>ubh</marker></example>
+        </rule>
+        <rule id="TRI_BHLIANA" name="trí bhliana">
+            <pattern>
+                <token regexp="yes">d?trí</token>
+                <marker>
+                    <token regexp="yes">bhliana|chinn|chloigne|chuarta|fhichid|phingine|sheachtaine|throithe</token>
+                </marker>
+            </pattern>
+            <message>Séimhiú gan ghá: <suggestion><match no="2" regexp_match="([bcfpst])h(.*)" regexp_replace="$1$2"/></suggestion></message>
+            <example correction='bliana'>trí <marker>bhliana</marker></example>
+        </rule>
+        <rule id="THRI_BHLIANA" name="trí bhliana">
+            <pattern>
+                <token>thrí</token>
+                <marker>
+                    <token regexp="yes">bhliana|chinn|chloigne|chuarta|fhichid|phingine|sheachtaine|throithe</token>
+                </marker>
+            </pattern>
+            <message>Ní gá leis an dara séimhiú: <suggestion><match no="2" regexp_match="([bcfpst])h(.*)" regexp_replace="$1$2"/></suggestion></message>
+            <example correction='bliana'>thrí <marker>bhliana</marker></example>
+        </rule>
+        <rule id="DÁ_BHLIANA" name="dá bhliana">
+            <pattern>
+                <token regexp="yes">dh?á</token>
+                <marker>
+                    <token>bhliana</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>bhliain</suggestion> a scríobh.</message>
+            <example correction='bhliain'>dá <marker>bhliana</marker></example>
+        </rule>
+        <rule id="DÁ_CHINN" name="dá chinn">
+            <pattern>
+                <token regexp="yes">dh?á</token>
+                <marker>
+                    <token>chinn</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>cheann</suggestion> a scríobh.</message>
+            <example correction='cheann'>dá <marker>chinn</marker></example>
+        </rule>
+        <rule id="DÁ_CHLOIGNE" name="dá chloigne">
+            <pattern>
+                <token regexp="yes">dh?á</token>
+                <marker>
+                    <token>chloigne</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>chloigeann</suggestion> a scríobh.</message>
+            <example correction='chloigeann'>dá <marker>chloigne</marker></example>
+        </rule>
+        <rule id="DÁ_FHICHID" name="dá fhichid">
+            <pattern>
+                <token regexp="yes">dh?á</token>
+                <marker>
+                    <token>fhichid</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>fhichead</suggestion> a scríobh.</message>
+            <example correction='fhichead'>dá <marker>fhichid</marker></example>
+        </rule>
+        <rule id="DÁ_THROITHE" name="dá throithe">
+            <pattern>
+                <token regexp="yes">dh?á</token>
+                <marker>
+                    <token>throithe</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>throigh</suggestion> a scríobh.</message>
+            <example correction='throigh'>dá <marker>throithe</marker></example>
+        </rule>
+        <rule id="DÁ_PHINGINE" name="dá phingine">
+            <pattern>
+                <token regexp="yes">dh?á</token>
+                <marker>
+                    <token>phingine</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>phingin</suggestion> a scríobh.</message>
+            <example correction='phingin'>dá <marker>phingine</marker></example>
+        </rule>
+        <rule id="DÁ_SCILLINGE" name="dá scillinge">
+            <pattern>
+                <token regexp="yes">dh?á</token>
+                <marker>
+                    <token>scillinge</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>scilling</suggestion> a scríobh.</message>
+            <example correction='scilling'>dá <marker>scillinge</marker></example>
+        </rule>
+        <rule id="DÁ_SHEACHTAINE" name="dá sheachtaine">
+            <pattern>
+                <token regexp="yes">dh?á</token>
+                <marker>
+                    <token>sheachtaine</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>sheachtain</suggestion> a scríobh.</message>
+            <example correction='sheachtain'>dá <marker>sheachtaine</marker></example>
+        </rule>
+        <rule id="DÁ_UIBHE" name="dá uibhe">
+            <pattern>
+                <token regexp="yes">dh?á</token>
+                <marker>
+                    <token>uibhe</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>ubh</suggestion> a scríobh.</message>
+            <example correction='ubh'>dá <marker>uibhe</marker></example>
+        </rule>
+        <rule id="DÁ_HUAIRE" name="dá huaire">
+            <pattern>
+                <token regexp="yes">dh?á</token>
+                <marker>
+                    <token regexp="yes">h?uaire</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>uair</suggestion> a scríobh.</message>
+            <example correction='uair'>dá <marker>huaire</marker></example>
+        </rule>
+        <rule id="DÁ_HORLAÍ" name="dá horlaí">
+            <pattern>
+                <token regexp="yes">dh?á</token>
+                <marker>
+                    <token regexp="yes">h?orlaí</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>orlach</suggestion> a scríobh.</message>
+            <example correction='orlach'>dá <marker>horlaí</marker></example>
+        </rule>
+        <rule id="DÁ_MBOS" name="dá mbos">
+            <pattern>
+                <token regexp="yes">dh?á</token>
+                <marker>
+                    <token regexp="yes">m?bh?os</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>bhois</suggestion> a scríobh.</message>
+            <example correction='bhois'>dá <marker>mbos</marker></example>
+        </rule>
+        <rule id="DÁ_MBRÓG" name="dá mbróg">
+            <pattern>
+                <token regexp="yes">dh?á</token>
+                <marker>
+                    <token regexp="yes">m?bh?róg</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>bhróig</suggestion> a scríobh.</message>
+            <example correction='bhróig'>dá <marker>mbróg</marker></example>
+        </rule>
+        <rule id="DÁ_GCLUAS" name="dá gcluas">
+            <pattern>
+                <token regexp="yes">dh?á</token>
+                <marker>
+                    <token regexp="yes">g?ch?luas</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>chluais</suggestion> a scríobh.</message>
+            <example correction='chluais'>dá <marker>gcluas</marker></example>
+        </rule>
+        <rule id="DÁ_GCOS" name="dá gcos">
+            <pattern>
+                <token regexp="yes">dh?á</token>
+                <marker>
+                    <token regexp="yes">g?ch?os</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>chois</suggestion> a scríobh.</message>
+            <example correction='chois'>dá <marker>gcos</marker></example>
+        </rule>
+        <rule id="DÁ_LÁMH" name="dá lámh">
+            <pattern>
+                <token regexp="yes">dh?á</token>
+                <marker>
+                    <token>lámh</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>láimh</suggestion> a scríobh.</message>
+            <example correction='láimh'>dá <marker>lámh</marker></example>
+        </rule>
+    </category>
+    <category id="SEIMHIU" name="Séimhiú ar iarraidh" type="grammar">
+        <rule id="AMHAIL_AN_MBEAN" name="amhail an mbean">
+            <pattern>
+                <token>amhail</token>
+                <token>an</token>
+                <marker>
+                    <token postag="(?:C[UMC]:)?Noun:Fem:Com:Sg:Ecl" postag_regexp="yes"></token>
+                </marker>
+            </pattern>
+            <message>Séimhiú ar iarraidh: <suggestion><match no="3" postag="(.*)(:Ecl)" postag_regexp="yes" postag_replace="$1:DefArt"/></suggestion></message>
+            <example correction='bhean'>amhail an <marker>mbean</marker></example>
+        </rule>
+        <rule id="CUIG_NUNLENITED" name="cúig NOUN-unlenited">
+            <pattern>
+                <token regexp="yes">g?ch?úig</token>
+                <marker>
+                    <token postag=".*Noun.*" postag_regexp="yes"><exception postag=".*:Len" postag_regexp="yes"/></token>
+                </marker>
+            </pattern>
+            <message>Séimhiú ar iarraidh: <suggestion><match no="2" postag="([^:]*):(.*)" postag_regexp="yes" postag_replace="$1:$2:Len"/></suggestion></message>
+            <example correction='pháirtí'>cúig <marker>páirtí</marker></example>
+            <example>cúig pháirtí</example>
+        </rule>
+        <rule id="CUIG_N_ADJ" name="cúig NOUN ADJ">
+            <pattern>
+                <token regexp="yes">g?ch?úig</token>
+                <token postag=".*Noun.*" postag_regexp="yes"></token>
+                <marker>
+                    <token postag="Adj:.*" postag_regexp="yes"><exception postag=".*:Len" postag_regexp="yes"/></token>
+                </marker>
+            </pattern>
+            <message>Séimhiú ar iarraidh: <suggestion><match no="3" postag="([^:]*):(.*)" postag_regexp="yes" postag_replace="$1:$2:Len"/></suggestion></message>
+            <example correction='mhóra'>cúig pháirtí <marker>móra</marker></example>
+            <example>cúig pháirtí mhóra</example>
+        </rule>
+        <rule id="CUIG_N_DEAG_ADJ" name="cúig NOUN déag ADJ">
+            <pattern>
+                <token regexp="yes">g?ch?úig</token>
+                <token postag=".*Noun.*" postag_regexp="yes"></token>
+                <token regexp="yes">dh?éag</token>
+                <marker>
+                    <token postag="Adj:.*" postag_regexp="yes"><exception postag=".*:Len" postag_regexp="yes"/></token>
+                </marker>
+            </pattern>
+            <message>Séimhiú ar iarraidh: <suggestion><match no="4" regexp_match="([bcdfgmpst])(.*)" regexp_replace="$1h$2"/></suggestion></message>
+            <example correction='mhóra'>cúig pháirtí déag <marker>móra</marker></example>
+            <example>cúig pháirtí déag mhóra</example>
+        </rule>
+        <rule id="AB_UNLENITEDF" name="ab Unlenited-F">
+            <pattern>
+                <token postag="Cop.*" postag_regexp="yes">ab</token>
+                <marker>
+                    <token regexp="yes">f[aeiouáéíóú].*</token>
+                </marker>
+            </pattern>
+            <message>Séimhiú ar iarraidh: <suggestion><match no="2" regexp_match="([f])(.*)" regexp_replace="$1h$2"/></suggestion></message>
+            <example correction='fhearr'>ab <marker>fearr</marker></example>
+        </rule>
+        <rule id="AG_FAIL_BAIS" name="ag fáil báis">
+            <pattern>
+                <token>ag</token>
+                <token>fáil</token>
+                <marker>
+                    <token regexp="yes">bái?s</token>
+                </marker>
+            </pattern>
+            <message>Séimhiú ar iarraidh: <suggestion>bháis</suggestion></message>
+            <example correction='bháis'>ag fáil <marker>báis</marker></example>
+        </rule>
+        <rule id="AG_GABHAIL_FOINN" name="ag gabháil foinn">
+            <pattern>
+                <token>ag</token>
+                <token>gabháil</token>
+                <marker>
+                    <token>foinn</token>
+                </marker>
+            </pattern>
+            <message>Séimhiú ar iarraidh: <suggestion>fhoinn</suggestion></message>
+            <example correction='fhoinn'>ag gabháil <marker>foinn</marker></example>
+        </rule>
+        <rule id="AG_GABHAIL_CEOIL" name="ag gabháil ceoil">
+            <pattern>
+                <token>ag</token>
+                <token>gabháil</token>
+                <marker>
+                    <token>ceoil</token>
+                </marker>
+            </pattern>
+            <message>Séimhiú ar iarraidh: <suggestion>cheoil</suggestion></message>
+            <example correction='cheoil'>ag gabháil <marker>ceoil</marker></example>
+        </rule>
+        <rule id="ADHARC_DUIGH" name="adharc dúigh">
+            <pattern>
+                <token>adharc</token>
+                <marker>
+                    <token>dúigh</token>
+                </marker>
+            </pattern>
+            <message>Séimhiú ar iarraidh: <suggestion>dhúigh</suggestion></message>
+            <example correction='dhúigh'>adharc <marker>dúigh</marker></example>
+        </rule>
+        <rule id="ADHARC_PUDAIR" name="adharc púdair">
+            <pattern>
+                <token>adharc</token>
+                <marker>
+                    <token>púdair</token>
+                </marker>
+            </pattern>
+            <message>Séimhiú ar iarraidh: <suggestion>phúdair</suggestion></message>
+            <example correction='phúdair'>adharc <marker>púdair</marker></example>
+        </rule>
+        <rule id="GACH_UILE_N" name="gach uile NOUN-unlenited">
+            <pattern>
+                <token>gach</token>
+                <token>uile</token>
+                <marker>
+                    <token postag=".*Noun.*" postag_regexp="yes"><exception postag=".*:Len" postag_regexp="yes"/></token>
+                </marker>
+            </pattern>
+            <message>Séimhiú ar iarraidh: <suggestion><match no="3" postag="([^:]*):(.*)" postag_regexp="yes" postag_replace="$1:$2:Len"/></suggestion></message>
+            <example correction='bhean'>gach uile <marker>bean</marker></example>
+        </rule>
+        <!-- replace rule should suggest 'gach uile' for 'chuile', but it still needs a séimhiú -->
+        <rule id="CHUILE_N" name="chuile NOUN-unlenited">
+            <pattern>
+                <token>chuile</token>
+                <marker>
+                    <token postag=".*Noun.*" postag_regexp="yes"><exception postag=".*:Len" postag_regexp="yes"/></token>
+                </marker>
+            </pattern>
+            <message>Séimhiú ar iarraidh: <suggestion><match no="2" postag="([^:]*):(.*)" postag_regexp="yes" postag_replace="$1:$2:Len"/></suggestion></message>
+            <example correction='bhean'>chuile <marker>bean</marker></example>
+        </rule>
+        <rule id="GACH_UILE_DUINE" name="gach uile duine">
+            <pattern>
+                <token>gach</token>
+                <token>uile</token>
+                <marker>
+                    <token>duine</token>
+                </marker>
+            </pattern>
+            <message>Séimhiú ar iarraidh: <suggestion>dhuine</suggestion></message>
+            <example correction='dhuine'>gach uile <marker>duine</marker></example>
+        </rule>
+        <rule id="CHUILE_DUINE" name="chuile duine">
+            <pattern>
+                <token>chuile</token>
+                <marker>
+                    <token>duine</token>
+                </marker>
+            </pattern>
+            <message>Séimhiú ar iarraidh: <suggestion>dhuine</suggestion></message>
+            <example correction='dhuine'>chuile <marker>duine</marker></example>
+        </rule>
+        <rule id="CILL_MANTAIN" name="Cill Mantáin">
+            <pattern>
+                <token regexp="yes">(?:gC|Ch|C)ill</token>
+                <marker>
+                    <token>Mantáin</token>
+                </marker>
+            </pattern>
+            <message>Séimhiú ar iarraidh: <suggestion>Mhantáin</suggestion></message>
+            <example correction='Mhantáin'>Cill <marker>Mantáin</marker></example>
+        </rule>
+        <rule id="TRI_NOUN" name="trí NOUN">
+            <antipattern>
+                <token regexp="yes">(?:dt|th|t)rí</token>
+                <token regexp="yes">bliana|cinn|cloigne|cuarta|fichid|pingine|seachtaine|troithe</token>
+            </antipattern>
+            <pattern>
+                <token regexp="yes">(?:dt|th|t)rí</token>
+                <marker>
+                    <token postag=".*Noun.*" postag_regexp="yes"><exception postag=".*:Len" postag_regexp="yes"/></token>
+                </marker>
+            </pattern>
+            <message>Séimhiú ar iarraidh: <suggestion><match no="2" postag="([^:]*):(.*)" postag_regexp="yes" postag_replace="$1:$2:Len"/></suggestion></message>
+            <example correction='thine'>trí <marker>tine</marker></example>
+            <example>trí fichid</example>
+        </rule>
+    </category>
+    <category id="GRAMADOIR_BACHOIR" name="Ba chóir">
+        <rule id="NA_NUASAL" name="na n-uasal">
+            <pattern>
+                <token>na</token>
+                <marker>
+                    <token regexp="yes">(n-uasal|nUasal)</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>n-uaisle</suggestion> a scríobh.</message>
+            <example correction='n-uaisle'>na <marker>n-uasal</marker></example>
+        </rule>
+        <rule id="INIS_GLÓIRE" name="Inis Glóire">
+            <pattern>
+                <token>Inis</token>
+                <marker>
+                    <token>Glóire</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>Gluaire</suggestion> a scríobh.</message>
+            <example correction='Gluaire'>Inis <marker>Glóire</marker></example>
+        </rule>
+        <rule id="AN_NFGS" name="an NFGS">
+            <pattern>
+                <marker>
+                    <token>an</token>
+                </marker>
+                <token postag=".*Noun:Fem:Gen:Sg:DefArt" postag_regexp="yes"></token>
+            </pattern>
+            <message>Ba chóir duit <suggestion>na</suggestion> a scríobh.</message>
+            <example correction='na'>teach <marker>an</marker> mná</example>
+        </rule>
+        <rule id="AN_NP" name="an NP">
+            <pattern>
+                <marker>
+                    <token>an</token>
+                </marker>
+                <token postag=".*Noun:.*:Pl:DefArt" postag_regexp="yes"></token>
+            </pattern>
+            <message>Ba chóir duit <suggestion>na</suggestion> a scríobh.</message>
+            <example correction='na'>teach <marker>an</marker> mban</example>
+        </rule>
+        <rule id="BEIRT_MBEAN" name="beirt mbean">
+            <pattern>
+                <token regexp="yes">(mb|bh|b)eirt</token>
+                <marker>
+                    <token regexp="yes">(mb|bh|b)ean</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>bhan</suggestion> a scríobh.</message>
+            <example correction='bhan'>beirt <marker>mbean</marker></example>
+        </rule>
+        <rule id="CEATHRAR_MBEAN" name="ceathrar mbean">
+            <pattern>
+                <token regexp="yes">(dt|th|t)riúr|(gc|ch|c)(eathrar|úigear)|sh?(eisear|eachtar)|ochtar|naonúr|(nd|dh|d)(eichniúr|áréag)|mh?órsheisear</token>
+                <marker>
+                    <token regexp="yes">(mb|bh|b)ean</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>ban</suggestion> a scríobh.</message>
+            <example correction='ban'>ceathrar <marker>mbean</marker></example>
+            <example correction='ban'>cúigear <marker>bean</marker></example>
+        </rule>
+        <rule id="CORR_SHLIABH" name="Corr Shliabh">
+            <pattern>
+                <marker>
+                    <token>Corr</token>
+                    <token>Shliabh</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>Corrshliabh</suggestion> a scríobh.</message>
+            <example correction='Corrshliabh'><marker>Corr Shliabh</marker></example>
+        </rule>
+        <rule id="DIA_LUAIN" name="Dia Luain">
+            <pattern>
+                <marker>
+                    <token>Dia</token>
+                </marker>
+                <token regexp="yes">Luain|Máirt|Céadaoin|hAoine|Sathairn|Domhnaigh</token>
+            </pattern>
+            <message>Ba chóir duit <suggestion>Dé</suggestion> a scríobh.</message>
+            <example correction='Dé'><marker>Dia</marker> Luain</example>
+        </rule>
+        <rule id="DAREAG" name="dáréag">
+            <pattern>
+                <token>dáréag</token>
+            </pattern>
+            <message>Ba chóir duit <suggestion>dháréag</suggestion> a scríobh.</message>
+            <example correction='dháréag'><marker>dáréag</marker></example>
+        </rule>
+        <rule id="DUBH_OILEÁN" name="Dubh Oileán">
+            <pattern>
+                <token>Dubh</token>
+                <token>Oileán</token>
+            </pattern>
+            <message>Ba chóir duit <suggestion>Dubhoileán</suggestion> a scríobh.</message>
+            <example correction='Dubhoileán'><marker>Dubh Oileán</marker></example>
+        </rule>
+        <rule id="DATIVEPREP_EIRE" name="in Éire">
+            <pattern>
+                <token regexp="yes">&dativeprep;</token>
+                <marker>
+                    <token regexp="yes">&eire;</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion><match no="2" regexp_match="(nÉ|hÉ|É)ire(?:ann)?" regexp_replace="$1irinn"/></suggestion> a scríobh.</message>
+            <example correction='Éirinn'>in <marker>Éire</marker></example>
+            <example correction='hÉirinn'>go <marker>hÉire</marker></example>
+        </rule>
+        <rule id="O_N-AR" name="ó n-ár">
+            <pattern>
+                <marker>
+                    <token>ó</token>
+                    <token>n-ár</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>ónár</suggestion> a scríobh.</message>
+            <example correction='ónár'><marker>ó n-ár</marker></example>
+        </rule>
+        <rule id="O_AN" name="ó an">
+            <pattern>
+                <marker>
+                    <token>ó</token>
+                    <token>an</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>ón</suggestion> a scríobh.</message>
+            <example correction='ón'><marker>ó an</marker></example>
+        </rule>
+        <rule id="TRI_N-AR" name="trí n-ár">
+            <pattern>
+                <marker>
+                    <token>trí</token>
+                    <token>n-ár</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>trínár</suggestion> a scríobh.</message>
+            <example correction='trínár'><marker>trí n-ár</marker></example>
+        </rule>
+        <rule id="TRI_AR" name="trí ár">
+            <pattern>
+                <marker>
+                    <token>trí</token>
+                    <token>ár</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>trínár</suggestion> a scríobh.</message>
+            <example correction='trínár'><marker>trí ár</marker></example>
+        </rule>
+        <rule id="TRI_AN" name="trí an">
+            <pattern>
+                <marker>
+                    <token>trí</token>
+                </marker>
+                <token>an</token>
+            </pattern>
+            <message>Ba chóir duit <suggestion>tríd</suggestion> a scríobh.</message>
+            <example correction='tríd'><marker>trí</marker> an</example>
+        </rule>
+        <rule id="FAOI_N-AR" name="faoi n-ár">
+            <pattern>
+                <marker>
+                    <token>faoi</token>
+                    <token>n-ár</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>faoinár</suggestion> a scríobh.</message>
+            <example correction='faoinár'><marker>faoi n-ár</marker></example>
+        </rule>
+        <rule id="FAOI_AR" name="faoi ár">
+            <pattern>
+                <marker>
+                    <token regexp="yes">faoin?</token>
+                    <token>ár</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>faoinár</suggestion> a scríobh.</message>
+            <example correction='faoinár'><marker>faoi ár</marker></example>
+        </rule>
+        <rule id="FAOI_A" name="faoi a">
+            <pattern>
+                <marker>
+                    <token regexp="yes">faoin?</token>
+                    <token>a</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>faoina</suggestion> a scríobh.</message>
+            <example correction='faoina'><marker>faoi a</marker></example>
+        </rule>
+        <rule id="FAOI_AN" name="faoi an">
+            <pattern>
+                <marker>
+                    <token>faoi</token>
+                    <token>an</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>faoin</suggestion> a scríobh.</message>
+            <example correction='faoin'><marker>faoi an</marker></example>
+        </rule>
+        <rule id="FAOI_INITIALBAPOST" name="faoi INITIALBAPOST">
+            <pattern>
+                <token regexp="yes">faoin?</token>
+                <token>b</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
+            </pattern>
+            <message>Ba chóir duit <suggestion>faoinarbh</suggestion> a scríobh.</message>
+            <example correction='faoinarbh'><marker>faoi b'</marker></example>
+        </rule>
+        <rule id="I_NA" name="i na">
+            <pattern>
+                <token regexp="yes">in?</token>
+                <token>na</token>
+            </pattern>
+            <message>Ba chóir duit <suggestion>sna</suggestion> a scríobh.</message>
+            <example correction='sna'><marker>i na</marker></example>
+        </rule>
+        <rule id="I_AN" name="i an">
+            <pattern>
+                <token regexp="yes">in?</token>
+                <token>an</token>
+            </pattern>
+            <message>Ba chóir duit <suggestion>sa</suggestion> a scríobh.</message>
+            <example correction='sa'><marker>i an</marker></example>
+        </rule>
+        <rule id="I_A" name="i a">
+            <pattern>
+                <token regexp="yes">in?</token>
+                <token>a</token>
+            </pattern>
+            <message>Ba chóir duit <suggestion>ina</suggestion> a scríobh.</message>
+            <example correction='ina'><marker>i a</marker></example>
+        </rule>
+        <rule id="I_AR" name="i ar">
+            <pattern>
+                <token regexp="yes">in?</token>
+                <token>ar</token>
+            </pattern>
+            <message>Ba chóir duit <suggestion>inar</suggestion> a scríobh.</message>
+            <example correction='inar'><marker>i ar</marker></example>
+        </rule>
+        <rule id="IN_AR" name="in ár">
+            <pattern>
+                <token regexp="yes">in?</token>
+                <token>ár</token>
+            </pattern>
+            <message>Ba chóir duit <suggestion>inár</suggestion> a scríobh.</message>
+            <example correction='inár'><marker>i ár</marker></example>
+        </rule>
+        <rule id="I_INITIALBAPOST" name="i INITIALBAPOST">
+            <pattern>
+                <token regexp="yes">in?</token>
+                <token>b</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
+            </pattern>
+            <message>Ba chóir duit <suggestion>inarbh</suggestion> a scríobh.</message>
+            <example correction='inarbh'><marker>i b'</marker></example>
+        </rule>
+        <rule id="I_DÁ" name="i dá">
+            <pattern>
+                <token>i</token>
+                <token>dá</token>
+            </pattern>
+            <message>Ba chóir duit <suggestion>in dhá</suggestion> a scríobh.</message>
+            <example correction='in dhá'><marker>i dá</marker></example>
+        </rule>
+        <rule id="IN_DÁ" name="in dá">
+            <pattern>
+                <token>in</token>
+                <marker>
+                    <token>dá</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>dhá</suggestion> a scríobh.</message>
+            <example correction='dhá'>in <marker>dá</marker></example>
+        </rule>
+        <rule id="IN_INITIALCONSONANT" name="in INITIALCONSONANT">
+            <pattern>
+                <marker>
+                    <token>in</token>
+                </marker>
+                <token regexp="yes">&initialconsonant;</token>
+            </pattern>
+            <message>Ba chóir duit <suggestion>i</suggestion> a scríobh.</message>
+            <example correction='i'><marker>in</marker> bpáirc</example>
+        </rule>
+        <rule id="NA_DHÁ" name="na dhá">
+            <pattern>
+                <token>na</token>
+                <token>dhá</token>
+            </pattern>
+            <message>Ba chóir duit <suggestion>an dá</suggestion> a scríobh.</message>
+            <example correction='an dá'><marker>na dhá</marker></example>
+        </rule>
+        <rule id="NA_DÁ" name="na dá">
+            <pattern>
+                <marker>
+                    <token>na</token>
+                </marker>
+                <token>dá</token>
+            </pattern>
+            <message>Ba chóir duit <suggestion>an</suggestion> a scríobh.</message>
+            <example correction='an'><marker>na</marker> dá</example>
+        </rule>
+        <rule id="NA_FICHE" name="na fiche">
+            <pattern>
+                <marker>
+                    <token>na</token>
+                </marker>
+                <token regexp="yes">fiche|tríocha|daichead|caoga|seasca|seachtó|ochtó|nócha</token>
+            </pattern>
+            <message>Ba chóir duit <suggestion>an</suggestion> a scríobh.</message>
+            <example correction='an'><marker>na</marker> fiche</example>
+        </rule>
+        <rule id="NA_MILE" name="na míle">
+            <pattern>
+                <marker>
+                    <token>na</token>
+                </marker>
+                <token regexp="yes">míle|milliún</token>
+            </pattern>
+            <message>Ba chóir duit <suggestion>an</suggestion> a scríobh.</message>
+            <example correction='an'><marker>na</marker> míle</example>
+        </rule>
+        <rule id="NA_TRI_MILE" name="na trí mhíle">
+            <pattern>
+                <marker>
+                    <token>na</token>
+                </marker>
+                <token regexp="yes">trí|ceithre|cúig|sé|seacht|ocht|naoi|deich</token>
+                <token regexp="yes">g?ch?éad|mh?íle|mh?illiún</token>
+            </pattern>
+            <message>Ba chóir duit <suggestion>an</suggestion> a scríobh.</message>
+            <example correction='an'><marker>na</marker> trí mhíle</example>
+        </rule>
+        <rule id="NA_HOCHT_MILE" name="na hocht mhíle">
+            <pattern>
+                <marker>
+                    <token>na</token>
+                </marker>
+                <token>hocht</token>
+                <token regexp="yes">g?ch?éad|mh?íle|mh?illiún</token>
+            </pattern>
+            <message>Ba chóir duit <suggestion>an</suggestion> a scríobh.</message>
+            <example correction='an'><marker>na</marker> hocht mhíle</example>
+        </rule>
+        <rule id="Ó_A" name="ó a">
+            <pattern>
+                <token regexp="yes">ón?</token>
+                <token>a</token>
+            </pattern>
+            <message>Ba chóir duit <suggestion>óna</suggestion> a scríobh.</message>
+            <example correction='óna'><marker>ó a</marker></example>
+        </rule>
+        <rule id="Ó_AR" name="ó ar">
+            <pattern>
+                <token regexp="yes">ón?</token>
+                <token>ar</token>
+            </pattern>
+            <message>Ba chóir duit <suggestion>ónar</suggestion> a scríobh.</message>
+            <example correction='ónar'><marker>ó ar</marker></example>
+        </rule>
+        <rule id="Ó_ÁR" name="ó ár">
+            <pattern>
+                <token regexp="yes">ón?</token>
+                <token>ár</token>
+            </pattern>
+            <message>Ba chóir duit <suggestion>ónár</suggestion> a scríobh.</message>
+            <example correction='ónár'><marker>ó ár</marker></example>
+        </rule>
+        <rule id="TRÍ_A" name="trí a">
+            <pattern>
+                <token>trí</token>
+                <token>a</token>
+            </pattern>
+            <message>Ba chóir duit <suggestion>trína</suggestion> a scríobh.</message>
+            <example correction='trína'><marker>trí a</marker></example>
+        </rule>
+        <rule id="TRÍ_AR" name="trí ar">
+            <pattern>
+                <token>trí</token>
+                <token>ar</token>
+            </pattern>
+            <message>Ba chóir duit <suggestion>trínar</suggestion> a scríobh.</message>
+            <example correction='trínar'><marker>trí ar</marker></example>
+        </rule>
+        <rule id="SAN_NONVOWELNONF" name="san NONVOWELNONF">
+            <pattern>
+                <marker>
+                    <token>san</token>
+                </marker>
+                <token regexp="yes">&nonvowelnonf;</token>
+            </pattern>
+            <message>Ba chóir duit <suggestion>sa</suggestion> a scríobh.</message>
+            <example correction='sa'><marker>san</marker> bhaile</example>
+        </rule>
+        <rulegroup id="SNA_AON" name="sna aon">
+            <rule>
+                <pattern>
+                    <marker>
+                        <token>sna</token>
+                    </marker>
+                    <token>aon</token>
+                </pattern>
+                <message>Ba chóir duit <suggestion>san</suggestion> a scríobh.</message>
+                <example correction='san'><marker>sna</marker> aon</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token>sna</token>
+                    <token>haon</token>
+                </pattern>
+                <message>Ba chóir duit <suggestion>san aon</suggestion> a scríobh.</message>
+                <example correction='san aon'><marker>sna haon</marker> aon</example>
+            </rule>
+        </rulegroup>
+        <rule id="SULA_A" name="sula a">
+            <pattern>
+                <token>sula</token>
+                <token>a</token>
+            </pattern>
+            <message>Ba chóir duit <suggestion>sula</suggestion> a scríobh.</message>
+            <example correction='sula'><marker>sula a</marker></example>
+        </rule>
+        <rule id="SULARB_INITIALCONSONANT" name="sularb INITIALCONSONANT">
+            <pattern>
+                <marker>
+                    <token>sularb</token>
+                </marker>
+                <token regexp="yes">&initialconsonant;</token>
+            </pattern>
+            <message>Ba chóir duit <suggestion>sular</suggestion> a scríobh.</message>
+            <example correction='sular'>Tháinig siad orm <marker>sularb</marker> mhothaigh mé.</example>
+        </rule>
+    </category>
+    <category id="SUPERLATIVES" name="superlatives" type="grammar">
+        <rule id="NÍOS_BIGE" name="níos bige">
+            <pattern>
+                <token>níos</token>
+                <marker>
+                    <token regexp="yes">bh?ige</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>lú</suggestion> a scríobh.</message>
+            <example correction='lú'>níos <marker>bige</marker></example>
+        </rule>
+        <rulegroup id="NIBS_BIGE" name="ní ba bige">
+            <rule>
+                <pattern>
+                    <token>ní</token>
+                    <token>ba</token>
+                    <marker>
+                        <token regexp="yes">bh?ige</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>lú</suggestion> a scríobh.</message>
+                <example correction='lú'>ní ba <marker>bige</marker></example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token>ní</token>
+                    <marker>
+                        <token>b</token>
+                        <token regexp="yes" spacebefore="no">&apost;</token>
+                        <token regexp="yes">bh?ige</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>ba lú</suggestion> a scríobh.</message>
+                <example correction='ba lú'>ní <marker>b'bhige</marker></example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token>ní</token>
+                    <marker>
+                        <token regexp="yes">bh?ige</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>lú</suggestion> a scríobh.</message>
+                <example correction='lú'>ní <marker>bige</marker></example>
+            </rule>
+        </rulegroup>
+        <rule id="IS_BIGE" name="is bige">
+            <pattern>
+                <token>is</token>
+                <marker>
+                    <token regexp="yes">bh?ige</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>lú</suggestion> a scríobh.</message>
+            <example correction='lú'>is <marker>bige</marker></example>
+        </rule>
+        <rule id="NÍOS_DÓCHA" name="níos dócha">
+            <pattern>
+                <token>níos</token>
+                <marker>
+                    <token regexp="yes">dh?ócha</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>dóichí</suggestion> a scríobh.</message>
+            <example correction='dóichí'>níos <marker>dócha</marker></example>
+        </rule>
+        <rulegroup id="NIBS_DÓCHA" name="ní ba dócha">
+            <rule>
+                <pattern>
+                    <token>ní</token>
+                    <token>ba</token>
+                    <marker>
+                        <token regexp="yes">dh?ócha</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>dhóichí</suggestion> a scríobh.</message>
+                <example correction='dhóichí'>ní ba <marker>dócha</marker></example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token>ní</token>
+                    <marker>
+                        <token>b</token>
+                        <token regexp="yes" spacebefore="no">&apost;</token>
+                        <token regexp="yes">dh?ócha</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>ba dhóichí</suggestion> a scríobh.</message>
+                <example correction='ba dhóichí'>ní <marker>b'dhócha</marker></example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token>ní</token>
+                    <marker>
+                        <token regexp="yes">dh?ócha</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>dóichí</suggestion> a scríobh.</message>
+                <example correction='dóichí'>ní <marker>dócha</marker></example>
+            </rule>
+        </rulegroup>
+        <rule id="NÍOS_FADA" name="níos fada">
+            <pattern>
+                <token>níos</token>
+                <marker>
+                    <token regexp="yes">fh?ada</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>faide</suggestion> a scríobh.</message>
+            <example correction='faide'>níos <marker>fada</marker></example>
+        </rule>
+        <rulegroup id="NIBS_FADA" name="ní ba fada">
+            <rule>
+                <pattern>
+                    <token>ní</token>
+                    <marker>
+                        <token>ba</token>
+                        <token regexp="yes">fh?ada</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>b'fhaide</suggestion> a scríobh.</message>
+                <example correction="b'fhaide">ní <marker>ba fada</marker></example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token>ní</token>
+                    <token>b</token>
+                    <token regexp="yes" spacebefore="no">&apost;</token>
+                    <marker>
+                        <token regexp="yes">fh?ada</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>fhaide</suggestion> a scríobh.</message>
+                <example correction="fhaide">ní b'<marker>fhada</marker></example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token>ní</token>
+                    <marker>
+                        <token regexp="yes">fh?ada</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>faide</suggestion> a scríobh.</message>
+                <example correction='faide'>ní <marker>fada</marker></example>
+            </rule>
+        </rulegroup>
+        <rule id="NÍOS_FURASTA" name="níos furasta">
+            <pattern>
+                <token>níos</token>
+                <marker>
+                    <token regexp="yes">fh?urasta</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>fusa</suggestion> a scríobh.</message>
+            <example correction='fusa'>níos <marker>furasta</marker></example>
+        </rule>
+        <rulegroup id="NIBS_FURASTA" name="ní ba furasta">
+            <rule>
+                <pattern>
+                    <token>ní</token>
+                    <marker>
+                        <token>ba</token>
+                        <token regexp="yes">fh?urasta</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>b'fhusa</suggestion> a scríobh.</message>
+                <example correction="b'fhusa">ní <marker>ba furasta</marker></example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token>ní</token>
+                    <token>b</token>
+                    <token regexp="yes" spacebefore="no">&apost;</token>
+                    <marker>
+                        <token regexp="yes">fh?urasta</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>fhusa</suggestion> a scríobh.</message>
+                <example correction='fhusa'>ní b'<marker>fhurasta</marker></example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token>ní</token>
+                    <marker>
+                        <token regexp="yes">fh?urasta</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>fusa</suggestion> a scríobh.</message>
+                <example correction='fusa'>ní <marker>furasta</marker></example>
+            </rule>
+        </rulegroup>
+        <rule id="NÍOS_IOMAÍ" name="níos iomaí">
+            <pattern>
+                <token>níos</token>
+                <marker>
+                    <token>iomaí</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>lia</suggestion> a scríobh.</message>
+            <example correction='lia'>níos <marker>iomaí</marker></example>
+        </rule>
+        <rulegroup id="NIBS_IOMAÍ" name="ní ba iomaí">
+            <rule>
+                <pattern>
+                    <token>ní</token>
+                    <token>ba</token>
+                    <marker>
+                        <token>iomaí</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>lia</suggestion> a scríobh.</message>
+                <example correction='lia'>ní ba <marker>iomaí</marker></example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token>ní</token>
+                    <marker>
+                        <token>b</token>
+                        <token regexp="yes" spacebefore="no">&apost;</token>
+                        <token>iomaí</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>ba lia</suggestion> a scríobh.</message>
+                <example correction='ba lia'>ní <marker>b'iomaí</marker></example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token>ní</token>
+                    <marker>
+                        <token>iomaí</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>lia</suggestion> a scríobh.</message>
+                <example correction='lia'>ní <marker>iomaí</marker></example>
+            </rule>
+        </rulegroup>
+        <rule id="NÍOS_MHAITHE" name="níos mhaithe">
+            <pattern>
+                <token>níos</token>
+                <marker>
+                    <token regexp="yes">mh?aithe</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>fearr</suggestion> a scríobh.</message>
+            <example correction='fearr'>níos <marker>maithe</marker></example>
+        </rule>
+        <rulegroup id="NIBS_MAITHE" name="ní ba maithe">
+            <rule>
+                <pattern>
+                    <token>ní</token>
+                    <marker>
+                        <token>ba</token>
+                        <token regexp="yes">mh?aithe</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>b'fhearr</suggestion> a scríobh.</message>
+                <example correction="b'fhearr">ní <marker>ba maithe</marker></example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token>ní</token>
+                    <token>b</token>
+                    <token regexp="yes" spacebefore="no">&apost;</token>
+                    <marker>
+                        <token regexp="yes">mh?aithe</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>fhearr</suggestion> a scríobh.</message>
+                <example correction="fhearr">ní b'<marker>mhaithe</marker></example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token>ní</token>
+                    <marker>
+                        <token regexp="yes">mh?aithe</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>fearr</suggestion> a scríobh.</message>
+                <example correction='fearr'>ní <marker>maithe</marker></example>
+            </rule>
+        </rulegroup>
+        <rule id="IS_MAITHE" name="is maithe">
+            <pattern>
+                <token>is</token>
+                <marker>
+                    <token regexp="yes">mh?aithe</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>fearr</suggestion> a scríobh.</message>
+            <example correction='fearr'>is <marker>maithe</marker></example>
+        </rule>
+        <rule id="NÍOS_MÓIRE" name="níos móire">
+            <pattern>
+                <token>níos</token>
+                <marker>
+                    <token regexp="yes">mh?óire</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>mó</suggestion> a scríobh.</message>
+            <example correction='mó'>níos <marker>móire</marker></example>
+        </rule>
+        <rulegroup id="NIBS_MÓIRE" name="ní ba móire">
+            <rule>
+                <pattern>
+                    <token>ní</token>
+                    <token>ba</token>
+                    <marker>
+                        <token regexp="yes">mh?óire</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>mhó</suggestion> a scríobh.</message>
+                <example correction='mhó'>ní ba <marker>móire</marker></example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token>ní</token>
+                    <marker>
+                        <token>b</token>
+                        <token regexp="yes" spacebefore="no">&apost;</token>
+                        <token regexp="yes">mh?óire</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>ba mhó</suggestion> a scríobh.</message>
+                <example correction='ba mhó'>ní <marker>b'mhóire</marker></example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token>ní</token>
+                    <marker>
+                        <token regexp="yes">mh?óire</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>mó</suggestion> a scríobh.</message>
+                <example correction='mó'>ní <marker>móire</marker></example>
+            </rule>
+        </rulegroup>
+        <rule id="IS_MHÓIRE" name="is mhóire">
+            <pattern>
+                <token>is</token>
+                <marker>
+                    <token regexp="yes">mh?óire</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>mó</suggestion> a scríobh.</message>
+            <example correction='mó'>is <marker>móire</marker></example>
+        </rule>
+        <rule id="NÍOS_OILCE" name="níos oilce">
+            <pattern>
+                <token>níos</token>
+                <marker>
+                    <token>oilce</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>measa</suggestion> a scríobh.</message>
+            <example correction='measa'>níos <marker>oilce</marker></example>
+        </rule>
+        <rulegroup id="NIBS_OILCE" name="ní ba oilce">
+            <rule>
+                <pattern>
+                    <token>ní</token>
+                    <token>ba</token>
+                    <marker>
+                        <token>oilce</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>mheasa</suggestion> a scríobh.</message>
+                <example correction='mheasa'>ní ba <marker>oilce</marker></example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token>ní</token>
+                    <marker>
+                        <token>b</token>
+                        <token regexp="yes" spacebefore="no">&apost;</token>
+                        <token>oilce</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>ba mheasa</suggestion> a scríobh.</message>
+                <example correction='ba mheasa'>ní <marker>b'oilce</marker></example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token>ní</token>
+                    <marker>
+                        <token>oilce</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>measa</suggestion> a scríobh.</message>
+                <example correction='measa'>ní <marker>oilce</marker></example>
+            </rule>
+        </rulegroup>
+        <rule id="IS_OILCE" name="is oilce">
+            <pattern>
+                <token>is</token>
+                <marker>
+                    <token>oilce</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>measa</suggestion> a scríobh.</message>
+            <example correction='measa'>is <marker>oilce</marker></example>
+        </rule>
+        <rule id="NÍOS_THE" name="níos the">
+            <pattern>
+                <token>níos</token>
+                <marker>
+                    <token regexp="yes">th?e</token>
+                </marker>
+            </pattern>
+            <message>Ba chóir duit <suggestion>teo</suggestion> a scríobh.</message>
+            <example correction='teo'>níos <marker>te</marker></example>
+        </rule>
+        <rulegroup id="NIBS_TE" name="ní ba te">
+            <rule>
+                <pattern>
+                    <token>ní</token>
+                    <token>ba</token>
+                    <marker>
+                        <token regexp="yes">th?e</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>theo</suggestion> a scríobh.</message>
+                <example correction='theo'>ní ba <marker>te</marker></example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token>ní</token>
+                    <marker>
+                        <token>b</token>
+                        <token regexp="yes" spacebefore="no">&apost;</token>
+                        <token regexp="yes">th?e</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>ba theo</suggestion> a scríobh.</message>
+                <example correction='ba theo'>ní <marker>b'the</marker></example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token>ní</token>
+                    <marker>
+                        <token regexp="yes">th?e</token>
+                    </marker>
+                </pattern>
+                <message>Ba chóir duit <suggestion>teo</suggestion> a scríobh.</message>
+                <example correction='teo'>ní <marker>te</marker></example>
+            </rule>
+        </rulegroup>
+    </category>
+    <category id="COLLOCATIONS" name="collocations" type="style">
+        <rule id="DIRIU_ISTEACH_AR" name="díriú isteach ar">
+            <pattern>
+                <token>díriú</token>
+                <token>isteach</token>
+                <token inflected="yes">ar</token>
+            </pattern>
+            <message>Ba chóir duit <suggestion>\1 \3</suggestion> a scríobh.</message>
+            <example correction='díriú orm'><marker>díriú isteach orm</marker></example>
         </rule>
     </category>
 </rules>
