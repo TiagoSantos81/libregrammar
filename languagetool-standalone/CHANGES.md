@@ -11,11 +11,12 @@
      - cliche detection - 691 entries from AtD;
      - wordiness database enhancements - 725 entries from Grammark;
      - informal expressions detection - 228 entries from Wikipedia;
+     - verb-noun confusion rule - 540 entries from After the Deadline;
      - EnglishStyleRepeatedWordRule;
      - split infinitive detection;
      - comma splice partial detection;
      - weasel word and thought-terminating clichés detection - 87 entries added from Wikipedia;
-     - typography of mathematical symbols and arrows;
+     - typography of mathematical symbols;
      - easily confused words - 533 pairs add - active only with
     ngram data (see http://wiki.languagetool.org/finding-errors-using-n-gram-data).
   * English rules re-activated:
@@ -82,7 +83,7 @@
   * re-activated subject-predicate agreement category.
   * activated generic Java rules, including:
      - LongSentenceRule, LongParagraphRule, SentenceWhitespaceRule, WhiteSpaceAtBeginOfParagraph, EmptyLineRule, ParagraphRepeatBeginningRule, PunctuationMarkAtParagraphEnd.
-  * add typography rules for mathematical symbols and arrows.
+  * add typography rules for mathematical symbols.
 
 #### General
   * server and HTTP API connection commits for LibreOffice plug-in reverted.
