@@ -22,9 +22,16 @@ import org.languagetool.AnalyzedSentence;
 import org.languagetool.AnalyzedToken;
 import org.languagetool.AnalyzedTokenReadings;
 import org.languagetool.JLanguageTool;
+import org.languagetool.tools.Tools;
+import org.languagetool.Language;
+import org.languagetool.tagging.disambiguation.rules.DisambiguationPatternRule;
 import org.languagetool.rules.*;
+import org.languagetool.rules.patterns.PatternToken;
+import org.languagetool.rules.patterns.PatternTokenBuilder;
+import org.languagetool.tagging.en.EnglishTagger;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
@@ -35,18 +42,6 @@ import java.io.InputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import org.languagetool.tools.Tools;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.*;
-import java.util.regex.Pattern;
-
-import org.languagetool.Language;
-import org.languagetool.tagging.disambiguation.rules.DisambiguationPatternRule;
-import org.languagetool.rules.patterns.PatternToken;
-import org.languagetool.rules.patterns.PatternTokenBuilder;
-import org.languagetool.tagging.en.EnglishTagger;
 import static org.languagetool.rules.patterns.PatternRuleBuilderHelper.*;
 
 public class EnglishVerbNounConfusionRule extends Rule {
@@ -55,7 +50,7 @@ public class EnglishVerbNounConfusionRule extends Rule {
   private final Language english;
 
   private static final Map<String,String> VERB_NOUN_DB = loadWordlist("en/verb_nouns.txt", 0);
-  private static final Pattern PRECEEDS_NOUN = Pattern.compile("[Tt]h(e|is|at)|[Aa]n?|[Mm]y|[Yy]?[Oo]ur|[Hh](is|er)|[Tt]heir|[Ii]ts|s");
+  private static final Pattern PRECEDES_NOUN = Pattern.compile("[Tt]h(e|is|at)|[Aa]n?|[Mm]y|[Yy]?[Oo]ur|[Hh](is|er)|[Tt]heir|[Ii]ts|s");
 
   private static final List<List<PatternToken>> ANTI_PATTERNS = Arrays.asList(
   // antipatterns from grammar.xml::A_INFINITIVE
@@ -177,7 +172,7 @@ public class EnglishVerbNounConfusionRule extends Rule {
       if (tokens[i].isImmunized() || tokens[i + 1].isImmunized()) {
         continue;
       }
-      if ((preceedsNoun(tokens[i])) && (isVerb(tokens[i + 1]))) {
+      if ((precedesNoun(tokens[i])) && (isVerb(tokens[i + 1]))) {
         markEnd = i + 1;
         if (replacement == null) {
           replacement = getNounReplacements().get(tokens[i + 1].getToken());
@@ -186,7 +181,7 @@ public class EnglishVerbNounConfusionRule extends Rule {
           }
         }
       }
-      if ((preceedsNoun(tokens[i])) && (isAdjective(tokens[i + 1])) && !(tokens[i + 2].isImmunized()) && (isVerb(tokens[i + 2]))) {
+      if ((precedesNoun(tokens[i])) && (isAdjective(tokens[i + 1])) && !(tokens[i + 2].isImmunized()) && (isVerb(tokens[i + 2]))) {
         markEnd = i + 2;
         if (replacement == null) {
           replacement = getNounReplacements().get(tokens[i + 2].getToken());
@@ -205,8 +200,8 @@ public class EnglishVerbNounConfusionRule extends Rule {
     return toRuleMatchArray(ruleMatches);
   }
 
-  public boolean preceedsNoun(AnalyzedTokenReadings token) {
-    return PRECEEDS_NOUN.matcher(token.getToken()).matches();
+  public boolean precedesNoun(AnalyzedTokenReadings token) {
+    return PRECEDES_NOUN.matcher(token.getToken()).matches();
   }
 
   private boolean isAdjective(AnalyzedTokenReadings token) {
