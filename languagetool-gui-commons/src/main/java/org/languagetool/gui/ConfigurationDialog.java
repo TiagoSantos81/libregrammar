@@ -258,7 +258,7 @@ public class ConfigurationDialog implements ActionListener {
     cons.gridy = 0;
     cons.weightx = 10.0f;
     cons.weighty = 10.0f;
-    cons.fill = GridBagConstraints.NONE;
+    cons.fill = GridBagConstraints.BOTH;
     cons.anchor = GridBagConstraints.NORTHWEST;
     
     jPane.add(getProfilePanel(cons, rules), cons);
@@ -550,17 +550,14 @@ public class ConfigurationDialog implements ActionListener {
     });
     
     numParaField.getDocument().addDocumentListener(new DocumentListener() {
-
       @Override
       public void insertUpdate(DocumentEvent e) {
         changedUpdate(e);
       }
-
       @Override
       public void removeUpdate(DocumentEvent e) {
         changedUpdate(e);
       }
-
       @Override
       public void changedUpdate(DocumentEvent e) {
         try {
@@ -603,9 +600,6 @@ public class ConfigurationDialog implements ActionListener {
     });
     cons.insets = new Insets(0, 4, 0, 0);
     cons.gridx = 0;
-//    JLabel dummyLabel = new JLabel(" ");
-//    cons.gridy++;
-//    portPanel.add(dummyLabel, cons);
     cons.gridy++;
     portPanel.add(resetCheckbox, cons);
 
@@ -619,9 +613,6 @@ public class ConfigurationDialog implements ActionListener {
     fullTextCheckAtFirstBox.addItemListener(e -> config.setFullCheckAtFirst(fullTextCheckAtFirstBox.isSelected()));
     cons.insets = new Insets(0, 4, 0, 0);
     cons.gridx = 0;
-//    cons.gridy++;
-//    JLabel dummyLabel2 = new JLabel(" ");
-//    portPanel.add(dummyLabel2, cons);
     cons.gridy++;
     portPanel.add(fullTextCheckAtFirstBox, cons);
     

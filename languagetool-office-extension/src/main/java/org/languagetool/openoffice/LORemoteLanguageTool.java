@@ -56,7 +56,6 @@ class LORemoteLanguageTool {
   private static final String BLANK = " ";
   private static final String SERVER_URL = "https://languagetool.org/api";
   private static final int SERVER_LIMIT = 20000;
-  private final boolean useServerConfig;
   private final String serverUrl;
   private final Set<String> enabledRules = new HashSet<>();
   private final Set<String> disabledRules = new HashSet<>();
@@ -64,6 +63,10 @@ class LORemoteLanguageTool {
   private final Set<CategoryId> enabledRuleCategories = new HashSet<>();
   private final List<Rule> allRules = new ArrayList<>();
   private final List<String> ruleValues = new ArrayList<>();
+  private URL serverBaseUrl;
+  private Language language;
+  private Language motherTongue;
+  private RemoteLanguageTool remoteLanguageTool;
   private CheckConfiguration remoteConfig;
   private CheckConfigurationBuilder configBuilder;
   private int maxTextLength;
@@ -73,7 +76,6 @@ class LORemoteLanguageTool {
                        List<Rule> extraRemoteRules) throws MalformedURLException {
     this.language = language;
     this.motherTongue = motherTongue;
-    useServerConfig = config.useServerConfiguration();
     serverUrl = config.getServerUrl();
     setRuleValues(config.getConfigurableValues());
     serverBaseUrl = new URL(serverUrl == null ? SERVER_URL : serverUrl);
@@ -81,7 +83,6 @@ class LORemoteLanguageTool {
     try {
       String urlParameters = "language=" + language.getShortCodeWithCountryAndVariant();
       RemoteConfigurationInfo configInfo = remoteLanguageTool.getConfigurationInfo(urlParameters);
-//      MessageHandler.printToLogFile("Number of rules: " + configInfo.getRemoteRules().size());
       storeAllRules(configInfo.getRemoteRules());
       maxTextLength = configInfo.getMaxTextLength();
       MessageHandler.printToLogFile("Server Limit text length: " + maxTextLength);
@@ -103,19 +104,14 @@ class LORemoteLanguageTool {
       configBuilder.setMotherTongueLangCode(motherTongue.getShortCodeWithCountryAndVariant());
     }
     if(paraMode == ParagraphHandling.ONLYPARA) {
-      if(!useServerConfig) {
-        configBuilder.enabledRuleIds(enabledRules.toArray(new String[0]));
-/*
-        configBuilder.ruleValues(ruleValues);
-        configBuilder.enabledOnly();
-      }
+      configBuilder.enabledRuleIds(enabledRules.toArray(new String[0]));
+      configBuilder.ruleValues(ruleValues);
+      configBuilder.enabledOnly();
       configBuilder.mode("textLevelOnly");
     } else {
-      if(!useServerConfig) {
-        configBuilder.enabledRuleIds(enabledRules.toArray(new String[0]));
-        configBuilder.disabledRuleIds(disabledRules.toArray(new String[0]));
-        configBuilder.ruleValues(ruleValues);
-      }
+      configBuilder.enabledRuleIds(enabledRules.toArray(new String[0]));
+      configBuilder.disabledRuleIds(disabledRules.toArray(new String[0]));
+      configBuilder.ruleValues(ruleValues);
       configBuilder.mode("allButTextLevelOnly");
     }
     remoteConfig = configBuilder.build();
@@ -141,12 +137,9 @@ class LORemoteLanguageTool {
       try {
         remoteResult = remoteLanguageTool.check(subText, remoteConfig);
       } catch (Throwable t) {
-        MessageHandler.showError(t);
-/*
         MessageHandler.printException(t);
         remoteRun = false;
         return null;
-/*
       }
       ruleMatches.addAll(toRuleMatches(remoteResult.getMatches(), nStart));
     }
