@@ -15951,7 +15951,7 @@ USA
             </marker>
             <token postag="V.+" postag_regexp='yes'/>
           </pattern>
-          <message>Possible mistake. Please verify.</message>
+          <message>Possible mistake. You should not use a pronoun before a noun.</message>
           <example correction=""><marker>I downtown</marker> went yesterday.</example><!-- XXX home is also a verb. fixing it may mess with disambiguation -->
           <example correction=""><marker>It alpha</marker> decays to the extremely long-lived (in practice, ...</example><!-- 'Alpha decay' is a noun, not a verb: www.merriam-webster.com/dictionary/alpha%20decay -->
           <example>I went downtown yesterday.</example>
@@ -31407,6 +31407,18 @@ The accident victim died from her injuries.
             <message>Did you mean <suggestion><match no="1" regexp_match="nu" regexp_replace="ngu"/></suggestion> (verb) instead of <match no="2"/> (noun)?</message>
             <short>Possible typo</short>
             <example correction="Angus"><marker>Anus</marker> beef, lettuce, tomatoes,...</example>
+        </rule>
+        <rule id="ANUS_HEINOUS" name="anus (heinous)">
+            <pattern>
+                <marker>
+                    <token>anus</token>
+                </marker>
+                    <token min='0'/>
+                    <token regexp="yes">(?:act|crime|curse|murder|profanity|scandal|sin|weapon)s?</token>
+            </pattern>
+            <message>Did you mean <suggestion>heinous</suggestion>, i.e. 'hateful \2'?</message>
+            <short>Possible word confusion</short>
+            <example correction="heinous">It was an <marker>anus</marker> act of violence.</example>
         </rule>
         <rule id="CONFUSION_OF_MARSHAL_MARTIAL" name="marshal/marital (martial)">
             <pattern>
