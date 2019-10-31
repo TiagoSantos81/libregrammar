@@ -5,20 +5,21 @@
 ### This fork differences
 
 #### English
-  * Rules added:
+  * rules added:
      - EnglishSimpleGrammarRule for simple replacement rule creation - 877 entries added from Wikipedia;
-     - eggcorn detection - 227 entries from Grammark and After the Dealine (AtD);
+     - verb-noun confusion rule - 540 entries from After the Deadline (AtD);
+     - eggcorn detection - 227 entries from Grammark and AtD;
      - cliche detection - 691 entries from AtD;
-     - wordiness database enhancements - 725 entries from Grammark;
+     - wordiness database enhancements - 653 entries from Grammark;
      - informal expressions detection - 228 entries from Wikipedia;
-     - verb-noun confusion rule - 540 entries from After the Deadline;
      - EnglishStyleRepeatedWordRule;
      - split infinitive detection;
      - comma splice partial detection;
      - weasel word and thought-terminating clichés detection - 87 entries added from Wikipedia;
      - typography of mathematical symbols;
      - easily confused words - 533 pairs add - active only with
-    ngram data (see http://wiki.languagetool.org/finding-errors-using-n-gram-data).
+    ngram data (see http://wiki.languagetool.org/finding-errors-using-n-gram-data);
+     - other rules added and improved.
   * English rules re-activated:
      - EnglishPlainEnglishRule - 697 entries from AtD;
      - Plain English category - 105 rules;
@@ -56,7 +57,7 @@
 #### Irish
   * Support added thanks to Jim Regan, Emily Barnes, Mícheál J. Ó Meachair, 
   and Seanán Ó Coistín. Support includes:
-     - 606 grammar rules;
+     - 961 grammar rules;
      - Irish naming conventions converter;
      - generic typographical rules (e.g., spacing rules);
      - generic style rules (e.g., sentence length);
@@ -86,7 +87,6 @@
   * add typography rules for mathematical symbols.
 
 #### General
-  * server and HTTP API connection commits for LibreOffice plug-in reverted.
   * dependencies security updates.
   * restored some languagetool-dev and languagetool-standalone scripts.
   * [WIP] removed Google dependencies from English and Catalan language modules, as well as from several Java rules.
@@ -96,6 +96,7 @@
     - cyan: typographical suggestions.
 
 #### LibreOffice / Apache OpenOffice Integration
+  * remote server commits for LibreOffice plug-in reverted.
   * multiple core CPU support active by default.
 
 ### Other changes common to both projects
