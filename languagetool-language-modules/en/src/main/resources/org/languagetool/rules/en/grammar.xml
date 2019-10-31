@@ -16105,6 +16105,37 @@ USA
           <example>And name it something like ...</example>
           <example>I can offer you Lifetime Warranty.</example>
         </rule>
+      <rulegroup id="POSSESSIVE_PRONOUN_NOUN" name="Possessive pronoun + noun">
+        <!-- Created by Tiago F. Santos, 2019-10-30 -->
+        <rule>
+          <pattern>
+            <marker>
+              <token>mine</token>
+              <token postag="N.+" postag_regexp='yes'>
+                <exception postag='V.+|RB|IN' postag_regexp='yes'/>
+              </token>
+            </marker>
+            <token postag="V.+" postag_regexp='yes'/>
+          </pattern>
+          <message>Possible mistake. You should not use a pronoun before a noun.</message>
+            <suggestion>my \2</suggestion>
+          <example correction="My friend"><marker>Mine friend</marker> hasn't called yet.</example>
+        </rule>
+        <rule>
+          <pattern>
+            <marker>
+              <token regexp='yes'>y?ours|hers|theirs</token>
+              <token postag="N.+" postag_regexp='yes'>
+                <exception postag='V.+|RB|IN' postag_regexp='yes'/>
+              </token>
+            </marker>
+            <token postag="V.+" postag_regexp='yes'/>
+          </pattern>
+          <message>Possible mistake. You should not use a pronoun before a noun.</message>
+            <suggestion><match no='1' regexp_match='(.+)(s$)' regexp_replace='$1'/> \2</suggestion>
+          <example correction="Our friend"><marker>Ours friend</marker> hasn't called yet.</example>
+        </rule>
+      </rulegroup>
         <rulegroup id="TO_NON_BASE" name="'to' + non-base form">
             <rule>
                 <antipattern>
