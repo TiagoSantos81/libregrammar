@@ -50,7 +50,7 @@ public class EnglishVerbNounConfusionRule extends Rule {
   private final Language english;
 
   private static final Map<String,String> VERB_NOUN_DB = loadWordlist("en/verb_nouns.txt", 0);
-  private static final Pattern PRECEDES_NOUN = Pattern.compile("[Tt]h(e|is|at)|[Aa]n?|[Mm]y|[Yy]?[Oo]ur|[Hh](is|er)|[Tt]heir|[Ii]ts");
+  private static final Pattern PRECEDES_NOUN = Pattern.compile("[Tt]h(e|is)|[Aa]n?|[Mm]y|[Yy]?[Oo]ur|[Hh](is|er)|[Tt]heir|[Ii]ts"); // excluded also non-determiners s|that
 
   private static final List<List<PatternToken>> ANTI_PATTERNS = Arrays.asList(
   // antipatterns from grammar.xml::A_INFINITIVE
