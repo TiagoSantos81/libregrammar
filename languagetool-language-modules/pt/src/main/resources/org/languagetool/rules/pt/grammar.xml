@@ -5812,13 +5812,13 @@ title="Easy editing stylesheet" ?>
     <rule id='ESQUECER_VERB' name="esquecer de">
     <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
       <pattern>
-		<marker>
+        <marker>
           <token inflected='yes'>esquecer</token>
-		</marker>
-		<token postag_regexp='yes' postag='V.+'></token>
+        </marker>
+          <token postag_regexp='yes' postag='V.+'/>
       </pattern>
       <message>Insira a preposição 'de' após o verbo.</message>
-       <suggestion>\1 de</suggestion>
+        <suggestion>\1 de</suggestion>
       <example correction="esquecer de">Não vou <marker>esquecer</marker> limpar a cozinha.</example>
     </rule>
 
@@ -7275,8 +7275,8 @@ title="Easy editing stylesheet" ?>
     <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
       <pattern>
           <token inflected='yes'>tornar</token>
-		  <token>mais</token>
-		  <token>difícil</token>
+          <token>mais</token>
+          <token>difícil</token>
       </pattern>
       <message>Substitua por <match no='1' postag='V.+' postag_regexp='yes'>dificultar</match>.</message>
         <suggestion><match no='1' postag='V.+' postag_regexp='yes'>dificultar</match></suggestion>
@@ -7287,14 +7287,14 @@ title="Easy editing stylesheet" ?>
     <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
       <pattern>
           <token inflected='yes'>tornar</token>
-		  <token>mais</token>
-		  <token>fácil</token>
+          <token>mais</token>
+          <token>fácil</token>
       </pattern>
       <message>Substitua por <match no='1' postag='V.+' postag_regexp='yes'>facilitar</match>.</message>
         <suggestion><match no='1' postag='V.+' postag_regexp='yes'>facilitar</match></suggestion>
       <example correction="facilitar">As regras vão <marker>tornar mais fácil</marker> o jogo.</example>
     </rule>
-	
+
     <rule id='TRABALHO_PAGO' name="trabalho remunerado">
     <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
       <pattern>
@@ -25300,10 +25300,10 @@ TODO Write better examples
     </rule>
     <rule>
       <pattern>
-          <marker>
-            <token>&lt;</token>
-            <token spacebefore="no">=</token>
-          </marker>
+        <marker>
+          <token>&lt;</token>
+          <token spacebefore="no">=</token>
+        </marker>
           <token negate="yes">&gt;</token>
       </pattern>
       <message>Prefira o símbolo tipográfico.</message>
@@ -25318,7 +25318,7 @@ TODO Write better examples
     <!-- Localized from German grammar.xml, by Tiago F. Santos, 2017-07-07 -->
     <rule>
       <pattern>
-        <token negate="yes">&lt;</token>
+          <token negate="yes">&lt;</token>
         <marker>
           <token regexp="yes">(?:\-|=){1,2}</token>
           <token>&gt;</token>
@@ -25340,7 +25340,7 @@ TODO Write better examples
           <token>&lt;</token>
           <token spacebefore="no" regexp="yes">(?:\-|=){1,2}</token>
         </marker>
-        <token negate="yes">&gt;</token>
+          <token negate="yes">&gt;</token>
       </pattern>
       <message>Pretende utilizar uma seta?</message>
         <suggestion>≤</suggestion>
