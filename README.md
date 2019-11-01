@@ -1,7 +1,7 @@
 ## LibreGrammar
 
 This is a **LanguageTool** fork, an Open Source proofreading software for English, French, German,
-Polish, Portuguese, Russian, and [more than 20 other languages](https://languagetool.org/languages/).
+Polish, Portuguese, Russian, and [more 28 other languages](https://github.com/TiagoSantos81/languagetool/tree/master/languagetool-language-modules).
 
 Due to increased hostility related to development divergences, the need for another fork arose. 
 Since late 2017, LanguageTool has had its development constrained by several factors, namely the 
