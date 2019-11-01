@@ -23,7 +23,7 @@
   * English rules re-activated:
      - EnglishPlainEnglishRule - 697 entries from AtD;
      - Plain English category - 105 rules;
-     - EnglishRedundancyRule (AtD) - 731 entries from AtD;
+     - EnglishRedundancyRule - 731 entries from AtD;
      - LongSentenceRule;
      - Passive voice;
      - Tired intensifiers;
@@ -127,8 +127,16 @@
   * added and improved rules
   * POS and spelling improvements
 
+#### Portuguese
+  * added and improved rules
+  * POS and spelling improvements
+
 #### Russian
   * improved rules
+
+#### Spanish
+  * added rules
+  * POS and spelling improvements
 
 #### General
   * The unmaintained code from package `org.languagetool.dev.wikipedia.atom`
