@@ -98,7 +98,7 @@ Matches: [STYLE_REPEATED_WORD_RULE_EN:2-4:Possible style problem: The word is al
    * Only substantive, names, verbs and adjectives are checked
    */
   protected boolean isTokenToCheck(AnalyzedTokenReadings token) {
-    return (token.matchesPosTagRegex("[VNJRW].+|FW") 
+    return (token.matchesPosTagRegex("[VNJR].+|FW") 
         && !token.matchesPosTagRegex("NNPS?|MD|IN|DT|CC|P.+")
         && !StringUtils.equalsAny(token.getToken(), 
            "am", "is", "s", "isn", "are", "re", "be", "been",
@@ -109,7 +109,10 @@ Matches: [STYLE_REPEATED_WORD_RULE_EN:2-4:Possible style problem: The word is al
            "not", "t",
            "more", "less",
            "day", "days", "week", "weeks", "month", "months", "year", "years", "hour", "hours", "minute", "minutes", "second", "seconds",
-           "n", "x", "y"))
+           "n", "x", "y",
+           "percent",
+           "meter", "meters", "gram", "grams", "liter", "litre", "liters", "litres",
+           "pounds", "dollars", "euros", "yenes"))
         || isUnknownWord(token);
   }
 

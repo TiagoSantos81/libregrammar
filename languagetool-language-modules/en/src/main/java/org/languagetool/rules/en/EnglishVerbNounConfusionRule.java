@@ -50,7 +50,7 @@ public class EnglishVerbNounConfusionRule extends Rule {
   private final Language english;
 
   private static final Map<String,String> VERB_NOUN_DB = loadWordlist("en/verb_nouns.txt", 0);
-  private static final Pattern PRECEDES_NOUN = Pattern.compile("[Tt]h(e|is)|[Aa]n?|[Mm]y|[Yy]?[Oo]ur|[Hh](is|er)|[Tt]heir|[Ii]ts"); // excluded also non-determiners s|that
+  private static final Pattern PRECEDES_NOUN = Pattern.compile("[Tt]h(e|is)|[Aa]n?|[Mm]y|[Yy]?[Oo]ur|[Hh](is|er)|[Tt]heir|[Ii]ts|[Oo][fn]"); // excluded also non-determiners s|that
 
   private static final List<List<PatternToken>> ANTI_PATTERNS = Arrays.asList(
   // antipatterns from grammar.xml::A_INFINITIVE
@@ -132,6 +132,11 @@ public class EnglishVerbNounConfusionRule extends Rule {
       regex("[a-z0-9\\-]+"), // TODO space_before
       regex("."), // TODO space_before
       regex("a(?:e|r|sia|t|u)|b(?:e|id|iz|r)|c(?:a|at|c|f|h|l|lub|n|o|om|z)|d(?:e|k)|e(?:du|s|u)|f(?:i|r)|g(?:a|dn|ov|q|r)|h(?:k|u)|i(?:d|e|l|n|nfo|nt|o|r|t)|jp|k(?:iwi|r|z)|l(?:ife|ink|oan|t)|m(?:e|en|il|l|obi|x|y)|n(?:ame|et|l|o|u|z)|o(?:nline|rg)|p(?:arty|l|ro|t|w)|r(?:acing|o|u)|s(?:e|g|hop|ite|k|pace|tore|u)|t(?:ech|k|op|r|rade|v|w)|u(?:a|k|s)|v(?:ip|n)|w(?:ang|ebsite|in|s)|x(?:in|yz)|za")
+    ),
+    Arrays.asList(
+      token("from"),
+      token("now"),
+      token("on")
     )
   );
 
