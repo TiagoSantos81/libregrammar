@@ -20,10 +20,11 @@ package org.languagetool.tagging.ga;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.lang.Character;
+
 import org.languagetool.AnalyzedToken;
 import org.languagetool.AnalyzedTokenReadings;
 import org.languagetool.tagging.BaseTagger;
+import org.languagetool.tagging.TaggedWord;
 import org.languagetool.tools.StringTools;
 import java.util.Locale;
 
@@ -37,31 +38,6 @@ import java.util.Locale;
 public class IrishTagger extends BaseTagger {
   public IrishTagger() {
     super("/ga/irish.dict", new Locale("ga"));
-  }
-
-  private boolean isUpperVowel(char c) {
-    switch(c) {
-      case 'A':
-      case 'E':
-      case 'I':
-      case 'O':
-      case 'U':
-      case '\u00c1':
-      case '\u00c9':
-      case '\u00cd':
-      case '\u00d3':
-      case '\u00da':
-        return true;
-      default:
-        return false;
-    }
-  }
-  private String toLowerCaseIrish(String s) {
-    if(s.length() > 1 && (s.charAt(0) == 'n' || s.charAt(0) == 't') && isUpperVowel(s.charAt(1))) {
-      return s.substring(0,1) + "-" + s.substring(1).toLowerCase();
-    } else {
-      return s.toLowerCase();
-    }
   }
 
   // Not used
@@ -80,7 +56,7 @@ public class IrishTagger extends BaseTagger {
 
     for (String word : sentenceTokens) {
       final List<AnalyzedToken> l = new ArrayList<>();
-      final String lowerWord = toLowerCaseIrish(word);
+      final String lowerWord = Utils.toLowerCaseIrish(word);
 
       taggerTokens = asAnalyzedTokenListForTaggedWords(word, getWordTagger().tag(word));
       lowerTaggerTokens = asAnalyzedTokenListForTaggedWords(word, getWordTagger().tag(lowerWord));
@@ -96,13 +72,28 @@ public class IrishTagger extends BaseTagger {
 
       //uppercase
       if (lowerTaggerTokens.isEmpty() && taggerTokens.isEmpty()) {
+        List<AnalyzedToken> guessedTokens = asAnalyzedTokenListForTaggedWords(word, filterMorph(word));
+        List<AnalyzedToken> lowerGuessedTokens = asAnalyzedTokenListForTaggedWords(word,
+          filterMorph(Utils.toLowerCaseIrish(word)));
+        if (!guessedTokens.isEmpty()) {
+          addTokens(guessedTokens, l);
+        }
+        if (guessedTokens.isEmpty() && !lowerGuessedTokens.isEmpty()) {
+          addTokens(lowerGuessedTokens, l);
+        }
         if (isLowercase) {
           upperTaggerTokens = asAnalyzedTokenListForTaggedWords(word,
               getWordTagger().tag(StringTools.uppercaseFirstChar(word)));
           if (!upperTaggerTokens.isEmpty()) {
             addTokens(upperTaggerTokens, l);
           } else {
-            l.add(new AnalyzedToken(word, null, null));
+            List<AnalyzedToken> upperGuessedTokens = asAnalyzedTokenListForTaggedWords(word,
+              filterMorph(StringTools.uppercaseFirstChar(word)));
+            if(!upperGuessedTokens.isEmpty()) {
+              addTokens(upperGuessedTokens, l);
+            } else {
+              l.add(new AnalyzedToken(word, null, null));
+            }
           }
         } else {
           l.add(new AnalyzedToken(word, null, null));
@@ -113,6 +104,47 @@ public class IrishTagger extends BaseTagger {
     }
 
     return tokenReadings;
+  }
+
+  private List<TaggedWord> filterMorph(String in) {
+    List<TaggedWord> tagged = new ArrayList<>();
+    List<Retaggable> tocheck = Utils.morphWord(in);
+    if(tocheck == null || tocheck.size() == 0) {
+      return tagged;
+    }
+    for(Retaggable rt : tocheck) {
+      boolean pfx = false;
+      List<TaggedWord> cur = getWordTagger().tag(rt.getWord());
+      if(rt.getPrefix() != null && !rt.getPrefix().equals("")) {
+        pfx = true;
+        String tryword = rt.getPrefix() + Utils.lenite(rt.getWord());
+        List<TaggedWord> joined = getWordTagger().tag(tryword);
+        String hyphword = rt.getPrefix() + "-" + Utils.lenite(rt.getWord());
+        List<TaggedWord> hyphen = getWordTagger().tag(hyphword);
+
+        if(!joined.isEmpty()) {
+          cur = joined;
+          pfx = false;
+        } else if(!hyphen.isEmpty()) {
+          pfx = false;
+          cur = hyphen;
+        } else {
+          pfx = true;
+        }
+      }
+
+      if(cur.isEmpty()) {
+        continue;
+      }
+      for(TaggedWord tw : cur) {
+        String append = (pfx) ? rt.getAppendTag() + ":NonStdCmpd" : rt.getAppendTag();
+        if(tw.getPosTag().matches(rt.getRestrictToPos())) {
+          String lemma = (pfx) ? rt.getPrefix() + Utils.lenite(tw.getLemma()) : tw.getLemma();
+          tagged.add(new TaggedWord(lemma, tw.getPosTag() + append));
+        }
+      }
+    }
+    return tagged;
   }
 
   private void addTokens(List<AnalyzedToken> taggedTokens, List<AnalyzedToken> l) {
