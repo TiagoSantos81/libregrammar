@@ -53,7 +53,7 @@ public class EnglishRedundancyRule extends AbstractSimpleReplaceRule2 {
   public EnglishRedundancyRule(ResourceBundle messages) throws IOException {
     super(messages, new English());
     super.setCategory(Categories.REDUNDANCY.getCategory(messages));
-    setLocQualityIssueType(ITSIssueType.Duplication);
+    setLocQualityIssueType(ITSIssueType.Style);
     // setDefaultOff();
     addExamplePair(Example.wrong("<marker>tuna fish</marker>"),
                    Example.fixed("<marker>tuna</marker>"));
