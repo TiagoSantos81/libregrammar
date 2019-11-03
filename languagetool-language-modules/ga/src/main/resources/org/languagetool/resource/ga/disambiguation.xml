@@ -6,6 +6,7 @@
 <!DOCTYPE rules [
         <!ENTITY nbsp " ">
         <!ENTITY apost "['`’]">
+        <!ENTITY interp "[\p{Punct}\-−–—―„«»…’]+">
         ]>
 <rules lang="ga" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:noNamespaceSchemaLocation="../../../../../../../../../languagetool-core/src/main/resources/org/languagetool/resource/disambiguation.xsd">
@@ -937,6 +938,102 @@
         </pattern>
         <disambig action="filterall"/>
     </rule>
+    <rule id="NA_BA" name="na ba">
+        <pattern>
+            <marker>
+                <token postag="Art:Pl:Def">na</token>
+                <token postag="Noun:Fem:Com:Pl:DefArt">ba</token>
+            </marker>
+        </pattern>
+        <disambig action="filterall"/>
+    </rule>
+    <rule id="BA_AR_A_LACHT" name="ba ar a lacht">
+        <pattern>
+            <marker>
+                <token postag="Noun:Fem:Com:Pl">ba</token>
+                <token postag="Prep:Simp">ar</token>
+                <token postag="Det:Poss:3P:Pl">a</token>
+                <token postag="Noun:Masc:Com:Sg:Ecl">lacht</token>
+            </marker>
+        </pattern>
+        <disambig action="filterall"/>
+    </rule>
+    <!-- if singular, on 'her'; if plural, on 'their' -->
+    <rulegroup id="BO_AR_A_LACHT" name="bó ar a lacht">
+        <rule>
+            <pattern>
+                <marker>
+                    <token postag="Noun:Fem:(Com|Gen):Sg.*" postag_regexp="yes" inflected="yes">bó</token>
+                    <token postag="Prep:Simp">ar</token>
+                    <token postag="Det:Poss:3P:Sg:Fem">a</token>
+                    <token postag="Noun:Masc:Com:Sg">lacht</token>
+                </marker>
+            </pattern>
+            <disambig action="filterall"/>
+        </rule>
+        <rule>
+            <pattern>
+                <marker>
+                    <token postag="Noun:Fem:(Com|Gen):Pl.*" postag_regexp="yes" inflected="yes">bó</token>
+                    <token postag="Prep:Simp">ar</token>
+                    <token postag="Det:Poss:3P:Pl">a</token>
+                    <token postag="Noun:Masc:Com:Sg:Ecl">lacht</token>
+                </marker>
+            </pattern>
+            <disambig action="filterall"/>
+        </rule>
+    </rulegroup>
+    <rule id="BA_AG_INIOR" name="ba ag iníor">
+        <pattern>
+            <marker>
+                <token postag="Noun:Fem:Com:Pl">ba</token>
+                <token postag="Prep:Simp">ag</token>
+                <token postag="Noun:Masc:Com:Sg">iníor</token>
+            </marker>
+        </pattern>
+        <disambig action="filterall"/>
+    </rule>
+    <rule id="NAR_FHILLE" name="nár fhille">
+        <pattern>
+            <marker>
+                <token postag="Part:Vb:Neg:Subj">nár</token>
+                <token postag=".*Verb.*PresSubj:Neg.*" postag_regexp="yes"></token>
+            </marker>
+        </pattern>
+        <disambig action="filterall"/>
+    </rule>
+    <rule id="GO_N-OIBRI" name="go n-oibrí">
+        <pattern>
+            <marker>
+                <token postag="Part:Vb:Subj">go</token>
+                <token postag=".*Verb.*PresSubj.*" postag_regexp="yes" inflected="yes">oibrigh</token>
+            </marker>
+        </pattern>
+        <disambig action="filterall"/>
+    </rule>
+    <rulegroup id="GO_SUBJ" name="go SUBJ">
+        <rule>
+            <pattern>
+                <token postag="SENT_START"></token>
+                <marker>
+                    <token postag="Part:Vb:Subj">go</token>
+                    <token postag=".*Verb.*PresSubj.*" postag_regexp="yes"></token>
+                </marker>
+            </pattern>
+            <disambig action="filterall"/>
+        </rule>
+        <rule>
+            <pattern>
+                <token postag="SENT_START"></token>
+                <token regexp="yes">&interp;</token>
+                <marker>
+                    <token postag="Part:Vb:Subj">go</token>
+                    <token postag=".*Verb.*PresSubj.*" postag_regexp="yes"></token>
+                </marker>
+            </pattern>
+            <disambig action="filterall"/>
+        </rule>
+    </rulegroup>
     <rule id="AR_AR" name="ar ar">  <!-- suppress in word repeat rule -->
         <pattern>
             <marker><token>ar</token></marker>
