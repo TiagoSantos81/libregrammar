@@ -9,7 +9,7 @@ conflict of interests inherent to the existence of a Freemium sister project and
 of contributors owning other derivative commercial projects.
 
 This fork intends to be a **pure free and open-source software** 'editor', developed for [end users](https://en.wikipedia.org/wiki/End_user), so, 
-it enables several rules that were not allowed to be enabled by default in the open-source component, reverts commits in the main branch that degrade the work previously done, and adds rules 
+it enables several rules not allowed to be enabled by default in the open-source component, reverts commits in the main branch that degrade the work previously done, and adds rules 
 that could be disabled on the grounds of being 'too picky' by some elements of the former team.
 In addition, this project has reverted all remote access connections code input in the LibreOffice 
 extension, updated dependencies that have known security vulnerabilities, and removed Freemium bindings.
@@ -51,7 +51,7 @@ Options:
    -p --package <package>      Specifies package to install when building (default all)
    -o --override <OS>          Override automatic OS detection with <OS>
    -a --accept                 Accept the oracle license at http://java.com/license. Only run this if you have seen the license and agree to its terms!
-   -r --remove <all/partial>   Removes LanguageTool install. <all> uninstalls the dependencies that were auto-installed. (default partial)
+   -r --remove <all/partial>   Removes LanguageTool install. <all> uninstalls the auto-installed dependencies. (default partial)
 
 Packages(only if -b is specified):
    standalone                  Installs standalone package
