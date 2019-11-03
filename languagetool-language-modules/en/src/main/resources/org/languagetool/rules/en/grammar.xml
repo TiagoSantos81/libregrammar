@@ -31642,6 +31642,25 @@ The accident victim died from her injuries.
             <example correction="martial">He is an experienced <marker>marshal</marker> artist.</example>
             <example correction="martial">He is an experienced <marker>marital</marker> artist.</example>
         </rule>
+        <rule id="CONFUSION_OF_DO_DUE" name="do to (due to)">
+        <!-- Created by Tiago F. Santos 2019-11-02 -->
+            <antipattern>
+                <token postag='MD'/>
+                <token>do</token>
+            </antipattern>
+            <antipattern>
+                <token regexp='yes'>I|you|we|they</token>
+                <token>do</token>
+            </antipattern>
+            <pattern>
+                <token>do</token>
+                <token>to</token>
+            </pattern>
+            <message>If you mean 'because of', you should use <suggestion>due to</suggestion> instead.</message>
+            <short>Word confusion</short>
+            <example correction="due to">It was <marker>do to</marker> him.</example>
+            <example>I can't believe the things you do to get that promotion.</example>
+        </rule>
         <rulegroup id="CONFUSION_OF_SATE_STATE" name="sate (state)">
             <rule>
                 <pattern>
