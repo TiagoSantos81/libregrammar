@@ -6,24 +6,24 @@
 
 #### English
   * rules added:
-     - EnglishSimpleGrammarRule for simple replacement rule creation - 877 entries added from Wikipedia;
-     - verb-noun confusion rule - 540 entries from After the Deadline (AtD);
-     - eggcorn detection - 227 entries from Grammark and AtD;
-     - cliche detection - 691 entries from AtD;
-     - wordiness database enhancements - 653 entries from Grammark;
-     - informal expressions detection - 228 entries from Wikipedia;
+     - EnglishSimpleGrammarRule for simple replacement rule creation - 877 error patterns added from Wikipedia;
+     - verb-noun confusion rule - 540 error patterns from After the Deadline (AtD);
+     - eggcorn detection - 227 error patterns from Grammark and AtD;
+     - cliche detection - 691 error patterns from AtD;
+     - wordiness database enhancements - 653 error patterns from Grammark;
+     - informal expressions detection - 228 error patterns from Wikipedia;
      - EnglishStyleRepeatedWordRule;
      - split infinitive detection;
      - comma splice partial detection;
-     - weasel word and thought-terminating clichés detection - 87 entries added from Wikipedia;
+     - weasel word and thought-terminating cliches detection - 87 error patterns added from Wikipedia;
      - typography of mathematical symbols;
-     - easily confused words - 533 pairs add - active only with
+     - easily confused words - 533 pairs added - active only with
     ngram data (see http://wiki.languagetool.org/finding-errors-using-n-gram-data);
      - other rules added and improved.
   * English rules re-activated:
-     - EnglishPlainEnglishRule - 697 entries from AtD;
+     - EnglishPlainEnglishRule - 697 error patterns from AtD;
      - Plain English category - 105 rules;
-     - EnglishRedundancyRule - 731 entries from AtD;
+     - EnglishRedundancyRule - 731 error patterns from AtD;
      - LongSentenceRule;
      - Passive voice;
      - Tired intensifiers;
@@ -57,7 +57,7 @@
 #### Irish
   * Support added thanks to Jim Regan, Emily Barnes, Mícheál J. Ó Meachair, 
   and Seanán Ó Coistín. Support includes:
-     - 961 grammar rules;
+     - 963 grammar rules;
      - Irish naming conventions converter;
      - generic typographical rules (e.g., spacing rules);
      - generic style rules (e.g., sentence length);

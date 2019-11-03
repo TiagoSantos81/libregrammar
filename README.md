@@ -4,14 +4,15 @@ This is a **LanguageTool** fork, an Open Source proofreading software for Englis
 Polish, Portuguese, Russian, and [more 28 other languages](https://github.com/TiagoSantos81/languagetool/tree/master/languagetool-language-modules).
 
 Due to increased hostility related to development divergences, the need for another fork arose. 
-Since late 2017, LanguageTool has had its development constrained by several factors, namely the 
+More noticeably since late 2017, LanguageTool has had its development constrained by several factors, namely the 
 conflict of interests inherent to the existence of a Freemium sister project and the integration 
 of contributors owning other derivative commercial projects.
 
 This fork intends to be a **pure free and open-source software** 'editor', developed for [end users](https://en.wikipedia.org/wiki/End_user), so, 
-it enables several rules that were not allowed to be enabled by default in the open-source component, 
-and adds rules that could be disabled on the grounds of being 'too picky' by some elements of the 
-former team.
+it enables several rules that were not allowed to be enabled by default in the open-source component, reverts commits in the main branch that degrade the work previously done, and adds rules 
+that could be disabled on the grounds of being 'too picky' by some elements of the former team.
+In addition, this project has reverted all remote access connections code input in the LibreOffice 
+extension, updated dependencies that have known security vulnerabilities, and removed Freemium bindings.
 
 Future work may also involve rolling back Freemium API bindings, making the add-ons work entirely 
 offline, and replacing n-gram rules by faster and lighter XML or [word2vec](https://github.com/gulp21/languagetool-neural-network) alternatives that can be 

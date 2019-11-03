@@ -1,9 +1,10 @@
-# LanguageTool
+# LibreGrammar
 
 **A proof-reading tool for Catalan, Dutch, English, French, German,
 Polish, Portuguese, Russian, and [more languages](https://www.languagetool.org/languages/)**
 
 Version 4.8-alpha-LT_fork, 2019-xx-xx
+Copyright (C) 2019- the LibreGrammar community and Tiago F. Santos
 Copyright (C) 2005-2019 the LanguageTool community and Daniel Naber (www.danielnaber.de)  
 https://www.languagetool.org
 
