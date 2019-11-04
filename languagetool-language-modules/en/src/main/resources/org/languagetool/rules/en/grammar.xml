@@ -36487,7 +36487,7 @@ The accident victim died from her injuries.
                 <token>Niggers</token>
             </antipattern>
             <pattern>
-                <token inflected="yes" regexp="yes">cocksucker|coon|cunt|dago|fuck|motherfucker|nigger|piss|shit|spic|spick|spik|tits|turd|twat<exception postag="NNP"></exception></token>
+                <token inflected="yes" regexp="yes">cocksucker|coon|cunt|dago|fart|fuck|motherfucker|nigger|piss|shit|spic|spick|spik|tits|turd|twat<exception postag="NNP"></exception></token>
             </pattern>
             <message>This word is considered offensive.</message>
             <url>https://en.wikipedia.org/wiki/Profanity</url>
@@ -36503,7 +36503,7 @@ The accident victim died from her injuries.
       <url>https://en.wiktionary.org/wiki/Category:English_offensive_terms</url>
       <example correction=""><marker>Fuck off</marker>!</example>
       <example><marker>Get out of here</marker>.</example>
-      <example>...ominant, chiefly Anatolian black pine (Pinus <marker>nigra</marker>), ...</example>
+      <example type='triggers_error'>...ominant, chiefly Anatolian black pine (Pinus <marker>nigra</marker>), ...</example>
       <example type='triggers_error'>-1993 - "Welcher Pfad führt zur Geschichte" (12"/MCD, MZEE</example>
       <example correction="">You son of a <marker>bitch</marker>!</example>
       <example type='triggers_error'>...ond Washington, American gang leader, founder the Crips (b. 1953)</example>
