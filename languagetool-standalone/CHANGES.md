@@ -71,7 +71,9 @@
 
 #### Portuguese
   * re-activated diacritics rule;
-  * add a few more subject-predicate agreement rules;
+  * add a few more rules:
+    - punctuation;
+    - subject-predicate agreement.
   * Portugal Portuguese former orthographic agreement locale added (Portugal 
   pre-AO) with support for:
      - [pt-PT pre-AO] [Dicionários Portugueses Complementares 1.2](https://github.com/TiagoSantos81/PortugueseLibreOfficeExtension);
