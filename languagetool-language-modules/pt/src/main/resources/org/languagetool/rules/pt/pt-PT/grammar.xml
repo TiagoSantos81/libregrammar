@@ -1005,7 +1005,7 @@ title="Easy editing stylesheet" ?>
     </rule>
     <rule>
       <pattern>
-          <token regexp='yes'>teus?|tuas?|ti</token>
+          <token regexp='yes'>teus?|tuas?|ti|contigo</token>
       </pattern>
       <message>O uso explícito do pronome "\1" pode ser interpretado como desrespeitoso. Considere substituí-lo pelo pronome de tratamente adequado.</message>
         <suggestion><match no='1' regexp_match='t' regexp_replace='s'/></suggestion>
