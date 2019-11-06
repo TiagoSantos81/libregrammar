@@ -137,6 +137,14 @@ public class EnglishVerbNounConfusionRule extends Rule {
       token("from"),
       token("now"),
       token("on")
+    ),
+    Arrays.asList(
+      pos("MD"),
+      regex("th(?:is|at)")
+    ),
+    Arrays.asList(
+      regex("d(?:oes|id)"),
+      regex("th(?:is|at)")
     )
   );
 
@@ -173,6 +181,7 @@ public class EnglishVerbNounConfusionRule extends Rule {
     int markEnd = 1;
     String replacement = null;
     String msg = null;
+    String shortmsg = null;
     for (int i = 0; i < (tokens.length - 1); i++) {
       if (tokens[i].isImmunized() || tokens[i + 1].isImmunized()) {
         continue;
@@ -182,6 +191,7 @@ public class EnglishVerbNounConfusionRule extends Rule {
         if (replacement == null) {
           replacement = getNounReplacements().get(tokens[i + 1].getToken());
           if (msg == null) {
+            shortmsg = "noun";
             msg = "Notice ‘" + tokens[i + 1].getToken() + "’ is a verb. If you are referring to the related noun, you probably should use <suggestion>" + tokens[i].getToken() + " " + replacement + "</suggestion> instead.";
           }
         }
@@ -191,13 +201,14 @@ public class EnglishVerbNounConfusionRule extends Rule {
         if (replacement == null) {
           replacement = getNounReplacements().get(tokens[i + 2].getToken());
           if (msg == null) {
+            shortmsg = "noun";
             msg = "Notice ‘" + tokens[i + 2].getToken() + "’ is a verb. If you are referring to the related noun, you probably should use <suggestion>" + tokens[i].getToken() + " " + tokens[i + 1].getToken() + " " + replacement + "</suggestion> instead.";
           }
         }
       }
       if (msg != null) {
         RuleMatch match = new RuleMatch(
-          this, sentence, tokens[i].getStartPos(), tokens[markEnd].getEndPos(), msg, "Here you should use the noun instead.");
+          this, sentence, tokens[i].getStartPos(), tokens[markEnd].getEndPos(), msg, "Here you should use the " + shortmsg + " instead.");
         ruleMatches.add(match);
         msg = null;
       }
@@ -210,7 +221,8 @@ public class EnglishVerbNounConfusionRule extends Rule {
   }
 
   private boolean isAdjective(AnalyzedTokenReadings token) {
-    if ((token.hasPosTagStartingWith("JJ")) && !(token.hasPosTagStartingWith("NN"))) {
+    if ((token.hasPosTagStartingWith("JJ"))
+    && !(token.hasPosTagStartingWith("NN"))) {
       return true;
       }
     return false;
@@ -247,11 +259,13 @@ public class EnglishVerbNounConfusionRule extends Rule {
           continue;
         }
         String[] parts = line.split("=");
-        /*if (parts.length != 2) {
+        if (parts.length != 2) {
           throw new IOException("Unexpected format in " + path + ": " + line + " - expected two parts delimited by '='");
-        }*/
+        }
         words.put(parts[column], parts[column == 1 ? 0 : 1]);
       }
+    } catch (IOException e) {
+      throw new RuntimeException(e);
     }
     return words;
   }

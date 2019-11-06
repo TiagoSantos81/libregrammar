@@ -16691,6 +16691,11 @@ USA
     http://www.geocities.com/Athens/Olympus/7583/ncntlist.html
     -->
         <rulegroup id="A_UNCOUNTABLE" name="Articles: a + uncountable noun">
+                <antipattern><!-- Names -->
+                        <token regexp="yes">an?</token>
+                        <token postag="JJ" min='0'/>
+                        <token regexp="yes" case_sensitive="yes">\p{Lu}\p{Ll}+</token>
+                </antipattern>
             <rule>
                 <pattern>
                     <marker>
@@ -29733,6 +29738,11 @@ The accident victim died from her injuries.
                 <token postag='SENT_START' skip='6'/>
                 <token>,</token>
                 <token regexp="yes">however|therefore|moreover|nevertheless|furthermore</token>
+        </antipattern>
+        <antipattern>
+                <token>,</token>
+                <token regexp="yes">however|therefore|moreover|nevertheless|furthermore</token>
+                <token regexp="yes">[\.!?…]</token>
         </antipattern>
         <pattern>
                 <token>,</token>
