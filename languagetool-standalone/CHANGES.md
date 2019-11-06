@@ -98,7 +98,7 @@
     - cyan: typographical suggestions.
 
 #### LibreOffice / Apache OpenOffice Integration
-  * remote server commits for LibreOffice plug-in reverted.
+  * remote server commits for LibreOffice plug-in reverted (#1929).
   * multiple core CPU support active by default.
 
 ### Other changes common to both projects
