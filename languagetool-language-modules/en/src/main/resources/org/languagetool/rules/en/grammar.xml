@@ -7474,25 +7474,83 @@ USA
         <rule id="CAN_SETUP" name="can setup (set up)">
             <pattern>
                 <token regexp="yes">can(not)?|been|[wc]ould|should|might|must|was|were|may|ve|did|ha([ds]|ve)|help|is|a?re|a?m|to</token>
-                <token>setup</token>
+                <token regexp="yes">set-?up</token>
             </pattern>
             <message>The verb 'set up' is spelled as two words. The noun 'setup' is spelled as one.</message>
-             <suggestion>\1 set up</suggestion>
+            <suggestion>\1 set up</suggestion>
+            <url>https://www.merriam-webster.com/dictionary/set%20up</url>
             <example correction="can set up">She <marker>can setup</marker> the tent in thirty seconds.</example>
             <example>She can set up the tent very quickly.</example>
             <example>The setup is working.</example>
         </rule>
-        <rule id="PRP_SETUP" name="They setup (set up)">
+        <rule id="PRP_SETUP" name="They setup (set up)" default="temp_off">
             <pattern>
-                <token regexp="yes">I|you|they|we</token>
+                <token regexp="yes">I|you|they|we|s?he</token>
                 <marker>
-                    <token>setup</token>
+                    <token regexp="yes">set-?up</token>
                 </marker>
             </pattern>
             <message>The verb 'set up' is spelled as two words. The noun 'setup' is spelled as one.</message>
-             <suggestion>set up</suggestion>
+            <suggestion>set up</suggestion>
+            <url>https://www.merriam-webster.com/dictionary/set%20up</url>
             <example correction="set up">They <marker>setup</marker> a meeting.</example>
             <example>The setup is working.</example>
+        </rule>
+        <rulegroup id="CAN_CHECKIN" name="can checkin (check in)" default="temp_off">
+            <antipattern>
+                <token regexp="yes" inflected="yes">proceed|go|forward|refer|send|continue|move</token>
+                <token>to</token>
+            </antipattern>
+            <rule>
+                <pattern>
+                    <token regexp="yes">can(not)?|[wc]ould|should|might|must|may|ve|did|ha([ds]|ve)|to</token>
+                    <token regexp="yes">check-?in</token>
+                </pattern>
+                <message>The verb 'check in' is spelled as two words. The noun 'check-in' is spelled as one.</message>
+                <suggestion>\1 check in</suggestion>
+                <url>https://www.merriam-webster.com/dictionary/check%20in</url>
+                <example correction="can check in">She <marker>can checkin</marker> tomorrow.</example>
+                <example>Sami was checkin his e-mails.</example>
+                <example>I will go to check-in and complain.</example>
+            </rule>
+        </rulegroup>
+        <rule id="PRP_CHECKIN" name="They checkin (check in)" default="temp_off">
+            <pattern>
+                <token regexp="yes">I|you|they|we</token>
+                <marker>
+                    <token regexp="yes">check-?in</token>
+                </marker>
+            </pattern>
+            <message>The verb <suggestion>check in</suggestion> is spelled as two words. The noun 'check-in' is spelled as one.</message>
+            <url>https://www.merriam-webster.com/dictionary/check%20in</url>
+            <example correction="check in">They <marker>check-in</marker> tomorrow</example>
+            <example>The check-in was yesterday.</example>
+        </rule>
+        <rule id="CAN_CHECKOUT" name="can checkout (check out)" default="temp_off">
+            <antipattern>
+                <token regexp="yes" inflected="yes">proceed|go|forward|refer|send|continue|move</token>
+                <token>to</token>
+            </antipattern>
+            <pattern>
+                <token regexp="yes">can(not)?|[wc]ould|should|might|must|may|did|to</token>
+                <token regexp="yes">check-?out</token>
+            </pattern>
+            <message>The verb 'check out' is spelled as two words. The noun 'checkout' is spelled as one.</message>
+             <suggestion>\1 check out</suggestion>
+            <example correction="can check out">She <marker>can checkout</marker> tomorrow.</example>
+            <example>Click the "Proceed to checkout" button.</example>
+        </rule>
+        <rule id="PRP_CHECKOUT" name="They checkout (check out)" default="temp_off">
+            <pattern>
+                <token regexp="yes">I|you|they|we</token>
+                <marker>
+                    <token regexp="yes">check-?out</token>
+                </marker>
+            </pattern>
+            <message>The verb <suggestion>check out</suggestion> is spelled as two words. The noun 'checkout' is spelled as one.</message>
+            <url>https://www.merriam-webster.com/dictionary/check%20out</url>
+            <example correction="check out">They <marker>checkout</marker> tomorrow</example>
+            <example>The checkout was yesterday.</example>
         </rule>
         <!-- can workout::word=can work out -->
         <rule id="CAN_WORKOUT" name="can workout (work out)">
@@ -10035,7 +10093,7 @@ USA
             </antipattern>
             <antipattern><!-- brexit term -->
                 <token>remain</token>
-                <token regexp="yes">campaigns?|people|movement|party|politicians?</token>
+                <token regexp="yes">campaigns?|people|movement|party|politicians?|alliances?</token>
             </antipattern>
             <antipattern>
                 <token>redeem</token>
@@ -11337,6 +11395,49 @@ USA
                 <message>The word '\3' is a verb. Did you mean the noun <suggestion><match no="3" regexp_match="(?i)point" regexp_replace="pointment" /></suggestion>?</message>
                 <example correction="appointment">Let's setup an <marker>appoint</marker> to discuss the latest development.</example>
             </rule>
+            <rule><!-- the troubleshoot -->
+                <pattern>
+                    <token regexp="yes">the|an?|my|y?our|his|her|their|its|s</token>
+                    <token postag="JJS?" postag_regexp="yes" min="0">
+                        <exception postag="NN.*" postag_regexp="yes" />
+                    </token>
+                    <marker>
+                        <token>troubleshoot</token>
+                    </marker>
+                </pattern>
+                <message>The word '\3' is a verb. Did you mean the noun <suggestion><match no="3" regexp_match="(?i)roubleshoot" regexp_replace="roubleshooting" /></suggestion> or <suggestion><match no="3" regexp_match="(?i)roubleshoot" regexp_replace="roubleshooting" /> guide</suggestion>?</message>
+                <example correction="troubleshooting|troubleshooting guide">Please check the <marker>troubleshoot</marker> document for a solution.</example>
+            </rule>
+            <rule><!-- the compensate -->
+                <pattern>
+                    <token regexp="yes">the|an?|my|y?our|his|her|their|its|s</token>
+                    <token postag="JJS?" postag_regexp="yes" min="0">
+                        <exception postag="NN.*" postag_regexp="yes" />
+                    </token>
+                    <marker>
+                        <token>compensate</token>
+                    </marker>
+                </pattern>
+                <message>The word '\3' is a verb. Did you mean the noun <suggestion><match no="3" regexp_match="(?i)ompensate" regexp_replace="ompensation" /></suggestion>?</message>
+                <example correction="compensation">He received a nice <marker>compensate</marker> for his work.</example>
+            </rule>
+            <!-- <rule>
+                <antipattern>
+                    <token skip="1" regexp="yes">(re-?)?submit</token>
+                    <token regexp="yes">(button|link|form|account|page|screen|draft|view|parameter|permission|function|feature|request|command|procedure|call|api|section|query|dialog|option|menu|plugin|script|method|endpoint|event|operation|window)s?|process(es)?</token>
+                </antipattern>
+                <pattern>
+                    <token regexp="yes">the|an?|my|y?our|his|her|their|its|s</token>
+                    <token postag="JJS?" postag_regexp="yes" min="0">
+                        <exception postag="NN.*" postag_regexp="yes" />
+                    </token>
+                    <marker>
+                        <token regexp="yes">(re-?)?submit</token>
+                    </marker>
+                </pattern>
+                <message>The word '\3' is a verb. Did you mean the noun <suggestion><match no="3" regexp_match="(?i)ubmit" regexp_replace="ubmission" /></suggestion>?</message>
+                <example correction="resubmission">The <marker>resubmit</marker> of the form finally worked.</example>
+            </rule> -->
             <rule><!-- the grow -->
                 <antipattern>
                     <token>grow</token>
@@ -12763,6 +12864,12 @@ USA
                 <token>need</token>
                 <token>not</token>
             </antipattern>
+            <antipattern><!-- #2124 do it after school -->
+                <token inflected="yes">do</token>
+                <token>it</token>
+                <token postag="IN"/>
+                <token chunk="E-NP-singular" postag_regexp="yes" postag="NN:UN?"/>
+            </antipattern>
             <pattern>
                 <!-- 't': from "doesn't" etc -->
                 <token><exception regexp="yes">can|could|must|might|shall|does|will|ll|would|should|may|t|did|be|is|were|was|that|about|of|lest|whether|surrounding|had</exception><exception regexp="yes" inflected="yes">hear|feel|see|insist|call|claim|make|let</exception><exception postag="IN"/></token>
@@ -12814,6 +12921,7 @@ USA
             <example>They confirmed it so will you please do it?</example>
             <example>They say it cant happen.</example><!-- rule CANT will catch this -->
             <example>... to the cheerfully optimistic, and it need not imply anything specific about the writer's...</example>
+            <example>Then please do it after school.</example><!-- #2124 -->
             <example type="triggers_error">Si le grain ne meurt – 1926 (translated as If It Die)</example>
         </rule>
         <rulegroup id="DID_PAST" name="'did' with past tense verb">
@@ -15259,6 +15367,10 @@ USA
                     <token>are</token>
                     <token>go</token>
                 </antipattern>
+                <antipattern><!-- #2123 You will be queen. -->
+                    <token>be</token>
+                    <token chunk="E-NP-singular" postag="NN">queen</token><!-- Do not make a general exception for NN:U because 'queen' is NN. Refer to https://www.lexico.com/en/definition/queen: "[as complement] ‘he insisted the princess could be crowned queen’" -->
+                </antipattern>
                 <pattern>
                     <token inflected="yes">be
                         <exception scope="previous" postag_regexp="yes" postag="VBP?" negate="yes" regexp="yes">ha(?:ve|s)</exception>
@@ -15300,6 +15412,7 @@ USA
                 <example>The Egyptians believed that every human being was composed of ...</example>
                 <example>All systems are go.</example>
                 <example>What is Google AMP?</example>
+                <example>You will be queen.</example><!-- #2123 -->
             </rule>
             <rule>
                 <antipattern><!-- Cannot use a chunk in an exception. Thus, use an antipattern with a chunk in a token. -->
@@ -17790,6 +17903,22 @@ USA
         </rulegroup>
         <rulegroup id="THIS_NNS" name="'this' vs. 'these'">
             <rule>
+                <pattern>
+                    <token>this</token>
+                    <token regexp="yes">
+                        years|months|weeks|days
+                        <exception regexp="yes" scope="next">ago|now</exception>
+                    </token>
+                </pattern>
+                <message>It seems that a possesive apostrophe is missing.</message>
+                <suggestion>\1 <match no="2" regexp_match="(?i)s" regexp_replace="'s" /></suggestion>
+                <suggestion>these \2</suggestion>
+                <example correction="This year's|These years"><marker>This years</marker> election will change everything.</example>
+                <example correction="this week's|these weeks">And <marker>this weeks</marker> platform update is a relatively small.</example>
+                <example>I suggested this years ago.</example>
+                <example>Been working on this months now and am exasperated.</example>
+            </rule>
+            <rule>
                 <antipattern><!-- this class will -->
                     <token>this</token>
                     <token chunk="E-NP-singular"/><!-- Disambiguation NN_are_NNS gives class/NNS -->
@@ -19633,6 +19762,13 @@ USA
         </rule>
         <rule id="DO_HE_VERB" name="do (does) he have">
             <!-- more specific than HE_VERB_AGR, helps to avoid loops with that -->
+            <antipattern><!-- #2125 Do it after school. -->
+                <token>do</token>
+                <token skip="-1">it
+                    <exception scope="next">?</exception>
+                    </token>
+                <token postag="SENT_END"/>
+            </antipattern>
             <pattern>
                 <marker>
                     <token>do</token>
@@ -19643,7 +19779,13 @@ USA
             </pattern>
             <message>Did you mean <suggestion>does</suggestion>?</message>
             <example correction="Does"><marker>Do</marker> she have dinner alone?</example>
+            <example correction="Does"><marker>Do</marker> it look broken to you?</example>
+            <example correction="does">... but <marker>do</marker> it usually look good or bad?</example>
             <example>If you do it at all, try to do it well.</example>
+            <example>Then please do it after school.</example><!-- #2125 -->
+            <example>Then do it after school.</example>
+            <example>Do it after school.</example>
+            <example>You should do it before school.</example>
         </rule>
         <rule id="WHEN_IS_NNP_AND_NNP" name="Incorrect use of 'is' vs. 'are'">
             <pattern>
@@ -19844,9 +19986,18 @@ USA
                 <token postag="JJ" />
             </antipattern>
             <antipattern>
+                <token regexp="yes">I|you|s?he|it|we|they</token>
+                <token regexp="yes">freakin.*</token>
+            </antipattern>
+            <antipattern>
                 <token>you</token>
                 <token postag="VBG" />
                 <token regexp="yes">idiots?|douche(bag)?s?|morons?</token>
+            </antipattern>
+            <antipattern>
+                <token>you</token>
+                <token postag="VBG" />
+                <token postag="UNKNOWN" />
             </antipattern>
             <antipattern>
                 <token>t</token>
@@ -19872,6 +20023,7 @@ USA
                 <example>(t)he conditioning of petty criminals with the whip.</example>
                 <example>We had an IT Meeting.</example>
                 <example>IT Consulting.</example>
+                <example>You freaking change it!</example><!-- freaking is an intensifier (https://www.merriam-webster.com/dictionary/freaking) -->
                 <example>They used to have Jerry Stiller and Anne Meara perform for us because he being Jewish, and her being Irish.</example>
             </rule>
             <rule>
@@ -19923,6 +20075,7 @@ USA
                 <example>How're you doing?</example>
                 <example>I cannot continue my class with you chattering to one another.</example>
                 <example>You dithering idiot!</example>
+                <example>You yammering clammorer</example>
             </rule>
             <rule>
                 <pattern>
@@ -20401,6 +20554,11 @@ USA
                 <example>Has anyone done this?</example>
             </rule>
             <rule>
+                <antipattern><!-- #2122 -->
+                    <token regexp="yes">Have|Are</token>
+                    <token chunk="B-NP-plural" postag="NNP"/>
+                    <token chunk="E-NP-plural" postag="NNS"/>
+                </antipattern>
                 <pattern case_sensitive="yes">
                     <token postag="SENT_START"/>
                     <marker>
@@ -20410,7 +20568,8 @@ USA
                 </pattern>
                 <message>The singular proper name <match no="3"/> must be used with <suggestion><match no="2" postag="VBZ"/></suggestion>.</message>
                 <example correction="Has"><marker>Have</marker> Mary bought a ticket?</example>
-                <example>Has Jack done this?</example>
+                <example><marker>Has</marker> Jack done this?</example>
+                <example>Are NASA images really taken from space?</example><!-- #2122 -->
             </rule>
             <rule>
                 <pattern case_sensitive="no">
@@ -21390,7 +21549,7 @@ USA
                 <token regexp="yes">\d+</token>
             </antipattern>
             <antipattern>
-                <token>season</token>
+                <token regexp="yes">season|chapter</token>
                 <token postag="CD" />
             </antipattern>
             <antipattern>
@@ -23715,7 +23874,7 @@ USA
             </antipattern>
             <antipattern><!-- you bastards, you guys -->
                 <token>you</token>
-                <token regexp="yes">(bastard|guy|idiot)s?</token>
+                <token regexp="yes">(bastard|guy|idiot|girl|boy)s?</token>
             </antipattern>
             <antipattern><!-- you son of a bitch -->
                 <token>you</token>
@@ -23809,6 +23968,7 @@ USA
             <example>… to which <marker>he quickly responded</marker>.</example>
             <example>She told me her secret.</example>
             <example>Is it bad?</example>
+            <example>All of you girls</example>
             <example>... if I ask you anything else today.</example>
             <example>They sold you garbage!</example>
             <example>It would take me too much time to explain to you why it's not going to work.</example>
@@ -29346,7 +29506,7 @@ The accident victim died from her injuries.
                         </token>
                         <token>day</token>
                     </marker>
-                    <token regexp="yes">weeks?|shipping|deliver(y|ies)|event|seminar|cookies?|trade|diet|cruise|school|weather|forecast|challenges?|warrant(y|ies)|guarantees?|getaways?|weekends?|course|conference|tour|adventure|training|off-?site|workout|travel|experience|rule|ticket|timeframe|trip</token>
+                    <token regexp="yes">weeks?|shipping|deliver(y|ies)|event|seminar|cookies?|trade|diet|cruise|festival|school|weather|forecast|challenges?|warrant(y|ies)|guarantees?|getaways?|weekends?|course|conference|tour|adventure|training|off-?site|workout|travel|experience|rule|ticket|timeframe|trip</token>
                 </pattern>
                 <message>When a number forms part of an adjectival compound, use a hyphen: <suggestion>\1-\2</suggestion></message>
                 <example correction="2-day">FedEx <marker>2 day</marker> delivery.</example>
