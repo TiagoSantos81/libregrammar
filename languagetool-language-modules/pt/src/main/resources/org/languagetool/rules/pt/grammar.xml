@@ -9025,7 +9025,7 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>\p{Lu}.+</token>
         </marker>
       </pattern>
-      <message>O vocativo deve ser separada por vírgulas.</message>
+      <message>O vocativo deve ser separado por vírgulas.</message>
         <suggestion>\2, \3</suggestion>
       <example correction="Parabéns, João"><marker>Parabéns João</marker>.</example>
     </rule>
@@ -9038,7 +9038,7 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>\p{Lu}.+</token>
         </marker>
       </pattern>
-      <message>O vocativo deve ser separada por vírgulas.</message>
+      <message>O vocativo deve ser separado por vírgulas.</message>
         <suggestion>\2 \3, \4</suggestion>
       <example correction="Boa sorte, João"><marker>Boa sorte João</marker>.</example>
     </rule>
@@ -9051,7 +9051,7 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>\p{Lu}.+</token>
         </marker>
       </pattern>
-      <message>O vocativo deve ser separada por vírgulas.</message>
+      <message>O vocativo deve ser separado por vírgulas.</message>
         <suggestion>\2 \3, \4</suggestion>
       <example correction="Tudo bem, João"><marker>Tudo bem João</marker>?</example>
     </rule>
@@ -9064,7 +9064,7 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>\p{Lu}.+</token>
         </marker>
       </pattern>
-      <message>O vocativo deve ser separada por vírgulas.</message>
+      <message>O vocativo deve ser separado por vírgulas.</message>
         <suggestion>\2 \3, \4</suggestion>
       <example correction="Como estás, João"><marker>Como estás João</marker>?</example>
     </rule>
@@ -9074,12 +9074,12 @@ title="Easy editing stylesheet" ?>
         <marker>
           <token postag='NP.+' postag_regexp='yes' regexp='yes'>\p{Lu}.+
             <exception postag='NP.+' negate_pos='yes' postag_regexp='yes'/></token>
-          <token regexp='yes'>o(?:brigad[ao]|i|lá)|parabéns</token>
         </marker>
+          <token regexp='yes'>o(?:brigad[ao]|i|lá)|parabéns</token>
       </pattern>
-      <message>O vocativo deve ser separada por vírgulas.</message>
-        <suggestion>\2, \3</suggestion>
-      <example correction="João, parabéns"><marker>João parabéns</marker>.</example>
+      <message>O vocativo deve ser separado por vírgulas.</message>
+        <suggestion>\2,</suggestion>
+      <example correction="João,"><marker>João</marker> parabéns.</example>
     </rule>
     <rule>
       <pattern>
@@ -9087,13 +9087,13 @@ title="Easy editing stylesheet" ?>
         <marker>
           <token postag='NP.+' postag_regexp='yes' regexp='yes'>\p{Lu}.+
             <exception postag='NP.+' negate_pos='yes' postag_regexp='yes'/></token>
+        </marker>
           <token regexp='yes'>bo(?:m|as?|ns)</token>
           <token regexp='yes'>dia|tarde|noite|cesta|festas|Natal|Páscoa|sonhos|sorte|trabalho|viagem</token>
-        </marker>
       </pattern>
-      <message>O vocativo deve ser separada por vírgulas.</message>
-        <suggestion>\2, \3 \4</suggestion>
-      <example correction="João, boa sorte"><marker>João boa sorte</marker>.</example>
+      <message>O vocativo deve ser separado por vírgulas.</message>
+        <suggestion>\2,</suggestion>
+      <example correction="João,"><marker>João</marker> boa sorte.</example>
     </rule>
     <rule>
       <pattern>
@@ -9101,13 +9101,13 @@ title="Easy editing stylesheet" ?>
         <marker>
           <token postag='NP.+' postag_regexp='yes' regexp='yes'>\p{Lu}.+
             <exception postag='NP.+' negate_pos='yes' postag_regexp='yes'/></token>
+        </marker>
           <token>tudo</token>
           <token regexp='yes'>b[eo]m</token>
-        </marker>
       </pattern>
-      <message>O vocativo deve ser separada por vírgulas.</message>
-        <suggestion>\2, \3 \4</suggestion>
-      <example correction="João, tudo bem"><marker>João tudo bem</marker>?</example>
+      <message>O vocativo deve ser separado por vírgulas.</message>
+        <suggestion>\2,</suggestion>
+      <example correction="João,"><marker>João</marker> tudo bem?</example>
     </rule>
     <rule>
       <pattern>
@@ -9115,13 +9115,13 @@ title="Easy editing stylesheet" ?>
         <marker>
           <token postag='NP.+' postag_regexp='yes' regexp='yes'>\p{Lu}.+
             <exception postag='NP.+' negate_pos='yes' postag_regexp='yes'/></token>
+        </marker>
           <token>como</token>
           <token regexp='yes'>(?:está|passa)s?</token>
-        </marker>
       </pattern>
-      <message>O vocativo deve ser separada por vírgulas.</message>
-        <suggestion>\2, \3 \4</suggestion>
-      <example correction="João, como estás"><marker>João como estás</marker>?</example>
+      <message>O vocativo deve ser separado por vírgulas.</message>
+        <suggestion>\2,</suggestion>
+      <example correction="João,"><marker>João</marker> como estás?</example>
     </rule>
     <rule>
       <pattern>
@@ -9129,12 +9129,12 @@ title="Easy editing stylesheet" ?>
         <marker>
           <token postag='NP.+' postag_regexp='yes' regexp='yes'>\p{Lu}.+
             <exception postag='NP.+' negate_pos='yes' postag_regexp='yes'/></token>
-          <token  postag='D.+' postag_regexp='yes' regexp='yes'>\p{Ll}+</token>
         </marker>
+          <token  postag='D.+' postag_regexp='yes' regexp='yes'>\p{Ll}+</token>
       </pattern>
-      <message>O vocativo deve ser separada por vírgulas.</message>
-        <suggestion>\2, \3</suggestion>
-      <example correction="João, o"><marker>João o</marker> correio está atrasado?</example>
+      <message>O vocativo deve ser separado por vírgulas.</message>
+        <suggestion>\2,</suggestion>
+      <example correction="João,"><marker>João</marker> o correio está atrasado?</example>
     </rule>
     <rule>
       <pattern>
@@ -9142,12 +9142,12 @@ title="Easy editing stylesheet" ?>
             <exception postag='SENT_START'/></token>
         <marker>
           <token regexp='yes'>\p{Lu}\p{L}+</token>
-          <token  postag='D.+' postag_regexp='yes' regexp='yes'>\p{Ll}+</token>
         </marker>
+          <token  postag='D.+' postag_regexp='yes' regexp='yes'>\p{Ll}+</token>
       </pattern>
-      <message>O vocativo deve ser separada por vírgulas.</message>
-        <suggestion>\2, \3</suggestion>
-      <example correction="João, o">Diz logo, <marker>João o</marker> correio está atrasado?</example>
+      <message>O vocativo deve ser separado por vírgulas.</message>
+        <suggestion>\2,</suggestion>
+      <example correction="João,">Diz logo, <marker>João</marker> o correio está atrasado?</example>
     </rule>
   </rulegroup>
 
