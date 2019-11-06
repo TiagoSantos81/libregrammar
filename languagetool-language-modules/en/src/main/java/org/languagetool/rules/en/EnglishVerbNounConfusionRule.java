@@ -189,43 +189,48 @@ public class EnglishVerbNounConfusionRule extends Rule {
       if (tokens[i].isImmunized() || tokens[i + 1].isImmunized()) {
         continue;
       }
-      if ((precedesNoun(tokens[i])) && (isVerb(tokens[i + 1]))) {
-        markEnd = i + 1;
-        if (replacement == null) {
-          replacement = getNounReplacements().get(tokens[i + 1].getToken());
-          if (msg == null) {
-            shortmsg = "noun";
-            msg = "Notice ‘" + tokens[i + 1].getToken() + "’ is a verb. If you are referring to the related noun, you probably should use <suggestion>" + tokens[i].getToken() + " " + replacement + "</suggestion> instead.";
+      if (precedesNoun(tokens[i])) {
+        shortmsg = "noun";
+        if (isVerb(tokens[i + 1])) {
+          markEnd = i + 1;
+          if (replacement == null) {
+            replacement = getNounReplacements().get(tokens[i + 1].getToken());
+            if (msg == null) {
+              msg = "Notice ‘" + tokens[i + 1].getToken() + "’ is a verb. If you are referring to the related noun, you probably should use <suggestion>" + tokens[i].getToken() + " " + replacement + "</suggestion> instead.";
+            }
+          }
+        }
+        if ((isAdjective(tokens[i + 1]))
+        && (isVerb(tokens[i + 2])) && !(tokens[i + 2].isImmunized())) {
+          markEnd = i + 2;
+          if (replacement == null) {
+            replacement = getNounReplacements().get(tokens[i + 2].getToken());
+            if (msg == null) {
+              msg = "Notice ‘" + tokens[i + 2].getToken() + "’ is a verb. If you are referring to the related noun, you probably should use <suggestion>" + tokens[i].getToken() + " " + tokens[i + 1].getToken() + " " + replacement + "</suggestion> instead.";
+            }
           }
         }
       }
-      if ((precedesNoun(tokens[i])) && (isAdjective(tokens[i + 1])) && !(tokens[i + 2].isImmunized()) && (isVerb(tokens[i + 2]))) {
-        markEnd = i + 2;
-        if (replacement == null) {
-          replacement = getNounReplacements().get(tokens[i + 2].getToken());
-          if (msg == null) {
-            shortmsg = "noun";
-            msg = "Notice ‘" + tokens[i + 2].getToken() + "’ is a verb. If you are referring to the related noun, you probably should use <suggestion>" + tokens[i].getToken() + " " + tokens[i + 1].getToken() + " " + replacement + "</suggestion> instead.";
+      if (precedesVerb(tokens[i])) {
+        shortmsg = "verb";
+        if (isNoun(tokens[i + 1])) {
+          markEnd = i + 1;
+          if (replacement == null) {
+            replacement = getVerbReplacements().get(tokens[i + 1].getToken());
+            if (msg == null) {
+              msg = "Notice ‘" + tokens[i + 1].getToken() + "’ is a noun. If you are referring to the related verb, you probably should use <suggestion>" + tokens[i].getToken() + " " + replacement + "</suggestion> instead.";
+            }
           }
         }
-      }
-      if ((precedesVerb(tokens[i])) && (isNoun(tokens[i + 1]))) {
-        markEnd = i + 1;
-        if (replacement == null) {
-          replacement = getVerbReplacements().get(tokens[i + 1].getToken());
-          if (msg == null) {
-            shortmsg = "verb";
-            msg = "Notice ‘" + tokens[i + 1].getToken() + "’ is a noun. If you are referring to the related verb, you probably should use <suggestion>" + tokens[i].getToken() + " " + replacement + "</suggestion> instead.";
-          }
-        }
-      }
-      if ((precedesVerb(tokens[i])) && (isAdverb(tokens[i + 1])) && !(tokens[i + 2].isImmunized()) && (isNoun(tokens[i + 2]))) {
-        markEnd = i + 2;
-        if (replacement == null) {
-          replacement = getVerbReplacements().get(tokens[i + 2].getToken());
-          if (msg == null) {
-            shortmsg = "verb";
-            msg = "Notice ‘" + tokens[i + 2].getToken() + "’ is a noun. If you are referring to the related verb, you probably should use <suggestion>" + tokens[i].getToken() + " " + tokens[i + 1].getToken() + " " + replacement + "</suggestion> instead.";
+        if ((isAdverb(tokens[i + 1]))
+        && !(tokens[i + 2].isImmunized())
+        && (isNoun(tokens[i + 2]))) {
+          markEnd = i + 2;
+          if (replacement == null) {
+            replacement = getVerbReplacements().get(tokens[i + 2].getToken());
+            if (msg == null) {
+              msg = "Notice ‘" + tokens[i + 2].getToken() + "’ is a noun. If you are referring to the related verb, you probably should use <suggestion>" + tokens[i].getToken() + " " + tokens[i + 1].getToken() + " " + replacement + "</suggestion> instead.";
+            }
           }
         }
       }
