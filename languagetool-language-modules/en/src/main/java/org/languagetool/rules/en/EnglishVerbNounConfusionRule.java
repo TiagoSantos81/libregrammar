@@ -52,6 +52,9 @@ public class EnglishVerbNounConfusionRule extends Rule {
   private static final Map<String,String> VERB_NOUN_DB = loadWordlist("en/verb_nouns.txt", 0);
   private static final Pattern PRECEDES_NOUN = Pattern.compile("[Tt]h(e|is)|[Aa]n?|[Mm]y|[Yy]?[Oo]ur|[Hh](is|er)|[Tt]heir|[Ii]ts|[Oo][fn]"); // excluded also non-determiners s|that
 
+  private static final Map<String,String> NOUN_VERB_DB = loadWordlist("en/verb_nouns.txt", 1);
+  private static final Pattern PRECEDES_VERB = Pattern.compile("can(not)?|[wc]ould|should|might|must|may|ve|did|ha([ds]|ve)|to|I|[Yy]ou|[Tt]hey|[Ww]e");
+
   private static final List<List<PatternToken>> ANTI_PATTERNS = Arrays.asList(
   // antipatterns from grammar.xml::A_INFINITIVE
     Arrays.asList(
@@ -206,6 +209,26 @@ public class EnglishVerbNounConfusionRule extends Rule {
           }
         }
       }
+      if ((precedesVerb(tokens[i])) && (isNoun(tokens[i + 1]))) {
+        markEnd = i + 1;
+        if (replacement == null) {
+          replacement = getVerbReplacements().get(tokens[i + 1].getToken());
+          if (msg == null) {
+            shortmsg = "verb";
+            msg = "Notice ‘" + tokens[i + 1].getToken() + "’ is a noun. If you are referring to the related verb, you probably should use <suggestion>" + tokens[i].getToken() + " " + replacement + "</suggestion> instead.";
+          }
+        }
+      }
+      if ((precedesVerb(tokens[i])) && (isAdverb(tokens[i + 1])) && !(tokens[i + 2].isImmunized()) && (isNoun(tokens[i + 2]))) {
+        markEnd = i + 2;
+        if (replacement == null) {
+          replacement = getVerbReplacements().get(tokens[i + 2].getToken());
+          if (msg == null) {
+            shortmsg = "verb";
+            msg = "Notice ‘" + tokens[i + 2].getToken() + "’ is a noun. If you are referring to the related verb, you probably should use <suggestion>" + tokens[i].getToken() + " " + tokens[i + 1].getToken() + " " + replacement + "</suggestion> instead.";
+          }
+        }
+      }
       if (msg != null) {
         RuleMatch match = new RuleMatch(
           this, sentence, tokens[i].getStartPos(), tokens[markEnd].getEndPos(), msg, "Here you should use the " + shortmsg + " instead.");
@@ -238,6 +261,32 @@ public class EnglishVerbNounConfusionRule extends Rule {
         return true;
       }
     }
+    return false;
+  }
+
+  public boolean precedesVerb(AnalyzedTokenReadings token) {
+    return PRECEDES_VERB.matcher(token.getToken()).matches();
+  }
+
+  static Map<String, String> getVerbReplacements() {
+    return NOUN_VERB_DB;
+  }
+
+  private boolean isNoun(AnalyzedTokenReadings token) {
+    for (String verb : getVerbReplacements().keySet()) {
+      if (verb.equalsIgnoreCase(token.getToken())) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  private boolean isAdverb(AnalyzedTokenReadings token) {
+    if ((token.hasPosTagStartingWith("R"))
+    && !(token.hasPosTagStartingWith("N"))
+    && !(token.hasPosTagStartingWith("V"))) {
+      return true;
+      }
     return false;
   }
 
