@@ -23066,13 +23066,14 @@ USA
                 <marker>
                     <token regexp="yes">an?</token>
                     <and>
-                        <token postag="NN:U"/>
+                        <token postag="NN:U">
+                            <exception postag="NN"/></token>
                         <token chunk="E-NP-singular"/>
                     </and>
                 </marker>
                 <token><exception>of</exception></token>
             </pattern>
-            <message>The indefinite article might be unnecessary before the uncountable noun: <suggestion>\2</suggestion>.</message>
+            <message>This noun is usually uncountable, so the indefinite article might be unnecessary before <suggestion>\2</suggestion>.</message>
             <short>Article unnecessary</short>
             <example correction="oil">I need <marker>a oil</marker> for my car.</example>
             <example correction="oil">My car needs <marker>an oil</marker>.</example>
@@ -23087,7 +23088,7 @@ USA
             <example type="triggers_error">Use <marker>an oil</marker> that has a high smoke point.</example>
             <example type="triggers_error">If a defendant appeals a conviction for <marker>a crime</marker> having multiple levels of offenses...</example>
             <example type="triggers_error">Such <marker>an acceleration</marker> will cause lateral loads on the walls, resulting ...</example>
-            <example type="triggers_error">In recent years there has been <marker>a backlash</marker> against the external environmental effects of...</example>
+            <example>In recent years there has been <marker>a backlash</marker> against the external environmental effects of...</example>
         </rule>
         <rule id="ACCUSTOMED_TO" name="accustomed to">
             <antipattern>
@@ -30218,6 +30219,20 @@ The accident victim died from her injuries.
               <suggestion>Mars</suggestion>
             <url>https://en.wiktionary.org/wiki/mars#Verb</url>
             <example correction="Mars">The planet <marker>mars</marker> has.</example>
+        </rule>
+        <rule id="CONFUSION_OF_OF_HAVE" name="Confusion of mars/Mars">
+        <!-- Created by Tiago F. Santos, 2019-11-06 -->
+            <pattern>
+                <token>
+                  <exception postag='DT'/></token>
+            <marker>
+                <token>might</token>
+                <token>of</token>
+            </marker>
+            </pattern>
+            <message>Did you mean <suggestion>might have</suggestion>?</message>
+            <example correction="might have">He <marker>might of</marker> some reason.</example>
+            <example>The might of that man is impressive.</example>
         </rule>
         <rule id="MARRIAGE_ANNIVERSARY" name="marriage (wedding) anniversary">
             <pattern>

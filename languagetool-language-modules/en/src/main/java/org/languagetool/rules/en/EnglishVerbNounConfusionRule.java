@@ -141,6 +141,7 @@ public class EnglishVerbNounConfusionRule extends Rule {
       token("now"),
       token("on")
     ),
+    // antipatterns for PRECEDES_VERB + NOUN
     Arrays.asList(
       pos("MD"),
       regex("th(?:is|at)")
@@ -148,6 +149,12 @@ public class EnglishVerbNounConfusionRule extends Rule {
     Arrays.asList(
       regex("d(?:oes|id)"),
       regex("th(?:is|at)")
+    ),
+    Arrays.asList(
+      posRegex("[^D].+"),
+      regex("proceed|go|forward|refer|send|continue|move"),
+      token("to"),
+      posRegex("NN.*")
     )
   );
 
