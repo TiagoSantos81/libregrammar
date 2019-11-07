@@ -9143,7 +9143,8 @@ title="Easy editing stylesheet" ?>
         <marker>
           <token regexp='yes'>\p{Lu}\p{L}+</token>
         </marker>
-          <token  postag='D.+' postag_regexp='yes' regexp='yes'>\p{Ll}+</token>
+          <token  postag='D.+' postag_regexp='yes' regexp='yes'>\p{Ll}+
+            <exception postag='S.+' postag_regexp='yes'/></token>
       </pattern>
       <message>O vocativo deve ser separado por vírgulas.</message>
         <suggestion>\2,</suggestion>
