@@ -53,7 +53,7 @@ public class EnglishVerbNounConfusionRule extends Rule {
   private static final Pattern PRECEDES_NOUN = Pattern.compile("[Tt]h(e|is)|[Aa]n?|[Mm]y|[Yy]?[Oo]ur|[Hh](is|er)|[Tt]heir|[Ii]ts|[Oo][fn]"); // excluded also non-determiners s|that
 
   private static final Map<String,String> NOUN_VERB_DB = loadWordlist("en/verb_nouns.txt", 1);
-  private static final Pattern PRECEDES_VERB = Pattern.compile("can(not)?|[wc]ould|should|might|must|may|ve|did|ha([ds]|ve)|to|I|[Yy]ou|[Tt]hey|[Ww]e");
+  private static final Pattern PRECEDES_VERB = Pattern.compile("can(not)?|[wc]ould|should|m(?:ight|ust|ay)|ve|did|ha([ds]|ve)|ve|will|[Tt]o|I|[Yy]ou|[Tt]hey|[Ww]e");
 
   private static final List<List<PatternToken>> ANTI_PATTERNS = Arrays.asList(
   // antipatterns from grammar.xml::A_INFINITIVE
