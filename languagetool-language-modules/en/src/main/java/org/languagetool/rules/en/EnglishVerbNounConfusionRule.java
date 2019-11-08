@@ -151,6 +151,10 @@ public class EnglishVerbNounConfusionRule extends Rule {
       regex("th(?:is|at)")
     ),
     Arrays.asList(
+      regex("this"),
+      pos("VBZ")
+    ),
+    Arrays.asList(
       posRegex("[^D].+"),
       regex("proceed|go|forward|refer|send|continue|move"),
       token("to"),
