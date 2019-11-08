@@ -1954,6 +1954,26 @@
     </rule>
   </rulegroup>
 
+  <rulegroup id="UM_DOS_QUAIS" name="umdos quais">
+    <!-- 		Created by Tiago F. Santos, 2019-11-08		-->
+    <rule>
+      <pattern>
+          <token>um</token>
+          <token>dos</token>
+          <token>quais</token>
+      </pattern>
+      <disambig action="replace"><wd pos="DI0MS0"/><wd pos="SPS00"/><wd pos="DI0MS0"/></disambig>
+    </rule>
+    <rule>
+      <pattern>
+          <token>uma</token>
+          <token>das</token>
+          <token>quais</token>
+      </pattern>
+      <disambig action="replace"><wd pos="DI0FS0"/><wd pos="SPS00"/><wd pos="DI0FS0"/></disambig>
+    </rule>
+  </rulegroup>
+
     <rule id="AVANCA_NUMEROS" name="avança números">
     <!-- 		Created by Tiago F. Santos, 2019-08-30		-->
       <pattern>
