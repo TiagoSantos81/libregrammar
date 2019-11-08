@@ -258,6 +258,35 @@ title="Easy editing stylesheet" ?>
       </includephrases>
     </phrase>
 
+    <phrase id="ONE_WORD_GREETINGS">
+          <token regexp='yes'>o(?:brigad[ao]|i|lá)|parabéns</token>
+    </phrase>
+    <phrase id="TWO_WORDS_GREETINGS">
+          <token regexp='yes'>bo(?:m|as?|ns)</token>
+          <token regexp='yes'>dia|tarde|noite|cesta|festas|Natal|Páscoa|sonhos|sorte|trabalho|viagem</token>
+    </phrase>
+    <phrase id="TWO_WORDS_GREETINGS_TUDO_BEM">
+          <token regexp='yes'>tudo|estás?|tás</token>
+          <token regexp='yes'>b(?:[eo]m|oa)</token>
+    </phrase>
+    <phrase id="TWO_WORDS_GREETINGS_COMO_PASSA">
+          <token>como</token>
+          <token regexp='yes'>(?:está|passa)s?</token>
+    </phrase>
+    <phrase id="ALL_TWO_WORD_GREETINGS">
+      <includephrases>
+          <phraseref idref="TWO_WORDS_GREETINGS"/>
+          <phraseref idref="TWO_WORDS_GREETINGS_TUDO_BEM"/>
+          <phraseref idref="TWO_WORDS_GREETINGS_COMO_PASSA"/>
+      </includephrases>
+    </phrase>
+    <phrase id="ALL_GREETINGS">
+      <includephrases>
+          <phraseref idref="ONE_WORD_GREETINGS"/>
+          <phraseref idref="ALL_TWO_WORD_GREETINGS"/>
+      </includephrases>
+    </phrase>
+
     <phrase id="YESTERDAYS">
           <token regexp="yes">(?i)(?:ante)?ontem</token>
     </phrase>
@@ -4693,6 +4722,42 @@ title="Easy editing stylesheet" ?>
           <token postag_regexp='yes' postag="[AN].+"/>
           <token>?</token>
       </antipattern>
+      <antipattern><!-- one word greetings -->
+      <!-- TODO allow phrases in disambiguation -->
+          <token postag="SENT_START"/>
+          <token regexp='yes'>o(?:brigad[ao]|i|lá)|parabéns</token>
+          <token min='0'>,</token>
+          <token max='2'>
+            <exception>,</exception></token>
+          <token regexp='yes'>[.!?]</token>
+      </antipattern>
+      <antipattern><!-- two word greetings -->
+          <token postag="SENT_START"/>
+          <token regexp='yes'>bo(?:m|as?|ns)</token>
+          <token regexp='yes'>dia|tarde|noite|cesta|festas|Natal|Páscoa|sonhos|sorte|trabalho|viagem</token>
+          <token min='0'>,</token>
+          <token max='2'>
+            <exception>,</exception></token>
+          <token regexp='yes'>[.!?]</token>
+      </antipattern>
+      <antipattern><!-- two word greetings -->
+          <token postag="SENT_START"/>
+          <token>tudo</token>
+          <token regexp='yes'>b[eo]m</token>
+          <token min='0'>,</token>
+          <token max='2'>
+            <exception>,</exception></token>
+          <token regexp='yes'>[.!?]</token>
+      </antipattern>
+      <antipattern><!-- two word greetings 2 -->
+          <token postag="SENT_START"/>
+          <token>como</token>
+          <token regexp='yes'>(?:está|passa)s?</token>
+          <token min='0'>,</token>
+          <token max='2'>
+            <exception>,</exception></token>
+          <token regexp='yes'>[.!?]</token>
+      </antipattern>
       <antipattern><!-- XXX LibreOffice specific antipattern -->
     <!-- TODO Libreoffice plug-in tokenizes enumerations differently, so, it triggers an error that does not exist in the LT-server, nor LT-standalone. Verify. -->
           <token postag='SENT_START'/>
@@ -4750,6 +4815,9 @@ title="Easy editing stylesheet" ?>
       <example>Junte a cebola.</example>
       <example>Mande lembranças minhas para seus pais.</example>
       <example>A guerra trouxe a ruína para o país.</example>
+      <example>Olá a todos!</example>
+      <example>Bom dia, Jessica!</example>
+      <example type='triggers_error'>Oi, Carolina. Tudo bem?</example><!-- FIXME java implementation bug. does not trigger error on the standalone tool -->
     </rule>
 
   <rulegroup id='FRAGMENT_TWO_ARTICLES' name='Fragmento: dois artigos seguidos' default='on'>
@@ -9021,7 +9089,7 @@ title="Easy editing stylesheet" ?>
       <pattern>
           <token postag='SENT_START'/>
         <marker>
-          <token regexp='yes'>o(?:brigad[ao]|i|lá)|parabéns</token>
+          <phraseref idref='ONE_WORD_GREETINGS'/>
           <token regexp='yes'>\p{Lu}.+</token>
         </marker>
       </pattern>
@@ -9032,41 +9100,16 @@ title="Easy editing stylesheet" ?>
     <rule>
       <pattern>
           <token postag='SENT_START'/>
+          <phraseref idref='ALL_TWO_WORD_GREETINGS'/>
         <marker>
-          <token regexp='yes'>bo(?:m|as?|ns)</token>
-          <token regexp='yes'>dia|tarde|noite|cesta|festas|Natal|Páscoa|sonhos|sorte|trabalho|viagem</token>
           <token regexp='yes'>\p{Lu}.+</token>
         </marker>
       </pattern>
       <message>O vocativo deve ser separado por vírgulas.</message>
-        <suggestion>\2 \3, \4</suggestion>
-      <example correction="Boa sorte, João"><marker>Boa sorte João</marker>.</example>
-    </rule>
-    <rule>
-      <pattern>
-          <token postag='SENT_START'/>
-        <marker>
-          <token>tudo</token>
-          <token regexp='yes'>b[eo]m</token>
-          <token regexp='yes'>\p{Lu}.+</token>
-        </marker>
-      </pattern>
-      <message>O vocativo deve ser separado por vírgulas.</message>
-        <suggestion>\2 \3, \4</suggestion>
-      <example correction="Tudo bem, João"><marker>Tudo bem João</marker>?</example>
-    </rule>
-    <rule>
-      <pattern>
-          <token postag='SENT_START'/>
-        <marker>
-          <token>como</token>
-          <token regexp='yes'>(?:está|passa)s?</token>
-          <token regexp='yes'>\p{Lu}.+</token>
-        </marker>
-      </pattern>
-      <message>O vocativo deve ser separado por vírgulas.</message>
-        <suggestion>\2 \3, \4</suggestion>
-      <example correction="Como estás, João"><marker>Como estás João</marker>?</example>
+        <suggestion>, \4</suggestion>
+      <example correction=", João">Boa sorte <marker>João</marker>.</example>
+      <example correction=", João">Como estás <marker>João</marker>?</example>
+      <example correction=", João">Tudo bem <marker>João</marker>?</example>
     </rule>
     <rule>
       <pattern>
@@ -9075,7 +9118,7 @@ title="Easy editing stylesheet" ?>
           <token postag='NP.+' postag_regexp='yes' regexp='yes'>\p{Lu}.+
             <exception postag='NP.+' negate_pos='yes' postag_regexp='yes'/></token>
         </marker>
-          <token regexp='yes'>o(?:brigad[ao]|i|lá)|parabéns</token>
+          <phraseref idref='ONE_WORD_GREETINGS'/>
       </pattern>
       <message>O vocativo deve ser separado por vírgulas.</message>
         <suggestion>\2,</suggestion>
@@ -9088,39 +9131,12 @@ title="Easy editing stylesheet" ?>
           <token postag='NP.+' postag_regexp='yes' regexp='yes'>\p{Lu}.+
             <exception postag='NP.+' negate_pos='yes' postag_regexp='yes'/></token>
         </marker>
-          <token regexp='yes'>bo(?:m|as?|ns)</token>
-          <token regexp='yes'>dia|tarde|noite|cesta|festas|Natal|Páscoa|sonhos|sorte|trabalho|viagem</token>
+          <phraseref idref='ALL_TWO_WORD_GREETINGS'/>
       </pattern>
       <message>O vocativo deve ser separado por vírgulas.</message>
         <suggestion>\2,</suggestion>
       <example correction="João,"><marker>João</marker> boa sorte.</example>
-    </rule>
-    <rule>
-      <pattern>
-          <token postag='SENT_START'/>
-        <marker>
-          <token postag='NP.+' postag_regexp='yes' regexp='yes'>\p{Lu}.+
-            <exception postag='NP.+' negate_pos='yes' postag_regexp='yes'/></token>
-        </marker>
-          <token>tudo</token>
-          <token regexp='yes'>b[eo]m</token>
-      </pattern>
-      <message>O vocativo deve ser separado por vírgulas.</message>
-        <suggestion>\2,</suggestion>
       <example correction="João,"><marker>João</marker> tudo bem?</example>
-    </rule>
-    <rule>
-      <pattern>
-          <token postag='SENT_START'/>
-        <marker>
-          <token postag='NP.+' postag_regexp='yes' regexp='yes'>\p{Lu}.+
-            <exception postag='NP.+' negate_pos='yes' postag_regexp='yes'/></token>
-        </marker>
-          <token>como</token>
-          <token regexp='yes'>(?:está|passa)s?</token>
-      </pattern>
-      <message>O vocativo deve ser separado por vírgulas.</message>
-        <suggestion>\2,</suggestion>
       <example correction="João,"><marker>João</marker> como estás?</example>
     </rule>
     <rule>
