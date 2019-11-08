@@ -9138,10 +9138,26 @@ title="Easy editing stylesheet" ?>
     </rule>
     <rule>
       <pattern>
-          <token>
-            <exception postag='SENT_START'/></token>
+          <token regexp='yes'>[\"“«—]</token>
         <marker>
-          <token regexp='yes'>\p{Lu}\p{L}+</token>
+          <token postag='NP.+' postag_regexp='yes' regexp='yes'>\p{Lu}.+
+            <exception postag='NP.+' negate_pos='yes' postag_regexp='yes'/></token>
+        </marker>
+          <token  postag='D.+' postag_regexp='yes' regexp='yes'>\p{Ll}+</token>
+      </pattern>
+      <message>O vocativo deve ser separado por vírgulas.</message>
+        <suggestion>\2,</suggestion>
+      <example correction="João,">E depois de ele dizer “<marker>João</marker> o correio está atrasado?”</example>
+      <example>Ao que ele respondeu “<marker>Existe</marker> uma oportunidade.”</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token>
+            <exception postag='SENT_START'/>
+            <exception regexp='yes'>[\"“«—]</exception></token>
+        <marker>
+          <token regexp='yes'>\p{Lu}\p{L}+
+            <exception postag='[AN].+' postag_regexp='yes' negate_pos='yes'/></token>
         </marker>
           <token  postag='D.+' postag_regexp='yes' regexp='yes'>\p{Ll}+
             <exception postag='S.+' postag_regexp='yes'/></token>
@@ -27253,7 +27269,7 @@ TODO Write better examples
           <token spacebefore='no'>feira</token>
       </pattern>
       <message>Redundância não gramatical.</message>
-        <suggestion>\1 a \5\6\7</suggestion>
+        <suggestion>\1 \4 \5\6\7</suggestion>
       <example correction="segunda a sexta-feira">Podem visitar o museu de <marker>segunda-feira a sexta-feira</marker>.</example>
     </rule>
 
