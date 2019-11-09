@@ -53,7 +53,7 @@ public class EnglishVerbNounConfusionRule extends Rule {
   private static final Pattern PRECEDES_NOUN = Pattern.compile("[Tt]h(e|is)|[Aa]n?|[Mm]y|[Yy]?[Oo]ur|[Hh](is|er)|[Tt]heir|[Ii]ts|[Oo][fn]"); // excluded also non-determiners s|that
 
   private static final Map<String,String> NOUN_VERB_DB = loadWordlist("en/verb_nouns.txt", 1);
-  private static final Pattern PRECEDES_VERB = Pattern.compile("can(not)?|[wc]ould|should|m(?:ight|ust|ay)|ve|did|ha([ds]|ve)|ve|will|[Tt]o|I|[Yy]ou|[Tt]hey|[Ww]e");
+  private static final Pattern PRECEDES_VERB = Pattern.compile("can(not)?|[wc]ould|should|m(?:ight|ust|ay)|did|ha([ds]|ve)|ve|will|[Tt]o|It?|[Yy]ou|[Ss][Hh]e|[Tt]hey|[Ww]e");
 
   private static final List<List<PatternToken>> ANTI_PATTERNS = Arrays.asList(
   // antipatterns from grammar.xml::A_INFINITIVE
@@ -151,12 +151,17 @@ public class EnglishVerbNounConfusionRule extends Rule {
       regex("th(?:is|at)")
     ),
     Arrays.asList(
-      regex("this"),
+      token("this"),
       pos("VBZ")
     ),
     Arrays.asList(
       posRegex("[^D].+"),
-      regex("proceed|go|forward|refer|send|continue|move"),
+      regex("(?:collapse|continue|forward|go|move|proceed|refer|send)(?:e?[ds])?"),
+      token("to"),
+      posRegex("NN.*")
+    ),
+    Arrays.asList(
+      regex("(?:call|drive|thank)(?:e?[ds])?"),
       token("to"),
       posRegex("NN.*")
     )
@@ -273,7 +278,7 @@ public class EnglishVerbNounConfusionRule extends Rule {
 
   private boolean isVerb(AnalyzedTokenReadings token) {
     for (String verb : getNounReplacements().keySet()) {
-      if (verb.equalsIgnoreCase(token.getToken())) {
+      if (verb.equals(token.getToken())) {
         return true;
       }
     }
@@ -290,7 +295,7 @@ public class EnglishVerbNounConfusionRule extends Rule {
 
   private boolean isNoun(AnalyzedTokenReadings token) {
     for (String verb : getVerbReplacements().keySet()) {
-      if (verb.equalsIgnoreCase(token.getToken())) {
+      if (verb.equals(token.getToken())) {
         return true;
       }
     }
