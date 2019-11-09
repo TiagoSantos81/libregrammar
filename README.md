@@ -14,9 +14,8 @@ that could be disabled on the grounds of being 'too picky' by some elements of t
 In addition, this project has reverted all remote access connections code input in the LibreOffice 
 extension, updated dependencies that have known security vulnerabilities, and removed Freemium bindings.
 
-Future work may also involve rolling back Freemium API bindings, making the add-ons work entirely 
-offline, and replacing n-gram rules by faster and lighter XML or [word2vec](https://github.com/gulp21/languagetool-neural-network) alternatives that can be 
-shipped with the main package.
+Future work may also involve making the add-ons work entirely offline, and replacing n-gram rules by faster and lighter XML 
+or [word2vec](https://github.com/gulp21/languagetool-neural-network) alternatives that can be shipped with the main package.
 
 Everyone is still welcome to use and comment on this code according to the licencing terms, but feedback 
 will only be considered if it has the end-users best interests in mind.
