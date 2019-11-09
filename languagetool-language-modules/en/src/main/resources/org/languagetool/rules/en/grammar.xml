@@ -17002,10 +17002,10 @@ USA
                 <token spacebefore='no'><exception postag="DT|WDT|JJ|NN.*" postag_regexp="yes"/></token>
             </antipattern>
             <antipattern><!-- TODO replace by disambiguation after testing (IN + JJ&NN + and|or + JJ|NN + NNS) -->
-                <token postag="NN" postag_regexp="yes"/>
+                <token postag="NN"/>
                 <token regexp="yes">and|or</token>
                 <token postag="JJ|NN.+" postag_regexp="yes"/>
-                <token postag="NNS" postag_regexp="yes"/>
+                <token postag="NNS"/>
             </antipattern>
             <rule>
                 <pattern>
@@ -37382,7 +37382,7 @@ The accident victim died from her injuries.
                 <token postag="NN(:.+)?" postag_regexp="yes" regexp="yes">.{2,}
                     <exception regexp="yes">today|yesterday|tomorrow|now|in|are</exception>
                     <exception postag="VB[DGNP]?|RB|MD|IN|JJ.*|CC" postag_regexp="yes"/>
-                    <exception case_sensitive='yes'>\p{Lu}.+</token>
+                    <exception case_sensitive='yes' regexp='yes'>\p{Lu}.+</exception></token>
             </pattern>
             <message>You used three nouns one after another, and this might decrease readability. You might consider rewording the sentence.</message>
             <short>Possibly bad style</short>
