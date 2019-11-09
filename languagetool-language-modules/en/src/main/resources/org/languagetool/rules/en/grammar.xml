@@ -4254,7 +4254,7 @@ USA
                     <marker>
                         <token postag="NNP?S" postag_regexp="yes" regexp="yes">\p{Lu}?\p{Ll}*s<exception regexp="yes">eats|says|likes|loves|hates|customs|sports|decreases|does|his|ones|relations|affairs|weapons|crimes</exception><exception postag="VBZ|RB|IN|JJ|NN:.*|NNP?" postag_regexp="yes"/></token>
                     </marker>
-                    <token postag="NN(:.+)?" postag_regexp="yes" regexp="yes">\p{Ll}{2,}<exception regexp="yes">equipment|department|sector|exam|faculty|given|can|today|yesterday|tomorrow|now|in|are</exception><exception postag="VBG|VB|VBP|VB[DN]|RB|MD|IN|JJ.*|CC|PRP|NNP.*" postag_regexp="yes"/></token>
+                    <token postag="NN(:.+)?" postag_regexp="yes" regexp="yes">\p{Ll}{2,}<exception regexp="yes">equipment|department|sector|exam|faculty|given|can|today|yesterday|tomorrow|now|in|are</exception><exception postag="VB[DGNP]?|RB|MD|IN|JJ.*|CC|PRP|NNP.*" postag_regexp="yes"/></token>
                     <token><exception regexp="yes">\p{Punct}|and|or</exception></token>
                 </pattern>
                 <message>Apostrophe might be missing. Did you mean <suggestion><match no="3"/>'</suggestion> or <suggestion><match suppress_misspelled="yes" no="3" postag="NN(P)?S" postag_regexp="yes" postag_replace="NN$1(:U.?)?" setpos="no"/>'s</suggestion>?</message>
@@ -16992,24 +16992,37 @@ USA
                 <token regexp="yes">bud|season|session</token>
             </antipattern>
             <antipattern>
+                <token postag="JJ|NN.*" postag_regexp="yes"/>
+                <token spacebefore='no' regexp="yes">&quot;|[“‘]</token>
+                <token spacebefore='no'>s</token>
+            </antipattern>
+            <antipattern>
                 <token postag="DT|WDT|JJ|NN.*" postag_regexp="yes"/>
                 <token regexp="yes">&quot;|[“‘]</token>
                 <token spacebefore='no'><exception postag="DT|WDT|JJ|NN.*" postag_regexp="yes"/></token>
+            </antipattern>
+            <antipattern><!-- TODO replace by disambiguation after testing (IN + JJ&NN + and|or + JJ|NN + NNS) -->
+                <token postag="NN" postag_regexp="yes"/>
+                <token regexp="yes">and|or</token>
+                <token postag="JJ|NN.+" postag_regexp="yes"/>
+                <token postag="NNS" postag_regexp="yes"/>
             </antipattern>
             <rule>
                 <pattern>
                     <token><exception postag="DT|WDT|JJ|NN.*" postag_regexp="yes"/></token>
                     <token postag="VBP|VBZ" postag_regexp="yes"><exception regexp="yes">do|does|take[s]*|give[s]*|says|go|goes|becomes</exception><exception postag="NN.*|JJ.*|POS.*" postag_regexp="yes"/></token>
                     <marker>
-                        <token postag="NN"><exception postag="DT|RB.*|RP|JJ.*|IN|C[CD]|VB[DN]|MD|NNP|NNP?S|PRP.*|WRB|NN:UN?" postag_regexp="yes"/><exception regexp="yes">(?iu)\p{Lu}\p{Ll}+</exception></token>
+                        <token postag="NN"><exception postag="DT|RB.*|RP|JJ.*|IN|C[CD]|VB[DN]|MD|NN[PS]S?|PRP.*|WRB|NN:UN?" postag_regexp="yes"/><exception regexp="yes">(?iu)\p{Lu}\p{Ll}+</exception></token>
                     </marker>
                     <token><exception postag="NN.*|CD" postag_regexp="yes"/></token>
                 </pattern>
                 <message>The article might be missing before the noun: <suggestion><match no="3" postag="+DT"/></suggestion>.</message>
                 <short>Article might be missing</short>
                 <example correction="a friend|the friend">He is <marker>friend</marker>.</example>
+                <example correction="a friend|the friend">He's <marker>friend</marker>.</example>
                 <example>He is <marker>a friend</marker>.</example>
                 <example>He is my friend.</example>
+                <example>He is somebody else's <marker>friend</marker>.</example>
                 <example>This is Chapter 2.</example>
                 <example>Depict one's immersion with the world.</example>
                 <example>You can go <marker>by car</marker> or by train.</example>
@@ -17023,7 +17036,7 @@ USA
                     <token><exception postag="DT|WDT|JJ|NN.*" postag_regexp="yes"/></token>
                     <token regexp="yes">do|does</token>
                     <marker>
-                        <token postag="NN"><exception postag="DT|WRB|RB|RP|JJ|IN|CC|CD|JJR|RBS|VB[DN]|MD|NNP|NNS|VB|VBP" postag_regexp="yes"/></token>
+                        <token postag="NN"><exception postag="DT|WRB|R[BP]|JJ|IN|C[CD]|JJR|RBS|VB[DN]|MD|NN[PS]|VB|VBP" postag_regexp="yes"/></token>
                     </marker>
                     <token><exception postag="NN.*" postag_regexp="yes"/></token>
                 </pattern>
@@ -17038,7 +17051,7 @@ USA
                     <token><exception postag="DT|WDT|JJ|NN.*" postag_regexp="yes"/></token>
                     <token regexp="yes">takes?</token>
                     <marker>
-                        <token postag="NN"><exception regexp="yes">place|charge</exception><exception postag="DT|WRB|RB|RP|JJ|IN|CC|CD|JJR|RBS|VB[DN]|MD|NNP|NNS" postag_regexp="yes"/></token>
+                        <token postag="NN"><exception regexp="yes">place|charge</exception><exception postag="DT|WRB|R[BP]|JJ|IN|C[CD]|JJR|RBS|VB[DN]|MD|NN[PS]" postag_regexp="yes"/></token>
                     </marker>
                     <token><exception postag="NN.*" postag_regexp="yes"/></token>
                 </pattern>
@@ -17053,7 +17066,7 @@ USA
                     <token><exception postag="DT|WDT|JJ|NN.*" postag_regexp="yes"/></token>
                     <token regexp="yes">gives?</token>
                     <marker>
-                        <token postag="NN"><exception regexp="yes">rise|way|room|vent|rein</exception><exception postag="DT|WRB|RB|RP|JJ|IN|CC|CD|JJR|RBS|VB[DN]|MD|NNP|NNS" postag_regexp="yes"/></token>
+                        <token postag="NN"><exception regexp="yes">rise|way|room|vent|rein</exception><exception postag="DT|WRB|R[BP]|JJ|IN|C[CD]|JJR|RBS|VB[DN]|MD|NN[PS]" postag_regexp="yes"/></token>
                     </marker>
                     <token><exception postag="NN.*" postag_regexp="yes"/></token>
                 </pattern>
@@ -17068,7 +17081,7 @@ USA
                     <token><exception postag="DT|WDT|JJ|NN.*" postag_regexp="yes"/></token>
                     <token regexp="yes">go|goes</token>
                     <marker>
-                        <token postag="NN"><exception>hand</exception><exception postag="DT|WRB|RB|RP|JJ|IN|CC|CD|JJR|RBS|VB[DN]|MD|NNP|NNS" postag_regexp="yes"/></token>
+                        <token postag="NN"><exception>hand</exception><exception postag="DT|WRB|R[BP]|JJ|IN|C[CD]|JJR|RBS|VB[DN]|MD|NN[PS]" postag_regexp="yes"/></token>
                     </marker>
                     <token><exception postag="NN.*" postag_regexp="yes"/></token>
                 </pattern>
@@ -17083,7 +17096,7 @@ USA
                     <token><exception postag="DT|WDT|JJ|NN.*" postag_regexp="yes"/></token>
                     <token regexp="yes">falls?</token>
                     <marker>
-                        <token postag="NN"><exception>victim</exception><exception postag="DT|WRB|RB|RP|JJ|IN|CC|CD|JJR|RBS|VB[DN]|MD|NNP|NNS" postag_regexp="yes"/></token>
+                        <token postag="NN"><exception>victim</exception><exception postag="DT|WRB|R[BP]|JJ|IN|C[CD]|JJR|RBS|VB[DN]|MD|NN[PS]" postag_regexp="yes"/></token>
                     </marker>
                     <token><exception postag="NN.*" postag_regexp="yes"/></token>
                 </pattern>
@@ -17098,8 +17111,8 @@ USA
                     <token><exception postag="DT|WDT" postag_regexp="yes"/></token>
                     <token postag="VBP|VBZ" postag_regexp="yes"><exception postag="JJ"/></token>
                     <marker>
-                        <token postag="JJ"><exception>else</exception><exception postag="VB|RP|RB|CD|IN|CC|MD|VB[DN]|VBG|DT|WRB" postag_regexp="yes"/><exception regexp="yes">(?iu)\p{Lu}\p{Ll}+</exception></token>
-                        <token postag="NN"><exception postag="CC|DT|RB|RP|JJ|IN|CD|JJR|RBS|VB[DN]|MD|NN[SP]|WRB" postag_regexp="yes"/><exception>are</exception></token>
+                        <token postag="JJ"><exception>else</exception><exception postag="VB|R[BP]|C[CD]|IN|MD|VB[DN]|VBG|DT|WRB" postag_regexp="yes"/><exception regexp="yes">(?iu)\p{Lu}\p{Ll}+</exception></token>
+                        <token postag="NN"><exception postag="CC|DT|R[BP]|JJR?|IN|CD|RBS|VB[DN]|MD|NN[SP]|WRB" postag_regexp="yes"/><exception>are</exception></token>
                     </marker>
                     <token><exception postag="NN.*" postag_regexp="yes"/></token>
                 </pattern>
@@ -17115,8 +17128,8 @@ USA
                     <token postag="PRP|NNP" postag_regexp="yes"/>
                     <token regexp="yes">ha(?:ve|s|d)</token>
                     <marker>
-                        <token postag="VBN"><exception postag="VB|RP|WRB|RB|CD|IN|CC|MD" postag_regexp="yes"/></token>
-                        <token postag="NN"><exception postag="CC|DT|WDT|RB|RP|JJ|IN|CD|JJR|RBS|VB[DN]|MD|NN[SP]|PRP" postag_regexp="yes"/><exception>are</exception></token>
+                        <token postag="VBN"><exception postag="VB|RP|WRB|RB|C[CD]|IN|MD" postag_regexp="yes"/></token>
+                        <token postag="NN"><exception postag="CC|DT|WDT|R[BP]|JJR?|IN|CD|RBS|VB[DN]|MD|NN[SP]|PRP" postag_regexp="yes"/><exception>are</exception></token>
                     </marker>
                     <token><exception postag="NN.*" postag_regexp="yes"/></token>
                 </pattern>
@@ -17131,9 +17144,9 @@ USA
                     <token postag="PRP|NNP" postag_regexp="yes"/>
                     <token regexp="yes">have|ha[ds]</token>
                     <marker>
-                        <token postag="VBN"><exception postag="VB|RP|WRB|RB|CD|IN|CC|MD" postag_regexp="yes"/></token>
-                        <token postag="JJ"><exception postag="VB|RP|WRB|RB|CD|IN|CC|MD|DT|WDT" postag_regexp="yes"/></token>
-                        <token postag="NN"><exception postag="CC|DT|RB|RP|JJ|IN|CD|JJR|RBS|VB[DN]|MD|NNS" postag_regexp="yes"/><exception>are</exception></token>
+                        <token postag="VBN"><exception postag="VB|RP|WRB|RB|C[CD]|IN|MD" postag_regexp="yes"/></token>
+                        <token postag="JJ"><exception postag="VB|RP|WRB|RB|C[CD]|IN|MD|DT|WDT" postag_regexp="yes"/></token>
+                        <token postag="NN"><exception postag="CC|DT|R[BP]|JJR?|IN|CD|RBS|VB[DN]|MD|NNS" postag_regexp="yes"/><exception>are</exception></token>
                     </marker>
                     <token><exception postag="NN.*" postag_regexp="yes"/></token>
                 </pattern>
@@ -17147,8 +17160,8 @@ USA
                 <pattern>
                     <token><exception postag="PRP.*|NN.*|DT|JJ.*|RB.*|CC|IN|VBG|WRB|WDT|WP\$?|UNKNOWN" postag_regexp="yes"/><exception regexp="yes">one|have|ha[sd]|appointed|called|s|\&quot;|[0-9].*|[,\'.\(\[]</exception></token>
                     <marker>
-                        <token postag="VBN|JJ" postag_regexp="yes"><exception>else</exception><exception postag="VB|RP|WRB|RB|CD|IN|CC|MD|NNP|DT" postag_regexp="yes"/><exception>called</exception></token>
-                        <token postag="NN"><exception postag="CC|DT|RB|RP|JJ|IN|CD|JJR|RBS|VB[DN]|MD|NNP?S|NNP|WRB" postag_regexp="yes"/><exception>are</exception><exception regexp="yes">(?iu)\p{Lu}\p{Ll}+</exception></token>
+                        <token postag="VBN|JJ" postag_regexp="yes"><exception>else</exception><exception postag="VB|RP|WRB|RB|C[CD]|IN|MD|NNP|DT" postag_regexp="yes"/><exception>called</exception></token>
+                        <token postag="NN"><exception postag="CC|DT|R[BP]|JJR?|IN|CD|RBS|VB[DN]|MD|NNP?S|NNP|WRB" postag_regexp="yes"/><exception>are</exception><exception regexp="yes">(?iu)\p{Lu}\p{Ll}+</exception></token>
                     </marker>
                     <token><exception postag="NN.*|CD" postag_regexp="yes"/></token>
                 </pattern>
@@ -17168,9 +17181,9 @@ USA
                 <pattern>
                     <token><exception postag="PRP|NNP|DT|JJ|PRP\$|RB.*|CC|WDT|WP" postag_regexp="yes"/><exception regexp="yes">then|have|ha[sd]|s|\&quot;|[0-9].*|[\',\(\[]</exception></token>
                     <marker>
-                        <token postag="RB.*" postag_regexp="yes"><exception postag="VB|RP|CD|IN|CC|MD" postag_regexp="yes"/><exception regexp="yes">not|only|also</exception></token>
-                        <token postag="VBN|JJ" postag_regexp="yes"><exception postag="VB|RP.*|RB|CD|IN|CC|MD|DT|WDT" postag_regexp="yes"/><exception regexp="yes">(?iu)\p{Lu}\p{Ll}+</exception></token>
-                        <token postag="NN"><exception postag="WDT|CC|DT|RB|RP|JJ|IN|CD|JJR|RBS|VB[DN]|MD|NNS" postag_regexp="yes"/><exception>are</exception><exception regexp="yes">(?iu)\p{Lu}\p{Ll}+</exception></token>
+                        <token postag="RB.*" postag_regexp="yes"><exception postag="VB|RP|C[CD]|IN|MD" postag_regexp="yes"/><exception regexp="yes">not|only|also</exception></token>
+                        <token postag="VBN|JJ" postag_regexp="yes"><exception postag="VB|RP.*|RB|C[CD]|IN|MD|DT|WDT" postag_regexp="yes"/><exception regexp="yes">(?iu)\p{Lu}\p{Ll}+</exception></token>
+                        <token postag="NN"><exception postag="WDT|CC|DT|R[BP]|JJR?|IN|CD|RBS|VB[DN]|MD|NNS" postag_regexp="yes"/><exception>are</exception><exception regexp="yes">(?iu)\p{Lu}\p{Ll}+</exception></token>
                     </marker>
                     <token><exception postag="NN.*" postag_regexp="yes"/></token>
                 </pattern>
@@ -17191,7 +17204,7 @@ USA
                 <pattern>
                     <token>at</token>
                     <marker>
-                        <token postag="NN"><exception postag="CC|UH|DT|WDT|RP|JJ|IN|CD|JJS|JJR|RBS|VB[DN]|MD|NNP|NNS" postag_regexp="yes"/><exception regexp="yes">least|(?iu)\p{Lu}\p{Ll}+</exception></token>
+                        <token postag="NN"><exception postag="CC|UH|DT|WDT|RP|IN|CD|JJ[SR]|RBS|VB[DN]|MD|NN[PS]" postag_regexp="yes"/><exception regexp="yes">least|(?iu)\p{Lu}\p{Ll}+</exception></token>
                     </marker>
                     <token><exception postag="NN.*|CD" postag_regexp="yes"/></token>
                 </pattern>
@@ -17205,7 +17218,7 @@ USA
                     <token>at</token>
                     <marker>
                         <token postag="JJ"><exception postag="VB|WRB|RB.*|CD|IN|DT|WDT" postag_regexp="yes"/></token>
-                        <token postag="NN"><exception postag="DT|WDT|RP|JJ|IN|CD|JJR|RBS|VB[DN]|MD|NNP|NNS|CC" postag_regexp="yes"/><exception>glance</exception></token>
+                        <token postag="NN"><exception postag="DT|WDT|RP|JJR?|IN|CD|RBS|VB[DN]|MD|NN[PS]|CC" postag_regexp="yes"/><exception>glance</exception></token>
                     </marker>
                     <token><exception postag="NN.*|CD" postag_regexp="yes"/><exception>free</exception></token>
                 </pattern>
@@ -17221,7 +17234,7 @@ USA
                     <token regexp="yes">[Bb]y</token>
                     <marker>
                         <and>
-                            <token postag="NN"><exception postag="CC|UH|DT|WDT|RB|RP|JJ|IN|CD|JJS|JJR|RBS|VB[DN]|MD|NNP|NNS|VBG" postag_regexp="yes"/><exception regexp="yes">bit|step|example|\p{Lu}\p{Ll}+</exception></token>
+                            <token postag="NN"><exception postag="CC|UH|DT|WDT|R[BP]|IN|CD|JJ[SR]|RBS|VB[DN]|MD|NN[PS]|VBG" postag_regexp="yes"/><exception regexp="yes">bit|step|example|\p{Lu}\p{Ll}+</exception></token>
                             <token negate="yes"><match no="0"/></token>
                         </and>
                     </marker>
@@ -17240,7 +17253,7 @@ USA
                     <token>by</token>
                     <marker>
                         <token postag="JJ"><exception postag="VB|WRB|RB.*|CD|IN|DT|WDT" postag_regexp="yes"/></token>
-                        <token postag="NN"><exception postag="DT|WDT|RP|JJ|IN|CD|JJR|RBS|VB[DN]|MD|NNP|NNS" postag_regexp="yes"/><exception>fiat</exception><exception regexp="yes">bit|step|way|example|dint|crook|hook|hand|machine|word|cheque|accident|day|means|mistake|name|train|rail|railway|coach|bus|boat|automobile|helicopter|taxi|ambulance|plane|airplane|foot|section|article|page|road|letter|phone|telephone|mail|storm|arrangement|satellite|decree|year-end|lot|profession|district|week|eye|covenant|fiat|ship|car|jowl|tramway|(?iu)\p{Lu}\p{Ll}+</exception></token>
+                        <token postag="NN"><exception postag="DT|WDT|RP|JJR?|IN|CD|RBS|VB[DN]|MD|NN[PS]" postag_regexp="yes"/><exception>fiat</exception><exception regexp="yes">bit|step|way|example|dint|crook|hook|hand|machine|word|cheque|accident|day|means|mistake|name|train|rail|railway|coach|bus|boat|automobile|helicopter|taxi|ambulance|plane|airplane|foot|section|article|page|road|letter|phone|telephone|mail|storm|arrangement|satellite|decree|year-end|lot|profession|district|week|eye|covenant|fiat|ship|car|jowl|tramway|(?iu)\p{Lu}\p{Ll}+</exception></token>
                     </marker>
                     <token><exception postag="NN.*|CD" postag_regexp="yes"/><exception>free</exception></token>
                 </pattern>
@@ -17254,7 +17267,7 @@ USA
                 <pattern>
                     <token>for</token>
                     <marker>
-                        <token postag="NN"><exception postag="UH|CC|VBD|VBG|VBN|DT|WDT|RP|JJ|IN|CD|JJS|JJR|RBS|MD|NNP|NNS|WRB|PRP\$" postag_regexp="yes"/><exception regexp="yes">are|(?iu)\p{Lu}\p{Ll}+</exception></token>
+                        <token postag="NN"><exception postag="UH|CC|VB[DGN]|DT|WDT|RP|IN|CD|JJ[SR]|RBS|MD|NN[PS]|WRB|PRP\$" postag_regexp="yes"/><exception regexp="yes">are|(?iu)\p{Lu}\p{Ll}+</exception></token>
                     </marker>
                     <token><exception postag="NN.*|CD" postag_regexp="yes"/><exception>free</exception><exception regexp="yes">&apostrophe;</exception></token>
                 </pattern>
@@ -17270,7 +17283,7 @@ USA
                     <token>for</token>
                     <marker>
                         <token postag="JJ"><exception postag="VBG|VB|WRB|RB.*|CD|IN|DT|WDT" postag_regexp="yes"/></token>
-                        <token postag="NN"><exception postag="DT|WDT|RP|JJ|IN|CD|JJR|RBS|VB[DN]|MD|NNP|NNS" postag_regexp="yes"/><exception regexp="yes">(?iu)\p{Lu}\p{Ll}+</exception></token>
+                        <token postag="NN"><exception postag="DT|WDT|RP|JJR?|IN|CD|RBS|VB[DN]|MD|NN[PS]" postag_regexp="yes"/><exception regexp="yes">(?iu)\p{Lu}\p{Ll}+</exception></token>
                     </marker>
                     <token><exception postag="NN.*|CD" postag_regexp="yes"/><exception>free</exception></token>
                 </pattern>
@@ -17286,7 +17299,7 @@ USA
                     <token spacebefore="yes">in</token>
                     <marker>
                         <and>
-                            <token postag="NN"><exception postag="VBG|DT|WDT|RP|JJ|IN|CD|JJS|JJR|RBS|VB[DN]|MD|NN[PS]|PRP\$" postag_regexp="yes"/><exception regexp="yes">word|(?iu)\p{Lu}\p{Ll}+</exception></token>
+                            <token postag="NN"><exception postag="VBG|DT|WDT|RP|IN|CD|JJ[SR]|RBS|VB[DN]|MD|NN[PS]|PRP\$" postag_regexp="yes"/><exception regexp="yes">word|(?iu)\p{Lu}\p{Ll}+</exception></token>
                             <token negate="yes"><match no="0"/></token>
                         </and>
                     </marker>
@@ -17325,7 +17338,7 @@ USA
                     <token>in</token>
                     <marker>
                         <token postag="JJ"><exception postag="NNP|VBG|VB|WRB|RB.*|CD|IN|DT|WDT" postag_regexp="yes"/><exception regexp="yes">(?iu)\p{Lu}\p{Ll}+</exception></token>
-                        <token postag="NN"><exception postag="DT|WDT|RP|JJ.*|IN|CD|RB.*|VB[DN]|MD|NNP|NNP?S|PRP.*|WRB" postag_regexp="yes"/></token>
+                        <token postag="NN"><exception postag="DT|WDT|RP|JJ.*|IN|CD|RB.*|VB[DN]|MD|NN[PS]S?|PRP.*|WRB" postag_regexp="yes"/></token>
                     </marker>
                     <token><exception postag="NN.*|JJ|CD" postag_regexp="yes"/><exception regexp="yes">\d+</exception></token>
                 </pattern>
@@ -17344,7 +17357,7 @@ USA
                 <pattern>
                     <token>on</token>
                     <marker>
-                        <token postag="NN"><exception postag="CC|UH|DT|WDT|RP|JJ|IN|CD|JJS|JJR|RB.*|VB[DN]|MD|NNP|NNS|WRB" postag_regexp="yes"/><exception regexp="yes">(?iu)\p{Lu}\p{Ll}+</exception></token>
+                        <token postag="NN"><exception postag="CC|UH|DT|WDT|RP|IN|CD|JJ[SR]|RB.*|VB[DN]|MD|NN[PS]|WRB" postag_regexp="yes"/><exception regexp="yes">(?iu)\p{Lu}\p{Ll}+</exception></token>
                     </marker>
                     <token><exception postag="NN.*|CD" postag_regexp="yes"/></token>
                 </pattern>
@@ -17360,7 +17373,7 @@ USA
                     <token>on</token>
                     <marker>
                         <token postag="JJ"><exception postag="VBG|VB|WRB|RB.*|CD|IN|DT|WDT|NNP" postag_regexp="yes"/><exception regexp="yes">(?iu)\p{Lu}\p{Ll}+</exception></token>
-                        <token postag="NN"><exception postag="CC|DT|WDT|RP|JJ.*|IN|CD|RBS|VB[DN]|MD|NNP|NNS|NNPS" postag_regexp="yes"/></token>
+                        <token postag="NN"><exception postag="CC|DT|WDT|RP|JJ.*|IN|CD|RBS|VB[DN]|MD|NN[PS]S?" postag_regexp="yes"/></token>
                     </marker>
                     <token><exception postag="NN.*|CD" postag_regexp="yes"/><exception>free</exception><exception regexp="yes">&apostrophe;</exception></token>
                 </pattern>
@@ -17373,11 +17386,11 @@ USA
                 <!--after, with exception for phrases like 'anecdote after anecdote' (x after x); FIXME: first two tokens should be replaced with a chunk &lt;DT+VBN&gt; marked in a disambig-->
                 <pattern>
                     <token><exception postag="DT|WDT" postag_regexp="yes"/></token>
-                    <token><exception postag="VBN|VBD" postag_regexp="yes"/></token>
+                    <token><exception postag="VB[ND]" postag_regexp="yes"/></token>
                     <token>after</token>
                     <marker>
                         <and>
-                            <token postag="NN"><exception postag="CC|UH|DT|WDT|RP|JJ.*|IN|CD|RB.*|VBD|VBZ|VBN|MD|NNP|NNP?S|PRP.*|WRB" postag_regexp="yes"/><exception regexp="yes">(?iu)\p{Lu}\p{Ll}+</exception></token>
+                            <token postag="NN"><exception postag="CC|UH|DT|WDT|RP|JJ.*|IN|CD|RB.*|VB[DZN]|MD|NN[PS]S?|PRP.*|WRB" postag_regexp="yes"/><exception regexp="yes">(?iu)\p{Lu}\p{Ll}+</exception></token>
                             <token negate="yes"><match no="1"/></token>
                         </and>
                     </marker>
@@ -17394,10 +17407,10 @@ USA
                 <pattern>
                     <!--  to exclude phrases like: 'the turned up card' -->
                     <token><exception postag="DT|WDT" postag_regexp="yes"/></token>
-                    <token><exception postag="VBN|VBD" postag_regexp="yes"/></token>
+                    <token><exception postag="VB[ND]" postag_regexp="yes"/></token>
                     <token postag="IN"><exception regexp="yes">a[st]|by|for|[io]n|to|of|following|than|after</exception><exception postag="JJ.*" postag_regexp="yes"/></token>
                     <marker>
-                        <token postag="NN"><exception postag="CC|UH|DT|WDT|RP|JJ.*|IN|CD|RB.*|VBD|VBZ|VBN|MD|NNP|NNP?S|PRP.*|WRB" postag_regexp="yes"/><exception regexp="yes">(?iu)\p{Lu}\p{Ll}+</exception></token>
+                        <token postag="NN"><exception postag="CC|UH|DT|WDT|RP|JJ.*|IN|CD|RB.*|VB[DZN]|MD|NN[PS]S?|PRP.*|WRB" postag_regexp="yes"/><exception regexp="yes">(?iu)\p{Lu}\p{Ll}+</exception></token>
                     </marker>
                     <token><exception postag="NN.*|CD" postag_regexp="yes"/><exception>free</exception></token>
                 </pattern>
@@ -17410,11 +17423,11 @@ USA
             <rule>
                 <pattern>
                     <token><exception postag="DT|WDT" postag_regexp="yes"/></token>
-                    <token><exception postag="VBN|VBD" postag_regexp="yes"/></token>
+                    <token><exception postag="VB[ND]" postag_regexp="yes"/></token>
                     <token postag="IN"><exception regexp="yes">a[st]|by|for|[io]n|to|of|following|re</exception><exception postag="JJ.*" postag_regexp="yes"/></token>
                     <marker>
                         <token postag="JJ"><exception postag="VBG|VB|WRB|RB.*|CD|IN|DT|WDT|NNP" postag_regexp="yes"/><exception regexp="yes">(?iu)\p{Lu}\p{Ll}+</exception></token>
-                        <token postag="NN"><exception postag="CC|DT|WDT|RP|JJ|IN|CD|JJR|RBS|VB[DN]|MD|NNP|NNS" postag_regexp="yes"/></token>
+                        <token postag="NN"><exception postag="CC|DT|WDT|RP|JJR?|IN|CD|RBS|VB[DN]|MD|NN[PS]" postag_regexp="yes"/></token>
                     </marker>
                     <token><exception postag="NN.*|CD" postag_regexp="yes"/><exception>free</exception><exception regexp="yes">&apostrophe;</exception></token>
                 </pattern>
@@ -17449,7 +17462,7 @@ USA
                     <token postag="IN"><exception regexp="yes">a[st]|by|for|[io]n|to|of|following</exception><exception postag="JJ.*" postag_regexp="yes"/></token>
                     <marker>
                         <token postag="JJ"><exception postag="VBG|VB|WRB|RB.*|CD|IN|DT|WDT|NNP" postag_regexp="yes"/></token>
-                        <token postag="NN"><exception postag="DT|WDT|RP|JJ|IN|CD|JJR|RBS|VB[DN]|MD|NNP|NNS" postag_regexp="yes"/></token>
+                        <token postag="NN"><exception postag="DT|WDT|RP|JJR?|IN|CD|RBS|VB[DN]|MD|NN[PS]" postag_regexp="yes"/></token>
                     </marker>
                     <token><exception postag="NN.*|JJ|CD" postag_regexp="yes"/></token>
                 </pattern>
@@ -17464,7 +17477,7 @@ USA
                     <token><exception regexp="yes">no|any|every</exception><exception postag="JJ.*" postag_regexp="yes"/></token>
                     <token>such</token>
                     <marker>
-                        <token postag="NN"><exception postag="DT|WDT|RP|JJ|IN|CD|JJR|RBS|VB[DN]|MD|NN[PS]" postag_regexp="yes"/><exception inflected="yes" regexp="yes">be|have</exception></token>
+                        <token postag="NN"><exception postag="DT|WDT|RP|JJR?|IN|CD|RBS|VB[DN]|MD|NN[PS]" postag_regexp="yes"/><exception inflected="yes" regexp="yes">be|have</exception></token>
                     </marker>
                     <token><exception postag="NN.*" postag_regexp="yes"/><exception>free</exception></token>
                 </pattern>
@@ -17480,7 +17493,7 @@ USA
                     <token>such</token>
                     <marker>
                         <token postag="JJ"><exception postag="VBG|VB|WRB|RB.*|CD|IN|DT|WDT|NNP" postag_regexp="yes"/></token>
-                        <token postag="NN"><exception postag="DT|WDT|RP|JJ|IN|CD|JJR|RBS|VB[DN]|MD|NNP|NNS" postag_regexp="yes"/></token>
+                        <token postag="NN"><exception postag="DT|WDT|RP|JJR?|IN|CD|RBS|VB[DN]|MD|NN[PS]" postag_regexp="yes"/></token>
                     </marker>
                     <token><exception postag="NN.*" postag_regexp="yes"/><exception>free</exception></token>
                 </pattern>
@@ -37360,14 +37373,22 @@ The accident victim died from her injuries.
         </rule>
         <rule default="on" id="THREE_NN" name="Readability: Three nouns in a row">
             <pattern>
-                <token postag="NN(:.+)?" postag_regexp="yes" regexp="yes">.{2,}<exception regexp="yes">today|yesterday|tomorrow|now|in|are</exception><exception postag="VBG|VB|VBP|VB[DN]|RB|MD|IN|JJ.*|CC|DT" postag_regexp="yes"/></token>
-                <token postag="NN(:.+)?" postag_regexp="yes" regexp="yes">.{2,}<exception regexp="yes">today|yesterday|tomorrow|now|in|are</exception><exception postag="VBG|VB|VBP|VB[DN]|RB|MD|IN|JJ.*|CC" postag_regexp="yes"/></token>
-                <token postag="NN(:.+)?" postag_regexp="yes" regexp="yes">.{2,}<exception regexp="yes">today|yesterday|tomorrow|now|in|are</exception><exception postag="VBG|VB|VBP|VB[DN]|RB|MD|IN|JJ.*|CC" postag_regexp="yes"/></token>
+                <token postag="NN(:.+)?" postag_regexp="yes" regexp="yes">.{2,}
+                    <exception regexp="yes">today|yesterday|tomorrow|now|in|are</exception>
+                    <exception postag="VB[DGNP]?|RB|MD|IN|JJ.*|CC|DT" postag_regexp="yes"/></token>
+                <token postag="NN(:.+)?" postag_regexp="yes" regexp="yes">.{2,}
+                    <exception regexp="yes">today|yesterday|tomorrow|now|in|are</exception>
+                    <exception postag="VB[DGNP]?|RB|MD|IN|JJ.*|CC" postag_regexp="yes"/></token>
+                <token postag="NN(:.+)?" postag_regexp="yes" regexp="yes">.{2,}
+                    <exception regexp="yes">today|yesterday|tomorrow|now|in|are</exception>
+                    <exception postag="VB[DGNP]?|RB|MD|IN|JJ.*|CC" postag_regexp="yes"/>
+                    <exception case_sensitive='yes'>\p{Lu}.+</token>
             </pattern>
             <message>You used three nouns one after another, and this might decrease readability. You might consider rewording the sentence.</message>
             <short>Possibly bad style</short>
             <example correction="">The <marker>security protection software</marker> we offer is the state-of-the art achievement.</example>
             <example>The security software we offer is the state-of-the art achievement.</example>
+            <example>...from the research organisation Climate Visuals, ...</example>
         </rule>
         <rule id="POSSIBILTY_POSSIBLE" name="Style: 'possible' after 'possibility'"><!-- https://github.com/languagetool-org/languagetool/issues/540 -->
             <pattern>

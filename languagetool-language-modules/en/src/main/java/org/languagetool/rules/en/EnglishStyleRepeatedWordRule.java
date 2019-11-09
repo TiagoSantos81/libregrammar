@@ -101,8 +101,8 @@ Matches: [STYLE_REPEATED_WORD_RULE_EN:2-4:Possible style problem: The word is al
     return (token.matchesPosTagRegex("[VNJR].+|FW") 
         && !token.matchesPosTagRegex("NNPS?|MD|IN|DT|CC|P.+")
         && !StringUtils.equalsAny(token.getToken(), 
-           "am", "is", "s", "isn", "are", "re", "be", "been",
-           "was", "wasn", "were", "weren",
+           "am", "m", "is", "s", "isn", "are", "re", "be", "been",
+           "was", "wasn", "were", "weren", "will", "ll",
            "have", "haven", "has", "hasn", "had", "hadn",
            "did", "didn",
            "say", "says", "said", "says",
