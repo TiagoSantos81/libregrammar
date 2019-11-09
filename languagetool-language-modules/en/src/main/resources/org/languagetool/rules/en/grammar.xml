@@ -14421,6 +14421,10 @@ USA
                     <token regexp="yes">[A-Z]+</token>
                     <token regexp="yes">means|stands</token>
                 </antipattern>
+                <antipattern>
+                    <token>thanks</token>
+                    <token postag="NN.*" postag_regexp="yes" />
+                </antipattern>
                 <pattern>
                     <token postag="SENT_START"/>
                     <marker>
@@ -14432,6 +14436,7 @@ USA
                 <short>Possible agreement error</short>
                 <example correction="Do dogs|Does dog"><marker>Does dogs</marker> sleep more than 15 hours per day?</example>
                 <example>AIDS means "Acquired Immune Deficiency Syndrome".</example>
+                <example>Thanks guys for replying.</example><!-- TODO: requires a comma rule -->
                 <!--example><marker>Cats sleeps</marker> more than 15 hours per day.</example>< 2018-11-26 corrected VBZNNS_NNS such that it does not give 'Cats' the postag VBZ. -->
             </rule>
             <rule><!-- needed after changes in VBZNNS_NNS in disambiguation.xml [3f2b9f5]: -->
@@ -27778,39 +27783,109 @@ The accident victim died from her injuries.
     <!-- XXX Beware/couple OF rules have too many obvious exceptions -->
   </rulegroup>
 
+    <rulegroup id="NON_ANTI_PRE_JJ" name="missing hyphen in adjectives with 'non/anti/pre'" default="temp_off">
+        <rule>
+            <pattern>
+                <token regexp="yes">non|anti</token>
+                <token postag="JJ">
+                    <exception regexp="yes">compos|troppo|mis|me|non|up</exception>
+                    <exception scope="next">relic</exception><!-- New Relic is a proper noun-->
+                </token>
+            </pattern>
+            <message>It appears that a hyphen is missing.</message>
+            <suggestion>\1-\2</suggestion>
+            <url>https://en.wiktionary.org/wiki/non-</url>
+            <example correction="non-American">He is <marker>non American</marker></example>
+            <example correction="non-alcoholic">This is <marker>non alcoholic</marker> traditional drink.</example>
+            <example correction="non-standard">Maybe you used <marker>non standard</marker> commands?</example>
+            <example correction="anti-communist">Roy almost brought the US to its knees in the early 1950s in an orgy of <marker>anti communist</marker> rights.</example>
+            <example correction="Non-religious"><marker>Non religious</marker> people comprised the 32.0% of the population</example>
+            <!-- Todo: -->
+            <!-- <example correction="pre-Islamic">The <marker>pre Islamic</marker> heritage of Afghanistan.</example> -->
+            <example>Non compos mentis (Latin) is a legal term.</example>
+            <example>When I time them myself using a non new relic source.</example>
+            <example>Non Khun District.</example>
+            <example>Non nobis solum.</example>
+            <example>Non occides.</example>
+            <example>Anti Up</example>
+        </rule>
+    </rulegroup>
+
+  <rule id="THANK_NNP_PRP" name="'Thank' + Proper noun" default="temp_off">
+    <pattern>
+        <token postag="SENT_START|CC" postag_regexp="yes" />
+        <marker>
+            <token>thank</token>
+            <token postag="NNP">
+                <exception regexp="yes">god|allah?</exception>
+            </token>
+        </marker>
+        <token postag="PRP\$?" postag_regexp="yes" />
+    </pattern>
+    <message>Did you mean <suggestion>\2s to \3</suggestion> or <suggestion>\2s \3,</suggestion>?</message>
+    <example correction="Thanks to Carl|Thanks Carl,"><marker>Thank Carl</marker> we can finally start the project.</example>
+    <example>Thank God it's Friday.</example>
+  </rule>
+
+  <rule id="THANK_THE_NN" name="'Thank the' + noun" default="temp_off">
+    <antipattern>
+        <token skip="-1">thank</token>
+        <token>for</token>
+    </antipattern>
+    <pattern>
+        <token postag="SENT_START" />
+        <marker>
+            <token>thank</token>
+        </marker>
+        <token>the</token>
+        <token postag="NN.*" postag_regexp="yes">
+            <exception>lord</exception>
+        </token>
+    </pattern>
+    <message>Did you mean <suggestion>\2s to</suggestion> or <suggestion>\2s for</suggestion>?</message>
+    <example correction="Thanks to|Thanks for"><marker>Thank</marker> the clarifications.</example>
+    <example correction="Thanks to|Thanks for"><marker>Thank</marker> the meds, I guess.</example>
+    <example>Thank the police officer for saving us.</example>
+    <example>Thank the lord.</example>
+  </rule>
+
   <rule id="MISSING_PREPOSITION" name='Missing preposition'>
         <antipattern>
-            <token>thanks</token>
-            <token>a</token>
-            <token regexp="yes">lot|bunch|ton|mill?</token>
-        </antipattern>
-        <antipattern>
             <token>Prior</token>
-            <token>General</token>
+            <token regexp="yes">General|Executive</token>
         </antipattern>
         <antipattern>
             <token>due</token>
             <token regexp="yes">east|west</token>
         </antipattern>
+        <antipattern>
+            <token>now</token>
+            <token>due</token>
+            <token postag="NNP" />
+        </antipattern>
         <pattern>
             <token postag="SENT_START|CC" postag_regexp="yes" />
             <marker>
-                <token regexp="yes">thanks|according|due|prior</token>
-                <token postag_regexp="yes" postag='PRP\$?|NNP|DT' />
+                <token regexp="yes">according|due|prior</token>
+                <token postag_regexp="yes" postag='PRP\$?|NNP|DT|W.+'>
+                    <exception>however</exception>
+                </token>
             </marker>
         </pattern>
         <message>It appears that a preposition is missing after '\2'.</message>
         <suggestion>\2 to \3</suggestion>
         <example correction='According to Angela'><marker>According Angela</marker>, they are dating.</example>
+        <example correction='According to what'><marker>According what</marker> I heard.</example>
         <example correction='According to his'><marker>According his</marker> friend, they are dating.</example>
         <example correction='According to him'><marker>According him</marker>, they are dating.</example>
         <example correction="According to a"><marker>According a</marker> TV forecast, it will rain tomorrow.</example>
         <example correction="Prior to the"><marker>Prior the</marker> storm everything was calm.</example>
         <example correction="Due to the"><marker>Due the</marker> unique climate in Azerbaijan , the flora is much richer in the number of species.</example>
-        <example correction="Thanks to the"><marker>Thanks the</marker> friend of Mike.</example>
         <example>Thanks a lot.</example>
         <example>The arc connecting the points on the horizon due East and due West.</example>
         <example>His term as Prior General of the Camaldolese.</example>
+        <example>They are now due January 1st.</example>
+        <example>According however to the common account, Hecuba was the daughter of Cisseus, a Thracian prince.</example>
   </rule>
 
   <rulegroup id='GOOD_IN_AT' name='Collocation: Good in/at'>
@@ -31961,6 +32036,18 @@ The accident victim died from her injuries.
             <example correction='Due to|Because of'><marker>Do to the fact that</marker> the MTA has burned through leaders at a rate of nearly one per year over the last six years, ...</example>
             <example>Due to</example>
             <example>Because of</example>
+        </rule>
+        <rule id="DO_TO_THE_LACK_OF" name="'Do to the lack of' -> 'Due to lack of'" default="temp_off">
+            <pattern>
+                <token>do</token>
+                <token>to</token>
+                <token>the</token>
+                <token regexp="yes">lack|absence</token>
+                <token>of</token>
+            </pattern>
+            <message>Did you mean <suggestion>due to the \4 of</suggestion>?</message>
+            <url>https://public.wsu.edu/~brians/errors/dueto.html</url>
+            <example correction='due to the lack of'>He feels powerless <marker>do to the lack of</marker> friends.</example>
         </rule>
         <rule id="MINUETS" name="minuet (minute)">
             <antipattern>
