@@ -72,7 +72,8 @@
 #### Portuguese
   * re-activated diacritics rule;
   * add a few more rules:
-    - punctuation;
+    - vocative punctuation;
+    - personal infinitive rules;
     - subject-predicate agreement.
   * Portugal Portuguese former orthographic agreement locale added (Portugal 
   pre-AO) with support for:

@@ -2653,6 +2653,143 @@ title="Easy editing stylesheet" ?>
     </rule>
   </rulegroup>
 
+  <rulegroup id='IMPERSONAL_INFINITIVE_USAGE' name="Concordância Verbal: Infinitivo pessoal">
+    <!-- Created by Tiago F. Santos, Portuguese rule, 2019-11-09  -->
+      <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/ainda-o-uso-do-infinitivo-impessoal-e-pessoal/34446</url>
+      <antipattern>
+          <token spacebefore='no' regexp='yes'>&hifen;</token>
+          <token spacebefore='no'>se</token>
+      </antipattern>
+    <rule><!-- EU + Infinitivo pessoal -->
+      <pattern>
+          <token regexp='yes'>conv(?:ém|inha)|para</token>
+        <marker>
+          <token>eu</token>
+          <token min="0" max="3" postag='R.+' postag_regexp='yes'>
+            <exception scope='next'>,</exception></token>
+          <token postag='V.[CISN]...0' postag_regexp='yes'>
+            <exception postag='V.N.1S0' postag_regexp='yes'/></token>
+        </marker>
+      </pattern>
+      <message>Se o sujeito deste verbo não é o sujeito da oração principal, deve utilizar o infinitivo impessoal.</message>
+        <suggestion><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all' postag='VMN01S0'/></suggestion>
+      <example correction='eu passear'>Para <marker>eu passeiam</marker> na praia.</example>
+    </rule>
+    <rule><!-- TU + Infinitivo pessoal -->
+      <pattern>
+          <token regexp='yes'>conv(?:ém|inha)|para</token>
+        <marker>
+          <token>tu</token>
+          <token min="0" max="3" postag='R.+' postag_regexp='yes'>
+            <exception scope='next'>,</exception></token>
+          <token postag='V.[CISN]...0' postag_regexp='yes'>
+            <exception postag='V.N.2S0' postag_regexp='yes'/></token>
+        </marker>
+      </pattern>
+      <message>&MSG_ECV;</message>
+        <suggestion><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all' postag='VMN02S0'/></suggestion>
+      <example correction='tu passeares'>Para <marker>tu passeiam</marker> na praia.</example>
+    </rule>
+    <rule><!-- ELE + Infinitivo pessoal -->
+      <pattern>
+          <token regexp='yes'>conv(?:ém|inha)|para</token>
+        <marker>
+          <token regexp="yes">el[ea]|você</token>
+          <token min="0" max="3" postag='R.+' postag_regexp='yes'>
+            <exception scope='next'>,</exception></token>
+          <token postag='V.[CISN]...0' postag_regexp='yes'>
+            <exception postag='V.N.3S0' postag_regexp='yes'/></token>
+        </marker>
+      </pattern>
+      <message>&MSG_ECV;</message>
+        <suggestion><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all' postag='VMN03S0'/></suggestion>
+      <example correction='ele passear'>Para <marker>ele passeiam</marker> na praia.</example>
+    </rule>
+    <rule><!-- NÓS + Infinitivo pessoal -->
+      <pattern>
+          <token regexp='yes'>conv(?:ém|inha)|para</token>
+        <marker>
+          <token>nós</token>
+          <token min="0" max="3" postag='R.+' postag_regexp='yes'>
+            <exception scope='next'>,</exception></token>
+          <token postag='V.[CISN]...0' postag_regexp='yes'>
+            <exception postag='V.N.1P0' postag_regexp='yes'/></token>
+        </marker>
+      </pattern>
+      <message>&MSG_ECV;</message>
+        <suggestion><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all' postag='VMN01P0'/></suggestion>
+      <example correction='nós passearmos'>Para <marker>nós passeiam</marker> na praia.</example>
+    </rule>
+    <?ignore
+    <rule><!-- NÓS[EU + E + DT + NOME] + Infinitivo pessoal -->
+      <pattern>
+          <token regexp='yes'>conv(?:ém|inha)|para</token>
+        <marker>
+          <token>eu</token>
+          <token regexp='yes'>e|ou</token>
+          <token min="0" postag='DA0[MF].0' postag_regexp='yes'/>
+          <token/>
+          <token min="0" max="3" postag='R.+' postag_regexp='yes'>
+            <exception scope='next'>,</exception></token>
+          <token postag='V.+' postag_regexp='yes'>
+            <exception postag='V.N.1P0' postag_regexp='yes'/></token>
+        </marker>
+      </pattern>
+      <message>&MSG_ECV;</message>
+        <suggestion><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' include_skipped='all'/> <match no='6' include_skipped='all'/> <match no='7' include_skipped='all' postag='VMN01P0'/></suggestion>
+      <example correction='eu e a Rita passearmos'>Para <marker>eu e a Rita passeiam</marker> na praia.</example>
+    </rule>
+    <rule><!-- VÓS[TU + E + DT + NOME] + Infinitivo pessoal -->
+      <pattern>
+          <token regexp='yes'>conv(?:ém|inha)|para</token>
+        <marker>
+          <token>tu</token>
+          <token regexp='yes'>e|ou</token>
+          <token min="0" postag='DA0[MF].0' postag_regexp='yes'/>
+          <token/>
+          <token min="0" max="3" postag='R.+' postag_regexp='yes'>
+            <exception scope='next'>,</exception></token>
+          <token postag='V.[CISN]...0' postag_regexp='yes'>
+            <exception postag='V.N.2P0' postag_regexp='yes'/></token>
+        </marker>
+      </pattern>
+      <message>&MSG_ECV;</message>
+        <suggestion><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' include_skipped='all'/> <match no='6' include_skipped='all'/> <match no='7' include_skipped='all' postag='VMN02P0'/></suggestion>
+      <example correction='tu e a Rita passeardes'>Para <marker>tu e a Rita passeiam</marker> na praia.</example>
+    </rule>
+    ?>
+    <rule><!-- VÓS + Infinitivo pessoal -->
+      <pattern>
+          <token regexp='yes'>conv(?:ém|inha)|para</token>
+        <marker>
+          <token>vós</token>
+          <token min="0" max="3" postag='R.+' postag_regexp='yes'>
+            <exception scope='next'>,</exception></token>
+          <token postag='V.[CISN]...0' postag_regexp='yes'>
+            <exception postag='V.N.2P0' postag_regexp='yes'/></token>
+        </marker>
+      </pattern>
+      <message>&MSG_ECV;</message>
+        <suggestion><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all' postag='VMN02P0'/></suggestion>
+      <example correction='vós passeardes'>Para <marker>vós passeiam</marker> na praia.</example>
+    </rule>
+    <rule><!-- ELES + Infinitivo pessoal -->
+      <pattern>
+          <token regexp='yes'>conv(?:ém|inha)|para</token>
+        <marker>
+          <token regexp='yes'>el[ea]s|vocês</token>
+          <token min="0" max="3" postag='R.+' postag_regexp='yes'>
+            <exception scope='next'>,</exception></token>
+          <token postag='V.[CISN]...0' postag_regexp='yes'>
+            <exception postag='V.N.3P0' postag_regexp='yes'/></token>
+        </marker>
+      </pattern>
+      <message>&MSG_ECV;</message>
+        <suggestion><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all' postag='VMN03P0'/></suggestion>
+      <example correction='elas passearem'>Para <marker>elas passeiam</marker> na praia.</example>
+    </rule>
+  </rulegroup>
+
   <rulegroup id="FUTURE_PAST_CONFUSION" name="Confusão de sufixos: 3P - ouviram (passado) /ouvirão (futuro)">
     <!-- Created by Tiago F. Santos, Portuguese rule, 2017-08-11 -->
     <!--short>Tempo verbal incorreto.</short-->
@@ -9118,23 +9255,11 @@ title="Easy editing stylesheet" ?>
           <token postag='NP.+' postag_regexp='yes' regexp='yes'>\p{Lu}.+
             <exception postag='NP.+' negate_pos='yes' postag_regexp='yes'/></token>
         </marker>
-          <phraseref idref='ONE_WORD_GREETINGS'/>
+          <phraseref idref='ALL_GREETINGS'/>
       </pattern>
       <message>O vocativo deve ser separado por vírgulas.</message>
         <suggestion>\2,</suggestion>
       <example correction="João,"><marker>João</marker> parabéns.</example>
-    </rule>
-    <rule>
-      <pattern>
-          <token postag='SENT_START'/>
-        <marker>
-          <token postag='NP.+' postag_regexp='yes' regexp='yes'>\p{Lu}.+
-            <exception postag='NP.+' negate_pos='yes' postag_regexp='yes'/></token>
-        </marker>
-          <phraseref idref='ALL_TWO_WORD_GREETINGS'/>
-      </pattern>
-      <message>O vocativo deve ser separado por vírgulas.</message>
-        <suggestion>\2,</suggestion>
       <example correction="João,"><marker>João</marker> boa sorte.</example>
       <example correction="João,"><marker>João</marker> tudo bem?</example>
       <example correction="João,"><marker>João</marker> como estás?</example>
