@@ -23332,7 +23332,7 @@ USA
                 <pattern>
                     <marker>
                         <token postag="DT" inflected="yes" regexp="yes">a|the</token>
-                        <token>this</token>
+                        <token regexp="yes">th(?:is|at|ese|ose|eir)|my|y?our|h(?:is|er)|its|whose</token>
                     </marker>
                     <token><exception regexp="yes">'|\.</exception></token>
                 </pattern>
@@ -29458,6 +29458,11 @@ The accident victim died from her injuries.
                 <token spacebefore="no" regexp="yes">['’"”]</token>
                 <token>which</token>
             </antipattern>
+            <antipattern>
+                <token>which</token>
+                <token>of</token>
+                <token postag="DT|PRP\$?" postag_regexp="yes"/>
+            </antipattern>
             <pattern>
                 <token><exception regexp="yes">[,(-–−—―"“]|that</exception><exception postag="IN|TO|;|SENT_START" postag_regexp="yes"/></token>
                 <token>which</token>
@@ -29470,6 +29475,7 @@ The accident victim died from her injuries.
             <example>This is an example (which is dull).</example>
             <example>..., these or those it is usual to use 'which'.</example>
             <example>...executive committee,” which included donors and other...</example>
+            <example>I would like to see which of you will fold first.</example>
         </rule>
         <rule id="BY_DEFAULT_COMMA" name="Comma after by default at the beginning of a sentence.">
             <pattern case_sensitive="yes">
