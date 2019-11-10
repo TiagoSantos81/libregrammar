@@ -19890,6 +19890,48 @@ USA
             <example correction="are">It's exciting but when <marker>is</marker> Christmas and New Years finally over?</example>
             <example>What is Carl's and Peter's favorite meal?</example>
         </rule>
+        <rule id="WAS_IS" name="was is" default="temp_off">
+            <antipattern>
+                <token postag="W.+" postag_regexp="yes" skip="-1" />
+                <token>was</token>
+            </antipattern>
+            <pattern case_sensitive="yes">
+                <marker>
+                    <token regexp="yes">[Ww]as</token>
+                    <token regexp="yes">[Ii]s</token>
+                </marker>
+            </pattern>
+            <message>Did you mean <suggestion>\1</suggestion>, <suggestion>\2</suggestion>, or <suggestion>\1 it</suggestion>?</message>
+            <example correction="was|is|was it">He <marker>was is</marker> a good boy.</example>
+            <example correction="was|is|was it">Tom <marker>was is</marker> in the passenger seat.</example>
+            <example>Whatever it was is not relevant anymore.</example>
+            <example>Was IS defeated by Obama or Trump?</example>
+        </rule>
+        <rule id="IS_WAS" name="is was" default="temp_off">
+            <antipattern>
+                <token postag="W.+" postag_regexp="yes" skip="-1" />
+                <token>is</token>
+            </antipattern>
+            <pattern case_sensitive="yes">
+                <marker>
+                    <token regexp="yes">[Ii]s</token>
+                    <token regexp="yes">[Ww]as</token>
+                </marker>
+            </pattern>
+            <message>Did you mean <suggestion>\1</suggestion>, <suggestion>\2</suggestion>, or <suggestion>it \2</suggestion>?</message>
+            <example correction="is|was|it was">He <marker>is was</marker> a good boy.</example>
+            <example correction="Is|Was|It was"><marker>Is was</marker> a very simple install except.</example>
+            <example>Whatever it is was not relevant anymore.</example>
+            <example>IS was defeated by Obama or Trump.</example>
+        </rule>
+        <rule id="IS_OWN" name="is own" default="temp_off">
+            <pattern>
+                <token>is</token>
+                <token>own</token>
+            </pattern>
+            <message>Did you mean <suggestion>its \2</suggestion>?</message>
+            <example correction="its own">Currently SAMI has <marker>is own</marker> API</example>
+        </rule>
         <rule id="DIDINT" name="he didin't (didn't)">
             <pattern>
                 <token regexp="yes">didin|din|did</token>
@@ -21763,6 +21805,16 @@ USA
                 <token postag="NNS"/>
                 <token postag="CD"/>
             </antipattern>
+            <antipattern><!--   2 sextillion (2×1021) atoms. LT loses the formatting of 10^21 -->
+                <token postag="CD"/>
+                <token postag="NN"/><!-- Assume that the entire fragment of text is correct. If that causes errors, specify the tokens (thousand, million etc) -->
+                <token>(</token>
+                <token postag="CD"/>
+                <token regexp="yes">×|x</token>
+                <token postag="CD"/>
+                <token>)</token>
+                <token postag="NNS"/>
+            </antipattern>
             <pattern>
                 <token spacebefore="yes" postag="CD">
                     <exception regexp="yes">one|thou|zero|1</exception>
@@ -21776,7 +21828,7 @@ USA
                     <exception scope="previous" regexp="yes">×|x</exception>
                 </token>
                 <token chunk="I-NP-singular" min="0" max="-1">
-                    <exception regexp="yes">Pound|Dollar|RUB|percent|minute|megapixel|bit|foot|[kcm]m|BC|CE|[KMGk]B|^[^a-zA-Z]+</exception>
+                    <exception regexp="yes">Pound|Dollar|RUB|percent|minute|megapixel|bit|foot|[kcm]m|BC|CE|[KMGk]B|^[^a-zA-Z]+|cc</exception>
                     <exception regexp="yes">one|thou|zero|1</exception>
                     <exception regexp="yes">[,;()×]</exception>
                 </token>
@@ -21786,7 +21838,7 @@ USA
                         <exception regexp="yes">will|year|so|pst</exception>
                         <exception>year</exception><!-- "16 year old Ahmad" -->
                         <exception>are</exception> <!-- chunker treats it as E-NP-singular at times... -->
-                        <exception regexp="yes">lb|yd|ft|Msec|[kcm]m|[km]g|gm|lux|stat|[ck]c|hr|min|m3|mcg|cpu|[KMGk]B|kelvin|saw|percent|baht</exception>
+                        <exception regexp="yes">lb|yd|ft|Msec|[kcm]m|[km]g|gm|lux|stat|[ck]c|hr|min|m3|mcg|cpu|[KMGk]B|kelvin|saw|percent|baht|grad</exception>
                         <exception regexp="yes">&months;|size|\$\d+|\d+|\)</exception>
                         <exception regexp="yes">&weekdays;</exception>
                         <exception regexp="yes">trained|mentioned|assisting|voting|caused</exception><!-- "300 to 400 being trained each year" - mistagging by OpenNLP -->
@@ -21885,6 +21937,9 @@ USA
             <example>Of those 1,839 buses 416 run on compressed natural gas.</example><!-- Better to put a comma before 'run', but that is a different problem. -->
             <example>Of your 9 questions 8 show a complete lack of understanding.</example>
             <example>Earlier than 900 CE progressing past the 13th century, the population complexes ...</example><!-- Possible missing comma or 'and' before 'CE', but that is a different problem -->
+            <example>... included production of a small but sturdy 125 cc motorcycle and a DKW delivery van.</example><!-- regression 2019-11-08 -->
+            <example>A single drop of water contains about 2 sextillion (2×1021) atoms of oxygen, and twice the number of...</example><!-- regression 2019-11-08 -->
+            <example>= 90° = π/2 rad = 1/4 turn = 100 grad.</example><!-- regression 2019-11-08 -->
             <example type="triggers_error">But then he got 502 bad gateway.</example><!-- 2019-10-09 MFU adds: This is only an FP if '502 bad gateway' is emphasised (italics/bold) in the original text. -->
             <example type="triggers_error">England eventually faced a massive 707 run target for victory and failed, Australia winning the ...</example>
         </rule>
@@ -27796,7 +27851,7 @@ The accident victim died from her injuries.
     <!-- XXX Beware/couple OF rules have too many obvious exceptions -->
   </rulegroup>
 
-    <rulegroup id="NON_ANTI_PRE_JJ" name="missing hyphen in adjectives with 'non/anti/pre'" default="temp_off">
+    <rulegroup id="NON_ANTI_JJ" name="missing hyphen in adjectives with 'non/anti'">
         <rule>
             <pattern>
                 <token regexp="yes">non|anti</token>
@@ -27824,7 +27879,7 @@ The accident victim died from her injuries.
         </rule>
     </rulegroup>
 
-  <rule id="THANK_NNP_PRP" name="'Thank' + Proper noun" default="temp_off">
+  <rule id="THANK_NNP_PRP" name="'Thank' + Proper noun">
     <pattern>
         <token postag="SENT_START|CC" postag_regexp="yes" />
         <marker>
@@ -27840,7 +27895,7 @@ The accident victim died from her injuries.
     <example>Thank God it's Friday.</example>
   </rule>
 
-  <rule id="THANK_THE_NN" name="'Thank the' + noun" default="temp_off">
+  <rule id="THANK_THE_NN" name="'Thank the' + noun">
     <antipattern>
         <token skip="-1">thank</token>
         <token>for</token>
@@ -32050,7 +32105,7 @@ The accident victim died from her injuries.
             <example>Due to</example>
             <example>Because of</example>
         </rule>
-        <rule id="DO_TO_THE_LACK_OF" name="'Do to the lack of' -> 'Due to lack of'" default="temp_off">
+        <rule id="DO_TO_THE_LACK_OF" name="'Do to the lack of' -> 'Due to lack of'">
             <pattern>
                 <token>do</token>
                 <token>to</token>
