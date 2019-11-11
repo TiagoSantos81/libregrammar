@@ -53,6 +53,7 @@ public class Galician extends Language {
     if (sentenceTokenizer == null) {
       sentenceTokenizer = new SRXSentenceTokenizer(this);
     }
+    sentenceTokenizer.setSingleLineBreaksMarksParagraph(true);
     return sentenceTokenizer;
   }
   

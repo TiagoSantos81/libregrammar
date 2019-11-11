@@ -44,11 +44,19 @@
      - Typographical ellipsis;
      - 'also' at the end of the sentence
      - Several adjustments to rules with wide-spectrum antipatterns.
+  * sentences and paragraphs now end with a single line break.
+
+#### Esperanto
+  * sentences and paragraphs now end with a single line break.
 
 #### French
   * activated generic Java rules, including:
      - LongSentenceRule, LongParagraphRule, SentenceWhitespaceRule, WhiteSpaceAtBeginOfParagraph, EmptyLineRule, ParagraphRepeatBeginningRule, PunctuationMarkAtParagraphEnd.
   * add typography rules for mathematical symbols and arrows.
+  * sentences and paragraphs now end with a single line break.
+
+#### Galician
+  * sentences and paragraphs now end with a single line break.
 
 #### German
   * activated generic Java rules, including:
@@ -68,6 +76,7 @@
   * activated generic Java rules, including:
      - LongSentenceRule, LongParagraphRule, SentenceWhitespaceRule, WhiteSpaceAtBeginOfParagraph, EmptyLineRule, ParagraphRepeatBeginningRule, PunctuationMarkAtParagraphEnd.
   * add typography rules for mathematical symbols and arrows.
+  * sentences and paragraphs now end with a single line break.
 
 #### Portuguese
   * re-activated diacritics rule;
@@ -82,12 +91,15 @@
      - pre-AO hyphenation rules;
      - wrong spelling agreement errors (PortuguesePreAgreementReplaceRule);
      - capitalization rules.
+  * sentences and paragraphs now end with a single line break.
+  * various localization fixes.
 
 #### Spanish
   * re-activated subject-predicate agreement category.
   * activated generic Java rules, including:
      - LongSentenceRule, LongParagraphRule, SentenceWhitespaceRule, WhiteSpaceAtBeginOfParagraph, EmptyLineRule, ParagraphRepeatBeginningRule, PunctuationMarkAtParagraphEnd.
   * add typography rules for mathematical symbols.
+  * sentences and paragraphs now end with a single line break.
 
 #### General
   * dependencies security updates.

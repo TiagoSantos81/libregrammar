@@ -106,6 +106,7 @@ public class Spanish extends Language implements AutoCloseable{
     if (sentenceTokenizer == null) {
       sentenceTokenizer = new SRXSentenceTokenizer(this);
     }
+    sentenceTokenizer.setSingleLineBreaksMarksParagraph(true);
     return sentenceTokenizer;
   }
   

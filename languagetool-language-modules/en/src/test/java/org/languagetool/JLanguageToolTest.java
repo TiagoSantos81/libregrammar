@@ -140,10 +140,10 @@ public class JLanguageToolTest {
     JLanguageTool tool = new JLanguageTool(new AmericanEnglish());
     List<RuleMatch> matches = tool.check("A sentence with no period\n" +
         "A phrase. A typoh.");
-    assertEquals(1, matches.size());
+    assertEquals(2, matches.size());
     RuleMatch match = matches.get(0);
     assertEquals(1, match.getLine());
-    assertEquals(13, match.getColumn());
+    assertEquals(11, match.getColumn());
   }
 
   @Test
@@ -154,7 +154,7 @@ public class JLanguageToolTest {
     assertEquals(1, matches.size());
     RuleMatch match = matches.get(0);
     assertEquals(2, match.getLine());
-    assertEquals(14, match.getColumn());   // TODO: should actually be 15, as in testPositionsWithEnglish()
+    assertEquals(15, match.getColumn());
   }
 
   @Test

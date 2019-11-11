@@ -338,7 +338,7 @@ public class MainTest extends AbstractSecurityTestCase {
 
     Main.main(args);
     String output = new String(this.out.toByteArray());
-    assertEquals("This is what I mean\nand you know it.", output);
+    assertEquals("This is what I mean\nAnd you know it.", output);
   }
 
   @Test
