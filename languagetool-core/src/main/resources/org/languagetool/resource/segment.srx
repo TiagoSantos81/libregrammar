@@ -6055,6 +6055,11 @@
 </rule>
 </languagerule>
 <languagerule languagerulename="GeneralImportant">
+<!-- Split sentences on line break --><!-- languagerulename="ByLineBreak" integrated in general rules since 2019-11-10 -->
+<rule break="yes">
+<beforebreak>\r?\n</beforebreak>
+<afterbreak></afterbreak>
+</rule>
 <!--Don't split up URLs.-->
 <rule break="no">
 <beforebreak>\bwww\.</beforebreak>
