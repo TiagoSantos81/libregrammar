@@ -1181,6 +1181,11 @@ title="Easy editing stylesheet" ?>
       <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/prefixos-e-hifen/17908</url>
       <url>https://ciberduvidas.iscte-iul.pt/artigos/rubricas/idioma/o-uso-do-hifen-segundo-o-acordo-ortografico/3195</url>-->
       <url>https://pt.wikipedia.org/wiki/Uso_do_h%C3%ADfen_conforme_o_Acordo_Ortogr%C3%A1fico_de_1990</url>
+      <antipattern>
+          <token regexp='yes'>\p{L}{2,5}</token>
+          <token regexp='yes' spacebefore='no'>&hifen;</token>
+          <token regexp='yes' spacebefore='no' case_sensitive='yes'>\p{Lu}.+</token>
+      </antipattern>
     <rule>
       <pattern>
           <token regexp='yes'>ex|sota|soto|vice|vizo|grã|pós|pré|pró|recém</token>
@@ -1222,9 +1227,17 @@ title="Easy editing stylesheet" ?>
     <!--	<example correction='sobre-humano'>Fez um esforço <marker>sobre humano</marker> para obter bons resultados.</example>-->
       <example correction='sub-hepática'>Prescrevi uma ecografia à região <marker>sub hepática</marker>.</example>
     </rule>
-
-    <!--	TODO Rule for (des|in)-h... -> (des|in)...	-->
-
+    <rule>
+      <pattern>
+          <token regexp='yes'>(?:des|in)</token>
+          <token min='0' regexp='yes' spacebefore='no'>&hifen;</token>
+          <token regexp='yes'>h.+
+            <exception postag='.+_' postag_regexp='yes'/></token>
+      </pattern>
+      <message>Palavra deve ser unida. Pretende dizer </message>
+        <suggestion>\1<match no='3' regexp_match='^h(.+)' regexp_replace='$1'/></suggestion>
+      <example correction='desumano'>Teve um tratamento <marker>des-humano</marker>.</example>
+    </rule>
     <rule>
       <pattern>
           <token regexp='yes'>co|p(?:r[eo]|os)|re|bi|tri|tetra|penta|hexa</token>
@@ -1330,8 +1343,7 @@ title="Easy editing stylesheet" ?>
     <rule>
       <pattern>
           <token regexp='yes'>&prefixos_i;</token>
-          <token regexp='yes'>i.+
-            <exception case_sensitive='yes' regexp='yes'>\p{Lu}.+</exception></token>
+          <token regexp='yes'>i.+</token>
       </pattern>
       <message>Palavra hifenizada.</message>
         <suggestion>\1-\2</suggestion>
@@ -1342,7 +1354,6 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>&prefixos_i;</token>
           <token min='0' regexp='yes' spacebefore='no'>&hifen;</token>
           <token regexp='yes'>[^ihrs].+
-            <exception case_sensitive='yes' regexp='yes'>\p{Lu}.+</exception>
             <exception postag_regexp='yes' postag='[RS].+'/></token>
       </pattern>
       <message>Este prefixo não é hifenizado neste contexto.</message>
@@ -1906,7 +1917,7 @@ title="Easy editing stylesheet" ?>
           <token>pelo</token>
           <token inflected='yes'>ser</token>
       </pattern>
-      <message>'Pelo' é uma forma verbal do verbo 'pelar'. Pretende dizer <suggestion>pêlo \3</suggestion>?</message>
+      <message>'Pelo' é uma forma verbal do verbo 'pelar'. Pretende dizer <suggestion>pêlo \2</suggestion>?</message>
       <example correction="pêlo é">Para quem tem animais com muito <marker>pelo é</marker> bom.</example>
     </rule>
  </category>
