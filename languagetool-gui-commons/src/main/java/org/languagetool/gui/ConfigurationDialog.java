@@ -41,6 +41,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
+import java.text.MessageFormat;
 import java.util.*;
 import java.util.List;
 
@@ -65,6 +66,7 @@ public class ConfigurationDialog implements ActionListener {
   private boolean configChanged = false;
   private boolean profileChanged = true;
   private boolean restartShow = false;
+  private boolean firstSelection = true;
 
   private JDialog dialog;
   private JCheckBox serverCheckbox;
@@ -625,6 +627,106 @@ public class ConfigurationDialog implements ActionListener {
     cons.gridy++;
     portPanel.add(isMultiThreadBox, cons);
     
+    JTextField otherServerNameField = new JTextField(config.getServerUrl() ==  null ? "" : config.getServerUrl(), 25);
+    otherServerNameField.setMinimumSize(new Dimension(100, 25));
+    otherServerNameField.getDocument().addDocumentListener(new DocumentListener() {
+      @Override
+      public void insertUpdate(DocumentEvent e) {
+        changedUpdate(e);
+      }
+      @Override
+      public void removeUpdate(DocumentEvent e) {
+        changedUpdate(e);
+      }
+      @Override
+      public void changedUpdate(DocumentEvent e) {
+        String serverName = otherServerNameField.getText();
+        serverName = serverName.trim();
+        if(serverName.isEmpty()) {
+          serverName = null;
+        }
+        config.setOtherServerUrl(serverName);
+      }
+    });
+
+    JCheckBox useServerBox = new JCheckBox(Tools.getLabel(messages.getString("guiUseServer")) + " ");
+    useServerBox.setSelected(config.useOtherServer());
+    useServerBox.addItemListener(e -> {
+      int select = JOptionPane.OK_OPTION;
+      boolean selected = useServerBox.isSelected();
+      if(selected && firstSelection) {
+        select = showRemoteServerHint(useServerBox, true);
+        firstSelection = false;
+      } else {
+        firstSelection = true;
+      }
+      if(select == JOptionPane.OK_OPTION) {
+        useServerBox.setSelected(selected);
+        config.setUseOtherServer(useServerBox.isSelected());
+        otherServerNameField.setEnabled(useServerBox.isSelected());
+      } else {
+        useServerBox.setSelected(false);
+        firstSelection = true;
+      }
+    });
+
+    JCheckBox useRemoteServerBox = new JCheckBox(Tools.getLabel(messages.getString("guiUseRemoteServer")));
+    useRemoteServerBox.setSelected(config.doRemoteCheck());
+    useServerBox.setEnabled(useRemoteServerBox.isSelected());
+    otherServerNameField.setEnabled(useRemoteServerBox.isSelected() && useServerBox.isSelected());
+    isMultiThreadBox.setEnabled(!useRemoteServerBox.isSelected());
+    
+    useRemoteServerBox.addItemListener(e -> {
+      int select = JOptionPane.OK_OPTION;
+      boolean selected = useRemoteServerBox.isSelected();
+      if(selected && firstSelection) {
+        select = showRemoteServerHint(useRemoteServerBox, false);
+        firstSelection = false;
+      } else {
+        firstSelection = true;
+      }
+      if(select == JOptionPane.OK_OPTION) {
+        useRemoteServerBox.setSelected(selected);
+        config.setRemoteCheck(useRemoteServerBox.isSelected());
+        useServerBox.setEnabled(useRemoteServerBox.isSelected());
+        otherServerNameField.setEnabled(useRemoteServerBox.isSelected() && useServerBox.isSelected());
+        isMultiThreadBox.setEnabled(!useRemoteServerBox.isSelected());
+      } else {
+        useRemoteServerBox.setSelected(false);
+        firstSelection = true;
+      }
+    });
+  
+    cons.gridy++;
+    portPanel.add(useRemoteServerBox, cons);
+    cons.insets = new Insets(0, 30, 0, 0);
+    JPanel serverPanel = new JPanel();
+    serverPanel.setLayout(new GridBagLayout());
+    GridBagConstraints cons1 = new GridBagConstraints();
+    cons1.insets = new Insets(0, 0, 0, 0);
+    cons1.gridx = 0;
+    cons1.gridy = 0;
+    cons1.anchor = GridBagConstraints.WEST;
+    cons1.fill = GridBagConstraints.NONE;
+    cons1.weightx = 0.0f;
+    serverPanel.add(useServerBox, cons1);
+    cons1.gridx++;
+    serverPanel.add(otherServerNameField, cons1);
+    cons.gridx = 0;
+    cons.gridy++;
+    portPanel.add(serverPanel, cons);
+
+  }
+  
+  private int showRemoteServerHint(Component component, boolean otherServer) {
+    if(config.useOtherServer() || otherServer) {
+        return JOptionPane.showConfirmDialog(component, 
+            MessageFormat.format(messages.getString("loRemoteInfoOtherServer"), config.getServerUrl()), 
+          messages.getString("loMenuRemoteInfo"), JOptionPane.OK_CANCEL_OPTION);
+    } else {
+      return JOptionPane.showConfirmDialog(component, messages.getString("loRemoteInfoDefaultServer"), 
+          messages.getString("loMenuRemoteInfo"), JOptionPane.OK_CANCEL_OPTION);
+    }
   }
 
   @NotNull
@@ -1266,5 +1368,5 @@ public class ConfigurationDialog implements ActionListener {
     }
     return panel;
   }
-  
+
 }
