@@ -130,6 +130,9 @@
   * added and improved rules
   * POS and spelling improvements
 
+#### Greek
+  * updated spelling dictionary to el_GR 0.9 (14/03/2019), by George Zougianos
+
 #### Portuguese
   * added and improved rules
   * POS and spelling improvements
