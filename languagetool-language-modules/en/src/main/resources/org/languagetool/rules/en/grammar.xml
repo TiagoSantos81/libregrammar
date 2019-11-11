@@ -26041,6 +26041,12 @@ USA
           <token chunk="I-VP">back</token>
           <token regexp="yes">away|down|off|onto|out|up</token>
       </antipattern>
+      <antipattern>
+          <token inflected='yes'>be</token>
+          <token>going</token>
+          <token>to</token>
+          <token>close</token>
+      </antipattern>
       <pattern>
           <token inflected="yes">go</token>
           <token>to</token>
