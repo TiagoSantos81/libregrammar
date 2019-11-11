@@ -166,6 +166,13 @@ class SingleDocument {
    */
   ProofreadingResult getCheckResults(String paraText, Locale locale, ProofreadingResult paRes, 
       int[] footnotePositions, boolean isParallelThread, boolean docReset, SwJLanguageTool langTool) {
+
+    /* if by merge error isRemote can become 'true'
+     * it will show on the context menu.
+     * this code is kept to double check if isRemote is false.
+     * that variable is kept as an assurance even though the
+     * remaining code was deleted or commented out.
+     */
     isRemote = langTool.isRemote();
     try {
       if(docReset) {

@@ -350,10 +350,19 @@ public class Main extends WeakBase implements XJobExecutor,
       } else if ("deactivateRule".equals(sEvent)) {
         documents.deactivateRule();
         resetDocument();
+    /* if by merge error isRemote can become 'true'
+     * it will show on the context menu.
+     * this code is kept to double check if isRemote is false.
+     * isRemote variable was kept as an assurance even though
+     * the remaining code was deleted or commented out.
+     */
       } else if ("remoteHint".equals(sEvent)) {
         if(documents.getConfiguration().useOtherServer()) {
+    /* getServerUrl does not exist here
           MessageHandler.showMessage(MessageFormat.format(MESSAGES.getString("loRemoteInfoOtherServer"), 
               documents.getConfiguration().getServerUrl()));
+     */
+          MessageHandler.showMessage(MESSAGES.getString("loRemoteInfoOtherServer"));
         } else {
           MessageHandler.showMessage(MESSAGES.getString("loRemoteInfoDefaultServer"));
         }

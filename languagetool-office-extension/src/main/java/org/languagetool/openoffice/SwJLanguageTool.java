@@ -60,6 +60,10 @@ public class SwJLanguageTool {
     }
   }
 
+    /*
+     * this variable is kept as an assurance even though the
+     * remaining code was deleted or commented out.
+     */
   public boolean isRemote() {
     return false;
   }

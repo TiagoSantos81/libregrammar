@@ -627,6 +627,9 @@ public class ConfigurationDialog implements ActionListener {
     cons.gridy++;
     portPanel.add(isMultiThreadBox, cons);
     
+    /*
+     * XXX keep this code commented out for easier merging
+     *
     JTextField otherServerNameField = new JTextField(config.getServerUrl() ==  null ? "" : config.getServerUrl(), 25);
     otherServerNameField.setMinimumSize(new Dimension(100, 25));
     otherServerNameField.getDocument().addDocumentListener(new DocumentListener() {
@@ -727,6 +730,7 @@ public class ConfigurationDialog implements ActionListener {
       return JOptionPane.showConfirmDialog(component, messages.getString("loRemoteInfoDefaultServer"), 
           messages.getString("loMenuRemoteInfo"), JOptionPane.OK_CANCEL_OPTION);
     }
+*/
   }
 
   @NotNull
