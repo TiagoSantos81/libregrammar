@@ -2686,7 +2686,7 @@ title="Easy editing stylesheet" ?>
             <exception postag='V.N.2S0' postag_regexp='yes'/></token>
         </marker>
       </pattern>
-      <message>&MSG_ECV;</message>
+      <message>Se o sujeito deste verbo não é o sujeito da oração principal, deve utilizar o infinitivo impessoal.</message>
         <suggestion><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all' postag='VMN02S0'/></suggestion>
       <example correction='tu passeares'>Para <marker>tu passeiam</marker> na praia.</example>
     </rule>
@@ -2701,7 +2701,7 @@ title="Easy editing stylesheet" ?>
             <exception postag='V.N.3S0' postag_regexp='yes'/></token>
         </marker>
       </pattern>
-      <message>&MSG_ECV;</message>
+      <message>Se o sujeito deste verbo não é o sujeito da oração principal, deve utilizar o infinitivo impessoal.</message>
         <suggestion><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all' postag='VMN03S0'/></suggestion>
       <example correction='ele passear'>Para <marker>ele passeiam</marker> na praia.</example>
     </rule>
@@ -2716,7 +2716,7 @@ title="Easy editing stylesheet" ?>
             <exception postag='V.N.1P0' postag_regexp='yes'/></token>
         </marker>
       </pattern>
-      <message>&MSG_ECV;</message>
+      <message>Se o sujeito deste verbo não é o sujeito da oração principal, deve utilizar o infinitivo impessoal.</message>
         <suggestion><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all' postag='VMN01P0'/></suggestion>
       <example correction='nós passearmos'>Para <marker>nós passeiam</marker> na praia.</example>
     </rule>
@@ -2735,7 +2735,7 @@ title="Easy editing stylesheet" ?>
             <exception postag='V.N.1P0' postag_regexp='yes'/></token>
         </marker>
       </pattern>
-      <message>&MSG_ECV;</message>
+      <message>Se o sujeito deste verbo não é o sujeito da oração principal, deve utilizar o infinitivo impessoal.</message>
         <suggestion><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' include_skipped='all'/> <match no='6' include_skipped='all'/> <match no='7' include_skipped='all' postag='VMN01P0'/></suggestion>
       <example correction='eu e a Rita passearmos'>Para <marker>eu e a Rita passeiam</marker> na praia.</example>
     </rule>
@@ -2753,7 +2753,7 @@ title="Easy editing stylesheet" ?>
             <exception postag='V.N.2P0' postag_regexp='yes'/></token>
         </marker>
       </pattern>
-      <message>&MSG_ECV;</message>
+      <message>Se o sujeito deste verbo não é o sujeito da oração principal, deve utilizar o infinitivo impessoal.</message>
         <suggestion><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' include_skipped='all'/> <match no='6' include_skipped='all'/> <match no='7' include_skipped='all' postag='VMN02P0'/></suggestion>
       <example correction='tu e a Rita passeardes'>Para <marker>tu e a Rita passeiam</marker> na praia.</example>
     </rule>
@@ -2769,7 +2769,7 @@ title="Easy editing stylesheet" ?>
             <exception postag='V.N.2P0' postag_regexp='yes'/></token>
         </marker>
       </pattern>
-      <message>&MSG_ECV;</message>
+      <message>Se o sujeito deste verbo não é o sujeito da oração principal, deve utilizar o infinitivo impessoal.</message>
         <suggestion><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all' postag='VMN02P0'/></suggestion>
       <example correction='vós passeardes'>Para <marker>vós passeiam</marker> na praia.</example>
     </rule>
@@ -2784,7 +2784,7 @@ title="Easy editing stylesheet" ?>
             <exception postag='V.N.3P0' postag_regexp='yes'/></token>
         </marker>
       </pattern>
-      <message>&MSG_ECV;</message>
+      <message>Se o sujeito deste verbo não é o sujeito da oração principal, deve utilizar o infinitivo impessoal.</message>
         <suggestion><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all' postag='VMN03P0'/></suggestion>
       <example correction='elas passearem'>Para <marker>elas passeiam</marker> na praia.</example>
     </rule>
@@ -5502,6 +5502,19 @@ title="Easy editing stylesheet" ?>
           <token min='0'>.</token>
           <token>:</token>
       </antipattern>
+      <antipattern><!-- vocative -->
+          <token>
+            <exception regexp='yes'>[,;\:]</exception></token>
+          <token>
+            <exception regexp='yes'>[,;]</exception></token>
+          <token regexp='yes'>[,;]</token>
+          <token regexp='yes'>\p{Lu}\p{Ll}*</token>
+          <token regexp='yes'>[,;]</token>
+          <token>
+            <exception regexp='yes'>[,;e]</exception></token>
+          <token>
+            <exception regexp='yes'>[,;]</exception></token>
+      </antipattern>
       <pattern>
           <token regexp='yes'>[\,\;\:]
             <exception scope='previous' case_sensitive="yes" regexp="yes">\p{Lu}\p{Ll}+</exception><!-- References --></token>
@@ -5522,6 +5535,7 @@ title="Easy editing stylesheet" ?>
       <example>Anarcocapitalismo, Multinacionais e Contratos</example>
       <example>Sendo liberal, é natural que tenha lido, entre outros, Adam Smith, Bastiat, Böhm-Bawerk, Schumpeter, Mises, Hayek, Friedman, Sowell. No entanto, também li Saint-Simon, Proudhon, Bakunin, Marx, Lassale, Lénin, Trotsky, Gramsci e Nikolai Berdyaev que, em 1923,…</example>
       <example>Ele define os números no triângulo por recursão: Chame o número na (m+1)-ésima linha e na (n+1)-ésima co…</example>
+      <example>...desse adversário, Lula, acabou de sair...</example>
     </rule>
 
   <rulegroup id='COMPOUND_PROPER_NOUNS_CASING' name="Capitalizar nomes próprios compostos...">
@@ -9291,10 +9305,10 @@ title="Easy editing stylesheet" ?>
       <example correction="João,">E depois de ele dizer “<marker>João</marker> o correio está atrasado?”</example>
       <example>Ao que ele respondeu “<marker>Existe</marker> uma oportunidade.”</example>
     </rule>
-    <rule>
+    <rule id='VOCATIVE_PUNCTUATION_MID_SENTENCE' name="Pontuação: vocativo" default="on">
       <pattern>
           <token>
-            <exception postag='SENT_START'/>
+            <exception postag='SENT_START|[SD].+' postag_regexp='yes'/>
             <exception regexp='yes'>[\"“«—]</exception></token>
         <marker>
           <token regexp='yes'>\p{Lu}\p{L}+
