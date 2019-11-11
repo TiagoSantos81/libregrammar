@@ -357,15 +357,15 @@ public class Main extends WeakBase implements XJobExecutor,
      * the remaining code was deleted or commented out.
      */
       } else if ("remoteHint".equals(sEvent)) {
+        /* XXX useOtherServer() and getServerUrl() do not exist in LibreGrammar
         if(documents.getConfiguration().useOtherServer()) {
-    /* getServerUrl does not exist here
           MessageHandler.showMessage(MessageFormat.format(MESSAGES.getString("loRemoteInfoOtherServer"), 
               documents.getConfiguration().getServerUrl()));
-     */
-          MessageHandler.showMessage(MESSAGES.getString("loRemoteInfoOtherServer"));
         } else {
           MessageHandler.showMessage(MESSAGES.getString("loRemoteInfoDefaultServer"));
         }
+         */
+          MessageHandler.showMessage(MESSAGES.getString("loRemoteInfoDefaultServer"));
       } else {
         MessageHandler.printToLogFile("Sorry, don't know what to do, sEvent = " + sEvent);
       }
