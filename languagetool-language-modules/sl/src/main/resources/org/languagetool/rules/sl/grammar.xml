@@ -834,14 +834,18 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             </rule>
         </rulegroup>
         <rulegroup id="POMISLJAJ_3" name="Presledek pred pomišljajem">
+                <antipattern>
+                    <token>&lt;</token>
+                    <token>-</token>
+                </antipattern>
             <rule>
                 <pattern>
-                    <token regexp="yes">(.*\S)(-)<exception regexp="no">&lt;-</exception></token>
+                    <token regexp="yes">(.*\S)(-)</token>
                 </pattern>
                 <message>Pred in po pomišljaju mora biti presledek. Vstavite presledek predenj (<suggestion><match no="1" regexp_match="(.*\S)(-)" regexp_replace="$1 –"></match></suggestion>) ali pa odstranite končni presledek.</message>
                 <short>Manjka presledek</short>
                 <example correction="primer –">To je <marker>primer-</marker> ali pa tudi ne.</example>
-                <example>To je primer – ali pa tudi ne.</example>
+                <example>To je primer &lt;- ali pa tudi ne.</example>
             </rule>
         </rulegroup>
         <rulegroup id="VEZAJ" name="Zamenjaj pomišljaj z vezajem">
