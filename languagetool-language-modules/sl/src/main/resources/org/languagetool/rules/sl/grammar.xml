@@ -819,13 +819,18 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rulegroup>
         <rulegroup id="POMISLJAJ_2" name="Presledek po pomišljaju">
             <rule>
+                <antipattern>
+                    <token>-</token>
+                    <token>&gt;</token>
+                </antipattern>
                 <pattern>
-                    <token regexp="yes">(-)(\D.*)<exception regexp="no">-&gt;</exception></token>
+                    <token regexp="yes">(-)(\D.*)</token>
                 </pattern>
                 <message>Pred in po pomišljaju mora biti presledek. Vstavite presledek za njim (<suggestion><match no="1" regexp_match="(-)(\D.*)" regexp_replace="– $2"></match></suggestion>) ali pa odstranite začetni presledek.</message>
                 <short>Manjka presledek</short>
                 <example correction="– ali">To je primer <marker>-ali</marker> pa tudi ne.</example>
                 <example>To je primer – ali pa tudi ne.</example>
+                <example>To je primer -&gt; ali pa tudi ne.</example>
             </rule>
         </rulegroup>
         <rulegroup id="POMISLJAJ_3" name="Presledek pred pomišljajem">
@@ -886,12 +891,22 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         <rulegroup name="Manjkajoči vezaj v sklanjani kratici" id="KRATICA_BREZ_VEZAJA">
             <rule id="KRATICA_IZJEM">
                 <pattern>
-                    <token regexp="yes">^(\p{Lu}{2}+[i]*\p{Lu}+[\p{L}&amp;&amp;[^\p{Lu}]]{1,4}+)<exception regexp="yes">GHz|MHz|Kb|Mb|Gb|Tb</exception></token>
+                    <token regexp="yes">^(\p{Lu}{2}+[i]*\p{Lu}+[\p{L}&amp;&amp;[^\p{Lu}]]{1,4}+)
+                    <!-- XXX no item in this exception actually triggers 
+                    since regexp needs 3 uppercased letter at the start 
+                    of the word to trigger. Please, review.
+                      <exception regexp="yes">GHz|MHz|Kb|Mb|Gb|Tb</exception>
+                      --></token>
                 </pattern>
                 <message>Nepravilno sklanjana kratica; manjka vezaj: <suggestion><match no="1" regexp_match="^(\p{Lu}{2}+[i]*\p{Lu}+)([\p{L}&amp;&amp;[^\p{Lu}]]{1,4}+)" regexp_replace="$1-$2"></match></suggestion>
                 </message>
                 <short>Manjka vezaj</short>
                 <example correction="URL-je">Vnesel je popravljene <marker>URLje</marker>.</example>
+                <example>100 GHz</example>
+                <example>100 MHz</example>
+                <example>100 Kb</example>
+                <example>100 Mb</example>
+                <example>100 Tb</example>
             </rule>
         </rulegroup>
     </category>
