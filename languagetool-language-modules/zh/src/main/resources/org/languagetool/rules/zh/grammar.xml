@@ -19443,7 +19443,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 			<rule>
 				<pattern>
 					<!--<token postag="n.*|r" postag_regexp="yes"/> -->
-					<token regexp="yes" postag="p">[^对|的]+</token>
+					<token regexp="yes" postag="p">[^对的]+</token>
 					<token postag="n.*|r|c|m|q" postag_regexp="yes" skip="10" />
 					<marker>
 						<token regexp="yes">来说|而言|说来</token>
