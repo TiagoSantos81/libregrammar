@@ -41,11 +41,14 @@ public class GermanParagraphRepeatBeginningRuleTest {
     JLanguageTool lt = new JLanguageTool(lang);
     setUpRule(lt);
 
-    assertEquals(2, lt.check("Der Hund spazierte über die Straße.\n\nDer Hund ignorierte den Verkehr.").size());
+    assertEquals(2, lt.check("Der Hund spazierte über die Straße.\nDer Hund ignorierte den Verkehr.").size());
+    assertEquals(0, lt.check("Der Hund spazierte über die Straße.\n\nDer Hund ignorierte den Verkehr.").size());
     assertEquals(0, lt.check("Der Hund spazierte über die Straße.\n\nDas Tier ignorierte den Verkehr.").size());
-    assertEquals(2, lt.check("Peter spazierte über die Straße.\n\nPeter ignorierte den Verkehr.").size());
+    assertEquals(2, lt.check("Peter spazierte über die Straße.\nPeter ignorierte den Verkehr.").size());
+    assertEquals(0, lt.check("Peter spazierte über die Straße.\n\nPeter ignorierte den Verkehr.").size());
     assertEquals(0, lt.check("Peter spazierte über die Straße.\n\nDer Junge ignorierte den Verkehr.").size());
-    assertEquals(2, lt.check("»Peter spazierte über die Straße.«\n\n»Peter ignorierte den Verkehr.«").size());
+    assertEquals(2, lt.check("»Peter spazierte über die Straße.«\n»Peter ignorierte den Verkehr.«").size());
+    assertEquals(0, lt.check("»Peter spazierte über die Straße.«\n\n»Peter ignorierte den Verkehr.«").size());
   }
 
   private void setUpRule(JLanguageTool lt) {
