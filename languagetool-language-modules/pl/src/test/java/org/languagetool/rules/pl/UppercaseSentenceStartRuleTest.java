@@ -32,7 +32,8 @@ public class UppercaseSentenceStartRuleTest {
   public void testPolishSpecialCases() throws IOException {
     final JLanguageTool lt = new JLanguageTool(new Polish());
     assertEquals(0, lt.check("Zdanie.").size());
-    assertEquals(0, lt.check("To jest lista punktowana:\n\npunkt pierwszy,\n\npunkt drugi,\n\npunkt trzeci.").size());
+    assertEquals(0, lt.check("To jest lista punktowana:\n\npierwszy,\n\ndrugi,\n\ntrzeci.").size());
+    assertEquals(3, lt.check("To jest lista punktowana:\n\npunkt pierwszy,\n\npunkt drugi,\n\npunkt trzeci.").size()); // three matches from ParagraphRepeatBeginning
   }
 
 }

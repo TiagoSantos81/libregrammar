@@ -51,7 +51,8 @@
 
 #### French
   * activated generic Java rules, including:
-     - LongSentenceRule, LongParagraphRule, SentenceWhitespaceRule, WhiteSpaceAtBeginOfParagraph, EmptyLineRule, ParagraphRepeatBeginningRule, PunctuationMarkAtParagraphEnd.
+     - LongSentenceRule, LongParagraphRule, SentenceWhitespaceRule, WhiteSpaceAtBeginOfParagraph,
+     EmptyLineRule, ParagraphRepeatBeginningRule, PunctuationMarkAtParagraphEnd.
   * add typography rules for mathematical symbols and arrows.
   * sentences and paragraphs now end with a single line break.
 
@@ -74,7 +75,8 @@
 
 #### Italian
   * activated generic Java rules, including:
-     - LongSentenceRule, LongParagraphRule, SentenceWhitespaceRule, WhiteSpaceAtBeginOfParagraph, EmptyLineRule, ParagraphRepeatBeginningRule, PunctuationMarkAtParagraphEnd.
+     - LongSentenceRule, LongParagraphRule, SentenceWhitespaceRule, WhiteSpaceAtBeginOfParagraph,
+     EmptyLineRule, ParagraphRepeatBeginningRule, PunctuationMarkAtParagraphEnd.
   * add typography rules for mathematical symbols and arrows.
   * sentences and paragraphs now end with a single line break.
 
@@ -94,10 +96,16 @@
   * sentences and paragraphs now end with a single line break.
   * various localization fixes.
 
+#### Polish
+  * activated generic Java rules, including:
+     - LongSentenceRule, LongParagraphRule, UppercaseSentenceStartRule, WhiteSpaceBeforeParagraphEnd,
+     WhiteSpaceAtBeginOfParagraph, EmptyLineRule, ParagraphRepeatBeginningRule, PunctuationMarkAtParagraphEnd.
+
 #### Spanish
   * re-activated subject-predicate agreement category.
   * activated generic Java rules, including:
-     - LongSentenceRule, LongParagraphRule, SentenceWhitespaceRule, WhiteSpaceAtBeginOfParagraph, EmptyLineRule, ParagraphRepeatBeginningRule, PunctuationMarkAtParagraphEnd.
+     - LongSentenceRule, LongParagraphRule, SentenceWhitespaceRule, WhiteSpaceAtBeginOfParagraph,
+     EmptyLineRule, ParagraphRepeatBeginningRule, PunctuationMarkAtParagraphEnd.
   * add typography rules for mathematical symbols.
   * sentences and paragraphs now end with a single line break.
 
@@ -109,6 +117,7 @@
   * standalone default underline colors changed:
     - grey: style repetitions and redundancies;
     - cyan: typographical suggestions.
+  * ParagraphRepeatBeginning now triggers properly, shows the correct messages, and is now active by default.
 
 #### LibreOffice / Apache OpenOffice Integration
   * remote server commits for LibreOffice plug-in reverted (#1929).
