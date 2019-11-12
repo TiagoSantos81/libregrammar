@@ -204,7 +204,8 @@ public class EnglishVerbNounConfusionRule extends Rule {
     String msg = null;
     String shortmsg = null;
     for (int i = 0; i < (tokens.length - 1); i++) {
-      if (tokens[i].isImmunized() || tokens[i + 1].isImmunized()) {
+      if (tokens[i].isImmunized()
+       || tokens[i + 1].isImmunized()) {
         continue;
       }
       if (precedesNoun(tokens[i])) {
@@ -219,7 +220,8 @@ public class EnglishVerbNounConfusionRule extends Rule {
           }
         }
         if ((isAdjective(tokens[i + 1]))
-        && (isVerb(tokens[i + 2])) && !(tokens[i + 2].isImmunized())) {
+              && (isVerb(tokens[i + 2]))
+                    && !(tokens[i + 2].isImmunized())) {
           markEnd = i + 2;
           if (replacement == null) {
             replacement = getNounReplacements().get(tokens[i + 2].getToken());
@@ -241,8 +243,8 @@ public class EnglishVerbNounConfusionRule extends Rule {
           }
         }
         if ((isAdverb(tokens[i + 1]))
-        && !(tokens[i + 2].isImmunized())
-        && (isNoun(tokens[i + 2]))) {
+           && (isNoun(tokens[i + 2]))
+                 && !(tokens[i + 2].isImmunized())) {
           markEnd = i + 2;
           if (replacement == null) {
             replacement = getVerbReplacements().get(tokens[i + 2].getToken());
@@ -255,7 +257,7 @@ public class EnglishVerbNounConfusionRule extends Rule {
       if (precedesNegativeVerb(tokens[i])) {
         shortmsg = "verb";
         if (isApostrophe(tokens[i + 1])
-                      || tokens[i + 2].equals("t")) {
+                      && tokens[i + 2].equals("t")) {
           if (isNoun(tokens[i + 3])
           &&       !(tokens[i + 3].isImmunized())) {
             markEnd = i + 3;
@@ -267,8 +269,8 @@ public class EnglishVerbNounConfusionRule extends Rule {
             }
           }
           if ((isAdverb(tokens[i + 3]))
-          && !(tokens[i + 4].isImmunized())
-          && (isNoun(tokens[i + 4]))) {
+             && (isNoun(tokens[i + 4]))
+                   && !(tokens[i + 4].isImmunized())) {
             markEnd = i + 4;
             if (replacement == null) {
               replacement = getVerbReplacements().get(tokens[i + 4].getToken());
