@@ -473,7 +473,7 @@ public final class StringTools {
   public static boolean isParagraphEnd(String sentence, boolean singleLineBreaksMarksPara) {
     boolean isParaEnd = false;
     if (singleLineBreaksMarksPara) {
-      if (sentence.endsWith("\n") || sentence.endsWith("\n\r")) {
+      if (sentence.endsWith("\n") || sentence.endsWith("\n\r") || sentence.endsWith("\r\n")) {
         isParaEnd = true;
       }
     } else if (sentence.endsWith("\n\n") || sentence.endsWith("\n\r\n\r") || sentence.endsWith("\r\n\r\n")) {
