@@ -257,7 +257,7 @@ public class EnglishVerbNounConfusionRule extends Rule {
       if (precedesNegativeVerb(tokens[i])) {
         shortmsg = "verb";
         if (isApostrophe(tokens[i + 1])
-                      && tokens[i + 2].equals("t")) {
+                      || tokens[i + 2].equals("t")) { // FIXME && would make sense but it fails to trigger the rule here. Why?
           if (isNoun(tokens[i + 3])
           &&       !(tokens[i + 3].isImmunized())) {
             markEnd = i + 3;
