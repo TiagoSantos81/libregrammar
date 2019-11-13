@@ -903,10 +903,10 @@ in the balance=[OMIT IF POSSIBLE]|
 in the case of=for
 in the course of=during|while
 in the distance=distantly
-in the end=finally
+# in the end=finally (make rule VERB + in the end=finally)
 in the event of=if
 in the event that=if
-in the extreme=extremely
+# in the extreme=extremely (make rule VERB + in the extreme=extremely)
 in the eyes of=according to
 in the final analysis=finally|[OMIT IF POSSIBLE]| 
 in the first place=first
@@ -937,8 +937,8 @@ in the neighbourhood of=about|around
 in the night=at night
 in the not-too-distant future=soon
 in the not too distant future=soon|[OMIT IF POSSIBLE]| 
-in the open=openly
-# in theory=theoretically
+# in the open=openly (make rule VERB + in the open=openly)
+# in theory=theoretically (more verbose)
 in the possession of=has|have
 in the present communication=here|in this paper
 in the process of=beginning to|starting to|[OMIT IF POSSIBLE]| 
@@ -965,7 +965,7 @@ in tune with=agreeing with
 in turn=[OMIT IF POSSIBLE]| 
 in unison=together
 in use=current|used|relevant
-in vain=vainly
+# in vain=vainly (make rule VERB + in vain=vainly)
 in view of=considering|since
 in view of the above=so
 in view of the fact that=as|because|since
