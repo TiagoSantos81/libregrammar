@@ -44,8 +44,8 @@ public class ParagraphRepeatBeginningRule extends TextLevelRule {
     super(messages);
     super.setCategory(Categories.STYLE.getCategory(messages));
     this.lang = lang;
-    setLocQualityIssueType(ITSIssueType.Style);
-    setDefaultOff();
+    setLocQualityIssueType(ITSIssueType.Duplication);
+    // setDefaultOff();
   }
 
   @Override
@@ -59,7 +59,7 @@ public class ParagraphRepeatBeginningRule extends TextLevelRule {
   }
   
   public boolean isArticle(AnalyzedTokenReadings token) {
-    return token.hasPosTagStartingWith("DT");
+    return token.hasPosTagStartingWith("D");
   }
   
   private int numCharEqualBeginning(AnalyzedTokenReadings[] lastTokens, AnalyzedTokenReadings[] nextTokens) throws IOException {
@@ -123,7 +123,7 @@ public class ParagraphRepeatBeginningRule extends TextLevelRule {
         endPos = numCharEqualBeginning(lastTokens, nextTokens);
         if (endPos > 0) {
           int startPos = lastPos + lastTokens[1].getStartPos();
-          String msg = messages.getString("repetition_paragraph_beginning_last_msg");
+          String msg = messages.getString("repetition_paragraph_beginning_next_msg");
           RuleMatch ruleMatch = new RuleMatch(this, lastSentence, startPos, lastPos+endPos, msg);
           ruleMatches.add(ruleMatch);
           
