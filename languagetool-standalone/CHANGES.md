@@ -137,7 +137,9 @@
   * POS and spelling improvements
 
 #### English
-  * added and improved rules
+  * many rules added and significant rules improvements
+    - SpecificCaseRule for case specific phrases
+  * multiwords support added
   * disambiguation improvements
   * POS and spelling improvements
 
