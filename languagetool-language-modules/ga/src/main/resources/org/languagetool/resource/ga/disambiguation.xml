@@ -718,7 +718,7 @@
             <marker>
                 <token>d</token>
             </marker>
-            <token>&apos;</token>
+            <token regexp="yes">&apost;</token>
             <token regexp="yes">aois|airgead</token>
         </pattern>
         <disambig action="add"><wd lemma="de" pos="Prep:Simp"></wd></disambig>
@@ -1031,6 +1031,15 @@
         </pattern>
         <disambig action="filterall"/>
     </rule>
+    <rule id="START_BHI" name="Bhí">
+        <pattern>
+            <token postag="SENT_START"></token>
+            <marker>
+                <token>bhí</token>
+            </marker>
+        </pattern>
+        <disambig action="filter" postag="Verb:VI:PastInd:Len"/>
+    </rule>
     <rulegroup id="GO_SUBJ" name="go SUBJ">
         <rule>
             <pattern>
@@ -1054,6 +1063,24 @@
             <disambig action="filterall"/>
         </rule>
     </rulegroup>
+    <rule id="COMHAIRLE_CONTAE" name="Comhairle Contae">
+        <pattern>
+            <marker>
+                <token postag="Noun:Fem:.*:Sg.*" postag_regexp="yes">comhairle</token>
+                <token postag="Noun:Masc:Gen:Sg">contae</token>
+            </marker>
+        </pattern>
+        <disambig action="filterall"/>
+    </rule>
+    <rule id="CILL_DARA" name="Cill Dara">
+        <pattern>
+            <marker>
+                <token postag="Prop:Noun:Masc:.*:Sg.*" postag_regexp="yes">Cill</token>
+                <token postag="Prop:Noun:Masc:Gen:Sg">Dara</token>
+            </marker>
+        </pattern>
+        <disambig action="filterall"/>
+    </rule>
     <rule id="RTE_PONC_IE" name="rte.ie">  <!-- suppress in spell checker/capital -->
         <pattern>
             <marker><token>rte</token></marker>
