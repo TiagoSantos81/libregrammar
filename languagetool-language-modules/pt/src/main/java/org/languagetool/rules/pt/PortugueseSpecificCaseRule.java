@@ -68,7 +68,7 @@ public class PortugueseSpecificCaseRule extends Rule {
     super.setCategory(Categories.CASING.getCategory(messages));
     setLocQualityIssueType(ITSIssueType.Misspelling);
     addExamplePair(Example.wrong("Vou à <marker>serra da estrela</marker> este Natal."),
-                   Example.fixed("Vou à <marker>Serra da Estrela</marker> este Natal."));
+                   Example.fixed("Vou à <marker>serra da Estrela</marker> este Natal."));
   }
 
   @Override

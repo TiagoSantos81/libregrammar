@@ -4,6 +4,7 @@
 # Used by SpecificCaseRule.java
 Aguiar da Beira
 Alcácer do Sal
+Aldeia da Pena
 Alfândega da Fé
 Alter do Chão
 Angra do Heroísmo
@@ -114,126 +115,30 @@ Vila Real de Santo António
 Vila Velha de Ródão
 Vila Verde
 Vila Viçosa
-serra da Aboboreira
-serra do Açor
-serra da Adiça
-serra da Agrela
-serra de Aire
-serra Alta das Doze
-Alto do Talefe
+#
+# Topografia Portuguesa
+#
 Alto de Trevim
-serra do Alvão
-serra de Alvelos
-serra Amarela
-serra de Ansião
-serra da Arada
-serra do Arado
-serra do Arestal
-serra de Arga
-serra da Arrábida
-serra de Arraiolos
-serra da Aveleira
-serra do Barroso
-serra de Bigorne
-serra da Boa Viagem
-serra de Bornes
-serra do Buçaco
+Alto do Talefe
 Cabeço de Montachique
 Cabeço de Nosso Senhor do Mundo
-serra do Cabeço da Rainha
 Cabeço de São Pedro
 Cabeços das Torrinhas
-serra da Cabreira
-serra do Caldeirão
-serra dos Candeeiros
-serra do Caramulo
-serra da Carregueira
-serra do Carvalho
-serra do Cercal
 Cerro da Cabeça
-serra da Coelheira
-# Complexo desmantelado da Serra do Cume
 # Complexo da Serra Dormida
-serra da Coroa
-serra Devassa
-serra de Espinhaço de Cão
-serra da Estrela
-serra da Falperra
-Monte do Faro
-serra da Freita
-serra da Gardunha
-serra da Gralheira
-serra de Grândola
-serra do Labaçal
-serra da Lapa
-serra do Larouco
-serra de Leomil
-serra da Lousã
-# Maciço Calcário Estremenho
-serra de Mairos
-serra da Malcata
-serra do Marão
-serra da Marisol
-serra da Marofa
-serra de Marvão
-serra da Melriça
-serra do Mendro
-serra das Mesas
-serra de Mogadouro
-serra de Monchique
-serra de Monfurado
-serra de Monsanto
+# Complexo desmantelado da Serra do Cume
+Maciço Calcário Estremenho
+Maciço da Gralheira
 monte d'Assaia
-serra de Monte Figo
 monte de Santo Adrião
-serra de Montejunto
-serra de Montemuro
-serra de Montesinho
-serra do Moradal
-serra da Nogueira
-serra de Ossa
-serra de Oural
-serra da Padrela
-serra do Pereiro
-serra de Pias
-serra dos Picos
-serra da Picota
-serra do Pisco
-serra de Portel
-serra do Rabaçal
-serra de Rates
-serra da Ribeirinha
-serra de Santa Bárbara
-serra de Santa Comba
-serra de Santa Maria
-serra de São Lourenço
-serra de São Macário
-serra de São Mamede
-serra de São Tiago
-serra de Á-do-Formoso
-serra de Água de Pau
-serra da Caba
-serra da Cascalheira
-serra da Achada
-serra da Esculqueira
-serra de São Francisco
-serra de São Luís
-serra do Açor
-serra do Louro
-serra dos Açores
-serra dos Gaiteiros
-serra das Fontes
-serra do Morião
-serra de Sicó
-serra de Sintra
-serra do Soajo
-serra das Talhadas
-Terra Brava
-serra de Todo o Mundo
-serra da Tronqueira
-serra de Valongo
-serra do Vidual
-serra da Vigia
+monte do Faro
+ria de Alvor
+ribeira de Colares
+ribeira de Cótimos
+ribeira de Cuncos
+ribeira de Murtega
+ribeira de Pera
+ribeira do Arão
 rio Abadia
 rio Agadão
 rio Águeda
@@ -249,11 +154,9 @@ rio Alpiarça
 rio Alto
 rio Alva
 rio Alvôco
-ria de Alvor
 rio Âncora
 rio Anços
 rio Antuã
-ribeira do Arão
 rio Arcão
 rio Arcossó
 rio Arda
@@ -264,8 +167,6 @@ rio Arouce
 rio Arunca
 rio Asnes
 rio Assureira
-rio de Atouguia
-Vala Real de Azambuja
 rio Baça
 rio Baceiro
 rio Balsemão
@@ -279,25 +180,29 @@ rio Cabril
 rio Cabrum
 rio Caia
 rio Caima
-rio da Carvalhosa
 rio Cáster
 rio Cavalum
 rio Cercal
 rio Cértima
 rio Cobres
 rio Coina
-ribeira de Colares
 rio Corgo
 rio Corvo
-rio da Costa
 rio Coura
 rio Côvo
-ribeira de Cuncos
+rio da Carvalhosa
+rio da Costa
+rio da Mata
 rio Dão
+rio da Peneda
+rio da Veiga
+rio de Atouguia
 rio Degebe
+rio de Loures
+rio do Esteiro
+rio do Penegral
 rio Erges
 rio Este
-rio do Esteiro
 rio Febros
 rio Ferreira
 rio Fresno
@@ -320,10 +225,8 @@ rio Lis
 rio Lizandro
 rio Lordelo
 rio Lourêdo
-rio de Loures
 rio Maçãs
 rio Maior
-ribeira de Cótimos
 rio Massueime
 rio Mau
 rio Mau
@@ -331,7 +234,6 @@ rio Mente
 rio Mesio
 rio Mira
 rio Mouro
-ribeira de Murtega
 rio Nabão
 rio Neiva
 rio Noéme
@@ -340,15 +242,11 @@ rio Onda
 rio Ota
 rio Ovelha
 rio Paivó
-rio da Peneda
-rio do Penegral
 rio Poio
 rio Porto do Rei Búbal
 rio Pranto
 rio Rabaçal
 rio Real
-ribeira de Pera
-rio da Mata
 rio Sabor
 rio Safarujo
 rio Salas
@@ -383,15 +281,124 @@ rio Unhais
 rio Urtigosa
 rio Varosa
 rio Vascão
-rio da Veiga
 rio Veiga
 rio Vidoeiro
 rio Vizela
 rio Xarrama
 rio Xévora
 rio Zêzere
+serra Alta das Doze
+serra Amarela
+serra da Aboboreira
+serra da Achada
+serra da Adiça
+serra da Agrela
+serra da Arada
+serra da Arrábida
+serra da Aveleira
+serra da Boa Viagem
+serra da Caba
+serra da Cabreira
+serra da Carregueira
+serra da Cascalheira
+serra da Coelheira
+serra da Coroa
+serra da Esculqueira
+serra da Estrela
+serra da Falperra
+serra da Freita
+serra da Gardunha
+serra da Gralheira
+serra da Lapa
+serra da Lousã
+serra da Malcata
+serra da Marisol
+serra da Marofa
+serra da Melriça
+serra da Nogueira
+serra da Padrela
+serra da Picota
+serra da Ribeirinha
+serra das Fontes
+serra das Mesas
+serra das Talhadas
+serra da Tronqueira
+serra da Vigia
+serra de Á-do-Formoso
+serra de Água de Pau
+serra de Aire
+serra de Alvelos
+serra de Ansião
+serra de Arga
+serra de Arraiolos
+serra de Bigorne
+serra de Bornes
+serra de Espinhaço de Cão
+serra de Grândola
+serra de Leomil
+serra de Mairos
+serra de Marvão
+serra de Mogadouro
+serra de Monchique
+serra de Monfurado
+serra de Monsanto
+serra de Monte Figo
+serra de Montejunto
+serra de Montemuro
+serra de Montesinho
+serra de Ossa
+serra de Oural
+serra de Pias
+serra de Portel
+serra de Rates
+serra de Santa Bárbara
+serra de Santa Comba
+serra de Santa Maria
+serra de São Francisco
+serra de São Lourenço
+serra de São Luís
+serra de São Macário
+serra de São Mamede
+serra de São Tiago
+serra de Sicó
+serra de Sintra
+serra de Todo o Mundo
+serra de Valongo
+serra Devassa
+serra do Açor
+serra do Açor
+serra do Alvão
+serra do Arado
+serra do Arestal
+serra do Barroso
+serra do Buçaco
+serra do Cabeço da Rainha
+serra do Caldeirão
+serra do Caramulo
+serra do Carvalho
+serra do Cercal
+serra do Labaçal
+serra do Larouco
+serra do Louro
+serra do Marão
+serra do Mendro
+serra do Moradal
+serra do Morião
+serra do Pereiro
+serra do Pisco
+serra do Rabaçal
+serra dos Açores
+serra dos Candeeiros
+serra dos Gaiteiros
+serra do Soajo
+serra dos Picos
+serra do Vidual
+Terra Brava
+Vala Real de Azambuja
 
+#
 # International geographical names
+#
 Antilhas Holandesas
 arquipélago dos Açores
 arquipélago da Madeira
@@ -615,21 +622,21 @@ ilha Roti
 ilha Rottnest
 ilha Rupat
 ilha Sable
-ilhas Admiralty
-ilhas Aegean
-ilhas Agalega
+Ilhas Admiralty
+Ilhas Aegean
+Ilhas Agalega
 ilha Sagar
 ilha Saint Clements
 ilha Saint Paul
 ilha Sakhalin
 ilha Sal
-ilhas Aldabra
-ilhas Aleutian
-ilhas Alor
-ilhas Amakusa
+Ilhas Aldabra
+Ilhas Aleutian
+Ilhas Alor
+Ilhas Amakusa
 ilha San Cristóbal
-ilhas Andaman
-ilhas Andreanof
+Ilhas Andaman
+Ilhas Andreanof
 ilha Sandwip
 ilha Sanibel
 ilha San Salvador
@@ -639,7 +646,7 @@ ilha Santa Fe
 ilha Santa Luzia
 ilha Santa Maria
 ilha Santa María
-ilhas Antipodes
+Ilhas Antipodes
 ilha Santo Antão
 ilha São Jorge
 ilha São Miguel
@@ -648,161 +655,161 @@ ilha São Vicente
 ilha da Madeira
 ilha de Porto Santo
 arquipélago de Fernando de Noronha
-ilhas Aran
-ilhas Aru
-ilhas Ashmore and Cartier
-ilhas Auckland
-ilhas Babuyan
-ilhas Balearic
-ilhas Banda
-ilhas Banggai
-ilhas Banks
-ilhas Banyak
-ilhas Barlavento
-ilhas Batan
-ilhas Batu
-ilhas Bay
-ilhas Belcher
-ilhas Bélep
-ilhas Bijagós
-ilhas Bimini
-ilhas Bonin
-ilhas Borromean
-ilhas Bounty
-ilhas British Virgin
-ilhas Canary
-ilhas Cayman
-ilhas Chafarinas
-ilhas Channel
-ilhas Chatham
-ilhas Chesterfield
-ilhas Chincha
-ilhas Chuuk
-ilhas Cocos
-ilhas Cook
-ilhas Coral Sea
-ilhas Corn
-ilhas Crozet
-ilhas Cumberland
-ilhas Daitō
-ilhas Diomede
-ilhas Egadi
-ilhas Elizabeth
-ilhas Eolie
+Ilhas Aran
+Ilhas Aru
+Ilhas Ashmore and Cartier
+Ilhas Auckland
+Ilhas Babuyan
+Ilhas Balearic
+Ilhas Banda
+Ilhas Banggai
+Ilhas Banks
+Ilhas Banyak
+Ilhas Barlavento
+Ilhas Batan
+Ilhas Batu
+Ilhas Bay
+Ilhas Belcher
+Ilhas Bélep
+Ilhas Bijagós
+Ilhas Bimini
+Ilhas Bonin
+Ilhas Borromean
+Ilhas Bounty
+Ilhas British Virgin
+Ilhas Canary
+Ilhas Cayman
+Ilhas Chafarinas
+Ilhas Channel
+Ilhas Chatham
+Ilhas Chesterfield
+Ilhas Chincha
+Ilhas Chuuk
+Ilhas Cocos
+Ilhas Cook
+Ilhas Coral Sea
+Ilhas Corn
+Ilhas Crozet
+Ilhas Cumberland
+Ilhas Daitō
+Ilhas Diomede
+Ilhas Egadi
+Ilhas Elizabeth
+Ilhas Eolie
 ilha Seymour
-ilhas Falkland
-ilhas Farne
-ilhas Faroe
-ilhas Fox
-ilhas Frisian
-ilhas Galapagos
-ilhas Gambier
-ilhas Gilbert
-ilhas Gotō
-ilhas Goulburn
-ilhas Ḥanīsh
-ilhas Hatia
-ilhas Hawaiian
+Ilhas Falkland
+Ilhas Farne
+Ilhas Faroe
+Ilhas Fox
+Ilhas Frisian
+Ilhas Galapagos
+Ilhas Gambier
+Ilhas Gilbert
+Ilhas Gotō
+Ilhas Goulburn
+Ilhas Ḥanīsh
+Ilhas Hatia
+Ilhas Hawaiian
 ilha Sherbro
-ilhas Horne
-ilhas Huon
+Ilhas Horne
+Ilhas Huon
 ilha Siberut
 ilha Silhouette
 ilha Simeulue
-ilhas Ionian
-ilhas Izu
-ilhas Juan Fernández
-ilhas Kai
-ilhas Kangean
-ilhas Kerguelen
-ilhas Kermadec
-ilhas Komandor
-ilhas Kuril
-ilhas Leeward
-ilhas Line
-ilhas Los
-ilhas Loyalty
-ilhas Maldivas
-ilhas Maldive
-ilhas Mariana
-ilhas Marquesas
-ilhas Marshall
-ilhas Mascarene
-ilhas McDonald
-ilhas Mentawai
-ilhas Midway
-ilhas Molle
-ilhas Montebello
-ilhas Near
-ilhas New Georgia
-ilhas New Siberian
-ilhas Nicobar
-ilhas North and South Stradbroke
-ilhas Northern Mariana
-ilhas North Frisian
-ilhas Obi
+Ilhas Ionian
+Ilhas Izu
+Ilhas Juan Fernández
+Ilhas Kai
+Ilhas Kangean
+Ilhas Kerguelen
+Ilhas Kermadec
+Ilhas Komandor
+Ilhas Kuril
+Ilhas Leeward
+Ilhas Line
+Ilhas Los
+Ilhas Loyalty
+Ilhas Maldivas
+Ilhas Maldive
+Ilhas Mariana
+Ilhas Marquesas
+Ilhas Marshall
+Ilhas Mascarene
+Ilhas McDonald
+Ilhas Mentawai
+Ilhas Midway
+Ilhas Molle
+Ilhas Montebello
+Ilhas Near
+Ilhas New Georgia
+Ilhas New Siberian
+Ilhas Nicobar
+Ilhas North and South Stradbroke
+Ilhas Northern Mariana
+Ilhas North Frisian
+Ilhas Obi
 ilha Sohano
-ilhas Oki
+Ilhas Oki
 ilha Somerset
 ilha Sorenarwa
-ilhas Orkney
-ilhas Out
+Ilhas Orkney
+Ilhas Out
 ilha South
 ilha Southampton
-ilhas Parry
-ilhas Pearl
-ilhas Pelagie
-ilhas Phoenix
-ilhas Ponza
-ilhas Pribilof
-ilhas Queen Elizabeth
-ilhas Revillagigedo
-ilhas Rialto
-ilhas Ryukyu
-ilhas Sangihe
-ilhas San Juan
-ilhas Santa Cruz
-ilhas Sawu
-ilhas Schouten
-ilhas Sea
-ilhas Shetland
-ilhas Shortland
-ilhas Snares
-ilhas Society
-ilhas Solomon
-ilhas Solor
-ilhas Solovets
-ilhas Sotavento
-ilhas South Orkney
-ilhas South Sandwich
-ilhas South Shetland
-ilhas Sunda
-ilhas Swan
-ilhas Talaud
-ilhas Tanimbar
+Ilhas Parry
+Ilhas Pearl
+Ilhas Pelagie
+Ilhas Phoenix
+Ilhas Ponza
+Ilhas Pribilof
+Ilhas Queen Elizabeth
+Ilhas Revillagigedo
+Ilhas Rialto
+Ilhas Ryukyu
+Ilhas Sangihe
+Ilhas San Juan
+Ilhas Santa Cruz
+Ilhas Sawu
+Ilhas Schouten
+Ilhas Sea
+Ilhas Shetland
+Ilhas Shortland
+Ilhas Snares
+Ilhas Society
+Ilhas Solomon
+Ilhas Solor
+Ilhas Solovets
+Ilhas Sotavento
+Ilhas South Orkney
+Ilhas South Sandwich
+Ilhas South Shetland
+Ilhas Sunda
+Ilhas Swan
+Ilhas Talaud
+Ilhas Tanimbar
 ilha Starbuck
 ilha Staten
 ilha Stewart
-ilhas Thousand
-ilhas Three Kings
+Ilhas Thousand
+Ilhas Three Kings
 ilha Stonington
-ilhas Torres
-ilhas Torres Strait
-ilhas Trobriand
+Ilhas Torres
+Ilhas Torres Strait
+Ilhas Trobriand
 ilha Stromboli
-ilhas Tubuai
-ilhas Turks and Caicos
-ilhas United States Virgin
-ilhas Vestmanna
-ilhas Virgin
-ilhas Visayan
+Ilhas Tubuai
+Ilhas Turks and Caicos
+Ilhas United States Virgin
+Ilhas Vestmanna
+Ilhas Virgin
+Ilhas Visayan
 ilha Swains
-ilhas Wallis
-ilhas Wellesley
-ilhas Wessel
-ilhas West Frisian
-ilhas Witu
-ilhas Yap
+Ilhas Wallis
+Ilhas Wellesley
+Ilhas Wessel
+Ilhas West Frisian
+Ilhas Witu
+Ilhas Yap
 ilha Taboga
 ilha Tarakan
 ilha Taveuni
@@ -834,6 +841,9 @@ Costa do Marfim
 Antilhas Menores
 Montanha Lugnaquillia
 Manāslu I
+# Exceções de Mar em https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/minuscula-e-maiuscula-com-rio-e-ribeira/33813
+Mar Morto
+Mar Negro
 Mauna Kea
 Mauna Loa
 Médio Oriente
