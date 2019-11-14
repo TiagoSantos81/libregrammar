@@ -30157,7 +30157,7 @@ The accident victim died from her injuries.
     <!-- ====================================================================== -->
     <!-- Commonly Confused Words -->
     <!-- ====================================================================== -->
-    <category id="CONFUSED_WORDS" name="Commonly Confused Words" type="misspelling">
+    <category id="CONFUSED_WORDS" name="Commonly Confused Words" type="grammar">
         <rulegroup id="BLU_RAY" name="Blue-ray (Blu-ray)">
             <rule>
                 <pattern case_sensitive="yes">
@@ -34442,7 +34442,7 @@ The accident victim died from her injuries.
     <!-- ====================================================================== -->
     <!-- Nonstandard Phrases -->
     <!-- ====================================================================== -->
-    <category id="NONSTANDARD_PHRASES" name="Nonstandard Phrases" type="misspelling">
+    <category id="NONSTANDARD_PHRASES" name="Nonstandard Phrases" type="grammar">
       <rule id="IN_X_ORDER" name="redundant determiner: 'in (an) alphabetical order">
           <pattern case_sensitive="yes">
               <token>in</token>
