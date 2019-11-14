@@ -11917,14 +11917,6 @@ USA
             <url>https://en.wikipedia.org/wiki/WhatsApp</url>
             <example correction="WhatsApp|What's up">He is using <marker>Whats App</marker> to communicate with his friends.</example>
         </rule>
-        <rule id="HARRY_POTTER" name="capitalization of 'Harry Potter'">
-            <pattern case_sensitive="yes">
-                <token>harry</token>
-                <token>potter</token>
-            </pattern>
-            <message>The name <suggestion><match no="1" case_conversion="startupper" /> <match no="2" case_conversion="startupper" /></suggestion> is a proper noun and needs to be capitalized.</message>
-            <example correction="Harry Potter">The <marker>harry potter</marker> book.</example>
-        </rule>
         <rule id="A_WINDOWS" name="Windows (proper noun)">
             <pattern>
                 <marker>
@@ -12380,6 +12372,13 @@ USA
             </pattern>
             <message>Did you mean the verb <suggestion><match no="1" regexp_match="nege" regexp_replace="nage" /></suggestion> or the noun <suggestion><match no="1" regexp_match="nege" regexp_replace="nège" /></suggestion> (the art of horsemanship)?</message>
             <example correction="manage|manège">The director was able to <marker>manege</marker> his employees well.</example>
+        </rule>
+        <rule id="COMPERE" name="Compere (compère or compare)">
+            <pattern>
+                <token regexp="yes">comper(e|ing|es|ed)?</token>
+            </pattern>
+            <message>Did you mean the verb <suggestion><match no="1" regexp_match="(?i)per" regexp_replace="par" /></suggestion> or the noun <suggestion><match no="1" regexp_match="per" regexp_replace="pèr" /></suggestion> (master of ceremonies)?</message>
+            <example correction="compare|compère">He wanted to <marker>compere</marker> both of them.</example>
         </rule>
         <rule id="MATERIEL" name="Materiel (matériel or material)">
             <pattern>
@@ -19805,6 +19804,21 @@ USA
                     <token postag_regexp="yes" postag="VB(Z|D)?"/>
                     <token>you</token>
                 </antipattern>
+                <antipattern><!-- #2148 He sent you messages -->
+                    <token postag_regexp="yes" postag="VB.*"/>
+                    <token>you</token>
+                    <token chunk="E-NP-plural" postag="NNS"/>
+                </antipattern>
+                <antipattern><!-- #2148 giving you a heads up -->
+                    <token postag_regexp="yes" postag="VB.*"/>
+                    <token>you</token>
+                    <token postag="DT"/>
+                </antipattern>
+                <antipattern><!-- #2148 Missing you is -->
+                    <token postag="VBG"/>
+                    <token>you</token>
+                    <token postag="VBZ"/>
+                </antipattern>
                 <pattern>
                     <token skip="1" postag="PRP">you<exception scope="previous" postag="IN"/><exception scope="next" postag="PRP"/></token>
                     <marker>
@@ -19832,6 +19846,12 @@ USA
                 <example>Next to seeing you is the pleasure of seeing your handwriting.</example>
                 <example>The API I provided you is only useful for capturing.</example>
                 <example>The API I will provide you is great.</example>
+                <example>He sent you messages asking for help.</example><!-- #2148 -->
+                <example>I'm giving you a heads up.</example><!-- #2148. The noun 'heads up' is hyphenated [www.lexico.com/en/definition/heads-up], but that is a different problem. -->
+                <example>I'm asking you questions.</example><!-- #2148 -->
+                <example>Missing you is something I hate.</example><!-- #2148 -->
+                <example>The manager sent you messages asking for help.</example><!-- #2148 -->
+                <example>Loving you makes me happy.</example><!-- #2148 -->
             </rule>
             <rule>
                 <pattern>
@@ -19853,7 +19873,7 @@ USA
                     </marker>
                     <token regexp="yes">I|we|you|they</token>
                 </pattern>
-                <message>The pronoun \3 must be used with <suggestion>Have</suggestion>.</message>
+                <message>The pronoun '\3' must be used with <suggestion>Have</suggestion>.</message>
                 <example correction="Have"><marker>Has</marker> you bought a ticket?</example>
                 <example>Have you done this?</example>
             </rule>
@@ -19866,7 +19886,7 @@ USA
                     </marker>
                     <token regexp="yes">I|we|you|they</token>
                 </pattern>
-                <message>The pronoun \3 must be used with <suggestion>have</suggestion>.</message>
+                <message>The pronoun '\3' must be used with <suggestion>have</suggestion>.</message>
                 <example correction="have">What <marker>has</marker> you done?</example>
                 <example>Why have you done this?</example>
             </rule>
@@ -19878,7 +19898,7 @@ USA
                     </marker>
                     <token regexp="yes">we|you|they</token>
                 </pattern>
-                <message>The pronoun \3 must be used with <suggestion>Are</suggestion>.</message>
+                <message>The pronoun '\3' must be used with <suggestion>Are</suggestion>.</message>
                 <example correction="Are"><marker>Is</marker> you crazy?</example>
                 <example>Is this true?</example>
             </rule>
@@ -19890,7 +19910,7 @@ USA
                     </marker>
                     <token>I</token>
                 </pattern>
-                <message>The pronoun \3 must be used with <suggestion>Am</suggestion>.</message>
+                <message>The pronoun '\3' must be used with <suggestion>Am</suggestion>.</message>
                 <example correction="Am"><marker>Is</marker> I crazy?</example>
                 <example>Is this true?</example>
             </rule>
@@ -19903,7 +19923,7 @@ USA
                     </marker>
                     <token regexp="yes">we|you|they</token>
                 </pattern>
-                <message>The pronoun \3 must be used with <suggestion>are</suggestion>.</message>
+                <message>The pronoun '\3' must be used with <suggestion>are</suggestion>.</message>
                 <example correction="are">What <marker>is</marker> you doing?</example>
                 <example>Why are you doing this?</example>
             </rule>
@@ -19916,7 +19936,7 @@ USA
                     </marker>
                     <token>I</token>
                 </pattern>
-                <message>The pronoun \3 must be used with <suggestion>am</suggestion>.</message>
+                <message>The pronoun '\3' must be used with <suggestion>am</suggestion>.</message>
                 <example correction="am">Why <marker>is</marker> I in love?</example>
                 <example>Why am I doing this?</example>
             </rule>
@@ -21281,7 +21301,7 @@ USA
                     </marker>
                     <token postag="SENT_END|[,;:]" postag_regexp="yes"/>
                 </pattern>
-                <message>The adjective \1 is used with 'of': <suggestion>\1 of \2 \3</suggestion>.</message>
+                <message>The adjective '\1' is used with 'of': <suggestion>\1 of \2 \3</suggestion>.</message>
                 <short>Grammatical problem</short>
                 <example>I'm afraid of the dark.</example>
                 <example>From the look of the sky I'm afraid the rain won't let up for a while.</example>
@@ -21292,7 +21312,7 @@ USA
                     <token>afraid</token>
                     <token postag="NNS"/>
                 </pattern>
-                <message>The adjective \1 is used with 'of': <suggestion>\1 of \2</suggestion>.</message>
+                <message>The adjective '\1' is used with 'of': <suggestion>\1 of \2</suggestion>.</message>
                 <short>Grammatical problem</short>
                 <example correction="afraid of spiders">I'm <marker>afraid spiders</marker>.</example>
             </rule>
@@ -21301,7 +21321,7 @@ USA
                     <token>afraid</token>
                     <token postag="VB"><exception regexp="yes">wind|rain</exception></token>
                 </pattern>
-                <message>The adjective \1 is used with 'to': <suggestion>\1 to \2</suggestion>.</message>
+                <message>The adjective '\1' is used with 'to': <suggestion>\1 to \2</suggestion>.</message>
                 <short>Grammatical problem</short>
                 <example correction="afraid to eat">I'm <marker>afraid eat</marker> spiders.</example>
             </rule>
@@ -24903,7 +24923,7 @@ USA
                         <token>than</token>
                     </marker>
                 </pattern>
-                <message>The adjective \1 is normally used with <suggestion>to</suggestion>.</message>
+                <message>The adjective '\1' is normally used with <suggestion>to</suggestion>.</message>
                 <short>Wrong collocation</short>
                 <example correction="to">He feels inferior <marker>than</marker> us.</example>
             </rule>
@@ -24913,7 +24933,7 @@ USA
                     <token regexp="yes">superior|inferior</token>
                     <token>than</token>
                 </pattern>
-                <message>The adjective \1 is normally used with to and does not need 'more' (so called implicit comparative). Probably you need to write: <suggestion>\2 to</suggestion>.</message>
+                <message>The adjective '\1' is normally used with to and does not need 'more' (so called implicit comparative). Probably you need to write: <suggestion>\2 to</suggestion>.</message>
                 <short>Wrong collocation</short>
                 <example correction="inferior to">He feels <marker>more inferior than</marker> us.</example>
                 <example>He feels inferior to them.</example>
@@ -24925,7 +24945,7 @@ USA
                 <token>for</token>
                 <token postag="PRP|NN.*" postag_regexp="yes"><exception regexp="yes">he|years|decades|months</exception></token>
             </pattern>
-            <message>The adjective \1 is normally used with 'to': <suggestion>\1 to \3</suggestion>.</message>
+            <message>The adjective '\1' is normally used with 'to': <suggestion>\1 to \3</suggestion>.</message>
             <example correction="obvious to me">It's <marker>obvious for me</marker>.</example>
         </rule>
         <rule id="TODAY_MORNING" name="Wrong phrase: 'today morning' (this morning)">
@@ -25417,7 +25437,7 @@ USA
           <token>of</token>
           <token>drugs</token>
       </pattern>
-      <message>The usual preposition for \1 is "to." Did you mean, <suggestion>\1 to \3</suggestion>?</message>
+      <message>The usual preposition for '\1' is "to." Did you mean, <suggestion>\1 to \3</suggestion>?</message>
       <example correction='addiction to drugs'>I would like to work with people who have an <marker>addiction of drugs</marker>.</example>
     </rule>
     <rule id='ON_IN_CHARGE_OF' name='Collocation: on/in charge of'>
@@ -26092,7 +26112,7 @@ USA
           <token min='0' postag="DT"/>
           <token case_sensitive='yes' regexp="yes">[Pp]lanet|[Aa]steroid|[Mm]oon|Mercury|Venus|Earth|Mars|Jupiter|Saturn|Neptune|Uranus|Pluto</token>
       </pattern>
-      <message>The usual preposition for \4 is "on". Did you mean <suggestion>\1 on <match no='3' include_skipped='all'/> \4</suggestion>?</message>
+      <message>The usual preposition for '\4' is "on". Did you mean <suggestion>\1 on <match no='3' include_skipped='all'/> \4</suggestion>?</message>
       <example correction='live on the planet'>Not all creatures that <marker>live in the planet</marker> Earth use oxygen.</example>
     </rule>
     <rule id='COUNTLESS_OF' name='Collocation: countless of'>
@@ -27234,7 +27254,7 @@ The accident victim died from her injuries.
             <exception inflected="yes">be</exception></token>
       </pattern>
       <message>The usual prepositions to use with "similar" is "to" not "as". Did you mean <suggestion>\1 to \3 \4</suggestion>?</message>
-<suggestion>like \3 \4</suggestion>
+      <suggestion>like \3 \4</suggestion>
       <example correction='similar to a church|like a church'>the roof will be <marker>similar as a church</marker>.</example>
     </rule>
     <rule id='KIND_WITH_TO' name='Collocation: kind with/to'>
@@ -30223,7 +30243,11 @@ The accident victim died from her injuries.
         <rulegroup id="AD_ADD" name="'ad' vs 'add'">
             <antipattern>
                 <token>ad</token>
-                <token regexp="yes">hoc|hominem|lib|valorem</token>
+                <token regexp="yes">hoc|hominem|lib|valorem|infinitum|acta|astra</token>
+            </antipattern>
+            <antipattern>
+                <token>ad</token>
+                <token postag="UNKNOWN" />
             </antipattern>
             <rule>
                 <pattern>
@@ -37328,7 +37352,7 @@ The accident victim died from her injuries.
             </token>
           </pattern>
           <message>This expression can be considered offensive.</message>
-          <suggestion>Afro-American</suggestion>
+          <suggestion><match no="1" regexp_match="(?i)negro" regexp_replace="Afro-American" /></suggestion>
           <url>https://en.wikipedia.org/wiki/Negro</url>
           <example correction="Afro-American">He is a <marker>negro</marker>.</example>
           <example>Monte Negro</example><!-- caught by EN_COMPOUNDS -->
