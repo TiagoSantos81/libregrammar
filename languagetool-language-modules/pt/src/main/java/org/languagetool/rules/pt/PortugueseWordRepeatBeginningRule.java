@@ -74,7 +74,6 @@ public class PortugueseWordRepeatBeginningRule extends WordRepeatBeginningRule {
   public PortugueseWordRepeatBeginningRule(ResourceBundle messages, Language language) {
     super(messages, language);
     super.setCategory(Categories.STYLE.getCategory(messages));
-    setLocQualityIssueType(ITSIssueType.Style);
     addExamplePair(Example.wrong("Além disso, a rua é quase completamente residêncial. <marker>Além</marker> disso, foi chamada em nome de um poeta."),
                    Example.fixed("Além disso, a rua é quase completamente residêncial. <marker>Foi</marker> chamada em nome de um poeta."));
   }
