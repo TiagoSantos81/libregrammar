@@ -48,8 +48,19 @@
      - Several adjustments to rules with wide-spectrum antipatterns.
   * sentences and paragraphs now end with a single line break.
 
+#### Danish
+  * spelling suggestions now active.
+  * activated generic Java rules, including:
+     - LongSentenceRule, LongParagraphRule, MultipleWhispacesRule, SentenceWhitespaceRule,
+     WhiteSpaceAtBeginOfParagraph, EmptyLineRule, ParagraphRepeatBeginningRule, 
+     PunctuationMarkAtParagraphEnd.
+
 #### Esperanto
+  * spelling suggestions now active.
   * sentences and paragraphs now end with a single line break.
+  * activated generic Java rules, including:
+     - LongSentenceRule, LongParagraphRule, WhiteSpaceAtBeginOfParagraph, EmptyLineRule,
+     ParagraphRepeatBeginningRule, PunctuationMarkAtParagraphEnd.
 
 #### French
   * activated generic Java rules, including:
@@ -64,6 +75,12 @@
 #### German
   * activated generic Java rules, including:
      - GermanStyleRepeatedWordRule, LongSentenceRule.
+
+#### Icelandic
+  * spelling suggestions now active.
+  * activated generic Java rules, including:
+     - LongSentenceRule, LongParagraphRule, SentenceWhitespaceRule, WhiteSpaceAtBeginOfParagraph,
+     EmptyLineRule, ParagraphRepeatBeginningRule, PunctuationMarkAtParagraphEnd.
 
 #### Irish
   * Support added thanks to Jim Regan, Emily Barnes, Mícheál J. Ó Meachair, 
@@ -125,6 +142,13 @@
 #### LibreOffice / Apache OpenOffice Integration
   * remote server commits for LibreOffice plug-in reverted (#1929).
   * multiple core CPU support active by default.
+
+#### Internal
+  * The internal hunspell has been updated from 1.3 to 1.7, now using
+    https://gitlab.com/dumonts/hunspell-java as the project providing the bindings.
+    For Portuguese, this speeds up generating suggestions for misspellings by
+    a factor of about 3 (but it's still slow compared to Morfologik), thanks to Daniel
+    Naber.
 
 ### Other changes common to both projects
 
@@ -190,10 +214,6 @@
     comes to offering suggestions for misspelled words. 
 
 #### Internal
-  * The internal hunspell has been updated from 1.3 to 1.7, now using
-    https://gitlab.com/dumonts/hunspell-java as the project providing the bindings.
-    For Portuguese, this speeds up generating suggestions for misspellings by
-    a factor of about 3 (but it's still slow compared to Morfologik).
   * Experimental: the new `default="temp_off"` attribute in `grammar.xml` files will
     turn off a rule/rulegroup, but keep it activated for our nightly regression tests.
   * Many external dependencies have been updated to new versions
