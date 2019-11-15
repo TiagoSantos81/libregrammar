@@ -319,6 +319,7 @@ public class English extends Language implements AutoCloseable {
       case "I_MOVING":                  return -2;  // prefer other more specific rules (e.g. PRP_VBG)
       case "HE_VERB_AGR":               return -2;  // prefer other more specific rules (e.g. PRP_VBG)
       case "PRONOUN_NOUN":              return -2;  // prefer other rules (e.g. PRP_VB)
+      case "EN_NONSTANDARD_SIMPLE_REPLACE": return -5;
       case "MORFOLOGIK_RULE_EN_US":     return -10;  // more specific rules (e.g. L2 rules) have priority
       case "MORFOLOGIK_RULE_EN_GB":     return -10;  // more specific rules (e.g. L2 rules) have priority
       case "MORFOLOGIK_RULE_EN_CA":     return -10;  // more specific rules (e.g. L2 rules) have priority
@@ -329,8 +330,8 @@ public class English extends Language implements AutoCloseable {
       case "CONFUSION_RULE":            return -20;
       case "SENTENCE_FRAGMENT":         return -50; // prefer other more important sentence start corrections.
       case "SENTENCE_FRAGMENT_SINGLE_WORDS": return -51;  // prefer other more important sentence start corrections.
-      case "EN_INFORMAL_REPLACE":       return -508;  // prefer other more important sentence start corrections.
-      case "EN_WEASELWORDS_REPLACE":    return -509;  // prefer other more important sentence start corrections.
+      case "EN_INFORMAL_REPLACE":       return -508;  // style rules should always have the lowest priority.
+      case "EN_WEASELWORDS_REPLACE":    return -509;  // style rules should always have the lowest priority.
       case "EN_REDUNDANCY_REPLACE":     return -510;  // style rules should always have the lowest priority.
       case "EN_PLAIN_ENGLISH_REPLACE":  return -511;  // style rules should always have the lowest priority.
       case "EN_SIMPLE_GRAMMAR_REPLACE": return -600;  // prefer specific rules to this catch-all rule
