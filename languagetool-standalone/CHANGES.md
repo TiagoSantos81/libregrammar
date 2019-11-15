@@ -9,6 +9,8 @@
      - EnglishSimpleGrammarRule for simple replacement rule creation - 877 error patterns added from Wikipedia;
      - verb-noun confusion rule - 1465 error patterns mostly from After the Deadline (AtD);
      - eggcorn detection - 227 error patterns from Grammark and AtD;
+     - specific case rule - 751 entries from Wikipedia;
+     - nonstandard English replacement rule - 7 error patterns;
      - cliche detection - 691 error patterns from AtD;
      - wordiness database enhancements - 653 error patterns from Grammark;
      - informal expressions detection - 228 error patterns from Wikipedia;
@@ -81,11 +83,12 @@
   * sentences and paragraphs now end with a single line break.
 
 #### Portuguese
-  * re-activated diacritics rule;
   * add a few more rules:
     - vocative punctuation;
     - personal infinitive rules;
-    - subject-predicate agreement.
+    - subject-predicate agreement;
+    - specific case rules with 1057 entries from Wikipedia.
+  * re-activated diacritics rule;
   * Portugal Portuguese former orthographic agreement locale added (Portugal 
   pre-AO) with support for:
      - [pt-PT pre-AO] [Dicionários Portugueses Complementares 1.2](https://github.com/TiagoSantos81/PortugueseLibreOfficeExtension);
@@ -116,7 +119,7 @@
   * [WIP] removed or comment out Freemium server bindings.
   * standalone default underline colors changed:
     - grey: style repetitions and redundancies;
-    - cyan: typographical suggestions.
+    - cyan: typographical and whitespaces related suggestions.
   * ParagraphRepeatBeginning now triggers properly, shows the correct messages, and is now active by default.
 
 #### LibreOffice / Apache OpenOffice Integration
