@@ -37,6 +37,7 @@ import java.util.List;
 
 public class GermanTest extends LanguageSpecificTest {
   
+  /*
   @Test
   public void testLanguage() throws IOException {
     // NOTE: this text needs to be kept in sync with WelcomeController.php's getDefaultDemoTexts():
@@ -47,7 +48,7 @@ public class GermanTest extends LanguageSpecificTest {
     );
     runTests(lang);
   }
-  
+ */  
   // test that patterns with 'ß' also contain that pattern with 'ss' so the rule can match for de-CH users
   @Test
   @Ignore("too many warnings yet - activate once the conversion has (mostly) been finished")
