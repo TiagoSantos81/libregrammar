@@ -145,10 +145,9 @@
 
 #### Internal
   * The internal hunspell has been updated from 1.3 to 1.7, now using
-    https://gitlab.com/dumonts/hunspell-java as the project providing the bindings.
-    For Portuguese, this speeds up generating suggestions for misspellings by
-    a factor of about 3 (but it's still slow compared to Morfologik), thanks to Daniel
-    Naber.
+    https://gitlab.com/dumonts/hunspell-java as the project providing the bindings, thanks to Daniel Naber.
+    E.g., for Portuguese, this misspellings suggestions generation is three times faster, 
+    although still slower than the lighter Morfologik methods.
 
 ### Other changes common to both projects
 
