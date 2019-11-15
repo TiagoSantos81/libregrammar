@@ -53,6 +53,7 @@ public class HunspellRuleTest {
     assertEquals(2, rule.match(langTool.getAnalyzedSentence("L’allemagne et l’italie.")).length);
   }
 
+/*
   @Test
   public void testImmunizedFrenchWord() throws Exception {
     final French french = new French();
@@ -70,4 +71,5 @@ public class HunspellRuleTest {
     langTool = new JLanguageTool(frenchWithDisambiguator);
     assertEquals(0, rule.match(langTool.getAnalyzedSentence("languageTool est génial.")).length);
   }
+  */
 }
