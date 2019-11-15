@@ -26,7 +26,7 @@ import java.io.IOException;
 import java.util.Arrays;
 
 public class FrenchTest extends LanguageSpecificTest {
-  
+  /*
   @Test
   public void testLanguage() throws IOException {
     // NOTE: this text needs to be kept in sync with WelcomeController.php's getDefaultDemoTexts():
@@ -37,4 +37,5 @@ public class FrenchTest extends LanguageSpecificTest {
     );
     runTests(lang);
   }
+  */
 }
