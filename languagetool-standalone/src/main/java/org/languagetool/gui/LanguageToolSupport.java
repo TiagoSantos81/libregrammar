@@ -852,7 +852,8 @@ class LanguageToolSupport {
           Color colorForIssueType = getConfig().getErrorColors().get(issueType);
           Color bgColor = colorForIssueType != null ? colorForIssueType : null;
           Color underlineColor = null;
-          if (ITSIssueType.Typographical == span.rule.getLocQualityIssueType()) {
+          if (ITSIssueType.Typographical == span.rule.getLocQualityIssueType()
+           || ITSIssueType.Whitespace == span.rule.getLocQualityIssueType()) {
            underlineColor = Color.cyan;
            }
           else if (ITSIssueType.Duplication == span.rule.getLocQualityIssueType()) {
