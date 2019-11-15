@@ -25,7 +25,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class FrenchTest {
-  /*
+  
   @Test
   public void testSentenceTokenizer() {
     SentenceTokenizer tokenizer = new French().getSentenceTokenizer();
@@ -33,5 +33,5 @@ public class FrenchTest {
     assertThat(tokenizer.tokenize("Arrête de le cajoler… ça ne donnera rien.").size(), is(2));  // TODO: should be 1
     assertThat(tokenizer.tokenize("Il est possible de le contacter par tous les moyens (courrier, téléphone, mail...) à condition de vous présenter.").size(), is(2)); // TODO: should be 1
   }
-*/
+
 }

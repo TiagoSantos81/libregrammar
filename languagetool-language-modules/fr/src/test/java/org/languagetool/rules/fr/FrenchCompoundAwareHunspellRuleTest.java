@@ -31,7 +31,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class FrenchCompoundAwareHunspellRuleTest {
-  /*
+  
   @Test
   public void testSpellcheck() throws IOException {
     JLanguageTool lt = new JLanguageTool(Languages.getLanguageForShortCode("fr"));
@@ -49,7 +49,7 @@ public class FrenchCompoundAwareHunspellRuleTest {
     assertSuggestion(lt, "boton", "bot on", "bâton", "béton");  // "bouton" would be better? 
     assertSuggestion(lt, "skype", "Skype");
   }
-*/
+
   private void assertSuggestion(JLanguageTool lt, String input, String... expected) throws IOException {
     List<RuleMatch> matches = lt.check(input);
     assertThat(matches.size(), is(1));
