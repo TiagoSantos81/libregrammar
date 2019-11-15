@@ -2864,7 +2864,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <pattern>
                         <token>ag</token>
                         <token postag='Verbal:Noun:V(?:TI|I|T)|Verbal:Noun:NStem' postag_regexp="yes" regexp="yes">[bcdfgmpstnlrzvwx].*</token>
-                        <token regexp="yes">[íi]</token>
+                        <token>í</token>
                 </pattern>
                 <message>Ba chóir duit <suggestion>á <match no="2" /></suggestion> a scríobh.</message>
                 <example correction="á déanamh"><marker>ag déanamh í</marker></example>
@@ -2947,7 +2947,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <marker>
                         <token>ag</token>
                         <token postag='Verbal:Noun:V(?:TI|I|T)|Verbal:Noun:NStem' postag_regexp="yes" regexp="yes">[^bcdfgmpstaeiouáéíóú].*</token>
-                        <token regexp='yes'>iad|[ée]|[íi]</token>
+                        <token regexp='yes'>iad|[ée]|í</token>
                     </marker>
                 </pattern>
                 <message>Ba chóir duit <suggestion>á <match no="2" /></suggestion> a scríobh.</message>
@@ -2991,7 +2991,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <marker>
                         <token>ag</token>
                         <token postag='Verbal:Noun:V(?:TI|I|T)|Verbal:Noun:NStem' postag_regexp="yes" regexp="yes">[aeiouáéíóú].*</token>
-                        <token regexp="yes">[íi]</token>
+                        <token>í</token>
                     </marker>
                 </pattern>
                 <message>Ba chóir duit <suggestion>á <match no="2" postag="(Verbal:Noun:V(?:TI|I|T)|Verbal:Noun:NStem)" postag_regexp="yes" postag_replace="$1:hPref"/></suggestion> a scríobh.</message>
@@ -3065,11 +3065,13 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
     <category id="GRAMADOIR_CAIGHDEAN" name="Foirm neamhchaighdeánach" type="non-conformance">
         <rule id="AG_MARBHADH" name="ag marbhadh">
             <pattern>
-                    <token>ag</token>
+                <token>ag</token>
+                <marker>
                     <token>marbhadh</token>
+                </marker>
             </pattern>
-            <message>Foirm neamhchaighdeánach de <suggestion>ag marú</suggestion></message>
-            <example correction="ag marú"><marker>ag marbhadh</marker></example>
+            <message>Foirm neamhchaighdeánach de <suggestion>marú</suggestion></message>
+            <example correction="marú">ag <marker>marbhadh</marker></example>
         </rule>
         <rule id="MARBHADH" name="marbhadh">
             <pattern>
@@ -3308,32 +3310,32 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rule>
         <rule id="A_APOS" name="a'">
             <pattern>
-                    <token>a</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>a</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>an</suggestion></message>
             <example correction="an"><marker>a'</marker></example>
         </rule>
         <rule id="AB" name="ab'">
             <pattern>
-                    <token>ab</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>ab</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>ab</suggestion></message>
             <example correction="ab"><marker>ab'</marker></example>
         </rule>
         <rule id="AC" name="'ac">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">ac</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">ac</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>Mac</suggestion></message>
             <example correction="Mac"><marker>'ac</marker></example>
         </rule>
         <rule id="ACH" name="'ach">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">ach</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">ach</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>gach</suggestion></message>
             <example correction="gach"><marker>'ach</marker></example>
@@ -9588,14 +9590,13 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example correction='thine'>trí <marker>tine</marker></example>
             <example>trí fichid</example>
         </rule>
-        <!-- First: disambiguation
         <rule id="NFCS_A" name="NFCS Adj" default="temp_off">
             <antipattern>
-                <token postag=".*Noun:Fem:Com:Sg" postag_regexp="yes"></token>
+                <token postag=".*Noun:Fem:Com:Sg.*" postag_regexp="yes"></token>
                 <token postag=".*Adj.*" postag_regexp="yes" regexp="yes">&unboundadj;</token>
             </antipattern>
             <pattern>
-                <token postag=".*Noun:Fem:Com:Sg" postag_regexp="yes"></token>
+                <token postag=".*Noun:Fem:Com:Sg|.*Noun:Fem:Com:Sg:DefArt" postag_regexp="yes"></token>
                 <marker>
                     <token postag=".*Adj:Fem:Com:Sg:MorphErr" postag_regexp="yes"><exception postag=".*:Len" postag_regexp="yes"/></token>
                 </marker>
@@ -9606,6 +9607,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example correction="mhór">bó <marker>mór</marker></example>
             <example>Léimeann an fharraige céad méadar suas sa spéir.</example>
         </rule>
+        <!-- First: disambiguation
         <rule id="NFCS_A_A" name="NFCS Adj Adj" default="temp_off">
             <antipattern>
                 <token postag=".*Noun:Fem:Com:Sg" postag_regexp="yes"></token>
@@ -9821,6 +9823,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example correction='mhóra'>deich bhád <marker>móra</marker></example>
         </rule>
         <rule id="CEITHRE_NOUN" name="ceithre NOUN">
+            <antipattern>
+                <token regexp="yes">g?ch?eithre</token>
+                <token regexp="yes">bliana|cinn|cloigne|cuarta|fichid|pingine|seachtaine|troithe</token>
+            </antipattern>
             <pattern>
                 <token regexp="yes">g?ch?eithre</token>
                 <marker>
@@ -9854,8 +9860,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example correction='mhóra'>ceithre bhád déag <marker>móra</marker></example>
         </rule>
         <rule id="CUIG_NOUN" name="cúig NOUN">
+            <antipattern>
+                <token regexp="yes">(?:gc|ch|c)úig</token>
+                <token regexp="yes">bliana|cinn|cloigne|cuarta|fichid|pingine|seachtaine|troithe</token>
+            </antipattern>
             <pattern>
-                <token regexp="yes">g?ch?úig</token>
+                <token regexp="yes">(?:gc|ch|c)úig</token>
                 <marker>
                     <token postag=".*Noun.*" postag_regexp="yes"><exception postag=".*:Len" postag_regexp="yes"/></token>
                 </marker>
@@ -9887,6 +9897,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example correction='mhóra'>cúig bhád déag <marker>móra</marker></example>
         </rule>
         <rule id="SE_NOUN" name="sé NOUN">
+            <antipattern>
+                <token regexp="yes">sh?é</token>
+                <token regexp="yes">bliana|cinn|cloigne|cuarta|fichid|pingine|seachtaine|troithe</token>
+            </antipattern>
             <pattern>
                 <token regexp="yes">sh?é</token>
                 <marker>
@@ -10188,7 +10202,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         <rule id="I_DÁ" name="i dá">
             <pattern>
                 <token>i</token>
-                <token>dá</token>
+                <token regexp="yes">dh?á</token>
             </pattern>
             <message>Ba chóir duit <suggestion>in dhá</suggestion> a scríobh.</message>
             <example correction='in dhá'><marker>i dá</marker></example>
@@ -11526,6 +11540,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             </rule>
         </rulegroup>
         <rulegroup id="I_NAecl" name="i NA">
+            <antipattern>
+                <token>i</token>
+                <token>dhá</token>
+            </antipattern>
             <rule>
                 <pattern>
                     <token>i</token>
