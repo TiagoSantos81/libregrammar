@@ -75,6 +75,8 @@ public class EnglishWordTokenizer extends WordTokenizer {
         l.add(token);
       }
     }
-    return joinEMailsAndUrls(l);
+    return joinValidWord(joinEMailsAndUrls(l),text);
   }
+  
+
 }
