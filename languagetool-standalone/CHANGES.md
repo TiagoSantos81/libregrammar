@@ -151,6 +151,9 @@
 
 #### Danish
   * corrections are now offered for spell check errors 
+  * updated spell checker to version 2.4 (2018-04-15)
+    (source: https://extensions.libreoffice.org/extensions/stavekontrolden-danish-dictionary) 
+
 
 #### Dutch
   * improved rules
@@ -169,6 +172,9 @@
 
 #### French
   * added and improved rules
+  * updated spell checker (Grammalecte·dic/Dicollecte) to version 6.4.1 (2019-04-05)
+    (source: https://grammalecte.net/download.php?prj=fr)
+
   * POS and spelling improvements, including:
     - updated part-of-speech dictionaries to dicollecte-6.4.1
     (https://github.com/languagetool-org/languagetool/pull/1963)
@@ -180,6 +186,10 @@
 #### Greek
   * updated spelling dictionary to el_GR 0.9 (14/03/2019), by George Zougianos
 
+#### Khmer
+  * updated spell checker to version 1.82 (2015-10-23)
+    (source: https://extensions.libreoffice.org/extensions/khmer-spelling-checker-sbbic-version)
+
 #### Portuguese
   * added and improved rules
   * POS and spelling improvements
@@ -190,6 +200,10 @@
 #### Spanish
   * added rules
   * POS and spelling improvements
+
+#### Swedish
+  * updated spelling dictionary to version 2.42 (Released Feb 03, 2019)
+    (source: https://extensions.libreoffice.org/extensions/swedish-spelling-dictionary-den-stora-svenska-ordlistan)
 
 #### General
   * The unmaintained code from package `org.languagetool.dev.wikipedia.atom`
