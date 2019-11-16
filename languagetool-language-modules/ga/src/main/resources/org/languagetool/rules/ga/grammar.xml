@@ -2848,6 +2848,16 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="rachtúil">go <marker>reachtúil</marker></example>
             </rule>
         </rulegroup>
+        <rule id="AG_MUNADH" name="ag múnadh">
+            <pattern>
+                <token>ag</token>
+                <marker>
+                    <token>múnadh</token>
+                </marker>
+            </pattern>
+            <message>An <suggestion>múineadh</suggestion> a bhí i gceist agat?</message>
+            <example correction="múineadh">ag <marker>múnadh</marker></example>
+        </rule>
      </category>
      <category id="VN" name="Verbal" type="grammar">
         <rulegroup id="AG_DEANAMH_E" name="ag déanamh é">
@@ -11637,5 +11647,25 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example correction="mbád">An bhfuil aon uachtar reoite ag fear na <marker>bád</marker>?</example>
         </rule>
         -->
+    </category>
+    <category name="Ainmneacha" id="AINMNEACHA">
+        <rule id="MARTIN_LUTHER" name="Martin Luther">
+            <antipattern>
+                <token>Martin</token>
+                <token>Luther</token>
+                <token>King</token>
+            </antipattern>
+            <antipattern>
+                <token>Martin</token>
+                <token>Luther</token>
+                <token>III</token>
+            </antipattern>
+            <pattern>
+                <token>Martin</token>
+                <token>Luther</token>
+            </pattern>
+            <message>Is <suggestion>Máirtín Liútar</suggestion> an t-ainm Gaelach ar Martin Luther.</message>
+            <example correction="Máirtín Liútar">Tháinig <marker>Martin Luther</marker> chun saoil in Eisleben ar an 10 Samhain 1483.</example>
+        </rule>
     </category>
 </rules>
