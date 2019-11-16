@@ -49,14 +49,12 @@
   * sentences and paragraphs now end with a single line break.
 
 #### Danish
-  * spelling suggestions now active.
   * activated generic Java rules, including:
      - LongSentenceRule, LongParagraphRule, MultipleWhispacesRule, SentenceWhitespaceRule,
      WhiteSpaceAtBeginOfParagraph, EmptyLineRule, ParagraphRepeatBeginningRule, 
      PunctuationMarkAtParagraphEnd.
 
 #### Esperanto
-  * spelling suggestions now active.
   * sentences and paragraphs now end with a single line break.
   * activated generic Java rules, including:
      - LongSentenceRule, LongParagraphRule, WhiteSpaceAtBeginOfParagraph, EmptyLineRule,
@@ -157,6 +155,9 @@
 #### Chinese
   * Now using https://github.com/hankcs/HanLP for tokenization (PR 1981)
 
+#### Danish
+  * corrections are now offered for spell check errors 
+
 #### Dutch
   * improved rules
   * disambiguation improvements
@@ -168,6 +169,9 @@
   * multiwords support added
   * disambiguation improvements
   * POS and spelling improvements
+
+#### Esperanto
+  * corrections are now offered for spell check errors 
 
 #### French
   * added and improved rules
