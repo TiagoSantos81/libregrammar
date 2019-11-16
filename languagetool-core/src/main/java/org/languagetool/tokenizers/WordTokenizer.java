@@ -1,6 +1,6 @@
 /* LanguageTool, a natural language style checker
  * Copyright (C) 2005 Daniel Naber (http://www.danielnaber.de)
- * 
+ *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
@@ -34,7 +34,7 @@ import org.languagetool.tools.StringTools;
  * The tokenizer is a quite simple character-based one, though it knows
  * about urls and will put them in one token, if fully specified including
  * a protocol (like {@code http://foobar.org}).
- * 
+ *
  * @author Daniel Naber
  */
 public class WordTokenizer implements Tokenizer {
@@ -44,7 +44,7 @@ public class WordTokenizer implements Tokenizer {
   private static final Pattern DOMAIN_CHARS = Pattern.compile("[a-zA-Z0-9][a-zA-Z0-9-]+");
   private static final Pattern NO_PROTOCOL_URL = Pattern.compile("([a-zA-Z0-9][a-zA-Z0-9-]+\\.)?([a-zA-Z0-9][a-zA-Z0-9-]+)\\.([a-zA-Z0-9][a-zA-Z0-9-]+)/.*");
   private static final Pattern E_MAIL = Pattern.compile("(?<!:)\\b[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))\\b");
-  private static final Pattern ONE_WORD_TWO_DOT_PATTERN = Pattern.compile("[ ,]?[0-9a-zA-Z]+[\\.][0-9a-zA-Z]+[\\.][0-9a-zA-Z]+");
+  private static final Pattern ONE_WORD_TWO_DOT_PATTERN = Pattern.compile("[ ,]?(?!((?:\\d{4}|\\d{2})\\.\\d{1,2}\\.(?:\\d{4}|\\d{2})))([0-9]+[\\.](?:[0-9]+|[a-zA-Z])[\\.](?:[0-9]+|[a-zA-Z]))"); // only items, e.g., 1.a.a. so it doesn't match abreviations, otherwise it breaks some languages
 
   private static final String TOKENIZING_CHARACTERS = "\u0020\u00A0\u115f" +
       "\u1160\u1680"
@@ -231,25 +231,24 @@ public class WordTokenizer implements Tokenizer {
     }
     return false;
   }
-  /** This function is designed to handle words like 12.3.a .   
-   * 
+
+  /*
+   * This function is designed to handle words like 12.3.a
    * @param tokens
    * @param input
    * @return
    */
   protected List<String> joinValidWord(List<String> tokens, String input) {
-    
+
     int count = 0;
     Matcher matcher = ONE_WORD_TWO_DOT_PATTERN.matcher(input);
     int noOfMatch = 0;
     while (matcher.find())
       noOfMatch++;
- 
     if(noOfMatch==0){
       return tokens;
     }
     matcher = ONE_WORD_TWO_DOT_PATTERN.matcher(input);
-    
     while (matcher.find()) {
       boolean executed = false;
       String matchedStr = input.substring(matcher.start() + 1, matcher.end());
@@ -258,18 +257,14 @@ public class WordTokenizer implements Tokenizer {
       if(matcher.start()!=0 && input.charAt(matcher.start())!= ' ' && input.charAt(matcher.start())!=','){
     	  continue;
       }
-    	  
       if (matcher.end() != input.length()) {
         if (input.charAt(matcher.end()) == ',' || input.charAt(matcher.end()) == ' ') {
-
           if (matcher.start() == 0 && input.charAt(0)!=' ' && input.charAt(0)!=',') {
             matchedStr = input.substring(matcher.start(), matcher.end());
           }
-
           int index = getStartIndex(tokens, matchedStr);
           // Break The String
           if (index != -1) {
-
             List<String> tokenList = tokens.subList(index, index + 5);
             String newToken = String.join("", tokenList);
             List<String> frontList = tokens.subList(0, index);
@@ -279,13 +274,10 @@ public class WordTokenizer implements Tokenizer {
             tokens = frontList;
             executed = true;
           }
-
         }
       }
-
       if (count == noOfMatch && executed)
         continue;
-      
       // Last Token Case
       if (matcher.end() == input.length()) {
         List<String> combine = tokens.subList(tokens.size() - 5, tokens.size());
@@ -299,7 +291,6 @@ public class WordTokenizer implements Tokenizer {
         String str = String.join("", combine);
         tokens.add(str);
         tokens.add(lastToken);
-
       } else if (matcher.end() == (input.length() - 2)) {
         List<String> combine = tokens.subList(tokens.size() - 7, tokens.size() - 2);
         String lastToken = tokens.get(tokens.size() - 2);
