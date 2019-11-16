@@ -101,8 +101,16 @@ public class Esperanto extends Language {
             new HunspellRule(messages, this, userConfig, altLanguages),
             new UppercaseSentenceStartRule(messages, this),
             new WordRepeatRule(messages, this),
+            // "WORD_REPEAT_RULE" implemented in grammar.xml
             new MultipleWhitespaceRule(messages, this),
-            new SentenceWhitespaceRule(messages)
+            new SentenceWhitespaceRule(messages),
+            new LongSentenceRule(messages, userConfig, -1, true),
+            new LongParagraphRule(messages, this, userConfig),
+            new WhiteSpaceBeforeParagraphEnd(messages, this),
+            new WhiteSpaceAtBeginOfParagraph(messages),
+            new EmptyLineRule(messages, this),
+            new ParagraphRepeatBeginningRule(messages, this),
+            new PunctuationMarkAtParagraphEnd(messages, this, true)
     );
   }
 
