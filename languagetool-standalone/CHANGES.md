@@ -141,12 +141,6 @@
   * remote server commits for LibreOffice plug-in reverted (#1929).
   * multiple core CPU support active by default.
 
-#### Internal
-  * The internal hunspell has been updated from 1.3 to 1.7, now using
-    https://gitlab.com/dumonts/hunspell-java as the project providing the bindings, thanks to Daniel Naber.
-    E.g., for Portuguese, this misspellings suggestions generation is three times faster, 
-    although still slower than the lighter Morfologik methods.
-
 ### Other changes common to both projects
 
 #### Catalan
@@ -217,6 +211,10 @@
     comes to offering suggestions for misspelled words. 
 
 #### Internal
+  * The internal hunspell has been updated from 1.3 to 1.7, now using
+    https://gitlab.com/dumonts/hunspell-java as the project providing the bindings, thanks to Daniel Naber.
+    E.g., for Portuguese, misspellings suggestions generation is three times faster, 
+    although it is still slower than the lighter Morfologik methods.
   * Experimental: the new `default="temp_off"` attribute in `grammar.xml` files will
     turn off a rule/rulegroup, but keep it activated for our nightly regression tests.
   * Many external dependencies have been updated to new versions
