@@ -72,7 +72,7 @@ public class IrishWordTokenizer extends WordTokenizer {
       s = st.nextToken();
       l.addAll(wordsToAdd(s));
     }
-    return joinEMailsAndUrls(l);
+    return joinValidWord(joinEMailsAndUrls(l),text);
   }
 
   /* Splits a word containing hyphen(-) if it doesn't exist in the dictionary. */
