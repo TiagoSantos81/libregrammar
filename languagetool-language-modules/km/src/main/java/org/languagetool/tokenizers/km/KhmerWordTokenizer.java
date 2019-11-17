@@ -46,7 +46,7 @@ public class KhmerWordTokenizer extends WordTokenizer {
     while (st.hasMoreElements()) {
       tokens.add(st.nextToken());
     }
-    return joinEMailsAndUrls(tokens);
+    return joinValidWord(joinEMailsAndUrls(tokens),text);
   }
   
 }
