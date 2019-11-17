@@ -6568,6 +6568,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token>dass</token>
                     <token>.</token>
                 </antipattern>
+                <antipattern case_sensitive="yes">
+                    <token>,</token>
+                    <token>dass</token>
+                    <token regexp="yes">[a-z]</token>
+                    <token spacebefore="no">.</token>
+                </antipattern>
                 <antipattern>
                     <token>,</token>
                         <token skip="-1">dass
@@ -6582,7 +6588,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token>,</token>
                     <token>dass</token>
                 </antipattern>
-                <pattern>
+                <pattern case_sensitive="yes">
                     <token skip="-1" postag="SUB.*SIN.*NEU.*|EIG.*SIN.*NEU.*|PRO:.*SIN.*NEU.*" postag_regexp="yes"/>
                     <token>,</token>
                     <marker>
@@ -6597,6 +6603,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="das">Er hat kein Stück geschrieben, <marker>dass</marker> nicht erfolgreich wurde.</example>
                 <example>Er sagt, <marker>dass</marker> er sie liebt.</example>
                 <example>Das Mädchen sagte, dass nur reden hilft und nicht betrügen.</example>
+                <example>Es ging viel mehr darum, dass u. a. „ansässige“ 2mal vorkommt.</example>
             </rule>
             <rule>
                 <pattern case_sensitive="yes">
@@ -15989,6 +15996,15 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="Google Ads">Wir müssen Werbung bei <marker>AdWords</marker> schalten.</example>
             </rule>
         </rulegroup>
+        <rule id="SPACEX" name="SpaceX">
+            <pattern>
+                <token>Space</token>
+                <token>X</token>
+            </pattern>
+            <message>Meinten Sie <suggestion>SpaceX</suggestion> (= Raumfahrtunternehmen)?</message>
+            <url>https://de.wikipedia.org/wiki/SpaceX</url>
+            <example correction="SpaceX"><marker>Space X</marker> ist ein Raumfahrtunternehmen.</example>
+        </rule>
         <rulegroup id="ZITAT_VGL" name="'vgl.' bei direkten Zitaten">
             <!--
             <rule>
@@ -31979,6 +31995,33 @@ Andere Projekte</example>
                 <example correction="Buy-outs">Während des <marker>Buy-Outs</marker> kamen negative Schlagzeilen in die Presse.</example>
             </rule>
         </rulegroup>
+        <rulegroup id="MAKE_UP" name="'Make-up'">
+            <rule>
+                <pattern>
+                    <token case_sensitive="yes">Make</token>
+                    <token regexp="yes">ups?</token>
+                </pattern>
+                <message>Meinten Sie das Substantiv <suggestion>Make-<match no="2" case_conversion="alllower" /></suggestion> (= Schminke)?</message>
+                <url>https://www.duden.de/rechtschreibung/Make_up</url>
+                <example correction="Make-up">Ihr <marker>Make Up</marker> wurde professionell aufgetragen.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token case_sensitive="yes" regexp="yes">Makeups?</token>
+                </pattern>
+                <message>Meinten Sie das Substantiv <suggestion><match no="1" regexp_match="Makeup" regexp_replace="Make-up" /></suggestion> (= Schminke)?</message>
+                <url>https://www.duden.de/rechtschreibung/Make_up</url>
+                <example correction="Make-up">Sie musste ihr <marker>Makeup</marker> auffrischen.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token case_sensitive="yes" regexp="yes">Make-?Ups?</token>
+                </pattern>
+                <message>Meinten Sie das Substantiv <suggestion><match no="1" regexp_match="(?i)make-?up" regexp_replace="Make-up" /></suggestion> (= Schminke)?</message>
+                <url>https://www.duden.de/rechtschreibung/Make_up</url>
+                <example correction="Make-ups">Während des Auftragens ihres <marker>Make-Ups</marker> ging etwas schief.</example>
+            </rule>
+        </rulegroup>
         <rulegroup id="CHECK_IN" name="'Check-in'">
             <rule>
                 <pattern>
@@ -36805,6 +36848,15 @@ Andere Projekte</example>
                 <example correction='richtig?|richtig!'>Er ist schon nach Hause, <marker>richtig.</marker></example>
             </rule>
         </rulegroup>
+        <rule id="DIRECTORS_CUT" name="Apostroph in 'Directors Cut'">
+            <pattern>
+                <token regexp="yes">directors?</token>
+                <token>cut</token>
+            </pattern>
+            <message>Meinten Sie <suggestion>Director’s Cut</suggestion>?</message>
+            <url>https://de.wikipedia.org/wiki/Director%E2%80%99s_Cut</url>
+            <example correction="Director’s Cut">Der <marker>Directors Cut</marker> ist die Schnittversion eines Spielfilms.</example>
+        </rule>
         <rulegroup id="ROCK_N_ROLL" name="Apostroph in 'Rock 'n' Roll'">
             <rule>
                 <pattern>
