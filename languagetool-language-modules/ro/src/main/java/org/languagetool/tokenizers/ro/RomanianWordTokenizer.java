@@ -49,7 +49,7 @@ public class RomanianWordTokenizer extends WordTokenizer {
     while (st.hasMoreElements()) {
       l.add(st.nextToken());
     }
-    return joinEMailsAndUrls(l);
+    return joinValidWord(joinEMailsAndUrls(l),text);
   }
 
 }
