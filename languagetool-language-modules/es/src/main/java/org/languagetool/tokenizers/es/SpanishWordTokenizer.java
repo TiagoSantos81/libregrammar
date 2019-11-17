@@ -46,7 +46,7 @@ public class SpanishWordTokenizer extends WordTokenizer {
     while (st.hasMoreElements()) {
       tokenList.add(st.nextToken());
     }
-    return joinEMailsAndUrls(tokenList);
+    return joinValidWord(joinEMailsAndUrls(tokenList),text);
   }
 
 }
