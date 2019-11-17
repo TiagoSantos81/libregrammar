@@ -16766,11 +16766,15 @@ USA
                 <exception postag='V.+|RB|IN' postag_regexp='yes'/>
               </token>
             </marker>
-            <token postag="V.+" postag_regexp='yes'/>
+            <or>
+              <token postag="V.+" postag_regexp='yes'/>
+              <token regexp='yes'>[,.!?…]</token>
+            </or>
           </pattern>
           <message>Possible mistake. You should not use a pronoun before a noun.</message>
             <suggestion>my \2</suggestion>
           <example correction="My friend"><marker>Mine friend</marker> hasn't called yet.</example>
+          <example correction="my friend">Take good care of <marker>mine friend</marker>.</example>
         </rule>
         <rule>
           <pattern>
@@ -16780,11 +16784,15 @@ USA
                 <exception postag='V.+|RB|IN' postag_regexp='yes'/>
               </token>
             </marker>
-            <token postag="V.+" postag_regexp='yes'/>
+            <or>
+              <token postag="V.+" postag_regexp='yes'/>
+              <token regexp='yes'>[,.!?…]</token>
+            </or>
           </pattern>
           <message>Possible mistake. You should not use a pronoun before a noun.</message>
             <suggestion><match no='1' regexp_match='(.+)(s$)' regexp_replace='$1'/> \2</suggestion>
           <example correction="Our friend"><marker>Ours friend</marker> hasn't called yet.</example>
+          <example correction="our friend">Take good care of <marker>ours friend</marker>.</example>
         </rule>
       </rulegroup>
         <rulegroup id="TO_NON_BASE" name="'to' + non-base form">

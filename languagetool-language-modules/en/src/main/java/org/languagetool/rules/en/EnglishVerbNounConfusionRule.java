@@ -50,10 +50,10 @@ public class EnglishVerbNounConfusionRule extends Rule {
   private final Language english;
 
   private static final Map<String,String> VERB_NOUN_DB = loadWordlist("en/verb_nouns.txt", 0);
-  private static final Pattern PRECEDES_NOUN = Pattern.compile("[Tt]h(e|is)|[Aa]n?|[Mm]y|[Yy]?[Oo]ur|[Hh](is|er)|[Tt]heir|[Ii]ts|[Oo][fn]"); // excluded also non-determiners s|that
+  private static final Pattern PRECEDES_NOUN = Pattern.compile("[Tt]h(e|is)|[Aa]n?|[Mm]y|[Yy]?[Oo]ur|[Hh](is|er)|[Tt]heir|[Ii]ts|[Oo][fn]|[Ff]or"); // excluded also non-determiners s|that
 
   private static final Map<String,String> NOUN_VERB_DB = loadWordlist("en/verb_nouns.txt", 1);
-  private static final Pattern PRECEDES_VERB = Pattern.compile("can(not)?|[wc]ould|should|m(?:ight|ust|ay)|did|ha([ds]|ve)|ve|will|[Tt]o|It?|[Yy]ou|[Ss][Hh]e|[Tt]hey|[Ww]e");
+  private static final Pattern PRECEDES_VERB = Pattern.compile("can(not)?|[wc]ould|should|m(?:ight|ust|ay)|did|ha([ds]|ve)|ve|will|It?|[Yy]ou|[Ss][Hh]e|[Tt]hey|[Ww]e"); // excluded to
   private static final Pattern PRECEDES_VERB_NOT = Pattern.compile("can|shouldn|couldn|wouldn|won|didn|mustn");
   private static final Pattern APOSTROPHE = Pattern.compile("['’`´‘]");
 
@@ -155,7 +155,8 @@ public class EnglishVerbNounConfusionRule extends Rule {
     Arrays.asList(
       token("this"),
       pos("VBZ")
-    ),
+    )
+    /*
     Arrays.asList(
       posRegex("[^D].+"),
       regex("(?:collapse|continue|forward|go|move|proceed|refer|send)(?:e?[ds])?"),
@@ -167,6 +168,7 @@ public class EnglishVerbNounConfusionRule extends Rule {
       token("to"),
       posRegex("NN.*")
     )
+    */
   );
 
   @Override
