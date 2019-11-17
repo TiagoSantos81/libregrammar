@@ -83,7 +83,7 @@ public class DutchWordTokenizer extends WordTokenizer {
         l.add(token);
       }
     }
-    return joinEMailsAndUrls(l);
+    return joinValidWord(joinEMailsAndUrls(l),text);
   }
 
   private boolean startsWithQuote(String token) {
