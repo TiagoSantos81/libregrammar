@@ -46,6 +46,6 @@ public class GreekWordTokenizer extends WordTokenizer {
     } catch (IOException ex) {
       throw new RuntimeException(ex);
     }
-    return joinEMailsAndUrls(tokens);
+    return joinValidWord(joinEMailsAndUrls(tokens),text);
   }
 }
