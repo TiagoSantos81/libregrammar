@@ -174,7 +174,6 @@
   * added and improved rules
   * updated spell checker (Grammalecte·dic/Dicollecte) to version 6.4.1 (2019-04-05)
     (source: https://grammalecte.net/download.php?prj=fr)
-
   * POS and spelling improvements, including:
     - updated part-of-speech dictionaries to dicollecte-6.4.1
     (https://github.com/languagetool-org/languagetool/pull/1963)
@@ -209,6 +208,15 @@
   * The unmaintained code from package `org.languagetool.dev.wikipedia.atom`
     has been removed. It hadn't been maintained for years and didn't work properly
     anymore.
+  * `prohibit_custom.txt` and `spelling_custom.txt` can be used to make your
+    own additions to `spelling.txt` and `prohibit.txt` without having to edit those
+    files after a LanguageTool update (you will still need to manually copy those
+    files).  
+    Paths to these files (`xx` = language code):  
+    `./org/languagetool/resource/xx/hunspell/prohibit_custom.txt`
+    `./org/languagetool/resource/xx/hunspell/spelling_custom.txt`  
+    Note that you can simply create these files if they don't exist for your language yet.
+
 
 #### LibreOffice / Apache OpenOffice Integration
   * 'disable rule' option added to context menu.
