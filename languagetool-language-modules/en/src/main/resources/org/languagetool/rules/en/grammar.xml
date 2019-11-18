@@ -35021,6 +35021,20 @@ The accident victim died from her injuries.
          <example correction='antithetical'>The two events this week were <marker>directly antithetical</marker> to the University's values for these reasons.</example>
          <example>The two events this week were antithetical to the University's values for these reasons.</example>
         </rule>
+        <rule id="FALL_DOWN" name="fall down (fall)">
+         <pattern>
+           <marker>
+            <token inflected='yes'>fall</token>
+            <token>down</token>
+           </marker>
+             <token>
+               <exception postag='DT'/></token>
+         </pattern>
+         <message>This phrase verges on redundancy. Consider writing <suggestion><match no="1"/></suggestion>.</message>
+         <short>Redundant phrase</short>
+         <example correction='fell'>He <marker>fell down</marker> to the floor.</example>
+         <example>He fell down the stairs.</example>
+        </rule>
         <rule id="APPROXIMATELY_ABOUT" name="approximately about">
          <pattern>
           <marker>
