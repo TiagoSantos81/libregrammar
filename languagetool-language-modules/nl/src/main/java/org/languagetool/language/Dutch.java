@@ -143,7 +143,9 @@ public class Dutch extends Language {
             new LongSentenceRule(messages, userConfig, -1, true),
             new LongParagraphRule(messages, this, userConfig),
             new ParagraphRepeatBeginningRule(messages, this),
-            new PunctuationMarkAtParagraphEnd(messages, this)
+            new PunctuationMarkAtParagraphEnd(messages, this),
+            new DutchReadabilityRule(messages, this, userConfig, false, 3),
+            new DutchReadabilityRule(messages, this, userConfig, true, 3)
     );
   }
 

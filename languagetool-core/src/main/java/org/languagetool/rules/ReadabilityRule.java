@@ -297,20 +297,15 @@ public class ReadabilityRule extends TextLevelRule {
            * ASL = Average Sentence Length
            * ASW = Average Number of Syllables per Word
            * English: FRE = 206,835 - ( 1,015 * ASL ) - ( 84,6 * ASW )
-           * German: FRE = 180 - ASL - ( 58,5 * ASW )
            * 
-           * FLE(German) = 180 - ( total words/total sentences ) - 58.5( total syllables/total words ).
+           * Other formulas not yet localized:
            * FLE(Spanish) = 206.84 - 1.02 ( total words/total sentences ) - 0.60( syllables in 100 words ).
            * FLE(Italian) = 217 - 1.3( total words/total sentences ) - 0.6( syllables in 100 words ).
-           * FLE(French) = 207 - 1.015( total words/total sentences ) - 73.6( total syllables/total words ).
            * FLE(Russian) = 206.835 - 1.3( total words/total sentences ) - 60.1(total syllables/total words ).
-           * FLE(Dutch) = 206.84 - 0.77( #syllables in 100 words ) - 0.93( total words/total sentences ).
            * 
-           * Amstad, T. (1978). Wie verständlich sind unsere Zeitungen?. Studenten-Schreib-Service. 
            * Garais, E. G. (2011). Web Applications Readability. Journal of Information Systems & Operations Management, 5(1), 114-120.
            * Устинова, Л. В., & Фазылова, Л. С. (2014). Автоматизация оценки сложности учебных текстов на основе статистических параметров.ХАБАРШЫСЫ ВЕСТНИК, 96. 
            * Oborneva, I. V. (2005): Mathematical model for evaluation of didactic texts.. Proc. of Moscow State Pedag. Univ., series ‘Informatics’, Vol. 4, No. 1, pp. 141–147 
-           * https://nl.wikipedia.org/wiki/Leesbaarheid
            *
            */
           double ASL = (double) nWords / (double) nSentences;
