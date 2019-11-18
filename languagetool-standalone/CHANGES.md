@@ -51,21 +51,34 @@
 #### Danish
   * activated generic Java rules, including:
      - LongSentenceRule, LongParagraphRule, MultipleWhispacesRule, SentenceWhitespaceRule,
-     WhiteSpaceAtBeginOfParagraph, EmptyLineRule, ParagraphRepeatBeginningRule, 
+     WhiteSpaceAtBeginOfParagraph, EmptyLineRule, ParagraphRepeatBeginningRule,
      PunctuationMarkAtParagraphEnd.
+  * improved tokenization.
+
+#### Dutch
+  * rules added:
+     - DutchReadabilityRule.
+  * activated generic Java rules, including:
+     - LongSentenceRule, LongParagraphRule, SentenceWhitespaceRule, WhiteSpaceAtBeginOfParagraph,
+     EmptyLineRule, ParagraphRepeatBeginningRule, PunctuationMarkAtParagraphEnd.
+  * improved tokenization.
 
 #### Esperanto
   * sentences and paragraphs now end with a single line break.
   * activated generic Java rules, including:
      - LongSentenceRule, LongParagraphRule, WhiteSpaceAtBeginOfParagraph, EmptyLineRule,
      ParagraphRepeatBeginningRule, PunctuationMarkAtParagraphEnd.
+  * improved tokenization.
 
 #### French
   * activated generic Java rules, including:
      - LongSentenceRule, LongParagraphRule, SentenceWhitespaceRule, WhiteSpaceAtBeginOfParagraph,
      EmptyLineRule, ParagraphRepeatBeginningRule, PunctuationMarkAtParagraphEnd.
-  * add typography rules for mathematical symbols and arrows.
+  * rules added:
+     - DutchReadabilityRule.
+     - typography rules for mathematical symbols and arrows.
   * sentences and paragraphs now end with a single line break.
+  * improved tokenization.
 
 #### Galician
   * sentences and paragraphs now end with a single line break.
@@ -81,9 +94,9 @@
      EmptyLineRule, ParagraphRepeatBeginningRule, PunctuationMarkAtParagraphEnd.
 
 #### Irish
-  * Support added thanks to Jim Regan, Emily Barnes, Mícheál J. Ó Meachair, 
+  * Support added thanks to Jim Regan, Emily Barnes, Mícheál J. Ó Meachair,
   and Seanán Ó Coistín. Support includes:
-     - 963 grammar rules;
+     - 1184 grammar rules;
      - Irish naming conventions converter;
      - generic typographical rules (e.g., spacing rules);
      - generic style rules (e.g., sentence length);
@@ -97,15 +110,24 @@
   * add typography rules for mathematical symbols and arrows.
   * sentences and paragraphs now end with a single line break.
 
+#### Khmer
+  * improved tokenization.
+
+#### Polish
+  * activated generic Java rules, including:
+     - LongSentenceRule, LongParagraphRule, UppercaseSentenceStartRule, WhiteSpaceBeforeParagraphEnd,
+     WhiteSpaceAtBeginOfParagraph, EmptyLineRule, ParagraphRepeatBeginningRule, PunctuationMarkAtParagraphEnd,
+     Flesher ReadabilityRule.
+  * improved tokenization.
+
 #### Portuguese
   * add a few more rules:
     - vocative punctuation;
     - personal infinitive rules;
     - subject-predicate agreement;
-    - specific case rules with 1057 entries from Wikipedia.
+    - specific case rules with 1867 entries mostly from Wikipedia.
   * re-activated diacritics rule;
-  * Portugal Portuguese former orthographic agreement locale added (Portugal 
-  pre-AO) with support for:
+  * Portugal Portuguese former orthographic agreement locale added (Portugal pre-AO) with support for:
      - [pt-PT pre-AO] [Dicionários Portugueses Complementares 1.2](https://github.com/TiagoSantos81/PortugueseLibreOfficeExtension);
      - common Portuguese rules;
      - pre-AO hyphenation rules;
@@ -113,11 +135,10 @@
      - capitalization rules.
   * sentences and paragraphs now end with a single line break.
   * various localization fixes.
+  * improved tokenization.
 
-#### Polish
-  * activated generic Java rules, including:
-     - LongSentenceRule, LongParagraphRule, UppercaseSentenceStartRule, WhiteSpaceBeforeParagraphEnd,
-     WhiteSpaceAtBeginOfParagraph, EmptyLineRule, ParagraphRepeatBeginningRule, PunctuationMarkAtParagraphEnd.
+#### Romenian
+  * improved tokenization.
 
 #### Spanish
   * re-activated subject-predicate agreement category.
@@ -150,9 +171,9 @@
   * Now using https://github.com/hankcs/HanLP for tokenization (PR 1981)
 
 #### Danish
-  * corrections are now offered for spell check errors 
+  * corrections are now offered for spell check errors
   * updated spell checker to version 2.4 (2018-04-15)
-    (source: https://extensions.libreoffice.org/extensions/stavekontrolden-danish-dictionary) 
+    (source: https://extensions.libreoffice.org/extensions/stavekontrolden-danish-dictionary)
 
 
 #### Dutch
@@ -168,7 +189,7 @@
   * POS and spelling improvements
 
 #### Esperanto
-  * corrections are now offered for spell check errors 
+  * corrections are now offered for spell check errors
 
 #### French
   * added and improved rules
@@ -220,7 +241,7 @@
 
 #### LibreOffice / Apache OpenOffice Integration
   * 'disable rule' option added to context menu.
- 
+
 #### Java API
   * `AbstractSimpleReplaceRule2` has been fixed so that it's now case-insensitive.
     If you implement a sub class of it and you want the old behavior, please implement
@@ -230,12 +251,12 @@
   * The dynamic languages feature (`lang-xx=...` and `lang-xx-dictPath=...`) now
     also supports hunspell dictionaries. Just let `lang-xx-dictPath` point to the
     absolute path of the `.dic` file. Note that hunspell is quite slow when it
-    comes to offering suggestions for misspelled words. 
+    comes to offering suggestions for misspelled words.
 
 #### Internal
   * The internal hunspell has been updated from 1.3 to 1.7, now using
     https://gitlab.com/dumonts/hunspell-java as the project providing the bindings, thanks to Daniel Naber.
-    E.g., for Portuguese, misspellings suggestions generation is three times faster, 
+    E.g., for Portuguese, misspellings suggestions generation is three times faster,
     although it is still slower than the lighter Morfologik methods.
   * Experimental: the new `default="temp_off"` attribute in `grammar.xml` files will
     turn off a rule/rulegroup, but keep it activated for our nightly regression tests.
