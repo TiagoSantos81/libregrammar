@@ -136,7 +136,14 @@ public class Dutch extends Language {
             new SimpleReplaceRule(messages),
             new LongSentenceRule(messages, userConfig, -1, true),
             new PreferredWordRule(messages),
-            new SentenceWhitespaceRule(messages)
+            new SentenceWhitespaceRule(messages),
+            new WhiteSpaceBeforeParagraphEnd(messages, this),
+            new WhiteSpaceAtBeginOfParagraph(messages),
+            new EmptyLineRule(messages, this),
+            new LongSentenceRule(messages, userConfig, -1, true),
+            new LongParagraphRule(messages, this, userConfig),
+            new ParagraphRepeatBeginningRule(messages, this),
+            new PunctuationMarkAtParagraphEnd(messages, this)
     );
   }
 
