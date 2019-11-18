@@ -243,8 +243,8 @@ public class English extends Language implements AutoCloseable {
         new EnglishEggcornsRule(messages),
         new EnglishWeaselWordsRule(messages),
         new EnglishStyleRepeatedWordRule(messages, this, userConfig),
-        new ReadabilityRule(messages, this, userConfig, false, 3),
-        new ReadabilityRule(messages, this, userConfig, true, 3)
+        new ReadabilityRule(messages, this, userConfig, false),
+        new ReadabilityRule(messages, this, userConfig, true)
     ));
     return allRules;
   }
