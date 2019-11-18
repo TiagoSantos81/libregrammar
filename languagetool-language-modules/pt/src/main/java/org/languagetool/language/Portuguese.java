@@ -174,8 +174,8 @@ public class Portuguese extends Language implements AutoCloseable {
             new PortugueseWrongWordInContextRule(messages),
             new PortugueseWordCoherencyRule(messages),
             new PortugueseUnitConversionRule(messages),
-            new PortugueseReadabilityRule(messages, this, userConfig, true),
-            new PortugueseReadabilityRule(messages, this, userConfig, false)
+            new PortugueseReadabilityRule(messages, this, userConfig, true, 3),
+            new PortugueseReadabilityRule(messages, this, userConfig, false, 3)
     );
   }
 
