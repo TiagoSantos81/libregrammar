@@ -116,8 +116,7 @@
 #### Polish
   * activated generic Java rules, including:
      - LongSentenceRule, LongParagraphRule, UppercaseSentenceStartRule, WhiteSpaceBeforeParagraphEnd,
-     WhiteSpaceAtBeginOfParagraph, EmptyLineRule, ParagraphRepeatBeginningRule, PunctuationMarkAtParagraphEnd,
-     Flesher ReadabilityRule.
+     WhiteSpaceAtBeginOfParagraph, EmptyLineRule, ParagraphRepeatBeginningRule, PunctuationMarkAtParagraphEnd.
   * improved tokenization.
 
 #### Portuguese
@@ -125,7 +124,7 @@
     - vocative punctuation;
     - personal infinitive rules;
     - subject-predicate agreement;
-    - specific case rules with 1867 entries mostly from Wikipedia.
+    - specific case rules with 1057 entries mostly from Wikipedia.
   * re-activated diacritics rule;
   * Portugal Portuguese former orthographic agreement locale added (Portugal pre-AO) with support for:
      - [pt-PT pre-AO] [Dicionários Portugueses Complementares 1.2](https://github.com/TiagoSantos81/PortugueseLibreOfficeExtension);
