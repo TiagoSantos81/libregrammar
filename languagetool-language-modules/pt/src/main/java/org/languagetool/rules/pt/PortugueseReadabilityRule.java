@@ -117,7 +117,7 @@ public class PortugueseReadabilityRule extends ReadabilityRule {
       simple = "difícil";
       few = "muitas";
     }
-    return "Legibilidade {FRE: " + FRE +", ASL: " + ASL + ", ASW: " + ASW + "}: O texto deste parágrafo é " + simple + printMessageLevel(level) + ". Tem "
+    return "Legibilidade {FRE: " + FRE +", ASL: " + ASL + ", ASW: " + ASW + "}: O texto deste parágrafo é demasiado " + simple + printMessageLevel(level) + ". Tem "
         + few + " palavras por frase e " + few + " sílabas por palavra.";
   }
 
