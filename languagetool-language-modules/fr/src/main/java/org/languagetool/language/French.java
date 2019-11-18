@@ -129,6 +129,8 @@ public class French extends Language implements AutoCloseable {
             new EmptyLineRule(messages, this),
             new ParagraphRepeatBeginningRule(messages, this),
             new PunctuationMarkAtParagraphEnd(messages, this, true),
+            new FrenchReadabilityRule(messages, this, userConfig, false),
+            new FrenchReadabilityRule(messages, this, userConfig, true),
             // specific to French:
             new CompoundRule(messages),
             new QuestionWhitespaceStrictRule(messages, this),
