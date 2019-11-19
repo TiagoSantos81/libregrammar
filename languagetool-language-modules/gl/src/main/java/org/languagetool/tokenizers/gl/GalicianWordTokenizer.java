@@ -75,6 +75,10 @@ public class GalicianWordTokenizer extends WordTokenizer {
   private static final Pattern DOTTED_ORDINALS_PATTERN = Pattern.compile("([\\d])\\.([aoªº][sˢ]?)", Pattern.CASE_INSENSITIVE|Pattern.UNICODE_CASE);
   private static final String DOTTED_ORDINALS_REPL = "$1" + NON_BREAKING_DOT_SUBST + "$2";
 
+  // multidot entries, e.g., 1.1.1 or 1.A.b.
+  private static final Pattern DOTTED_ENTRIES_PATTERN = Pattern.compile("([0-9]+)[\\.]([0-9]+|[a-zA-Z])[\\.]([0-9]+|[a-zA-Z])", Pattern.CASE_INSENSITIVE|Pattern.UNICODE_CASE);
+  private static final String DOTTED_ENTRIES_REPL = "$1" + NON_BREAKING_DOT_SUBST + "$2" + NON_BREAKING_DOT_SUBST + "$3";
+
   @Override
   public List<String> tokenize(String text) {
 
@@ -87,6 +91,7 @@ public class GalicianWordTokenizer extends WordTokenizer {
     boolean dotInsideSentence = dotIndex >= 0 && dotIndex < text.length()-1;
     if( dotInsideSentence ){
       text = DATE_PATTERN.matcher(text).replaceAll(DATE_PATTERN_REPL);
+      text = DOTTED_ENTRIES_PATTERN.matcher(text).replaceAll(DOTTED_ENTRIES_REPL); // need to be before ordinals due to numbers (e.g., 1.1) and entries (e.g., 1.a.b)
       text = DOTTED_NUMBERS_PATTERN.matcher(text).replaceAll(DOTTED_NUMBERS_REPL);
       text = DOTTED_ORDINALS_PATTERN.matcher(text).replaceAll(DOTTED_ORDINALS_REPL);
     }
