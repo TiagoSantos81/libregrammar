@@ -10,14 +10,14 @@
      - verb-noun confusion rule - 1465 error patterns mostly from After the Deadline (AtD);
      - eggcorn detection - 227 error patterns from Grammark and AtD;
      - specific case rule - 751 entries from Wikipedia;
-     - nonstandard English replacement rule - 7 error patterns;
-     - cliche detection - 691 error patterns from AtD;
+     - nonstandard English replacement rule - 22 error patterns;
+     - cliché detection - 691 error patterns from AtD;
      - wordiness database enhancements - 653 error patterns from Grammark;
      - informal expressions detection - 228 error patterns from Wikipedia;
      - EnglishStyleRepeatedWordRule;
      - split infinitive detection;
      - comma splice partial detection;
-     - weasel word and thought-terminating cliches detection - 87 error patterns added from Wikipedia;
+     - weasel word and thought-terminating clichés detection - 87 error patterns added from Wikipedia;
      - typography of mathematical symbols;
      - easily confused words - 533 pairs added - active only with
     ngram data (see http://wiki.languagetool.org/finding-errors-using-n-gram-data);
@@ -82,6 +82,7 @@
 
 #### Galician
   * sentences and paragraphs now end with a single line break.
+  * improved tokenization.
 
 #### German
   * activated generic Java rules, including:
@@ -124,7 +125,7 @@
     - vocative punctuation;
     - personal infinitive rules;
     - subject-predicate agreement;
-    - specific case rules with 1057 entries mostly from Wikipedia.
+    - specific case rules with 1867 entries mostly from Wikipedia.
   * re-activated diacritics rule;
   * Portugal Portuguese former orthographic agreement locale added (Portugal pre-AO) with support for:
      - [pt-PT pre-AO] [Dicionários Portugueses Complementares 1.2](https://github.com/TiagoSantos81/PortugueseLibreOfficeExtension);
@@ -134,6 +135,7 @@
      - capitalization rules.
   * sentences and paragraphs now end with a single line break.
   * various localization fixes.
+  * improved disambiguation.
   * improved tokenization.
 
 #### Romenian
@@ -239,7 +241,8 @@
 
 
 #### LibreOffice / Apache OpenOffice Integration
-  * 'disable rule' option added to context menu.
+  * 'disable rule' option added to context menu, thanks to Fred Kruse.
+  * TextLevelRules now have the option to check chapter blocks, thanks to Fred Kruse.
 
 #### Java API
   * `AbstractSimpleReplaceRule2` has been fixed so that it's now case-insensitive.
