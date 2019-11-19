@@ -5021,6 +5021,10 @@ title="Easy editing stylesheet" ?>
       <example>Olá a todos!</example>
       <example>Bom dia, Jessica!</example>
       <example type='triggers_error'>Oi, Carolina. Tudo bem?</example><!-- FIXME java implementation bug. does not trigger error on the standalone tool -->
+      <example>Esta técnica falha 5 em cada 1000 ocorrências.</example>
+      <example type='triggers_error'>Mudanças no comportamento, personalidade ou modo de pensar.</example><!-- XXX correct since "modo the pensar", i.e., "way of thinking" is a noun phrase -->
+      <example type='triggers_error'>Sistema de Crenças: São os argumentos e os pesos.</example><!-- XXX correct since with these capitalization it implies 'São' as 'Saint'. -->
+      <example>Sistema de Crenças são os argumentos e os pesos.</example><!-- correct punctuation and capitalization -->
     </rule>
 
   <rulegroup id='FRAGMENT_TWO_ARTICLES' name='Fragmento: dois artigos seguidos' default='on'>
@@ -24526,7 +24530,7 @@ TODO Write better examples
     </rule>
     <rule>
       <pattern>
-          <token regexp='yes'>(?:a|a(?:lgum|o|quele|utêntico)|cm|c(?:om|omo)|de|d(?:er|o)|É|e(?:m|norme|scondido|sse|ste)?|fez|g(?:era|erava|rande)|havia|i(?:mprudente|nfinito|nviolado)|m(?:aior|antém|ediante)|n(?:enhum|este|o|osso|outro|ovo|um)|o|ou|p(?:agar|ara|elo|equeno|esado|or|recioso|rimeiro|rincipal|ro|rofundo)|que|r(?:eceber|eferido|equerer)|respec?tivo|rígido|s(?:agrado|eu|imples|ó|oturno)|tal|um|único|virou)s?</token><!-- XXX add in new rule [A-Za-zçáê]+(-se|-lhes?|-o|-me|-nos|-la|-lo|-te) -->
+          <token regexp='yes'>(?:a|a(?:lgum|o|quele|utêntico)|cm|c(?:om|omo)|de|d(?:er|o)|É|e(?:m|norme|scondido|sse|ste)?|fez|g(?:era|erava|rande)|havia|i(?:mprudente|nfinito|nviolado)|m(?:aior|antém|ediante)|n(?:enhum|este|o|osso|outro|ovo|um)|o|ou|p(?:agar|ara|elo|equeno|esado|or|recioso|rimeiro|rincipal|ro|rofundo)|r(?:eceber|eferido|equerer)|respec?tivo|rígido|s(?:agrado|eu|imples|ó|oturno)|tal|um|único|virou)s?</token><!-- XXX add in new rule [A-Za-zçáê]+(-se|-lhes?|-o|-me|-nos|-la|-lo|-te) -->
         <marker>
           <token regexp='yes'>depositos?</token>
         </marker>
