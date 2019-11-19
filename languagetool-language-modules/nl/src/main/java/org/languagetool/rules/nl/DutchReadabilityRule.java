@@ -30,7 +30,7 @@ import org.languagetool.rules.ReadabilityRule;
 import org.languagetool.rules.Category.Location;
 
 /**
- * A rule that checks the readability of Portuguese text (using the Flesch-Reading-Ease Formula)
+ * A rule that checks the readability of Dutch text (using the adapted Flesch-Reading-Ease Formula)
  * If tooEasyTest == true, the rule tests if paragraph level &gt; level (readability is too easy)
  * If tooEasyTest == false, the rule tests if paragraph level &lt; level (readability is too difficult)
  * @author Fred Kruse localized by Tiago F. Santos
