@@ -11753,6 +11753,8 @@ USA
                 <example>Those three <marker>install</marker> great effects.</example>
             </rule>
         </rulegroup>
+  </category>
+  <category id="CASING" name="Casing" type="misspelling">
         <rulegroup id="A_GOOGLE" name="a/the + proper noun">
             <antipattern>
                 <token>let</token>
@@ -11892,6 +11894,58 @@ USA
                 </pattern>
                 <message>The proper noun <suggestion>Chrome</suggestion> (= software from Google) needs to be capitalized.</message>
                 <example correction="Chrome">The <marker>chrome</marker> browser is better than Internet Explorer.</example>
+            </rule>
+        </rulegroup>
+        <rulegroup id="MAC_OS" name="Mac OS (macOS)">
+            <antipattern>
+                <token>Mac</token>
+                <token>OS</token>
+                <token>X</token>
+            </antipattern>
+            <antipattern>
+                <token>MacOS</token>
+                <token>X</token>
+            </antipattern>
+            <antipattern>
+                <token>Mac</token>
+                <token>OS</token>
+                <token regexp="yes">\d</token>
+            </antipattern>
+            <antipattern>
+                <token>Mac</token>
+                <token>OS</token>
+                <token>10</token>
+                <token>.</token>
+                <token regexp="yes">[0-9]|10|11</token>
+            </antipattern>
+            <rule>
+                <pattern>
+                    <token>mac</token>
+                    <token>
+                        os
+                    </token>
+                </pattern>
+                <message>The operating system from Apple is called <suggestion><match no="1" case_conversion="alllower" />OS</suggestion></message>
+                <url>https://en.wikipedia.org/wiki/MacOS</url>
+                <example correction="macOS">Do you prefer Windows or <marker>mac OS</marker>?</example>
+            </rule>
+            <rule>
+                <antipattern case_sensitive="yes">
+                    <token postag="SENT_START" />
+                    <token>MacOS</token>
+                </antipattern>
+                <antipattern case_sensitive="yes">
+                    <token>macOS</token>
+                </antipattern>
+                <pattern>
+                    <token>
+                        MacOS
+                    </token>
+                </pattern>
+                <message>The operating system from Apple is called <suggestion><match no="1" case_conversion="startlower" regexp_match="(?i)macos" regexp_replace="macOS" /></suggestion>.</message>
+                <url>https://en.wikipedia.org/wiki/MacOS</url>
+                <example correction="macOS">Do you prefer Windows or <marker>MacOS</marker>?</example>
+                <example>MacOS updates were failing.</example>
             </rule>
         </rulegroup>
         <rulegroup id="OPERA_BROWSER" name="capitalization of 'Opera' (browser)" default="temp_off">
@@ -12069,6 +12123,8 @@ USA
             <message>The proper noun <suggestion>Royal Air <match no="3" case_conversion="startupper" /></suggestion> needs to be capitalized.</message>
             <example correction="Royal Air Force">The <marker>royal air force</marker> is the United Kingdom's aerial warfare force</example>
         </rule>
+  </category>
+  <category id="GRAMMAR_2" name="Grammar" type="grammar">
         <rulegroup id="A_ATTACH" name="a/the attach">
             <rule>
                 <antipattern>
@@ -37389,7 +37445,8 @@ The accident victim died from her injuries.
             <example correction="times when">There are <marker>times where</marker> you need to measure high current devices.</example>
             <example correction="days when">Do you remember the happy <marker>days where</marker> we were together</example>
         </rule>
-        <rulegroup id="MAC_OS" name="Mac OS (macOS)">
+  <?ignore
+        <rulegroup id="MAC_OS" name="Mac OS (macOS)" type="misspelling">
             <antipattern>
                 <token>Mac</token>
                 <token>OS</token>
@@ -37441,6 +37498,7 @@ The accident victim died from her injuries.
                 <example>MacOS updates were failing.</example>
             </rule>
         </rulegroup>
+ ?>
 
       <rulegroup id="PROFANITY" name="Profanity">
          <rule>
