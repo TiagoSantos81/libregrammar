@@ -5025,6 +5025,12 @@ title="Easy editing stylesheet" ?>
       <example type='triggers_error'>Mudanças no comportamento, personalidade ou modo de pensar.</example><!-- XXX correct since "modo the pensar", i.e., "way of thinking" is a noun phrase -->
       <example type='triggers_error'>Sistema de Crenças: São os argumentos e os pesos.</example><!-- XXX correct since with these capitalization it implies 'São' as 'Saint'. -->
       <example>Sistema de Crenças são os argumentos e os pesos.</example><!-- correct punctuation and capitalization -->
+      <example type='triggers_error'>Gestão Regional de Conservação.</example><!-- correct. it is a sentence since it has punctuation and it has no verbs here. -->
+      <example>Gestão Regional de Conservação</example><!-- correct. no verbs here but this looks like a title, it has no punctuation -->
+      <example type='triggers_error'>O estudo de métodos de redução de dados.</example><!-- correct. it is a sentence since it has punctuation and it has no verbs here. -->
+      <example>O estudo de métodos de redução de dados</example><!-- correct. no verbs here but this looks like a title, it has no punctuation -->
+      <example type='triggers_error'>Duração das batalhas até 10 horas.</example><!-- correct. it is a sentence since it has punctuation and it has no verbs here. -->
+      <example>Duração das batalhas até 10 horas</example><!-- correct. no verbs here but this looks like a title, it has no punctuation -->
     </rule>
 
   <rulegroup id='FRAGMENT_TWO_ARTICLES' name='Fragmento: dois artigos seguidos' default='on'>
