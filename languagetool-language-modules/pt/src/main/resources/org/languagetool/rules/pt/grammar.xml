@@ -27082,7 +27082,7 @@ TODO Write better examples
           <token spacebefore="no">:</token>
       </antipattern>
       <antipattern>
-          <token>;</token>
+          <token regexp="yes">:|;</token>
           <token regexp="yes">“|»|«|"|”</token>
           <token spacebefore="yes"/>
       </antipattern>
