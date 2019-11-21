@@ -75,7 +75,7 @@ public class SpecificCaseRule extends Rule {
 
   @Override
   public String getDescription() {
-    return "Checks upper/lower case spelling of some proper nouns";
+    return "Checks the casing of some proper nouns";
   }
 
   @Override
@@ -92,7 +92,7 @@ public class SpecificCaseRule extends Rule {
         String lcPhrase = phrase.toLowerCase();
         String properSpelling = lcToProperSpelling.get(lcPhrase);
         if (properSpelling != null && !StringTools.isAllUppercase(phrase) && !phrase.equals(properSpelling)) {
-          String msg = "If the term is a proper noun, use initial capitals.";
+          String msg = "If the phrase is a proper noun, use initial capitals.";
           RuleMatch match = new RuleMatch(this, sentence, tokens[i].getStartPos(), tokens[i].getStartPos() + phrase.length(), msg);
           match.setSuggestedReplacement(properSpelling);
           matches.add(match);
