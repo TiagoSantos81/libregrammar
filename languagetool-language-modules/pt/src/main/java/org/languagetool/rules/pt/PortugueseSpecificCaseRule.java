@@ -78,7 +78,7 @@ public class PortugueseSpecificCaseRule extends Rule {
 
   @Override
   public String getDescription() {
-    return "Verifica se nomes próprios estão a utilizar a capitalização correta.";
+    return "Verifica se certos normes ou expressões estão a utilizar a capitalização correta.";
   }
 
   @Override
