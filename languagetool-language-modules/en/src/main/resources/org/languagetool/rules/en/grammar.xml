@@ -15110,6 +15110,91 @@ USA
                 <example correction="are|were">Where <marker>is</marker> your dogs?</example>
                 <example correction="are|were">Where <marker>was</marker> the cars?</example>
             </rule>
+            <!-- Created by Tiago F. Santos, 2019-11-19 #2142-->
+            <rule>
+                <pattern>
+                    <token postag="SENT_START"/>
+                    <marker>
+                        <token>is</token>
+                        <token postag="NNP?S"  postag_regexp="yes" skip='-1'>
+                            <exception postag="NN(:.+)?" postag_regexp="yes"/></token>
+                    </marker>
+                    <token>?</token>
+                </pattern>
+                <message>Possible agreement error. You should probably use <suggestion>are \3</suggestion>.</message>
+                <short>Possible agreement error</short>
+                <example correction="Are computers"><marker>Is computers</marker> different?</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token postag="SENT_START"/>
+                    <marker>
+                        <token>was</token>
+                        <token postag="NNP?S"  postag_regexp="yes" skip='-1'>
+                            <exception postag="NN(:.+)?" postag_regexp="yes"/></token>
+                    </marker>
+                    <token>?</token>
+                </pattern>
+                <message>Possible agreement error. You should probably use <suggestion>were \3</suggestion>.</message>
+                <short>Possible agreement error</short>
+                <example correction="Were computers"><marker>Was computers</marker> different?</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token postag="SENT_START"/>
+                    <marker>
+                        <token>has</token>
+                        <token postag="NNP?S"  postag_regexp="yes" skip='-1'>
+                            <exception postag="NN(:.+)?" postag_regexp="yes"/></token>
+                    </marker>
+                    <token>?</token>
+                </pattern>
+                <message>Possible agreement error. You should probably use <suggestion>have \3</suggestion>.</message>
+                <short>Possible agreement error</short>
+                <example correction="Have computers"><marker>Has computers</marker> evolved?</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token postag="SENT_START"/>
+                    <marker>
+                        <token>are</token>
+                    <token postag="NN" skip='-1'>
+                        <exception postag="NN(:.+|P?S)" postag_regexp="yes"/></token>
+                    </marker>
+                    <token>?</token>
+                </pattern>
+                <message>You should probably use <suggestion>is \3</suggestion>.</message>
+                <short>Possible agreement error</short>
+                <example correction="Is computer"><marker>Are computer</marker> different?</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token postag="SENT_START"/>
+                    <marker>
+                        <token>were</token>
+                    <token postag="NN" skip='-1'>
+                        <exception postag="NN(:.+|P?S)" postag_regexp="yes"/></token>
+                    </marker>
+                    <token>?</token>
+                </pattern>
+                <message>You should probably use <suggestion>was \3</suggestion>.</message>
+                <short>Possible agreement error</short>
+                <example correction="Was computer"><marker>Were computer</marker> different?</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token postag="SENT_START"/>
+                    <marker>
+                        <token>have</token>
+                    <token postag="NN" skip='-1'>
+                        <exception postag="NN(:.+|P?S)" postag_regexp="yes"/></token>
+                    </marker>
+                    <token>?</token>
+                </pattern>
+                <message>You should probably use <suggestion>has computer</suggestion>.</message>
+                <short>Possible agreement error</short>
+                <example correction="Has computer"><marker>Have computer</marker> evolved?</example>
+            </rule>
         </rulegroup>
         <rule id="A_HUNDREDS" name="a hundreds (hundred)">
             <pattern>
