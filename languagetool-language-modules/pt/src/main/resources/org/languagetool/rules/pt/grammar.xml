@@ -2556,7 +2556,7 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes' inflected='yes'>ser|estar|ficar|permanecer|parecer
             <exception>seres</exception></token>
           <token min="0" max="3" postag_regexp='yes' postag='R.'/>
-          <token regexp='yes'>(?:a(?:ceitad|ntepagad|prisionad|ssentad)|benzid|d(?:espertad|ispersad)|e(?:legid|mergid|nchid|ntregad|nxugad|xaurid|xpelid|xpressad|xprimid|xpulsad|xtinguid)|f(?:indad|ixad|rigid|ritad)|g(?:anhad|astad)|i(?:mergid|mprimid|ncurrid|sentad)|limpad|m(?:algastad|alquerid|anifestad|atad|orrido)|o(?:mitid|primid)|p(?:agad|asmad|rendid)|r(?:reelegid|epelid|evolvid|ompid)|s(?:alvad|egurad|oltad|ubmergid|ujad|ujeitad|urpreendid|uspendid)|v(?:agad|olvid))[ao]s?</token>
+          <token regexp='yes'>(?:a(?:ceitad|ntepagad|prisionad|ssentad)|d(?:espertad|ispersad)|e(?:nchid|ntregad|nxugad|xaurid|xpelid|xpressad|xpulsad|xtinguid)|f(?:indad|ixad|rigid|ritad)|g(?:anhad|astad)|i(?:ncurrid|sentad)|limpad|m(?:algastad|alquerid|anifestad|atad|orrido)|p(?:agad|asmad)|r(?:epelid|evolvid|ompid)|s(?:alvad|egurad|oltad|ujad|ujeitad|uspendid)|v(?:agad|olvid))[ao]s?</token>
     <!-- XXX Removidos: absorvido|acendido|anexado|concluído|cultivado|defendido|desenvolvido|dissolvido|distinguido|envolvido|erigido|incluído|inserido|ocultado|pegado|sepultado|suprimido|tingido
            Formas não reconhecidas como verbo abuntante por todos os dicionários, em desuso, ou com significados distintos.  -->
       </pattern>
@@ -2587,6 +2587,94 @@ title="Easy editing stylesheet" ?>
       <example correction='foi aceite'>O projeto <marker>foi aceito</marker>.</example>
       <example correction='foi aceite'>A China <marker>foi aceita</marker> na Organização Mundial do Comércio.</example>
       <example correction='serem aceites'>... que ser de um certo tamanho e qualidade antes de <marker>serem aceitas</marker> pelos praticantes da MTC e consumidores.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token regexp='yes' inflected='yes'>ser|estar|ficar|permanecer|parecer
+            <exception>seres</exception></token>
+          <token min="0" max="3" postag_regexp='yes' postag='R.'/>
+          <token regexp='yes'>(?:benzid|volvid)[ao]s?</token>
+      </pattern>
+      <message>Com o verbo '<match no='1' postag='VMN0000'/>' deve utilizar-se o particípio passado irregular.</message>
+        <suggestion>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)([vz]id)([ao]s?)' regexp_replace='$1t$3' suppress_misspelled='yes'/></suggestion>
+    <!--suggestion>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)ad([ao]s?)' regexp_replace='$1ue' suppress_misspelled='yes'/></suggestion-->
+      <example correction='foi bento'>O filho <marker>foi benzido</marker> pelo bispo.</example>
+      <example correction='é volto'>O filho <marker>é volvido</marker> a casa.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token regexp='yes' inflected='yes'>ser|estar|ficar|permanecer|parecer
+            <exception>seres</exception></token>
+          <token min="0" max="3" postag_regexp='yes' postag='R.'/>
+          <token regexp='yes'>(?:re)?elegid[ao]s?</token>
+      </pattern>
+      <message>Com o verbo '<match no='1' postag='VMN0000'/>' deve utilizar-se o particípio passado irregular.</message>
+        <suggestion>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)gid([ao]s?)' regexp_replace='$1it$2' suppress_misspelled='yes'/></suggestion>
+    <!--suggestion>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)ad([ao]s?)' regexp_replace='$1ue' suppress_misspelled='yes'/></suggestion-->
+      <example correction='foi eleito'>O presidente <marker>foi elegido</marker> o mês passado.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token regexp='yes' inflected='yes'>ser|estar|ficar|permanecer|parecer
+            <exception>seres</exception></token>
+          <token min="0" max="3" postag_regexp='yes' postag='R.'/>
+          <token regexp='yes'>(?:[ei]|sub)mergid[ao]s?</token>
+      </pattern>
+      <message>Com o verbo '<match no='1' postag='VMN0000'/>' deve utilizar-se o particípio passado irregular.</message>
+        <suggestion>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)gid([ao]s?)' regexp_replace='$1s$2' suppress_misspelled='yes'/></suggestion>
+    <!--suggestion>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)ad([ao]s?)' regexp_replace='$1ue' suppress_misspelled='yes'/></suggestion-->
+      <example correction='foi imerso'>O cálice <marker>foi imergido</marker> na pia.</example>
+      <example correction='foi submerso'>O cálice <marker>foi submergido</marker> na pia.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token regexp='yes' inflected='yes'>ser|estar|ficar|permanecer|parecer
+            <exception>seres</exception></token>
+          <token min="0" max="3" postag_regexp='yes' postag='R.'/>
+          <token regexp='yes'>omitid[ao]s?</token>
+      </pattern>
+      <message>Com o verbo '<match no='1' postag='VMN0000'/>' deve utilizar-se o particípio passado irregular.</message>
+        <suggestion>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)itid([ao]s?)' regexp_replace='$1iss$2' suppress_misspelled='yes'/></suggestion>
+    <!--suggestion>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)ad([ao]s?)' regexp_replace='$1ue' suppress_misspelled='yes'/></suggestion-->
+      <example correction='era omisso'>O relatório <marker>era omitido</marker> em relação às inconformidades.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token regexp='yes' inflected='yes'>ser|estar|ficar|permanecer|parecer
+            <exception>seres</exception></token>
+          <token min="0" max="3" postag_regexp='yes' postag='R.'/>
+          <token regexp='yes'>(?:(?:ex|o)primid|imprimid)[ao]s?</token>
+      </pattern>
+      <message>Com o verbo '<match no='1' postag='VMN0000'/>' deve utilizar-se o particípio passado irregular.</message>
+        <suggestion>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)imid([ao]s?)' regexp_replace='$1ess$2' suppress_misspelled='yes'/></suggestion>
+    <!--suggestion>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)ad([ao]s?)' regexp_replace='$1ue' suppress_misspelled='yes'/></suggestion-->
+      <example correction='foi opresso'>O povo <marker>foi oprimido</marker> o mês passado.</example>
+      <example correction='foi bem expressa'>A ideia <marker>foi bem exprimida</marker>.</example>
+      <example correction='fica bem impresso'>Confirma se <marker>fica bem imprimido</marker>.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token regexp='yes' inflected='yes'>ser|estar|ficar|permanecer|parecer
+            <exception>seres</exception></token>
+          <token min="0" max="3" postag_regexp='yes' postag='R.'/>
+          <token regexp='yes'>prendid[ao]s?</token>
+      </pattern>
+      <message>Com o verbo '<match no='1' postag='VMN0000'/>' deve utilizar-se o particípio passado irregular.</message>
+        <suggestion>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)(endid)([ao]s?)' regexp_replace='$1es$3' suppress_misspelled='yes'/></suggestion>
+    <!--suggestion>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)ad([ao]s?)' regexp_replace='$1ue' suppress_misspelled='yes'/></suggestion-->
+      <example correction='será preso'>O bispo <marker>será prendido</marker> já pela madrugada.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token regexp='yes' inflected='yes'>ser|estar|ficar|permanecer|parecer
+            <exception>seres</exception></token>
+          <token min="0" max="3" postag_regexp='yes' postag='R.'/>
+          <token regexp='yes'>surpreendid[ao]s?</token>
+      </pattern>
+      <message>Com o verbo '<match no='1' postag='VMN0000'/>' deve utilizar-se o particípio passado irregular.</message>
+        <suggestion>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)(eendid)([ao]s?)' regexp_replace='$1es$3' suppress_misspelled='yes'/></suggestion>
+    <!--suggestion>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)ad([ao]s?)' regexp_replace='$1ue' suppress_misspelled='yes'/></suggestion-->
+      <example correction='Parece surpreso'><marker>Parece surpreendido</marker>.</example>
     </rule>
   </rulegroup>
 
@@ -5022,8 +5110,8 @@ title="Easy editing stylesheet" ?>
       <example>Bom dia, Jessica!</example>
       <example type='triggers_error'>Oi, Carolina. Tudo bem?</example><!-- FIXME java implementation bug. does not trigger error on the standalone tool -->
       <example>Esta técnica falha 5 em cada 1000 ocorrências.</example>
-      <example type='triggers_error'>Mudanças no comportamento, personalidade ou modo de pensar.</example><!-- XXX correct since "modo the pensar", i.e., "way of thinking" is a noun phrase -->
-      <example type='triggers_error'>Sistema de Crenças: São os argumentos e os pesos.</example><!-- XXX correct since with these capitalization it implies 'São' as 'Saint'. -->
+      <example type='triggers_error'>Mudanças no comportamento, personalidade ou modo de pensar.</example><!-- correct since "modo the pensar", i.e., "way of thinking" is a noun phrase -->
+      <example type='triggers_error'>Sistema de Crenças: São os argumentos e os pesos.</example><!-- correct. with this capitalization it implies 'São' as 'Saint'. -->
       <example>Sistema de Crenças são os argumentos e os pesos.</example><!-- correct punctuation and capitalization -->
       <example type='triggers_error'>Gestão Regional de Conservação.</example><!-- correct. it is a sentence since it has punctuation and it has no verbs here. -->
       <example>Gestão Regional de Conservação</example><!-- correct. no verbs here but this looks like a title, it has no punctuation -->
