@@ -75,7 +75,7 @@
      - LongSentenceRule, LongParagraphRule, SentenceWhitespaceRule, WhiteSpaceAtBeginOfParagraph,
      EmptyLineRule, ParagraphRepeatBeginningRule, PunctuationMarkAtParagraphEnd.
   * rules added:
-     - DutchReadabilityRule.
+     - FrenchReadabilityRule;
      - typography rules for mathematical symbols and arrows.
   * sentences and paragraphs now end with a single line break.
   * improved tokenization.
