@@ -230,6 +230,8 @@
   * The unmaintained code from package `org.languagetool.dev.wikipedia.atom`
     has been removed. It hadn't been maintained for years and didn't work properly
     anymore.
+  * `spelling_global.txt` has been added. Words or phrases added here will
+    be accepted for all languages.
   * `prohibit_custom.txt` and `spelling_custom.txt` can be used to make your
     own additions to `spelling.txt` and `prohibit.txt` without having to edit those
     files after a LanguageTool update (you will still need to manually copy those
@@ -244,16 +246,16 @@
   * 'disable rule' option added to context menu, thanks to Fred Kruse.
   * TextLevelRules now have the option to check chapter blocks, thanks to Fred Kruse.
 
-#### Java API
-  * `AbstractSimpleReplaceRule2` has been fixed so that it's now case-insensitive.
-    If you implement a sub class of it and you want the old behavior, please implement
-    `isCaseSensitive()` and have it return `true`. (Issue #2051)
-
 #### HTTP API / LT server
   * The dynamic languages feature (`lang-xx=...` and `lang-xx-dictPath=...`) now
     also supports hunspell dictionaries. Just let `lang-xx-dictPath` point to the
     absolute path of the `.dic` file. Note that hunspell is quite slow when it
     comes to offering suggestions for misspelled words.
+
+#### Java API
+  * `AbstractSimpleReplaceRule2` has been fixed so that it's now case-insensitive.
+    If you implement a sub class of it and you want the old behavior, please implement
+    `isCaseSensitive()` and have it return `true`. (Issue #2051)
 
 #### Internal
   * The internal hunspell has been updated from 1.3 to 1.7, now using
