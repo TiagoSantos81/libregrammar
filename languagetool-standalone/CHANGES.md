@@ -7,9 +7,9 @@
 #### English
   * rules added:
      - EnglishSimpleGrammarRule for simple replacement rule creation - 877 error patterns added from Wikipedia;
-     - verb-noun confusion rule - 1465 error patterns mostly from After the Deadline (AtD);
+     - verb-noun confusion rule - 1526 error patterns mostly from After the Deadline (AtD);
      - eggcorn detection - 227 error patterns from Grammark and AtD;
-     - specific case rule - 751 entries from Wikipedia;
+     - specific case rule - 751 extra entries from Wikipedia;
      - nonstandard English replacement rule - 22 error patterns;
      - cliché detection - 691 error patterns from AtD;
      - wordiness database enhancements - 653 error patterns from Grammark;
@@ -150,10 +150,12 @@
   * sentences and paragraphs now end with a single line break.
 
 #### General
+  * spelling_global.txt active with 4051 entries on the database.
+     - NOTE: developers using the dynamic languages feature may face bugs in the languages they introduce.
   * dependencies security updates.
   * restored some languagetool-dev and languagetool-standalone scripts.
   * [WIP] removed Google dependencies from English and Catalan language modules, as well as from several Java rules.
-  * [WIP] removed or comment out Freemium server bindings.
+  * removed or comment out Freemium server bindings.
   * standalone default underline colors changed:
     - grey: style repetitions and redundancies;
     - cyan: typographical and whitespaces related suggestions.
