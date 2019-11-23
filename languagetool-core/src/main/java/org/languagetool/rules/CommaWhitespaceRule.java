@@ -34,7 +34,21 @@ import static org.languagetool.tools.StringTools.isEmpty;
  * 
  * @author Daniel Naber
  */
+
 public class CommaWhitespaceRule extends Rule {
+
+  protected boolean checkQuotes = true;
+
+  /** @since 4.8 */
+  public CommaWhitespaceRule(ResourceBundle messages, IncorrectExample incorrectExample, CorrectExample correctExample, boolean checkQuotes) {
+    super(messages);
+    super.setCategory(Categories.TYPOGRAPHY.getCategory(messages));
+    setLocQualityIssueType(ITSIssueType.Whitespace);
+    if (incorrectExample != null && correctExample != null) {
+      addExamplePair(incorrectExample, correctExample);
+    }
+    this.checkQuotes = checkQuotes;
+  }
 
   /** @since 3.3 */
   public CommaWhitespaceRule(ResourceBundle messages, IncorrectExample incorrectExample, CorrectExample correctExample) {
@@ -50,7 +64,7 @@ public class CommaWhitespaceRule extends Rule {
    * @deprecated use {@link #CommaWhitespaceRule(ResourceBundle, IncorrectExample, CorrectExample)} instead (deprecated since 3.3)
    */
   public CommaWhitespaceRule(ResourceBundle messages) {
-    this(messages, null, null);
+    this(messages, null, null, true);
   }
 
   @Override
@@ -85,7 +99,7 @@ public class CommaWhitespaceRule extends Rule {
           msg = messages.getString("no_space_after");
           suggestionText = prevToken;
         }
-      } else if (isWhitespace && isQuote(prevToken) && prevPrevToken.equals(" ")) {
+      } else if (isWhitespace && checkQuotes && isQuote(prevToken) && prevPrevToken.equals(" ")) {
       	  msg = messages.getString("no_space_around_quotes");
           suggestionText = "";
       } else if (!isWhitespace && prevToken.equals(getCommaCharacter())

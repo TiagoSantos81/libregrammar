@@ -108,7 +108,9 @@ public class French extends Language implements AutoCloseable {
   @Override
   public List<Rule> getRelevantRules(ResourceBundle messages, UserConfig userConfig, Language motherTongue, List<Language> altLanguages) throws IOException {
     return Arrays.asList(
-            new CommaWhitespaceRule(messages),
+            new CommaWhitespaceRule(messages,
+                Example.wrong("Nous avons mangé du café<marker> ,</marker> du fromage, des craquelins et des raisins."),
+                Example.fixed("Nous avons mangé du café<marker>,</marker> du fromage, des craquelins et des raisins."), false),
             new DoublePunctuationRule(messages),
             new GenericUnpairedBracketsRule(messages,
                     Arrays.asList("[", "(", "{" /*"«", "‘"*/),
