@@ -1,6 +1,6 @@
 /* LanguageTool, a natural language style checker
  * Copyright (C) 2005 Daniel Naber (http://www.danielnaber.de)
- * 
+ *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
@@ -31,7 +31,7 @@ import static org.languagetool.tools.StringTools.isEmpty;
 /**
  * A rule that matches periods, commas and closing parenthesis preceded by whitespace and
  * opening parenthesis followed by whitespace.
- * 
+ *
  * @author Daniel Naber
  */
 
@@ -76,7 +76,7 @@ public class CommaWhitespaceRule extends Rule {
   public final String getDescription() {
     return messages.getString("desc_comma_whitespace");
   }
-  
+
   public String getCommaCharacter() {
     return ",";
   }
@@ -151,7 +151,7 @@ public class CommaWhitespaceRule extends Rule {
   }
 
   private static boolean isWhitespaceToken(AnalyzedTokenReadings token) {
-	  return (   token.isWhitespace()
+	  return (token.isWhitespace()
 			  || StringTools.isNonBreakingWhitespace(token.getToken())
 			  || token.isFieldCode()) && !token.equals("\u200B");
   }
