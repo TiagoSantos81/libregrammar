@@ -49,7 +49,7 @@ USA
      			<marker><token>هذا</token></marker>
      	   		<token>اليمين</token>  
      		</pattern>
-     		<message> أتقصد باليمين القسم<suggestion>هذه  </suggestion>?</message> 
+     		<message> أتقصد باليمين القسم <suggestion>هذه</suggestion>?</message> 
      		<example correction="هذه"><marker>هذا</marker></example>	     
      	</rule>
      	<rule>
@@ -79,7 +79,7 @@ USA
     			<token>يمينا</token>
     			<marker><token>صادقا</token></marker>
     		</pattern>
-    		<message> أتقصد<suggestion>صادقة </suggestion>؟</message>
+    		<message> أتقصد <suggestion>صادقة</suggestion>؟</message>
      		<example correction="صادقة"> حلفت يمينا <marker>صادقا</marker></example>    		
     	</rule>
     	<rule>
@@ -105,14 +105,14 @@ USA
 		<token>غاية</token>
 		<marker><token>الوضاحة</token></marker>
 		</pattern>
-		<message> أتقصد<suggestion>الوضوح </suggestion>؟</message>
+		<message> أتقصد <suggestion>الوضوح</suggestion>؟</message>
 		<example correction="الوضوح">هذا الأمر في غاية <marker>الوضاحة</marker></example>
 	</rule>
 	<rule>
 		<pattern>
 		<marker><token>نجاعة</token></marker>
 		</pattern>
-		<message> أتقصد<suggestion>نجوع </suggestion>؟</message>
+		<message> أتقصد <suggestion>نجوع</suggestion>؟</message>
 		<example correction="نجوع">لم يثبت لهذا الدواء<marker>نجاعة</marker></example>		
 	</rule>
 	<rule id="INSHALLA" name="إن شاء الله">	 
@@ -1039,10 +1039,10 @@ USA
     		<pattern>
     			<token>قميص</token>
     			<marker>
-    				<token regexp="yes"> قديمة|جديدة</token>
+    				<token regexp="yes">قديمة|جديدة</token>
     			</marker>
        		</pattern>
-       		<message> أتقصد<suggestion>جديد </suggestion>؟</message>
+       		<message> أتقصد <suggestion>جديد</suggestion>؟</message>
        		<example correction="جديد">هذا قميص<marker>جديدة</marker></example>
        		<example correction="قديم">هذا قميص<marker>قديمة</marker></example>    	
    		</rule> 
@@ -1060,7 +1060,7 @@ USA
    				<token>ميناء</token>
    				<marker><token>أمينة</token></marker>
    			</pattern>
-   			<message> أتقصد<suggestion>أمين </suggestion>؟</message>
+   			<message> أتقصد <suggestion>أمين</suggestion>؟</message>
    			<example correction="أمين"><marker>أمينة</marker>أمين</example>
    		</rule>
 
@@ -1081,7 +1081,7 @@ USA
           		</marker>
           		<token regexp="yes">رفات|ذقن</token>
       		</pattern>
-      		<message> أتقصد<suggestion>هذا </suggestion>؟</message>
+      		<message> أتقصد <suggestion>هذا</suggestion>؟</message>
       		<example correction="هذا"> <marker>هذه</marker></example> 		   	
 	</rule>	
 	</category>
@@ -1232,7 +1232,7 @@ USA
 			<pattern>
 				<marker><token>الموانئ</token></marker>
 			</pattern>
-			<message> صيغة الجمع غير صحيحة: لا تحتاج إلى الياء المهموزة..أتقصد<suggestion>المواني </suggestion>؟</message>
+			<message> صيغة الجمع غير صحيحة: لا تحتاج إلى الياء المهموزة..أتقصد <suggestion>المواني</suggestion>؟</message>
 			<example correction="المواني"><marker>الموانئ</marker></example>
 		</rule>
 		<rule>
