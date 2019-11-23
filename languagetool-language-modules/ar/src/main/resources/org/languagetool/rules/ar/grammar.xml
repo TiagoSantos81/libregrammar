@@ -92,8 +92,6 @@ USA
   </rulegroup>
  </category>
 
-
-
     <!-- ====================================================================== -->
     <!-- Common errors-->
     <!-- ====================================================================== -->
@@ -166,7 +164,6 @@ USA
       <message>قل أمر<suggestion>مهم</suggestion><suggestion>المهم</suggestion>لأن "هامٌّ" هو اسم الفاعل من الفعل "هَمَّ" فنقول هَمَّهُ الأمرُ أي أَقْلَقَهُ وأَحْزَنَهُ </message>
       <example correction="مهم">‎هذا أمر<marker>هام</marker></example>
     </rule>
-
     <rule>
       <pattern>
         <marker><token>الرئيسية</token></marker>
@@ -211,7 +208,6 @@ USA
       <example correction="طريق">‎إن‎<marker>مشوار</marker>العلم طويل</example>
       <example correction="نزهة">‎ذهبنا في ‎<marker>مشوار</marker></example>
     </rule>
-
     <rule>
       <pattern>
         <marker><token>على</token>
@@ -227,7 +223,6 @@ USA
       <example correction="مستعد">‎أنا ‎‎<marker>على أهبة الاستعداد</marker>للقيام بهذا الأمر</example>
       <example correction="متأهب">‎أنا ‎‎<marker>على أهبة الاستعداد</marker>للقيام بهذا الأمر</example>
     </rule>
-
     <rule>
       <pattern>
         <marker><token>التأقلم</token>
@@ -239,7 +234,6 @@ USA
       </message>
       <example correction="الاندماج في">‎‎لم يستطع ‎‎<marker>التأقلم مع</marker> المحيط الجديد</example>
     </rule>
-
     <rule>
       <pattern>
         <marker><token>مؤشرات</token>
@@ -253,7 +247,6 @@ USA
       </message>
       <example correction="إشارات"> ‎هذه التصرفات هي  ‎‎<marker>مؤشرات</marker> لكذا</example>
     </rule>
-
     <rule>
       <pattern>
           <token>وأخيرا</token>
@@ -267,8 +260,6 @@ USA
       </message>
       <example correction="">‎ وأخيراً،‎‎<marker>وليس آخراً</marker> ، أختم كلامي بكذا</example>
     </rule>
-
-
     <rule>
       <pattern>
           <token skip='1'>تماثل</token>
@@ -288,7 +279,6 @@ USA
       </message>
       <example correction="مكنة">‎اشترت أمي  ‎‎<marker>ماكينة</marker>خياطة</example>
     </rule>
-
     <rule>
       <pattern>
         <marker><token regexp='yes'>المليء|مليء</token></marker>
@@ -303,8 +293,6 @@ USA
       </message>
       <example correction="مملوء">هذا الإناء  ‎‎<marker>مليء</marker>بالشراب</example>
     </rule>
-
-
     <rule>
       <pattern>
           <token regexp='yes'>استفتاء|الاستفتاء</token>
@@ -317,8 +305,6 @@ USA
       </message>
       <example correction="في">‎بدأ الاستفتاء  ‎‎<marker>على</marker>قانون الانتخاب الجديد</example>
     </rule>
-
-
     <rule>
       <pattern>
           <token>جهاز</token>
@@ -329,7 +315,6 @@ USA
       </message>
       <example correction="تنصّت">‎زرعت المخابرات جهاز  ‎‎<marker>تصنت</marker>على العدو.	</example>
     </rule>
-
     <rule>
       <pattern>
         <marker><token>وبالتالي</token></marker>
@@ -349,7 +334,6 @@ USA
       <example correction="لذا">‎أنا أكلت، ‎‎<marker>وبالتالي</marker>أنا شبعت.
       </example>
     </rule>
-
     <rule>
       <pattern>
         <marker><token>بشكل</token></marker>
@@ -376,8 +360,6 @@ USA
       <example correction="على الوجه المناسب">‎ستحلّ المشكلة‎‎<marker>بالشكل المناسب</marker>في وقتها.</example>
       <example correction="بفاعلية">‎تعالج الأمور‎‎<marker>بشكل فعّال</marker>في المخابر.</example>
     </rule>
-
-
     <rule>
       <pattern>
         <marker><token>من</token>
@@ -409,8 +391,6 @@ USA
 		الإدعاء صراحة.
       </example>
     </rule>
-
-
     <rule>
       <pattern>
         <marker><token>على</token>
@@ -425,8 +405,6 @@ USA
       <example correction="مع أنّ"> ‎‎<marker>على الرغم من</marker>أنّ المسألة صعبة</example>
       <example correction="مع أنّ"> ‎‎<marker>على الرغم من كون</marker> البلوتونيوم مادة سامة</example>
     </rule>
-
-
     <rule>
       <pattern>
         <marker><token>يتوجب</token></marker>
@@ -441,7 +419,6 @@ USA
       <url>http://www.reefnet.gov.sy/Arabic_Proficiency/18.htm</url>
       <example correction="يجب"> ‎‎<marker>يتوجب</marker>علينا أن نفعل كذا</example>
     </rule>
-
     <rule>
       <pattern>
         <marker><token>الآنف</token>
@@ -456,7 +433,6 @@ USA
       <url>http://www.reefnet.gov.sy/Arabic_Proficiency/17.htm</url>
       <example correction="المذكور آنفا"> الخيار‎‎<marker>الآنف الذكر</marker>.</example>
     </rule>
-
     <rule>
       <pattern>
         <marker><token>غسيل</token></marker>
@@ -470,7 +446,6 @@ USA
       <url>http://www.reefnet.gov.sy/Arabic_Proficiency/17.htm</url>
       <example correction="تبييض"> محاربة‎‎<marker>غسيل</marker>الأموال.</example>
     </rule>
-
     <rule>
       <pattern>
         <marker><token regexp='yes' skip='1'>فتح|فتحت|فتحوا</token></marker>
@@ -479,17 +454,13 @@ USA
       </pattern>
       <message>
 		ويفضل أن يقال:
-
         <suggestion>أطلق</suggestion>
         <suggestion>أطلقت</suggestion>
-
 		لأنها ترجمة مبتذلة لـ (opened fire).
       </message>
       <url>http://www.reefnet.gov.sy/Arabic_Proficiency/17.htm</url>
       <example correction="أطلقت"> ‎‎<marker>فتحت</marker>الشرطة الرصاص على المتظاهرين.</example>
     </rule>
-
-
     <rule>
       <pattern>
         <marker><token inflected='yes'>إمكانيات</token></marker>
@@ -501,7 +472,6 @@ USA
       </message>
       <example correction="إمكانات"> للبلاد ‎‎<marker>إمكانيات</marker> هائلة</example>
     </rule>
-
     <rule>
       <pattern>
         <marker><token regexp='yes'>يتواجد|تتواجد</token></marker>
@@ -514,9 +484,6 @@ USA
       </message>
       <example correction="توجد">  ‎‎<marker>تتواجد</marker> المادة في الكون</example>
     </rule>
-
-
-
     <rule>
       <pattern>
         <marker><token>مسبقا</token></marker>
@@ -529,8 +496,6 @@ USA
       </message>
       <example correction="سلفًا">  فعل ذلك‎‎<marker>مُسبقًا</marker></example>
     </rule>
-
-
     <rule>
       <pattern>
         <marker><token>متعارف</token>
@@ -543,8 +508,6 @@ USA
       <url>http://www.reefnet.gov.sy/Arabic_Proficiency/19.htm</url>
       <example correction="متعارفة">  عادات‎‎<marker>متعارف عليها</marker>في البلاد</example>
     </rule>
-
-
     <rule>
       <pattern>
         <marker><token>بمثابة</token></marker>
@@ -560,10 +523,6 @@ USA
       <example correction='تقوم مقام'>هذه الأداة <marker>بمثابة</marker> حاسوب.</example>
       <example correction=''>سنعد عدم إجابتكم <marker>بمثابة</marker> موافقةٍ.</example>
     </rule>
-
-
-
-
     <rule>
       <pattern>
         <marker><token inflected='yes'>استبيان</token></marker>
@@ -576,7 +535,6 @@ USA
       </message>
       <example correction='الاستبانة'>كانت نتيجة  <marker>الاستبيان</marker> أنّ.…</example>
     </rule>
-
     <rule>
       <pattern>
         <marker><token inflected='yes'>أخصائي</token></marker>
@@ -587,7 +545,6 @@ USA
       </message>
       <example correction='الاختصاصي'>كان الطبيب  <marker>الأخصائي</marker> ماهرا</example>
     </rule>
-
     <rule>
       <pattern>
         <marker><token inflected='yes'>طقوس</token></marker>
@@ -599,7 +556,6 @@ USA
       </message>
       <example correction='الشعائر'>  <marker>الطقوس</marker> الدينية</example>
     </rule>
-
     <rule>
       <pattern>
           <token>كما</token>
@@ -614,9 +570,6 @@ USA
 		المطالعة ممتعة كما
         <marker>وأنها</marker> تثري ثقافة القارئ</example>
     </rule>
-
-
-
     <rule>
       <pattern>
         <marker><token>بحسب</token></marker>
@@ -640,7 +593,6 @@ USA
 		تصنف هذه الأنواع
         <marker>بحسب</marker> مصادر الطاقة </example>
     </rule>
-
     <rule>
       <pattern>
         <marker><token>عامود</token></marker>
@@ -653,8 +605,6 @@ USA
 		يدل تغير الماء
         <marker>عامود</marker> الماء </example>
     </rule>
-
-
     <rule>
       <pattern>
         <marker><token inflected='yes'>فشل</token>
@@ -672,8 +622,6 @@ USA
       <example correction='أخفق'>
         <marker>فشل</marker> في دراسته </example>
     </rule>
-
-
     <rule>
       <pattern>
         <marker><token inflected='yes'>اعتبر</token></marker>
@@ -686,8 +634,6 @@ USA
       <example correction='ُعددت'>
         <marker>اعتبرت</marker> زيدًا صديقي </example>
     </rule>
-
-
     <rule>
       <pattern>
         <marker><token inflected='yes'>برهة</token></marker>
@@ -701,7 +647,6 @@ USA
 		غادر زيدٌ قبل
         <marker>بُرهة</marker></example>
     </rule>
-
     <rule>
       <pattern>
         <marker><token regexp='yes'>للصالح|لصالح|لصالحك|لصالحنا|لصالحه</token></marker>
@@ -719,7 +664,6 @@ USA
 		كان التعديل
         <marker>لصالح</marker>الشركة</example>
     </rule>
-
     <rule>
       <pattern>
         <marker><token>عبارة</token>
@@ -737,8 +681,6 @@ USA
       <example correction=''> أشعة غاما هي  فوتونات. <marker>عبارة عن</marker>فوتونات</example>
       <example correction=''> هذا الجهاز. <marker>عبارة عن</marker>صندوق فيه</example>
     </rule>
-
-
     <rule>
       <pattern>
         <marker><token regexp='yes'>علاوة|وعلاوة</token>
@@ -755,7 +697,6 @@ USA
       <url>http://www.reefnet.gov.sy/Arabic_Proficiency/77.htm</url>
       <example correction='فضلا على'> أشعة غاما هي  فوتونات. <marker>علاوة على</marker>ذلك</example>
     </rule>
-
     <rule>
       <pattern>
         <marker><token inflected='yes'>آونة</token>
@@ -769,7 +710,6 @@ USA
       </message>
       <example correction='أوان'> بين. <marker>آونة</marker> وأخرى</example>
     </rule>
-
     <rule>
       <pattern>
         <marker><token inflected='yes'>بواسل</token>
@@ -783,8 +723,6 @@ USA
       </message>
       <example correction='الباسلون'> الفرسان. <marker>البواسل</marker></example>
     </rule>
-
-
     <rule>
       <pattern>
         <marker><token>لأول</token>
@@ -798,9 +736,6 @@ USA
       </message>
       <example correction='أول'> ‎يُقام في دمشق معرض المخطوطات .<marker>لأول</marker> مرة</example>
     </rule>
-
-
-
     <rule>
       <pattern>
         <marker><token inflected='yes'>مستهتر</token>
@@ -816,8 +751,6 @@ USA
       </message>
       <example correction='مستهين'> ‎فلان  .<marker>مستهين</marker> بالقانون</example>
     </rule>
-
-
     <rule>
       <pattern>
         <marker><token inflected='yes' skip='1'>سواح</token>
@@ -843,9 +776,6 @@ USA
       </message>
       <example correction='من'> ‎نتابع الأمر  .<marker>عن</marker> كثب</example>
     </rule>
-
-
-
     <rule>
       <pattern>
           <token negate='yes'>في</token>
@@ -859,8 +789,6 @@ USA
       </message>
       <example correction='في أثناء'> الزيارة  .<marker>أثناء</marker> العمل، تحرج الموظف</example>
     </rule>
-
-
     <rule>
       <pattern>
           <token inflected='yes'>نتج</token>
@@ -874,9 +802,6 @@ USA
       </message>
       <example correction=''> نتج <marker>عن</marker> هذا الدواء أعراض جانبية</example>
     </rule>
-
-
-
     <rule>
       <pattern>
         <marker><token inflected='yes'>حق</token></marker>
@@ -890,8 +815,6 @@ USA
       </message>
       <example correction=''> حصل على <marker>حق</marker> اللجوء السياسي</example>
     </rule>
-
-
     <rule>
       <pattern>
         <marker><token inflected='yes'>طاولة</token></marker>
@@ -905,7 +828,6 @@ USA
       </message>
       <example correction=''> عودة الأطراف إلى   <marker>طاولة</marker> المداولات</example>
     </rule>
-
     <rule>
       <pattern>
         <marker><token>ككل</token></marker>
@@ -966,7 +888,6 @@ USA
       </pattern>
       <message>
 		ويفضل أن يقال:
-
         <suggestion>في</suggestion>
         <suggestion>فيه</suggestion>
         <suggestion>فيها</suggestion>
