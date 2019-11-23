@@ -26,7 +26,7 @@ import org.languagetool.rules.*;
 import org.languagetool.rules.ar.ArabicCommaWhitespaceRule;
 import org.languagetool.rules.ar.ArabicContractionSpellingRule;
 import org.languagetool.rules.ar.ArabicDoublePunctuationRule;
-import org.languagetool.rules.ar.ArabicLongSentenceRule;
+// import org.languagetool.rules.ar.ArabicLongSentenceRule;
 import org.languagetool.rules.ar.ArabicWordRepeatRule;
 import org.languagetool.rules.spelling.hunspell.HunspellRule;
 import org.languagetool.synthesis.Synthesizer;
@@ -134,7 +134,10 @@ public class Arabic extends Language implements AutoCloseable {
         new HunspellRule(messages, this, userConfig, altLanguages),
         new ArabicCommaWhitespaceRule(messages),
         new ArabicDoublePunctuationRule(messages),
+        /* XXX needs fix for this version. replaced by generic rule.
         new ArabicLongSentenceRule(messages, 40),
+        */
+        new LongSentenceRule(messages, userConfig, -1, false),
         new ArabicWordRepeatRule(messages, this),
         new ArabicContractionSpellingRule(messages)
     );

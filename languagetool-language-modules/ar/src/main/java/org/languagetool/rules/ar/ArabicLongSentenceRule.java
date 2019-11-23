@@ -16,6 +16,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301
  * USA
  */
+  /* XXX is this still needed? please, review.
 package org.languagetool.rules.ar;
 
 import java.util.ResourceBundle;
@@ -28,7 +29,7 @@ public class ArabicLongSentenceRule extends LongSentenceRule {
 	private static final Pattern NON_WORD_REGEX = Pattern.compile("[،؟؛.?!:;,~’'\"„“»«‚‘›‹()\\[\\]-]");
 
 	public ArabicLongSentenceRule(ResourceBundle messages, int maxSentenceLength) {
-		super(messages, maxSentenceLength, NON_WORD_REGEX);
+		super(messages, maxSentenceLength);
 	}
 
 	@Override
@@ -37,3 +38,4 @@ public class ArabicLongSentenceRule extends LongSentenceRule {
 	}
 
 }
+	*/
