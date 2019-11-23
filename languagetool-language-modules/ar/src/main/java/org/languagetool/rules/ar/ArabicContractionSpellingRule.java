@@ -36,7 +36,7 @@ public class ArabicContractionSpellingRule extends AbstractSimpleReplaceRule {
 
 	public static final String CONTRACTION_SPELLING_RULE = "AR_CONTRACTION_SPELLING";
 
-	private static final Map<String, List<String>> wrongWords = load("/ar/contractions.txt");
+	private static final Map<String, List<String>> wrongWords = loadFromPath("/ar/contractions.txt");
 	private static final Locale AR_LOCALE = new Locale("ar");
 
 	@Override
