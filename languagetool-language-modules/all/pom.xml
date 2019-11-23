@@ -47,11 +47,17 @@
     </build>
 
     <dependencies>
+	<dependency>
+            <groupId>org.languagetool</groupId>
+            <artifactId>language-ar</artifactId>
+            <version>${languagetool.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.languagetool</groupId>
             <artifactId>language-en</artifactId>
             <version>${languagetool.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.languagetool</groupId>
             <artifactId>language-fa</artifactId>
@@ -225,13 +231,15 @@
             <artifactId>language-uk</artifactId>
             <version>${languagetool.version}</version>
         </dependency>
-	      <!--dependency>
+
+        <dependency>
             <groupId>org.languagetool</groupId>
             <artifactId>language-ar</artifactId>
             <version>${languagetool.version}</version>
-        </dependency-->
+        </dependency>
         <!-- note: de-DE-x-simple-language is not yet included because we don't want to
              show it in the GUI yet (we have no way there yet to describe what this actually is) -->
+
         <dependency>
             <!-- see http://stackoverflow.com/questions/174560/sharing-test-code-in-maven#174670 -->
             <groupId>org.languagetool</groupId>
