@@ -150,8 +150,7 @@
   * sentences and paragraphs now end with a single line break.
 
 #### General
-  * spelling_global.txt active with 4051 entries on the database.
-     - NOTE: developers using the dynamic languages feature may face bugs in the languages they introduce.
+  * spelling_global.txt has 4049 extra entries on the database.
   * dependencies security updates.
   * restored some languagetool-dev and languagetool-standalone scripts.
   * [WIP] removed Google dependencies from English and Catalan language modules, as well as from several Java rules.
