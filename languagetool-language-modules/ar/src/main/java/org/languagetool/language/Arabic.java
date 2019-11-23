@@ -24,7 +24,7 @@ import org.languagetool.rules.ar.ArabicContractionSpellingRule;
 import org.languagetool.rules.ar.ArabicDoublePunctuationRule;
 import org.languagetool.rules.ar.ArabicLongSentenceRule;
 import org.languagetool.rules.ar.ArabicWordRepeatRule;
-import org.languagetool.rules.spelling.hunspell.HunspellNoSuggestionRule;
+import org.languagetool.rules.spelling.hunspell.HunspellRule;
 import org.languagetool.tagging.Tagger;
 import org.languagetool.tagging.ar.ArabicTagger;
 import org.languagetool.tokenizers.SentenceTokenizer;
@@ -107,7 +107,7 @@ public class Arabic extends Language {
                 Arrays.asList("[", "(", "{" , "«", "﴾"), 
                 Arrays.asList("]", ")", "}" , "»", "﴿")),
         // specific to Arabic :
-        new HunspellNoSuggestionRule(messages, this),
+        new HunspellRule(messages, this),
         new ArabicCommaWhitespaceRule(messages),
         new ArabicDoublePunctuationRule(messages),
         new ArabicLongSentenceRule(messages, 40),
