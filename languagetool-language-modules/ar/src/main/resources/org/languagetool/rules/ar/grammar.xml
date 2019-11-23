@@ -33,7 +33,7 @@ USA
     <!-- ====================================================================== -->
     <category id="M_L_F" name="Masculine gender" type="grammar">
     <rulegroup id="REPLACEDETERMINERF" name="هذه) هذا)">
-    	<rule  > 
+    	<rule> 
       		<pattern>  
           		<marker>
               		 <token>هذا</token>
@@ -42,9 +42,8 @@ USA
       		</pattern>
       		<message>الإسم مؤنث..أتقصد <suggestion>هذه</suggestion>؟</message>
       		<example correction="هذه"> <marker>هذا</marker></example>
-      		
      	</rule>
-     	<rule >
+     	<rule>
      		<pattern>
      			<marker><token>هذا</token></marker>
      	   		<token>اليمين</token>  
@@ -62,7 +61,7 @@ USA
      	</rule>     	
     </rulegroup>
     <rulegroup id="ADJECTIFFEMININ" name="الصفة تتبع الموصوف">
-    	<rule >
+    	<rule>
      		<pattern>
      			<token>أدى</token>
      			<token>اليمين</token>
@@ -1101,7 +1100,7 @@ USA
 		</rule>
 		<rule>
 			<pattern>
-				<token >برهنت</token>
+				<token>برهنت</token>
 				<marker><token negate ="yes" inflected='yes'> على</token></marker>
 			</pattern>
 			<message>أتقصد<suggestion>على</suggestion></message>
@@ -1160,7 +1159,7 @@ USA
           		<token>الجنود</token>
           		<marker><token>يدافعان</token></marker>
           		<token>عن</token>
-          		<token >الوطن</token>
+          		<token>الوطن</token>
       		</pattern>
       		<message>أتقصد <suggestion>يدافعون</suggestion>؟</message>
       		<example correction="يدافعون"> <marker>يدافعان</marker></example> 		   	
