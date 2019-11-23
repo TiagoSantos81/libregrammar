@@ -17,6 +17,7 @@
  * USA
  */
 package org.languagetool.language;
+
 import org.languagetool.Language;
 import org.languagetool.LanguageMaintainedState;
 import org.languagetool.languagemodel.LanguageModel;
@@ -28,6 +29,8 @@ import org.languagetool.rules.ar.ArabicDoublePunctuationRule;
 import org.languagetool.rules.ar.ArabicLongSentenceRule;
 import org.languagetool.rules.ar.ArabicWordRepeatRule;
 import org.languagetool.rules.spelling.hunspell.HunspellRule;
+import org.languagetool.synthesis.Synthesizer;
+import org.languagetool.synthesis.ar.ArabicSynthesizer;
 import org.languagetool.tagging.Tagger;
 import org.languagetool.tagging.ar.ArabicTagger;
 import org.languagetool.tokenizers.SentenceTokenizer;
@@ -51,6 +54,7 @@ public class Arabic extends Language implements AutoCloseable {
   private SentenceTokenizer sentenceTokenizer;
   private WordTokenizer wordTokenizer;
   private Tagger tagger;
+  private Synthesizer synthesizer;
   private LanguageModel languageModel;
 
   @Override
@@ -71,6 +75,14 @@ public class Arabic extends Language implements AutoCloseable {
   @Override
   public Language getDefaultLanguageVariant() {
     return DEFAULT_ARABIC;
+  }
+
+  @Override
+  public Synthesizer getSynthesizer() {
+    if (synthesizer == null) {
+      synthesizer = new ArabicSynthesizer(this);
+    }
+    return synthesizer;
   }
 
   @Override
