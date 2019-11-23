@@ -18,6 +18,9 @@
  */
 package org.languagetool.language;
 import org.languagetool.Language;
+import org.languagetool.LanguageMaintainedState;
+import org.languagetool.languagemodel.LanguageModel;
+import org.languagetool.UserConfig;
 import org.languagetool.rules.*;
 import org.languagetool.rules.ar.ArabicCommaWhitespaceRule;
 import org.languagetool.rules.ar.ArabicContractionSpellingRule;
@@ -32,6 +35,7 @@ import org.languagetool.tokenizers.WordTokenizer;
 import org.languagetool.tokenizers.ArabicSentenceTokenizer;
 import org.languagetool.tokenizers.ArabicWordTokenizer;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
@@ -40,11 +44,14 @@ import java.util.ResourceBundle;
 /**
  * Support for Arabic.
  */
-public class Arabic extends Language {
+public class Arabic extends Language implements AutoCloseable {
 
+  private static final Language DEFAULT_ARABIC = new Arabic();
+  
   private SentenceTokenizer sentenceTokenizer;
   private WordTokenizer wordTokenizer;
   private Tagger tagger;
+  private LanguageModel languageModel;
 
   @Override
   public String getName() {
@@ -60,7 +67,12 @@ public class Arabic extends Language {
   public String[] getCountries() {
     return new String[]{"", "DZ", "SA", "TN", "EG"};
   }
-  
+
+  @Override
+  public Language getDefaultLanguageVariant() {
+    return DEFAULT_ARABIC;
+  }
+
   @Override
   public SentenceTokenizer getSentenceTokenizer() {
     if (sentenceTokenizer == null) {
@@ -99,7 +111,7 @@ public class Arabic extends Language {
   }
 
   @Override
-  public List<Rule> getRelevantRules(ResourceBundle messages) throws IOException {
+  public List<Rule> getRelevantRules(ResourceBundle messages, UserConfig userConfig, Language motherTongue, List<Language> altLanguages) throws IOException {
     return Arrays.asList(
         new MultipleWhitespaceRule(messages, this),
         new SentenceWhitespaceRule(messages),
@@ -107,7 +119,7 @@ public class Arabic extends Language {
                 Arrays.asList("[", "(", "{" , "«", "﴾"), 
                 Arrays.asList("]", ")", "}" , "»", "﴿")),
         // specific to Arabic :
-        new HunspellRule(messages, this),
+        new HunspellRule(messages, this, userConfig, altLanguages),
         new ArabicCommaWhitespaceRule(messages),
         new ArabicDoublePunctuationRule(messages),
         new ArabicLongSentenceRule(messages, 40),
@@ -116,5 +128,21 @@ public class Arabic extends Language {
     );
   }
 
+  @Override
+  public LanguageMaintainedState getMaintainedState() {
+    return LanguageMaintainedState.ActivelyMaintained;
+  }
 
+  @Override
+  public synchronized LanguageModel getLanguageModel(File indexDir) throws IOException {
+    languageModel = initLanguageModel(indexDir, languageModel);
+    return languageModel;
+  }
+
+  @Override
+  public void close() throws Exception {
+    if (languageModel != null) {
+      languageModel.close();
+    }
+  } 
 }
