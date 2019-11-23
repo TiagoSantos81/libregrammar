@@ -6,6 +6,8 @@
 <rules lang="en" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:noNamespaceSchemaLocation="../../../../../../../../../languagetool-core/src/main/resources/org/languagetool/resource/disambiguation.xsd">
 
+ <?ignore XXX This needs to be localized
+ 
     <unification feature="number">
         <equivalence type="sg">
             <token postag="NNP?(:UN?)?|VB[ZD]|SENT_END" postag_regexp="yes"/>
@@ -4138,4 +4140,5 @@
       </pattern>
       <disambig action="immunize"/>
     </rule>
+    ?>
 </rules>
