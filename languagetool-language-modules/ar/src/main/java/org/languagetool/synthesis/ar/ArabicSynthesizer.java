@@ -29,6 +29,7 @@ import morfologik.stemming.WordData;
 
 import org.languagetool.AnalyzedToken;
 import org.languagetool.JLanguageTool;
+import org.languagetool.Language;
 import org.languagetool.Languages;
 //import org.languagetool.rules.ar.GenderRule;
 import org.languagetool.synthesis.BaseSynthesizer;
@@ -51,8 +52,8 @@ public class ArabicSynthesizer extends BaseSynthesizer {
   private static final String RESOURCE_FILENAME = "/ar/arabic_synth.dict";
   private static final String TAGS_FILE_NAME = "/ar/arabic_tags.txt";
 
-  public ArabicSynthesizer() {
-    super(RESOURCE_FILENAME, TAGS_FILE_NAME);
+  public ArabicSynthesizer(Language lang) {
+    super(RESOURCE_FILENAME, TAGS_FILE_NAME, lang);
   }
 
   /**
