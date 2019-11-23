@@ -6,12 +6,7 @@
 Arabic Grammar and Typo Rules for LanguageTool
 See tagset.txt for the meaning of the POS tags
 Copyright (C) 2017 Taha Zerrouki (http://www.tahadz.com),
-<<<<<<< HEAD
-  Kali Imane & TCHOKETCH Karima and the LanguageTool contributors
-=======
    Imane Kali &  Karima TCHOKETCH & Sohaib Afifi and the LanguageTool contributors
->>>>>>> sohaib-master
-
 
 This library is free software; you can redistribute it and/or
 modify it under the terms of the GNU Lesser General Public
@@ -578,13 +573,8 @@ USA
 		ويفضل أن يقال: 
 		<suggestion>استبانة</suggestion>
 		<suggestion>الاستبانة</suggestion>
-<<<<<<< HEAD
-		</message>
-		لأن مصدر استبان استبانة، مثل استقام استقامة.
-=======
 		لأن مصدر استبان استبانة، مثل استقام استقامة.
 		</message>
->>>>>>> sohaib-master
 		<example correction='الاستبانة'>كانت نتيجة  <marker>الاستبيان</marker> أنّ....</example>
 	</rule>
 
@@ -606,13 +596,8 @@ USA
 		<message>
 		ويفضل أن يقال: 
 		<suggestion>شعائر</suggestion>
-<<<<<<< HEAD
-		</message>
-		فلا وجود لطقوس في اللغة العربية.
-=======
 		فلا وجود لطقوس في اللغة العربية.
 		</message>
->>>>>>> sohaib-master
 		<example correction='الشعائر'>  <marker>الطقوس</marker> الدينية</example>
 	</rule>
 
@@ -623,15 +608,9 @@ USA
 		</pattern>
 		<message>
 		ويفضل أن يقال: 
-<<<<<<< HEAD
-		<suggestion>أنها</suggestion>
-		</message>
-		لأن "كما" في هذا السياق، تفيد معنى العطف، والواو حرف عطف. وعطفان لا يجتمعان.
-=======
 		<suggestion>أنها</suggestion>		
 		لأن "كما" في هذا السياق، تفيد معنى العطف، والواو حرف عطف. وعطفان لا يجتمعان.
 		</message>
->>>>>>> sohaib-master
 		<example correction='أنها'>  
 		المطالعة ممتعة كما  
 		<marker>وأنها</marker> تثري ثقافة القارئ</example>
@@ -655,15 +634,9 @@ USA
 		<suggestion>استناداً إلى</suggestion>
 		<suggestion>عملاً بـ</suggestion>
 		<suggestion>انطلاقاً من</suggestion>
-<<<<<<< HEAD
-		</message>
-		(ترجمة غير صحيحة لـ According to)
-		حَسَبُ الشيءِ: قَدْرُه وعددُه، فيقال على الصواب:حَسَبَ ما ذُكر. وليكن عملك بحَسَبِ ذلك: أي على وفاقه وعدده.
-=======
 		(ترجمة غير صحيحة لـ According to)
 		حَسَبُ الشيءِ: قَدْرُه وعددُه، فيقال على الصواب:حَسَبَ ما ذُكر. وليكن عملك بحَسَبِ ذلك: أي على وفاقه وعدده.
 		</message>
->>>>>>> sohaib-master
 		<example correction='حَسَبَ'>  
 		تصنف هذه الأنواع   
 		<marker>بحسب</marker> مصادر الطاقة </example>
@@ -677,11 +650,7 @@ USA
 		ويفضل أن يقال: 
 		<suggestion>عمود</suggestion>
 		</message>
-<<<<<<< HEAD
-pos		<example correction='عمود'>  
-=======
-		<example correction='عمود'>  
->>>>>>> sohaib-master
+		<example correction='عمود'>
 		يدل تغير الماء
 		<marker>عامود</marker> الماء </example>
 	</rule>
@@ -790,12 +759,7 @@ pos		<example correction='عمود'>
 
 	<rule>	 
 		<pattern>
-<<<<<<< HEAD
-		<marker><token infl
-ected='yes'>آونة</token>
-=======
 		<marker><token inflected='yes'>آونة</token>
->>>>>>> sohaib-master
 		</marker>
 		</pattern>
 		<message>
@@ -1056,16 +1020,6 @@ ected='yes'>آونة</token>
 		<message>
 		ويفضل أن يقال: حاز
 		<suggestion></suggestion>
-<<<<<<< HEAD
-		</message>
-		لأن الفعل "حاز" يتعدى بنفسه
-		<example correction=''>حاز فلان <marker>على</marker> الشهادات والأموال.</example>
-	</rule>
-</rulegroup>
-<rulegroup id="vt2vt" name="إضافة حرف التعدي">
-
-</rulegroup>
-=======
 		لأن الفعل "حاز" يتعدى بنفسه</message>
 		<example correction=''>حاز فلان <marker>على</marker> الشهادات والأموال.</example>
 	</rule>
@@ -1075,7 +1029,6 @@ ected='yes'>آونة</token>
 
 </rulegroup>
 -->
->>>>>>> sohaib-master
 </category>
 <!-- ====================================================================== -->
 <!-- Feminin Gender -->
