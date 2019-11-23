@@ -32,7 +32,7 @@ USA
     <!-- Gender error-->
     <!-- ====================================================================== -->
     <category id="M_L_F" name="Masculine gender" type="grammar">
-    <rulegroup id="ReplaceDeterminerF" name="هذه) هذا)">
+    <rulegroup id="REPLACEDETERMINERF" name="هذه) هذا)">
     	<rule  > 
       		<pattern>  
           		<marker>
@@ -40,7 +40,7 @@ USA
           		</marker>
           		<token regexp="yes">الكتف|الفخذ|الساق|الريح|البئر|المراجع</token>
       		</pattern>
-      		<message>الإسم مؤنث..أتقصد<suggestion>هذه </suggestion>؟</message>
+      		<message>الإسم مؤنث..أتقصد <suggestion>هذه</suggestion>؟</message>
       		<example correction="هذه"> <marker>هذا</marker></example>
       		
      	</rule>
@@ -61,7 +61,7 @@ USA
      		<example correction="هذه"><marker>هذا</marker>السن تعبر عن مدى كبر هذا الشيخ</example>
      	</rule>     	
     </rulegroup>
-    <rulegroup id="AdjectifFeminin" name="الصفة تتبع الموصوف">
+    <rulegroup id="ADJECTIFFEMININ" name="الصفة تتبع الموصوف">
     	<rule >
      		<pattern>
      			<token>أدى</token>
@@ -98,8 +98,8 @@ USA
 <!-- ====================================================================== -->
 <!-- Common errors-->
 <!-- ====================================================================== -->
-<category id="common_errors" name="أخطاء لغوية شائعة" type="grammar">
-<rulegroup id="semantic_errors" name="دلالية">
+<category id="COMMON_ERRORS" name="أخطاء لغوية شائعة" type="grammar">
+<rulegroup id="SEMANTIC_ERRORS" name="دلالية">
 	<rule>
 		<pattern>
 		<token>غاية</token>
@@ -115,7 +115,7 @@ USA
 		<message> أتقصد<suggestion>نجوع </suggestion>؟</message>
 		<example correction="نجوع">لم يثبت لهذا الدواء<marker>نجاعة</marker></example>		
 	</rule>
-	<rule id="inshalla" name="إن شاء الله">	 
+	<rule id="INSHALLA" name="إن شاء الله">	 
 		<pattern>  
 		<marker><token>إنشاء</token></marker>
 		<token>الله</token> 		          		
@@ -806,7 +806,7 @@ USA
 		<pattern>
 		<marker><token inflected='yes'>مستهتر</token>
 		</marker>
-		<token>بالقانون|بالدين|بالأعراف|بالعادات</token>
+		<token regexp="yes">بالقانون|بالدين|بالأعراف|بالعادات</token>
 		</pattern>
 		<message>
 		ويفضل أن يقال:  
@@ -924,8 +924,8 @@ USA
 <!-- ====================================================================== -->
 <!-- Verb transitivity by a partical  الأفعال المتعدية بحرف -->
 <!-- ====================================================================== -->  
-<category id="verbtrans" name="الأفعال المتعدية بحرف" type="grammar">
-<rulegroup id="vta2vtb" name="تصحيح حرف التعدي">
+<category id="VERBTRANS" name="الأفعال المتعدية بحرف" type="grammar">
+<rulegroup id="VTA2VTB" name="تصحيح حرف التعدي">
 	<rule id='vta2vtb001'>	 
 		<pattern>
 		<token>يمت</token>
@@ -1001,7 +1001,7 @@ USA
 	</rule>
 
 </rulegroup>
-<rulegroup id="vta2vt" name="حذف حرف التعدي">
+<rulegroup id="VTA2VT" name="حذف حرف التعدي">
 	<rule id='vta2vt001'>	 
 		<pattern>
 		<token>امتثل</token>
@@ -1025,7 +1025,7 @@ USA
 	</rule>
 </rulegroup>
 <!-- 
-<rulegroup id="vt2vt" name="إضافة حرف التعدي">
+<rulegroup id="VT2VT" name="إضافة حرف التعدي">
 
 </rulegroup>
 -->
@@ -1034,7 +1034,7 @@ USA
 <!-- Feminin Gender -->
 <!-- ====================================================================== -->  
 	<category id="F_L_M" name="Feminin gender instead of masculine" type="grammar">
-	<rulegroup id="NounMasculin" name="الاسم مذكر">
+	<rulegroup id="NOUNMASCULIN" name="الاسم مذكر">
 		<rule>
     		<pattern>
     			<token>قميص</token>
@@ -1074,7 +1074,7 @@ USA
 		<message>أتقصد <suggestion>انتفخ\2</suggestion>؟</message>
 		<example correction=" انتفخ">انتفخ بطني من الأكل ليلة البارحة<marker>انتفخت</marker></example>
 	</rule>
-	<rule id="ReplaceDeterminerM" name="هذا) هذه)">	 
+	<rule id="REPLACEDETERMINERM" name="هذا) هذه)">	 
       		<pattern>  
           		<marker>
               		 <token>هذه</token>
@@ -1088,8 +1088,8 @@ USA
 <!-- ====================================================================== -->
 <!-- Prépositions -->
 <!-- ====================================================================== -->
-	<category id="prep" name="Prepositions" type="grammar">
-	<rulegroup id="RepPrep" name="حروف الجر">
+	<category id="PREP" name="Prepositions" type="grammar">
+	<rulegroup id="REPPREP" name="حروف الجر">
 		<rule>
 			<pattern>
 				<token>يدل</token>
@@ -1154,7 +1154,7 @@ USA
 <!-- ====================================================================== -->
 <!-- توافق المبتدأ والخبر -->
 <!-- ====================================================================== -->	
-<category id="AccGenderNumberInchoactifInonciatof" name="توافق الجنس و النوع بين المبتدأ و الخبر" type="grammar">
+<category id="ACCGENDERNUMBERINCHOACTIFINONCIATOF" name="توافق الجنس و النوع بين المبتدأ و الخبر" type="grammar">
 	<rule id="G_N_I_I" name="يدافعون) يدافعان)">	 
       		<pattern>  
           		<token>الجنود</token>
@@ -1169,7 +1169,7 @@ USA
 <!-- ====================================================================== -->
 <!-- Verb subject gender agreement-->
 <!-- ====================================================================== -->
-<category id="Number_gender_agreement_circum_accusative_subject" name="توافق الجنس و النوع بين الفعل و المفعول به" type="grammar">
+<category id="NUMBER_GENDER_AGREEMENT_CIRCUM_ACCUSATIVE_SUBJECT" name="توافق الجنس و النوع بين الفعل و المفعول به" type="grammar">
 	<rule id="G_N_C_A_S" name="يحملن) تحملن)">	 
       		<pattern>  
           		<token skip="1">جاءت</token>          		
@@ -1184,8 +1184,8 @@ USA
 <!-- ====================================================================== -->
 <!-- Noun & adjective agreement-->
 <!-- ====================================================================== -->
-<category id="Adjectif_Name" name="توافق الجنس و النوع بين الصفة و الموصوف" type="grammar">
-	<rule id="G_N_Adj_Nm" name="الكرماء) الكريم)">	 
+<category id="ADJECTIF_NAME" name="توافق الجنس و النوع بين الصفة و الموصوف" type="grammar">
+	<rule id="G_N_ADJ_NM" name="الكرماء) الكريم)">	 
       		<pattern>  
           		<token>الرجال</token>
           		<marker><token>الكريم</token></marker>
@@ -1199,8 +1199,8 @@ USA
 <!-- ====================================================================== -->
 <!-- Verb subject agreement-->
 <!-- ====================================================================== -->
-<category id="Verb_Subject" name="توافق النوع بين الفعل و الفاعل" type="grammar">
-	<rule id="Verb_S" name="شربت) شرب)">	 
+<category id="VERB_SUBJECT" name="توافق النوع بين الفعل و الفاعل" type="grammar">
+	<rule id="VERB_S" name="شربت) شرب)">	 
       		<pattern>  
       			<marker><token>شرب</token></marker>
           		<token>البنت</token>         		
@@ -1214,8 +1214,8 @@ USA
 <!-- ====================================================================== -->
 <!-- Pluriel-->
 <!-- ====================================================================== -->
-<category id="Pluriel" name="أخطاء في الجمع" type="grammar">
-	<rulegroup id="PluralRules" name="قواعد الجمع">
+<category id="PLURIEL" name="أخطاء في الجمع" type="grammar">
+	<rulegroup id="PLURALRULES" name="قواعد الجمع">
 	<rule>	 
 		<pattern>
 		<marker><token regexp='yes'>مشاكل|المشاكل</token></marker>
@@ -1328,8 +1328,8 @@ USA
 <!-- ====================================================================== -->
 <!-- Plurals-->
 <!-- ====================================================================== -->
-<category id="NumbersErrors" name="الأخطاء المتعلقة بالأعداد" type="grammar">
-	<rulegroup id="Number_F" name="تأنيث العدد">
+<category id="NUMBERSERRORS" name="الأخطاء المتعلقة بالأعداد" type="grammar">
+	<rulegroup id="NUMBER_F" name="تأنيث العدد">
 	<rule>
 		<pattern>
 		<marker><token>ثلاث</token></marker>
@@ -1405,7 +1405,7 @@ USA
 			<example correction="عشرة"><marker>عشر</marker></example>
 		</rule>
 	</rulegroup>
-	<rulegroup id="Number_M" name="تذكير العدد">
+	<rulegroup id="NUMBER_M" name="تذكير العدد">
 	<rule>
 		<pattern>
 		<marker><token>ثلاثة</token></marker>
