@@ -47,11 +47,17 @@
     </build>
 
     <dependencies>
+	<dependency>
+            <groupId>org.languagetool</groupId>
+            <artifactId>language-ar</artifactId>
+            <version>${languagetool.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.languagetool</groupId>
             <artifactId>language-en</artifactId>
             <version>${languagetool.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.languagetool</groupId>
             <artifactId>language-fa</artifactId>
@@ -223,6 +229,12 @@
         <dependency>
             <groupId>org.languagetool</groupId>
             <artifactId>language-uk</artifactId>
+            <version>${languagetool.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.languagetool</groupId>
+            <artifactId>language-ar</artifactId>
             <version>${languagetool.version}</version>
         </dependency>
         <!-- note: de-DE-x-simple-language is not yet included because we don't want to

@@ -36,6 +36,7 @@
                 <value xml:lang="ca">Gramàtica (LanguageTool)</value>
                 <value xml:lang="ta">லேங்குவேஜ் டூல்</value>
                 <value xml:lang="sr">Правопис (LanguageTool)</value>
+				<value xml:lang="ar">التدقيق النحوي</value>
                 </prop>
               <node oor:name="Submenu">
                 <node oor:name="M1" oor:op="replace">
@@ -69,6 +70,7 @@
                     <value xml:lang="ca">Revisa el text</value>
                     <value xml:lang="ta">உரையைச் சரிபார்</value>
                     <value xml:lang="sr">Провера правописа</value>
+					<value xml:lang="ar">دقّق النص</value>
                   </prop>
                   <prop oor:name="Target" oor:type="xs:string">
                     <value>_self</value>
@@ -106,6 +108,7 @@
                     <value xml:lang="ca">Revisa el text de nou</value>
                     <value xml:lang="ta">ஆவணத்தை மீண்டும் சரிபார்</value>
                     <value xml:lang="sr">Поново проверити документ</value>
+					<value xml:lang="ar">أعد تدقيق المستند</value>
                   </prop>
                   <prop oor:name="Target" oor:type="xs:string">
                     <value>_self</value>
@@ -169,6 +172,7 @@
                     <value xml:lang="ca">Configuració...</value>
                     <value xml:lang="ta">தேர்வுகள்...</value>
                     <value xml:lang="sr">Подешавања ...</value>
+					<value xml:lang="ar">خيارات...</value>
                   </prop>
                   <prop oor:name="Target" oor:type="xs:string">
                     <value>_self</value>
@@ -206,6 +210,7 @@
                     <value xml:lang="ca">Sobre...</value>
                     <value xml:lang="ta">எங்களைப் பற்றி...</value>
                     <value xml:lang="sr">О програму LanguageTool ...</value>
+					<value xml:lang="ar">حول...</value>
                   </prop>
                   <prop oor:name="Target" oor:type="xs:string">
                     <value>_self</value>
