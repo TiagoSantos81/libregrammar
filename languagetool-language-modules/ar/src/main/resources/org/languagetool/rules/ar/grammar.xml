@@ -41,7 +41,7 @@ USA
           <token regexp="yes">الكتف|الفخذ|الساق|الريح|البئر|المراجع</token>
       </pattern>
       <message>الإسم مؤنث..أتقصد <suggestion>هذه</suggestion>؟</message>
-      <example correction="هذه"> <marker>هذا</marker></example>
+      <example correction="هذه"> <marker>هذا</marker> المراجع</example>
     </rule>
     <rule>
       <pattern>
@@ -49,7 +49,7 @@ USA
           <token>اليمين</token>
       </pattern>
       <message> أتقصد باليمين القسم <suggestion>هذه</suggestion>?</message>
-      <example correction="هذه"><marker>هذا</marker></example>
+      <example correction="هذه"><marker>هذا</marker> اليمين</example>
     </rule>
     <rule>
       <pattern>
@@ -57,7 +57,7 @@ USA
           <token>السن</token>
       </pattern>
       <message>أتقصد بالسن:العمر و الجارحة<suggestion>هذه السن</suggestion>؟</message>
-      <example correction="هذه"><marker>هذا</marker>السن تعبر عن مدى كبر هذا الشيخ</example>
+      <example correction="هذه"><marker>هذا</marker> السن تعبر عن مدى كبر هذا الشيخ</example>
     </rule>
   </rulegroup>
   <rulegroup id="ADJECTIFFEMININ" name="الصفة تتبع الموصوف">
