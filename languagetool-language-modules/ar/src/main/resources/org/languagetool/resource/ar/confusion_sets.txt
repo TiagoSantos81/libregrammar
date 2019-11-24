@@ -1,7 +1,4 @@
-# English confusion sets, mostly homophones
-# Original source: After the Deadline's data/rules/homophonedb.txt
-# URL: http://openatd.wordpress.com/ or https://openatd.svn.wordpress.org/atd-server/data/rules/homophonedb.txt
-# License: GNU GENERAL PUBLIC LICENSE Version 2
+# Arabic confusion sets
 #
 # Line format:
 # <word1>|<description1>; <word2>|<description2>; <factor>   # optional comment
@@ -10,13 +7,8 @@
 #   <factor> is the factor of how much more the other word must be more
 #            probable so the text is considered potentially incorrect.
 #            Use a higher value for better precision but lower recall.
-#   Precision (p) and recall (r) values in the comments come from ConfusionRuleEvaluator
-#     and are based on Wikipedia, Tatoeba, and Enron data, usually with 1000 random 
-#     sentences (if that many sentence are available for that pair). The number after recall
-#     is the number of sentences used for evaluation.
 # Order is relevant for ambiguous cases like 'know' ('no' or 'now') where the match
 # is used whose pair comes first in this file.
 
-#able; bale; 1000000000;                                                           # p=1.000, r=0.966, 975+15, 3grams, 2016-04-06
-#abstruse|difficult to penetrate;obtuse|between 90 and 180 degrees;10000000        # p=0.995, r=0.144, 343+1000, 3grams, 2016-04-19
-# ظن|اعتقد; ضن|بخل; 1000000000;
+ضن; ظن; 1000
+الضن; الظن; 1000

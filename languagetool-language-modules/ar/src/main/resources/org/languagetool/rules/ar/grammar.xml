@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="../../../../../../../../../languagetool-core/src/main/resources/org/languagetool/rules/print.xsl" ?>
 <?xml-stylesheet type="text/css" href="../../../../../../../../../languagetool-core/src/main/resources/org/languagetool/rules/rules.css"
         title="Easy editing stylesheet" ?>
-    <!--
+<!--
 Arabic Grammar and Typo Rules for LanguageTool
 See tagset.txt for the meaning of the POS tags
 Copyright (C) 2017 Taha Zerrouki (http://www.tahadz.com),
@@ -25,8 +25,9 @@ USA
 -->
 
 
-
-<rules lang="ar" xsi:noNamespaceSchemaLocation="../../../../../../../../../languagetool-core/src/main/resources/org/languagetool/rules/rules.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<rules xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       lang="ar"
+       xsi:noNamespaceSchemaLocation="../../../../../../../../../languagetool-core/src/main/resources/org/languagetool/rules/rules.xsd">
 
     <!-- ====================================================================== -->
     <!-- Gender error-->

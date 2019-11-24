@@ -18,28 +18,16 @@
  */
 package org.languagetool.rules.ar;
 
-import org.languagetool.rules.CommaWhitespaceRule;
-import org.languagetool.rules.Example;
+import org.junit.Test;
+import org.languagetool.rules.spelling.SpellcheckerTest;
 
-import java.util.ResourceBundle;
+import java.io.IOException;
 
+public class LanguageSpecificSpellcheckerTest extends SpellcheckerTest {
 
-public class ArabicCommaWhitespaceRule extends CommaWhitespaceRule {
-
-  public ArabicCommaWhitespaceRule(ResourceBundle messages) {
-    super(messages,
-      Example.wrong("نعم<marker> ،</marker> لقد نجحنا."),
-      Example.fixed("نعم<marker>،</marker> لقد نجحنا."));
-  }
-
-  @Override
-  public final String getId() {
-    return "ARABIC_COMMA_PARENTHESIS_WHITESPACE";
-  }
-
-  @Override
-  public String getCommaCharacter() {
-    return "،";
+  @Test
+  public void testRules() throws IOException {
+    runLanguageSpecificTest();
   }
 
 }

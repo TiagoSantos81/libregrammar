@@ -1,6 +1,6 @@
 /* LanguageTool, a natural language style checker
- * Copyright (C) 2017 Sohaib Afifi, Taha Zerrouki
- * 
+ * Copyright (C) 2019 Sohaib Afifi, Taha Zerrouki
+ *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
@@ -16,26 +16,24 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301
  * USA
  */
-  /* XXX is this still needed? please, review.
 package org.languagetool.rules.ar;
 
+import org.languagetool.Language;
+import org.languagetool.languagemodel.LanguageModel;
+import org.languagetool.rules.Example;
+import org.languagetool.rules.ngrams.ConfusionProbabilityRule;
+
 import java.util.ResourceBundle;
-import java.util.regex.Pattern;
 
-import org.languagetool.rules.LongSentenceRule;
+/**
+ * @since 2.8
+ */
+public class ArabicConfusionProbabilityRule extends ConfusionProbabilityRule {
 
-public class ArabicLongSentenceRule extends LongSentenceRule {
-
-	private static final Pattern NON_WORD_REGEX = Pattern.compile("[،؟؛.?!:;,~’'\"„“»«‚‘›‹()\\[\\]-]");
-
-	public ArabicLongSentenceRule(ResourceBundle messages, int maxSentenceLength) {
-		super(messages, maxSentenceLength);
-	}
-
-	@Override
-	public final String getId() {
-		return "ARABIC_TOO_LONG_SENTENCE";
-	}
+  public ArabicConfusionProbabilityRule(ResourceBundle messages, LanguageModel languageModel, Language language) {
+    super(messages, languageModel, language);
+    addExamplePair(Example.wrong("إن بعض <marker>الضن</marker> إثم.<marker>"),
+      Example.fixed("إن بعض <marker>الظن</marker> إثم.<marker>"));
+  }
 
 }
-	*/

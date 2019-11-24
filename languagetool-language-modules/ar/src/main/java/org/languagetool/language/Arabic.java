@@ -1,6 +1,6 @@
-/* LanguageTool, a natural language style checker 
- * Copyright (C) 2014 Daniel Naber (http://www.danielnaber.de)
-* 
+/* LanguageTool, a natural language style checker
+ * Copyright (C) 2019 Sohaib Afifi, Taha Zerrouki
+ *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
@@ -20,23 +20,19 @@ package org.languagetool.language;
 
 import org.languagetool.Language;
 import org.languagetool.LanguageMaintainedState;
-import org.languagetool.languagemodel.LanguageModel;
 import org.languagetool.UserConfig;
+import org.languagetool.languagemodel.LanguageModel;
 import org.languagetool.rules.*;
-import org.languagetool.rules.ar.ArabicCommaWhitespaceRule;
-import org.languagetool.rules.ar.ArabicContractionSpellingRule;
-import org.languagetool.rules.ar.ArabicDoublePunctuationRule;
-// import org.languagetool.rules.ar.ArabicLongSentenceRule;
-import org.languagetool.rules.ar.ArabicWordRepeatRule;
+import org.languagetool.rules.ar.*;
 import org.languagetool.rules.spelling.hunspell.HunspellRule;
 import org.languagetool.synthesis.Synthesizer;
 import org.languagetool.synthesis.ar.ArabicSynthesizer;
 import org.languagetool.tagging.Tagger;
 import org.languagetool.tagging.ar.ArabicTagger;
-import org.languagetool.tokenizers.SentenceTokenizer;
-import org.languagetool.tokenizers.WordTokenizer;
 import org.languagetool.tokenizers.ArabicSentenceTokenizer;
 import org.languagetool.tokenizers.ArabicWordTokenizer;
+import org.languagetool.tokenizers.SentenceTokenizer;
+import org.languagetool.tokenizers.WordTokenizer;
 
 import java.io.File;
 import java.io.IOException;
@@ -50,7 +46,6 @@ import java.util.ResourceBundle;
 public class Arabic extends Language implements AutoCloseable {
 
   private static final Language DEFAULT_ARABIC = new Arabic();
-  
   private SentenceTokenizer sentenceTokenizer;
   private WordTokenizer wordTokenizer;
   private Tagger tagger;
@@ -69,7 +64,7 @@ public class Arabic extends Language implements AutoCloseable {
 
   @Override
   public String[] getCountries() {
-    return new String[]{"", "DZ", "SA", "TN", "EG"};
+    return new String[]{"", "DZ", "TN"};
   }
 
   @Override
@@ -78,20 +73,11 @@ public class Arabic extends Language implements AutoCloseable {
   }
 
   @Override
-  public Synthesizer getSynthesizer() {
-    if (synthesizer == null) {
-      synthesizer = new ArabicSynthesizer(this);
-    }
-    return synthesizer;
-  }
-
-  @Override
   public SentenceTokenizer getSentenceTokenizer() {
     if (sentenceTokenizer == null) {
-      sentenceTokenizer =  new ArabicSentenceTokenizer(this);
+      sentenceTokenizer = new ArabicSentenceTokenizer(this);
     }
     return sentenceTokenizer;
-
   }
 
   @Override
@@ -103,43 +89,54 @@ public class Arabic extends Language implements AutoCloseable {
   }
 
   @Override
-
   public Tagger getTagger() {
     if (tagger == null) {
       tagger = new ArabicTagger();
     }
     return tagger;
   }
-  
+
+  @Override
+  public Synthesizer getSynthesizer() {
+    if (synthesizer == null) {
+      synthesizer = new ArabicSynthesizer(this);
+    }
+    return synthesizer;
+  }
+
   @Override
   public Contributor[] getMaintainers() {
-    return new Contributor[] {
-            new Contributor("Taha Zerrouki"),
-            new Contributor("Sohaib Afifi"),
-            new Contributor("Imen Kali"),
-            new Contributor("Karima Tchoketch"),
+    return new Contributor[]{
+      new Contributor("Taha Zerrouki"),
+      new Contributor("Sohaib Afifi"),
+      new Contributor("Imen Kali"),
+      new Contributor("Karima Tchoketch"),
     };
-
   }
+
 
   @Override
   public List<Rule> getRelevantRules(ResourceBundle messages, UserConfig userConfig, Language motherTongue, List<Language> altLanguages) throws IOException {
     return Arrays.asList(
-        new MultipleWhitespaceRule(messages, this),
-        new SentenceWhitespaceRule(messages),
-        new GenericUnpairedBracketsRule(messages,
-                Arrays.asList("[", "(", "{" , "«", "﴾"), 
-                Arrays.asList("]", ")", "}" , "»", "﴿")),
-        // specific to Arabic :
-        new HunspellRule(messages, this, userConfig, altLanguages),
-        new ArabicCommaWhitespaceRule(messages),
-        new ArabicDoublePunctuationRule(messages),
-        /* XXX needs fix for this version. replaced by generic rule.
-        new ArabicLongSentenceRule(messages, 40),
-        */
-        new LongSentenceRule(messages, userConfig, -1, false),
-        new ArabicWordRepeatRule(messages, this),
-        new ArabicContractionSpellingRule(messages)
+      new MultipleWhitespaceRule(messages, this),
+      new SentenceWhitespaceRule(messages),
+      new GenericUnpairedBracketsRule(messages,
+        Arrays.asList("[", "(", "{", "«", "﴾"),
+        Arrays.asList("]", ")", "}", "»", "﴿")),
+      // specific to Arabic :
+      new HunspellRule(messages, this, userConfig, altLanguages),
+      new ArabicCommaWhitespaceRule(messages),
+      new ArabicDoublePunctuationRule(messages),
+      new LongSentenceRule(messages, userConfig, -1, false),
+      new ArabicWordRepeatRule(messages, this),
+      new ArabicContractionSpellingRule(messages)
+    );
+  }
+
+  @Override
+  public List<Rule> getRelevantLanguageModelRules(ResourceBundle messages, LanguageModel languageModel) throws IOException {
+    return Arrays.<Rule>asList(
+      new ArabicConfusionProbabilityRule(messages, languageModel, this)
     );
   }
 
@@ -159,5 +156,5 @@ public class Arabic extends Language implements AutoCloseable {
     if (languageModel != null) {
       languageModel.close();
     }
-  } 
+  }
 }
