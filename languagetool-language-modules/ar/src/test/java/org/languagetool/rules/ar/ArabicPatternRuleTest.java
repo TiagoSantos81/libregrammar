@@ -1,5 +1,5 @@
 /* LanguageTool, a natural language style checker
- * Copyright (C) 2013 Daniel Naber (http://www.danielnaber.de)
+ * Copyright (C) 2017 Sohaib Afifi, Taha Zerrouki
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -15,8 +15,6 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301
  * USA
- *
- * Copied from PolishPatternRuleTest.java
  */
 package org.languagetool.rules.ar;
 
@@ -33,4 +31,3 @@ public class ArabicPatternRuleTest extends PatternRuleTest {
   }
 
 }
-

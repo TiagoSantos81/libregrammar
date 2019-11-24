@@ -1,6 +1,6 @@
-/* LanguageTool, a natural language style checker 
- * Copyright (C) 2014 Daniel Naber (http://www.danielnaber.de)
- * 
+/* LanguageTool, a natural language style checker
+ * Copyright (C) 2019 Sohaib Afifi, Taha Zerrouki
+ *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
@@ -19,12 +19,6 @@
 package org.languagetool.tokenizers;
 
 import org.languagetool.Language;
-import org.languagetool.language.Contributor;
-import org.languagetool.rules.Rule;
-
-import java.util.Collections;
-import java.util.List;
-import java.util.ResourceBundle;
 
 /**
  * A sentence tokenizer that splits on {@code [.!؟…]} followed by whitespace

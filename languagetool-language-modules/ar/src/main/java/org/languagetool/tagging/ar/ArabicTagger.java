@@ -1,6 +1,6 @@
-/* LanguageTool, a natural language style checker 
- * Copyright (C) 2006 Daniel Naber (http://www.danielnaber.de)
- * 
+/* LanguageTool, a natural language style checker
+ * Copyright (C) 2019 Sohaib Afifi, Taha Zerrouki
+ *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
@@ -18,18 +18,18 @@
  */
 package org.languagetool.tagging.ar;
 
-import java.util.Locale;
-
 import org.languagetool.tagging.BaseTagger;
 
+import java.util.Locale;
+
 public class ArabicTagger extends BaseTagger {
+
+  public ArabicTagger() {
+    super("/ar/arabic.dict", new Locale("ar"));
+  }
 
   @Override
   public String getManualAdditionsFileName() {
     return "/ar/added.txt";
-  }
- 
-  public ArabicTagger() {
-    super("/ar/arabic.dict", new Locale("ar"));
   }
 }

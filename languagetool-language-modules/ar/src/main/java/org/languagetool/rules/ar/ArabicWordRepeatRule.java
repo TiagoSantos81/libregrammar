@@ -1,5 +1,5 @@
 /* LanguageTool, a natural language style checker
- * Copyright (C) 2012 Daniel Naber (http://www.danielnaber.de)
+ * Copyright (C) 2019 Sohaib Afifi, Taha Zerrouki
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -18,12 +18,12 @@
  */
 package org.languagetool.rules.ar;
 
-import java.util.ResourceBundle;
-
 import org.languagetool.AnalyzedTokenReadings;
 import org.languagetool.Language;
 import org.languagetool.rules.Example;
 import org.languagetool.rules.WordRepeatRule;
+
+import java.util.ResourceBundle;
 
 /**
  * Word repeat rule for َArabic, to avoid false alarms in the generic word repetition rule.
@@ -33,7 +33,7 @@ public class ArabicWordRepeatRule extends WordRepeatRule {
   public ArabicWordRepeatRule(ResourceBundle messages, Language language) {
     super(messages, language);
     addExamplePair(Example.wrong("هذا <marker>فقط فقط</marker> مثال."),
-                   Example.fixed("هذا <marker>فقط</marker> مثال."));
+      Example.fixed("هذا <marker>فقط</marker> مثال."));
   }
 
   @Override
@@ -43,21 +43,13 @@ public class ArabicWordRepeatRule extends WordRepeatRule {
 
   @Override
   public boolean ignore(AnalyzedTokenReadings[] tokens, int position) {
-
     if (wordRepetitionOf("خطوة", tokens, position)) {
       return true;   // "نفذت التعليمات خطوة خطوة."
     }
-    return false;
-  }
-
-  private boolean posIsIn(AnalyzedTokenReadings[] tokens, int position, String... posTags) {
-    if (position >= 0 && position < tokens.length) {
-      for (String posTag : posTags) {
-        if (tokens[position].hasPartialPosTag(posTag)) {
-          return true;
-        }
-      }
+    if (wordRepetitionOf("رويدا", tokens, position)) {
+      return true;
     }
+
     return false;
   }
 
