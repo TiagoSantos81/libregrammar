@@ -23,7 +23,10 @@ import org.languagetool.LanguageMaintainedState;
 import org.languagetool.UserConfig;
 import org.languagetool.languagemodel.LanguageModel;
 import org.languagetool.rules.*;
-import org.languagetool.rules.ar.*;
+import org.languagetool.rules.ar.ArabicCommaWhitespaceRule;
+import org.languagetool.rules.ar.ArabicContractionSpellingRule;
+import org.languagetool.rules.ar.ArabicDoublePunctuationRule;
+import org.languagetool.rules.ar.ArabicWordRepeatRule;
 import org.languagetool.rules.spelling.hunspell.HunspellRule;
 import org.languagetool.synthesis.Synthesizer;
 import org.languagetool.synthesis.ar.ArabicSynthesizer;
@@ -45,7 +48,9 @@ import java.util.ResourceBundle;
  */
 public class Arabic extends Language implements AutoCloseable {
 
-  private static final Language DEFAULT_ARABIC = new Arabic();
+  // XXX one default language is required for server use only.
+  // Egyptian Arabic was chosen due to number of native speakers and for having the same dictionaries as ar-SA and ar-TN
+  private static final Language DEFAULT_ARABIC = new EgyptianArabic();
   private SentenceTokenizer sentenceTokenizer;
   private WordTokenizer wordTokenizer;
   private Tagger tagger;
