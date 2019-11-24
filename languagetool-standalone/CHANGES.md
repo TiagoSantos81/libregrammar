@@ -48,6 +48,14 @@
      - Several adjustments to rules with wide-spectrum antipatterns.
   * sentences and paragraphs now end with a single line break.
 
+#### Arabic
+  * Support added thanks to [Taha Zerrouki](https://github.com/linuxscout/languagetool), [Sohaib Afifi](https://github.com/sohaibafifi/languagetool), Imen Kali, and Karima Tchoketch. Support includes:
+     - 117 grammar rules;
+     - [spell checking](http://ayaspell.sourceforge.net/) for Algerian, Egyptian, Saudi Arabian, Tunisian language variant;
+     - [part-of-speech dictionary and synthesiser](https://github.com/sohaibafifi/languagetool).
+     - a few generic typographical rules (e.g., spacing rules);
+     - a few generic style rules (e.g., sentence length);
+
 #### Danish
   * activated generic Java rules, including:
      - LongSentenceRule, LongParagraphRule, MultipleWhispacesRule, SentenceWhitespaceRule,
@@ -95,14 +103,14 @@
      EmptyLineRule, ParagraphRepeatBeginningRule, PunctuationMarkAtParagraphEnd.
 
 #### Irish
-  * Support added thanks to Jim Regan, Emily Barnes, Mícheál J. Ó Meachair,
+  * Support added thanks to [Jim Regan](https://github.com/jimregan/languagetool), Emily Barnes, Mícheál J. Ó Meachair,
   and Seanán Ó Coistín. Support includes:
      - 1184 grammar rules;
+     - [spell checking](https://github.com/jimregan/languagetool-ga-dicts);
+     - [part-of-speech dictionary and synthesiser](https://github.com/jimregan/languagetool-ga-dicts);
      - Irish naming conventions converter;
      - generic typographical rules (e.g., spacing rules);
-     - generic style rules (e.g., sentence length);
-     - [spell checking](https://github.com/jimregan/languagetool-ga-dicts);
-     - [part-of-speech dictionary and synthesiser](https://github.com/jimregan/languagetool-ga-dicts).
+     - generic style rules (e.g., sentence length).
 
 #### Italian
   * activated generic Java rules, including:
