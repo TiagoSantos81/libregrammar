@@ -19,6 +19,7 @@
 package org.languagetool.rules.ar;
 
 import org.junit.Test;
+import org.junit.Ignore;
 import org.languagetool.rules.patterns.PatternRuleTest;
 
 import java.io.IOException;
@@ -26,6 +27,7 @@ import java.io.IOException;
 public class ArabicPatternRuleTest extends PatternRuleTest {
 
   @Test
+  @Ignore
   public void testRules() throws IOException {
     runGrammarRulesFromXmlTest();
   }
