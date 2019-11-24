@@ -27,6 +27,7 @@ import org.languagetool.rules.ar.ArabicCommaWhitespaceRule;
 import org.languagetool.rules.ar.ArabicContractionSpellingRule;
 import org.languagetool.rules.ar.ArabicDoublePunctuationRule;
 import org.languagetool.rules.ar.ArabicWordRepeatRule;
+import org.languagetool.rules.ar.ArabicConfusionProbabilityRule;
 import org.languagetool.rules.spelling.hunspell.HunspellRule;
 import org.languagetool.synthesis.Synthesizer;
 import org.languagetool.synthesis.ar.ArabicSynthesizer;
