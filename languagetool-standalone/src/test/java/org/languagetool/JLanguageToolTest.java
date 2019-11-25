@@ -315,15 +315,22 @@ public class JLanguageToolTest {
   @Ignore
   public void testRuleMessagesForSpellingErrors() throws Exception {
     JLanguageTool lt = new JLanguageTool(english);
+    //JLanguageTool lt = new JLanguageTool(new French());
+    //JLanguageTool lt = new JLanguageTool(new Galician());
     //JLanguageTool lt = new JLanguageTool(new GermanyGerman());
+    //JLanguageTool lt = new JLanguageTool(new Irish());
+    //JLanguageTool lt = new JLanguageTool(new Portuguese());
     //JLanguageTool lt = new JLanguageTool(new Russian());
+    //JLanguageTool lt = new JLanguageTool(new Spanish());
     String[] rulesDisabled = {
             // en:
             "EN_QUOTES", "UPPERCASE_SENTENCE_START", "WHITESPACE_RULE",
             "EN_UNPAIRED_BRACKETS", "DASH_RULE", "COMMA_PARENTHESIS_WHITESPACE",
             // de:
             "TYPOGRAFISCHE_ANFUEHRUNGSZEICHEN", "GROESSER_KLEINER_ANFUEHRUNG",
-            "ABKUERZUNG_LEERZEICHEN"
+            "ABKUERZUNG_LEERZEICHEN",
+            //pt:
+            "REPEATED_WORDS"
     };
     lt.disableRules(Arrays.asList(rulesDisabled));
     int matchesCounter = 0;
