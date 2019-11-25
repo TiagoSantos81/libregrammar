@@ -27948,6 +27948,33 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rulegroup>
     </category>
     <category id="INCORRECT_EXPRESSIONS" name="Expressions incorrectes" type="grammar">
+        <rulegroup id="PARAULES_EN_ALTRES_IDIOMES" name="paraules en altres idiomes">
+            <rule>
+                <pattern>
+                    <token regexp="yes">don|ain</token>
+                    <token>'t</token>
+                </pattern>
+                <message>Paraules en anglès.</message>
+                <example correction="">I <marker>don't</marker> know.</example>
+            </rule>
+        </rulegroup>
+        <rule id="EL_DE_MENYS" name="ser el de menys">
+            <antipattern>
+                <token>menys</token>
+                <token postag="[ANR].*" postag_regexp="yes"/>
+            </antipattern>
+            <pattern>
+                <token inflected="yes">ser</token>
+                <token regexp="yes">lo|el</token>
+                <token>de</token>
+                <token>menys</token>
+            </pattern>
+            <message>Castellanisme.</message>
+            <suggestion>rai</suggestion>
+            <suggestion>no <match no="1" postag="V.(.*)" postag_regexp="yes" postag_replace="VM$1">tenir</match> importància</suggestion>
+            <example correction="rai|no tingué importància">Això <marker>fou lo de menys</marker>.</example>
+            <example>És el de menys importància.</example>
+        </rule>
         <rulegroup id="VOLTA_INCORRECTE" name="*a volta de correu">
             <rule>
                 <pattern>
@@ -35232,6 +35259,15 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <message>¿Volíeu dir <suggestion><match no="1" postag="(V.*)" postag_regexp="yes" postag_replace="$1">moldre</match></suggestion>? "Molturar" és cobrar el dret de moltura.</message>
             <example correction="moldre">Haig de <marker>molturar</marker> el cafè.</example>
         </rule>
+        <rule id="EMBLAR" name="emblar/semblar">
+            <pattern>
+                <marker>
+                    <token inflected="yes">emblar</token>
+                </marker>
+            </pattern>
+            <message>¿Volíeu dir <suggestion>s<match no="1" case_conversion="alllower"/></suggestion>? "Emblar" és un arcaisme que vol dir "furtar".</message>
+            <example correction="semblava">Això no <marker>emblava</marker> possible.</example>
+        </rule>
         <rule id="LLEGAT_LEGAT" name="llegat/legat">
             <pattern>
                 <marker>
@@ -42316,6 +42352,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example>Es deu als efectes de la radiació</example>
         </rule>
         <rulegroup id="DON" name="don/senyor/en">
+            <antipattern>
+                <token>riu</token>
+                <token case_sensitive="yes">Don</token>
+            </antipattern>
             <rule>
                 <pattern>
                     <marker>
@@ -42336,16 +42376,21 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token>don</token>
                     <token regexp="yes">\p{Lu}.*</token>
                 </antipattern>
+                <antipattern>
+                    <token>don</token>
+                    <token>'t</token>
+                </antipattern>
                 <pattern>
                     <marker>
                         <token>don</token>
                     </marker>
                 </pattern>
-                <message>Possible confusió. "Don" pot ser un antic tractament honorífic.</message>
+                <message>Possible confusió. "Don" pot ser un antic tractament honorífic o el nom d'un riu rus.</message>
                 <suggestion>d'on</suggestion>
                 <suggestion>do</suggestion>
                 <example correction="d'on|do">És davant <marker>don</marker> et vaig dir.</example>
                 <example>Don Quixot i Don Joan</example>
+                <example>Baixaren pel riu Don.</example>
             </rule>
             <rule>
                 <pattern>

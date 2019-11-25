@@ -177,6 +177,9 @@
 #### Catalan
   * improved rules
 
+#### Catalan
+  * added and improved rules
+
 #### Chinese
   * Now using https://github.com/hankcs/HanLP for tokenization (PR 1981)
 
