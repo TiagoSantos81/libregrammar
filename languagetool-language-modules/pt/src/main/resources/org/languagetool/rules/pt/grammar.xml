@@ -2897,7 +2897,7 @@ title="Easy editing stylesheet" ?>
           <token min='0' skip='4'/>
           <token postag="V.IF3P.+" postag_regexp="yes" regexp="yes">.+?rão</token>
       </pattern>
-      <message>Esta inflexão refere-se ao futuro. Se pretende referir-se ao passado substitua '-ão' por '-am'.</message>
+      <message>Esta inflexão refere-se ao futuro. Se pretende referir-se ao passado, substitua '-ão' por '-am'.</message>
       <example correction=""><marker>Anteontem, enviarão</marker> os livros antes do fecho.</example>
     <!-- FIXME token index doesn't work with variable size phrases -->
       <example correction=""><marker>A semana passada, os editores enviarão</marker> os livros antes do fecho.</example>
@@ -2913,7 +2913,7 @@ title="Easy editing stylesheet" ?>
     <!--token min='0' max='3'/-->
           <phraseref idref="ALL_PAST_EXPRESSIONS"/>
       </pattern>
-      <message>Esta inflexão refere-se ao futuro. Se pretende referir-se ao passado substitua '-ão' por '-am'.</message>
+      <message>Esta inflexão refere-se ao futuro. Se pretende referir-se ao passado, substitua '-ão' por '-am'.</message>
         <suggestion><match no='1' regexp_match='(.+?)(rão)' regexp_replace='$1ram'/></suggestion>
       <example correction="Enviaram"><marker>Enviarão</marker> ontem os livros.</example>
       <example>Na semana passada enviaram os livros antes do fecho.</example>
@@ -2926,7 +2926,7 @@ title="Easy editing stylesheet" ?>
           <token skip='4'/>
           <phraseref idref="ALL_PAST_EXPRESSIONS"/>
       </pattern>
-      <message>Esta inflexão refere-se ao futuro. Se pretende referir-se ao passado substitua 'ão' por 'am'</message>
+      <message>Esta inflexão refere-se ao futuro. Se pretende referir-se ao passado, substitua 'ão' por 'am'</message>
       <example correction=""><marker>Enviarão os livros anteontem</marker>, antes do fecho.</example>
       <example correction=""><marker>os editores enviarão, a semana passada, </marker> os livros antes do fecho.</example>
       <example correction=""><marker>Enviarão os livros na passada semana</marker>, antes do fecho.</example>
@@ -2938,7 +2938,7 @@ title="Easy editing stylesheet" ?>
           <token min='0' skip='4'/>
           <token postag="V.IF[23]S.+" postag_regexp="yes" regexp="yes">.+?rás?</token>
       </pattern>
-      <message>Esta inflexão refere-se ao futuro. Se pretende referir-se ao passado substitua '-rá' por '-ra'.</message>
+      <message>Esta inflexão refere-se ao futuro. Se pretende referir-se ao passado, substitua '-rá' por '-ra'.</message>
       <example correction=""><marker>Anteontem, enviará</marker> os livros antes do fecho.</example>
       <example correction=""><marker>A semana passada, os editores enviarás</marker> os livros antes do fecho.</example>
       <example correction=""><marker>Na passada semana enviarás</marker> os livros antes do fecho.</example>
@@ -2953,7 +2953,7 @@ title="Easy editing stylesheet" ?>
     <!--token min='0' max='3'/-->
           <phraseref idref="ALL_PAST_EXPRESSIONS"/>
       </pattern>
-      <message>Esta inflexão refere-se ao futuro. Se pretende referir-se ao passado substitua '-rá' por '-ra'</message>
+      <message>Esta inflexão refere-se ao futuro. Se pretende referir-se ao passado, substitua '-rá' por '-ra'</message>
         <suggestion><match no='1' regexp_match='(.+?)(rá)' regexp_replace='$1ra'/></suggestion>
       <example correction="Enviara"><marker>Enviará</marker> ontem os livros.</example>
       <example>Na semana passada enviaram os livros antes do fecho.</example>
@@ -3285,7 +3285,7 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes' spacebefore='no'>&tracos_de_separacao;</token>
           <token regexp='yes' spacebefore='no'>[oa]s?</token>
       </pattern>
-      <message>As ênclises terminadas em m, ão ou õe exigem alteração do pronome.</message>
+      <message>As ênclises terminadas em -m, -ão ou -õe exigem alteração do pronome.</message>
         <suggestion>\1-n\3</suggestion>
       <url>https://pt.wikipedia.org/wiki/Coloca%C3%A7%C3%A3o_pronominal#.C3.8Anclise</url>
       <example correction='tinham-no'>Muitos <marker>tinham-o</marker>  como um bom amigo.</example>
@@ -3370,7 +3370,7 @@ title="Easy editing stylesheet" ?>
           <token postag="AQ.[MC][PN]." postag_regexp="yes">
             <exception postag="N.[MC][PN].*|PI.[MC]P.*" postag_regexp="yes"/></token>
       </pattern>
-      <message>"Muito" e "pouco" são invariáveis como advérbio. Pretende dizer <suggestion><match no='1' regexp_match="(muit|pouc)[ao]s" regexp_replace="$1o"/></suggestion>?</message>
+      <message>“Muito” e “pouco” são invariáveis como advérbio. Pretende dizer <suggestion><match no='1' regexp_match="(muit|pouc)[ao]s" regexp_replace="$1o"/></suggestion>?</message>
       <example correction="muito">Estamos <marker>muitos</marker> contentes.</example>
       <example correction="pouco">São <marker>poucos</marker> usuais.</example>
       <example>Muitos grandes cantores.</example>
@@ -3391,7 +3391,7 @@ title="Easy editing stylesheet" ?>
           <token postag="AQ.[FC][PN]." postag_regexp="yes">
             <exception postag="N.[FC][PN].*|PI.[FC]P.*" postag_regexp="yes"/></token>
       </pattern>
-      <message>"Muito" e "pouco" são invariáveis como advérbio. Pretende dizer <suggestion><match no='1' regexp_match="(muit|pouc)[ao]s" regexp_replace="$1o"/></suggestion>?</message>
+      <message>“Muito” e “pouco” são invariáveis como advérbio. Pretende dizer <suggestion><match no='1' regexp_match="(muit|pouc)[ao]s" regexp_replace="$1o"/></suggestion>?</message>
       <example correction="muito">Estamos <marker>muitas</marker> embriagadas.</example>
       <example correction="pouco">São <marker>poucas</marker> escassas.</example>
       <example>Muitos grandes cantores.</example>
@@ -3415,7 +3415,7 @@ title="Easy editing stylesheet" ?>
             <exception>muito</exception></token>
           <token inflected='yes'>pouco</token>
       </pattern>
-      <message>"Muito" é invariável como advérbio.</message>
+      <message>“Muito” é invariável como advérbio.</message>
         <suggestion>muito \2</suggestion>
       <example correction='muito poucos'>Tem <marker>muitos poucos</marker> incentivos.</example>
     </rule>
@@ -3463,7 +3463,7 @@ title="Easy editing stylesheet" ?>
           <token postag_regexp='yes' postag='N.+'/>
         </marker>
       </pattern>
-      <message>Comparação de preferências utiliza a preposição "a".</message>
+      <message>Comparação de preferências utiliza a preposição “a”.</message>
         <suggestion>\2 a \5</suggestion>
       <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/a-regencia-de-preferir-e-a-coordenacao-de-oracoes-de-infinitivo/26152</url>
       <example correction='peixe a carne'>Eu prefiro <marker>peixe do que carne</marker>.</example>
@@ -3474,7 +3474,7 @@ title="Easy editing stylesheet" ?>
           <token inflected='yes' regexp='yes'>namorar|arrasar</token>
           <token>com</token>
       </pattern>
-      <message>Este verbo não utiliza a preposição "com".</message>
+      <message>Este verbo não utiliza a preposição “com”.</message>
         <suggestion>\1</suggestion>
       <example correction='Namorei'><marker>Namorei com</marker> a ideia de comprar um carro novo.</example>
       <example correction='arrasou'>Ele <marker>arrasou com</marker> a concorrência.</example>
@@ -3489,7 +3489,7 @@ title="Easy editing stylesheet" ?>
           <token min='0' regexp='yes'>me|te|se|nos|vos</token>
           <token>com</token>
       </pattern>
-      <message>Neste contexto o verbo "habituar" rege-se com a preposição "a".</message>
+      <message>Neste contexto o verbo “habituar” rege-se com a preposição “a”.</message>
         <suggestion><match no='1' include_skipped='all'/> <match no='2' include_skipped='all'/><match no='3' include_skipped='all'/><match no='4' include_skipped='all'/> a</suggestion>
       <example correction='habituar-te a'>Conseguiste <marker>habituar-te com</marker> o clima?</example>
       <example>Consegues <marker>habituar-te com calma</marker> ao clima.</example>
@@ -3500,7 +3500,7 @@ title="Easy editing stylesheet" ?>
           <token inflected='yes'>acarretar</token>
           <token regexp='yes'>em|n[ao]s?</token>
       </pattern>
-      <message>Este verbo não se rege com a proposição "em".</message>
+      <message>Este verbo não se rege com a proposição “em”.</message>
         <suggestion>\1</suggestion>
       <example correction='acarretaram'>Estas derrapagens no orçamento <marker>acarretaram nos</marker> valores irrazoáveis que foram apresentados.</example>
     </rule>
@@ -3510,7 +3510,7 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>valorizaç(?:ão|ões)</token>
           <token regexp='yes'>a|às?|aos?</token>
       </pattern>
-      <message>\1 rege-se com a preposição "de".</message>
+      <message>\1 rege-se com a preposição “de”.</message>
         <suggestion>\1 de</suggestion><!-- TODO Add suggestions for the contracted forms -->
       <example correction='valorização de'>Cada vez se dá mais importância à <marker>valorização a</marker> recursos humanos altamente qualificados.</example>
       <example>A <marker>valorização às claras de</marker> recursos humanos altamente qualificados, tem óbvias vantagens.</example>
@@ -3521,7 +3521,7 @@ title="Easy editing stylesheet" ?>
           <token inflected='yes'>evitar</token><!--|usufruir-->
           <token regexp='yes'>d[eao]s?</token>
       </pattern>
-      <message>Este verbo não se rege com a proposição "de".</message>
+      <message>Este verbo não se rege com a proposição “de”.</message>
         <suggestion>\1</suggestion>
     <!-- <Example>
       <Incorrect>Nós evitaremos de falar em dinheiro.</example>
@@ -3538,7 +3538,7 @@ title="Easy editing stylesheet" ?>
         </marker>
           <token regexp='yes'>\d+</token>
       </pattern>
-      <message>Este verbo não se rege com a proposição "em".</message>
+      <message>Este verbo não se rege com a proposição “em”.</message>
         <suggestion>\1 por</suggestion>
       <example correction='empatou por'>A equipa <marker>empatou em</marker> 1 a 1.</example>
     </rule>
@@ -3589,7 +3589,7 @@ title="Easy editing stylesheet" ?>
           <token inflected='yes' regexp='yes'>sobrep[oô]r</token>
           <token>sobre</token>
       </pattern>
-      <message>O verbo 'sobrepor' rege-se com a preposição 'a'.</message>
+      <message>O verbo “sobrepor” rege-se com a preposição “a”.</message>
         <suggestion>\1 a</suggestion>
       <example correction='sobrepôs a'>Ele <marker>sobrepôs sobre</marker>…</example>
     </rule>
@@ -3615,7 +3615,7 @@ title="Easy editing stylesheet" ?>
           <token min='0' postag_regexp='yes' postag='D..M.+'/>
           <token postag_regexp='yes' postag='N.M.+'/>
       </pattern>
-      <message>Este verbo utiliza a preposição "a".</message>
+      <message>Este verbo utiliza a preposição “a”.</message>
         <suggestion>\1 a<match no='2' include_skipped='all'/></suggestion>
       <example correction='obedecerei aos'>Acima de tudo, <marker>obedecerei os</marker> meus princípios!</example>
     </rule>
@@ -3632,7 +3632,7 @@ title="Easy editing stylesheet" ?>
           <token min='0' postag_regexp='yes' postag='D..F.+'/>
           <token postag_regexp='yes' postag='N.F.+'/>
       </pattern>
-      <message>Este verbo utiliza a preposição "a".</message>
+      <message>Este verbo utiliza a preposição “a”.</message>
         <suggestion>\1 <match no='2' regexp_match='(a)(s?)' regexp_replace='à$2'/></suggestion>
       <example correction='obedece à'>O rapaz não <marker>obedece a</marker> mãe.</example>
     </rule>
@@ -3695,7 +3695,7 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes' spacebefore='no'>&tracos_de_separacao;</token>
           <token regexp='yes' spacebefore='no'>&pronomes_ambiguos;|&pronomes_nao_ambiguos;</token>
       </pattern>
-      <message>"só", "ora" e "quer" devem ser seguidos de próclise.</message><!-- TODO Review "ou",  -->
+      <message>As palavras “só”, “ora” e “quer” devem ser seguidos de próclise.</message><!-- TODO Review "ou",  -->
         <suggestion>\1 \4 \2</suggestion>
       <example correction='Só te tirei'><marker>Só tirei-te</marker> o brinquedo, porque te portaste mal</example>
     </rule>
@@ -3724,7 +3724,7 @@ title="Easy editing stylesheet" ?>
           <token>porque</token>
           <token regexp='yes'>raz(?:ão|ões)|motivos?|causas?</token>
       </pattern>
-      <message>Sempre que possa substituir por expressões equivalentes a "pelo qual", deve utilizar <suggestion>por que \2</suggestion>.</message>
+      <message>Sempre que possa substituir por expressões equivalentes a “pelo qual”, deve utilizar <suggestion>por que \2</suggestion>.</message>
       <url>https://ciberduvidas.iscte-iul.pt/artigos/rubricas/pelourinho/falta-apurar-e-nao-faltam-apurar--por-que-vs-porque/309</url>
       <example correction="Por que motivo"><marker>Porque motivo</marker> tem uma atitude tão indiferente?</example>
     </rule>
@@ -3890,7 +3890,7 @@ title="Easy editing stylesheet" ?>
           <token regexp="yes">(?:me|te|lh[ea][s]?|se|nos|os)</token>
           <token>que</token>
       </pattern>
-      <message>Neste contexto, o verbo é seguido normalmente da preposição 'de': <suggestion>\1\2\3 de \4</suggestion></message>
+      <message>Neste contexto, o verbo é seguido normalmente da preposição 'de': <suggestion>\1\2\3 de \4</suggestion>.</message>
       <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/uso-de-de-que-de-novo-queismo-e-dequeismo/19156</url>
       <short>Possível queísmo</short>
       <example correction="alegrar-se de que">Está bem <marker>alegrar-se que</marker> haja dinheiro para todos.</example>
@@ -3905,7 +3905,7 @@ title="Easy editing stylesheet" ?>
           <token inflected="yes" regexp="yes"><!--seguro|certo|farto-->alegre|triste|entristecer|surpreender|convencer|preocupar|cansar|aborrecer</token>
           <token>que</token>
       </pattern>
-      <message>Neste contexto, o verbo é seguido normalmente da preposição 'de':  <suggestion>\1 \2 de \3</suggestion></message>
+      <message>Neste contexto, o verbo é seguido normalmente da preposição 'de':  <suggestion>\1 \2 de \3</suggestion>.</message>
       <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/uso-de-de-que-de-novo-queismo-e-dequeismo/19156</url>
       <short>Possível queísmo</short>
       <example correction="Estamos alegres de que"><marker>Estamos alegres que</marker> falta pouco para acabar.</example>
@@ -3919,7 +3919,7 @@ title="Easy editing stylesheet" ?>
             <exception postag="VM..3.." postag_regexp="yes"/></token>
           <token>que</token>
       </pattern>
-      <message>Neste contexto, o verbo é seguido normalmente da preposição 'de':  <suggestion>\1 \2 de que</suggestion></message>
+      <message>Neste contexto, o verbo é seguido normalmente da preposição 'de':  <suggestion>\1 \2 de que</suggestion>.</message>
       <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/uso-de-de-que-de-novo-queismo-e-dequeismo/19156</url>
       <short>Possível queísmo</short>
       <example correction="Me preocupo de que"><marker>Me preocupo que</marker> haja comida para todos.</example>
@@ -3944,7 +3944,7 @@ title="Easy editing stylesheet" ?>
       <pattern>
           <token inflected="yes" regexp="yes">ser|estar|encontrar|ver|entender</token>
           <token postag="(?:R|A).+" postag_regexp="yes">
-            <exception inflected="yes" regexp="yes"><!--seguro|certo|livre|consciente|farto|-->abaixo|acima|longe|perto|.+d[ao]s?</exception></token>
+            <exception inflected="yes" regexp="yes"><!--seguro|certo|livre|consciente|farto|-->abaixo|alegres?|acima|longe|perto|.+d[ao]s?</exception></token>
           <token regexp="yes">d[eo]</token>
           <token>que</token>
       </pattern>
@@ -4214,7 +4214,7 @@ title="Easy editing stylesheet" ?>
           <token postag_regexp='yes' postag='N.FS.+'>
             <exception postag='D..F.+|R.+' postag_regexp='yes'/></token>
       </pattern>
-      <message>Esta palavra rege-se com a preposição "a".</message>
+      <message>Esta palavra rege-se com a preposição “a”.</message>
         <suggestion>\1 <match no='2' include_skipped='all'/> à</suggestion>
       <url>https://pt.wikipedia.org/wiki/Crase</url>
       <short>Erro de crase</short>
@@ -4243,7 +4243,7 @@ title="Easy editing stylesheet" ?>
           <token postag_regexp='yes' postag='N.FP.+'>
             <exception postag='D..F.+|R.+' postag_regexp='yes'/></token>
       </pattern>
-      <message>Esta palavra rege-se com a preposição "a".</message>
+      <message>Esta palavra rege-se com a preposição “a”.</message>
         <suggestion>\1 <match no='2' include_skipped='all'/> às</suggestion>
       <url>https://pt.wikipedia.org/wiki/Crase</url>
       <short>Erro de crase</short>
@@ -4378,7 +4378,7 @@ title="Easy editing stylesheet" ?>
           <token>a</token>
           <token regexp='yes'>apresentação|peça</token>
       </pattern>
-      <message>O verbo "assistir" com o sentido de presenciar rege preposição "a".</message>
+      <message>O verbo “assistir” com o sentido de presenciar rege preposição “a”.</message>
         <suggestion>\1 à \3</suggestion>
       <example correction='assistir à apresentação'>Poderá <marker>assistir a apresentação</marker> da gala.</example>
     </rule>
@@ -4388,7 +4388,7 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>as?</token>
           <token regexp='yes'>apresentações|peças</token>
       </pattern>
-      <message>O verbo "assistir" com o sentido de presenciar rege preposição "a".</message>
+      <message>O verbo “assistir” com o sentido de presenciar rege preposição “a”.</message>
         <suggestion>\1 às \3</suggestion>
       <example correction='assistir às apresentações'>Poderá <marker>assistir a apresentações</marker> da gala.</example>
     </rule>
@@ -4775,7 +4775,7 @@ title="Easy editing stylesheet" ?>
         </marker>
           <token postag_regexp='yes' postag="V...3S.+"/>
       </pattern>
-      <message>Erro de concordância de número: <suggestion><match no='2' postag_regexp= "yes" postag="(N.)FP(.+)" postag_replace="$1FS$2"/></suggestion></message>
+      <message>Erro de concordância de número: <suggestion><match no='2' postag_regexp= "yes" postag="(N.)FP(.+)" postag_replace="$1FS$2"/></suggestion>.</message>
       <example correction="vaca">A <marker>vacas</marker> está no pasto.</example>
     </rule-->
     <rule>
@@ -4786,7 +4786,7 @@ title="Easy editing stylesheet" ?>
         </marker>
           <token postag_regexp='yes' postag="V...3P.+"/>
       </pattern>
-      <message>Erro de concordância de número: <suggestion><match no='2' postag_regexp= "yes" postag="(N.)FS(.+)" postag_replace="$1FP$2"/></suggestion></message>
+      <message>Erro de concordância de número: <suggestion><match no='2' postag_regexp= "yes" postag="(N.)FS(.+)" postag_replace="$1FP$2"/></suggestion>.</message>
       <example correction="vacas">As <marker>vaca</marker> estão no pasto.</example>
     </rule>
     <rule>
@@ -4797,7 +4797,7 @@ title="Easy editing stylesheet" ?>
         </marker>
           <token postag_regexp='yes' postag="V...3S."/>
       </pattern>
-      <message>Erro de concordância de número: <suggestion><match no='2' postag_regexp= "yes" postag="(N.)MP(.+)" postag_replace="$1MS$2"/></suggestion></message>
+      <message>Erro de concordância de número: <suggestion><match no='2' postag_regexp= "yes" postag="(N.)MP(.+)" postag_replace="$1MS$2"/></suggestion>.</message>
       <example correction="boi">O <marker>bois</marker> está no pasto.</example>
     </rule>
     <rule>
@@ -4808,7 +4808,7 @@ title="Easy editing stylesheet" ?>
         </marker>
           <token postag_regexp='yes' postag="V...3P."/>
       </pattern>
-      <message>Erro de concordância de número: <suggestion><match no='2' postag_regexp= "yes" postag="(N.)MS(.+)" postag_replace="$1MP$2"/></suggestion></message>
+      <message>Erro de concordância de número: <suggestion><match no='2' postag_regexp= "yes" postag="(N.)MS(.+)" postag_replace="$1MP$2"/></suggestion>.</message>
       <example correction="bois">Os <marker>boi</marker> estão no pasto.</example>
     </rule>
   </rulegroup>
@@ -4820,7 +4820,7 @@ title="Easy editing stylesheet" ?>
           <token>gente</token>
           <token postag_regexp='yes' postag="V...1P.+"/>
       </pattern>
-      <message>Erro de concordância de número: <suggestion>\1 \2 <match no='3' postag_regexp= "yes" postag="(V...)1P(.+)" postag_replace="$13S$2"/></suggestion></message>
+      <message>Erro de concordância de número: <suggestion>\1 \2 <match no='3' postag_regexp= "yes" postag="(V...)1P(.+)" postag_replace="$13S$2"/></suggestion>.</message>
       <short>Erro de concordância de número</short>
       <example correction="A gente vai|A gente vá"><marker>A gente vamos</marker> à praia.</example>
     </rule>
@@ -5718,7 +5718,7 @@ title="Easy editing stylesheet" ?>
       <short>Erro de capitalização</short>
     <rule>
       <regexp>(?-i)\b((grand [cC]anyon)|(monte Ev[ae]reste))\b</regexp>
-      <message>Capitalize nomes de regiões geográficas: <suggestion><match no='1' regexp_match="( .+)" regexp_replace="$1" case_conversion="startupper"/></suggestion></message>
+      <message>Capitalize nomes de regiões geográficas: <suggestion><match no='1' regexp_match="( .+)" regexp_replace="$1" case_conversion="startupper"/></suggestion>.</message>
       <example correction="Monte Evareste">Demorou um mês a subir o <marker>monte Evareste</marker>.</example>
       <example>Siga para <marker>sul</marker> três blocos e depois, vire à esquerda.</example>
       <example>As ilhas Britânicas e o noroeste da Europe.</example>
@@ -5818,7 +5818,7 @@ title="Easy editing stylesheet" ?>
             <exception regexp='yes'>DJ|FC</exception></token>
         </marker>
       </pattern>
-      <message>Unidades do Sistema Internacional iguais ou inferiores a "kilo" são escritas com minúsculas.</message>
+      <message>Unidades do Sistema Internacional iguais ou inferiores a “kilo” são escritas com minúsculas.</message>
         <suggestion><match no='2' case_conversion="startlower"/></suggestion>
       <example correction="km">A 30 <marker>Km</marker> de distância.</example>
       <example correction="km²">..estado no ano de 2010, foi de 4,68 habitantes por <marker>Km²</marker>, sendo a vigésima quarta maior do Brasil e a quin…</example>
@@ -5833,7 +5833,7 @@ title="Easy editing stylesheet" ?>
             <exception>pH</exception></token>
         </marker>
       </pattern>
-      <message>Unidades do Sistema Internacional superiores a "kilo" são escritas com minúsculas.</message>
+      <message>Unidades do Sistema Internacional superiores a “kilo” são escritas com minúsculas.</message>
         <suggestion><match no='2' case_conversion="startupper"/></suggestion>
       <example correction="TJ">Estimaram-se forças de 30 <marker>tJ</marker> por m².</example>
       <example correction="GW">120 <marker>gW</marker> de potência</example>
@@ -7024,7 +7024,7 @@ title="Easy editing stylesheet" ?>
           <token>
             <exception regexp='yes' spacebefore='no'>&hifen;</exception></token>
       </pattern>
-      <message>Usar infinitivo: <suggestion><match no='3' postag_regexp= "yes" postag="V.+" postag_replace="VMN0000"/></suggestion></message>
+      <message>Usar infinitivo: <suggestion><match no='3' postag_regexp= "yes" postag="V.+" postag_replace="VMN0000"/></suggestion>.</message>
       <example correction="pedir">Alguns carteiros <marker>estão a pedirem</marker> a reforma.</example>
       <example>Alguns carteiros <marker>estão a pedi-la</marker>.</example>
     </rule>
@@ -8645,7 +8645,8 @@ title="Easy editing stylesheet" ?>
             <exception regexp="yes">[!.,;:–—\(]</exception></token>
           <token/>
       </pattern>
-      <message>Usar vírgula: <suggestion>\1, \2,</suggestion></message>
+      <message>Usar vírgula.</message>
+        <suggestion>\1, \2,</suggestion>
       <example correction="é, pois,">Ela <marker>é pois</marker> do Norte.</example>
     </rule>
     <rule>
@@ -8656,7 +8657,8 @@ title="Easy editing stylesheet" ?>
           <token>pois</token>
           <token regexp="yes">[!.]</token>
       </pattern>
-      <message>Usar vírgula: <suggestion>\1,</suggestion></message>
+      <message>Usar vírgula.</message>
+        <suggestion>\1,</suggestion>
       <example correction="É,">Será verdade? <marker>É</marker> pois!</example>
     </rule>
     <rule>
@@ -8670,7 +8672,8 @@ title="Easy editing stylesheet" ?>
             <exception regexp="yes">[!.,;:–—\(]</exception></token>
           <token/>
       </pattern>
-      <message>Usar vírgula: <suggestion>\1, \3,</suggestion></message>
+      <message>Usar vírgula.</message>
+        <suggestion>\1, \3,</suggestion>
       <example correction="é, pois,">Ela <marker>é, pois</marker> do Norte.</example>
     </rule>
     <rule>
@@ -8682,7 +8685,8 @@ title="Easy editing stylesheet" ?>
           <token>,</token>
           <token/>
       </pattern>
-      <message>Usar vírgula: <suggestion>\1, \2</suggestion></message>
+      <message>Usar vírgula.</message>
+        <suggestion>\1, \2</suggestion>
       <example correction="é, pois">Ela <marker>é pois</marker>, do Norte.</example>
     </rule>
   </rulegroup>
@@ -10247,7 +10251,7 @@ title="Easy editing stylesheet" ?>
       <example>THE END</example>
       <example>Este carro tem 128 cv e um motor de 1.7 cc.</example>
       <example>O CV segue anexo.</example>
-      <example>Se pretende referir-se ao passado substitua '-ão' por '-am'.</example>
+      <example>Se pretende referir-se ao passado, substitua '-ão' por '-am'.</example>
     </rule>
     <rule>
       <antipattern>
@@ -10360,7 +10364,7 @@ title="Easy editing stylesheet" ?>
     <rule id='NUMBER_ABREVIATION' name="Abreviatura de número: n.º/ núm.">
     <!--  Created by Tiago F. Santos, 30-01-2017 -->
       <regexp>\b(nºs?|nr[\.ºs])\.?s?</regexp>
-      <message>As abreviaturas para número são: <suggestion>n.º</suggestion> ou <suggestion>núm.</suggestion></message>
+      <message>As abreviaturas para número são: <suggestion>n.º</suggestion> ou <suggestion>núm.</suggestion>.</message>
       <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/abreviacao-da-palavra-numero/6920</url>
       <short>Erro de abreviação</short>
       <example correction="n.º|núm.">O premiado é o <marker>nº.</marker> 12 012.</example>
@@ -10981,7 +10985,7 @@ title="Easy editing stylesheet" ?>
           <token regexp="yes">&expressoes_de_tempo;</token>
           <token>atrás</token>
       </pattern>
-      <message>Com o verbo haver não é necessário usar "atrás": <suggestion><match no='1' include_skipped="all"/> <match no='2' include_skipped="all"/> <match no='3' include_skipped="all"/> <match no='4' include_skipped="all"/></suggestion>.</message>
+      <message>Com o verbo haver não é necessário usar “atrás”: <suggestion><match no='1' include_skipped="all"/> <match no='2' include_skipped="all"/> <match no='3' include_skipped="all"/> <match no='4' include_skipped="all"/></suggestion>.</message>
       <example correction="Há n segundos"><marker>Há n segundos atrás</marker>.</example>
     </rule>
 
@@ -25016,7 +25020,7 @@ TODO Write better examples
             <exception regexp='yes'>.+s$</exception></token>
           <token>doze</token>
       </pattern>
-      <message>\2 é um número. Porção de comida escreve-se <suggestion>\1 <match no='2' regexp_match='doze(s?)' regexp_replace='dose$1' include_skipped='all'/></suggestion></message>
+      <message>\2 é um número. Porção de comida escreve-se <suggestion>\1 <match no='2' regexp_match='doze(s?)' regexp_replace='dose$1' include_skipped='all'/></suggestion>.</message>
       <example correction="Uma dose"><marker>Uma doze</marker> de bifinhos com cogumelhos para a mesa três.</example>
       <example>…a, a segunda maior de toda a América e também uma das doze forças armadas mais bem preparadas do mundo.</example>
       <example>Veja abaixo as doze macro bacias hidrográficas brasileiras:</example>
@@ -25026,7 +25030,7 @@ TODO Write better examples
           <token>dose</token>
           <token postag="(Z|N..P).+" postag_regexp="yes"/>
       </pattern>
-      <message>\1 é uma porção de comida. O número escreve-se <suggestion>doze \2</suggestion></message>
+      <message>\1 é uma porção de comida. O número escreve-se <suggestion>doze \2</suggestion>.</message>
       <example correction="Doze mil"><marker>Dose mil</marker> esculturas estão em exposição este Domingo.</example>
     </rule>
   </rulegroup>
@@ -25422,6 +25426,13 @@ TODO Write better examples
           <token regexp="yes">\d+\.\d+</token>
         </marker>
       </antipattern>
+      <antipattern><!-- software numbers -->
+        <marker>
+          <token regexp="yes">\w+buntu</token>
+          <token regexp="yes" spacebefore="no">&hifen;</token>
+          <token regexp="yes" spacebefore="no">\d+\.\d+</token>
+        </marker>
+      </antipattern>
     <!--<antipattern>   Livros da Bíblia
         <marker>
           <token postag="_abrev_biblia"/>
@@ -25461,6 +25472,7 @@ TODO Write better examples
       <example>No último censo nacional, 600.000 argentinos (1,autoidentificaram como indígena…</example>
       <example>GNOME 3.16 – 3.20 Committer</example>
       <example><marker>111.231</marker></example><!-- XXX Corrigido pela segunda regra -->
+      <example>xubuntu-12.04</example>
     </rule>
     <rule>
       <pattern>
@@ -25539,7 +25551,7 @@ TODO Write better examples
       <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/simbolos-de-unidades/11572</url>
     <rule>
       <regexp case_sensitive='yes'>(\-?[0-9]+[0-9,\.]*(°C|°F|°De?|°R[éeøa]?|(Z|E|P|T|G|M|k|h|da|d|c|m|µ|n|p|f|a|z|y)?m|(Z|E|P|T|G|M|k|h|da|d|c|m|µ|n|p|f|a|z|y)?N|[kKMGTPEZY]i?B|[kmµnp]g|[Mk]t|kWh|GWa|MWd|MWh))\b</regexp>
-      <message>Deve dar um espaço entre o valor e a unidade de medida: <suggestion><match no='1' regexp_match="((\-)?[0-9]+[0-9,.]*{1,})" regexp_replace="$1 "/></suggestion></message>
+      <message>Deve dar um espaço entre o valor e a unidade de medida: <suggestion><match no='1' regexp_match="((\-)?[0-9]+[0-9,.]*{1,})" regexp_replace="$1 "/></suggestion>.</message>
       <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/simbolos-de-unidades/11572</url>
       <example correction="25 °C">Fazem <marker>25°C</marker>.</example>
       <example correction="-25 °C">Fazem <marker>-25°C</marker>.</example>
@@ -26776,7 +26788,7 @@ TODO Write better examples
         </marker>
           <token regexp="yes">\d{4}|\p{Lu}\p{Ll}+</token>
       </pattern>
-      <message>Esta anotação não é padronizada, utilize antes o símbolo: <suggestion>©</suggestion></message>
+      <message>Esta anotação não é padronizada, utilize antes o símbolo: <suggestion>©</suggestion>.</message>
       <short>Anotação não padronizada de ©</short>
       <example correction="©">Copyright <marker>(C)</marker> Joanna Bator, 2012</example>
       <example correction="©">Copyright <marker>(C)</marker> 2010 O Estado da Gramática</example>
@@ -26860,7 +26872,7 @@ TODO Write better examples
       <pattern>
           <token postag="''"/>
       </pattern>
-      <message>Utilize uma aspas de fecho aqui: <suggestion>”</suggestion>.</message>
+      <message>Utilize aqui aspas de fecho: <suggestion>”</suggestion>.</message>
       <url>https://en.wikipedia.org/wiki/Smart_quote#Electronic_documents</url>
       <short>Utilize aspas inteligentes</short>
       <example correction="”">Isto é um teste (&quot;teste<marker>&quot;</marker>)</example>
@@ -27013,7 +27025,7 @@ TODO Write better examples
             <exception regexp="yes">[,;:!?…”»()\[\]&#8210;&#8211;&#8212;&#8213;\-]</exception>
             <exception postag='SENT_END'/></token>
       </pattern>
-      <message>Coloque um espaço depois das reticências</message>
+      <message>Coloque um espaço depois das reticências.</message>
         <suggestion>… </suggestion>
       <example correction='… '>Cole aqui o seu texto<marker>...</marker>ou verifique este texto.</example>
       <example correction='… '><marker>...</marker>e os votos de Bom Ano Novo.</example>
@@ -27029,7 +27041,7 @@ TODO Write better examples
             <exception regexp="yes">[,;:!?…”»()\[\]&#8210;&#8211;&#8212;&#8213;\-&quot;“]</exception>
             <exception postag='SENT_END'/></token>
       </pattern>
-      <message>Coloque um espaço depois das reticências</message>
+      <message>Coloque um espaço depois das reticências.</message>
         <suggestion>… </suggestion>
       <example correction='… '>Cole aqui o seu texto<marker>…</marker>ou verifique este texto.</example>
       <example correction='… '><marker>…</marker>e os votos de Bom Ano Novo.</example>
@@ -30895,7 +30907,7 @@ TODO Write better examples
           <token regexp='yes'>longo|largo</token>
           <token>prazo</token>
       </pattern>
-      <message>Esta expressão utiliza a preposição "a".</message>
+      <message>Esta expressão utiliza a preposição “a”.</message>
         <suggestion>a \2 \3</suggestion>
       <example correction='a longo prazo'><marker>em longo prazo</marker></example>
     </rule>
@@ -31303,7 +31315,7 @@ TODO Write better examples
     <!-- Created by Tiago F. Santos, 2017-05-15 -->
       <pattern>
           <token regexp="yes">.*ü.*
-            <exception regexp="yes">Atatürk|Hübner|hübneriano|Müller|mülleriano|ü|über.*|Württemberg|Zürich|Führer.*|Düsseldorf|München|Für</exception></token>
+            <exception regexp="yes">Atatürk|Hübner|hübneriano|Müller|mülleriano|ü|über.*|Württemberg|Zürich|Führer.*|Düsseldorf|München|Für|Gründgens</exception></token>
       </pattern>
       <message>O trema deixou de ser utilizado em Português com o Acordo de 1945.</message>
         <suggestion><match no='1' regexp_match='ü' regexp_replace='u'/></suggestion>
@@ -34002,7 +34014,7 @@ TODO Write better examples
           <token regexp='yes'>olas?
             <exception scope='previous' regexp='yes'>(?:[dn]?(?:um|algum)?)?as?</exception></token>
       </pattern>
-      <message>Se se pretende referir à saudação, escreva <suggestion><match no='1' regexp_match='a' regexp_replace='á'/></suggestion>.</message>
+      <message>Se se pretende referir-se à saudação, escreva <suggestion><match no='1' regexp_match='a' regexp_replace='á'/></suggestion>.</message>
       <url>https://pt.wiktionary.org/wiki/olá</url>
       <example correction="Olá"><marker>Ola</marker>!</example>
     </rule>
