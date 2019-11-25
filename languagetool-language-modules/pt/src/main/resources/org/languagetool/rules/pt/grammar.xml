@@ -1077,7 +1077,7 @@ title="Easy editing stylesheet" ?>
           <token postag_regexp='yes' postag='D..F.+'/>
           <token regexp='yes'>andaluz|aprendiz|petiz</token>
       </pattern>
-      <message>Esta palavra varia entre géneros. Substitua por <suggestion>a \2a</suggestion>.</message>
+      <message>Esta palavra varia entre géneros. Substitua por: <suggestion>a \2a</suggestion>.</message>
       <example correction="a aprendiza">Vamos ver <marker>a aprendiz</marker>.</example>
     </rule>
     <rule>
@@ -1085,7 +1085,7 @@ title="Easy editing stylesheet" ?>
           <token postag_regexp='yes' postag='D..F.+'/>
           <token>juiz</token>
       </pattern>
-      <message>Esta palavra varia entre géneros. Substitua por <suggestion>a juíza</suggestion>.</message>
+      <message>Esta palavra varia entre géneros. Substitua por: <suggestion>a juíza</suggestion>.</message>
       <example correction="a juíza">Vamos ver <marker>a juiz</marker>.</example>
       <example>…chegou a juiz por ter mandado prender…</example>
     </rule>
@@ -2684,7 +2684,7 @@ title="Easy editing stylesheet" ?>
       <short>&MSG_ECV;</short>
     <rule>
       <antipattern>
-          <token postag_regexp='yes' postag='V....S.+' inflected='yes' regexp='yes'>dizer|ler</token>
+          <token postag_regexp='yes' postag='V....S.+' inflected='yes' regexp='yes'>dizer|escrever|ler</token>
           <token regexp='yes' spacebefore='no'>&hifen;</token>
           <token>se</token>
           <token postag_regexp='yes' postag='(?:N..|A...)P.+'/>
@@ -2701,13 +2701,22 @@ title="Easy editing stylesheet" ?>
           <token max="3" postag_regexp='yes' postag='(?:N..|A...)P.+'>
             <exception negate_pos='yes' postag_regexp='yes' postag='(?:N..|A...)P.+'/></token>
       </pattern>
-      <message>O verbo aqui concorda com o objecto portanto deve utilizar o verbo no plural.</message>
+      <message>O verbo aqui concorda com o objecto, portanto, deve utilizá-lo no plural.</message>
         <suggestion><match no='1' postag='(V....)S(.+)' include_skipped='all' postag_replace='$1P$2' postag_regexp='yes'/>\2\3 <match no='4' include_skipped='all'/> <match no='5' include_skipped='all'/> <match no='6' include_skipped='all'/></suggestion>
       <example correction='juntaram-se os amigos'>A ele <marker>juntou-se os amigos</marker> e família.</example>
       <example correction='juntaram-se muitos bons amigos'>A ele <marker>juntou-se muitos bons amigos</marker> e família.</example>
       <example>…leia-se superstições…</example>
+      <example>A unidade de tempo escreve-se minutos.</example>
     </rule>
     <rule>
+      <antipattern>
+          <token regexp='yes'>dizem|escrevem|l[eê]em</token>
+          <token regexp='yes' spacebefore='no'>&hifen;</token>
+          <token spacebefore='no'>se</token>
+          <token min="0" max="3" postag_regexp='yes' postag='R.'/>
+          <token max="3" postag_regexp='yes' postag='(?:N..|A...)S.+'/>
+          <token regexp='yes'>e|ou</token>
+      </antipattern>
       <antipattern>
           <token inflected='yes'>reservar</token>
           <token regexp='yes' spacebefore='no'>&hifen;</token>
@@ -2733,11 +2742,12 @@ title="Easy editing stylesheet" ?>
           <token>
             <exception regexp='yes'>e|,</exception></token>
       </pattern>
-      <message>O verbo aqui concorda com o objecto portanto deve utilizar o verbo no singular.</message>
+      <message>O verbo aqui concorda com o objecto, portanto, deve utilizá-lo no singular.</message>
         <suggestion><match no='1' postag='(V....)P(.+)' include_skipped='all' postag_replace='$1S$2' postag_regexp='yes'/>\2\3 <match no='4' include_skipped='all'/> <match no='5' include_skipped='all'/> <match no='6' include_skipped='all'/></suggestion>
       <example correction='juntara-se a família|juntou-se a família'>A ele <marker>juntaram-se a família</marker>.</example>
     <!--example correction='juntara-se à família|juntou-se à família'>Ele <marker>juntaram-se à família</marker>.</example-->
       <example>A ele <marker>juntaram-se uma amiga</marker> e a família.</example>
+      <example>Os graus de parentesco escrevem-se avó ou avô.</example>
     </rule>
   </rulegroup>
 
@@ -10213,6 +10223,10 @@ title="Easy editing stylesheet" ?>
           <token>qua</token>
           <token>non</token>
       </antipattern>
+      <antipattern>
+          <token regexp='yes'>&hifen;</token>
+          <token regexp='yes' spacebefore='no'>am|ra</token>
+      </antipattern>
     <rule>
       <pattern case_sensitive="no">
         <marker>
@@ -10233,6 +10247,7 @@ title="Easy editing stylesheet" ?>
       <example>THE END</example>
       <example>Este carro tem 128 cv e um motor de 1.7 cc.</example>
       <example>O CV segue anexo.</example>
+      <example>Se pretende referir-se ao passado substitua '-ão' por '-am'.</example>
     </rule>
     <rule>
       <antipattern>
@@ -33916,7 +33931,7 @@ TODO Write better examples
       <pattern>
           <token regexp='yes'>bateiras?</token>
       </pattern>
-      <message>'Bateira' é um tipo de barco. O modo de alimentação escreve-se <suggestion>bateria</suggestion>.</message>
+      <message>'Bateira' é um barco. O modo de alimentação escreve-se <suggestion>bateria</suggestion>.</message>
       <url>https://pt.wiktionary.org/wiki/bateria</url>
       <example correction="bateria">Acabou a <marker>bateira</marker>.</example>
     </rule>
@@ -33942,7 +33957,7 @@ TODO Write better examples
             <exception regexp='yes'>Amaz[ôó]nia|envenen.+|(.+índi[ao]|tribo|veneno)s?</exception>
             <exception regexp='yes' scope='next'>Amaz[ôó]nia|envenen.+|(.+índi[ao]|tribo|veneno)s?</exception></token>
       </pattern>
-      <message>'\1' é um tipo de veneno tribal. Confirme.</message>
+      <message>'\1' é um veneno tribal. Confirme.</message>
         <suggestion>curar e</suggestion>
         <suggestion>curar</suggestion>
       <url>https://pt.wiktionary.org/wiki/curare</url>
@@ -33987,7 +34002,7 @@ TODO Write better examples
           <token regexp='yes'>olas?
             <exception scope='previous' regexp='yes'>(?:[dn]?(?:um|algum)?)?as?</exception></token>
       </pattern>
-      <message>Se se pretende referir à saudação escreva <suggestion><match no='1' regexp_match='a' regexp_replace='á'/></suggestion>.</message>
+      <message>Se se pretende referir à saudação, escreva <suggestion><match no='1' regexp_match='a' regexp_replace='á'/></suggestion>.</message>
       <url>https://pt.wiktionary.org/wiki/olá</url>
       <example correction="Olá"><marker>Ola</marker>!</example>
     </rule>
