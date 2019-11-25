@@ -80,7 +80,7 @@ public class PortugueseDiacriticsRule extends AbstractSimpleReplaceRule2 {
 
   @Override
   public String getSuggestion() {
-    return "'$match' é uma expressão estrangeira importada cuja grafia tem diacríticos. É preferível escrever $suggestions";
+    return "'$match' é uma expressão estrangeira importada cuja grafia tem diacríticos. É preferível escrever $suggestions.";
   }
 
   @Override
