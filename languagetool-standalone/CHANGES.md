@@ -1,4 +1,4 @@
-# LibreGrammar Change Log
+# `LibreGrammar` Change Log
 
 ## 4.8X-SNAPSHOT (release planned for 2019-XX-XX)
 
@@ -6,7 +6,7 @@
 
 #### English
   * rules added:
-     - EnglishSimpleGrammarRule for simple replacement rule creation - 877 error patterns added from Wikipedia;
+     - `EnglishSimpleGrammarRule` for simple replacement rule creation - 877 error patterns added from Wikipedia;
      - verb-noun confusion rule - 1526 error patterns mostly from After the Deadline (AtD);
      - eggcorn detection - 227 error patterns from Grammark and AtD;
      - specific case rule - 751 extra entries from Wikipedia;
@@ -14,7 +14,7 @@
      - cliché detection - 691 error patterns from AtD;
      - wordiness database enhancements - 653 error patterns from Grammark;
      - informal expressions detection - 228 error patterns from Wikipedia;
-     - EnglishStyleRepeatedWordRule;
+     - `EnglishStyleRepeatedWordRule`;
      - split infinitive detection;
      - comma splice partial detection;
      - weasel word and thought-terminating clichés detection - 87 error patterns added from Wikipedia;
@@ -23,10 +23,10 @@
     ngram data (see http://wiki.languagetool.org/finding-errors-using-n-gram-data);
      - other rules added and improved.
   * English rules re-activated:
-     - EnglishPlainEnglishRule - 697 error patterns from AtD;
+     - `EnglishPlainEnglishRule` - 697 error patterns from AtD;
      - Plain English category - 105 rules;
-     - EnglishRedundancyRule - 731 error patterns from AtD;
-     - LongSentenceRule;
+     - `EnglishRedundancyRule` - 731 error patterns from AtD;
+     - `LongSentenceRule`;
      - Passive voice;
      - Tired intensifiers;
      - Number at sentence start;
@@ -51,39 +51,39 @@
 #### Arabic
   * Support added thanks to [Taha Zerrouki](https://github.com/linuxscout/languagetool), [Sohaib Afifi](https://github.com/sohaibafifi/languagetool), Imen Kali, and Karima Tchoketch. Support includes:
      - 117 grammar rules;
-     - [spell checking](http://ayaspell.sourceforge.net/) for Algerian, Egyptian, Saudi Arabian, Tunisian language variant;
+     - [spell checking](http://ayaspell.sourceforge.net/) for Algerian, Egyptian, Saudi Arabian, and Tunisian language variants;
      - [part-of-speech dictionary and synthesiser](https://github.com/sohaibafifi/languagetool).
      - a few generic typographical rules (e.g., spacing rules);
      - a few generic style rules (e.g., sentence length);
 
 #### Danish
   * activated generic Java rules, including:
-     - LongSentenceRule, LongParagraphRule, MultipleWhispacesRule, SentenceWhitespaceRule,
-     WhiteSpaceAtBeginOfParagraph, EmptyLineRule, ParagraphRepeatBeginningRule,
-     PunctuationMarkAtParagraphEnd.
+     - `LongSentenceRule`, `LongParagraphRule`, `MultipleWhispacesRule`, `SentenceWhitespaceRule`,
+     `WhiteSpaceAtBeginOfParagraph`, `EmptyLineRule`, `ParagraphRepeatBeginningRule`,
+     `PunctuationMarkAtParagraphEnd`.
   * improved tokenization.
 
 #### Dutch
   * rules added:
-     - DutchReadabilityRule.
+     - `DutchReadabilityRule`.
   * activated generic Java rules, including:
-     - LongSentenceRule, LongParagraphRule, SentenceWhitespaceRule, WhiteSpaceAtBeginOfParagraph,
-     EmptyLineRule, ParagraphRepeatBeginningRule, PunctuationMarkAtParagraphEnd.
+     - `LongSentenceRule`, `LongParagraphRule`, `SentenceWhitespaceRule`, `WhiteSpaceAtBeginOfParagraph`,
+     `EmptyLineRule`, `ParagraphRepeatBeginningRule`, `PunctuationMarkAtParagraphEnd`.
   * improved tokenization.
 
 #### Esperanto
   * sentences and paragraphs now end with a single line break.
   * activated generic Java rules, including:
-     - LongSentenceRule, LongParagraphRule, WhiteSpaceAtBeginOfParagraph, EmptyLineRule,
-     ParagraphRepeatBeginningRule, PunctuationMarkAtParagraphEnd.
+     - `LongSentenceRule`, `LongParagraphRule`, `WhiteSpaceAtBeginOfParagraph`, `EmptyLineRule`,
+     `ParagraphRepeatBeginningRule`, `PunctuationMarkAtParagraphEnd`.
   * improved tokenization.
 
 #### French
   * activated generic Java rules, including:
-     - LongSentenceRule, LongParagraphRule, SentenceWhitespaceRule, WhiteSpaceAtBeginOfParagraph,
-     EmptyLineRule, ParagraphRepeatBeginningRule, PunctuationMarkAtParagraphEnd.
+     - `LongSentenceRule`, `LongParagraphRule`, `SentenceWhitespaceRule`, `WhiteSpaceAtBeginOfParagraph`,
+     `EmptyLineRule`, `ParagraphRepeatBeginningRule`, `PunctuationMarkAtParagraphEnd`.
   * rules added:
-     - FrenchReadabilityRule;
+     - `FrenchReadabilityRule`;
      - typography rules for mathematical symbols and arrows.
   * sentences and paragraphs now end with a single line break.
   * improved tokenization.
@@ -94,13 +94,13 @@
 
 #### German
   * activated generic Java rules, including:
-     - GermanStyleRepeatedWordRule, LongSentenceRule.
+     - `GermanStyleRepeatedWordRule`, `LongSentenceRule`.
 
 #### Icelandic
   * spelling suggestions now active.
   * activated generic Java rules, including:
-     - LongSentenceRule, LongParagraphRule, SentenceWhitespaceRule, WhiteSpaceAtBeginOfParagraph,
-     EmptyLineRule, ParagraphRepeatBeginningRule, PunctuationMarkAtParagraphEnd.
+     - `LongSentenceRule`, `LongParagraphRule`, `SentenceWhitespaceRule`, `WhiteSpaceAtBeginOfParagraph`,
+     `EmptyLineRule`, `ParagraphRepeatBeginningRule`, `PunctuationMarkAtParagraphEnd`.
 
 #### Irish
   * Support added thanks to [Jim Regan](https://github.com/jimregan/languagetool), Emily Barnes, Mícheál J. Ó Meachair,
@@ -114,8 +114,8 @@
 
 #### Italian
   * activated generic Java rules, including:
-     - LongSentenceRule, LongParagraphRule, SentenceWhitespaceRule, WhiteSpaceAtBeginOfParagraph,
-     EmptyLineRule, ParagraphRepeatBeginningRule, PunctuationMarkAtParagraphEnd.
+     - `LongSentenceRule`, `LongParagraphRule`, `SentenceWhitespaceRule`, `WhiteSpaceAtBeginOfParagraph`,
+     `EmptyLineRule`, `ParagraphRepeatBeginningRule`, `PunctuationMarkAtParagraphEnd`.
   * add typography rules for mathematical symbols and arrows.
   * sentences and paragraphs now end with a single line break.
 
@@ -124,12 +124,12 @@
 
 #### Polish
   * activated generic Java rules, including:
-     - LongSentenceRule, LongParagraphRule, UppercaseSentenceStartRule, WhiteSpaceBeforeParagraphEnd,
-     WhiteSpaceAtBeginOfParagraph, EmptyLineRule, ParagraphRepeatBeginningRule, PunctuationMarkAtParagraphEnd.
+     - `LongSentenceRule`, `LongParagraphRule`, `UppercaseSentenceStartRule`, `WhiteSpaceBeforeParagraphEnd`,
+     `WhiteSpaceAtBeginOfParagraph`, `EmptyLineRule`, `ParagraphRepeatBeginningRule`, `PunctuationMarkAtParagraphEnd`.
   * improved tokenization.
 
 #### Portuguese
-  * add a few more rules:
+  * add rules:
     - vocative punctuation;
     - personal infinitive rules;
     - subject-predicate agreement;
@@ -152,13 +152,13 @@
 #### Spanish
   * re-activated subject-predicate agreement category.
   * activated generic Java rules, including:
-     - LongSentenceRule, LongParagraphRule, SentenceWhitespaceRule, WhiteSpaceAtBeginOfParagraph,
-     EmptyLineRule, ParagraphRepeatBeginningRule, PunctuationMarkAtParagraphEnd.
+     - `LongSentenceRule`, `LongParagraphRule`, `SentenceWhitespaceRule`, `WhiteSpaceAtBeginOfParagraph`,
+     `EmptyLineRule`, `ParagraphRepeatBeginningRule`, `PunctuationMarkAtParagraphEnd`.
   * add typography rules for mathematical symbols.
   * sentences and paragraphs now end with a single line break.
 
 #### General
-  * spelling_global.txt has 4049 extra entries on the database.
+  * `spelling_global.txt` has 4049 extra entries on the database.
   * dependencies security updates.
   * restored some languagetool-dev and languagetool-standalone scripts.
   * [WIP] removed Google dependencies from English and Catalan language modules, as well as from several Java rules.
@@ -166,10 +166,10 @@
   * standalone default underline colors changed:
     - grey: style repetitions and redundancies;
     - cyan: typographical and whitespaces related suggestions.
-  * ParagraphRepeatBeginning now triggers properly, shows the correct messages, and is now active by default.
+  * `ParagraphRepeatBeginning` now triggers properly, shows the correct messages, and is now active by default.
 
-#### LibreOffice / Apache OpenOffice Integration
-  * remote server commits for LibreOffice plug-in reverted (#1929).
+#### `LibreOffice` / Apache `OpenOffice` Integration
+  * remote server commits for `LibreOffice` plug-in reverted (#1929).
   * multiple core CPU support active by default.
 
 ### Other changes common to both projects
@@ -193,7 +193,7 @@
 
 #### English
   * many rules added and significant rules improvements
-    - SpecificCaseRule for case specific phrases
+    - `SpecificCaseRule` for case specific phrases
   * multiwords support added
   * disambiguation improvements
   * POS and spelling improvements
@@ -243,7 +243,7 @@
     be accepted for all languages.
   * `prohibit_custom.txt` and `spelling_custom.txt` can be used to make your
     own additions to `spelling.txt` and `prohibit.txt` without having to edit those
-    files after a LanguageTool update (you will still need to manually copy those
+    files after a `LanguageTool` update (you will still need to manually copy those
     files).  
     Paths to these files (`xx` = language code):  
     `./org/languagetool/resource/xx/hunspell/prohibit_custom.txt`
@@ -251,9 +251,9 @@
     Note that you can simply create these files if they don't exist for your language yet.
 
 
-#### LibreOffice / Apache OpenOffice Integration
+#### `LibreOffice` / Apache `OpenOffice` Integration
   * 'disable rule' option added to context menu, thanks to Fred Kruse.
-  * TextLevelRules now have the option to check chapter blocks, thanks to Fred Kruse.
+  * `TextLevelRules` now have the option to check chapter blocks, thanks to Fred Kruse.
 
 #### HTTP API / LT server
   * The dynamic languages feature (`lang-xx=...` and `lang-xx-dictPath=...`) now

@@ -1,7 +1,7 @@
 # LibreGrammar
 
 **A proof-reading tool for Catalan, Dutch, English, French, German,
-Polish, Portuguese, Russian, and [more languages](https://www.languagetool.org/languages/)**
+Polish, Portuguese, Russian, and [29 more languages](https://github.com/TiagoSantos81/languagetool/tree/master/languagetool-language-modules)**
 
 Version 4.8-alpha-LT_fork, 2019-xx-xx
 Copyright (C) 2019- the LibreGrammar community and Tiago F. Santos
