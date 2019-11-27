@@ -22238,7 +22238,7 @@ USA
                         <exception postag="NNP?S" postag_regexp="yes"/>
                         <exception regexp="yes">&apostrophe;</exception></token>
             </pattern>
-            <message>Possible agreement error. The noun <match no="4"/> seems to be countable; consider using: <suggestion><match no="1"/> of <match no="3" postag="NNS"/></suggestion>.</message>
+            <message>Possible agreement error. The noun <match no="3"/> seems to be countable; consider using: <suggestion><match no="1"/> of <match no="3" postag="NNS"/></suggestion>.</message>
             <short>Grammatical problem</short>
             <example correction="collection of books">The library has a <marker>collection of book</marker>.</example>
             <example correction="Glossary of terms"><marker>Glossary of term</marker> and acronyms</example>
