@@ -2336,10 +2336,10 @@
           <token postag='V.+' postag_regexp='yes'>
             <exception inflected="yes">ser</exception></token>
         <marker>
-          <token regexp="yes">modelar</token>
+          <token>modelar</token>
         </marker>
       </pattern>
-      <disambig action="filter"><wd pos="V.+"/></disambig>
+      <disambig action="filter" postag="V.+"/>
     </rule>
 
     <rule id="DEVE_SER" name="Deve + Infinitivo">
