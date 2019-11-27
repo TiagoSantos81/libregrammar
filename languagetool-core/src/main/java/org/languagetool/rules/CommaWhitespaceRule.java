@@ -40,13 +40,8 @@ public class CommaWhitespaceRule extends Rule {
 
   /** @since 4.8 */
   public CommaWhitespaceRule(ResourceBundle messages, IncorrectExample incorrectExample, CorrectExample correctExample, boolean checkQuotes) {
-    super(messages);
-    super.setCategory(Categories.TYPOGRAPHY.getCategory(messages));
-    setLocQualityIssueType(ITSIssueType.Whitespace);
-    if (incorrectExample != null && correctExample != null) {
-      addExamplePair(incorrectExample, correctExample);
-    }
-    this.checkQuotes = checkQuotes;
+    this(messages, incorrectExample, correctExample);
+    this.quotesWhitespaceCheck = checkQuotes;
   }
 
   /** @since 3.3 */
