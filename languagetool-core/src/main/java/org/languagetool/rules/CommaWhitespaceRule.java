@@ -1,6 +1,6 @@
 /* LanguageTool, a natural language style checker
  * Copyright (C) 2005 Daniel Naber (http://www.danielnaber.de)
- *
+ * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
@@ -31,13 +31,12 @@ import static org.languagetool.tools.StringTools.isEmpty;
 /**
  * A rule that matches periods, commas and closing parenthesis preceded by whitespace and
  * opening parenthesis followed by whitespace.
- *
+ * 
  * @author Daniel Naber
  */
-
 public class CommaWhitespaceRule extends Rule {
 
-  protected boolean checkQuotes = true;
+  private boolean quotesWhitespaceCheck;
 
   /** @since 4.8 */
   public CommaWhitespaceRule(ResourceBundle messages, IncorrectExample incorrectExample, CorrectExample correctExample, boolean checkQuotes) {
@@ -58,14 +57,22 @@ public class CommaWhitespaceRule extends Rule {
     if (incorrectExample != null && correctExample != null) {
       addExamplePair(incorrectExample, correctExample);
     }
+    this.quotesWhitespaceCheck = true;
+  }
+
+  public CommaWhitespaceRule(ResourceBundle messages, boolean quotesWhitespace) { 
+    this(messages, null, null);
+    this.quotesWhitespaceCheck = quotesWhitespace;
   }
 
   /**
    * @deprecated use {@link #CommaWhitespaceRule(ResourceBundle, IncorrectExample, CorrectExample)} instead (deprecated since 3.3)
    */
   public CommaWhitespaceRule(ResourceBundle messages) {
-    this(messages, null, null, true);
+    this(messages, null, null);
+    this.quotesWhitespaceCheck = true;
   }
+
 
   @Override
   public String getId() {
@@ -76,7 +83,7 @@ public class CommaWhitespaceRule extends Rule {
   public final String getDescription() {
     return messages.getString("desc_comma_whitespace");
   }
-
+  
   public String getCommaCharacter() {
     return ",";
   }
@@ -99,8 +106,8 @@ public class CommaWhitespaceRule extends Rule {
           msg = messages.getString("no_space_after");
           suggestionText = prevToken;
         }
-      } else if (isWhitespace && checkQuotes && isQuote(prevToken) && prevPrevToken.equals(" ")) {
-      	  msg = messages.getString("no_space_around_quotes");
+      } else if (isWhitespace && isQuote(prevToken) && this.quotesWhitespaceCheck && prevPrevToken.equals(" ")) {
+          msg = messages.getString("no_space_around_quotes");
           suggestionText = "";
       } else if (!isWhitespace && prevToken.equals(getCommaCharacter())
           && !isQuote(token)
@@ -151,27 +158,27 @@ public class CommaWhitespaceRule extends Rule {
   }
 
   private static boolean isWhitespaceToken(AnalyzedTokenReadings token) {
-	  return (token.isWhitespace()
-			  || StringTools.isNonBreakingWhitespace(token.getToken())
-			  || token.isFieldCode()) && !token.equals("\u200B");
+    return (   token.isWhitespace()
+        || StringTools.isNonBreakingWhitespace(token.getToken())
+        || token.isFieldCode()) && !token.getToken().equals("\u200B");
   }
 
   private static boolean isQuote(String str) {
-	    if (str.length() == 1) {
-	      char c = str.charAt(0);
-	      if (c =='\'' || c == '"' || c =='’'
-	          || c == '”' || c == '“'
-	          || c == '«'|| c == '»') {
-	        return true;
-	      }
-	    }
-	    return false;
+    if (str.length() == 1) {
+      char c = str.charAt(0);
+      if (c =='\'' || c == '"' || c =='’'
+          || c == '”' || c == '“'
+          || c == '«'|| c == '»') {
+        return true;
+      }
+    }
+    return false;
   }
 
   private static boolean isHyphenOrComma(String str) {
     if (str.length() == 1) {
       char c = str.charAt(0);
-      if ( c == '-' || c == ',') {
+      if (c == '-' || c == ',') {
         return true;
       }
     }
