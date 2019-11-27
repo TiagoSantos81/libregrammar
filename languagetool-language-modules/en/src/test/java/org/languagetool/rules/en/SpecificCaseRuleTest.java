@@ -49,9 +49,9 @@ public class SpecificCaseRuleTest {
     assertThat(matches1[0].getFromPos(), is(7));
     assertThat(matches1[0].getToPos(), is(19));
     assertThat(matches1[0].getSuggestedReplacements().toString(), is("[Harry Potter]"));
-    assertThat(matches1[0].getMessage(), is("If the term is a proper noun, use initial capitals."));
+    assertThat(matches1[0].getMessage(), is("If the phrase is a proper noun, use initial capitals."));
     RuleMatch[] matches2 = assertBad("Alexander The Great");
-    assertThat(matches2[0].getMessage(), is("If the term is a proper noun, use the suggested capitalization."));
+    assertThat(matches2[0].getMessage(), is("If the phrase is a proper noun, use the suggested capitalization."));
   }
 
   private void assertGood(String input) throws IOException {
