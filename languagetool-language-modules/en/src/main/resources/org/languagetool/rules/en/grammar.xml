@@ -8441,6 +8441,23 @@ USA
     <!-- Grammar -->
     <!-- ====================================================================== -->
     <category id="GRAMMAR" name="Grammar" type="grammar">
+        <rulegroup id="CONDITIONAL_CLAUSE" name="conditional clause">
+            <rule>
+                <pattern>
+                    <token postag="SENT_START"></token>
+                    <token skip="3" case_sensitive="yes">If<exception scope="next" postag="PCT|VB.*|JJ|RB" postag_regexp="yes"></exception></token>
+                    <marker>
+                        <token>will
+                            <exception scope="previous" postag="POS|PRP\$" postag_regexp="yes"/>
+                        </token>
+                    </marker>
+                    <token postag="VB"><exception>be</exception></token>
+                </pattern>
+                <message>Consider removing 'will'</message>
+                <suggestion></suggestion>
+                <example correction="">If we <marker>will</marker> go there, we might meet him.</example>
+            </rule>
+        </rulegroup>
         <rulegroup id="LOWERCASE_MONTHS" name="august (August)">
             <rule>
                 <antipattern>
@@ -22604,6 +22621,19 @@ USA
             <suggestion>\1 \2, \3 \4</suggestion>
             <example correction="Buy 2, Get 1"><marker>Buy 2 Get 1</marker> Free!</example>
             <example correction="Order five, receive one">New offer: <marker>Order five receive one</marker> for free</example>
+        </rule>
+        <rule id="MISSING_COMMA_THE_JJR_THE_JJR" name="missing comma in 'the sooner, the better'" default="off">
+            <pattern>
+                <token>the</token>
+                <marker>
+                    <token postag="JJR"></token>
+                </marker>
+                <token>the</token>
+                <token postag="JJR"></token>
+            </pattern>
+            <message>It appears that a comma is missing after '\2'.</message>
+            <suggestion>\2,</suggestion>
+            <example correction="sooner,">The <marker>sooner</marker> the better!</example>
         </rule>
         <rule id="CD_NN" name="Possible agreement error: numeral + singular countable noun">
         <antipattern case_sensitive="yes">
