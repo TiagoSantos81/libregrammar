@@ -2330,6 +2330,18 @@
     </rule>
   </rulegroup>
 
+    <rule id="MODELAR_AS_VERB" name="modelar como verbo">
+    <!-- 		Created by Tiago F. Santos, 2019-11-27		-->
+      <pattern>
+          <token postag='V.+' postag_regexp='yes'>
+            <exception inflected="yes">ser</exception></token>
+        <marker>
+          <token regexp="yes">modelar</token>
+        </marker>
+      </pattern>
+      <disambig action="filter"><wd pos="V.+"/></disambig>
+    </rule>
+
     <rule id="DEVE_SER" name="Deve + Infinitivo">
     <!-- Created by Tiago F. Santos, Portuguese rule, 2018-07-08  	-->
       <pattern>
