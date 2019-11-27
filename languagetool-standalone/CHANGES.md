@@ -166,7 +166,7 @@
   * standalone default underline colors changed:
     - grey: style repetitions and redundancies;
     - cyan: typographical and whitespaces related suggestions.
-  * `ParagraphRepeatBeginning` now triggers properly, shows the correct messages, and is now active by default.
+  * some bug fixes to java functions.
 
 #### `LibreOffice` / Apache `OpenOffice` Integration
   * remote server commits for `LibreOffice` plug-in reverted (#1929).
@@ -187,7 +187,6 @@
   * corrections are now offered for spell check errors
   * updated spell checker to version 2.4 (2018-04-15)
     (source: https://extensions.libreoffice.org/extensions/stavekontrolden-danish-dictionary)
-
 
 #### Dutch
   * improved rules
@@ -252,11 +251,12 @@
     `./org/languagetool/resource/xx/hunspell/prohibit_custom.txt`
     `./org/languagetool/resource/xx/hunspell/spelling_custom.txt`  
     Note that you can simply create these files if they don't exist for your language yet.
-
+  * several bug fixes to java functions.
 
 #### `LibreOffice` / Apache `OpenOffice` Integration
   * 'disable rule' option added to context menu, thanks to Fred Kruse.
   * `TextLevelRules` now have the option to check chapter blocks, thanks to Fred Kruse.
+  * several bug fixes, thanks to Fred Kruse.
 
 #### HTTP API / LT server
   * The dynamic languages feature (`lang-xx=...` and `lang-xx-dictPath=...`) now
