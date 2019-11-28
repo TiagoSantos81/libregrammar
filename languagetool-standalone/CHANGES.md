@@ -1,4 +1,4 @@
-# `LibreGrammar` Change Log
+# LibreGrammar Change Log
 
 ## 4.8X-SNAPSHOT (release planned for 2019-XX-XX)
 
@@ -7,7 +7,7 @@
 #### English
   * rules added:
      - `EnglishSimpleGrammarRule` for simple replacement rule creation - 877 error patterns added from Wikipedia;
-     - verb-noun confusion rule - 1526 error patterns mostly from After the Deadline (AtD);
+     - verb-noun confusion rule - 1530 error patterns mostly from After the Deadline (AtD);
      - eggcorn detection - 227 error patterns from Grammark and AtD;
      - specific case rule - 751 extra entries from Wikipedia;
      - nonstandard English replacement rule - 22 error patterns;
@@ -168,8 +168,8 @@
     - cyan: typographical and whitespaces related suggestions.
   * some bug fixes to java functions.
 
-#### `LibreOffice` / Apache `OpenOffice` Integration
-  * remote server commits for `LibreOffice` plug-in reverted (#1929).
+#### LibreOffice / Apache OpenOffice Integration
+  * remote server commits for LibreOffice plug-in reverted (#1929).
   * multiple core CPU support active by default.
 
 ### Other changes common to both projects
@@ -195,7 +195,8 @@
 
 #### English
   * many rules added and significant rules improvements
-    - `SpecificCaseRule` for case specific phrases
+    - `SpecificCaseRule` for case specific phrases;
+    - modal verbs in conditional clauses.
   * multiwords support added
   * disambiguation improvements
   * POS and spelling improvements
@@ -253,7 +254,7 @@
     Note that you can simply create these files if they don't exist for your language yet.
   * several bug fixes to java functions.
 
-#### `LibreOffice` / Apache `OpenOffice` Integration
+#### LibreOffice / Apache OpenOffice Integration
   * 'disable rule' option added to context menu, thanks to Fred Kruse.
   * `TextLevelRules` now have the option to check chapter blocks, thanks to Fred Kruse.
   * several bug fixes, thanks to Fred Kruse.
