@@ -133,7 +133,8 @@
     - vocative punctuation;
     - personal infinitive rules;
     - subject-predicate agreement;
-    - specific case rules with 1867 entries mostly from Wikipedia.
+    - specific case rules with 1867 entries mostly from Wikipedia;
+    - various other rules added or improved.
   * re-activated diacritics rule;
   * Portugal Portuguese former orthographic agreement locale added (Portugal pre-AO) with support for:
      - [pt-PT pre-AO] [Dicionários Portugueses Complementares 1.2](https://github.com/TiagoSantos81/PortugueseLibreOfficeExtension);
@@ -141,6 +142,7 @@
      - pre-AO hyphenation rules;
      - wrong spelling agreement errors (PortuguesePreAgreementReplaceRule);
      - capitalization rules.
+  * add narrow no-break space option to typography rules.
   * sentences and paragraphs now end with a single line break.
   * various localization fixes.
   * improved disambiguation.
@@ -175,10 +177,8 @@
 ### Other changes common to both projects
 
 #### Catalan
-  * improved rules
-
-#### Catalan
   * added and improved rules
+  * disambiguation improvements
 
 #### Chinese
   * Now using https://github.com/hankcs/HanLP for tokenization (PR 1981)
@@ -189,7 +189,7 @@
     (source: https://extensions.libreoffice.org/extensions/stavekontrolden-danish-dictionary)
 
 #### Dutch
-  * improved rules
+  * added and improved rules
   * disambiguation improvements
   * POS and spelling improvements
 
@@ -199,7 +199,8 @@
     - modal verbs in conditional clauses.
   * multiwords support added
   * disambiguation improvements
-  * POS and spelling improvements
+  * POS and spelling improvements, including:
+    - updated spelling dictionaries to [version 2.79 (2019-11-01)](https://github.com/languagetool-org/languagetool/commit/3153f537701e5324fd649ab46bd507125061e2b3)
 
 #### Esperanto
   * corrections are now offered for spell check errors
@@ -209,8 +210,7 @@
   * updated spell checker (Grammalecte·dic/Dicollecte) to version 6.4.1 (2019-04-05)
     (source: https://grammalecte.net/download.php?prj=fr)
   * POS and spelling improvements, including:
-    - updated part-of-speech dictionaries to dicollecte-6.4.1
-    (https://github.com/languagetool-org/languagetool/pull/1963)
+    - updated part-of-speech dictionaries to [dicollecte-6.4.1](https://github.com/languagetool-org/languagetool/pull/1963)
 
 #### German
   * added and improved rules

@@ -8746,6 +8746,25 @@ title="Easy editing stylesheet" ?>
     <!--example>...inam climas desérticos e semi-desérticos, ao norte, e frios e temperados na regiões mais altas.</example-->
       <example>O processo demora entre mês e mês e meio, e os medicamentos…</example>
     </rule>
+    <rule>
+    <!-- Based on forum rule by Fabio, 2019-11-28 -->
+    <!-- https://forum.languagetool.org/t/pt-commas/5102 -->
+      <pattern>
+        <marker>
+          <token postag='N.+' postag_regexp='yes'>
+            <exception postag='A.+|NP.+' postag_regexp='yes'/></token>
+        </marker>
+          <token postag='N.+' postag_regexp='yes'>
+            <exception regexp='yes' case_sensitive='yes'>\p{Lu}.+</exception>
+            <exception postag='A.+|NP.+' postag_regexp='yes'/></token>
+          <token>e</token>
+      </pattern>
+      <message>Ausência de pontuação.</message>
+        <suggestion><match no="1"/>,</suggestion>
+      <example correction='frutas,'>As <marker>frutas</marker> verduras e legumes são importantes.</example>
+      <example correction='Frutas,'><marker>Frutas</marker> verduras e legumes são importantes.</example>
+      <example>António Costa e Passos Coelho são figuras políticas portuguesas.</example>
+    </rule>
   </rulegroup>
 
   <rulegroup id='ALTERNATIVE_CONJUNCTIONS_COMMA' name="Pontuação: conjunções coordenativas: tal..., tal ...; quer..., quer ...">
