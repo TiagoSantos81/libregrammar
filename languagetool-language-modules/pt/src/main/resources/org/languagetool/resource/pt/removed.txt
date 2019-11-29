@@ -118,9 +118,6 @@ falhas	falho	AQ0FP0
 falho	falho	AQ0MS0
 falhos	falho	AQ0MP0
 face	face	NCFP000
-feira	feirar	VMIP3S0
-feira	feirar	VMM02S0
-feiras	feirar	VMIP2S0
 # 'festival' como adjetivo está correto mas tem comparativamente pouco uso
 festival	festival	AQ0CS0
 festivais	festival	AQ0CP0
@@ -144,10 +141,6 @@ gerado	gerar	AQ0MS0
 gerador	gerador	AQ0MP0
 há	há	NCMS000
 Hispânia	Hispânia	NPMS000
-hora	horar	VMIP3S0
-hora	horar	VMM02S0
-horas	horar	VMIP2S0
-# horar - existe mas é raramente utilizado
 hospitalar	hospitalar	AQ0MS0
 hospitalares	hospitalar	AQ0MP0
 ião	ião	NCFS000
@@ -168,26 +161,14 @@ juvenil	juvenil	NCMS000
 laranja	laranjo	AQ0FS0
 laranjas	laranjo	AQ0FP0
 Lajes	Lajes	NPCSG00
-# 'latinar': verbo raramente utilizado
-latina	latinar	VMIP3S0
-latina	latinar	VMM02S0
-latina	latino	AQ0FS0
-latinas	latinar	VMIP2S0
 # 'leva' náutico: raro comparativamente
 leva	leva	NCFS000
 levas	leva	NCFS000
 # li : utilização rara
 li	li	NCMS000
 livre	livre	NCMS000
-# lindar: verbo raramente utilizado
-linda	lindar	VMIP3S0
-linda	lindar	VMM02S0
-lindas	lindar	VMIP2S0
 lóbi	lóbi	NCFS000
 lóbis	lóbi	NCFP000
-maluco	malucar	VMIP1S0
-maluca	malucar	VMIP3S0
-malucas	malucar	VMIP2S0
 # mantém como toalha é raramente utilizado em comparação com a forma verbal
 mantém	mantém	NCMS000
 manténs	mantém	NCMP000
@@ -227,12 +208,6 @@ perdoe	perdoe	NCFS000
 perita	pêra	NCFS00D
 peritas	pêra	NCFP00D
 # remover perita evita AO45 falso positivo
-portugueses	portuguesar	VMM02S0
-portugueses	portuguesar	VMSP2S0
-portuguesas	portuguesar	VMIP2S0
-portuguesa	portuguesar	VMIP3S0
-portuguesa	portuguesar	VMM02S0
-# Portuguesar - não é utilizado em linguagem formal
 posicionamento	posicionamento	NCFS000
 posicionamentos	posicionamento	NCFP000
 puseste	pôr	VMIS2P0
@@ -296,6 +271,7 @@ trilião	trilião	NCCS000
 triliões	trilião	NCCP000
 trouxe	trouxe	AQ0CN0
 Uganda	Uganda	NPFSG00
+# umar: keep despite FAST_TAGGER_FIXES_FOR_RARE_MEANINGS to avoid changing disambiguation tests
 uma	umar	VMIP3S0
 uma	umar	VMM02S0
 umas	umar	VMIP2S0

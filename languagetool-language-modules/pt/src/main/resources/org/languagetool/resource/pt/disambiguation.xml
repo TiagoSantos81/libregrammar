@@ -2076,6 +2076,7 @@
   </rulegroup>
 
     <rule id="SER_TODOS" name="Ser + Todos">
+    <!-- Created by Tiago F. Santos -->
       <pattern>
         <token inflected='yes'>ser</token>
         <marker>
@@ -2086,9 +2087,17 @@
       <example inputform="todos[todo/DI0MP0,todo/PI0MP000]" outputform="todos[todo/PI0MP000]" type="ambiguous">Éramos <marker>todos</marker> família.</example>
     </rule>
 
-    <!-- P_N Possesivo + nome -->
+    <rule id="FAST_TAGGER_FIXES_FOR_RARE_MEANINGS" name="Excluir significados raros">
+    <!-- Created by Tiago F. Santos, 2019-11-28 -->
+      <pattern>
+        <token regexp='yes'>feiras?|frut(?:as?|o)|horas?|latin(?:as?|o)|lindas?|maluc(?:as?|o)|portugues(.+)?|umas?|vacas?</token>
+      </pattern>
+      <disambig action="remove" postag="V.+"/>
+      <example inputform="Frutas[fruta/NCFP000,frutar/VMIP2S0]" outputform="Frutas[fruta/NCFP000]" type="ambiguous"><marker>Frutas</marker> e legumes são vegetais.</example>
+    </rule>
+
     <!-- 		l18n from Spanish disambiguation.xml by Tiago F. Santos		-->
-    <rule id="PN" name="Pos + Nom ">
+    <rule id="POSSESSIVE_NOUN" name="Pos + Nom ">
       <pattern>
         <marker>
           <unify>
@@ -2330,13 +2339,13 @@
     </rule>
   </rulegroup>
 
-    <rule id="MODELAR_AS_VERB" name="modelar como verbo">
+    <rule id="NOUNS_AS_INFINITIVE_VERB" name="Nomes como verbo no infitivo">
     <!-- 		Created by Tiago F. Santos, 2019-11-27		-->
       <pattern>
           <token postag='V.+' postag_regexp='yes'>
             <exception inflected="yes">ser</exception></token>
         <marker>
-          <token>modelar</token>
+          <token regexp='yes'>circular|andar|mod[eu]lar</token>
         </marker>
       </pattern>
       <disambig action="filter" postag="V.+"/>
