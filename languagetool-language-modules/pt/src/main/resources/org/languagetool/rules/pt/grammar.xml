@@ -5024,7 +5024,7 @@ title="Easy editing stylesheet" ?>
           <token>?</token>
       </antipattern>
       <antipattern><!-- one word greetings -->
-      <!-- TODO allow phrases in disambiguation -->
+    <!-- TODO allow phrases in disambiguation -->
           <token postag="SENT_START"/>
           <token regexp='yes'>o(?:brigad[ao]|i|lá)|parabéns</token>
           <token min='0'>,</token>
@@ -5709,7 +5709,7 @@ title="Easy editing stylesheet" ?>
       <example>Anarcocapitalismo, Multinacionais e Contratos</example>
       <example>Sendo liberal, é natural que tenha lido, entre outros, Adam Smith, Bastiat, Böhm-Bawerk, Schumpeter, Mises, Hayek, Friedman, Sowell. No entanto, também li Saint-Simon, Proudhon, Bakunin, Marx, Lassale, Lénin, Trotsky, Gramsci e Nikolai Berdyaev que, em 1923,…</example>
       <example>Ele define os números no triângulo por recursão: Chame o número na (m+1)-ésima linha e na (n+1)-ésima co…</example>
-      <example>...desse adversário, Lula, acabou de sair...</example>
+      <example>…desse adversário, Lula, acabou de sair…</example>
     </rule>
 
   <rulegroup id='COMPOUND_PROPER_NOUNS_CASING' name="Capitalizar nomes próprios compostos...">
@@ -6207,11 +6207,13 @@ title="Easy editing stylesheet" ?>
       <pattern>
         <marker>
           <token inflected='yes'>esquecer</token>
-		</marker>
-		<token postag_regexp='yes' postag='V.+'>
-			<exception regexp="yes">antes|deste|disto</exception>
-			<exception postag_regexp="yes" postag='VMIP3S0|VMIM3S0'></exception>
-		</token>
+        </marker>
+          <token postag_regexp='yes' postag='V.+'>
+
+            <exception regexp="yes">antes|deste|disto</exception>
+
+            <exception postag_regexp="yes" postag='VMIP3S0|VMIM3S0'/>
+          </token>
       </pattern>
       <message>Insira a preposição 'de' após o verbo.</message>
         <suggestion>\1 de</suggestion>
@@ -25301,9 +25303,10 @@ TODO Write better examples
       </pattern>
       <message>Se não é um ano, os algarismos devem ser agrupados em grupos de 3.</message>
         <suggestion><match no='2' regexp_match="(\d)(?=(\d{3})+(?!\d))" regexp_replace="$1 "/></suggestion>
-      <example correction='10 341'>Em 2016, Portugal registou <marker>10341</marker> milhares de habitantes.</example>
-      <example correction='1 034 133'><marker>1034133</marker> corresponde a um décimo dos habitantes portugueses</example>
-      <example correction='1 034 133,00'><marker>1034133,00</marker> não é um número redondo.</example>
+        <suggestion><match no='2' regexp_match="(\d)(?=(\d{3})+(?!\d))" regexp_replace="$1 "/></suggestion>
+      <example correction='10 341|10 341'>Em 2016, Portugal registou <marker>10341</marker> milhares de habitantes.</example>
+      <example correction='1 034 133|1 034 133'><marker>1034133</marker> corresponde a um décimo dos habitantes portugueses</example>
+      <example correction='1 034 133,00|1 034 133,00'><marker>1034133,00</marker> não é um número redondo.</example>
       <example><marker>1034133,0000</marker> também não é um número redondo.</example>
       <example>O ano tem exatamente 365,24219858156 dias.</example>
       <example>É o ano de <marker>1989</marker>.</example>
@@ -25317,8 +25320,9 @@ TODO Write better examples
       </pattern>
       <message>Os algarismos devem ser agrupados em grupos de 3.</message>
         <suggestion><match no='3' regexp_match="((?:\d{1,3}[\. ]?)+,\d{3})(\d+)" regexp_replace="$1 $2"/></suggestion>
-      <example correction='17,103 41'>A média exata é de <marker>17,10341</marker> valores.</example>
-      <example correction='365,242 19858156'>O ano tem exatamente <marker>365,24219858156</marker> dias.</example>
+        <suggestion><match no='3' regexp_match="((?:\d{1,3}[\. ]?)+,\d{3})(\d+)" regexp_replace="$1 $2"/></suggestion>
+      <example correction='17,103 41|17,103 41'>A média exata é de <marker>17,10341</marker> valores.</example>
+      <example correction='365,242 19858156|365,242 19858156'>O ano tem exatamente <marker>365,24219858156</marker> dias.</example>
     </rule>
     <rule>
       <antipattern>
@@ -25481,8 +25485,9 @@ TODO Write better examples
       <message>Para separar os decimais, utilize uma vírgula. Se é um número inteiro deve ser separado.</message>
         <suggestion><match no='1' regexp_match='(\d{1,2})\.(\d{3})' regexp_replace='$1,$2'/></suggestion>
         <suggestion><match no='1' regexp_match='(\d{1,2})\.(\d{3})' regexp_replace='$1 $2'/></suggestion>
-      <example correction="11,231|11 231"><marker>11.231</marker></example>
-      <example correction="111,231|111 231"><marker>111.231</marker></example>
+        <suggestion><match no='1' regexp_match='(\d{1,2})\.(\d{3})' regexp_replace='$1 $2'/></suggestion>
+      <example correction="11,231|11 231|11 231"><marker>11.231</marker></example>
+      <example correction="111,231|111 231|111 231"><marker>111.231</marker></example>
       <example><marker>9.5</marker></example>
       <example>És de <marker>9.5</marker>.</example>
       <example><marker>9349.5</marker></example>
@@ -25496,8 +25501,9 @@ TODO Write better examples
       <message>Para separar os decimais, utilize uma vírgula. Se é um ano não deve ser separado.</message>
         <suggestion><match no='1' regexp_match='(\d{1,2})\.(\d{3})' regexp_replace='$1,$2'/></suggestion>
         <suggestion><match no='1' regexp_match='(\d{1,2})\.(\d{3})' regexp_replace='$1 $2'/></suggestion>
+        <suggestion><match no='1' regexp_match='(\d{1,2})\.(\d{3})' regexp_replace='$1 $2'/></suggestion>
         <suggestion><match no='1' regexp_match='(\d{1,2})\.(\d{3})' regexp_replace='$1$2'/></suggestion>
-      <example correction="1,231|1 231|1231"><marker>1.231</marker></example>
+      <example correction="1,231|1 231|1 231|1231"><marker>1.231</marker></example>
       <example><marker>19.349</marker></example>
     </rule>
     <rule>
@@ -25506,7 +25512,8 @@ TODO Write better examples
       </pattern>
       <message>Para separar os decimais, utilize uma vírgula.</message>
         <suggestion><match no='1' regexp_match='(\d{1,3}),(\d{3})\.(\d+)' regexp_replace='$1 $2,$3'/></suggestion>
-      <example correction="21 349,56"><marker>21,349.56</marker></example>
+        <suggestion><match no='1' regexp_match='(\d{1,3}),(\d{3})\.(\d+)' regexp_replace='$1 $2,$3'/></suggestion>
+      <example correction="21 349,56|21 349,56"><marker>21,349.56</marker></example>
     </rule>
     <rule>
       <pattern>
@@ -25514,7 +25521,8 @@ TODO Write better examples
       </pattern>
       <message>Para separar os decimais, utilize uma vírgula.</message>
         <suggestion><match no='1' regexp_match='(\d{1,3}),(\d{1,3}),(\d{3})\.(\d+)' regexp_replace='$1 $2 $3,$4'/></suggestion>
-      <example correction="21 999 349,56"><marker>21,999,349.56</marker></example>
+        <suggestion><match no='1' regexp_match='(\d{1,3}),(\d{1,3}),(\d{3})\.(\d+)' regexp_replace='$1 $2 $3,$4'/></suggestion>
+      <example correction="21 999 349,56|21 999 349,56"><marker>21,999,349.56</marker></example>
     </rule>
   </rulegroup>
 
@@ -25552,37 +25560,39 @@ TODO Write better examples
     <rule>
       <regexp case_sensitive='yes'>(\-?[0-9]+[0-9,\.]*(°C|°F|°De?|°R[éeøa]?|(Z|E|P|T|G|M|k|h|da|d|c|m|µ|n|p|f|a|z|y)?m|(Z|E|P|T|G|M|k|h|da|d|c|m|µ|n|p|f|a|z|y)?N|[kKMGTPEZY]i?B|[kmµnp]g|[Mk]t|kWh|GWa|MWd|MWh))\b</regexp>
       <message>Deve dar um espaço entre o valor e a unidade de medida: <suggestion><match no='1' regexp_match="((\-)?[0-9]+[0-9,.]*{1,})" regexp_replace="$1 "/></suggestion>.</message>
+        <suggestion><match no='1' regexp_match="((\-)?[0-9]+[0-9,.]*{1,})" regexp_replace="$1 "/></suggestion>
       <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/simbolos-de-unidades/11572</url>
-      <example correction="25 °C">Fazem <marker>25°C</marker>.</example>
-      <example correction="-25 °C">Fazem <marker>-25°C</marker>.</example>
-      <example correction="25,5 °F">Fazem <marker>25,5°F</marker>.</example>
+      <example correction="25 °C|25 °C">Fazem <marker>25°C</marker>.</example>
+      <example correction="-25 °C|-25 °C">Fazem <marker>-25°C</marker>.</example>
+      <example correction="25,5 °F|25,5 °F">Fazem <marker>25,5°F</marker>.</example>
       <example>Fazem <marker>25,5 °C</marker>.</example>
       <example>Fazem <marker>25,5 °Ra</marker>.</example>
       <example>São <marker>5 km</marker> gelaufen.</example>
-      <example correction="5 km">São <marker>5km</marker> de distância.</example>
+      <example correction="5 km|5 km">São <marker>5km</marker> de distância.</example>
       <example>São <marker>5 ZiB</marker> de dados.</example>
-      <example correction="5 ZiB">São <marker>5ZiB</marker> de dados.</example>
+      <example correction="5 ZiB|5 ZiB">São <marker>5ZiB</marker> de dados.</example>
       <example>São <marker>5 kB</marker> de dados.</example>
-      <example correction="5 kB">São <marker>5kB</marker> de dados.</example>
-      <example correction="5 kg">Pesa <marker>5kg</marker>.</example>
-      <example correction="5 Mt">Pesa <marker>5Mt</marker>.</example>
+      <example correction="5 kB|5 kB">São <marker>5kB</marker> de dados.</example>
+      <example correction="5 kg|5 kg">Pesa <marker>5kg</marker>.</example>
+      <example correction="5 Mt|5 Mt">Pesa <marker>5Mt</marker>.</example>
       <example>Pesa <marker>5 µg</marker>.</example>
       <example>Isótopo 241Am</example>
       <example>(AsCH3)2n</example>
       <example>Bd. 1b</example>
       <example>Primeiro lançamento de Saturno 1B</example>
-      <example correction="2.000 kWh">Foram consumidos <marker>2.000kWh</marker></example>
+      <example correction="2.000 kWh|2.000 kWh">Foram consumidos <marker>2.000kWh</marker></example>
       <example>Os juros são de <marker>5 %</marker>.</example>
       <example>jbo:1901moi</example>
     </rule>
     <rule>
       <regexp>((\-)?[0-9]+[0-9.,]*{1,}) (°[^CFK])</regexp>
       <message>Não existe espaçamento a preceder o símbolo de grau. Utilize <suggestion>\1°</suggestion> ou adicione a unidade de medida térmica (p.ex. <suggestion>\1 °C</suggestion>).</message>
-      <example correction="25°|25 °C">O ângulo é <marker>25 ° </marker></example>
-      <example correction="-25,5°|-25,5 °C">Fazem <marker>-25,5 ° </marker>de temperatura.</example>
-      <example correction="-25°|-25 °C">Fazem <marker>-25 ° </marker>de temperatura.</example>
-      <example correction="25°|25 °C">O ângulo é <marker>25 ° </marker>de abertura.</example>
-      <example correction="-25°|-25 °C">Fazem <marker>-25 ° </marker>de temperatura.</example>
+        <suggestion>\1 °C</suggestion>
+      <example correction="25°|25 °C|25 °C">O ângulo é <marker>25 ° </marker></example>
+      <example correction="-25,5°|-25,5 °C|-25,5 °C">Fazem <marker>-25,5 ° </marker>de temperatura.</example>
+      <example correction="-25°|-25 °C|-25 °C">Fazem <marker>-25 ° </marker>de temperatura.</example>
+      <example correction="25°|25 °C|25 °C">O ângulo é <marker>25 ° </marker>de abertura.</example>
+      <example correction="-25°|-25 °C|-25 °C">Fazem <marker>-25 ° </marker>de temperatura.</example>
     </rule>
     <rule>
       <regexp>((\-)?[0-9]+[0-9.,]*{1,}) (″)</regexp>
@@ -25711,8 +25721,9 @@ TODO Write better examples
       </pattern>
       <message>Separe as fórmulas com espaços (protegidos).</message>
         <suggestion>\1 \2 \3</suggestion>
-      <example correction="5 * 5"><marker>5*5</marker>.</example>
-      <example correction="3a = 2"><marker>3a=2</marker>.</example>
+        <suggestion>\1 \2 \3</suggestion>
+      <example correction="5 * 5|5 * 5"><marker>5*5</marker>.</example>
+      <example correction="3a = 2|3a = 2"><marker>3a=2</marker>.</example>
       <example>Um mapa na escala 1:80000.</example>
       <example>Tenho uma reunião às 7:00 h.</example>
       <example>Tenho uma reunião às 7:00h.</example>
@@ -25995,9 +26006,10 @@ TODO Write better examples
       </pattern>
       <message>Escolheu a opção de inserção de espaço.</message>
         <suggestion><match no='1' regexp_match="(.+)([%‰‱])" regexp_replace="$1 $2"/></suggestion>
+        <suggestion><match no='1' regexp_match="(.+)([%‰‱])" regexp_replace="$1 $2"/></suggestion>
       <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/centigrados--percentagem/18011</url>
-      <example correction="23,5 %">A taxa é de <marker>23,5%</marker>.</example>
-      <example correction="23,5 ‰">Paga <marker>23,5‰</marker>.</example>
+      <example correction="23,5 %|23,5 %">A taxa é de <marker>23,5%</marker>.</example>
+      <example correction="23,5 ‰|23,5 ‰">Paga <marker>23,5‰</marker>.</example>
       <example>Paga 25 %.</example>
     </rule>
 
@@ -28536,7 +28548,7 @@ TODO Write better examples
           <token regexp="yes">E|Mas|Ou|Porém</token>
         </marker>
       </pattern>
-      <message>Estilisticamente '\2' só deve ser utilizado no início da frase raramente, e para um efeito dramático.</message>
+      <message>Estilisticamente '\2' só deve ser utilizado no início da frase raramente, e somente para criar um efeito dramático.</message>
       <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/a-conjuncao-porem-no-inicio-de-frase/22597</url>
       <short>Problema de estilo</short>
       <example correction=""><marker>E</marker> sim, isto mostra problemas de estilo ao começar a frase com 'e'.</example>
