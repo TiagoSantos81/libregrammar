@@ -1747,7 +1747,9 @@ RB => Règles Brutes
       </pattern>
       <disambig action="ignore_spelling"/>
     </rule>
+
     <rule name="Ignore common chemical formulas" id="IGNORE_COMMON_CHEMICAL_FORMULAS">
+  <!-- XXX entries copied to spelling_global.txt, but, this rule is still needed since speller tokenizer is not compatible -->
     <!-- Created by Tiago F. Santos, 2019-08-29  -->
     <!-- List retreived and triaged from https://en.wikipedia.org/wiki/Glossary_of_chemical_formulas -->
       <pattern case_sensitive="yes">
@@ -1755,4 +1757,5 @@ RB => Règles Brutes
       </pattern>
       <disambig action="ignore_spelling"/>
     </rule>
+
 </rules>

@@ -3843,6 +3843,7 @@
       <disambig action="ignore_spelling"/>
     </rule>
     <rule name="Ignore common chemical formulas" id="IGNORE_COMMON_CHEMICAL_FORMULAS">
+  <!-- XXX entries copied to spelling_global.txt, but, this rule is still needed since speller tokenizer is not compatible -->
     <!-- Created by Tiago F. Santos, 2019-08-29  -->
     <!-- List retreived and triaged from https://en.wikipedia.org/wiki/Glossary_of_chemical_formulas -->
       <pattern case_sensitive="yes">
@@ -3850,7 +3851,9 @@
       </pattern>
       <disambig action="ignore_spelling"/>
     </rule>
-  <rulegroup name="Ignore CTT abreviation" id="IGNORE_MAIL_ABREVIATIONS">
+  <rulegroup name="Ignore CTT abbreviation" id="IGNORE_MAIL_ABBREVIATIONS">
+  <!-- Created by Tiago F. Santos, 2019-11-30 -->
+  <!-- https://pt.wikipedia.org/wiki/Lista_de_abreviaturas_recomendadas_pelos_CTT -->
     <rule>
       <pattern case_sensitive="yes">
           <token regexp="yes">&abreviaturas_CTT;</token>

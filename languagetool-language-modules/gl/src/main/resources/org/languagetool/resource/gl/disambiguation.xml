@@ -1939,6 +1939,10 @@
       </pattern>
       <disambig action="ignore_spelling"/>
     </rule>
+
+  <?ignore 
+  <!-- XXX entries copied to spelling_global.txt, so now this is redundant -->
+
     <rule name="Ignore common chemical formulas" id="IGNORE_COMMON_CHEMICAL_FORMULAS">
     <!-- Created by Tiago F. Santos, 2019-08-29  -->
     <!-- List retreived and triaged from https://en.wikipedia.org/wiki/Glossary_of_chemical_formulas -->
@@ -1947,4 +1951,6 @@
       </pattern>
       <disambig action="ignore_spelling"/>
     </rule>
+  ?>
+
 </rules>
