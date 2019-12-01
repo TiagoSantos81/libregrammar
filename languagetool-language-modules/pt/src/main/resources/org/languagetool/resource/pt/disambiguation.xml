@@ -1800,7 +1800,8 @@
         <marker>
         <and>
           <token postag="D.+" postag_regexp="yes"/>
-          <token postag="[PN].+" postag_regexp="yes"/>
+          <token postag="[PN].+" postag_regexp="yes">
+            <exception postag="R.+" postag_regexp="yes"/></token>
         </and>
         </marker>
           <token postag="V.+" postag_regexp="yes">
@@ -1810,6 +1811,7 @@
       <example type="untouched">Muito obrigada por esta viagem maravilhosa.</example>
       <example type="untouched">Escreva seu endereço aqui.</example>
       <example type="untouched">Durante seu reinado, os Durrani consolidaram em uma só nação.</example>
+      <example type="untouched">A inflexibilidade corretiva pouco acrescentou.</example>
     </rule>
 
   <rulegroup id="S_V" name="Preposição + Verbo">
@@ -2679,8 +2681,9 @@
       <disambig action="ignore_spelling"/>
     </rule>
     <rule>
-      <pattern>
-          <token regexp="yes">M{0,4}(CM|CD|D?C{0,3})(?:XC|X?L|L?X{0,3})(?:IX|I{0,3}|IV|V|VI{0,3})?</token>
+      <pattern case_sensitive="yes">
+          <token regexp="yes">(?:M{0,4}(CM|CD|D?C{0,3})(?:XC|X?L|L?X{0,3})(?:IX|I{0,3}|IV|V|VI{0,3})?)|m{0,4}(cm|cd|d?c{0,3})(?:xc|x?l|l?x{0,3})(?:ix|i{0,3}|iv|v|vi{0,3})
+            <exception case_sensitive="yes">cd</exception></token>
       </pattern>
       <disambig action="ignore_spelling"/>
     </rule>
