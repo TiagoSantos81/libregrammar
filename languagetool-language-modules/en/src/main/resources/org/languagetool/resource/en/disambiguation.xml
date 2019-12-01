@@ -7975,7 +7975,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
     <rule>
       <pattern case_sensitive="yes">
           <token regexp="yes">(?:M{0,4}(CM|CD|D?C{0,3})(?:XC|X?L|L?X{0,3})(?:IX|I{0,3}|IV|V|VI{0,3})?)|m{0,4}(cm|cd|d?c{0,3})(?:xc|x?l|l?x{0,3})(?:ix|i{0,3}|iv|v|vi{0,3})|[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩⅪⅫⅬⅭⅮⅯ]+
-            <exception case_sensitive="yes" regexp="yes">II?|i|[cdm]ii?|IV|cd</exception></token>
+            <exception case_sensitive="yes" regexp="yes">\p{L}\p{Ll}?|[cdm]ii?|IV</exception></token>
       </pattern>
       <disambig action="ignore_spelling"/>
     </rule>
