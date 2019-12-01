@@ -959,6 +959,7 @@ title="Easy editing stylesheet" ?>
             <exception regexp='yes'>uma|e</exception></token>
           <token postag="V...3S.+" postag_regexp='yes'/>
           <token postag='A..M.+' postag_regexp='yes'>
+            <exception>medo</exception>
             <exception postag="R.+" postag_regexp='yes'/></token>
       </pattern>
       <message>&MSG_ECG;</message>
@@ -1191,6 +1192,14 @@ title="Easy editing stylesheet" ?>
           <token postag='(?:NC|A..)[MC]P.+' postag_regexp='yes'/>
           <token regexp='yes'>alvo|padrão</token>
       </antipattern>
+      <antipattern>
+          <token postag='N.[MC]P.+' postag_regexp='yes'/>
+          <token postag='A..[MC]S.+' postag_regexp='yes'/>
+          <token>,</token>
+          <token postag='A..[MC]S.+' postag_regexp='yes'/>
+          <token regexp='yes'>e|,</token>
+          <token postag='A..[MC]S.+' postag_regexp='yes'/>
+      </antipattern>
       <pattern>
           <token negate='yes' regexp='yes'>&hifen;</token>
         <marker>
@@ -1221,6 +1230,7 @@ title="Easy editing stylesheet" ?>
       <example>Os montes Evereste, K2 e Kanchenjunga são os mais altos do mundo.</example>
       <example>As cores são: Ás de Copas vermelho, Ás de Ouros vermelho, Ás de Paus preto e Ás de Espadas preto.</example>
       <example>Os entendimentos têm de ser o mais amplos possível para serem efectivos.</example>
+      <example>Haja entendimento nos domínios económico, académico e cultural.</example>
     </rule>
     <rule>
       <antipattern>
@@ -1468,6 +1478,14 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>mais|menor|maior|pior|melhor</token>
           <token postag='(?:D[ADIP].|NC|A..|Z.)[FC]P.+' postag_regexp='yes'/>
           <token>possível</token>
+      </antipattern>
+      <antipattern>
+          <token postag='N.[FC]P.+' postag_regexp='yes'/>
+          <token postag='A..[FC]S.+' postag_regexp='yes'/>
+          <token>,</token>
+          <token postag='A..[FC]S.+' postag_regexp='yes'/>
+          <token regexp='yes'>e|,</token>
+          <token postag='A..[FC]S.+' postag_regexp='yes'/>
       </antipattern>
       <pattern>
           <token negate='yes' regexp='yes'>&hifen;</token>
@@ -2506,7 +2524,7 @@ title="Easy editing stylesheet" ?>
           <token min='0' postag_regexp='yes' postag='N.+'/>
           <token min="0" skip="3" postag_regexp='yes' postag='R.'/>
           <token postag_regexp='yes' postag='V.+'>
-            <exception postag_regexp='yes' postag='V...3S.+'/>
+            <exception postag_regexp='yes' postag='V...3S.+|VMP00S.+'/>
             <exception negate_pos='yes' postag_regexp='yes' postag='V.+'/></token>
       </pattern>
       <message>Nesta situação deve utilizar o verbo no singular.</message>
@@ -2515,6 +2533,7 @@ title="Easy editing stylesheet" ?>
       <example correction='A maioria não sabe'><marker>A maioria não sabem</marker> muito.</example>
       <example correction='A maioria do país não sabe'><marker>A maioria do país não sabem</marker> muito.</example>
       <example>Apesar de a maioria do país não saber muito.</example>
+      <example>A maioria não era especializada.</example>
     </rule>
 
   <rulegroup id='IRREGULAR_PAST_PARTICIPLES' name='Convenções linguísticas: particípio regular/irregular'>
@@ -33926,7 +33945,6 @@ TODO Write better examples
 
   <rulegroup id='EASILY_CONFUSED_RARE_WORDS' name="Palavras raras facilmente confundidas">
     <!--      Created by Tiago F. Santos, Portuguese rule, 2017-08-20      -->
-
     <rule>
       <pattern>
           <token>alem</token>
