@@ -34035,6 +34035,13 @@ TODO Write better examples
     </rule>
     <rule>
       <pattern>
+          <token regexp='yes'>[lvm]ii</token>
+      </pattern>
+      <message>'\1' é número romano. Possível confusão com <suggestion><match no='1' regexp_match='ii' regexp_replace='i'/></suggestion>.</message>
+      <example correction="li">Não <marker>lii</marker> bem a frase.</example>
+    </rule>
+    <rule>
+      <pattern>
           <token regexp='yes'>mandalas?</token>
       </pattern>
       <message>'Mandala' é um símbolo da tradição hindi. O verbo escreve-se <suggestion><match no='1' regexp_match='andal' regexp_replace='andá-l'/></suggestion>.</message>

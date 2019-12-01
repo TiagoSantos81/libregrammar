@@ -2669,12 +2669,18 @@
           <token regexp="yes">[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩⅪⅫⅬⅭⅮⅯ]+</token>
         </marker>
       </pattern>
-      <disambig action="add"><wd pos="AO0CN0"/></disambig>
+      <disambig action="add"><wd pos="AO0CN0_"/></disambig>
     </rule>
     <rule>
       <pattern case_sensitive="no">
           <token regexp="yes">(?:xc|x?l|l?x{0,3})(?:ix|i{0,3}|iv|v|vi{0,3})</token>
           <token spacebefore='no'>)</token>
+      </pattern>
+      <disambig action="ignore_spelling"/>
+    </rule>
+    <rule>
+      <pattern>
+          <token regexp="yes">M{0,4}(CM|CD|D?C{0,3})(?:XC|X?L|L?X{0,3})(?:IX|I{0,3}|IV|V|VI{0,3})?</token>
       </pattern>
       <disambig action="ignore_spelling"/>
     </rule>
