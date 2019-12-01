@@ -160,7 +160,9 @@
   * sentences and paragraphs now end with a single line break.
 
 #### General
-  * `spelling_global.txt` has 4049 extra entries on the database.
+  * `spelling_global.txt` has 5814 extra entries on the database, inlcuding:
+    - 1666 compound chemical formulas;
+    - 1666 species scientific names.
   * dependencies security updates.
   * restored some languagetool-dev and languagetool-standalone scripts.
   * [WIP] removed Google dependencies from English and Catalan language modules, as well as from several Java rules.
