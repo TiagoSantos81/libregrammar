@@ -10007,7 +10007,7 @@ title="Easy editing stylesheet" ?>
       <pattern>
         <marker>
           <token postag='N.+' postag_regexp='yes'>
-            <exception postag='A.+|NP.+' postag_regexp='yes'/></token>
+            <exception postag='[ADRSVZ].+|NP.+' postag_regexp='yes'/></token>
         </marker>
           <token postag='N.+' postag_regexp='yes'>
             <exception regexp='yes' case_sensitive='yes'>\p{Lu}.+</exception>
@@ -10019,6 +10019,8 @@ title="Easy editing stylesheet" ?>
       <example correction='frutas,'>As <marker>frutas</marker> verduras e legumes são importantes.</example>
       <example correction='Frutas,'><marker>Frutas</marker> verduras e legumes são importantes.</example>
       <example>António Costa e Passos Coelho são figuras políticas portuguesas.</example>
+      <example>Terão que contratar mais professores e administrativos. </example>
+      <example>Estas são as práticas pedagógicas usadas por muitos professores.</example>
     </rule>
   </rulegroup>
 
@@ -34035,7 +34037,7 @@ TODO Write better examples
     </rule>
     <rule>
       <pattern>
-          <token regexp='yes'>[lvm]ii</token>
+          <token regexp='yes' case_sensitive='yes'>[lvm]ii</token>
       </pattern>
       <message>'\1' é número romano. Possível confusão com <suggestion><match no='1' regexp_match='ii' regexp_replace='i'/></suggestion>.</message>
       <example correction="li">Não <marker>lii</marker> bem a frase.</example>
