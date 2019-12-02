@@ -46,6 +46,7 @@
      - Typographical ellipsis;
      - 'also' at the end of the sentence
      - Several adjustments to rules with wide-spectrum antipatterns.
+  * recognize spelling of roman numbers.
   * sentences and paragraphs now end with a single line break.
 
 #### Arabic
@@ -89,6 +90,7 @@
   * improved tokenization.
 
 #### Galician
+  * recognize spelling of roman numbers.
   * sentences and paragraphs now end with a single line break.
   * improved tokenization.
 
@@ -142,6 +144,7 @@
      - pre-AO hyphenation rules;
      - wrong spelling agreement errors (PortuguesePreAgreementReplaceRule);
      - capitalization rules.
+  * recognize spelling of roman numbers.
   * add narrow no-break space option to typography rules.
   * sentences and paragraphs now end with a single line break.
   * various localization fixes.
@@ -160,9 +163,10 @@
   * sentences and paragraphs now end with a single line break.
 
 #### General
-  * `spelling_global.txt` has 5814 extra entries on the database, inlcuding:
+  * `spelling_global.txt` has 5814 extra entries on the database, including:
     - 1666 compound chemical formulas;
-    - 1666 species scientific names.
+    - 1666 species scientific names;
+    - 1358 mediatic people.
   * dependencies security updates.
   * restored some languagetool-dev and languagetool-standalone scripts.
   * [WIP] removed Google dependencies from English and Catalan language modules, as well as from several Java rules.
