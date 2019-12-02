@@ -6,3 +6,5 @@ fsa.dict.separator=+
 fsa.dict.encoding=ISO-8859-15
 
 fsa.dict.encoder=SUFFIX
+fsa.dict.speller.ignore-all-uppercase=false
+fsa.dict.speller.ignore-camel-case=false
