@@ -206,7 +206,11 @@
   * multiwords support added
   * disambiguation improvements
   * POS and spelling improvements, including:
-    - updated spelling dictionaries to [version 2.79 (2019-11-01)](https://github.com/languagetool-org/languagetool/commit/3153f537701e5324fd649ab46bd507125061e2b3)
+   - updated en_GB spellchecker dictionary from https://github.com/marcoagpinto/aoo-mozilla-en-dict (Version 2.79 - 2019-12-01)
+   - updated en_US spellchecker dictionary from http://wordlist.aspell.net (Version 2019.10.06)
+   - updated en_CA spellchecker dictionary from http://wordlist.aspell.net (Version 2019.10.06)
+   - updated en_AU spellchecker dictionary from http://wordlist.aspell.net (Version 2019.10.06)
+
 
 #### Esperanto
   * corrections are now offered for spell check errors
