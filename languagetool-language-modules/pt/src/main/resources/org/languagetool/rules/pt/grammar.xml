@@ -25345,7 +25345,7 @@ TODO Write better examples
         <suggestion><match no='2' regexp_match="(\d)(?=(\d{3})+(?!\d))" regexp_replace="$1 "/></suggestion>
         <suggestion><match no='2' regexp_match="(\d)(?=(\d{3})+(?!\d))" regexp_replace="$1 "/></suggestion>
       <example correction='10 341|10 341'>Em 2016, Portugal registou <marker>10341</marker> milhares de habitantes.</example>
-      <example correction='1 034 133|1 034 133'><marker>1034133</marker> corresponde a um décimo dos habitantes portugueses</example>
+      <example correction='1 034 133|1 034 133'><marker>1034133</marker> corresponde a um décimo dos habitantes portugueses.</example>
       <example correction='1 034 133,00|1 034 133,00'><marker>1034133,00</marker> não é um número redondo.</example>
       <example><marker>1034133,0000</marker> também não é um número redondo.</example>
       <example>O ano tem exatamente 365,24219858156 dias.</example>

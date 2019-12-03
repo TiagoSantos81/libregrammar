@@ -17,6 +17,7 @@
      - `EnglishStyleRepeatedWordRule`;
      - split infinitive detection;
      - comma splice partial detection;
+     - number format typography;
      - weasel word and thought-terminating clichés detection - 87 error patterns added from Wikipedia;
      - typography of mathematical symbols;
      - easily confused words - 533 pairs added - active only with
@@ -46,6 +47,7 @@
      - Typographical ellipsis;
      - 'also' at the end of the sentence
      - Several adjustments to rules with wide-spectrum antipatterns.
+  * disambiguation improvements.
   * recognize spelling of roman numbers.
   * sentences and paragraphs now end with a single line break.
 
@@ -238,7 +240,8 @@
   * POS and spelling improvements
 
 #### Russian
-  * improved rules
+  * added new words
+  * improve java rule
 
 #### Spanish
   * added rules
