@@ -5763,6 +5763,14 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         </rule>
         <rule>
           <pattern>
+              <token>to</token>
+              <token>understand</token>
+              <token>better</token>
+          </pattern>
+          <disambig action="replace"><wd pos="RB"/><wd pos="RB"/><wd pos="RB"/></disambig>
+        </rule>
+        <rule>
+          <pattern>
               <token>slightly</token>
               <token>close</token>
           </pattern>
@@ -5771,7 +5779,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <rule>
           <pattern>
               <token>as</token>
-              <token>soon</token>
+              <token regexp='yes'>quickly|soon</token>
               <token>as</token>
               <token>possible</token>
           </pattern>
@@ -5783,6 +5791,43 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
               <token>down</token>
           </pattern>
           <disambig action="replace"><wd pos="RB"/><wd pos="RB"/></disambig>
+        </rule>
+        <rule>
+          <pattern>
+              <token>for</token>
+              <token>sure</token>
+          </pattern>
+          <disambig action="replace"><wd pos="RB"/><wd pos="RB"/></disambig>
+        </rule>
+        <rule>
+          <pattern>
+              <token regexp='yes'>each|every</token>
+              <token regexp='yes'>day|night|morning|evening|week|month|year|decade</token>
+          </pattern>
+          <disambig action="replace"><wd pos="RB"/><wd pos="RB"/></disambig>
+        </rule>
+        <rule>
+          <pattern>
+              <token regexp='yes'>each|every</token>
+              <token min='0'>other</token>
+              <token regexp='yes'>day|night|morning|evening|week|month|year|decade</token>
+          </pattern>
+          <disambig action="replace"><wd pos="RB"/><wd pos="RB"/><wd pos="RB"/></disambig>
+        </rule>
+        <rule>
+          <pattern>
+              <token postag='R.+' postag_regexp='yes'/>
+              <token>well</token>
+          </pattern>
+          <disambig action="replace"><wd pos="RB"/><wd pos="RB"/></disambig>
+        </rule>
+        <rule>
+          <pattern>
+              <token>for</token>
+              <token>more</token>
+              <token>information</token>
+          </pattern>
+          <disambig action="replace"><wd pos="RB"/><wd pos="RB"/><wd pos="RB"/></disambig>
         </rule>
     <rule name="Number of times" id="NUMBER_TIMES">
       <pattern>
