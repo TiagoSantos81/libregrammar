@@ -17,9 +17,8 @@
      - `EnglishStyleRepeatedWordRule`;
      - split infinitive detection;
      - comma splice partial detection;
-     - number format typography;
      - weasel word and thought-terminating clichés detection - 87 error patterns added from Wikipedia;
-     - typography of mathematical symbols;
+     - typography of mathematical symbols and number formatting;
      - easily confused words - 533 pairs added - active only with
     ngram data (see http://wiki.languagetool.org/finding-errors-using-n-gram-data);
      - other rules added and improved.
@@ -48,7 +47,7 @@
      - 'also' at the end of the sentence
      - Several adjustments to rules with wide-spectrum antipatterns.
   * disambiguation improvements.
-  * recognize spelling of roman numbers.
+  * ignore spelling of roman numbers.
   * sentences and paragraphs now end with a single line break.
 
 #### Arabic
@@ -88,11 +87,12 @@
   * rules added:
      - `FrenchReadabilityRule`;
      - typography rules for mathematical symbols and arrows.
+  * ignore spelling of roman numbers.
   * sentences and paragraphs now end with a single line break.
   * improved tokenization.
 
 #### Galician
-  * recognize spelling of roman numbers.
+  * ignore spelling of roman numbers.
   * sentences and paragraphs now end with a single line break.
   * improved tokenization.
 
@@ -121,6 +121,7 @@
      - `LongSentenceRule`, `LongParagraphRule`, `SentenceWhitespaceRule`, `WhiteSpaceAtBeginOfParagraph`,
      `EmptyLineRule`, `ParagraphRepeatBeginningRule`, `PunctuationMarkAtParagraphEnd`.
   * add typography rules for mathematical symbols and arrows.
+  * ignore spelling of roman numbers.
   * sentences and paragraphs now end with a single line break.
 
 #### Khmer
@@ -146,7 +147,7 @@
      - pre-AO hyphenation rules;
      - wrong spelling agreement errors (PortuguesePreAgreementReplaceRule);
      - capitalization rules.
-  * recognize spelling of roman numbers.
+  * ignore spelling of roman numbers.
   * add narrow no-break space option to typography rules.
   * sentences and paragraphs now end with a single line break.
   * various localization fixes.
@@ -161,21 +162,23 @@
   * activated generic Java rules, including:
      - `LongSentenceRule`, `LongParagraphRule`, `SentenceWhitespaceRule`, `WhiteSpaceAtBeginOfParagraph`,
      `EmptyLineRule`, `ParagraphRepeatBeginningRule`, `PunctuationMarkAtParagraphEnd`.
+  * ignore spelling of roman numbers.
   * add typography rules for mathematical symbols.
   * sentences and paragraphs now end with a single line break.
 
 #### General
-  * `spelling_global.txt` has 5814 extra entries on the database, including:
+  * `spelling_global.txt` has 8370 extra entries on the database, including:
     - 1666 compound chemical formulas;
     - 1666 species scientific names;
-    - 1358 mediatic people.
+    - 1666 mediatic people.
   * dependencies security updates.
   * restored some languagetool-dev and languagetool-standalone scripts.
   * [WIP] removed Google dependencies from English and Catalan language modules, as well as from several Java rules.
   * removed or comment out Freemium server bindings.
   * standalone default underline colors changed:
     - grey: style repetitions and redundancies;
-    - cyan: typographical and whitespaces related suggestions.
+    - cyan: typographical and whitespaces related suggestions;
+    - red: casing and misspelings.
   * some bug fixes to java functions.
 
 #### LibreOffice / Apache OpenOffice Integration
