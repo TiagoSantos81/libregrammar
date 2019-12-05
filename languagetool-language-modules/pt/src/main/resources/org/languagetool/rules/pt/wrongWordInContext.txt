@@ -46,7 +46,7 @@
 # massagem/mensagem
 massage.+	mensage.+	mass	mens	(?i)tailandesa|relax.*|n(?:ú|ua)s|terapeut(?:a|ic[ao])s?|próstata|erótica|tântrica|limfática	erros?|envi.+|receb.+|important.+|escrev.+|escrita.+	técnica de relaxamento físico	comunicação, ou o que é comunicado
 # paço/passo
-(?-i)paços?	[Pp]assos?	aço	asso	(?-i)(Arcos|Brandão|Ducal|Ribeira|Vilharigues|Concelho|São|Lanhenses|Raxoi|Lamirás|Escolas|Ferreira|D|[Ee]piscopal|[Ii]mperial|[Mm]unicipal|[Pp]alácio|[Rr]eal|[Dd]uque(sa)?|[Rr]ei)s?|cultura(l|is)	(?-i)(pé|and.+|caminh.+|curto|largo|rápido|lento|carreira|apert.+|dança|próximo|importante|dois)s?|atrás	tipo de palácio real ou episcocal	movimento dos pés a andar; verbo passar
+(?-i)paços?	[Pp]assos?	aço	asso	(?-i)(Arcos|Brandão|Ducal|Ribeira|Vilharigues|Concelho|São|Lanhenses|Raxoi|Lamirás|Escolas|Ferreira|D|[Ee]piscopal|[Ii]mperial|[Mm]unicipal|[Pp]alácio|[Rr]eal|[Dd]uque(sa)?|[Rr]ei)s?|cultura(l|is)	(?-i)(pé|and.+|caminh.+|curto|largo|rápido|lento|carreira|apert.+|dança|próximo|seguite|importante|dois)s?|atrás	tipo de palácio real ou episcocal	movimento dos pés a andar; verbo passar
 # pás/paz
 (?i)pás	paz	ás	az	(?i)(cova|coveiro|buraco|terra)s?	(?i)(alma|descan[çs].+|céu|guerra)s?	plural de pá	estado de calma
 # peão/pião
@@ -56,7 +56,7 @@ massage.+	mensage.+	mass	mens	(?i)tailandesa|relax.*|n(?:ú|ua)s|terapeut(?:a|ic
 # ringue/rinque
 (?i)ringues?	(?i)rinques?	ngu	nqu	(?i)(boxe|UFC|MMA|kickboxing|karaté|muay|thai|judo|jiujitsu|capoeira|lutadore?|oponente|sangue|soco|pontapé|submissão|lutar?|combate)s?	(?i)(gelo|gelado|pati[nm]|patinagem|bailarin.+|bailado|dançarin.+)s?	recinto para lutas competitiva	recinto para patinar
 # soar/suar
-(?i)so(a[rs]?|ei|aste|ares|ou|aram|eís|am)	(?i)su(ar|ei|aste|ares|ou|aram|eís|am)	so	su	(?i)mal|bem|alto	(?i)cheiros?|salgados?|esforç.*|exercícios?|ginásio|desportos?|treinos?|atletas?	emitir som	transpirar
+(?-i)(?!Soares)([Ss]o(a[rs]?|ei|aste|ares|ou|aram|eís|am))	(?i)su(ar|ei|aste|ares|ou|aram|eís|am)	so	su	(?i)mal|bem|alto	(?i)cheiros?|salgados?|esforç.*|exercícios?|ginásio|desportos?|treinos?|atletas?	emitir som	transpirar
 # sortir/surtir
 (?i)sort(i.*|amos|em)	(?i)surt(i.*|amos|em)	ort	urt	(?i)dados|elementos?	(?i)resultados?|efeitos?|impac?tos?	misturar	produzir efeito
 # tráfego/tráfico

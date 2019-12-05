@@ -1242,7 +1242,7 @@ title="Easy editing stylesheet" ?>
         <marker>
           <token regexp='yes'>&contracoes_MP;
             <exception>neles</exception>
-            <exception postag_regexp='yes' postag='R.|NP.+'/></token>
+            <exception postag_regexp='yes' postag='R.|NP.+|.+_$'/></token>
           <token regexp='yes' min='0'>&adverbios_de_intensidade;</token><!-- XXX use POS after disambiguation improvements -->
           <token min='0' postag='(?:A..|Z.)C.+' postag_regexp='yes'>
             <exception negate_pos='yes' postag_regexp='yes' postag='(?:[NZ].|A..)C.+'/></token>
@@ -1341,7 +1341,7 @@ title="Easy editing stylesheet" ?>
         <marker>
           <token regexp='yes'>&contracoes_MS;
             <exception>nele</exception>
-            <exception postag_regexp='yes' postag='R.|NP.+'/></token>
+            <exception postag_regexp='yes' postag='R.|NP.+|.+_$'/></token>
           <token regexp='yes' min='0'>&adverbios_de_intensidade;</token><!-- XXX use POS after disambiguation improvements -->
           <token min='0' postag='(?:A..|Z.)C.+' postag_regexp='yes'>
             <exception negate_pos='yes' postag_regexp='yes' postag='(?:[NZ].|A..)C.+'/></token>
@@ -1426,7 +1426,7 @@ title="Easy editing stylesheet" ?>
         <marker>
           <token regexp='yes'>&contracoes_FS;
             <exception>nela</exception>
-            <exception postag_regexp='yes' postag='R.|NP.+'/></token>
+            <exception postag_regexp='yes' postag='R.|NP.+|.+_$'/></token>
           <token regexp='yes' min='0'>&adverbios_de_intensidade;</token><!-- XXX use POS after disambiguation improvements -->
           <token min='0' postag='(?:A..|Z.)C.+' postag_regexp='yes'>
             <exception negate_pos='yes' postag_regexp='yes' postag='(?:[NZ].|A..)C.+'/></token>
@@ -1439,6 +1439,7 @@ title="Easy editing stylesheet" ?>
         <suggestion><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' postag="(N.|[AD]..|Z.)[FC]P(.+)" postag_replace='$1[FC]S$2' postag_regexp="yes"/></suggestion>
         <suggestion>\2s <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' include_skipped='all'/></suggestion>
       <example correction='numa espécie|numas espécies'>Valor contido <marker>numa espécies</marker> por descobrir.</example>
+      <example>Há pouco tempo quatro ex-presidentes da República jantaram na companhia.</example>
     </rule>
     <rule>
       <antipattern>
@@ -1524,7 +1525,7 @@ title="Easy editing stylesheet" ?>
         <marker>
           <token regexp='yes'>&contracoes_FP;
             <exception regexp='yes'>mas|nelas</exception>
-            <exception postag_regexp='yes' postag='R.|NP.+'/></token>
+            <exception postag_regexp='yes' postag='R.|NP.+|.+_$'/></token>
           <token regexp='yes' min='0'>&adverbios_de_intensidade;</token><!-- XXX use POS after disambiguation improvements -->
           <token min='0' postag='(?:A..|Z.)C.+' postag_regexp='yes'>
             <exception negate_pos='yes' postag_regexp='yes' postag='(?:[NZ].|A..)C.+'/></token>
@@ -7143,7 +7144,7 @@ title="Easy editing stylesheet" ?>
       <example correction="houve muitos">No passado <marker>houveram muitos</marker> muitos acidentes.</example>
     </rule>
 
-    <rule id='JÁ_MAIS' name="Confusão: já mais - jamais">
+    <rule id='JÁ_MAIS' name="Confusão: já mais - jamais" default='off'>
     <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
       <pattern>
           <token>
@@ -9482,6 +9483,7 @@ title="Easy editing stylesheet" ?>
           <token postag='SENT_START'/>
         <marker>
           <token postag='NP.+' postag_regexp='yes' regexp='yes'>\p{Lu}.+
+            <exception>Faria</exception>
             <exception postag='NP.+' negate_pos='yes' postag_regexp='yes'/></token>
         </marker>
           <token  postag='D.+' postag_regexp='yes' regexp='yes'>\p{Ll}+</token>
@@ -9495,6 +9497,7 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>[\"“«—]</token>
         <marker>
           <token postag='NP.+' postag_regexp='yes' regexp='yes'>\p{Lu}.+
+            <exception>Faria</exception>
             <exception postag='NP.+' negate_pos='yes' postag_regexp='yes'/></token>
         </marker>
           <token  postag='D.+' postag_regexp='yes' regexp='yes'>\p{Ll}+</token>
@@ -27680,6 +27683,7 @@ TODO Write better examples
     <rule> <!-- Visitávamos 7 Outubro 2020 -->
       <pattern>
           <token postag="V.(?:P.|.[ISM]).+" postag_regexp="yes" skip="-1">
+            <exception regexp='yes'>marcad[ao]s?</exception>
             <exception scope='next' regexp="yes">a(?:ntes|té)</exception>
             <exception scope='next' postag="V..F.+" postag_regexp="yes"/></token>
         <marker> &date_dmy; </marker>
@@ -27703,6 +27707,7 @@ TODO Write better examples
           <token/>
         <marker> &date_dmy_skip; </marker>
           <token postag="V.(?:P.|.[ISM]).+" postag_regexp="yes" skip="-1">
+            <exception regexp='yes'>marcad[ao]s?</exception>
             <exception scope='next' postag="V..F.+" postag_regexp="yes"/></token>
       </pattern>
       <filter class="org.languagetool.rules.pt.FutureDateFilter" args="year:\5 month:\4 day:\2"/>
@@ -27715,6 +27720,7 @@ TODO Write better examples
     <rule> <!-- Estávamos a visitar o cliente a Outubro 7, 2020 -->
       <pattern>
           <token postag="V.(?:P.|.[ISM]).+" postag_regexp="yes" skip="-1">
+            <exception regexp='yes'>marcad[ao]s?</exception>
             <exception scope='next' regexp="yes">a(?:ntes|té)</exception>
             <exception scope='next' postag="V..F.+" postag_regexp="yes"/></token>
         <marker> &date_mdy; </marker>
@@ -27736,6 +27742,7 @@ TODO Write better examples
           <token/>
         <marker> &date_mdy_skip; </marker>
           <token postag="V.(?:P.|.[ISM]).+" postag_regexp="yes" skip="-1">
+            <exception regexp='yes'>marcad[ao]s?</exception>
             <exception scope='next' postag="V..F.+" postag_regexp="yes"/></token>
       </pattern>
       <filter class="org.languagetool.rules.pt.FutureDateFilter" args="year:\5 month:2 day:\3"/>
@@ -27748,6 +27755,7 @@ TODO Write better examples
     <rule> <!-- estávamos a visitar o cliente a 27/10/2040 -->
       <pattern>
           <token postag="V.(?:P.|.[ISM]).+" postag_regexp="yes" skip="-1">
+            <exception regexp='yes'>marcad[ao]s?</exception>
             <exception scope='next' regexp="yes">a(?:ntes|té)</exception>
             <exception scope='next' postag="V..F.+" postag_regexp="yes"/></token>
         <marker> &date_dmy_numbers; </marker>
@@ -27769,6 +27777,7 @@ TODO Write better examples
           <token/>
         <marker> &date_dmy_numbers_skip; </marker>
           <token postag="V.(?:P.|.[ISM]).+" postag_regexp="yes" skip="-1">
+            <exception regexp='yes'>marcad[ao]s?</exception>
             <exception scope='next' postag="V..F.+" postag_regexp="yes"/></token>
       </pattern>
       <filter class="org.languagetool.rules.pt.FutureDateFilter" args="year:\6 month:\4 day:\2"/>
@@ -27790,6 +27799,7 @@ TODO Write better examples
     <rule> <!-- Estávamos a visitar o cliente a 10/27/2040 -->
       <pattern>
           <token postag="V.(?:P.|.[ISM]).+" postag_regexp="yes" skip="-1">
+            <exception regexp='yes'>marcad[ao]s?</exception>
             <exception scope='next' regexp="yes">a(?:ntes|té)</exception>
             <exception scope='next' postag="V..F.+" postag_regexp="yes"/></token>
         <marker> &date_mdy_numbers; </marker>
@@ -27811,6 +27821,7 @@ TODO Write better examples
           <token/>
         <marker> &date_mdy_numbers_skip; </marker>
           <token postag="V.(?:P.|.[ISM]).+" postag_regexp="yes" skip="-1">
+            <exception regexp='yes'>marcad[ao]s?</exception>
             <exception scope='next' postag="V..F.+" postag_regexp="yes"/></token>
       </pattern>
       <filter class="org.languagetool.rules.pt.FutureDateFilter" args="year:\6 month:\2 day:\3"/>
@@ -34077,6 +34088,10 @@ TODO Write better examples
       <example correction="Olá"><marker>Ola</marker>!</example>
     </rule>
     <rule>
+      <antipattern>
+          <token regexp='yes'>ac?ç(?:ão|ões)</token>
+          <token regexp='yes'>concertadas?</token>
+      </antipattern>
       <antipattern>
           <token inflected='yes' skip='-1'>concertar</token>
           <token regexp='yes'>(?:bloquistas|comunista|democrata|republicano|socialista|sindica(?:to|lista)|BE|CDS|CGTP|PAN|PCP|PP|PSD?)s?|líder(?:es)?</token>
