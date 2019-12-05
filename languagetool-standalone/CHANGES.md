@@ -8,6 +8,7 @@
   * rules added:
      - `EnglishSimpleGrammarRule` for simple replacement rule creation - 877 error patterns added from Wikipedia;
      - verb-noun confusion rule - 1530 error patterns mostly from After the Deadline (AtD);
+     - adjective order rule;
      - eggcorn detection - 227 error patterns from Grammark and AtD;
      - specific case rule - 751 extra entries from Wikipedia;
      - nonstandard English replacement rule - 22 error patterns;
@@ -167,7 +168,7 @@
   * sentences and paragraphs now end with a single line break.
 
 #### General
-  * `spelling_global.txt` has 8370 extra entries on the database, including:
+  * `spelling_global.txt` has 8481 extra entries on the database, including:
     - 1666 compound chemical formulas;
     - 1666 species scientific names;
     - 1666 mediatic people.
