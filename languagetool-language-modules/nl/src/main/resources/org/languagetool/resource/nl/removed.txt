@@ -111,6 +111,8 @@ aangebotst	aanbotsen	WKW:VTD:ONV
 aangebotste	aanbotsen	WKW:VTD:VRB
 aangedacht	aangedacht	ZNW:EKV
 aangeefcentrum	aangeefcentrum	ZNW:EKV:HET
+aangeloop	aangeloop	ZNW:EKV
+aangelopen	aangeloop	ZNW:MRV:DE_
 aangestel	aangestel	ZNW:EKV
 aangeval	aangeval	ZNW:EKV:HET
 aangevallen	aangeval	ZNW:MRV:DE_
@@ -571,6 +573,7 @@ achterklok	achterklok	ZNW:EKV
 achtermanier	achtermanier	ZNW:EKV:DE_
 achtermarge	achtermarge	ZNW:EKV:DE_
 achtermeningsspiegel	achtermeningsspiegel	ZNW:EKV:DE_
+achterover	achterover	ZNW:EKV:DE_
 achterovereenkomst	achterovereenkomst	ZNW:EKV:DE_
 achterpadenverlichting	achterpadenverlichting	ZNW:EKV:DE_
 achterprovincie	achterprovincie	ZNW:EKV:DE_
@@ -1312,6 +1315,7 @@ algenvijand	algenvijand	ZNW:EKV:DE_
 aliascollectie	aliascollectie	ZNW:EKV:DE_
 aliasformulier	aliasformulier	ZNW:EKV:HET
 alibietje	alibi	ZNW:EKV:VRK:HET
+alignementje	alignement	ZNW:EKV:VRK:HET
 alimentatieadvies	alimentatieadvies	ZNW:EKV:HET
 alimentatietoekenning	alimentatietoekenning	ZNW:EKV
 alineaplakker	alineaplakker	ZNW:EKV:DE_
@@ -1344,6 +1348,7 @@ allroundvissers	allroundvisser	ZNW:MRV:DE_
 allyl	allyl	ZNW:EKV
 alsemdrank	alsemdrank	ZNW:EKV:DE_
 alsemgeest	alsemgeest	ZNW:EKV:DE_
+alsmede	alsmede	ZNW:EKV
 altaarhaard	altaarhaard	ZNW:EKV:DE_
 altaarsieraden	altaarsieraad	ZNW:MRV:DE_
 altaartabellen	altaartabel	ZNW:MRV:DE_
@@ -4493,6 +4498,8 @@ blauwbessenjenever	blauwbessenjenever	ZNW:EKV:DE_
 blauwgaren	blauwgaren	ZNW:EKV:HET
 blauwhelmenmacht	blauwhelmenmacht	ZNW:EKV
 blauwlijntje	blauwlijntje	ZNW:EKV:VRK:HET
+blauwselen	blauwsel	ZNW:MRV:DE_
+blauwsels	blauwsel	ZNW:MRV:DE_
 blauwtijger	blauwtijger	ZNW:EKV:DE_
 blauwtijgers	blauwtijger	ZNW:MRV:DE_
 blauwverversambacht	blauwverversambacht	ZNW:EKV
@@ -7465,6 +7472,7 @@ cyclocrossend	cyclocrossen	WKW:ODW:ONV
 cyclocroste	cyclocrossen	WKW:VLT:1EP
 cyclopenburcht	cyclopenburcht	ZNW:EKV:DE_
 cyclopentroep	cyclopentroep	ZNW:EKV:DE_
+cyclotronnetje	cyclotron	ZNW:EKV:VRK:HET
 cyclusdienst	cyclusdienst	ZNW:EKV:DE_
 cyclusgeschiedenis	cyclusgeschiedenis	ZNW:EKV:DE_
 cyclusmacht	cyclusmacht	ZNW:EKV:DE_
@@ -8884,6 +8892,7 @@ dramaklassen	dramaklasse	ZNW:MRV:DE_
 dramamedewerkers	dramamedewerker	ZNW:MRV:DE_
 dramaontwikkeling	dramaontwikkeling	ZNW:EKV:DE_
 dramasuggesties	dramasuggestie	ZNW:MRV:DE_
+drangertje	dranger	ZNW:EKV:VRK:HET
 drankadvertenties	drankadvertentie	ZNW:MRV:DE_
 drankarena	drankarena	ZNW:EKV:DE_
 drankbediende	drankbediende	ZNW:EKV:DE_
@@ -9887,6 +9896,7 @@ escamoteren	escamoteren	WKW:TGW:INF
 escortegroep	escortegroep	ZNW:EKV:DE_
 escorteleider	escorteleider	ZNW:EKV:DE_
 escortmodel	escortmodel	ZNW:EKV:HET
+esculaapjes	esculaap	ZNW:MRV:VRK:DE_
 esdoorndesign	esdoorndesign	ZNW:EKV
 espressofabriek	espressofabriek	ZNW:EKV:DE_
 espressolounge	espressolounge	ZNW:EKV:DE_
@@ -11457,6 +11467,7 @@ geklaar	geklaar	ZNW:EKV:HET
 geklommene	geklommene	ZNW:EKV
 gekokt	kokken	WKW:VTD:ONV
 gekokte	kokken	WKW:VTD:VRB
+gekost	gekost	ZNW:EKV:HET
 gekubeerd	gekubeerd	BNW:STL:ONV
 gekubeerde	gekubeerd	BNW:STL:VRB
 gekwetstheidjes	gekwetstheid	ZNW:MRV:VRK:DE_
@@ -11731,6 +11742,7 @@ genadevoorstellen	genadevoorstel	ZNW:MRV:DE_
 genderbehoeften	genderbehoefte	ZNW:MRV:DE_
 gendergebaseerd	gendergebaseerd	BNW:STL:ONV
 gendergebaseerde	gendergebaseerd	BNW:STL:VRB
+gene	gene	ZNW:EKV
 geneescultuur	geneescultuur	ZNW:EKV:DE_
 geneeskundeborst	geneeskundeborst	ZNW:EKV
 geneeskundegebruik	geneeskundegebruik	ZNW:EKV:HET
@@ -11784,6 +11796,8 @@ genezingsverklaring	genezingsverklaring	ZNW:EKV:DE_
 genezingswereld	genezingswereld	ZNW:EKV:DE_
 genietcrisis	genietcrisis	ZNW:EKV:DE_
 genocide-standpunt	genocide-standpunt	ZNW:EKV:HET
+genoemde	genoemde	ZNW:EKV
+genoemden	genoemde	ZNW:MRV:DE_
 genoomopeenvolging	genoomopeenvolging	ZNW:EKV
 genootschap	genootschap	ZNW:EKV
 genotprikkels	genotprikkel	ZNW:MRV:DE_
@@ -12179,6 +12193,7 @@ gezelligheidsdispuut	gezelligheidsdispuut	ZNW:EKV:HET
 gezelligheidsfascisme	gezelligheidsfascisme	ZNW:EKV:HET
 gezelligheidsmiddagen	gezelligheidsmiddag	ZNW:MRV:DE_
 gezelschapsdierenbalie	gezelschapsdierenbalie	ZNW:EKV
+gezet	gezet	ZNW:EKV:HET
 gezichtentrekking	gezichtentrekking	ZNW:EKV:DE_
 gezichtsaanduiding	gezichtsaanduiding	ZNW:EKV
 gezichtseigenschappen	gezichtseigenschap	ZNW:MRV:DE_
@@ -13223,6 +13238,7 @@ healingsvermogen	healingsvermogen	ZNW:EKV:HET
 hechtingsachterstand	hechtingsachterstand	ZNW:EKV
 hechtingseigenschappen	hechtingseigenschap	ZNW:MRV:DE_
 hechtingswijzen	hechtingswijze	ZNW:MRV:DE_
+hectometertjes	hectometer	ZNW:MRV:VRK:DE_
 hedjra	hedjra	ZNW:EKV
 heefjes	heef	ZNW:MRV:VRK:DE_
 heerserspraktijken	heerserspraktijk	ZNW:MRV:DE_
@@ -14866,6 +14882,7 @@ inlaatlocatie	inlaatlocatie	ZNW:EKV:DE_
 inlaatluchtkanaal	inlaatluchtkanaal	ZNW:EKV:HET
 inlaatmanchetten	inlaatmanchet	ZNW:MRV:DE_
 inlaatreductie	inlaatreductie	ZNW:EKV:DE_
+inlandertjes	inlander	ZNW:MRV:VRK:DE_
 inlegmotieven	inlegmotief	ZNW:MRV:DE_
 inlegtafels	inlegtafel	ZNW:MRV:DE_
 inleidingsartikel	inleidingsartikel	ZNW:EKV:HET
@@ -17127,6 +17144,7 @@ klerenkoffertje	klerenkoffer	ZNW:EKV:VRK:HET
 klerkensmoelen	klerkensmoel	ZNW:MRV:DE_
 klerkenverzet	klerkenverzet	ZNW:EKV:HET
 kletsbloot	kletsbloot	ZNW:EKV:DE_
+kletsertjes	kletser	ZNW:MRV:VRK:DE_
 kleuraanname	kleuraanname	ZNW:EKV
 kleurapparaten	kleurapparaat	ZNW:MRV:DE_
 kleurarrangement	kleurarrangement	ZNW:EKV:HET
@@ -18910,6 +18928,7 @@ latercampagne	latercampagne	ZNW:EKV:DE_
 laterdatum	laterdatum	ZNW:EKV:DE_
 latexsoort	latexsoort	ZNW:EKV
 latexvriendelijk	latexvriendelijk	BNW:STL:ONV
+latinaatjes	latina	ZNW:MRV:VRK:DE_
 laurieressence	laurieressence	ZNW:EKV:DE_
 lawaaiblokkade	lawaaiblokkade	ZNW:EKV:DE_
 lawaaicampagnes	lawaaicampagne	ZNW:MRV:DE_
@@ -25961,6 +25980,7 @@ petroleumpotentieel	petroleumpotentieel	ZNW:EKV:HET
 petroleumtankers	petroleumtanker	ZNW:MRV:DE_
 pettenhandel	pettenhandel	ZNW:EKV:DE_
 pettenregen	pettenregen	ZNW:EKV:DE_
+petuniaatjes	petunia	ZNW:MRV:VRK:DE_
 peulenmengsel	peulenmengsel	ZNW:EKV:HET
 peurstokken	peurstok	ZNW:MRV:DE_
 peuterdagboek	peuterdagboek	ZNW:EKV:HET
@@ -26609,6 +26629,7 @@ pollendrager	pollendrager	ZNW:EKV:DE_
 pollenmonster	pollenmonster	ZNW:EKV:DE_
 poloclinics	poloclinic	ZNW:MRV:DE_
 polodames	polodame	ZNW:MRV:DE_
+polonia	polonium	ZNW:MRV:DE_
 polsstokhouder	polsstokhouder	ZNW:EKV:DE_
 polsstokploeg	polsstokploeg	ZNW:EKV:DE_
 polsstokstage	polsstokstage	ZNW:EKV:DE_
@@ -28601,6 +28622,7 @@ regularisatiedocument	regularisatiedocument	ZNW:EKV:HET
 regularisatierekeningen	regularisatierekening	ZNW:MRV:DE_
 regularisatievoorstellen	regularisatievoorstel	ZNW:MRV:DE_
 regularisatievraagstuk	regularisatievraagstuk	ZNW:EKV:HET
+regulariteiten	regulariteit	ZNW:MRV:DE_
 regulatiekwaliteit	regulatiekwaliteit	ZNW:EKV:DE_
 regulatietheoretici	regulatietheoreticus	ZNW:MRV:DE_
 regulatieventiel	regulatieventiel	ZNW:EKV:HET
@@ -31284,6 +31306,7 @@ skimanege	skimanege	ZNW:EKV
 skimotoren	skimotor	ZNW:MRV:DE_
 skioveralls	skioverall	ZNW:MRV:DE_
 skiparty	skiparty	ZNW:EKV
+skippertje	skipper	ZNW:EKV:VRK:HET
 skiracers	skiracer	ZNW:MRV:DE_
 skischansboezem	skischansboezem	ZNW:EKV:DE_
 skischoolgebied	skischoolgebied	ZNW:EKV:HET
@@ -33083,6 +33106,7 @@ statusvoorkeur	statusvoorkeur	ZNW:EKV:DE_
 statutenaanpassing	statutenaanpassing	ZNW:EKV:DE_
 statutendossiers	statutendossier	ZNW:MRV:DE_
 statutenherziening	statutenherziening	ZNW:EKV:DE_
+stayertje	stayer	ZNW:EKV:VRK:HET
 stedenelftal	stedenelftal	ZNW:EKV:HET
 stedenkruisje	stedenkruisje	ZNW:EKV:VRK:HET
 stedenserie	stedenserie	ZNW:EKV:DE_
@@ -34922,6 +34946,7 @@ tempelbezichtigingen	tempelbezichtiging	ZNW:MRV:DE_
 tempeldrama	tempeldrama	ZNW:EKV:HET
 tempelgeheimen	tempelgeheim	ZNW:MRV:DE_
 tempelherberg	tempelherberg	ZNW:EKV:DE_
+tempeliertjes	tempelier	ZNW:MRV:VRK:DE_
 tempelleerling	tempelleerling	ZNW:EKV:DE_
 tempelmusici	tempelmusicus	ZNW:MRV:DE_
 tempelplicht	tempelplicht	ZNW:EKV:DE_
@@ -35007,6 +35032,8 @@ tepeljuwelen	tepeljuweel	ZNW:MRV:DE_
 tepelklevers	tepelklever	ZNW:MRV:DE_
 tepelknijpertjes	tepelknijper	ZNW:MRV:VRK:DE_
 tepelstijfheid	tepelstijfheid	ZNW:EKV:DE_
+teratogeen	teratogeen	ZNW:EKV
+teratogene	teratogene	ZNW:EKV
 termenoverzicht	termenoverzicht	ZNW:EKV:HET
 termenverzameling	termenverzameling	ZNW:EKV:DE_
 termietenbehandeling	termietenbehandeling	ZNW:EKV:DE_
@@ -36138,6 +36165,7 @@ tropenslaapje	tropenslaap	ZNW:EKV:VRK:HET
 tropenslaapjes	tropenslaap	ZNW:MRV:VRK:DE_
 tropentoestel	tropentoestel	ZNW:EKV:HET
 tropenzaken	tropenzaak	ZNW:MRV:DE_
+trotsheden	trotsheid	ZNW:MRV:DE_
 trottoiraanleg	trottoiraanleg	ZNW:EKV
 trottoirplant	trottoirplant	ZNW:EKV:DE_
 trouwadvertenties	trouwadvertentie	ZNW:MRV:DE_
@@ -36685,6 +36713,7 @@ universiteitsvoetbal	universiteitsvoetbal	ZNW:EKV
 universiteitswerknemers	universiteitswerknemer	ZNW:MRV:DE_
 universiteitszaaltje	universiteitszaaltje	ZNW:EKV:VRK:HET
 universiteitszegel	universiteitszegel	ZNW:EKV
+upbeatje	upbeat	ZNW:EKV:VRK:HET
 updatebezoek	updatebezoek	ZNW:EKV:HET
 updatevoorziening	updatevoorziening	ZNW:EKV:DE_
 upgrade-onderdelen	upgrade-onderdeel	ZNW:MRV:DE_
