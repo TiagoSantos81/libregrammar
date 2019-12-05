@@ -53,7 +53,8 @@ public class EnglishVerbNounConfusionRule extends Rule {
   private static final Pattern PRECEDES_NOUN = Pattern.compile("[Tt]h(e|is)|[Aa]n?|[Mm]y|[Yy]?[Oo]ur|[Hh](is|er)|[Tt]heir|[Ii]ts|[Oo][fn]|[Ff]or"); // excluded also non-determiners s|that
 
   private static final Map<String,String> NOUN_VERB_DB = loadWordlist("en/verb_nouns.txt", 1);
-  private static final Pattern PRECEDES_VERB = Pattern.compile("can(not)?|[wc]ould|should|m(?:ight|ust|ay)|did|ha([ds]|ve)|ve|will|It?|[Yy]ou|[Ss][Hh]e|[Tt]hey|[Ww]e"); // excluded to
+  private static final Pattern PRECEDES_VERB = Pattern.compile("can(not)?|[wc]ould|should|m(?:ight|ust|ay)|did|will|It?|[Yy]ou|[Ss][Hh]e|[Tt]hey|[Ww]e"); // excluded to|ha([ds]|ve)|ve
+                                                                                                                                       // TODO add conditional for have + inflected verb
   private static final Pattern PRECEDES_VERB_NOT = Pattern.compile("can|shouldn|couldn|wouldn|won|didn|mustn");
   private static final Pattern APOSTROPHE = Pattern.compile("['’`´‘]");
 
