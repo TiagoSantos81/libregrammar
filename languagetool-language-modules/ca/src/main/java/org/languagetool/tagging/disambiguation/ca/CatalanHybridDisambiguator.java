@@ -71,13 +71,12 @@ public class CatalanHybridDisambiguator extends AbstractDisambiguator {
             nextPOSTag = "";
             lemma = "";
           }
-          aTokens[i] = new AnalyzedTokenReadings(aTokens[i], Arrays.asList(newAnalyzedToken),
-              "CatalanHybridDisambiguator");
+          aTokens[i] = new AnalyzedTokenReadings(aTokens[i], Arrays.asList(newAnalyzedToken), "CA_HYBRID_DISAMB_END");
         } else if ((analyzedToken = getMultiWordAnalyzedToken(aTokens, i)) != null) {
           POSTag = analyzedToken.getPOSTag().substring(1, analyzedToken.getPOSTag().length() - 1);
           lemma = analyzedToken.getLemma();
           AnalyzedToken newAnalyzedToken = new AnalyzedToken(analyzedToken.getToken(), POSTag, lemma);
-          aTokens[i] = new AnalyzedTokenReadings(aTokens[i], Arrays.asList(newAnalyzedToken), "CATHybridDisamb");
+          aTokens[i] = new AnalyzedTokenReadings(aTokens[i], Arrays.asList(newAnalyzedToken), "CA_HYBRID_DISAMB_START");
           if (POSTag.startsWith("NC")) {
             nextPOSTag = "AQ0" + POSTag.substring(2, 4) + "0";
           } else {
