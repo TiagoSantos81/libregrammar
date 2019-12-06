@@ -10746,6 +10746,11 @@ title="Easy editing stylesheet" ?>
       <example>Ena, que surpresa!</example>
     </rule>
     <rule>
+      <antipattern>
+          <token regexp='yes'>\p{Lu}.*</token>
+          <token postag='I'/>
+          <token regexp='yes'>\p{Lu}.*</token>
+      </antipattern>
       <pattern>
         <marker>
           <token postag='I'>
@@ -10766,6 +10771,7 @@ title="Easy editing stylesheet" ?>
       <example>Ano de Nosso Senhor Jesus Cristo</example>
       <example>É uma explicação insuficiente, pois, há outra bem melhor: se tomarmos o…</example>
       <example>Explique brevemente a sua teoria.</example>
+      <example>Olá Joana!</example><!-- caught by VOCATIVE_PUNCTUATION -->
     </rule>
   </rulegroup>
 
@@ -26546,11 +26552,11 @@ TODO Write better examples
     <rule id='DEGREE_SYMBOL' name="Matemático: Símbolo de grau (°)">
     <!--  Localized from Catalan grammar.xml, by Tiago F. Santos, 2017-02-27      -->
       <regexp>(?-i)\s?º\s?([CFNSEW])\b</regexp>
-      <message>Se está a indicar graus, utilize o símbolo <suggestion>&#8239;°\1</suggestion>.</message>
-      <example correction="&#8239;°C">Faz 25<marker>º C</marker> à sombra.</example>
-      <example correction="&#8239;°C">Faz 25<marker>ºC</marker> à sombra.</example>
-      <example correction="&#8239;°C">Faz 25<marker> º C</marker> à sombra.</example>
-      <example correction="&#8239;°C">Faz 25<marker> ºC</marker> à sombra.</example>
+      <message>Se está a indicar graus, utilize o símbolo <suggestion> °\1</suggestion> ou <suggestion>&#8239;°\1</suggestion>.</message>
+      <example correction=" °C|&#8239;°C">Faz 25<marker>º C</marker> à sombra.</example>
+      <example correction=" °C|&#8239;°C">Faz 25<marker>ºC</marker> à sombra.</example>
+      <example correction=" °C|&#8239;°C">Faz 25<marker> º C</marker> à sombra.</example>
+      <example correction=" °C|&#8239;°C">Faz 25<marker> ºC</marker> à sombra.</example>
       <example>Faz 25°.</example>
       <example>…o da União, conforme estabelecido nos artigos 349.º e 355.º do Tratado sobre o Funcionamento da União E…</example>
       <example>…que pôs fim à República Velha, depondo seu 13º e último presidente Washington Luís e impedindo a…</example>
@@ -26574,11 +26580,12 @@ TODO Write better examples
     <!-- Localized and improved by Tiago F. Santos, Portuguese rule, 2017-02-27 -->
       <regexp>\s*[º°]\s*K\b</regexp>
       <message>Kelvin não utiliza o sinal de grau.</message>
+        <suggestion> K</suggestion>
         <suggestion>&#8239;K</suggestion>
       <url>https://pt.wikipedia.org/wiki/Kelvin</url>
-      <example correction="&#8239;K">A 30<marker> ºK</marker>.</example>
-      <example correction="&#8239;K">A 30<marker>ºK</marker>.</example>
-      <example correction="&#8239;K">A 30<marker> º K</marker>.</example>
+      <example correction=" K|&#8239;K">A 30<marker> ºK</marker>.</example>
+      <example correction=" K|&#8239;K">A 30<marker>ºK</marker>.</example>
+      <example correction=" K|&#8239;K">A 30<marker> º K</marker>.</example>
     </rule>
 
   <rulegroup id='DEGREE_MINUTES_SECONDS' name="Matemático: Tipografia de graus, minutos e segundos: 50°45′ 20″">
@@ -26586,34 +26593,37 @@ TODO Write better examples
     <rule>
       <regexp>\b([\d., ]*\d)\s*[º°]\s*([\d., ]*\d)\s*[”"'’′`]\s*([\d., ]*\d)\s*[”"'’′`]</regexp>
       <message>Utilize os símbolos de graus, minutos e segundos.</message>
+        <suggestion>\1° \2′ \3″</suggestion>
         <suggestion>\1°&#8239;\2′&#8239;\3″</suggestion>
-      <example correction="25°&#8239;29,1′&#8239;49″"><marker>25º 29,1' 49"</marker>.</example>
-      <example correction="25°&#8239;29′&#8239;49″"><marker>25º 29' 49'</marker>.</example>
-      <example correction="25°&#8239;29,1′&#8239;49″"><marker>25 º 29,1' 49"</marker>.</example>
-      <example correction="25°&#8239;29′&#8239;49″"><marker>25 º 29' 49'</marker>.</example>
-      <example correction="25°&#8239;29′&#8239;49″"><marker>25º29’49”</marker>  N.</example>
+      <example correction="25° 29,1′ 49″|25°&#8239;29,1′&#8239;49″"><marker>25º 29,1' 49"</marker>.</example>
+      <example correction="25° 29′ 49″|25°&#8239;29′&#8239;49″"><marker>25º 29' 49'</marker>.</example>
+      <example correction="25° 29,1′ 49″|25°&#8239;29,1′&#8239;49″"><marker>25 º 29,1' 49"</marker>.</example>
+      <example correction="25° 29′ 49″|25°&#8239;29′&#8239;49″"><marker>25 º 29' 49'</marker>.</example>
+      <example correction="25° 29′ 49″|25°&#8239;29′&#8239;49″"><marker>25º29’49”</marker>  N.</example>
       <example>25° 29′ 34″</example>
     </rule>
     <rule>
       <regexp>\b([\d., ]*\d)\s*[º°]\s*([\d., ]*\d)\s*[”"'’`]</regexp>
       <message>Utilize os símbolos de graus e minutos.</message>
+        <suggestion>\1° \2′</suggestion>
         <suggestion>\1°&#8239;\2′</suggestion>
-      <example correction="25°&#8239;29,1′"><marker>25º 29,1'</marker>.</example>
-      <example correction="25°&#8239;29′"><marker>25º 29 '</marker>.</example>
-      <example correction="25°&#8239;29,1′"><marker>25 º 29,1'</marker>.</example>
-      <example correction="25°&#8239;29′"><marker>25 º29'</marker>.</example>
-      <example correction="25°&#8239;29′"><marker>25º29’</marker>  N.</example>
+      <example correction="25° 29,1′|25°&#8239;29,1′"><marker>25º 29,1'</marker>.</example>
+      <example correction="25° 29′|25°&#8239;29′"><marker>25º 29 '</marker>.</example>
+      <example correction="25° 29,1′|25°&#8239;29,1′"><marker>25 º 29,1'</marker>.</example>
+      <example correction="25° 29′|25°&#8239;29′"><marker>25 º29'</marker>.</example>
+      <example correction="25° 29′|25°&#8239;29′"><marker>25º29’</marker>  N.</example>
       <example>25° 29′</example>
     </rule>
     <rule>
       <regexp>\b([\d., ]*\d)\s*[”"'’′`]\s*([\d., ]*\d)\s*[”"'’′`]</regexp>
       <message>Utilize os símbolos de minutos e segundos.</message>
+        <suggestion>\1′ \2″</suggestion>
         <suggestion>\1′&#8239;\2″</suggestion>
-      <example correction="29,1′&#8239;49″"><marker>29,1' 49"</marker>.</example>
-      <example correction="29′&#8239;49″"><marker>29' 49 '</marker>.</example>
-      <example correction="29,1′&#8239;49″"><marker>29,1' 49 "</marker>.</example>
-      <example correction="29′&#8239;49″"><marker>29 ' 49'</marker>.</example>
-      <example correction="29′&#8239;49″"><marker>29’49”</marker>  N.</example>
+      <example correction="29,1′ 49″|29,1′&#8239;49″"><marker>29,1' 49"</marker>.</example>
+      <example correction="29′ 49″|29′&#8239;49″"><marker>29' 49 '</marker>.</example>
+      <example correction="29,1′ 49″|29,1′&#8239;49″"><marker>29,1' 49 "</marker>.</example>
+      <example correction="29′ 49″|29′&#8239;49″"><marker>29 ' 49'</marker>.</example>
+      <example correction="29′ 49″|29′&#8239;49″"><marker>29’49”</marker>  N.</example>
       <example>29′ 34″</example>
     </rule>
   </rulegroup>
@@ -29646,7 +29656,7 @@ TODO Write better examples
     </rule>
     <rule>
       <pattern>
-          <token inflected='yes'>adeus</token>
+          <token>adeus</token>
           <token>de</token>
           <token>mão</token>
           <token>fechada</token>
@@ -29684,7 +29694,7 @@ TODO Write better examples
     </rule>
     <rule>
       <pattern>
-          <token inflected='yes'>aqui</token>
+          <token>aqui</token>
           <token>se</token>
           <token>faz</token>
           <token>,</token>
@@ -29857,7 +29867,7 @@ TODO Write better examples
     </rule>
     <rule>
       <pattern>
-          <token inflected='yes'>de</token>
+          <token>de</token>
           <token>jeito</token>
           <token>nenhum</token>
       </pattern>
@@ -29967,7 +29977,7 @@ TODO Write better examples
     </rule>
     <rule>
       <pattern>
-          <token inflected='yes'>fala</token>
+          <token inflected='yes'>falar</token>
           <token>sério</token>
       </pattern>
       <message>Esta é uma expressão oral. Reveja.</message>
@@ -30096,7 +30106,7 @@ TODO Write better examples
     </rule>
     <rule>
       <pattern>
-          <token inflected='yes'>mão</token>
+          <token>mão</token>
           <token>de</token>
           <token>obra</token>
       </pattern>
@@ -30122,7 +30132,7 @@ TODO Write better examples
     </rule>
     <rule>
       <pattern>
-          <token inflected='yes'>para</token>
+          <token>para</token>
           <token>valer</token>
       </pattern>
       <message>Esta é uma expressão oral. Reveja.</message>
@@ -30179,7 +30189,7 @@ TODO Write better examples
     </rule>
     <rule>
       <pattern>
-          <token inflected='yes'>pra</token>
+          <token regexp='yes'>pa?ra</token>
           <token>valer</token>
       </pattern>
       <message>Esta é uma expressão oral. Reveja.</message>
@@ -30231,7 +30241,7 @@ TODO Write better examples
     </rule>
     <rule>
       <pattern>
-          <token inflected='yes'>se</token>
+          <token>se</token>
           <token>pá</token>
       </pattern>
       <message>Esta é uma expressão oral. Reveja.</message>
@@ -30297,7 +30307,7 @@ TODO Write better examples
     </rule>
     <rule>
       <pattern>
-          <token inflected='yes'>Tio</token>
+          <token>Tio</token>
           <token>Sam</token>
       </pattern>
       <message>Esta é uma expressão oral. Reveja.</message>
@@ -30307,7 +30317,7 @@ TODO Write better examples
     </rule>
     <rule>
       <pattern>
-          <token inflected='yes'>tipo</token>
+          <token>tipo</token>
           <token>assim</token>
       </pattern>
       <message>Esta é uma expressão oral. Reveja.</message>
@@ -30355,22 +30365,13 @@ TODO Write better examples
     <rule>
       <pattern>
           <token inflected='yes'>trocar</token>
+          <token min='0'>uma</token>
           <token>ideia</token>
       </pattern>
       <message>Esta é uma expressão oral. Reveja.</message>
       <url>https://pt.wiktionary.org/wiki/trocar_ideia</url>
       <short>Coloquialismo</short>
       <example correction=''><marker>trocar ideia</marker></example>
-    </rule>
-    <rule>
-      <pattern>
-          <token inflected='yes'>trocar</token>
-          <token>uma</token>
-          <token>ideia</token>
-      </pattern>
-      <message>Esta é uma expressão oral. Reveja.</message>
-      <url>https://pt.wiktionary.org/wiki/trocar_uma_ideia</url>
-      <short>Coloquialismo</short>
       <example correction=''><marker>trocar uma ideia</marker></example>
     </rule>
     <rule>
