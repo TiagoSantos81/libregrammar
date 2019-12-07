@@ -1,5 +1,5 @@
 /* LanguageTool, a natural language style checker
- * Copyright (C) 2019 Tiago Santos (https://github.com/TiagoSantos81)
+ * Copyright (C) 2019 Tiago F. Santos (https://github.com/TiagoSantos81)
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -44,13 +44,20 @@ import java.io.InputStreamReader;
 
 import static org.languagetool.rules.patterns.PatternRuleBuilderHelper.*;
 
+/**
+ * A rule that checks the usage of verbs in place of nouns.
+ * Loads the list of words from <code>/pt/verb_nouns.txt</code>.
+ *
+ * @author Tiago F. Santos
+ * @since 4.8
+ */
 public class EnglishVerbNounConfusionRule extends Rule {
 
   private final EnglishTagger tagger;
   private final Language english;
 
   private static final Map<String,String> VERB_NOUN_DB = loadWordlist("en/verb_nouns.txt", 0);
-  private static final Pattern PRECEDES_NOUN = Pattern.compile("[Tt]h(e|is)|[Aa]n?|[Mm]y|[Yy]?[Oo]ur|[Hh](is|er)|[Tt]heir|[Ii]ts|[Oo][fn]|[Ff]or"); // excluded also non-determiners s|that
+  private static final Pattern PRECEDES_NOUN = Pattern.compile("[Tt]h(e|is)|[Aa]n?|[Mm]y|[Yy]?[Oo]ur|[Hh](is|er)|[Tt]heir|[Ii]ts|[Oo][fn]|[Ff]or|[Ww]ith"); // excluded also non-determiners s|that
 
   private static final Map<String,String> NOUN_VERB_DB = loadWordlist("en/verb_nouns.txt", 1);
   private static final Pattern PRECEDES_VERB = Pattern.compile("can(not)?|[wc]ould|should|m(?:ight|ust|ay)|did|will|It?|[Yy]ou|[Ss][Hh]e|[Tt]hey|[Ww]e"); // excluded to|ha([ds]|ve)|ve

@@ -56,7 +56,7 @@ USA
     <!ENTITY adjective_miscellaneous "full|empty|wet|dry|open|closed|ornate">
     <!ENTITY adjective_brightness "light|dark|bright|shadowy|drab|radiant|shining|pale|dull|glowing|shimmering|luminous|gleaming">
     <!ENTITY adjective_color "pink|red|orange|yellowish|dark-green|blue|purple|black|white|gray|brown|tanned|pastel|metallic|silver|colorless|transparent|translucent">
-    <!ENTITY adjective_time "early|late|morning|night|evening|everlasting|initial|first|last|overdue|belated|long-term|delayed|punctual">
+    <!ENTITY adjective_time "early|late|morning|night|evening|everlasting|initial|overdue|belated|long-term|delayed|punctual"><!-- first|last| -->
     <!ENTITY adjective_location "lunar|northern|oceanic|polar|equatorial|&languages;|Floridian|American|Canadian|Mexican|Australian">
     <!ENTITY adjective_material "glass|wooden|cloth|concrete|fabric|cotton|plastic|leather|ceramic|china|metal|steel|silicon">
     <!ENTITY adjective_purpose "folding|swinging|work|racing|cooking|sleeping|dance|rolling|walking">
@@ -18309,7 +18309,7 @@ USA
             <!-- and now "an experienced soldier" -->
             <rule>
                 <pattern>
-                    <token><exception postag="PRP.*|NN.*|DT|JJ.*|RB.*|CC|IN|VBG|WRB|WDT|WP\$?|UNKNOWN" postag_regexp="yes"/><exception regexp="yes">one|have|ha[sd]|appointed|called|s|\&quot;|[0-9].*|[,\'.\(\[]</exception></token>
+                    <token><exception postag="PRP.*|NN.*|DT|JJ.*|RB.*|CC|IN|VBG|WRB|WDT|WP\$?|UNKNOWN" postag_regexp="yes"/><exception regexp="yes">one|have|ha[sd]|appointed|called|s|\&quot;|[0-9].*|[,\'’.\(\[]</exception></token>
                     <marker>
                         <token postag="VBN|JJ" postag_regexp="yes"><exception>else</exception><exception postag="VB|RP|WRB|RB|C[CD]|IN|MD|NNP|DT" postag_regexp="yes"/><exception>called</exception></token>
                         <token postag="NN"><exception postag="CC|DT|R[BP]|JJR?|IN|CD|RBS|VB[DN]|MD|NNP?S|NNP|WRB" postag_regexp="yes"/><exception>are</exception><exception regexp="yes">(?iu)\p{Lu}\p{Ll}+</exception></token>
@@ -18326,11 +18326,12 @@ USA
                 <example>The typical U.S. daily menu, says Dr. Keys, contains 3,000 calories</example>
                 <example>I find the cleaner, less razor-edged monophonic version more interesting.</example>
                 <example>Majestic Pick comes next.</example>
+                <example>...Morales’ former ambassador to the United Nations, said in a recent interview.</example>
             </rule>
             <!-- an extremely experienced soldier -->
             <rule>
                 <pattern>
-                    <token><exception postag="PRP|NNP|DT|JJ|PRP\$|RB.*|CC|WDT|WP" postag_regexp="yes"/><exception regexp="yes">then|have|ha[sd]|s|\&quot;|[0-9].*|[\',\(\[]</exception></token>
+                    <token><exception postag="PRP|NNP|DT|JJ|PRP\$|RB.*|CC|WDT|WP" postag_regexp="yes"/><exception regexp="yes">then|have|ha[sd]|s|\&quot;|[0-9].*|[\'’,\(\[]</exception></token>
                     <marker>
                         <token postag="RB.*" postag_regexp="yes"><exception postag="VB|RP|C[CD]|IN|MD" postag_regexp="yes"/><exception regexp="yes">not|only|also</exception></token>
                         <token postag="VBN|JJ" postag_regexp="yes"><exception postag="VB|RP.*|RB|C[CD]|IN|MD|DT|WDT" postag_regexp="yes"/><exception regexp="yes">(?iu)\p{Lu}\p{Ll}+</exception></token>
