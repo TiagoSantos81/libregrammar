@@ -74,8 +74,10 @@ public class AgreementRule2 extends Rule {
     this.language = language;
     setDefaultTempOff();
     super.setCategory(Categories.GRAMMAR.getCategory(messages));
+    /*
     addExamplePair(Example.wrong("<marker>Der Haus</marker> wurde letztes Jahr gebaut."),
                    Example.fixed("<marker>Das Haus</marker> wurde letztes Jahr gebaut."));
+                   */
   }
 
   @Override
