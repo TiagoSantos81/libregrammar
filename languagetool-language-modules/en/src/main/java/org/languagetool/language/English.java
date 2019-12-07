@@ -236,6 +236,7 @@ public class English extends Language implements AutoCloseable {
         new EnglishSimpleGrammarRule(messages),
         new EnglishNonstandardReplaceRule(messages),
         new EnglishVerbNounConfusionRule(messages, this),
+        new EnglishAdjectiveNounConfusionRule(messages, this),
         new EnglishDiacriticsRule(messages),
         new EnglishInformalRule(messages),
         new EnglishPlainEnglishRule(messages),

@@ -8,6 +8,7 @@
   * rules added:
      - `EnglishSimpleGrammarRule` for simple replacement rule creation - 877 error patterns added from Wikipedia;
      - verb-noun confusion rule - 1530 error patterns mostly from After the Deadline (AtD);
+     - adjective-noun confusion rule - 101 error patterns;
      - adjective order rule;
      - eggcorn detection - 227 error patterns from Grammark and AtD;
      - specific case rule - 751 extra entries from Wikipedia;
