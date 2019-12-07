@@ -57,10 +57,11 @@ public class EnglishAdjectiveNounConfusionRule extends Rule {
   private final Language english;
 
   private static final Map<String,String> ADJECTIVE_NOUN_DB = loadWordlist("en/adjective_nouns.txt", 0);
-  private static final Pattern PRECEEDS_NOUN = Pattern.compile("[Tt]h(e|is)|[Aa]n?|[Mm]y|[Yy]?[Oo]ur|[Hh](is|er)|[Tt]heir|[Ii]ts|[Aa]t|[In]n|[Oo][fn]|[Ff]or|[Ww]ith");
+  private static final Pattern PRECEEDS_NOUN = Pattern.compile("[Tt]h(e|is)|[Aa]n?|[Mm]y|[Yy]?[Oo]ur|[Hh](is|er|a[ds]|ave)|[Tt]heir|[Ii]ts|[Aa]t|[In]n|[Oo][fn]|[Ff]or|[Ww]ith");
   private static final Pattern FOLLOWS_NOUN = Pattern.compile("[Oo][fn]|[Ff]or");
 
   private static final Map<String,String> NOUN_ADJECTIVE_DB = loadWordlist("en/adjective_nouns.txt", 1);
+  private static final Pattern PRECEEDS_ADJECTIVE = Pattern.compile("[Ii]s|[Ww](as|ere)");
   private static final Pattern FOLLOWS_ADJECTIVE = Pattern.compile("can(not)?|[wc]ould|should|m(?:ight|ust|ay)|did|will|It?|[Yy]ou|[Ss][Hh]e|[Tt]hey|[Ww]e");
 
   public EnglishAdjectiveNounConfusionRule(ResourceBundle messages, Language language) {
@@ -104,23 +105,23 @@ public class EnglishAdjectiveNounConfusionRule extends Rule {
           if (replacement == null) {
             replacement = getNounReplacements().get(tokens[i + 1].getToken());
             if (msg == null) {
-              msg = "Notice ‘" + tokens[i + 1].getToken() + "’ is an adjective. If you are referring to the related noun, you probably should use <suggestion>" + tokens[i].getToken() + " " + replacement + "</suggestion> instead.";
+              msg = "Notice ‘" + tokens[i + 1].getToken() + "’ is an adjective. If you are referring to the related " + shortmsg + ", you probably should use <suggestion>" + tokens[i].getToken() + " " + replacement + "</suggestion> instead.";
             }
           }
         }
       }
-      /*
-      if (precedesAdjective(tokens[i])) {
+      if (isListedNoun(tokens[i])) {
         shortmsg = "adjective";
         if (isNoun(tokens[i + 1])) {
           markEnd = i + 1;
           if (replacement == null) {
             replacement = getAdjectiveReplacements().get(tokens[i + 1].getToken());
             if (msg == null) {
-              msg = "Notice ‘" + tokens[i + 1].getToken() + "’ is a noun. If you are referring to the related verb, you probably should use <suggestion>" + tokens[i].getToken() + " " + replacement + "</suggestion> instead.";
+              msg = "Notice ‘" + tokens[i + 1].getToken() + "’ is a noun. If you are referring to the related " + shortmsg + ", you probably should use <suggestion>" + tokens[i].getToken() + " " + replacement + "</suggestion> instead.";
             }
           }
         }
+        /*
         if ((isAdverb(tokens[i + 1]))
            && (isNoun(tokens[i + 2]))
                  && !(tokens[i + 2].isImmunized())) {
@@ -132,8 +133,8 @@ public class EnglishAdjectiveNounConfusionRule extends Rule {
             }
           }
         }
+        */
       }
-      */
       if (msg != null) {
         RuleMatch match = new RuleMatch(
           this, sentence, tokens[i].getStartPos(), tokens[markEnd].getEndPos(), msg, "Here you should use the " + shortmsg + " instead.");
@@ -173,6 +174,19 @@ public class EnglishAdjectiveNounConfusionRule extends Rule {
   private boolean isListedAdjective(AnalyzedTokenReadings token) {
     for (String adjective : getNounReplacements().keySet()) {
       if (adjective.equals(token.getToken())) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  static Map<String, String> getAdjectiveReplacements() {
+    return NOUN_ADJECTIVE_DB;
+  }
+
+  private boolean isListedNoun(AnalyzedTokenReadings token) {
+    for (String noun : getAdjectiveReplacements().keySet()) {
+      if (noun.equals(token.getToken())) {
         return true;
       }
     }
