@@ -42,6 +42,9 @@ import java.io.InputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import org.languagetool.tools.Tools;
+import java.net.URL;
+
 import static org.languagetool.rules.patterns.PatternRuleBuilderHelper.*;
 
 /**
@@ -58,21 +61,74 @@ public class EnglishAdjectiveNounConfusionRule extends Rule {
 
   private static final Map<String,String> ADJECTIVE_NOUN_DB = loadWordlist("en/adjective_nouns.txt", 0);
   private static final Pattern PRECEEDS_NOUN = Pattern.compile("[Tt]h(e|is)|[Aa]n?|[Mm]y|[Yy]?[Oo]ur|[Hh](is|er|a[ds]|ave)|[Tt]heir|[Ii]ts|[Aa]t|[In]n|[Oo][fn]|[Ff]or|[Ww]ith");
-  private static final Pattern FOLLOWS_NOUN = Pattern.compile("[Oo][fn]|[Ff]or");
+  private static final Pattern FOLLOWS_NOUN = Pattern.compile("[Oo][fn]|[Ff]or|[\\.!\\?]");
 
   private static final Map<String,String> NOUN_ADJECTIVE_DB = loadWordlist("en/adjective_nouns.txt", 1);
-  private static final Pattern PRECEEDS_ADJECTIVE = Pattern.compile("[Ii]s|[Ww](as|ere)");
-  private static final Pattern FOLLOWS_ADJECTIVE = Pattern.compile("can(not)?|[wc]ould|should|m(?:ight|ust|ay)|did|will|It?|[Yy]ou|[Ss][Hh]e|[Tt]hey|[Ww]e");
+  private static final Pattern PRECEEDS_ADJECTIVE = Pattern.compile("[Ii]s|[Ww](as|ere)"); // + the most
+  private static final Pattern FOLLOWS_ADJECTIVE = Pattern.compile("[\\.!\\?]");
+
+  @Override
+  public List<DisambiguationPatternRule> getAntiPatterns() {
+    return makeAntiPatterns(ANTI_PATTERNS, english);
+  }
+
+  private static final List<List<PatternToken>> ANTI_PATTERNS = Arrays.asList(
+    Arrays.asList(
+      token("nature"),
+      regex("c(?:onservation|risis)|magazine|polic(?:y|ies)|reserves?")
+    ),
+    Arrays.asList(
+      token("on"),
+      token("screen")
+    ),
+    Arrays.asList(
+      token("for"),
+      token("the"),
+      token("good"),
+      token("of")
+    ),
+    Arrays.asList(
+      regex("an?|the"),
+      posRegex("J.+"),
+      posRegex("J.+"),
+      posRegex("N.+")
+    ),
+    Arrays.asList(
+      token("danger"),
+      regex("zones?")
+    ),
+    Arrays.asList(
+      token("guilt"),
+      regex("trips?")
+    ),
+    Arrays.asList(
+      token("juice"),
+      regex("shots?")
+    ),
+    Arrays.asList(
+      token("pain"),
+      regex("treatments?")
+    ),
+    Arrays.asList(
+      token("truth"),
+      regex("(movement|teller)s?")
+    )
+  );
 
   public EnglishAdjectiveNounConfusionRule(ResourceBundle messages, Language language) {
     super.setCategory(Categories.GRAMMAR.getCategory(messages));
     setLocQualityIssueType(ITSIssueType.Grammar);
     addExamplePair(Example.wrong("<marker>The easy</marker> of use of this product is obvious."),
-      Example.fixed("<marker><marker>The ease</marker> of use of this product is obvious."));
-    // addExamplePair(Example.wrong("<marker>The pursue</marker> is on."),
-    //  Example.fixed("<marker>The pursuit</marker> is on."));
+      Example.fixed("<marker>The ease</marker> of use of this product is obvious."));
+    // addExamplePair(Example.wrong("It was nice to see the animals in their <marker>nature environment.</marker>"),
+    //  Example.fixed("It was nice to see the animals in their <marker>natural environment.</marker>"));
     this.english = language;
     this.tagger = (EnglishTagger) english.getTagger();
+  }
+
+  @Override
+  public URL getUrl() {
+    return Tools.getUrl("https://www.ecenglish.com/learnenglish/lessons/noun-and-adjective-forms");
   }
 
   @Override
@@ -100,7 +156,8 @@ public class EnglishAdjectiveNounConfusionRule extends Rule {
       }
       if (preceedsNoun(tokens[i])) {
         shortmsg = "noun";
-        if (isListedAdjective(tokens[i + 1]) && (followsNoun(tokens[i + 2]) || isVerb(tokens[i + 2]))) {
+        if (isListedAdjective(tokens[i + 1])
+              && (followsNoun(tokens[i + 2]) || (isVerb(tokens[i + 2]) && !isNoun(tokens[i + 2])))) {
           markEnd = i + 1;
           if (replacement == null) {
             replacement = getNounReplacements().get(tokens[i + 1].getToken());
@@ -112,28 +169,15 @@ public class EnglishAdjectiveNounConfusionRule extends Rule {
       }
       if (isListedNoun(tokens[i])) {
         shortmsg = "adjective";
-        if (isNoun(tokens[i + 1])) {
+        if (isNoun(tokens[i + 1]) && !isVerb(tokens[i + 1])) {
           markEnd = i + 1;
           if (replacement == null) {
-            replacement = getAdjectiveReplacements().get(tokens[i + 1].getToken());
+            replacement = getAdjectiveReplacements().get(tokens[i].getToken());
             if (msg == null) {
-              msg = "Notice ‘" + tokens[i + 1].getToken() + "’ is a noun. If you are referring to the related " + shortmsg + ", you probably should use <suggestion>" + tokens[i].getToken() + " " + replacement + "</suggestion> instead.";
+              msg = "Notice ‘" + tokens[i].getToken() + "’ is a noun. If you are referring to the related " + shortmsg + ", you probably should use <suggestion>" + replacement + " " + tokens[i + 1].getToken() + "</suggestion> instead.";
             }
           }
         }
-        /*
-        if ((isAdverb(tokens[i + 1]))
-           && (isNoun(tokens[i + 2]))
-                 && !(tokens[i + 2].isImmunized())) {
-          markEnd = i + 2;
-          if (replacement == null) {
-            replacement = getAdjectiveReplacements().get(tokens[i + 2].getToken());
-            if (msg == null) {
-              msg = "Notice ‘" + tokens[i + 2].getToken() + "’ is a noun. If you are referring to the related verb, you probably should use <suggestion>" + tokens[i].getToken() + " " + tokens[i + 1].getToken() + " " + replacement + "</suggestion> instead.";
-            }
-          }
-        }
-        */
       }
       if (msg != null) {
         RuleMatch match = new RuleMatch(
@@ -155,6 +199,13 @@ public class EnglishAdjectiveNounConfusionRule extends Rule {
 
   private boolean isVerb(AnalyzedTokenReadings token) {
     if (token.hasPosTagStartingWith("V")) {
+      return true;
+      }
+    return false;
+  }
+
+  private boolean isAdjective(AnalyzedTokenReadings token) {
+    if (token.hasPosTagStartingWith("J")) {
       return true;
       }
     return false;
@@ -191,6 +242,11 @@ public class EnglishAdjectiveNounConfusionRule extends Rule {
       }
     }
     return false;
+  }
+
+  @Override
+  public int estimateContextForSureMatch() {
+    return ANTI_PATTERNS.stream().mapToInt(List::size).max().orElse(0);
   }
 
   private static Map<String,String> loadWordlist(String path, int column) {
