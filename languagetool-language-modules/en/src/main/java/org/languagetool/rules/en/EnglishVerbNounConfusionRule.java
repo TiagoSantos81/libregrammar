@@ -151,6 +151,11 @@ public class EnglishVerbNounConfusionRule extends Rule {
       token("now"),
       token("on")
     ),
+    Arrays.asList(
+      regex("makes?"),
+      regex("this|that"),
+      token("happen")
+    ),
     // antipatterns for PRECEDES_VERB + NOUN
     Arrays.asList(
       pos("MD"),
