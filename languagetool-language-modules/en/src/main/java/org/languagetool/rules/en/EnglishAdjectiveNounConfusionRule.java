@@ -94,6 +94,10 @@ public class EnglishAdjectiveNounConfusionRule extends Rule {
       posRegex("N.+")
     ),
     Arrays.asList(
+      token("beauty"),
+      regex("pageants?")
+    ),
+    Arrays.asList(
       token("danger"),
       regex("zones?")
     ),
@@ -120,8 +124,8 @@ public class EnglishAdjectiveNounConfusionRule extends Rule {
     setLocQualityIssueType(ITSIssueType.Grammar);
     addExamplePair(Example.wrong("<marker>The easy</marker> of use of this product is obvious."),
       Example.fixed("<marker>The ease</marker> of use of this product is obvious."));
-    // addExamplePair(Example.wrong("It was nice to see the animals in their <marker>nature environment.</marker>"),
-    //  Example.fixed("It was nice to see the animals in their <marker>natural environment.</marker>"));
+    addExamplePair(Example.wrong("It was nice to see the animals in their <marker>nature environment.</marker>"),
+      Example.fixed("It was nice to see the animals in their <marker>natural environment.</marker>"));
     this.english = language;
     this.tagger = (EnglishTagger) english.getTagger();
   }

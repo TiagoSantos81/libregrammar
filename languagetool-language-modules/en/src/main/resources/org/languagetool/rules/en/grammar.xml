@@ -34407,8 +34407,8 @@ The accident victim died from her injuries.
             <example correction="calendar">A <marker>calender</marker> is a system of organizing days for social, religious, commercial or administrative purposes.</example>
         </rule>
         <rule id="DHOW" name="dhow (show)">
-            <antipattern>
-                <token>Dow</token>
+            <antipattern><!-- caught by DHOW_JONES -->
+                <token>Dhow</token>
                 <token>Jones</token>
             </antipattern>
             <pattern>
