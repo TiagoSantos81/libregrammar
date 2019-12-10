@@ -3259,7 +3259,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <message>Foirm neamhchaighdeánach de <suggestion>a</suggestion></message>
             <example correction="a"><marker>n-a</marker></example>
         </rule>
-	<rule id="APOS_A" name="'á">
+        <rule id="APOS_A" name="'á">
             <pattern>
                 <token regexp="yes">&apost;</token>
                 <token spacebefore="no">á</token>
@@ -3278,18 +3278,18 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rule>
         <rule id="A_MHAITHE" name="a' mhaithe">
             <pattern>
-                    <token>a</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
-                    <token>mhaithe</token>
+                <token>a</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>mhaithe</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>ar mhaithe</suggestion></message>
             <example correction="ar mhaithe"><marker>a'mhaithe</marker></example>
         </rule>
         <rule id="A_CHOR" name="a' chor">
             <pattern>
-                    <token>a</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
-                    <token>chor</token>
+                <token>a</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>chor</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>ar chor</suggestion></message>
             <example correction="ar chor"><marker>a'chor</marker></example>
@@ -3350,85 +3350,85 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rule>
         <rule id="ACHAN" name="'acha'n">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">acha</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
-                    <token spacebefore="no">n</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">acha</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
+                <token spacebefore="no">n</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>gach aon</suggestion></message>
             <example correction="gach aon"><marker>'acha'n</marker></example>
         </rule>
         <rule id="AO" name="ao'">
             <pattern>
-                    <token>ao</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>ao</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>aon</suggestion></message>
             <example correction="aon"><marker>ao'</marker></example>
         </rule>
         <rule id="APOS_NAR" name="'nár">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no" regexp="yes">n?ár</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no" regexp="yes">n?ár</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>inár</suggestion></message>
             <example correction="inár"><marker>'nár</marker></example>
         </rule>
         <rule id="APOS_AR_NDOIGH" name="'ar ndóigh">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">ar</token>
-                    <token regexp="yes">ndóighe?</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">ar</token>
+                <token regexp="yes">ndóighe?</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>ar ndóigh</suggestion></message>
             <example correction="ar ndóigh"><marker>'ar ndóigh</marker></example>
         </rule>
         <rule id="AR_MHAITHE" name="'ar mhaithe">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">ar</token>
-                    <token>mhaithe</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">ar</token>
+                <token>mhaithe</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>ar mhaithe</suggestion></message>
             <example correction="ar mhaithe"><marker>'ar mhaithe</marker></example>
         </rule>
         <rule id="AR_NDIAIDH" name="'ar ndiaidh">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">ar</token>
-                    <token>ndiaidh</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">ar</token>
+                <token>ndiaidh</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>inár ndiaidh</suggestion></message>
             <example correction="inár ndiaidh"><marker>'ar ndiaidh</marker></example>
         </rule>
         <rule id="AR" name="'ar">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">ar</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">ar</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>inar</suggestion></message>
             <example correction="inar"><marker>'ar</marker></example>
         </rule>
         <rule id="ARB" name="arb'">
             <pattern>
-                    <token>arb</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>arb</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>arb</suggestion></message>
             <example correction="arb"><marker>arb'</marker></example>
         </rule>
         <rule id="ARBH" name="arbh'">
             <pattern>
-                    <token>arbh</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>arbh</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>arbh</suggestion></message>
             <example correction="arbh"><marker>arbh'</marker></example>
         </rule>
         <rule id="ARS" name="ars'">
             <pattern>
-                    <token>ars</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>ars</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>arsa</suggestion></message>
             <example correction="arsa"><marker>ars'</marker></example>
@@ -3440,723 +3440,723 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token spacebefore="no">athair</token>
             </antipattern>
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">athair</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">athair</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>a athair</suggestion></message>
             <example correction="a athair"><marker>'athair</marker></example>
         </rule>
         <rule id="BHAINT" name="'bhaint">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">bhaint</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">bhaint</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>a bhaint</suggestion></message>
             <example correction="a bhaint"><marker>'bhaint</marker></example>
         </rule>
         <rule id="BHEITH" name="'bheith">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">bheith</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">bheith</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>a bheith</suggestion></message>
             <example correction="a bheith"><marker>'bheith</marker></example>
         </rule>
         <rule id="BHFUIL" name="'bhfuil">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">bhfuil</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">bhfuil</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>an bhfuil</suggestion></message>
             <example correction="an bhfuil"><marker>'bhfuil</marker></example>
         </rule>
         <rule id="BHI" name="'bhí">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">bhí</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">bhí</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>a bhí</suggestion></message>
             <example correction="a bhí"><marker>'bhí</marker></example>
         </rule>
         <rule id="BHIODH" name="'bhíodh">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">bhíodh</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">bhíodh</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>a bhíodh</suggestion></message>
             <example correction="a bhíodh"><marker>'bhíodh</marker></example>
         </rule>
         <rule id="BHIONN" name="'bhíonn">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">bhíonn</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">bhíonn</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>a bhíonn</suggestion></message>
             <example correction="a bhíonn"><marker>'bhíonn</marker></example>
         </rule>
         <rule id="BHLIADHNA" name="'bhliadhna">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">bhliadhna</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">bhliadhna</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>de bhlianta</suggestion></message>
             <example correction="de bhlianta"><marker>'bhliadhna</marker></example>
         </rule>
         <rule id="BHUR" name="'bhur">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">bhur</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">bhur</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>in bhur</suggestion></message>
             <example correction="in bhur"><marker>'bhur</marker></example>
         </rule>
         <rule id="BHUS" name="'bhus">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">bhus</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">bhus</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>abhus</suggestion></message>
             <example correction="abhus"><marker>'bhus</marker></example>
         </rule>
         <rule id="BRATH" name="'brath">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">brath</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">brath</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>ag brath</suggestion></message>
             <example correction="ag brath"><marker>'brath</marker></example>
         </rule>
         <rule id="CAINNT" name="'cainnt">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">cainnt</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">cainnt</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>ag caint</suggestion></message>
             <example correction="ag caint"><marker>'cainnt</marker></example>
         </rule>
         <rule id="CERBH_APOS" name="cérbh'">
             <pattern>
-                    <token>cérbh</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>cérbh</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>cérbh</suggestion></message>
             <example correction="cérbh"><marker>cérbh'</marker></example>
         </rule>
         <rule id="CHAON" name="'chaon">
             <pattern>
-		    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">chaon</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">chaon</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>gach aon</suggestion></message>
             <example correction="gach aon"><marker>'chaon</marker></example>
         </rule>
         <rule id="LECHEILE" name="le'chéile">
             <pattern>
-                    <token>le</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
-                    <token spacebefore="no">chéile</token>
+                <token>le</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
+                <token spacebefore="no">chéile</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>lena chéile</suggestion></message>
             <example correction="lena chéile"><marker>le'chéile</marker></example>
         </rule>
         <rule id="OCHEILE" name="ó'chéile">
             <pattern>
-                    <token>ó</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
-                    <token spacebefore="no">chéile</token>
+                <token>ó</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
+                <token spacebefore="no">chéile</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>óna chéile</suggestion></message>
             <example correction="óna chéile"><marker>ó'chéile</marker></example>
         </rule>
         <rule id="CHEILE" name="'chéile">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">chéile</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">chéile</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>a chéile</suggestion></message>
             <example correction="a chéile"><marker>'chéile</marker></example>
         </rule>
         <rule id="CHOIS" name="'chois">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">chois</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">chois</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>de chois</suggestion></message>
             <example correction="de chois"><marker>'chois</marker></example>
         </rule>
         <rule id="CHOMHAIR" name="'chomhair">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">chomhair</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">chomhair</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>chóir</suggestion></message>
             <example correction="chóir"><marker>'chomhair</marker></example>
         </rule>
         <rule id="CHOR" name="'chor">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">chor</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">chor</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>ar chor</suggestion></message>
             <example correction="ar chor"><marker>'chor</marker></example>
         </rule>
         <rule id="CHUILE" name="'chuile">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">chuile</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">chuile</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>gach uile</suggestion></message>
             <example correction="gach uile"><marker>'chuile</marker></example>
         </rule>
         <rule id="CHUR" name="'chur">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">chur</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">chur</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>a chur</suggestion></message>
             <example correction="a chur"><marker>'chur</marker></example>
         </rule>
         <rule id="DARAB" name="darab'">
             <pattern>
-                    <token>darab</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>darab</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>darb</suggestion></message>
             <example correction="darb"><marker>darab'</marker></example>
         </rule>
         <rule id="DARBH" name="dárbh'">
             <pattern>
-                    <token regexp="yes">d[áa]rbh</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
+                <token regexp="yes">d[áa]rbh</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>darbh</suggestion></message>
             <example correction="darbh"><marker>dárbh'</marker></example>
         </rule>
         <rule id="DEAR" name="dear'">
             <pattern>
-                    <token>dear</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>dear</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>deara</suggestion></message>
             <example correction="deara"><marker>dear'</marker></example>
         </rule>
         <rule id="DED" name="ded'">
             <pattern>
-                    <token>ded</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>ded</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>de do</suggestion></message>
             <example correction="de do"><marker>ded'</marker></example>
         </rule>
         <rule id="DEIR" name="'deir">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">deir</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">deir</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>a deir</suggestion></message>
             <example correction="a deir"><marker>'deir</marker></example>
         </rule>
         <rule id="DEM" name="dem'">
             <pattern>
-                    <token>dem</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>dem</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>de mo</suggestion></message>
             <example correction="de mo"><marker>dem'</marker></example>
         </rule>
         <rule id="DHATH" name="'dhath">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">dhath</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">dhath</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>a dhath</suggestion></message>
             <example correction="a dhath"><marker>'dhath</marker></example>
         </rule>
         <rule id="DHIA" name="'Dhia">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">Dhia</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">Dhia</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>a Dhia</suggestion></message>
             <example correction="a Dhia"><marker>'Dhia</marker></example>
         </rule>
         <rule id="DHIOGHBHAIL" name="'dhíoghbháil">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">dhíoghbháil</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">dhíoghbháil</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>de dhíobháil</suggestion></message>
             <example correction="de dhíobháil"><marker>'dhíoghbháil</marker></example>
         </rule>
         <rule id="DIR" name="'dir">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">dir</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">dir</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>idir</suggestion></message>
             <example correction="idir"><marker>'dir</marker></example>
         </rule>
         <rule id="DHITH" name="'dhith">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">dhith</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">dhith</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>de dhíth</suggestion></message>
             <example correction="de dhíth"><marker>'dhith</marker></example>
         </rule>
         <rule id="DHUINE" name="'dhuine">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">dhuine</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">dhuine</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>a dhuine</suggestion></message>
             <example correction="a dhuine"><marker>'dhuine</marker></example>
         </rule>
         <rule id="DTAINI" name="dtaini'">
             <pattern>
-                    <token>dtaini</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>dtaini</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>dtáinig</suggestion></message>
             <example correction="dtáinig"><marker>dtaini'</marker></example>
         </rule>
         <rule id="DTEARN" name="dteárn'">
             <pattern>
-                    <token regexp="yes">dte[áa]rn</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
+                <token regexp="yes">dte[áa]rn</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>ndearna</suggestion></message>
             <example correction="ndearna"><marker>dteárn'</marker></example>
         </rule>
         <rule id="NDEARN" name="ndeárn'">
             <pattern>
-                    <token regexp="yes">nde[áa]rn</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
+                <token regexp="yes">nde[áa]rn</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>ndearna</suggestion></message>
             <example correction="ndearna"><marker>ndeárn'</marker></example>
         </rule>
         <rule id="DHEARN" name="dheárn'">
             <pattern>
-                    <token regexp="yes">[dt]he[áa]rn</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
+                <token regexp="yes">[dt]he[áa]rn</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>dhearna</suggestion></message>
             <example correction="dhearna"><marker>dheárn'</marker></example>
         </rule>
         <rule id="DO_I_DO" name="'do">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">do</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">do</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>i do</suggestion></message>
             <example correction="i do"><marker>'do</marker></example>
         </rule>
         <rule id="DOB" name="dob'">
             <pattern>
-                    <token>dob</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>dob</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>ba</suggestion></message>
             <example correction="ba"><marker>dob'</marker></example>
         </rule>
         <rule id="DOD" name="dod'">
             <pattern>
-                    <token>dod</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>dod</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>do do</suggestion></message>
             <example correction="do do"><marker>dod'</marker></example>
         </rule>
         <rule id="DOM" name="dom'">
             <pattern>
-                    <token>dom</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>dom</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>do mo</suggestion></message>
             <example correction="do mo"><marker>dom'</marker></example>
         </rule>
         <rule id="DUL" name="'dul">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">dul</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">dul</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>ag dul</suggestion></message>
             <example correction="ag dul"><marker>'dul</marker></example>
         </rule>
         <rule id="E_CHLOG" name="'e chlog">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">e</token>
-                    <token>chlog</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">e</token>
+                <token>chlog</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>a chlog</suggestion></message>
             <example correction="a chlog"><marker>'e chlog</marker></example>
         </rule>
         <rule id="E" name="'e">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">e</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">e</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>de</suggestion></message>
             <example correction="de"><marker>'e</marker></example>
         </rule>
         <rule id="FAGHAIL" name="'fágháil">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no" regexp="yes">f[aá]gháil</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no" regexp="yes">f[aá]gháil</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>ag fáil</suggestion></message>
             <example correction="ag fáil"><marker>'fágháil</marker></example>
         </rule>
         <rule id="FHAD" name="'fhad">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">fhad</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">fhad</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>a fhad</suggestion></message>
             <example correction="a fhad"><marker>'fhad</marker></example>
         </rule>
         <rule id="FHAGHAIL" name="'fhagháil">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no" regexp="yes">fh[aá]gháil</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no" regexp="yes">fh[aá]gháil</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>a fháil</suggestion></message>
             <example correction="a fháil"><marker>'fhágháil</marker></example>
         </rule>
         <rule id="FATH" name="fáth'">
             <pattern>
-                    <token>fáth</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>fáth</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>fátha</suggestion></message>
             <example correction="fátha"><marker>fáth'</marker></example>
         </rule>
         <rule id="FEIL" name="féil'">
             <pattern>
-                    <token>féil</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>féil</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>Féile</suggestion></message>
             <example correction="Féile"><marker>féil'</marker></example>
         </rule>
         <rule id="FHEIL" name="fhéil'">
             <pattern>
-                    <token>fhéil</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>fhéil</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>Fhéile</suggestion></message>
             <example correction="Fhéile"><marker>fhéil'</marker></example>
         </rule>
         <rule id="FICH" name="fich'">
             <pattern>
-                    <token>fich</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>fich</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>fiche</suggestion></message>
             <example correction="fiche"><marker>fich'</marker></example>
         </rule>
         <rule id="FHICH" name="fhich'">
             <pattern>
-                    <token>fhich</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>fhich</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>fhiche</suggestion></message>
             <example correction="fhiche"><marker>fhich'</marker></example>
         </rule>
         <rule id="FHIOS" name="'fhios">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">fhios</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">fhios</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>a fhios</suggestion></message>
             <example correction="a fhios"><marker>'fhios</marker></example>
         </rule>
         <rule id="G" name="'g">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">g</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">g</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>ag</suggestion></message>
             <example correction="ag"><marker>'g</marker></example>
         </rule>
         <rule id="GABHAIL" name="'gabhail">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no" regexp="yes">gabh[aá]il</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no" regexp="yes">gabh[aá]il</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>ag gabháil</suggestion></message>
             <example correction="ag gabháil"><marker>'gabháil</marker></example>
         </rule>
         <rule id="GAM" name="'gam">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">gam</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">gam</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>agam</suggestion></message>
             <example correction="agam"><marker>'gam</marker></example>
         </rule>
         <rule id="GHA" name="'ghá">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">ghá</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">ghá</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>á</suggestion></message>
             <example correction="á"><marker>'ghá</marker></example>
         </rule>
         <rule id="GHABHAIL" name="'ghabháil">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no" regexp="yes">ghabh[aá]il</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no" regexp="yes">ghabh[aá]il</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>a ghabháil</suggestion></message>
             <example correction="a ghabháil"><marker>'ghabháil</marker></example>
         </rule>
         <rule id="GHEALL" name="'gheall">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">gheall</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">gheall</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>de gheall</suggestion></message>
             <example correction="de gheall"><marker>'gheall</marker></example>
         </rule>
         <rule id="GURAB" name="gurab'">
             <pattern>
-                    <token>gurab</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>gurab</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>gurab</suggestion></message>
             <example correction="gurab"><marker>gurab'</marker></example>
         </rule>
         <rule id="GURB" name="gurb'">
             <pattern>
-                    <token>gurb</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>gurb</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>gurb</suggestion></message>
             <example correction="gurb"><marker>gurb'</marker></example>
         </rule>
         <rule id="GURBH" name="gurbh'">
             <pattern>
-                    <token>gurbh</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>gurbh</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>gurbh</suggestion></message>
             <example correction="gurbh"><marker>gurbh'</marker></example>
         </rule>
         <rule id="GUS" name="'gus">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">gus</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">gus</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>agus</suggestion></message>
             <example correction="agus"><marker>'gus</marker></example>
         </rule>
         <rule id="IC" name="'ic">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">ic</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">ic</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>Mic</suggestion></message>
             <example correction="Mic"><marker>'ic</marker></example>
         </rule>
         <rule id="RULE_ID" name="id'">
             <pattern>
-                    <token>id</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>id</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>i do</suggestion></message>
             <example correction="i do"><marker>id'</marker></example>
         </rule>
         <rule id="IM" name="im'">
             <pattern>
-                    <token>im</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>im</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>i mo</suggestion></message>
             <example correction="i mo"><marker>im'</marker></example>
         </rule>
         <rule id="IMIRT" name="'imirt">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">imirt</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">imirt</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>a imirt</suggestion></message>
             <example correction="a imirt"><marker>'imirt</marker></example>
         </rule>
         <rule id="APOS_IN" name="'in">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">in</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">in</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>sin</suggestion></message>
             <example correction='sin'>nach <marker>'in</marker> cúrsaí an tsaoil</example>
         </rule>
         <rule id="IN_APOS" name="in'">
             <pattern>
-                    <token>in</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>in</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>ina</suggestion></message>
             <example correction="ina"><marker>in'</marker></example>
         </rule>
         <rule id="INNSE" name="'innse">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">innse</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">innse</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>a insint</suggestion></message>
             <example correction="a insint"><marker>'innse</marker></example>
         </rule>
         <rule id="IONNS_AR" name="ionns' ar">
             <pattern>
-                    <token>ionns</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
-                    <token>ar</token>
+                <token>ionns</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>ar</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>ionsar</suggestion></message>
             <example correction="ionsar"><marker>ionns'ar</marker></example>
         </rule>
         <rule id="IONNS_AIR" name="ionns' air">
             <pattern>
-                    <token>ionns</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
-                    <token>air</token>
+                <token>ionns</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>air</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>ionsair</suggestion></message>
             <example correction="ionsair"><marker>ionns'air</marker></example>
         </rule>
         <rule id="IONNS_ORM" name="ionns' orm">
             <pattern>
-                    <token>ionns</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
-                    <token>orm</token>
+                <token>ionns</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>orm</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>ionsorm</suggestion></message>
             <example correction="ionsorm"><marker>ionns'orm</marker></example>
         </rule>
         <rule id="IONNS_ORT" name="ionns' ort">
             <pattern>
-                    <token>ionns</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
-                    <token>ort</token>
+                <token>ionns</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>ort</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>ionsort</suggestion></message>
             <example correction="ionsort"><marker>ionns'ort</marker></example>
         </rule>
         <rule id="IONNS_ORAINN" name="ionns' orainn">
             <pattern>
-                    <token>ionns</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
-                    <token>orainn</token>
+                <token>ionns</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>orainn</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>ionsorainn</suggestion></message>
             <example correction="ionsorainn"><marker>ionns'orainn</marker></example>
         </rule>
         <rule id="IONNS_ORAIBH" name="ionns' oraibh">
             <pattern>
-                    <token>ionns</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
-                    <token>oraibh</token>
+                <token>ionns</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>oraibh</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>ionsoraibh</suggestion></message>
             <example correction="ionsoraibh"><marker>ionns'oraibh</marker></example>
         </rule>
         <rule id="IONNS_UIRTHI" name="ionns' uirthi">
             <pattern>
-                    <token>ionns</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
-                    <token>uirthi</token>
+                <token>ionns</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>uirthi</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>ionsuirthi</suggestion></message>
             <example correction="ionsuirthi"><marker>ionns'uirthi</marker></example>
         </rule>
         <rule id="IONNS_ORTHA" name="ionns' ortha">
             <pattern>
-                    <token>ionns</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
-                    <token>ortha</token>
+                <token>ionns</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>ortha</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>ionsorthu</suggestion></message>
             <example correction="ionsorthu"><marker>ionns'ortha</marker></example>
         </rule>
         <rule id="IONNS" name="ionns'">
             <pattern>
-                    <token>ionns</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>ionns</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>ionsar</suggestion></message>
             <example correction="ionsar"><marker>ionns'</marker></example>
         </rule>
         <rule id="ITHE" name="'ithe">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">ithe</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">ithe</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>a ithe</suggestion></message>
             <example correction="a ithe"><marker>'ithe</marker></example>
         </rule>
         <rule id="LACH" name="lach'">
             <pattern>
-                    <token>lach</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>lach</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>lacha</suggestion></message>
             <example correction="lacha"><marker>lach'</marker></example>
         </rule>
         <rule id="LE" name="'le">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">le</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">le</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>Fhéile</suggestion></message>
             <example correction="Fhéile"><marker>'le</marker></example>
         </rule>
         <rule id="LEANBH" name="'leanbh">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">leanbh</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">leanbh</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>a leanbh</suggestion></message>
             <example correction="a leanbh"><marker>'leanbh</marker></example>
         </rule>
         <rule id="LED" name="led'">
             <pattern>
-                    <token>led</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>led</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>le do</suggestion></message>
             <example correction="le do"><marker>led'</marker></example>
         </rule>
         <rule id="LEIM" name="'léim">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">léim</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">léim</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>de léim</suggestion></message>
             <example correction="de léim"><marker>'léim</marker></example>
         </rule>
         <rule id="LEM" name="lem'">
             <pattern>
-                    <token>lem</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>lem</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>le mo</suggestion></message>
             <example correction="le mo"><marker>lem'</marker></example>
         </rule>
         <rule id="LEN" name="len'">
             <pattern>
-                    <token>len</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>len</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>lena</suggestion></message>
             <example correction="lena"><marker>len'</marker></example>
         </rule>
         <rule id="APOS_M" name="'m">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">m</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">m</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>i mo</suggestion></message>
             <example correction="i mo"><marker>'m</marker></example>
@@ -4168,81 +4168,81 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token regexp="yes" spacebefore="no">[aeiouáéíóú].*</token>
             </antipattern>
             <pattern>
-                    <token>m</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
+                <token>m</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>mo</suggestion></message>
             <example correction="mo"><marker>m'</marker></example>
         </rule>
         <rule id="MACH" name="'mach">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">mach</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">mach</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>amach</suggestion></message>
             <example correction="amach"><marker>'mach</marker></example>
         </rule>
         <rule id="MHAIN" name="'mháin">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">mháin</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">mháin</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>amháin</suggestion></message>
             <example correction="amháin"><marker>'mháin</marker></example>
         </rule>
         <rule id="MHAITH" name="'mhaith">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">mhaith</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">mhaith</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>a mhaith</suggestion></message>
 	    <example correction="a mhaith">Go ndéana Dia <marker>'mhaith</marker></example>
         </rule>
         <rule id="MHORAN" name="'mhórán">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">mhórán</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">mhórán</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>a mhórán</suggestion></message>
             <example correction="a mhórán"><marker>'mhórán</marker></example>
         </rule>
         <rule id="APOS_MO" name="'mo">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">mo</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">mo</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>i mo</suggestion></message>
             <example correction="i mo"><marker>'mo</marker></example>
         </rule>
         <rule id="APOS_MUR" name="'mur">
             <pattern>
-                    <token regexp="yes">&apost;</token>
-                    <token spacebefore="no">mur</token>
+                <token regexp="yes">&apost;</token>
+                <token spacebefore="no">mur</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>in bhur</suggestion></message>
             <example correction="in bhur"><marker>'mur</marker></example>
         </rule>
         <rule id="MUR_APOS" name="mur'">
             <pattern>
-                    <token>mur</token>
-                    <token regexp="yes">&apost;</token>
+                <token>mur</token>
+                <token regexp="yes">&apost;</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>mura</suggestion></message>
             <example correction="mura"><marker>mur'</marker></example>
         </rule>
         <rule id="MURAB" name="murab'">
             <pattern>
-                    <token regexp="yes">m[au]rab</token>
-                    <token regexp="yes">&apost;</token>
+                <token regexp="yes">m[au]rab</token>
+                <token regexp="yes">&apost;</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion>murab</suggestion></message>
             <example correction="murab"><marker>murab'</marker></example>
         </rule>
         <rule id="I_N" name="i n'">
             <pattern>
-                    <token regexp="yes">i|le</token>
-                    <token>n</token>
-                    <token regexp="yes" spacebefore="no">&apost;</token>
+                <token regexp="yes">i|le</token>
+                <token>n</token>
+                <token regexp="yes" spacebefore="no">&apost;</token>
             </pattern>
             <message>Foirm neamhchaighdeánach de <suggestion><match no="1" regexp_match="(i|le)" regexp_replace="$1na"/></suggestion></message>
             <example correction="ina"><marker>i n'</marker></example>
@@ -11664,6 +11664,143 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             </pattern>
             <message>Is <suggestion>Máirtín Liútar</suggestion> an t-ainm Gaelach ar Martin Luther.</message>
             <example correction="Máirtín Liútar">Tháinig <marker>Martin Luther</marker> chun saoil in Eisleben ar an 10 Samhain 1483.</example>
+        </rule>
+    </category>
+    <category id="GRAMADOIR_MICHEART" name="Mícheart">
+        <rule id="A_APOS_BHFUIL" name="a'bhfuil">
+            <pattern>
+                <token>a</token>
+                <token spacebefore="no" regexp="yes">&apost;</token>
+                <token spacebefore="no">bhfuil</token>
+            </pattern>
+            <message>An <suggestion>an bhfuil</suggestion> a bhí i gceist agat?</message>
+            <example correction="an bhfuil"><marker>a'bhfuil</marker></example>
+        </rule>
+        <rule id="AO_APOS_CHOR" name="ao'chor">
+            <pattern>
+                <token>ao</token>
+                <token spacebefore="no" regexp="yes">&apost;</token>
+                <token spacebefore="no">chor</token>
+            </pattern>
+            <message>An <suggestion>aon chor</suggestion> a bhí i gceist agat?</message>
+            <example correction="aon chor"><marker>ao'chor</marker></example>
+        </rule>
+        <rule id="ARSA_APOS_N" name="arsa'n">
+            <pattern>
+                <token>arsa</token>
+                <token spacebefore="no" regexp="yes">&apost;</token>
+                <token spacebefore="no">n</token>
+            </pattern>
+            <message>An <suggestion>arsa an</suggestion> a bhí i gceist agat?</message>
+            <example correction="arsa an"><marker>arsa'n</marker></example>
+        </rule>
+        <rule id="ARS_APOS_AN" name="ars'an">
+            <pattern>
+                <token>ars</token>
+                <token spacebefore="no" regexp="yes">&apost;</token>
+                <token spacebefore="no">an</token>
+            </pattern>
+            <message>An <suggestion>arsa an</suggestion> a bhí i gceist agat?</message>
+            <example correction="arsa an"><marker>ars'an</marker></example>
+        </rule>
+        <rule id="C_APOS_AINM" name="c'ainm">
+            <pattern>
+                <token>c</token>
+                <token spacebefore="no" regexp="yes">&apost;</token>
+                <token spacebefore="no">ainm</token>
+            </pattern>
+            <message>An <suggestion>cén t-ainm</suggestion> a bhí i gceist agat?</message>
+            <example correction="cén t-ainm"><marker>c'ainm</marker></example>
+        </rule>
+        <rule id="D_APOS_AINEOINN" name="d'aineoinn">
+            <pattern>
+                <token>d</token>
+                <token spacebefore="no" regexp="yes">&apost;</token>
+                <token spacebefore="no">aineoinn</token>
+            </pattern>
+            <message>An <suggestion>d'ainneoin</suggestion> a bhí i gceist agat?</message>
+            <example correction="d'ainneoin"><marker>d'aineoinn</marker></example>
+        </rule>
+        <rule id="D_APOS_FEADFADH" name="d'féadfadh">
+            <pattern>
+                <token>d</token>
+                <token spacebefore="no" regexp="yes">&apost;</token>
+                <token spacebefore="no">féadfadh</token>
+            </pattern>
+            <message>An <suggestion>d'fhéadfadh</suggestion> a bhí i gceist agat?</message>
+            <example correction="d'fhéadfadh"><marker>d'féadfadh</marker></example>
+        </rule>
+        <rule id="DIA_APOS_S" name="Dia's">
+            <pattern>
+                <token>Dia</token>
+                <token spacebefore="no" regexp="yes">&apost;</token>
+                <token spacebefore="no">s</token>
+            </pattern>
+            <message>An <suggestion>Dia is</suggestion> a bhí i gceist agat?</message>
+            <example correction="Dia is"><marker>Dia's</marker></example>
+        </rule>
+        <rule id="D_APOS_THOIL" name="d'thoil">
+            <pattern>
+                <token>d</token>
+                <token spacebefore="no" regexp="yes">&apost;</token>
+                <token spacebefore="no">thoil</token>
+            </pattern>
+            <message>An <suggestion>do thoil</suggestion> a bhí i gceist agat?</message>
+            <example correction="do thoil"><marker>d'thoil</marker></example>
+        </rule>
+        <rule id="N_APOS_EIRI" name="n'eiri">
+            <pattern>
+                <token>n</token>
+                <token spacebefore="no" regexp="yes">&apost;</token>
+                <token spacebefore="no" regexp="yes">[eé]iri</token>
+            </pattern>
+            <message>An <suggestion>n-éirí</suggestion> a bhí i gceist agat?</message>
+            <example correction="n-éirí"><marker>n'eiri</marker></example>
+        </rule>
+        <rule id="O_APOS_BRIENSBRIDGE" name="O'Briensbridge">
+            <pattern>
+                <token>O</token>
+                <token spacebefore="no" regexp="yes">&apost;</token>
+                <token spacebefore="no">Briensbridge</token>
+            </pattern>
+            <message>An <suggestion>Droichead Uí Bhriain</suggestion> a bhí i gceist agat?</message>
+            <example correction="Droichead Uí Bhriain"><marker>O'Briensbridge</marker></example>
+        </rule>
+        <rule id="O_APOS_CALLAGHANSMILLS" name="O'Callaghansmills">
+            <pattern>
+                <token>O</token>
+                <token spacebefore="no" regexp="yes">&apost;</token>
+                <token spacebefore="no">Callaghansmills</token>
+            </pattern>
+            <message>An <suggestion>Muileann Uí Cheallacháin</suggestion> a bhí i gceist agat?</message>
+            <example correction="Muileann Uí Cheallacháin"><marker>O'Callaghansmills</marker></example>
+        </rule>
+        <rule id="T_APOS_EH" name="t'eh">
+            <pattern>
+                <token>t</token>
+                <token spacebefore="no" regexp="yes">&apost;</token>
+                <token spacebefore="no">eh</token>
+            </pattern>
+            <message>An <suggestion>tá sé</suggestion> a bhí i gceist agat?</message>
+            <example correction="tá sé"><marker>t'eh</marker></example>
+        </rule>
+        <rule id="T_APOS_FHIOS" name="t'fhios">
+            <pattern>
+                <token>t</token>
+                <token spacebefore="no" regexp="yes">&apost;</token>
+                <token spacebefore="no">fhios</token>
+            </pattern>
+            <message>An <suggestion>tá a fhios</suggestion> a bhí i gceist agat?</message>
+            <example correction="tá a fhios"><marker>t'fhios</marker></example>
+        </rule>
+        <rule id="T_APOS_ME" name="t'mé">
+            <pattern>
+                <token>t</token>
+                <token spacebefore="no" regexp="yes">&apost;</token>
+                <token spacebefore="no">mé</token>
+            </pattern>
+            <message>An <suggestion>tá mé</suggestion> a bhí i gceist agat?</message>
+            <example correction="tá mé"><marker>t'mé</marker></example>
         </rule>
     </category>
 </rules>
