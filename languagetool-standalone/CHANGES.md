@@ -7,8 +7,8 @@
 #### English
   * rules added:
      - `EnglishSimpleGrammarRule` for simple replacement rule creation - 877 error patterns added from Wikipedia;
-     - verb-noun confusion rule - 1530 error patterns mostly from After the Deadline (AtD);
-     - adjective-noun confusion rule - 101 error patterns;
+     - verb-noun confusion rule - 1541 error patterns mostly from After the Deadline (AtD);
+     - adjective-noun confusion rule - 103 error patterns;
      - adjective order rule;
      - eggcorn detection - 227 error patterns from Grammark and AtD;
      - specific case rule - 751 extra entries from Wikipedia;
@@ -20,7 +20,7 @@
      - split infinitive detection;
      - comma splice partial detection;
      - weasel word and thought-terminating clichés detection - 87 error patterns added from Wikipedia;
-     - typography of mathematical symbols and number formatting;
+     - typography of mathematical symbols, chemical formulas and number formatting;
      - easily confused words - 533 pairs added - active only with
     ngram data (see http://wiki.languagetool.org/finding-errors-using-n-gram-data);
      - other rules added and improved.
