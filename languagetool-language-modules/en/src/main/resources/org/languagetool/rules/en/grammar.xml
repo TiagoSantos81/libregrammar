@@ -82,8 +82,8 @@ USA
     <!ENTITY ATD_cliches_single_words "(?:\b(?:E-ticket|Legendary|accommodations|ameliorate|artsy-craftsy|artsy-fartsy|brouhaha|commence|deactivate|donnybrook|endeavor|finalize|godliness|grief-stricken|imbroglio|imbroglios|implement|initiate|kickbutt|legendary|methodology|motivation|objective|peruse|pinko|proliferation|purchase|red-faced|remuneration|replicate|roost|socialize|terror-stricken|tongue-in-cheek|underprivileged|utilize|wheeler-dealer|wimp|yuppie)\b)">
     <!ENTITY ATD_to_collocation "(?:ability|able|according|adds?|adding|addition|adherence|adhere|agreeing|aims|akin|allude|allusion|amounting|analogous|apt|aversion|belonging|belongs?|ceases|clinging|cling|closer|clung|commitment|conducive|conform|contributes?|contribution|decides|dedicated|deductible|defaults|deletions|desire|detrimental|due|eager|endeavours?|fails|going|hesitate|homage|inability|intending|intends?|liable|listening|listen|newsletter|ought|owing|percent|pertaining|preferable|prelude|prepares|prior|proceeded|prone|proportional|proximity|pursuant|reacting|recourse|refer|referring|refers|refusal|relates|relating|reluctant|resemblance|resistant|responding|respond|scrambling|strive|strove|subscribe|susceptible|tendency|tending|tends?|testament|thanks|unable|unwilling|willingness|willing)">
     <!ENTITY no_to_collocation "forward|back(wards?)?|home|upstairs|downstairs|downtown|inside|outside|here|there|back|away|near|close|abroad|overseas|everywhere|somewhere|nowhere|underground">
+
     <!ENTITY periodic_table "(?:[UVW]|C[adeflmnorsu]?|N[abdehiop]?|P[abdmortu]?|S[bcegimnr]?|T[abcehilms]|A[cglmrstu]|R[abefghnu]|B[aehikr]?|H[efgos]?|M[cdgnot]|F[elmr]?|L[airuv]|D[bsy]|E[rsu]|G[ade]|I[nr]?|O[gs]?|Z[nr]|Kr?|Yb?|Xe|[₁₂₃₄₅₆₇₈₉₀])">
-    <!ENTITY naipes "(?:o[iu]ros|copas|espadas|paus|trunfos?)">
     <!ENTITY file_name_extensions "asp|aspx|avi|bak|bat|bmp|cab|cfg|cgi|com|cs[sv]|dat|dbf?|dll|eps|exe|flv|gif|htm|html|ibooks|ico|ini|jar|jpg|js|jsp|lnk|md|mdb|mid|mov|mp3|mp4|mpa|mpg|pdf|php|pl|png|pps|ppt|pptx|ps|psd|py|rss|sh|sql|svg|sys|tar|tif|tiff|tmp|txt|wav|wma|xhtml|xls|xlsx|xsl|xml|zip|zipx">
     <!ENTITY hyphen "(?:[-‑])">
 
@@ -42573,7 +42573,7 @@ The accident victim died from her injuries.
       <pattern case_sensitive='yes'>
           <token regexp='yes'>(?:\d+)(?:&periodic_table;)+(?:[₁₂₃₄₅₆₇₈₉]+)((&periodic_table;)+)?</token>
       </pattern>
-      <message>Chemical formulas multipliers should be separated.</message>
+      <message>Chemical formulas' multipliers should be separated.</message>
         <suggestion><match no='1' regexp_match='(\d+)((&periodic_table;)+)([₁₂₃₄₅₆₇₈₉₀]+)(((&periodic_table;)+)?)' regexp_replace='$1 $2$4$5'/></suggestion>
       <example correction='4 H₂O'><marker>4H₂O</marker></example>
     </rule>
@@ -42582,7 +42582,7 @@ The accident victim died from her injuries.
           <token regexp='yes'>(?:\d+)?(?:&periodic_table;)+2((?:&periodic_table;)+)?
             <exception regexp='yes'>(?:U|PS)2</exception></token>
       </pattern>
-      <message>Chemical formulas numbers should be written in subscript.</message>
+      <message>Chemical formulas' numbers should be written in subscript.</message>
         <suggestion><match no='1' regexp_match='((&periodic_table;)+)2(((&periodic_table;)+)?)' regexp_replace='$1₂$3'/></suggestion>
       <example correction='O₂'><marker>O2</marker></example>
       <example correction='4H₂O'><marker>4H2O</marker></example>
@@ -42591,9 +42591,9 @@ The accident victim died from her injuries.
     <rule>
       <pattern case_sensitive='yes'>
           <token regexp='yes'>(?:\d+)?(?:&periodic_table;)+3((?:&periodic_table;)+)?
-            <exception regexp='yes'>PS3</exception></token>
+            <exception>PS3</exception></token>
       </pattern>
-      <message>Chemical formulas numbers should be written in subscript.</message>
+      <message>Chemical formulas' numbers should be written in subscript.</message>
         <suggestion><match no='1' regexp_match='((&periodic_table;)+)3(((&periodic_table;)+)?)' regexp_replace='$1₃$3'/></suggestion>
       <example correction='2S₃'><marker>2S3</marker></example>
       <example>PS3</example>
@@ -42601,9 +42601,9 @@ The accident victim died from her injuries.
     <rule>
       <pattern case_sensitive='yes'>
           <token regexp='yes'>(?:\d+)?(?:&periodic_table;)+4((?:&periodic_table;)+)?
-            <exception regexp='yes'>PS4</exception></token>
+            <exception>PS4</exception></token>
       </pattern>
-      <message>Chemical formulas numbers should be written in subscript.</message>
+      <message>Chemical formulas' numbers should be written in subscript.</message>
         <suggestion><match no='1' regexp_match='((&periodic_table;)+)4(((&periodic_table;)+)?)' regexp_replace='$1₄$3'/></suggestion>
       <example correction='CH₄'><marker>CH4</marker></example>
       <example correction='H₄Si'><marker>H4Si</marker></example>
@@ -42612,7 +42612,7 @@ The accident victim died from her injuries.
       <pattern case_sensitive='yes'>
           <token regexp='yes'>(?:\d+)?(?:&periodic_table;)+2((?:&periodic_table;)+)?2((?:&periodic_table;)+)?</token>
       </pattern>
-      <message>Chemical formulas numbers should be written in subscript.</message>
+      <message>Chemical formulas' numbers should be written in subscript.</message>
         <suggestion><match no='1' regexp_match='((&periodic_table;)+)2(((&periodic_table;)+)?)2(((&periodic_table;)+)?)' regexp_replace='$1₂$3₂$6'/></suggestion>
       <example correction='H₂O₂'><marker>H2O2</marker></example>
       <example correction='H₂NO₂Al'><marker>H2NO2Al</marker></example>
@@ -42621,7 +42621,7 @@ The accident victim died from her injuries.
       <pattern case_sensitive='yes'>
           <token regexp='yes'>(?:\d+)?(?:&periodic_table;)+2((?:&periodic_table;)+)?3((?:&periodic_table;)+)?</token>
       </pattern>
-      <message>Chemical formulas numbers should be written in subscript.</message>
+      <message>Chemical formulas' numbers should be written in subscript.</message>
         <suggestion><match no='1' regexp_match='((&periodic_table;)+)2(((&periodic_table;)+)?)3(((&periodic_table;)+)?)' regexp_replace='$1₂$3₃$6'/></suggestion>
       <example correction='K₂HPO₃'><marker>K2HPO3</marker></example>
     </rule>
@@ -42629,7 +42629,7 @@ The accident victim died from her injuries.
       <pattern case_sensitive='yes'>
           <token regexp='yes'>(?:\d+)?(?:&periodic_table;)+3((?:&periodic_table;)+)?2((?:&periodic_table;)+)?</token>
       </pattern>
-      <message>Chemical formulas numbers should be written in subscript.</message>
+      <message>Chemical formulas' numbers should be written in subscript.</message>
         <suggestion><match no='1' regexp_match='((&periodic_table;)+)3(((&periodic_table;)+)?)2(((&periodic_table;)+)?)' regexp_replace='$1₃$3₂$6'/></suggestion>
       <example correction='CH₃CH₂OH'><marker>CH3CH2OH</marker></example>
     </rule>
@@ -42637,7 +42637,7 @@ The accident victim died from her injuries.
       <pattern case_sensitive='yes'>
           <token regexp='yes'>(?:\d+)?(?:&periodic_table;)+3((?:&periodic_table;)+)?3((?:&periodic_table;)+)?</token>
       </pattern>
-      <message>Chemical formulas numbers should be written in subscript.</message>
+      <message>Chemical formulas' numbers should be written in subscript.</message>
         <suggestion><match no='1' regexp_match='((&periodic_table;)+)3(((&periodic_table;)+)?)3(((&periodic_table;)+)?)' regexp_replace='$1₃$3₃$6'/></suggestion>
       <example correction='CH₃CH₃'><marker>CH3CH3</marker></example>
     </rule>
@@ -42645,7 +42645,7 @@ The accident victim died from her injuries.
       <pattern case_sensitive='yes'>
           <token regexp='yes'>(?:\d+)?(?:&periodic_table;)+2((?:&periodic_table;)+)?4((?:&periodic_table;)+)?</token>
       </pattern>
-      <message>Chemical formulas numbers should be written in subscript.</message>
+      <message>Chemical formulas' numbers should be written in subscript.</message>
         <suggestion><match no='1' regexp_match='((&periodic_table;)+)2(((&periodic_table;)+)?)4(((&periodic_table;)+)?)' regexp_replace='$1₂$3₄$6'/></suggestion>
       <example correction='H₂SO₄'><marker>H2SO4</marker></example>
     </rule>
@@ -42653,7 +42653,7 @@ The accident victim died from her injuries.
       <pattern case_sensitive='yes'>
           <token regexp='yes'>(?:\d+)?(?:&periodic_table;)+2((?:&periodic_table;)+)?5((?:&periodic_table;)+)?</token>
       </pattern>
-      <message>Chemical formulas numbers should be written in subscript.</message>
+      <message>Chemical formulas' numbers should be written in subscript.</message>
         <suggestion><match no='1' regexp_match='((&periodic_table;)+)2(((&periodic_table;)+)?)5(((&periodic_table;)+)?)' regexp_replace='$1₂$3₅$6'/></suggestion>
       <example correction='C₂H₅OH'><marker>C2H5OH</marker></example>
     </rule>
@@ -42661,7 +42661,7 @@ The accident victim died from her injuries.
       <pattern case_sensitive='yes'>
           <token regexp='yes'>(?:\d+)?(?:&periodic_table;)+2((?:&periodic_table;)+)?6((?:&periodic_table;)+)?</token>
       </pattern>
-      <message>Chemical formulas numbers should be written in subscript.</message>
+      <message>Chemical formulas' numbers should be written in subscript.</message>
         <suggestion><match no='1' regexp_match='((&periodic_table;)+)2(((&periodic_table;)+)?)6(((&periodic_table;)+)?)' regexp_replace='$1₂$3₆$6'/></suggestion>
       <example correction='C₂H₆'><marker>C2H6</marker></example>
     </rule>
@@ -42670,35 +42670,37 @@ The accident victim died from her injuries.
           <token regexp='yes'>(?:\d+)?(?:&periodic_table;)+7((?:&periodic_table;)+)?
             <exception>V7</exception></token>
       </pattern>
-      <message>Chemical formulas numbers should be written in subscript.</message>
+      <message>Chemical formulas' numbers should be written in subscript.</message>
         <suggestion><match no='1' regexp_match='((&periodic_table;)+)7(((&periodic_table;)+)?)' regexp_replace='$1₇$3'/></suggestion>
       <example correction='C₇H₁₆'><marker>C7H₁₆</marker></example>
+      <example>Lola T70 Chevy V7</example>
     </rule>
     <rule>
       <pattern case_sensitive='yes'>
           <token regexp='yes'>(?:\d+)?(?:&periodic_table;)+8((?:&periodic_table;)+)?
             <exception>V8</exception></token>
       </pattern>
-      <message>Chemical formulas numbers should be written in subscript.</message>
+      <message>Chemical formulas' numbers should be written in subscript.</message>
         <suggestion><match no='1' regexp_match='((&periodic_table;)+)8(((&periodic_table;)+)?)' regexp_replace='$1₈$3'/></suggestion>
       <example correction='C₈H₁₈'><marker>C8H₁₈</marker></example>
+      <example>Lola T70 Chevy V8</example>
     </rule>
     <rule>
       <pattern case_sensitive='yes'>
           <token regexp='yes'>(?:\d+)?(?:&periodic_table;)+9((?:&periodic_table;)+)?
             <exception>V9</exception></token>
       </pattern>
-      <message>Chemical formulas numbers should be written in subscript.</message>
+      <message>Chemical formulas' numbers should be written in subscript.</message>
         <suggestion><match no='1' regexp_match='((&periodic_table;)+)9(((&periodic_table;)+)?)' regexp_replace='$1₉$3'/></suggestion>
       <example correction='C₉H₂₀'><marker>C9H₂₀</marker></example>
-      <example>Lola T70 Chevy V8</example>
+      <example>Lola T70 Chevy V9</example>
     </rule>
     <rule>
       <pattern case_sensitive='yes'>
           <token regexp='yes'>(?:\d+)?(?:&periodic_table;)+0((?:&periodic_table;)+)?
             <exception>V0</exception></token>
       </pattern>
-      <message>Chemical formulas numbers should be written in subscript.</message>
+      <message>Chemical formulas' numbers should be written in subscript.</message>
         <suggestion><match no='1' regexp_match='((&periodic_table;)+)0(((&periodic_table;)+)?)' regexp_replace='$1₀$3'/></suggestion>
       <example correction='C₉H₂₀'><marker>C₉H₂0</marker></example>
     </rule>

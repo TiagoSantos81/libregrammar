@@ -1666,7 +1666,7 @@ title="Easy editing stylesheet" ?>
     <rule>
       <antipattern>
           <token>calça</token>
-          <token regexp='yes'>umas?</token>
+          <token regexp='yes'>um(?:[oa]s?)?|uns</token>
       </antipattern>
       <antipattern>
           <token>alta</token>
@@ -26516,6 +26516,7 @@ TODO Write better examples
       <message>Os números nas fórmulas químicas devem estar em subscrito.</message>
         <suggestion><match no='1' regexp_match='((&tabela_periodica;)+)7(((&tabela_periodica;)+)?)' regexp_replace='$1₇$3'/></suggestion>
       <example correction='C₇H₁₆'><marker>C7H₁₆</marker></example>
+      <example>Lola T70 Chevy V7</example>
     </rule>
     <rule>
       <pattern case_sensitive='yes'>
@@ -26526,6 +26527,7 @@ TODO Write better examples
       <message>Os números nas fórmulas químicas devem estar em subscrito.</message>
         <suggestion><match no='1' regexp_match='((&tabela_periodica;)+)8(((&tabela_periodica;)+)?)' regexp_replace='$1₈$3'/></suggestion>
       <example correction='C₈H₁₈'><marker>C8H₁₈</marker></example>
+      <example>Lola T70 Chevy V8</example>
     </rule>
     <rule>
       <pattern case_sensitive='yes'>
@@ -26536,7 +26538,7 @@ TODO Write better examples
       <message>Os números nas fórmulas químicas devem estar em subscrito.</message>
         <suggestion><match no='1' regexp_match='((&tabela_periodica;)+)9(((&tabela_periodica;)+)?)' regexp_replace='$1₉$3'/></suggestion>
       <example correction='C₉H₂₀'><marker>C9H₂₀</marker></example>
-      <example>Lola T70 Chevy V8</example>
+      <example>Lola T70 Chevy V9</example>
     </rule>
     <rule>
       <pattern case_sensitive='yes'>
