@@ -4206,7 +4206,7 @@ Copyright (C) 2012 Jaume Ortolà i Font
                 <token inflected="yes">posar</token>
                 <token>en</token>
                 <marker>
-                    <token inflected="yes">camí</token>
+                    <token>camí</token>
                 </marker>
             </pattern>
             <disambig action="add"><wd pos="_GV_"></wd></disambig>
@@ -9292,6 +9292,10 @@ Copyright (C) 2012 Jaume Ortolà i Font
         </rule>
         <!-- main rule -->
         <rule>
+            <antipattern>
+                <token>fora</token>
+                <token postag="V.[ISM].*" postag_regexp="yes"/>
+            </antipattern>
             <pattern>
                 <token inflected="yes" regexp="yes">ser|estar|parèixer|semblar</token>
                 <marker>
@@ -9305,6 +9309,7 @@ Copyright (C) 2012 Jaume Ortolà i Font
             <disambig action="remove"  postag="N.*"/>
             <example type="untouched">Aquesta impressió és reflex de la situació.</example>
             <example type="untouched">Són mones albines.</example>
+            <example type="untouched">Si fora bufa vent, ens quedem a casa.</example>
             <!--<example type="untouched">Són mitjans de comunicació.</example>-->
         </rule>
     </rulegroup>
@@ -10051,7 +10056,7 @@ Copyright (C) 2012 Jaume Ortolà i Font
     <rulegroup id="no_GV" name="neteja GV">
         <rule>
             <pattern>
-                <token postag="_GV_"><exception postag="P[P0].*|V.*" postag_regexp="yes"/><exception regexp="yes">falta|terme|origen|camí|corrent</exception></token>
+                <token postag="_GV_"><exception postag="P[P0].*|V.*" postag_regexp="yes"/><exception regexp="yes">falta|terme|origen|camí|corrent|relleu|compte</exception></token>
             </pattern>
             <disambig action="remove"><wd pos="_GV_"></wd></disambig>
         </rule>
@@ -10070,6 +10075,10 @@ Copyright (C) 2012 Jaume Ortolà i Font
         </rule>
     </rulegroup>
     <rule id="verb_verbadj" name="verb + verb/adj">
+        <antipattern>
+            <token>fora</token>
+            <token postag="V.[ISM].*" postag_regexp="yes"/>
+        </antipattern>
         <pattern>
             <token postag="V.[MSI].*|_GV_" postag_regexp="yes"><exception postag="PP.*|P0.*|N.*" postag_regexp="yes"/></token>
             <marker>
@@ -13075,7 +13084,7 @@ Copyright (C) 2012 Jaume Ortolà i Font
                     <token postag="DA..S." postag_regexp="yes"/>
                 </marker>
                 <token regexp="yes">dia|setmana|mes|any|&mesos_any;|&dies_setmana;|primavera|estiu|tardor|hivern</token>
-                <token regexp="yes">de|d'|que|\d+|vinent|pròxima?|propera?|següent|provinent</token>
+                <!--<token regexp="yes">de|d'|que|\d+|vinent|pròxima?|propera?|següent|provinent</token>-->
             </pattern>
             <disambig action="add"><wd pos="_data_concreta"></wd></disambig>
         </rule>
@@ -13100,6 +13109,40 @@ Copyright (C) 2012 Jaume Ortolà i Font
                 <token regexp="yes">&mesos_any;</token>
             </pattern>
             <disambig action="add"><wd pos="_data_concreta"></wd></disambig>
+        </rule>
+    </rulegroup>
+    <rulegroup id="pringat" name="pringat">
+        <rule>
+            <pattern>
+                <marker>
+                    <token>pringat<exception scope="previous" inflected="yes">haver</exception></token>
+                </marker>
+            </pattern>
+            <disambig action="add"><wd pos="AQ0MS0" lemma="pringat"></wd></disambig>
+        </rule>
+        <rule>
+            <pattern>
+                <marker>
+                    <token>pringats<exception scope="previous" inflected="yes">haver</exception></token>
+                </marker>
+            </pattern>
+            <disambig action="add"><wd pos="AQ0MP0" lemma="pringat"></wd></disambig>
+        </rule>
+        <rule>
+            <pattern>
+                <marker>
+                    <token>pringada<exception scope="previous" inflected="yes">haver</exception></token>
+                </marker>
+            </pattern>
+            <disambig action="add"><wd pos="AQ0FS0" lemma="pringat"></wd></disambig>
+        </rule>
+        <rule>
+            <pattern>
+                <marker>
+                    <token>pringades<exception scope="previous" inflected="yes">haver</exception></token>
+                </marker>
+            </pattern>
+            <disambig action="add"><wd pos="AQ0FP0" lemma="pringat"></wd></disambig>
         </rule>
     </rulegroup>
     <rule name="Ignore spelling of file names" id="IGNORE_SPELLING_OF_FILE_NAMES">
