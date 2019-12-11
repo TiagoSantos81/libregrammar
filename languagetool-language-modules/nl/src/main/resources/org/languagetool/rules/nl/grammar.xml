@@ -61,6 +61,8 @@ regexp case-insensitive maken : (?i)
 <!-- definieer macro voor gespelde afkortingen als cd -->
 <!ENTITY gespeld "abc|adv|aed|apk|b2b|bh|bhv|bso|btw|bv|cao|cd|cfk|ckv|cv|dc|dj|dtp|dvd|fte|gft|ggo|ggz|gm|gmo|gps|gsm|hbo|hd|hiv|hr|hrm|hst|ic|ivf|kmo|lcd|lp|lpg|lsd|mbo|mdf|mkb|mms|msn|mt|ngo|nv|ob|ov|ozb|p2p|pc|pcb|pdf|pk|pps|pr|pvc|roc|rvs|sms|tbc|tbs|tl|tv|uv|vbo|vj|vmbo|vsbo|vwo|wc|wo|xtc|zzp">
 <!ENTITY apostrof "[`'‘’]">
+
+    <!ENTITY periodiek_systeem "(?:[UVW]|C[adeflmnorsu]?|N[abdehiop]?|P[abdmortu]?|S[bcegimnr]?|T[abcehilms]|A[cglmrstu]|R[abefghnu]|B[aehikr]?|H[efgos]?|M[cdgnot]|F[elmr]?|L[airuv]|D[bsy]|E[rsu]|G[ade]|I[nr]?|O[gs]?|Z[nr]|Kr?|Yb?|Xe|[₁₂₃₄₅₆₇₈₉₀])">
 ]>
 <rules xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" lang="nl" xsi:noNamespaceSchemaLocation="../../../../../../../../../languagetool-core/src/main/resources/org/languagetool/rules/rules.xsd">
     <!--
@@ -37056,6 +37058,144 @@ steenwijk;Steenwijk
         </rulegroup>
     </category>
     <category id="TYPOGRAPHY" name="Aandachtspunten rond o.a. punten en aanhalingstekens.">
+  <rulegroup id='CHEMICAL_FORMULAS_TYPOGRAPHY' name='Typografie: chemische formulering'>
+    <!-- Localized from Portuguese, Tiago F. Santos, 2019-12-09 -->
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)(?:&periodiek_systeem;)+(?:[₁₂₃₄₅₆₇₈₉]+)((&periodiek_systeem;)+)?</token>
+      </pattern>
+      <message>De vermenigvuldigers van de chemische formules moeten worden gescheiden.</message>
+        <suggestion><match no='1' regexp_match='(\d+)((&periodiek_systeem;)+)([₁₂₃₄₅₆₇₈₉₀]+)(((&periodiek_systeem;)+)?)' regexp_replace='$1 $2$4$5'/></suggestion>
+      <example correction='4 H₂O'><marker>4H₂O</marker></example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&periodiek_systeem;)+2((?:&periodiek_systeem;)+)?
+            <exception regexp='yes'>(?:U|PS)2</exception></token>
+      </pattern>
+      <message>De nummers van chemische formules moeten in subscript worden geschreven.</message>
+        <suggestion><match no='1' regexp_match='((&periodiek_systeem;)+)2(((&periodiek_systeem;)+)?)' regexp_replace='$1₂$3'/></suggestion>
+      <example correction='O₂'><marker>O2</marker></example>
+      <example correction='4H₂O'><marker>4H2O</marker></example>
+      <example>U2</example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&periodiek_systeem;)+3((?:&periodiek_systeem;)+)?
+            <exception>PS3</exception></token>
+      </pattern>
+      <message>De nummers van chemische formules moeten in subscript worden geschreven.</message>
+        <suggestion><match no='1' regexp_match='((&periodiek_systeem;)+)3(((&periodiek_systeem;)+)?)' regexp_replace='$1₃$3'/></suggestion>
+      <example correction='2S₃'><marker>2S3</marker></example>
+      <example>PS3</example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&periodiek_systeem;)+4((?:&periodiek_systeem;)+)?
+            <exception>PS4</exception></token>
+      </pattern>
+      <message>De nummers van chemische formules moeten in subscript worden geschreven.</message>
+        <suggestion><match no='1' regexp_match='((&periodiek_systeem;)+)4(((&periodiek_systeem;)+)?)' regexp_replace='$1₄$3'/></suggestion>
+      <example correction='CH₄'><marker>CH4</marker></example>
+      <example correction='H₄Si'><marker>H4Si</marker></example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&periodiek_systeem;)+2((?:&periodiek_systeem;)+)?2((?:&periodiek_systeem;)+)?</token>
+      </pattern>
+      <message>De nummers van chemische formules moeten in subscript worden geschreven.</message>
+        <suggestion><match no='1' regexp_match='((&periodiek_systeem;)+)2(((&periodiek_systeem;)+)?)2(((&periodiek_systeem;)+)?)' regexp_replace='$1₂$3₂$6'/></suggestion>
+      <example correction='H₂O₂'><marker>H2O2</marker></example>
+      <example correction='H₂NO₂Al'><marker>H2NO2Al</marker></example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&periodiek_systeem;)+2((?:&periodiek_systeem;)+)?3((?:&periodiek_systeem;)+)?</token>
+      </pattern>
+      <message>De nummers van chemische formules moeten in subscript worden geschreven.</message>
+        <suggestion><match no='1' regexp_match='((&periodiek_systeem;)+)2(((&periodiek_systeem;)+)?)3(((&periodiek_systeem;)+)?)' regexp_replace='$1₂$3₃$6'/></suggestion>
+      <example correction='K₂HPO₃'><marker>K2HPO3</marker></example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&periodiek_systeem;)+3((?:&periodiek_systeem;)+)?2((?:&periodiek_systeem;)+)?</token>
+      </pattern>
+      <message>De nummers van chemische formules moeten in subscript worden geschreven.</message>
+        <suggestion><match no='1' regexp_match='((&periodiek_systeem;)+)3(((&periodiek_systeem;)+)?)2(((&periodiek_systeem;)+)?)' regexp_replace='$1₃$3₂$6'/></suggestion>
+      <example correction='CH₃CH₂OH'><marker>CH3CH2OH</marker></example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&periodiek_systeem;)+3((?:&periodiek_systeem;)+)?3((?:&periodiek_systeem;)+)?</token>
+      </pattern>
+      <message>De nummers van chemische formules moeten in subscript worden geschreven.</message>
+        <suggestion><match no='1' regexp_match='((&periodiek_systeem;)+)3(((&periodiek_systeem;)+)?)3(((&periodiek_systeem;)+)?)' regexp_replace='$1₃$3₃$6'/></suggestion>
+      <example correction='CH₃CH₃'><marker>CH3CH3</marker></example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&periodiek_systeem;)+2((?:&periodiek_systeem;)+)?4((?:&periodiek_systeem;)+)?</token>
+      </pattern>
+      <message>De nummers van chemische formules moeten in subscript worden geschreven.</message>
+        <suggestion><match no='1' regexp_match='((&periodiek_systeem;)+)2(((&periodiek_systeem;)+)?)4(((&periodiek_systeem;)+)?)' regexp_replace='$1₂$3₄$6'/></suggestion>
+      <example correction='H₂SO₄'><marker>H2SO4</marker></example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&periodiek_systeem;)+2((?:&periodiek_systeem;)+)?5((?:&periodiek_systeem;)+)?</token>
+      </pattern>
+      <message>De nummers van chemische formules moeten in subscript worden geschreven.</message>
+        <suggestion><match no='1' regexp_match='((&periodiek_systeem;)+)2(((&periodiek_systeem;)+)?)5(((&periodiek_systeem;)+)?)' regexp_replace='$1₂$3₅$6'/></suggestion>
+      <example correction='C₂H₅OH'><marker>C2H5OH</marker></example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&periodiek_systeem;)+2((?:&periodiek_systeem;)+)?6((?:&periodiek_systeem;)+)?</token>
+      </pattern>
+      <message>De nummers van chemische formules moeten in subscript worden geschreven.</message>
+        <suggestion><match no='1' regexp_match='((&periodiek_systeem;)+)2(((&periodiek_systeem;)+)?)6(((&periodiek_systeem;)+)?)' regexp_replace='$1₂$3₆$6'/></suggestion>
+      <example correction='C₂H₆'><marker>C2H6</marker></example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&periodiek_systeem;)+7((?:&periodiek_systeem;)+)?
+            <exception>V7</exception></token>
+      </pattern>
+      <message>De nummers van chemische formules moeten in subscript worden geschreven.</message>
+        <suggestion><match no='1' regexp_match='((&periodiek_systeem;)+)7(((&periodiek_systeem;)+)?)' regexp_replace='$1₇$3'/></suggestion>
+      <example correction='C₇H₁₆'><marker>C7H₁₆</marker></example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&periodiek_systeem;)+8((?:&periodiek_systeem;)+)?
+            <exception>V8</exception></token>
+      </pattern>
+      <message>De nummers van chemische formules moeten in subscript worden geschreven.</message>
+        <suggestion><match no='1' regexp_match='((&periodiek_systeem;)+)8(((&periodiek_systeem;)+)?)' regexp_replace='$1₈$3'/></suggestion>
+      <example correction='C₈H₁₈'><marker>C8H₁₈</marker></example>
+      <example>Lola T70 Chevy V8</example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&periodiek_systeem;)+9((?:&periodiek_systeem;)+)?
+            <exception>V9</exception></token>
+      </pattern>
+      <message>De nummers van chemische formules moeten in subscript worden geschreven.</message>
+        <suggestion><match no='1' regexp_match='((&periodiek_systeem;)+)9(((&periodiek_systeem;)+)?)' regexp_replace='$1₉$3'/></suggestion>
+      <example correction='C₉H₂₀'><marker>C9H₂₀</marker></example>
+      <example>Lola T70 Chevy V9</example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&periodiek_systeem;)+0((?:&periodiek_systeem;)+)?
+            <exception>V0</exception></token>
+      </pattern>
+      <message>De nummers van chemische formules moeten in subscript worden geschreven.</message>
+        <suggestion><match no='1' regexp_match='((&periodiek_systeem;)+)0(((&periodiek_systeem;)+)?)' regexp_replace='$1₀$3'/></suggestion>
+      <example correction='C₉H₂₀'><marker>C₉H₂0</marker></example>
+    </rule>
+  </rulegroup>
+
         <rulegroup id="KOMMA_APO" name=",&quot; → &quot;,">
             <rule>
                 <pattern>
