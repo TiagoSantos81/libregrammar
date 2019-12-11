@@ -93,6 +93,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
     <!ENTITY gefuehladj "böse|erzürnt|sauer|verärgert|wütend|ärgerlich|enttäuscht|genervt|empört|entrüstet|erbost">
     <!ENTITY fragewoerter "inwie(fern|weit)|wa(nn|rum|s)|we[mnr]|wes(halb|sen|wegen)|wie(so)?|wo(durch|für|gegen|h(er|in)|mit|nach|ran|rauf|raus|rüber|runter|von|zu)?">
     <!ENTITY farbadj "grau|weiß|weiss|schwarz|grün|rot|gelb|blau|lila|orange|beige|rosa">
+
+    <!ENTITY periodensystem "(?:[UVW]|C[adeflmnorsu]?|N[abdehiop]?|P[abdmortu]?|S[bcegimnr]?|T[abcehilms]|A[cglmrstu]|R[abefghnu]|B[aehikr]?|H[efgos]?|M[cdgnot]|F[elmr]?|L[airuv]|D[bsy]|E[rsu]|G[ade]|I[nr]?|O[gs]?|Z[nr]|Kr?|Yb?|Xe|[₁₂₃₄₅₆₇₈₉₀])">
     <!--
     for local testing of an external file - also see below:
     <!ENTITY UserRules SYSTEM "file:///lt/git/languagetool/languagetool-language-modules/de/src/main/resources/org/languagetool/rules/de/grammar-test.xml">
@@ -38433,6 +38435,143 @@ Andere Projekte</example>
     <!-- Typographie -->
     <!-- ====================================================================== -->
     <category id="TYPOGRAPHY" name="Typografie">
+  <rulegroup id='CHEMICAL_FORMULAS_TYPOGRAPHY' name='Typografie: Chemische Formulierung'>
+    <!-- Localized from Portuguese, Tiago F. Santos, 2019-12-09 -->
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)(?:&periodensystem;)+(?:[₁₂₃₄₅₆₇₈₉]+)((&periodensystem;)+)?</token>
+      </pattern>
+      <message>Die Multiplikatoren der chemischen Formeln müssen getrennt werden.</message>
+        <suggestion><match no='1' regexp_match='(\d+)((&periodensystem;)+)([₁₂₃₄₅₆₇₈₉₀]+)(((&periodensystem;)+)?)' regexp_replace='$1 $2$4$5'/></suggestion>
+      <example correction='4 H₂O'><marker>4H₂O</marker></example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&periodensystem;)+2((?:&periodensystem;)+)?
+            <exception regexp='yes'>(?:U|PS)2</exception></token>
+      </pattern>
+      <message>Die Nummern der chemischen Formeln sollten im Index angegeben werden.</message>
+        <suggestion><match no='1' regexp_match='((&periodensystem;)+)2(((&periodensystem;)+)?)' regexp_replace='$1₂$3'/></suggestion>
+      <example correction='O₂'><marker>O2</marker></example>
+      <example correction='4H₂O'><marker>4H2O</marker></example>
+      <example>U2</example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&periodensystem;)+3((?:&periodensystem;)+)?
+            <exception>PS3</exception></token>
+      </pattern>
+      <message>Die Nummern der chemischen Formeln sollten im Index angegeben werden.</message>
+        <suggestion><match no='1' regexp_match='((&periodensystem;)+)3(((&periodensystem;)+)?)' regexp_replace='$1₃$3'/></suggestion>
+      <example correction='2S₃'><marker>2S3</marker></example>
+      <example>PS3</example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&periodensystem;)+4((?:&periodensystem;)+)?
+            <exception>PS4</exception></token>
+      </pattern>
+      <message>Die Nummern der chemischen Formeln sollten im Index angegeben werden.</message>
+        <suggestion><match no='1' regexp_match='((&periodensystem;)+)4(((&periodensystem;)+)?)' regexp_replace='$1₄$3'/></suggestion>
+      <example correction='CH₄'><marker>CH4</marker></example>
+      <example correction='H₄Si'><marker>H4Si</marker></example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&periodensystem;)+2((?:&periodensystem;)+)?2((?:&periodensystem;)+)?</token>
+      </pattern>
+      <message>Die Nummern der chemischen Formeln sollten im Index angegeben werden.</message>
+        <suggestion><match no='1' regexp_match='((&periodensystem;)+)2(((&periodensystem;)+)?)2(((&periodensystem;)+)?)' regexp_replace='$1₂$3₂$6'/></suggestion>
+      <example correction='H₂O₂'><marker>H2O2</marker></example>
+      <example correction='H₂NO₂Al'><marker>H2NO2Al</marker></example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&periodensystem;)+2((?:&periodensystem;)+)?3((?:&periodensystem;)+)?</token>
+      </pattern>
+      <message>Die Nummern der chemischen Formeln sollten im Index angegeben werden.</message>
+        <suggestion><match no='1' regexp_match='((&periodensystem;)+)2(((&periodensystem;)+)?)3(((&periodensystem;)+)?)' regexp_replace='$1₂$3₃$6'/></suggestion>
+      <example correction='K₂HPO₃'><marker>K2HPO3</marker></example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&periodensystem;)+3((?:&periodensystem;)+)?2((?:&periodensystem;)+)?</token>
+      </pattern>
+      <message>Die Nummern der chemischen Formeln sollten im Index angegeben werden.</message>
+        <suggestion><match no='1' regexp_match='((&periodensystem;)+)3(((&periodensystem;)+)?)2(((&periodensystem;)+)?)' regexp_replace='$1₃$3₂$6'/></suggestion>
+      <example correction='CH₃CH₂OH'><marker>CH3CH2OH</marker></example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&periodensystem;)+3((?:&periodensystem;)+)?3((?:&periodensystem;)+)?</token>
+      </pattern>
+      <message>Die Nummern der chemischen Formeln sollten im Index angegeben werden.</message>
+        <suggestion><match no='1' regexp_match='((&periodensystem;)+)3(((&periodensystem;)+)?)3(((&periodensystem;)+)?)' regexp_replace='$1₃$3₃$6'/></suggestion>
+      <example correction='CH₃CH₃'><marker>CH3CH3</marker></example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&periodensystem;)+2((?:&periodensystem;)+)?4((?:&periodensystem;)+)?</token>
+      </pattern>
+      <message>Die Nummern der chemischen Formeln sollten im Index angegeben werden.</message>
+        <suggestion><match no='1' regexp_match='((&periodensystem;)+)2(((&periodensystem;)+)?)4(((&periodensystem;)+)?)' regexp_replace='$1₂$3₄$6'/></suggestion>
+      <example correction='H₂SO₄'><marker>H2SO4</marker></example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&periodensystem;)+2((?:&periodensystem;)+)?5((?:&periodensystem;)+)?</token>
+      </pattern>
+      <message>Die Nummern der chemischen Formeln sollten im Index angegeben werden.</message>
+        <suggestion><match no='1' regexp_match='((&periodensystem;)+)2(((&periodensystem;)+)?)5(((&periodensystem;)+)?)' regexp_replace='$1₂$3₅$6'/></suggestion>
+      <example correction='C₂H₅OH'><marker>C2H5OH</marker></example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&periodensystem;)+2((?:&periodensystem;)+)?6((?:&periodensystem;)+)?</token>
+      </pattern>
+      <message>Die Nummern der chemischen Formeln sollten im Index angegeben werden.</message>
+        <suggestion><match no='1' regexp_match='((&periodensystem;)+)2(((&periodensystem;)+)?)6(((&periodensystem;)+)?)' regexp_replace='$1₂$3₆$6'/></suggestion>
+      <example correction='C₂H₆'><marker>C2H6</marker></example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&periodensystem;)+7((?:&periodensystem;)+)?
+            <exception>V7</exception></token>
+      </pattern>
+      <message>Die Nummern der chemischen Formeln sollten im Index angegeben werden.</message>
+        <suggestion><match no='1' regexp_match='((&periodensystem;)+)7(((&periodensystem;)+)?)' regexp_replace='$1₇$3'/></suggestion>
+      <example correction='C₇H₁₆'><marker>C7H₁₆</marker></example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&periodensystem;)+8((?:&periodensystem;)+)?
+            <exception>V8</exception></token>
+      </pattern>
+      <message>Die Nummern der chemischen Formeln sollten im Index angegeben werden.</message>
+        <suggestion><match no='1' regexp_match='((&periodensystem;)+)8(((&periodensystem;)+)?)' regexp_replace='$1₈$3'/></suggestion>
+      <example correction='C₈H₁₈'><marker>C8H₁₈</marker></example>
+      <example>Lola T70 Chevy V8</example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&periodensystem;)+9((?:&periodensystem;)+)?
+            <exception>V9</exception></token>
+      </pattern>
+      <message>Die Nummern der chemischen Formeln sollten im Index angegeben werden.</message>
+        <suggestion><match no='1' regexp_match='((&periodensystem;)+)9(((&periodensystem;)+)?)' regexp_replace='$1₉$3'/></suggestion>
+      <example correction='C₉H₂₀'><marker>C9H₂₀</marker></example>
+      <example>Lola T70 Chevy V9</example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&periodensystem;)+0((?:&periodensystem;)+)?
+            <exception>V0</exception></token>
+      </pattern>
+      <message>Die Nummern der chemischen Formeln sollten im Index angegeben werden.</message>
+        <suggestion><match no='1' regexp_match='((&periodensystem;)+)0(((&periodensystem;)+)?)' regexp_replace='$1₀$3'/></suggestion>
+      <example correction='C₉H₂₀'><marker>C₉H₂0</marker></example>
+    </rule>
+  </rulegroup>
         <rule id="TRADEMARK" name="(TM) statt ™">
             <pattern case_sensitive='yes'>
                 <token regexp='yes'>\p{Lu}.*</token>
