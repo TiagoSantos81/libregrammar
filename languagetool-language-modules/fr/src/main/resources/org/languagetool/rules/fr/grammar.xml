@@ -20,6 +20,11 @@ You should have received a copy of the GNU Lesser General Public
 License along with this library; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 -->
+
+<!DOCTYPE rules [
+    <!ENTITY tableau_periodique "(?:[UVW]|C[adeflmnorsu]?|N[abdehiop]?|P[abdmortu]?|S[bcegimnr]?|T[abcehilms]|A[cglmrstu]|R[abefghnu]|B[aehikr]?|H[efgos]?|M[cdgnot]|F[elmr]?|L[airuv]|D[bsy]|E[rsu]|G[ade]|I[nr]?|O[gs]?|Z[nr]|Kr?|Yb?|Xe|[₁₂₃₄₅₆₇₈₉₀])">
+]>
+
 <rules lang="fr" xsi:noNamespaceSchemaLocation="../../../../../../../../../languagetool-core/src/main/resources/org/languagetool/rules/rules.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <category id="CAT_PLEONASMES" name="Pléonasmes">
     <!--The following rules were created by Hugo Voisard
@@ -27456,6 +27461,143 @@ though, and has since been slightly modified)-->
     </rule>
   </category>
   <category id="CAT_TYPOGRAPHIE" name="Typographie">
+  <rulegroup id='CHEMICAL_FORMULAS_TYPOGRAPHY' name='Typographie: Formulation chimique'>
+    <!-- Localized from Portuguese, Tiago F. Santos, 2019-12-09 -->
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)(?:&tableau_periodique;)+(?:[₁₂₃₄₅₆₇₈₉]+)((&tableau_periodique;)+)?</token>
+      </pattern>
+      <message>Les multiplicateurs des formules chimiques doivent être séparés.</message>
+        <suggestion><match no='1' regexp_match='(\d+)((&tableau_periodique;)+)([₁₂₃₄₅₆₇₈₉₀]+)(((&tableau_periodique;)+)?)' regexp_replace='$1 $2$4$5'/></suggestion>
+      <example correction='4 H₂O'><marker>4H₂O</marker></example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&tableau_periodique;)+2((?:&tableau_periodique;)+)?
+            <exception regexp='yes'>(?:U|PS)2</exception></token>
+      </pattern>
+      <message>Les numéros des formules chimiques doivent être écrits en indice.</message>
+        <suggestion><match no='1' regexp_match='((&tableau_periodique;)+)2(((&tableau_periodique;)+)?)' regexp_replace='$1₂$3'/></suggestion>
+      <example correction='O₂'><marker>O2</marker></example>
+      <example correction='4H₂O'><marker>4H2O</marker></example>
+      <example>U2</example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&tableau_periodique;)+3((?:&tableau_periodique;)+)?
+            <exception>PS3</exception></token>
+      </pattern>
+      <message>Les numéros des formules chimiques doivent être écrits en indice.</message>
+        <suggestion><match no='1' regexp_match='((&tableau_periodique;)+)3(((&tableau_periodique;)+)?)' regexp_replace='$1₃$3'/></suggestion>
+      <example correction='2S₃'><marker>2S3</marker></example>
+      <example>PS3</example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&tableau_periodique;)+4((?:&tableau_periodique;)+)?
+            <exception>PS4</exception></token>
+      </pattern>
+      <message>Les numéros des formules chimiques doivent être écrits en indice.</message>
+        <suggestion><match no='1' regexp_match='((&tableau_periodique;)+)4(((&tableau_periodique;)+)?)' regexp_replace='$1₄$3'/></suggestion>
+      <example correction='CH₄'><marker>CH4</marker></example>
+      <example correction='H₄Si'><marker>H4Si</marker></example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&tableau_periodique;)+2((?:&tableau_periodique;)+)?2((?:&tableau_periodique;)+)?</token>
+      </pattern>
+      <message>Les numéros des formules chimiques doivent être écrits en indice.</message>
+        <suggestion><match no='1' regexp_match='((&tableau_periodique;)+)2(((&tableau_periodique;)+)?)2(((&tableau_periodique;)+)?)' regexp_replace='$1₂$3₂$6'/></suggestion>
+      <example correction='H₂O₂'><marker>H2O2</marker></example>
+      <example correction='H₂NO₂Al'><marker>H2NO2Al</marker></example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&tableau_periodique;)+2((?:&tableau_periodique;)+)?3((?:&tableau_periodique;)+)?</token>
+      </pattern>
+      <message>Les numéros des formules chimiques doivent être écrits en indice.</message>
+        <suggestion><match no='1' regexp_match='((&tableau_periodique;)+)2(((&tableau_periodique;)+)?)3(((&tableau_periodique;)+)?)' regexp_replace='$1₂$3₃$6'/></suggestion>
+      <example correction='K₂HPO₃'><marker>K2HPO3</marker></example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&tableau_periodique;)+3((?:&tableau_periodique;)+)?2((?:&tableau_periodique;)+)?</token>
+      </pattern>
+      <message>Les numéros des formules chimiques doivent être écrits en indice.</message>
+        <suggestion><match no='1' regexp_match='((&tableau_periodique;)+)3(((&tableau_periodique;)+)?)2(((&tableau_periodique;)+)?)' regexp_replace='$1₃$3₂$6'/></suggestion>
+      <example correction='CH₃CH₂OH'><marker>CH3CH2OH</marker></example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&tableau_periodique;)+3((?:&tableau_periodique;)+)?3((?:&tableau_periodique;)+)?</token>
+      </pattern>
+      <message>Les numéros des formules chimiques doivent être écrits en indice.</message>
+        <suggestion><match no='1' regexp_match='((&tableau_periodique;)+)3(((&tableau_periodique;)+)?)3(((&tableau_periodique;)+)?)' regexp_replace='$1₃$3₃$6'/></suggestion>
+      <example correction='CH₃CH₃'><marker>CH3CH3</marker></example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&tableau_periodique;)+2((?:&tableau_periodique;)+)?4((?:&tableau_periodique;)+)?</token>
+      </pattern>
+      <message>Les numéros des formules chimiques doivent être écrits en indice.</message>
+        <suggestion><match no='1' regexp_match='((&tableau_periodique;)+)2(((&tableau_periodique;)+)?)4(((&tableau_periodique;)+)?)' regexp_replace='$1₂$3₄$6'/></suggestion>
+      <example correction='H₂SO₄'><marker>H2SO4</marker></example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&tableau_periodique;)+2((?:&tableau_periodique;)+)?5((?:&tableau_periodique;)+)?</token>
+      </pattern>
+      <message>Les numéros des formules chimiques doivent être écrits en indice.</message>
+        <suggestion><match no='1' regexp_match='((&tableau_periodique;)+)2(((&tableau_periodique;)+)?)5(((&tableau_periodique;)+)?)' regexp_replace='$1₂$3₅$6'/></suggestion>
+      <example correction='C₂H₅OH'><marker>C2H5OH</marker></example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&tableau_periodique;)+2((?:&tableau_periodique;)+)?6((?:&tableau_periodique;)+)?</token>
+      </pattern>
+      <message>Les numéros des formules chimiques doivent être écrits en indice.</message>
+        <suggestion><match no='1' regexp_match='((&tableau_periodique;)+)2(((&tableau_periodique;)+)?)6(((&tableau_periodique;)+)?)' regexp_replace='$1₂$3₆$6'/></suggestion>
+      <example correction='C₂H₆'><marker>C2H6</marker></example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&tableau_periodique;)+7((?:&tableau_periodique;)+)?
+            <exception>V7</exception></token>
+      </pattern>
+      <message>Les numéros des formules chimiques doivent être écrits en indice.</message>
+        <suggestion><match no='1' regexp_match='((&tableau_periodique;)+)7(((&tableau_periodique;)+)?)' regexp_replace='$1₇$3'/></suggestion>
+      <example correction='C₇H₁₆'><marker>C7H₁₆</marker></example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&tableau_periodique;)+8((?:&tableau_periodique;)+)?
+            <exception>V8</exception></token>
+      </pattern>
+      <message>Les numéros des formules chimiques doivent être écrits en indice.</message>
+        <suggestion><match no='1' regexp_match='((&tableau_periodique;)+)8(((&tableau_periodique;)+)?)' regexp_replace='$1₈$3'/></suggestion>
+      <example correction='C₈H₁₈'><marker>C8H₁₈</marker></example>
+      <example>Lola T70 Chevy V8</example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&tableau_periodique;)+9((?:&tableau_periodique;)+)?
+            <exception>V9</exception></token>
+      </pattern>
+      <message>Les numéros des formules chimiques doivent être écrits en indice.</message>
+        <suggestion><match no='1' regexp_match='((&tableau_periodique;)+)9(((&tableau_periodique;)+)?)' regexp_replace='$1₉$3'/></suggestion>
+      <example correction='C₉H₂₀'><marker>C9H₂₀</marker></example>
+      <example>Lola T70 Chevy V9</example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>(?:\d+)?(?:&tableau_periodique;)+0((?:&tableau_periodique;)+)?
+            <exception>V0</exception></token>
+      </pattern>
+      <message>Les numéros des formules chimiques doivent être écrits en indice.</message>
+        <suggestion><match no='1' regexp_match='((&tableau_periodique;)+)0(((&tableau_periodique;)+)?)' regexp_replace='$1₀$3'/></suggestion>
+      <example correction='C₉H₂₀'><marker>C₉H₂0</marker></example>
+    </rule>
+  </rulegroup>
     <rule id="ESPACE_UNITES" name="espace insécable avant les unités (kg, cm, …)">
       <pattern>
         <token regexp="yes">\d+([kcmµn]?m|k?g|°C)</token>
