@@ -69,7 +69,8 @@
 
 #### Dutch
   * rules added:
-     - `DutchReadabilityRule`.
+     - `DutchReadabilityRule`;
+     - chemical formulas typography.
   * activated generic Java rules, including:
      - `LongSentenceRule`, `LongParagraphRule`, `SentenceWhitespaceRule`, `WhiteSpaceAtBeginOfParagraph`,
      `EmptyLineRule`, `ParagraphRepeatBeginningRule`, `PunctuationMarkAtParagraphEnd`.
@@ -88,7 +89,7 @@
      `EmptyLineRule`, `ParagraphRepeatBeginningRule`, `PunctuationMarkAtParagraphEnd`.
   * rules added:
      - `FrenchReadabilityRule`;
-     - typography rules for mathematical symbols and arrows.
+     - typography rules for mathematical symbols, chemical formulas and arrows.
   * ignore spelling of roman numbers.
   * sentences and paragraphs now end with a single line break.
   * improved tokenization.
@@ -101,6 +102,8 @@
 #### German
   * activated generic Java rules, including:
      - `GermanStyleRepeatedWordRule`, `LongSentenceRule`.
+  * rules added:
+     - chemical formulas typography.
 
 #### Icelandic
   * spelling suggestions now active.
@@ -122,7 +125,7 @@
   * activated generic Java rules, including:
      - `LongSentenceRule`, `LongParagraphRule`, `SentenceWhitespaceRule`, `WhiteSpaceAtBeginOfParagraph`,
      `EmptyLineRule`, `ParagraphRepeatBeginningRule`, `PunctuationMarkAtParagraphEnd`.
-  * add typography rules for mathematical symbols and arrows.
+  * add typography rules for mathematical symbols, chemical formulas and arrows.
   * ignore spelling of roman numbers.
   * sentences and paragraphs now end with a single line break.
 
@@ -130,6 +133,8 @@
   * improved tokenization.
 
 #### Polish
+  * rules added:
+     - chemical formulas typography.
   * activated generic Java rules, including:
      - `LongSentenceRule`, `LongParagraphRule`, `UppercaseSentenceStartRule`, `WhiteSpaceBeforeParagraphEnd`,
      `WhiteSpaceAtBeginOfParagraph`, `EmptyLineRule`, `ParagraphRepeatBeginningRule`, `PunctuationMarkAtParagraphEnd`.
@@ -160,6 +165,8 @@
   * improved tokenization.
 
 #### Spanish
+  * rules added:
+     - chemical formulas typography.
   * re-activated subject-predicate agreement category.
   * activated generic Java rules, including:
      - `LongSentenceRule`, `LongParagraphRule`, `SentenceWhitespaceRule`, `WhiteSpaceAtBeginOfParagraph`,
