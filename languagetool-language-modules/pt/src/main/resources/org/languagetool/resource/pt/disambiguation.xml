@@ -1106,7 +1106,7 @@
     <rule>
       <pattern>
           <token postag="N..S.+" postag_regexp="yes">
-            <exception postag="N..S.+" postag_regexp="yes" negate_pos='yes'/></token>
+            <exception postag="(A.|N)..S.+" postag_regexp="yes" negate_pos='yes'/></token>
         <marker>
         <and>
           <token postag="N.+" postag_regexp="yes"/>
@@ -1125,7 +1125,7 @@
           <token postag="D...S.+" postag_regexp="yes">
             <exception postag="[DP]...S.+" postag_regexp="yes" negate_pos='yes'/></token>
           <token postag="N..S.+" postag_regexp="yes">
-            <exception postag="N..S.+" postag_regexp="yes" negate_pos='yes'/></token>
+            <exception postag="(A.|N)..S.+" postag_regexp="yes" negate_pos='yes'/></token>
         <marker>
         <and>
           <token postag="N.+" postag_regexp="yes"/>
