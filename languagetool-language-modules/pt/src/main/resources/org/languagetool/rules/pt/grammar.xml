@@ -957,7 +957,8 @@ title="Easy editing stylesheet" ?>
           <token postag='D..FS.+' postag_regexp='yes'/>
           <token postag='(?:[NZ].|A..)FS.+' postag_regexp='yes'>
             <exception regexp='yes'>uma|e</exception></token>
-          <token postag="V...3S.+" postag_regexp='yes'/>
+          <token postag="V...3S.+" postag_regexp='yes'>
+            <exception inflected='yes' regexp='yes'>criar|matar</exception></token>
           <token postag='A..M.+' postag_regexp='yes'>
             <exception>medo</exception>
             <exception postag="R.+" postag_regexp='yes'/></token>
@@ -971,20 +972,23 @@ title="Easy editing stylesheet" ?>
           <token postag='D..MS.+' postag_regexp='yes'/>
           <token postag='(?:[NZ].|A..)MS.+' postag_regexp='yes'>
             <exception regexp='yes'>um|e|ser|nome|termo</exception></token>
-          <token postag="V...3S.+" postag_regexp='yes'/>
+          <token postag="V...3S.+" postag_regexp='yes'>
+            <exception inflected='yes' regexp='yes'>criar|matar</exception></token>
           <token postag='A..F.+' postag_regexp='yes'>
             <exception postag="R.+" postag_regexp='yes'/></token>
       </pattern>
       <message>&MSG_ECG;</message>
         <suggestion>\1 \2 \3 <match no='4' postag='(A..)F.(.+)' postag_replace='$1MS$2' postag_regexp='yes'/></suggestion>
       <example correction='O cão é meigo'><marker>O cão é meiga</marker>.</example>
+      <example>Este veneno mata baratas.</example>
     </rule>
     <rule>
       <pattern>
           <token postag='D..FP.+' postag_regexp='yes'/>
           <token postag='(?:[NZ].|A..)FP.+' postag_regexp='yes'>
             <exception regexp='yes'>uma|e</exception></token>
-          <token postag="V...3P.+" postag_regexp='yes'/>
+          <token postag="V...3P.+" postag_regexp='yes'>
+            <exception inflected='yes' regexp='yes'>criar|matar</exception></token>
           <token postag='A..M.+' postag_regexp='yes'>
             <exception postag="R.+" postag_regexp='yes'/></token>
       </pattern>
@@ -996,7 +1000,8 @@ title="Easy editing stylesheet" ?>
       <pattern>
           <token postag='D..MP.+' postag_regexp='yes'/>
           <token postag='(?:[NZ].|A..)MP.+' postag_regexp='yes'/>
-          <token postag="V...3P.+" postag_regexp='yes'/>
+          <token postag="V...3P.+" postag_regexp='yes'>
+            <exception inflected='yes' regexp='yes'>criar|matar</exception></token>
           <token postag='A..F.+' postag_regexp='yes'>
             <exception postag="R.+" postag_regexp='yes'/></token>
       </pattern>
@@ -1220,10 +1225,10 @@ title="Easy editing stylesheet" ?>
         <suggestion><match no='2' postag="(D[ADIP].|N.|A..|P[^IDP].|Z.)[MC]P(.+)" postag_replace='$1[MC]S$2' postag_regexp="yes"/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' include_skipped='all'/></suggestion>
         <suggestion><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' postag="(N.|[AD]..|Z.)[MC]S(.+)" postag_replace='$1[MC]P$2' postag_regexp="yes"/></suggestion>
         <suggestion><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/>, <match no='5' include_skipped='all'/></suggestion>
+      <example correction="caso mais preocupante|casos mais preocupantes|casos mais, preocupante">Os <marker>casos mais preocupante</marker> são estes.</example>
       <example correction='O cão|Os cães|Os, cão'><marker>Os cão</marker> está no pasto.</example>
       <example correction="pai natal|pais natais|pais, natal">Havia <marker>pais natal</marker> na festa.</example>
       <example correction="todinho litoral|todo litoral|todinho, litoral|todo, litoral">Possui uma extensão aproximada de 378 km, o que representa 3,8% de <marker>todos litoral</marker> do México.</example>
-      <example correction="caso mais preocupante|casos mais preocupantes|casos mais, preocupante">Os <marker>casos mais preocupante</marker> são estas.</example>
       <example>Conforme mais dados vão sendo acumulados de pessoas de todas as idades.</example>
       <example>Os rinocerontes serão anestesiados, antes de se remover o chifre.</example>
       <example>Calças, as mais rasgadas possível!</example>
@@ -1310,6 +1315,7 @@ title="Easy editing stylesheet" ?>
         <suggestion><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' postag="(N.|[AD]..|Z.)[MC]P(.+)" postag_replace='$1[MC]S$2' postag_regexp="yes"/></suggestion>
         <suggestion><match no='2' postag="(D[ADIP].|N.|A..|P[^IDP].|Z.)[MC]S(.+)" postag_replace='$1[MC]P$2' postag_regexp="yes"/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' include_skipped='all'/></suggestion>
         <suggestion><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/>, <match no='5' include_skipped='all'/></suggestion>
+      <example correction='seu limite|seus limites|seu, limites'>Em <marker>seu limites</marker> há grandes propriedades rurais, que utilizam sua ...</example>
       <example correction='Este gato|Estes gatos|Este, gatos'><marker>Este gatos</marker> estão no pasto.</example>
       <example>Sou todo ouvidos.</example>
       <example>Uso óculos desde os 6 anos,</example>
@@ -1319,6 +1325,7 @@ title="Easy editing stylesheet" ?>
       <example>Lá fora estão zero graus.</example>
       <example>O escritor francês gostava de comer croissants na cama.</example>
       <example>Os entendimentos têm de ser o mais amplos possível para serem efectivos.</example>
+      <example>Ele todos os dias lê romances.</example>
     </rule>
     <rule>
       <antipattern>
@@ -1353,8 +1360,8 @@ title="Easy editing stylesheet" ?>
       <message>&MSG_ECN;</message>
         <suggestion><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' postag="(N.|[AD]..|Z.)[MC]P(.+)" postag_replace='$1[MC]S$2' postag_regexp="yes"/></suggestion>
         <suggestion>\2s <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' include_skipped='all'/></suggestion>
-      <example correction='do pai|dos pais'>É o orgulho <marker>do pais</marker>.</example>
       <example correction='pelo meio|pelos meios'>Conseguiram combater o fogo <marker>pelo meios</marker> de todos os revezes.</example>
+      <example correction='do pai|dos pais'>É o orgulho <marker>do pais</marker>.</example>
       <example>Pelo menos nós terminamos o trabalho pesado.</example>
     </rule>
     <rule>
@@ -1407,14 +1414,18 @@ title="Easy editing stylesheet" ?>
         <suggestion><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' postag="(N.|[AD]..)[FC]P(.+)" postag_replace='$1[FC]S$2' postag_regexp="yes"/></suggestion>
         <suggestion><match no='2' postag="(D[ADIP].|N.|A..)[FC]S(.+)" postag_replace='$1[FC]P$2' postag_regexp="yes"/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' include_skipped='all'/></suggestion>
         <suggestion><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/>, <match no='5' include_skipped='all'/></suggestion>
+      <example correction='união empobrecida|uniões empobrecidas|união, empobrecidas'>As regiões na <marker>união empobrecidas</marker> acabaram por ser culpabilizadas.</example>
+      <example>As regiões da <marker>união empobrecidas</marker> acabaram por ser culpabilizados.</example>
       <example correction='A vaca|As vacas|A, vacas'><marker>A vacas</marker> são malhadas.</example>
       <example>O programa Lendas do Futuro é bom?</example>
       <example>Uma vez acordadas as novas condições, será feito o abastecimento elétrico.</example>
-      <example correction='união empobrecida|uniões empobrecidas|união, empobrecidas'>As regiões na <marker>união empobrecidas</marker> acabaram por ser culpabilizadas.</example>
-      <example>As regiões da <marker>união empobrecidas</marker> acabaram por ser culpabilizados.</example>
       <example>…odo estudante confia no Sr. Akai porque ele nunca quebra promessas.</example>
       <example correction='bastante mesa|bastantes mesas|bastante, mesas'>Existem <marker>bastante mesas</marker>!</example>
       <example>Algo que nos une como plataforma a tantos continentes, a tantos oceanos, a tantas culturas, a tantas civilizações</example>
+      <example correction='parte integrante|partes integrantes|parte, integrantes'>...ign industrial, ao ponto destas disciplinas serem <marker>parte integrantes</marker> dos currículos de alguns cursos superiores de eng...</example>
+      <example>...omo o maior grupo religioso do país; outro estudo estima protestantes de todas as raças em 30-35%.</example>
+      <example>A pneumonia causa dificuldades respiratórias.</example>
+      <example type='triggers_error'>...ções da torre, e a lama em ebulição que o rodeia, liberta grandes quantidades de gases, incluindo monóxido de carbo...</example>
     </rule>
     <rule>
       <antipattern>
@@ -1439,6 +1450,7 @@ title="Easy editing stylesheet" ?>
         <suggestion><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' postag="(N.|[AD]..|Z.)[FC]P(.+)" postag_replace='$1[FC]S$2' postag_regexp="yes"/></suggestion>
         <suggestion>\2s <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' include_skipped='all'/></suggestion>
       <example correction='numa espécie|numas espécies'>Valor contido <marker>numa espécies</marker> por descobrir.</example>
+      <example correction='pela política|pelas políticas'>...cesso no setor artístico-cultural, principalmente <marker>pela políticas</marker> públicas e privadas de estímulo desse setor, como...</example>
       <example>Há pouco tempo quatro ex-presidentes da República jantaram na companhia.</example>
     </rule>
     <rule>
@@ -26344,7 +26356,7 @@ TODO Write better examples
     </rule>
     <rule>
       <pattern case_sensitive='yes'>
-          <token>H2</token>
+          <token>H2</token><!-- also a chemical but message is ok -->
       </pattern>
       <message>Prefira o símbolo tipográfico.</message>
         <suggestion>H₂</suggestion>

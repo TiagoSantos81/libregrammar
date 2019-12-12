@@ -1080,9 +1080,9 @@
     </rule>
   </rulegroup>
 
+    <rule id="P_V" name="Pronome + Verbo">
     <!--P_V Quando está a frente de um verbo, trata-se de um pronome-->
     <!-- 		l18n from Spanish disambiguation.xml by Tiago F. Santos		-->
-    <rule id="P_V" name="Pronome + Verbo">
       <pattern>
         <marker>
         <and>
@@ -1100,6 +1100,64 @@
       <example type="untouched">Durante seu reinado, os Durrani consolidaram em uma só nação.</example>
       <example type="untouched">A inflexibilidade corretiva pouco acrescentou.</example>
     </rule>
+
+  <rulegroup id="NOUN_VERB_DISAMBIGUATION" name="Nome ou Verbo">
+    <!-- 		Created by Tiago F. Santos, 2019-12-11		-->
+    <rule>
+      <pattern>
+          <token postag="N..S.+" postag_regexp="yes">
+            <exception postag="N..S.+" postag_regexp="yes" negate_pos='yes'/></token>
+        <marker>
+        <and>
+          <token postag="N.+" postag_regexp="yes"/>
+          <token postag="V...3S.+" postag_regexp="yes"/>
+        </and>
+        </marker>
+          <token postag="(N|A.)..P.+" postag_regexp="yes"/>
+          <token postag="(N|A.)..P.+" postag_regexp="yes"/>
+      </pattern>
+      <disambig action="filter" postag="V...3S.+"/>
+      <example type='ambiguous' inputform="toma[toma/NCFS000,tomar/VMIP3S0,tomar/VMM02S0]" outputform="toma[tomar/VMIP3S0]">Getúlio <marker>toma</marker> medidas liberalizantes.</example>
+      <example type='ambiguous' inputform="ama[amar/VMIP3S0,amar/VMM02S0,amo/NCFS000]" outputform="ama[amar/VMIP3S0]">Minha mulher <marker>ama</marker> novelas românticas.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token postag="D...S.+" postag_regexp="yes">
+            <exception postag="[DP]...S.+" postag_regexp="yes" negate_pos='yes'/></token>
+          <token postag="N..S.+" postag_regexp="yes">
+            <exception postag="N..S.+" postag_regexp="yes" negate_pos='yes'/></token>
+        <marker>
+        <and>
+          <token postag="N.+" postag_regexp="yes"/>
+          <token postag="V...3S.+" postag_regexp="yes"/>
+        </and>
+        </marker>
+          <token postag="(A.|N)..P.+" postag_regexp="yes"/>
+          <token postag="_PUNCT|SENT_END|S.+" postag_regexp="yes"/>
+      </pattern>
+      <disambig action="filter" postag="V...3S.+"/>
+      <example type='ambiguous' inputform="mata[mata/NCFS000,matar/VMIP3S0,matar/VMM02S0]" outputform="mata[matar/VMIP3S0]">Este veneno <marker>mata</marker> baratas.</example>
+      <example type='ambiguous' inputform="cria[crer/VMII1S0,crer/VMII2S0,crer/VMII3S0,cria/NCFS000,criar/VMIP3S0,criar/VMM02S0]" outputform="cria[crer/VMII3S0,criar/VMIP3S0]">Aquele esquisitão <marker>cria</marker> baratas em caixa de fósforo.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token postag="PP3.S.+" postag_regexp="yes">
+            <exception postag="P.3.S.+" postag_regexp="yes" negate_pos='yes'/></token>
+          <token postag="R.+" postag_regexp="yes" max="3"/>
+        <marker>
+        <and>
+          <token postag="N.+" postag_regexp="yes"/>
+          <token postag="V...3S.+" postag_regexp="yes"/>
+        </and>
+        </marker>
+          <token postag="(N|A.)..P.+" postag_regexp="yes"/>
+          <token postag="(N|A.)..P.+|S.+|_PUNCT|SENT_END" postag_regexp="yes"/>
+      </pattern>
+      <disambig action="filter" postag="V...3S.+"/>
+      <example type='ambiguous' inputform="escuta[escuta/NCCS000,escuta/NCFS000,escutar/VMIP3S0,escutar/VMM02S0]" outputform="escuta[escutar/VMIP3S0]">Ele só <marker>escuta</marker> músicas difíceis.</example>
+      <example type='ambiguous' inputform="escuta[escuta/NCCS000,escuta/NCFS000,escutar/VMIP3S0,escutar/VMM02S0]" outputform="escuta[escutar/VMIP3S0]">Ele só <marker>escuta</marker> velhos.</example>
+    </rule>
+  </rulegroup>
 
   <rulegroup id="S_V" name="Preposição + Verbo">
     <rule>
