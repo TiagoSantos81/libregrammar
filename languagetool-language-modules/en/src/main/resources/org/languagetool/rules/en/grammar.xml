@@ -6237,6 +6237,13 @@ USA
                 <example>Legion of Whom?</example>
             </rule>
             <rule>
+                <antipattern>
+                    <token>part</token>
+                    <token>of</token>
+                    <token>who</token>
+                    <token regexp='yes'>It?|you|s?he|we|they</token>
+                    <token inflected='yes'>be</token>
+                </antipattern>
                 <pattern>
                     <token postag="IN">
                       <exception>like</exception></token>
