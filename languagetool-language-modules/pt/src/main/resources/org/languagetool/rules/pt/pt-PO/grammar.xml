@@ -1196,7 +1196,7 @@ title="Easy editing stylesheet" ?>
 
  <category id="AO45_RULES" name="Regras do Acordo Ortográfico de 45 (pré-AO90)"  type="misspelling">
 
-    <rule id='AO45_MONTHS_CASING' type='grammar' name='AO45: Capitalização de Meses e Estações do Ano'>
+    <rule id='AO45_MONTHS_CASING' name='AO45: Capitalização de Meses e Estações do Ano' type='misspelling'>
     <!-- Created by Tiago F. Santos , Portuguese rule, 2017-01-26 -->
       <pattern case_sensitive='yes'>
           <token regexp='yes'>(?:&meses_ano;)s?|(?:&meses_ano_abrev;)|invernos?|primaveras?|ver(?:ão|ões)|estios?|outonos?
@@ -1211,7 +1211,7 @@ title="Easy editing stylesheet" ?>
       <example>Só faltam dez dias para as férias.</example>
     </rule>
 
-  <rulegroup id='AO45_WEEKDAYS_CASING' type='grammar' name='AO45: Capitalização dos Dias da Semana'>
+  <rulegroup id='AO45_WEEKDAYS_CASING' name='AO45: Capitalização dos Dias da Semana' type='misspelling'>
     <!-- Created by Tiago F. Santos , Portuguese rule, 2017-01-26 -->
     <rule>
       <pattern case_sensitive='yes'>
@@ -1237,7 +1237,7 @@ title="Easy editing stylesheet" ?>
     </rule>
   </rulegroup>
 
-  <rulegroup id='AO45_CARDINAL_POINTS_CASING' type='grammar' name='AO45: Capitalização de Pontos Cardeais'>
+  <rulegroup id='AO45_CARDINAL_POINTS_CASING' name='AO45: Capitalização de Pontos Cardeais' type='misspelling'>
     <!-- Created by  Tiago F. Santos , Portuguese rule, 2017-XX-XX -->
     <rule>
       <pattern case_sensitive='yes'>
