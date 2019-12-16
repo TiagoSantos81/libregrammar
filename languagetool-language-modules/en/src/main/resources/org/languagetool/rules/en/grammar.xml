@@ -818,7 +818,7 @@ USA
         <rulegroup id="CONFUSION_OF_ME_I" name="me (I)">
             <rule>
                 <pattern>
-                    <token postag="SENT_START"/>
+                    <token postag_regexp="yes" postag="SENT_START|RB_SENT"/><!-- 2019-12-16 RB_SENT refer to #2213 -->
                     <token/>
                     <token>and</token>
                     <marker><token>me</token></marker>
@@ -829,6 +829,10 @@ USA
                 <example correction="I">Tim and <marker>me</marker> work together.</example>
                 <example correction="I">Digitization and <marker>me</marker> don't agree.</example><!-- Anthropomorphism. -->
                 <example correction="I">Mary and <marker>me</marker> would often walk in the park.</example>
+                <example correction="I">However, Tim and <marker>me</marker> work well together.</example>
+                <example correction="I">First of all, digitization and <marker>me</marker> don't agree.</example>
+                <example correction="I">Whenever possible, Mary and <marker>me</marker> would walk in the park.</example>
+                <example correction="I">On the other hand, she and <marker>me</marker> would walk in the park.</example>
             </rule>
             <rule>
                 <pattern>
@@ -1914,6 +1918,177 @@ USA
             <example correction="yours">This house is <marker>yours'</marker>.</example>
             <example>My heart is hers.</example>
         </rule>
+        <rule id="VB_NN" name="missing determiner" default="temp_off">
+            <!-- TODO: "we can create good event" -->
+            <!-- TODO: "we can create music event" -->
+            <antipattern>
+                <token postag="NNP"></token>
+                <token postag="VB.*" postag_regexp="yes" regexp="yes">[A-Z].*</token>
+                <token postag="NN.*|UNKNOWN" postag_regexp="yes" />
+            </antipattern>
+            <antipattern>
+                <token postag="NN" min="1" max="3"></token>
+                <token postag="NN:UN|NN:U|NNP?S|UNKNOWN|CD" postag_regexp="yes"></token>
+            </antipattern>
+            <antipattern>
+                <token postag="NN" min="1" max="3"></token>
+                <token regexp="yes">,|and|&amp;|or</token>
+                <token postag="JJ|UNKNOWN" postag_regexp="yes" min="0" />
+                <token postag="NN.*|UNKNOWN" postag_regexp="yes" />
+            </antipattern>
+            <antipattern>
+                <token postag="NN" min="1" max="3"></token>
+                <token regexp="yes" min="0">,</token>
+                <token regexp="yes">not|instead</token>
+            </antipattern>
+            <antipattern>
+                <token postag="NN"></token>
+                <token spacebefore="no">.</token>
+                <token spacebefore="no" regexp="yes">.+</token>
+            </antipattern>
+            <antipattern>
+                <token regexp="yes">have|has|had</token>
+                <token postag="NN.*" postag_regexp="yes" min="1" max="3" />
+                <token>do</token>
+            </antipattern>
+            <antipattern>
+                <token regexp="yes">sort|kind</token>
+                <token>of</token>
+            </antipattern>
+            <antipattern>
+                <token postag="MD" />
+                <token>be</token>
+                <token postag="VBN" />
+            </antipattern>
+            <antipattern>
+                <token>echo</token>
+                <token>dot</token>
+            </antipattern>
+            <antipattern>
+                <token regexp="yes">plug|log</token>
+                <token>in</token>
+            </antipattern>
+            <antipattern>
+                <token inflected="yes" regexp="yes">keep|lose</token>
+                <token>track</token>
+            </antipattern>
+            <antipattern>
+                <token regexp="yes">that|which|who|what|when|while</token>
+                <token />
+                <token postag="VB.*" postag_regexp="yes" />
+            </antipattern>
+            <antipattern>
+                <token>got</token>
+                <token>word</token>
+            </antipattern>
+            <antipattern>
+                <token>step</token>
+                <token>by</token>
+                <token>step</token>
+            </antipattern>
+            <antipattern>
+                <token inflected="yes">get</token>
+                <token postag="VB[DN]" postag_regexp="yes" />
+            </antipattern>
+            <pattern>
+                <token postag="NNP|PRP" postag_regexp="yes">
+                    <exception>one</exception>
+                </token>
+                <token postag="MD" min="0"></token>
+                <token postag="RB" min="0">
+                    <exception postag="IN" />
+                </token>
+                <token postag="VB.*" postag_regexp="yes">
+                    <exception regexp="yes">please|cant|off|let|rule|right|con|last|google</exception>
+                    <exception inflected="yes" regexp="yes">say|mean|mention|click|tap|hit|press|hold</exception>
+                </token>
+                <!-- <token postag="JJ" min="0">
+                </token> -->
+                <marker>
+                    <token postag="NN">
+                        <exception postag="NNS|NNPS?|NN:UN?|IN|W.*|CD|JJR?|RB|PRP.*|MD|DT" postag_regexp="yes" />
+                        <exception regexp="yes">atm|able|if|setup|backup|blackout|login|logout|are|is|brand|amazon|run|given|SOL|SEG|arm|raspberry|internet|inline|auto|iot|fine</exception>
+                        <exception scope="next" regexp="yes">#?\d+</exception>
+                        <exception scope="next" postag="CD" />
+                    </token>
+                </marker>
+                <token postag="PCT|IN|JJ|CC" postag_regexp="yes">
+                    <exception regexp="yes">wide|specific|only</exception>
+                </token>
+            </pattern>
+            <message>It seems that a determiner is missing.</message>
+            <suggestion>a \5</suggestion>
+            <suggestion>the \5</suggestion>
+            <example correction="a event|the event">We can schedule <marker>event</marker>.</example>
+            <!-- <example correction="a event|the event">You schedule music <marker>event</marker>.</example> -->
+            <example correction="a car|the car">Tom regularly makes <marker>car</marker> clean.</example>
+            <example correction="a relay|the relay">Maybe you configured <marker>relay</marker> for a maintained connection.</example>
+            <example correction="a fan|the fan">I am <marker>fan</marker> of Google.</example>
+            <example correction="a bunch|the bunch">I’m trying to make my zigbee robuts I have <marker>bunch</marker> of them.</example>
+            <example correction="a bunch|the bunch">I just bought <marker>bunch</marker> of securifi peanut smart plugs.</example>
+            <example correction="a problem|the problem">If you have <marker>problem</marker> with the app itself or with the IFTTT channel, these are the people you contact.</example>
+            <example correction="a link|the link">Can you provide <marker>link</marker> to the Smartapp?</example>
+            <example correction="a sensor|the sensor">Every 24 hours we remind <marker>sensor</marker> to wake up regularly.</example>
+            <example correction="a module|the module">You can control <marker>module</marker> with this remote.</example>
+            <example correction="a hub|the hub">Do you have <marker>hub</marker>?</example>
+            <example correction="a answer|the answer">Also I got <marker>answer</marker> from support that there is no power metering in this socket.</example>
+            <example correction="a device|the device">In the Alexa app I select Smart Home then add <marker>device</marker>.</example>
+            <example>As long as the thermostat implements capability thermostat it should show up.</example>
+            <example>I wonder why I can switch on a light in a Routine.</example>
+            <example>Can you please fix this issue?</example>
+            <example>I have one integrated wall switch.</example>
+            <example>Looking for a wall Switch to replace the one I have atm.</example>
+            <example>Have they discontinued support and development for this?</example>
+            <example>We contacted support.</example>
+            <example>when I let go</example>
+            <example>I held reset for 30 seconds, still no change.</example>
+            <example>I think that makes me feel better?</example>
+            <example>At least one GE z-wave electrical outlet which I understand serve as ‘repeaters’ for the mesh network.</example>
+            <example>I always keep track.</example>
+            <example>The new Samsung Connect app.</example>
+            <example>I had given up on this.</example>
+            <example>I actually keep track of this.</example>
+            <example>If you press master B, only the light that it controls comes on.</example>
+            <example>The 2 motions that I have drop off the map for days then magically start working again.</example>
+            <example>I have Siri as a back up.</example>
+            <example>A generic Z-Wave Water Sensor handler.</example>
+            <example>I have run into this before.</example>
+            <example>When you say hub, what do you mean?</example>
+            <example>It works great.</example>
+            <example>I missed step one.</example>
+            <example>Hopefully you will be given a variety of options here.</example>
+            <example>It was closer.</example>
+            <example>I just have Siri do it.</example>
+            <example>If I open garage door 1, I see garage door 2 in the logs.</example>
+            <example>Not to throw it off topic, but it’s called an Arrival Sensor.</example>
+            <example>I use several of these handy little temperature and humidity sensors.</example>
+            <example>It is specific to the Samsung platform.</example>
+            <example>I just bought one from Amazon.</example>
+            <example>Summing up, I want wall control and automation capabilities.</example>
+            <example>I already set mine up.</example>
+            <example>Please explain step by step.</example>
+            <example>I needed smoker and meat temps.</example>
+            <example>If you have can you share your config.json with me?</example>
+            <example>I cannot find documentation on Schlage Connect.</example>
+            <example>Have you checked graph.api.smartthings.com to dig into the cause?</example>
+            <example>It’s using the HA profile and I think endpoint 3.</example>
+            <example>I use weather tile device to view the current observations.</example>
+            <example>It says no.</example>
+            <example>you can do soft reset by holding power button.</example>
+            <example>Until I hit refresh on that particular switch.</example>
+            <example>I think you need no led in your case.</example>
+            <example>Also if you look on ebay you can find brand new sealed Leviton or GE Z-Wave plus switches.</example>
+            <example>I exit full screen mode.</example>
+            <example>Look up the 3rd gen Echo Dot Mount Genie in wall mount on Amazon.</example>
+            <example>The Arlo connect smart app.</example>
+            <example>Does the remote need to be in the same room as the candles or will it work house wide?</example>
+            <example>I posted this here because it is device related.</example> <!-- TODO -->
+            <example>I believe device uptime, not distance to be the main factor.</example>
+            <example>it worked sort of.</example>
+            <example>Reports are coming in that people’s phones have been dropping off after he last update.</example>
+            <example>They now work fine.</example>
+            <example>He has lied to them.</example>
+        </rule>
         <rule id="CD_WEEK_S" name="Number + 'week's time' (weeks' time)">
             <pattern>
                 <token postag="CD"><exception regexp="yes">one|1</exception></token>
@@ -2895,6 +3070,11 @@ USA
             <example type="triggers_error">A <marker>cant</marker>, called Shelta, is spoken by Irish Travellers...</example>
         </rule>
         <rulegroup id="HELL" name="hell/shell (he'll, she'll)">
+            <antipattern>
+                <token>sure</token>
+                <token>as</token>
+                <token>hell</token>
+            </antipattern>
             <rule>
                 <pattern>
                     <marker>
@@ -3120,6 +3300,14 @@ USA
                 <example>But it's literal brain damage</example>
             </rule>
             <rule>
+                <antipattern>
+                    <token regexp="yes">first|second|third</token>
+                    <token>of</token>
+                    <token>all</token>
+                    <token>it</token>
+                    <token spacebefore="no" regexp="yes">&apostrophe;</token>
+                    <token>s</token>
+                </antipattern>
                 <pattern>
                     <token>all<exception scope="previous">after</exception></token>
                     <marker>
@@ -10466,7 +10654,7 @@ USA
             </antipattern>
             <antipattern>
                 <token regexp="yes">write|read</token>
-                <token regexp="yes">access|protection</token>
+                <token regexp="yes">access|protection|operations?</token>
             </antipattern>
             <antipattern><!-- "Thanks for the add." (https://www.urbandictionary.com/define.php?term=thanks%20for%20the%20add) -->
                 <token>for</token>
@@ -10530,11 +10718,17 @@ USA
                 <token spacebefore="no" regexp="yes">[a-z0-9\-]+</token>
                 <token spacebefore="no">.</token>
             </antipattern>
+            <antipattern>
+                <token regexp="yes" inflected="yes">click|tap</token>
+                <token min="0">on</token>
+                <token>the</token>
+                <token postag='VB|VBP' postag_regexp='yes' />
+            </antipattern>
             <pattern>
                 <token regexp='yes'>an?|the</token>
                 <token postag='VB|VBP' postag_regexp='yes'>
                     <!-- Many of the excluded words are grammatically wrong but handled by different/better rules -->
-                    <exception regexp="yes">commit|remix|long-running|spend|merge|thank|add|create|re(map|store|place|quire)</exception>
+                    <exception regexp="yes">commit|remix|long-running|spend|merge|thank|add|create|re(map|store|place|quire)|occupy|emotes?</exception>
                     <exception postag='VBP?|(SENT|PARA)_END' postag_regexp='yes' negate_pos='yes'/>
                 </token>
             </pattern>
@@ -11688,8 +11882,69 @@ USA
                     </marker>
                 </pattern>
                 <message>The word '<match no="3" />' is not a noun. Did you mean <suggestion><match no="3" regexp_match="(?i)draw" regexp_replace="drawal" /></suggestion>?</message>
+                <url>https://www.merriam-webster.com/dictionary/withdrawal</url>
                 <example correction="withdrawal">The <marker>withdraw</marker> succeeded.</example>
             </rule>
+
+            <rule default="temp_off"><!-- the seize -->
+                <pattern>
+                    <token regexp="yes">the|an?|my|y?our|his|her|their|its|s</token>
+                    <token postag="JJS?" postag_regexp="yes" min="0">
+                        <exception postag="NN.*" postag_regexp="yes" />
+                    </token>
+                    <marker>
+                        <token>seize</token>
+                    </marker>
+                </pattern>
+                <message>The word '<match no="3" />' is not a noun. Did you mean <suggestion>size</suggestion>?</message>
+                <url>https://www.merriam-webster.com/dictionary/size</url>
+                <example correction="size">Please notice the enormous <marker>seize</marker> of the Statue of Liberty.</example>
+            </rule>
+
+            <rule default="temp_off"><!-- the thieve -->
+                <pattern>
+                    <token regexp="yes">the|an?|my|y?our|his|her|their|its|s</token>
+                    <token postag="JJS?" postag_regexp="yes" min="0">
+                        <exception postag="NN.*" postag_regexp="yes" />
+                    </token>
+                    <marker>
+                        <token>thieve</token>
+                    </marker>
+                </pattern>
+                <message>The word '<match no="3" />' is not a noun. Did you mean <suggestion>thief</suggestion>?</message>
+                <url>https://www.merriam-webster.com/dictionary/thief</url>
+                <example correction="thief">The <marker>thieve</marker> stole my watch!</example>
+            </rule>
+
+            <rule default="temp_off"><!-- the relieve -->
+                <pattern>
+                    <token regexp="yes">the|an?|my|y?our|his|her|their|its|s</token>
+                    <token postag="JJS?" postag_regexp="yes" min="0">
+                        <exception postag="NN.*" postag_regexp="yes" />
+                    </token>
+                    <marker>
+                        <token>relieve</token>
+                    </marker>
+                </pattern>
+                <message>The word '<match no="3" />' is not a noun. Did you mean <suggestion>relief</suggestion>?</message>
+                <url>https://www.merriam-webster.com/dictionary/relief</url>
+                <example correction="relief">It was a <marker>relieve</marker>.</example>
+            </rule>
+
+            <rule default="temp_off"><!-- the exaggerate -->
+                <pattern>
+                    <token regexp="yes">the|an?|my|y?our|his|her|their|its|s</token>
+                    <token postag="RB" min="0"></token>
+                    <marker>
+                        <token>exaggerate</token>
+                    </marker>
+                    <token postag="NN.*" postag_regexp="yes" />
+                </pattern>
+                <message>Did you mean the adjective <suggestion>exaggerated</suggestion>?</message>
+                <url>https://www.merriam-webster.com/dictionary/exaggerated</url>
+                <example correction="exaggerated">It was a wildly <marker>exaggerate</marker> story.</example>
+            </rule>
+
             <rule><!-- the misspell -->
                 <pattern>
                     <token regexp="yes">the|an?|my|y?our|his|her|their|its|s</token>
@@ -19461,6 +19716,12 @@ USA
                 <example type="triggers_error">...were built during the Old and Middle Kingdoms, but most <marker>later rulers</marker> abandoned them in favor of...</example><!-- MFI: The adjective 'later' modifies the noun rulers. -->
             </rule>
             <rule>
+                <antipattern>
+                    <token>is</token>
+                    <token>more</token>
+                    <token>better</token>
+                    <token>?</token>
+                </antipattern>
                 <pattern>
                     <token>more<exception scope="previous" postag="CD"/></token>
                     <token postag="JJR|RBR" postag_regexp="yes"><exception>later</exception></token>
@@ -21637,7 +21898,7 @@ USA
                     <token postag="RB" min='0' max='3'><exception postag="VBD"/></token>
                     <marker>
                         <token postag="VB[GP]?" postag_regexp="yes">
-                            <exception postag="VB[ND]|JJ.*|RB|MD|IN" postag_regexp="yes"/>
+                            <exception postag="VB[NDZ]|JJ.*|RB|MD|IN" postag_regexp="yes"/>
                             <!-- already found by EN_CONTRACTION_SPELLING: -->
                             <exception>cant</exception>
                         </token>
@@ -21682,8 +21943,19 @@ USA
                 <example>When are Carl, Joseph and Laura back?</example>
                 <example>Anyone else having to deal with that problem?</example>
                 <example>Anyone going to the concert?</example>
+                <example>He then summons them.</example><!-- #2222 -->
             </rule>
             <rule>
+                <antipattern><!-- #2223 we will usually receive it so don't listen -->
+                    <token regexp="yes">it|(any|every|no|some)(one|body)</token>
+                    <token postag="CC"/>
+                    <token postag="VBP"/>
+                </antipattern>
+                <antipattern><!-- #2223 ['thus' is not a conjunction: www.lexico.com/definition/thus, www.merriam-webster.com/dictionary/thus] -->
+                    <token regexp="yes">it|(any|every|no|some)(one|body)</token>
+                    <token>thus</token>
+                    <token postag="VBP"/>
+                </antipattern>
                 <pattern>
                     <token negate="yes" regexp="yes"><exception inflected="yes" regexp="yes">feel|hear|see|insist|suggest|help|prevent|stop|of|have|be</exception>(that|how|will|must|could|can|should|would|does|did|may|might|t|let|dare|lest|without|into)</token>
                     <token regexp="yes">s?he|it|(any|every|no|some)(one|body)</token>
@@ -21704,6 +21976,10 @@ USA
                 <example correction="doesn't|didn't">He really <marker>don't</marker> like it.</example><!-- #1907 -->
                 <example>He really doesn't like it.</example>
                 <example>He really didn't like it.</example>
+                <example>If we expect the negative, we will usually receive it so don't listen to the world's negative talk.</example><!-- #2223 -->
+                <example>I don't like it therefore don't expect me to buy it.</example><!-- #2223 -->
+                <example>They don't know about it thus don't listen to them.</example><!-- #2223 -->
+                <example>She doesn't know anyone therefore don't expect her to go to the party.</example><!-- #2223 -->
             </rule>
             <rule>
                 <pattern>
@@ -21711,7 +21987,7 @@ USA
                     <token regexp="yes">s?he|(any|every|no|some)(one|body)</token>
                     <token postag="RB" min='1' max='3'><exception postag="VBD"/></token>
                     <marker>
-                        <token postag="VB[GP]?" postag_regexp="yes"><exception postag="VB[ND]|JJ.*|RB|MD" postag_regexp="yes"/>
+                        <token postag="VB[GP]?" postag_regexp="yes"><exception postag="VB[NDZ]|JJ.*|RB|MD" postag_regexp="yes"/>
                           <exception regexp='yes'>don|haven|aren</exception></token>
                     </marker>
                 </pattern>
@@ -21721,6 +21997,7 @@ USA
                 <example>He always <marker>walks</marker> to the building.</example>
                 <example>He always <marker>walked</marker> to the building.</example>
                 <example>He really don't like it.</example><!-- #1907 -->
+                <example>He then summons them.</example><!-- #2222 -->
             </rule>
             <rule>
                 <antipattern>
@@ -21981,6 +22258,7 @@ USA
                 <example>Johnson &amp; Trump are both English-speaking leaders.</example>
                 <example>YouTube channel for cooking videos.</example>
                 <example>He was required to put Mr Johnson’s Brexit deal into law.</example><!-- #2075 -->
+                <example>Jake: <marker>So</marker> explain to me why you are unhappy.</example><!-- #2224 -->
             </rule>
             <rule>
                 <pattern case_sensitive="yes">
@@ -22033,11 +22311,17 @@ USA
                     <token spacebefore="no" regexp="yes">&apostrophe;</token>
                     <token spacebefore="no">s</token>
                 </antipattern>
+                <antipattern case_sensitive="no"><!-- #2225 How are Victor and Carl related? -->
+                    <token regexp="yes">have|are</token>
+                    <token postag="NNP"/>
+                    <token regexp="yes">and|or</token>
+                    <token postag="NNP"/>
+                </antipattern>
                 <pattern case_sensitive="no">
                     <token postag="SENT_START"/>
                     <token postag="W(RB|P)" postag_regexp="yes"/>
                     <marker>
-                        <token regexp="yes">Have|Are|Am</token>
+                        <token regexp="yes">have|are|am</token>
                     </marker>
                     <token postag="NNP" regexp="yes">.{2,}<exception postag="JJ|CC|RP|DT|PRP\$|NNP?S|IN|RB|WRB" postag_regexp="yes"/></token>
                 </pattern>
@@ -22045,6 +22329,8 @@ USA
                 <example correction="has">When <marker>have</marker> Mary bought a ticket?</example>
                 <example>Why has Mary done this?</example>
                 <example>Which are Taro's?</example>
+                <example>How are Victor and Carl related?</example><!-- #2225 -->
+                <example>Why have Janet and John gone to Hull?</example><!-- #2225 -->
             </rule>
         </rulegroup>
         <rulegroup id="PRP_PAST_PART" name="Agreement error: past participle without 'have'">
@@ -30044,16 +30330,21 @@ The accident victim died from her injuries.
                 <example>Thank You For That.</example>
             </rule>
             <rule>
+                <antipattern>
+                    <token>welcome</token>
+                    <token regexp="yes">kit|package</token>
+                </antipattern>
                 <pattern>
                     <token postag="SENT_START"/>
                     <marker>
                         <token regexp="yes">Thanks|Please|Welcome|Goodbye</token>
-                        <token postag="NNP"><exception regexp="yes">for|to</exception></token>
+                        <token postag="NNP"><exception regexp="yes">for|to|in</exception></token>
                     </marker>
                 </pattern>
                 <message>When a person is directly addressed, a comma should set off the name: <suggestion>\2, \3</suggestion>?</message>
                 <short>Missing comma</short>
                 <example correction="Please, Tom"><marker>Please Tom</marker>, let us go.</example>
+                <example>Welcome In India!</example>
             </rule>
             <rule>
                 <pattern>
@@ -43203,7 +43494,7 @@ The accident victim died from her injuries.
             <rule>
                 <pattern>
                     <token regexp="yes">
-                        plenty|lots?|couple|majority|pair
+                        plenty|lots?|couple|majority|pair|bunch
                     </token>
                     <token>of</token>
                     <token postag="JJ.*" min="0" postag_regexp="yes">

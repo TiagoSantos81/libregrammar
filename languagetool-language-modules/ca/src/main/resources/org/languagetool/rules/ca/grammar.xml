@@ -2045,7 +2045,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <rule>
                 <pattern>
                     <token postag="A.*" postag_regexp="yes">bon</token>
-                    <token postag="N.MP.*" postag_regexp="yes"><exception postag="N.CN.*|A.*|V.[PIS].*|ignore_concordance|.*LOC_ADV.*" postag_regexp="yes" /></token>
+                    <token postag="N.MP.*" postag_regexp="yes"><exception postag="N.CN.*|V.[PIS].*|ignore_concordance|.*LOC_ADV.*" postag_regexp="yes" /></token>
                 </pattern>
                 <message>Error de concordança.</message>
                 <suggestion>bon <match no="2" postag="N.[MC][SN].*" postag_regexp="yes" /></suggestion>
@@ -2063,7 +2063,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                         <feature id="nombre" />
                         <feature id="genere" />
                         <token postag="A.*|PX.*" postag_regexp="yes"><exception postag="NP.*|complement.*|ignore_concordance|_possible_nompropi" postag_regexp="yes"/><exception inflected="yes" regexp="yes">plegats|junt</exception></token>
-                        <token postag="N.M.*" postag_regexp="yes"><exception postag="N.CN.*|A.*|V.[PIS].*|ignore_concordance|.*LOC_ADV.*" postag_regexp="yes" /></token>
+                        <token postag="N.M.*" postag_regexp="yes"><exception postag="N.CN.*|V.[PIS].*|ignore_concordance|.*LOC_ADV.*" postag_regexp="yes" /></token>
                     </unify>
                 </pattern>
                 <message>Error de concordança.</message>
@@ -2073,6 +2073,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="Magnífic ganivet|Magnífics ganivets"><marker>Magnífiques ganivets</marker>.</example>
                 <example correction="Magnífic ganivet|Magnífics ganivets"><marker>Magnífic ganivets</marker>.</example>
                 <example correction="Magnífic ganivet|Magnífics ganivets"><marker>Magnífiques ganivet</marker>.</example>
+                <example correction="gran mestre|grans mestres">Per <marker>grans mestre</marker></example>
                 <example>Magnífics ganivets.</example>
                 <example>Aquesta situació ha sigut acumulativa any rere any,</example>
                 <example>Durant el període medieval gremis d'artesans</example>
@@ -2095,7 +2096,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                         <feature id="nombre" />
                         <feature id="genere" />
                         <token postag="A.*|PX.*" postag_regexp="yes"><exception postag="NP.*|complement.*|ignore_concordance|_possible_nompropi" postag_regexp="yes"/><exception inflected="yes" regexp="yes">plegats|junt</exception></token>
-                        <token postag="N.F.*" postag_regexp="yes"><exception postag="N.CN.*|A.*|V.[PIS].*|ignore_concordance|.*LOC_ADV.*" postag_regexp="yes" /><exception>ca</exception></token>
+                        <token postag="N.F.*" postag_regexp="yes"><exception postag="N.CN.*|V.[PIS].*|ignore_concordance|.*LOC_ADV.*" postag_regexp="yes" /><exception>ca</exception></token>
                     </unify>
                 </pattern>
                 <message>Error de concordança.</message>
@@ -4328,24 +4329,44 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rulegroup>
     </category>
     <category id="VERBS" name="Verbs" type="grammar">
-        <rule id="VENIR_NO_REFLEXIU" name="v. venir no és reflexiu">
-            <pattern>
+        <rulegroup id="VENIR_NO_REFLEXIU" name="v. venir no és reflexiu">
+            <rule>
+                <pattern>
                     <marker>
                         <token>se</token>
-                        <token postag="P.*" postag_regexp="yes"/>
+                        <token postag="&pronom_feble;" postag_regexp="yes"/>
+                        <token inflected="yes" spacebefore="no" postag="V.[SI].3S.." postag_regexp="yes">haver</token>
                     </marker>
-                    <token min="0" inflected="yes" regexp="yes">haver|anar</token>
-                    <token inflected="yes">venir</token>
+                    <token inflected="yes" postag="V.P..SM." postag_regexp="yes">venir</token>
                     <token min="0">a</token>
                     <token regexp="yes">sobre|damunt</token>
-            </pattern>
-            <message>El v. 'venir' no és reflexiu.</message>
-            <suggestion><match no="2" regexp_match="'(.*)" regexp_replace="e$1"/></suggestion>
-            <example correction="ens">La tempesta que <marker>se'ns</marker> venia a sobre</example>
-            <example correction="li">La tempesta que <marker>se li</marker> venia a sobre</example>
-            <example correction="els">La tempesta que <marker>se'ls</marker> venia a sobre</example>
-            <example correction="em">La tempesta que <marker>se'm</marker> venia damunt</example>
-        </rule>
+                </pattern>
+                <message>El v. 'venir' no és reflexiu.</message>
+                <suggestion>\2\3</suggestion>
+                <example correction="m'ha">La tempesta que <marker>se m'ha</marker> vingut a sobre</example>
+                <example correction="t'ha">La tempesta que <marker>se t'ha</marker> vingut a sobre</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <marker>
+                        <token>se</token>
+                        <token postag="&pronom_feble;" postag_regexp="yes"/>
+                    </marker>
+                    <token min="0" inflected="yes" regexp="yes" postag="V.[SI].3S.." postag_regexp="yes">anar|haver</token>
+                    <token inflected="yes" postag="V.[SI].3S..|V.[NP].*" postag_regexp="yes">venir</token>
+                    <token min="0">a</token>
+                    <token regexp="yes">sobre|damunt</token>
+                </pattern>
+                <message>El v. 'venir' no és reflexiu.</message>
+                <suggestion><match no="2" regexp_match="'(.*)" regexp_replace="e$1"/></suggestion>
+                <example correction="ens">La tempesta que <marker>se'ns</marker> vindria a sobre</example>
+                <example correction="ens">La tempesta que <marker>se'ns</marker> ha vingut a sobre</example>
+                <example correction="li">La tempesta que <marker>se li</marker> vingué a sobre</example>
+                <example correction="els">La tempesta que <marker>se'ls</marker> vingués a sobre</example>
+                <example correction="em">La tempesta que <marker>se'm</marker> venia damunt</example>
+                <example correction="em">La tempesta que <marker>se'm</marker> va venir damunt</example>
+            </rule>
+        </rulegroup>
         <rule id="SOLO_SOLC" name="*solo/solc fer">
             <pattern>
                 <marker>
@@ -5387,6 +5408,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="hi ha">Fins <marker>ha</marker> quin punt estava decidit.</example>
                 <example correction="hi havia">No <marker>havia</marker> sortida.</example>
                 <example correction="hi ha">On se l'<marker>ha</marker> pretén col·locar.</example>
+                <example correction="hi havia">Ni tan sols <marker>havia</marker> diferències degudes a la mateixa velocitat.</example>
                 <example>no me n'hauria pas recordat.</example>
                 <example>S'han fos els ploms.</example>
                 <example>No hi ha gairebé ningú.</example>
@@ -5402,6 +5424,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>Ho havia o no ho havia assumit?</example>
                 <example>Havia o no dit això.</example>
                 <example>que anys ha degué ésser conegut</example>
+                <example>Els grafiti han estat després un tema habitual.</example>
+                <example>El que havia deixat amagat el 1944.</example>
+                <example>el disseny dels quals ha estat després utilitzat en la indústria</example>
             </rule>
             <rule>
                 <antipattern>
@@ -5522,6 +5547,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <suggestion>hi <match no="2" postag="(VA..3)P(..?)" postag_regexp="yes" postag_replace="$1S$2"/></suggestion>
                 <short>Expressió incorrecta</short>
                 <example correction="hi ha">No <marker>hi han</marker> bananes</example>
+                <example correction="Hi havia"><marker>Hi havien</marker> algunes activitats dedicades als infants.</example>
+                <example correction="hi havia">Ja <marker>hi havien</marker> 590 matriculats.</example>
                 <example>No hi ha bananes</example>
                 <example>S'hi han de fer millores.</example>
                 <example>Hi han descaradament contribuït.</example>
@@ -12392,6 +12419,18 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rulegroup>
     </category>
     <category id="CONFUSIONS" name="Z1) Confusions" type="grammar">
+        <rule id="COM_VEUREM" name="com veure'm/veurem">
+            <pattern>
+                <marker>
+                    <token>com</token>
+                    <token>veure</token>
+                    <token skip="3">'m</token>
+                </marker>
+                <token regexp="yes" inflected="yes">posteriorment|després|següent|futur</token>
+            </pattern>
+            <message>¿Volíeu dir <suggestion>com veurem</suggestion> (futur)?</message>
+            <example correction="com veurem">I, <marker>com veure'm</marker> després.</example>
+        </rule>
         <rule id="PER_LA_A" name="per la a/per a la">
             <pattern>
                 <marker>
@@ -13678,14 +13717,29 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>Atenent a tots els clients</example>
             </rule>
         </rulegroup>
-        <rule id="ALTES_ALTRES" name="altes/altres">
-            <pattern>
-                <token>altes</token>
-                <token regexp="yes">coses|causes</token>
-            </pattern>
-            <message>¿Volíeu dir <suggestion>altres \2</suggestion>?</message>
-            <example correction="altres coses">Vol <marker>altes coses</marker>.</example>
-        </rule>
+        <rulegroup id="ALTES_ALTRES" name="altes/altres">
+            <rule>
+                <pattern>
+                    <token>altes</token>
+                    <token regexp="yes">coses|causes</token>
+                </pattern>
+                <message>¿Volíeu dir <suggestion>altres \2</suggestion>?</message>
+                <example correction="altres coses">Vol <marker>altes coses</marker>.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <marker>
+                        <token>altres</token>
+                    </marker>
+                    <token>hores</token>
+                    <token>de</token>
+                    <token regexp="yes">la|l</token>
+                    <token regexp="yes">nit|vespre|matinada</token>
+                </pattern>
+                <message>¿Volíeu dir <suggestion>altes</suggestion>?</message>
+                <example correction="altes">Vam acabar a <marker>altres</marker> hores de la nit.</example>
+            </rule>
+        </rulegroup>
         <rule id="CAP_A_MUNT" name="cap *a munt/amunt">
             <pattern>
                 <token>cap</token>
@@ -21244,7 +21298,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>Vista de fora estant</example>
                 <example>deixant fora altres empreses menors</example>
                 <example>Extensió de terreny fora poblat</example>
-                <exmaple>Si fora bufa el vent, no sortim.</exmaple>
+                <example>Si fora bufa el vent, no sortim.</example>
             </rule>
             <rule>
                 <pattern>
@@ -26216,6 +26270,86 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
     </category>
     <category id="TYPOGRAPHY_OPTIONS" name="B) Opcions de tipografia" type="typographical">
         <!-- TODO: separador de milers: coma o espai fi -->
+        <rulegroup id="PUNT_EN_HORES" name="punt en les expressions d'hores" default="temp_off">
+            <url>http://esadir.cat/entrades/fitxa/node/leshores</url>
+            <url>https://aplicacions.llengua.gencat.cat/llc/AppJava/index.html;jsessionid=6E692BAB1070977E6DD710A6AAED2D07?action=Principal&amp;method=detall&amp;input_cercar=hores&amp;numPagina=1&amp;database=FITXES_PUB&amp;idFont=12804&amp;idHit=12804&amp;tipusFont=Fitxes+de+l%27Optimot&amp;numeroResultat=2&amp;databases_avansada=&amp;categories_avansada=&amp;clickLink=detall&amp;titol=Les+hores%3A+amb+lletres+o+amb+xifres%3F+%2F+Com+s%27escriuen+les+hores%3F&amp;tematica=&amp;tipusCerca=cerca.fitxes</url>
+            <rule>
+                <pattern>
+                    <token regexp="yes">([01]?\d|2[0-4])</token>
+                    <token spacebefore="no">:</token>
+                    <token spacebefore="no" regexp="yes">[012345]\d</token>
+                    <token spacebefore="no">:</token>
+                    <token spacebefore="no" regexp="yes">[012345]\d(,\d+)?</token>
+                </pattern>
+                <message>Fem servir un punt en les expressions d'hores.</message>
+                <suggestion>\1.\3.\5</suggestion>
+                <example correction="12.30.58">Són les <marker>12:30:58</marker> hores.</example>
+                <example correction="12.30.58,5">Són les <marker>12:30:58,5</marker> hores.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp="yes">([01]?\d|2[0-4])</token>
+                    <token spacebefore="no">:</token>
+                    <token spacebefore="no" regexp="yes">[012345]\d</token>
+                </pattern>
+                <message>Fem servir un punt en les expressions d'hores.</message>
+                <suggestion>\1.\3</suggestion>
+                <example correction="12.30">Són les <marker>12:30</marker> hores.</example>
+            </rule>
+        </rulegroup>
+        <rulegroup id="DOSPUNTS_EN_HORES" name="dos punts en les expressions d'hores" default="temp_off">
+            <url>http://esadir.cat/entrades/fitxa/node/leshores</url>
+            <url>https://aplicacions.llengua.gencat.cat/llc/AppJava/index.html;jsessionid=6E692BAB1070977E6DD710A6AAED2D07?action=Principal&amp;method=detall&amp;input_cercar=hores&amp;numPagina=1&amp;database=FITXES_PUB&amp;idFont=12804&amp;idHit=12804&amp;tipusFont=Fitxes+de+l%27Optimot&amp;numeroResultat=2&amp;databases_avansada=&amp;categories_avansada=&amp;clickLink=detall&amp;titol=Les+hores%3A+amb+lletres+o+amb+xifres%3F+%2F+Com+s%27escriuen+les+hores%3F&amp;tematica=&amp;tipusCerca=cerca.fitxes</url>
+            <rule>
+                <pattern>
+                    <token regexp="yes">([01]?\d|2[0-4])\.([012345]\d)\.([012345]\d(,\d+)?)</token>
+                </pattern>
+                <message>Fem servir dos punts en les expressions d'hores.</message>
+                <suggestion><match no="1" regexp_match="([01]?\d|2[0-4])\.([012345]\d)\.([012345]\d(,\d+)?)" regexp_replace="$1:$2:$3"/></suggestion>
+                <example correction="12:30:58">Són les <marker>12.30.58</marker> hores.</example>
+                <example correction="12:30:58,5">Són les <marker>12.30.58,5</marker> hores.</example>
+            </rule>
+            <rule>
+                <antipattern>
+                    <token regexp="yes">([01]?\d|2[0-4])\.([012345]\d)</token>
+                    <token postag="Y|NC.P.*" postag_regexp="yes"><exception regexp="yes">h|hores|hrs|hs|hora|am|pm</exception></token>
+                </antipattern>
+                <pattern>
+                    <token regexp="yes">([01]?\d|2[0-4])\.([012345]\d)</token>
+                </pattern>
+                <message>Fem servir dos punts en les expressions d'hores.</message>
+                <suggestion><match no="1" regexp_match="([01]?\d|2[0-4])\.([012345]\d)" regexp_replace="$1:$2"/></suggestion>
+                <example correction="12:30">Són les <marker>12.30</marker> hores.</example>
+                <example correction="12:30">Són les <marker>12.30</marker> AM.</example>
+                <example>Són <marker>12.30</marker> m.</example>
+                <example>Són <marker>12.30</marker> pessetes.</example>
+            </rule>
+        </rulegroup>
+        <rulegroup id="ESPAI_FI" name="Espai fi entre nombres i unitats" default="temp_off">
+            <url>https://aplicacions.llengua.gencat.cat/llc/AppJava/index.html?action=Principal&amp;method=detall&amp;input_cercar=percentatge&amp;numPagina=1&amp;database=FITXES_PUB&amp;idFont=8786&amp;idHit=8786&amp;tipusFont=Fitxes+de+l%27Optimot&amp;numeroResultat=1&amp;databases_avansada=&amp;categories_avansada=&amp;clickLink=detall&amp;titol=per+cent+%28s%EDmbol%29+%2F+percentatge+o+tant+per+cent+%28s%EDmbol%29&amp;tematica=&amp;tipusCerca=cerca.fitxes</url>
+            <rule>
+                <pattern>
+                    <token regexp="yes">\d[\d+\.,]*</token>
+                    <token postag="Y"/>
+                </pattern>
+                <filter class="org.languagetool.rules.WhitespaceCheckFilter" args="whitespaceChar:&#x2006; position:2"/>
+                <message>Utilitzeu un espai fi entre nombres i unitats.</message>
+                <suggestion>\1&#x2006;\2</suggestion>
+                <example correction="3&#x2006;km"><marker>3 km</marker></example>
+                <example correction="36&#x2006;mm"><marker>36 mm</marker></example>
+                <example correction="36&#x2006;mm"><marker>36&#160;mm</marker></example>
+                <example correction="36&#x2006;%"><marker>36&#160;%</marker></example>
+                <example>L'any 1560 habitants.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp="yes">[\d.,]+[%‰‱]</token>
+                </pattern>
+                <message>Utilitzeu un espai fi entre nombres i unitats.</message>
+                <suggestion><match no="1" regexp_match="(.+)([%‰‱])" regexp_replace="$1&#x2006;$2"/></suggestion> 
+                <example correction="3&#x2006;‰"><marker>3‰</marker></example>
+            </rule>
+        </rulegroup>
         <rule id="GUIONET_EN_CORRELACIONS" name="Exigeix guionet en correlacions de nombres" default="off">
             <pattern>
                 <token regexp="yes">[\d,\.]*\d</token>
@@ -26226,7 +26360,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <suggestion>\1-\3</suggestion>
             <example correction="34-36">En les pàgines <marker>34—36</marker>.</example>
             <example correction="34-36">En les pàgines <marker>34–36</marker>.</example>
-            <exmaple>En les pàgines 34-35.</exmaple>
+            <example>En les pàgines 34-35.</example>
         </rule>
         <rule id="NDASH_EN_CORRELACIONS" name="Exigeix guió mitjà en correlacions de nombres" default="off">
             <pattern>
@@ -26238,7 +26372,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <suggestion>\1–\3</suggestion>
             <example correction="34–36">En les pàgines <marker>34—36</marker>.</example>
             <example correction="34–36">En les pàgines <marker>34-36</marker>.</example>
-            <exmaple>En les pàgines 34–35.</exmaple>
+            <example>En les pàgines 34–35.</example>
         </rule>
         <rulegroup id="USA_COMA_DECIMALS" name="Usa la coma i no el punt en nombres decimals" default="on">
             <antipattern> <!-- més d'un punt -->
@@ -27997,50 +28131,13 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         <rulegroup id="PUNT_O_DOS_PUNTS_EN_HORES" name="22.30 h/22:30 h">
             <url>http://esadir.cat/entrades/fitxa/node/leshores</url>
             <url>https://aplicacions.llengua.gencat.cat/llc/AppJava/index.html;jsessionid=6E692BAB1070977E6DD710A6AAED2D07?action=Principal&amp;method=detall&amp;input_cercar=hores&amp;numPagina=1&amp;database=FITXES_PUB&amp;idFont=12804&amp;idHit=12804&amp;tipusFont=Fitxes+de+l%27Optimot&amp;numeroResultat=2&amp;databases_avansada=&amp;categories_avansada=&amp;clickLink=detall&amp;titol=Les+hores%3A+amb+lletres+o+amb+xifres%3F+%2F+Com+s%27escriuen+les+hores%3F&amp;tematica=&amp;tipusCerca=cerca.fitxes</url>
-            <!--<rule>
-                <antipattern>
-                    <token regexp="yes">[012]?\d</token>
-                    <token spacebefore="no">.</token>
-                    <token regexp="yes" spacebefore="no">[012345]\d</token>
-                    <token spacebefore="no">.</token>
-                    <token regexp="yes" spacebefore="no">[012345]\d([,.]\d+)?</token>
-                </antipattern>
-                <antipattern>
-                    <token regexp="yes">[012]?\d</token>
-                    <token spacebefore="no">:</token>
-                    <token regexp="yes" spacebefore="no">[012345]\d</token>
-                    <token spacebefore="no">:</token>
-                    <token regexp="yes" spacebefore="no">[012345]\d([,.]\d+)?</token>
-                </antipattern>
-                <pattern>
-                    <token regexp="yes">[012]?\d</token>
-                    <token regexp="yes" spacebefore="no">[,:\.]</token>
-                    <token regexp="yes" spacebefore="no">[012345]\d</token>
-                    <token regexp="yes" spacebefore="no">[,:\.]</token>
-                    <token regexp="yes" spacebefore="no">[012345]\d([,.]\d+)?</token>
-                </pattern>
-                <message>En les expressions d'hores, usem el punt o els dos punts (sistema internacional).</message>
-                <suggestion>\1.\3.\5</suggestion>
-                <suggestion>\1:\3:\5</suggestion>
-                <example correction="10.00.43|10:00:43">A les <marker>10,00,43</marker>.</example>
-                <example correction="10.00.43,5|20:00:43,5">A les <marker>10,00:43,5</marker>.</example>
-            </rule>
             <rule>
-                <pattern>
-                    <token regexp="yes">[012]?\d</token>
-                    <token spacebefore="no">,</token>
-                    <token regexp="yes" spacebefore="no">[012345]\d</token>
-                    <token regexp="yes">h|hores|hrs|hs|hora</token>
-                </pattern>
-                <message>En les expressions d'hores, usem el punt o els dos punts (sistema internacional).</message>
-                <suggestion>\1.\3&#160;\4</suggestion>
-                <suggestion>\1:\3&#160;\4</suggestion>
-                <example correction="22.50&#160;h|22:50&#160;h">A les <marker>22,50 h</marker>.</example>
-                <example correction="6.05&#160;h|6:05&#160;h">A les <marker>6,05 h</marker>.</example>
-                <example>A les 22.30 h.</example>
-                <example>L'ascenció dura 8, 10 hores.</example>
-            </rule>-->
-            <rule>
+                <antipattern>
+                    <token>h</token> <!--habitants-->
+                    <token min="0">.</token>
+                    <token regexp="yes">/|per</token>
+                    <token regexp="yes">km|km²|km2|quilòmetre|kilòmetre</token>
+                </antipattern>
                 <pattern>
                     <marker>
                         <token regexp="yes">([01]?\d|2[0-4]),[012345]\d</token>
@@ -28052,6 +28149,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <suggestion><match no="1" regexp_match="([012]?\d),([012345]\d)" regexp_replace="$1:$2"/>&#160;\2</suggestion>
                 <example correction="22.50&#160;h|22:50&#160;h">A les <marker>22,50 h</marker>.</example>
                 <example correction="6.05&#160;h|6:05&#160;h">A les <marker>6,05 h</marker>.</example>
+                <example>Una densitat de població de 5,27 h/km2</example>
+                <example>1,09 h per km</example>
+                <example>1,09 h. per km</example>
             </rule>
             <rule>
                 <pattern>
@@ -28066,8 +28166,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <suggestion><match no="3" regexp_match="([012]?\d),([012345]\d)" regexp_replace="$1:$2"/></suggestion>
                 <example correction="10.00|10:00">A les <marker>10,00</marker>.</example>
                 <example correction="10.00|10:00">De les <marker>10,00</marker> a ... </example>
-                <exmaple>un pes de 7,26 kg</exmaple>
-                <exmaple>un matalàs de caiguda de 6,50 m x 5 m.</exmaple>
+                <example>un pes de 7,26 kg</example>
+                <example>un matalàs de caiguda de 6,50 m x 5 m.</example>
             </rule>
             <rule>
                 <antipattern>
@@ -28076,7 +28176,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 </antipattern>
                 <antipattern>
                     <token regexp="yes">[012]?\d,[012345]\d</token>
-                    <token regexp="yes" inflected="yes">.*metre|.*gram|.*litre</token>
+                    <token regexp="yes" inflected="yes">.*metre|.*gram|.*litre|Ma</token>
                 </antipattern>
                 <pattern>
                     <marker>
@@ -28309,21 +28409,21 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rule>
         <rulegroup id="SUPERINDEXS" name="superíndexs en unitats: m2/m²">
             <rule>
-                <pattern case_sensitive="yes">
-                    <token regexp="yes">(m|c|d|h|k)?m2</token>
+                <pattern>
+                    <token regexp="yes" postag="Y">.*2</token>
                 </pattern>
                 <message>Si és una unitat, cal escriure un superíndex.</message>
                 <suggestion><match no="1" regexp_match="(.*)2" regexp_replace="$1²"/></suggestion>
-                <example correction="km²"><marker>km2</marker></example>
+                <example correction="km²">30 <marker>km2</marker></example>
                 <example>KM2</example>
             </rule>
             <rule>
-                <pattern case_sensitive="yes">
-                    <token regexp="yes">(m|c|d|h|k)?m3</token>
+                <pattern>
+                    <token regexp="yes" postag="Y">.*3</token>
                 </pattern>
                 <message>Si és una unitat, cal escriure un superíndex.</message>
                 <suggestion><match no="1" regexp_match="(.*)3" regexp_replace="$1³"/></suggestion>
-                <example correction="km³"><marker>km3</marker></example>
+                <example correction="m³">10 <marker>m3</marker></example>
             </rule>
         </rulegroup>
     </category>
@@ -48025,52 +48125,43 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rulegroup>
         <rulegroup id="SUBSTANTIUS_JUNTS" name="Dos noms comuns junts">
             <antipattern>
-                <marker>
-                    <token regexp="yes">causa|cost</token>
-                    <token regexp="yes">[/-]</token>
-                    <token regexp="yes">efecte|benefici</token>
-                </marker>
+                <token regexp="yes">causa|cost</token>
+                <token regexp="yes">[/-]</token>
+                <token regexp="yes">efecte|benefici</token>
             </antipattern>
             <antipattern>
-                <marker>
-                    <token inflected="yes" regexp="yes">binomi|relació</token>
-                    <token/>
-                    <token regexp="yes">[/-]</token>
-                    <token/>
-                </marker>
+                <token inflected="yes" regexp="yes">binomi|relació</token>
+                <token/>
+                <token regexp="yes">[/-]</token>
+                <token/>
             </antipattern>
             <antipattern>
-                <marker>
-                    <token inflected="yes">tenir</token>
-                    <token min="0" postag="RG"/>
-                    <token>lloc</token>
-                </marker>
+                <token inflected="yes">tenir</token>
+                <token min="0" postag="RG"/>
+                <token>lloc</token>
             </antipattern>
             <antipattern>
-                <marker>
-                    <token regexp="yes" inflected="yes">major|gran|bona|formar|fer</token>
-                    <token inflected="yes">part</token>
-                </marker>
+                <token regexp="yes" inflected="yes">major|gran|bona|formar|fer</token>
+                <token inflected="yes">part</token>
             </antipattern>
             <antipattern>
-                <marker>
-                    <token>número</token>
-                    <token postag="DN.*" postag_regexp="yes"/>
-                </marker>
+                <token>número</token>
+                <token postag="DN.*" postag_regexp="yes"/>
             </antipattern>
             <antipattern>
-                <marker>
-                    <token>el</token>
-                    <token>concepte</token>
-                </marker>
+                <token>el</token>
+                <token>concepte</token>
+            </antipattern>
+            <antipattern>
+                <token/>
+                <token regexp="yes">amunt|avall|enllà|endins|enfora</token>
             </antipattern>
             <rule>
                 <pattern>
                     <marker>
-                        <token postag="NC.*" postag_regexp="yes" regexp="yes">\p{Ll}[\p{Ll}·]+<exception postag="A.*|V.P.*|V.[NMSI].*|complement.*|DN.*|_GV_|.*LOC_ADV.*|_loc_meitat" postag_regexp="yes" /><exception regexp="yes">\p{Lu}.*</exception><exception regexp="yes" inflected="yes">factors?|mots?|paraul(a|es)|termes?|expressi(ó|ons)|vocables?|nombres?|lletr(a|es)|colors?|vegad(a|es)|volt(a|es)|cops?|noms?|majoria|substantius?|objectes?|&dies_setmana;</exception></token>
+                        <token postag="NC.*" postag_regexp="yes" regexp="yes">\p{Ll}[\p{Ll}·]+<exception postag="A.*|V.P.*|V.[NMSI].*|complement.*|DN.*|_GV_|.*LOC_ADV.*|_loc_meitat" postag_regexp="yes" /><exception regexp="yes">\p{Lu}.*</exception><exception regexp="yes" inflected="yes">símbols?|factors?|mots?|paraul(a|es)|termes?|expressi(ó|ons)|vocables?|nombres?|lletr(a|es)|colors?|vegad(a|es)|volt(a|es)|cops?|noms?|majoria|substantius?|objectes?|&dies_setmana;</exception></token>
                         <token postag="NC.*" postag_regexp="yes" regexp="yes">\p{Ll}[\p{Ll}·]+<exception postag="A.*|V.P.*|V.[NMSI].*|_GN.*|DN.*|_loc_enma|.*LOC_ADV.*|_loc_meitat" postag_regexp="yes" /><exception regexp="yes">\p{Lu}.*|fra|don|&dies_setmana;|.+ador(a|s|es)?</exception></token>
                     </marker>
-                    <token><exception regexp="yes">amunt|avall|enllà</exception></token>
                 </pattern>
                 <message>Reviseu: dos substantius junts. Potser hi falta algun element (una coma, una conjunció, una preposició).</message>
                 <short>Reviseu: dos substantius junts.</short>
@@ -48105,6 +48196,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>La despesa corrent és alta.</example>
                 <example>Una altra pràctica corrent.</example>
                 <example>El factor temps és determinant.</example>
+                <example>fins a 200 km mar endins</example>
             </rule>
         </rulegroup>
         <rulegroup id="FALTA_ELEMENT_ENTRE_GN" name="Falta un element entre grups nominals" default="off">

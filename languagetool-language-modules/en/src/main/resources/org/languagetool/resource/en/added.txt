@@ -1079,6 +1079,8 @@ Biden	Biden	NNP
 Bidibidi	Bidibidi	NNP
 big-endian	big-endian	JJ
 biocompatible	biocompatible	JJ
+biodiesel	biodiesel	NN:U
+bio-diesel	bio-diesel	NN:U
 bioenergy	bioenergy	NN:U
 bioinformatic	bioinformatic	JJ
 bioinformatics	bioinformatics	NN:U
@@ -1671,6 +1673,8 @@ ciré	ciré	NN:U
 CIS	CIS	NN
 CIS	CIS	NNP
 CISes	CIS	NNS
+cisgender	cisgender	JJ
+cisgendered	cisgendered	JJ
 Citigroup	Citigroup	NNP
 citizenise	citizenise	VB
 citizenise	citizenise	VBP
@@ -2549,6 +2553,8 @@ decontextualized	decontextualize	VBD
 decontextualized	decontextualize	VBN
 decontextualizes	decontextualize	VBZ
 decontextualizing	decontextualize	VBG
+decreasing	decreasing	JJ
+decreasing	decreasing	NN:U
 decreolisation	decreolisation	NN:UN
 decriminalisation	decriminalisation	NN:UN
 decrypt	decrypt	VB
@@ -3449,8 +3455,8 @@ divisionalizes	divisionalize	VBZ
 divisionalizing	divisionalize	VBG
 DIY	DIY	NN:U
 Diyarbakır	Diyarbakır	NNP
-DLK	DLK	NNP
 DKIM	DKIM	NN:U
+DLK	DLK	NNP
 DMs	DM	NNS
 Dnipro	Dnipro	NNP
 Docebo	Docebo	NNP
@@ -4131,6 +4137,7 @@ extranet	extranet	NN
 extranets	extranet	NNS
 extraordinaire	extraordinaire	JJ
 Extremaduran	Extremaduran	NNP
+eyewitnessed	eyewitnessed	JJ
 Eyjafjallajökull	Eyjafjallajökull	NNP
 Fabienne	Fabienne	NNP
 Fabio	Fabio	NNP
@@ -4818,7 +4825,7 @@ globalizes	globalize	VBZ
 globalizing	globalize	VBG
 Glock	Glock	NNP
 glossopteris	glossopteris	NN
-glossopteris	glossopterises	NNS
+glossopterises	glossopteris	NNS
 glowy	glowy	JJ
 gluttonise	gluttonise	VB
 gluttonise	gluttonise	VBP
@@ -5398,6 +5405,7 @@ Hoyland	Hoyland	NNP
 hryvna	hryvna	NN
 hryvnas	hryvna	NNS
 Huawei	Huawei	NNP
+Hue	Hue	NNP
 hübnerite	hübnerite	NN:U
 HubSpot	HubSpot	NNP
 Hucknall	Hucknall	NNP
@@ -6083,6 +6091,7 @@ Judaizes	Judaize	VBZ
 Judaizing	Judaize	VBG
 judder	judder	NN
 judders	judder	NNS
+judgmentally	judgmentally	RB
 judicialise	judicialise	VB
 judicialise	judicialise	VBP
 judicialised	judicialise	VBD
@@ -6485,6 +6494,7 @@ Lowes	Lowe	NNPS
 LP	LP	NN
 LPs	LP	NNS
 Lübeck	Lübeck	NNP
+lubricating	lubricating	JJ
 Luca	Luca	NNP
 Luhansk	Luhansk	NNP
 Luhmann	Luhmann	NNP
@@ -7809,6 +7819,7 @@ nephrectomized	nephrectomize	VBN
 nephrectomizes	nephrectomize	VBZ
 nephrectomizing	nephrectomize	VBG
 Nespresso	Nespresso	NNP
+Nest	Nest	NNP
 Netatmo	Netatmo	NNP
 Netgear	Netgear	NNP
 netizen	netizen	NN
@@ -10936,6 +10947,8 @@ revisualized	revisualize	VBD
 revisualized	revisualize	VBN
 revisualizes	revisualize	VBZ
 revisualizing	revisualize	VBG
+revoke	revoke	NN
+revokes	revoke	NNS
 Revolut	Revolut	NNP
 revolutionary	revolutionary	JJ
 rewire	rewire	NN
@@ -11289,6 +11302,7 @@ schismatizes	schismatize	VBZ
 schismatizing	schismatize	VBG
 scholarly	scholarly	JJ
 schröckingerite	schröckingerite	NN:U
+Schrödinger	Schrödinger	NNP
 scientise	scientise	VB
 scientise	scientise	VBP
 scientised	scientise	VBD
@@ -11325,6 +11339,8 @@ screenshots	screenshot	NNS
 screwjack	screwjack	NN
 screwjacks	screwjack	NNS
 scribbly	scribbly	JJ
+scrolling	scrolling	JJ
+scrolling	scrolling	NN:U
 SDS	SDS	NNP
 Seagate	Seagate	NNP
 sealant	sealant	NN:UN
@@ -11605,6 +11621,7 @@ sirenized	sirenize	VBD
 sirenized	sirenize	VBN
 sirenizes	sirenize	VBZ
 sirenizing	sirenize	VBG
+Siri	Siri	NNP
 sit	sit	NN
 sits	sit	NNS
 sixteenfold	sixteenfold	JJ
@@ -12081,9 +12098,9 @@ summited	summit	VBD
 summited	summit	VBN
 summiting	summit	VBG
 summits	summit	VBZ
+Sumoto	Sumoto	NNP
 Suncorp	Suncorp	NNP
 SUNDAY	Sunday	NNP
-Sumoto	Sumoto	NNP
 super	super	RB
 supercalifragilistic	supercalifragilistic	JJ
 supercalifragilisticexpialidocious	supercalifragilisticexpialidocious	JJ
@@ -12245,6 +12262,7 @@ taquería	taquería	NN
 taquerías	taquería	NNS
 Targaryen	Targaryen	NNP
 Targaryen	Targaryen	NNPS
+Tariq	Tariq	NNP
 tartarisation	tartarisation	NN:UN
 tartarise	tartarise	VB
 tartarise	tartarise	VBP
@@ -13509,6 +13527,7 @@ Willimantic	Willimantic	NNP
 willing	will	VBG
 wills	will	VBZ
 Windows	Windows	NNP
+Wink	Wink	NNP
 Wirecard	Wirecard	NNP
 wireframe	wireframe	NN
 wireframes	wireframe	NNS

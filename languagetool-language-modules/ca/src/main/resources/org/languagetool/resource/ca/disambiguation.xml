@@ -374,7 +374,7 @@ Copyright (C) 2012 Jaume Ortolà i Font
         </rule>
         <rule>
             <pattern>
-                <token>la</token>
+                <token>la<exception scope="previous" postag="D..MS." postag_regexp="yes"/></token>
                 <marker>
                     <token regexp="yes">[1234567890]+</token>
                 </marker>
@@ -4255,6 +4255,22 @@ Copyright (C) 2012 Jaume Ortolà i Font
     </rule>
     <!-- haver + participi. mogut per "han després/desprès"-->
     <rulegroup id="haver_participi" name="haver + participi">
+        <antipattern>
+            <token postag="NC[MC][SN]000" postag_regexp="yes"><exception postag="RG|V.P.*" postag_regexp="yes"/><exception inflected="yes">haver</exception></token>
+            <token postag="V.P..SM." postag_regexp="yes"/>
+        </antipattern>
+        <antipattern>
+            <token postag="NC[FC][SN]000" postag_regexp="yes"><exception postag="RG|V.P.*" postag_regexp="yes"/><exception inflected="yes">haver</exception></token>
+            <token postag="V.P..SF." postag_regexp="yes"/>
+        </antipattern>
+        <antipattern>
+            <token postag="NC[MC][PN]000" postag_regexp="yes"><exception postag="RG|V.P.*" postag_regexp="yes"/><exception inflected="yes">haver</exception></token>
+            <token postag="V.P..PM." postag_regexp="yes"/>
+        </antipattern>
+        <antipattern>
+            <token postag="NC[FC][PN]000" postag_regexp="yes"><exception postag="RG|V.P.*" postag_regexp="yes"/><exception inflected="yes">haver</exception></token>
+            <token postag="V.P..PF." postag_regexp="yes"/>
+        </antipattern>
         <rule>
             <pattern>
                 <token inflected="yes">haver</token>
@@ -13184,6 +13200,15 @@ Copyright (C) 2012 Jaume Ortolà i Font
             <disambig action="add"><wd pos="AQ0FP0" lemma="pringat"></wd></disambig>
         </rule>
     </rulegroup>
+    <rule id="UNITATS_SI" name="Sistema Internacional d'Unitats">
+        <pattern>
+            <token regexp="yes">[\d\., &#160;]+</token>
+            <marker>
+                <token regexp="yes" case_sensitive="yes">[%‰‱]|(da|h|k|M|G|T|P|E|Z|Y|d|c|m|µ|n|p|f|a|z|y)?(m|g|s|A|K|cd|mol|Hz|N|Pa|J|W|Wh|C|V|Ω|S|F|T|Wb|H|rad|sr|lm|lx|Bq|Gy|Sv|kat|l|L)[²³23]?</token>
+            </marker>
+        </pattern>
+        <disambig action="add"><wd pos="Y"></wd></disambig>
+    </rule>
     <rule name="Ignore spelling of file names" id="IGNORE_SPELLING_OF_FILE_NAMES">
         <pattern>
            <token/>
