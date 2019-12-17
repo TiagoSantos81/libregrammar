@@ -70,7 +70,7 @@
 #### Dutch
   * rules added:
      - `DutchReadabilityRule`;
-     - chemical formulas typography.
+     - typography rules for mathematical symbols, and chemical formulas.
   * activated generic Java rules, including:
      - `LongSentenceRule`, `LongParagraphRule`, `SentenceWhitespaceRule`, `WhiteSpaceAtBeginOfParagraph`,
      `EmptyLineRule`, `ParagraphRepeatBeginningRule`, `PunctuationMarkAtParagraphEnd`.
@@ -103,7 +103,7 @@
   * activated generic Java rules, including:
      - `GermanStyleRepeatedWordRule`, `LongSentenceRule`.
   * rules added:
-     - chemical formulas typography.
+     - typography rules for mathematical symbols, and chemical formulas.
 
 #### Icelandic
   * spelling suggestions now active.
@@ -125,7 +125,8 @@
   * activated generic Java rules, including:
      - `LongSentenceRule`, `LongParagraphRule`, `SentenceWhitespaceRule`, `WhiteSpaceAtBeginOfParagraph`,
      `EmptyLineRule`, `ParagraphRepeatBeginningRule`, `PunctuationMarkAtParagraphEnd`.
-  * add typography rules for mathematical symbols, chemical formulas and arrows.
+  * add rules:
+     - typography rules for mathematical symbols, chemical formulas and arrows.
   * ignore spelling of roman numbers.
   * sentences and paragraphs now end with a single line break.
 
@@ -134,7 +135,7 @@
 
 #### Polish
   * rules added:
-     - chemical formulas typography.
+     - typography rules for mathematical symbols, and chemical formulas.
   * activated generic Java rules, including:
      - `LongSentenceRule`, `LongParagraphRule`, `UppercaseSentenceStartRule`, `WhiteSpaceBeforeParagraphEnd`,
      `WhiteSpaceAtBeginOfParagraph`, `EmptyLineRule`, `ParagraphRepeatBeginningRule`, `PunctuationMarkAtParagraphEnd`.
@@ -152,7 +153,7 @@
      - [pt-PT pre-AO] [Dicionários Portugueses Complementares 1.2](https://github.com/TiagoSantos81/PortugueseLibreOfficeExtension);
      - common Portuguese rules;
      - pre-AO hyphenation rules;
-     - wrong spelling agreement errors (PortuguesePreAgreementReplaceRule);
+     - wrong spelling agreement errors (`PortuguesePreAgreementReplaceRule`);
      - capitalization rules.
   * ignore spelling of roman numbers.
   * add narrow no-break space option to typography rules.
@@ -166,7 +167,7 @@
 
 #### Spanish
   * rules added:
-     - chemical formulas typography.
+     - typography rules for mathematical symbols, and chemical formulas.
   * re-activated subject-predicate agreement category.
   * activated generic Java rules, including:
      - `LongSentenceRule`, `LongParagraphRule`, `SentenceWhitespaceRule`, `WhiteSpaceAtBeginOfParagraph`,
@@ -265,9 +266,6 @@
     (source: https://extensions.libreoffice.org/extensions/swedish-spelling-dictionary-den-stora-svenska-ordlistan)
 
 #### General
-  * The unmaintained code from package `org.languagetool.dev.wikipedia.atom`
-    has been removed. It hadn't been maintained for years and didn't work properly
-    anymore.
   * `spelling_global.txt` has been added. Words or phrases added here will
     be accepted for all languages.
   * `prohibit_custom.txt` and `spelling_custom.txt` can be used to make your
@@ -278,6 +276,9 @@
     `./org/languagetool/resource/xx/hunspell/prohibit_custom.txt`
     `./org/languagetool/resource/xx/hunspell/spelling_custom.txt`  
     Note that you can simply create these files if they don't exist for your language yet.
+  * The unmaintained code from package `org.languagetool.dev.wikipedia.atom`
+    has been removed. It hadn't been maintained for years and didn't work properly
+    anymore.
   * several bug fixes to java functions.
 
 #### LibreOffice / Apache OpenOffice Integration
