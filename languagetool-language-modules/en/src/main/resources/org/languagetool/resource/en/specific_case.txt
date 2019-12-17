@@ -1,772 +1,7 @@
 # Add phrases that occur only in this upper/lowercase writing and that
 # would otherwise be accepted by the spell checker, e.g. because "potter"
-# in "Harry potter" is a valid word when not considering context.
-# Used by SpecificCaseRule.java
-#
-# Geographical names
-Abaiang Atoll
-Abemama Atoll
-Achill Island
-Admiralty Islands
-Adriatic Sea
-Aegean Islands
-Aegean Sea
-Agalega Islands
-Aitutaki Atoll
-Åland Islands
-Alborán Island
-Alcatraz Island
-Aldabra Islands
-Aleutian Islands
-Alexander Archipelago
-Alexander Island
-Alor Islands
-Amakusa Islands
-Amami Great Island
-Amazon River
-Amorgós Island
-Amu Darya River
-Anai Peak
-Andaman Islands
-Andreanof Islands
-Andros Island
-Antipodes Islands
-Arabian Sea
-Aran Islands
-Arctic Archipelago
-Arctic Ocean
-Arguin Island
-Arkansas River
-Aru Islands
-Ashmore and Cartier Islands
-Assateague Island
-Atlantic Ocean
-Atlas Mountains
-Auckland Islands
-Aunuu Island
-Awaji Island
-Babar Island
-Babuyan Islands
-Backbone Mountain
-Baffin Island
-Baker Island
-Baldy Mountain
-Balearic Islands
-Baltic Sea
-Baltra Island
-Bananal Island
-Banda Islands
-Bandeira Peak
-Banggai Islands
-Banks Island
-Banks Islands
-Banyak Islands
-Bardsey Island
-Barlavento Islands
-Barrow Island
-Bass Rock
-Batan Islands
-Bathurst Island
-Batu Islands
-Bay Islands
-Bazaruto Island
-Belcher Islands
-Bélep Islands
-Bell Island
-Ben Cruachan
-Bengkalis Island
-Ben Nevis
-Ben Rinnes
-Ben Wyvis
-Biak Island
-Big Rock Candy Mountain
-Bihor Massif
-Bijagós Islands
-Bimini Islands
-Bird Island
-Bismarck Archipelago
-Black Sea
-Block Island
-Boa Vista Island
-Bolívar Peak
-Bonin Islands
-Borromean Islands
-Bougainville Island
-Bounty Islands
-Bouvet Island
-Brahmaputra River
-Brampton Island
-Brandon Mountain
-Brava Island
-Bribie Island
-British Virgin Islands
-Bruny Island
-Buccaneer Archipelago
-Bucegi Massif
-Buka Island
-Butaritari Atoll
-Byam Martin Island
-Calamian Group
-Caldey Island
-Campbell Island
-Campobello Island
-Canary Islands
-Canvey Island
-Cape Breton Island
-Capraia Island
-Caprera Island
-Capricorn and Bunker Groups
-Caribbean Sea
-Caroline Atoll
-Caroline Islands
-Caspian Sea
-Cayman Islands
-Central African Republic
-Cerro Mercedario
-Chafarinas Islands
-Chagos Archipelago
-Chang Jiang River
-Channel Islands
-Chatham Islands
-Cheduba Island
-Cheju Island
-Chesterfield Islands
-Chiloé Island
-Chincha Islands
-Chongming Island
-Cho Oyu
-Christmas Island
-Chuuk Islands
-Clare Island
-Clipperton Island
-Cockspur Island
-Cocos Island
-Cocos Islands
-Coiba Island
-Colorado River
-Columbia River
-Concepción Volcano
-Con Son Island
-Cook Islands
-Coral Sea
-Coral Sea Islands
-Corn Islands
-Cornwallis Island
-Corregidor Island
-Corvo Island
-Cradle Mountain
-Croagh Patrick
-Croker Island
-Crozet Islands
-Culion Island
-Cumberland Islands
-Czech Republic
-Daitō Islands
-Dakhin Shahbazpur Island
-Danube River
-Darling River
-Dauphin Island
-Deception Island
-Devils Island
-Devon Island
-Diomede Islands
-Dirk Hartog Island
-Dnieper River
-Doda Betta
-Dominican Republic
-Don River
-Duke of York Group
-Dunk Island
-Easter Island
-Egadi Islands
-Elephanta Island
-Elizabeth Islands
-Ellesmere Island
-Ellis Island
-Enderbury Atoll
-Enggano Island
-Eolie Islands
-Española Island
-Euphrates River
-Exuma Cays
-Eyjafjallajökull volcano
-Faial Island
-Falkland Islands
-Fan Si Peak
-Far East
-Farne Islands
-Faroe Islands
-Fergusson Island
-Fernandina Island
-Fernando de Noronha Island
-Fire Island
-Flinders Island
-Flint Island
-Flores Island
-Fogo Island
-Fox Islands
-Fraser Island
-French Island
-Frisian Islands
-Fuerteventura Island
-Funafuti Atoll
-Furneaux Group
-Galapagos Islands
-Galdhø Peak
-Gambier Islands
-Ganges River
-Garden Island
-Gerlach Peak
-Giglio Island
-Gilbert Islands
-Glitter Mountain
-Goodenough Island
-Gorée Island
-Gotō Islands
-Gough Island
-Goulburn Islands
-Governador Island
-Governors Island
-Graciosa Island
-Grand Bahama Island
-Grand Manan Island
-Granite Peak
-Gran Paradiso
-Great Barrier Island
-Greater Antilles
-Great Rye Island
-Green Island
-Guadalcanal Island
-Guadalupe Peak
-Gulf of Aden
-Gulf of Mexico
-Gulf of Oman
-Haʿapai Group
-Ḥanīsh Islands
-Hatia Islands
-Hawaiian Islands
-Hayman Island
-Heard Island
-Heilong River
-Heron Island
-High Point
-Hilton Head Island
-Hinchinbrook Island
-Hinn Island
-Holy Island
-Horne Islands
-Howland Island
-Huang He River
-Humphreys Peak
-Hunter Island
-Huon Islands
-Imeni Ismail Samani Peak
-Indus River
-Ionian Islands
-Irazú Volcano
-Irrawaddy River
-Irtish River
-Isabela Island
-Island of Capri
-Island of Ischia
-Island of Mozambique
-Island of Procida
-Isle of Man
-Itsuku Island
-Ivory Coast
-Izalco Volcano
-Izu Islands
-Jaluit Atoll
-Japurá River
-Jarvis Island
-Jaya Peak
-Johnston Atoll
-Jost Van Dyke Island
-Juan Fernández Islands
-Kadavu Island
-Kaffeklubben Island
-Kai Islands
-Kanaga Island
-Kangaroo Island
-Kangean Islands
-Kanghwa Island
-Kanton Atoll
-Kapiti Island
-Karl Marx Peak
-Karm Island
-Kerguelen Islands
-Kermadec Islands
-Khan Tängiri Peak
-Kharg Island
-King Christian Island
-King Island
-Kings Peak
-King William Island
-Kiritimati Atoll
-Kizhi Island
-Klyuchevskaya Volcano
-Kodiak Island
-Kolguyev Island
-Komandor Islands
-Kuril Islands
-Kwajalein Atoll
-Lakeba Island
-Lampedusa Island
-Langkawi Island
-Lantao Island
-Lassen Peak
-Lau Group
-Laut Island
-Leeward Islands
-Lena River
-Lenin Peak
-Lesser Antilles
-Liberty Island
-Lifou Island
-Likoma Island
-Lindeman Island
-Line Islands
-Linosa Island
-Little Barrier Island
-Lomblen Island
-Long Island
-Los Islands
-Louisiade Archipelago
-Loyalty Islands
-Lugnaquillia Mountain
-MacCarthy Island
-Mackenzie River
-Mackinac Island
-Mactan Island
-Maddalena Island
-Madeira Islands
-Madeira River
-Madera Volcano
-Mafia Island
-Magnetic Island
-Mahé Island
-Maio Island
-Maipo Volcano
-Malay Archipelago
-Malden Island
-Maldive Islands
-Manāslu I
-Manihiki Atoll
-Manitoulin Islands
-Mannar Island
-Manuae Atoll
-Manua Islands
-Manus Island
-Marajó Island
-Marchena Island
-Maré Island
-Margarita Island
-Margherita Peak
-Maria Island
-Mariana Islands
-Marion Island
-Marquesas Islands
-Marshall Islands
-Martín García Island
-Mascarene Islands
-Matsu Island
-Matthew Island
-Mauna Kea
-Mauna Loa
-Mayon Volcano
-McDonald Islands
-Meighen Island
-Mekong River
-Melville Island
-Mentawai Islands
-Mergui Archipelago
-Middle East
-Midway Islands
-Minamitori Island
-Misima Island
-Misool Island
-Mississippi River
-Missouri River
-Misti Volcano
-Molle Islands
-Mont Blanc
-Montebello Islands
-Montecristo Island
-Monte Rosa
-Moreton Island
-Mount Aconcagua
-Mount Agou
-Mount Agung
-Mount Apo
-Mount Aragats
-Mount Ararat
-Mount Arvon
-Mount Aso
-Mount Aspiring
-Mount Athos
-Mount Babia
-Mount Bamba
-Mount Bartle Frere
-Mount Belukha
-Mount Bia
-Mount Bogong
-Mount Bruce
-Mount Cameroon
-Mount Canlaon
-Mount Chélia
-Mount Chorolque
-Mount Cook
-Mount Corcovado
-Mount Damāvand
-Mount Desert Island
-Mount Elbert
-Mount Elbrus
-Mount Elgon
-Mount Etna
-Mount Everest
-Mount Fairweather
-Mount Field
-Mount Frissell
-Mount Fuji
-Mount Gerizim
-Mount Gongga
-Mount Haltia
-Mount Helicon
-Mount Hiei
-Mount Hood
-Mount Huascarán
-Mount Huila
-Mount Hymettus
-Mount Inthanon
-Mount Karisimbi
-Mount Katahdin
-Mount Kātrīnā
-Mount Kazbek
-Mount Kenya
-Mount Kinabalu
-Mount Kosciuszko
-Mount Koussi
-Mount Kōya
-Mount Logan
-Mount Merapi
-Mount Meru
-Mount Mikeno
-Mount Mitchell
-Mount Monadnock
-Mount Narodnaya
-Mount Nebo
-Mount Nyamulagira
-Mount Nyiragongo
-Mount Olympus
-Mount Ontake
-Mount Ossa
-Mount Pangaion
-Mount Parnassus
-Mount Parnis
-Mount Pelée
-Mount Pelion
-Mount Pinatubo
-Mount Rainier
-Mount Rogers
-Mount Ruapehu
-Mount Ruiz
-Mount Rushmore
-Mount Saint Elias
-Mount Shasta
-Mount Sinai
-Mount Suthep
-Mount Tabor
-Mount Tahan
-Mount Tai
-Mount Tambora
-Mount Taranaki
-Mount Toba
-Mount Tolima
-Mount Toubkal
-Mount Tupungato
-Mount Whitney
-Mount Wutai
-Muhu archipelago
-Muna Island
-Murray River
-Muyua Island
-Nanga Parbat
-Nassau Island
-Near East
-Near Islands
-Neblina Peak
-Nelson River
-Netherlands Antilles
-Nevado Illimani
-New Britain
-New Caledonia
-Newfoundland and Labrador
-New Georgia Islands
-New Guinea
-New Ireland
-New Providence Island
-New Siberian Islands
-New Zealand
-Nicobar Islands
-Niger River
-Nile River
-Niuatoputapu Group
-Norfolk Island
-Normanby Island
-North and South Stradbroke Islands
-Northern Mariana Islands
-North Frisian Islands
-North Island
-North Pole
-Nunivak Island
-Obi Islands
-Ob River
-Oki Islands
-Ol Doinyo Lengai
-Olkhon Island
-Ometepe Island
-Ontong Java Atoll
-Orange River
-Orinoco River
-Orkney Islands
-Ōsumi Archipelago
-Ouessant Island
-Out Islands
-Ouvéa Island
-Padre Island
-Palmer Archipelago
-Palmerston Atoll
-Palmyra Atoll
-Panama Canal
-Pantar Island
-Pantelleria Island
-Papua New Guinea
-Paraguay River
-Paraná River
-Parris Island
-Parry Islands
-Peace River
-Pearl Islands
-Pelagie Islands
-Pelee Island
-Pemba Island
-Penrhyn Atoll
-Perim Island
-Phillip Island
-Phoenix Islands
-Phu Quoc Island
-Pianosa Island
-Pico Island
-Pilcomayo River
-Pinta Island
-Pinzón Island
-Pitcairn Island
-Ponza Islands
-Popa Hill
-Praslin Island
-Pribilof Islands
-Prince Edward Island
-Prince of Wales Island
-Prince Patrick Island
-Princess Royal Island
-Pukapuka Atoll
-Puná Island
-Purus River
-Qeys Island
-Queen Elizabeth Islands
-Rábida Island
-Rakahanga Atoll
-Rat Islands
-Red Rock River
-Ré Island
-Rennell Island
-Revillagigedo Islands
-Revolution Peak
-Rialto Islands
-Rikers Island
-Rio Grande
-Rio Grande River
-Roanoke Island
-Robben Island
-Rocky Mountains
-Rodna Massif
-Rodrigues Island
-Roosevelt Island
-Rose Atoll
-Rossel Island
-Ross Island
-Roti Island
-Rottnest Island
-Rupat Island
-Ryukyu Islands
-Sable Island
-Sagar Island
-Sahara desert
-Saint Clements Island
-Saint Paul Island
-Saint Peter and Saint Paul Rocks
-Sakhalin Island
-Sal Island
-Salween River
-Samana Cay
-San Cristóbal Island
-Sandwip Island
-San Francisco Peaks
-Sangihe Islands
-Sanibel Island
-San Juan Islands
-San Salvador Island
-Santa Ana Volcano
-Santa Catalina Island
-Santa Cruz Island
-Santa Cruz Islands
-Santa Fe Island
-Santa Luzia Island
-Santa Maria Island
-Santa María Island
-Santo Antão Island
-São Francisco River
-São Jorge Island
-São Miguel Island
-São Nicolau Island
-São Vicente Island
-Saskatchewan River
-Sassafras Mountain
-Sawu Islands
-Schouten Islands
-Sea Islands
-Seymour Island
-Sherbro Island
-Shetland Islands
-Shortland Islands
-Siberut Island
-Silhouette Island
-Simeulue Island
-Sint Maarten
-Sir Edward Pellew Group
-Slieve Croob
-Slieve Donard
-Snares Islands
-Society Islands
-Sohano Island
-Solomon Islands
-Solor Islands
-Solovets Islands
-Somerset Island
-Sorenarwa Island
-Sotavento Islands
-Southampton Island
-South Island
-South Orkney Islands
-South Pole
-South Sandwich Islands
-South Shetland Islands
-Starbuck Island
-Staten Island
-Stewart Island
-Stonington Island
-Stromboli Island
-Suez Canal
-Sugar Loaf
-Sulu Archipelago
-Sunda Islands
-Sungari River
-Suwarrow Atoll
-Sverdrup Islands
-Swains Island
-Swan Islands
-Table Mountain
-Taboga Island
-Tabuaeran Atoll
-Tagula Island
-Tajumulco Volcano
-Talaud Islands
-Tanimbar Islands
-Tarakan Island
-Taveuni Island
-Teide Peak
-Teraina Island
-Terceira Island
-Ternate Island
-Thabana Ntlenyana
-Thousand Islands
-Three Kings Islands
-Thursday Island
-Tidore Island
-Tierra del Fuego
-Tigris River
-Tioman Island
-Tirich Mir
-Tocantins River
-Tongatapu Group
-Torres Islands
-Torres Strait Islands
-Tortue Island
-Trobriand Islands
-Tropic of Cancer
-Tropic of Capricorn
-Tuamotu Archipelago
-Tubuai Islands
-Turks and Caicos Islands
-Tutuila Island
-Ulithi Atoll
-Ullung Island
-United Arab Emirates
-United Kingdom
-United States
-United States Virgin Islands
-Ural River
-Vancouver Island
-Vavaʿu Group
-Vestmanna Islands
-Victoria Island
-Victoria Peak
-Victory Peak
-Villegagnon Island
-Vinson Massif
-Virgin Gorda Island
-Virgin Islands
-Visayan Islands
-Volcano Islands
-Volcano Pico de Orizaba
-Volga River
-Vostok Island
-Vulcano Island
-Waigeo Island
-Waiheke Island
-Wake Island
-Wallis Islands
-Walpole Island
-Wasser Mountain
-Wellesley Islands
-Wessel Islands
-West Frisian Islands
-Wetar Island
-Whidbey Island
-Whiddy Island
-White Island
-Whitsunday Island
-Witu Islands
-Wrangel Island
-Xi Jiang River
-Yangtze River
-Yap Islands
-Yasawa Group
-Yellow River
-Yenisei River
-Yukon River
-Zaire River
-Zambezi River
-Zhoushan Archipelago
-
-# Various
-Dave Matthews Band
-Linkin Park
-Pearl Jam
-Rage Against the Machine
-The Smashing Pumpkins
-Supreme Court
-da Vinci
+# in "Harry potter" is a valid word when not considering context. 
+# Used by org.languagetool.rules.en.SpecificCaseRule
 Harry Potter
 Elon Musk
 Stephen Hawking
@@ -817,6 +52,7 @@ Central Park
 Times Square
 North Dakota
 South Dakota
+Rhode Island
 New Mexico
 Salt Lake City
 Oklahoma City
@@ -880,6 +116,7 @@ Labour Day
 Memorial Day
 Thanksgiving Day
 Mount Everest
+Daily Telegraph
 United Nations
 Mickey Mouse
 Walt Disney Studios
@@ -914,11 +151,13 @@ Donald Duck
 Daisy Duck
 Statue of Liberty
 Green Bay Packers
+Green Bay
 Blue Origin
 Red Hot Chili Peppers
 Red Army
 Red Army Fraction
 Black Sea
+Black Sabbath
 Milky Way
 Orange County
 Purple Heart
@@ -931,6 +170,7 @@ Fox News
 Fox NFL
 Fox Sports
 Capital One
+Pizza Hut
 Bed Bath & Beyond
 Bed Bath and Beyond
 Harbor Freight Tools
@@ -1032,7 +272,7 @@ United Airlines
 Toy Story
 Captain Marvel
 Fast & Furious
-# The Avengers
+The Avengers
 Jurassic Park
 Jurassic World
 Bohemian Rhapsody
@@ -1043,7 +283,7 @@ Ocean’s 12
 Ocean's 13
 Ocean’s 13
 Tomb Raider
-# Prime Day
+Prime Day
 Samsung Galaxy
 Galaxy S6
 Galaxy S7
@@ -1185,7 +425,7 @@ Dirty Dancing
 Forrest Gump
 The Silence of the Lambs
 Pulp Fiction
-The Great Wall
+#The Great Wall
 Los Angeles Times
 Houston Chronicle
 Chicago Tribune
@@ -1236,8 +476,8 @@ Led Zeppelin
 VW Beetle
 Volkswagen Beetle
 Black Sabbath
-# Iron Maiden
-# Foo Fighters
+Iron Maiden
+Foo Fighters
 Linkin Park
 Bank of Scotland
 Bank of China
@@ -1250,13 +490,13 @@ Model Y
 Model 3
 Beverly Hills
 Capitol Hill
-# Thousand Oaks
+Thousand Oaks
 Simi Valley
 Stinson Beach
 Redwood City
 Half Moon Bay
 Daly City
-# Garden City
+Garden City
 Staten Island
 White Plains
 East Orange
@@ -1267,12 +507,12 @@ Fire Island
 Sandy Hook
 Captain Hook
 Tim Cook
-# Family Guy
-# American Horror Story
+Family Guy
+American Horror Story
 Grey's Anatomy
 Grey’s Anatomy
 Fifty Shades of Grey
-# Stranger Things
+#Stranger Things
 The Man in the High Castle
 Navy CIS
 Costco Wholesale
@@ -1287,7 +527,7 @@ Super Nintendo
 Black Friday
 Larry King
 King of Queens
-King of the Hill
+#King of the Hill
 King’s College
 King's College
 King Kong
@@ -1296,7 +536,7 @@ Dolby Digital
 Iron Man
 Tony Stark
 Legend of Zelda
-# Rapid City
+Rapid City
 Woody Allen
 North Macedonia
 South Sudan
@@ -1351,7 +591,7 @@ Trinity Church
 United States Supreme Court
 World Health Organization
 Meek Mill
-# City of London
+City of London
 Olympic Games
 Cyber Monday
 Dallas Mavericks
@@ -1456,8 +696,10 @@ Davidson County
 Bernalillo County
 Hudson County
 Magic Johnson
+Fat Joe
 Larry Page
 Larry Bird
+Miami Hurricanes
 Premier League
 Penn State
 Kemba Walker
@@ -1489,7 +731,9 @@ Grammy Award
 Grammy Awards
 Gray Davis
 Coles County
+King of Pop
 American Music Awards
+King of Jerusalem
 Kingdom of Great Britain
 Union Jack
 Union Pacific Railroad
@@ -1499,6 +743,7 @@ Alameda Street
 Union of South American Nations
 United States House of Representatives
 United States Capitol
+National Mall
 Lincoln Memorial
 House of Commons
 House of Lords
@@ -1519,6 +764,7 @@ Treasure Island
 Beauty and the Beast
 Lion King
 Monsters University
+Finding Dory
 Jungle Book
 Pirates of the Caribbean
 South Jamaica
@@ -1560,7 +806,8 @@ South Pole
 Camp David
 Federal Bureau of Investigation
 Central Intelligence Agency
-# Secret Service
+Secret Service
+Machine Gun Kelly
 Interscope Records
 Billboard Hot 100
 New York Mortgage Trust
@@ -1611,6 +858,7 @@ Hans Christian Andersen
 Mexico City
 Lord's Prayer
 Middle East
+Wikimedia:Manual of Style
 Martin Luther King Jr.
 Marie Curie
 Solomon Islands
@@ -1693,7 +941,8 @@ Caribbean Sea
 Crimean Peninsula
 Elizabeth I of England
 Lake Baikal
-United States dollar
+Citrus ×limon
+# United States dollar
 Ancient Egypt
 Mississippi River
 Microsoft Windows
@@ -1738,8 +987,10 @@ Sun Tzu
 AD 1000
 Ban Ki-moon
 Stone Age
+Rocky Mountains
 Basque Country
 National Aeronautics and Space Administration
+Romance languages
 Max Weber
 Peter Paul Rubens
 Central Europe
@@ -1752,6 +1003,7 @@ Panama City
 East Asia
 International Monetary Fund
 H. G. Wells
+La concha de tu mamá
 Dead Sea
 La Paz
 Iberian Peninsula
@@ -1771,7 +1023,7 @@ T. S. Eliot
 Xi Jinping
 Vietnam War
 One Thousand and One Nights
-FIFA World Cup
+2014 FIFA World Cup
 Great Lakes
 Anne Frank
 Ho Chi Minh
@@ -1822,7 +1074,7 @@ Valentine's Day
 Ficus carica
 Arabian Peninsula
 Formula One
-Summer Olympics
+2012 Summer Olympics
 John Milton
 Lake Tanganyika
 Berlin Wall
@@ -1841,7 +1093,7 @@ Rutherford B. Hayes
 State of Palestine
 Cocos nucifera
 Aosta Valley
-Summer Olympics
+2016 Summer Olympics
 Rainer Maria Rilke
 Zheng He
 World Bank
@@ -1873,7 +1125,8 @@ Franklin Pierce
 Commonwealth of Independent States
 Don Quixote
 Gospel of John
-# The Ten Commandments
+list of Presidents of the United States
+#The Ten Commandments
 Norfolk Island
 John XXIII
 House Sparrow
@@ -1913,13 +1166,14 @@ International Women's Day
 Port Vila
 Aral Sea
 Ural Mountains
+How to create a user account
 International Space Station
 Komi Republic
 Prince Edward Island
 Diana, Princess of Wales
 Satyajit Ray
 Pearl S. Buck
-The Internationale
+#The Internationale
 Mount Fuji
 Port of Spain
 South China Sea
@@ -1928,14 +1182,14 @@ Chester A. Arthur
 GNU Free Documentation License
 Juventus F.C.
 Tuva Republic
-International Red Cross
-Red Crescent Movement
+International Red Cross and Red Crescent Movement
 Malcolm X
 Piper nigrum
 Gospel of Luke
 Jack Nicholson
 Internet Movie Database
 John Paul I
+Indigenous peoples of America
 South Georgia and the South Sandwich Islands
 English Channel
 Saint Paul
@@ -1945,6 +1199,7 @@ John Keats
 Karachay-Cherkess Republic
 Western Australia
 Southern Africa
+ISO 3166–1: Codes for the representation of names of countries and their subdivisions—Part 1: Country codes
 Chris Pine
 Pays de la Loire
 Da Nang International Airport
@@ -2086,7 +1341,7 @@ Global Positioning System
 St. Peter's Basilica
 North Brabant
 Tang Empire
-Winter Olympics
+2010 Winter Olympics
 Epic of Gilgamesh
 #The Art of War
 Karl Popper
@@ -2097,7 +1352,7 @@ Horn of Africa
 John Wayne
 Astrakhan Oblast
 Western Asia
-UEFA Euro
+UEFA Euro 2012
 #Bad Cat
 Great Depression
 Jewish Autonomous Oblast

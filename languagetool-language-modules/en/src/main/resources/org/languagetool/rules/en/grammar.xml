@@ -12461,7 +12461,7 @@ USA
             <rule>
                 <pattern>
                     <token regexp="yes">the|an?</token>
-                    <token postag="JJS?" postag_regexp="yes" min="0">
+                    <token postag="JJ.*" postag_regexp="yes" min="0">
                         <exception postag="NN.*" postag_regexp="yes" />
                     </token>
                     <marker>
@@ -12474,7 +12474,9 @@ USA
             <rule>
                 <pattern>
                     <token regexp='yes'>an?|the|that|which|this|those|my|his|her|their|our|your|s</token>
-                    <token postag="JJS?|VBD" postag_regexp="yes" min="0" />
+                    <token postag="JJ.*|VBD" postag_regexp="yes" min="0">
+                        <exception postag="NN.*" postag_regexp="yes" />
+                    </token>
                     <marker>
                         <token case_sensitive="yes" regexp="yes">google|excel|chevy|react|skype|photoshop|kindle|discover|aspire|velcro|intuit</token>
                     </marker>
@@ -12492,6 +12494,7 @@ USA
                 <example>The bassist who wanted to <marker>excel</marker> at improvising</example>
                 <example>He wanted to <marker>google</marker> for the medicine.</example>
                 <example>The <marker>Chevy</marker> Impala is a beautiful car.</example>
+                <example>Brand advertising presents a substantial opportunity to help people around the world discover Google's brand and products.</example>
                 <example>Let's google life.</example>
                 <example correction="Excel">The <marker>excel</marker>, powerpoint and word program.</example>
                 <example correction="Skype">Please open your <marker>skype</marker>.</example>
@@ -12807,6 +12810,28 @@ USA
                 <example correction="Office 365">My <marker>office365</marker> license expired.</example>
             </rule>
         </rulegroup>
+        <rule id="VITAMIN_C" name="vitamin C" default="temp_off">
+            <antipattern case_sensitive="yes">
+                <token regexp="yes">vitamin|VITAMIN</token>
+                <token regexp="yes">[A-Z]</token>
+            </antipattern>
+            <antipattern>
+                <token postag="SENT_START" />
+                <token>Vitamin</token>
+            </antipattern>
+            <antipattern>
+                <token regexp="yes">:|;</token>
+                <token>Vitamin</token>
+            </antipattern>
+            <pattern>
+                <token>vitamin</token>
+                <token regexp="yes">[A-Z]</token>
+            </pattern>
+            <message>The word 'vitamin' is not capitalized in <suggestion><match no="1" case_conversion="alllower" /> <match no="2" case_conversion="allupper" /></suggestion></message>
+            <url>https://www.merriam-webster.com/dictionary/vitamin%20C</url>
+            <example correction="vitamin C">Prolonged storage or cooking may reduce <marker>Vitamin C</marker> content in foods.</example>
+            <example>Vitamin C</example>
+        </rule>
         <rule id="WHATS_APP" name="WhatsApp">
             <pattern>
                 <token>whats</token>
@@ -12995,9 +13020,41 @@ USA
                 <token regexp="yes">highs?|lows?|highest|lowest|best|medals?|roads?|classics?|favou?rites?|awards?|leaders?|cinemas?|box|world|sales?|baseball|football|career|college|comparisons?|champions?|era|faves?|scorers?|goalscorers?|great(est)?|greats|records?|goal|hits?|interceptions?|international|jokes|jazz|movies?|nfl|nhl|nba|number|ops|olympic|office|points?|quarterback|stats?|scoring|strikeout|strikers?|touchdown|usa?|ucl|views|winners?|yankees|zones?</token>
             </pattern>
             <message>It appears that a hyphen is missing in the adjective <suggestion>\1-\2</suggestion></message>
+            <url>https://www.merriam-webster.com/dictionary/all-time</url>
             <example correction="all-time">He is the best <marker>all time</marker> goalscorer.</example>
             <example>He is the best of all time.</example>
         </rule>
+        <rulegroup id="ALL_IN_ONE_HYPHEN" name="missing hyphens in 'all-in-one'" default="temp_off">
+            <url>https://www.lexico.com/definition/all_in_one</url>
+            <rule>
+                <pattern>
+                    <token regexp="yes">the|an?|my|your|his|her|our|its|s|many|this</token>
+                    <token postag="JJ.*" postag_regexp="yes" min="0" max="2" />
+                    <marker>
+                        <token>all</token>
+                        <token>in</token>
+                        <token>one</token>
+                    </marker>
+                </pattern>
+                <message>It seems that hyphens are missing.</message>
+                <suggestion>\3-\4-\5</suggestion>
+                <example correction="all-in-one">It's an <marker>all in one</marker> solution.</example>
+                <example>They are driving all in one car.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <marker>
+                        <token>all</token>
+                        <token>in</token>
+                        <token>one</token>
+                    </marker>
+                    <token postag="IN"><exception>to</exception></token>
+                </pattern>
+                <message>It seems that hyphens are missing.</message>
+                <suggestion>\1-\2-\3</suggestion>
+                <example correction="all-in-one">The <marker>all in one</marker> for beginners .</example>
+            </rule>
+        </rulegroup>
         <rule id="AFRO_AMERICAN_HYPHEN" name="missing hyphen in 'Afro American'">
             <pattern>
                 <token>afro</token>
@@ -13005,9 +13062,10 @@ USA
             </pattern>
             <message>It appears that a hyphen is missing.</message>
             <suggestion><match no="1" case_conversion="startupper" />-<match no="2" case_conversion="startupper" /></suggestion>
+            <url>https://www.merriam-webster.com/dictionary/Afro-American</url>
             <example correction="Afro-American">He is an <marker>afro american</marker>.</example>
         </rule>
-        <rulegroup id="ZERO_DAY_EXPLOIT" name="a zero day (zero-day) exploit">
+        <rulegroup id="ZERO_DAY_EXPLOIT_HYPHEN" name="a zero day (zero-day) exploit">
             <rule>
                 <pattern>
                     <marker>
@@ -13050,6 +13108,7 @@ USA
             </pattern>
             <message>It appears that two hyphens are missing.</message>
             <suggestion>\2-\3-\4</suggestion>
+            <url>https://www.merriam-webster.com/dictionary/day-to-day</url>
             <example>I'm living from <marker>day to day</marker>.</example>
             <example correction="month-to-month">My lease is up, so now I'm on the ordinary <marker>month to month</marker> portion of the contract.</example>
             <example correction="day-to-day">My <marker>day to day</marker> routine during finals weeks did not change dramatically</example>
@@ -25470,6 +25529,11 @@ USA
                     <token chunk="B-NP-singular"><match no="1"/></token>
                     <token postag_regexp="yes" postag="NN(:UN?)?"/>
                 </antipattern>
+                <antipattern><!-- www.lexico.com/definition/side_to_side -->
+                    <token>side</token>
+                    <token>to</token>
+                    <token>side</token>
+                </antipattern>
                 <pattern>
                     <token negate_pos="yes" postag="SENT_START" regexp="yes"><exception>and</exception>\p{L}+</token>
                     <token regexp="yes"><exception>and</exception>\p{L}+</token>
@@ -25496,6 +25560,7 @@ USA
                 <example>No credit is almost <marker>as bad as</marker> bad credit.</example>
                 <example>He accuses the public health lobby of being just <marker>as big as</marker> big business.</example>
                 <example>I think this rule should be replaced step by step by new rules.</example>
+                <example>It moves from side to side.</example>
             </rule>
         </rulegroup>
         <rule id="ACCORDING_TO" name="according to">
