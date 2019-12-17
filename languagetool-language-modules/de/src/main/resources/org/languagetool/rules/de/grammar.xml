@@ -95,6 +95,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
     <!ENTITY farbadj "grau|weiß|weiss|schwarz|grün|rot|gelb|blau|lila|orange|beige|rosa">
 
     <!ENTITY periodensystem "(?:[UVW]|C[adeflmnorsu]?|N[abdehiop]?|P[abdmortu]?|S[bcegimnr]?|T[abcehilms]|A[cglmrstu]|R[abefghnu]|B[aehikr]?|H[efgos]?|M[cdgnot]|F[elmr]?|L[airuv]|D[bsy]|E[rsu]|G[ade]|I[nr]?|O[gs]?|Z[nr]|Kr?|Yb?|Xe|[₁₂₃₄₅₆₇₈₉₀])">
+    <!ENTITY hyphen "(?:[-‑])">
     <!--
     for local testing of an external file - also see below:
     <!ENTITY UserRules SYSTEM "file:///lt/git/languagetool/languagetool-language-modules/de/src/main/resources/org/languagetool/rules/de/grammar-test.xml">
@@ -38462,6 +38463,113 @@ Andere Projekte</example>
     <!-- Typographie -->
     <!-- ====================================================================== -->
     <category id="TYPOGRAPHY" name="Typografie">
+
+  <rulegroup id='HYPOTHESIS_TYPOGRAPHY' name='Typografie für Hypothesen'>
+    <!-- Localised from Portuguese by Tiago F. Santos, 2019-12-17 -->
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token>H0</token>
+      </pattern>
+      <message>Ersetzen Sie durch das typografische Symbol.</message>
+        <suggestion>H₀</suggestion>
+      <example correction='H₀'><marker>H0</marker>: Es gibt keine wesentlichen Auswirkungen.</example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token>H1</token>
+      </pattern>
+      <message>Ersetzen Sie durch das typografische Symbol.</message>
+        <suggestion>H₁</suggestion>
+      <example correction='H₁'><marker>H1</marker>: Verbindung A hat signifikante Wirkungen.</example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token>H2</token>
+      </pattern>
+      <message>Ersetzen Sie durch das typografische Symbol.</message>
+        <suggestion>H₂</suggestion>
+      <example correction='H₂'><marker>H2</marker>: Verbindung B hat signifikante Wirkungen.</example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token>H3</token>
+      </pattern>
+      <message>Ersetzen Sie durch das typografische Symbol.</message>
+        <suggestion>H₃</suggestion>
+      <example correction='H₃'><marker>H3</marker>: Verbindung A in Kombination mit Verbindung B hat signifikante Wirkungen.</example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token>H4</token>
+      </pattern>
+      <message>Ersetzen Sie durch das typografische Symbol.</message>
+        <suggestion>H₄</suggestion>
+      <example correction='H₄'><marker>H4</marker>: In Abwesenheit von Verbindung C treten signifikante Effekte auf.</example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token>H5</token>
+      </pattern>
+      <message>Ersetzen Sie durch das typografische Symbol.</message>
+        <suggestion>H₅</suggestion>
+      <example correction='H₅'><marker>H5</marker>: Verbindung C hat signifikante Wirkungen.</example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token>H6</token>
+      </pattern>
+      <message>Ersetzen Sie durch das typografische Symbol.</message>
+        <suggestion>H₆</suggestion>
+      <example correction='H₆'><marker>H6</marker>: Verbindung D hat signifikante Wirkungen.</example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token>H7</token>
+      </pattern>
+      <message>Ersetzen Sie durch das typografische Symbol.</message>
+        <suggestion>H₇</suggestion>
+      <example correction='H₇'><marker>H7</marker>: Verbindung E hat signifikante Wirkungen.</example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token>H8</token>
+      </pattern>
+      <message>Ersetzen Sie durch das typografische Symbol.</message>
+        <suggestion>H₈</suggestion>
+      <example correction='H₈'><marker>H8</marker>: Verbindung F hat signifikante Wirkungen.</example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token>H9</token>
+      </pattern>
+      <message>Ersetzen Sie durch das typografische Symbol.</message>
+        <suggestion>H₉</suggestion>
+      <example correction='H₉'><marker>H9</marker>: Verbindung G hat signifikante Wirkungen.</example>
+    </rule>
+  </rulegroup>
+
+  <rulegroup id='PLUS_MINUS' name="Mathematik: +- - ± ">
+    <!-- Localised from Portuguese by Tiago F. Santos, 2019-02-10 -->
+    <rule>
+      <pattern>
+          <token>+</token>
+          <token regexp='yes' spacebefore='no'>&hyphen;</token>
+      </pattern>
+      <message>Ersetzen Sie durch das typografische Symbol.</message>
+        <suggestion>±</suggestion>
+      <example correction='±'>m = 75,5 <marker>+-</marker> 0,1 g</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token regexp='yes'>&hyphen;</token>
+          <token spacebefore='no'>+</token>
+      </pattern>
+      <message>Ersetzen Sie durch das typografische Symbol.</message>
+        <suggestion>±</suggestion>
+      <example correction='±'>m = 75,5 <marker>-+</marker> 0,1 g</example>
+    </rule>
+  </rulegroup>
+
   <rulegroup id='CHEMICAL_FORMULAS_TYPOGRAPHY' name='Typografie: Chemische Formulierung'>
     <!-- Localized from Portuguese, Tiago F. Santos, 2019-12-09 -->
     <rule>
