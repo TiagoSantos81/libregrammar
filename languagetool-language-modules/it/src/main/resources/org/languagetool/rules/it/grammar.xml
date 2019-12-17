@@ -122,6 +122,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 
 <!DOCTYPE rules [
     <!ENTITY tavola_periodica "(?:[UVW]|C[adeflmnorsu]?|N[abdehiop]?|P[abdmortu]?|S[bcegimnr]?|T[abcehilms]|A[cglmrstu]|R[abefghnu]|B[aehikr]?|H[efgos]?|M[cdgnot]|F[elmr]?|L[airuv]|D[bsy]|E[rsu]|G[ade]|I[nr]?|O[gs]?|Z[nr]|Kr?|Yb?|Xe|[₁₂₃₄₅₆₇₈₉₀])">
+    <!ENTITY hyphen "(?:[-‑])">
 ]>
 
 <rules lang="it" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../../../languagetool-core/src/main/resources/org/languagetool/rules/rules.xsd">
@@ -1868,6 +1869,182 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
     </category>
 
   <category id="TYPOGRAPHY" name="Typography" type="typographical">
+
+  <rulegroup id='HYPOTHESIS_TYPOGRAPHY' name='Tipografia per ipotesi'>
+    <!-- Localised from Portuguese by Tiago F. Santos, 2019-12-17 -->
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token>H0</token>
+      </pattern>
+      <message>Sostituisci con il simbolo tipografico.</message>
+        <suggestion>H₀</suggestion>
+      <example correction='H₀'><marker>H0</marker>: Non ci sono effetti significativi.</example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token>H1</token>
+      </pattern>
+      <message>Sostituisci con il simbolo tipografico.</message>
+        <suggestion>H₁</suggestion>
+      <example correction='H₁'><marker>H1</marker>: Il composto A ha effetti significativi.</example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token>H2</token>
+      </pattern>
+      <message>Sostituisci con il simbolo tipografico.</message>
+        <suggestion>H₂</suggestion>
+      <example correction='H₂'><marker>H2</marker>: Il composto B ha effetti significativi.</example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token>H3</token>
+      </pattern>
+      <message>Sostituisci con il simbolo tipografico.</message>
+        <suggestion>H₃</suggestion>
+      <example correction='H₃'><marker>H3</marker>: Il composto A combinato con il composto B ha effetti significativi.</example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token>H4</token>
+      </pattern>
+      <message>Sostituisci con il simbolo tipografico.</message>
+        <suggestion>H₄</suggestion>
+      <example correction='H₄'><marker>H4</marker>: Ci sono effetti significativi in assenza del composto C.</example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token>H5</token>
+      </pattern>
+      <message>Sostituisci con il simbolo tipografico.</message>
+        <suggestion>H₅</suggestion>
+      <example correction='H₅'><marker>H5</marker>: Il composto C ha effetti significativi.</example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token>H6</token>
+      </pattern>
+      <message>Sostituisci con il simbolo tipografico.</message>
+        <suggestion>H₆</suggestion>
+      <example correction='H₆'><marker>H6</marker>: Il composto D ha effetti significativi.</example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token>H7</token>
+      </pattern>
+      <message>Sostituisci con il simbolo tipografico.</message>
+        <suggestion>H₇</suggestion>
+      <example correction='H₇'><marker>H7</marker>: Il composto E ha effetti significativi.</example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token>H8</token>
+      </pattern>
+      <message>Sostituisci con il simbolo tipografico.</message>
+        <suggestion>H₈</suggestion>
+      <example correction='H₈'><marker>H8</marker>: Il composto F ha effetti significativi.</example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token>H9</token>
+      </pattern>
+      <message>Sostituisci con il simbolo tipografico.</message>
+        <suggestion>H₉</suggestion>
+      <example correction='H₉'><marker>H9</marker>: Il composto G ha effetti significativi.</example>
+    </rule>
+  </rulegroup>
+
+  <rulegroup id='MULTIPLICATION_SIGN' name="Matematica: moltiplicazione: x - ×">
+    <!-- Localised from Portuguese by Tiago F. Santos, 2019-12-17  -->
+    <rule>
+      <antipattern>
+          <token regexp='yes'>x|\*</token>
+          <token regexp='yes'>[,;]|and</token>
+      </antipattern>
+      <antipattern>
+          <token regexp='yes'>[,;]|an|the</token>
+          <token regexp='yes'>x|\*</token>
+      </antipattern>
+      <antipattern>
+          <token regexp='yes' skip='2'>versions?|series?|v</token>
+          <token regexp='yes'>\d+</token>
+          <token spacebefore='no'>.</token>
+          <token spacebefore='no'>x</token>
+      </antipattern>
+      <antipattern>
+          <token regexp='yes'>\p{Lu}</token>
+          <token spacebefore='no'>.</token>
+          <token regexp='yes' spacebefore='yes'>\p{Lu}</token>
+      </antipattern>
+      <pattern>
+          <token regexp="yes">[a-z]|[\d\.,⁻¹²³⁴⁵⁶⁷⁸⁹⁰]+?[a-z]{0,1}</token>
+        <marker>
+          <token regexp='yes'>[x\*]</token>
+        </marker>
+          <token regexp="yes">[a-z]|[\d\.,⁻¹²³⁴⁵⁶⁷⁸⁹⁰]+?[a-z]{0,1}</token>
+      </pattern>
+      <message>Sostituisci con il simbolo tipografico.</message>
+        <suggestion>×</suggestion>
+        <suggestion>·</suggestion>
+      <example correction="×|·">h = 6,626 <marker>x</marker> 10⁻³⁴ J.s</example>
+      <example correction="×|·">h = 6.626 <marker>x</marker> 10⁻³⁴ J.s</example>
+      <example correction="×|·">5 <marker>*</marker> 2 = 10</example>
+      <example correction="×|·">a = 5 <marker>*</marker> x + 7</example>
+      <example correction="×|·">a = 5x <marker>*</marker> 5 + 7</example>
+      <example correction="×|·">a <marker>*</marker> b</example>
+      <example>a = 2 · x² + 5</example>
+      <example>4,5 × 2,5 = 11,25</example>
+      <example>Rodrigues Fernandes, X. L.</example>
+    </rule>
+    <rule>
+      <regexp>(?&lt;!([a-vyz]|[a-vyz]\d|[a-vyz]\d{2}|[a-vyz]\d{3}|[a-vyz]\d{4}|[a-vyz]\d{5}))((?!(?:[,;\(\.][x\*]([\d\.,⁻¹²³⁴⁵⁶⁷⁸⁹⁰]+?)|(?:[\d\.,⁻¹²³⁴⁵⁶⁷⁸⁹⁰]+?)[x\*][,;\.\)\!\?]))([\d\.,⁻¹²³⁴⁵⁶⁷⁸⁹⁰]+?)[x\*]([\d\.,⁻¹²³⁴⁵⁶⁷⁸⁹⁰]+))</regexp>
+      <message>Sostituisci con il simbolo tipografico.</message>
+        <suggestion>\4×\5</suggestion>
+        <suggestion>\4·\5</suggestion>
+      <example correction='2,998×10⁸|2,998·10⁸'>c=<marker>2,998x10⁸</marker> m/s</example>
+      <example correction="6.626×10⁻³⁴|6.626·10⁻³⁴">h = <marker>6.626x10⁻³⁴</marker> J.s</example>
+      <example correction="5×2|5·2"><marker>5*2</marker> = 10</example>
+      <example>a=2·x²+5</example>
+      <example>4,5×2,5=11,25</example>
+      <example>AmVIO2X2, AmVO2X, AmIVOX2, AmIIIOX.</example>
+      <example>1Z1141X30370035113</example>
+    </rule>
+    <rule>
+      <regexp>([a-z]|[\d\.,⁻¹²³⁴⁵⁶⁷⁸⁹⁰]+?[a-z]{0,1})\*([a-z]|[\d\.,⁻¹²³⁴⁵⁶⁷⁸⁹⁰]+?[a-z]{0,1})</regexp>
+      <message>Sostituisci con il simbolo tipografico.</message>
+        <suggestion>\1×\2</suggestion>
+        <suggestion>\1·\2</suggestion>
+      <example correction="5×x|5·x">a=<marker>5*x</marker>+7</example>
+      <example correction="5x×5|5x·5">a=<marker>5x*5</marker>+7</example>
+      <example correction="5x×5|5x·5">a=7+<marker>5x*5</marker></example>
+      <example correction="a×b|a·b"><marker>a*b</marker></example>
+      <example>a=2·x²+5</example>
+      <example>4,5×2,5=11,25</example>
+      <example>Number 1Z1141X30370035113</example>
+    </rule>
+  </rulegroup>
+
+  <rulegroup id='PLUS_MINUS' name="Matematica: +- - ± ">
+    <!-- Localised from Portuguese by Tiago F. Santos, 2019-12-17 -->
+    <rule>
+      <pattern>
+          <token>+</token>
+          <token regexp='yes' spacebefore='no'>&hyphen;</token>
+      </pattern>
+      <message>Sostituisci con il simbolo tipografico.</message>
+        <suggestion>±</suggestion>
+      <example correction='±'>m = 75,5 <marker>+-</marker> 0,1 g</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token regexp='yes'>&hyphen;</token>
+          <token spacebefore='no'>+</token>
+      </pattern>
+      <message>Sostituisci con il simbolo tipografico.</message>
+        <suggestion>±</suggestion>
+      <example correction='±'>m = 75,5 <marker>-+</marker> 0,1 g</example>
+    </rule>
+  </rulegroup>
 
   <rulegroup id='CHEMICAL_FORMULAS_TYPOGRAPHY' name='Tipografia: formulazione chimica'>
     <!-- Localized from Portuguese, Tiago F. Santos, 2019-12-09 -->
