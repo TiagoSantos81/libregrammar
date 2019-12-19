@@ -8478,7 +8478,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <short>&getrennt;.</short>
             <example correction="WhatsApp">Wir schrieben per <marker>whats app</marker>.</example>
         </rule>
-        <rule id="SOCIETE_GENERALE" name="Société Générale" default="temp_off">
+        <rule id="SOCIETE_GENERALE" name="Société Générale">
             <antipattern case_sensitive="yes">
                 <token>Société</token>
                 <token regexp="yes">Générales?</token>
@@ -17130,7 +17130,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <marker><token postag="VER:INF:.+" postag_regexp="yes" regexp="yes">[a-zäöü]+</token></marker>
                     <token regexp="yes">d(ies)?e[rs]|[mds]?eine[rs]</token>
                 </pattern>
-                <message><suggestion><match no="3" case_conversion="startupper"/></suggestion> scheint hier substantivisch verwendet zu werden und muss daher großgeschrieben werden.</message>
+                <message><suggestion><match no="3" case_conversion="startupper"/></suggestion> scheint hier nominalisiert verwendet zu werden und muss daher großgeschrieben werden.</message>
                 <example correction="Absenken">Ein vorsichtiges <marker>absenken</marker> des Drucks ist notwendig.</example>
             </rule>
         </rulegroup>
@@ -18215,7 +18215,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     </token>
                 </marker>
             </pattern>
-            <message>Falls <suggestion><match no="2" case_conversion="startupper"/></suggestion> hier substantivisch gebraucht wird, muss man es großschreiben.</message>
+            <message>Falls <suggestion><match no="2" case_conversion="startupper"/></suggestion> hier nominalisiert gebraucht wird, muss man es großschreiben.</message>
             <short>&prgk;.</short>
             <example correction="Einsetzen">Wir berechnen die Werte durch <marker>einsetzen</marker>.</example>
         </rule>
@@ -29300,7 +29300,7 @@ Andere Projekte</example>
                         <token>wehe</token>
                     </marker>
                 </pattern>
-                <message>&subanfang;<suggestion>Wehe</suggestion> hier substantivisch verwendet wird und dementsprechend großgeschrieben werden muss.</message>
+                <message>&subanfang;<suggestion>Wehe</suggestion> hier nominalisiert verwendet wird und dementsprechend großgeschrieben werden muss.</message>
                 <short>&prgk;.</short>
                 <example correction="Wehe">Das entscheidet über das wohl und <marker>wehe</marker> der Partei.</example>
             </rule>
@@ -29313,7 +29313,7 @@ Andere Projekte</example>
                     <token>und</token>
                     <token regexp="yes">[wW]ehe</token>
                 </pattern>
-                <message>&subanfang;<suggestion>Wohl</suggestion> hier substantivisch verwendet wird und dementsprechend großgeschrieben werden muss.</message>
+                <message>&subanfang;<suggestion>Wohl</suggestion> hier nominalisiert verwendet wird und dementsprechend großgeschrieben werden muss.</message>
                 <short>&prgk;.</short>
                 <example correction="Wohl">Das entscheidet womöglich über das <marker>wohl</marker> und Wehe der Partei.</example>
             </rule>
@@ -32171,7 +32171,7 @@ Andere Projekte</example>
                 <example correction="Check-outs">Während des <marker>Check-Outs</marker> ging etwas schief.</example>
             </rule>
         </rulegroup>
-        <rulegroup id="COMING_OUT" name="'Coming-out'" default="temp_off">
+        <rulegroup id="COMING_OUT" name="'Coming-out'">
             <rule>
                 <pattern>
                     <token case_sensitive="yes" regexp="yes">Comm?ing</token>
@@ -32190,7 +32190,7 @@ Andere Projekte</example>
                 <example correction="Coming-outs">Während seines <marker>Comming-Outs</marker> sah man ihm seinen Stolz an.</example>
             </rule>
         </rulegroup>
-        <rulegroup id="DRIVE_IN" name="'Drive-in'" default="temp_off">
+        <rulegroup id="DRIVE_IN" name="'Drive-in'">
             <rule>
                 <pattern>
                     <token case_sensitive="yes">Drive</token>
@@ -37629,7 +37629,7 @@ Andere Projekte</example>
             </antipattern>
             <antipattern>
                 <!-- Maßstab -->
-                <token inflected="yes" regexp="yes" skip="-1">Maßstab|Massstab|Verh(ae|ä)ltnis</token>
+                <token inflected="yes" regexp="yes" skip="-1">Maßstab|Massstab|.*verh(ae|ä)ltnis</token>
                 <token regexp="yes">[0-9]+</token>
                 <token>:</token>
                 <token regexp="yes">[0-9]+</token>
@@ -37639,7 +37639,7 @@ Andere Projekte</example>
                 <token regexp="yes">[0-9]+</token>
                 <token>:</token>
                 <token regexp="yes" skip="-1">[0-9]+</token>
-                <token inflected="yes" regexp="yes">Maßstab|Massstab|Verh(ae|ä)ltnis</token>
+                <token inflected="yes" regexp="yes">Maßstab|Massstab|.*verh(ae|ä)ltnis</token>
             </antipattern>
             <pattern>
                 <marker>
@@ -37659,6 +37659,7 @@ Andere Projekte</example>
             <example>Am 2014-01-23 10:32 schrieb ich:</example>
             <example>a = 2 · x² + 5</example>
             <example>4,5 × 2,5</example>
+            <example>Während es einem Mischungsverhältnis (nach Gewichtsanteilen) von 1 : 0,6 : 6,3 entspricht.</example>
             <example>Sie verloren das Spiel mit 3:0.</example>
             <example>Zwischen 9:00 und 16:45.</example>
             <example>Das 5:2 gegen Ungarn</example>
@@ -40431,6 +40432,14 @@ Andere Projekte</example>
                     <token>je</token>
                     <token case_sensitive="yes">nachdem</token>
                     <token case_sensitive="yes" regexp="yes">ob|w[a-z]+</token>
+                </antipattern>
+                <antipattern>
+                    <token postag="KON:UNT"/>
+                    <token skip="-1">
+                        <exception scope="next" postag="VER:.+" postag_regexp="yes"/>
+                        <exception postag="VER:.+" postag_regexp="yes"/>
+                    </token>
+                    <token postag="SENT_END"/>
                 </antipattern>
                 <pattern>
                     <marker>
