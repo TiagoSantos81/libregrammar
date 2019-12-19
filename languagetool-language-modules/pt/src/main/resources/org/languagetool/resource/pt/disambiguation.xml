@@ -1517,6 +1517,19 @@
       <disambig action="replace"><wd pos="SP000"/></disambig>
     </rule>
 
+    <rule id="ADVERBIAL_PHRASES" name="Expressões adverbiais">
+    <!-- Created by Tiago F. Santos, Portuguese rule, 2017-09-06  	-->
+      <pattern>
+          <token>
+            <exception postag_regexp='yes' postag='[DS].+'/></token>
+        <marker>
+          <token regexp='yes'>&expressoes_de_tempo;</token>
+          <token regexp='yes'>antes|depois</token>
+        </marker>
+      </pattern>
+      <disambig action="replace"><wd pos="RG"/><wd pos="RG"/></disambig>
+    </rule>
+
     <rule id="MESMO" name="Mesmo">
     <!-- Created by Tiago F. Santos, Portuguese rule, 2017-09-27  	-->
       <antipattern><!-- XXX D_R_N -->
