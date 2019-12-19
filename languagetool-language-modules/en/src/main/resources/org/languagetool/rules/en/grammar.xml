@@ -39187,9 +39187,17 @@ The accident victim died from her injuries.
             <example correction="loves">He <marker>luvs</marker> you</example>
         </rule>
         <rule id="DAT" name="dat (that)" default="temp_off">
+        <!--
             <antipattern>
                 <token skip="2">dat</token>
                 <token regexp="yes">.*motor.*|cars?|auto.*|internali.ation|transporter|formats?|files?|recorders?|nguyen</token>
+            </antipattern>
+            -->
+            <antipattern><!-- dative abbreviation -->
+                <token>dat</token>
+                <token spacebefore="no">.
+                  <exception scope='next' regexp='yes'>\p{Lu}.+</exception>
+                  <exception postag='SENT_END'/></token>
             </antipattern>
             <antipattern>
                 <token>.</token>
@@ -39204,15 +39212,21 @@ The accident victim died from her injuries.
                 <token>,</token>
             </antipattern>
             <pattern>
+            <?ignore
                 <token postag="SENT_START|VB.*" postag_regexp="yes" />
                 <marker>
+                ?>
                     <token case_sensitive="yes" regexp="yes">
                         [Dd]at
                     </token>
+                    <?ignore
                 </marker>
+                ?>
             </pattern>
-            <message>Did you mean <suggestion>that</suggestion>?</message>
+            <message>The word '\1' is informal and non-standard. Did you mean <suggestion>that</suggestion>?</message>
+            <url>https://www.collinsdictionary.com/dictionary/english/dat</url>
             <example correction="that">We can do <marker>dat</marker>.</example>
+            <example correction="that">We can do <marker>dat</marker>. It is wrong.</example>
             <example>Bill, it appears that all is well with updating the DAT files to CSV</example>
             <example>list.dat</example>
         </rule>
@@ -39222,6 +39236,7 @@ The accident victim died from her injuries.
                 <token>dis</token>
                 <token>)</token>
             </antipattern>
+            <?ignore
             <antipattern><!-- dis can be used as a noun (rare) -->
                 <token regexp="yes">the|an?|my|her|his|y?our|their|its|s</token>
                 <token postag="JJ.*" postag_regexp="yes" min="0" />
@@ -39233,10 +39248,13 @@ The accident victim died from her injuries.
                 <token>dis</token>
                 <token postag="PRP.*|NNP" postag_regexp="yes" />
             </antipattern>
+            ?>
             <antipattern>
+                <token regexp="yes">the|an?|my|her|his|y?our|their|its|s</token>
                 <token>dis</token>
                 <token regexp="yes">/|-|tracks?|songs?|vids?|videos?</token>
             </antipattern>
+            <?ignore
             <antipattern>
                 <token>dis</token>
                 <token postag="UNKNOWN" />
@@ -39249,15 +39267,17 @@ The accident victim died from her injuries.
                 <token regexp="yes">[a-z].+</token>
                 <token>Dis</token>
             </antipattern>
+            ?>
             <pattern>
                 <token regexp="yes" case_sensitive="yes">[Dd]is</token>
             </pattern>
             <message>Did you mean <suggestion>this</suggestion>?</message>
+            <url>https://www.collinsdictionary.com/dictionary/english/dis_1</url>
             <example correction="This"><marker>Dis</marker> is my favourite food.</example>
             <example>Ideally, Diaspora should be equally easy to use for people with all levels of (dis)ability and on all devices.</example>
             <example>The dis track was part released on his recent studio album.</example>
-            <example>The rapper want to dis his opponent.</example>
-            <example>Punished within Dis are those whose lives were marked by active (rather than passive) sins.</example>
+            <example type="triggers_error">The rapper want to dis his opponent.</example>
+            <example type="triggers_error">Punished within Dis are those whose lives were marked by active (rather than passive) sins.</example>
         </rule>
         <rulegroup id="WANNA" name="wanna (want to)">
             <rule>
