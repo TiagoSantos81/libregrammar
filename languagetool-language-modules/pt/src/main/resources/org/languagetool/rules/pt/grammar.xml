@@ -628,7 +628,7 @@ title="Easy editing stylesheet" ?>
         <marker>
           <token postag='(?:D[ADIP].|NC|A..|P[^IDP].|Z.)FS.+' postag_regexp='yes'>
             <exception postag='(?:[NZ].|A..)[CM]S.+|V.[CSI].+|(C|R).+|SPS00' postag_regexp='yes'/>
-            <exception regexp='yes'>e|ser|a|mas|palavra|letra|comunidade|continha</exception></token>
+            <exception regexp='yes'>e|ser|a|mas|palavra|letra|c(?:hamada|omunidade|ontinha)</exception></token>
           <token min='0' regexp='yes'>&adverbios_de_intensidade;</token>
           <token min='0' postag='(?:A..|Z.)C[NS].+' postag_regexp='yes'>
             <exception negate_pos='yes' postag_regexp='yes' postag='(?:[NZ].|A..)C[NS].+'/></token>
@@ -653,6 +653,8 @@ title="Easy editing stylesheet" ?>
       <example>Nenhuma cidade na Europa é tão populosa quanto Tóquio.</example>
       <example>… da aprovação da Lei n.º54/2017, que procedeu à alteração…</example>
       <example>Isto foi publicado na revista Domingo.</example>
+      <example>O ADN pode ser observado numa estrutura chamada cromossoma durante a metáfase.</example>
+      <example>...il, nos moldes da recém ocorrida revolução cubana ocorrida anos antes.</example>
     </rule>
     <rule>
       <antipattern>
