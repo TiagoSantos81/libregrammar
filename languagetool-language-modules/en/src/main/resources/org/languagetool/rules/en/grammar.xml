@@ -40002,8 +40002,12 @@ The accident victim died from her injuries.
                     <token regexp="yes">And|But</token>
                 </marker>
             </pattern>
+            <message>While it is not exactly wrong, stylistically '\2' should only be used to start a sentence for dramatic effect and even then rarely.</message>
+            <url>https://web.archive.org/web/20190330044627/https://blog.oxforddictionaries.com/2012/01/05/can-i-start-a-sentence-with-a-conjunction/</url>
+          <?ignore
             <message>Some people say that stylistically '\2' should only be used to start a sentence for dramatic effect. Other people do not agree.</message>
             <url>http://www.thewriter.com/what-we-think/style-guide/and-and-but-why-its-okay-to-start-a-sentence-with-a-conjunction/</url>
+            ?>
             <short>Possibly improvable style</short>
             <example correction=""><marker>And</marker> yes, it shows a lack of style to start a sentence with 'and'.</example>
             <example>Yes, it shows a lack of style to start a sentence with 'and'.</example>
