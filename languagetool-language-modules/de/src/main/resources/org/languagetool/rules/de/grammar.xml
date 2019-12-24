@@ -2186,6 +2186,13 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example correction="wird">Es <marker>wir</marker> wieder wärmer draußen.</example>
         </rule>
         <rule id="ZU_SEIEN" name="'zu seien (sein/seinen)'">
+            <antipattern>
+                <token>ab</token>
+                <token>und</token>
+                <token>zu</token>
+                <token>seien</token>
+                <token postag_regexp="yes" postag=".+PLU.+"/>
+            </antipattern>
             <pattern>
                 <token>zu</token>
                 <marker>
@@ -2197,6 +2204,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example correction="sein|seinen">Er ist gut zu <marker>seien</marker> Haustieren.</example>
             <example correction="sein|seinen">Es scheint kaputt zu <marker>seien</marker>.</example>
             <example>Es scheint defekt zu <marker>sein</marker>.</example>
+            <example>Nur ab und zu <marker>seien</marker> sie dort gewesen, antwortete sie leise.</example>
         </rule>
         <rulegroup id="ES_KANN_NICHT_SEIEN" name="'es kann nicht seien (sein)'">
             <short>Möglicher Tippfehler</short>
@@ -8540,22 +8548,49 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token postag="SENT_START|UNKNOWN|PCT" postag_regexp="yes" />
                 <token>Von</token>
                 <token>der</token>
-                <token>Leyen</token>
+                <token regexp="yes">Leyens?</token>
             </antipattern>
             <antipattern case_sensitive="yes">
                 <token>von</token>
                 <token>der</token>
-                <token>Leyen</token>
+                <token regexp="yes">Leyens?</token>
             </antipattern>
             <pattern>
                 <token regexp="yes">v.n</token>
                 <token regexp="yes">der?</token>
-                <token regexp="yes">L[ea][yi]en</token>
+                <token regexp="yes">L[ea][yi]ens?</token>
             </pattern>
-            <message>Meinten Sie <suggestion><match case_conversion="alllower" no="1" regexp_match="(?i)v.n" regexp_replace="von" /> der Leyen</suggestion> (= Politikerin)?</message>
+            <message>Meinten Sie <suggestion><match case_conversion="alllower" no="1" regexp_match="(?i)v.n" regexp_replace="von" /> der <match case_conversion="startupper" no="3" regexp_match="(?i)L..en" regexp_replace="Leyen" /></suggestion> (= Politikerin)?</message>
             <url>https://de.wikipedia.org/wiki/Ursula_von_der_Leyen</url>
             <example correction="von der Leyen">Ursula <marker>Von de Leyen</marker> ist eine deutsche Politikerin.</example>
             <example>Von der leben sie heute.</example>
+            <example correction="von der Leyens">Während <marker>Von Der Leyens</marker> Berateraffäre.</example>
+        </rule>
+        <rule id="JEROME_BOATENG" name="Jérôme Boateng" default="temp_off">
+            <antipattern case_sensitive="yes">
+                <token>Jérôme</token>
+                <token regexp="yes">(Boateng|Bonaparte|Kerviel|Lalande|Leroy|Cahuzac|Ferrari|Fernandez|Bel)s?</token>
+            </antipattern>
+            <pattern>
+                <token regexp="yes">J.r.me</token>
+                <token regexp="yes">(Boateng|Bonaparte|Kerviel|Lalande|Leroy|Cahuzac|Ferrari|Fernandez|Bel)s?</token>
+            </pattern>
+            <message>Meinten Sie <suggestion>Jérôme <match no="2" case_conversion="startupper" /></suggestion> (= prominente Person)</message>
+            <example correction="Jérôme Boateng"><marker>Jerome Boateng</marker> ist ein deutscher Fußballspieler.</example>
+            <example>Jérôme Boatengs Karriere erreichte seinen Höhepunkt mit dem Gewinn der WM 2014.</example>
+        </rule>
+        <rule id="LEROY_SANE" name="Leroy Sané" default="temp_off">
+            <antipattern case_sensitive="yes">
+                <token>Leroy</token>
+                <token regexp="yes">Sanés?</token>
+            </antipattern>
+            <pattern>
+                <token regexp="yes">Lee?roy</token>
+                <token regexp="yes">San.s?</token>
+            </pattern>
+            <message>Meinten Sie <suggestion>Leroy <match no="2" regexp_match="(?i)San." regexp_replace="Sané" /></suggestion> (= Fußballspieler)</message>
+            <url>https://de.wikipedia.org/wiki/Leroy_San%C3%A9</url>
+            <example correction="Leroy Sanés"><marker>Leroy Sanes</marker> neuer Fußballverein heißt wohl bald Bayern München.</example>
         </rule>
         <rule id="COPY_AND_PASTE" name="Copy-and-paste">
             <pattern>
@@ -31883,6 +31918,55 @@ Andere Projekte</example>
           </rule>
         </rulegroup>
         -->
+        <rulegroup id="PRP_DAT_AKK" name="Präposition mit Dativ oder Akkusativ">
+          <rule>
+            <antipattern>
+                <token skip="3">in</token>
+                <token regexp="yes">genannt|bezeichnet</token>
+            </antipattern>
+            <antipattern>
+                <token>an</token>
+                <token regexp="yes">genannt|bezeichnet</token>
+            </antipattern>
+            <antipattern>
+                <token postag="PRP:LOK+TMP+MOD:DAT+AKK"/>
+                <token postag="VER:[123].+" postag_regexp="yes"/>
+            </antipattern>
+            <antipattern>
+                <token postag="PRP:LOK+TMP+MOD:DAT+AKK"/>
+                <token><exception postag="SUB:.+" postag_regexp="yes"/></token>
+                <token postag="VER:[123].+" postag_regexp="yes"/>
+            </antipattern>
+            <antipattern>
+                <token postag="PRP:LOK+TMP+MOD:DAT+AKK"/>
+                <token><exception postag="SUB:.+" postag_regexp="yes"/></token>
+                <token><exception postag="SUB:.+" postag_regexp="yes"/></token>
+                <token postag="VER:[123].+" postag_regexp="yes"/>
+            </antipattern>
+            <antipattern>
+                <token postag="PRP:LOK+TMP+MOD:DAT+AKK"/>
+                <token><exception postag="SUB:.+" postag_regexp="yes"/></token>
+                <token><exception postag="SUB:.+" postag_regexp="yes"/></token>
+                <token><exception postag="SUB:.+" postag_regexp="yes"/></token>
+                <token postag="VER:[123].+" postag_regexp="yes"/>
+            </antipattern>
+            <pattern>
+              <marker>
+                  <token postag="PRP:LOK+TMP+MOD:DAT+AKK" skip="3">
+                      <exception postag=".+(AKK|DAT):.+|UNKNOWN|PKT" postag_regexp="yes" scope="next"/>
+                      <exception case_sensitive="yes">an</exception>
+                  </token>
+              </marker>
+              <token postag="VER:[123].+" postag_regexp="yes"/>
+            </pattern>
+            <message>Kasusfehler: Sollte nach '\1' eine Dativ- oder Akkusativform folgen?</message>
+            <example correction="">Sie fragte, was <marker>in</marker> jeden Geschichtsbuches steht.</example>
+            <example>Weil sie es <marker>in</marker> etwas anderes umtauschen wollte, ...</example>
+            <example>Von nun an benutze ich dieses Wort nicht mehr.</example>
+            <example>...die in ihrer eigenen Sprache Kelten und in unserer Gallier genannt werden.</example>
+            <example>Ich frage mich, was ein von Geburt an Blinder denkt.</example>
+          </rule>
+        </rulegroup>
         <!-- TODO: testen!!
         <rulegroup id="EINER_EINE" name="'unbestimmter weiblicher Artikel im Akkusativ'">
           <rule>
@@ -35078,6 +35162,48 @@ Andere Projekte</example>
                 <example correction="den">Wir machten uns auf <marker>dem</marker> Weg!</example>
                 <example correction="den">Wir machten uns auf <marker>dem</marker> Heimweg!</example>
             </rule>
+            <rule>
+                <pattern>
+                    <token postag="PRP:LOK+TMP:DAT"></token>
+                    <token regexp='yes'>&wochentage;|&abgekWochentage;</token>
+                    <token min="0">,</token>
+                    <marker><token regexp="yes">de[nrs]</token></marker>
+                    <token regexp='yes'>\d\d?</token>
+                    <token>.</token>
+                    <token regexp='yes'>\d\d?|&monate;</token>
+                </pattern>
+                <message>Meinten Sie <suggestion>dem</suggestion>?</message>
+                <example correction="dem">Wir sehen uns am Samstag, <marker>den</marker> 23.08.2014.</example>
+                <example correction="dem">Wir sehen uns am Samstag, <marker>den</marker> 23. Februar.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token inflected="yes">sein</token>
+                    <token regexp='yes'>&wochentage;|&abgekWochentage;</token>
+                    <token min="0">,</token>
+                    <marker><token regexp="yes">de[mns]</token></marker>
+                    <token regexp='yes'>\d\d?</token>
+                    <token>.</token>
+                    <token regexp='yes'>\d\d?|&monate;</token>
+                </pattern>
+                <message>Meinten Sie <suggestion>der</suggestion>?</message>
+                <example correction="der">Gestern war Samstag, <marker>den</marker> 23.08.2014.</example>
+                <example correction="der">Gestern war Samstag, <marker>den</marker> 23. Februar</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token><exception postag="PRP:LOK+TMP:DAT"></exception></token>
+                    <token regexp='yes'>&wochentage;|&abgekWochentage;</token>
+                    <token min="0">,</token>
+                    <marker><token>des</token></marker>
+                    <token regexp='yes'>\d\d?</token>
+                    <token>.</token>
+                    <token regexp='yes'>\d\d?|&monate;</token>
+                </pattern>
+                <message>Meinten Sie <suggestion>dem</suggestion>, <suggestion>den</suggestion> oder <suggestion>der</suggestion>?</message>
+                <example correction="dem|den|der">Bis nächsten Samstag, <marker>des</marker> 23.08.2014.</example>
+                <example correction="dem|den|der">Bis nächsten Samstag, <marker>des</marker> 23. Februar.</example>
+            </rule>          
         </rulegroup>
         <rule id="AN_HERR" name="Präposition/Kasus – 'an/für Herr (Herrn)' etc.">
             <pattern case_sensitive="yes">
@@ -35356,6 +35482,22 @@ Andere Projekte</example>
                 <example correction="sind">Die Principia Mathematica <marker>ist</marker> ein dreibändiges Werk von Bertrand Russell und Alfred North Whitehead.</example>
             </rule>
         </rulegroup>
+        <rulegroup id="AN_AM" name="an (am)">
+            <rule>
+                <pattern>
+                    <marker>
+                        <token>an</token>
+                    </marker>
+                    <token regexp="yes" min="0" case_sensitive="yes">[a-zü].+en</token>
+                    <token regexp="yes">&wochentage;</token>
+                </pattern>
+                <message>Meinten Sie <suggestion><match no="1" regexp_match="n" regexp_replace="m"/></suggestion>?</message>
+                <example correction="Am"><marker>An</marker> Montag tranken wir Kaffee.</example>
+                <example correction="am">Wir tranken Kaffee <marker>an</marker> Dienstag.</example>
+                <example correction="am">Wir tranken Kaffee <marker>an</marker> letzten Dienstag.</example>
+                <example correction="Am"><marker>An</marker> übernächsten Montag tranken wir Kaffee.</example>
+            </rule>
+        </rulegroup>
         <rulegroup id="IN_IM" name="in (im)">
             <rule>
                 <pattern case_sensitive="yes">
@@ -35364,7 +35506,7 @@ Andere Projekte</example>
                     <marker>
                         <token>in</token>
                     </marker>
-                    <token regexp="yes">Begriffe?|Einsatz|Haus|Garten|Park|.*zimmer</token>
+                    <token regexp="yes">Begriffe?|Einsatz|Haus|Garten|Park|Preis|.*zimmer</token>
                 </pattern>
                 <message>Meinten Sie <suggestion>im</suggestion>?</message>
                 <example correction="im">Zwölf Feuerwehren waren <marker>in</marker> Einsatz.</example>
@@ -37729,7 +37871,7 @@ Andere Projekte</example>
             </antipattern>
             <antipattern>
                 <!-- vermutlich Spielstand -->
-                <token inflected="yes" regexp="yes" skip="1">mit|verlieren|gewinnen|enden|unentschieden|trennen|spielen|schlagen|Spiel</token>
+                <token inflected="yes" regexp="yes" skip="1">mit|verlieren|gewinnen|enden|unentschieden|trennen|spielen|schlagen|Spiel|treffen</token>
                 <token regexp="yes">[0-9]+</token>
                 <token>:</token>
                 <token regexp="yes">[0-9]+</token>
@@ -37739,7 +37881,7 @@ Andere Projekte</example>
                 <token regexp="yes">[0-9]+</token>
                 <token>:</token>
                 <token regexp="yes" skip="1">[0-9]+</token>
-                <token inflected="yes" regexp="yes">mit|verlieren|gewinnen|enden|unentschieden|spielen</token>
+                <token inflected="yes" regexp="yes">mit|verlieren|gewinnen|enden|unentschieden|spielen|treffen</token>
             </antipattern>
             <antipattern>
                 <!-- Maßstab -->
@@ -37779,6 +37921,8 @@ Andere Projekte</example>
             <example>Das 5:2 gegen Ungarn</example>
             <example>Sie trennten sich 1:1.</example>
             <example>Das Verhältnis war lange 1:4.</example>
+            <example>Er hat zum 1:0 getroffen.</example>
+            <example>Er traf zum 1:0.</example>
             <example correction="3a = 2"><marker>3a=2</marker>.</example>
             <example correction="5 * 5"><marker>5*5</marker>.</example>
             <example>Das Spiel endete <marker>3:5</marker>.</example>
@@ -41112,6 +41256,11 @@ Andere Projekte</example>
                    <token postag="SUB:.+" postag_regexp="yes"/>
                    <token postag="KON:.+" postag_regexp="yes"/>
                 </antipattern>
+                <antipattern>
+                    <token regexp="yes">Hallo|Hey|Hi|Moin|Servus</token>
+                    <token regexp="yes" skip="2">ihr|du|sie</token>
+                    <token>,</token>
+                </antipattern>
                 <pattern>
                     <token skip="-1" postag="SENT_START">
                         <exception scope="next" postag="VER:.*|UNKNOWN" postag_regexp="yes"/>
@@ -41133,6 +41282,7 @@ Andere Projekte</example>
                 <example>Sehr geehrte Frau Schmidt, zum 20. Jahrestag Ihrer Firma gratulieren wir Ihnen recht herzlich!</example>
                 <example>Klarheit über die eigenen Kompetenzen, Erfolge und den Mehrwert für das Unternehmen können dabei helfen.</example>
                 <example>In der ersten Version eher nicht, d.h. es gibt kein User Interface dafür.</example>
+                <example>Hallo ihr beiden, Tim und ich sind ab heute Nachmittag unterwegs.</example>
             </rule>
         </rulegroup>
         <rulegroup id="KOMMA_VOR_INFINITIVGRUPPEN_OPT" name="Optional: Komma vor Infinitivgruppen" default="off">
