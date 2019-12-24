@@ -173,7 +173,6 @@
      - `LongSentenceRule`, `LongParagraphRule`, `SentenceWhitespaceRule`, `WhiteSpaceAtBeginOfParagraph`,
      `EmptyLineRule`, `ParagraphRepeatBeginningRule`, `PunctuationMarkAtParagraphEnd`.
   * ignore spelling of roman numbers.
-  * add typography rules for mathematical symbols.
   * sentences and paragraphs now end with a single line break.
 
 #### General
