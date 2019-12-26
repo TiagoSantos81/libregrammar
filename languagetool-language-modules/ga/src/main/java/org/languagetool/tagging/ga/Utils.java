@@ -271,6 +271,10 @@ public class Utils {
     }
   }
 
+  public static boolean isVowel(char c) {
+    return isLowerVowel(c) || isUpperVowel(c);
+  }
+
   public static boolean isUpperLenitable(char c) {
     switch(c) {
       case 'B':
@@ -343,6 +347,36 @@ public class Utils {
       }
     } else {
       return in;
+    }
+  }
+
+  public static String eclipse(String in) {
+    if(in == null || in.equals("")) {
+      return in;
+    }
+    if(isUpperVowel(in.charAt(0))) {
+      return "n" + in;
+    }
+    if(isLowerVowel(in.charAt(0))) {
+      return "n-" + in;
+    }
+
+    switch(in.toLowerCase().charAt(0)) {
+      case 'b':
+        return "m" + in;
+      case 'c':
+        return "g" + in;
+      case 'd':
+      case 'g':
+        return "n" + in;
+      case 'f':
+        return "bh" + in;
+      case 'p':
+        return "b" + in;
+      case 't':
+        return "d" + in;
+      default:
+        return in;
     }
   }
 
