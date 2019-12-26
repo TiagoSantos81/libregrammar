@@ -7,7 +7,7 @@
 #### English
   * rules added:
      - `EnglishSimpleGrammarRule` for simple replacement rule creation - 877 error patterns added from Wikipedia;
-     - verb-noun confusion rule - 1541 error patterns mostly from After the Deadline (AtD);
+     - verb-noun confusion rule - 1543 error patterns mostly from After the Deadline (AtD);
      - adjective-noun confusion rule - 103 error patterns;
      - adjective order rule;
      - eggcorn detection - 227 error patterns from Grammark and AtD;
@@ -114,7 +114,7 @@
 #### Irish
   * Support added thanks to [Jim Regan](https://github.com/jimregan/languagetool), Emily Barnes, Mícheál J. Ó Meachair,
   and Seanán Ó Coistín. Support includes:
-     - 1184 grammar rules;
+     - 1211 grammar rules;
      - [spell checking](https://github.com/jimregan/languagetool-ga-dicts);
      - [part-of-speech dictionary and synthesiser](https://github.com/jimregan/languagetool-ga-dicts);
      - Irish naming conventions converter;
