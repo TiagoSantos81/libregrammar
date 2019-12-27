@@ -1,6 +1,6 @@
 # LibreGrammar Change Log
 
-## 4.8X-SNAPSHOT (release planned for 2019-XX-XX)
+## 4.8 (released 2019-12-28)
 
 ### This fork differences
 

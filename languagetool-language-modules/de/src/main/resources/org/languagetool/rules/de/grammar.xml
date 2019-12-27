@@ -143,6 +143,14 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
     <!-- Tippfehler -->
     <!-- ====================================================================== -->
     <category id="TYPOS" name="Mögliche Tippfehler">
+        <!-- this is an example rule: -->
+        <rule id="GILBT" name="gilbt (gilt/gibt)">
+            <pattern>
+                <token>gilbt</token>
+            </pattern>
+            <message>Meinten Sie <suggestion>gibt</suggestion> oder <suggestion>gilt</suggestion>?</message>
+            <example correction="gibt|gilt">In Italien <marker>gilbt</marker> es viele Italiener.</example>
+        </rule>
         <rule id="PRP_DM" name="über/mit dm (dem)">
             <antipattern case_sensitive="yes">
                 <token>per</token>
@@ -179,7 +187,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     </token>
                     <token postag="PA2:.+" postag_regexp="yes"></token>
                     <marker>
-                        <token regexp="yes">hat|wurdet</token>
+                        <token regexp="yes">hat|w[uü]rdet</token>
                     </marker>
                 </pattern>
                 <message>Meinten Sie <suggestion><match no="4" regexp_match="t" regexp_replace="st"/></suggestion> (Bezugswort 'du') oder fehlt ein vorausgehendes Komma?</message>
@@ -195,7 +203,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     </token>
                     <token postag="PA2:.+" postag_regexp="yes"></token>
                     <marker>
-                        <token regexp="yes">habe|wurde</token>
+                        <token regexp="yes">habe|w[uü]rde</token>
                     </marker>
                 </pattern>
                 <message>Meinten Sie <suggestion><match no="4" regexp_match="e" regexp_replace="en"/></suggestion> (Bezugswort 'wir') oder fehlt ein vorausgehendes Komma?</message>
@@ -789,6 +797,17 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example><marker>Im</marker> gleichen T-Shirt sah er besser aus.</example>
             </rule>
             <rule>
+                <antipattern>
+                    <token>dank</token>
+                    <token>im</token>
+                    <token>voraus</token>
+                    <token postag="PKT" />
+                </antipattern>
+                <antipattern>
+                    <token>dank</token>
+                    <token>im</token>
+                    <token postag="SENT_END">voraus</token>
+                </antipattern>
                 <pattern>
                     <marker>
                         <token>im</token>
@@ -803,6 +822,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="ihm">Er schaffte es nicht, sich bei <marker>im</marker> zu bedanken.</example>
                 <example correction="ihm">Sie schaute <marker>im</marker> zu.</example>
                 <example>Tom ist nicht besonders gut im rückwärts Einparken.</example>
+                <example>Vielen Dank im voraus.</example><!-- different error (voraus -> Voraus, caught by IM_KLAREN) -->
+
             </rule>
         </rulegroup>
         <rule id="SEIN_MONATEN" name="sein (seit) Jahren etc.">
