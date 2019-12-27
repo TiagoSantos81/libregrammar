@@ -114,7 +114,7 @@
 #### Irish
   * Support added thanks to [Jim Regan](https://github.com/jimregan/languagetool), Emily Barnes, Mícheál J. Ó Meachair,
   and Seanán Ó Coistín. Support includes:
-     - 1211 grammar rules;
+     - 1361 grammar rules;
      - [spell checking](https://github.com/jimregan/languagetool-ga-dicts);
      - [part-of-speech dictionary and synthesiser](https://github.com/jimregan/languagetool-ga-dicts);
      - Irish naming conventions converter;
