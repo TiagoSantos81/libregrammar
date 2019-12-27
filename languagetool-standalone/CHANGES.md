@@ -7,7 +7,7 @@
 #### English
   * rules added:
      - `EnglishSimpleGrammarRule` for simple replacement rule creation - 877 error patterns added from Wikipedia;
-     - verb-noun confusion rule - 1543 error patterns mostly from After the Deadline (AtD);
+     - verb-noun confusion rule - 1547 error patterns mostly from After the Deadline (AtD);
      - adjective-noun confusion rule - 103 error patterns;
      - adjective order rule;
      - eggcorn detection - 227 error patterns from Grammark and AtD;
