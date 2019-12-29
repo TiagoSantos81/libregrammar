@@ -29,7 +29,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 /**
- * @since 4.9
+ * @since 4.8
  */
 public final class ArabicHunspellSpellerRule extends HunspellRule {
 

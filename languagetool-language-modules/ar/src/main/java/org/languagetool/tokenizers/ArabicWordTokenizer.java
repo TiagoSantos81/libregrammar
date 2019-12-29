@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 /**
- * @since 4.9
+ * @since 4.8
  */
 public class ArabicWordTokenizer extends WordTokenizer {
 

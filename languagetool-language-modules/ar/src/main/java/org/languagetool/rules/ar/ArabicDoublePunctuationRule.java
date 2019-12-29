@@ -23,7 +23,7 @@ import org.languagetool.rules.DoublePunctuationRule;
 import java.util.ResourceBundle;
 
 /**
- * @since 4.9
+ * @since 4.8
  */
 public class ArabicDoublePunctuationRule extends DoublePunctuationRule {
 

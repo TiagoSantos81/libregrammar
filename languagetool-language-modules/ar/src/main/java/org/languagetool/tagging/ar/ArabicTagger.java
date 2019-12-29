@@ -31,7 +31,7 @@ import java.lang.StringBuilder;
 import java.util.Locale;
 
 /**
- * @since 4.9
+ * @since 4.8
  */
 public class ArabicTagger extends BaseTagger {
 

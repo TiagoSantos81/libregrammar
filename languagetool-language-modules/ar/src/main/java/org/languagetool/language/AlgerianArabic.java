@@ -18,6 +18,9 @@
  */
 package org.languagetool.language;
 
+/**
+ * @since 4.8
+ */
 public class AlgerianArabic extends Arabic {
 
   @Override

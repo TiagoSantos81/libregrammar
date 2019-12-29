@@ -27,6 +27,7 @@ import java.util.ResourceBundle;
 
 /**
  * Word repeat rule for َArabic, to avoid false alarms in the generic word repetition rule.
+ * @since 4.8
  */
 public class ArabicWordRepeatRule extends WordRepeatRule {
 

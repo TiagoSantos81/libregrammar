@@ -42,7 +42,7 @@ import java.util.regex.Pattern;
  * </ol>
  *
  * @author Taha Zerrouki
- * @since 4.9
+ * @since 4.8
  */
 public class ArabicSynthesizer extends BaseSynthesizer {
 

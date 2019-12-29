@@ -26,7 +26,7 @@ import org.languagetool.rules.ngrams.ConfusionProbabilityRule;
 import java.util.ResourceBundle;
 
 /**
- * @since 4.9
+ * @since 4.8
  */
 public class ArabicConfusionProbabilityRule extends ConfusionProbabilityRule {
 

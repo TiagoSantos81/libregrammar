@@ -27,6 +27,9 @@ import org.languagetool.rules.Example;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+/**
+ * @since 4.8
+ */
 public class ArabicSimpleReplaceRule extends AbstractSimpleReplaceRule2 {
   
   public static final String RULE_ID = "AR_SIMPLE_REPLACE";

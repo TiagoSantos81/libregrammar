@@ -30,7 +30,7 @@ import java.io.IOException;
 /**
  * Hybrid chunker for Arabic.
  *
- * @since 4.9
+ * @since 4.8
  */
 public class ArabicHybridDisambiguator extends AbstractDisambiguator {
 
