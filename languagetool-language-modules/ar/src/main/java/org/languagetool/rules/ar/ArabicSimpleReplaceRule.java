@@ -24,6 +24,7 @@ import org.languagetool.rules.AbstractSimpleReplaceRule2;
 import org.languagetool.rules.Categories;
 import org.languagetool.rules.Example;
 
+import java.io.IOException;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -36,7 +37,7 @@ public class ArabicSimpleReplaceRule extends AbstractSimpleReplaceRule2 {
   
   private static final String RESOURCE_FILENAME = "ar/replaces.txt";
 
-  public ArabicSimpleReplaceRule(ResourceBundle messages, Language language) {
+  public ArabicSimpleReplaceRule(ResourceBundle messages, Language language) throws IOException {
     super(messages, language);
     super.setCategory(Categories.CONFUSED_WORDS.getCategory(messages));
     addExamplePair(Example.wrong("<marker>إنشاء</marker>"),
