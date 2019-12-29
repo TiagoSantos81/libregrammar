@@ -8606,7 +8606,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <short>&getrennt;.</short>
             <example correction="WhatsApp">Wir schrieben per <marker>whats app</marker>.</example>
         </rule>
-        <rulegroup id="JONG_UN" name="Kim Jong-un" default="temp_off">
+        <rulegroup id="JONG_UN" name="Kim Jong-un">
             <url>https://de.wikipedia.org/wiki/Kim_Jong-un</url>
             <rule>
                 <pattern>
@@ -31575,7 +31575,7 @@ Andere Projekte</example>
                     <token postag="ZAL"/>
                 </antipattern>
                 <pattern>
-                    <token postag="PRO:.*:SIN:NEU:.*|ADJ:AKK:...:NEU:.*|ZAL" postag_regexp="yes"><exception regexp="yes">gerade|ungerade|jedem</exception></token>
+                    <token postag="PRO:.*:SIN:NEU:.*|ADJ:(AKK|DAT):...:NEU:.*|ZAL" postag_regexp="yes"><exception regexp="yes">gerade|ungerade|jedem</exception></token>
                     <marker>
                     <token case_sensitive="yes">mal</token>
                     </marker>
@@ -32483,7 +32483,7 @@ Andere Projekte</example>
                 <example correction="Make-ups">Während des Auftragens ihres <marker>Make-Ups</marker> ging etwas schief.</example>
             </rule>
         </rulegroup>
-        <rulegroup id="POST_IT" name="'Post-it'" default="temp_off">
+        <rulegroup id="POST_IT" name="'Post-it'">
             <url>https://de.wikipedia.org/wiki/Klebezettel</url>
             <rule>
                 <pattern>
@@ -32677,11 +32677,12 @@ Andere Projekte</example>
                     <token regexp="yes">E-[A-Z].+</token>
                 </antipattern>
                 <pattern>
-                    <token regexp="yes">e-?(autos?|mobilität|motor(s|en)?|bikes?|mobil[es]?|mobility|roller[sn]?|zigaretten?|scooter[sn]?|shishas?|fahrrads?|fahrräder|gitarren?|herds?|heizung(en)?|motorrads?|motorräder|tretroller|bus(se)?)|pkws?|lkws?</token>
+                    <token regexp="yes">e-?(autos?|mobilität|motor(s|en)?|bikes?|mobil[es]?|mobility|roller[sn]?|zigaretten?|scooter[sn]?|shishas?|fahrrads?|fahrräder|gitarren?|herds?|heizung(en)?|motorrads?|motorräder|tretroller|bus(se)?|pkws?|lkws?)</token>
                 </pattern>
                 <message>Meinten Sie <suggestion>E-<match no="1" regexp_match="(?i)^e-?" regexp_replace="" case_conversion="startupper" /></suggestion>?</message>
                 <example correction="E-Auto">Ein <marker>eAuto</marker> ist oft umweltschonender als ein Auto mit Verbrenner.</example>
                 <example correction="E-Scooter">Ein <marker>EScooter</marker> wird elektrisch angetrieben.</example>
+                <example>Das Kind wurde fast überfahren, als der LKW rückwärts fuhr.</example>
             </rule>
         </rulegroup>
         <rulegroup id="CUM_EX" name="Cum-Ex">
