@@ -588,7 +588,7 @@
         <pattern>
             <marker>
                 <token postag="Art:Gen:Sg:Def:Fem|Art:Pl:Def|CU:Prep:Art:Sg|Cop:Pres:Pron:Pers:3P:Sg:Masc:Art:Sg:Def|Cop:Q:Art:Sg|Det:Q:Art:Sg|Prep:Art:Pl|Prep:Art:Sg|Art:Sg:Def" postag_regexp="yes"></token>
-                <token postag=".*:DefArt|Num:Ord" postag_regexp="yes"></token>
+                <token postag=".*:DefArt|Num:Ord|.*Verb.*Q.*|.*Noun.*Len" postag_regexp="yes"></token>
             </marker>
         </pattern>
         <disambig action="filterall"/>
@@ -1297,6 +1297,14 @@
                 <marker><token postag="Adj:Masc:Com:Sg"></token></marker>
             </pattern>
             <disambig action="add"><wd pos="Adj:Fem:Com:Sg:MorphErr"/></disambig>
+        </rule>
+        <rule>
+            <pattern>
+                <token>ag</token>
+                <token postag=".*Verbal:Noun.*" postag_regexp="yes"></token>
+                <marker><token>Ghaeilge</token></marker>
+            </pattern>
+            <disambig action="add"><wd pos="Prop:Noun:Fem:Gen:Sg:Len"/></disambig>
         </rule>
     </rulegroup>
     <rulegroup id="NOUN_ADJ_ADJ" name="noun adj adj">
