@@ -31323,8 +31323,9 @@ The accident victim died from her injuries.
     </rule>
   </rulegroup>
 
-  <rulegroup id='VERB_TO_PREPOSITION' name='Collocation: verb + to + preposition'>
+  <rulegroup id='VERB_TO_PRONOUN' name='Collocation: verb + to + pronoun'>
     <!-- Created by Tiago F. Santos, 2019-12-31 -->
+      <short>Collocation error</short>
       <antipattern>
           <token postag='DT'/>
           <token postag_regexp='yes' postag='[JN].+'/>
