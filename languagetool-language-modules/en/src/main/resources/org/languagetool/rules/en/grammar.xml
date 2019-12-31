@@ -27238,12 +27238,14 @@ USA
                 <token regexp="yes">ha[ds]</token>
                 <token regexp="yes">s?he|it</token>
             </antipattern>
+            <?ignore since in standard English the expression is "provide you information"
             <antipattern><!-- #2251 provide to you information -->
                 <token postag_regexp="yes" postag="VB.*"/>
                 <token>to</token>
                 <token regexp="yes">you|it</token>
                 <token postag_regexp="yes" postag="NN:UN?"/>
             </antipattern>
+            ?>
             <pattern>
                 <token><exception inflected="yes">be</exception></token>
                 <marker>
@@ -27302,9 +27304,12 @@ USA
             <example>On no condition <marker>has he permission</marker> to touch it.</example>
             <example>... but <marker>had she time</marker> to do it?</example>
             <example>I'm going to stand with you arm in arm.</example>
-            <example>I can provide to you information that you asked for.</example><!-- #2251 -->
-            <example>I can give to you something that makes you happy.</example><!-- #2251 -->
-            <example>... and by providing to it data which it will use in its calculations.</example><!-- #2251 -->
+            <example type="triggers_error">I can provide to you information that you asked for.</example><!-- #2251 -->
+            <example>I can provide you the information you that asked for.</example><!-- #2251 -->
+            <example type="triggers_error">I can give to you something that makes you happy.</example><!-- #2251 -->
+            <example>I can give you something that makes you happy.</example><!-- #2251 -->
+            <example type="triggers_error">... and by providing to it data which it will use in its calculations.</example><!-- #2251 -->
+            <example>... and by providing it data which it will use in its calculations.</example><!-- #2251 -->
             <example>Peter and him have someone they know and Ralph admires.</example><!-- #2252 -->
 <!-- GUI shows a warning, but testrules does not complain. --><example>State Wise Registration Details of <marker>G.I Applications</marker></example>
 <!-- testrules gives an error when 'triggers_error' is used and when it is not used. 
