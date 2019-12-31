@@ -31323,6 +31323,56 @@ The accident victim died from her injuries.
     </rule>
   </rulegroup>
 
+  <rulegroup id='VERB_TO_PREPOSITION' name='Collocation: verb + to + preposition'>
+    <!-- Created by Tiago F. Santos, 2019-12-31 -->
+      <antipattern>
+          <token postag='DT'/>
+          <token postag_regexp='yes' postag='[JN].+'/>
+          <token postag_regexp='yes' postag='N.+'/>
+          <token>to</token>
+          <token regexp='yes'>me|you|h(?:er|im)|it|us|them</token>
+      </antipattern>
+    <rule>
+      <antipattern>
+          <token regexp='yes' inflected='yes'>be|have</token>
+          <token postag='VBN'/>
+          <token>to</token>
+      </antipattern>
+      <pattern>
+          <token>
+            <exception postag='DT'/></token>
+        <marker>
+          <token regexp='yes' inflected='yes'>a(?:ccept|ccuse|dmire)|b(?:eat|elieve|etray|ite)|c(?:atch|onvince)|delay|e(?:nable|ncourage)|f(?:ight|orbid|orgive)|h(?:ug|urt)|i(?:dentify|nform|nvolve)|meet|n(?:eed|eglect)|o(?:bserve|vercome|we)|p(?:ersuade|revent|ursue)|recent|shoot|t(?:each|rust)|understand|w(?:atch|in)</token>
+          <token>to</token>
+          <token regexp='yes'>me|you|h(?:er|im)|it|us|them</token>
+        </marker>
+          <token postag_regexp='yes' postag="IN|PCT"/>
+      </pattern>
+      <message>Usually, with the verb <match no='2' postag='VB'/> followed by \4 does not use the collocation 'to'.</message>
+        <suggestion>\2 \4</suggestion>
+      <example correction="won you">She <marker>won to you</marker> at that party game.</example>
+      <example>This was a big <marker>win to you</marker>.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token>
+            <exception postag='DT'/></token>
+        <marker>
+          <token regexp='yes' inflected='yes'>a(?:ccept|ccuse|ckowledge|dmire|llow|rrange)|b(?:athe|eat|elieve|etray|ite)|c(?:atch|onvince)|delay|e(?:nable|ncourage)|f(?:ight|orbid|orgive)|give|h(?:ug|urt)|i(?:dentify|nform|nvolve)|lose|meet|n(?:eed|eglect)|o(?:bserve|vercome|we)|p(?:ersuade|r(?:epare|event|ovide)|ursue)|r(?:efuse|ecent)|s(?:erve|hoot)|t(?:each|rust)|understand|w(?:atch|in)</token>
+          <token>to</token>
+          <token regexp='yes'>me|you|h(?:er|im)|it|us|them</token>
+        </marker>
+          <token postag_regexp='yes' postag="[DN].+"/>
+      </pattern>
+      <message>Usually, with the verb <match no='2' postag='VB'/> followed by \4 does not use the collocation 'to'.</message>
+        <suggestion>\2 \4</suggestion>
+      <example correction="provide you">I can <marker>provide to you</marker> information that you asked for.</example><!-- #2251 -->
+      <example>I can provide you the information you that asked for.</example><!-- #2251 -->
+      <example correction="give you">I can <marker>give to you</marker> something that makes you happy.</example><!-- #2251 -->
+      <example correction="providing it">... and by <marker>providing to it</marker> data which it will use in its calculations.</example><!-- #2251 -->
+    </rule>
+  </rulegroup>
+
   <rulegroup id='EXCEPTION_OF_TO' name='Collocation: exception to/of'>
     <!-- Created by Nicholas Walker (Bokomaru), 2017-11-14 -->
     <!-- https://forum.languagetool.org/t/en-english-collocation-rules-to-contribute-to-lt/2318 -->
