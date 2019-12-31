@@ -27304,11 +27304,14 @@ USA
             <example>On no condition <marker>has he permission</marker> to touch it.</example>
             <example>... but <marker>had she time</marker> to do it?</example>
             <example>I'm going to stand with you arm in arm.</example>
-            <example type="triggers_error">I can provide to you information that you asked for.</example><!-- #2251 -->
+            <?ignore in this project, it does not trigger error even without the antipattern 
+            <example type="triggers_error">I can provide to you information that you asked for.</example><!-- #2251 --> ?>
             <example>I can provide you the information you that asked for.</example><!-- #2251 -->
-            <example type="triggers_error">I can give to you something that makes you happy.</example><!-- #2251 -->
+            <?ignore in this project, it does not trigger error even without the antipattern 
+            <example type="triggers_error">I can give to you something that makes you happy.</example><!-- #2251 -->?>
             <example>I can give you something that makes you happy.</example><!-- #2251 -->
-            <example type="triggers_error">... and by providing to it data which it will use in its calculations.</example><!-- #2251 -->
+            <?ignore in this project, it does not trigger error even without the antipattern 
+            <example type="triggers_error">... and by providing to it data which it will use in its calculations.</example><!-- #2251 -->?>
             <example>... and by providing it data which it will use in its calculations.</example><!-- #2251 -->
             <example>Peter and him have someone they know and Ralph admires.</example><!-- #2252 -->
 <!-- GUI shows a warning, but testrules does not complain. --><example>State Wise Registration Details of <marker>G.I Applications</marker></example>
