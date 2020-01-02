@@ -95,35 +95,23 @@ public class MorfologikSpeller {
             && speller.isMisspelled(word);
   }
 
-  public Speller getSpeller() {
-    return speller;
-  }
-
-  public List<WeightedSuggestion> getSuggestions(String word) {
-    List<WeightedSuggestion> suggestions = new ArrayList<>();
+  public List<String> getSuggestions(String word) {
+    List<String> suggestions = new ArrayList<>();
     // needs to be reset every time, possible bug: HMatrix for distance computation is not reset;
     // output changes when reused
     Speller speller = new Speller(dictionary, maxEditDistance);
-    List<Speller.CandidateData> replacementCandidates = speller.findReplacementCandidates(word);
-    for (Speller.CandidateData candidate : replacementCandidates) {
-      suggestions.add(new WeightedSuggestion(candidate.getWord(), candidate.getDistance()));
-    }
-    List<Speller.CandidateData> runOnCandidates = speller.replaceRunOnWordCandidates(word);
-    for (Speller.CandidateData runOnCandidate : runOnCandidates) {
-      suggestions.add(new WeightedSuggestion(runOnCandidate.getWord(), runOnCandidate.getDistance()));
-    }
-    
+    suggestions.addAll(speller.findReplacements(word));
+    suggestions.addAll(speller.replaceRunOnWords(word));
     // capitalize suggestions if necessary
     if (dictionary.metadata.isConvertingCase() && StringTools.startsWithUppercase(word)) {
       for (int i = 0; i < suggestions.size(); i++) {
-        WeightedSuggestion sugg = suggestions.get(i);
-        String uppercaseFirst = StringTools.uppercaseFirstChar(sugg.getWord());
+        String uppercaseFirst = StringTools.uppercaseFirstChar(suggestions.get(i));
         // do not use capitalized word if it matches the original word or it's mixed case
-        if (uppercaseFirst.equals(word) || StringTools.isMixedCase(suggestions.get(i).getWord())) {
-          uppercaseFirst = sugg.getWord();
+        if (uppercaseFirst.equals(word) || StringTools.isMixedCase(suggestions.get(i))) {
+          uppercaseFirst = suggestions.get(i);
         }
         // remove capitalized duplicates
-        int auxIndex = sugg.getWord().indexOf(uppercaseFirst);
+        int auxIndex = suggestions.indexOf(uppercaseFirst);
         if (auxIndex > i) {
           suggestions.remove(auxIndex);
         }
@@ -131,7 +119,7 @@ public class MorfologikSpeller {
           suggestions.remove(i);
           i--;
         } else {
-          suggestions.set(i, new WeightedSuggestion(uppercaseFirst, sugg.getWeight()));
+          suggestions.set(i, uppercaseFirst);
         }
       }
     }
