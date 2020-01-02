@@ -2420,6 +2420,14 @@ title="Easy editing stylesheet" ?>
             <exception negate_pos='yes' postag_regexp='yes' postag='R.+'/></token>
           <token postag='V.[CIS].3S.' postag_regexp='yes'/>
       </antipattern>
+      <antipattern>
+          <token postag='VMN0000'/>
+          <token postag_regexp='yes' postag='D...P.+'/>
+          <token postag_regexp='yes' postag='(?:N..|A...)P.+'/>
+          <token min="0" max="3" postag='R.+' postag_regexp='yes'>
+            <exception negate_pos='yes' postag_regexp='yes' postag='R.+'/></token>
+          <token postag='V.[CIS].3S.' postag_regexp='yes'/>
+      </antipattern>
       <pattern>
           <token postag_regexp='yes' postag='D...P.+'>
             <exception negate_pos='yes' postag_regexp='yes' postag='D...P.+'/></token>
@@ -2445,6 +2453,7 @@ title="Easy editing stylesheet" ?>
       <example correction='Os médicos haviam'><marker>Os médicos havia</marker> saído sem saber como dar a notícia.</example>
       <example>Os venezuelanos não conseguem ingerir três refeições por dia a horas certas.</example>
       <example>A aterragem de outros aviões foi interrompida temporariamente.</example>
+      <example>Disposição para aceitar as responsabilidades é um sinal de maturidade.</example>
     </rule>
     <rule>
       <antipattern>
