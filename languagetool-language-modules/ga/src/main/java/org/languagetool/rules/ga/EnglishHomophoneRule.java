@@ -53,7 +53,7 @@ public class EnglishHomophoneRule extends AbstractSimpleReplaceRule {
     super.setCategory(Categories.TYPOS.getCategory(messages));
     super.setLocQualityIssueType(ITSIssueType.Misspelling);
     addExamplePair(Example.wrong("An bhialann <marker>sushi</marker> sin ba chúis leis."),
-      Example.fixed("An bhialann <marker>súisí</marker> sin ba chúis leis."));
+                   Example.fixed("An bhialann <marker>súisí</marker> sin ba chúis leis."));
     this.setCheckLemmas(false);
   }
 
@@ -64,12 +64,12 @@ public class EnglishHomophoneRule extends AbstractSimpleReplaceRule {
 
   @Override
   public String getDescription() {
-    return "";
+    return "Is homafóin iad na focail, m.sh., \"well\" agus \"bhuel\"";
   }
 
   @Override
   public String getShort() {
-    return "Litriú réamhchaighdeánach";
+    return "Homafón Béarla.";
   }
 
   @Override

@@ -1,3 +1,7 @@
+# A part-of-speech dictionary that's used additionally to the binary dictionary (*.dict).
+# This does not add words to the spell checker, see hunspell/spelling.txt for that.
+# File Encoding: UTF-8
+# Format: three tab-separated fields: fullform baseform postags
 atáid	bí	Verb:VI:PresInd:3P:Pl:Rel:CM
 ⁊	⁊	Conj:Coord
 &	&	Conj:Coord
@@ -74,3 +78,39 @@ ndúnmharfóirí	dúnmharfóir	Noun:Masc:Com:Pl:Ecl
 ndúnmharfóirí	dúnmharfóir	Noun:Masc:Gen:Strong:Pl:DefArt
 ndúnmharfóirí	dúnmharfóir	Noun:Masc:Gen:Strong:Pl:Ecl
 ndúnmharfóra	dúnmharfóir	Noun:Masc:Gen:Sg:Ecl
+jóc	jóc	Noun:Masc:Com:Sg:Len
+jóc	jóc	Noun:Masc:Gen:Sg:DefArt
+jóc	jóc	Noun:Masc:Gen:Sg:Len
+jóc	jóc	Noun:Masc:Voc:Sg:Len
+jóc	jóc	Noun:Masc:Com:Sg
+jóc	jóc	Noun:Masc:Com:Sg:DefArt
+jóc	jóc	Noun:Masc:Gen:Sg
+jóc	jóc	Noun:Masc:Com:Sg:Ecl
+jóc	jóc	Noun:Masc:Gen:Sg:Ecl
+jócanna	jóc	Noun:Masc:Com:Pl:Len
+jócanna	jóc	Noun:Masc:Gen:Strong:Pl:Len
+jócanna	jóc	Noun:Masc:Voc:Pl:Len
+jócanna	jóc	Noun:Masc:Com:Pl
+jócanna	jóc	Noun:Masc:Com:Pl:DefArt
+jócanna	jóc	Noun:Masc:Gen:Strong:Pl
+jócanna	jóc	Noun:Masc:Com:Pl:Ecl
+jócanna	jóc	Noun:Masc:Gen:Strong:Pl:DefArt
+jócanna	jóc	Noun:Masc:Gen:Strong:Pl:Ecl
+zombaí	zombaí	Noun:Masc:Com:Sg:Len
+zombaí	zombaí	Noun:Masc:Gen:Sg:DefArt
+zombaí	zombaí	Noun:Masc:Gen:Sg:Len
+zombaí	zombaí	Noun:Masc:Voc:Sg:Len
+zombaí	zombaí	Noun:Masc:Com:Sg
+zombaí	zombaí	Noun:Masc:Com:Sg:DefArt
+zombaí	zombaí	Noun:Masc:Gen:Sg
+zombaí	zombaí	Noun:Masc:Com:Sg:Ecl
+zombaí	zombaí	Noun:Masc:Gen:Sg:Ecl
+zombaithe	zombaí	Noun:Masc:Com:Pl:Len
+zombaithe	zombaí	Noun:Masc:Gen:Strong:Pl:Len
+zombaithe	zombaí	Noun:Masc:Voc:Pl:Len
+zombaithe	zombaí	Noun:Masc:Com:Pl
+zombaithe	zombaí	Noun:Masc:Com:Pl:DefArt
+zombaithe	zombaí	Noun:Masc:Gen:Strong:Pl
+zombaithe	zombaí	Noun:Masc:Com:Pl:Ecl
+zombaithe	zombaí	Noun:Masc:Gen:Strong:Pl:DefArt
+zombaithe	zombaí	Noun:Masc:Gen:Strong:Pl:Ecl

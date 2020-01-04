@@ -53,7 +53,7 @@ public class PrestandardReplaceRule extends AbstractSimpleReplaceRule {
     super.setCategory(Categories.TYPOS.getCategory(messages));
     super.setLocQualityIssueType(ITSIssueType.Misspelling);
     addExamplePair(Example.wrong("“Ní <marker>baoghal</marker> daoibh,” ar sise."),
-      Example.fixed("“Ní <marker>baol</marker> daoibh,” ar sise."));
+                   Example.fixed("“Ní <marker>baol</marker> daoibh,” ar sise."));
     this.setCheckLemmas(false);
   }
 
@@ -64,7 +64,7 @@ public class PrestandardReplaceRule extends AbstractSimpleReplaceRule {
 
   @Override
   public String getDescription() {
-    return "";
+    return "Litriú réamhchaighdeánach, m.sh., \"baoghal\" in áit \"baol\"";
   }
 
   @Override
@@ -74,7 +74,8 @@ public class PrestandardReplaceRule extends AbstractSimpleReplaceRule {
 
   @Override
   public String getMessage(String tokenStr,List<String> replacements) {
-    return "Litriú réamhchaighdeánach.";
+    return "Litriú réamhchaighdeánach:\""
+        + String.join(", ", replacements) + "\".";
   }
 
   @Override

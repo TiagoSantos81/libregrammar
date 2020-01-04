@@ -1,5 +1,6 @@
 #!/usr/bin/perl
-
+# Converts rules from an Gramadóir
+# Licence: MIT
 use warnings;
 use strict;
 use utf8;
@@ -11,22 +12,34 @@ my %TOKEN = (
     '<N>UNLENITED</N>' => '<token postag=".*Noun.*" postag_regexp="yes"><exception postag="*:Len" postag_regexp="yes"/></token>',
     '<A>UNLENITED</A>' => '<token postag="Adj:.*" postag_regexp="yes"><exception postag="*:Len" postag_regexp="yes"/></token>',
     '<N pl="n" gnt="n" gnd="f">ECLIPSED</N>' => '<token postag="(?:C[UMC]:)?Noun:Fem:Com:Sg:Ecl" postag_regexp="yes"></token>',
+    '<S>COMPOUND</S>' => '<token postag="&lt;/Prep:Cmpd&gt;"></token>',
+    '<S>NONCOMPOUND</S>' => '<token postag=".*Prep.*" postag_regexp="yes"></token>',
 );
 
 my %PARTTOKEN = (
-    '<V cop="y">' => 'Cop:.*',
-    '<N pl="n" gnt="n" gnd="f">' => '(?:C[UMC]:)?Noun:Fem:Com:Sg',
-    '<N pl="n" gnt="n" gnd="m">' => '(?:C[UMC]:)?Noun:Masc:Com:Sg',
-    '<N pl="n" gnt="y" gnd="f">' => '(?:C[UMC]:)?Noun:Fem:Gen:Sg',
-    '<N pl="n" gnt="y" gnd="m">' => '(?:C[UMC]:)?Noun:Masc:Gen:Sg',
-    '<N pl="y" gnt="n" gnd="f">' => '(?:C[UMC]:)?Noun:Fem:Com:Pl',
-    '<N pl="y" gnt="n" gnd="m">' => '(?:C[UMC]:)?Noun:Masc:Com:Pl',
-    '<N pl="y" gnt="y" gnd="f">' => '(?:C[UMC]:)?Noun:Fem:Gen:Pl',
-    '<N pl="y" gnt="y" gnd="m">' => '(?:C[UMC]:)?Noun:Masc:Gen:Pl',
+    '<V cop="y">' => '.*Cop:.*',
+    '<N pl="n" gnt="n" gnd="f">' => '(?:C[UMC]:)?Noun:Fem:Com:Sg.*',
+    '<N pl="n" gnt="n" gnd="m">' => '(?:C[UMC]:)?Noun:Masc:Com:Sg.*',
+    '<N pl="n" gnt="y" gnd="f">' => '(?:C[UMC]:)?Noun:Fem:Gen:Sg.*',
+    '<N pl="n" gnt="y" gnd="m">' => '(?:C[UMC]:)?Noun:Masc:Gen:Sg.*',
+    '<N pl="y" gnt="n" gnd="f">' => '(?:C[UMC]:)?Noun:Fem:Com:Pl.*',
+    '<N pl="y" gnt="n" gnd="m">' => '(?:C[UMC]:)?Noun:Masc:Com:Pl.*',
+    '<N pl="y" gnt="y" gnd="f">' => '(?:C[UMC]:)?Noun:Fem:Gen:Pl.*',
+    '<N pl="y" gnt="y" gnd="m">' => '(?:C[UMC]:)?Noun:Masc:Gen:Pl.*',
+    '<A pl="." gnt="n">' => '.*Adj.*Com.*',
+    #'<A pl="n" gnt="n" h="y">' => '',
+    '<A pl="n" gnt="n">' => '.*Adj.*Com.*Sg.*|.*Adj:Base.*',
+    '<A pl="n" gnt="y" gnd="f">' => '.*Adj:Gen:Fem:Sg.*',
+    '<A pl="n" gnt="y" gnd="m">' => '.*Adj:Gen:Masc:Sg.*',
+    '<A pl="y" gnt="n">' => '.*Adj.*Com.*Pl.*',
+
 );
 
 my %POS = (
-    'A' => 'Adj:.*',
+    'A' => '.*Adj:.*',
+    'AG' => '.*Adj:.*Gen.*',
+    'AP' => '.*Adj:.*Pl.*',
+    'AS' => '.*Adj:.*Sg.*',
     'N' => '.*Noun.*',
     'NG' => '.*Noun.*:Gen.*',
     'NFCS' => '.*Noun:Fem:Com:Sg',
@@ -35,6 +48,12 @@ my %POS = (
     'NFGS' => '.*Noun:Fem:Gen:Sg',
     'NMGS' => '.*Noun:Masc:Gen:Sg',
     'NP' => '.*Noun:.*:Pl',
+    '[NY]' => '.*Noun.*',
+    'S' => '.*Prep.*|&lt;/Prep:Cmpd&gt;',
+    'T' => '.*:Art.*',
+    'Q' => '.*:(?:Q|NegQ).*',
+    'C' => '.*Conj:.*',
+    'Y' => '.*Prop:Noun.*',
 );
 
 my @mentities = qw/
@@ -171,28 +190,30 @@ slendersecondimp
 my %entities = map { $_ => 1 } @mentities;
 
 my %msg = (
-    "ABSOLUTE" => "",
-    "AIDIOLRA" => "",
-    "ANAITHNID" => "",
-    "BACHOIR" => "",
-    "BADART" => "",
-    "BREISCHEIM" => "",
-    "CAIGHDEAN" => "",
-    "CLAOCHLU" => "",
-    "CONDITIONAL" => "",
-    "CUPLA" => "",
-    "GENDER" => "",
-    "GENITIVE" => "",
-    "INPHRASE" => "",
-    "IOLRA" => "",
-    "IONADAI" => "",
-    "MICHEART" => "",
-    "NEAMHCHOIT" => "",
-    "NEEDART" => "",
+    "ABSOLUTE" => "Níl gá leis an fhoirm spleách",
+    "AIDIOLRA" => "Ba chóir duit aidiacht iolra a úsáid anseo",
+    "ANAITHNID" => "Focal anaithnid",
+    "BACHOIR" => "Ba chóir duit ‘\\1’ a úsáid anseo",
+    "BADART" => "Níl gá leis an alt cinnte anseo",
+    "BREISCHEIM" => "Ba chóir duit an bhreischéim a úsáid anseo",
+    "CAIGHDEAN" => "Foirm neamhchaighdeánach de ‘\\1’",
+    "CAIGHMOIRF" => "Bunaithe ar fhoirm neamhchaighdeánach de ‘\\1’",
+    "CLAOCHLU" => "Urú nó séimhiú ar iarraidh",
+    "CONDITIONAL" => "Ba chóir duit an modh coinníollach a úsáid anseo",
+    "CUPLA" => "Cor cainte aisteach",
+    "DROCHMHOIRF" => "Bunaithe go mícheart ar an bhfréamh ‘\\1’",
+    "GENDER" => "Inscne mhícheart",
+    "GENITIVE" => "Tá gá leis an leagan ginideach anseo",
+    "INPHRASE" => "Ní úsáidtear an focal seo ach san abairtín ‘\\1’ de ghnáth",
+    "IOLRA" => "Tá gá leis an leagan iolra anseo",
+    "IONADAI" => "Focal ceart ach tá ‘\\1’ níos coitianta",
+    "MICHEART" => "An raibh ‘\\1’ ar intinn agat?",
+    "NEAMHCHOIT" => "Focal ceart ach an-neamhchoitianta - an é atá uait anseo?",
+    "NEEDART" => "Ba chóir duit an t-alt cinnte a úsáid",
     "NIAITCH" => "Réamhlitir ‘h’ gan ghá",
     "NIBEE" => "Réamhlitir ‘b'’ gan ghá",
-    "NICLAOCHLU" => "",
-    "NIDARASEIMHIU" => "",
+    "NICLAOCHLU" => "Urú nó séimhiú gan ghá",
+    "NIDARASEIMHIU" => "Ní gá leis an dara séimhiú",
     "NIDEE" => "Réamhlitir ‘d'’ gan ghá",
     "NIGA" => "Níl gá leis an fhocal ‘\\1’",
     "NISEIMHIU" => "Séimhiú gan ghá",

@@ -21,33 +21,37 @@
  */
 package org.languagetool.tagging.ga;
 
+import java.util.Objects;
+
 public class Retaggable {
-  String word;
-  String restrictToPos;
-  String appendTag;
-  String prefix;
-  public Retaggable(String word, String restrictToPos, String appendTag) {
+  
+  private String word;
+  private String restrictToPos;
+  private String appendTag;
+  private String prefix;
+  
+  Retaggable(String word, String restrictToPos, String appendTag) {
+    Objects.requireNonNull(word, "word must not be null");
     this.word = word;
     this.restrictToPos = restrictToPos;
     this.appendTag = appendTag;
   }
-  public Retaggable(String word, String restrictToPos, String appendTag, String prefix) {
-    this.word = word;
-    this.restrictToPos = restrictToPos;
-    this.appendTag = appendTag;
+  
+  Retaggable(String word, String restrictToPos, String appendTag, String prefix) {
+    this(word, restrictToPos, appendTag);
     this.prefix = prefix;
   }
 
-  public void setAppendTag(String appendTag) {
-    if(this.appendTag == null || this.appendTag == "") {
+  void setAppendTag(String appendTag) {
+    if(this.appendTag == null || "".equals(this.appendTag)) {
       this.appendTag = appendTag;
     } else {
       this.appendTag = this.appendTag + appendTag;
     }
   }
 
-  public void setRestrictToPos(String restrictToPos) {
-    if(this.restrictToPos == null || this.restrictToPos == "") {
+  void setRestrictToPos(String restrictToPos) {
+    if(this.restrictToPos == null || "".equals(this.restrictToPos)) {
       this.restrictToPos = restrictToPos;
     } else {
       this.restrictToPos = this.restrictToPos + "|" + restrictToPos;
@@ -63,7 +67,7 @@ public class Retaggable {
   public String getAppendTag() {
     return appendTag;
   }
-  public String getPrefix() {
+  String getPrefix() {
     return prefix;
   }
 }

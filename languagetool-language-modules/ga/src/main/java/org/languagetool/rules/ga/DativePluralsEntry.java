@@ -18,73 +18,74 @@
  */
 package org.languagetool.rules.ga;
 
-public class DativePluralsEntry {
+class DativePluralsEntry {
+  
   private String form;
-  private String form_modern;
+  private String formModern;
   private String lemma;
-  private String lemma_modern;
+  private String lemmaModern;
   private String equivalent;
   private String replacement;
 
-  public String getForm() {
+  String getForm() {
     return form;
   }
 
-  public String getModern() {
-    return form_modern;
+  String getModern() {
+    return formModern;
   }
 
-  public String getLemma() {
+  String getLemma() {
     return lemma;
   }
 
-  public String getLemmaModern() {
-    return lemma_modern;
+  String getLemmaModern() {
+    return lemmaModern;
   }
 
-  public String getEquivalent() {
+  String getEquivalent() {
     return equivalent;
   }
 
-  public String getReplacement() {
+  String getReplacement() {
     return replacement;
   }
 
-  public String getGender() {
+  String getGender() {
     return gender;
   }
 
-  String gender;
+  private String gender;
 
-  public DativePluralsEntry(String form, String lemma, String gender, String replacement) {
+  DativePluralsEntry(String form, String lemma, String gender, String replacement) {
     this.form = form;
     this.lemma = lemma;
     this.gender = gender;
     this.replacement = replacement;
   }
 
-  public void setEquivalent(String equiv) {
+  void setEquivalent(String equiv) {
     this.equivalent = equiv;
   }
-  public void setModernised(String modernised) {
-    this.form_modern = modernised;
+  void setModernised(String modernised) {
+    this.formModern = modernised;
   }
-  public void setModernLemma(String modernised) {
-    this.lemma_modern = modernised;
+  void setModernLemma(String modernised) {
+    this.lemmaModern = modernised;
   }
-  public boolean hasEquivalent() {
+  boolean hasEquivalent() {
     return !(equivalent == null || equivalent.equals(""));
   }
-  public boolean hasModernised() {
-    return !(form_modern == null || form_modern.equals(""));
+  boolean hasModernised() {
+    return !(formModern == null || formModern.equals(""));
   }
-  public boolean hasModernLemma() {
-    return !(lemma_modern == null || lemma_modern.equals(""));
+  boolean hasModernLemma() {
+    return !(lemmaModern == null || lemmaModern.equals(""));
   }
-  public String getBaseTag() {
+  String getBaseTag() {
     return (this.gender.equals("f")) ? "Noun:Fem:Dat:Pl" : "Noun:Masc:Dat:Pl";
   }
-  public String getStandard() {
+  String getStandard() {
     if(hasEquivalent()) {
       return equivalent;
     } else {

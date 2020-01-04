@@ -28,6 +28,7 @@ import org.languagetool.tagging.ga.Utils;
 import static org.junit.Assert.*;
 
 public class UtilsTest {
+  
   @Test
   public void testToLowerCaseIrish() {
     assertEquals("test", Utils.toLowerCaseIrish("TEST"));
@@ -100,5 +101,13 @@ public class UtilsTest {
   public void testFixSuffix() {
     Retaggable tmp = Utils.fixSuffix("caimiléaracht");
     assertEquals(tmp.getWord(), "caimiléireacht");
+  }
+
+  @Test
+  public void testUnPonc() {
+    assertEquals("chuir", Utils.unPonc("ċuir"));
+    assertEquals("CHUIR", Utils.unPonc("ĊUIR"));
+    assertEquals("Chuir", Utils.unPonc("Ċuir"));
+    assertEquals("FÉACH", Utils.unPonc("FÉAĊ"));
   }
 }

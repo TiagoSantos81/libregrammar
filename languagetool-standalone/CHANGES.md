@@ -16,6 +16,10 @@
   * support now also available on upstream project
     (https://github.com/languagetool-org/languagetool/pull/2219)
 
+#### Irish
+  * support now also available on upstream project
+    (https://github.com/languagetool-org/languagetool/pull/2260)
+
 #### German
   * added and improved rules
   
