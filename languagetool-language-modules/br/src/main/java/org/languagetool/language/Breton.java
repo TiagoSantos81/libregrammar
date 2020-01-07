@@ -29,6 +29,7 @@ import org.languagetool.LanguageMaintainedState;
 import org.languagetool.UserConfig;
 import org.languagetool.rules.*;
 import org.languagetool.rules.br.TopoReplaceRule;
+import org.languagetool.rules.br.BretonCompoundRule;
 import org.languagetool.rules.br.MorfologikBretonSpellerRule;
 import org.languagetool.tagging.Tagger;
 import org.languagetool.tagging.br.BretonTagger;
@@ -112,7 +113,9 @@ public class Breton extends Language {
             new UppercaseSentenceStartRule(messages, this),
             new MultipleWhitespaceRule(messages, this),
             new SentenceWhitespaceRule(messages),
-            new TopoReplaceRule(messages)
+            // specific to Breton
+            new TopoReplaceRule(messages),
+            new BretonCompoundRule(messages)
     );
   }
 

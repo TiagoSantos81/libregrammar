@@ -4,6 +4,10 @@
 
 ### This fork differences
 
+#### Breton
+  * compound rule added:
+     - 4136 entries thanks to Wanibzh29 (https://github.com/languagetool-org/languagetool/issues/2299).
+
 #### English
   * rules added and improved
 
@@ -13,16 +17,21 @@
 ### Other changes common to both projects
 
 #### Arabic
-  * support now also available on upstream project
-    (https://github.com/languagetool-org/languagetool/pull/2219)
+  * support now also available on upstream project 
+    (https://github.com/languagetool-org/languagetool/pull/2219);
+  * rules added and improved.
 
-#### Irish
-  * support now also available on upstream project
-    (https://github.com/languagetool-org/languagetool/pull/2260)
+#### Dutch
+  * added and improved rules
 
 #### German
   * added and improved rules
-  
+
+#### Irish
+  * support now also available on upstream project
+    (https://github.com/languagetool-org/languagetool/pull/2260);
+  * rules added and improved.
+
 #### General
   * dependency security update
   * [upstream hunspell support dropped for 32-bit systems](https://github.com/languagetool-org/languagetool/commit/b769f5ec319a53c10c45a8aa33a9fd6a4600792c).
