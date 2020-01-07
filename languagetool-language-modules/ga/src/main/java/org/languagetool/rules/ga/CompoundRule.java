@@ -27,6 +27,8 @@ import org.languagetool.rules.Example;
 
 /**
  * Checks that compounds (if in the list) are not written as separate words.
+ * since @4.8
+ *
  */
 public final class CompoundRule extends AbstractCompoundRule {
 

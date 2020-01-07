@@ -30,6 +30,10 @@ import java.util.ResourceBundle;
 import static org.languagetool.rules.ga.DhaNoBeirtData.getNumberReplacements;
 import static org.languagetool.rules.ga.DhaNoBeirtData.getDaoine;
 
+/* 
+ * since @4.8
+ *
+ */
 public class DhaNoBeirtRule extends Rule {
   public DhaNoBeirtRule(ResourceBundle messages) {
     super.setCategory(Categories.MISC.getCategory(messages));

@@ -42,7 +42,7 @@ import org.languagetool.tokenizers.Tokenizer;
 import org.languagetool.tokenizers.WordTokenizer;
 
 /**
- * @since 4.9
+ * @since 4.8
  */
 public class Irish extends Language implements AutoCloseable {
 

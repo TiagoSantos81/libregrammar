@@ -27,6 +27,9 @@ import java.util.*;
  * Data for {@link DhaNoBeirtRule}.
  * Loads list of humans from external files.
  * Based on AvsAnData
+ * 
+ * since @4.8
+ *
  */
 final class DhaNoBeirtData {
 

@@ -37,7 +37,7 @@ import java.util.List;
  * <b>Warning: Do not use this in disambiguation.xml, it would cause an endless loop,
  * use {@link NoDisambiguationIrishPartialPosTagFilter} instead.</b> 
  *
- * @since 2.8
+ * @since 4.9
  * @see NoDisambiguationIrishPartialPosTagFilter
  */
 public class IrishPartialPosTagFilter extends PartialPosTagFilter {

@@ -33,6 +33,8 @@ import java.util.ResourceBundle;
  * A rule that matches words which should not be used and suggests
  * correct ones instead. 
  * 
+ * since @4.8
+ *
  * Irish version for English names of people (Nero, etc.)
  * relevant words from <code>rules/ga/names.txt</code>.
  * 

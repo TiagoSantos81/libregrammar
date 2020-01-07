@@ -30,7 +30,7 @@ import java.util.List;
 
 /**
  * A {@link PartialPosTagFilter} for Irish that does not run the disambiguator.
- * @since 3.2
+ * @since 4.9
  * @see IrishPartialPosTagFilter
  */
 public class NoDisambiguationIrishPartialPosTagFilter extends PartialPosTagFilter {

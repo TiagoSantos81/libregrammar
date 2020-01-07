@@ -34,6 +34,8 @@ import java.util.ResourceBundle;
  * A rule that matches words which should not be used and suggests
  * correct ones instead. 
  * 
+ * since @4.8
+ *
  * Irish version for English placenames
  * relevant words from <code>rules/ga/placenames.txt</code>.
  * 
