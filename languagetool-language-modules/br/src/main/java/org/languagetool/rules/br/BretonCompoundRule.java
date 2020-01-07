@@ -1,5 +1,5 @@
 /* LanguageTool, a natural language style checker 
- * Copyright (C) 2020 Tiago Santos (tiagofsantos@sapo.pt)
+ * Copyright (C) 2020 Tiago Santos (tiagofsantos81@sapo.pt)
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
