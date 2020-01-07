@@ -6,7 +6,7 @@
 
 #### Breton
   * compound rule added:
-     - 4136 entries thanks to Wanibzh29 (https://github.com/languagetool-org/languagetool/issues/2300).
+     - 4101 entries thanks to Wanibzh29 (https://github.com/languagetool-org/languagetool/issues/2300).
 
 #### English
   * rules added and improved
