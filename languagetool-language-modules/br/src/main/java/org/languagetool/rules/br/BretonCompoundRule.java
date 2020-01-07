@@ -53,8 +53,10 @@ public class BretonCompoundRule extends AbstractCompoundRule {
             "An droienn-mañ a zo skrivet evel ur ger hepken pe gant ur varrennig-stagañ.",
             "Kudenn barrennig-stagañ");
     super.setCategory(Categories.COMPOUNDING.getCategory(messages));
+    /*
     addExamplePair(Example.wrong("Gwelet em eus un <marker>alc'hweder gwez</marker> e-kerzh an dibenn-sizhun-mañ."),
                    Example.fixed("Gwelet em eus un <marker>alc'hweder-gwez</marker> e-kerzh an dibenn-sizhun-mañ."));
+                   */
     setLocQualityIssueType(ITSIssueType.Grammar);
   }
 
