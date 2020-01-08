@@ -15,10 +15,14 @@
 #### English
   * rules added and improved
   * POS and spelling improvements
+     - scientific nomenclature POS support added
 
 #### Portuguese
   * some commit fixes to upstream project
 
+#### General
+  * 1547 species taxa entries added to `spelling_global.txt`
+  
 ### Other changes common to both projects
 
 #### Arabic
