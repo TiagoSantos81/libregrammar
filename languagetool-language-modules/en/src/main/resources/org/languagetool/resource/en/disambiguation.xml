@@ -4235,7 +4235,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
     <rule id="NNP_CIUDAD_DE" name="NNP for Spanish names containing 'de'">
         <pattern case_sensitive="yes">
             <marker>
-                <token regexp="yes">Ciudad|Playa|Casa|Puerto|Avenida|Santiago|Municipio|Paseo|Calle|Di?os|Rancho</token>
+                <token regexp="yes">Ciudad|Playa|Casa|Puerto|Avenida|Santiago|Municipio|Paseo|Calle|Di?os|Rancho|Cerro</token>
                 <token>de</token>
                 <token regexp="yes" min="0">[Ll]a</token>
                 <token regexp="yes">[A-Z].+</token>
@@ -4247,7 +4247,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
     <rule id="NNP_CIUDAD_DEL" name="NNP for Spanish geo names containing 'del'">
         <pattern case_sensitive="yes">
             <marker>
-                <token regexp="yes">Ciudad|Playa|Casa|Puerto|Avenida|Santiago|Municipio|Paseo|Calle|Di?os|Rancho</token>
+                <token regexp="yes">Ciudad|Playa|Casa|Puerto|Avenida|Santiago|Municipio|Paseo|Calle|Di?os|Rancho|Cerro</token>
                 <token>del</token>
                 <token regexp="yes">[A-Z].+</token>
             </marker>
@@ -4260,7 +4260,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <marker>
                 <token postag="NNP|UNKNOWN" postag_regexp="yes" regexp="yes" case_sensitive="yes">[A-Z].+</token>
                 <token>de</token>
-                <token regexp="yes">las?</token>
+                <token regexp="yes">los?|las</token>
                 <token postag="NNP|UNKNOWN" postag_regexp="yes" regexp="yes" case_sensitive="yes">[A-Z].+</token>
             </marker>
         </pattern>
@@ -5370,6 +5370,14 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
       <disambig action="replace"><wd pos="NNP"/><wd pos="NNP"/></disambig>
     </rule>
 
+    <rule name="Proper noun: Charlie Hebdo" id="CHARLIE_HEBDO"><!-- https://en.wikipedia.org/wiki/Charlie_Hebdo -->
+      <pattern case_sensitive="yes">
+        <token>Charlie</token>
+        <token>Hebdo</token>
+      </pattern>
+      <disambig action="replace"><wd pos="NNP"/><wd pos="NNP"/></disambig>
+    </rule>
+
     <rule name="Proper noun: Christ lag in Todesbanden" id="CHRIST_LAG_IN_TODESBANDEN"><!-- https://en.wikipedia.org/wiki/Christ_lag_in_Todesbanden -->
       <pattern case_sensitive="yes">
         <token>Christ</token>
@@ -5584,7 +5592,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
     <rule id="IGNORE_SPELLING_OF_CIUDAD_DE" name="Ignore spelling of Hispanic names containing 'de'">
         <pattern case_sensitive="yes">
             <marker>
-                <token regexp="yes">Ciudad|Playa|Casa|Puerto|Avenida|Santiago|Municipio|Paseo|Calle|Días|Di?os|Nacional|Villas|Cinco|Rancho</token>
+                <token regexp="yes">Ciudad|Playa|Casa|Puerto|Avenida|Santiago|Municipio|Paseo|Calle|Días|Di?os|Nacional|Villas|Cinco|Rancho|Cerro</token>
                 <token>de</token>
                 <token regexp="yes" min="0">[Ll]a|[Ll][eoa]s</token>
             </marker>
@@ -5596,7 +5604,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
     <rule id="IGNORE_SPELLING_OF_CIUDAD" name="Ignore spelling of Hispanic names containing 'del'">
         <pattern case_sensitive="yes">
             <marker>
-                <token regexp="yes">Ciudad|Playa|Casa|Puerto|Avenida|Santiago|Municipio|Paseo|Calle|Di?os|Villas|Rancho</token>
+                <token regexp="yes">Ciudad|Playa|Casa|Puerto|Avenida|Santiago|Municipio|Paseo|Calle|Di?os|Villas|Rancho|Cerro</token>
                 <token regexp="yes">[Dd]el</token>
             </marker>
             <token regexp="yes">[A-Z].+</token>
@@ -7388,6 +7396,14 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
                 <token>res</token>
             </pattern>
             <disambig action="replace"><wd pos="RB"/><wd pos="RB"/><wd pos="RB"/></disambig>
+        </rule>
+
+        <rule id="IN_MEMORIAM" name="in memoriam">
+            <pattern>
+                <token>in</token>
+                <token>memoriam</token>
+            </pattern>
+            <disambig action="replace"><wd pos="IN"/><wd pos="IN"/></disambig>
         </rule>
 
         <rule id="IN_PROPRIA_PERSONA" name="in propria persona">
