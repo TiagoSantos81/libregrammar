@@ -12719,6 +12719,51 @@ USA
                 <url>https://www.merriam-webster.com/dictionary/immigrant</url>
                 <example correction="immigrant">I'm an <marker>immigrate</marker> from Syria ...</example>
             </rule>
+            <rule><!-- the well-deserved + NOUN -->
+                <pattern>
+                    <token regexp="yes">the|an?|my|y?our|his|her|their|its|s</token>
+                    <token postag="JJS?|RB" postag_regexp="yes" min="0">
+                        <exception postag="NN.*" postag_regexp="yes" />
+                    </token>
+                    <marker>
+                        <token>well</token>
+                        <token>deserved</token>
+                    </marker>
+                    <token postag="N.+" postag_regexp="yes" min="0"/>
+                </pattern>
+                <message>The expression '\3 \4' is not an adjective. Did you mean <suggestion>\3-\4</suggestion>?</message>
+                <url>https://www.collinsdictionary.com/dictionary/english/well-deserved</url>
+                <example correction="well-deserved">He has a <marker>well deserved</marker> reputation.</example>
+                <example>Well deserved!</example>
+            </rule>
+            <rule><!-- the open-heart surgery -->
+                <pattern>
+                    <token>open</token>
+                    <token>heart</token>
+                    <token regexp='yes'>surger(?:y|ies)</token>
+                </pattern>
+                <message>The word '\3' is not an adjective. Did you mean <suggestion>\1-\2 \3</suggestion>?</message>
+                <url>https://www.collinsdictionary.com/dictionary/english/open-heart</url>
+                <example correction="open-heart surgery">He has an <marker>open heart surgery</marker> scheduled today.</example>
+                <example>Only an open heart will...</example>
+            </rule>
+            <rule><!-- the under-age + NOUN -->
+                <pattern>
+                    <token regexp="yes">the|an?|my|y?our|his|her|their|its|s</token>
+                    <token postag="JJS?|RB" postag_regexp="yes" min="0">
+                        <exception postag="NN.*" postag_regexp="yes" />
+                    </token>
+                    <marker>
+                        <token>under</token>
+                        <token regexp='yes'>age[ds]?</token>
+                    </marker>
+                    <token postag="N.+" postag_regexp="yes" min="0"/>
+                </pattern>
+                <message>The expression '\3 \4' is not an adjective. Did you mean <suggestion>\3\4</suggestion>?</message>
+                <url>https://www.merriam-webster.com/dictionary/underage</url>
+                <example correction="underage">The news reported an <marker>under age</marker> girl is missing.</example>
+                <example>Usually, children under age 14 go to school.</example>
+            </rule>
             <rule><!-- the reflect -->
                 <pattern>
                     <token regexp="yes">the|an?|my|y?our|his|her|their|its|s</token>
