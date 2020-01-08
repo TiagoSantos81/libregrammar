@@ -1127,7 +1127,7 @@
         </marker>
       </pattern>
       <disambig action="filter" postag="S.+"/>
-      <example type="untouched">Por amor a Deus, muitas atrocidades foram cometidas.</example>
+      <example type="untouched">Por amor a Deus, muitas atrocidades foram cometidas.</example><!-- XXX cases like 'amor a Deus' are already handled by 'NSN' rule anyway... -->
     </rule>
   </rulegroup>
 
