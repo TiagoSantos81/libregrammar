@@ -6,10 +6,15 @@
 
 #### Breton
   * compound rule added:
-     - 4101 entries thanks to Wanibzh29 (https://github.com/languagetool-org/languagetool/issues/2300).
+     - 4101 entries thanks to [Pierre Morvan](https://github.com/languagetool-org/languagetool/issues/2300).
+  * activated generic Java rules, including:
+     - `GenericUnpairedBracketsRule`, `WordRepeatRule`, `LongSentenceRule`, `LongParagraphRule`, 
+     `WhiteSpaceBeforeParagraphEnd`, `WhiteSpaceAtBeginOfParagraph`, `EmptyLineRule`, 
+     `ParagraphRepeatBeginningRule`, `PunctuationMarkAtParagraphEnd` .
 
 #### English
   * rules added and improved
+  * POS and spelling improvements
 
 #### Portuguese
   * some commit fixes to upstream project
@@ -31,6 +36,9 @@
   * support now also available on upstream project
     (https://github.com/languagetool-org/languagetool/pull/2260);
   * rules added and improved.
+
+#### Portuguese
+  * POS and spelling improvements
 
 #### General
   * dependency security update
