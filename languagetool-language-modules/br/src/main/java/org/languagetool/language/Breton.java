@@ -115,6 +115,15 @@ public class Breton extends Language {
             new UppercaseSentenceStartRule(messages, this),
             new MultipleWhitespaceRule(messages, this),
             new SentenceWhitespaceRule(messages),
+            new GenericUnpairedBracketsRule(messages),
+            new WordRepeatRule(messages, this),
+            new LongSentenceRule(messages, userConfig, -1, true),
+            new LongParagraphRule(messages, this, userConfig),
+            new WhiteSpaceBeforeParagraphEnd(messages, this),
+            new WhiteSpaceAtBeginOfParagraph(messages),
+            new EmptyLineRule(messages, this),
+            new ParagraphRepeatBeginningRule(messages, this),
+            new PunctuationMarkAtParagraphEnd(messages, this, true),
             // specific to Breton
             new TopoReplaceRule(messages),
             new BretonCompoundRule(messages)
