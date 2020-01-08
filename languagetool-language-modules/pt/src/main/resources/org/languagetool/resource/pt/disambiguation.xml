@@ -1119,6 +1119,16 @@
       </pattern>
       <disambig action="filter" postag="S.+"/>
     </rule>
+    <rule>
+      <pattern>
+          <token regexp='yes'>amor|devoção|entrega</token>
+        <marker>
+          <token>a</token>
+        </marker>
+      </pattern>
+      <disambig action="filter" postag="S.+"/>
+      <example type="untouched">Por amor a Deus, muitas atrocidades foram cometidas.</example>
+    </rule>
   </rulegroup>
 
     <rule id="P_V" name="Pronome + Verbo">
