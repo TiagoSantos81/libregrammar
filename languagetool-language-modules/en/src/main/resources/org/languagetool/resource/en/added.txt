@@ -118,6 +118,7 @@ ActionScript	ActionScript	NNP
 ActiveCampaign	ActiveCampaign	NNP
 Acura	Acura	NNP
 AdBlock	AdBlock	NNP
+Adderall	Adderall	NNP
 Adeeb	Adeeb	NNP
 Adeel	Adeel	NNP
 Adélie	Adélie	NNP
@@ -269,6 +270,13 @@ air-dry	air-dry	VB
 air-dry	air-dry	VBP
 air-drying	air-dry	VBG
 AirPods	AirPods	NNPS
+airfreight	airfreight	VBG
+airfreight	airfreight	VB
+airfreight	airfreight	VBP
+airfreighted	airfreight	VBD
+airfreighted	airfreight	VBN
+airfreights	airfreight	VBZ
+airfreighting	airfreight	VBG
 airpower	airpower	NN:UN
 Airtel	Airtel	NNP
 Ajay	Ajay	NNP
@@ -642,6 +650,7 @@ ArcelorMittal	ArcelorMittal	NNP
 arcologies	arcology	NNS
 Arctica	Arctica	NNP
 Arduino	Arduino	NNP
+argh	argh	UH
 Århus	Århus	NNP
 Arial	Arial	NNP
 Ariana	Ariana	NNP
@@ -765,6 +774,7 @@ Asus	Asus	NNP
 ASUS	ASUS	NNP
 atheroma	atheroma	NN:U
 Atlassian	Atlassian	NNP
+Atlético	Atlético	NNP
 ATMs	ATM	NNS
 Atos	Atos	NNP
 ATP	ATP	NNP
@@ -861,6 +871,8 @@ attoweber	attoweber	NN
 attowebers	attoweber	NNS
 attracted	attracted	JJ
 audial	audial	JJ
+audiobook	audiobook	NN
+audiobooks	audiobook	NNS
 audio-animatronic	audio-animatronic	JJ
 Audis	Audi	NNPS
 auditionee	auditionee	NN
@@ -944,6 +956,12 @@ autonomized	autonomize	VBN
 autonomizes	autonomize	VBZ
 autonomizing	autonomize	VBG
 autophobia	autophobia	NN:U
+autoplay	autoplay	VB
+autoplay	autoplay	VBP
+autoplayed	autoplay	VBD
+autoplayed	autoplay	VBN
+autoplays	autoplay	VBZ
+autoplaying	autoplay	VBG
 autoresponder	autoresponder	NN
 auto-responder	auto-responder	NN
 autoresponders	autoresponder	NNS
@@ -1089,6 +1107,7 @@ béchamel	béchamel	NN:U
 bêche-de-mer	bêche-de-mer	NN
 Bêche-de-Mer	Bêche-de-Mer	NNP
 bêches-de-mer	bêche-de-mer	NNS
+Beaverton	Beaverton	NNP
 Bechtle	Bechtle	NNP
 Bedford	Bedford	NNP
 Będzin	Będzin	NNP
@@ -1137,6 +1156,12 @@ Bicolline	Bicolline	NNP
 Biden	Biden	NNP
 Bidibidi	Bidibidi	NNP
 big-endian	big-endian	JJ
+binge-watch	binge-watch	VB
+binge-watch	binge-watch	VBP
+binge-watched	binge-watch	VBD
+binge-watched	binge-watch	VBN
+binge-watches	binge-watch	VBZ
+binge-watching	binge-watch	VBG
 biocompatible	biocompatible	JJ
 biodiesel	biodiesel	NN:U
 bio-diesel	bio-diesel	NN:U
@@ -1192,6 +1217,7 @@ Blackwater	Blackwater	NNP
 blasé	blasé	JJ
 blasphemy	blasphemy	NN:U
 bleed	bleed	NN
+bleeding	bleeding	JJ
 bleeds	bleed	NNS
 blendable	blendable	JJ
 blockchain	blockchain	NN
@@ -1321,6 +1347,7 @@ burnettizes	burnettize	VBZ
 burnettizing	burnettize	VBG
 burpee	burpee	NN
 burpees	burpee	NNS
+bushland	bushland	NN:U
 bustling	bustling	JJ
 BV	BV	NNP
 ByteDance	ByteDance	NNP
@@ -1679,6 +1706,8 @@ chèvre	chèvre	NN:U
 Chhattisgarh	Chhattisgarh	NNP
 Chick-fil-A	Chick-fil-A	NNP
 Chimalhuacán	Chimalhuacán	NNP
+chimichurri	chimichurri	NN:UN
+chimichurris	chimichurri	NNS
 chipped	chipped	JJ
 chit-chat	chit-chat	NN:UN
 chit-chat	chit-chat	VB
@@ -1720,6 +1749,7 @@ chronologised	chronologise	VBN
 chronologises	chronologise	VBZ
 chronologising	chronologise	VBG
 Churchwell	Churchwell	NNP
+Ciara	Ciara	NNP
 Ciaran	Ciaran	NNP
 cicatrise	cicatrise	VB
 cicatrise	cicatrise	VBP
@@ -1844,6 +1874,7 @@ cognised	cognise	VBN
 cognises	cognise	VBZ
 cognising	cognise	VBG
 cohomological	cohomological	JJ
+Coldplay	Coldplay	NNP
 collateralise	collateralise	VB
 collateralise	collateralise	VBP
 collateralised	collateralise	VBD
@@ -2161,6 +2192,12 @@ counter-intuitive	counter-intuitive	JJ
 counter-intuitively	counter-intuitively	RB
 coupé	coupé	NN
 coupés	coupé	NNS
+courier	courier	VB
+courier	courier	VBP
+couriered	courier	VBD
+couriered	courier	VBN
+couriers	courier	VBZ
+couriering	courier	VBG
 Covestro	Covestro	NNP
 cowabunga	cowabunga	UH
 coworking	coworking	NN:U
@@ -3372,10 +3409,17 @@ dieselises	dieselise	VBZ
 dieselising	dieselise	VBG
 dieselize	dieselize	VB
 dieselize	dieselize	VBP
+Dietmar	Dietmar	NNP
 dieselized	dieselize	VBD
 dieselized	dieselize	VBN
 dieselizes	dieselize	VBZ
 dieselizing	dieselize	VBG
+diff	diff	VB
+diff	diff	VBP
+diffed	diff	VBD
+diffed	diff	VBN
+diffs	diff	VBZ
+diffing	diff	VBG
 différance	différance	NN
 diffractogram	diffractogram	NN
 diffractograms	diffractogram	NNS
@@ -3565,6 +3609,12 @@ Diyarbakır	Diyarbakır	NNP
 DKIM	DKIM	NN:U
 DLK	DLK	NNP
 DMs	DM	NNS
+dm	dm	VB
+dm	dm	VBP
+dmed	dm	VBD
+dmed	dm	VBN
+dms	dm	VBZ
+dming	dm	VBG
 Dnipro	Dnipro	NNP
 Docebo	Docebo	NNP
 documentation	documentation	NN
@@ -3633,6 +3683,7 @@ double-clicked	double-click	VBD
 double-clicked	double-click	VBN
 double-clicking	double-click	VBG
 double-clicks	double-click	VBZ
+double-quoted	double-quoted	JJ
 down	down	RB
 download	download	NN
 downloads	download	NNS
@@ -4086,6 +4137,7 @@ etymologised	etymologise	VBD
 etymologised	etymologise	VBN
 etymologises	etymologise	VBZ
 etymologising	etymologise	VBG
+eubacterial	eubacterial	JJ
 eugenol	eugenol	NN:U
 euphemise	euphemise	VB
 euphemise	euphemise	VBP
@@ -4349,6 +4401,13 @@ FBA	FBA	NN
 FC	FC	NN
 FCs	FC	NNS
 FEBRUARY	February	NNP
+FedEx	FedEx	NNP
+FedEx	FedEx	VB
+FedEx	FedEx	VBP
+FedExed	FedEx	VBD
+FedExed	FedEx	VBN
+FedExes	FedEx	VBZ
+FedExing	FedEx	VBG
 féerie	féerie	NN
 féeries	féerie	NNS
 Feliciano	Feliciano	NNP
@@ -4545,6 +4604,8 @@ FMD	FMD	NNP
 Fnjóskadalur	Fnjóskadalur	NNP
 FNSKU	FNSKU	NN
 FNSKUs	FNSKU	NNS
+focaccia	focaccia	NN:UN
+focaccias	focaccia	NNS
 FOC	FOC	NN
 focalise	focalise	VB
 focalise	focalise	VBP
@@ -5016,6 +5077,7 @@ Gomal	Gomal	NNP
 Gómez	Gómez	NNP
 gonadectomised	gonadectomised	JJ
 gonadectomized	gonadectomized	JJ
+González	González	NNP
 Google	Google	NNP
 google	google	VB
 google	google	VBP
@@ -5263,6 +5325,7 @@ Hapag-Lloyd	Hapag-Lloyd	NNP
 HAProxy	HAProxy	NNP
 Hárbarðsljóð	Hárbarðsljóð	NNP
 hard	hard	RB
+Harish	Harish	NNP
 Harvinder	Harvinder	NNP
 Hashem	Hashem	NNP
 hashtag	hashtag	NN
@@ -5918,6 +5981,7 @@ incentivizes	incentivize	VBZ
 incentivizing	incentivize	VBG
 incidence	incidence	NN
 inclined	inclined	JJ
+including	including	IN
 incorporate	incorporate	JJ
 IND	IND	NNP
 InDesign	InDesign	NNP
@@ -6294,6 +6358,7 @@ JULY	July	NNP
 Jumanji	Jumanji	NNP
 JUNE	June	NNP
 Jungheinrich	Jungheinrich	NNP
+Jungkook	Jungkook	NNP
 JUnit	JUnit	NNP
 just	just	RB
 juvenilia	juvenilia	NNS
@@ -6695,6 +6760,8 @@ Lübeck	Lübeck	NNP
 lubricating	lubricating	JJ
 Luca	Luca	NNP
 Lucasfilm	Lucasfilm	NNP
+Luciana	Luciana	NNP
+Luciano	Luciano	NNP
 Luhansk	Luhansk	NNP
 Luhmann	Luhmann	NNP
 Luleå	Luleå	NNP
@@ -6816,6 +6883,12 @@ manqué	manqué	JJ
 manufacturability	manufacturability	NN:U
 Manzanillo	Manzanillo	NNP
 Mar-A-Lago	Mar-A-Lago	NNP
+margin	margin	VB
+margin	margin	VBP
+margined	margin	VBD
+margined	margin	VBN
+margins	margin	VBZ
+margining	margin	VBG
 Maranhão	Maranhão	NNP
 Marbella	Marbella	NNP
 marbleise	marbleise	VB
@@ -6959,6 +7032,7 @@ Mbps	Mbps	NNS
 McAfee	McAfee	NNP
 McAllister	McAllister	NNP
 McAlpine	McAlpine	NNP
+McCain	McCain	NNP
 McCollum	McCollum	NNP
 McDrive	McDrive	NNP
 McFlurry	McFlurry	NNP
@@ -8878,6 +8952,7 @@ passivizes	passivize	VBZ
 passivizing	passivize	VBG
 passphrase	passphrase	NN
 passphrases	passphrase	NNS
+past	past	RB
 pasteurised	pasteurised	JJ
 Patanjali	Patanjali	NNP
 patellofemoral	patellofemoral	JJ
@@ -8930,7 +9005,9 @@ patrializing	patrialize	VBG
 patronising	patronise	VBG
 Patryk	Patryk	NNP
 Paulo	Paulo	NNP
+Payfare	Payfare	NNP
 PayPal	PayPal	NNP
+payroll	payroll	NN:U
 PDF	PDF	NN
 PDFs	PDF	NNS
 pearlise	pearlise	VB
@@ -9140,6 +9217,7 @@ pessimized	pessimize	VBD
 pessimized	pessimize	VBN
 pessimizes	pessimize	VBZ
 pessimizing	pessimize	VBG
+PETA	PETA	NNP
 petaampere	petaampere	NN
 petaamperes	petaampere	NNS
 petabecquerel	petabecquerel	NN
@@ -9522,6 +9600,14 @@ plug-in	plug-in	JJ
 plugin	plugin	NN
 plugins	plugin	NNS
 pluralisers	pluralisers	NNS
+PM	PM	NN
+PMs	PM	NNS
+pm	pm	VB
+pm	pm	VBP
+pmed	pm	VBD
+pmed	pm	VBN
+pms	pm	VBZ
+pming	pm	VBG
 PNG	PNG	NN
 PNGs	PNG	NNS
 POC	POC	NN
@@ -10278,6 +10364,7 @@ puritanizing	puritanize	VBG
 pushbuttons	pushbutton	NNS
 PWA	PWA	NN
 PWAs	PWA	NNS
+PwC	PwC	NNP
 pyloroduodenal	pyloroduodenal	JJ
 pyritise	pyritise	VB
 pyritise	pyritise	VBP
@@ -10294,6 +10381,7 @@ pyritizing	pyritize	VBG
 PySpark	PySpark	NNP
 Q&A	Q&A	NN
 Q&As	Q&A	NNS
+Qassem	Qassem	NNP
 Qiagen	Qiagen	NNP
 Qin	Qin	NNP
 qindarkë	qindarkë	NN
@@ -10464,6 +10552,12 @@ rearises	rearise	VBZ
 rearising	rearise	VBG
 reattempt	reattempt	NN
 reattempts	reattempt	NNS
+re-attend	re-attend	VB
+re-attend	re-attend	VBP
+re-attended	re-attend	VBD
+re-attended	re-attend	VBN
+re-attending	re-attend	VBG
+re-attends	re-attend	VBZ
 reattend	reattend	VB
 reattend	reattend	VBP
 reattended	reattend	VBD
@@ -10576,6 +10670,9 @@ recontextualizing	recontextualize	VBG
 recover	recover	NN
 recovers	recover	NNS
 recrystallisation	recrystallisation	NN:UN
+recurring	recurring	JJ
+recurve	recurve	NN
+recurves	recurve	NNS
 Reddit	Reddit	NNP
 redemand	redemand	VB
 redemand	redemand	VBP
@@ -11422,6 +11519,12 @@ royalty	royalty	NN:U
 rRNA	rRNA	NN:U
 RSVP	RSVP	NN
 RSVPs	RSVP	NNS
+rsvp	rsvp	VB
+rsvp	rsvp	VBP
+rsvped	rsvp	VBD
+rsvped	rsvp	VBN
+rsvps	rsvp	VBZ
+rsvping	rsvp	VBG
 Ruffy	Ruffy	NNP
 ruggedise	ruggedise	VB
 ruggedise	ruggedise	VBP
@@ -11508,6 +11611,7 @@ safeties	safety	VBZ
 safety	safety	VB
 safety	safety	VBP
 safetying	safety	VBG
+Sagamore	Sagamore	NNP
 saignée	saignée	NN:U
 Sailthru	Sailthru	NNP
 Sainsbury	Sainsbury	NNP
@@ -11650,6 +11754,8 @@ schismatized	schismatize	VBN
 schismatizes	schismatize	VBZ
 schismatizing	schismatize	VBG
 scholarly	scholarly	JJ
+schooler	schooler	NN
+schoolers	schooler	NNS
 schröckingerite	schröckingerite	NN:U
 Schrödinger	Schrödinger	NNP
 scientification	scientification	NN:U
@@ -11700,6 +11806,7 @@ scrolling	scrolling	JJ
 scrolling	scrolling	NN:U
 SDS	SDS	NNP
 Seagate	Seagate	NNP
+Seahawks	Seahawks	NNPS
 sealant	sealant	NN:UN
 séance	séance	NN
 séances	séance	NNS
@@ -12049,6 +12156,12 @@ smithereens	smithereens	NNS
 smṛiti	smṛiti	NN
 smṛitis	smṛiti	NNS
 Smythe	Smythe	NNP
+snark	snark	VB
+snark	snark	VBP
+snarked	snark	VBD
+snarked	snark	VBN
+snarks	snark	VBZ
+snarking	snark	VBG
 Snowden	Snowden	NNP
 so	so	RB
 soap	soap	NN
@@ -12300,6 +12413,12 @@ Stratocruisers	Stratocruiser	NNPS
 streamline	streamline	NN
 streamlines	streamline	NNS
 strength	strength	NN
+strobe	strobe	VB
+strobe	strobe	VBP
+strobed	strobe	VBD
+strobed	strobe	VBN
+strobes	strobe	VBZ
+strobing	strobe	VBG
 strobing	strobing	NN
 strobings	strobing	NNS
 struct	struct	NN
@@ -12932,6 +13051,12 @@ thematized	thematize	VBD
 thematized	thematize	VBN
 thematizes	thematize	VBZ
 thematizing	thematize	VBG
+theme	theme	VB
+theme	theme	VBP
+themed	theme	VBD
+themed	theme	VBN
+themes	theme	VBZ
+theming	theme	VBG
 theologise	theologise	VB
 theologise	theologise	VBP
 theologised	theologise	VBD
@@ -13000,6 +13125,7 @@ tickies	ticky	NNS
 ticky	ticky	NN
 TikTok	TikTok	NNP
 TikToks	TikTok	NNPS
+Timberwolves	Timberwolves	NNPS
 timestamp	timestamp	NN
 timestamp	timestamp	VB
 timestamp	timestamp	VBP
@@ -13077,6 +13203,12 @@ touché	touché	JJ
 touché	touché	UH
 touchpoint	touchpoint	NN
 touchpoints	touchpoint	NNS
+tough	tough	VB
+tough	tough	VBP
+toughed	tough	VBD
+toughed	tough	VBN
+toughs	tough	VBZ
+toughing	tough	VBG
 townspeople	townspeople	NNS
 towtruck	towtruck	NN
 towtrucks	towtruck	NNS
@@ -13853,6 +13985,14 @@ vulgarisers	vulgariser	NNS
 VW	VW	NNP
 VWs	VW	NNPS
 Wachovia	Wachovia	NNP
+wait-list	wait-list	NN
+wait-lists	wait-list	NNS
+wait-list	wait-list	VB
+wait-list	wait-list	VBP
+wait-listed	wait-list	VBD
+wait-listed	wait-list	VBN
+wait-lists	wait-list	VBZ
+wait-listing	wait-list	VBG
 walkthrough	walkthrough	NN
 walkthroughs	walkthrough	NNS
 Walmart	Walmart	NNP
@@ -14295,6 +14435,7 @@ Zhou	Zhou	NNP
 Zhytomyr	Zhytomyr	NNP
 ZigBee	ZigBee	NNP
 Zinacantán	Zinacantán	NNP
+Zoho	Zoho	NNP
 Zuckerberg	Zuckerberg	NNP
 Zürich	Zürich	NNP
 Z-Wave	Z-Wave	NNP

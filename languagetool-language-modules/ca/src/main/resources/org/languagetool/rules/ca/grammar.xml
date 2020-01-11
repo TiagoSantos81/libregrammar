@@ -4877,27 +4877,25 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rulegroup>
         <rulegroup id="VERBS_NO_INTRANSITIUS" name="verbs no intransitius">
             <antipattern>
-                <marker>
-                    <token>a</token>
-                    <token min="0" regexp="yes">l|la</token>
-                    <token regexp="yes">fi|damunt|davall|sota|sobre|final|partir|mesura|conseqüència</token>
-                </marker>
+                <token>a</token>
+                <token min="0" regexp="yes">l|la</token>
+                <token regexp="yes">fi|damunt|davall|sota|sobre|final|partir|mesura|conseqüència</token>
             </antipattern>
             <antipattern>
-                <marker>
-                    <token>a</token>
-                    <token spacebefore="no">l</token>
-                    <token>mateix</token>
-                    <token>temps</token>
-                </marker>
+                <token>a</token>
+                <token spacebefore="no">l</token>
+                <token>mateix</token>
+                <token>temps</token>
             </antipattern>
             <antipattern>
-                <marker>
-                    <token>se</token>
-                    <token skip="3">li</token>
-                    <token postag="DA.*" postag_regexp="yes"></token>
-                    <token inflected="yes" regexp="yes">braç|cama|mà</token>
-                </marker>
+                <token>se</token>
+                <token skip="3">li</token>
+                <token postag="DA.*" postag_regexp="yes"></token>
+                <token inflected="yes" regexp="yes">braç|cama|mà</token>
+            </antipattern>
+            <antipattern>
+                <token>a</token>
+                <token>qui</token>
             </antipattern>
             <rule>
                 <pattern>
@@ -8202,14 +8200,14 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 </marker>
                 <token><exception postag="_PUNCT.*" postag_regexp="yes"/><exception regexp="yes">bé|sí|vinga|vaja</exception></token>
             </pattern>
-            <message>Inocrrecte si equival a "perquè" (valor causal). Correcte si equival a "per tant" o indica continuació.</message>
+            <message>Incorrecte si equival a "perquè" (valor causal). Correcte si equival a "per tant" o indica continuació.</message>
             <suggestion>perquè</suggestion>
             <suggestion>ja que</suggestion>
             <suggestion>puix</suggestion>
             <suggestion>puix que</suggestion>
             <url>http://esadir.cat/gramatica/sintaxi/conjdoncs</url>
             <!--<url>https://aplicacions.llengua.gencat.cat/llc/AppJava/index.html?action=Principal&amp;method=detall&amp;input_cercar=doncs&amp;numPagina=1&amp;database=FITXES_PUB&amp;idFont=12637&amp;idHit=12637&amp;tipusFont=Fitxes+de+l%27Optimot&amp;numeroResultat=2&amp;databases_avansada=&amp;categories_avansada=&amp;clickLink=detall&amp;titol=%27doncs%27+o+%27perqu%E8%27%3F&amp;tematica=&amp;tipusCerca=cerca.fitxes</url>-->
-            <short>Inocrrecte si equival a "perquè"</short>
+            <short>Incorrecte si equival a "perquè"</short>
             <example correction="perquè|ja que|puix|puix que">Vingué, <marker>doncs</marker> això li agradava.</example>
             <example correction="perquè|ja que|puix|puix que">La indicació no és certa, <marker>doncs</marker> aquesta opció no hi és.</example>
             <example>Bé, doncs vam arribar a mig matí.</example>

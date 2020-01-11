@@ -28,10 +28,7 @@ import org.languagetool.rules.SuggestedReplacement;
 import org.languagetool.rules.spelling.morfologik.MorfologikSpellerRule;
 import org.languagetool.synthesis.en.EnglishSynthesizer;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 public abstract class AbstractEnglishSpellerRule extends MorfologikSpellerRule {
@@ -54,24 +51,17 @@ public abstract class AbstractEnglishSpellerRule extends MorfologikSpellerRule {
       throw new IllegalArgumentException("Only column 0 and 1 are supported: " + column);
     }
     Map<String,String> words = new HashMap<>();
-    try (
-      InputStreamReader isr = new InputStreamReader(JLanguageTool.getDataBroker().getFromResourceDirAsStream(path), StandardCharsets.UTF_8);
-      BufferedReader br = new BufferedReader(isr);
-    ) {
-      String line;
-      while ((line = br.readLine()) != null) {
-        line = line.trim();
-        if (line.isEmpty() ||  line.startsWith("#")) {
-          continue;
-        }
-        String[] parts = line.split(";");
-        if (parts.length != 2) {
-          throw new IOException("Unexpected format in " + path + ": " + line + " - expected two parts delimited by ';'");
-        }
-        words.put(parts[column], parts[column == 1 ? 0 : 1]);
+    List<String> lines = JLanguageTool.getDataBroker().getFromResourceDirAsLines(path);
+    for (String line : lines) {
+      line = line.trim();
+      if (line.isEmpty() ||  line.startsWith("#")) {
+        continue;
       }
-    } catch (IOException e) {
-      throw new RuntimeException(e);
+      String[] parts = line.split(";");
+      if (parts.length != 2) {
+        throw new RuntimeException("Unexpected format in " + path + ": " + line + " - expected two parts delimited by ';'");
+      }
+      words.put(parts[column], parts[column == 1 ? 0 : 1]);
     }
     return words;
   }
@@ -206,10 +196,18 @@ public abstract class AbstractEnglishSpellerRule extends MorfologikSpellerRule {
   protected List<String> getAdditionalTopSuggestions(List<String> suggestions, String word) throws IOException {
     if ("Alot".equals(word)) {
       return Arrays.asList("A lot");
+    } else if ("alot".equals(word)) {
+      return Arrays.asList("a lot");
     } else if ("acc".equals(word)) {
       return Arrays.asList("account", "accusative");
     } else if ("Acc".equals(word)) {
       return Arrays.asList("Account", "Accusative");
+    } else if ("Adhoc".equals(word)) {
+      return Arrays.asList("Ad hoc");
+    } else if ("ad hoc".equals(word)) {
+      return Arrays.asList("ad hoc");
+    } else if ("biggy".equals(word)) {
+      return Arrays.asList("biggie");
     } else if ("lieing".equals(word)) {
       return Arrays.asList("lying");
     } else if ("preffered".equals(word)) {
@@ -228,8 +226,6 @@ public abstract class AbstractEnglishSpellerRule extends MorfologikSpellerRule {
       return Arrays.asList("c'mon");
     } else if ("Cmon".equals(word)) {
       return Arrays.asList("C'mon");
-    } else if ("alot".equals(word)) {
-      return Arrays.asList("a lot");
     } else if ("da".equals(word)) {
       return Arrays.asList("the");
     } else if ("Da".equals(word)) {
@@ -403,7 +399,7 @@ public abstract class AbstractEnglishSpellerRule extends MorfologikSpellerRule {
       return Arrays.asList("After-party");
     } else if ("wellbeing".equals(word)) {
       return Arrays.asList("well-being");
-    } else if ("cuz".equals(word) || "coz".equals(word) ) {
+    } else if ("cuz".equals(word) || "coz".equals(word)) {
       return Arrays.asList("because");
     } else if ("pls".equals(word)) {
       return Arrays.asList("please");

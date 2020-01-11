@@ -12569,6 +12569,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token>an</token>
                 <token postag=".*Noun:(Masc|Fem):Com:Sg:DefArt" postag_regexp="yes"></token>
             </antipattern>
+            <antipattern>
+                <token>an</token>
+                <token postag=".*Noun:Fem:Gen:Sg:DefArt" postag_regexp="yes"></token>
+            </antipattern>
             <pattern>
                 <marker>
                     <token>an</token>
@@ -12844,6 +12848,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token>in</token>
                 <token>dhá</token>
             </antipattern>
+            <antipattern>
+                <token>in</token>
+                <token regexp="yes">2|8[0-9]*|2[0-9][0-9]+</token>
+            </antipattern>
             <pattern>
                 <marker>
                     <token>in</token>
@@ -12856,6 +12864,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example correction='i'>Phós sí Pádraig, fear ón mBlascaod Mór, <marker>in</marker> 1982.</example>
             <example>Theastaigh uaibh beirt bheith in bhur scríbhneoirí.</example>
             <example>Beidh an spórt seo á imirt in dhá ionad.</example>
+            <example>Phós sí Pádraig, fear ón mBlascaod Mór, in 1892.</example>
+            <example>In 2012 agus in 2013, féadfar suim suas le EUR 210 milliún...</example>
         </rule>
         <rule id="NA_DHÁ" name="na dhá">
             <pattern>
@@ -17816,6 +17826,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token>cé</token>
                 <token>ea</token>
             </antipattern>
+            <antipattern>
+                <token>cé</token>
+                <token postag=".*Pron:Prep.*" postag_regexp="yes"></token>
+            </antipattern>
             <pattern>
                 <token>cé</token>
                 <marker>
@@ -18659,6 +18673,19 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example correction="d’fhéach">Chuaigh sé chun na huaimhe agus <marker>fhéach</marker> sé isteach.</example>
             <example>Fágadh faoi smacht a lámh iad.</example>
             <example>An íosfá ubh eile?</example>
+        </rule>
+    </category>
+    <category id="GRAMADOIR_PREFIXT" name="Réamhlitir ‘t’ ar iarraidh">
+        <rule id="AN_SIONAINN" name="An Sionainn">
+            <pattern>
+                <token>an</token>
+                <marker>
+                    <token>Sionainn</token>
+                </marker>
+            </pattern>
+            <message>Réamhlitir ‘t’ ar iarraidh: <suggestion><match no="2" regexp_match="^(.*)$" regexp_replace="t$1" case_conversion="startlower"/></suggestion></message>
+            <short>Réamhlitir ‘t’ ar iarraidh</short>
+            <example correction='tSionainn'>an <marker>Sionainn</marker></example>
         </rule>
     </category>
     <category id="GRAMADOIR_URU" name="Urú ar iarraidh" type="grammar">

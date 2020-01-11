@@ -1398,6 +1398,14 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes' min='0'>&adverbios_de_intensidade;</token>
           <token postag='(?:D[ADIP].|NC|A..|Z.)[FC]P.+' postag_regexp='yes'/>
       </antipattern>
+	<!-- Added by Marco A.G.Pinto - 2020-01-09 ***START***-->
+	<!-- "No “Life” são colocadas na grelha células com valores" -->
+      <antipattern>	
+		  <token postag='SPS00.*' postag_regexp='yes'/>
+		  <token postag='NCFS000' postag_regexp='no'/>
+		  <token postag='NCFP000' postag_regexp='no'/>
+      </antipattern>
+	<!-- Added by Marco A.G.Pinto - 2020-01-09 ***END***-->
       <pattern>
           <token negate='yes' regexp='yes'>e|ou|&hifen;</token>
         <marker>

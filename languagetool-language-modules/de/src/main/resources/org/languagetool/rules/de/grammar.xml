@@ -2543,7 +2543,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="E-Mails">Er schickt mir viele <marker>e-mails</marker>.</example>
             </rule>
             <rule>
-                <regexp case_sensitive='yes'>(eMail|e-Mail|e-mail|E-mail|Email)-?([aA]dressen?|[aA]accounts?|[aA]nwendung(en)?|[cC]lients?|[kK]ontakte?|[pP]ostf[aä]ch(er|es|s)?|[pP]rogramms?|[sS]oftware)</regexp>
+                <regexp case_sensitive='yes'>(eMail|e-Mail|e-mail|E-mail|Email)-?([aA]dressen?|[aA]accounts?|[aA]nwendung(en)?|[cC]lients?|[kK]ontakte?|[kK]ont](os?|en)|[pP]ostf[aä]ch(er|es|s)?|[pP]rogramms?|[sS]oftware|[Vv]erkehrs?)</regexp>
                 <message>Meinten Sie <suggestion><match no="0" regexp_match=".*ail(.*)" regexp_replace="E-Mail$1"/></suggestion>? (E-Mail = elektronische Post, Email = Schmelzüberzug)</message>
                 <short>Möglicher Tippfehler</short>
                 <example correction="E-Mail-Adresse">Das ist meine <marker>eMail-Adresse</marker>.</example>
@@ -2564,7 +2564,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token negate="yes">per</token>
                     <marker>
                         <token regexp="yes">e\-?mail</token>
-                        <token regexp="yes">Adressen?|Programme?n?s?|Anwendunge?n?|Cliente?n?s?|Software</token>
+                        <token regexp="yes">Adressen?|Programme?n?s?|Anwendunge?n?|Cliente?n?s?|Postf(achs?|ächern?)|Software|Kont(os?|en)|Verkehrs?</token>
                     </marker>
                 </pattern>
                 <message>Meinten Sie <suggestion>E-Mail-<match no="3" case_conversion="startupper"/></suggestion>?</message>
@@ -14575,7 +14575,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token regexp="yes">kleine[ns]?</token>
                     <token regexp="yes" postag="SUB:[A-Z]{3}:SIN:NEU" postag_regexp="yes">[A-ZÄÖÜ][a-zäöüß]+chen
                         <exception postag="(SUB:.+:NEU)|NPP|NPP-E" postag_regexp="yes" negate_pos="yes"/>
-                        <exception regexp="yes">Mädchen|Veilchen|Brötchen|Kaninchen|Radieschen|München|Zeichen|Anzeichen|Kennzeichen</exception>
+                        <exception regexp="yes">Mädchen|.+mädchen|Veilchen|Brötchen|Kaninchen|Radieschen|München|Zeichen|Anzeichen|Kennzeichen</exception>
                     </token>
                 </pattern>
                 <message>Die Endung '-chen' beinhaltet bereits das Merkmal 'klein'. In manchen Kontexten kann diese Formulierung deswegen redundant (oder übermäßig verniedlichend) erscheinen.</message>
@@ -16378,6 +16378,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 </pattern>
                 <message>Die empfohlene Abkürzung für 'Umsatzsteuer-Identifikationsnummer' ist <suggestion>USt-IdNr.</suggestion>.</message>
                 <example correction="USt-IdNr."><marker>UST-Id</marker>: DEXXXXXXX</example>
+                <example correction="USt-IdNr."><marker>UST-ID</marker>: DEXXXXXXX</example>
             </rule>
             <rule>
                 <pattern>
@@ -16454,6 +16455,36 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="Google Ads">Wir müssen Werbung bei <marker>AdWords</marker> schalten.</example>
             </rule>
         </rulegroup>
+        <rule id="MYTAXI" name="MyTaxi (umbenannt zu Free Now)">
+            <antipattern>
+                <token regexp="yes" skip="3">früher|vorher|damals|davor|ehemals|bekannt|umbenannt|hie(ß|ss)</token>
+                <token>mytaxi</token>
+            </antipattern>
+            <antipattern>
+                <token>mytaxi</token>
+                <token regexp="yes">umbenennen|umbenannt</token>
+            </antipattern>
+            <antipattern>
+                <token regexp="yes">umbenennen|umbenannt</token>
+                <token>mytaxi</token>
+            </antipattern>
+            <antipattern>
+                <token skip="10">mytaxi</token>
+                <token>free</token>
+            </antipattern>
+            <antipattern>
+                <token skip="10">free</token>
+                <token>mytaxi</token>
+            </antipattern>
+            <pattern>
+                <token regexp="yes">Mytax[yi]s?</token>
+            </pattern>
+            <message>Der Taxi-Vermittler "Mytaxi" wurde 2019 umbenannt in <suggestion><match no="1" regexp_match=".+?(s)?$" regexp_replace="Free Now$1" /></suggestion>.</message>
+            <url>https://de.wikipedia.org/wiki/Taxi-App#myTaxi</url>
+            <example correction="Free Nows">Ich rufe mir via <marker>MyTaxis</marker> App ein Taxi.</example>
+            <example correction="Free Now"><marker>MyTaxi</marker> ist ein Taxi-Vermittler.</example>
+            <example>Die App hieß Mytaxi bis sie Anfang Juli 2019 in „Free Now“ umbenannt wurde.</example>
+        </rule>
         <rule id="SPACEX" name="SpaceX">
             <pattern>
                 <token>Space</token>
@@ -32150,6 +32181,29 @@ Andere Projekte</example>
     <!-- Grammatik -->
     <!-- ====================================================================== -->
     <category id="GRAMMAR" name="Grammatik">
+        <rulegroup id="DEJA_VU" name="Déjà-vu" default="temp_off">
+            <antipattern case_sensitive="yes">
+                <token regexp="yes">Déjà-vus?</token>
+            </antipattern>
+            <rule>
+                <pattern>
+                    <token regexp="yes">D[èéeä][jy][aàá]</token>
+                    <token regexp="yes">v[üu]s?</token>
+                </pattern>
+                <message>Meinten Sie <suggestion>Déjà-<match no="2" regexp_match="(?i)v[üu]" regexp_replace="vu" case_conversion="alllower" /></suggestion> (= Erinnerungstäuschung)?</message>
+                <url>https://www.duden.de/rechtschreibung/Deja_vu</url>
+                <example correction="Déjà-vus">Ich hatte heute schon 2 <marker>Deja vüs</marker>.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp="yes">D[èéeä][jy][aàá]\-?v[üu]s?</token>
+                </pattern>
+                <message>Meinten Sie <suggestion>Déjà-<match no="1" regexp_match="(?i)^.+v[üu]" regexp_replace="vu" case_conversion="alllower" /></suggestion> (= Erinnerungstäuschung)?</message>
+                <url>https://www.duden.de/rechtschreibung/Deja_vu</url>
+                <example correction="Déjà-vus">Ich hatte heute schon 2 <marker>Dejavüs</marker>.</example>
+            </rule>
+        </rulegroup>
+
         <rulegroup id="DATIV_PRP_PA1_SUB" name="mit wachsenden (wachsendem) Garten" default="temp_off">
             <rule>
                 <pattern>
@@ -32772,6 +32826,41 @@ Andere Projekte</example>
                 <example correction="Best-ofs">Er veröffentlichte mehrere <marker>Best-Ofs</marker>.</example>
             </rule>
         </rulegroup>
+        <rulegroup id="MAKING_OF" name="'Making-of'">
+            <antipattern><!-- english names -->
+                <token regexp="yes">the|a</token>
+                <token regexp="yes">making.*</token>
+            </antipattern>
+            <antipattern><!-- english names -->
+                <token regexp="yes">.*of</token>
+                <token regexp="yes">the|a</token>
+            </antipattern>
+            <rule>
+                <pattern>
+                    <token case_sensitive="yes">Making</token>
+                    <token regexp="yes">ofs?</token>
+                </pattern>
+                <message>Meinten Sie das Nomen <suggestion>Making-<match no="2" case_conversion="alllower" /></suggestion> (= Blick hinter die Kulisse)?</message>
+                <url>https://www.duden.de/rechtschreibung/Best_of</url>
+                <example correction="Making-of">Das <marker>Making Of</marker> wurde auch von fast allen Kinobesuchern gesehen.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token case_sensitive="yes" regexp="yes">Makingofs?</token>
+                </pattern>
+                <message>Meinten Sie das Nomen <suggestion><match no="1" regexp_match="Makingof" regexp_replace="Making-of" /></suggestion> (= Blick hinter die Kulisse)?</message>
+                <url>https://www.duden.de/rechtschreibung/Making_of</url>
+                <example correction="Making-of">Sie veröffentlichten ein <marker>Makingof</marker> des Films.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token case_sensitive="yes" regexp="yes">Making-?Ofs?</token>
+                </pattern>
+                <message>Meinten Sie das Nomen <suggestion><match no="1" regexp_match="(?i)making-?of" regexp_replace="Making-of" /></suggestion> (= Blick hinter die Kulisse)?</message>
+                <url>https://www.duden.de/rechtschreibung/Making_of</url>
+                <example correction="Making-ofs">Sie veröffentlichten zwei <marker>Making-Ofs</marker>.</example>
+            </rule>
+        </rulegroup>
         <rulegroup id="START_UP" name="'Start-up'">
             <rule>
                 <pattern>
@@ -32876,6 +32965,37 @@ Andere Projekte</example>
                 <example>Das Kind wurde fast überfahren, als der LKW rückwärts fuhr.</example>
             </rule>
         </rulegroup>
+        <rulegroup id="E_BOOK" name="E-Book/E-Commerce">
+            <rule>
+                <pattern>
+                    <token regexp="yes">e\-?book</token>
+                    <token regexp="yes">reader[sn]?</token>
+                </pattern>
+                <message>Meinten Sie <suggestion>E-Book-<match no="2" case_conversion="startupper" /></suggestion>?</message>
+                <url>https://www.duden.de/rechtschreibung/E_Book_Reader</url>
+                <example correction="E-Book-Reader">Ein <marker>EBook Reader</marker> ist oft umweltschonender als ein Buch aus Papier.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token>e</token>
+                    <token regexp="yes">books?|commerce|papern?|buch|bücher</token>
+                </pattern>
+                <message>Meinten Sie <suggestion>E-<match no="2" case_conversion="startupper" /></suggestion>?</message>
+                <url>https://www.duden.de/rechtschreibung/E_Book</url>
+                <example correction="E-Books">Die <marker>E Books</marker> sind umweltschonender als normale Bücher.</example>
+            </rule>
+            <rule>
+                <antipattern case_sensitive="yes">
+                    <token regexp="yes">E-[A-Z].+</token>
+                </antipattern>
+                <pattern>
+                    <token regexp="yes">e-?(books?|commerce|buch|bücher)</token>
+                </pattern>
+                <message>Meinten Sie <suggestion>E-<match no="1" regexp_match="(?i)^e-?" regexp_replace="" case_conversion="startupper" /></suggestion>?</message>
+                <url>https://www.duden.de/rechtschreibung/E_Book</url>
+                <example correction="E-Book">Ein <marker>EBook</marker> ist oft umweltschonender als ein Buch aus Papier.</example>
+            </rule>
+        </rulegroup>
         <rulegroup id="CUM_EX" name="Cum-Ex">
             <rule>
                 <pattern>
@@ -32896,6 +33016,15 @@ Andere Projekte</example>
                 <message>Die empfohlene Schreibweise laut Wikipedia ist <suggestion>Cum-Ex</suggestion> (= Dividendenstripping).</message>
                 <url>https://de.wikipedia.org/wiki/Dividendenstripping</url>
                 <example correction="Cum-Ex">Bei einer als <marker>CumEx</marker> bekannt gewordenen Variante dieser Geschäfte kam es in der Vergangenheit in großem Umfang zu bewusst herbeigeführter mehrfacher Erstattung von nur einmal abgeführter Kapitalertragsteuer.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp="yes">cum\-?ex</token>
+                    <token regexp="yes">Skandale?n?|Geschäfte?n?</token>
+                </pattern>
+                <message>Die empfohlene Schreibweise laut Wikipedia ist <suggestion>Cum-Ex-<match no="2" case_conversion="startupper" /></suggestion>.</message>
+                <url>https://de.wikipedia.org/wiki/Dividendenstripping</url>
+                <example correction="Cum-Ex-Geschäften">Bei <marker>CumEx Geschäften</marker> kam es in der Vergangenheit in großem Umfang zu bewusst herbeigeführter mehrfacher Erstattung von nur einmal abgeführter Kapitalertragsteuer.</example>
             </rule>
         </rulegroup>
         <!-- TODO: too many false alarms
@@ -35783,7 +35912,7 @@ Andere Projekte</example>
                             <exception regexp="yes">Eis|Tee|Kaffee|Bier|Wasser|Glas|.*teilen|Übereinkommen|Mal|.*Prozent|Fuß|Fuss|Paar|Mark|Reichsmark|Rentenmark|Pfund|Dollar|Euro|Pfennig|Stück|Grad|Gramm|Kilo.*|Milli.+|Mann|Schuss|Uhr|Zoll|Bar|Promille|Barrel|Schilling|Sigma|Charisma|Komma</exception>
                         </token>
                     </marker>
-                    <token><exception postag="SUB:.+:PLU:.+" postag_regexp="yes"/></token>
+                    <token><exception postag="SUB:.+:PLU:.+|UNKNOWN" postag_regexp="yes"/></token>
                 </pattern>
                 <message>Möglicher Tippfehler: Müsste dieses Wort im Plural stehen?</message>
                 <suggestion><match no="2" postag=".*:PLU:.*" postag_regexp="yes"/></suggestion>
@@ -35794,7 +35923,9 @@ Andere Projekte</example>
                 <example>Es war schon in Runde eins Endstation.</example>
                 <example>In zwei Anfang 2009 veröffentlichten Studien...</example>
                 <example>In zwei 2009 veröffentlichten Studien...</example>
+                <example correction="Screens">Das waren zwei <marker>Screen</marker>!</example>
                 <example>Es zeigte auch zwei Mitte der 1960er im Boden gefundene Platten.</example>
+                <example>Mit ihren schauspielerischen Leistungen gewann Jolie drei Golden Globe Awards, zwei Screen Actors Guild Awards und für ihre Rolle einer psychisch Kranken in dem Film Durchgeknallt.</example>
                 <example>Daraus wurde ein drei Stunden langer Kinofilm.</example>
                 <example>Er hatte in zwei Aufsehen erregenden Nature-Veröffentlichungen drüber berichtet.</example>
                 <example>Die Biene Maja ist die Hauptfigur in zwei Anfang des 20. Jahrhunderts erschienenen Romanen.</example>
@@ -37960,6 +38091,8 @@ Andere Projekte</example>
                         <exception>Beck</exception>
                         <exception>McDonald</exception>
                         <exception>Andrea</exception>
+                        <exception>Mary</exception>
+                        <exception>Paul</exception>
                     </token>
                     <token regexp="yes">'|’</token>
                     <token>s</token>
@@ -37969,6 +38102,8 @@ Andere Projekte</example>
                 <example><marker>Andrea's</marker> Blumenladen</example>
                 <example correction="Peters"><marker>Peter's</marker> Bude.</example>
                 <example correction="Peters"><marker>Peter’s</marker> Bude.</example>
+                <example>Das St Mary’s Hospital ist ein Krankenhaus im Londoner Stadtteil Paddington.</example>
+                <example>St Paul's Cathedral</example>
             </rule>
             <rule>
                 <pattern>
@@ -39851,7 +39986,7 @@ Andere Projekte</example>
                 <example correction="McDonald's|McDonald’s"><marker>McDonald`s</marker></example>
             </rule>
             <rule>
-                <regexp>[‘´`](nen|ne|n)\b</regexp>
+                <regexp>[‘´`](nen|ne|n|s)\b</regexp>
                 <message>Typografisch korrekt sollte hier ein Apostroph verwendet werden.</message>
                 <suggestion>'\1</suggestion>
                 <suggestion>’\1</suggestion>
@@ -39860,14 +39995,6 @@ Andere Projekte</example>
                 <example correction="'ne|’ne">Das war vielleicht <marker>´ne</marker> Party!</example>
                 <example correction="'ne|’ne">Das war vielleicht <marker>`ne</marker> Party!</example>
                 <example correction="'n|’n">Auf<marker>´n</marker> Dachboden musst du gehen.</example>
-            </rule>
-            <rule default="temp_off"> <!-- merge with rule above when okay -->
-                <regexp>[‘´`](s)\b</regexp>
-                <message>Typografisch korrekt sollte hier ein Apostroph verwendet werden.</message>
-                <suggestion>'\1</suggestion>
-                <suggestion>’\1</suggestion>
-                <short>Akzent statt Apostroph</short>
-                <example correction="'s|’s">Das war<marker>‘s</marker> dann wohl!</example>
             </rule>
             <rule>
                 <regexp>\bc[´`‘]t\b</regexp>
