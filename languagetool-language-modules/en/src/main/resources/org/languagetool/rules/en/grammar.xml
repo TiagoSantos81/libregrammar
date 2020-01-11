@@ -9107,6 +9107,64 @@ USA
     <!-- Grammar -->
     <!-- ====================================================================== -->
     <category id="GRAMMAR" name="Grammar" type="grammar">
+      <rulegroup id="MODAL_VERB_FOLLOWED_BY_NOUN" name="Modal verb followed by noun">
+      <!-- Created by Tiago F. Santos, 2020-01-11 -->
+            <url>https://en.wikipedia.org/wiki/Auxiliary_verb</url>
+            <short>Missing word</short>
+          <rule>
+            <pattern>
+                <token postag="PRP"/>
+              <marker>
+                <token postag="MD"/>
+                <token min='0' regexp='yes' spacebefore='no'>&apostrophe;</token>
+                <token min='0' spacebefore='no'>t</token>
+                <token min='0'>not</token>
+                <token postag_regexp="yes" postag="[JND].+">
+                  <exception negate_pos='yes' postag_regexp="yes" postag="[JND].+"/>
+                  <exception postag_regexp='yes' postag='PCT|[RV].+'/>
+                  <exception>able</exception></token>
+              </marker>
+            </pattern>
+            <message>There is probably a word missing here. You have used a modal verb followed by a word that is not a verb. Please, review.</message>
+            <url>https://en.wikipedia.org/wiki/Modal_verb</url>
+            <example type='incorrect'>I <marker>can cheeseburger</marker>.</example>
+            <example type='incorrect'>I <marker>can a</marker> cheeseburger.</example>
+            <example type='correct'>I <marker>can eat a</marker> cheeseburger.</example>
+          </rule>
+          <rule>
+            <pattern>
+                <token postag="PRP"/>
+              <marker>
+                <token postag_regexp='yes' postag="V.+"/>
+                <token regexp='yes' spacebefore='no'>&apostrophe;</token>
+                <token spacebefore='no'>t</token>
+                <token postag_regexp="yes" postag="[JND].+">
+                  <exception negate_pos='yes' postag_regexp="yes" postag="[JND].+"/>
+                  <exception postag_regexp='yes' postag='PCT|[RV].+'/>
+                  <exception>able</exception></token>
+              </marker>
+            </pattern>
+            <message>There is probably a word missing here. You have used an auxiliary verb followed by a word that is not a verb. Please, review.</message>
+            <example type='incorrect'>I <marker>don't colour-blind</marker>.</example>
+            <example type='correct'>I <marker>am not colour-blind</marker>.</example><!-- TODO create specific rule for 'to do'/'to be' distinction -->
+          </rule>
+          <rule>
+            <pattern>
+                <token postag="PRP"/>
+              <marker>
+                <token regexp='yes' inflected='yes'>do|have|will</token>
+                <token>not</token>
+                <token postag_regexp="yes" postag="[JND].+">
+                  <exception negate_pos='yes' postag_regexp="yes" postag="[JND].+"/>
+                  <exception postag_regexp='yes' postag='PCT|[RV].+'/>
+                  <exception>able</exception></token>
+              </marker>
+            </pattern>
+            <message>There is probably a word missing here. You have used a auxiliary verb followed by a word that is not a verb. Please, review.</message>
+            <example type='incorrect'>I <marker>do not colour-blind</marker>.</example>
+            <example type='correct'>I <marker>am not colour-blind</marker>.</example><!-- TODO create specific rule for 'to do'/'to be' distinction -->
+          </rule>
+      </rulegroup>
         <rule id="MD_ABLE" name="missing 'be' in 'will able'" default="temp_off">
             <!-- TODO other adjectives like "Do you really think it would safe to do that?" -->
             <pattern>
