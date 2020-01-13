@@ -4096,8 +4096,8 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <token postag="VBP"/>
         <token postag="PRP"/>
       </antipattern>
-      <antipattern><!-- Fix for chunker. Can't wait to -->
-        <token postag="SENT_START"/>
+      <antipattern><!-- Fix for chunker. Can't wait to / I can`t power off -->
+        <token postag_regexp="yes" postag="SENT_START|PRP"/>
         <token postag="MD"/>
         <token regexp="yes">&apostrophe;</token>
         <token>t</token>
@@ -4150,6 +4150,11 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             </token>
         <token postag="SENT_END"/>
       </antipattern>
+      <antipattern><!-- #2328 Fix for chunker. we can reference? -->
+        <token chunk="B-VP" postag="MD"/>
+        <token postag="NN:UN"/>
+        <token postag="SENT_END">?</token>
+      </antipattern>
       <pattern>
         <marker>
           <and>
@@ -4195,11 +4200,14 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
       <example type="untouched">IT WILL NOT <marker>WORK</marker> HERE.</example>
       <example type="untouched">It will ACTUALLY <marker>work</marker> here.</example>
       <example type="untouched">... you WON'T <marker>need</marker> at that point.</example><!-- #2326 -->
+      <example type="untouched">Do you have contact info or a case number we can <marker>reference</marker>?</example><!-- #2328 -->
+      <example type="untouched">I can`t <marker>power</marker> off or on or dimming it.</example><!-- #2328 -->
       <example type="ambiguous" inputform="claim[claim/NN:UN,claim/VB,claim/VBP]" outputform="claim[claim/NN:UN]">Morroco's disputed <marker>claim</marker> to portions of Algeria.</example>
       <example type="ambiguous" inputform="bark[bark/NN:UN,bark/VB,bark/VBP]" outputform="bark[bark/NN:UN]">Remove the old <marker>bark</marker> carefully.</example>
       <example type="ambiguous" inputform="work[work/JJ,work/NN:UN,work/VB,work/VBP]" outputform="work[work/NN:UN]">Does this <marker>work</marker> contain any errors?</example>
       <example type="ambiguous" inputform="work[work/JJ,work/NN:UN,work/VB,work/VBP]" outputform="work[work/NN:UN]">But will NOT <marker>work</marker> of any type help you to forget your troubles?</example><!--  #2326 Unusual capitalization of NOT. -->
       <example type="ambiguous" inputform="WORK[work/JJ,work/NN:UN,work/VB,work/VBP]" outputform="WORK[work/NN:UN]">BUT, WON'T <marker>WORK</marker> ON YOUR PART AFFECT THE COMPLETION TIME?</example>
+      <example type="ambiguous" inputform="reference[reference/NN:UN,reference/VB,reference/VBP]" outputform="reference[reference/NN:UN]">The document does not show the can reference. Do you know the can <marker>reference</marker>?</example><!-- A 'can reference' is a possible technical term. -->
     </rule>
     <rule id="E_NP_VBP" name="noun/verb after a plural NP -> verb">
       <antipattern><!-- Fix for chunker: staves off hunger -->
@@ -5001,6 +5009,11 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <example type="untouched">Adjective: ... because it's <marker>free</marker> and support is not provided.</example>
             <example type="untouched">Adjective: I would like having this with you <marker>sooner</marker> but discussions...</example><!-- #1803 -->
             <example type="untouched">Verb: I saw someone they <marker>know</marker> and Ralph admires.</example><!-- #2252 -->
+<?ignore since rule untouched in libregrammar
+            <example type="untouched">I couldn't <marker>vote</marker> because nothing applied to me.</example><!-- #2328 -->
+            <example type="untouched">I have a mandolin lesson at 11am on Saturday, which I can't <marker>miss</marker> because Tom is teaching me less these days.</example><!-- #2328 -->
+            <example type="untouched">We will not <marker>know</marker> whether individuals have state filing obligations without seeing their detailed tax information.</example><!-- #2328 -->
+?>
             <example type="ambiguous" inputform="man[man/NN:UN,man/VB,man/VBP]" outputform="man[man/NN:UN]">They are now <marker>man</marker> and wife duly married.</example>
             <example type="ambiguous" inputform="husband[husband/NN,husband/VB,husband/VBP]" outputform="husband[husband/NN]">They were <marker>husband</marker> and wife.</example>
             <example type="untouched">I couldn't vote because nothing applied to me.</example>
@@ -8353,4 +8366,28 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
       </pattern>
       <disambig action="ignore_spelling"/>
     </rule>
+
+    <rulegroup name="VON_DER_LEYEN" id="VON_DER_LEYEN">
+        <rule>
+            <pattern case_sensitive="yes">
+                <token postag="SENT_START" />
+                <marker>
+                    <token>Von</token>
+                    <token>der</token>
+                    <token regexp="yes">Leyens?</token>
+                </marker>
+            </pattern>
+            <disambig action="ignore_spelling"/>
+        </rule>
+        <rule>
+            <pattern case_sensitive="yes">
+                <marker>
+                    <token>von</token>
+                    <token>der</token>
+                    <token regexp="yes">Leyens?</token>
+                </marker>
+            </pattern>
+            <disambig action="ignore_spelling"/>
+        </rule>
+    </rulegroup>
 </rules>
