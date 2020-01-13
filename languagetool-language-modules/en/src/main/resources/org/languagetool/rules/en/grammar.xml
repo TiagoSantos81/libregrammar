@@ -42113,6 +42113,22 @@ The accident victim died from her injuries.
     <!-- ====================================================================== -->
     <category id="STYLE" name="Style" type="style">
 
+        <rule id="CAN_NOT_CANNOT" name="'can not' vs. 'cannot'">
+        <!-- Created by Tiago F. Santos, 2020-01-12 -->
+            <pattern>
+              <marker>
+                <token>can</token>
+                <token case_sensitive='yes'>not</token>
+              </marker>
+                <token postag='RG' min='0'>
+                  <exception regexp='yes'>only|yet|much|that|really|exactly|likely|necessarily|quite|on|until|very|far|absolutely</exception></token>
+                <token postag_regexp='yes' postag='V.+'></token>
+            </pattern>
+            <message>In formal English, modal verb 'can' negative form usual spelling is <suggestion>cannot</suggestion>.</message>
+            <url>https://www.lexico.com/grammar/cannot-or-can-not</url>
+            <example correction='cannot'>I <marker>can not</marker> eat a cheeseburger.</example>
+            <example>I <marker>can not only</marker> eat a cheeseburger, but I can also eat the potatoes.</example>
+        </rule>
         <rule id="MERCHANDIZE" name="'merchandize' vs. 'merchandise'">
             <pattern>
                 <token inflected="yes">merchandize</token>
