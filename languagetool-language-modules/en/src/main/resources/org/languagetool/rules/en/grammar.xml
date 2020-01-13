@@ -9118,17 +9118,25 @@ USA
             <url>https://en.wikipedia.org/wiki/Auxiliary_verb</url>
             <short>Missing word</short>
           <rule>
+            <antipattern>
+                <token inflected='yes'>will</token>
+                <token min='0' regexp='yes' spacebefore='no'>&apostrophe;</token>
+                <token min='0' spacebefore='no'>t</token>
+                <token min='0' case_sensitive='yes'>not</token>
+                <token>matter</token>
+            </antipattern>
             <pattern>
                 <token postag="PRP"/>
               <marker>
-                <token postag="MD"/>
+                <token postag="MD">
+                  <exception inflected='yes' regexp='yes'>need|have</exception></token>
                 <token min='0' regexp='yes' spacebefore='no'>&apostrophe;</token>
                 <token min='0' spacebefore='no'>t</token>
-                <token min='0'>not</token>
+                <token min='0' case_sensitive='yes'>not</token>
                 <token postag_regexp="yes" postag="[JND].+">
                   <exception negate_pos='yes' postag_regexp="yes" postag="[JND].+"/>
                   <exception postag_regexp='yes' postag='PCT|[RV].+'/>
-                  <exception>able</exception></token>
+                  <exception>able</exception><!-- XXX dealt by MD_ABLE --></token>
               </marker>
             </pattern>
             <message>There is probably a word missing here. You have used a modal verb followed by a word that is not a verb. Please, review.</message>
@@ -9136,12 +9144,22 @@ USA
             <example type='incorrect'>I <marker>can cheeseburger</marker>.</example>
             <example type='incorrect'>I <marker>can a</marker> cheeseburger.</example>
             <example type='correct'>I <marker>can eat a</marker> cheeseburger.</example>
+            <example>Why would we need this?</example>
+            <example correction="">I <marker>can’t enough</marker> how I appreciate almost anything Hedges writes.</example>
+            <example correction="">Maybe this is documented somewhere but I <marker>couldn’t anything</marker>.</example>
+            <example>It won’t matter and Trump will still be President next November.</example>
+            <example>It's a pity when you <marker>haven't anything</marker> but a pittance.</example>
+            <example>It's a pity when you <marker>haven't got anything</marker> but a pittance.</example>
+            <example>Keep those where you can find them easily (having to hunt for them is additional stress you WON'T need at that point!).</example>
+            <example>I couldn't vote because nothing applied to me.</example>
+            <example>I have a mandolin lesson at 11am on Saturday, which I can't miss because Tom is teaching me less these days.</example>
           </rule>
           <rule>
             <pattern>
                 <token postag="PRP"/>
               <marker>
-                <token postag_regexp='yes' postag="V.+"/>
+                <token postag_regexp='yes' postag="V.+">
+                  <exception inflected='yes' regexp='yes'>be|have</exception></token>
                 <token regexp='yes' spacebefore='no'>&apostrophe;</token>
                 <token spacebefore='no'>t</token>
                 <token postag_regexp="yes" postag="[JND].+">
@@ -9152,14 +9170,21 @@ USA
             </pattern>
             <message>There is probably a word missing here. You have used an auxiliary verb followed by a word that is not a verb. Please, review.</message>
             <example type='incorrect'>I <marker>don't colour-blind</marker>.</example>
-            <example type='correct'>I <marker>am not colour-blind</marker>.</example><!-- TODO create specific rule for 'to do'/'to be' distinction -->
+            <example type='correct'>I <marker>am not colour-blind</marker>.</example>
+            <example type='incorrect'>She <marker>doesn't colour-blind</marker>.</example>
+            <example type='correct'>She <marker>isn't colour-blind</marker>.</example><!-- TODO create specific rule for 'to do'/'to be' distinction -->
+            <example>It won’t matter and Trump will still be President next November.</example>
+            <example type='correct'>It's a pity when you haven't got anything but a pittance.</example>
+            <example>Keep those where you can find them easily (having to hunt for them is additional stress you WON'T need at that point!).</example>
+            <example>I couldn't vote because nothing applied to me.</example>
+            <example>I have a mandolin lesson at 11am on Saturday, which I can't miss because Tom is teaching me less these days.</example>
           </rule>
           <rule>
             <pattern>
                 <token postag="PRP"/>
               <marker>
                 <token regexp='yes' inflected='yes'>do|have|will</token>
-                <token>not</token>
+                <token case_sensitive='yes'>not</token>
                 <token postag_regexp="yes" postag="[JND].+">
                   <exception negate_pos='yes' postag_regexp="yes" postag="[JND].+"/>
                   <exception postag_regexp='yes' postag='PCT|[RV].+'/>
@@ -9169,6 +9194,10 @@ USA
             <message>There is probably a word missing here. You have used a auxiliary verb followed by a word that is not a verb. Please, review.</message>
             <example type='incorrect'>I <marker>do not colour-blind</marker>.</example>
             <example type='correct'>I <marker>am not colour-blind</marker>.</example><!-- TODO create specific rule for 'to do'/'to be' distinction -->
+            <example>Note that enabling redirects means that we will NOT search for any substring you’ve specified.</example><!-- "search" wrongly tagged as NN:UN -->
+            <example>Also, all smart switches use the same connection method and I would NOT call them push lock!</example><!-- "call" wrongly tagged as NN:UN -->
+            <example>When we reduced staff the first week of December, one of the assumptions we made was that we would no longer provide 24 hour support.</example>
+            <example>We will not know whether individuals have state filing obligations without seeing their detailed tax information.</example><!-- "know" wrongly tagged as NN:UN -->
           </rule>
       </rulegroup>
         <rule id="MD_ABLE" name="missing 'be' in 'will able'">
@@ -42083,6 +42112,7 @@ The accident victim died from her injuries.
     <!-- Style -->
     <!-- ====================================================================== -->
     <category id="STYLE" name="Style" type="style">
+
         <rule id="MERCHANDIZE" name="'merchandize' vs. 'merchandise'">
             <pattern>
                 <token inflected="yes">merchandize</token>
@@ -42092,7 +42122,7 @@ The accident victim died from her injuries.
             <example correction="merchandised">He <marker>merchandized</marker> eighteen years, owning mills and blacksmith shops.</example>
             <example correction="merchandise">The <marker>merchandize</marker> will arrive by truck at midnight.</example>
         </rule>
-        <rulegroup id="SUPER_BOWL" name="Super Bowl (roman literals)">
+        <rulegroup id="SUPER_BOWL" name="Super Bowl (roman numerals)">
             <rule>
                 <pattern>
                     <token>Super</token>
