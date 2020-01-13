@@ -4982,6 +4982,13 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
                 <token postag="NNP"/>
                 <token postag="VB[ZD]" postag_regexp="yes"/><!-- Not chunk: admires/E-NP-singular -->
             </antipattern>
+            <antipattern><!-- MODAL_VERB_FOLLOWED_BY_NOUN I couldn't vote because ... -->
+                <token postag="MD"/>
+                <token min='0' regexp='yes' spacebefore='no'>&apostrophe;</token>
+                <token postag="RB"/>
+                <token postag="V.+" postag_regexp='yes'/>
+                <token postag="CC"/>
+            </antipattern>
             <pattern>
                 <marker>
                     <token postag="NN.*" postag_regexp="yes"><exception postag_regexp="yes" postag="RBR?|JJ"/></token>
@@ -4996,6 +5003,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <example type="untouched">Verb: I saw someone they <marker>know</marker> and Ralph admires.</example><!-- #2252 -->
             <example type="ambiguous" inputform="man[man/NN:UN,man/VB,man/VBP]" outputform="man[man/NN:UN]">They are now <marker>man</marker> and wife duly married.</example>
             <example type="ambiguous" inputform="husband[husband/NN,husband/VB,husband/VBP]" outputform="husband[husband/NN]">They were <marker>husband</marker> and wife.</example>
+            <example type="untouched">I couldn't vote because nothing applied to me.</example>
         </rule>
 
         <rule id="PREPOSITIONAL_DT_VBZNNS_NNS" name="Prepositional quantifiers + noun plur/vb sg = >noun plur">

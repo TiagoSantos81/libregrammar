@@ -5,8 +5,6 @@
 ### This fork differences
 
 #### Breton
-  * compound rule added:
-     - 4101 entries thanks to [Pierre Morvan](https://github.com/languagetool-org/languagetool/issues/2300).
   * activated generic Java rules, including:
      - `GenericUnpairedBracketsRule`, `WordRepeatRule`, `LongSentenceRule`, `LongParagraphRule`, 
      `WhiteSpaceBeforeParagraphEnd`, `WhiteSpaceAtBeginOfParagraph`, `EmptyLineRule`, 
@@ -14,6 +12,7 @@
 
 #### English
   * rules added and improved
+  * disambiguation improvements
   * POS and spelling improvements
      - scientific nomenclature POS support added
 
@@ -30,8 +29,17 @@
     (https://github.com/languagetool-org/languagetool/pull/2219);
   * rules added and improved.
 
+#### Breton
+  * compound rule added:
+     - 4101 entries thanks to [Pierre Morvan](https://github.com/languagetool-org/languagetool/issues/2300).
+
 #### Dutch
   * added and improved rules
+
+#### English
+  * rules added and improved
+  * disambiguation improvements
+  * POS and spelling improvements
 
 #### German
   * added and improved rules
