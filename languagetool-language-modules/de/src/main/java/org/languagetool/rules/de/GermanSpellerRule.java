@@ -500,6 +500,7 @@ public class GermanSpellerRule extends CompoundAwareHunspellRule {
     put("[jJ]ahundert", "Jahrhundert");
     put("Gesochse", "Gesocks");
     put("[vV]orgensweise", "Vorgehensweise");
+    put("[kK]autsch", "Couch");
     put("guterletzt", "guter Letzt");
     putRepl("[zZ]uguterletzt", "guterletzt", " guter Letzt");
     putRepl("Nootbooks?", "Noot", "Note");
@@ -543,6 +544,7 @@ public class GermanSpellerRule extends CompoundAwareHunspellRule {
     putRepl("[aA]leine", "l", "ll");
     putRepl("Kaput", "t", "tt");
     putRepl("[fF]estell(s?t|en?)", "est", "estst");
+    putRepl("[Ee]igtl", "igtl", "igtl.");
     putRepl("(Baden-)?Würtenbergs?", "Würten", "Württem");
     putRepl("Betriebsratzimmer[ns]?", "rat", "rats");
     putRepl("Rechts?schreibungsfehler[ns]?", "Rechts?schreibungs", "Rechtschreib");
