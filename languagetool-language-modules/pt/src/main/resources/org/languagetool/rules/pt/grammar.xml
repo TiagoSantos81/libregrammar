@@ -31765,6 +31765,19 @@ TODO Write better examples
     <!--example>Are you <marker>au fait</marker> the LanguageTool?</example-->
     </rule>
 
+    <rule id='NON_STANDARD_ALPHABETIC_CHARACTERS' name="Tipografia: Caratéres não-latinos">
+    <!-- based on English rule, Tiago F. Santos, 2020-01-06 -->
+      <pattern>
+        <and>
+          <token regexp="yes">.*[A-Za-z].*</token>
+          <token regexp="yes">.*[\p{InGREEK}\p{InCYRILLIC}].*</token>
+        </and>
+      </pattern>
+      <message>Esta palavra tem um caratére não padrão, o que pode criar problemas na apresentação e nos programas. Por favor, volte a digitar a palavra.</message>
+      <example type='incorrect'><marker>Μaria</marker>, vamo-nos embora.</example>
+      <example><marker>Maria</marker>, vamo-nos embora.</example>
+    </rule>
+
   <rulegroup id='MISPELLED_NAMES' name="Nomes próprios estrangeiros: p.ex. Jimmy Hendrix → Jimi Hendrix">
     <!--      Localized from French grammar.xml by Tiago F. Santos, Portuguese rule, 2017-05-30      -->
       <short>Nome próprio incorreto</short>
