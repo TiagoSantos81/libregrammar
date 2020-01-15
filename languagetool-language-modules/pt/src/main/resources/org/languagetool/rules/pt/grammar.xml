@@ -2100,6 +2100,91 @@ title="Easy editing stylesheet" ?>
       <example correction='Quando eu vir'><marker>Quando eu ver</marker> algo errado, aviso.</example>
     </rule>
 
+  <rulegroup id='SUBJECT_PRONOUN_AFTER_VERB' name="Gramática: Pronome reto no lugar de oblíquo (comprar ele - comprá-lo">
+    <!-- Created by Tiago F. Santos, Portuguese rule, 2020-01-15 -->
+      <url>https://pt.wikipedia.org/wiki/Caso_obl%C3%ADquo</url>
+    <rule>
+      <pattern>
+          <token postag='VMN0000' regexp="yes">.+ar$</token>
+          <token regexp='yes'>eles?</token>
+      </pattern>
+      <message>Se o verbo refere-se a '\2' deve utilizar o pronome oblíquo e contrair o verbo.</message>
+        <suggestion><match no='1' regexp_match='(.+?)ar' regexp_replace='$1á'/>-lo<match no='2' regexp_match='ele(s?)' regexp_replace='$1'/></suggestion>
+        <suggestion>\1, \2</suggestion>
+      <example correction="comprá-lo|comprar, ele">Para <marker>comprar ele</marker> no mercado, tenho que poupar dinheiro.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token postag='VMN0000' regexp="yes">.+ar$</token>
+          <token regexp='yes'>elas?</token>
+      </pattern>
+      <message>Se o verbo refere-se a '\2' deve utilizar o pronome oblíquo e contrair o verbo.</message>
+        <suggestion><match no='1' regexp_match='(.+?)ar' regexp_replace='$1á'/>-la<match no='2' regexp_match='ela(s?)' regexp_replace='$1'/></suggestion>
+        <suggestion>\1, \2</suggestion>
+      <example correction="comprá-las|comprar, elas">Para <marker>comprar elas</marker> no mercado, tenho que poupar dinheiro.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token postag='VMN0000' regexp="yes">.+er$</token>
+          <token regexp='yes'>eles?</token>
+      </pattern>
+      <message>Se o verbo refere-se a '\2' deve utilizar o pronome oblíquo e contrair o verbo.</message>
+        <suggestion><match no='1' regexp_match='(.+?)er' regexp_replace='$1ê'/>-lo<match no='2' regexp_match='ele(s?)' regexp_replace='$1'/></suggestion>
+        <suggestion>\1, \2</suggestion>
+      <example correction="vendê-lo|vender, ele">Para <marker>vender ele</marker> no mercado, vou poupar dinheiro.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token postag='VMN0000' regexp="yes">.+er$</token>
+          <token regexp='yes'>elas?</token>
+      </pattern>
+      <message>Se o verbo refere-se a '\2' deve utilizar o pronome oblíquo e contrair o verbo.</message>
+        <suggestion><match no='1' regexp_match='(.+?)er' regexp_replace='$1ê'/>-la<match no='2' regexp_match='ela(s?)' regexp_replace='$1'/></suggestion>
+        <suggestion>\1, \2</suggestion>
+      <example correction="vendê-las|vender, elas">Para <marker>vender elas</marker> no mercado, vou poupar dinheiro.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token postag='VMN0000' regexp="yes">.+ir$</token>
+          <token regexp='yes'>eles?</token>
+      </pattern>
+      <message>Se o verbo refere-se a '\2' deve utilizar o pronome oblíquo e contrair o verbo.</message>
+        <suggestion><match no='1' regexp_match='(.+?)ir' regexp_replace='$1i'/>-lo<match no='2' regexp_match='ele(s?)' regexp_replace='$1'/></suggestion>
+        <suggestion>\1, \2</suggestion>
+      <example correction="garanti-lo|garantir, ele">Para <marker>garantir ele</marker> no mercado, tenho que poupar dinheiro.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token postag='VMN0000' regexp="yes">.+ir$</token>
+          <token regexp='yes'>elas?</token>
+      </pattern>
+      <message>Se o verbo refere-se a '\2' deve utilizar o pronome oblíquo e contrair o verbo.</message>
+        <suggestion><match no='1' regexp_match='(.+?)ir' regexp_replace='$1i'/>-la<match no='2' regexp_match='ela(s?)' regexp_replace='$1'/></suggestion>
+        <suggestion>\1, \2</suggestion>
+      <example correction="garanti-las|garantir, elas">Para <marker>garantir elas</marker> no mercado, tenho que poupar dinheiro.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token postag='VMN0000' regexp="yes">.+[ôo]r$</token>
+          <token regexp='yes'>eles?</token>
+      </pattern>
+      <message>Se o verbo refere-se a '\2' deve utilizar o pronome oblíquo e contrair o verbo.</message>
+        <suggestion><match no='1' regexp_match='(.+?)or' regexp_replace='$1ô'/>-lo<match no='2' regexp_match='ele(s?)' regexp_replace='$1'/></suggestion>
+        <suggestion>\1, \2</suggestion>
+      <example correction="compô-lo|compor, ele">Para <marker>compor ele</marker>, tenho que poupar dinheiro.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token postag='VMN0000' regexp="yes">.+[ôo]r$</token>
+          <token regexp='yes'>elas?</token>
+      </pattern>
+      <message>Se o verbo refere-se a '\2' deve utilizar o pronome oblíquo e contrair o verbo.</message>
+        <suggestion><match no='1' regexp_match='(.+?)or' regexp_replace='$1ô'/>-la<match no='2' regexp_match='ela(s?)' regexp_replace='$1'/></suggestion>
+        <suggestion>\1, \2</suggestion>
+      <example correction="compô-las|compor, elas">Para <marker>compor elas</marker>, tenho que poupar dinheiro.</example>
+    </rule>
+  </rulegroup>
+
   <rulegroup id='CONJUNTIVO_OBRIGATORIO' name='Concordância Verbal: Conjugações irregulares: conjuntivo/subjuntivo obrigatório'>
     <!-- Created by Tiago F. Santos, 2017-05-20 -->
       <url>https://pt.wikipedia.org/wiki/Modo_subjuntivo</url>
