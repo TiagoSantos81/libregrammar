@@ -202,10 +202,28 @@ public abstract class AbstractEnglishSpellerRule extends MorfologikSpellerRule {
       return Arrays.asList("account", "accusative");
     } else if ("Acc".equals(word)) {
       return Arrays.asList("Account", "Accusative");
+    } else if ("Addon".equals(word)) {
+      return Arrays.asList("Add-on");
+    } else if ("Addons".equals(word)) {
+      return Arrays.asList("Add-ons");
     } else if ("Adhoc".equals(word)) {
       return Arrays.asList("Ad hoc");
-    } else if ("ad hoc".equals(word)) {
+    } else if ("adhoc".equals(word)) {
       return Arrays.asList("ad hoc");
+    } else if ("ios".equals(word)) {
+      return Arrays.asList("iOS");
+    } else if ("standup".equals(word)) {
+      return Arrays.asList("stand-up");
+    } else if ("standups".equals(word)) {
+      return Arrays.asList("stand-ups");
+    } else if ("Standup".equals(word)) {
+      return Arrays.asList("Stand-up");
+    } else if ("Standups".equals(word)) {
+      return Arrays.asList("Stand-ups");
+    } else if ("Playdough".equals(word)) {
+      return Arrays.asList("Play-Doh");
+    } else if ("playdough".equals(word)) {
+      return Arrays.asList("Play-Doh");
     } else if ("biggy".equals(word)) {
       return Arrays.asList("biggie");
     } else if ("lieing".equals(word)) {
@@ -284,8 +302,12 @@ public abstract class AbstractEnglishSpellerRule extends MorfologikSpellerRule {
       return Arrays.asList("Today's");
     } else if ("todo".equals(word)) {
       return Arrays.asList("to-do", "to do");
-    } else if ("Todo".equals(word)) {
+    } else if ("todos".equals(word)) {
+      return Arrays.asList("to-dos", "to do");
+    } else if ("Todo".equalsIgnoreCase(word)) {
       return Arrays.asList("To-do", "To do");
+    } else if ("Todos".equalsIgnoreCase(word)) {
+      return Arrays.asList("To-dos");
     } else if ("heres".equals(word)) {
       return Arrays.asList("here's");
     } else if ("Heres".equals(word)) {

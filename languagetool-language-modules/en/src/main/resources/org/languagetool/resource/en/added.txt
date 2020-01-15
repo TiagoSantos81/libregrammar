@@ -1198,6 +1198,7 @@ bipolarized	bipolarize	VBD
 bipolarized	bipolarize	VBN
 bipolarizes	bipolarize	VBZ
 bipolarizing	bipolarize	VBG
+birdlife	birdlife	NN:U
 Bitbucket	Bitbucket	NNP
 bitcoin	bitcoin	NN
 Bitcoin	Bitcoin	NNP
@@ -1324,6 +1325,8 @@ Buenavista	Buenavista	NNP
 Buffett	Buffet	NNP
 bukovskýite	bukovskýite	NN:U
 bulletproof	bulletproof	JJ
+Bulgar	Bulgar	NNP
+Bulgars	Bulgar	NNPS
 Bundesliga	Bundesliga	NNP
 bunkered	bunker	VBD
 bunkered	bunker	VBN
@@ -1704,6 +1707,7 @@ chemoprophylactic	chemoprophylactic	JJ
 Cherkasy	Cherkasy	NNP
 Chernihiv	Chernihiv	NNP
 Chernivtsi	Chernivtsi	NNP
+chernozemic	chernozemic	JJ
 Chéticamp	Chéticamp	NNP
 Chetumal	Chetumal	NNP
 Chevelle	Chevelle	NNP
@@ -1780,6 +1784,7 @@ cinchonizing	cinchonize	VBG
 Cineplex	Cineplex	NNP
 CIO	CIO	NN
 CIOs	CIO	NNS
+CircleCI	CircleCI	NNP
 circumcision	circumcision	NN:U
 ciré	ciré	NN:U
 CIS	CIS	NN
@@ -1926,6 +1931,7 @@ colourized	colourize	VBN
 colourizes	colourize	VBZ
 colourizing	colourize	VBG
 Comcast	Comcast	NNP
+Comerica	Comerica	NNP
 comingle	comingle	VB
 comingle	comingle	VBP
 comingled	comingle	VBD
@@ -2390,6 +2396,8 @@ cyclizes	cyclize	VBZ
 cyclizing	cyclize	VBG
 cy-près	cy-près	JJ
 cy-près	cy-près	RB
+CVV	CVV	NN
+CVVs	CVV	NNS
 DACA	DACA	NNP
 DACH	DACH	NNP
 Daewoo	Daewoo	NNP
@@ -3405,6 +3413,7 @@ diazotized	diazotize	VBD
 diazotized	diazotize	VBN
 diazotizes	diazotize	VBZ
 diazotizing	diazotize	VBG
+diclofenac	diclofenac	NN:U
 Diegueño	Diegueño	NNP
 dieselise	dieselise	VB
 dieselise	dieselise	VBP
@@ -4133,6 +4142,7 @@ Ethicon	Ethicon	NNP
 étouffées	étouffée	NNS
 étrier	étrier	NN
 étriers	étrier	NNS
+Etsy	Etsy	NNP
 étude	étude	NN
 études	étude	NNS
 étui	étui	NN
@@ -4396,12 +4406,15 @@ fanfic	fanfic	NN
 fanfics	fanfic	NNS
 far	far	RB
 faradisers	faradiser	NNS
+Faramarz	Faramarz	NNP
 Farid	Farid	NNP
 Farmville	Farmville	NNP
 fascinated	fascinated	JJ
 fast	fast	RB
 FastSpring	FastSpring	NNP
 faux-naïf	faux-naïf	JJ
+favicon	favicon	NN
+favicons	favicon	NNS
 FB	FB	NNP
 FBA	FBA	NN
 FC	FC	NN
@@ -6021,6 +6034,9 @@ indigenized	indigenize	VBN
 indigenizes	indigenize	VBZ
 indigenizing	indigenize	VBG
 individualisers	individualiser	NNS
+Indo-Asian	Indo-Asian	NNP
+Indo-Asians	Indo-Asian	NNPS
+Indo-Asian	Indo-Asian	JJ
 inebriated	inebriated	JJ
 infantilise	infantilise	VB
 infantilise	infantilise	VBP
@@ -6433,6 +6449,7 @@ keratinizes	keratinize	VBZ
 keratinizing	keratinize	VBG
 Kerberos	Kerberos	NNP
 Kesäranta	Kesäranta	NNP
+Khamenei	Khamenei	NNP
 Khaled	Khaled	NNP
 Khalil	Khalil	NNP
 Kharkiv	Kharkiv	NNP
@@ -7044,9 +7061,11 @@ McAfee	McAfee	NNP
 McAllister	McAllister	NNP
 McAlpine	McAlpine	NNP
 McCain	McCain	NNP
+McClair	McClair	NNP
 McCollum	McCollum	NNP
 McDrive	McDrive	NNP
 McFlurry	McFlurry	NNP
+McGlynn	McGlynn	NNP
 McKone	McKone	NNP
 McRib	McRib	NNP
 MD	MD	NN
@@ -7947,6 +7966,8 @@ naïve	naïve	JJ
 naïveté	naïveté	NN:U
 nameserver	nameserver	NN
 nameservers	nameserver	NNS
+namespace	namespace	NN
+namespaces	namespace	NNS
 nanisation	nanisation	NN:U
 nanization	nanization	NN:U
 nanoampere	nanoampere	NN
@@ -8206,6 +8227,8 @@ nodalized	nodalize	VBN
 nodalizes	nodalize	VBZ
 nodalizing	nodalize	VBG
 NodeJS	NodeJS	NNP
+noise-cancelling	noise-cancelling	JJ
+noise-canceling	noise-canceling	JJ
 nomadisation	nomadisation	NN:U
 nomadise	nomadise	VB
 nomadise	nomadise	VBP
@@ -8604,6 +8627,13 @@ overcentralizes	overcentralize	VBZ
 overcentralizing	overcentralize	VBG
 overcivilised	overcivilised	JJ
 overcivilized	overcivilized	JJ
+overcomplicate	overcomplicate	VB
+overcomplicate	overcomplicate	VBP
+overcomplicated	overcomplicate	VBD
+overcomplicated	overcomplicated	JJ
+overcomplicated	overcomplicate	VBN
+overcomplicates	overcomplicate	VBZ
+overcomplicating	overcomplicate	VBG
 overdramatise	overdramatise	VB
 overdramatise	overdramatise	VBP
 overdramatised	overdramatise	VBD
@@ -8735,6 +8765,7 @@ ozonizes	ozonize	VBZ
 ozonizing	ozonize	VBG
 PA	PA	NNS
 PAA	PAA	NNP
+PaaS	PaaS	NN:U
 packetise	packetise	VB
 packetise	packetise	VBP
 packetised	packetise	VBD
@@ -8747,6 +8778,7 @@ packetized	packetize	VBD
 packetized	packetize	VBN
 packetizes	packetize	VBZ
 packetizing	packetize	VBG
+Pac-Man	Pac-Man	NNP
 paedogenetic	paedogenetic	JJ
 paedogenic	paedogenic	JJ
 Pagalu	Pagalu	NNP
@@ -9584,6 +9616,7 @@ Platonized	Platonize	VBD
 Platonized	Platonize	VBN
 Platonizes	Platonize	VBZ
 Platonizing	Platonize	VBG
+Play-Doh	Play-Doh	NNP
 PlayNetwork	PlayNetwork	NNP
 PLC	PLC	NNP
 PLCs	PLC	NNPS
@@ -9933,6 +9966,8 @@ pre-established	pre-establish	VBN
 preestablishes	preestablish	VBZ
 pre-establishes	pre-establish	VBZ
 preestablishing	preestablish	VBG
+preexisting	preexisting	JJ
+Preeti	Preeti	NNP
 pre-establishing	pre-establish	VBG
 prefill	prefill	VB
 pre-fill	pre-fill	VB
@@ -10756,6 +10791,12 @@ reexpresses	reexpress	VBZ
 re-expresses	re-express	VBZ
 reexpressing	reexpress	VBG
 re-expressing	re-express	VBG
+refactor	refactor	VB
+refactor	refactor	VBP
+refactored	refactor	VBD
+refactored	refactor	VBN
+refactoring	refactor	VBG
+refactors	refactor	VBZ
 refire	refire	VB
 refire	refire	VBP
 refired	refire	VBD
@@ -11470,6 +11511,7 @@ rivalized	rivalize	VBD
 rivalized	rivalize	VBN
 rivalizes	rivalize	VBZ
 rivalizing	rivalize	VBG
+Riverdale	Riverdale	NNP
 riverfront	riverfront	NN
 riveting	riveting	JJ
 Rivne	Rivne	NNP
@@ -11771,6 +11813,7 @@ schooler	schooler	NN
 schoolers	schooler	NNS
 schröckingerite	schröckingerite	NN:U
 Schrödinger	Schrödinger	NNP
+Schumacher	Schumacher	NNP
 scientification	scientification	NN:U
 scientise	scientise	VB
 scientise	scientise	VBP
@@ -11825,6 +11868,7 @@ séance	séance	NN
 séances	séance	NNS
 SeaTools	SeaTools	NNP
 Sebastián	Sebastián	NNP
+Sébastien	Sébastien	NNP
 Secaucus	Secaucus	NNP
 sectarianise	sectarianise	VB
 sectarianise	sectarianise	VBP
@@ -12382,6 +12426,8 @@ Stainton	Stainton	NNP
 standalone	standalone	JJ
 standardisable	standardisable	JJ
 standing	standing	JJ
+stand-up	stand-up	NN
+stand-ups	stand-up	NNS
 Stanislav	Stanislav	NNP
 Stannington	Stannington	NNP
 Starliner	Starliner	NNP
@@ -12422,6 +12468,7 @@ strategized	strategize	VBD
 strategized	strategize	VBN
 strategizes	strategize	VBZ
 strategizing	strategize	VBG
+Stratford	Stratford	NNP
 Stratocruiser	Stratocruiser	NNP
 Stratocruisers	Stratocruiser	NNPS
 streamline	streamline	NN
@@ -12780,6 +12827,7 @@ Tanja	Tanja	NNP
 Tapton	Tapton	NNP
 taquería	taquería	NN
 taquerías	taquería	NNS
+Tarek	Tarek	NNP
 Targaryen	Targaryen	NNP
 Targaryen	Targaryen	NNPS
 Tariq	Tariq	NNP
@@ -13363,6 +13411,8 @@ Ubisoft	Ubisoft	NNP
 udātta	udātta	NN
 Udemy	Udemy	NNP
 UHC	UHC	NNP
+UI	UI	NN
+UIs	UI	NNS
 UID	UID	NNP
 Ulaanbaatar	Ulaanbaatar	NNP
 Ultrabook	Ultrabook	NNP
@@ -13699,6 +13749,8 @@ uralitized	uralitize	VBN
 uralitizes	uralitize	VBZ
 uralitizing	uralitize	VBG
 urbanised	urbanised	JJ
+URI	URI	NN
+URIs	URI	NNS
 Urs	Urs	NNP
 username	username	NN
 usernames	username	NNS
@@ -14050,6 +14102,7 @@ weblinks	weblink	NNS
 weblog	weblog	NN
 weblogs	weblog	NNS
 WebQuest	WebQuest	NNP
+WebRTC	WebRTC	NNP
 Wechsler	Wechsler	NNP
 WEDNESDAY	Wednesday	NNP
 Weebly	Weebly	NNP
@@ -14157,6 +14210,7 @@ XMLmind	XMLmind	NNP
 Xsolla	Xsolla	NNP
 XSS	XSS	NN:U
 XSSF	XSSF	NN:U
+XXXTentacion	XXXTentacion	NNP
 Yamacraw	Yamacraw	NNP
 Yamacraws	Yamacraw	NNPS
 Yannick	Yannick	NNP
