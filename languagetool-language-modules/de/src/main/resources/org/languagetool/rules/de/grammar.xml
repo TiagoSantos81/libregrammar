@@ -4535,6 +4535,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example correction="LibreOffice">Das <marker>Libre Office</marker> Dokument enthielt alle Änderungen.</example>
         </rule>
         <rulegroup id="JOUR_FIXE" name="Schreibweise 'Der Jour fixe'">
+            <url>https://www.duden.de/rechtschreibung/Jour_fixe</url>
             <rule>
                 <pattern>
                     <marker>
@@ -4542,7 +4543,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                         <token case_sensitive="yes" regexp="yes">fix|Fix|Fixes?</token>
                     </marker>
                 </pattern>
-                <message>Die korrekte Schreibweise lautet <suggestion><match no="1" case_conversion="startupper" /> <match no="2" case_conversion="startlower" regexp_match="(?i)fixe?" regexp_replace="fixe" /></suggestion>.</message>
+                <message>Die korrekte Schreibweise lautet <suggestion><match no="1" case_conversion="startupper" /> <match no="2" case_conversion="startlower" regexp_match="(?i)fixe?" regexp_replace="fixe" /></suggestion> (= regelmäßiges Meeting).</message>
                 <example correction="Jour fixe">Der <marker>Jour Fix</marker> findet jeden Tag um 9 Uhr statt.</example>
                 <example correction="Jour fixes">Die <marker>Jour Fixes</marker> sind jeden Tag um 9 Uhr statt.</example>
             </rule>
@@ -4552,7 +4553,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                         <token regexp="yes">jour\-?fixe?s?</token>
                     </marker>
                 </pattern>
-                <message>Die korrekte Schreibweise lautet <suggestion><match no="1" regexp_match="(?i)jour\-?fixe?" regexp_replace="Jour fixe" /></suggestion>.</message>
+                <message>Die korrekte Schreibweise lautet <suggestion><match no="1" regexp_match="(?i)jour\-?fixe?" regexp_replace="Jour fixe" /></suggestion> (= regelmäßiges Meeting).</message>
                 <example correction="Jour fixes">Die <marker>Jour-fixes</marker> sind ab jetzt immer um 10 Uhr.</example>
             </rule>
         </rulegroup>
@@ -6633,6 +6634,15 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token skip="-1">das</token>
                     <token postag="VER:EIZ:.+" postag_regexp="yes"/>
                 </antipattern>
+                <antipattern>
+                    <token postag="SENT_START" />
+                    <token postag="ART:.*" postag_regexp="yes" min="0" />
+                    <token postag="SUB:.*|UNKNOWN" postag_regexp="yes"/>
+                    <token>,</token>
+                    <token>das</token>
+                    <token postag="ADJ:.*|UNKNOWN" postag_regexp="yes" min="0" max="3" />
+                    <token postag="SUB:.*|NEU.*" postag_regexp="yes" />
+                </antipattern>
                 <pattern>
                     <token postag="SENT_START|PKT" postag_regexp="yes" skip="-1">
                         <exception scope="next" postag="SUB.*SIN.*NEU.*|EIG.*SIN.*NEU.*|PRO:.*SIN.*NEU.*|PRO:IND.*|UNKNOWN" postag_regexp="yes"/>
@@ -6658,6 +6668,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>Ich glaube, das hier gehört mir.</example>
                 <example>Ich konnte dich sehen, das allein macht mich froh.</example>
                 <example>Ich glaube, das mit uns hat einfach keinen Sinn.</example>
+                <example>Die Außenpolitik, das neue Streitthema</example>
+                <example>KFZ-Elektronik, das Thema für heute</example>
                 <example>Ich weigere mich, das von Tom abgegebene Geschmiere, das er seine Bearbeitung nennt, anzunehmen.</example>
                 <example correction="dass">Ich weiß, <marker>das</marker> sie dort festhängt.</example>
                 <example correction="dass">Ich wüsste nicht, <marker>das</marker> er was damit zu tun hat.</example>
@@ -8771,7 +8783,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <url>https://de.wikipedia.org/wiki/%E2%80%99Ndrangheta</url>
             <example correction="’Ndrangheta">Die <marker>Ndrangheta</marker> ist die Vereinigung der kalabrischen Mafia.</example>
         </rule>
-        <rulegroup id="KRAMP_KARRENBAUER" name="Kramp-Karrenbauer" default="temp_off">
+        <rulegroup id="KRAMP_KARRENBAUER" name="Kramp-Karrenbauer">
             <antipattern case_sensitive="yes">
                 <token regexp="yes">Kramp-Karrenbauers?</token>
             </antipattern>
@@ -12697,7 +12709,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token postag="VER:.+" postag_regexp="yes">
                         <exception postag="VER:AUX:.*|SUB:.*|PRP:.*|ART.*|ZAL|ADV.*|PRO.*|PA[12].*" postag_regexp="yes"/>
                         <exception regexp="yes">(in|über|um|zer|zwischen|ver|zurück|weiter|vorbei|wieder|be).+|null|genügend</exception>
-                        <exception regexp="yes">weiß|weiss|Skype|skype</exception>
+                        <exception regexp="yes">weiß|weiss|skype</exception>
                     </token>
                 </marker>
             </pattern>
@@ -30930,7 +30942,7 @@ Andere Projekte</example>
                 <pattern case_sensitive="yes">
                     <token postag="PRP:.+|ADV:MOD" postag_regexp="yes"><exception postag="KON:NEB"/><exception>zu</exception></token>
                     <marker>
-                        <token postag="VER:(PA2:NON|INF:.+)" postag_regexp="yes" regexp="yes">[a-zäöü].+<exception postag="ADJ:AKK:.+|(ART|PRO):IND:.+" postag_regexp="yes"/></token>
+                        <token postag="VER:(PA2:NON|INF:.+)" postag_regexp="yes" regexp="yes">[a-zäöü].+<exception postag="ADJ:AKK:.+|(ART|PRO):IND:.+|ZAL" postag_regexp="yes"/></token>
                     </marker>
                     <token postag="(ART|PRO):(IND|DE[FM]|POS):GEN:.+" postag_regexp="yes"/>
                 </pattern>
@@ -30944,6 +30956,7 @@ Andere Projekte</example>
                 <example>Er setzte sich auf einen der vorderen Sitze, um besser hören zu können.</example>
                 <example>Apfelsamen sind giftig, doch schaden der Gesundheit nur dann, wenn sie in großen Menge verzehrt werden.</example>
                 <example>Nicht zu vergessen der Aufenthaltsstatus.</example>
+                <example>Außerdem zählt Blackrock demnach zu den zehn größten Anteilseignern von sieben der zehn größten globalen Kohleproduzenten.</example>
             </rule>
         </rulegroup>
         <rulegroup id="GEWISSEN_SUBST" name="'auf dem gewissen (Gewissen)' etc.">
@@ -32201,7 +32214,7 @@ Andere Projekte</example>
     <!-- Grammatik -->
     <!-- ====================================================================== -->
     <category id="GRAMMAR" name="Grammatik">
-        <rulegroup id="KO" name="KO (K. o.)" default="temp_off">
+        <rulegroup id="KO" name="KO (K. o.)">
             <antipattern><!-- domain -->
                 <token>ko</token>
                 <token spacebefore="no">.</token>
@@ -33018,7 +33031,7 @@ Andere Projekte</example>
                 <example correction="Close-ups">Er machte mehrere <marker>Close-Ups</marker> um später eines für die Galerie auszuwählen.</example>
             </rule>
         </rulegroup>
-        <rulegroup id="WIN_WIN_SITUATION" name="Win-win-Situation" default="temp_off">
+        <rulegroup id="WIN_WIN_SITUATION" name="Win-win-Situation">
             <antipattern case_sensitive="yes">
                 <token regexp="yes">Win-win-Situation(en)?</token>
             </antipattern>
@@ -37731,7 +37744,7 @@ Andere Projekte</example>
                 <message>Meinten Sie <suggestion>z.&nbsp;B.</suggestion>?</message>
                  <example correction="z.&nbsp;B.">Sie erkennt <marker>z B.</marker> den Fehler in diesem Satz.</example>
             </rule>
-            <rule default="temp_off">
+            <rule>
                 <pattern>
                     <token>u</token>
                     <token>a</token>
@@ -37741,7 +37754,7 @@ Andere Projekte</example>
                 <url>https://www.duden.de/suchen/dudenonline/u.a.</url>
                 <example correction="u.&nbsp;a.">Sie erkennt <marker>u a.</marker> diesen Fehler</example>
             </rule>
-            <rule default="temp_off">
+            <rule>
                 <pattern case_sensitive="yes">
                     <token>u</token>
                     <token spacebefore="no">.</token>
