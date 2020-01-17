@@ -2358,11 +2358,16 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
     </rule>
 
     <rule name="determiner + verb/NN -&gt; NN (2)" id="DT_VB_NN_SENTEND">
+        <antipattern><!-- we last spoke. -->
+            <token postag="PRP"/>
+            <token postag="RB"/>
+            <token postag="VBD"/>
+        </antipattern>
         <pattern>
             <token postag="DT"><exception postag="PDT"/><exception regexp="yes">th[eo]se|much</exception></token>
             <marker>
                 <and>
-                    <token postag="VB"></token>
+                    <token postag="VB"/>
                     <token postag="NN(:UN?)?" postag_regexp="yes"/>
                 </and>
             </marker>
@@ -2372,6 +2377,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
       <example type="ambiguous" inputform="better[better/NN,better/VB,better/VBP,good/JJR,well/RBR]" outputform="better[better/NN]">... at the casino yesterday. But, who was the <marker>better</marker>?</example>
       <example type="untouched">[No full stop at the end of the sentence] … to gain a much better understanding</example>
       <example type="untouched">... compared with last year, this year's crops are much better.</example>
+      <example type="untouched">... on the way to the Enron Broadband/BMC agreement since we last spoke.</example>
     </rule>
 
     <rule name="verb + pronoun + inconsistent verb > noun" id="VB_PRP_NN">
@@ -5861,6 +5867,18 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
                 args="no:1 regexp:([a-zA-Z]+)[™®] postag_regexp:NNP"/><!-- The filter is case-sensitive -->
         <disambig action="ignore_spelling"/>
       </rule>
+
+    <rule name="Ignore spelling of url protocols" id="URI_PROTOCOL">
+        <pattern><!-- chrome://, ftp://, file:// -->
+            <token regexp="yes">[a-z\-]+</token>
+            <token spacebefore="no">:</token>
+            <token spacebefore="no">/</token>
+            <token spacebefore="no">/</token>
+            <token spacebefore="no" min="0">/</token>
+            <token spacebefore="no" regexp="yes">[a-z0-9\-]+</token>
+        </pattern>
+        <disambig action="ignore_spelling"/>
+    </rule>
 
     <rule name="Ignore spelling of superscripted units of measure" id="IGNORE_SPELLING_OF_SUPERSCRIPTED_UNITS"><!-- Refer to http://physics.nist.gov/cuu/Units/units.html -->
         <pattern case_sensitive="yes">
