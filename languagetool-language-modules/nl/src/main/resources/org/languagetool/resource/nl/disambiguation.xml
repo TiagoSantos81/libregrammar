@@ -54,6 +54,8 @@ Copyright (C) 2008-2018 Ruud Baars, TaalTik
 
 <!ENTITY Unknown    '<token postag="UNKNOWN"/>'>
 
+<!ENTITY browser_protocols "aaa|aaas|about|acap|acct|acr|adiumxtra|afp|afs|aim|amss|apt|attachment|aw|barion|beshare|bitcoin|blob|bolo|callto|cap|chrome|chrome|cid|coap|coaps|content|crid|cvs|dab|data|dav|dict|dns|dntp|drm|dtn|dvb|ed2k|example|examples|facetime|fax|feed|file|filesystem|finger|fish|fm|ftp|geo|gg|git|gizmoproject|go|gopher|gtalk|h323|hcp|http|https|iax|icap|icon|im|imap|info|iotdisco|ipn|ipp|ipps|irc|irc6|ircs|iris|itms|jabber|jar|jms|keyparc|lastfm|ldap|ldaps|magnet|mailserver|mailto|(makes|maps|market|message|mid|mms|modem|msnim|msrp|msrps|mtqp|mumble|mupdate|mvn|news|nfs|ni|nih|nntp|notes|obsolete)|oid|opaquelocktoken|pack|palm|paparazzi|pkcs11|platform|pop|pres|prospero|proxy|psyc|query|redis|rediss|reload|res|resource|rmi|rsync|rtmfp|rtmp|rtsp|secondlife|service|session|sftp|sgn|shttp|sieve|sip|sips|skype|smb|sms|snews|snmp|soldat|spotify|ssh|steam|stun|stuns|svn|tag|teamspeak|tel|telnet|tftp|things|thismessage|tip|tn3270|turn|turns|tv|udp|udp|unreal|urn|ut2004|vemmi|ventrilo|videotex|vnc|wais|webcal|ws|wss|wtai|wyciwyg|xcon|xfire|xmpp|xri|ymsgr">
+
 ]>
 
 <rules lang="nl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -62,11 +64,13 @@ Copyright (C) 2008-2018 Ruud Baars, TaalTik
 	<!-- SPELLING IGNORES -->
     <rule name="Ignore spelling of url protocols" id="URI_PROTOCOL">
         <pattern><!-- chrome://, ftp://, file:// -->
-            <token regexp="yes">[a-z\-]+</token>
+          <marker>
+            <token regexp="yes">&browser_protocols;</token>
             <token spacebefore="no">:</token>
             <token spacebefore="no">/</token>
             <token spacebefore="no">/</token>
             <token spacebefore="no" min="0">/</token>
+          </marker>
             <token spacebefore="no" regexp="yes">[a-z0-9\-]+</token>
         </pattern>
         <disambig action="ignore_spelling"/>
