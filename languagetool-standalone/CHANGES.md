@@ -43,6 +43,8 @@
 
 #### German
   * added and improved rules
+  * `compounds.txt` now automatically expands `ß` to `ss` when using German (Switzerland)
+
 
 #### Irish
   * support now also available on upstream project

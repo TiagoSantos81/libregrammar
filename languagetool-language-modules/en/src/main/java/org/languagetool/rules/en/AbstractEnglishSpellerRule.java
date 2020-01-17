@@ -198,6 +198,8 @@ public abstract class AbstractEnglishSpellerRule extends MorfologikSpellerRule {
       return Arrays.asList("A lot");
     } else if ("alot".equals(word)) {
       return Arrays.asList("a lot");
+    } else if ("ad-on".equals(word)) {
+      return Arrays.asList("add-on");
     } else if ("acc".equals(word)) {
       return Arrays.asList("account", "accusative");
     } else if ("Acc".equals(word)) {
@@ -212,6 +214,8 @@ public abstract class AbstractEnglishSpellerRule extends MorfologikSpellerRule {
       return Arrays.asList("ad hoc");
     } else if ("ios".equals(word)) {
       return Arrays.asList("iOS");
+    } else if ("yrs".equals(word)) {
+      return Arrays.asList("years");
     } else if ("standup".equals(word)) {
       return Arrays.asList("stand-up");
     } else if ("standups".equals(word)) {
