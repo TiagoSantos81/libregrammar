@@ -58,6 +58,7 @@ title="Easy editing stylesheet" ?>
     <!ENTITY separadores_de_oracoes "(?:[,;:…–—\(«“]|\-|\[)">
     <!ENTITY hifen "(?:[-‑])">
     <!ENTITY tracos_de_separacao "(?:[-‑]|–|—)">
+    <!ENTITY apostrofe "['’`´‘]">
     <!ENTITY negacoes "(?:n(?:ão|em|unca|inguém|ada|enhu[mn]a?s?)|jamais|sem|tampouco)">
     <!ENTITY introduz_proclise "(?:a(?:inda|penas|té)|bem|c(?:aso|omo|onforme|onsoante)|e(?:mbora|nquanto)|já|mais|onde|p(?:ara|ois|orque|ortanto)|qu(?:ais|al|ando|ant[ao]s?|ão|em?)|se(?:mpre)?|talvez)"><!-- XXX Excluded pt-BR only: ali|aqui|acolá -->
 
@@ -34204,6 +34205,24 @@ TODO Write better examples
       <message>'Furação' é o ato de perfurar. O fenómeno meteorológico escreve-se <suggestion><match no='1' regexp_match='ç' regexp_replace='c'/></suggestion>.</message>
       <url>https://pt.wiktionary.org/wiki/furacão</url>
       <example correction="Furacões">Centro Nacional de <marker>Furações</marker>.</example>
+    </rule>
+    <rule>
+      <antipattern>
+          <token regexp='yes'>&apostrofe;</token>
+          <token regexp='yes' spacebefore='no' case_sensitive='yes'>[Ii]s</token>
+          <token regexp='yes' spacebefore='no'>&apostrofe;</token>
+      </antipattern>
+      <pattern>
+          <token>
+            <exception regexp='yes'>[adn]?os</exception></token>
+        <marker>
+          <token regexp='yes' case_sensitive='yes'>[Ii]s</token>
+        </marker>
+      </pattern>
+      <message>'\2' é o plural de 'i'. Possível confusão com <suggestion>ides</suggestion> ou <suggestion>íeis</suggestion>.</message>
+      <example correction="ides|íeis">Porque não <marker>is</marker> dar uma volta?</example>
+      <example>Foi preciso por os pontos nos is.</example>
+      <example>A vogais são os 'as', 'es', 'is', 'os', e 'us'.</example>
     </rule>
     <rule>
       <pattern>
