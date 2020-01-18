@@ -1274,12 +1274,16 @@ public class JLanguageTool {
             newMatch.setOffsetPosition(newFromPos, newToPos, newMatch);
             newMatch.setLine(range.from.line);
             newMatch.setEndLine(range.to.line);
-            if (match.getLine() == 0) {
+            if (newMatch.getLine() == 0) {
               newMatch.setColumn(range.from.column + 1);
             } else {
               newMatch.setColumn(range.from.column);
             }
-            newMatch.setEndColumn(range.to.column);
+            if (newMatch.getEndLine() == 0) {
+              newMatch.setEndColumn(range.to.column + 1);
+            } else {
+              newMatch.setEndColumn(range.to.column);
+            }
             adaptedMatches.add(newMatch);
           }
           ruleMatches.addAll(adaptedMatches);
