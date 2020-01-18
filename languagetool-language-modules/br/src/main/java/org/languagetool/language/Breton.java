@@ -29,6 +29,7 @@ import org.languagetool.LanguageMaintainedState;
 import org.languagetool.UserConfig;
 import org.languagetool.rules.*;
 import org.languagetool.rules.br.TopoReplaceRule;
+import org.languagetool.rules.br.BretonFillerWordsRule;
 import org.languagetool.rules.br.BretonCompoundRule;
 import org.languagetool.rules.br.MorfologikBretonSpellerRule;
 import org.languagetool.tagging.Tagger;
@@ -126,6 +127,7 @@ public class Breton extends Language {
             new PunctuationMarkAtParagraphEnd(messages, this, true),
             // specific to Breton
             new TopoReplaceRule(messages),
+            new BretonFillerWordsRule(messages, this, userConfig),
             new BretonCompoundRule(messages)
     );
   }
