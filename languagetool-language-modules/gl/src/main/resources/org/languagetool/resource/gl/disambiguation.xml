@@ -37,6 +37,7 @@
 
     <!ENTITY extensoes_de_ficheiros "aspx?|avi|bak|bat|bmp|cab|cfg|cgi|com|css|csv|dat|db|dbf|dll|docx?|eps|exe|flv|gif|html?|ibooks|ico|ini|jar|jpe?g|js|jsp|lnk|md|mdb|mid|mov|mp3|mp4|mpa|mpg|o[dt][tspfg]|pdf|php|pl|png|pps|pptx?|ps|psd|py|rss|sh|sql|svg|sys|tar|tif|tiff|tmp|txt|wav|wma|xhtml|xlsx?|xsl|xml|zipx?|7z">
     <!ENTITY dominios_internet "(?:cat|ae|ar|asia|at|au|be|bid|biz|br|ca|cc|cf|ch|cl|club|cn|co|com|cz|de|dk|edu|es|eu|fi|fr|ga|gdn|gov|gq|gr|hk|hu|id|ie|il|in|info|int|io|ir|it|jp|kiwi|kr|kz|life|link|loan|lt|me|men|mil|ml|mobi|mx|my|name|net|nl|no|nu|nz|online|org|party|pl|pro|pt|pw|racing|ro|ru|se|sg|shop|site|sk|space|store|su|tech|tk|top|tr|trade|tv|tw|ua|uk|us|vip|vn|wang|website|win|ws|xin|xyz|za)"><!-- the 100 most used + cat -->
+    <!ENTITY browser_protocols "(?:a(?:aas?|bout|cap|cct|cr|diumxtra|fp|fs|im|mss|pt|ttachment|w)|b(?:arion|eshare|itcoin|lob|olo)|c(?:allto|ap|hrome|id|oaps?|ontent|rid|vs)|da(?:b|ta|av)|d(?:ict|ns|ntp|rm|tn|vb)|e(?:d2k|xamples?)|fa(?:cetime|x)|f(?:eed|ile(?:system)?|i(?:nger|sh)|m|tp)|g(?:(?:eo|g)|i(?:t|zmoproject)|o(?:pher)?|talk)|h(?:323|cp|ttps?)|i(?:ax|cap|con|m(?:ap)?|nfo|otdisco|pn|pps?|ir(?:6?|cs|is|tms)|j(?:a(?:bber|r)|ms)|keyparc|l(?:astfm|daps?)|ma(?:gnet|ilserver|ilto|kes|ps|rket)|m(?:essage|id|ms|odem|snim|srps?|tqp|umble|update|vn)|n(?:ews|fs|i(?:h)?|ntp|otes)|obsolete|o(?:id|paquelocktoken)|pa(?:ck|lm|parazzi)|p(?:kcs11|latform|op|res|ro(?:spero|xy)|syc)|query|re(?:diss?|load|s(?:ource)?)|r(?:mi|sync|tmfp|t(?:mp|sp))|se(?:condlife|rvice|ssion)|s(?:ftp|gn|http|ieve|ips?|kype|mb|ms|n(?:ews|mp)|oldat|potify|sh|team|tuns?|vn)|t(?:ag|eamspeak|el(?:net)?|ftp|hings|hismessage|ip|n3270|urns?|v)|u(?:dp|nreal|rn|t2004)|v(?:e(?:mmi|ntrilo)|ideotex|nc))|w(?:ais|ebcal|ss?|tai|yciwyg)|x(?:con|fire|mpp|ri)|ymsgr)">
 
     <!ENTITY ditongos_chineses "A(?:i|ng?|o)|B(?:(?:(?:(?:ai?|(?:ang?|ao))|ei)|(?:(?:eng?|i)|iang?))|(?:(?:iao|ie)|(?:ing?|(?:o|u))))|C(?:(?:(?:(?:ai?|(?:(?:(?:ang?|ao)|en?)|(?:eng|hai?)))|(?:(?:hang?|(?:hao|hen?))|(?:(?:heng|(?:(?:hi|hong)|hou))|(?:hua?|huai))))|(?:(?:huang?|(?:hui|hun))|huo))|(?:(?:(?:i|ong)|ou)|(?:(?:u|uan)|(?:ui|(?:un|uo)))))|D(?:(?:(?:ai?|(?:(?:(?:(?:ang?|ao)|ei?)|(?:eng?|ia?))|(?:iang?|(?:iao|ie))))|(?:ing|(?:(?:iu|ong)|ou)))|(?:(?:u|uan)|(?:ui|(?:un|uo))))|E(?:i|(?:ng?|r))|F(?:(?:an?|(?:ang|ei))|(?:eng?|(?:(?:iao|ou?)|u)))|G(?:(?:(?:ai?|ang?)|(?:(?:(?:ao|(?:ei?|eng?))|ong)|(?:(?:ou|ua?)|uai)))|(?:(?:uang?|ui)|(?:un|uo)))|H(?:(?:(?:(?:ai?|ang?)|(?:(?:ao|(?:ei?|eng?))|ong))|(?:(?:ou|ua?)|uai))|(?:(?:uang?|ui)|(?:un|uo)))|J(?:(?:(?:(?:ia?|(?:iang?|iao))|ie)|(?:(?:ing?|iong)|iu))|(?:(?:u|uan)|(?:ue|un)))|K(?:(?:(?:(?:ai?|ang?)|(?:(?:ao|(?:ei?|eng?))|ong))|(?:(?:ou|ua?)|uai))|(?:(?:uang?|ui)|(?:un|uo)))|L(?:(?:(?:(?:(?:ai?|ang?)|(?:(?:ao|(?:ei?|eng))|ia?))|(?:(?:iang?|iao)|ie))|(?:(?:(?:ing?|iu)|(?:ong|(?:ou|u)))|uan))|(?:(?:(?:(?:un|uo)|ü)|(?:üan|üe))|ün))|M(?:(?:(?:(?:(?:ai?|ang?)|ao)|(?:ei?|eng?))|(?:i|(?:ian|iao)))|(?:(?:ie|(?:(?:ing?|iu)|ou?))|u))|N(?:(?:(?:(?:(?:ai?|ang?)|ao)|(?:ei?|eng?))|(?:ia?|(?:iang?|iao)))|(?:(?:ie|(?:(?:ing?|iu)|ong))|(?:(?:ou|u)|(?:(?:uan|(?:un|uo))|üe?))))|Ou|P(?:(?:(?:(?:ai?|(?:ang?|ao))|ei)|(?:(?:eng?|i)|ian))|(?:(?:iao|ie)|(?:ing?|(?:ou?|u))))|Q(?:(?:ia?|(?:(?:(?:iang?|iao)|ie)|(?:ing?|iong)))|(?:(?:iu|(?:u|uan))|(?:ue|un)))|R(?:(?:(?:(?:ang?|ao)|en?)|(?:(?:eng|i)|(?:ong|(?:ou|ua?))))|(?:uan|(?:(?:ui|un)|uo)))|S(?:(?:(?:(?:(?:ai?|ang?)|(?:ao|(?:ei?|eng?)))|hai?)|(?:(?:(?:(?:hang?|hao)|hei?)|(?:heng?|hi))|(?:(?:hong|(?:hou|hua?))|(?:huai|(?:(?:huang?|hui)|hun)))))|(?:(?:huo|i)|(?:(?:(?:ong|(?:ou|u))|uan)|(?:(?:ui|un)|uo))))|T(?:(?:(?:(?:(?:ai?|ang?)|(?:ao|(?:ei?|eng)))|(?:i|(?:(?:(?:ian|iao)|ie)|(?:ing|ong))))|(?:ou|(?:u|uan)))|(?:ui|(?:un|uo)))|W(?:(?:(?:ai?|ang?)|ei)|(?:(?:eng?|o)|u))|X(?:(?:(?:(?:ia?|iang?)|iao)|(?:(?:ie|ing?)|(?:iong|(?:iu|u))))|(?:uan|(?:ue|un)))|Y(?:(?:(?:(?:ai?|(?:ang?|ao))|e)|(?:(?:in?|ing)|o))|(?:(?:(?:ong|ou)|(?:u|(?:uan|ue)))|un))|Z(?:(?:(?:(?:(?:(?:ai?|ang?)|ao)|(?:ei?|eng?))|(?:hai?|(?:hang?|hao)))|(?:(?:hei?|(?:(?:heng?|hi)|hong))|(?:(?:hou|hua?)|(?:(?:huai|(?:huang?|hui))|hun))))|(?:(?:(?:huo|i)|ong)|(?:(?:(?:ou|u)|(?:uan|(?:ui|un)))|uo)))">
 
@@ -1938,6 +1939,19 @@
           <token spacebefore="no" regexp="yes">&dominios_internet;</token>
       </pattern>
       <disambig action="ignore_spelling"/>
+    </rule>
+    <rule name="Ignore spelling of url protocols" id="URI_PROTOCOL">
+        <pattern><!-- chrome://, ftp://, file:// -->
+          <marker>
+            <token regexp="yes">&browser_protocols;</token>
+            <token spacebefore="no">:</token>
+            <token spacebefore="no">/</token>
+            <token spacebefore="no">/</token>
+            <token spacebefore="no" min="0">/</token>
+          </marker>
+            <token spacebefore="no" regexp="yes">[a-z0-9\-]+</token>
+        </pattern>
+        <disambig action="ignore_spelling"/>
     </rule>
 
   <rulegroup id="ROMAN_NUMBER" name="Roman number">
