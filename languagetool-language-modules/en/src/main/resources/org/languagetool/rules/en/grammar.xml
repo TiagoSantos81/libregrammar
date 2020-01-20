@@ -184,7 +184,20 @@ USA
     <!-- Possible typo -->
     <!-- ====================================================================== -->
     <category id="TYPOS" name="Possible Typo" type="misspelling">
-
+        <rule id="PAPUA_NEW_GUINEA" name="Papua New Guinea" default="temp_off">
+            <antipattern case_sensitive="yes">
+                <token>Papua</token>
+                <token>New</token>
+                <token>Guinea</token>
+            </antipattern>
+            <pattern>
+                <token regexp="yes">Papp?u?au?</token>
+                <token>New</token>
+                <token regexp="yes">Guinea|Gunea|Guinae|Gunae|Guniea</token>
+            </pattern>
+            <message>Did you mean <suggestion>Papua New Guinea</suggestion> (= country in Oceania)?</message>
+            <example correction="Papua New Guinea">He was born in <marker>Papa New Guinea</marker>.</example>
+        </rule>
         <rule id="DHOW_JONES" name="dhow (show)">
         <!-- Created by Tiago F. Santos, 2019-12-08 -->
             <pattern>
@@ -9129,6 +9142,31 @@ USA
     <!-- Grammar -->
     <!-- ====================================================================== -->
     <category id="GRAMMAR" name="Grammar" type="grammar">
+        <rulegroup id="KIND_REGARD" name="Kind regard (regards)" default="temp_off">
+            <rule>
+                <pattern>
+                    <token postag="SENT_START" />
+                    <token regexp="yes">kind|best|warm</token>
+                    <marker>
+                        <token>regard</token>
+                    </marker>
+                    <token regexp="yes">,|\.|!</token>
+                </pattern>
+                <message>Did you mean <suggestion>\3s</suggestion>?</message>
+                <example correction="regards">Kind <marker>regard</marker>, Chris.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token postag="SENT_START" />
+                    <token regexp="yes">kind|best|warm</token>
+                    <marker>
+                        <token postag="SENT_END">regard</token>
+                    </marker>
+                </pattern>
+                <message>Did you mean <suggestion>\3s</suggestion>?</message>
+                <example correction="regards">Best <marker>regard</marker></example>
+            </rule>
+        </rulegroup>
         <rule id="SPLITTED" name="splitted (split)">
             <pattern>
                 <token>splitted</token>
@@ -13086,7 +13124,7 @@ USA
                 <url>https://en.wiktionary.org/wiki/rescheduling</url>
                 <example correction="rescheduling">Your <marker>reschedule</marker> didn't reach me.</example>
             </rule>
-            <rule default="temp_off"><!-- the administer -->
+            <rule><!-- the administer -->
                 <pattern>
                     <token regexp="yes">your|their|his|her|my|the|our|an?|s</token>
                     <token postag="JJS?" postag_regexp="yes" min="0">
@@ -13100,7 +13138,7 @@ USA
                 <url>https://www.merriam-webster.com/dictionary/administrator</url>
                 <example correction="administrator">Your <marker>administer</marker> should have sent you the login instructions.</example>
             </rule>
-            <rule default="temp_off"><!-- the exhale -->
+            <rule><!-- the exhale -->
                 <pattern>
                     <token regexp="yes">your|their|his|her|my|the|our|an?|s</token>
                     <token postag="JJS?" postag_regexp="yes" min="0">
@@ -13114,7 +13152,7 @@ USA
                 <url>https://www.merriam-webster.com/dictionary/exhalation</url>
                 <example correction="exhalation">The main reason for the <marker>exhale</marker> is to rid the body of carbon dioxide</example>
             </rule>
-            <rule default="temp_off"><!-- the prevent -->
+            <rule><!-- the prevent -->
                 <pattern>
                     <token regexp="yes">your|their|his|her|my|the|our|an?|s</token>
                     <token postag="JJS?" postag_regexp="yes" min="0">
@@ -13128,7 +13166,7 @@ USA
                 <url>https://www.merriam-webster.com/dictionary/prevention</url>
                 <example correction="prevention">The <marker>prevent</marker> of intruders was turned on every night.</example>
             </rule>
-            <rule default="temp_off"><!-- the homeschool -->
+            <rule><!-- the homeschool -->
                 <pattern>
                     <token regexp="yes">your|their|his|her|my|the|our|an?|s</token>
                     <token postag="JJS?" postag_regexp="yes" min="0">
@@ -13142,7 +13180,7 @@ USA
                 <url>https://en.wiktionary.org/wiki/home_school#English</url>
                 <example correction="home school">He learned all about life in his <marker>homeschool</marker>.</example>
             </rule>
-            <rule default="temp_off"><!-- the doubleclick -->
+            <rule><!-- the doubleclick -->
                 <pattern>
                     <token regexp="yes">your|their|his|her|my|the|our|an?|s</token>
                     <token postag="JJS?" postag_regexp="yes" min="0">
@@ -13155,8 +13193,9 @@ USA
                 <message>Did you mean <suggestion><match no="3" regexp_match="(?i)click" regexp_replace=" click" /></suggestion> (= noun)?</message>
                 <url>https://www.merriam-webster.com/dictionary/double-click</url>
                 <example correction="double click">He tried a <marker>doubleclick</marker> to open the folder.</example>
+                <example>He uses the DubleClick advertising platform.</example>
             </rule>
-            <rule default="temp_off"><!-- the injure -->
+            <rule><!-- the injure -->
                 <pattern>
                     <token regexp="yes">your|their|his|her|my|the|our|an?|s</token>
                     <token postag="JJS?" postag_regexp="yes" min="0">
@@ -13170,7 +13209,7 @@ USA
                 <url>https://www.merriam-webster.com/dictionary/injury</url>
                 <example correction="injury">He got an <marker>injure</marker> while playing football.</example>
             </rule>
-            <rule default="temp_off"><!-- the confirm -->
+            <rule><!-- the confirm -->
                 <pattern>
                     <token regexp="yes">your|their|his|her|my|the|our|an?|s</token>
                     <token postag="JJS?" postag_regexp="yes" min="0">
@@ -14644,7 +14683,7 @@ USA
                 </antipattern>
                 <pattern>
                     <token>microsoft</token>
-                    <token regexp="yes">word|excel|outlook|office|edge|azure|inc|surface|windows|hotmail|lumia|bing</token>
+                    <token regexp="yes">word|excel|outlook|office|edge|azure|inc|surface|windows|hotmail|lumia|bing|solitaire</token>
                 </pattern>
                 <message>Did you mean the proper noun <suggestion>Microsoft <match no="2" case_conversion="startupper" /></suggestion> (= Microsoft product)?</message>
                 <example correction="Microsoft Word"><marker>Microsoft word</marker> is a word processor.</example>
@@ -14698,6 +14737,31 @@ USA
             <url>https://en.wikipedia.org/wiki/WhatsApp</url>
             <example correction="WhatsApp|What's up">He is using <marker>Whats App</marker> to communicate with his friends.</example>
         </rule>
+        <rulegroup id="LOREAL" name="L’Oréal" default="temp_off">
+            <antipattern case_sensitive="yes">
+                <token>L</token>
+                <token spacebefore="no" regexp="yes">['’]</token>
+                <token regexp="yes" spacebefore="no">Oréals?</token>
+            </antipattern>
+            <rule>
+                <pattern>
+                    <token>l</token>
+                    <token min="0" regexp="yes">.</token>
+                    <token regexp="yes">or[eéè]als?</token>
+                </pattern>
+                <message>Did you mean <suggestion>L'<match no="3" case_conversion="startupper" regexp_match="(?i)or[eéè]al" regexp_replace="Oréal" /></suggestion> (= cosmetics company)?</message>
+                <url>https://en.wikipedia.org/wiki/L%27Or%C3%A9al</url>
+                <example correction="L'Oréal"><marker>L'oreal</marker> S.A. is a French personal care company headquartered in Clichy, Hauts-de-Seine.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp="yes">lor[eéè]als?</token>
+                </pattern>
+                <message>Did you mean <suggestion>L'<match no="1" case_conversion="startupper" regexp_match="(?i)lor[eéè]al" regexp_replace="Oréal" /></suggestion> (= cosmetics company)?</message>
+                <url>https://en.wikipedia.org/wiki/L%27Or%C3%A9al</url>
+                <example correction="L'Oréal"><marker>LOréal</marker> S.A. is a French personal care company headquartered in Clichy, Hauts-de-Seine.</example>
+            </rule>
+        </rulegroup>
         <rulegroup id="FEDEX" name="FedEx">
             <url>https://www.merriam-webster.com/dictionary/FedEx</url>
             <rule>
@@ -15034,6 +15098,18 @@ USA
             <url>https://www.merriam-webster.com/dictionary/so-called</url>
             <example correction="so-called">The <marker>so called</marker> conspiracy theory</example>
         </rule>
+        <rule id="IN_EAR_HYPHEN" name="missing hyphen in 'in ear'" default="temp_off">
+            <pattern>
+                <marker>
+                    <token>in</token>
+                    <token>ear</token>
+                </marker>
+                <token regexp="yes">buds?|noise|noise\-?cancel.*|bluetooth|translators?|headsets?|earbuds?|apple|placement|versions?|(head|ear)phones?|monitors?|eegs?|monitoring|wireless|samsung|airpods?</token>
+            </pattern>
+            <message>It seems that a hyphen is missing.</message>
+            <suggestion>\1-\2</suggestion>
+            <example correction="in-ear">He enjoys the <marker>in ear</marker> noise cancelling.</example>
+        </rule>
         <rule id="STEP_BY_STEP_HYPHEN" name="missing hyphens in 'step-by-step'">
             <pattern>
                 <marker>
@@ -15047,7 +15123,7 @@ USA
             <message>Did you mean the adjective or adverb <suggestion>\1-\2-\3</suggestion> (spelled with hyphens)?</message>
             <example correction="step-by-step">The <marker>step by step</marker> diet plan helped me to lose kilos.</example>
         </rule>
-        <rule id="OPEN_HEART_HYPHEN" name="missing hyphen in 'open heart'" default="temp_off">
+        <rule id="OPEN_HEART_HYPHEN" name="missing hyphen in 'open heart'">
             <pattern>
                 <marker>
                     <token>open</token>
@@ -23930,7 +24006,7 @@ USA
             <message>Did you mean <suggestion>didn't</suggestion>?</message>
             <example correction="didn't">He <marker>dint</marker> know about it.</example>
         </rule>
-        <rule id="ANI_T" name="he ani't (ani't)" default="temp_off">
+        <rule id="ANI_T" name="he ani't (ani't)">
             <pattern>
                 <token>ani</token>
                 <token regexp="yes">&apostrophe;</token>
@@ -23939,7 +24015,7 @@ USA
             <message>Did you mean <suggestion>ain\2t</suggestion>?</message>
             <example correction="ain't">I <marker>ani't</marker> happy about it.</example>
         </rule>
-        <rule id="PRP_ANIT" name="he ani't (ani't)" default="temp_off">
+        <rule id="PRP_ANIT" name="he ani't (ani't)">
             <pattern>
                 <token postag="PRP" />
                 <token postag="RB" min="0" />
@@ -28875,7 +28951,7 @@ USA
             </antipattern>
             <antipattern><!-- you bastards, you guys -->
                 <token>you</token>
-                <token regexp="yes">(bastard|guy|idiot|girl|boy|zombies|moron|monster|bro|fucker|dick|kid|weirdo)s?|kiddo|sir|mamm?a|papa|uncle|auntie</token>
+                <token regexp="yes">(bastard|guy|idiot|girl|boy|zombies|moron|monster|bro|fucker|dick|kid|weirdo)s?|kiddo|sir|mamm?a|papa|uncle|auntie|ladies</token>
             </antipattern>
             <antipattern><!-- you son of a bitch -->
                 <token>you</token>
@@ -33162,7 +33238,7 @@ The accident victim died from her injuries.
     <!-- Punctuation Errors -->
     <!-- ====================================================================== -->
     <category id="PUNCTUATION" name="Punctuation" type="typographical">
-        <rulegroup id="E_G" name="e.g." default="temp_off"><!-- picky -->
+        <rulegroup id="E_G" name="e.g."><!-- picky -->
             <url>https://www.merriam-webster.com/dictionary/e.g.</url>
             <rule>
                 <pattern>
@@ -33203,7 +33279,7 @@ The accident victim died from her injuries.
                 <example correction="e.g.">He has watched many action movies (<marker>e.g</marker> Fast &amp; Furious)</example>
             </rule>
         </rulegroup>
-        <rulegroup id="I_E" name="i.e." default="temp_off"><!-- picky -->
+        <rulegroup id="I_E" name="i.e."><!-- picky -->
             <url>https://www.merriam-webster.com/dictionary/i.e.</url>
             <rule>
                 <pattern>
@@ -35220,6 +35296,51 @@ The accident victim died from her injuries.
     <!-- Commonly Confused Words -->
     <!-- ====================================================================== -->
     <category id="CONFUSED_WORDS" name="Commonly Confused Words" type="grammar">
+        <rulegroup id="YO_TO" name="yo vs. to" default="temp_off">
+            <rule>
+                <antipattern>
+                    <token postag="SENT_START" />
+                    <token>yo</token>
+                    <token postag="NNP|UNKNOWN" postag_regexp="yes" />
+                </antipattern>
+                <antipattern>
+                    <token postag="UNKNOWN" />
+                    <token>yo</token>
+                </antipattern>
+                <antipattern>
+                    <token>yo</token>
+                    <token>no</token>
+                    <token postag="UNKNOWN" />
+                </antipattern>
+                <pattern>
+                    <marker>
+                        <token case_sensitive="yes" regexp="yes">
+                            [Yy]o
+                            <exception postag="CD" scope="previous" />
+                        </token>
+                    </marker>
+                    <token postag="RB" min="0" />
+                    <token postag="MD|VB.*|NN.*|PRP" postag_regexp="yes">
+                        <exception regexp="yes">soy|man|dude|dawg|weirdo|los|m[oa]mm?a|papa|kai|decido|amo|baby|canto|bum|chen|creek|duk|el|frankie|gotti|gabba|ho|hitoto|inoue|jong?|jin|l[oae]s?|murphy|majesty|nac[íi]|oizumi|protesto|scale|te|tambi[ée]n|takenaka|uematsu|un|un\-.+|wassup|yos?|zushi</exception>
+                    </token>
+                </pattern>
+                <message>Did you mean <suggestion>to</suggestion> or <suggestion>you</suggestion>?</message>
+                <example correction="to|you">I wanted <marker>yo</marker> play League of Legends.</example>
+                <example correction="to|you">What do <marker>yo</marker> think?</example>
+                <example correction="to|you">Please tell him <marker>yo</marker> go.</example>
+                <example correction="to|you">Call us if <marker>yo</marker> have any questions.</example>
+                <example>Yo, do you have anything to say?</example><!-- informal but valid grammar -->
+                <example>A 16 yo has to go to school.</example><!-- yo = abbrev "year old" (see https://www.merriam-webster.com/dictionary/yo) -->
+                <example>Yo Soy El Diego.</example><!-- book name -->
+                <example>Yo man!</example>
+                <example>Yo Lenny, glad to see you.</example>
+                <example>Yo, Blair. What are you doing?</example>
+                <example>He likes to play with his Yo Yo.</example>
+                <example>The yo scale, which does not contain minor notes, according to a traditional theory is a pentatonic scale used in much Japanese music including gagaku and shomyo.</example>
+                <example>Yo kai Watch 3 is a role-playing video game developed and published by Level-5.</example>
+            </rule>
+        </rulegroup>
+
         <rule id="TORCHER_TORTURE" name="torcher (torture) yourself"><!-- TODO extend -->
             <pattern>
                 <marker>
@@ -43549,12 +43670,17 @@ The accident victim died from her injuries.
             <token>papa</token>
             <token regexp="yes">johns?|roach|murphy</token>
         </antipattern>
+        <antipattern><!-- caught by PAPUA_NEW_GUINEA -->
+            <token>papa</token>
+            <token>new</token>
+            <token regexp="yes">gu.+</token>
+        </antipattern>
         <antipattern><!-- Popular Musician, spider, movie -->
             <token>daddy</token>
             <token regexp="yes">yankee|fox|long(legs)?|day.*</token>
         </antipattern>
         <antipattern>
-            <token regexp="yes">puff|fox|sugar|go</token>
+            <token regexp="yes">puff|fox|sugar|go|big</token>
             <token>daddy</token>
         </antipattern>
         <pattern>

@@ -3500,7 +3500,7 @@ Copyright © 2013 Markus Brenneis, Daniel Naber, Jan Schreiber
     <rule name="GREEN" id="GREEN">
         <pattern case_sensitive="yes">
             <token>Green</token>
-            <token regexp="yes">Bays?|Days?|Lanterns?|Books?|IT|Card</token>
+            <token regexp="yes">Bays?|Days?|Lanterns?|Books?|IT|Cards?|Tech</token>
         </pattern>
         <disambig action="ignore_spelling"/>
     </rule>
@@ -3535,7 +3535,7 @@ Copyright © 2013 Markus Brenneis, Daniel Naber, Jan Schreiber
     <rule name="CENTER_OF" id="CENTER_OF">
         <pattern><!-- z.B. Center of Automotive Research -->
             <marker>
-                <token case_sensitive="yes">Center</token>
+                <token case_sensitive="yes" regexp="yes">Center|Bank|Institute</token>
                 <token regexp="yes" case_sensitive="yes">of|for</token>
             </marker>
             <token regexp="yes">.*[a-z].*</token>
@@ -3552,6 +3552,50 @@ Copyright © 2013 Markus Brenneis, Daniel Naber, Jan Schreiber
         </pattern>
         <disambig action="ignore_spelling"/>
     </rule>
+    <rule name="NEWS" id="NEWS">
+        <pattern case_sensitive="yes">
+            <token regexp="yes">Breaking|Soft|Fake</token>
+            <token>News</token>
+        </pattern>
+        <disambig action="ignore_spelling"/>
+    </rule>
+    <rulegroup id="CC" name="cc">
+        <!-- https://www.duden.de/rechtschreibung/cc -->
+        <rule>
+            <pattern>
+                <marker>
+                    <token case_sensitive="yes">cc</token>
+                </marker>
+                <token min="0">:</token>
+                <!-- 
+                    cc Peter
+                    cc @peter
+                -->
+                <token postag="EIG:.*|UNKNOWN" postag_regexp="yes" regexp="yes">.*[a-z].*|.*@.+</token>
+            </pattern>
+            <disambig action="ignore_spelling"/>
+        </rule>
+        <rule>
+            <!-- setz mich in cc -->
+            <pattern>
+                <token>in</token>
+                <marker>
+                    <token case_sensitive="yes">cc</token>
+                </marker>
+            </pattern>
+            <disambig action="ignore_spelling"/>
+        </rule>
+        <rule>
+            <!-- ich hab dich in cc gesetzt -->
+            <pattern>
+                <marker>
+                    <token case_sensitive="yes">cc</token>
+                </marker>
+                <token inflected="yes">setzen</token>
+            </pattern>
+            <disambig action="ignore_spelling"/>
+        </rule>
+    </rulegroup>
     <rulegroup name="VON_DER_LEYEN" id="VON_DER_LEYEN">
         <rule>
             <pattern case_sensitive="yes">
