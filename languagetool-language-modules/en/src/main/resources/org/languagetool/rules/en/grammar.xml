@@ -43594,7 +43594,10 @@ The accident victim died from her injuries.
             <short>Use the extreme adjective instead.</short>
             <antipattern><!-- "He is significantly better than Tom" cannot be converted to "He is fantastic than Tom" -->
                 <token regexp="yes">&extreme_qualifiers;</token>
+                <?ignore
                 <token postag="JJR" skip="3" />
+                ?>
+                <token postag="JJR"/>
                 <token>than</token>
             </antipattern>
             <rule>
