@@ -1759,7 +1759,7 @@ Copyright © 2013 Markus Brenneis, Daniel Naber, Jan Schreiber
     <rule name="Chief" id="CHIEF"><!-- common job titles -->
       <pattern case_sensitive="yes">
         <token>Chief</token>
-        <token regexp="yes">Executive|Grwoth|Product|Technology|Sales|Business|Information|People|Procurement</token>
+        <token regexp="yes">Executive|Growth|Product|Technology|Sales|Business|Information|People|Procurement|Customer|Support|Commercial</token>
         <token regexp="yes">Officers?</token>
       </pattern>
       <disambig action="ignore_spelling"/>
@@ -3556,6 +3556,28 @@ Copyright © 2013 Markus Brenneis, Daniel Naber, Jan Schreiber
         <pattern case_sensitive="yes">
             <token regexp="yes">Breaking|Soft|Fake</token>
             <token>News</token>
+        </pattern>
+        <disambig action="ignore_spelling"/>
+    </rule>
+    <rule name="HUMAN" id="HUMAN">
+        <pattern case_sensitive="yes">
+            <token>Human</token>
+            <token regexp="yes">(Resource|Interface|Interaction|Engineering|Counter|Relation)s?</token>
+        </pattern>
+        <disambig action="ignore_spelling"/>
+    </rule>
+    <rule name="HUMAN_COMPUTER" id="HUMAN_COMPUTER">
+        <pattern case_sensitive="yes">
+            <token>Human</token>
+            <token>Computer</token>
+            <token regexp="yes">(Interface|Interaction|Engineering)s?</token>
+        </pattern>
+        <disambig action="ignore_spelling"/>
+    </rule>
+    <rule name="PUBLIC" id="PUBLIC">
+        <pattern case_sensitive="yes">
+            <token>Public</token>
+            <token regexp="yes">(School|Viewing|Relation)s?</token>
         </pattern>
         <disambig action="ignore_spelling"/>
     </rule>

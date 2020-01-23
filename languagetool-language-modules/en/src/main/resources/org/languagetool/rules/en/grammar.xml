@@ -61,7 +61,7 @@ USA
     <!ENTITY adjective_material "glass|wooden|cloth|concrete|fabric|cotton|plastic|leather|ceramic|china|metal|steel|silicon">
     <!ENTITY adjective_purpose "folding|swinging|work|racing|cooking|sleeping|dance|rolling|walking">
 
-    <!ENTITY short_adjectives "bad|big|black|bland|blue|bold|brave|brief|bright|broad|calm|cheap|chewy|clean|close|coarse|cold|cool|cruel|cute|damp|dark|deep|dense|dry|dull|dumb|early|easy|faint|fair|fa[rt]|fast|few|fierce|fine|firm|fit|flat|fresh|full|good|grand|grave|great|gross|hard|harsh|high|hip|hot|humble|kind|large|late|light|little|long|loud|low|mad|mean|mild|moist|narrow|nea[rt]|new|nice|o[dl]d|plain|poor|proud|pure|quick|quiet|rare|raw|rich|ripe|rough|rude|sad|sa[fn]e|shallow|sharp|short|shy|silly|simple|sincere|slim|slow|small|smart|smooth|soft|soon|sore|sour|steep|strange|strict|strong|sweet|tall|tan|thick|thin|tiny|tough|true|ugly|warm|weak|weird|wet|wide|wild|wise|young">
+    <!ENTITY short_adjectives "bad|big|black|bland|blue|bold|brave|brief|bright|broad|calm|cheap|chewy|clean|close|coarse|cold|cool|cruel|cute|damp|dark|deep|dense|dry|dull|dumb|early|easy|faint|fair|fa[rt]|fast|few|fierce|fine|firm|fit|flat|fresh|full|good|grand|grave|great|gross|hard|harsh|high|hip|hot|humble|kind|large|late|light|little|long|loud|low|mad|mean|mild|moist|narrow|nea[rt]|new|nice|o[dl]d|off|plain|poor|proud|pure|quick|quiet|rare|raw|rich|ripe|rough|rude|sad|sa[fn]e|shallow|sharp|short|shy|silly|simple|sincere|slim|slow|small|smart|smooth|soft|soon|sore|sour|steep|strange|strict|strong|sweet|tall|tan|thick|thin|tiny|tough|true|ugly|warm|weak|weird|wet|wide|wild|wise|young">
     <!ENTITY optional_short_adjectives "angry|bitter|bloody|bossy|busy|chubby|classy|clear|clever|cloudy|clumsy|crazy|creamy|creepy|crispy|crunchy|curly|curvy|deadly|dirty|dusty|fancy|filthy|flaky|friendly|funny|gentle|gloomy|greasy|greedy|guilty|hairy|handy|happy|healthy|heavy|hungry|icy|itchy|juicy|lazy|likely|lively|lonely|lovely|messy|nasty|naughty|needy|noisy|oily|polite|pretty|risky|roomy|rusty|salty|scary|shiny|skinny|sleepy|slimy|smelly|smoky|sorry|spicy|stingy|sunny|sweaty|tasty|thirsty|wealthy|windy|worldly|worthy">
     <!ENTITY extreme_qualifiers "ex(?:treme(?:ly)?|ceedingly|ceptionally|tra(ordinarily)?)|fault|tremendously|immensely|vastly|hugely|abundantly|intensely|acutely|singularly|significantly|distinctly|outstandingly|uncommonly|unusually|decidedly|particularly|eminently|supremely|highly|remarkably|really|truly|mightily|thoroughly|utmost|super|hiper|ultra">
     <!ENTITY ambiguous_past_tense_forms "babysat|backlighted|backlit|bare|bended|bode|bore|bound|brake|breastfed|burst|bust|clang|clave|could|crew|drunk|fell|felt|found|girt|green-lighted|green-lit|grove|hand-fed|hand-knit|hand-knitted|hew|hoist|knit|lope|low|misfit|missaw|outdrank|outdrunk|outflew|overbred|overdrank|overdrunk|overgot|overstrung|quick-froze|quod|quoth|re-laid|resent|reshowed|retread|retrodden|rewed|rid|rove|sate|self-fed|saw|shitted|shore|should|slang|slayed|slew|smelt|sod|span|spat|spoke|stringed|sung|swank|sweat|swum|test-flew|thrust|tread|trodden|unheard|upheaved|upswept|was|wed|were|wet|worth|worthed|would|wrack|writ|wrought"><!-- XXX excluded: bet|bid|book|lay|let|overlay|quit|read|rent|sew|shove|straight|sublet|tow|underlay|underlet| -->
@@ -4522,6 +4522,10 @@ USA
                 <token>dangerous</token>
                 <token>goods</token>
             </antipattern>
+            <antipattern><!-- https://www.lexico.com/definition/points_system -->
+                <token>points</token>
+                <token>system</token>
+            </antipattern>
             <antipattern><!-- www.investopedia.com/terms-beginning-with-e-4769355 and others-->
                 <token>earnings</token>
                 <token regexp="yes">announcement|estimate|management|multiplier|news|report|season|yield|release</token><!-- (This is a full list, not only non-count nouns.) 'news' is not in the dictionary, but many web pages show it as a singular compound noun. -->
@@ -4573,6 +4577,7 @@ USA
                 <example>Publishers today are at loss...</example>
                 <example>Owen was seven years younger.</example>
                 <example>My random thoughts day after day...</example>
+                <example>The results of each race are evaluated using the points system to determine two annual World Championships.</example>
                 <example>The Romans may have marked the centre of Londinium.</example>
                 <example>Universities A and B are old universities...</example>
                 <example>He made his final report to the Senate Foreign Relations Committee on U.S. affairs abroad.</example>
@@ -7966,6 +7971,11 @@ USA
         </rule>
         <!-- can backup::word=can back up -->
         <rule id="CAN_BACKUP" name="can backup (back up)">
+            <antipattern>
+                <token>subject</token>
+                <token>to</token>
+                <token>backup</token>
+            </antipattern>
             <pattern>
                 <token regexp="yes">can|to</token>
                 <token>backup</token>
@@ -7999,7 +8009,7 @@ USA
         <rulegroup id="SETUP_VERB" name="setup (set up)">
             <rule>
                 <antipattern>
-                    <token regexp="yes" inflected="yes">proceed|go|forward|refer|send|continue|move</token>
+                    <token regexp="yes" inflected="yes">proceed|go|forward|refer|send|continue|move|subject</token>
                     <token>to</token>
                 </antipattern>
                 <pattern>
@@ -8257,12 +8267,16 @@ USA
         <!-- to blackout::word=to black out -->
         <rule id="TO_BLACKOUT" name="to blackout (black out)">
             <pattern>
-                <token>to</token>
+                <token>
+                    to
+                    <exception scope="previous">subject</exception>
+                </token>
                 <token>blackout</token>
             </pattern>
             <message>Did you mean <suggestion>to black out</suggestion>?</message>
             <example correction="to black out">He didn't want <marker>to blackout</marker> in front of his professor.</example>
             <example>He didn't want to black out in front of the professor.</example>
+            <example>They are subject to blackout.</example>
         </rule>
         <!-- to comeback::word=to come back -->
         <rule id="TO_COMEBACK" name="to comeback (come back)">
@@ -9142,15 +9156,55 @@ USA
     <!-- Grammar -->
     <!-- ====================================================================== -->
     <category id="GRAMMAR" name="Grammar" type="grammar">
+        <rule id="IF_VB_PCT" name="if need (needed)">
+            <antipattern>
+                <token>.</token>
+                <token regexp="yes" spacebefore="no">.+</token>
+            </antipattern>
+            <antipattern><!-- tech speech: "the if condition/statement/block/sentence" -->
+                <token regexp="yes">an?|the</token>
+                <token>if</token>
+                <token postag="NN.*" postag_regexp="yes" />
+            </antipattern>
+            <antipattern>
+                <token regexp="yes">if|when</token>
+                <token postag="NN.*" postag_regexp="yes" min="1" max="2" />
+                <token>,</token>
+                <token postag="JJ.*|NN.*|UNKNOWN" postag_regexp="yes" skip="2" />
+                <token regexp="yes">or|and</token>
+                <token postag="JJ.*|NN.*|UNKNOWN" postag_regexp="yes" />
+            </antipattern>
+            <pattern>
+                <token regexp="yes" case_sensitive="yes">[Ii]f|[Ww]hen</token>
+                <marker>
+                    <token postag="VBP?" postag_regexp="yes">
+                        <exception postag="JJ.*|VB[DN]|IN|DT" postag_regexp="yes" />
+                        <exception regexp="yes">yes|not?|condition|block|statement|people|err</exception>
+                        <exception regexp="yes" case_sensitive="yes">[A-Z].*</exception>
+                    </token>
+                </marker>
+                <token postag="PCT" spacebefore="no" />
+            </pattern>
+            <message>The conjunction "\1" requires the past participle <suggestion><match no="2" postag="VBN" /></suggestion>, or did you mean <suggestion>you \2</suggestion>?</message>
+            <example correction="needed|you need">You can do that if <marker>need</marker>.</example>
+            <example>When are .rnd-files created?</example>
+            <example correction="canned|you can">Call when <marker>can</marker>.</example>
+            <example>The if statement.</example>
+            <example>Contact me if <marker>found</marker>.</example>
+            <example>Or, do I need to write out a table where it says, if Feb, 02, if Mar, 03, etc?</example>
+            <example>Baf's Guide to the Interactive Fiction Archive, a more user-friendly interface for the IF archive.</example>
+            <example>It is arguably more convincing if police, forensic experts or similar professionals are made the protagonist of a series of crime novels.</example>
+            <example>Elizabeth's reign became idealised as a time when crown, church and parliament had worked in constitutional balance.</example>
+        </rule>
         <rulegroup id="KIND_REGARD" name="Kind regard (regards)">
             <rule>
                 <pattern>
                     <token postag="SENT_START" />
-                    <token regexp="yes">kind|best|warm</token>
+                    <token regexp="yes">kind|kindest|best|warm|warmest</token>
                     <marker>
                         <token>regard</token>
                     </marker>
-                    <token regexp="yes">,|\.|!</token>
+                    <token regexp="yes">,|\.|!|:</token>
                 </pattern>
                 <message>Did you mean <suggestion>\3s</suggestion>?</message>
                 <example correction="regards">Kind <marker>regard</marker>, Chris.</example>
@@ -9158,7 +9212,7 @@ USA
             <rule>
                 <pattern>
                     <token postag="SENT_START" />
-                    <token regexp="yes">kind|best|warm</token>
+                    <token regexp="yes">kind|kindest|best|warm|warmest</token>
                     <marker>
                         <token postag="SENT_END">regard</token>
                     </marker>
@@ -10822,7 +10876,7 @@ USA
             <url>https://en.wikipedia.org/wiki/Pok%C3%A9mon#Name</url>
             <example correction="Pokémon">I have collected almost all of the <marker>Pokemons</marker>.</example>
         </rule>
-        <rule id="POKEMON_GO" name="Pokémon Go" default="temp_off">
+        <rule id="POKEMON_GO" name="Pokémon Go">
             <pattern>
                 <token regexp="yes">Pok[eé]mon</token>
                 <token case_sensitive="yes">go</token>
@@ -14624,7 +14678,7 @@ USA
                 </antipattern>
                 <pattern>
                     <token>apple</token>
-                    <token regexp="yes">MacBook|Watch|Pay|Store|Inc|A\d+|Card|Homepod|Music|Wallet|Xcode|HomeKit|Care|Carplay|EarPods|AirPods|Health|Maps|Siri|Lightning</token>
+                    <token regexp="yes">MacBook|Watch|Pay|Store|Inc|A\d+|Card|Homepod|Music|Wallet|Xcode|HomeKit|ARKit|Care|Carplay|EarPods|AirPods|Health|Maps|Siri|Lightning</token>
                 </pattern>
                 <message>Did you mean the proper noun <suggestion><match no="1" case_conversion="startupper" /> <match no="2" case_conversion="startupper" /></suggestion>?</message>
                 <example correction="Apple Inc">He's working for <marker>apple inc</marker>.</example>
@@ -14649,7 +14703,7 @@ USA
                     </marker>
                     <token min="0" regexp="yes">&apostrophe;</token>
                     <token min="0">s</token>
-                    <token regexp="yes">headquarters?|cloud|os|macos|employees?|founders?|accounts?|login|mobile|revenues?|profits?|website|mails?|software|hardware|germany|devices?|stores?|smartphones?|cell|technology|retail|apps?|eco\-?system|mac|quicktime|safari|resellers?|logo|repair|genius|upgrades?|macbooks?|iphones?|ipads?|stock|icloud|jobs|keyboard|news|nasdaq|newsroom|online|refurbished|support|updates?|usb|screen|thunderbolt|lightning|computers?|developers?|dividends?|events?|emails?|education|siri.*|security</token>
+                    <token regexp="yes">headquarters?|cloud|os|macos|employees?|founders?|chargers?|accounts?|login|mobile|revenues?|profits?|website|mails?|software|hardware|germany|devices?|stores?|smartphones?|cell|technology|retail|apps?|eco\-?system|mac|quicktime|safari|resellers?|logo|repair|genius|upgrades?|macbooks?|iphones?|ipads?|stock|icloud|jobs|keyboard|news|nasdaq|newsroom|online|refurbished|support|updates?|usb|screen|thunderbolt|lightning|computers?|developers?|dividends?|events?|emails?|education|siri.*|security</token>
                 </pattern>
                 <message>Did you mean the proper noun <suggestion>Apple</suggestion> (= technology company)?</message>
                 <example correction="Apple">He's an <marker>apple</marker> employee.</example>
@@ -15107,7 +15161,22 @@ USA
             <url>https://www.merriam-webster.com/dictionary/so-called</url>
             <example correction="so-called">The <marker>so called</marker> conspiracy theory</example>
         </rule>
-        <rulegroup id="FACT_CHECK_HYPHEN" name="missing hyphen in 'fact check'" default="temp_off">
+        <rulegroup id="PRIME_TIME_HYPHEN" name="missing hyphen in 'prime time television'">
+            <rule>
+                <pattern>
+                    <marker>
+                        <token>prime</token>
+                        <token>time</token>
+                    </marker>
+                    <token postag="JJ.*" postag_regexp="yes" min="0" />
+                    <token regexp="yes">radio|tv|television|viewing|sunday|saturday|friday|access|shows?|movies?|thanksgiving.</token>
+                </pattern>
+                <message>It seems that a hyphen is missing.</message>
+                <suggestion>\1-\2</suggestion>
+                <example correction="prime-time">NBC broadcasts the <marker>prime time</marker> Sunday Night Football package.</example>
+            </rule>
+        </rulegroup>
+        <rulegroup id="FACT_CHECK_HYPHEN" name="missing hyphen in 'fact check'">
             <url>https://www.merriam-webster.com/dictionary/fact-check</url>
             <rule>
                 <antipattern>
@@ -22510,6 +22579,10 @@ USA
                     <token>Atlantic</token>
                     <token regexp="yes">City|Records|Airways|College</token>
                 </antipattern>
+                <antipattern>
+                    <token>Thames</token>
+                    <token>Water</token>
+                </antipattern>
                 <pattern case_sensitive="yes">
                     <marker>
                         <token postag="IN"><exception scope="previous">Made</exception></token>
@@ -22517,7 +22590,7 @@ USA
                     </marker>
                     <token>
                         <exception regexp="yes">'</exception>
-                        <exception postag="NN?S" postag_regexp="yes" />
+                        <exception postag="NNP?S|NN:UN?" postag_regexp="yes" />
                     </token>
                 </pattern>
                 <message>A determiner is probably missing here: <suggestion>\1 the \2</suggestion>.</message>
@@ -22525,6 +22598,7 @@ USA
                 <example>Royal Netherlands Air Force</example>
                 <example>The articles came from USA Today.</example>
                 <example>He lives in Atlantic City.</example>
+                <example>The NBA is an active member of USA Basketball.</example>
                 <example>There are certain dynamics between Caribbean countries.</example>
             </rule>
             <rule>
@@ -22734,7 +22808,7 @@ USA
                 <antipattern>
                     <token>united</token>
                     <token>states</token>
-                    <token>history</token>
+                    <token postag="NN:UN?|NNS|UNKNOWN" postag_regexp="yes" />
                 </antipattern>
                 <pattern case_sensitive="yes">
                     <marker>
@@ -22745,6 +22819,7 @@ USA
                 </pattern>
                 <message>A determiner is probably missing here: <suggestion>\1 the United States</suggestion>.</message>
                 <example correction="in the United States">He lived <marker>in United States</marker> from 1933 till 1945.</example>
+                <example>History of the National Hockey League on United States television.</example>
             </rule>
             <rule>
                 <pattern case_sensitive="yes">
@@ -22758,6 +22833,11 @@ USA
                 <example correction="on the Virgin Islands">He lived <marker>on Virgin Islands</marker> from 1933 till 1945.</example>
             </rule>
             <rule>
+                <antipattern><!-- https://en.wikipedia.org/wiki/Rio_Grande_do_Norte -->
+                    <token>rio</token>
+                    <token>grande</token>
+                    <token>do</token>
+                </antipattern>
                 <pattern case_sensitive="yes">
                     <marker>
                         <token postag="IN"><exception scope="previous">Made</exception></token>
@@ -22768,7 +22848,8 @@ USA
                 <message>A determiner is probably missing here: <suggestion>\1 the Rio Grande</suggestion>.</message>
                 <example correction="in the Rio Grande">He lived <marker>in Rio Grande</marker> from 1933 till 1945.</example>
             </rule>
-            <rule>
+            <!-- TODO: What is "St. Lawrence"? -->
+            <!-- <rule> 
                 <pattern case_sensitive="yes">
                     <marker>
                         <token postag="IN"><exception scope="previous">Made</exception></token>
@@ -22779,7 +22860,7 @@ USA
                 </pattern>
                 <message>A determiner is probably missing here: <suggestion>\1 the St. Lawrence</suggestion>.</message>
                 <example correction="in the St. Lawrence">He lived <marker>in St. Lawrence</marker> from 1933 till 1945.</example>
-            </rule>
+            </rule> -->
             <rule>
                 <pattern case_sensitive="yes">
                     <marker>
@@ -26079,7 +26160,7 @@ USA
             <example>Conditioning: treadmill 10 minutes @ 3% incline - sprint @ 7 mph for 1 minute, walk @ 3 mph for 1 minute</example>
             <example>If one assumes 24 hour/day operation for 360 days/year.</example>
         </rule>
-        <rule id="WEEK_HYPHEN" name="missing hyphen in '8 week semester'" default="temp_off">
+        <rule id="WEEK_HYPHEN" name="missing hyphen in '8 week semester'">
             <pattern>
                 <marker>
                     <token postag="CD" />
@@ -26118,7 +26199,7 @@ USA
             <suggestion>\1-\2</suggestion>
             <example correction="two-year">The <marker>two year</marker> cycle.</example>
         </rule>
-        <rule id="FIGURE_HYPHEN" name="missing hyphen in '7 figure salary'" default="temp_off">
+        <rule id="FIGURE_HYPHEN" name="missing hyphen in '7 figure salary'">
             <pattern>
                 <marker>
                     <token postag="CD" />
@@ -26131,7 +26212,7 @@ USA
             <suggestion>\1-\2</suggestion>
             <example correction="6-figure">He earns a <marker>6 figure</marker> salary.</example>
         </rule>
-        <rule id="CYLINDER_HYPHEN" name="missing hyphen in '8 cylinder engine'" default="temp_off">
+        <rule id="CYLINDER_HYPHEN" name="missing hyphen in '8 cylinder engine'">
             <pattern>
                 <marker>
                     <token postag="CD" />
@@ -26143,7 +26224,7 @@ USA
             <suggestion>\1-\2</suggestion>
             <example correction="8-cylinder">His car has a <marker>8 cylinder</marker> engine.</example>
         </rule>
-        <rule id="CAR_HYPHEN" name="missing hyphen in 'four car garage'" default="temp_off">
+        <rule id="CAR_HYPHEN" name="missing hyphen in 'four car garage'">
             <pattern>
                 <marker>
                     <token regexp="yes">2|two|3|three|4|four|5|five|6|six</token>
@@ -26156,7 +26237,7 @@ USA
             <suggestion>\1-\2</suggestion>
             <example correction="4-car">He parks his van in a <marker>4 car</marker> basement garage.</example>
         </rule>
-        <rule id="DEGREE_HYPHEN" name="missing hyphen in '10 degree angle'" default="temp_off">
+        <rule id="DEGREE_HYPHEN" name="missing hyphen in '10 degree angle'">
             <pattern>
                 <marker>
                     <token postag="CD" />
@@ -26169,7 +26250,7 @@ USA
             <suggestion>\1-\2</suggestion>
             <example correction="10-degree">He looked at it from a <marker>10 degree</marker> angle.</example>
         </rule>
-        <rule id="PIECE_HYPHEN" name="missing hyphen in '125 piece puzzle'" default="temp_off">
+        <rule id="PIECE_HYPHEN" name="missing hyphen in '125 piece puzzle'">
             <pattern>
                 <marker>
                     <token postag="CD" />
@@ -26182,7 +26263,7 @@ USA
             <suggestion>\1-\2</suggestion>
             <example correction="100-piece">He wanted to finish the <marker>100 piece</marker> puzzle before dawn.</example>
         </rule>
-        <rulegroup id="CARAT_HYPHEN" name="missing hyphen in '30 carat gold'" default="temp_off">
+        <rulegroup id="CARAT_HYPHEN" name="missing hyphen in '30 carat gold'">
             <url>https://www.lexico.com/definition/carat</url>
             <rule>
                 <pattern>
@@ -26211,7 +26292,7 @@ USA
                 <example correction="18-karat">She wanted the <marker>18 karat</marker> for her birthday.</example>
             </rule>
         </rulegroup>
-        <rulegroup id="WHEEL_HYPHEN" name="missing hyphen in '4 wheel drive'" default="temp_off">
+        <rulegroup id="WHEEL_HYPHEN" name="missing hyphen in '4 wheel drive'">
             <rule>
                 <pattern>
                     <marker>
@@ -26340,7 +26421,7 @@ USA
                         <token postag="CD" />
                         <token regexp="yes">word|character|paragraph</token>
                     </marker>
-                    <token regexp="yes">limit|google|articles?|letters?|blog|thesis|doc(umentation)?|text|document|essays?|story|paragraphs?|poems?|abstract|papers?|sentences?|cv|message|description|memoir|biography|summary|vocabulary|manuscripts?</token>
+                    <token regexp="yes">limit|google|articles?|letters?|blog|thesis|doc(umentation)?|text|abbreviation|document|essays?|story|paragraphs?|poems?|abstract|papers?|sentences?|cv|message|description|memoir|biography|summary|vocabulary|manuscripts?</token>
                 </pattern>
                 <message>It appears that a hyphen is missing.</message>
                 <suggestion>\1-\2</suggestion>
@@ -26393,7 +26474,7 @@ USA
             <example correction="Buy 2, Get 1"><marker>Buy 2 Get 1</marker> Free!</example>
             <example correction="Order five, receive one">New offer: <marker>Order five receive one</marker> for free</example>
         </rule>
-        <rule id="AT_CD_CLOCK" name="At 7 clock (o'clock)" default="temp_off">
+        <rule id="AT_CD_CLOCK" name="At 7 clock (o'clock)">
             <pattern>
                 <token>at</token>
                 <token postag="CD" />
@@ -26775,6 +26856,7 @@ USA
                         <exception regexp="yes">&weekdays;</exception>
                         <exception regexp="yes">trained|mentioned|assisting|voting|caused|died|said</exception><!-- "300 to 400 being trained each year" - mistagging by OpenNLP -->
                         <exception regexp="yes">Ave(nue)?|Street|Terrace|Square|Plaza|Parkway</exception><!-- probably an address, "333 Grant Avenue" -->
+                        <exception scope="next">getters</exception>
                     </token>
                 </marker>
             </pattern>
@@ -26804,6 +26886,7 @@ USA
             <example>But mesage two said he is not available anymore.</example>
             <example>He gave over 1000 baht.</example><!-- baht and bahts (currency) is both plural -->
             <example>It's below 60 lux.</example>
+            <example>The National Hockey League publishes the names of the top three vote getters for all awards, and then names the award winner during the NHL Awards Ceremony.</example>
             <example>The iphone 11 pro max.</example>
             <example>In the 1835–36 legislative session, he voted to expand suffrage to white males.</example>
             <example>The room 51 movie.</example>
@@ -31672,7 +31755,7 @@ The accident victim died from her injuries.
       <message>The usual collocation for "\1" is "with"  or "in" or "by" or "at"  or "about" not "\2". Did you mean <suggestion>\1 with</suggestion> or <suggestion>\1 in</suggestion> or <suggestion>\1 by</suggestion> or <suggestion>\1 at</suggestion> or <suggestion>\1 about</suggestion>?</message>
       <example correction='disappointed with|disappointed in|disappointed by|disappointed at|disappointed about'>She was <marker>disappointed from</marker> the surprise.</example>
     </rule>
-    <rule id='DIVIDE_IN_INTO' name='Collocation: divide in/into'>
+    <rule id='DIVIDE_IN_INTO' name='Collocation: divide in/into' default="off">
     <!-- Created by Nicholas Walker (Bokomaru), 2017-11-14 -->
       <pattern>
         <marker>
@@ -42946,6 +43029,22 @@ The accident victim died from her injuries.
     <!-- ====================================================================== -->
     <category id="STYLE" name="Style" type="style">
 
+        <rule id="THEMSELF" name="'themself'">
+            <antipattern>
+                <token regexp="yes">"|„|‘|“</token>
+                <token spacebefore="no">themself</token>
+                <token regexp="yes" spacebefore="no">"|“|’|”</token>
+            </antipattern>
+            <pattern>
+                <token>themself</token>
+            </pattern>
+            <message>The term is non-standard and not widely accepted.</message>
+            <suggestion>himself</suggestion>
+            <suggestion>herself</suggestion>
+            <suggestion>themselves</suggestion>
+            <url>https://www.lexico.com/definition/themself</url>
+            <example correction="himself|herself|themselves">The casual observer might easily think <marker>themself</marker> back in 1945.</example>
+        </rule>
         <rule id="CAN_NOT_CANNOT" name="'can not' vs. 'cannot'">
         <!-- Created by Tiago F. Santos, 2020-01-12 -->
             <pattern>
@@ -43493,6 +43592,11 @@ The accident victim died from her injuries.
             <!--      Created by Tiago F. Santos, 2018-07-20      -->
             <url>https://learnenglish.britishcouncil.org/english-grammar-reference/intensifiers</url>
             <short>Use the extreme adjective instead.</short>
+            <antipattern><!-- "He is significantly better than Tom" cannot be converted to "He is fantastic than Tom" -->
+                <token regexp="yes">&extreme_qualifiers;</token>
+                <token postag="JJR" skip="3" />
+                <token>than</token>
+            </antipattern>
             <rule>
                 <pattern>
                     <token regexp='yes'>&extreme_qualifiers;</token>
@@ -43995,8 +44099,8 @@ The accident victim died from her injuries.
         </antipattern>
         <pattern>
             <token regexp="yes">
-                mama|mummy|momsy|mommy
-                <exception scope="next" regexp="yes">June</exception>
+                mama|mummy|momsy|mommy|momma
+                <exception scope="next" regexp="yes">June|Dee|Cass</exception>
             </token>
         </pattern>
         <message>In some contexts, this is childish language. Consider alternatives.</message>

@@ -78,6 +78,7 @@ public class GermanSpellerRule extends CompoundAwareHunspellRule {
   static {
     put("lieder", w -> Arrays.asList("leider", "Lieder"));
     put("abgekatertes", "abgekartetes");
+    put("wiederspiegelt", "widerspiegelt");
     put("Komplexheit", "Komplexität");
     put("einzigst", "einzig");
     put("Einzigst", "Einzig");
@@ -407,7 +408,6 @@ public class GermanSpellerRule extends CompoundAwareHunspellRule {
     put("[kK]affeeteria", "Cafeteria");
     put("[kK]affeeterien", "Cafeterien");
     put("berücksicht", "berücksichtigt");
-    put("nix", "nichts");
     put("must", "musst");
     put("kaffe", "Kaffee");
     put("zetel", "Zettel");
@@ -494,6 +494,7 @@ public class GermanSpellerRule extends CompoundAwareHunspellRule {
     put("bittete", "bat");
     put("nehm", "nimm");
     put("möchst", "möchtest");
+    put("Win", "Windows");
     put("anschein[dt]", "anscheinend");
     put("Subvestitionen", "Subventionen");
     put("angeschaffen", "angeschafft");
@@ -815,7 +816,8 @@ public class GermanSpellerRule extends CompoundAwareHunspellRule {
     putRepl("rethorisch(ere|ste)[mnrs]?$", "rethor", "rhetor");
     putRepl("repetativ(ere|ste)[mnrs]?$", "repetat", "repetit");
     putRepl("voluptös(e|ere|este)?[mnrs]?$", "tös", "tuös");
-    putRepl("geblogt(e[mnrs]?)?$", "g", "gg");
+    putRepl("[pP]flanzig(e[mnrs]?)?", "ig", "lich");
+    putRepl("geblogt(e[mnrs]?)?$", "gt", "ggt");
   }
 
   private static void putRepl(String wordPattern, String pattern, String replacement) {

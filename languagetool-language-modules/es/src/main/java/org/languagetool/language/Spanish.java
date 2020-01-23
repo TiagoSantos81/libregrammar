@@ -153,7 +153,7 @@ public class Spanish extends Language implements AutoCloseable{
 
   /** @since 3.1 */
   @Override
-  public List<Rule> getRelevantLanguageModelRules(ResourceBundle messages, LanguageModel languageModel) throws IOException {
+  public List<Rule> getRelevantLanguageModelRules(ResourceBundle messages, LanguageModel languageModel, UserConfig userConfig) throws IOException {
     return Arrays.asList(
             new SpanishConfusionProbabilityRule(messages, languageModel, this)
     );

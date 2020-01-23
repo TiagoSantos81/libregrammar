@@ -143,7 +143,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
     <!-- Tippfehler -->
     <!-- ====================================================================== -->
     <category id="TYPOS" name="Mögliche Tippfehler">
-        <rulegroup id="VIELE_DANK" name="viele (vielen) Dank" default="temp_off">
+        <rulegroup id="VIELE_DANK" name="viele (vielen) Dank">
             <rule>
                 <pattern>
                     <marker>
@@ -12371,6 +12371,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token>und</token>
                 <token>zurück</token>
             </antipattern>
+            <antipattern>
+                <token>weiter</token>
+                <token>zurück</token>
+            </antipattern>
             <pattern case_sensitive="yes">
                 <token><exception regexp="yes">;|:|Blick</exception><exception postag="SENT_START"/></token>
                 <marker>
@@ -12390,6 +12394,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example>Es wird kein Zurück geben.</example> 
             <example>Der Blick zurück lehrt uns eines:...</example>
             <example>..., als dass es ein Zurück geben könne.</example>
+            <example>Noch weiter zurück liegt das Fest.</example>
         </rule>
         <rule id="ZUSAMMENSCHREIBUNG_HER" name="Zusammenschreibung von Verben mit dem Präfix 'her', 'hervor', 'umher', etc.">
             <antipattern>
@@ -17345,7 +17350,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token min="0">zu</token>
                 <token inflected="yes">machen</token>
             </pattern>
-            <message>Wenn die Phrase 'recht machen' (= jemandes Wunsch nachkommen) gemeint ist, wird 'recht' kleingeschrieben.</message>
+            <message>Wenn die Wendung 'recht machen' (= jemandes Wunsch nachkommen) gemeint ist, wird 'recht' kleingeschrieben.</message>
             <suggestion><match no="1" case_conversion="startlower"/></suggestion>
             <url>https://www.duden.de/rechtschreibung/recht_machen</url>
             <short>&prgk;.</short>

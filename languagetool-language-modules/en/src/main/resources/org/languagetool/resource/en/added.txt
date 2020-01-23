@@ -17,6 +17,8 @@ abbés	abbé	NNS
 Abbeydale	Abbeydale	NNP
 Abdallah	Abdallah	NNP
 Abderrahim	Abderrahim	NNP
+Abdoulaye	Abdoulaye	NNP
+Abdoulie	Abdoulie	NNP
 Abdullah	Abdullah	NNP
 Abdullahi	Abdullahi	NNP
 Abdurrahman	Abdurrahman	NNP
@@ -26,6 +28,7 @@ Abhimanyu	Abhimanyu	NNP
 Abhishek	Abhishek	NNP
 Abi	Abi	NNP
 ABI	ABI	NNP
+Abilify	Abilify	NNP
 abort	abort	NN
 aborts	abort	NNS
 Aboubacar	Aboubacar	NNP
@@ -554,6 +557,8 @@ aperçu	aperçu	NN
 aperçus	aperçu	NNS
 apéritif	apéritif	NN
 apéritifs	apéritif	NNS
+APFA	APFA	NNP
+APFC	APFC	NNP
 APFS	APFS	NNP
 aphetise	aphetise	VB
 aphetise	aphetise	VBP
@@ -1176,6 +1181,8 @@ biocompatible	biocompatible	JJ
 biodiesel	biodiesel	NN:U
 bio-diesel	bio-diesel	NN:U
 bioenergy	bioenergy	NN:U
+bioethanol	bioethanol	NN:UN
+bioethanols	bioethanol	NNS
 bioinformatic	bioinformatic	JJ
 bioinformatics	bioinformatics	NN:U
 biomineralisation	biomineralisation	NN:UN
@@ -1306,6 +1313,7 @@ Brendon	Brendon	NNP
 Brevard	Brevard	NNP
 Brexit	Brexit	NNP
 Bridgend	Bridgend	NNP
+Bridgestone	Bridgestone	NNP
 Bridgnorth	Bridgnorth	NNP
 Brissette	Brissette	NNP
 broken	broken	JJ
@@ -1380,6 +1388,7 @@ cafetières	cafetière	NNS
 Cahill	Cahill	NNP
 caïque	caïque	NN
 caïques	caïque	NNS
+Caitlyn	Caitlyn	NNP
 Čakavian	Čakavian	NNP
 calèche	calèche	NN
 calèches	calèche	NNS
@@ -1603,6 +1612,7 @@ cellularized	cellularize	VBD
 cellularized	cellularize	VBN
 cellularizes	cellularize	VBZ
 cellularizing	cellularize	VBG
+Cengage	Cengage	NNP
 centiampere	centiampere	NN
 centiamperes	centiampere	NNS
 centibecquerel	centibecquerel	NN
@@ -1666,6 +1676,7 @@ CGIAR	CGIAR	NNP
 chakra	chakra	NN
 chakras	chakra	NNS
 Chambéry	Chambéry	NNP
+Chapo	Chapo	NNP
 chaptalise	chaptalise	VB
 chaptalise	chaptalise	VBP
 chaptalised	chaptalise	VBD
@@ -1726,6 +1737,8 @@ chemicalized	chemicalize	VBD
 chemicalized	chemicalize	VBN
 chemicalizes	chemicalize	VBZ
 chemicalizing	chemicalize	VBG
+chemoautotroph	chemoautotroph	NN
+chemoautotrophs	chemoautotroph	NNS
 chemoprophylactic	chemoprophylactic	JJ
 Cherkasy	Cherkasy	NNP
 Chernihiv	Chernihiv	NNP
@@ -1780,6 +1793,7 @@ chronologised	chronologise	VBD
 chronologised	chronologise	VBN
 chronologises	chronologise	VBZ
 chronologising	chronologise	VBG
+Chronopost	Chronopost	NNP
 Churchwell	Churchwell	NNP
 Ciara	Ciara	NNP
 Ciaran	Ciaran	NNP
@@ -3261,6 +3275,7 @@ desexualised	desexualise	VBD
 desexualised	desexualise	VBN
 desexualises	desexualise	VBZ
 desexualising	desexualise	VBG
+desmodromic	desmodromic	JJ
 despiritualise	despiritualise	VB
 despiritualise	despiritualise	VBP
 despiritualised	despiritualise	VBD
@@ -3725,6 +3740,8 @@ double-clicking	double-click	VBG
 double-clicks	double-click	VBZ
 double-quoted	double-quoted	JJ
 down	down	RB
+downforce	downforce	NN:UN
+downforces	downforce	NNS
 download	download	NN
 downloads	download	NNS
 downturned	downturned	JJ
@@ -4439,6 +4456,12 @@ far	far	RB
 faradisers	faradiser	NNS
 Faramarz	Faramarz	NNP
 farewell	farewell	NN:U
+farfetch	farfetch	VB
+farfetch	farfetch	VBP
+farfetched	farfetch	VBD
+farfetched	farfetch	VBN
+farfetches	farfetch	VBZ
+farfetching	farfetch	VBG
 Farid	Farid	NNP
 Farmville	Farmville	NNP
 fascinated	fascinated	JJ
@@ -4447,9 +4470,11 @@ FastSpring	FastSpring	NNP
 faux-naïf	faux-naïf	JJ
 favicon	favicon	NN
 favicons	favicon	NNS
+Fawcett	Fawcett	NNP
 FB	FB	NNP
 FBA	FBA	NN
 FC	FC	NN
+FCCLA	FCCLA	NNP
 FCs	FC	NNS
 FEBRUARY	February	NNP
 FedEx	FedEx	NNP
@@ -4615,6 +4640,7 @@ fireproof	fireproof	JJ
 first	first	RB
 first-grader	first-grader	NN
 first-graders	first-grader	NNS
+FISA	FISA	NNP
 Fitbit	Fitbit	NNP
 fitting	fitting	JJ
 Fiverr	Fiverr	NNP
@@ -4776,6 +4802,7 @@ frisé	frisé	NN:U
 Fróech	Fróech	NNP
 frontend	frontend	NN
 frontends	frontend	NNS
+front-engined	front-engined	JJ
 frustrated	frustrated	JJ
 frustrating	frustrating	JJ
 FTE	FTE	NN
@@ -5306,6 +5333,7 @@ groundbreaking	groundbreaking	JJ
 Groupon	Groupon	NNP
 grünerite	grünerite	NN
 grünerites	grünerite	NNS
+Grubhub	Grubhub	NNP
 Gruyère	Gruyère	NNP
 Grzegorz	Grzegorz	NNP
 GSFP	GSFP	NNP
@@ -5616,6 +5644,7 @@ Hinduizes	Hinduize	VBZ
 Hinduizing	Hinduize	VBG
 HIPAA	HIPAA	NN
 hip-hop	hip-hop	NN:U
+Hisashi	Hisashi	NNP
 Hispanicise	Hispanicise	VB
 Hispanicise	Hispanicise	VBP
 Hispanicised	Hispanicise	VBD
@@ -6063,6 +6092,8 @@ incents	incent	VBZ
 incidence	incidence	NN
 inclined	inclined	JJ
 including	including	IN
+inclusivity	inclusivity	NN:UN
+inclusivities	inclusivity	NNS
 incorporate	incorporate	JJ
 IND	IND	NNP
 InDesign	InDesign	NNP
@@ -6477,6 +6508,7 @@ kaolinizing	kaolinize	VBG
 karambit	karambit	NN
 karambits	karambit	NNS
 karaoke	karaoke	NN:UN
+Kardashian	Kardashian	NNP
 Karim	Karim	NNP
 Kármán	Kármán	NNP
 Kasia	Kasia	NNP
@@ -6575,6 +6607,7 @@ Kolkata	Kolkata	NNP
 Kölsch	Kölsch	NNP
 Königsberg	Königsberg	NNP
 Konstantin	Konstantin	NNP
+Kool-Aid	Kool-Aid	NNP
 Kosovo	Kosovo	NNP
 Kotlin	Kotlin	NNP
 Kowalski	Kowalski	NNP
@@ -6613,6 +6646,7 @@ KYC	KYC	NNP
 Kyffin	Kyffin	NNP
 Kyiv	Kyiv	NNP
 Kylie	Kylie	NNP
+Kylo	Kylo	NNP
 Kyocera	Kyocera	NNP
 Kyuhyun	Kyuhyun	NNP
 Láadan	Láadan	NNP
@@ -7006,6 +7040,7 @@ marinized	marinize	VBD
 marinized	marinize	VBN
 marinizes	marinize	VBZ
 marinizing	marinize	VBG
+Mariusz	Mariusz	NNP
 Marjolein	Marjolein	NNP
 marketise	marketise	VB
 marketise	marketise	VBP
@@ -7134,6 +7169,7 @@ McFlurry	McFlurry	NNP
 McGillick	McGillick	NNP
 McGlynn	McGlynn	NNP
 McKone	McKone	NNP
+McLaren	McLaren	NNP
 McRib	McRib	NNP
 MD	MD	NN
 MDs	MD	NNS
@@ -7228,6 +7264,7 @@ megateslas	megatesla	NNS
 megaweber	megaweber	NN
 megawebers	megaweber	NNS
 Mehdi	Mehdi	NNP
+Mehmet	Mehmet	NNP
 Mehran	Mehran	NNP
 mélange	mélange	NN
 mélanges	mélange	NNS
@@ -7486,6 +7523,7 @@ microtesla	microtesla	NN
 microteslas	microtesla	NNS
 microweber	microweber	NN
 microwebers	microweber	NNS
+mid-engined	mid-engined	JJ
 Midi-Pyrénées	Midi-Pyrénées	NNP
 mightn	mightn	MD
 Miklowitz	Miklowitz	NNP
@@ -7779,6 +7817,8 @@ mongrelised	mongrelise	VBN
 mongrelises	mongrelise	VBZ
 mongrelising	mongrelise	VBG
 Monika	Monika	NNP
+monocoque	monocoque	NN
+monocoques	monocoque	NNS
 monologise	monologise	VB
 monologise	monologise	VBP
 monologised	monologise	VBD
@@ -7847,8 +7887,11 @@ Moslemizing	Moslemize	VBG
 Mossad	Mossad	NNP
 Mössbauer	Mössbauer	NNP
 motionally	motionally	RB
+motorsport	motorsport	NN:UN
+motorsports	motorsport	NNS
 mouillé	mouillé	JJ
 mounting	mounting	JJ
+Mourinho	Mourinho	NNP
 mouseover	mouseover	NN
 mouseovers	mouseover	NNS
 mousmé	mousmé	NN
@@ -7872,6 +7915,7 @@ Mudéjar	Mudéjar	NNP
 Mudéjares	Mudéjares	NNP
 Muhammad	Muhammad	NNP
 mujtahidūn	mujtahid	NNS
+Mukesh	Mukesh	NNP
 Müller	Müller	NNP
 multidecadal	multidecadal	JJ
 multi-decadal	multi-decadal	JJ
@@ -8146,6 +8190,8 @@ nativizes	nativize	VBZ
 nativizing	nativize	VBG
 Naucalpan	Naucalpan	NNP
 Naveen	Naveen	NNP
+NBC	NBC	NNP
+NBCSN	NBCSN	NNP
 NCD	NCD	NNP
 NCI	NCI	NNP
 NDA	NDA	NN
@@ -8379,6 +8425,7 @@ notarising	notarise	VBG
 notarized	notarized	JJ
 Nouméa	Nouméa	NNP
 NOVEMBER	November	NNP
+Nowitzki	Nowitzki	NNP
 NPM	NPM	NNP
 nuclearisation	nuclearisation	NN:UN
 nuclearise	nuclearise	VB
@@ -8395,6 +8442,7 @@ nuclearizes	nuclearize	VBZ
 nuclearizing	nuclearize	VBG
 numéraire	numéraire	NN
 numéraires	numéraire	NNS
+Nürburgring	Nürburgring	NNP
 nuroblastoma	nuroblastoma	NN:UN
 nuroblastomata	nuroblastoma	NNS
 Nutella	Nutella	NNP
@@ -8453,6 +8501,7 @@ oedometer	oedometer	NN
 oedometers	oedometer	NNS
 oestrogenisation	oestrogenisation	NN:UN
 oestrogenization	oestrogenization	NN:UN
+off	off	JJ
 off	off	RB
 official	official	JJ
 officialise	officialise	VB
@@ -8541,6 +8590,7 @@ opalizing	opalize	VBG
 OpenID	OpenID	NNP
 OpenShift	OpenShift	NNP
 open-source	open-source	JJ
+OpenStreetMap	OpenStreetMap	NNP
 OpenWrt	OpenWrt	NNP
 Open-Xchange	Open-Xchange	NNP
 operationalisable	operationalisable	JJ
@@ -8910,6 +8960,7 @@ panellised	panellised	JJ
 panellized	panellized	JJ
 panopticon	panopticon	NN
 panopticons	panopticon	NNS
+pantless	pantless	JJ
 Paola	Paola	NNP
 Paoli	Paoli	NNP
 papalise	papalise	VB
@@ -9671,6 +9722,7 @@ pingable	pingable	JJ
 Pinterest	Pinterest	NNP
 Pipedrive	Pipedrive	NNP
 piqué	piqué	NN:U
+Pirelli	Pirelli	NNP
 Piscataway	Piscataway	NNP
 pisé	pisé	NN:UN
 pisés	pisé	NNS
@@ -10127,6 +10179,7 @@ pre-installed	pre-install	VBN
 preinstalls	preinstall	VBZ
 pre-installs	pre-install	VBZ
 pre-IPO	pre-IPO	JJ
+pre-Islamic	pre-Islamic	JJ
 prejudiced	prejudiced	JJ
 preload	preload	NN
 preload	preload	VB
@@ -10137,6 +10190,8 @@ preloading	preload	VBG
 preloads	preload	NNS
 preloads	preload	VBZ
 Prémare	Prémare	NNP
+pre-merger	pre-merger	JJ
+premerger	premerger	JJ
 premiumise	premiumise	VB
 premiumise	premiumise	VBP
 premiumised	premiumise	VBD
@@ -10206,6 +10261,13 @@ pre-recorded	pre-record	VBD
 pre-recorded	pre-record	VBN
 pre-recording	pre-record	VBG
 pre-records	pre-record	VBZ
+pre-revolution	pre-revolution	JJ
+prerevolutionary	prerevolutionary	JJ
+prerevolutionary	prerevolutionary	NN
+prerevolutionaries	prerevolutionary	NNS
+pre-revolutionary	pre-revolutionary	JJ
+pre-revolutionary	pre-revolutionary	NN
+pre-revolutionaries	pre-revolutionary	NNS
 presale	presale	JJ
 pre-sale	pre-sale	JJ
 preselect	preselect	VB
@@ -10501,6 +10563,7 @@ psychologizes	psychologize	VBZ
 psychologizing	psychologize	VBG
 psychs	psych	NNS
 PTSD	PTSD	NN:U
+Publix	Publix	NNP
 Pune	Pune	NNP
 purée	purée	NN:UN
 purée	purée	VB
@@ -11259,6 +11322,22 @@ repopularized	repopularize	VBN
 repopularizes	repopularize	VBZ
 repopularizing	repopularize	VBG
 repos	repo	NNS
+repost	repost	NN
+re-post	re-post	NN
+repost	repost	VB
+re-post	re-post	VB
+repost	repost	VBP
+re-post	re-post	VBP
+reposted	repost	VBD
+re-posted	re-post	VBD
+reposted	repost	VBN
+re-posted	re-post	VBN
+reposts	repost	NN
+re-posts	re-post	NN
+reposts	repost	VBZ
+re-posts	re-post	VBZ
+reposting	repost	VBG
+re-posting	re-post	VBG
 repoussé	repoussé	JJ
 repoussé	repoussé	NN:U
 repower	repower	VB
@@ -11848,6 +11927,7 @@ Sanjeev	Sanjeev	NNP
 sans	sans	IN
 Santosh	Santosh	NNP
 Sápara	Sápara	NNP
+saprobically	saprobically	RB
 Sarandë	Sarandë	NNP
 Sartorius	Sartorius	NNP
 satanise	satanise	VB
@@ -12066,6 +12146,7 @@ securitizing	securitize	VBG
 Sedgefield	Sedgefield	NNP
 segregate	segregate	NN
 segregates	segregate	NNS
+Seguin	Seguin	NNP
 selfie	selfie	NN
 selfies	selfie	NNS
 self-lover	self-lover	NN
@@ -12116,6 +12197,8 @@ serialisable	serialisable	JJ
 serializable	serializable	JJ
 sericitisation	sericitisation	NN:U
 sericitization	sericitization	NN:U
+SERP	SERP	NN
+SERPs	SERP	NNS
 serpentinise	serpentinise	VB
 serpentinise	serpentinise	VBP
 serpentinised	serpentinise	VBD
@@ -12174,10 +12257,12 @@ Shans	Shan	NNPS
 shapely	shapely	JJ
 shape-shifter	shape-shifter	NN
 shape-shifters	shape-shifter	NNS
+Shaquille	Shaquille	NNP
 Shareef	Shareef	NNP
 Sharepoint	Sharepoint	NNP
 SharePoint	SharePoint	NNP
 Sharma	Sharma	NNP
+Sharonda	Sharonda	NNP
 Sharpeville	Sharpeville	NNP
 Sharpville	Sharpville	NNP
 shaykh	shaykh	NN
@@ -12216,6 +12301,7 @@ showrunners	showrunner	NNS
 Shreya	Shreya	NNP
 Shtokavian	Shtokavian	NNP
 Shubham	Shubham	NNP
+Siddharth	Siddharth	NNP
 Siddhartha	Siddhartha	NNP
 sideslip	sideslip	VB
 sideslip	sideslip	VBP
@@ -12250,6 +12336,7 @@ silverized	silverize	VBD
 silverized	silverize	VBN
 silverizes	silverize	VBZ
 silverizing	silverize	VBG
+Silverstone	Silverstone	NNP
 Simona	Simona	NNP
 simonise	simonise	VB
 simonise	simonise	VBP
@@ -12258,6 +12345,8 @@ simonised	simonise	VBN
 simonises	simonise	VBZ
 simonising	simonise	VBG
 Sinan	Sinan	NNP
+single-seater	single-seater	NN
+single-seaters	single-seater	NNS
 singularisation	singularisation	NN:UN
 singularise	singularise	VB
 singularise	singularise	VBP
@@ -12556,6 +12645,7 @@ splined	splined	JJ
 SpongeBob	SpongeBob	NNP
 spork	spork	NN
 sporks	spork	NNS
+Sportsnet	Sportsnet	NNP
 Spotify	Spotify	NNP
 Sprachgefühl	Sprachgefühl	NN:U
 Squarespace	Squarespace	NNP
@@ -12870,6 +12960,7 @@ syllogised	syllogise	VBN
 syllogises	syllogise	VBZ
 syllogising	syllogise	VBG
 Symbian	Symbian	NNP
+Symbicort	Symbicort	NNP
 Symrise	Symrise	NNP
 syncretise	syncretise	VB
 syncretise	syncretise	VBP
@@ -13269,6 +13360,7 @@ themed	theme	VBD
 themed	theme	VBN
 themes	theme	VBZ
 theming	theme	VBG
+themself	themself	PRP
 theologise	theologise	VB
 theologise	theologise	VBP
 theologised	theologise	VBD
@@ -13428,6 +13520,7 @@ towtruck	towtruck	NN
 towtrucks	towtruck	NNS
 TPA	TPA	NN
 TPAs	TPA	NNS
+trackside	trackside	JJ
 traditionalise	traditionalise	VB
 traditionalise	traditionalise	VBP
 traditionalised	traditionalise	VBD
@@ -13585,6 +13678,7 @@ ultra-rights	ultra-right	NNS
 ulvöspinel	ulvöspinel	NN:U
 Umeå	Umeå	NNP
 Umesh	Umesh	NNP
+unallocated	unallocated	JJ
 unbowdlerise	unbowdlerise	VB
 unbowdlerise	unbowdlerise	VBP
 unbowdlerised	unbowdlerise	VBD
@@ -13838,6 +13932,7 @@ unrufflable	unrufflable	JJ
 unruffleable	unruffleable	JJ
 unsatisfaction	unsatisfaction	NN:U
 unsightly	unsightly	JJ
+unsourced	unsourced	JJ
 unsubscribe	unsubscribe	VB
 unsubscribe	unsubscribe	VBP
 unsubscribed	unsubscribe	VBD
@@ -13920,6 +14015,7 @@ Urs	Urs	NNP
 username	username	NN
 usernames	username	NNS
 utilisable	utilisable	JJ
+utopian	utopian	JJ
 utopianise	utopianise	VB
 utopianise	utopianise	VBP
 utopianised	utopianise	VBD
@@ -14072,6 +14168,7 @@ verticalized	verticalize	VBN
 verticalizes	verticalize	VBZ
 verticalizing	verticalize	VBG
 Vettel	Vettel	NNP
+Viasat	Viasat	NNP
 vicuña	vicuña	NN:UN
 vicuñas	vicuña	NNS
 vid	vid	NN
@@ -14240,6 +14337,7 @@ Warframe	Warframe	NNP
 watchkeeper	watchkeeper	NN
 watchkeepers	watchkeeper	NNS
 watchkeeping	watchkeeping	NN:U
+Wattpad	Wattpad	NNP
 Wayfair	Wayfair	NNP
 Waze	Waze	NNP
 WCU	WCU	NNP
@@ -14525,6 +14623,7 @@ YouTuber	YouTuber	NNP
 YouTubers	YouTuber	NNPS
 Yovanovitch	Yovanovitch	NNP
 YP	YP	NNP
+YT	YT	NNP
 Yucatán	Yucatán	NNP
 yucca	yucca	NN:U
 Yugyeom	Yugyeom	NNP
@@ -14679,6 +14778,7 @@ ZigBee	ZigBee	NNP
 Zinacantán	Zinacantán	NNP
 Zoho	Zoho	NNP
 Zuckerberg	Zuckerberg	NNP
+Zofran	Zofran	NNP
 Zürich	Zürich	NNP
 Z-Wave	Z-Wave	NNP
 Zweihänder	Zweihänder	NN
