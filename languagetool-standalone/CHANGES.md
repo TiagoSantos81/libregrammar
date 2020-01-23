@@ -11,13 +11,16 @@
      `ParagraphRepeatBeginningRule`, `PunctuationMarkAtParagraphEnd` .
 
 #### English
-  * rules added and improved
+  * rules added and improved, including:
+     - slang terms.
   * disambiguation improvements
   * POS and spelling improvements
      - scientific nomenclature POS support added
 
 #### Portuguese
-  * some commit fixes to upstream project
+  * revert all grammar.xml commits from upstream project, and replace those with appropriate solutions for
+    the false positives they try to fix. Most upstream solutions are either semantically incorrect, or too
+    crippling to detection while not providing meaningful improvements to accuracy.
 
 #### General
   * 1547 species taxa entries added to `spelling_global.txt`
