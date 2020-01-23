@@ -1902,11 +1902,26 @@
       <disambig action="replace"><wd pos="RG"/><wd pos="RG"/></disambig>
     </rule>
     <rule>
+      <antipattern>
+          <token postag_regexp="yes" postag="(N.|[AD]..)M.+">
+            <exception postag_regexp="yes" postag="(N.|[AD]..)[FC].+"/></token>
+          <token regexp="yes">inúmeras|muitas|tantas|duas|&numero_por_extenso_CP;</token>
+          <token>vezes</token>
+      </antipattern>
+      <antipattern>
+          <token postag_regexp="yes" postag="(N.|[AD]..).S.+">
+            <exception postag_regexp="yes" postag="(N.|[AD]..).[NP].+"/></token>
+          <token regexp="yes">inúmeras|muitas|tantas|duas|&numero_por_extenso_CP;</token>
+          <token>vezes</token>
+      </antipattern>
       <pattern>
-          <token regexp="yes">muitas|tantas|duas|&numero_por_extenso_CP;</token>
+          <token regexp="yes">inúmeras|muitas|tantas|duas|&numero_por_extenso_CP;</token>
           <token>vezes</token>
       </pattern>
       <disambig action="replace"><wd pos="RG"/><wd pos="RG"/></disambig>
+      <example type='untouched'>O meu pai inúmeras vezes dá o exemplo.</example><!-- to be caught by GENERAL_GENDER_AGREEMENT_ERRORS -->
+      <example type='untouched'>Os muitas vezes...</example><!-- to be caught by GENERAL_GENDER_AGREEMENT_ERRORS -->
+      <example type='untouched'>A muitas vezes...</example><!-- to be caught by GENERAL_GENDER_AGREEMENT_ERRORS -->
     </rule>
   </rulegroup>
 

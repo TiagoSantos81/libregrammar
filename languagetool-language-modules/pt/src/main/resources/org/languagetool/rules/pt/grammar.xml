@@ -451,6 +451,9 @@ title="Easy editing stylesheet" ?>
       <example>…tecnologia o mais rápida possível…</example>
       <example>Tem consistência tipo água.</example><!-- informality -->
       <example>De acordo com uma fonte do Governo britânico ouvida pelo The Telegr…</example>
+      <example correction="(pai) inúmeras|pai inúmero|pai, inúmeras">O meu <marker>pai inúmeras</marker> vezes dá o exemplo.</example>
+      <example>O meu pai — inúmeras vezes — dá o exemplo.</example><!-- parenthetical phrase -->
+      <example>O meu pai dá inúmeras vezes o exemplo.</example><!-- adverb -->
     </rule>
     <rule>
       <pattern>
