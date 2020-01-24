@@ -180,6 +180,43 @@ USA
     </category>
 
     <category id="BRITISH_ENGLISH" name="British English phrases" type="locale-violation">
+
+      <rulegroup id='COUPLE_VERB_AGREEMENT_VBD' name='a couple of developers have (has)'>
+        <rule>
+            <pattern>
+                <token>couple</token>
+                <token>of</token>
+                <token postag='NNS'>
+                    <exception postag='^(?!.*(NNS|VBZ)).*$' postag_regexp='yes'/>
+                    <exception>people</exception>
+                </token>
+                <marker>
+                    <token regexp='yes'>(were|have)</token>
+                </marker>
+            </pattern>
+            <message>Possible agreement error</message>
+            <suggestion><match no='4' postag='VBZ'/></suggestion>
+            <example correction="has">A couple of developers <marker>have</marker> let me know they are discussing your issue.</example>
+        </rule>
+        <rule>
+            <pattern>
+                <token>couple</token>
+                <token>of</token>
+                <token postag='NNS'>
+                    <exception postag='^(?!.*(NNS|VBZ)).*$' postag_regexp='yes'/>
+                    <exception>people</exception>
+                </token>
+                <marker>
+                    <token postag='VBP?' postag_regexp='yes'>
+                      <exception negate_pos='yes' postag='VBP?' postag_regexp='yes'/></token>
+                </marker>
+            </pattern>
+            <message>Possible agreement error</message>
+            <suggestion><match no='4' postag='VBZ'/></suggestion>
+            <example correction="works">A couple of friends <marker>work</marker> in that famous company.</example>
+        </rule>
+      </rulegroup>
+
         <rule id="GROUND_FIRST_FLOOR" name="ground floor/first floor">
             <pattern>
                 <token>ground</token>
