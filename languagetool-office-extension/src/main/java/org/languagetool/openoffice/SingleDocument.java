@@ -213,6 +213,7 @@ class SingleDocument {
       if (debugMode > 1) {
         MessageHandler.printToLogFile("paRes.aErrors.length: " + paRes.aErrors.length + "; docID: " + docID + logLineBreak);
       }
+      resetCheck();
     } catch (Throwable t) {
       MessageHandler.showError(t);
     }
@@ -334,7 +335,16 @@ class SingleDocument {
       MessageHandler.printToLogFile("Checked parapraphs: docID: " + docID + ", Number of Paragraphs: " + isChecked.size() 
           + ", Checked: " + nChecked + logLineBreak);
     }
-}
+  }
+  
+  /**
+   * Inform listener that the doc should be rechecked.
+   */
+  public void resetCheck() {
+    if(doResetCheck() && mDocHandler.resetCheck()) {
+      optimizeReset();
+    }
+  }
 
   // Fix numbers that are (probably) foot notes.
   // See https://bugs.freedesktop.org/show_bug.cgi?id=69416
@@ -1062,8 +1072,7 @@ class SingleDocument {
               + "; startPos: " + startPos + "; Sentence: " + sentence 
               + "; Error number: " + errorArray.length + logLineBreak);
         }
-        sentencesCache.remove(numCurPara, startPos);
-        sentencesCache.add(numCurPara, startPos, nextPos, errorArray);
+        sentencesCache.put(numCurPara, startPos, nextPos, errorArray);
       }
       return errorArray;
     } catch (Throwable t) {
