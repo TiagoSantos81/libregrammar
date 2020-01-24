@@ -47863,11 +47863,13 @@ The accident victim died from her injuries.
     </category>
 
   <category id="TYPOGRAPHY" name="Typography" type="typographical">
+
     <rule id="CD_TH" name="number + (th, nd, st, rd)" default="temp_off">
         <antipattern>
             <token>.</token>
             <token spacebefore="no" regexp="yes">\d+</token>
         </antipattern>
+      <?ignore why cripple the rule with antipatterns from the start? (https://github.com/languagetool-org/languagetool/commit/18588caacef1a09856500444c8ac513eef384e62)
         <antipattern>
             <token regexp="yes">.*[023456789]</token>
             <token>st</token>
@@ -47880,6 +47882,7 @@ The accident victim died from her injuries.
             <token regexp="yes">.*[124567890]</token>
             <token>rd</token>
         </antipattern>
+      ?>
         <pattern>
             <token regexp="yes">\d{1,2}</token>
             <token regexp="yes" case_sensitive="yes">th|nd|st|rd</token>
