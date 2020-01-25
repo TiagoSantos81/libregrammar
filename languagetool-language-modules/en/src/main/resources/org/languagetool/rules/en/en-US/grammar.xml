@@ -183,6 +183,7 @@ USA
     <category id="BRITISH_ENGLISH" name="British English phrases" type="locale-violation">
 
       <rulegroup id='COUPLE_VERB_AGREEMENT_VBD' name='a couple of developers have (has)'>
+        <url>https://www.quickanddirtytips.com/education/grammar/collective-nouns</url>
         <rule>
             <pattern>
                 <token>couple</token>
