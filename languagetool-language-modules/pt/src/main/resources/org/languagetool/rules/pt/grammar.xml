@@ -1354,7 +1354,7 @@ title="Easy editing stylesheet" ?>
           <token negate='yes' regexp='yes'>e|ou|&hifen;</token>
         <marker>
           <token regexp='yes'>&contracoes_MS;
-            <exception regexp="yes">nele</exception>
+            <exception>nele</exception>
             <exception postag_regexp='yes' postag='R.|NP.+|.+_$'/></token>
           <token regexp='yes' min='0'>&adverbios_de_intensidade;</token><!-- XXX use POS after disambiguation improvements -->
           <token min='0' postag='(?:A..|Z.)C.+' postag_regexp='yes'>
@@ -2518,14 +2518,6 @@ title="Easy editing stylesheet" ?>
             <exception negate_pos='yes' postag_regexp='yes' postag='R.+'/></token>
           <token postag='V.[CIS].3S.' postag_regexp='yes'/>
       </antipattern>
-	<!-- Added by Marco A.G.Pinto - 2020-01-26 ***START***--> 
-	<!-- "No início das minhas férias tive um acidente." -->
-	  <antipattern>
-		  <token postag='DP1F[SP][SP]|DP2F[SP][SP]' postag_regexp='yes'></token>
-		  <token postag='NCF[SP]000|NCM[SP]000' postag_regexp='yes'></token>
-		  <token postag='VMIS1[SP]0|VMIS2[SP]0|VMIM3P0|VMIS3P0' postag_regexp='yes'></token> 
-      </antipattern>	
-	<!-- Added by Marco A.G.Pinto - 2020-01-26 ***END***-->  
       <pattern>
           <token postag_regexp='yes' postag='D...P.+'>
             <exception negate_pos='yes' postag_regexp='yes' postag='D...P.+'/></token>
@@ -2539,19 +2531,22 @@ title="Easy editing stylesheet" ?>
       </pattern>
       <message>&MSG_ECV;</message>
         <suggestion><match no='1' include_skipped='all'/> <match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all' postag='(V.[CIS].).S(.)' postag_replace='$1\3P$2' postag_regexp='yes'/></suggestion>
-      <example correction='Os médicos saíram'><marker>Os médicos saíra</marker> sem saber como dar a notícia.</example>
-      <example correction='meus amigos não bebem'>Os <marker>meus amigos não bebe</marker> café.</example>
-      <example correction='meus amigos ainda não bebem'>Os <marker>meus amigos ainda não bebe</marker> café.</example>
+        <suggestion><match no='1' include_skipped='all'/> <match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/>, \4</suggestion>
+      <example correction='Os médicos saíram|Os médicos, saíra'><marker>Os médicos saíra</marker> sem saber como dar a notícia.</example>
+      <example correction='meus amigos não bebem|meus amigos não, bebe'>Os <marker>meus amigos não bebe</marker> café.</example>
+      <example correction='meus amigos ainda não bebem|meus amigos ainda não, bebe'>Os <marker>meus amigos ainda não bebe</marker> café.</example>
       <example>Nenhum dos meus amigos bebe café.</example>
       <example>Sem os grandes primatas, ficamos sem os nossos parentes mais próximos no reino animal.</example>
       <example>Outros governos preocupar-se-iam, talvez, com esta manifestação de ignorância.</example>
       <example>Este trabalho deu os primeiros passos há um ano.</example>
       <example>Cada um dos seus alunos expressou a sua opinião.</example>
       <example>Entre os resíduos há substâncias perigosas.</example>
-      <example correction='Os médicos haviam'><marker>Os médicos havia</marker> saído sem saber como dar a notícia.</example>
+      <example correction='Os médicos haviam|Os médicos, havia'><marker>Os médicos havia</marker> saído sem saber como dar a notícia.</example>
       <example>Os venezuelanos não conseguem ingerir três refeições por dia a horas certas.</example>
       <example>A aterragem de outros aviões foi interrompida temporariamente.</example>
       <example>Disposição para aceitar as responsabilidades é um sinal de maturidade.</example>
+      <example correction="minhas férias tiveram|minhas férias, tive">No início das <marker>minhas férias tive</marker> um acidente.</example>
+      <example>No início das <marker>minhas férias, tive</marker> um acidente.</example>
     </rule>
     <rule>
       <antipattern>
@@ -2576,14 +2571,6 @@ title="Easy editing stylesheet" ?>
           <token postag_regexp='yes' postag='[AN].+'/>
           <token postag='V.[CIS].3P.' postag_regexp='yes'/>
       </antipattern>
-	<!-- Added by Marco A.G.Pinto - 2020-01-26 ***START***--> 
-	<!-- "No início da minha semana tive um acidente." -->
-	  <antipattern>
-		  <token postag='DP1F[SP][SP]|DP2F[SP][SP]' postag_regexp='yes'></token>
-		  <token postag='NCF[SP]000|NCM[SP]000' postag_regexp='yes'></token>
-		  <token postag='VMIS1[SP]0|VMIS2[SP]0|VMIM3P0|VMIS3P0' postag_regexp='yes'></token> 
-      </antipattern>	
-	<!-- Added by Marco A.G.Pinto - 2020-01-26 ***END***--> 
       <pattern>
           <token postag_regexp='yes' postag='D...S.+'>
             <exception negate_pos='yes' postag_regexp='yes' postag='D...S.+'/></token>
@@ -2597,12 +2584,15 @@ title="Easy editing stylesheet" ?>
       </pattern>
       <message>&MSG_ECV;</message>
         <suggestion><match no='1' include_skipped='all'/> <match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all' postag='(V.[CIS].).P(.)' postag_replace='$1\3S$2' postag_regexp='yes'/></suggestion>
-      <example correction='O médico novo saiu|O médico novo saíra'><marker>O médico novo saíram</marker> sem saber como dar a notícia.</example>
+        <suggestion><match no='1' include_skipped='all'/> <match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/>, \4</suggestion>
+      <example correction='O médico novo saiu|O médico novo saíra|O médico novo, saíram'><marker>O médico novo saíram</marker> sem saber como dar a notícia.</example>
       <example>A sua polidez e o seu empenho fizeram com que todos o admirassem.</example>
       <example>A empresa e a ONG pretendem alertar as populações.</example>
       <example>O amor ou o ódio estão presentes.</example>
       <example>Outro governo preocupar-se-ia, talvez, com esta manifestação de ignorância.</example>
       <example>Dizem que ela e o marido não concordam em nada.</example>
+      <!-- example correction="minha semana tiveram|minha semana, tive">No início da <marker>minha semana tive</marker> um acidente.</example--><!-- XXX works but with messed up suggestions. needs java code fix -->
+      <example>No início das <marker>minhas férias, tive</marker> um acidente.</example>
     </rule>
   </rulegroup>
 
