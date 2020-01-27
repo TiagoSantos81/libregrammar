@@ -103,6 +103,10 @@ public class CaseRule extends Rule {
       regex(".*")
     ),
     Arrays.asList(
+      regex("Roten?"),
+      regex("Bete")
+    ),
+    Arrays.asList(
       // see https://www.duden.de/suchen/dudenonline/u-f%C3%B6rmig
       regex("[A-Z]-förmig(e[mnrs]?)?")
     ),
@@ -374,6 +378,10 @@ public class CaseRule extends Rule {
       token("im"),
       csToken("Aus")
     ),
+    Arrays.asList(
+      token("im"),
+      csToken("Ganzen")
+    ),
     Arrays.asList( // Die Top Fünf (https://www.korrekturen.de/forum.pl/md/read/id/73791/sbj/top-top-fuenf-fuenf/)
       csToken("Top"),
       pos("ZAL")
@@ -417,6 +425,7 @@ public class CaseRule extends Rule {
     "Mag",   // "Mag. Helke Müller"
     "Studierende",
     "Suchbegriffen",
+    "Plattdeutsch",
     "Wallet",
     "Str",
     "Auszubildende",
