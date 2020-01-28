@@ -9550,6 +9550,12 @@ USA
       <!-- Created by Tiago F. Santos, 2020-01-11 -->
             <url>https://en.wikipedia.org/wiki/Auxiliary_verb</url>
             <short>Missing word</short>
+            <antipattern><!-- XXX handled by ADJECTIVE_ADVERB -->
+                <token postag="PRP"/>
+                <token postag="JJ">
+                  <exception>good</exception></token>
+                <token postag="VB[GDZ]" postag_regexp="yes"/>
+            </antipattern>
           <rule>
             <antipattern>
                 <token inflected='yes'>will</token>
@@ -9671,6 +9677,12 @@ USA
             <example>A little man who was stumping along eastward at a good walk, and the other a girl of maybe eight or ten who was running as hard as she was able down a cross street.</example>
         </rule>
         <rulegroup id="PRP_MD_NN" name="missing verb after after 'will/can/could/would'">
+            <antipattern><!-- XXX handled by ADJECTIVE_ADVERB -->
+                <token postag="PRP"/>
+                <token postag="JJ">
+                  <exception>good</exception></token>
+                <token postag="VB[GDZ]" postag_regexp="yes"/>
+            </antipattern>
             <antipattern>
                 <token skip="3" regexp="yes">how|like|otherwise|as|way|extent|than</token>
                 <token postag="MD" />
@@ -36532,7 +36544,8 @@ The accident victim died from her injuries.
     <!-- Commonly Confused Words -->
     <!-- ====================================================================== -->
     <category id="CONFUSED_WORDS" name="Commonly Confused Words" type="grammar">
-        <rulegroup id="ADJECTIVE_ADVERB" name="adjective vs. adverb" default="temp_off"><!-- TODO add more rules (e.g. unusual -> unusually) -->
+        <rulegroup id="ADJECTIVE_ADVERB" name="adjective vs. adverb"><!-- TODO add more rules (e.g. unusual -> unusually) -->
+                <url>https://www.ef.com/wwen/english-resources/english-grammar/forming-adverbs-adjectives/</url>
             <antipattern>
                 <token regexp="yes">subject|responses?|addition|due|alternatives?|exposure|similar|comparable</token>
                 <token>to</token>
@@ -36548,8 +36561,14 @@ The accident victim died from her injuries.
                     <token postag="MD">
                         <exception postag="VB.*" postag_regexp="yes" />
                     </token>
+                    <?ignore
                     <marker>
                         <token regexp="yes">(im)?possible|probable|simple|(un)?comfortable|acceptable|sustainable|understandable|reliable|terrible|horrible|unbelievable|invisible|profitable|unrecognizable</token>
+                    </marker>
+                    ?>
+                    <marker>
+                      <token postag='JJ' regexp='yes'>.+le$
+                        <exception postag='RB|V.+' postag_regexp='yes'/></token>
                     </marker>
                     <token postag="VBP?" postag_regexp="yes" />
                 </pattern>
@@ -36564,8 +36583,14 @@ The accident victim died from her injuries.
                         <exception scope="previous" postag="VB.*" postag_regexp="yes" />
                         I|you|they|we|s?he|it
                     </token>
+                    <?ignore
                     <marker>
                         <token regexp="yes">(im)?possible|probable|simple|(un)?comfortable|acceptable|sustainable|understandable|reliable|terrible|horrible|unbelievable|invisible|profitable|unrecognizable</token>
+                    </marker>
+                    ?>
+                    <marker>
+                      <token postag='JJ' regexp='yes'>.+le$
+                        <exception postag='RB|V.+' postag_regexp='yes'/></token>
                     </marker>
                     <token postag="VB[GDZ]" postag_regexp="yes" />
                 </pattern>
@@ -36577,26 +36602,87 @@ The accident victim died from her injuries.
             <rule><!-- to + adjective ending in "le" + VB -->
                 <pattern>
                     <token>to</token>
+                    <?ignore
                     <marker>
-                        <token regexp="yes">(im)?possible|probable|acceptable|sustainable|understandable|reliable|terrible|horrible|unbelievable|invisible|profitable|unrecognizable</token>
+                        <token regexp="yes">(im)?possible|probable|simple|(un)?comfortable|acceptable|sustainable|understandable|reliable|terrible|horrible|unbelievable|invisible|profitable|unrecognizable</token>
+                    </marker>
+                    ?>
+                    <marker>
+                      <token postag='JJ' regexp='yes'>.+le$
+                        <exception postag='RB|V.+' postag_regexp='yes'/></token>
                     </marker>
                     <token postag="VB[GP]?" postag_regexp="yes">
                         <exception postag="JJ.*|NN.*|DT|PRP\$?" postag_regexp="yes" />
                     </token>
                 </pattern>
-                <message>The word "\2" is an adjective and doesn't fit in this context. Did you mean the adverb <suggestion><match no="2" regexp_match="(?i)ble" regexp_replace="bly" /></suggestion>?</message>
+                <message>The word "\2" is an adjective and doesn't fit in this context. Did you mean the adverb <suggestion><match no="2" regexp_match="(?i)le$" regexp_replace="ly" /></suggestion>?</message>
                 <example correction="sustainably">He tried to <marker>sustainable</marker> achieve a clean environment.</example>
                 <example correction="possibly">How to <marker>possible</marker> create wildcard certifcates and then renew them?</example>
                 <example>It is subject to unbelievable events.</example>
                 <example correction="possibly">I think we should give consideration to <marker>possible</marker> using Gary's expertise on a part-time basis in Bakersfield and relocate and fill his position in Texas.</example>
+            </rule>
+            <rule><!-- MD + adjective ending in "ic" + VB -->
+                <pattern>
+                    <token postag="MD">
+                        <exception postag="VB.*" postag_regexp="yes" />
+                    </token>
+                    <marker>
+                      <token postag='JJ' regexp='yes'>.+ic$
+                        <exception postag='RB|V.+' postag_regexp='yes'/></token>
+                    </marker>
+                    <token postag="VBP?" postag_regexp="yes" />
+                </pattern>
+                <message>The word "\2" is an adjective and doesn't fit in this context. Did you mean the adverb <suggestion><match no="2" regexp_match="(?i)ic$" regexp_replace="ically" /></suggestion>?</message>
+                <example correction="basically">It could <marker>basic</marker> have something to do with his new car.</example>
+                <example correction="economically">Delves are different in that you can <marker>economic</marker> run 3 delves every day.</example>
+            </rule>
+            <rule><!-- PRP + adjective ending in "ic" + VB -->
+                <pattern>
+                    <token regexp="yes">
+                        <exception scope="previous" postag="VB.*" postag_regexp="yes" />
+                        I|you|they|we|s?he|it
+                    </token>
+                    <marker>
+                      <token postag='JJ' regexp='yes'>.+ic$
+                        <exception postag='RB|V.+' postag_regexp='yes'/></token>
+                    </marker>
+                    <token postag="VB[GDZ]" postag_regexp="yes" />
+                </pattern>
+                <message>The word "\2" is an adjective and doesn't fit in this context. Did you mean the adverb <suggestion><match no="2" regexp_match="(?i)ic$" regexp_replace="ically" /></suggestion>?</message>
+                <example correction="tragically">It <marker>tragic</marker> has something to do with his new car.</example>
+                <example>You don’t balance your game only when something tragic is introduced.</example>
+                <example>Is it tragic going there without wearing a jacket?</example>
+            </rule>
+            <rule><!-- to + adjective ending in "ic" + VB -->
+                <pattern>
+                    <token>to</token>
+                    <marker>
+                      <token postag='JJ' regexp='yes'>.+ic$
+                        <exception postag='RB|V.+' postag_regexp='yes'/></token>
+                    </marker>
+                    <token postag="VB[GP]?" postag_regexp="yes">
+                        <exception postag="JJ.*|NN.*|DT|PRP\$?" postag_regexp="yes" />
+                    </token>
+                </pattern>
+                <message>The word "\2" is an adjective and doesn't fit in this context. Did you mean the adverb <suggestion><match no="2" regexp_match="(?i)ic$" regexp_replace="ically" /></suggestion>?</message>
+                <example correction="economically">He tried to <marker>economic</marker> achieve a clean environment.</example>
+                <example correction="basically">How to <marker>basic</marker> create wildcard certifcates and then renew them?</example>
+                <example>It is subject to tragic events.</example>
+                <example correction="economically">I think we should give consideration to <marker>economic</marker> using Gary's expertise on a part-time basis in Bakersfield and relocate and fill his position in Texas.</example>
             </rule>
             <rule><!-- MD + easy + VB -->
                 <pattern>
                     <token postag="MD">
                         <exception postag="VB.*" postag_regexp="yes" />
                     </token>
+                    <?ignore
                     <marker>
                         <token>easy</token>
+                    </marker>
+                    ?>
+                    <marker>
+                      <token postag='JJ' regexp='yes'>.+y$
+                        <exception postag='RB|V.+' postag_regexp='yes'/></token>
                     </marker>
                     <token postag="VBP?" postag_regexp="yes" />
                 </pattern>
@@ -36610,8 +36696,14 @@ The accident victim died from her injuries.
                         <exception scope="previous" postag="VB.*" postag_regexp="yes" />
                         I|you|they|we|s?he|it
                     </token>
+                    <?ignore
                     <marker>
                         <token>easy</token>
+                    </marker>
+                    ?>
+                    <marker>
+                      <token postag='JJ' regexp='yes'>.+y$
+                        <exception postag='RB|V.+' postag_regexp='yes'/></token>
                     </marker>
                     <token postag="VB[GDZ]" postag_regexp="yes" />
                 </pattern>
@@ -36622,8 +36714,14 @@ The accident victim died from her injuries.
             <rule><!-- to + easy + VB -->
                 <pattern>
                     <token>to</token>
+                    <?ignore
                     <marker>
                         <token>easy</token>
+                    </marker>
+                    ?>
+                    <marker>
+                      <token postag='JJ' regexp='yes'>.+y$
+                        <exception postag='RB|V.+' postag_regexp='yes'/></token>
                     </marker>
                     <token postag="VB[GP]?" postag_regexp="yes">
                         <exception postag="JJ.*|NN.*|DT|PRP\$?" postag_regexp="yes" />
@@ -36638,8 +36736,15 @@ The accident victim died from her injuries.
                     <token postag="MD">
                         <exception postag="VB.*" postag_regexp="yes" />
                     </token>
+                    <?ignore
                     <marker>
                         <token regexp="yes">quick|immediate|potential|actual|(un)?usual</token>
+                    </marker>
+                    ?>
+                    <marker>
+                      <token postag='JJ'>
+                        <exception regexp='yes'>.+(le|ic|y)$|good</exception><!-- XXX handled by previous subrules -->
+                      <exception postag='RB|V.+' postag_regexp='yes'/></token>
                     </marker>
                     <token postag="VBP?" postag_regexp="yes" />
                 </pattern>
@@ -36655,8 +36760,15 @@ The accident victim died from her injuries.
                         <exception scope="previous" postag="VB.*" postag_regexp="yes" />
                         I|you|they|we|s?he|it
                     </token>
+                    <?ignore
                     <marker>
                         <token regexp="yes">quick|immediate|potential|actual|(un)?usual</token>
+                    </marker>
+                    ?>
+                    <marker>
+                    <token postag='JJ'>
+                      <exception regexp='yes'>.+(le|ic|y)$|good</exception><!-- XXX handled by previous subrules -->
+                      <exception postag='RB|V.+' postag_regexp='yes'/></token>
                     </marker>
                     <token postag="VB[GDZ]" postag_regexp="yes" />
                 </pattern>
@@ -36666,8 +36778,15 @@ The accident victim died from her injuries.
             <rule><!-- to + quick|immediate|potential|actual|unusual + VB -->
                 <pattern>
                     <token>to</token>
+                    <?ignore
                     <marker>
                         <token regexp="yes">quick|immediate|potential|actual|(un)?usual</token>
+                    </marker>
+                    ?>
+                    <marker>
+                      <token postag='JJ'>
+                        <exception regexp='yes'>.+(le|ic|y)$|good</exception><!-- XXX handled by previous subrules -->
+                        <exception postag='RB|V.+' postag_regexp='yes'/></token>
                     </marker>
                     <token postag="VB[GP]?" postag_regexp="yes">
                         <exception postag="JJ.*|NN.*|DT|PRP\$?" postag_regexp="yes" />
@@ -36676,6 +36795,10 @@ The accident victim died from her injuries.
                 <message>The word "\2" is an adjective and doesn't fit in this context. Did you mean the adverb <suggestion><match no="2" regexp_match="(?i)$" regexp_replace="ly" /></suggestion>?</message>
                 <example correction="quickly">He tried to <marker>quick</marker> achieve a clean environment.</example>
                 <example>Some investors have expressed concern about Calpine's exposure to potential overbuilding in the Texas market.</example>
+                <example correction="intelligently">He tried to <marker>intelligent</marker> achieve a clean environment.</example>
+                <example correction="cheaply">How to <marker>cheap</marker> create wildcard certifcates and then renew them?</example>
+                <example>It is subject to tragic events.</example>
+                <!--example correction="slowly">I think we should give consideration to <marker>slow</marker> using Gary's expertise on a part-time basis in Bakersfield and relocate and fill his position in Texas.</example--><!-- TODO add rule for ambiguous adjective/verb cases --> 
             </rule>
         </rulegroup>
         <rulegroup id="WONT_WANT" name="wont vs. want">
@@ -45705,7 +45828,7 @@ The accident victim died from her injuries.
             </rule>
         </rulegroup> <!-- end passive voice rule -->
 
-        <rule id="SPLIT_INFITIVES" name="Style: split infinitives">
+        <rule id="SPLIT_INFINITIVES" name="Style: split infinitives">
         <!-- Created by Tiago F. Santos, 2019-10-11 -->
             <!--antipattern>
                 <token regexp='yes' inflected='yes'>&ATD_to_collocation;</token>

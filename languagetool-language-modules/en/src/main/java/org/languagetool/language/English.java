@@ -344,7 +344,7 @@ public class English extends Language implements AutoCloseable {
       case "EN_REDUNDANCY_REPLACE":     return -510;  // style rules should always have the lowest priority.
       case "EN_PLAIN_ENGLISH_REPLACE":  return -511;  // style rules should always have the lowest priority.
       case "EN_SIMPLE_GRAMMAR_REPLACE": return -600;  // prefer specific rules to this catch-all rule
-      case "SPLIT_INFITIVES":           return -800;  // style rules should always have the lowest priority, especially ADJECTIVE_ADVERB.
+      case "SPLIT_INFINITIVES":           return -800;  // style rules should always have the lowest priority, especially ADJECTIVE_ADVERB.
       case "STYLE_REPEATED_WORD_RULE_EN":  return -900;  // style rules should always have the lowest priority.
       case LongSentenceRule.RULE_ID:    return -997;
       case LongParagraphRule.RULE_ID:   return -998;
