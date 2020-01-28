@@ -1247,7 +1247,10 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <marker>
                 <and>
                 <token postag="VBZ"/>
-                <token postag="NNS"><exception postag_regexp="yes" postag="NNPS?"/></token>
+                <token postag="NNS">
+                    <exception postag_regexp="yes" postag="NNPS?"/>
+                    <exception>does</exception>
+                </token>
                 </and>
             </marker>
             <token regexp="yes">weren?|aren?|couldn?|might|may|shouldn?|haven?|don?|wouldn?</token>
@@ -1256,6 +1259,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <example type="untouched">These tests of <marker>Peters</marker> are interesting. Incorrect grammar: missing apostrophe in a double genitive (www.merriam-webster.com/dictionary/double%20genitive).</example>
         <example type="untouched">The things he <marker>says</marker> are entirely inconsequential.</example>
         <example type="untouched">First, the premises on which it <marker>rests</marker> may not be correct.</example>
+        <example type="untouched">She really does have no idea what I'm talking about.</example>
         <example type="untouched">Information about what this <marker>does</marker> would be nice.</example>
         <example type="untouched">... but data about whoever each <marker>tries</marker> should tell us whether these judges are corrupt.</example>
         <example type="ambiguous" inputform="forces[force/NNS,force/VBZ]"
@@ -2404,6 +2408,10 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <token>all</token>
         <token postag="IN"/>
       </antipattern>
+      <antipattern>
+        <token>either</token>
+        <token postag="VB.*" postag_regexp="yes" />
+      </antipattern>
       <pattern>
         <token postag="DT"><exception postag="PDT"/><exception regexp="yes">th[eo]se|one|much</exception></token>
         <marker>
@@ -2424,6 +2432,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
       <example type="untouched">Incorrect grammar. The new method is much <marker>fast</marker> than the old method.</example>
       <example type="untouched">Incorrect grammar. The solution is not <marker>a simple as</marker> we had hoped.</example>
       <example type="untouched">Incorrect grammar. It's not a large sheep, it's <marker>a small as</marker>!</example>
+      <example type="untouched">You can either pay via credit card or via PayPal.</example>
       <example type="untouched">We can say that <marker>all</marker> in some way belong to a kind of ethnic category...</example><!-- 'That' comes before a relative clause in which 'all' is a pronoun (https://www.lexico.com/en/definition/all) -->
     </rule>
 
@@ -2858,6 +2867,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
     <rule name="VBN + VBN + NN -&gt; JJ" id="VBN_VBN_NN_JJ">
        <antipattern>
            <token postag="PRP"/>
+           <token postag="RB" min="0" />
            <token postag="VBD"/>
        </antipattern>
        <antipattern><!-- a that succeeded armored cruisers were now classified -->
@@ -2875,10 +2885,13 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
        </antipattern>
         <pattern>
             <marker>
-                <token postag="VBN"><exception regexp="yes">been|had|got</exception></token>
+                <token postag="VBN">
+                    <exception postag="VBP?" postag_regexp="yes" />
+                    <exception regexp="yes">been|had|got</exception>
+                </token>
             </marker>
-            <token postag="VBN"/>
-            <token postag_regexp="yes" postag="NN:.*|NNS?"/>
+            <token postag="VBN" />
+            <token postag_regexp="yes" postag="NN:.*|NNS?" />
         </pattern>
         <disambig postag="JJ"/>
         <example type="untouched">He had been proven innocent.</example>
@@ -2887,6 +2900,11 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <example type="untouched">He <marker>looked</marker> tired then.</example>
         <example type="untouched">Verb. ... of the World War I era that <marker>succeeded</marker> armored cruisers were now classified...</example>
         <example type="untouched">Passive voice verb. Whatever was <marker>said</marker> showed great insight.</example>
+        <example type="untouched">I think I'll rent Hidden Figures.</example>
+        <example type="untouched">I can't read handwritten script, so could you please write it in printed script?</example>
+        <example type="untouched">In addition, she will assume the business lead role supporting new endeavors that our will group will become involved in, including the cost of funds and prepays activity.</example>
+        <example type="untouched">Objects must orbit the Earth within this radius, or they can become unbound by the gravitational perturbation of the Sun.</example>
+        <example type="untouched">Presently you can only set named tags via AppleScript.</example>
     </rule>
     <rule name="of + VBN + JJ -&gt; JJ" id="OF_VBN_JJ">
         <pattern>
@@ -4878,6 +4896,10 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
               <token>t</token>
               <token postag_regexp="yes" postag="VBP?"/>
           </antipattern>
+          <antipattern><!-- its home games -->
+              <token postag="PRP$"/>
+              <token chunk="I-NP-plural" postag_regexp="yes" postag="JJR?|NN.*"/>
+          </antipattern>
           <pattern>
             <marker>
               <and>
@@ -4892,6 +4914,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
           <example type="untouched">We <marker>supply</marker> parts to the auto manufacturer.[Adverb variant of 'supplely': https://www.lexico.com/definition/supplely]</example>
           <example type="untouched">Incorrect. Should be 'setback', but 'back' is not an adverb in this context. This set <marker>back</marker> is annoying.</example>
           <example type="untouched">It's not good, <marker>so</marker> don't buy it.</example><!-- #2223 -->
+          <example type="untouched">Adjective: The national team plays its <marker>home</marker> games at the Ghazi Stadium in Kabul.</example>
           <example type="ambiguous" inputform="forever[forever/NN:U,forever/RB]" outputform="forever[forever/RB]">You're <marker>forever</marker> making mistakes.</example>
         </rule>
 
@@ -4996,6 +5019,16 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         </rule>
 
         <rule id="PRPPOSS_JJ_NN" name="Possessive pronoun + adj/noun =>noun">
+          <antipattern><!-- its home games -->
+              <token postag="PRP$"/>
+              <token chunk="I-NP-plural" postag="JJ"/>
+              <token chunk="E-NP-plural" postag="NNS"/>
+          </antipattern>
+          <antipattern><!-- Chunker error: His last view -->
+              <token postag="PRP$">his</token>
+              <token chunk="I-NP-plural" postag="JJ"/>
+              <token chunk="E-NP-plural" postag_regexp="yes" postag="NN(:UN?)?"/>
+          </antipattern>
           <pattern>
             <token postag="PRP$"/>
             <marker>
@@ -5004,11 +5037,14 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
               <token postag="JJ" postag_regexp="yes"><exception postag="CD"/></token>
             </and>
             </marker>
-            <token postag="VB.*" postag_regexp="yes"/>
+            <token postag="VB.*" postag_regexp="yes" />
           </pattern>
           <disambig action="filter" postag="NN.*"/>
           <example type="untouched">I do what I want to.</example>
           <example type="untouched">Your two best boys.</example>
+          <example type="untouched">His last film The Sacrifice was produced in Sweden in 1986.</example>
+          <example type="untouched">Adjective: The national team plays its <marker>home</marker> games at the Ghazi Stadium in Kabul.</example>
+          <example type="untouched">His last view of the land he had inhabited was by moonlight...</example><!-- Chunker error: view/E-NP-plural -->
           <!-- example type="ambiguous" inputform="sister[sister/JJ,sister/NN]" outputform="sister[sister/NN]">My <marker>sister</marker> believes you!</example -->
         </rule>
 
@@ -6028,6 +6064,15 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <pattern>
             <token>cron</token>
             <token regexp="yes">jobs?</token>
+        </pattern>
+        <disambig action="ignore_spelling"/>
+    </rule>
+
+    <rule name="ignore spelling of 'amazon ant'" id="IGNORE_SPELLING_OF_AMAZON_ANT">
+        <!-- https://www.lexico.com/definition/amazon_ant -->
+        <pattern>
+            <token>amazon</token>
+            <token regexp="yes">ants?</token>
         </pattern>
         <disambig action="ignore_spelling"/>
     </rule>

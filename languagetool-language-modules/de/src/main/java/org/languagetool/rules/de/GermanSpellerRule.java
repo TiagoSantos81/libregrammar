@@ -77,6 +77,7 @@ public class GermanSpellerRule extends CompoundAwareHunspellRule {
   private static final Map<Pattern, Function<String,List<String>>> ADDITIONAL_SUGGESTIONS = new HashMap<>();
   static {
     put("lieder", w -> Arrays.asList("leider", "Lieder"));
+    put("zuviel", "zu viel");
     put("abgekatertes", "abgekartetes");
     put("wiederspiegelt", "widerspiegelt");
     put("Komplexheit", "Komplexität");
@@ -989,7 +990,7 @@ public class GermanSpellerRule extends CompoundAwareHunspellRule {
           BufferedReader variantReader = null;
           if (languageVariantPlainTextDict != null && !languageVariantPlainTextDict.isEmpty()) {
             InputStream variantStream = JLanguageTool.getDataBroker().getFromResourceDirAsStream(languageVariantPlainTextDict);
-            variantReader = new ExpandingReader (new BufferedReader(new InputStreamReader(variantStream, UTF_8)));
+            variantReader = new ExpandingReader(new BufferedReader(new InputStreamReader(variantStream, UTF_8)));
           }
           return new MorfologikMultiSpeller(morfoFile, new ExpandingReader(br), paths,
             variantReader, languageVariantPlainTextDict, userConfig != null ? userConfig.getAcceptedWords(): Collections.emptyList(), MAX_EDIT_DISTANCE);
