@@ -9198,6 +9198,11 @@ USA
                 <token chunk="I-NP-plural">IM</token>
                 <token chunk="E-NP-plural" postag="NNS"/>
             </antipattern>
+            <antipattern case_sensitive="yes"><!-- as IM Arabic [https://en.wikipedia.org/wiki/Arabic] -->
+                <token postag="IN"/>
+                <token chunk="B-NP-singular">IM</token>
+                <token chunk="E-NP-singular">Arabic</token>
+            </antipattern>
             <pattern>
                 <marker>
                     <token case_sensitive="yes">IM<exception postag="NNP"/></token>
@@ -9211,6 +9216,7 @@ USA
             <example correction="I'm|I am">YES, <marker>IM</marker> 100% IN ENE.</example>
             <example correction="I'm|I am"><marker>IM</marker> SO SICK OF IT</example>
             <example correction="I'm|I am"><marker>IM</marker> afraid we won’t be able to read the alert.</example>
+            <example correction="I'm|I am">Hello, <marker>IM</marker> Arabic.</example>
             <example><marker>I'm</marker> curious.</example>
             <example>Im curious.</example><!-- The spell checker finds this. -->
             <example>... and im 18 next week.</example><!-- The spell checker finds this. -->
@@ -9227,6 +9233,7 @@ USA
             <example>THE FAMILY MOVED TO <marker>KÖNIGSFELD IM SCHWARZWALD</marker>, BADEN-WÜRTTEMBERG, WHERE HE...</example>
             <example>Sitara shows HPLC IM Wellhead.</example>
             <example>Pidgin (IM client)</example>
+            <example>...in these technologies by transliterating the Arabic text using the Latin script, sometimes known as IM Arabic.</example>
             <example type="triggers_error">Pidgin (IM client).</example><!-- Compare with the example that has no full stop. -->
             <example type="triggers_error">If you want to go ahead, then we can proceed via IM.</example>
             <example type="triggers_error">International Master (shortened as IM).</example>
@@ -9877,7 +9884,7 @@ USA
             </antipattern>
             <antipattern><!-- nouns that are verbs when written as two words, needs different rule with suggestion -->
                 <token postag="MD" skip="2" />
-                <token regexp="yes">shout\-?out|plug\-?in|drop\-?down|sleep\-?over|start\-?up|pop\-?up|voiceover|cash\-?out|print\-?out|line\-?up|catch\-?up|call\-?back|stand\-?by|try\-?out|kick\-off|stand\-?up|come\-?back|stand\-?alone|lay\-?off|burn\-?out|sign\-?up|sign\-?in|sign\-?out|log\-?out|log\-?in|take\-?over|mark\-?up|log\-?on|set\-?up|pick\-?up|feed\-?back|back\-?up|walk\-?through|break\-?out|break\-?through|hook\-?up|shut\-?off|break\-?down|pay\-off|time\-?out|clean\-?up|look\-?up|look\-?out|roll\-?out|work\-?out|make\-?up|follow\-?up|check\-?out|check\-?in|lay\-?out|work\-?around|shut\-?down|fall\-?back</token>
+                <token regexp="yes">shout\-?out|short\-?cut|plug\-?in|drop\-?down|sleep\-?over|start\-?up|pop\-?up|voiceover|cash\-?out|print\-?out|line\-?up|catch\-?up|call\-?back|stand\-?by|try\-?out|kick\-off|stand\-?up|come\-?back|stand\-?alone|lay\-?off|burn\-?out|sign\-?up|sign\-?in|sign\-?out|log\-?out|log\-?in|take\-?over|mark\-?up|log\-?on|set\-?up|pick\-?up|feed\-?back|back\-?up|walk\-?through|break\-?out|break\-?through|hook\-?up|shut\-?off|break\-?down|pay\-off|time\-?out|clean\-?up|look\-?up|look\-?out|roll\-?out|work\-?out|make\-?up|follow\-?up|check\-?out|check\-?in|lay\-?out|work\-?around|shut\-?down|fall\-?back</token>
             </antipattern>
             <antipattern><!-- "I must mercy them" https://en.wiktionary.org/wiki/mercy#Verb -->
                 <token>mercy</token>
@@ -10012,7 +10019,7 @@ USA
                 <example>A strategy of building local elections would seem appropriate, should Tom care to do it.</example>
                 <example>I recommend speaking to Tom should people complain about the new feature.</example>
             </rule>
-            <rule default="temp_off">
+            <rule>
                 <pattern>
                     <or>
                         <token postag="NNP|PRP" postag_regexp="yes" />
@@ -10093,7 +10100,7 @@ USA
                 <example>An important property in this context is forward secrecy, which ensures that encrypted communications recorded in the past cannot be retrieved and decrypted should long-term secret keys or passwords be compromised in the future.</example>
                 <example>But the two states belong to regional transmission grids with little interconnection, a situation that provides safeguards should huge power failures occur but limits how much one region can help another.</example>
             </rule>
-            <rule default="temp_off">
+            <rule>
                 <pattern>
                     <or>
                         <token postag="NNP|PRP" postag_regexp="yes" />
@@ -10158,7 +10165,7 @@ USA
                 <example>An important property in this context is forward secrecy, which ensures that encrypted communications recorded in the past cannot be retrieved and decrypted should long-term secret keys or passwords be compromised in the future.</example>
                 <example>But the two states belong to regional transmission grids with little interconnection, a situation that provides safeguards should huge power failures occur but limits how much one region can help another.</example>
             </rule>
-            <rule default="temp_off">
+            <rule>
                 <antipattern>
                     <token regexp="yes">.+</token>
                     <token spacebefore="no">.</token>
@@ -10293,7 +10300,7 @@ USA
                     </token>
                 </marker>
             </pattern>
-            <message>The word 'to' seems to be wrong here.</message>
+            <message>The word 'to' seems to be wrong here. "\3" is a present participle verb.</message>
             <suggestion>\3</suggestion>
             <example correction="making">He was <marker>to making</marker> America great again.</example>
             <example correction="melting">This material is <marker>to melting</marker>.</example>
@@ -10899,7 +10906,7 @@ USA
                     <marker>
                         <token regexp="yes" case_sensitive="yes">march|may|august</token><!-- month names that have a different meaning and can be in lowercase -->
                     </marker>
-                    <token regexp="yes">\d{4}|[1-9](st|nd|th)?|[0-3]\d(st|nd|th)?|until|till</token>
+                    <token regexp="yes">\d{4}|[1-9](st|nd|th|rd)?|[0-3]\d(st|nd|th|rd)?|until|till</token>
                 </pattern>
                 <message>The month <suggestion><match case_conversion="startupper" no="1" /></suggestion> needs to be capitalized.</message>
                 <example correction="August">My birthday is on <marker>august</marker> 2nd.</example>
@@ -12868,11 +12875,26 @@ USA
                 <token>a</token>
                 <token>munch</token>
             </antipattern>
+            <antipattern case_sensitive="yes"><!-- the Subscribe and Save button -->
+                <token>the</token>
+                <token regexp="yes" postag="VBP?" postag_regexp="yes">[A-Z][a-z]+</token>
+                <token regexp="yes">and|or|&amp;</token>
+                <token regexp="yes" postag="VBP?" postag_regexp="yes">[A-Z][a-z]+</token>
+            </antipattern>
+            <antipattern><!-- The Don't Ask, Don't Tell Repeal Act -->
+                <token regexp="yes">the|an?</token>
+                <token>don</token>
+                <token regexp="yes">&apostrophe;</token>
+                <token>t</token>
+                <token>ask</token>
+                <token min="0">,</token>
+                <token>don</token>
+            </antipattern>
             <pattern>
                 <token regexp='yes'>an?|the</token>
                 <token postag='VB|VBP' postag_regexp='yes'>
                     <!-- Many of the excluded words are grammatically wrong but handled by different/better rules -->
-                    <exception regexp="yes">cherry\-?pick|commit|remix|long-running|spend|merge|thank|add|create|re(map|store|place|quire)|occupy|emotes?|Vex</exception>
+                    <exception regexp="yes">cherry\-?pick|commit|remix|long-running|spend|merge|thank|add|create|re(map|store|place|quire|factor)|occupy|emotes?|Vex</exception>
                     <exception postag='VBP?|(SENT|PARA)_END' postag_regexp='yes' negate_pos='yes'/>
                 </token>
             </pattern>
@@ -12885,6 +12907,7 @@ USA
             <example>Let's have a listen to what he wants to say</example>
             <example>He had a listen.</example>
             <example>a show</example>
+            <example>We don't have time for a refactor: we're shipping in two weeks.</example><!-- https://en.wiktionary.org/wiki/refactor#Noun -->
             <example>Sections 4.a and 5.<marker>a are</marker> not correct.</example>
             <example>For the <marker>merge processes</marker> to be faster, we must...</example>
             <example>... that script the way abecedary derives from Latin a be ce de.</example>
@@ -15431,7 +15454,7 @@ USA
             <url>https://en.wikipedia.org/wiki/WhatsApp</url>
             <example correction="WhatsApp|What's up">He is using <marker>Whats App</marker> to communicate with his friends.</example>
         </rule>
-        <rule id="EARL_GREY" name="Earl Grey" default="temp_off">
+        <rule id="EARL_GREY" name="Earl Grey">
             <antipattern case_sensitive="yes">
                 <token>Earl</token>
                 <token>Grey</token>
@@ -15444,7 +15467,7 @@ USA
             <url>https://en.wikipedia.org/wiki/Earl_Grey_tea</url>
             <example correction="Earl Grey"><marker>Earl Gray</marker> tea is a tea blend which has been flavoured with the addition of oil of bergamot. </example>
         </rule>
-        <rule id="FORREST_GUMP" name="Forest (Forrest) Gump" default="temp_off">
+        <rule id="FORREST_GUMP" name="Forest (Forrest) Gump">
             <pattern>
                 <token>forest</token>
                 <token>gump</token>
@@ -15827,7 +15850,7 @@ USA
             <url>https://www.merriam-webster.com/dictionary/so-called</url>
             <example correction="so-called">The <marker>so called</marker> conspiracy theory</example>
         </rule>
-        <rule id="FIRST_PERSON_SHOOTER" name="hyphen in 'first person shooter'" default="temp_off">
+        <rule id="FIRST_PERSON_SHOOTER" name="hyphen in 'first person shooter'">
             <pattern>
                 <marker>
                     <token>first</token>
@@ -15840,7 +15863,7 @@ USA
             <url>https://www.lexico.com/definition/first-person_shooter</url>
             <example correction="first-person">He was playing a <marker>first person</marker> shooter.</example>
         </rule>
-        <rule id="SET_TOP_BOX_HYPHEN" name="missing hyphen in 'set top box'" default="temp_off">
+        <rule id="SET_TOP_BOX_HYPHEN" name="missing hyphen in 'set top box'">
             <pattern>
                 <marker>
                     <token>set</token>
@@ -15939,6 +15962,7 @@ USA
                 <token regexp="yes">tutorials?|guides?|instructions?|process(es)?|cookbooks?|podcasts?|audiobooks?|e\-?book|recipes?|directions|plan|diet|knitting|lyrics|learning|landscaping|programming|courses?|origami|painting|solutions?|teaching|videos?|workouts?|screenhots?|screencasts?|approach(es)?|configurations?|pictures?|diagnostics?|photos?|documentations?|procedures?|installations?|examples?|troubleshootings?|lists?|walkthrough|help|setups?|guidances?</token>
             </pattern>
             <message>Did you mean the adjective or adverb <suggestion>\1-\2-\3</suggestion> (spelled with hyphens)?</message>
+            <url>https://www.merriam-webster.com/dictionary/step-by-step</url>
             <example correction="step-by-step">The <marker>step by step</marker> diet plan helped me to lose kilos.</example>
         </rule>
         <rule id="OPEN_HEART_HYPHEN" name="missing hyphen in 'open heart'">
@@ -15952,24 +15976,37 @@ USA
             </pattern>
             <message>It seems that a hyphen is missing.</message>
             <suggestion>\1-\2</suggestion>
+            <url>https://www.merriam-webster.com/dictionary/open-heart</url>
             <example correction="Open-heart"><marker>Open heart</marker> surgery is an operation to repair a fault or damage in the heart.</example>
         </rule>
-        <rule id="ALL_TIME_HYPHEN" name="missing hyphen in 'all time high'">
-            <pattern>
-                <marker>
-                    <token>all</token>
-                    <token>time</token>
-                </marker>
-                <token min="0">
-                    <exception regexp="yes">\p{P}</exception>
-                </token>
-                <token regexp="yes">highs?|lows?|highest|lowest|best|medals?|roads?|classics?|favou?rites?|awards?|leaders?|cinemas?|box|world|sales?|baseball|football|career|college|comparisons?|champions?|era|faves?|scorers?|goalscorers?|great(est)?|greats|records?|goal|hits?|interceptions?|international|jokes|jazz|movies?|nfl|nhl|nba|number|ops|olympic|office|points?|quarterback|stats?|scoring|strikeout|strikers?|touchdown|usa?|ucl|views|winners?|yankees|zones?</token>
-            </pattern>
-            <message>It appears that a hyphen is missing in the adjective <suggestion>\1-\2</suggestion></message>
+        <rulegroup id="ALL_TIME_HYPHEN" name="missing hyphen in 'all time high'">
             <url>https://www.merriam-webster.com/dictionary/all-time</url>
-            <example correction="all-time">He is the best <marker>all time</marker> goalscorer.</example>
-            <example>He is the best of all time.</example>
-        </rule>
+            <rule default="temp_off">
+                <pattern>
+                    <token regexp="yes">the|an?|our|your|my|their|its|his|her|s</token>
+                    <token postag="JJ.*" postag_regexp="yes" min="0" />
+                    <marker>
+                        <token>all</token>
+                        <token>time</token>
+                    </marker>
+                </pattern>
+                <message>It appears that a hyphen is missing in the adjective <suggestion>\3-\4</suggestion></message>
+                <example correction="all-time">He is the best <marker>all time</marker> goalscorer.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <marker>
+                        <token>all</token>
+                        <token>time</token>
+                    </marker>
+                    <token min="0" postag="JJ.*|NN.*" postag_regexp="yes" />
+                    <token regexp="yes">highs?|lows?|highest|lowest|best|medals?|roads?|classics?|favou?rites?|awards?|leaders?|cinemas?|box|world|sales?|baseball|football|career|college|comparisons?|champions?|era|faves?|scorers?|goalscorers?|great(est)?|greats|records?|goal|hits?|interceptions?|international|revenue|jokes|jazz|movies?|nfl|nhl|nba|number|ops|olympic|office|points?|quarterback|stats?|scoring|strikeout|strikers?|touchdown|usa?|ucl|views|winners?|yankees|zones?</token>
+                </pattern>
+                <message>It appears that a hyphen is missing in the adjective <suggestion>\1-\2</suggestion></message>
+                <example correction="all-time">He is the best <marker>all time</marker> goalscorer.</example>
+                <example>He is the best of all time.</example>
+            </rule>
+        </rulegroup>
         <rulegroup id="ALL_IN_ONE_HYPHEN" name="missing hyphens in 'all-in-one'">
             <url>https://www.lexico.com/definition/all_in_one</url>
             <rule>
@@ -18117,7 +18154,7 @@ USA
         <rule id="PRP_RB_NO_VB" name="Verb missing after personal pronoun and adverb at beginning of sentence.">
             <antipattern><!-- missing hyphen needs different rule -->
                 <token>all</token>
-                <token regexp="yes">year|day|night|week|month</token>
+                <token regexp="yes">year|day|night|week|month|time</token>
             </antipattern>
             <pattern>
                 <token postag="SENT_START"/>
@@ -23878,7 +23915,6 @@ USA
             </rule>
         </rulegroup>
 
-
           <rule id='SHORT_COMPARATIVES' name="Short comparatives">
           <!--      Created by Tiago F. Santos, 2018-07-10. Edited by MFU 2012-12-11      -->
                 <antipattern>
@@ -27984,6 +28020,7 @@ USA
                 <message>Probably a noun is missing in this part of the sentence.</message>
                 <example correction=""><marker>An absurd</marker> is making my existence meaningless.</example>
                 <example>An absurd existence is meaningless.</example>
+                <example>He became a civil rights attorney and an academic.</example><!-- #2378 -->
             </rule>
         </rulegroup>
         <rulegroup id="MANY_NN_U" name="Possible agreement error: 'many/several/few' + uncountable noun">
@@ -36544,7 +36581,45 @@ The accident victim died from her injuries.
     <!-- Commonly Confused Words -->
     <!-- ====================================================================== -->
     <category id="CONFUSED_WORDS" name="Commonly Confused Words" type="grammar">
-        <rulegroup id="ADJECTIVE_ADVERB" name="adjective vs. adverb"><!-- TODO add more rules (e.g. unusual -> unusually) -->
+        <rulegroup id="WEN_WE" name="wen vs. when/we" default="temp_off">
+            <antipattern>
+                <token />
+                <token />
+                <token case_sensitive="yes">Wen</token><!-- middle of sentence, probably name -->
+            </antipattern>
+            <antipattern>
+                <token />
+                <token spacebefore="no">.</token>
+                <token>wen</token>
+            </antipattern>
+            <rule>
+                <pattern>
+                    <token postag="PCT|SENT_START|CC" postag_regexp="yes" />
+                    <token postag="RB|UH" min="0" postag_regexp="yes" />
+                    <marker>
+                        <token case_sensitive="yes" regexp="yes">[Ww]en</token>
+                    </marker>
+                    <token postag="RB" min="0" />
+                    <token postag="MD|VB.*" postag_regexp="yes" />
+                </pattern>
+                <message>"Wen" is the name of a cyst. Did you maybe mean <suggestion>we</suggestion> or <suggestion>when</suggestion>?</message>
+                <example correction="We|When"><marker>Wen</marker> can do it.</example>
+                <example>Mr. Wen was a smart guy.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token postag="VB[DN]?" postag_regexp="yes" />
+                    <marker>
+                        <token case_sensitive="yes">wen</token>
+                    </marker>
+                    <token postag="RB" min="0" />
+                    <token postag="VB.*" postag_regexp="yes" />
+                </pattern>
+                <message>"Wen" is the name of a cyst. Did you maybe mean <suggestion>we</suggestion>?</message>
+                <example correction="we">Can <marker>wen</marker> check it now?</example>
+            </rule>
+        </rulegroup>
+        <rulegroup id="ADJECTIVE_ADVERB" name="adjective vs. adverb"><!-- TODO add more pairs (general(ly), direct(ly), eventual(ly), certain(ly), extreme(ly), immediate(ly), slow(ly) ...) -->
                 <url>https://www.ef.com/wwen/english-resources/english-grammar/forming-adverbs-adjectives/</url>
             <antipattern>
                 <token regexp="yes">subject|responses?|addition|due|alternatives?|exposure|similar|comparable</token>
@@ -36903,9 +36978,9 @@ The accident victim died from her injuries.
                 <token>price</token>
                 <token>sensibility</token>
             </pattern>
-            <message>Did you mean <suggestion>price sensivity</suggestion> (= degree to which the price of a product affects consumers' purchasing behaviors)?</message>
+            <message>Did you mean <suggestion>price sensitivity</suggestion> (= degree to which the price of a product affects consumers' purchasing behaviors)?</message>
             <url>https://www.investopedia.com/terms/p/price-sensitivity.asp</url>
-            <example correction="Price sensivity"><marker>Price sensibility</marker> is the degree to which the price of a product affects consumers' purchasing behaviors.</example>
+            <example correction="Price sensitivity"><marker>Price sensibility</marker> is the degree to which the price of a product affects consumers' purchasing behaviors.</example>
         </rule>
         <rulegroup id="WHAT_WOULD" name="He what (would) do it again">
             <rule>
