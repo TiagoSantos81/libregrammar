@@ -9558,10 +9558,12 @@ USA
             <url>https://en.wikipedia.org/wiki/Auxiliary_verb</url>
             <short>Missing word</short>
             <antipattern><!-- XXX handled by ADJECTIVE_ADVERB -->
-                <token postag="PRP"/>
+                <token postag="MD"/>
+                <token spacebefore='no' min='0' regexp='yes'>&apostrophe;</token>
+                <token spacebefore='no' min='0'>t</token>
                 <token postag="JJ">
                   <exception>good</exception></token>
-                <token postag="VB[GDZ]" postag_regexp="yes"/>
+                <token postag="VBP?" postag_regexp="yes"/>
             </antipattern>
           <rule>
             <antipattern>
@@ -9685,10 +9687,12 @@ USA
         </rule>
         <rulegroup id="PRP_MD_NN" name="missing verb after after 'will/can/could/would'">
             <antipattern><!-- XXX handled by ADJECTIVE_ADVERB -->
-                <token postag="PRP"/>
+                <token postag="MD"/>
+                <token spacebefore='no' min='0' regexp='yes'>&apostrophe;</token>
+                <token spacebefore='no' min='0'>t</token>
                 <token postag="JJ">
                   <exception>good</exception></token>
-                <token postag="VB[GDZ]" postag_regexp="yes"/>
+                <token postag="VBP?" postag_regexp="yes"/>
             </antipattern>
             <antipattern>
                 <token skip="3" regexp="yes">how|like|otherwise|as|way|extent|than</token>
@@ -21003,6 +21007,13 @@ USA
         </rule>
         <rule id="PRONOUN_NOUN" name="Pronoun + noun">
         <!-- Created by Tiago F. Santos, 2018-11-11 -->
+          <antipattern><!-- XXX handled by ADJECTIVE_ADVERB -->
+            <token postag="PRP"/>
+            <token postag="JJ">
+              <exception postag='N.+' postag_regexp='yes'/>
+              <exception>good</exception></token>
+            <token postag="VB[GDZ]" postag_regexp="yes"/>
+          </antipattern>
           <antipattern>
             <token regexp='yes'>block|level|century</token>
             <token>I</token>
@@ -45111,7 +45122,7 @@ The accident victim died from her injuries.
         </rule>
     <rule>
       <regexp>\b(&profanity;)\b</regexp>
-      <message>This expression can be considered offensive.</message>
+      <message>This expression is considered offensive.</message>
       <url>https://en.wiktionary.org/wiki/Category:English_offensive_terms</url>
       <example correction=""><marker>Fuck off</marker>!</example>
       <example><marker>Get out of here</marker>.</example>
@@ -45229,6 +45240,20 @@ The accident victim died from her injuries.
           <suggestion><match no="2" regexp_match="mute" regexp_replace="deaf"/></suggestion>
           <url>https://en.wikipedia.org/wiki/Deaf-mute</url>
           <example correction="Deaf"><marker>Deaf mute</marker> means a person is deaf and can't speak at all.</example>
+        </rule>
+        <rule>
+          <pattern>
+              <token regexp='yes'>hoe?s?</token>
+          </pattern>
+          <message>Possible typo. Unless you are referring unequivecally to the tool, this word can be considered offensive.</message>
+            <suggestion>how<match no='1' regexp_match='[Hh]oe?(s?)' regexp_replace='$1'/></suggestion>
+            <suggestion>owe<match no='1' regexp_match='[Hh]oe?(s?)' regexp_replace='$1'/></suggestion>
+          <url>https://en.wikipedia.org/wiki/hoe</url>
+          <example correction="How|Owe"><marker>Hoe</marker> did that happen?</example>
+          <example correction="hows|owes">The <marker>hoes</marker> are yet to be found.</example>
+          <example correction="how|owe">That <marker>hoe</marker> owes me one.</example>
+          <example type='correct'>She still owes me one.</example>
+          <example correction="how|owe">Do I owe you something? Yes, you <marker>hoe</marker>.</example>
         </rule>
         <rule>
           <pattern>
