@@ -28,6 +28,7 @@ import org.languagetool.AnalyzedSentence;
 import org.languagetool.AnalyzedTokenReadings;
 import org.languagetool.Language;
 import org.languagetool.tokenizers.WordTokenizer;
+import org.languagetool.tools.Tools;
 
 /**
  * A rule that checks for a punctuation mark at the end of a paragraph.
@@ -100,7 +101,7 @@ public class PunctuationMarkAtParagraphEnd extends TextLevelRule {
     boolean isFirstWord;
     for (int n = 0; n < sentences.size(); n++) {
       AnalyzedSentence sentence = sentences.get(n);
-      if (sentence.hasParagraphEndMark(lang) || (n == sentences.size() - 1)) {
+      if (Tools.isParagraphEnd(sentences, n, lang)) {
         AnalyzedTokenReadings[] tokens = sentence.getTokensWithoutWhitespace();
         if (tokens.length > 2) {
           isFirstWord = (isWord(tokens[1]) && !isPunctuationMark(tokens[2]))

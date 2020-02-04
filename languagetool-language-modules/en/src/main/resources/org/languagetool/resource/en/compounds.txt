@@ -967,6 +967,12 @@ lip-reader*
 lip-reading*
 lip-readings*
 lip-reads*
+lip-synced*
+lip-syncing*
+lip-synched*
+lip-synching*
+lip-syncer*
+lip-syncher*
 long-drawn*
 long-drawn-out*
 long-faced*
@@ -1205,7 +1211,7 @@ off-topic*
 off-street*
 off-white*
 old-fashioned*
-one-to-one*
+# one-to-one*
 one-upmanship*
 only-begotten*
 open-and-shut*
@@ -1464,6 +1470,7 @@ school-leaver*
 school-leavers*
 school-leaving*
 sci-fi*
+Scooby-Doo*
 scot-free*
 second-grader*
 second-graders*
@@ -1797,7 +1804,7 @@ tee-heed*
 tell-tale*
 tender-hearted*
 tender-heartedness*
-ten-year*
+# ten-year*
 # term-time* # see https://www.lexico.com/definition/term_time
 terror-stricken*
 test-driving*
@@ -3005,8 +3012,8 @@ roll-overs
 room-mate
 room-mates
 saw-horse
-#school-day # only plural noun "schooldays" exists as compound in lexico
-school-days
+# school-day # "school day" and "school days" are both valid (https://www.collinsdictionary.com/dictionary/english/school-day)
+# school-days 
 # school-time # does not exist in lexico
 scrum-half
 sea-girt
@@ -3334,8 +3341,8 @@ inter-sectionality?
 inter-sectionalities?
 Exxon-Mobil+
 pre-determined?
-pre-season?
-pre-seasons?
+pre-season$
+pre-seasons$
 bio-fuel?
 bio-fuels?
 bio-gas?
@@ -3370,6 +3377,7 @@ re-invents?
 re-invented?
 re-inventing?
 re-invention?
+re-inventions?
 hypno-birth?
 hypno-birthing?
 mis-information?
@@ -3378,3 +3386,29 @@ home-owners?
 re-authorization?
 inter-ocular?
 inter-subjective?
+door-bell?
+door-bells?
+live-streamed$
+live-streaming$
+pre-writing?
+pre-writings?
+pseudo-stratified?
+pre-installation?
+pre-installations?
+re-point?
+re-points?
+re-pointed?
+re-pointing?
+auto-fill?
+re-target?
+re-targets?
+re-targeted?
+re-targeting?
+pre-production?
+pre-productions?
+re-market?
+re-markets?
+re-marketed?
+re-marketing?
+tele-screen?
+tele-screens?

@@ -86,6 +86,18 @@ public abstract class AbstractEnglishSpellerRule extends MorfologikSpellerRule {
   }
 
   @Override
+  protected List<String> filterSuggestions(List<String> suggestions, AnalyzedSentence sentence, int i) {
+    List<String> result = super.filterSuggestions(suggestions, sentence, i);
+    List<String> clean = new ArrayList<>();
+    for (String suggestion : result) {
+      if (!suggestion.matches(".* (s|t|d|ll|ve)")) {  // e.g. 'timezones' suggests 'timezone s'
+        clean.add(suggestion);
+      }
+    }
+    return clean;
+  }
+  
+  @Override
   protected List<RuleMatch> getRuleMatches(String word, int startPos, AnalyzedSentence sentence, List<RuleMatch> ruleMatchesSoFar, int idx, AnalyzedTokenReadings[] tokens) throws IOException {
     List<RuleMatch> ruleMatches = super.getRuleMatches(word, startPos, sentence, ruleMatchesSoFar, idx, tokens);
     if (ruleMatches.size() > 0) {
@@ -198,6 +210,10 @@ public abstract class AbstractEnglishSpellerRule extends MorfologikSpellerRule {
       return Arrays.asList("A lot");
     } else if ("alot".equals(word)) {
       return Arrays.asList("a lot");
+    } else if ("ad-hoc".equals(word) || "adhoc".equals(word)) {
+      return Arrays.asList("ad hoc");
+    } else if ("Ad-hoc".equals(word) || "Adhoc".equals(word)) {
+      return Arrays.asList("Ad hoc");
     } else if ("ad-on".equals(word)) {
       return Arrays.asList("add-on");
     } else if ("acc".equals(word)) {
@@ -439,10 +455,6 @@ public abstract class AbstractEnglishSpellerRule extends MorfologikSpellerRule {
       return Arrays.asList("please");
     } else if ("Plz".equals(word)) {
       return Arrays.asList("Please");
-    } else if ("prio".equals(word)) {
-      return Arrays.asList("priority");
-    } else if ("prios".equals(word)) {
-      return Arrays.asList("priorities");
     } else if ("gmail".equals(word)) {
       return Arrays.asList("Gmail");
       // AtD irregular plurals - START

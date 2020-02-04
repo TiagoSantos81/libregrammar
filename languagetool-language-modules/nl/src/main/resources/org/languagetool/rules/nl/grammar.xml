@@ -7021,7 +7021,7 @@ onwaarschijnlijk
             <rule>
                 <pattern>
 					<token>terug</token>
-                    <token postag="BNW:STL:ONV"><exception regexp="yes">naar|na|net|waar</exception></token>
+                    <token postag="BNW:STL:ONV"><exception regexp="yes">naar|na|net|waar|waardoor</exception></token>
 				</pattern>
 				<message>In Nederland is <suggestion>weer \2</suggestion> of <suggestion>opnieuw \2</suggestion> gebruikelijk.</message>
                 <example correction="weer vrij|opnieuw vrij">Hij is <marker>terug vrij</marker>.</example>
@@ -8310,14 +8310,14 @@ onwaarschijnlijk
                     <token regexp="yes">^\P{M}{20,29}$<exception postag="UNKNOWN"/></token>
                 </pattern>
                 <message>Lange woorden kunnen een tekst lastig maken. Kan het niet eenvoudiger?</message>
-                <example type="incorrect">Ander woord voor <marker>producentenaansprakelijkheid</marker>.</example>
+                <example type="incorrect">Ander woord voor <marker>speendesinfectiemiddel</marker>.</example>
             </rule>
         </rulegroup>
         <rulegroup id="ERG_LANG_WOORD" name="Lang woord">
             <!-- TODO uitzonderingen voor websites en urls -->
             <rule>
                 <pattern>
-                    <token regexp="yes">^\p{L}{30,}$<exception postag="UNKNOWN"/></token>
+                    <token regexp="yes">^\p{L}{30,}$</token>
                 </pattern>
                 <message>Lange woorden kunnen een tekst lastig maken. Kan het niet eenvoudiger?</message>
                 <example type="incorrect">Dit conform de <marker>producentenaansprakelijkheidsverplichtingen</marker>.</example>
@@ -37625,6 +37625,9 @@ steenwijk;Steenwijk
 				<message>Het woord na 'de' is onverwacht. Kijk eens goed of er geen spatie te veel staat, 'de' 'te' of 'het' moet zijn, of nog iets anders. </message>
 				<example type="incorrect"><marker>de het</marker></example>
                 <example>Bij de overheadpass zijn beide handen aan de bal.</example> <!-- false alarm 15-12-2019 -->
+                <example>Bij de opgestane Jezus.</example> <!-- false alarm-->
+                <example>Bij de kartuizers.</example> <!-- false alarm-->
+                <example>Bij de princeps.</example> <!-- false alarm-->
 			</rule>
 		</rulegroup>
 		
@@ -37660,10 +37663,10 @@ steenwijk;Steenwijk
                 <antipattern><token postag_regexp="yes" postag="BNW:.*:IET"/><token regexp="yes">en|of</token><token postag_regexp="yes" postag="BNW:.*:IET"/></antipattern>
 				<pattern case_sensitive="yes">
 					<token/>
-					<token postag_regexp="yes" postag="BNW:.*:IET"><exception negate_pos="yes" postag_regexp="yes" postag="BNW:.*:IET"/><exception>anders</exception></token>
+                    <token postag_regexp="yes" postag="BNW:.*:IET"><exception postag_regexp="yes" postag="ZNW.*|BYW|WKW.*|BNW:.*:(ONV|VRB)"/><exception regexp="yes">slechts|nieuws|langs|wees|straks|limes|anders</exception></token>
 				</pattern>
 				<message>Gebruikelijk is 'iets kleins', maar klopt wat hier staat wel?</message>
-				<example type="incorrect"><marker>het kleins</marker>.</example>		
+				<example type="incorrect"><marker>blijven kleins</marker>.</example>		
 			</rule>
 		</rulegroup>
 	</category>	

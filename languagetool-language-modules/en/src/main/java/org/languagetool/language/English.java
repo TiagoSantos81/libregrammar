@@ -222,6 +222,7 @@ public class English extends Language implements AutoCloseable {
         //new OpenNMTRule(),     // commented out because of #903
         new ParagraphRepeatBeginningRule(messages, this),
         new PunctuationMarkAtParagraphEnd(messages, this),
+        new PunctuationMarkAtParagraphEnd2(messages, this),
         // specific to English:
         new SpecificCaseRule(messages),
         new EnglishUnpairedBracketsRule(messages, this),
@@ -326,7 +327,6 @@ public class English extends Language implements AutoCloseable {
       case "BE_I_BE_GERUND":            return -1;  // prefer other more specific rules (with suggestions)
       case "BEEN_PART_AGREEMENT":       return -2;  // prefer other more specific rules (e.g. VARY_VERY, VB_NN)
       case "A_INFINITIVE":              return -2;  // prefer other more specific rules (with suggestions, e.g. PREPOSITION_VERB)
-      case "I_MOVING":                  return -2;  // prefer other more specific rules (e.g. PRP_VBG)
       case "HE_VERB_AGR":               return -2;  // prefer other more specific rules (e.g. PRP_VBG)
       case "PRONOUN_NOUN":              return -2;  // prefer other rules (e.g. PRP_VB)
       case "EN_NONSTANDARD_SIMPLE_REPLACE": return -5;
