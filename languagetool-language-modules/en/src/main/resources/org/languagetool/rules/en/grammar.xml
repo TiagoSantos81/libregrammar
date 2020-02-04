@@ -42851,6 +42851,17 @@ The accident victim died from her injuries.
     <!-- Redundant Phrases -->
     <!-- ====================================================================== -->
     <category id="REDUNDANCY" name="Redundant Phrases" type="style">
+    <rule id="JUST_ADVERB" name="just + adverb">
+    <!-- Created by HandWritten, 2020-02-03 -->
+    <!-- https://forum.languagetool.org/t/en-new-redundancy-rule/5339 -->
+      <pattern>
+          <token>just</token>
+          <token regexp='yes' postag='RB'>barely|exactly|merely|only|simply|recently|precisely</token>
+      </pattern>
+      <message>This phrase is redundant. Consider using <suggestion><match no="2"/></suggestion>.</message>
+      <short>Redundant phrase</short>
+      <example correction='recently'>The giraffe left the zoo <marker>just recently</marker>.</example>
+    </rule>
     <rulegroup id="FORMER_ALUMNUS" name="former alumnus (alumnus)">
     <url>https://www.amherst.edu/news/communications/editorial-services-media/styleguide/node/84702</url>
     <rule>
