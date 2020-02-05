@@ -18,6 +18,8 @@
      - scientific nomenclature POS support added
 
 #### Portuguese
+  * rules added and improved, including:
+     - mesoclisis related rules added.
   * revert all grammar.xml commits from upstream project, and replace those with appropriate solutions for
     the false positives they try to fix. Most upstream solutions are either semantically incorrect, or too
     crippling to detection while not providing meaningful improvements to accuracy.
