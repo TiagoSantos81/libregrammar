@@ -659,7 +659,7 @@ title="Easy editing stylesheet" ?>
       <example>… da aprovação da Lei n.º54/2017, que procedeu à alteração…</example>
       <example>Isto foi publicado na revista Domingo.</example>
       <example>O ADN pode ser observado numa estrutura chamada cromossoma durante a metáfase.</example>
-      <example>...il, nos moldes da recém ocorrida revolução cubana ocorrida anos antes.</example>
+      <example>…il, nos moldes da recém ocorrida revolução cubana ocorrida anos antes.</example>
     </rule>
     <rule>
       <antipattern>
@@ -1322,7 +1322,7 @@ title="Easy editing stylesheet" ?>
         <suggestion><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' postag="(N.|[AD]..|Z.)[MC]P(.+)" postag_replace='$1[MC]S$2' postag_regexp="yes"/></suggestion>
         <suggestion><match no='2' postag="(D[ADIP].|N.|A..|P[^IDP].|Z.)[MC]S(.+)" postag_replace='$1[MC]P$2' postag_regexp="yes"/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' include_skipped='all'/></suggestion>
         <suggestion><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/>, <match no='5' include_skipped='all'/></suggestion>
-      <example correction='seu limite|seus limites|seu, limites'>Em <marker>seu limites</marker> há grandes propriedades rurais, que utilizam sua ...</example>
+      <example correction='seu limite|seus limites|seu, limites'>Em <marker>seu limites</marker> há grandes propriedades rurais, que utilizam sua …</example>
       <example correction='Este gato|Estes gatos|Este, gatos'><marker>Este gatos</marker> estão no pasto.</example>
       <example>Sou todo ouvidos.</example>
       <example>Uso óculos desde os 6 anos,</example>
@@ -1429,10 +1429,10 @@ title="Easy editing stylesheet" ?>
       <example>…odo estudante confia no Sr. Akai porque ele nunca quebra promessas.</example>
       <example correction='bastante mesa|bastantes mesas|bastante, mesas'>Existem <marker>bastante mesas</marker>!</example>
       <example>Algo que nos une como plataforma a tantos continentes, a tantos oceanos, a tantas culturas, a tantas civilizações</example>
-      <example correction='parte integrante|partes integrantes|parte, integrantes'>...ign industrial, ao ponto destas disciplinas serem <marker>parte integrantes</marker> dos currículos de alguns cursos superiores de eng...</example>
-      <example>...omo o maior grupo religioso do país; outro estudo estima protestantes de todas as raças em 30-35%.</example>
+      <example correction='parte integrante|partes integrantes|parte, integrantes'>...ign industrial, ao ponto destas disciplinas serem <marker>parte integrantes</marker> dos currículos de alguns cursos superiores de eng…</example>
+      <example>…omo o maior grupo religioso do país; outro estudo estima protestantes de todas as raças em 30-35%.</example>
       <example>A pneumonia causa dificuldades respiratórias.</example>
-      <example type='triggers_error'>...ções da torre, e a lama em ebulição que o rodeia, liberta grandes quantidades de gases, incluindo monóxido de carbo...</example>
+      <example type='triggers_error'>...ções da torre, e a lama em ebulição que o rodeia, liberta grandes quantidades de gases, incluindo monóxido de carbo…</example>
     </rule>
     <rule>
       <antipattern>
@@ -1457,7 +1457,7 @@ title="Easy editing stylesheet" ?>
         <suggestion><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' postag="(N.|[AD]..|Z.)[FC]P(.+)" postag_replace='$1[FC]S$2' postag_regexp="yes"/></suggestion>
         <suggestion>\2s <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' include_skipped='all'/></suggestion>
       <example correction='numa espécie|numas espécies'>Valor contido <marker>numa espécies</marker> por descobrir.</example>
-      <example correction='pela política|pelas políticas'>...cesso no setor artístico-cultural, principalmente <marker>pela políticas</marker> públicas e privadas de estímulo desse setor, como...</example>
+      <example correction='pela política|pelas políticas'>...cesso no setor artístico-cultural, principalmente <marker>pela políticas</marker> públicas e privadas de estímulo desse setor, como…</example>
       <example>Há pouco tempo quatro ex-presidentes da República jantaram na companhia.</example>
     </rule>
     <rule>
@@ -2591,7 +2591,7 @@ title="Easy editing stylesheet" ?>
       <example>O amor ou o ódio estão presentes.</example>
       <example>Outro governo preocupar-se-ia, talvez, com esta manifestação de ignorância.</example>
       <example>Dizem que ela e o marido não concordam em nada.</example>
-      <!-- example correction="minha semana tiveram|minha semana, tive">No início da <marker>minha semana tive</marker> um acidente.</example--><!-- XXX works but with messed up suggestions. needs java code fix -->
+    <!-- example correction="minha semana tiveram|minha semana, tive">No início da <marker>minha semana tive</marker> um acidente.</example--><!-- XXX works but with messed up suggestions. needs java code fix -->
       <example>No início das <marker>minhas férias, tive</marker> um acidente.</example>
     </rule>
   </rulegroup>
@@ -3447,19 +3447,69 @@ title="Easy editing stylesheet" ?>
       <example>Eu tinha-o como um bom amigo.</example>
     </rule>
 
-    <rule id='PRONOMIAL_COLOCATIONS_ADJUSTMENT_LOS' name='Colocações pronomiais: ênclise com o infinitivo (lo, la, los, las)'>
+  <rulegroup id='PRONOMIAL_COLOCATIONS_ADJUSTMENT_LOS' name='Colocações pronomiais: ênclise com o infinitivo (lo, la, los, las)'>
     <!-- Created by Tiago F. Santos, 2017-03-10 -->
+    <rule>
       <pattern>
-          <token postag_regexp='yes' postag='V.+' regexp='yes'>.+(?:r|s|z)$</token>
+          <token postag_regexp='yes' postag='V.+' regexp='yes'>.+(?:s|z)$</token>
           <token regexp='yes' spacebefore='no'>&tracos_de_separacao;</token>
           <token regexp='yes' spacebefore='no'>[oa]s?</token>
       </pattern>
       <message>As ênclises terminadas em r, s ou z exigem alteração do pronome e do verbo. A palavra poderá exigir um acento adicional na forma verbal sugerido.</message>
         <suggestion><match no='1' regexp_match='(.+)(r|s|z)$' regexp_replace='$1'/>-l\3</suggestion>
       <url>https://pt.wikipedia.org/wiki/Coloca%C3%A7%C3%A3o_pronominal#.C3.8Anclise</url>
-      <example correction='Come-las'>Estas entradas são deliciosas. Vá! <marker>Comer-as</marker>.</example>
+      <example correction='Come-las'>Estas entradas são deliciosas. Vá! <marker>Comes-as</marker>.</example>
       <example>Ele teve-a como perdida.</example>
     </rule>
+    <rule>
+      <pattern>
+          <token postag_regexp='yes' postag='V.+' regexp='yes'>.+ar$</token>
+          <token regexp='yes' spacebefore='no'>&tracos_de_separacao;</token>
+          <token regexp='yes' spacebefore='no'>[oa]s?</token>
+      </pattern>
+      <message>As ênclises terminadas em r, s ou z exigem alteração do pronome e do verbo. A palavra poderá exigir um acento adicional na forma verbal sugerido.</message>
+        <suggestion><match no='1' regexp_match='(.+)ar$' regexp_replace='$1'/>á-l\3</suggestion>
+      <url>https://pt.wikipedia.org/wiki/Coloca%C3%A7%C3%A3o_pronominal#.C3.8Anclise</url>
+      <example correction='dá-las'>Estas entradas são deliciosas. Vá! É <marker>dar-as</marker>.</example>
+      <example>Ele teve-a como perdida.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token postag_regexp='yes' postag='V.+' regexp='yes'>.+er$</token>
+          <token regexp='yes' spacebefore='no'>&tracos_de_separacao;</token>
+          <token regexp='yes' spacebefore='no'>[oa]s?</token>
+      </pattern>
+      <message>As ênclises terminadas em r, s ou z exigem alteração do pronome e do verbo. A palavra poderá exigir um acento adicional na forma verbal sugerido.</message>
+        <suggestion><match no='1' regexp_match='(.+)er$' regexp_replace='$1'/>ê-l\3</suggestion>
+      <url>https://pt.wikipedia.org/wiki/Coloca%C3%A7%C3%A3o_pronominal#.C3.8Anclise</url>
+      <example correction='comê-las'>Estas entradas são deliciosas. Vá! É <marker>comer-as</marker>.</example>
+      <example>Ele teve-a como perdida.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token postag_regexp='yes' postag='V.+' regexp='yes'>.+ir$</token>
+          <token regexp='yes' spacebefore='no'>&tracos_de_separacao;</token>
+          <token regexp='yes' spacebefore='no'>[oa]s?</token>
+      </pattern>
+      <message>As ênclises terminadas em r, s ou z exigem alteração do pronome e do verbo. A palavra poderá exigir um acento adicional na forma verbal sugerido.</message>
+        <suggestion><match no='1' regexp_match='(.+)ir$' regexp_replace='$1'/>i-l\3</suggestion>
+      <url>https://pt.wikipedia.org/wiki/Coloca%C3%A7%C3%A3o_pronominal#.C3.8Anclise</url>
+      <example correction='pedi-las'>Estas entradas são deliciosas. Vá! É <marker>pedir-as</marker>.</example>
+      <example>Ele teve-a como perdida.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token postag_regexp='yes' postag='V.+' regexp='yes'>.+[oô]r$</token>
+          <token regexp='yes' spacebefore='no'>&tracos_de_separacao;</token>
+          <token regexp='yes' spacebefore='no'>[oa]s?</token>
+      </pattern>
+      <message>As ênclises terminadas em r, s ou z exigem alteração do pronome e do verbo. A palavra poderá exigir um acento adicional na forma verbal sugerido.</message>
+        <suggestion><match no='1' regexp_match='(.+)[oô]r$' regexp_replace='$1'/>ô-l\3</suggestion>
+      <url>https://pt.wikipedia.org/wiki/Coloca%C3%A7%C3%A3o_pronominal#.C3.8Anclise</url>
+      <example correction='pô-las'>Estas entradas são deliciosas. Vá! É <marker>pôr-as</marker> na mesa.</example>
+      <example>Ele teve-a como perdida.</example>
+    </rule>
+  </rulegroup>
 
   <rulegroup id='PRONOMIAL_COLOCATIONS_NEGATIONS' name='Colocações pronomiais: próclises por negações'>
     <!-- Created by Tiago F. Santos , Portuguese rule, 2017-01-11 -->
@@ -28005,7 +28055,7 @@ TODO Write better examples
       <example correction="7 Out 2014">Festival Pop/Rock - <marker>7 Out 2013</marker></example>
       <example>Festival Pop/Rock - Terça-feira, <marker>7 Outubro 2014</marker></example>
       <example>Festival Pop/Rock - Terça-feira, <marker>7 Out 2014</marker></example>
-      <!--example correction="7 Outubro 2014">Festival Pop/Rock - <marker>7 de Outubro, 2013</marker></example--><!-- XXX the correction string is incorrect -->
+    <!--example correction="7 Outubro 2014">Festival Pop/Rock - <marker>7 de Outubro, 2013</marker></example--><!-- XXX the correction string is incorrect -->
     </rule>
     <rule>
       <pattern>
