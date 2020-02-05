@@ -391,6 +391,137 @@ title="Easy editing stylesheet" ?>
     </rule>
   </rulegroup>
 
+  <rulegroup id="REQUIRES_MESOCLISIS"  name="Gramática: Mesóclise necessária">
+    <!-- Created by Tiago F. Santos, 2020-02-05 -->
+      <url>https://pt.wikibooks.org/wiki/Portugu%C3%AAs/Coloca%C3%A7%C3%A3o_pronominal/Mes%C3%B3clise</url>
+      <short>Colocação pronominal inadequada</short>
+      <antipattern><!-- handled by GENERAL_PRONOMIAL_COLOCATIONS and PRONOMIAL_COLOCATIONS_NEGATIONS -->
+          <token regexp='yes' skip='-1'>&negacoes;|&introduz_proclise;
+            <exception scope='next' regexp='yes'>[,;—]|\(</exception></token>
+          <token postag='V.I[CF].+' postag_regexp='yes'/>
+      </antipattern>
+    <rule>
+      <pattern>
+          <token postag='V.IC.+' postag_regexp='yes'/>
+          <token regexp='yes' spacebefore='no'>&tracos_de_separacao;</token>
+          <token spacebefore='no' regexp='yes'>(?:lh|[mtsnv])(?:[ao]s?|e)<!-- https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/mesoclise-dupla-/12713 -->
+            <exception regexp='yes'>n[ao]|nas</exception></token><!-- XXX dealt by following rules -->
+      </pattern>
+      <message>Colocação pronominal inadequada. O condicional requer mesóclise.</message>
+        <suggestion><match no='1' regexp_match="(.+r)(?:ias?|íamos|íeis|iam)$" regexp_replace="$1"/>-\3-<match no='1' regexp_match="(.+r)(ias?|íamos|íeis|iam)$" regexp_replace="$2"/></suggestion>
+      <example correction='Amar-me-ia'><marker>Amaria-me</marker>.</example>
+      <example>Colocar-vos-ia.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token postag='V.IF.+' postag_regexp='yes'/>
+          <token regexp='yes' spacebefore='no'>&tracos_de_separacao;</token>
+          <token spacebefore='no' regexp='yes'>(?:lh|[mtsnv])(?:[ao]s?|e)<!-- https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/mesoclise-dupla-/12713 -->
+            <exception regexp='yes'>n[ao]|nas</exception></token><!-- XXX dealt by following rules -->
+      </pattern>
+      <message>Colocação pronominal inadequada. O futuro do indicativo requer mesóclise.</message>
+        <suggestion><match no='1' regexp_match="(.+r)(?:ei|ás?|emos|eis|ão)$" regexp_replace="$1"/>-\3-<match no='1' regexp_match="(.+r)(ei|ás?|emos|eis|ão)$" regexp_replace="$2"/></suggestion>
+      <example correction='Amar-te-ei'><marker>Amarei-te</marker>.</example>
+      <example>Colocar-vos-ia.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token postag='V.IC.+' postag_regexp='yes' regexp='yes'>(.+)ar(?:ias?|íamos|íeis|iam)$</token>
+          <token regexp='yes' spacebefore='no'>&tracos_de_separacao;</token>
+          <token spacebefore='no' regexp='yes'>[ln]?[ao]s?
+            <exception>nos</exception></token>
+      </pattern>
+      <message>Colocação pronominal inadequada. O condicional requer mesóclise.</message>
+        <suggestion><match no='1' regexp_match="(.+)ar(?:ias?|íamos|íeis|iam)$" regexp_replace="$1á"/>-l<match no='3' regexp_match="[ln]([ao]s?)" regexp_replace="$1"/>-<match no='1' regexp_match="(.+r)(ias?|íamos|íeis|iam)$" regexp_replace="$2"/></suggestion>
+      <example correction='Amá-la-ia'><marker>Amaria-a</marker>.</example>
+      <example>Colocar-vos-ia.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token postag='V.IF.+' postag_regexp='yes' regexp='yes'>(.+)ar(?:ei|ás?|emos|eis|ão)$</token>
+          <token regexp='yes' spacebefore='no'>&tracos_de_separacao;</token>
+          <token spacebefore='no' regexp='yes'>[ln]?[ao]s?
+            <exception>nos</exception></token>
+      </pattern>
+      <message>Colocação pronominal inadequada. O futuro do indicativo requer mesóclise.</message>
+        <suggestion><match no='1' regexp_match="(.+)ar(?:ei|ás?|emos|eis|ão)$" regexp_replace="$1á"/>-l<match no='3' regexp_match="[ln]([ao]s?)" regexp_replace="$1"/>-<match no='1' regexp_match="(.+r)(ei|ás?|emos|eis|ão)$" regexp_replace="$2"/></suggestion>
+      <example correction='Amá-la-ei'><marker>Amarei-la</marker>.</example>
+      <example>Colocar-vos-ia.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token postag='V.IC.+' postag_regexp='yes' regexp='yes'>(.+)er(?:ias?|íamos|íeis|iam)$</token>
+          <token regexp='yes' spacebefore='no'>&tracos_de_separacao;</token>
+          <token spacebefore='no' regexp='yes'>[ln]?[ao]s?
+            <exception>nos</exception></token>
+      </pattern>
+      <message>Colocação pronominal inadequada. O condicional requer mesóclise.</message>
+        <suggestion><match no='1' regexp_match="(.+)er(?:ias?|íamos|íeis|iam)$" regexp_replace="$1ê"/>-l<match no='3' regexp_match="[ln]([ao]s?)" regexp_replace="$1"/>-<match no='1' regexp_match="(.+r)(ias?|íamos|íeis|iam)$" regexp_replace="$2"/></suggestion>
+      <example correction='Vendê-lo-ia'><marker>Venderia-lo</marker>.</example>
+      <example>Vender-vos-ia.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token postag='V.IF.+' postag_regexp='yes' regexp='yes'>(.+)er(?:ei|ás?|emos|eis|ão)$</token>
+          <token regexp='yes' spacebefore='no'>&tracos_de_separacao;</token>
+          <token spacebefore='no' regexp='yes'>[ln]?[ao]s?
+            <exception>nos</exception></token>
+      </pattern>
+      <message>Colocação pronominal inadequada. O futuro do indicativo requer mesóclise.</message>
+        <suggestion><match no='1' regexp_match="(.+)er(?:ei|ás?|emos|eis|ão)$" regexp_replace="$1ê"/>-l<match no='3' regexp_match="[ln]([ao]s?)" regexp_replace="$1"/>-<match no='1' regexp_match="(.+r)(ei|ás?|emos|eis|ão)$" regexp_replace="$2"/></suggestion>
+      <example correction='Vendê-lo-ei'><marker>Venderei-lo</marker>.</example>
+      <example>Vender-vos-ei.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token postag='V.IC.+' postag_regexp='yes' regexp='yes'>(.+)ir(?:ias?|íamos|íeis|iam)$</token>
+          <token regexp='yes' spacebefore='no'>&tracos_de_separacao;</token>
+          <token spacebefore='no' regexp='yes'>[ln]?[ao]s?
+            <exception>nos</exception></token>
+      </pattern>
+      <message>Colocação pronominal inadequada. O condicional requer mesóclise.</message>
+        <suggestion><match no='1' regexp_match="(.+)ir(?:ias?|íamos|íeis|iam)$" regexp_replace="$1i"/>-l<match no='3' regexp_match="[ln]([ao]s?)" regexp_replace="$1"/>-<match no='1' regexp_match="(.+r)(ias?|íamos|íeis|iam)$" regexp_replace="$2"/></suggestion>
+      <example correction='Pedi-lo-ia'><marker>Pediria-lo</marker>.</example>
+      <example>Pedir-vos-ia.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token postag='V.IF.+' postag_regexp='yes' regexp='yes'>(.+)ir(?:ei|ás?|emos|eis|ão)$</token>
+          <token regexp='yes' spacebefore='no'>&tracos_de_separacao;</token>
+          <token spacebefore='no' regexp='yes'>[ln]?[ao]s?
+            <exception>nos</exception></token>
+      </pattern>
+      <message>Colocação pronominal inadequada. O futuro do indicativo requer mesóclise.</message>
+        <suggestion><match no='1' regexp_match="(.+)ir(?:ei|ás?|emos|eis|ão)$" regexp_replace="$1i"/>-l<match no='3' regexp_match="[ln]([ao]s?)" regexp_replace="$1"/>-<match no='1' regexp_match="(.+r)(ei|ás?|emos|eis|ão)$" regexp_replace="$2"/></suggestion>
+      <example correction='Pedi-lo-ei'><marker>Pedirei-lo</marker>.</example>
+      <example>Pedir-vos-ei.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token postag='V.IC.+' postag_regexp='yes' regexp='yes'>(.+)[oô]r(?:ias?|íamos|íeis|iam)$</token>
+          <token regexp='yes' spacebefore='no'>&tracos_de_separacao;</token>
+          <token spacebefore='no' regexp='yes'>[ln]?[ao]s?
+            <exception>nos</exception></token>
+      </pattern>
+      <message>Colocação pronominal inadequada. O condicional requer mesóclise.</message>
+        <suggestion><match no='1' regexp_match="(.+)[oô]r(?:ias?|íamos|íeis|iam)$" regexp_replace="$1ô"/>-l<match no='3' regexp_match="[ln]([ao]s?)" regexp_replace="$1"/>-<match no='1' regexp_match="(.+r)(ias?|íamos|íeis|iam)$" regexp_replace="$2"/></suggestion>
+      <example correction='Pô-lo-ia'><marker>Poria-lo</marker>.</example>
+      <example>Vender-vos-ia.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token postag='V.IF.+' postag_regexp='yes' regexp='yes'>(.+)[oô]r(?:ei|ás?|emos|eis|ão)$</token>
+          <token regexp='yes' spacebefore='no'>&tracos_de_separacao;</token>
+          <token spacebefore='no' regexp='yes'>[ln]?[ao]s?
+            <exception>nos</exception></token>
+      </pattern>
+      <message>Colocação pronominal inadequada. O futuro do indicativo requer mesóclise.</message>
+        <suggestion><match no='1' regexp_match="(.+)[oô]r(?:ei|ás?|emos|eis|ão)$" regexp_replace="$1ô"/>-l<match no='3' regexp_match="[ln]([ao]s?)" regexp_replace="$1"/>-<match no='1' regexp_match="(.+r)(ei|ás?|emos|eis|ão)$" regexp_replace="$2"/></suggestion>
+      <example correction='Pô-lo-ei'><marker>Porei-lo</marker>.</example>
+      <example>Pôr-vos-ei.</example>
+    </rule>
+  </rulegroup>
+
   <rulegroup id="POSSESSIVE_WITHOUT_ARTICLE" name="Determinante possessivo sem artigo">
     <!-- Improved by Tiago F. Santos, Portuguese rule, 2016-10-18 	-->
     <!--     Base rule id="A_SUA" name="a sua" by Marco Pinto	-->
