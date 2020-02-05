@@ -566,21 +566,60 @@ USA
             <suggestion>\1\2\3\4</suggestion>
             <example correction="doesn't">He <marker>does n't</marker> like her.</example>
         </rule>
-        <rulegroup id="ISSUES_WITH_CONTRACTIONS" name="Contraction errors: e.g. did'nt->didn't">
-        <!-- Created by Tiago F. Santos, 2018-11-25 -->
+        
+      <rulegroup id="INCORRECT_CONTRACTIONS" name="Contraction errors: e.g. did'nt->didn't" default="temp_off">
           <url>https://en.wikipedia.org/wiki/Wikipedia:List_of_English_contractions</url>
           <rule>
-<!-- Cannot use antipattern with regexp            <antipattern>
-              <token>hell</token>
-              <token spacebefore="no" regexp="yes">&apostrophe;</token>
-              <token spacebefore="no">s</token>
-            </antipattern>-->
-            <regexp>\b((a[im]|are|ca|could|dares?|das|did|do(es)?|has|have|is|ought|sha|should|was|wo)(&apostrophe;n?t|n&apostrophe;[^t])|(?:I|you|s?he|it|we|they)([ds]&apostrophe;|l&apostrophe;l|l?l&apostrophe;|v&apostrophe;e|ve&apostrophe;)|(oc&apostrophe;lock))\b</regexp>
-            <message>This contraction is incorrect. Please, check the apostrophe position.</message>
-            <example correction="">...it <marker>did'nt</marker> work.</example>
-            <example>... it didn't work.</example>
-            <example type="triggers_error">Have you seen the film Hell's Angels (https://www.imdb.com/title/tt0020960/)?</example>
-            <example type="triggers_error">Sometimes, I think about hell's deep symbolism.</example>
+            <pattern>
+                <token regexp="yes">does|is|are|was|were|did|do|has|have|had|should|would|could|must</token>
+                <token regexp="yes">&apostrophe;</token>
+                <token regexp="yes" case_sensitive="yes">n?t</token>
+            </pattern>
+            <message>Did you mean <suggestion>\1n\2t</suggestion>?</message>
+            <example correction="isn't">This <marker>is'nt</marker> true!</example>
+            <example correction="didn't">It <marker>did' t</marker> work.</example>
+          </rule>
+          <rule>
+            <pattern>
+                <token regexp="yes">doesn|isn|aren|wasn|weren|didn|hasn|hadn|shouldn|wouldn|couldn|mustn</token>
+                <token regexp="yes">&apostrophe;</token>
+                <token regexp="yes" case_sensitive="yes">s</token>
+            </pattern>
+            <message>Did you mean <suggestion>\1\2t</suggestion>?</message>
+            <example correction="hasn't">This <marker>hasn's</marker> happened!</example>
+            <example>New Haven's principal commerical corrdiors</example>
+            <example>Have you seen Don's new car?</example>
+          </rule>
+          <rule>
+            <pattern>
+                <marker>
+                    <token regexp="yes">doesn|isn|aren|wasn|weren|don|won|didn|hasn|hadn|shouldn|wouldn|couldn|mustn</token>
+                    <token regexp="yes">&apostrophe;</token>
+                </marker>
+                <token><exception regexp="yes">t|s</exception></token>
+            </pattern>
+            <message>Did you mean <suggestion>\1\2t</suggestion>?</message>
+            <example correction="hasn't">This <marker>hasn'</marker> happened!</example>
+          </rule>
+          <rule>
+            <pattern>
+                <token regexp="yes">doesnt|isnt|arent|wasnt|werent|didnt|dont|wont|hasnt|hadnt|shouldnt|wouldnt|couldnt|mustnt</token>
+                <token regexp="yes">&apostrophe;</token>
+                <token>t</token>
+            </pattern>
+            <message>Did you mean <suggestion><match no="1" regexp_match="t$" regexp_replace="'t" /></suggestion>?</message>
+            <example correction="hasn't">This <marker>hasnt't</marker> happened.</example>
+          </rule>
+          <rule>
+            <pattern>
+                <marker>
+                    <token regexp="yes">doesnt|isnt|arent|wasnt|werent|didnt|dont|wont|hasnt|hadnt|shouldnt|wouldnt|couldnt|mustnt</token>
+                    <token regexp="yes">&apostrophe;</token>
+                </marker>
+                <token><exception>t</exception></token>
+            </pattern>
+            <message>Did you mean <suggestion><match no="1" regexp_match="(?i)t$" regexp_replace="'t" /></suggestion>?</message>
+            <example correction="hasn't">This <marker>hasnt'</marker> happened.</example>
           </rule>
         </rulegroup>
         <rulegroup id="PERS_PRON_CONTRACTION" name="I'l (I'll) etc.">
@@ -9869,6 +9908,10 @@ USA
                 <token>piggy</token><!-- "piggy back" needs rule (written as one word) -->
                 <token>back</token>
             </antipattern>
+            <antipattern><!-- https://www.lexico.com/definition/island-hop -->
+                <token>island</token>
+                <token>hop</token>
+            </antipattern>
             <antipattern>
                 <token postag="MD" skip="2" />
                 <token>matter</token><!-- It will matter -->
@@ -9899,7 +9942,7 @@ USA
             </antipattern>
             <antipattern><!-- nouns that are verbs when written as two words, needs different rule with suggestion -->
                 <token postag="MD" skip="2" />
-                <token regexp="yes">run\-?off|slow\-?down|roll\-?back|hang\-?out|hand\-?off|shout\-?out|short\-?cut|plug\-?in|drop\-?down|sleep\-?over|start\-?up|pop\-?up|voiceover|cash\-?out|print\-?out|line\-?up|catch\-?up|call\-?back|stand\-?by|try\-?out|kick\-off|stand\-?up|come\-?back|stand\-?alone|lay\-?off|burn\-?out|sign\-?up|sign\-?in|sign\-?out|log\-?out|log\-?in|take\-?over|mark\-?up|log\-?on|set\-?up|pick\-?up|feed\-?back|back\-?up|walk\-?through|break\-?out|break\-?through|hook\-?up|shut\-?off|break\-?down|pay\-off|time\-?out|clean\-?up|look\-?up|look\-?out|roll\-?out|work\-?out|make\-?up|follow\-?up|check\-?out|check\-?in|lay\-?out|work\-?around|shut\-?down|fall\-?back</token>
+                <token regexp="yes">run\-?off|slow\-?down|white\-list|roll\-?back|hang\-?up|hang\-?out|hand\-?off|shout\-?out|short\-?cut|plug\-?in|drop\-?down|sleep\-?over|start\-?up|pop\-?up|voiceover|cash\-?out|print\-?out|line\-?up|catch\-?up|call\-?back|stand\-?by|try\-?out|kick\-off|stand\-?up|come\-?back|stand\-?alone|lay\-?off|burn\-?out|sign\-?up|sign\-?in|sign\-?out|log\-?out|log\-?in|take\-?over|mark\-?up|log\-?on|set\-?up|pick\-?up|feed\-?back|back\-?up|walk\-?through|break\-?out|break\-?through|hook\-?up|shut\-?off|break\-?down|pay\-off|time\-?out|clean\-?up|look\-?up|look\-?out|roll\-?out|work\-?out|make\-?up|follow\-?up|check\-?out|check\-?in|lay\-?out|work\-?around|shut\-?down|fall\-?back</token>
             </antipattern>
             <antipattern case_sensitive="yes"><!-- A.I -->
                 <token regexp="yes">[A-Z]</token>
@@ -9909,6 +9952,10 @@ USA
             <antipattern><!-- "I must mercy them" https://en.wiktionary.org/wiki/mercy#Verb -->
                 <token>mercy</token>
                 <token regexp="yes">me|them|him|her|us|it</token>
+            </antipattern>
+            <antipattern>
+                <token postag="VB.*" postag_regexp="yes" />
+                <token regexp="yes">that|this</token>
             </antipattern>
             <rule>
                 <pattern>
@@ -9952,6 +9999,7 @@ USA
                 <example correction="could be potential|could have potential">This <marker>could potential</marker> increase our dues.</example>
                 <example correction="could be potential|could have potential">But Tom <marker>could potential</marker> increase our revenue.</example>
                 <example>Why would I need one?</example>
+                <example>The only difference is that should chocolate milk be made with soya ...</example>
                 <example>I recommend going to Tom should unfortunate things happen.</example>
                 <example>May 16th, 2017</example>
                 <example>Yes Thursday may 18th.</example>
@@ -12891,7 +12939,7 @@ USA
                         <token case_sensitive="yes">french</token>
                     </marker>
                     <token postag="JJ.*" postag_regexp="yes" min="0" />
-                    <token regexp="yes">presidents?|wars?|versions?|manicures?|websites?|sites?|university|universities|side|governments?|keyboards?|learners?|organi[zs]ations?|associations?|food|restaurants?|tutors?|lessons?|teachers?|students?|residents?|colleagues?|cars?|speakers?|press|translations?|translators?|regions?|military|guys?|toast|country|city|cities|community|towns?|accents?|people|villages?|words?|languages?|states?|citizens?|football|literature|laws?|revolution|\.|\!|\?</token>
+                    <token regexp="yes">presidents?|bulldogs?|wars?|versions?|manicures?|websites?|sites?|university|universities|side|governments?|keyboards?|learners?|organi[zs]ations?|associations?|food|restaurants?|tutors?|lessons?|teachers?|students?|residents?|colleagues?|cars?|speakers?|press|translations?|translators?|regions?|military|guys?|toast|country|city|cities|community|towns?|accents?|people|villages?|words?|languages?|states?|citizens?|football|literature|laws?|revolution|\.|\!|\?</token>
                 </pattern>
                 <message><suggestion>French</suggestion> needs to be capitalized when not used as a verb.</message>
                 <example correction="French">The <marker>french</marker> government.</example>
@@ -15455,7 +15503,15 @@ USA
             <url>https://en.wikipedia.org/wiki/WhatsApp</url>
             <example correction="WhatsApp|What's up">He is using <marker>Whats App</marker> to communicate with his friends.</example>
         </rule>
-        <rulegroup id="SUPER_TUESDAY" name="Super Tuesday" default="temp_off">
+        <rule id="ERDOGAN" name="Erdogan (Erdoğan)" default="temp_off">
+            <pattern>
+                <token>Erdogan</token>
+            </pattern>
+            <message>The name of the Turkish politician is spelled <suggestion>Erdoğan</suggestion> (= Recep Tayyip Erdoğan).</message>
+            <url>https://en.wikipedia.org/wiki/Recep_Tayyip_Erdo%C4%9Fan</url>
+            <example correction="Erdoğan"><marker>Erdogan</marker> is president of Turkey.</example>
+        </rule>
+        <rulegroup id="SUPER_TUESDAY" name="Super Tuesday">
             <url>https://en.wikipedia.org/wiki/Super_Tuesday</url>
             <antipattern case_sensitive="yes">
                 <token>Super</token>
@@ -15517,7 +15573,7 @@ USA
             <url>https://en.wikipedia.org/wiki/Forrest_Gump</url>
             <example correction="Forrest Gump">He watched <marker>forest gump</marker> in his favorite cinema.</example>
         </rule>
-        <rule id="NEW_ZEELAND" name="New Zeeland (Zealand)" default="temp_off">
+        <rule id="NEW_ZEELAND" name="New Zeeland (Zealand)">
             <pattern>
                 <token>new</token>
                 <token regexp="yes">zeeland|sealand</token>
@@ -16029,7 +16085,7 @@ USA
             <url>https://www.merriam-webster.com/dictionary/open-heart</url>
             <example correction="Open-heart"><marker>Open heart</marker> surgery is an operation to repair a fault or damage in the heart.</example>
         </rule>
-        <rulegroup id="ALL_KNOWING_HYPHEN" name="missing hyphen in 'all knowing'" default="temp_off">
+        <rulegroup id="ALL_KNOWING_HYPHEN" name="missing hyphen in 'all knowing'">
             <url>https://www.lexico.com/definition/all-knowing</url>
             <rule>
                 <pattern>
@@ -16803,7 +16859,7 @@ USA
                     <token>made</token>
                 </marker>
                 <token min="0">natural</token>
-                <token regexp="yes">islands?|fibres?|disasters?|crisis|diamonds?|diseases?|damages?|earthquakes?|eggs?|elements?|forests?|fruits?|lakes?|beach(es)?|resources?|attractions?|jewels|jewelr(y|ies)|jungle|products?|nature|clouds?|honey?|hybrids?|hazards?|hurricanes?|animals?|galler(y|ies)|granite|greenhouse|materials?|monsters?|mountains?|noise?|objects?|pollution|rivers?|rain|rocks|radiation|risks?|structures?|storms?|snow|satellites?|sources?|tsunamis?|tourist|textiles?|tornados?|vegetables?|virus(es)?|waterfalls?|wood|wonders|water|zoo</token>
+                <token regexp="yes">islands?|fibres?|disasters?|crisis|diamonds?|diseases?|damages?|freshwater|meadows?|earthquakes?|eggs?|elements?|forests?|fruits?|lakes?|beach(es)?|resources?|attractions?|jewels|jewelr(y|ies)|jungle|products?|nature|clouds?|honey?|hybrids?|hazards?|hurricanes?|animals?|galler(y|ies)|granite|greenhouse|materials?|monsters?|mountains?|noise?|objects?|pollution|rivers?|rain|rocks|radiation|risks?|structures?|storms?|snow|satellites?|sources?|tsunamis?|tourist|textiles?|tornados?|vegetables?|virus(es)?|waterfalls?|wood|wonders|water|zoo</token>
             </pattern>
             <message>It appears that a hyphen is missing.</message>
             <suggestion><match no="1" />-<match no="2" /></suggestion>
@@ -21365,18 +21421,42 @@ USA
                     <token>to</token>
                     <token/>
                 </antipattern>
+                <antipattern><!-- from books to zips -->
+                    <token>from</token>
+                    <token chunk="E-NP-plural" postag="NNS"/>
+                    <token>to</token>
+                    <token chunk="E-NP-plural" postag="NNS"/>
+                </antipattern>
+                <antipattern><!-- to beavers and squirrels -->
+                    <token>to</token>
+                    <token chunk="B-NP-plural" postag="NNS"/>
+                    <token chunk="I-NP-plural" regexp="yes">and|or</token>
+                    <token chunk="E-NP-plural" postag="NNS"/>
+                </antipattern>
+                <antipattern><!-- added to purchases -->
+                    <token postag_regexp="yes" postag="VB[DGNPZ]?"/>
+                    <token>to</token>
+                    <token chunk="E-NP-plural" postag="NNS"/>
+                </antipattern>
+                <antipattern><!-- message to does  -->
+                    <token chunk="E-NP-singular" postag_regexp="yes" postag="NN(:UN?)?"/>
+                    <token>to</token>
+                    <token>does</token>
+                </antipattern>
                 <pattern>
                     <token postag_regexp="yes" postag="VB[DGNPZ]?"/>
                     <token min="0">not</token>
                     <token>to</token>
                     <marker>
-                        <token postag="VBZ"><exception>is</exception><exception postag="NNS|NNPS?" postag_regexp="yes"/></token>
+                        <token postag="VBZ"><exception>is</exception><exception postag="NNPS?" postag_regexp="yes"/></token>
                     </marker>
                 </pattern>
                 <message>The verb after "to" should be in the base form: <suggestion><match no="4" postag="VB"/></suggestion>.</message>
                 <short>Grammatical problem: use the base form</short>
                 <example correction="learn">I was surprised to <marker>learns</marker> this.</example>
-                <example correction="laugh">He tried not to <marker>laughs</marker>.</example>
+                <example correction="laugh">He tried not to <marker>laughs</marker>.</example><!-- laughs/E-NP-plural, thus do not use chunk in the pattern -->
+                <example correction="say">What would it have to <marker>says</marker>?</example>
+                <example correction="award">Film companies will spend as much as several million dollars on marketing to <marker>awards</marker> voters for a movie in the running for Best Picture, in attempts to improve chances of receiving Oscars and other movie awards conferred in Oscar season.</example><!-- The sentence from https://en.wikipedia.org/wiki/Academy_Awards does not make sense to me -->
                 <example>I was surprised to <marker>learn</marker> this.</example>
                 <example>Morocco's disputed claim to portions of western Algeria</example>
                 <example>He spoke to chosen people.</example>
@@ -21388,17 +21468,62 @@ USA
                 <example>What happens to babies who are born at sea?</example>
                 <example>The guy who we spoke to seems fair.</example>
                 <example>Whichever college he wants to go to is fine with me.</example>
-                <!-- FIXME: 'says' is NNS -->
-                <!--  example correction="say">What would it have to <marker>says</marker>?</example -->
-                <example correction="learn">I was surprised to <marker>learns</marker> this.</example>
-                <!-- 'gets' is NNS
-                example correction="get">She is manipulating her father to <marker>gets</marker> her way.</example -->
+                <example>You must confirm not to Bill but to Joe.</example>
+                <example>We have all types of products from books to zips.</example>
+                <example>... for cities and counties are also added to purchases.</example>
+                <example>More than 7,500 were jailed or deported to places like New Caledonia. </example>
+                <example>... status in the colonial system, gave rise to demands for greater political autonomy, and eventual...</example>
+                <example>Such scripts are to tone what abjads are to vowels. </example>
+                <example>...review the talk page before making changes to lines to see if there is a previous established...</example>
+                <example>Rabbits are related to beavers and squirrels.</example>
+                <example>The user you to want to send this message to does not exist.</example>
+                <example>The user that you to want to send this message to does (I think) not really exist.</example>
+                <example>The users that the technician wants to send these messages to does not exist.</example>
+            </rule>
+            <rule><!-- MFU 2020-02-05 he tried to laughs. This pattern (except for the NNP exception) was in disambiguation.xml -->
+                <antipattern><!-- agree to terms and conditions -->
+                    <token>to</token>
+                    <token chunk="B-NP-plural" postag="NNS"/>
+                    <token chunk="I-NP-plural" regexp="yes">and|or</token>
+                    <token chunk="E-NP-plural" postag="NNS"/>
+                </antipattern>
+                <antipattern><!-- offered to schools in -->
+                    <token>to</token>
+                    <token chunk="E-NP-plural" postag="NNS"/>
+                    <token postag="IN"/>
+                </antipattern>
+                <pattern>
+                    <token inflected="yes" regexp="yes" postag="VB.*" postag_regexp="yes">agree|aim|appear|arrange|ask|attempt|beg|afford|wait|choose|claim|decide|demand|desire|expect|fail|guarantee|happen|help|hope|manage|offer|plan|prepare|pretend|promise|prove|refuse|seem|tend|threaten|undertake|want|wish|begin|bother|continue|intend|propose|start|forget|like|mean|need|regret|remember|stop|try</token>
+                    <token>to</token>
+                    <marker>
+                        <token postag="VBZ">
+                            <exception postag_regexp="yes" postag="NNPS?"/>
+                            </token>
+                    </marker>
+                </pattern>
+                <message>The verb after "to" should be in the base form: <suggestion><match no="3" postag="VB"/></suggestion>.</message>
+                <short>Grammatical problem: use the base form</short>
+                <example correction="laugh">He tried to <marker>laughs</marker>.</example>
+                <example correction="piece">You’ll need to <marker>pieces</marker>.</example>
+                <example correction="continue">Those who want to <marker>continues</marker> developing under emacs or sublime...</example>
+                <example correction="provide">But, to start with, you need to <marker>provides</marker> us with more information.</example>
+                <example correction="highlight">Also, I’d like to <marker>highlights</marker> 2 things:</example>
+                <example>He tried to <marker>laugh</marker>.</example>
+                <example>... so users don’t need to agree to terms and conditions.</example>
+                <example>... device in a laptop form factor offered to schools in 1997 as an inexpensive ($799 US, original...</example>
+                <example>... and what happened to Bills at the convention.</example>
+                <example type="triggers_error">... is like what happened to Divines: several troops were ...</example>
             </rule>
             <rule>
                 <antipattern>
                     <token>to</token>
                     <token postag="VBN"/>
                     <token postag="NN.*" postag_regexp="yes"/>
+                </antipattern>
+                <antipattern><!-- taught to beginning students -->
+                    <token>to</token>
+                    <token postag="JJ"/>
+                    <token postag="NNS"/>
                 </antipattern>
                 <pattern>
                     <token inflected="yes" regexp="yes" skip="2">advise|ask|encourage|invite|order|persuade|remind|warn|expect|intend|want|allow|enable|force|teach|convince|manipulate|try<exception scope="next">,</exception></token>
@@ -21412,6 +21537,8 @@ USA
                 <example correction="get">She is manipulating her father to <marker>got</marker> her way.</example>
                 <example correction="lift">He tried very hard to <marker>lifted</marker> the rock.</example>
                 <example>She teaches English to advanced students.</example>
+                <example>...incorrect Bohr model is still often taught to beginning students.</example>
+                <example>She sometimes teaches to interesting students, but usually they are quite boring.</example>
             </rule>
             <rule>
                 <antipattern><!-- invited to dances occasionally -->
@@ -24950,12 +25077,19 @@ USA
         </rule>
         <rule id="DIDINT" name="he didin't (didn't)">
             <pattern>
-                <token regexp="yes">didin|din|did</token>
+                <token regexp="yes">didin|diden|din|did</token>
                 <token regexp="yes">&apostrophe;</token>
                 <token>t</token>
             </pattern>
             <message>Did you mean <suggestion>didn\2t</suggestion>?</message>
             <example correction="didn't">He <marker>didin't</marker> know about it.</example>
+        </rule>
+        <rule id="DIDENT" name="he dident (didn't)">
+            <pattern>
+                <token>dident</token>
+            </pattern>
+            <message>Did you mean <suggestion>didn't</suggestion>?</message>
+            <example correction="didn't">He <marker>dident</marker> know about it.</example>
         </rule>
         <rule id="PRP_DINT" name="he dint (didn't)">
             <pattern>
@@ -25068,7 +25202,19 @@ USA
             <url>https://www.merriam-webster.com/dictionary/go</url>
             <example correction="goes">He <marker>gos</marker> home.</example>
         </rule>
-        <rule id="HE_HIS" name="he his (is)" default="temp_off">
+        <rule id="PRP_WUS" name="he wos (was)">
+            <pattern>
+                <token regexp="yes">s?he|it</token>
+                <token postag="RB" min="0" />
+                <marker>
+                    <token regexp="yes">w[ou]s</token>
+                </marker>
+            </pattern>
+            <message>Did you mean <suggestion>was</suggestion>?</message>
+            <url>https://www.merriam-webster.com/dictionary/was</url>
+            <example correction="was">He <marker>wos</marker> home.</example>
+        </rule>
+        <rule id="HE_HIS" name="he his (is)">
             <antipattern>
                 <token postag="VB.*|IN|UNKNOWN" postag_regexp="yes" />
                 <token>it</token>
@@ -25100,7 +25246,7 @@ USA
             <url>https://www.merriam-webster.com/dictionary/come</url>
             <example correction="came">He <marker>cam</marker> to help.</example>
         </rule>
-        <rule id="PRP_SOOTHS" name="it sooths (soothes)" default="temp_off">
+        <rule id="PRP_SOOTHS" name="it sooths (soothes)">
             <pattern>
                 <token regexp="yes">s?he|it|we|they|I</token>
                 <token postag="RB" min="0" />
@@ -25112,7 +25258,7 @@ USA
             <url>https://www.merriam-webster.com/dictionary/soothe</url>
             <example correction="soothes">It <marker>sooths</marker> my skin.</example>
         </rule>
-        <rule id="PRP_DISCUSES" name="he discuses (discusses)" default="temp_off">
+        <rule id="PRP_DISCUSES" name="he discuses (discusses)">
             <pattern>
                 <token regexp="yes">s?he|it</token>
                 <token postag="RB" min="0" />
@@ -25124,7 +25270,7 @@ USA
             <url>https://www.merriam-webster.com/dictionary/discuss</url>
             <example correction="discusses">He <marker>discuses</marker> the topic.</example>
         </rule>
-        <rule id="PRP_KNOWNS" name="he knowns (knows)" default="temp_off">
+        <rule id="PRP_KNOWNS" name="he knowns (knows)">
             <pattern>
                 <token regexp="yes">s?he|it</token>
                 <token postag="RB" min="0" />
@@ -25272,7 +25418,7 @@ USA
                     <token>apologies</token>
                 </antipattern>
                 <antipattern>
-                    <token regexp="yes">response|subject</token>
+                    <token regexp="yes">response|subject|similar</token>
                     <token>to</token>
                 </antipattern>
                 <pattern>
@@ -25344,7 +25490,7 @@ USA
                     <token>priorities</token>
                 </antipattern>
                 <antipattern>
-                    <token regexp="yes">response|subject</token>
+                    <token regexp="yes">response|subject|similar</token>
                     <token>to</token>
                 </antipattern>
                 <pattern>
@@ -25472,6 +25618,10 @@ USA
                 <token postag="RB" min="0" />
                 <token postag="JJ" />
             </antipattern>
+            <antipattern case_sensitive="yes"><!-- online shop -->
+                <token>ABOUT</token>
+                <token>YOU</token>
+            </antipattern>
             <antipattern>
                 <token regexp="yes">aren|isn|wasn|weren|ain</token>
                 <token regexp="yes">&apostrophe;</token>
@@ -25583,6 +25733,11 @@ USA
                 <token spacebefore="no">.</token>
                 <token spacebefore="no">I</token>
             </antipattern>
+            <antipattern><!-- has he amazing skills -->
+                <token inflected="yes">have</token>
+                <token regexp="yes">s?he|it|we|they|I</token>
+                <token postag="JJ" />
+            </antipattern>
             <rule>
                 <pattern>
                     <token regexp="yes">s?he|it</token>
@@ -25600,6 +25755,7 @@ USA
                 <example>Wire it up using jumper wires.</example><!-- see #2403 -->
                 <example>What is he currently doing?</example>
                 <example>I’m very worried about it not running tomorrow or it just stopping and it being pricey to fix.</example>
+                <example>Has he amazing skills or not?</example>
             </rule>
             <rule><!-- TODO: what (is) she doing? -->
                 <pattern>
@@ -30459,6 +30615,19 @@ USA
                 <token />
                 <token postag="SENT_END" regexp="yes">\p{P}</token>
             </antipattern>
+            <antipattern>
+                <token />
+                <token />
+                <token regexp="yes">it|you</token>
+                <token postag="SENT_END" regexp="yes">folks|guys</token>
+            </antipattern>
+            <antipattern>
+                <token />
+                <token />
+                <token regexp="yes">it|you</token>
+                <token regexp="yes">folks|guys</token>
+                <token postag="PCT" />
+            </antipattern>
             <antipattern><!-- you bastards -->
                 <token>you</token>
                 <token postag="SENT_END" />
@@ -30482,6 +30651,10 @@ USA
                 <token>you</token>
                 <token/>
                 <token regexp="yes">[,!\.]</token>
+            </antipattern>
+            <antipattern case_sensitive="yes"><!-- online shop -->
+                <token>ABOUT</token>
+                <token>YOU</token>
             </antipattern>
             <antipattern case_sensitive="yes"><!-- Division I Basketball Championship -->
                 <token regexp="yes">[A-Z][a-z].+</token>
@@ -30508,11 +30681,10 @@ USA
                 <token regexp="yes">kind|sort</token>
                 <token>of</token>
             </antipattern>
-            <antipattern><!-- the more of it producers will supply -->
-                <token>of</token>
+            <antipattern><!-- "the more of it producers will supply", "I'm sharing with you insights and statistics about yesterday's traffic."" -->
+                <token postag="VB.*" postag_regexp="yes" />
+                <token postag="IN|TO" postag_regexp="yes" />
                 <token regexp="yes">you|it</token>
-                <token postag="NNS"/>
-                <token postag_regexp="yes" postag="MD|VB[PD]?"/>
             </antipattern>
             <antipattern><!-- with it something of / in it nothing can -->
                 <token postag="IN"/>
@@ -30537,6 +30709,14 @@ USA
             <antipattern><!-- we Argentinians -->
                 <token regexp="yes">we|you</token>
                 <token postag="NNPS"/>
+                <token postag="RB.*" postag_regexp="yes" min="0" />
+                <token postag="VB.*|MD" postag_regexp="yes" />
+            </antipattern>
+            <antipattern><!-- we children cannot do it -->
+                <token>we</token>
+                <token regexp="yes">children|democrats|republicans</token>
+                <token postag="RB.*" postag_regexp="yes" min="0" />
+                <token postag="VB.*|MD" postag_regexp="yes" />
             </antipattern>
             <antipattern><!-- World War I -->
                 <token regexp="yes">current|Article|mustang|war|phase|grade</token>
@@ -30546,14 +30726,23 @@ USA
                 <token regexp="yes">ha[ds]</token>
                 <token regexp="yes">s?he|it</token>
             </antipattern>
-            <?ignore since in standard English the expression is "provide you information"
-            <antipattern><!-- #2251 provide to you information -->
-                <token postag_regexp="yes" postag="VB.*"/>
-                <token>to</token>
-                <token regexp="yes">you|it</token>
-                <token postag_regexp="yes" postag="NN:UN?"/>
+            <antipattern><!-- #2304 burned - most of it bushland, forests and national parks, which -->
+                <token postag_regexp="yes" postag="VB[DN]"/>
+                <token regexp="yes">-|—|–|,|;</token><!-- hyphen, m-dash, n-dash, comma, semicolon -->
+                <token regexp="yes">much|most</token>
+                <token>of</token>
+                <token>it</token>
+                <token postag_regexp="yes" postag="NN.*"/>
+                <token>,</token>
+                <token postag_regexp="yes" postag="NN.*"/><!-- forests/VBZ, thus cannot use an exception for VBZ -->
+                <token min="0" max="1">,</token>
+                <token>and</token>
+                <token chunk="B-NP-plural" postag_regexp="yes" postag="NN.*|JJ"/>
+                <token min="0" max="1" chunk="I-NP-plural" postag_regexp="yes" postag="NN.*|JJ"/>
+                <token chunk="E-NP-plural" postag="NNS"/>
+                <token min="0" max="1">,</token>
+                <token regexp="yes">which|that</token>
             </antipattern>
-            ?>
             <antipattern><!-- I wouldn’t read within it anything other than the half (of the Qur’an) that I had previously memorized -->
                 <token postag="VB.*" postag_regexp="yes" />
                 <token regexp="yes">(with)?in</token>
@@ -30600,6 +30789,7 @@ USA
             <example>... if I ask you anything else today.</example>
             <example>I wouldn’t read within it anything other than the half (of the Qur’an) that I had previously memorized.</example>
             <example>They sold you garbage!</example>
+            <example>I'm sharing with you insights and statistics about yesterday's traffic.</example>
             <example>It would take me too much time to explain to you why it's not going to work.</example>
             <example>Who wrote 'The World As I See It'?</example>
             <example>…success of the NCAA Men's Division I Basketball Championship.</example>
@@ -30636,9 +30826,7 @@ USA
             <example type="triggers_error">... and by providing to it data which it will use in its calculations.</example><!-- #2251 -->?>
             <example>... and by providing it data which it will use in its calculations.</example><!-- #2251 -->
             <example>Peter and him have someone they know and Ralph admires.</example><!-- #2252 -->
-            <?ignore in this project it triggers error. correct examples follows since interpretation without punctuation has ambiguous meaning.
             <example>Nearly 18 million acres of land have been burned - most of it bushland, forests and national parks, which...</example><!-- #2304 -->
-            ?>
             <example>Nearly 18 million acres of land have been burned - most of it: bushland, forests and national parks, which...</example>
             <example>Nearly 18 million acres of land have been burned - most of its bushland, forests and national parks, which...</example>
             <example>I love the way you <marker>are</marker> and friends should honor that.</example><!-- #2343 -->
@@ -34925,6 +35113,19 @@ The accident victim died from her injuries.
             <suggestion>\3, \4</suggestion>
             <example correction="it, girls">Go for <marker>it girls</marker>!</example>
             <example correction="it, guys">Get ready for <marker>it guys</marker>!</example>
+        </rule>
+        <rule id="ME_MYSELF_AND_I_COMMA" name="Comma in 'Me myself and I'" default="temp_off">
+            <pattern>
+                <marker>
+                    <token>me</token>
+                </marker>
+                <token>myself</token>
+                <token regexp="yes">and|&amp;|or</token>
+            </pattern>
+            <message>Consider adding a comma here.</message>
+            <suggestion>\1,</suggestion>
+            <url>https://en.wikipedia.org/wiki/Me,_Myself_and_I_(Beyonc%C3%A9_song)</url>
+            <example correction="me,">It's just <marker>me</marker> myself and I.</example>
         </rule>
         <rulegroup id="PRP_COMMA" name="Missing comma after pronoun">
             <rule>
@@ -44781,7 +44982,7 @@ The accident victim died from her injuries.
             <url>https://www.lexico.com/definition/themself</url>
             <example correction="themselves|himself|herself">The casual observer might easily think <marker>themself</marker> back in 1945.</example>
         </rule>
-        <rule id="OURSELF" name="'ourself'" default="temp_off">
+        <rule id="OURSELF" name="'ourself'">
             <antipattern>
                 <token regexp="yes">"|„|‘|“</token>
                 <token spacebefore="no">ourself</token>

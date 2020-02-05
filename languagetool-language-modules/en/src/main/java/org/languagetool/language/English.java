@@ -298,6 +298,7 @@ public class English extends Language implements AutoCloseable {
       case "ADJECTIVE_ADVERB":          return 2;   // prefer over MODAL_VERB_FOLLOWED_BY_NOUN, PRP_MD_NN, and PRONOUN_NOUN
       case "LIGATURES":                 return 1;   // prefer over spell checker
       case "APPSTORE":                  return 1;   // prefer over spell checker
+      case "INCORRECT_CONTRACTIONS":    return 1;   // prefer over EN_CONTRACTION_SPELLING
       case "DONT_T":                    return 1;   // prefer over EN_CONTRACTION_SPELLING
       case "WHATS_APP":                 return 1;   // prefer over EN_CONTRACTION_SPELLING
       case "NON_STANDARD_COMMA":        return 1;   // prefer over spell checker
