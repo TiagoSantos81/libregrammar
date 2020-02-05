@@ -566,6 +566,24 @@ USA
             <suggestion>\1\2\3\4</suggestion>
             <example correction="doesn't">He <marker>does n't</marker> like her.</example>
         </rule>
+
+        <rulegroup id="ISSUES_WITH_CONTRACTIONS" name="Contraction errors: e.g. did'nt->didn't">
+        <!-- Created by Tiago F. Santos, 2018-11-25 -->
+          <url>https://en.wikipedia.org/wiki/Wikipedia:List_of_English_contractions</url>
+          <rule>
+<!-- Cannot use antipattern with regexp            <antipattern>
+              <token>hell</token>
+              <token spacebefore="no" regexp="yes">&apostrophe;</token>
+              <token spacebefore="no">s</token>
+            </antipattern>-->
+            <regexp>\b((a[im]|are|ca|could|dares?|das|did|do(es)?|has|have|is|ought|sha|should|was|wo)(&apostrophe;n?t|n&apostrophe;[^t])|(?:I|you|s?he|it|we|they)([ds]&apostrophe;|l&apostrophe;l|l?l&apostrophe;|v&apostrophe;e|ve&apostrophe;)|(oc&apostrophe;lock))\b</regexp>
+            <message>This contraction is incorrect. Please, check the apostrophe position.</message>
+            <example correction="">...it <marker>did'nt</marker> work.</example>
+            <example>... it didn't work.</example>
+            <example type="triggers_error">Have you seen the film Hell's Angels (https://www.imdb.com/title/tt0020960/)?</example>
+            <example type="triggers_error">Sometimes, I think about hell's deep symbolism.</example>
+          </rule>
+        </rulegroup>
         
       <rulegroup id="INCORRECT_CONTRACTIONS" name="Contraction errors: e.g. did'nt->didn't" default="temp_off">
           <url>https://en.wikipedia.org/wiki/Wikipedia:List_of_English_contractions</url>
