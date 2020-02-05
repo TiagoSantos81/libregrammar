@@ -454,7 +454,6 @@ anagrammatises	anagrammatise	VBZ
 anagrammatising	anagrammatise	VBG
 analyte	analyte	NN
 analytes	analyte	NNS
-Anand	Anand	NNP
 anaphase	anaphase	NN:U
 anarchist	anarchist	JJ
 anatomisers	anatomiser	NNS
@@ -930,6 +929,7 @@ Australianized	Australianize	VBD
 Australianized	Australianize	VBN
 Australianizes	Australianize	VBZ
 Australianizing	Australianize	VBG
+auteurist	auteurist	JJ
 auth	auth	NN
 auth	auth	NNS
 auth	auth	VB
@@ -950,6 +950,12 @@ autocompletes	autocomplete	VBZ
 autocompleting	autocomplete	VBG
 autocompletion	autocompletion	NN:UN
 auto-completion	auto-completion	NN:UN
+autoconfigure	autoconfigure	VB
+autoconfigure	autoconfigure	VBP
+autoconfigured	autoconfigure	VBD
+autoconfigured	autoconfigure	VBN
+autoconfigures	autoconfigure	VBZ
+autoconfiguring	autoconfigure	VBG
 autocorrect	autocorrect	NN:UN
 autocorrect	autocorrect	VB
 autocorrect	autocorrect	VBP
@@ -1114,6 +1120,7 @@ banalizes	banalize	VBZ
 banalizing	banalize	VBG
 bandwidth	bandwidth	NN:U
 Barajas	Barajas	NNP
+Barbosa	Barbosa	NNP
 Barça	Barça	NNP
 barcode	barcode	NN
 barcode	barcode	VB
@@ -1231,6 +1238,7 @@ bioinformatic	bioinformatic	JJ
 bioinformatics	bioinformatics	NN:U
 biomineralisation	biomineralisation	NN:UN
 biomonitoring	biomonitoring	NN:U
+biostratigraphic	biostratigraphic	JJ
 biosynthesise	biosynthesise	VB
 biosynthesise	biosynthesise	VBP
 biosynthesised	biosynthesise	VBD
@@ -1318,6 +1326,7 @@ Bocelli	Bocelli	NNP
 Bogotá	Bogotá	NNP
 bohemian	bohemian	JJ
 Bokmål	Bokmål	NNP
+Bolivarian	Bolivarian	JJ
 Bollywood	Bollywood	NNP
 bolognese	bolognese	JJ
 bolognese	bolognese	NN:UN
@@ -1978,6 +1987,12 @@ coalized	coalize	VBN
 coalizes	coalize	VBZ
 coalizing	coalize	VBG
 Coatzacoalcos	Coatzacoalcos	NNP
+code-name	code-name	VB
+code-name	code-name	VBP
+code-named	code-name	VBD
+code-named	code-name	VBN
+code-names	code-name	VBZ
+code-naming	code-name	VBG
 coding	coding	NN:UN
 codings	coding	NNS
 coecilian	coecilian	JJ
@@ -2748,6 +2763,12 @@ decisiemens	decisiemens	NN
 decisiemens	decisiemens	NNS
 decisievert	decisievert	NN
 decisieverts	decisievert	NNS
+decision	decision	VB
+decision	decision	VBP
+decisioned	decision	VBD
+decisioned	decision	VBN
+decisions	decision	VBZ
+decisioning	decision	VBG
 decisteradian	decisteradian	NN
 decisteradians	decisteradian	NNS
 decitesla	decitesla	NN
@@ -4153,6 +4174,8 @@ enolisation	enolisation	NN:UN
 # enough	enough	RB
 Enríquez	Enríquez	NNP
 ensuing	ensuing	JJ
+enterocyte	enterocyte	NN
+enterocytes	enterocyte	NNS
 enthralling	enthralling	JJ
 entitled	entitled	JJ
 entrancing	entrancing	JJ
@@ -4757,6 +4780,7 @@ fiberized	fiberize	VBD
 fiberized	fiberize	VBN
 fiberizes	fiberize	VBZ
 fiberizing	fiberize	VBG
+fibrillary	fibrillary	RB
 fibromyalgia	fibromyalgia	NN
 fibromyalgias	fibromyalgia	NNS
 FIDS	FIDS	NN
@@ -4855,6 +4879,7 @@ focalizing	focalize	VBG
 FOCs	FOC	NN
 fo'c'sle	fo'c'sle	NN
 follow	follow	NN
+followership	followership	NN:U
 follows	follow	NNS
 fondue	fondue	NN:U
 FontoXML	FontoXML	NNP
@@ -5146,6 +5171,12 @@ genialized	genialize	VBN
 genializes	genialize	VBZ
 genializing	genialize	VBG
 geoarchaeology	geoarchaeology	NN:U
+geocode	geocode	VB
+geocode	geocode	VBP
+geocoded	geocode	VBD
+geocoded	geocode	VBN
+geocodes	geocode	VBZ
+geocoding	geocode	VBG
 geo-fence	geo-fence	VB
 geo-fence	geo-fence	VBP
 geo-fenced	geo-fence	VBD
@@ -5944,6 +5975,7 @@ Hoverla	Hoverla	NNP
 hovers	hover	NNS
 howling	howling	JJ
 Hoyland	Hoyland	NNP
+HRQoL	HRQoL	NN:U
 hrs	hrs	NNS
 hryvna	hryvna	NN
 hryvnas	hryvna	NNS
@@ -6000,6 +6032,12 @@ hydrogenizes	hydrogenize	VBZ
 hydrogenizing	hydrogenize	VBG
 hydrolysers	hydrolyser	NNS
 hydrolyzers	hydrolyzer	NNS
+hydroxylate	hydroxylate	VB
+hydroxylate	hydroxylate	VBP
+hydroxylated	hydroxylate	VBD
+hydroxylated	hydroxylate	VBN
+hydroxylates	hydroxylate	VBZ
+hydroxylating	hydroxylate	VBG
 Hyeseong	Hyeseong	NNP
 hygroscopy	hygroscopy	NN:U
 hygrothermal	hygrothermal	JJ
@@ -6411,6 +6449,7 @@ intelligized	intelligize	VBD
 intelligized	intelligize	VBN
 intelligizes	intelligize	VBZ
 intelligizing	intelligize	VBG
+intercuspation	intercuspation	NN:U
 interfamily	interfamily	JJ
 inter-individual	inter-individual	JJ
 Interlagos	Interlagos	NNP
@@ -7037,6 +7076,7 @@ LexisNexis	LexisNexis	NNP
 LGBTQ	LGBTQ	JJ
 LGTBQ	LGTBQ	JJ
 liberalisers	liberaliser	NNS
+Libra	Libra	NNP
 LibreOffice	LibreOffice	NNP
 Lidl	Lidl	NNP
 lied	lie	VBN
@@ -7053,6 +7093,8 @@ lighters	lighter	VBZ
 lightheadedness	lightheadedness	NN:U
 limaçon	limaçon	NN
 limaçons	limaçon	NNS
+liminality	liminality	NN:UN
+liminalities	liminality	NNS
 Linde	Linde	NNP
 lingualise	lingualise	VB
 lingualise	lingualise	VBP
@@ -7381,6 +7423,7 @@ masculinizes	masculinize	VBZ
 masculinizing	masculinize	VBG
 Maslow	Maslow	NNP
 Masri	Masri	NNP
+masseteric	masseteric	JJ
 Mastercard	Mastercard	NNP
 masterly	masterly	JJ
 mastitis	mastitis	NN:UN
@@ -7766,6 +7809,7 @@ microcontroller	microcontroller	NN
 microcontrollers	microcontroller	NNS
 microcoulombs	microcoulomb	NNS
 microeconomic	microeconomic	JJ
+microfloral	microfloral	JJ
 microgramme	microgramme	NN
 microgrammes	microgramme	NNS
 microgray	microgray	NN
@@ -8227,6 +8271,7 @@ much	much	RB
 muchly	muchly	RB
 mucoadhesion	mucoadhesion	NN:U
 mucoadhesive	mucoadhesive	JJ
+mucosally	mucosally	RB
 Mudéjar	Mudéjar	NNP
 Mudéjares	Mudéjares	NNP
 Muhamad	Muhamad	NNP
@@ -8601,6 +8646,7 @@ neurocognitive	neurocognitive	JJ
 neurodiverse	neurodiverse	JJ
 neurodiversity	neurodiversity	NN:U
 neuroleptic	neuroleptic	JJ
+neuropharmacologic	neuropharmacologic	JJ
 neuroplasticities	neuroplasticity	NNS
 neuroplasticity	neuroplasticity	NN:UN
 neuroscience	neuroscience	NN:U
@@ -8796,6 +8842,7 @@ obelized	obelize	VBD
 obelized	obelize	VBN
 obelizes	obelize	VBZ
 obelizing	obelize	VBG
+obestatin	obestatin	NN:U
 objectivisation	objectivisation	NN:UN
 objectivise	objectivise	VB
 objectivise	objectivise	VBP
@@ -8871,6 +8918,7 @@ oligomerizes	oligomerize	VBZ
 oligomerizing	oligomerize	VBG
 Oliinyk	Oliinyk	NNP
 Olivares	Olivares	NNP
+Olsztyn	Olsztyn	NNP
 omalizumab	omalizumab	NN:U
 omelette	omelette	NN
 omelettes	omelette	NNS
@@ -8971,6 +9019,8 @@ opinionized	opinionize	VBN
 opinionizes	opinionize	VBZ
 opinionizing	opinionize	VBG
 opioid	opioid	JJ
+oppositionality	oppositionality	NN:UN
+oppositionalities	oppositionality	NNS
 opsonise	opsonise	VB
 opsonise	opsonise	VBP
 opsonised	opsonise	VBD
@@ -10833,6 +10883,7 @@ prophetized	prophetize	VBD
 prophetized	prophetize	VBN
 prophetizes	prophetize	VBZ
 prophetizing	prophetize	VBG
+prosthetically	prosthetically	RB
 protégé	protégé	NN
 protégée	protégée	NN
 protégées	protégée	NNS
@@ -10985,6 +11036,7 @@ pyritized	pyritize	VBD
 pyritized	pyritize	VBN
 pyritizes	pyritize	VBZ
 pyritizing	pyritize	VBG
+pyrometric	pyrometric	JJ
 PySpark	PySpark	NNP
 Q&A	Q&A	NN
 Q&As	Q&A	NNS
@@ -11304,6 +11356,8 @@ recrystallisation	recrystallisation	NN:UN
 recurring	recurring	JJ
 recurve	recurve	NN
 recurves	recurve	NNS
+recyclate	recyclate	NN:UN
+recyclates	recyclate	NNS
 Reddit	Reddit	NNP
 redemand	redemand	VB
 redemand	redemand	VBP
@@ -11459,6 +11513,7 @@ rehardening	reharden	VBG
 rehardens	reharden	VBZ
 rehire	rehire	NN
 rehires	rehire	NNS
+rheologically	rheologically	RB
 rehospitalisation	rehospitalisation	NN:UN
 rehospitalise	rehospitalise	VB
 rehospitalise	rehospitalise	VBP
@@ -11757,6 +11812,7 @@ repowered	repower	VBD
 repowered	repower	VBN
 repowering	repower	VBG
 repowers	repower	VBZ
+repressory	repressory	JJ
 repressurisation	repressurisation	NN:U
 repressurise	repressurise	VB
 repressurise	repressurise	VBP
@@ -13022,6 +13078,7 @@ specialised	specialised	JJ
 speciational	speciational	JJ
 species	species	NNS
 specs	spec	VBZ
+spectrographical	spectrographical	JJ
 speedbrake	speedbrake	NN
 speedbrakes	speedbrake	NNS
 spellbinding	spellbinding	JJ
@@ -13245,6 +13302,7 @@ sublimized	sublimize	VBD
 sublimized	sublimize	VBN
 sublimizes	sublimize	VBZ
 sublimizing	sublimize	VBG
+suboptimally	suboptimally	RB
 suboptimisation	suboptimisation	NN:UN
 suboptimise	suboptimise	VB
 suboptimise	suboptimise	VBP
@@ -13636,6 +13694,7 @@ teleworks	telework	VBZ
 Téllez	Téllez	NNP
 Telstra	Telstra	NNP
 Telus	Telus	NNP
+Temary	Temary	NNP
 temporising	temporise	VBG
 Tencent	Tencent	NNP
 Tenerife	Tenerife	NNP
@@ -14396,15 +14455,28 @@ unrealized	unrealize	VBD
 unrealized	unrealize	VBN
 unrealizes	unrealize	VBZ
 unrealizing	unrealize	VBG
+unredeemedly	unredeemedly	RB
 unrufflable	unrufflable	JJ
 unruffleable	unruffleable	JJ
 unsatisfaction	unsatisfaction	NN:U
+unselect	unselect	VB
+unselect	unselect	VBP
+unselected	unselect	VBD
+unselected	unselect	VBN
+unselects	unselect	VBZ
+unselecting	unselect	VBG
 unset	unset	VB
 unset	unset	VBP
 unsets	unset	VBZ
 unsetted	unset	VBD
 unsetted	unset	VBN
 unsetting	unset	VBG
+unship	unship	VB
+unship	unship	VBP
+unships	unship	VBZ
+unshipped	unship	VBD
+unshipped	unship	VBN
+unshipping	unship	VBG
 unsightly	unsightly	JJ
 unsourced	unsourced	JJ
 unsubscribe	unsubscribe	VB
@@ -14436,6 +14508,12 @@ up	up	RB
 UPC	UPC	NN
 UPCs	UPC	NNS
 upgradable	upgradable	JJ
+uplink	uplink	VB
+uplink	uplink	VBP
+uplinked	uplink	VBD
+uplinked	uplink	VBN
+uplinks	uplink	VBZ
+uplinking	uplink	VBG
 uprate	uprate	VB
 uprate	uprate	VBP
 uprated	uprate	VBD
@@ -14570,6 +14648,7 @@ vassalized	vassalize	VBD
 vassalized	vassalize	VBN
 vassalizes	vassalize	VBZ
 vassalizing	vassalize	VBG
+Växjö	Växjö	NNP
 Vayigash	Vayigash	NNP
 Vāyu	Vāyu	NNP
 VBScript	VBScript	NNP
@@ -14800,6 +14879,12 @@ voxels	voxel	NNS
 VP	VP	NN
 VPs	VP	NNS
 VR	VR	NN:U
+vroom	vroom	VB
+vroom	vroom	VBP
+vroomed	vroom	VBD
+vroomed	vroom	VBN
+vrooms	vroom	VBZ
+vrooming	vroom	VBG
 Vuitton	Vuitton	NNP
 vulcanisers	vulcaniser	NNS
 vulgarisers	vulgariser	NNS
