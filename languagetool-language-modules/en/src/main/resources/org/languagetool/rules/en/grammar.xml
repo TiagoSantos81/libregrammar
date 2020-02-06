@@ -43094,17 +43094,6 @@ The accident victim died from her injuries.
     <!-- Redundant Phrases -->
     <!-- ====================================================================== -->
     <category id="REDUNDANCY" name="Redundant Phrases" type="style">
-    <rule id="JUST_ADVERB" name="just + adverb">
-    <!-- Created by HandWritten, 2020-02-03 -->
-    <!-- https://forum.languagetool.org/t/en-new-redundancy-rule/5339 -->
-      <pattern>
-          <token>just</token>
-          <token regexp='yes' postag='RB'>barely|exactly|merely|only|simply|recently|precisely</token>
-      </pattern>
-      <message>This phrase is redundant. Consider using <suggestion><match no="2"/></suggestion>.</message>
-      <short>Redundant phrase</short>
-      <example correction='recently'>The giraffe left the zoo <marker>just recently</marker>.</example>
-    </rule>
     <rulegroup id="FORMER_ALUMNUS" name="former alumnus (alumnus)">
     <url>https://www.amherst.edu/news/communications/editorial-services-media/styleguide/node/84702</url>
     <rule>
@@ -44966,7 +44955,7 @@ The accident victim died from her injuries.
         </rule>
         <rule id="JUST_BARELY" name="just barely">
             <pattern>
-                <token postag="RB" postag_regexp="yes">just</token>
+                <token postag="RB">just</token>
                 <token regexp="yes" postag="RB">barely|exactly|merely|only|simply|recently|precisely</token>
             </pattern>
             <message>Consider using <suggestion><match no="2"/></suggestion>.</message>
@@ -44976,24 +44965,26 @@ The accident victim died from her injuries.
         </rule>
         <rulegroup id="FUTURE_PLAN" name="future plan">
             <rule>
-                <pattern>
-                    <token regexp="yes">plan|predict</token>
-                    <token regexp="yes">(for|into)? the future|ahead</token>
-                </pattern>
                 <antipattern>
                     <token postag="VB">plan</token>
-                    <token psotag="IN">ahead</token>
+                    <token postag="IN">ahead</token>
                     <token>of</token>
                     <token>time</token>
                 </antipattern>
                 <antipattern>
                     <token postag="VB">plan</token>
-                    <token psotag="IN">in</token>
+                    <token postag="IN">in</token>
                     <token>advance</token>
                 </antipattern>
+                <pattern>
+                    <token regexp="yes">plan|predict</token>
+                    <token regexp="yes" min='0'>for|into</token>
+                    <token min='0'>the</token>
+                    <token regexp="yes">future|ahead</token>
+                </pattern>
                 <message>Consider using <suggestion><match no="1"/></suggestion>.</message>
                 <short>Redundant phrase</short>
-                <example correction="plan" type="incorrect">The company needs to <marker>plan ahead</marker> for the economic downturn.</example>
+                <example correction="plan">The company needs to <marker>plan ahead</marker> for the economic downturn.</example>
                 <example type="correct">The company needs to <marker>plan</marker> for the economic downturn.</example>
             </rule>
             <rule>
@@ -45001,7 +44992,7 @@ The accident victim died from her injuries.
                     <token regexp="yes" postag="JJ">future|prospective</token>
                     <token regexp="yes" inflected='yes'>plan|planning</token>
                 </pattern>
-                <message>Consider using <suggestion><match no="1"/></suggestion>.</message>
+                <message>Consider using <suggestion><match no="2"/></suggestion>.</message>
                 <short>Redundant phrase</short>
                 <example correction="plans" type="incorrect">He has no <marker>future plans</marker>.</example>
                 <example type="correct">He has no plans.</example>
@@ -45015,9 +45006,9 @@ The accident victim died from her injuries.
                 </pattern>
                 <message>Consider using <suggestion><match no="2"/></suggestion>.</message>
                 <short>Redundant phrase</short>
-                <example correction="destroyed" type="incorrect">The hospital was <marker>completely destroyed</marker>.</example>
+                <example correction="destroyed">The hospital was <marker>completely destroyed</marker>.</example>
                 <example type="correct">The hospital was <marker>destroyed</marker>.</example>
-                <example correction="destroy" type="incorrect">They want to <marker>totally destroy</marker> the government.</example>
+                <example correction="destroy">They want to <marker>totally destroy</marker> the government.</example>
                 <example type="correct">They want to <marker>destroy</marker> the government.</example>
             </rule>
             <rule>
@@ -45037,9 +45028,9 @@ The accident victim died from her injuries.
                     <token regexp='yes' postag='RB'>completely|entirely|wholly|totally|fully|downright|absolutely</token>
                     <token regexp='yes' postag='VBG'>destroying|destructing|annihilating|engulfing|deleting|removing|demolishing|abandoning|ruining|obliterating</token>
                 </pattern>
-                <message>Consider using <suggestion><match no="1"/></suggestion>.</message>
+                <message>Consider using <suggestion><match no="2"/></suggestion>.</message>
                 <short>Redundant phrase</short>
-                <example correction="destroying" type="incorrect">The hospital was hit by a missile, <marker>completely destroying</marker> the facility.</example>
+                <example correction="destroying">The hospital was hit by a missile, <marker>completely destroying</marker> the facility.</example>
                 <example type="correct">The hospital was hit by a missile, <marker>destroying</marker> the facility.</example>
             </rule>
             <rule>
@@ -45049,7 +45040,7 @@ The accident victim died from her injuries.
                 </pattern>
                 <message>Consider using <suggestion><match no="1"/></suggestion>.</message>
                 <short>Redundant phrase</short>
-                <example type="incorrect" correction="destroying">The hospital was hit by a missile, <marker>destroying completely</marker> the facility.</example>
+                <example correction="destroying">The hospital was hit by a missile, <marker>destroying completely</marker> the facility.</example>
                 <example type="correct">The hospital was hit by a missile, <marker>destroying</marker> the facility.</example>
             </rule>
         </rulegroup>
