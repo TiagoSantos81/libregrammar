@@ -32,6 +32,7 @@ Abhishek	Abhishek	NNP
 Abi	Abi	NNP
 ABI	ABI	NNP
 Abilify	Abilify	NNP
+ableist	ableist	JJ
 abort	abort	NN
 aborts	abort	NNS
 Aboubacar	Aboubacar	NNP
@@ -1416,6 +1417,8 @@ brown	brown	NN:U
 BrowserStack	BrowserStack	NNP
 Broxbourne	Broxbourne	NNP
 Broze	Broze	NNP
+bruh	bruh	NN
+bruhs	bruh	NNS
 Brulé	Brulé	NNP
 Brustein	Brustein	NNP
 BTEC	BTEC	NNP
@@ -1455,6 +1458,7 @@ burpee	burpee	NN
 burpees	burpee	NNS
 bushland	bushland	NN:U
 bustling	bustling	JJ
+Buttigieg	Buttigieg	NNP
 BV	BV	NNP
 ByteDance	ByteDance	NNP
 Byton	Byton	NNP
@@ -1888,6 +1892,7 @@ chronologises	chronologise	VBZ
 chronologising	chronologise	VBG
 Chronopost	Chronopost	NNP
 Churchwell	Churchwell	NNP
+Churubusco	Churubusco	NNP
 Ciara	Ciara	NNP
 Ciaran	Ciaran	NNP
 cicatrise	cicatrise	VB
@@ -1991,6 +1996,8 @@ close	close	RB
 cloth	cloth	NN
 Cloudflare	Cloudflare	NNP
 Cloutier	Cloutier	NNP
+CMS	CMS	NN
+CMSs	CMS	NNS
 CMYK	CMYK	NN:U
 CNAME	CNAME	NNP
 CNBC	CNBC	NNP
@@ -3679,6 +3686,13 @@ diphthongised	diphthongise	VBN
 diphthongises	diphthongise	VBZ
 diphthongising	diphthongise	VBG
 DirecTV	DirecTV	NNP
+disaggregate	disaggregate	VB
+disaggregate	disaggregate	VBP
+disaggregated	disaggregate	VBD
+disaggregated	disaggregate	VBN
+disaggregates	disaggregate	VBZ
+disaggregating	disaggregate	VBG
+disaggregative	disaggregative	JJ
 disambiguator	disambiguator	NN
 disambiguators	disambiguator	NNS
 disauthorise	disauthorise	VB
@@ -4194,6 +4208,8 @@ encephalisation	encephalisation	NN:U
 encephalization	encephalization	NN:U
 encyclopædia	encyclopædia	NN
 encyclopædias	encyclopædia	NNS
+endosymbiotic	endosymbiotic	JJ
+endosymbiotically	endosymbiotically	RB
 end-user	end-user	JJ
 energisation	energisation	NN:UN
 enforced	enforced	JJ
@@ -4589,6 +4605,7 @@ extranet	extranet	NN
 extranets	extranet	NNS
 extraordinaire	extraordinaire	JJ
 Extremaduran	Extremaduran	NNP
+extrudable	extrudable	JJ
 ExxonMobil	ExxonMobil	NNP
 eyewitnessed	eyewitnessed	JJ
 Eyjafjallajökull	Eyjafjallajökull	NNP
@@ -5038,6 +5055,7 @@ frontends	frontend	NNS
 front-engined	front-engined	JJ
 frustrated	frustrated	JJ
 frustrating	frustrating	JJ
+FSN	FSN	NNP
 FTE	FTE	NN
 FTE	FTE	NNP
 FTEs	FTE	NNS
@@ -5084,6 +5102,7 @@ gaelicizes	gaelicize	VBZ
 gaelicizing	gaelicize	VBG
 Gagné	Gagné	NNP
 Gainesville	Gainesville	NNP
+galactosemic	galactosemic	JJ
 Galápagos	Galápagos	NNP
 Galia	Galia	NNP
 Galindo	Galindo	NNP
@@ -5701,12 +5720,14 @@ hashtag	hashtag	NN
 hashtags	hashtag	NNS
 Hassan	Hassan	NNP
 Hassānīya	Hassānīya	NNP
+Haudenosaunee	Haudenosaunee	NNP
 Haughton	Haughton	NNP
 Hauts-de-Seine	Hauts-de-Seine	NNP
 haüyne	haüyne	NN:U
 Hávamál	Hávamál	NNP
 Hayabusa	Hayabusa	NNP
 HC	HC	NN
+HCl	HCl	NNP
 HCs	HC	NNS
 HCT	HCT	NNP
 HDFC	HDFC	NNP
@@ -6078,6 +6099,7 @@ hydrogenized	hydrogenize	VBN
 hydrogenizes	hydrogenize	VBZ
 hydrogenizing	hydrogenize	VBG
 hydrolysers	hydrolyser	NNS
+hydrolytically	hydrolytically	RB
 hydrolyzers	hydrolyzer	NNS
 hydroxylate	hydroxylate	VB
 hydroxylate	hydroxylate	VBP
@@ -6176,6 +6198,7 @@ hypostatised	hypostatise	VBD
 hypostatised	hypostatise	VBN
 hypostatises	hypostatise	VBZ
 hypostatising	hypostatise	VBG
+hyperthermic	hyperthermic	JJ
 hypothesise	hypothesise	VB
 hypothesise	hypothesise	VBP
 hypothesised	hypothesise	VBD
@@ -7001,6 +7024,7 @@ laicised	laicise	VBN
 laicises	laicise	VBZ
 laicising	laicise	VBG
 Lakers	Lakers	NNPS
+Lakeville	Lakeville	NNP
 Lambourne	Lambourne	NNP
 laminarise	laminarise	VB
 laminarise	laminarise	VBP
@@ -7227,6 +7251,7 @@ livestreams	livestream	VBZ
 live-streams	live-stream	VBZ
 Lleida	Lleida	NNP
 LLVM	 LLVM	 NN:U
+LMAO	LMAO	UH
 localisability	localisability	NN:UN
 Lockton	Lockton	NNP
 LOD	LOD	NNP
@@ -7488,6 +7513,7 @@ Matamoros	Matamoros	NNP
 Matebook	Matebook	NNP
 Matebooks	Matebook	NNPS
 Mateo	Mateo	NNP
+Materazzi	Materazzi	NNP
 matériel	matériel	NN:U
 matériels	matériel	NNS
 mathematicise	mathematicise	VB
@@ -7554,7 +7580,9 @@ McAllister	McAllister	NNP
 McAlpine	McAlpine	NNP
 McAtee	McAtee	NNP
 McCain	McCain	NNP
+McChesney	McChesney	NNP
 McClair	McClair	NNP
+McClung	McClung	NNP
 McCollum	McCollum	NNP
 McCulloch	McCulloch	NNP
 McDrive	McDrive	NNP
@@ -8595,6 +8623,7 @@ narrativized	narrativize	VBD
 narrativized	narrativize	VBN
 narrativizes	narrativize	VBZ
 narrativizing	narrativize	VBG
+narratological	narratological	JJ
 Naruto	Naruto	NNP
 NASTAR	NASTAR	NNP
 Natalia	Natalia	NNP
@@ -8653,6 +8682,7 @@ née	née	JJ
 négligée	négligée	NN
 négligées	négligée	NNS
 Nekrasovka	Nekrasovka	NNP
+Nelsonville-York	Nelsonville-York	NNP
 Nemetschek	Nemetschek	NNP
 neologise	neologise	VB
 neologise	neologise	VBP
@@ -9732,6 +9762,7 @@ Pelagianized	Pelagianize	VBD
 Pelagianized	Pelagianize	VBN
 Pelagianizes	Pelagianize	VBZ
 Pelagianizing	Pelagianize	VBG
+Pelé	Pelé	NNP
 pelletise	pelletise	VB
 pelletise	pelletise	VBP
 pelletised	pelletise	VBD
@@ -11371,6 +11402,8 @@ rechallenges	rechallenge	VBZ
 rechallenging	rechallenge	VBG
 recharge	recharge	NN
 recharges	recharge	NNS
+recharter	recharter	NN
+recharters	recharter	NNS
 réchauffé	réchauffé	NN
 réchauffés	réchauffé	NNS
 recherché	recherché	JJ
@@ -11814,6 +11847,7 @@ Renato	Renato	NNP
 René	René	NNP
 Renée	Renée	NNP
 renormalisation	renormalisation	NN:UN
+Renville	Renville	NNP
 reoxidise	reoxidise	VB
 reoxidise	reoxidise	VBP
 reoxidised	reoxidise	VBD
@@ -12248,6 +12282,7 @@ rigidizes	rigidize	VBZ
 rigidizing	rigidize	VBG
 Rígsmál	Rígsmál	NNP
 Rígsþula	Rígsþula	NNP
+Rinaldi	Rinaldi	NNP
 rincón	rincón	NN
 rincóns	rincón	NNS
 ring-fence	ring-fence	VB
@@ -12412,6 +12447,7 @@ rusticized	rusticize	VBD
 rusticized	rusticize	VBN
 rusticizes	rusticize	VBZ
 rusticizing	rusticize	VBG
+Rylee	Rylee	NNP
 Ryuchuan	Ryuchuan	JJ
 Ryuchuan	Ryuchuan	NNP
 Saami	Saami	NNP
@@ -12556,6 +12592,8 @@ sautés	sauté	VBZ
 Savitṛ	Savitṛ	NNP
 Sawley	Sawley	NNP
 Scalia	Scalia	NNP
+scaredy-cat	scaredy-cat	NN
+scaredy-cats	scaredy-cat	NNS
 Scarlett	Scarlett	NNP
 Scáthach	Scáthach	NNP
 SCCM	SCCM	NNP
@@ -12755,6 +12793,7 @@ sensualises	sensualise	VBZ
 sensualising	sensualise	VBG
 Sephora	Sephora	NNP
 SEPTEMBER	September	NNP
+Septèmes-les-Vallons	Septèmes-les-Vallons	NNP
 sequelise	sequelise	VB
 sequelise	sequelise	VBP
 sequelised	sequelise	VBD
@@ -14004,6 +14043,7 @@ thermalized	thermalize	VBD
 thermalized	thermalize	VBN
 thermalizes	thermalize	VBZ
 thermalizing	thermalize	VBG
+thermohaline	thermohaline	JJ
 think	think	NN
 thinning	thinning	JJ
 third-grader	third-grader	NN
@@ -14235,6 +14275,7 @@ Tuxtla	Tuxtla	NNP
 Twilio	Twilio	NNP
 Twitch	Twitch	NNP
 Twitter	Twitter	NNP
+Twix	Twix	NNP
 twizzle	twizzle	NN
 twizzle	twizzle	VB
 twizzle	twizzle	VBP
@@ -14272,6 +14313,7 @@ Uberizing	Uberize	VBG
 Ubisoft	Ubisoft	NNP
 udātta	udātta	NN
 Udemy	Udemy	NNP
+UEFA	UEFA	NNP
 UHC	UHC	NNP
 UI	UI	NN
 UID	UID	NNP
@@ -15036,6 +15078,7 @@ weblog	weblog	NN
 weblogs	weblog	NNS
 WebQuest	WebQuest	NNP
 WebRTC	WebRTC	NNP
+WeChat	WeChat	NNP
 Wechsler	Wechsler	NNP
 WEDNESDAY	Wednesday	NNP
 Weebly	Weebly	NNP
@@ -15454,6 +15497,8 @@ Zhou	Zhou	NNP
 Zhytomyr	Zhytomyr	NNP
 ZigBee	ZigBee	NNP
 Zinacantán	Zinacantán	NNP
+Zinedine	Zinedine	NNP
+Zidane	Zidane	NNP
 Zoé	Zoé	NNP
 Zoey	Zoey	NNP
 Zofran	Zofran	NNP

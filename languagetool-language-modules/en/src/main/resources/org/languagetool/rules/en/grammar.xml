@@ -580,7 +580,7 @@ USA
           </rule>
         </rulegroup>
         
-      <rulegroup id="INCORRECT_CONTRACTIONS" name="Contraction errors: e.g. did'nt->didn't" default="temp_off">
+      <rulegroup id="INCORRECT_CONTRACTIONS" name="Contraction errors: e.g. did'nt->didn't">
           <url>https://en.wikipedia.org/wiki/Wikipedia:List_of_English_contractions</url>
           <rule>
             <pattern>
@@ -3182,6 +3182,16 @@ USA
             <url>https://www.dictionary.com/e/its-vs-its/</url>
             <rule>
                 <pattern>
+                    <marker>
+                        <token>its</token>
+                    </marker>
+                    <token>gonna</token>
+                </pattern>
+                <message>Did you mean <suggestion>it's</suggestion>?</message>
+                <example correction="It's"><marker>Its</marker> gonna be great.</example>
+            </rule>
+            <rule>
+                <pattern>
                     <token>all<exception scope="previous">after</exception></token>
                     <marker>
                         <token>it</token>
@@ -4632,6 +4642,11 @@ USA
                     <token postag="NNS" regexp="yes">\p{Lu}\p{Ll}+</token>
                     <token regexp="yes">\p{Ll}+</token>
                 </antipattern>
+                <antipattern><!-- #2423 -->
+                    <token>arms</token>
+                    <token>reduction</token>
+                    <token postag_regexp="yes" postag="NN.*" regexp="yes" inflected="yes">conference|discussion|talk|treaty</token>
+                </antipattern>
                 <pattern>
                     <token><exception postag="PRP$"/><exception inflected="yes" regexp="yes">give|avail|serve</exception></token>
                     <token postag="DT|JJ.*" postag_regexp="yes"><exception postag="CD"/></token>
@@ -4643,6 +4658,10 @@ USA
                 </pattern>
                 <message>Apostrophe might be missing. Did you mean <suggestion><match no="3"/>'</suggestion> or <suggestion><match suppress_misspelled="yes" no="3" postag="NN(P)?S" postag_regexp="yes" postag_replace="NN$1(:U.?)?" setpos="no"/>'s</suggestion>?</message>
                 <short>Possible typo</short>
+                <example correction="presidents'|president's">This is a transcript of the <marker>presidents</marker> speech from March.</example>
+                <example correction="Presidents'|President's">This is a transcript of the <marker>Presidents</marker> speech from March.</example>
+                <example correction="darts'|dart's">The <marker>darts</marker> trajectory is calculated thus:</example>
+                <example correction="arms'|arm's">This video shows the <marker>arms</marker> reduction in movement after surgery to...</example><!-- #2423 -->
                 <example>This is a transcript of the <marker>president's</marker> speech.</example>
                 <example>Publishers today are at loss...</example>
                 <example>Owen was seven years younger.</example>
@@ -4652,11 +4671,8 @@ USA
                 <example>Universities A and B are old universities...</example>
                 <example>He made his final report to the Senate Foreign Relations Committee on U.S. affairs abroad.</example>
                 <example>He gave the customers chips or checks or premium points.</example>
-                <example correction="presidents'|president's">This is a transcript of the <marker>presidents</marker> speech from March.</example>
-                <example correction="Presidents'|President's">This is a transcript of the <marker>Presidents</marker> speech from March.</example>
                 <example>Legalized Abortion on Crime, authored by the economists Steven D. Levitt and John Donohue.</example>
                 <example>Gershwin overlays the slow blues theme from section B in the final “Grandioso.”</example>
-                <example correction="darts'|dart's">The <marker>darts</marker> trajectory is calculated thus:</example>
                 <example>The English <marker>darts</marker> player is likely to win this tournament.</example>
                 <example>The main communications equipment failed.</example>
                 <example>The <marker>darts</marker> tip is made of tungsten.</example><!-- False negative -->
@@ -4677,6 +4693,7 @@ USA
                 <example>The upcoming Ashes series in 2013 will be held in England.</example>
                 <example>But not all the earnings news was cheery.</example>
                 <example>The earnings release was scheduled for May.</example>
+                <example>... voted against the ratification of New Start, a nuclear <marker>arms reduction treaty</marker> between the United States and Russian Federation.</example><!-- #2423 -->
                 <example type="triggers_error">The new restaurant was making the <marker>owners</marker> money hand over fist.</example>
             </rule>
             <rule>
@@ -6729,7 +6746,16 @@ USA
                 <example>You are the center of the Universe, not mine, but your own.</example>
                 <example correction="you're">A reason I think life goes by so quickly when <marker>your</marker> older.</example>
             </rule>
-
+            <rule>
+                <pattern>
+                    <marker>
+                        <token>your</token>
+                    </marker>
+                    <token>gonna</token>
+                </pattern>
+                <message>Did you mean <suggestion>you're</suggestion>?</message>
+                <example correction="You're"><marker>Your</marker> gonna be the best.</example>
+            </rule>
             <rule>
                 <pattern>
                     <token postag="SENT_START|PCT|UH|CC" postag_regexp="yes">
@@ -11098,13 +11124,17 @@ USA
                 <token postag="W(RB|P)" postag_regexp="yes"/>
                 <marker>
                     <token inflected="yes">be</token>
-                    <token inflected="yes" regexp="yes">will|must</token>
+                    <token inflected="yes" regexp="yes">
+                        will|must
+                        <exception>willing</exception>
+                    </token>
                 </marker>
             </pattern>
             <message>Please check whether one of these words is redundant.</message>
             <example correction="">How <marker>is would</marker> this approach be useful?</example>
             <example>How <marker>would</marker> this approach be useful?</example>
             <example>Vehicles should not be parked at these locations and those that <marker>are will</marker> be ticketed and subject to being towed.</example>
+            <example>McConnell confronted and pressured other Republican senators who were willing to negotiate with Democrats and the Obama administration.</example>
         </rule>
         <rule id="CAN_ABLE_TO" name="can able to (can)">
             <pattern>
@@ -11541,50 +11571,70 @@ USA
             <example>Lexical. ... God willed the child's death, so the Christian should <marker>will</marker> it, too.</example>
             <example>Lexical. We might <marker>can</marker> the fruit tomorrow.</example>
         </rule>
-        <rule id='COLLECTIVE_NOUN_VERB_AGREEMENT_VBP' name='a fleet of ships are (is)'>
+
+        <rule id="COLLECTIVE_NOUN_VERB_AGREEMENT_VBP" name="a fleet of ships are (is)">
             <antipattern><!-- what sort of curtains do you think -->
-                <token postag='NNS'/>
-                <token regexp='yes'>do|did</token>
-                <token regexp='yes'>I|you|we|they</token>
+                <token postag="NNS"/>
+                <token regexp="yes">do|did</token>
+                <token regexp="yes">I|you|we|they</token>
             </antipattern>
             <antipattern><!-- references to the concept of atoms -->
-                <token postag='NNS'/>
+                <token postag="NNS"/>
                 <token>to</token>
-                <token postag='DT'/>
-                <token postag='NN'/>
+                <token postag="DT"/>
+                <token postag="NN"/>
                 <token>of</token>
             </antipattern>
             <antipattern><!-- https://en.wikipedia.org/wiki/Rose_Parade -->
                 <token>roses</token>
                 <token>parade</token>
             </antipattern>
+            <antipattern><!-- #2410 had from the Book of Trades document created -->
+                <token postag="VB.*" postag_regexp="yes"/>
+                <token postag="IN"/>
+                <token postag="DT"/>
+                <token postag="NN(:UN?)?" postag_regexp="yes" regexp="yes">\p{Lu}\p{Ll}+</token><!-- Assume that text with initial capitals is a proper noun  -->
+                <token>of</token>
+                <token postag="NNS" regexp="yes">\p{Lu}\p{Ll}+</token>
+                <token postag="NN">document</token>
+                <token postag="VBN"/>
+            </antipattern>
+            <antipattern><!-- #2420 a bag of algae bread -->
+                <token>of</token>
+                <token chunk="B-NP-plural" postag="NNS"/>
+                <token chunk="E-NP-plural" postag_regexp="yes" postag="NN:UN?"/>
+            </antipattern>
             <pattern>
-                <token postag='NN'>
-                    <exception postag='^(?!.*NN(?!(S|P))).*$' postag_regexp='yes'/>
-                    <exception regexp='yes'>(\w*s\b|kind|lot|majority|pair)</exception>
+                <token postag="NN">
+                    <exception postag="^(?!.*NN(?!(S|P))).*$" postag_regexp="yes"/>
+                    <exception regexp="yes">(\w*s\b|kind|lot|majority|pair)</exception>
                 </token>
                 <token>of</token>
-                <token postag='NNS'>
-                    <exception postag='^(?!.*(NNS|VBZ)).*$' postag_regexp='yes'/>
+                <token postag="NNS">
+                    <exception postag="^(?!.*(NNS|VBZ)).*$" postag_regexp="yes"/>
                     <exception>people</exception>
                 </token>
                 <marker>
-                    <token postag='VBP'><exception postag='RB|IN' postag_regexp='yes'/></token>
+                    <token postag="VBP"><exception postag="RB|IN" postag_regexp="yes"/></token>
                 </marker>
             </pattern>
-            <message>Possible agreement error. Did you mean <suggestion><match no='4' postag='VBZ'/></suggestion>? (Some collective nouns can be treated as both singular and plural, so '\4' is not always incorrect.)</message>
+            <message>Possible agreement error. Did you mean <suggestion><match no="4" postag="VBZ"/></suggestion>? (Some collective nouns can be treated as both singular and plural, so '\4' is not always incorrect.)</message>
             <url>https://www.lexico.com/definition/collective_noun</url>
-            <example correction='is'>A fleet of ships <marker>are</marker> spotted.</example>
+            <example correction="is">A fleet of ships <marker>are</marker> spotted.</example>
+            <example correction="documents">This data from the Book of Trades <marker>document</marker> the changes to society.</example><!-- #2410 -->
             <example>A fleet of ships <marker>is</marker> spotted.</example>
             <example>...involvement of the inhabitants drove the band of thugs <marker>out</marker> of the town.</example>
             <example>I'm taking a couple of days <marker>off</marker>.</example>
             <example>What sort of curtains <marker>do</marker> you think would go with the carpet?</example>
             <example><marker>References to the concept of atoms</marker> date back to ancient Greece and India.</example>
             <example>...at the periphery of syllables like consonants, and moves at...</example>
+            <example>Today an impression of some of those original textile tradesmen can be had from the Book of Trades document created by Thomas.</example><!-- #2410 -->
+            <example>He carried a bag of <marker>algae bread</marker> in his wings.</example><!-- #2420 -->
             <example type="triggers_error">Only a handful of activists <marker>are</marker> articulate in our union.</example>
             <example type="triggers_error">A couple of swallows <marker>are</marker> flying overhead.</example>
             <example type="triggers_error">Only a handful of men <marker>want</marker> to take childcare leave.</example>
         </rule>
+
         <rule id="POKEMONS" name="Plural of Pokémon">
             <pattern>
                 <token regexp="yes">Pok[eé]mons</token>
@@ -12745,6 +12795,10 @@ USA
             <antipattern>
                 <token>mosh</token>
                 <token regexp="yes">pits?</token>
+            </antipattern>
+            <antipattern><!-- https://en.wikipedia.org/wiki/Serie_A -->
+                <token>serie</token>
+                <token>a</token>
             </antipattern>
             <antipattern><!-- https://en.equipauto.com/ -->
                 <token>equip</token>
@@ -15516,7 +15570,7 @@ USA
             <url>https://en.wikipedia.org/wiki/WhatsApp</url>
             <example correction="WhatsApp|What's up">He is using <marker>Whats App</marker> to communicate with his friends.</example>
         </rule>
-        <rule id="ERDOGAN" name="Erdogan (Erdoğan)" default="temp_off">
+        <rule id="ERDOGAN" name="Erdogan (Erdoğan)">
             <pattern>
                 <token>Erdogan</token>
             </pattern>
@@ -15594,6 +15648,19 @@ USA
             <message>Did you mean <suggestion>New Zealand</suggestion>?</message>
             <url>https://en.wikipedia.org/wiki/New_Zealand</url>
             <example correction="New Zealand">I live in <marker>New Zeeland</marker>.</example>
+        </rule>
+        <rule id="LEHMANN_BROTHERS" name="Lehman Brothers" default="temp_off">
+            <antipattern case_sensitive="yes">
+                <token>Lehman</token>
+                <token regexp="yes">Brothers|College</token>
+            </antipattern>
+            <pattern>
+                <token regexp="yes">Lehmann?</token>
+                <token regexp="yes">Brothers|College</token>
+            </pattern>
+            <message>Did you mean <suggestion>Lehman <match no="2" case_conversion="startupper" /></suggestion>?</message>
+            <url>https://en.wikipedia.org/wiki/Lehman_Brothers</url>
+            <example correction="Lehman Brothers"><marker>Lehmann Brothers</marker> was a popular investment bank.</example>
         </rule>
         <rulegroup id="LOREAL" name="L’Oréal">
             <antipattern case_sensitive="yes">
@@ -19557,9 +19624,10 @@ USA
             <example><marker>The thousands</marker> of students on campus when protesting.</example>
             <example>It would go up to 21 millions by 1966.</example>
         </rule>
+
         <rulegroup id="A_PLURAL" name="Agreement: 'a' + plural word">
             <antipattern><!-- category A -->
-                <token regexp="yes">category|class|division|formula|grade|group|hepatitis|influenza|series|type|zone|dock|band</token>
+                <token regexp="yes">category|class|division|document|formula|grade|group|hepatitis|influenza|series|type|zone|dock|band|source</token>
                 <token case_sensitive="yes">A</token>
             </antipattern>
             <antipattern>
@@ -19568,13 +19636,29 @@ USA
             </antipattern>
             <antipattern>
                 <token case_sensitive="yes">A</token>
-                <token regexp="yes">levels|records</token>
+                <token regexp="yes">levels?|records?</token>
             </antipattern>
             <antipattern><!-- "He registered a ups.com user" -->
-                <token regexp="yes">an?</token>
-                <token />
+                <token regexp="yes" skip="2">an?</token>
                 <token>.</token>
                 <token regexp="yes" spacebefore="no">\w{2,6}</token>
+            </antipattern>
+            <antipattern>
+                <token>serie</token>
+                <token>a</token>
+            </antipattern>
+            <antipattern><!-- Spanish name -->
+                <token>a</token>
+                <token>las</token>
+            </antipattern>
+            <antipattern><!-- A Creative Commons Attribution -->
+                <token>Creative</token>
+                <token>Commons</token>
+                <token />
+            </antipattern>
+            <antipattern>
+                <token>A</token>
+                <token>nucleotides</token>
             </antipattern>
             <rule>
                 <antipattern><!-- an operations center campus -->
@@ -19590,7 +19674,7 @@ USA
                         <token postag="NNP?S" postag_regexp="yes">
                             <exception postag="NN:.*|VBZ|NNP?|C[CD]" postag_regexp="yes"/>
                             <exception case_sensitive="yes" regexp="yes">[A-Z]+</exception> <!-- e.g. "a LAPS" -->
-                            <exception regexp="yes">savings|headquarters|innings</exception> <!-- savings has singular concord according to OED; headquarters may as well -->
+                            <exception regexp="yes">savings|headquarters|innings|sideways</exception> <!-- savings has singular concord according to OED; headquarters may as well -->
                         </token>
                     </marker>
                     <token><exception postag="NN.*" postag_regexp="yes"/><exception regexp="yes">&apostrophe;|and</exception></token>
@@ -19610,6 +19694,7 @@ USA
                 <example>Division A teams are the best.</example>
                 <example>Dock A floats.</example>
                 <example>He registered a ups.com user</example>
+                <example>He moved to Juventus where he won trophies including two Serie A titles.</example>
                 <example>Atlas District, an arts and entertainment district in the Near Northeast</example>
                 <example>"The murderer," wrote Schopenhauer, "who is condemned to death according to the law must, it is true, be now used as a mere means, and with complete right."</example>
                 <example>As a consequence, a LAPS is very similar in structure to an EIS sensor.</example>
@@ -19619,6 +19704,8 @@ USA
                 <example>… the <marker>heads of a ram and a buck are</marker> budding forth.</example>
                 <example>... Group N Production cars and more modified <marker>Group A</marker> cars.</example>
                 <example>... which includes a regional headquarters, an operations center campus and a $400 million data center.</example>
+                <example>A <marker>tries</marker> to overtake B.</example><!-- #2415 -->
+                <example>A <marker>million</marker> thank you.</example><!-- #2415 -->
                 <example type="triggers_error">Dwan operated <marker>Flying A Studios</marker> in La Mesa, California from August 1911 to July 1912.</example>
             </rule>
             <rule>
@@ -19663,6 +19750,7 @@ USA
                 <example type="triggers_error">The American Military authorities established a displaced persons (DP) camp in what used to be a sanatorium...</example>
             </rule>
         </rulegroup>
+
         <rule id="ONE_PLURAL" name="Agreement: 'one' + plural word">
             <!-- Similar to A_PLURAL except that we deal with other situations:
                 "one hundred and one items" and "fifty one items" -->
@@ -20208,16 +20296,16 @@ USA
                     </marker>
                     <token><exception regexp="yes">&apostrophe;</exception><exception postag="NNS"/></token>
                 </pattern>
-                <message>Consider using a past participle here: <suggestion><match no="2" postag="VBN"/></suggestion>.</message>
+                <message>Consider using a past participle <suggestion><match no="2" postag="VBN"/></suggestion> or a present participle <suggestion><match no="2" postag="VBG"/></suggestion>.</message>
                 <short>Possible agreement error</short>
-                <example correction="introduced">The software was <marker>introduce</marker> yesterday.</example>
-                <example correction="introduced">The program has been <marker>introduce</marker>.</example>
-                <example correction="given">The gift has been <marker>gave</marker>.</example>
-                <example correction="Interred">If the body has not been <marker>Inter</marker>, yet...</example>
+                <example correction="introduced|introducing">The software was <marker>introduce</marker> yesterday.</example>
+                <example correction="introduced|introducing">The program has been <marker>introduce</marker>.</example>
+                <example correction="given|giving">The gift has been <marker>gave</marker>.</example>
+                <example correction="Interred|Interring">If the body has not been <marker>Inter</marker>, yet...</example>
                 <example>The park has been open for many years.</example>
                 <example>It has been done.</example>
                 <example>It has been love's whip.</example>
-                <example correction="done">He has been <marker>did</marker> this.</example>
+                <example correction="done|doing">He has been <marker>did</marker> this.</example>
                 <example>All you have to do is go and ask.</example>
                 <example>The other patrons were taxi drivers.</example>
                 <example>All she does is eat.</example>
@@ -20229,6 +20317,8 @@ USA
                 <example>The Anchorage <marker>art exhibit</marker> is to raise awareness about autism.</example>
                 <example>Your idea cannot be <marker>brand new</marker>. I heard about it from another source last year.</example>
                 <example type="triggers_error">What we are trying to do with Ridley now is go through the painstaking process of trying to...</example>
+                <example correction="normalized|normalizing">He was <marker>normalize</marker> the whole thing.</example>
+                <example correction="tried|trying">He is <marker>try</marker> to make it work.</example>
                 <example>Their opponents were club president Cesar de Zulueta and Valentin Barr.</example>
                 <example type="triggers_error">...in question of this school was whether Being came before Not-Being (in Chinese, 'ming' and ...</example>
                 <example type="triggers_error">A 10-day-old pup can die from being host to as few as 25 'A. caninum' worms.</example>
@@ -20310,18 +20400,19 @@ USA
                     </marker>
                     <token><exception regexp="yes">&apostrophe;</exception><exception postag="VBN"/></token>
                 </pattern>
-                <message>Consider using a past participle here: <suggestion><match no="3" postag="VBN"/></suggestion>.</message>
+                <message>Consider using a past participle <suggestion><match no="3" postag="VBN"/></suggestion> or a present participle <suggestion><match no="3" postag="VBG"/></suggestion>.</message>
                 <short>Possible agreement error</short>
                 <example>It has always been <marker>written</marker> like this.</example>
                 <example>The area the center of which is here was bombed.</example>
-                <example correction="written">It must have been always <marker>wrote</marker> that.</example>
-                <example correction="hated">The president was always <marker>hate</marker> in Moscow.</example>
+                <example correction="written|writing">It must have been always <marker>wrote</marker> that.</example>
+                <example correction="hated|hating">The president was always <marker>hate</marker> in Moscow.</example>
                 <example>It has always been liked.</example>
                 <example>As they are differentially <marker>phase</marker> modulated...</example>
                 <example>Indirect consumption is usually <marker>oil</marker>.</example>
                 <example>Indirect consumption is mainly <marker>oil and natural gas</marker>.</example>
                 <example>“There is still hope,” said Fernando.</example>
                 <example>That's not butter; it's margarine.</example>
+                <example correction="tried|trying">He is always <marker>try</marker> to make it work.</example>
                 <example>What he did next was Truly Mind Blowing.</example><!-- #1701 -->
                 <example>There's little water in the tank, if any.</example>
                 <example>This was before people knew how to record voices, so we don't know...</example>
@@ -23331,6 +23422,7 @@ USA
             <example>After many years of conflict that lead to the weakening of all the insurgent parties,...</example>
             <example>Mary is the cuter of the two.</example>
             <example>The exact composition of the layer of wax is not only species-dependent.</example>
+            <example>I’ve seen things you people wouldn’t believe. Attack ships on fire off the shoulder of Orion...</example><!-- https://forum.languagetool.org/t/en-possible-false-positive-2020-02-06/5353/2 -->
         </rule>
         <rule id="MOST_SUPERLATIVE" name="No 'more' or 'most' before superlatives">
             <pattern>
@@ -35127,7 +35219,7 @@ The accident victim died from her injuries.
             <example correction="it, girls">Go for <marker>it girls</marker>!</example>
             <example correction="it, guys">Get ready for <marker>it guys</marker>!</example>
         </rule>
-        <rule id="ME_MYSELF_AND_I_COMMA" name="Comma in 'Me myself and I'" default="temp_off">
+        <rule id="ME_MYSELF_AND_I_COMMA" name="Comma in 'Me myself and I'">
             <pattern>
                 <marker>
                     <token>me</token>
@@ -45324,14 +45416,31 @@ The accident victim died from her injuries.
             <suggestion>don't you</suggestion>
             <example correction="Don't you"><marker>Dontcha</marker> think this could be done easier?</example>
         </rule>
-        <rule id="WHATCHA" name="whatcha (what are you)">
-            <pattern>
-                <token regexp="yes">wh?atcha</token>
-            </pattern>
-            <message>The word '\1' is informal. Consider replacing it.</message>
-            <suggestion>what are you</suggestion>
-            <example correction="What are you"><marker>Whatcha</marker> doing?</example>
-        </rule>
+        <rulegroup id="WHATCHA" name="whatcha (what are you)">
+            <rule>
+                <pattern>
+                    <marker>
+                        <token regexp="yes">wh?atcha</token>
+                    </marker>
+                    <token postag="VBG" />
+                </pattern>
+                <message>The word '\1' is informal. Consider replacing it.</message>
+                <suggestion>what are you</suggestion>
+                <example correction="What are you"><marker>Whatcha</marker> doing?</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <marker>
+                        <token regexp="yes">wh?atcha</token>
+                    </marker>
+                    <token postag="VBG" negate_pos="yes" />
+                </pattern>
+                <message>The word '\1' is informal. Consider replacing it.</message>
+                <suggestion>what do you</suggestion>
+                <suggestion>what are you</suggestion>
+                <example correction="What do you|What are you"><marker>Whatcha</marker> have?</example>
+            </rule>
+        </rulegroup>
         <rule id="OUTTA" name="outta (out of)">
             <pattern>
                 <token>outta</token>

@@ -2678,10 +2678,10 @@ Copyright © 2013 Markus Brenneis, Daniel Naber, Jan Schreiber
         <disambig action="ignore_spelling"/>
     </rule>
 
-    <rule name="Daily Mail" id="DAILY_MAIL">
+    <rule name="Daily" id="DAILY">
         <pattern case_sensitive="yes">
             <token>Daily</token>
-            <token regexp="yes">Mail|Telegraph</token>
+            <token regexp="yes">Mail|Telegraphs?|Express|Mirrors?|Talks?|Soaps?|Work</token>
         </pattern>
         <disambig action="ignore_spelling"/>
     </rule>
@@ -3137,7 +3137,7 @@ Copyright © 2013 Markus Brenneis, Daniel Naber, Jan Schreiber
     <rule name="Happy End" id="HAPPY_END">
       <pattern case_sensitive="yes">
         <token>Happy</token>
-        <token>End</token>
+        <token regexp="yes">Ends?|Hours?|Fews?</token>
       </pattern>
       <disambig action="ignore_spelling"/>
     </rule>
@@ -3595,6 +3595,13 @@ Copyright © 2013 Markus Brenneis, Daniel Naber, Jan Schreiber
         <pattern case_sensitive="yes">
             <token>Public</token>
             <token regexp="yes">(School|Viewing|Relation)s?</token>
+        </pattern>
+        <disambig action="ignore_spelling"/>
+    </rule>
+    <rule name="SCHOOL" id="SCHOOL">
+        <pattern case_sensitive="yes">
+            <token regexp="yes">Business|Grammar|Public|Old</token>
+            <token regexp="yes">Schools?</token>
         </pattern>
         <disambig action="ignore_spelling"/>
     </rule>
