@@ -76,7 +76,7 @@ public abstract class AbstractSimpleReplaceRule2 extends Rule {
 
   // list of maps containing error-corrections pairs.
   // the n-th map contains key strings of (n+1) words
-  private final List<Map<String, String>> wrongWords;
+  private final List<Map<String, SuggestionWithMessage>> wrongWords;
 
 /*
   private static final LoadingCache<PathAndLanguage, List<Map<String, SuggestionWithMessage>>> cache = CacheBuilder.newBuilder()
@@ -122,7 +122,7 @@ public abstract class AbstractSimpleReplaceRule2 extends Rule {
    * @param filename the file from classpath to load
    * @return the list of maps containing the error-corrections pairs. The n-th map contains key strings of (n+1) words.
    */
-  private List<Map<String, String>> loadWords(InputStream stream, boolean caseSensitive)
+  private List<Map<String, SuggestionWithMessage>> loadWords(InputStream stream, boolean caseSensitive)
   /*
   private static List<Map<String, SuggestionWithMessage>> loadWords(String filename, Language lang, boolean caseSensitive)
    */
