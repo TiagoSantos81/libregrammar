@@ -11,6 +11,10 @@
 # pode estar sujeito a condições adicionais. Para mais detalhes, consulte as Condições de Uso.
 # Some redundancies were also based on Lightproof rules
 #
+# Format: word=replacement
+#     or: word=replacement{tab}message-shown-to-user
+#         replacement can be more than one word/phrase when separated by `|`
+#
 acontece que= 	Esta é uma expressão evasiva. Para ser claro, tente responder a “Como isso acontece?”.
 aconteceu que= 	Esta é uma expressão evasiva. Para ser claro, tente responder a “Como isso aconteceu?”.
 acredita-se= 	Esta é uma expressão evasiva. Para ser claro, tente responder a “Quem? Como sabem?”.
