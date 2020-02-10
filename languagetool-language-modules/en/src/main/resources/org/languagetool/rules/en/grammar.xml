@@ -6468,7 +6468,8 @@ USA
             <message>Did you mean <suggestion><match no="1"/> whom to</suggestion>?</message>
             <example correction="about whom to">What do you think <marker>about who to</marker> promote?</example>
         </rule>
-        <rulegroup id="WHOM_WHO" name="whom (who)">
+
+        <rulegroup id="WHO_WHOM" name="who (whom)">
             <rule>
                 <pattern>
                     <token postag="SENT_START"/>
@@ -6503,32 +6504,6 @@ USA
                 <message>Did you mean <suggestion>\3m</suggestion> instead of 'who'?</message>
                 <example correction="whom">The hall was filled with students, many of <marker>who</marker> were girls.</example>
             </rule>
-        </rulegroup>
-        <rulegroup id="WHO_WHOM" name="who (whom)">
-            <url>https://www.dictionary.com/e/whomever-vs-whoever/</url>
-            <rule>
-                <antipattern>
-                    <token skip='-1'>whom</token>
-                    <token postag="IN"/>
-                    <token postag="SENT_END"/>
-                </antipattern>
-                <pattern>
-                    <token>
-                        <exception postag="IN"/></token>
-                    <marker>
-                        <token regexp='yes'>whom(?:ever)?</token>
-                    </marker>
-                    <token postag="VBZ|VBD" postag_regexp="yes"><exception inflected="yes" regexp="yes">be|do</exception></token>
-                </pattern>
-                <message>Did you mean <suggestion><match no="2" regexp_match="hom" regexp_replace="ho"/></suggestion> instead of 'whom'?</message>
-                <example correction="Who"><marker>Whom</marker> paid for the meal?</example>
-                <example>With whom did you talk?</example>
-                <example>Whom did you meet?</example>
-                <example>The hall was filled with students, many of whom were girls.</example>
-                <example>Whom are you talking to?</example><!-- Common colloquial speech uses 'Who are you talking to?" incorrectly 
-                                                                https://forum.wordreference.com/threads/who-whom-you-are-talking-to.512760/ -->
-                <example>Legion of Whom?</example>
-            </rule>
             <rule>
                 <antipattern>
                     <token>part</token>
@@ -6552,6 +6527,34 @@ USA
                 <example>Legion of Whom?</example>
             </rule>
         </rulegroup>
+
+        <rulegroup id="WHOM_WHO" name="whom (who)">
+            <url>https://www.dictionary.com/e/whomever-vs-whoever/</url>
+            <rule>
+                <antipattern>
+                    <token skip='-1'>whom</token>
+                    <token postag="IN"/>
+                    <token postag="SENT_END"/>
+                </antipattern>
+                <pattern>
+                    <token>
+                        <exception postag="IN"/></token>
+                    <marker>
+                        <token regexp='yes'>whom(?:ever)?</token>
+                    </marker>
+                    <token postag="VBZ|VBD" postag_regexp="yes"><exception inflected="yes" regexp="yes">be|do</exception></token>
+                </pattern>
+                <message>Did you mean <suggestion><match no="2" regexp_match="hom" regexp_replace="ho"/></suggestion> instead of 'whom'?</message>
+                <example correction="Who"><marker>Whom</marker> paid for the meal?</example>
+                <example correction="who">He is demanding £5,000 from the elderly woman <marker>whom</marker> has ruined his life.</example>
+                <example>With whom did you talk?</example>
+                <example>Whom did you meet?</example>
+                <example>The hall was filled with students, many of whom were girls.</example>
+                <example>Whom are you talking to?</example><!-- Common colloquial speech uses 'Who are you talking to?" incorrectly: https://forum.wordreference.com/threads/who-whom-you-are-talking-to.512760/ 2020-02-10 MFU Lexico says that 'who' is now generally accepted: www.lexico.com/definition/who -->
+                <example>Legion of Whom?</example>
+            </rule>
+        </rulegroup>
+
         <!-- .*/VBG you're::word=\0 your::pivots=you're,your::options=you're,your -->
         <rule id="VBG_YOURE" name="VBG you're (your)">
             <antipattern>
@@ -11913,6 +11916,7 @@ USA
                 <message>Did you mean <suggestion>these</suggestion>?</message>
                 <example correction='These'><marker>This</marker> images are beautiful.</example>
                 <example>This tastes pretty good to me.</example>
+                <example>This makes access to the RawLine superfluous.</example><!-- #2436 -->
             </rule>
             <rule>
                 <pattern case_sensitive="yes">
@@ -15653,7 +15657,7 @@ USA
             <url>https://en.wikipedia.org/wiki/New_Zealand</url>
             <example correction="New Zealand">I live in <marker>New Zeeland</marker>.</example>
         </rule>
-        <rule id="LEHMANN_BROTHERS" name="Lehman Brothers" default="temp_off">
+        <rule id="LEHMANN_BROTHERS" name="Lehman Brothers">
             <antipattern case_sensitive="yes">
                 <token>Lehman</token>
                 <token regexp="yes">Brothers|College</token>
@@ -20300,16 +20304,16 @@ USA
                     </marker>
                     <token><exception regexp="yes">&apostrophe;</exception><exception postag="NNS"/></token>
                 </pattern>
-                <message>Consider using a past participle <suggestion><match no="2" postag="VBN"/></suggestion> or a present participle <suggestion><match no="2" postag="VBG"/></suggestion>.</message>
+                <message>Consider using a past participle here: <suggestion><match no="2" postag="VBN"/></suggestion>.</message>
                 <short>Possible agreement error</short>
-                <example correction="introduced|introducing">The software was <marker>introduce</marker> yesterday.</example>
-                <example correction="introduced|introducing">The program has been <marker>introduce</marker>.</example>
-                <example correction="given|giving">The gift has been <marker>gave</marker>.</example>
-                <example correction="Interred|Interring">If the body has not been <marker>Inter</marker>, yet...</example>
+                <example correction="introduced">The software was <marker>introduce</marker> yesterday.</example>
+                <example correction="introduced">The program has been <marker>introduce</marker>.</example>
+                <example correction="given">The gift has been <marker>gave</marker>.</example>
+                <example correction="Interred">If the body has not been <marker>Inter</marker>, yet...</example>
                 <example>The park has been open for many years.</example>
                 <example>It has been done.</example>
                 <example>It has been love's whip.</example>
-                <example correction="done|doing">He has been <marker>did</marker> this.</example>
+                <example correction="done">He has been <marker>did</marker> this.</example>
                 <example>All you have to do is go and ask.</example>
                 <example>The other patrons were taxi drivers.</example>
                 <example>All she does is eat.</example>
@@ -20321,8 +20325,6 @@ USA
                 <example>The Anchorage <marker>art exhibit</marker> is to raise awareness about autism.</example>
                 <example>Your idea cannot be <marker>brand new</marker>. I heard about it from another source last year.</example>
                 <example type="triggers_error">What we are trying to do with Ridley now is go through the painstaking process of trying to...</example>
-                <example correction="normalized|normalizing">He was <marker>normalize</marker> the whole thing.</example>
-                <example correction="tried|trying">He is <marker>try</marker> to make it work.</example>
                 <example>Their opponents were club president Cesar de Zulueta and Valentin Barr.</example>
                 <example type="triggers_error">...in question of this school was whether Being came before Not-Being (in Chinese, 'ming' and ...</example>
                 <example type="triggers_error">A 10-day-old pup can die from being host to as few as 25 'A. caninum' worms.</example>
@@ -20404,19 +20406,18 @@ USA
                     </marker>
                     <token><exception regexp="yes">&apostrophe;</exception><exception postag="VBN"/></token>
                 </pattern>
-                <message>Consider using a past participle <suggestion><match no="3" postag="VBN"/></suggestion> or a present participle <suggestion><match no="3" postag="VBG"/></suggestion>.</message>
+                <message>Consider using a past participle here: <suggestion><match no="3" postag="VBN"/></suggestion>.</message>
                 <short>Possible agreement error</short>
                 <example>It has always been <marker>written</marker> like this.</example>
                 <example>The area the center of which is here was bombed.</example>
-                <example correction="written|writing">It must have been always <marker>wrote</marker> that.</example>
-                <example correction="hated|hating">The president was always <marker>hate</marker> in Moscow.</example>
+                <example correction="written">It must have been always <marker>wrote</marker> that.</example>
+                <example correction="hated">The president was always <marker>hate</marker> in Moscow.</example>
                 <example>It has always been liked.</example>
                 <example>As they are differentially <marker>phase</marker> modulated...</example>
                 <example>Indirect consumption is usually <marker>oil</marker>.</example>
                 <example>Indirect consumption is mainly <marker>oil and natural gas</marker>.</example>
                 <example>“There is still hope,” said Fernando.</example>
                 <example>That's not butter; it's margarine.</example>
-                <example correction="tried|trying">He is always <marker>try</marker> to make it work.</example>
                 <example>What he did next was Truly Mind Blowing.</example><!-- #1701 -->
                 <example>There's little water in the tank, if any.</example>
                 <example>This was before people knew how to record voices, so we don't know...</example>
@@ -28411,10 +28412,17 @@ USA
             <short>Grammatical problem</short>
             <example correction="two dozen">You need <marker>two dozens of</marker> eggs.</example>
         </rule>
+
         <rule id="NODT_DOZEN" name="Numeral (dozen, hundred, thousand, million) without a determiner or a number">
-            <antipattern><!-- city in california -->
-                <token>thousand</token>
-                <token>oaks</token>
+            <antipattern case_sensitive="yes"><!-- city in California -->
+                <token>Thousand</token>
+                <token>Oaks</token>
+            </antipattern>
+            <antipattern case_sensitive="yes"><!-- #2439 https://en.wikipedia.org/wiki/The_Six_Million_Dollar_Man -->
+                <token>Six</token>
+                <token>Million</token>
+                <token>Dollar</token>
+                <token>Man</token>
             </antipattern>
             <pattern>
                 <token regexp="yes">dozen|hundred|thousand|[bm]illion
@@ -28425,12 +28433,15 @@ USA
             <message>Use <suggestion>a <match no="1"/></suggestion> or use a number before '<match no="1"/>'.</message>
             <short>Grammatical problem: missing determiner</short>
             <example correction="a hundred">You need almost <marker>hundred</marker> examples.</example>
+            <example correction="a thousand">There are about <marker>thousand</marker> oaks in this park.</example>
             <example>You need almost <marker>a hundred</marker> examples.</example>
             <example>The U.S. government gave USD250 million to UNITA between 1986 to 1991.</example>
             <example>It was selected as the first of Life magazine's 'hundred photos that changed the world'.</example>
             <example>a couple dozen</example>
             <example>At a peak of 6 <!--note: non-breaking space --><marker>million</marker>.</example>
+            <example>... which inspired the television series The Six Million Dollar Man.</example><!-- #2439 -->
         </rule>
+
         <rule id="MUCH_COUNTABLE" name="'much' + countable noun, e.g. 'much (many) children'">
             <antipattern>
                 <token>how</token>

@@ -92,16 +92,16 @@ public class MultiDocumentsHandler {
   
   private XComponentContext xContext;       //  The context of the document
   private List<SingleDocument> documents;   //  The List of LO documents to be checked
-//  private boolean proofIsRunning = false;   //  true if a check is almost running
   private XComponent goneContext = null;    //  save component of closed document
   private boolean recheck = true;
   private int docNum;                       //  number of the current document
 
   private boolean switchOff = false;        //  is LT switched off
-  private boolean noMultiReset = true;      //  will be overwritten by config;
+  private boolean useQueue = true;          //  will be overwritten by config;
 
   private String menuDocId = null;          //  Id of document at which context menu was called 
-
+  private TextLevelCheckQueue textLevelQueue = null; // Queue to check text level rules
+  
   @SuppressWarnings("unused")
   private LanguagetoolMenu ltMenu = null;
 
@@ -132,14 +132,10 @@ public class MultiDocumentsHandler {
     }
     if (!langForShortName.equals(docLanguage) || langTool == null || recheck) {
       docLanguage = langForShortName;
-      initLanguageTool();
-      initCheck();
+      langTool = initLanguageTool();
+      initCheck(langTool);
+      initDocuments();
     }
-//    if (proofIsRunning) {
-//      isParallelThread = true;          //  parallel Thread (right-click or dialog-box while background iteration is running)
-//    } else {
-//      proofIsRunning = true;  // main thread is running
-//    }
     docNum = getNumDoc(paRes.aDocumentIdentifier);
     if(switchOff) {
       return paRes;
@@ -158,13 +154,9 @@ public class MultiDocumentsHandler {
       mainThread.resetDocument();
     }
       */
-//    if(isParallelThread) {
-//      isParallelThread = false;
-//    } else {
-//      proofIsRunning = false;
-//    }
     return paRes;
   }
+
   
   /**
    *  Set all documents to be checked again
@@ -254,7 +246,6 @@ public class MultiDocumentsHandler {
    * Inform listener that the doc should be rechecked.
    */
   public boolean resetCheck(String docId) {
-//    if(documents.isEmpty() || (documents.size() > 1 && noMultiReset)) {
     if(documents.isEmpty()) {
       return false;
     }
@@ -372,7 +363,7 @@ public class MultiDocumentsHandler {
   private void setConfigValues(Configuration config, SwJLanguageTool langTool) {
     this.config = config;
     this.langTool = langTool;
-    this.noMultiReset = config.isNoMultiReset();
+    this.useQueue = config.useTextLevelQueue();
     for (SingleDocument document : documents) {
       document.setConfigValues(config);
     }
@@ -467,6 +458,9 @@ public class MultiDocumentsHandler {
       }
     }
     if(rmNum >= 0 && docNum != rmNum ) {  // don't delete a closed document before the last check is done
+      if(useQueue && textLevelQueue != null) {
+        textLevelQueue.setDispose(docID);
+      }
       documents.remove(rmNum);
       goneContext = null;
       if (debugMode) {
@@ -475,7 +469,8 @@ public class MultiDocumentsHandler {
     }
   }
 
-  private void initLanguageTool() {
+  SwJLanguageTool initLanguageTool() {
+    SwJLanguageTool langTool = null;
     try {
       linguServices = new LinguisticServices(xContext);
       config = new Configuration(configDir, configFile, oldConfigFile, docLanguage, linguServices);
@@ -506,13 +501,14 @@ public class MultiDocumentsHandler {
           langTool.enableRule(rule.getId());
         }
       }
-      setConfigValues(config, langTool);
+      return langTool;
     } catch (Throwable t) {
       MessageHandler.showError(t);
     }
+    return langTool;
   }
 
-  void initCheck() {
+  void initCheck(SwJLanguageTool langTool) {
     Set<String> disabledRuleIds = config.getDisabledRuleIds();
     if (disabledRuleIds != null) {
       // copy as the config thread may access this as well
@@ -542,12 +538,30 @@ public class MultiDocumentsHandler {
         langTool.disableRule(id);
       }
     }
+  }
+  
+  void initDocuments() {
     recheck = false;
     sortedTextRules = new SortedTextRules();
     setConfigValues(config, langTool);
     for (SingleDocument document : documents) {
       document.resetCache();
     }
+    if(useQueue) {
+      if(textLevelQueue == null) {
+        textLevelQueue = new TextLevelCheckQueue(this);
+      } else {
+        textLevelQueue.setReset();
+      }
+    }
+  }
+  
+  public List<SingleDocument> getDocuments() {
+    return documents;
+  }
+  
+  public TextLevelCheckQueue getTextLevelCheckQueue() {
+    return textLevelQueue;
   }
   
   
@@ -582,13 +596,13 @@ public class MultiDocumentsHandler {
     menuDocId = new String(docId);
   }
   
-  public void ignoreOnce() {
+  public String ignoreOnce() {
     for (SingleDocument document : documents) {
       if(menuDocId.equals(document.getDocID())) {
-        document.ignoreOnce();
-        break;
+        return document.ignoreOnce();
       }
     }
+    return null;
   }
   
   public void deactivateRule() {
@@ -673,22 +687,40 @@ public class MultiDocumentsHandler {
     }
 
     private void insertRule (int minPara, String RuleId) {
-      if(minPara < 0) {
-        int n = minToCheckParagraph.indexOf(minPara);
-        if( n < 0) {
-          minToCheckParagraph.add(minPara);
-          textLevelRules.add(new ArrayList<String>());
+      if(useQueue) {
+        if(minPara == 0) {
+          int n = minToCheckParagraph.indexOf(-1);
+          if( n == 0 || minToCheckParagraph.size() == 0) {
+            minToCheckParagraph.add(0, minPara);
+            textLevelRules.add(0, new ArrayList<String>());
+          }
+          textLevelRules.get(0).add(new String(RuleId));
+        } else {
+          int n = minToCheckParagraph.indexOf(-1);
+          if( n < 0) {
+            minToCheckParagraph.add(-1);
+            textLevelRules.add(new ArrayList<String>());
+          }
+          textLevelRules.get(textLevelRules.size() - 1).add(new String(RuleId));
         }
-        textLevelRules.get(textLevelRules.size() - 1).add(new String(RuleId));
       } else {
-        int n = minToCheckParagraph.indexOf(-1);
-        if( n == 0 || minToCheckParagraph.size() == 0) {
-          minToCheckParagraph.add(0, minPara);
-          textLevelRules.add(0, new ArrayList<String>());
-        } else if(minPara > minToCheckParagraph.get(0)) {
-          minToCheckParagraph.set(0, minPara);
+        if(minPara < 0) {
+          int n = minToCheckParagraph.indexOf(minPara);
+          if( n < 0) {
+            minToCheckParagraph.add(minPara);
+            textLevelRules.add(new ArrayList<String>());
+          }
+          textLevelRules.get(textLevelRules.size() - 1).add(new String(RuleId));
+        } else {
+          int n = minToCheckParagraph.indexOf(-1);
+          if( n == 0 || minToCheckParagraph.size() == 0) {
+            minToCheckParagraph.add(0, minPara);
+            textLevelRules.add(0, new ArrayList<String>());
+          } else if(minPara > minToCheckParagraph.get(0)) {
+            minToCheckParagraph.set(0, minPara);
+          }
+          textLevelRules.get(0).add(new String(RuleId));
         }
-        textLevelRules.get(0).add(new String(RuleId));
       }
     }
 
@@ -743,7 +775,7 @@ public class MultiDocumentsHandler {
     }
 
   }
-
+  
   class LanguagetoolMenu implements XMenuListener {
     
     XMenuBar menubar = null;
@@ -857,7 +889,7 @@ public class MultiDocumentsHandler {
         ltMenu.removeItem(profilesPos, (short)1);
       }
       toolsMenu.setPopupMenu(ltId, ltMenu);
-      menubar.setPopupMenu(toolsId, toolsMenu);
+//      menubar.setPopupMenu(toolsId, toolsMenu);
     }
       
     private void setProfileMenu() {
