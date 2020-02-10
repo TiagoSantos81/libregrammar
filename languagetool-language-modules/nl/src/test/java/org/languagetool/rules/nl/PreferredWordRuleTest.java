@@ -39,7 +39,7 @@ public class PreferredWordRuleTest {
     JLanguageTool lt = new JLanguageTool(dutch);
 
     AnalyzedSentence sentence1 = lt.getAnalyzedSentence("rijwiel");
-    assertThat(rule.match(sentence1).length, is(1));
+    assertThat(rule.match(sentence1).length, is(2));
     assertThat(rule.match(sentence1)[0].getSuggestedReplacements().toString(), is("[fiets]"));
   }
 
