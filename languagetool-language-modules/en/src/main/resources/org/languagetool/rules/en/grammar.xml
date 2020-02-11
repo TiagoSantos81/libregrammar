@@ -4668,12 +4668,18 @@ USA
                     <token postag="NN(:.+)?" postag_regexp="yes" regexp="yes">\p{Ll}{2,}<exception regexp="yes">equipment|department|sector|exam|faculty|given|can|today|yesterday|tomorrow|now|in|are</exception><exception postag="VB[DGNP]?|RB|MD|IN|JJ.*|CC|PRP|NNP.*" postag_regexp="yes"/></token>
                     <token><exception regexp="yes">\p{Punct}|and|or</exception></token>
                 </pattern>
+                <?ignore
                 <message>Apostrophe might be missing. Did you mean <suggestion><match no="3"/>'</suggestion> or <suggestion><match suppress_misspelled="yes" no="3" postag="NN(P)?S" postag_regexp="yes" postag_replace="NN$1(:U.?)?" setpos="no"/>'s</suggestion>?</message>
+                ?>
+                <message>If you mean '\4 of the \3', an apostrophe might be missing. Otherwise, a comma might be missing.</message>
+                  <suggestion><match no="3"/>'</suggestion>
+                  <suggestion><match suppress_misspelled="yes" no="3" postag="NN(P)?S" postag_regexp="yes" postag_replace="NN$1(:U.?)?" setpos="no"/>'s</suggestion>
+                  <suggestion><match no="3"/>,</suggestion>
                 <short>Possible typo</short>
-                <example correction="presidents'|president's">This is a transcript of the <marker>presidents</marker> speech from March.</example>
-                <example correction="Presidents'|President's">This is a transcript of the <marker>Presidents</marker> speech from March.</example>
-                <example correction="darts'|dart's">The <marker>darts</marker> trajectory is calculated thus:</example>
-                <example correction="arms'|arm's">This video shows the <marker>arms</marker> reduction in movement after surgery to...</example><!-- #2423 -->
+                <example correction="presidents'|president's|presidents,">This is a transcript of the <marker>presidents</marker> speech from March.</example>
+                <example correction="Presidents'|President's|Presidents,">This is a transcript of the <marker>Presidents</marker> speech from March.</example>
+                <example correction="darts'|dart's|darts,">The <marker>darts</marker> trajectory is calculated thus:</example>
+                <example correction="arms'|arm's|arms,">This video shows the <marker>arms</marker> reduction in movement after surgery to...</example><!-- #2423 -->
                 <example>This is a transcript of the <marker>president's</marker> speech.</example>
                 <example>Publishers today are at loss...</example>
                 <example>Owen was seven years younger.</example>
@@ -4706,6 +4712,10 @@ USA
                 <example>But not all the earnings news was cheery.</example>
                 <example>The earnings release was scheduled for May.</example>
                 <example>... voted against the ratification of New Start, a nuclear <marker>arms reduction treaty</marker> between the United States and Russian Federation.</example><!-- #2423 -->
+                <example correction="days'|day's|days,">In the old days friendship had more meaning.</example><!-- https://forum.languagetool.org/t/en-possible-false-positive-2020-02-11/5368 -->
+                <example>In the old days, friendship had more meaning.</example>
+                <example>Friendship had more meaning in the old days.</example>
+                <example>In the old days, friendship really had more meaning.</example>
                 <example type="triggers_error">The new restaurant was making the <marker>owners</marker> money hand over fist.</example>
             </rule>
             <rule>
