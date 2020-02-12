@@ -39043,11 +39043,11 @@ Andere Projekte</example>
         </rulegroup>
         <rule id="MALZEICHEN" name="Sternchen statt Malzeichen">
             <pattern>
-                <token regexp="yes">[0-9]+[a-z]*|[a-z]</token>
+                <token regexp="yes">[\d\.,⁻¹²³⁴⁵⁶⁷⁸⁹⁰]+[a-z]*|[a-z]</token>
                 <marker>
                     <token>*</token>
                 </marker>
-                <token regexp="yes">[0-9]+[a-z]*|[a-z]</token>
+                <token regexp="yes">[\d\.,⁻¹²³⁴⁵⁶⁷⁸⁹⁰]+[a-z]*|[a-z]</token>
             </pattern>
             <message>Wollen Sie statt des Sternchens (*) einen Mittelpunkt (<suggestion>·</suggestion>), ein Malzeichen (<suggestion>×</suggestion>) oder einen Sternoperator (<suggestion>∗</suggestion>) verwenden?</message>
             <example>a = 2 · x² + 5</example>
@@ -39056,6 +39056,11 @@ Andere Projekte</example>
             <example correction="·|×|∗">a = 5 <marker>*</marker> x + 7</example>
             <example correction="·|×|∗">a = 5x <marker>*</marker> 5 + 7</example>
             <example correction="·|×|∗">a <marker>*</marker> b</example>
+            <example>a=2·x²+5</example>
+            <example>4,5×2,5=11,25</example>
+            <example>Nummer 1Z1141X30370035113</example>
+            <example>Eine Wähler*in bleibt zu Hause.</example>
+            <example>Wähler*innen bleiben zu Hause.</example>
         </rule>
         <rule id="LEERZEICHEN_RECHENZEICHEN" name="Leerzeichen vor Rechenzeichen">
             <!-- Zwischen Zahlen werden Rechenzeichen durch kleine, feste Zwischenräume (Duden) oder ganze Leerschritte (DIN 5008) von den Zahlen abgetrennt -->
