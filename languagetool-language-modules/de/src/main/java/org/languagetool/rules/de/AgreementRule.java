@@ -204,6 +204,10 @@ public class AgreementRule extends Rule {
       posRegex("SUB:.*"),
       posRegex("PKT|KON:NEB|ZUS")// "Ist das Kunst?" / "Ist das Kunst oder Abfall?" / "Sind das Eier aus Bodenhaltung"
     ),
+    Arrays.asList( // Die Präsent AG
+      token("Präsent"),
+      token("AG")
+    ),
     Arrays.asList(
       pos(JLanguageTool.SENTENCE_START_TAGNAME),
       tokenRegex("Meist(ens)?|Oft(mals)?|Häufig|Selten"),
@@ -811,7 +815,7 @@ public class AgreementRule extends Rule {
       // avoid false alarm: "Der Mann, in dem quadratische Fische schwammen."
       // or: "Die Polizei erwischte die Diebin, weil diese Ausweis und Visitenkarte hinterließ."
       comma = tokens[pos-2].getToken().equals(",");
-      if(comma) {
+      if (comma) {
         boolean prep = tokens[pos-1].hasPosTagStartingWith("PRP:");
         relPronoun = tokens[pos].hasAnyLemma(REL_PRONOUN_LEMMAS);
         return prep && relPronoun || (tokens[pos-1].hasPosTag("KON:UNT") && (tokens[pos].hasLemma("jen") || tokens[pos].hasLemma("dies")));
@@ -849,9 +853,9 @@ public class AgreementRule extends Rule {
       List<String> errorCategories = getCategoriesCausingError(token1, token2);
       String errorDetails = errorCategories.isEmpty() ?
             "Kasus, Genus oder Numerus" : String.join(" und ", errorCategories);
-      String msg = "Möglicherweise fehlende grammatische Übereinstimmung zwischen Artikel und Nomen " +
-            "bezüglich " + errorDetails + ".";
-      String shortMsg = "Möglicherweise keine Übereinstimmung bezüglich " + errorDetails;
+      String msg = "Möglicherweise fehlende grammatische Übereinstimmung " +
+            "des " + errorDetails + ".";
+      String shortMsg = "Möglicherweise keine Übereinstimmung des " + errorDetails;
       ruleMatch = new RuleMatch(this, sentence, token1.getStartPos(),
               token2.getEndPos(), msg, shortMsg);
       /*try {
@@ -954,21 +958,27 @@ public class AgreementRule extends Rule {
       AnalyzedTokenReadings token2, AnalyzedTokenReadings token3, AnalyzedSentence sentence, int tokenPos) {
     // TODO: remove (token3 == null || token3.getToken().length() < 2)
     // see Daniel's comment from 20.12.2016 at https://github.com/languagetool-org/languagetool/issues/635
-    if(token3 == null || token3.getToken().length() < 2) {
+    if (token3 == null || token3.getToken().length() < 2) {
       return null;
     }
     Set<String> set = retainCommonCategories(token1, token2, token3);
     RuleMatch ruleMatch = null;
     if (set.isEmpty()) {
+      if (token3.getToken().matches("Herr|Frau") && tokenPos + 3 < sentence.getTokensWithoutWhitespace().length) {
+        AnalyzedTokenReadings token4 = sentence.getTokensWithoutWhitespace()[tokenPos + 3];
+        if (!token4.isTagged() || token4.hasPosTagStartingWith("EIG:")) {
+          // 'Aber das ignorierte Herr Grey bewusst.'
+          return null;
+        }
+      }
       RuleMatch compoundMatch = getCompoundError(token1, token2, token3, tokenPos, sentence);
       if (compoundMatch != null) {
         return compoundMatch;
       }
-      // TODO: more detailed error message:
-      String msg = "Möglicherweise fehlende grammatische Übereinstimmung zwischen Artikel, Adjektiv und " +
-            "Nomen bezüglich Kasus, Numerus oder Genus. Beispiel: 'mein kleiner Haus' " +
+      String msg = "Möglicherweise fehlende grammatische Übereinstimmung " +
+            "von Kasus, Numerus oder Genus. Beispiel: 'mein kleiner Haus' " +
             "statt 'mein kleines Haus'";
-      String shortMsg = "Möglicherweise keine Übereinstimmung bezüglich Kasus, Numerus oder Genus";
+      String shortMsg = "Möglicherweise keine Übereinstimmung von Kasus, Numerus oder Genus";
       ruleMatch = new RuleMatch(this, sentence, token1.getStartPos(), token3.getEndPos(), msg, shortMsg);
     }
     return ruleMatch;

@@ -3874,10 +3874,13 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                         <token>seid</token>
                     </marker>
                     <token postag="ADV:TMP"/>
-                    <token postag="VER:(AUX:|MOD:)?(1:SIN|2:SIN|3:SIN|1:PLU|3:PLU).*" postag_regexp="yes"/>
+                    <token postag="VER:(AUX:|MOD:)?(1:SIN|2:SIN|3:SIN|1:PLU|3:PLU).*" postag_regexp="yes">
+                        <exception regexp="yes">erwachsen|missraten|verkommen|überlegen|verlegen</exception>
+                    </token>
                 </pattern>
                 <message>Meinten Sie <suggestion>seit</suggestion> (Präposition) statt 'seid' (Verbform)?</message>
                 <example correction="Seit"><marker>Seid</marker> gestern geht es mir wieder besser.</example>
+                <example>Ihr Mädchen <marker>seid</marker> immer verlegen.</example>
             </rule>
             <rule>
                 <pattern>
@@ -7371,6 +7374,19 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <url>https://de.wikipedia.org/wiki/WhatsApp</url>
             <short>&getrennt;.</short>
             <example correction="WhatsApp">Wir schrieben per <marker>whats app</marker>.</example>
+        </rule>
+        <rule id="SAO_PAOLO" name="Sau Paulo (São Paulo)" default="temp_off">
+            <antipattern case_sensitive="yes">
+                <token>São</token>
+                <token>Paulo</token>
+            </antipattern>
+            <pattern>
+                <token regexp="yes">S[áãàa][ou]</token>
+                <token regexp="yes">Pa[ou]l[uo]s?</token>
+            </pattern>
+            <message>Meinten Sie <suggestion>São <match no="2" regexp_match="(?i)Pa[ou]lo" regexp_replace="Paulo" /></suggestion> (= Stadt in Brasilien)?</message>
+            <url>https://de.wikipedia.org/wiki/S%C3%A3o_Paulo</url>
+            <example correction="São Paulo">Er ist aus <marker>Sao Paolo</marker>.</example>
         </rule>
         <rulegroup id="LOREAL" name="L’Oréal">
             <antipattern case_sensitive="yes">
@@ -33024,8 +33040,17 @@ Andere Projekte</example>
             </rule>
         </rulegroup>
 
-        <rulegroup id="STAND_UP" name="'Stand-up'" default="temp_off">
+        <rulegroup id="STAND_UP" name="'Stand-up'">
             <url>https://www.duden.de/rechtschreibung/Stand_up</url>
+            <antipattern><!-- Englische Namen -->
+                <token>Stand</token>
+                <token>up</token>
+                <token regexp="yes">and|or|&amp;</token>
+            </antipattern>
+            <antipattern><!-- Englische Namen -->
+                <token>Standup</token>
+                <token regexp="yes" postag="UNKNOWN">.*[a-z].*</token>
+            </antipattern>
             <rule>
                 <pattern>
                     <token case_sensitive="yes">Stand</token>
@@ -40519,21 +40544,6 @@ Andere Projekte</example>
       <example>4,5×2,5=11,25</example>
       <example>AmVIO2X2, AmVO2X, AmIVOX2 und AmIIIOX</example>
       <example>Nummer 1Z1141X30370035113</example>
-    </rule>
-    <rule>
-      <regexp>([a-z]|[\d\.,⁻¹²³⁴⁵⁶⁷⁸⁹⁰]+?[a-z]{0,1})\*((?!in)[a-z]|[\d\.,⁻¹²³⁴⁵⁶⁷⁸⁹⁰]+?[a-z]{0,1})</regexp>
-      <message>Erwägen Sie die Verwendung eines echten Multiplikationszeichens.</message>
-        <suggestion>\1×\2</suggestion>
-        <suggestion>\1·\2</suggestion>
-      <example correction="5×x|5·x">a=<marker>5*x</marker>+7</example>
-      <example correction="5x×5|5x·5">a=<marker>5x*5</marker>+7</example>
-      <example correction="5x×5|5x·5">a=7+<marker>5x*5</marker></example>
-      <example correction="a×b|a·b"><marker>a*b</marker></example>
-      <example>a=2·x²+5</example>
-      <example>4,5×2,5=11,25</example>
-      <example>Nummer 1Z1141X30370035113</example>
-      <example>Eine Wähler*in bleibt zu Hause.</example>
-      <example>Wähler*innen bleiben zu Hause.</example>
     </rule>
   </rulegroup>
         <rulegroup id="FALSCHES_ANFUEHRUNGSZEICHEN" name="Falsches Anführungszeichen ('” [99]' statt '“ [66]')">
