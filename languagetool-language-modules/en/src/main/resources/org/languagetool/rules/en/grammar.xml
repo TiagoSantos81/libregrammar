@@ -4712,7 +4712,7 @@ USA
                 <example>But not all the earnings news was cheery.</example>
                 <example>The earnings release was scheduled for May.</example>
                 <example>... voted against the ratification of New Start, a nuclear <marker>arms reduction treaty</marker> between the United States and Russian Federation.</example><!-- #2423 -->
-                <example correction="days'|day's|days,">In the old days friendship had more meaning.</example><!-- https://forum.languagetool.org/t/en-possible-false-positive-2020-02-11/5368 -->
+                <example correction="days'|day's|days,">In the old <marker>days</marker> friendship had more meaning.</example><!-- https://forum.languagetool.org/t/en-possible-false-positive-2020-02-11/5368 -->
                 <example>In the old days, friendship had more meaning.</example>
                 <example>Friendship had more meaning in the old days.</example>
                 <example>In the old days, friendship really had more meaning.</example>

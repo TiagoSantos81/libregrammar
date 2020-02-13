@@ -2217,7 +2217,7 @@ title="Easy editing stylesheet" ?>
           <token postag_regexp='yes' postag='_PUNCT|C.+'/>
           <token regexp='yes'>até</token>
           <token>que</token>
-          <token postag_regexp='yes' postag='V...[12].+'>
+          <token postag_regexp='yes' postag='V...[12].+'/>
       </antipattern>	  
       <pattern>
           <token postag_regexp='yes' postag='SENT_START|_PUNCT|C.+'/>
