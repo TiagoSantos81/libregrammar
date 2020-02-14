@@ -10,6 +10,10 @@
      `WhiteSpaceBeforeParagraphEnd`, `WhiteSpaceAtBeginOfParagraph`, `EmptyLineRule`, 
      `ParagraphRepeatBeginningRule`, `PunctuationMarkAtParagraphEnd` .
 
+#### Dutch
+  * restored old [prefered words database](https://github.com/TiagoSantos81/languagetool/commit/5a3084a92142349926ee5f9772ea63eb100573fb)
+    since performance issues were fixed in the meantime.
+
 #### English
   * rules added and improved, including:
      - slang terms.
@@ -25,7 +29,8 @@
     crippling to detection while not providing meaningful improvements to accuracy.
 
 #### General
-  * 1547 species taxa entries added to `spelling_global.txt`
+  * 1547 species taxa entries added to `spelling_global.txt`.
+  * revert remote rules implementation and Google's BERT suggestion sorting.
   
 ### Other changes common to both projects
 
@@ -65,6 +70,10 @@
   * dependency security update
   * [upstream hunspell support dropped for 32-bit systems](https://github.com/languagetool-org/languagetool/commit/b769f5ec319a53c10c45a8aa33a9fd6a4600792c).
   * `AbstractReplaceRule2` now accepts per entry custom messages
+
+
+#### LibreOffice / Apache OpenOffice Integration
+  * more response rule queue mechanism thanks to Fred Kruse
 
 ## 4.8 (released 2019-12-28)
 
