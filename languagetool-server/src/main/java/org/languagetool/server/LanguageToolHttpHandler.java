@@ -76,7 +76,6 @@ class LanguageToolHttpHandler implements HttpHandler {
 
   /** @since 2.6 */
   void shutdown() {
-    textCheckerV2.shutdownNow();
   }
 
   @Override

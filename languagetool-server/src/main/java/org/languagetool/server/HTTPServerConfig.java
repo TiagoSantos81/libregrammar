@@ -30,7 +30,6 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.*;
-import java.util.regex.Pattern;
 
 /**
  * @since 2.0
@@ -80,7 +79,6 @@ public class HTTPServerConfig {
   protected boolean trustXForwardForHeader;
   protected int maxWorkQueueSize;
   protected File rulesConfigFile = null;
-  protected File remoteRulesConfigFile = null;
   protected int cacheSize = 0;
   protected long cacheTTLSeconds = 300;
   protected float maxErrorsPerWordRate = 0;
@@ -107,8 +105,6 @@ public class HTTPServerConfig {
   protected int slowRuleLoggingThreshold = -1; // threshold in milliseconds, used by SlowRuleLogger; < 0 - disabled
 
   protected String abTest = null;
-  protected Pattern abTestClients = null;
-  protected int abTestRollout = 100; // percentage [0,100]
   /**
    * Create a server configuration for the default port ({@link #DEFAULT_PORT}).
    */
@@ -249,13 +245,6 @@ public class HTTPServerConfig {
             throw new RuntimeException("Rules Configuration file can not be found: " + rulesConfigFile);
           }
         }
-        String remoteRulesConfigFilePath = getOptionalProperty(props, "remoteRulesFile", null);
-        if (remoteRulesConfigFilePath != null) {
-          remoteRulesConfigFile = new File(remoteRulesConfigFilePath);
-          if (!remoteRulesConfigFile.exists() || !remoteRulesConfigFile.isFile()) {
-            throw new RuntimeException("Remote rules configuration file can not be found: " + remoteRulesConfigFile);
-          }
-        }
         cacheSize = Integer.parseInt(getOptionalProperty(props, "cacheSize", "0"));
         if (cacheSize < 0) {
           throw new IllegalArgumentException("Invalid value for cacheSize: " + cacheSize + ", use 0 to deactivate cache");
@@ -299,8 +288,6 @@ public class HTTPServerConfig {
 
         addDynamicLanguages(props);
         setAbTest(getOptionalProperty(props, "abTest", null));
-        setAbTestClients(getOptionalProperty(props, "abTestClients", null));
-        setAbTestRollout(Integer.parseInt(getOptionalProperty(props, "abTestRollout", "100")));
       }
     } catch (IOException e) {
       throw new RuntimeException("Could not load properties from '" + file + "'", e);
@@ -799,15 +786,6 @@ public class HTTPServerConfig {
   }
 
   /**
-   * @return the file from which remote rules should be configured, or {@code null}
-   * @since 4.9
-   */
-  @Nullable
-  File getRemoteRulesConfigFile() {
-    return remoteRulesConfigFile;
-  }
-
-  /**
    * @return the database driver name like {@code org.mariadb.jdbc.Driver}, or {@code null}
    * @since 4.2
    */
@@ -965,51 +943,11 @@ public class HTTPServerConfig {
    */
   @Experimental
   public void setAbTest(@Nullable String abTest) {
-    if (abTest != null && abTest.trim().isEmpty()) {
-      this.abTest = null;
-    } else {
-      this.abTest = abTest;
+    List<String> values = Arrays.asList("SuggestionsOrderer", "SuggestionsRanker");
+    if (abTest != null && !values.contains(abTest)) {
+        throw new IllegalConfigurationException("Unknown value for 'abTest' property: Must be one of: " + values);
     }
-  }
-
-  /**
-   * Clients that a A/B test runs on; null -> disabled
-   * @since 4.9
-   */
-  @Experimental
-  @Nullable
-  public Pattern getAbTestClients() {
-    return abTestClients;
-  }
-
-  /**
-   * Clients that a A/B test runs on; null -> disabled
-   * @since 4.9
-   */
-  @Experimental
-  public void setAbTestClients(@Nullable String pattern) {
-    if (pattern == null) {
-      this.abTestClients = null;
-    } else {
-      this.abTestClients = Pattern.compile(pattern);
-    }
-  }
-
-  /**
-   * @param abTestRollout percentage [0,100] of users to include in ab test rollout
-   * @since 4.9
-   */
-  @Experimental
-  public void setAbTestRollout(int abTestRollout) {
-    this.abTestRollout = abTestRollout;
-  }
-
-  /**
-   * @since 4.9
-   */
-  @Experimental
-  public int getAbTestRollout() {
-    return abTestRollout;
+    this.abTest = abTest;
   }
 
   /**

@@ -31,7 +31,6 @@ import org.languagetool.language.LanguageIdentifier;
 import org.languagetool.markup.AnnotatedText;
 import org.languagetool.markup.AnnotatedTextBuilder;
 import org.languagetool.rules.CategoryId;
-import org.languagetool.rules.RemoteRule;
 import org.languagetool.rules.DictionaryMatchFilter;
 import org.languagetool.rules.RuleMatch;
 import org.languagetool.rules.bitext.BitextRule;
@@ -88,7 +87,6 @@ abstract class TextChecker {
   private final ResultCache cache;
   private final DatabaseLogger databaseLogger;
   private final Long logServerId;
-  private final Random random = new Random();
   PipelinePool pipelinePool; // mocked in test -> package-private / not final
 
   TextChecker(HTTPServerConfig config, boolean internalServer, Queue<Runnable> workQueue, RequestCounter reqCounter) {
@@ -121,7 +119,6 @@ abstract class TextChecker {
       logger.info("Prewarming finished.");
     }
     if (config.getAbTest() != null) {
-      UserConfig.enableABTests();
       logger.info("A/B-Test enabled: " + config.getAbTest());
       if (config.getAbTest().equals("SuggestionsOrderer")) {
         SuggestionsOrdererConfig.setMLSuggestionsOrderingEnabled(true);
@@ -183,7 +180,6 @@ abstract class TextChecker {
 
   void shutdownNow() {
     executorService.shutdownNow();
-    RemoteRule.shutdown();
   }
   
   void checkText(AnnotatedText aText, HttpExchange httpExchange, Map<String, String> parameters, ErrorRequestLimiter errorRequestLimiter,
@@ -213,52 +209,14 @@ abstract class TextChecker {
 
     boolean filterDictionaryMatches = "true".equals(parameters.get("filterDictionaryMatches"));
 
-
-    Long textSessionId = null;
-    try {
-      if (parameters.containsKey("textSessionId")) {
-        String textSessionIdStr = parameters.get("textSessionId");
-        if (textSessionIdStr.contains(":")) { // transitioning to new format used in chrome addon
-          // format: "{random number in 0..99999}:{unix time}"
-          long random, timestamp;
-          int sepPos = textSessionIdStr.indexOf(':');
-          random = Long.valueOf(textSessionIdStr.substring(0, sepPos));
-          timestamp = Long.valueOf(textSessionIdStr.substring(sepPos + 1));
-          // use random number to choose a slice in possible range of values
-          // then choose position in slice by timestamp
-          long maxRandom = 100000;
-          long randomSegmentSize = (Long.MAX_VALUE - maxRandom) / maxRandom;
-          long segmentOffset = random * randomSegmentSize;
-          if (timestamp > randomSegmentSize) {
-            logger.warn(String.format("Could not transform textSessionId '%s'", textSessionIdStr));
-          }
-          textSessionId = segmentOffset + timestamp;
-        } else {
-          textSessionId = Long.valueOf(textSessionIdStr);
-        }
-      }
-    } catch (NumberFormatException ex) {
-      logger.warn("Could not parse textSessionId '" + parameters.get("textSessionId") + "' as long: " + ex.getMessage());
-    }
-
-    String abTest = null;
-    if (agent != null && config.getAbTestClients() != null && config.getAbTestClients().matcher(agent).matches()) {
-      boolean testRolledOut;
-      // partial rollout; deterministic if textSessionId given to make testing easier
-      if (textSessionId != null) {
-        testRolledOut = textSessionId % 100 < config.getAbTestRollout();
-      } else {
-        testRolledOut = random.nextInt(100) < config.getAbTestRollout();
-      }
-      if (testRolledOut) {
-        abTest = config.getAbTest();
-      }
-    }
-
     UserConfig userConfig = new UserConfig(
             limits.getPremiumUid() != null ? getUserDictWords(limits.getPremiumUid()) : Collections.emptyList(),
-            getRuleValues(parameters), config.getMaxSpellingSuggestions(), null, null, filterDictionaryMatches,
-      abTest, textSessionId);
+            new HashMap<>(), config.getMaxSpellingSuggestions(), null, null, filterDictionaryMatches);
+
+    // NOTE: at the moment, feedback for A/B-Tests is only delivered from this client, so only run tests there
+    if (agent != null && agent.equals("ltorg")) {
+      userConfig.setAbTest(config.getAbTest());
+    }
 
     //print("Check start: " + text.length() + " chars, " + langParam);
     boolean autoDetectLanguage = getLanguageAutoDetect(parameters);
@@ -320,6 +278,34 @@ abstract class TextChecker {
       enabledCategories, disabledCategories, useEnabledOnly,
       useQuerySettings, allowIncompleteResults, enableHiddenRules, mode, callback);
 
+    Long textSessionId = null;
+    try {
+      if (parameters.containsKey("textSessionId")) {
+        String textSessionIdStr = parameters.get("textSessionId");
+        if (textSessionIdStr.contains(":")) { // transitioning to new format used in chrome addon
+          // format: "{random number in 0..99999}:{unix time}"
+          long random, timestamp;
+          int sepPos = textSessionIdStr.indexOf(':');
+          random = Long.valueOf(textSessionIdStr.substring(0, sepPos));
+          timestamp = Long.valueOf(textSessionIdStr.substring(sepPos + 1));
+          // use random number to choose a slice in possible range of values
+          // then choose position in slice by timestamp
+          long maxRandom = 100000;
+          long randomSegmentSize = (Long.MAX_VALUE - maxRandom) / maxRandom;
+          long segmentOffset = random * randomSegmentSize;
+          if (timestamp > randomSegmentSize) {
+            logger.warn(String.format("Could not transform textSessionId '%s'", textSessionIdStr));
+          }
+          textSessionId = segmentOffset + timestamp;
+        } else {
+          textSessionId = Long.valueOf(textSessionIdStr);
+        }
+
+        userConfig.setTextSessionId(textSessionId);
+      }
+    } catch (NumberFormatException ex) {
+      logger.warn("Could not parse textSessionId '" + parameters.get("textSessionId") + "' as long: " + ex.getMessage());
+    }
     int textSize = aText.getPlainText().length();
 
     List<RuleMatch> ruleMatchesSoFar = Collections.synchronizedList(new ArrayList<>());
@@ -556,7 +542,7 @@ abstract class TextChecker {
     try {
       settings = new PipelinePool.PipelineSettings(lang, motherTongue, params, config.globalConfig, userConfig);
       lt = pipelinePool.getPipeline(settings);
-      matches.addAll(lt.check(aText, true, JLanguageTool.ParagraphHandling.NORMAL, listener, params.mode, executorService));
+      matches.addAll(lt.check(aText, true, JLanguageTool.ParagraphHandling.NORMAL, listener, params.mode));
     } finally {
       if (lt != null) {
         pipelinePool.returnPipeline(settings, lt);

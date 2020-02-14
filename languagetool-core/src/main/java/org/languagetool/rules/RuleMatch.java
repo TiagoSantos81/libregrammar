@@ -90,14 +90,6 @@ public class RuleMatch implements Comparable<RuleMatch> {
   }
 
   /**
-   * Create a rule match with any suggestions in the message overridden by the given suggestions
-   * @since 4.7
-   */
-  public RuleMatch(Rule rule, AnalyzedSentence sentence, int fromPos, int toPos, String message, String shortMessage, List<String> suggestions) {
-    this(rule, sentence, fromPos, toPos, message, shortMessage, false, null);
-    setSuggestedReplacements(suggestions);
-  }
-  /**
    * @deprecated use a constructor that also takes an {@code AnalyzedSentence} parameter (deprecated since 4.0)
    */
   public RuleMatch(Rule rule, int fromPos, int toPos, String message, String shortMessage,
@@ -271,9 +263,9 @@ public class RuleMatch implements Comparable<RuleMatch> {
     return offsetPosition.getEnd();
   }
 
-  public void setOffsetPosition(int fromPos, int toPos) {
+  public void setOffsetPosition(int fromPos, int toPos, RuleMatch ruleMatch) {
     if (toPos <= fromPos) {
-      throw new RuntimeException("fromPos (" + fromPos + ") must be less than toPos (" + toPos + ") for match: " + this);
+      throw new RuntimeException("fromPos (" + fromPos + ") must be less than toPos (" + toPos + ") for match: " + ruleMatch);
     }
     offsetPosition = new OffsetPosition(fromPos, toPos);
   }
