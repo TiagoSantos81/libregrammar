@@ -2435,13 +2435,19 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <token postag_regexp="yes" postag="NN(S|:UN?)"/>
             <token postag="IN"/>
         </antipattern>
-          <antipattern><!-- #2405 the community sees it as -->
+        <antipattern><!-- #2405 the community sees it as -->
             <token postag="DT"/>
             <token postag_regexp="yes" postag="NN(:UN?)?"/>
             <token postag="VBZ"/>
             <token regexp="yes">me|you|him|her|it|us|them|one</token>
             <token postag_regexp="yes" postag="CC|IN"/>
-          </antipattern>
+        </antipattern>
+        <antipattern><!-- #2469 the work make her -->
+            <token postag_regexp="yes" postag="DT"/>
+            <token chunk="E-NP-singular" postag_regexp="yes" postag="NN:UN?"/>
+            <token chunk="B-VP" postag="VBP"/>
+            <token chunk="B-NP-singular"/>
+        </antipattern>
         <pattern>
             <token postag="DT"><exception postag="PDT"/><exception regexp="yes">th[eo]se|one</exception><exception scope="previous">of</exception></token>
             <token postag="JJ"><exception postag="RB|NNPS?|NN:U|PRP" postag_regexp="yes"/></token>
@@ -2463,6 +2469,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <example type="untouched">Verb: ... and over again continuously until the individual <marker>gains</marker> entry to a spiritual realm or Otherworld.</example><!-- chunker error: gains/I-NP-plural -->
         <example type="untouched">Verb: Otherwise, the community <marker>sees</marker> it as trolling, regardless of the intent.</example><!-- #2405 -->
         <example type="untouched">Verb: Also, this group <marker>sees</marker> them on many occasions.</example><!-- #2405 -->
+        <example type="untouched">Verb: ... that she brought to the work <marker>make</marker> her the master worker of the genre.</example><!-- #2469 -->
         <example type="ambiguous" inputform="dogs[dog/NNS,dog/VBZ]" outputform="dogs[dog/NNS]">Today, the black <marker>dogs</marker> barks loudly.</example>
         <example type="ambiguous" inputform="will[will/MD,will/NN:UN,will/VB,will/VBP]" outputform="will[will/NN:UN]">Undoubtedly, the general <marker>will</marker> is an important notion in Rousseau.</example>
         <example type="ambiguous" inputform="course[course/NN:UN,course/VB,course/VBP]" outputform="course[course/NN:UN]">Panovsky's notion of the dialectic makes history follow a predetermined <marker>course</marker>.</example>
@@ -3227,8 +3234,8 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <token postag_regexp="yes" postag="RB"/>
             <token postag_regexp="yes" postag="VBP"/>
         </antipattern>
-        <antipattern><!-- #2433 social safety make it -->
-            <token postag="JJ"/>
+        <antipattern><!-- #2433 social safety make it / #2462 this work make it -->
+            <token postag_regexp="yes" postag="DT|JJ|PRP\$"/>
             <token chunk="E-NP-singular" postag_regexp="yes" postag="NN:UN?"/>
             <token chunk="B-VP" postag="VBP"/>
             <token chunk="B-NP-singular"/>
@@ -3250,6 +3257,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <example type="untouched">Verb. She will soon <marker>clear</marker> away these dishes.</example>
         <example type="untouched">Phrasal verb. ...being a supply teacher; students would often <marker>cut up</marker> and play baffling tricks.</example>
         <example type="untouched">Noun. ... together with its education services and level of social <marker>safety</marker> make it attractive for locals and visitors alike.</example><!-- #2433 -->
+        <example type="untouched">Noun. ... that Ian brought to this <marker>work</marker> make it one of the masterpieces of Berkeley scholarship.</example><!-- #2462 -->
     </rule>
 
     <rule name="DT|JJ + JJ + NN/VBP -&gt; NN" id="DT_JJ_NN_NN">
@@ -3266,8 +3274,8 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <token>and</token>
             <token postag="JJ"/>
         </antipattern>
-        <antipattern><!-- #2433 social safety make it -->
-            <token postag="JJ"/>
+        <antipattern><!-- #2433 social safety make it / #2462 this work make it -->
+            <token postag_regexp="yes" postag="DT|JJ|PRP\$"/>
             <token chunk="E-NP-singular" postag_regexp="yes" postag="NN:UN?"/>
             <token chunk="B-VP" postag="VBP"/>
             <token chunk="B-NP-singular"/>
@@ -3295,6 +3303,9 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <example type="untouched">Verb. ... and although a few <marker>separate</marker>, many do not.</example>
         <example type="untouched">Verb. Most strands remain together, but a few <marker>separate</marker>.</example>
         <example type="untouched">Verb. Its stable economy together with its education services and level of social safety <marker>make</marker> it attractive for locals and visitors alike.</example><!-- #2433 -->
+        <example type="untouched">Verb. ... that Ian brought to this work <marker>make</marker> it one of the masterpieces of Berkeley scholarship.</example><!-- #2462 -->
+        <example type="untouched">Verb. ... that she brought to this work <marker>make</marker> her the master worker of the genre.</example>
+        <example type="untouched">Verb. ... that she brought to her work <marker>make</marker> the challenge of the genre seem overwhelming.</example>
         <example type="untouched">Adjective. One of the most <marker>stable</marker> and prosperous of the post-Communist states is the Czech Republic.</example>
         <example type="ambiguous" inputform="nose[nose/NN,nose/VB,nose/VBP]" outputform="nose[nose/NN]">The elephant swings its long <marker>nose</marker>.</example>
         <example type="ambiguous" inputform="stone[stone/JJ,stone/NN:UN,stone/NNS,stone/VB,stone/VBP]" outputform="stone[stone/NN:UN,stone/NNS]">A rolling <marker>stone</marker> gathers no moss.</example>
@@ -3314,6 +3325,22 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <disambig action="filterall"/>
         <example type="ambiguous" inputform="stable[stable/JJ,stable/NN,stable/VB,stable/VBP]" outputform="stable[stable/JJ]">One of the most <marker>stable</marker> and prosperous of the post-Communist states is the Czech Republic.</example>
     </rule>
+
+    <rule name="JJ + JJ/NN > NN + VB/NN > VB + NOUNPHRASE" id="JJ_NN_VB_NOUNPHRASE"><!-- This is based on the antipattern #2433 in DT_JJ_NN_NN and DT_JJ_NN_JJ -->
+        <pattern>
+            <token chunk="B-NP-singular" postag="JJ"/>
+            <marker>
+                <token chunk="E-NP-singular" postag_regexp="yes" postag="NN:UN?"/>
+                <token chunk="B-VP" postag="VBP"/>
+            </marker>
+            <token chunk="B-NP-singular"/>
+        </pattern>
+        <disambig action="filterall"/>
+        <example type="untouched">MD not JJ. But we <marker>must</marker> all understand they are a fledgling business...</example>
+        <example type="ambiguous" inputform="safety[safety/JJ,safety/NN:U,safety/VB,safety/VBP]" outputform="safety[safety/NN:U]">... together with its education services and level of social <marker>safety</marker> make it attractive for locals and visitors alike.</example><!-- #2433 -->
+        <example type="ambiguous" inputform="make[make/NN:UN,make/VB,make/VBP]" outputform="make[make/VBP]">... together with its education services and level of social safety <marker>make</marker> it attractive for locals and visitors alike.</example><!-- #2433 -->
+    </rule>
+
     <rulegroup name="a few + JJ + NNS" id="a_few_JJ_NNS">
      <rule>
         <pattern>
@@ -6054,6 +6081,63 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             </pattern>
             <disambig action="filterall"/>
         </rule>
+
+    <rule id="TO_VB_OR_VB"  name="to + noun/verb > verb + and/or + noun/verb > verb">
+        <antipattern><!-- singular noun phrase -->
+            <token postag="TO"/>
+            <token chunk="B-NP-singular" postag_regexp="yes" postag="NN:UN?"/>
+            <token chunk="I-NP-singular" postag="CC" regexp="yes">and|or</token>
+            <token postag_regexp="yes" postag="NN:UN?"/><!-- Do not use E-NP-singular, because this token is not necessarily the end of a noun phrase. -->
+        </antipattern>
+        <antipattern><!-- plural noun phrase -->
+            <token postag="TO"/>
+            <token chunk="B-NP-plural" postag_regexp="yes" postag="NN:UN?"/>
+        </antipattern>
+        <pattern>
+            <token postag="TO"/>
+            <marker>
+                <token postag_regexp="yes" postag="VBP?"/>
+                <token postag="CC" regexp="yes">and|or</token>
+                <token postag_regexp="yes" postag="VBP?"/>
+            </marker>
+        </pattern>
+        <disambig action="filterall"/>
+        <example type="untouched">... and is applicable to oil or sludge.</example>
+        <example type="untouched">... and is applicable to sludge or water in such conditions.</example>
+        <example type="untouched">... and is applicable to milk and water (as shown on page 3).</example>
+        <example type="untouched">This did not apply to oil and slurry seal because the...</example>
+        <example type="untouched">This did not apply to oil or water glass because the...</example>
+        <example type="untouched">This does not apply to oil and water mixtures because the...</example>
+        <example type="untouched">This test is not applicable to blue or black oil, except on Mondays.</example>
+        <example type="ambiguous" inputform="abstract[abstract/JJ,abstract/NN,abstract/VB,abstract/VBP]" outputform="abstract[abstract/VB,abstract/VBP]">... making its purpose difficult to <marker>abstract</marker> or quantify to any single concept.</example><!-- abstract/E-NP-singular, thus do not use the chunker in the pattern. -->
+        <example type="ambiguous" inputform="control[control/NN:UN,control/VB,control/VBP]" outputform="control[control/VB,control/VBP]">It is not easy to check and <marker>control</marker> these decisions.</example>
+        <example type="ambiguous" inputform="abstract[abstract/JJ,abstract/NN,abstract/VB,abstract/VBP]" outputform="abstract[abstract/VB,abstract/VBP]">Although to summarize and <marker>abstract</marker> the information is not easy...</example>
+        <example type="ambiguous" inputform="blue[blue/JJ,blue/NN:UN,blue/VB,blue/VBP]" outputform="blue[blue/VB,blue/VBP]">If you want to blacken or <marker>blue</marker> the metal, you must...</example><!-- black/B-NP-singular. Cannot do a test with 'black', thus use 'blacken' -->
+    </rule>
+
+    <rule id="VBN_TO_VB_IN"  name="past participle + to + noun/verb > verb + preposition">
+        <antipattern><!-- committed to Water at -->
+            <token postag="TO"/>
+            <token chunk="E-NP-singular" regexp="yes">\p{Lu}\p{L}+</token>
+        </antipattern>
+        <pattern>
+            <token postag="VBN"/>
+            <token postag="TO"/>
+            <marker>
+                <token postag="VB">
+                    <exception postag_regexp="yes" postag="NNPS?"/>
+                    </token>
+            </marker>
+            <token postag_regexp="yes" postag="IN|CC"/>
+        </pattern>
+        <disambig action="filterall"/>
+        <example type="untouched">A three-man committee has recommended to Commission Chairman Charles O. Emmerich...</example>
+        <example type="untouched">We have suggested to Peter on many occasions to do more tests.</example>
+        <example type="untouched">They were committed to Water at this time in their fast.</example>
+        <example type="ambiguous" inputform="flood[flood/JJ,flood/NN,flood/VB,flood/VBP]" outputform="flood[flood/VB]">The banks were said to <marker>flood</marker> when Aquarius put his jar into the river.</example><!-- flood/E-NP-singular, thus do not use the chunker in the pattern. -->
+        <example type="ambiguous" inputform="sleep[sleep/NN:U,sleep/VB,sleep/VBP]" outputform="sleep[sleep/VB]">You are generally expected to <marker>sleep</marker> at night.</example>
+        <example type="ambiguous" inputform="dream[dream/NN,dream/VB,dream/VBP]" outputform="dream[dream/VB]">Sheep are often erroneously believed to <marker>dream</marker> when they graze in the fields.</example>
+    </rule>
 
     <rule name="Proper noun: All Blacks" id="ALL_BLACKS"><!-- www.lexico.com/en/definition/all_blacks-->
       <pattern case_sensitive="yes">
@@ -9213,6 +9297,15 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <pattern>
             <token>clary</token>
             <token>sage</token>
+        </pattern>
+        <disambig action="ignore_spelling"/>
+    </rule>
+
+    <rule name="aurora borealis" id="AURORA_BOREALIS">
+        <!-- https://www.merriam-webster.com/dictionary/borealis -->
+        <pattern>
+            <token regexp="yes">aurora|Coronae?</token>
+            <token>borealis</token>
         </pattern>
         <disambig action="ignore_spelling"/>
     </rule>
