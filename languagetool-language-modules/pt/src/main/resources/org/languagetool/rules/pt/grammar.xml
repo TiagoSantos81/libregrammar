@@ -82,7 +82,7 @@ title="Easy editing stylesheet" ?>
     <!ENTITY pronomes_nao_ambiguos "(?:m(?:a|e|os?)|t(?:a|e|o)s?|lh?[aeo]s?|vos)">
 
     <!ENTITY conjuncoes_coordenativas "(?:e(?:ntão|ntretanto)?|p(?:ois|orém|or(?:t|qu)anto)|mas|ou|nem|contudo|logo|todavia)"><!-- XXX do not readd 'assim' -->
-    <!ENTITY introduz_conjuntivo "(?:caso|conquanto|embora|que|quando|se|talvez|tomara)">
+    <!ENTITY introduz_conjuntivo "(?:a(?:inda|ntes|té)|c(?:aso|onquanto)|embora|mesmo|q(?:ue|uando)|sem?|t(?:alvez|omara))">
 
     <!ENTITY verbos_auxiliares_part_passado "(?:ser|estar|ter|haver|ficar)">
     <!ENTITY verbos_auxiliares_aspectuais "(?:andar|ir|vir|começar|continuar|tornar|voltar|costumar|acabar|deixar)">
@@ -1820,7 +1820,7 @@ title="Easy editing stylesheet" ?>
           <token>pós</token>
           <token>
             <exception regexp="yes">[-,.!?\(\)]</exception>
-            <exception postag="C.|R.|S.+" postag_regexp="yes"/></token>
+            <exception postag="C.|R.|SP.+" postag_regexp="yes"/></token>
       </antipattern>
       <pattern case_sensitive='yes'>
           <token>
@@ -2198,14 +2198,16 @@ title="Easy editing stylesheet" ?>
       <pattern>
           <token inflected='yes'>negar</token>
           <token>que</token>
+          <token min='0' postag_regexp='yes' postag='P.+'/>
           <token postag_regexp='yes' postag='V.+'>
             <exception negate_pos='yes' postag_regexp='yes' postag='V.+'/>
             <exception postag_regexp='yes' postag='V.S.+|VMN0000'/></token>
       </pattern>
       <message>Este verbo introduz o conjuntivo.</message>
-        <suggestion>\1 \2 <match no='3' postag='(V.).(.+)' postag_replace='$1S$2' postag_regexp='yes'/></suggestion>
+        <suggestion>\1 \2 <match no='3' include_skipped='all'/> <match no='4' postag='(V.).(.+)' postag_replace='$1S$2' postag_regexp='yes'/></suggestion>
       <example correction='Negas que seja'><marker>Negas que é</marker> verdade?</example>
       <example correction='nega que tenha'>O Jorge <marker>nega que tem</marker> falado com ela.</example>
+      <example correction='Negas que o seja'><marker>Negas que o é</marker>?</example>
       <example>Não vais <marker>negar que trazer</marker> o cão é um incómodo, certo?</example>
     </rule>
     <rule>
@@ -2215,7 +2217,7 @@ title="Easy editing stylesheet" ?>
       </antipattern>
       <antipattern>
           <token postag_regexp='yes' postag='_PUNCT|C.+'/>
-          <token regexp='yes'>até</token>
+          <token>até</token>
           <token>que</token>
           <token postag_regexp='yes' postag='V...[12].+'/>
       </antipattern>	  
@@ -2224,39 +2226,45 @@ title="Easy editing stylesheet" ?>
         <marker>
           <token regexp='yes'>a(?:inda|ntes|té)|contanto|mesmo|sem|tomara</token>
           <token>que</token>
+          <token min='0' postag_regexp='yes' postag='P.+'/>
           <token postag_regexp='yes' postag='V.+'>
             <exception negate_pos='yes' postag_regexp='yes' postag='V.+'/>
             <exception postag_regexp='yes' postag='V.S.+|VMN0000'/></token>
         </marker>
       </pattern>
       <message>Hipóteses introduzem o conjuntivo.</message>
-        <suggestion>\2 \3 <match no='4' postag='(V.).(.+)' postag_replace='$1S$2' postag_regexp='yes'/></suggestion>
+        <suggestion>\2 \3 <match no='4' include_skipped='all'/> <match no='5' postag='(V.).(.+)' postag_replace='$1S$2' postag_regexp='yes' include_skipped='all'/></suggestion>
       <example correction='Ainda que seja'><marker>Ainda que é</marker> verdade?</example>
-      <example correction='mesmo que tenha'>O Jorge nega, <marker>mesmo que tem</marker> falado com ela.</example>
       <example correction='Tomara que seja'><marker>Tomara que é</marker> verdade.</example>
       <example>Temos <marker>mesmo que levar</marker> o cão.</example>
       <example>Sublinhamos antes que está a "fazer tudo de acordo com as regras".</example>
       <example correction='antes que esteja'>Sublinhamos que <marker>antes que está</marker> a "fazer tudo de acordo com as regras", deve saber quais são as regras.</example>
       <example>Andei um mês cheio de dores, até que pedi a um médico para fazer uma ecografia.</example>
+      <example correction='mesmo que tenha'>O Jorge nega, <marker>mesmo que tem</marker> falado com ela.</example>
+      <example correction='mesmo que o tenha'>O Jorge nega, <marker>mesmo que o tem</marker>.</example>
+      <example>O Jorge nega mesmo que o tem.</example><!-- emphatic 'mesmo' -->
+      <example>O Jorge nega, mesmo, que o tem.</example><!-- emphatic 'mesmo' -->
     </rule>
     <rule>
       <pattern>
           <token postag_regexp='yes' postag='SENT_START|_PUNCT|C.+'/>
         <marker>
-          <token regexp='yes'>embora|tomara</token><!-- XXX reconsider tomara-->
+          <token regexp='yes'>caso|embora|tomara</token><!-- XXX reconsider tomara-->
+          <token min='0' postag_regexp='yes' postag='P.+'/>
           <token postag_regexp='yes' postag='V.+'>
             <exception negate_pos='yes' postag_regexp='yes' postag='V.+'/>
             <exception postag_regexp='yes' postag='V.S.+|VMN0000'/></token>
         </marker>
       </pattern>
       <message>Hipóteses introduzem o conjuntivo.</message>
-        <suggestion>\2 <match no='3' postag='(V.).(.+)' postag_replace='$1S$2' postag_regexp='yes'/></suggestion>
+        <suggestion>\2 <match no='3' include_skipped='all'/> <match no='4' postag='(V.).(.+)' postag_replace='$1S$2' postag_regexp='yes' include_skipped='all'/></suggestion>
       <example correction='Embora seja'><marker>Embora é</marker> verdade, não me agrada.</example>
       <example><marker>Embora levar</marker> o cão não seja má ideia, vou concordar contigo.</example>
+      <example correction='caso estes representem'>Variamos os argumentos, <marker>caso estes representam</marker> resultados fracos.</example>
     </rule>
   </rulegroup>
 
-  <rulegroup id='REFLEXIVO_CONJUNTIVO' name='Confusão de Tempo Verbal: Conjuntivo - Reflexivo' default='off'><!-- XXX rethink rule. too many false positives -->
+  <rulegroup id='REFLEXIVO_CONJUNTIVO' name='Confusão de Tempo Verbal: Conjuntivo - Reflexivo'>
     <!-- Created by Tiago F. Santos, 2017-08-25 -->
       <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/as-formas-verbais-com-sse-ou-com--se/11603</url>
     <rule>
@@ -2287,9 +2295,20 @@ title="Easy editing stylesheet" ?>
         <suggestion><match no='2' regexp_match='(.+)sse' regexp_replace='$1-se'/></suggestion>
       <example correction='chega-se'>A cada palavra, ela <marker>chegasse</marker> mais perto.</example>
     </rule>
+  </rulegroup>
+
+  <rulegroup id='REFLEXIVO_CONJUNTIVO_2' name='Confusão de Tempo Verbal: Reflexivo - Conjuntivo' default='off'><!-- XXX rethink rule. too many false positives -->
+    <!-- Created by Tiago F. Santos, 2017-08-25 -->
     <rule>
+      <antipattern>
+          <token postag='D..MS.+|SP.+' postag_regexp='yes'/>
+          <token skip='-1'>caso</token>
+          <token postag_regexp='yes' postag='V.+'/>
+          <token spacebefore='no' regexp='yes'>&hifen;</token>
+          <token spacebefore='no'>se</token>
+      </antipattern>
       <pattern>
-          <token skip='-1' postag_regexp='yes' postag='C.+' regexp='yes'>se|embora
+          <token skip='-1' postag_regexp='yes' postag='C.+' regexp='yes'>se|embora|caso
             <exception scope='next' regexp='yes'>&separadores_de_oracoes;</exception></token>
         <marker>
           <token postag_regexp='yes' postag='V.+'/>
@@ -2301,6 +2320,9 @@ title="Easy editing stylesheet" ?>
         <suggestion>\2sse</suggestion>
       <example correction='lavasse'>Se <marker>lava-se</marker> os pratos, é que era bom.</example>
       <example correction='trabalhasse'>Embora Tchecov  <marker>trabalha-se</marker> como médico, enriqueceu a sua escrita com…</example>
+      <example correction='aproximasse'>Caso <marker>aproxima-se</marker> as suas observações às mais correntes, o estudo já teria sido publicado.</example>
+      <example>Este caso aproxima-se da sua conclusão.</example>
+      <example>Neste caso, aproxima-se da sua conclusão.</example>
     </rule>
   </rulegroup>
 
@@ -4503,7 +4525,7 @@ title="Easy editing stylesheet" ?>
             <exception scope='next' regexp='yes'>às?</exception>
             <exception>ronda</exception></token>
           <token regexp='yes'>as?
-            <exception scope='previous' postag_regexp='yes' postag='S.+'/></token>
+            <exception scope='previous' postag_regexp='yes' postag='SP.+'/></token>
           <token postag_regexp='yes' postag='Z.+|C.' max='3'/>
           <token regexp='yes'>horas?</token>
       </pattern>
@@ -4530,7 +4552,7 @@ title="Easy editing stylesheet" ?>
             <exception scope='next' regexp='yes'>às?</exception>
             <exception>ronda</exception></token>
           <token>as
-            <exception scope='previous' postag_regexp='yes' postag='S.+'/></token>
+            <exception scope='previous' postag_regexp='yes' postag='SP.+'/></token>
           <token regexp='yes'>\d{1,2}h(\d{2}m)?(\d{2})?s?</token>
       </pattern>
       <message>Neste contexto utiliza-se a crase.</message>
@@ -9709,7 +9731,7 @@ title="Easy editing stylesheet" ?>
             <exception postag='[AN].+' postag_regexp='yes' negate_pos='yes'/></token>
         </marker>
           <token  postag='D.+' postag_regexp='yes' regexp='yes'>\p{Ll}+
-            <exception postag='S.+' postag_regexp='yes'/></token>
+            <exception postag='SP.+' postag_regexp='yes'/></token>
       </pattern>
       <message>O vocativo deve ser separado por vírgulas.</message>
         <suggestion>\2,</suggestion>
