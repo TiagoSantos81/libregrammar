@@ -26,8 +26,8 @@ import org.languagetool.languagemodel.LanguageModel;
 import org.languagetool.rules.Rule;
 import org.languagetool.rules.en.MorfologikAmericanSpellerRule;
 import org.languagetool.rules.en.UnitConversionRuleUS;
-import org.languagetool.rules.spelling.suggestions.SuggestionsChanges;
 import org.languagetool.rules.spelling.SymSpellRule;
+import org.languagetool.rules.spelling.suggestions.SuggestionsChanges;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -63,5 +63,4 @@ public class AmericanEnglish extends English {
     }
     return rules;
   }
-
 }

@@ -44,10 +44,20 @@ import java.net.JarURLConnection;
 import java.net.URL;
 import java.util.*;
 import java.util.concurrent.Callable;
+/*
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.FutureTask;
+import java.util.function.Function;
+*/
 import java.util.jar.Manifest;
 import java.util.logging.Level;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+/*
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+*/
 
 /**
  * The main class used for checking text against different rules:
@@ -495,6 +505,37 @@ public class JLanguageTool {
       List<Rule> rules = language.getRelevantLanguageModelRules(messages, languageModel, userConfig);
       userRules.addAll(rules);
       updateOptionalLanguageModelRules(languageModel);
+/*
+    }
+  }
+
+  private void transformRules(Function<Rule, Rule> mapper, List<Rule> rules) {
+    // transform this way because variables are final + could log where rule was changed
+    for (int i = 0; i < rules.size(); i++) {
+      Rule original = rules.get(i);
+      Rule transformed = mapper.apply(original);
+      if (transformed != original) {
+        rules.set(i, transformed);
+      }
+    }
+  }
+
+  public void activateRemoteRules(@Nullable File configFile) throws IOException {
+    try {
+      List<RemoteRuleConfig> configs;
+      if (configFile != null) {
+        configs = RemoteRuleConfig.load(configFile);
+      }  else {
+        configs = Collections.emptyList();
+      }
+      List<Rule> rules = language.getRelevantRemoteRules(getMessageBundle(language), configs,
+        userConfig, motherTongue, altLanguages);
+      userRules.addAll(rules);
+    } catch (IOException e) {
+      throw new IOException("Could not load remote rules.", e);
+    } catch (ExecutionException e) {
+      throw new IOException("Could not load remote rules configuration at " + configFile.getAbsolutePath(), e);
+*/
     }
   }
 
