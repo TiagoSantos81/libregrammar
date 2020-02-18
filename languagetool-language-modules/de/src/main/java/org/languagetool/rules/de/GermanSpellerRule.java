@@ -158,6 +158,9 @@ public class GermanSpellerRule extends CompoundAwareHunspellRule {
     putRepl("hom(o?e|ö)ophatisch(e[mnrs]?)?", "hom(o?e|ö)ophat", "homöopath");
     putRepl("Geschwindlichkeit(en)?", "lich", "ig");
     putRepl("Jänners?", "Jänner", "Januar");
+    putRepl("[äÄ]hlich(e[mnrs]?)?", "lich", "nlich");
+    putRepl("entf[ai]ngen?", "ent", "emp");
+    putRepl("entf[äi]ngs?t", "ent", "emp");
     put("check", "checke");
     put("Rückrad", "Rückgrat");
     put("ala", "à la");
@@ -165,9 +168,12 @@ public class GermanSpellerRule extends CompoundAwareHunspellRule {
     put("Reinfolge", "Reihenfolge");
     put("Schloß", "Schloss");
     put("Investion", "Investition");
+    put("Beleidung", "Beleidigung");
+    put("Bole", "Bowle");
+    put("letzens", "letztens");
     put("Pakur", w -> Arrays.asList("Parcours", "Parkuhr"));
     put("Erstsemesterin", w -> Arrays.asList("Erstsemester", "Erstsemesters", "Erstsemesterstudentin"));
-    put("Erstsemesterinnen", w -> Arrays.asList("Erstsemester", "Erstsemestern"));
+    put("Erstsemesterinnen", w -> Arrays.asList("Erstsemesterstudentinnen", "Erstsemester", "Erstsemestern"));
     put("kreativlos(e[nmrs]?)?", w -> Arrays.asList(w.replaceFirst("kreativ", "fantasie"), w.replaceFirst("kreativ", "einfalls"), w.replaceFirst("kreativlos", "unkreativ"), w.replaceFirst("kreativlos", "uninspiriert")));
     put("Kreativlosigkeit", "Unkreativität");
     put("hinund?her", "hin und her");
