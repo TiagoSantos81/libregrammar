@@ -130,22 +130,25 @@ public class MultiDocumentsHandler {
     if (!hasLocale(locale)) {
       return paRes;
     }
-    if(fixedLanguage == null || langForShortName == null) {
-      langForShortName = getLanguage(locale);
-    }
-    if (!langForShortName.equals(docLanguage) || langTool == null || recheck) {
-      docLanguage = langForShortName;
-      langTool = initLanguageTool();
-      if(!switchOff) {
+    if(!switchOff) {
+      if(fixedLanguage == null || langForShortName == null) {
+        langForShortName = getLanguage(locale);
+      }
+      boolean isSameLanguage = langForShortName.equals(docLanguage);
+      if (!isSameLanguage || langTool == null || recheck) {
+        if (!isSameLanguage) {
+          docLanguage = langForShortName;
+          extraRemoteRules.clear();
+        }
+        langTool = initLanguageTool();
         initCheck(langTool);
         initDocuments();
       }
     }
-    ltMenu = new LanguagetoolMenu(xContext);
+    docNum = getNumDoc(paRes.aDocumentIdentifier);
     if(switchOff) {
       return paRes;
     }
-    docNum = getNumDoc(paRes.aDocumentIdentifier);
     paRes = documents.get(docNum).getCheckResults(paraText, locale, paRes, footnotePositions, docReset, langTool);
       /*
     if(langTool.doReset()) {
@@ -407,6 +410,7 @@ public class MultiDocumentsHandler {
           xComponent = null;
         }
       }
+      ltMenu = new LanguagetoolMenu(xContext);
     }
     documents.add(new SingleDocument(xContext, config, docID, xComponent, this));
     if (debugMode) {
@@ -647,6 +651,9 @@ public class MultiDocumentsHandler {
    * (currently only -1 for full text check and n for max number for other text level rules)
    */
   public List<Integer> getNumMinToCheckParas() {
+    if(sortedTextRules == null) {
+      return null;
+    }
     return sortedTextRules.minToCheckParagraph;
   }
 
