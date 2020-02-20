@@ -1,3 +1,4 @@
+/*
 package org.languagetool.languagemodel.bert.grpc;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
@@ -16,7 +17,7 @@ import static io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall;
 import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
 
 /**
- */
+ /
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.27.1)",
     comments = "Source: bert-lm.proto")
@@ -91,7 +92,7 @@ public final class BertLmGrpc {
 
   /**
    * Creates a new async stub that supports all call types for the service
-   */
+   *
   public static BertLmStub newStub(io.grpc.Channel channel) {
     io.grpc.stub.AbstractStub.StubFactory<BertLmStub> factory =
       new io.grpc.stub.AbstractStub.StubFactory<BertLmStub>() {
@@ -105,7 +106,7 @@ public final class BertLmGrpc {
 
   /**
    * Creates a new blocking-style stub that supports unary and streaming output calls on the service
-   */
+   *
   public static BertLmBlockingStub newBlockingStub(
       io.grpc.Channel channel) {
     io.grpc.stub.AbstractStub.StubFactory<BertLmBlockingStub> factory =
@@ -120,7 +121,7 @@ public final class BertLmGrpc {
 
   /**
    * Creates a new ListenableFuture-style stub that supports unary calls on the service
-   */
+   *
   public static BertLmFutureStub newFutureStub(
       io.grpc.Channel channel) {
     io.grpc.stub.AbstractStub.StubFactory<BertLmFutureStub> factory =
@@ -134,18 +135,18 @@ public final class BertLmGrpc {
   }
 
   /**
-   */
+   *
   public static abstract class BertLmImplBase implements io.grpc.BindableService {
 
     /**
-     */
+     *
     public void score(org.languagetool.languagemodel.bert.grpc.BertLmProto.ScoreRequest request,
         io.grpc.stub.StreamObserver<org.languagetool.languagemodel.bert.grpc.BertLmProto.BertLmResponse> responseObserver) {
       asyncUnimplementedUnaryCall(getScoreMethod(), responseObserver);
     }
 
     /**
-     */
+     *
     public void batchScore(org.languagetool.languagemodel.bert.grpc.BertLmProto.BatchScoreRequest request,
         io.grpc.stub.StreamObserver<org.languagetool.languagemodel.bert.grpc.BertLmProto.BatchBertLmResponse> responseObserver) {
       asyncUnimplementedUnaryCall(getBatchScoreMethod(), responseObserver);
@@ -172,7 +173,7 @@ public final class BertLmGrpc {
   }
 
   /**
-   */
+   *
   public static final class BertLmStub extends io.grpc.stub.AbstractAsyncStub<BertLmStub> {
     private BertLmStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
@@ -186,7 +187,7 @@ public final class BertLmGrpc {
     }
 
     /**
-     */
+     *
     public void score(org.languagetool.languagemodel.bert.grpc.BertLmProto.ScoreRequest request,
         io.grpc.stub.StreamObserver<org.languagetool.languagemodel.bert.grpc.BertLmProto.BertLmResponse> responseObserver) {
       asyncUnaryCall(
@@ -194,7 +195,7 @@ public final class BertLmGrpc {
     }
 
     /**
-     */
+     *
     public void batchScore(org.languagetool.languagemodel.bert.grpc.BertLmProto.BatchScoreRequest request,
         io.grpc.stub.StreamObserver<org.languagetool.languagemodel.bert.grpc.BertLmProto.BatchBertLmResponse> responseObserver) {
       asyncUnaryCall(
@@ -203,7 +204,7 @@ public final class BertLmGrpc {
   }
 
   /**
-   */
+   *
   public static final class BertLmBlockingStub extends io.grpc.stub.AbstractBlockingStub<BertLmBlockingStub> {
     private BertLmBlockingStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
@@ -217,14 +218,14 @@ public final class BertLmGrpc {
     }
 
     /**
-     */
+     *
     public org.languagetool.languagemodel.bert.grpc.BertLmProto.BertLmResponse score(org.languagetool.languagemodel.bert.grpc.BertLmProto.ScoreRequest request) {
       return blockingUnaryCall(
           getChannel(), getScoreMethod(), getCallOptions(), request);
     }
 
     /**
-     */
+     *
     public org.languagetool.languagemodel.bert.grpc.BertLmProto.BatchBertLmResponse batchScore(org.languagetool.languagemodel.bert.grpc.BertLmProto.BatchScoreRequest request) {
       return blockingUnaryCall(
           getChannel(), getBatchScoreMethod(), getCallOptions(), request);
@@ -232,7 +233,7 @@ public final class BertLmGrpc {
   }
 
   /**
-   */
+   *
   public static final class BertLmFutureStub extends io.grpc.stub.AbstractFutureStub<BertLmFutureStub> {
     private BertLmFutureStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
@@ -246,7 +247,7 @@ public final class BertLmGrpc {
     }
 
     /**
-     */
+     *
     public com.google.common.util.concurrent.ListenableFuture<org.languagetool.languagemodel.bert.grpc.BertLmProto.BertLmResponse> score(
         org.languagetool.languagemodel.bert.grpc.BertLmProto.ScoreRequest request) {
       return futureUnaryCall(
@@ -254,7 +255,7 @@ public final class BertLmGrpc {
     }
 
     /**
-     */
+     *
     public com.google.common.util.concurrent.ListenableFuture<org.languagetool.languagemodel.bert.grpc.BertLmProto.BatchBertLmResponse> batchScore(
         org.languagetool.languagemodel.bert.grpc.BertLmProto.BatchScoreRequest request) {
       return futureUnaryCall(
@@ -360,3 +361,4 @@ public final class BertLmGrpc {
     return result;
   }
 }
+*/
