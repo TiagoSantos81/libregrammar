@@ -121,6 +121,9 @@ public class MultiDocumentsHandler {
     disabledRulesUI = new HashSet<>();
   }
   
+  /**
+   * distribute the check request to the concerned document
+   */
   ProofreadingResult getCheckResults(String paraText, Locale locale, ProofreadingResult paRes, 
       int[] footnotePositions, boolean docReset) {
     
@@ -133,13 +136,16 @@ public class MultiDocumentsHandler {
     if (!langForShortName.equals(docLanguage) || langTool == null || recheck) {
       docLanguage = langForShortName;
       langTool = initLanguageTool();
-      initCheck(langTool);
-      initDocuments();
+      if(!switchOff) {
+        initCheck(langTool);
+        initDocuments();
+      }
     }
-    docNum = getNumDoc(paRes.aDocumentIdentifier);
+    ltMenu = new LanguagetoolMenu(xContext);
     if(switchOff) {
       return paRes;
     }
+    docNum = getNumDoc(paRes.aDocumentIdentifier);
     paRes = documents.get(docNum).getCheckResults(paraText, locale, paRes, footnotePositions, docReset, langTool);
       /*
     if(langTool.doReset()) {
@@ -243,35 +249,6 @@ public class MultiDocumentsHandler {
   }
 
   /**
-   * Inform listener that the doc should be rechecked.
-   */
-/*  
-  public boolean resetCheck(String docId) {
-    if(documents.isEmpty()) {
-      return false;
-    }
-    for(int i = 0; i < documents.size(); i++) {
-      if(!docId.equals(documents.get(i).getDocID())) {
-        documents.get(i).setPreventReset();
-        if(debugMode) {
-          MessageHandler.printToLogFile("setPreventReset (from docId = " + docId + "): docId = " + documents.get(i).getDocID());
-        }
-      }
-    }
-    return mainThread.resetCheck();
-  }
-*/
-  /** 
-   * Reset only changed paragraphs
-   */
-/*  
-  void optimizeReset() {
-    if(documents.size() > 0) {
-      documents.get(docNum).optimizeReset();
-    }
-  }
-*/  
-  /**
    * Checks the language under the cursor. Used for opening the configuration dialog.
    * @return the language under the visible cursor
    */
@@ -360,7 +337,7 @@ public class MultiDocumentsHandler {
   }
 
   /**
-   *  Set config Values for all documents
+   *  Set configuration Values for all documents
    */
   private void setConfigValues(Configuration config, SwJLanguageTool langTool) {
     this.config = config;
@@ -371,6 +348,9 @@ public class MultiDocumentsHandler {
     }
   }
 
+  /**
+   * Get language from locale
+   */
   private Language getLanguage(Locale locale) {
     try {
       if (locale.Language.equalsIgnoreCase(LIBREOFFICE_SPECIAL_LANGUAGE_TAG)) {
@@ -427,7 +407,6 @@ public class MultiDocumentsHandler {
           xComponent = null;
         }
       }
-      ltMenu = new LanguagetoolMenu(xContext);
     }
     documents.add(new SingleDocument(xContext, config, docID, xComponent, this));
     if (debugMode) {
@@ -471,6 +450,9 @@ public class MultiDocumentsHandler {
     }
   }
 
+  /**
+   * Initialize LanguageTool
+   */
   SwJLanguageTool initLanguageTool() {
     SwJLanguageTool langTool = null;
     try {
@@ -503,6 +485,7 @@ public class MultiDocumentsHandler {
           langTool.enableRule(rule.getId());
         }
       }
+      recheck = false;
       return langTool;
     } catch (Throwable t) {
       MessageHandler.showError(t);
@@ -510,6 +493,9 @@ public class MultiDocumentsHandler {
     return langTool;
   }
 
+  /**
+   * Enable or disable rules as given by configuration file
+   */
   void initCheck(SwJLanguageTool langTool) {
     Set<String> disabledRuleIds = config.getDisabledRuleIds();
     if (disabledRuleIds != null) {
@@ -542,8 +528,10 @@ public class MultiDocumentsHandler {
     }
   }
   
+  /**
+   * Initialize single documents, prepare text level rules and start queue
+   */
   void initDocuments() {
-    recheck = false;
     setConfigValues(config, langTool);
     sortedTextRules = new SortedTextRules();
     for (SingleDocument document : documents) {
@@ -557,24 +545,32 @@ public class MultiDocumentsHandler {
       }
     }
   }
-  
+
+  /**
+   * Get list of single documents
+   */
   public List<SingleDocument> getDocuments() {
     return documents;
   }
-  
+
+  /**
+   * Get text level queue
+   */
   public TextLevelCheckQueue getTextLevelCheckQueue() {
     return textLevelQueue;
   }
   
-  
+  /**
+   * true, if LanguageTool is switched off
+   */
   public boolean isSwitchedOff() {
     return switchOff;
   }
 
-/**
- *  Toggle Switch Off / On of LT
- *  return true if toggle was done 
- */
+  /**
+   *  Toggle Switch Off / On of LT
+   *  return true if toggle was done 
+   */
   public boolean toggleSwitchedOff() throws IOException {
     if(docLanguage == null) {
       docLanguage = getLanguage();
@@ -583,21 +579,25 @@ public class MultiDocumentsHandler {
       config = new Configuration(configDir, configFile, oldConfigFile, docLanguage, linguServices);
     }
     switchOff = !switchOff;
-//    boolean ret = setMenuTextForSwitchOff(xContext);
-/*    
-    if(!ret) {
-      switchOff = !switchOff;
+    if(!switchOff && textLevelQueue != null) {
+      textLevelQueue.setStop();
+      textLevelQueue = null;
     }
-*/    
-    langTool = null;
+    recheck = true;
     config.setSwitchedOff(switchOff, docLanguage);
     return true;
   }
-  
+
+  /**
+   * Set docID used within menu
+   */
   public void setMenuDocId(String docId) {
     menuDocId = new String(docId);
   }
-  
+
+  /**
+   * Call method ignoreOnce for concerned document 
+   */
   public String ignoreOnce() {
     for (SingleDocument document : documents) {
       if(menuDocId.equals(document.getDocID())) {
@@ -607,6 +607,18 @@ public class MultiDocumentsHandler {
     return null;
   }
   
+  /**
+   * reset ignoreOnce information in all documents
+   */
+  public void resetIgnoreOnce() {
+    for (SingleDocument document : documents) {
+      document.resetIgnoreOnce();
+    }
+  }
+
+  /**
+   * Deactivate a rule as requested by the context menu
+   */
   public void deactivateRule() {
     for (SingleDocument document : documents) {
       if(menuDocId.equals(document.getDocID())) {
@@ -630,12 +642,6 @@ public class MultiDocumentsHandler {
     }
   }
   
-  public void resetIgnoreOnce() {
-    for (SingleDocument document : documents) {
-      document.resetIgnoreOnce();
-    }
-  }
-
   /**
    * Returns a list of different numbers of paragraphs to check for text level rules
    * (currently only -1 for full text check and n for max number for other text level rules)
@@ -648,15 +654,15 @@ public class MultiDocumentsHandler {
    * activate all rules stored under a given index related to the list of getNumMinToCheckParas
    * deactivate all other text level rules
    */
-  public void activateTextRulesByIndex(int index) {
-    sortedTextRules.activateTextRulesByIndex(index);
+  public void activateTextRulesByIndex(int index, SwJLanguageTool langTool) {
+    sortedTextRules.activateTextRulesByIndex(index, langTool);
   }
 
   /**
    * reactivate all text level rules
    */
-  public void reactivateTextRules() {
-    sortedTextRules.reactivateTextRules();;
+  public void reactivateTextRules(SwJLanguageTool langTool) {
+    sortedTextRules.reactivateTextRules(langTool);;
   }
 
   /**
@@ -758,7 +764,7 @@ public class MultiDocumentsHandler {
       return minToCheckParagraph;
     }
 
-    public void activateTextRulesByIndex(int index) {
+    public void activateTextRulesByIndex(int index, SwJLanguageTool langTool) {
       for(int i = 0; i < textLevelRules.size(); i++) {
         if(i == index) {
           for (String ruleId : textLevelRules.get(i)) {
@@ -772,7 +778,7 @@ public class MultiDocumentsHandler {
       }
     }
 
-    public void reactivateTextRules() {
+    public void reactivateTextRules(SwJLanguageTool langTool) {
       for(List<String> textRules : textLevelRules) {
         for (String ruleId : textRules) {
           langTool.enableRule(ruleId);
@@ -895,7 +901,6 @@ public class MultiDocumentsHandler {
         ltMenu.removeItem(profilesPos, (short)1);
       }
       toolsMenu.setPopupMenu(ltId, ltMenu);
-//      menubar.setPopupMenu(toolsId, toolsMenu);
     }
       
     private void setProfileMenu() {
