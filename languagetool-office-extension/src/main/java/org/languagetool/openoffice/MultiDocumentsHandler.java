@@ -138,7 +138,9 @@ public class MultiDocumentsHandler {
       if (!isSameLanguage || langTool == null || recheck) {
         if (!isSameLanguage) {
           docLanguage = langForShortName;
+/*
           extraRemoteRules.clear();
+*/
         }
         langTool = initLanguageTool();
         initCheck(langTool);
