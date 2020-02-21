@@ -793,7 +793,40 @@ public class JLanguageTool {
     unknownWords = new HashSet<>();
     List<AnalyzedSentence> analyzedSentences = analyzeSentences(sentences);
     
+/*
+    List<RuleMatch> remoteMatches = Collections.emptyList();
+    List<FutureTask<List<RuleMatch>>> remoteRuleTasks = null;
+    if (remoteRulesThreadPool != null && mode != Mode.TEXTLEVEL_ONLY) {
+      remoteRuleTasks = allRules.stream()
+        .filter(rule -> rule instanceof RemoteRule)
+        .map(rule -> ((RemoteRule) rule).run(analyzedSentences))
+        .collect(Collectors.toList());
+      remoteRuleTasks.forEach(remoteRulesThreadPool::submit);
+    }
+*/
+
     List<RuleMatch> ruleMatches = performCheck(analyzedSentences, sentences, allRules, paraMode, annotatedText, listener, mode);
+
+/*
+    if (remoteRuleTasks != null) {
+      remoteMatches = remoteRuleTasks.stream()
+        .flatMap(task -> {
+          try {
+            return task.get().stream(); // can wait without timeout here, implemented in RemoteRule and TextChecker
+          } catch (InterruptedException | ExecutionException e) {
+            logger.warn("Failed to fetch result from remote rule.", e);
+            return Stream.empty();
+          }
+        }).collect(Collectors.toList());
+
+      for (RuleMatch match : remoteMatches) {
+        match.setSuggestedReplacementObjects(extendSuggestions(match.getSuggestedReplacementObjects()));
+      }
+    }
+
+    ruleMatches.addAll(remoteMatches)
+*/
+
     ruleMatches = new SameRuleGroupFilter().filter(ruleMatches);
     // no sorting: SameRuleGroupFilter sorts rule matches already
     if (cleanOverlappingMatches) {
@@ -1335,6 +1368,9 @@ public class JLanguageTool {
             } else {
               newMatch.setEndColumn(range.to.column);
             }
+            /*
+            newMatch.setSuggestedReplacementObjects(extendSuggestions(match.getSuggestedReplacementObjects()));
+            */
             adaptedMatches.add(newMatch);
           }
           ruleMatches.addAll(adaptedMatches);
