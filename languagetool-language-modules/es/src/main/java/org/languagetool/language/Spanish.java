@@ -140,6 +140,7 @@ public class Spanish extends Language implements AutoCloseable{
             new PunctuationMarkAtParagraphEnd(messages, this, true),
             //Specific to Spanish:
             new SpanishWikipediaRule(messages),
+            new SpanishStyleRepeatedWordRule(messages, this, userConfig),
             new SpanishDiacriticsCheckRule(messages)
     );
   }
