@@ -28,6 +28,9 @@
     the false positives they try to fix. Most upstream solutions are either semantically incorrect, or too
     crippling to detection while not providing meaningful improvements to accuracy.
 
+#### Spanish
+  * add `SpanishStyleRepeatedWordRule`,
+
 #### General
   * 1547 species taxa entries added to `spelling_global.txt`.
   * revert remote rules implementation and Google's BERT suggestion sorting.
@@ -70,7 +73,7 @@
   * dependency security update
   * [upstream hunspell support dropped for 32-bit systems](https://github.com/languagetool-org/languagetool/commit/b769f5ec319a53c10c45a8aa33a9fd6a4600792c).
   * `AbstractReplaceRule2` now accepts per entry custom messages
-
+  * [translation framework for secondary languages in a text](https://github.com/languagetool-org/languagetool/commit/209fc7dc97bd5c92a3c87769795545491642df34).
 
 #### LibreOffice / Apache OpenOffice Integration
   * more response rule queue mechanism thanks to Fred Kruse
