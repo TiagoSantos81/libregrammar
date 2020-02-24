@@ -25,6 +25,7 @@ import com.google.common.cache.LoadingCache;
 */
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.languagetool.GlobalConfig;
 import org.languagetool.Language;
 import org.languagetool.LanguageMaintainedState;
 import org.languagetool.UserConfig;
@@ -261,7 +262,7 @@ public class English extends Language implements AutoCloseable {
   }
 
   @Override
-  public List<Rule> getRelevantLanguageModelCapableRules(ResourceBundle messages, @Nullable LanguageModel languageModel, UserConfig userConfig, Language motherTongue, List<Language> altLanguages) throws IOException {
+  public List<Rule> getRelevantLanguageModelCapableRules(ResourceBundle messages, @Nullable LanguageModel languageModel, GlobalConfig globalConfig, UserConfig userConfig, Language motherTongue, List<Language> altLanguages) throws IOException {
     if (languageModel != null && motherTongue != null && "de".equals(motherTongue.getShortCode())) {
       return Arrays.asList(
           new EnglishForGermansFalseFriendRule(messages, languageModel, motherTongue, this)
@@ -295,6 +296,7 @@ public class English extends Language implements AutoCloseable {
   public int getPriorityForId(String id) {
     switch (id) {
       case "MISSING_HYPHEN":            return 5;
+      case "TRANSLATION_RULE":          return 5;   // Premium
       case "WRONG_APOSTROPHE":          return 5;
       case "ADJECTIVE_ADVERB":          return 2;   // prefer over MODAL_VERB_FOLLOWED_BY_NOUN, PRP_MD_NN, and PRONOUN_NOUN
       case "LIGATURES":                 return 1;   // prefer over spell checker

@@ -186,7 +186,7 @@ public abstract class Language {
    * @param languageModel null if no language model is available
    */
   public List<Rule> getRelevantLanguageModelCapableRules(ResourceBundle messages, @Nullable LanguageModel languageModel,
-                                                         UserConfig userConfig, Language motherTongue, List<Language> altLanguages) throws IOException {
+                                                         GlobalConfig globalConfig, UserConfig userConfig, Language motherTongue, List<Language> altLanguages) throws IOException {
     return Collections.emptyList();
   }
 
@@ -195,7 +195,7 @@ public abstract class Language {
    * Can return non-remote rules (e.g. if configuration missing, or for A/B tests), will be executed normally
    *
   public List<Rule> getRelevantRemoteRules(ResourceBundle messageBundle, List<RemoteRuleConfig> configs,
-                                           UserConfig userConfig, Language motherTongue, List<Language> altLanguages)
+                                           GlobalConfig globalConfig, UserConfig userConfig, Language motherTongue, List<Language> altLanguages)
     throws IOException {
     return Collections.emptyList();
   }

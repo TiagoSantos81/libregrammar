@@ -77,6 +77,7 @@ public class GermanSpellerRule extends CompoundAwareHunspellRule {
   private static final Map<Pattern, Function<String,List<String>>> ADDITIONAL_SUGGESTIONS = new HashMap<>();
   static {
     put("lieder", w -> Arrays.asList("leider", "Lieder"));
+    put("inbetracht", "in Betracht");
     put("zuviel", "zu viel");
     put("abgekatertes", "abgekartetes");
     put("wiederspiegelt", "widerspiegelt");
@@ -231,6 +232,7 @@ public class GermanSpellerRule extends CompoundAwareHunspellRule {
     put("[mM]illion(en)?mal", w -> Collections.singletonList(StringTools.uppercaseFirstChar(w.replaceFirst("mal", " Mal"))));
     put("Mysql", "MySQL");
     put("MWST", "MwSt");
+    put("Mwst", "MwSt");
     put("Opelarena", "Opel Arena");
     put("Toll-Collect", "Toll Collect");
     put("[pP][qQ]-Formel", "p-q-Formel");
