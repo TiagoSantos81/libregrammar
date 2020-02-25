@@ -1443,8 +1443,8 @@ bougainvillea	bougainvillea	NN:U
 bountiful	bountiful	JJ
 bourrèe	bourrèe	NN
 bourrèes	bourrèe	NNS
-Brāhmaṇa	Brāhmaṇa	NNP
 Braeden	Braeden	NNP
+Brāhmaṇa	Brāhmaṇa	NNP
 Brasília	Brasília	NNP
 Brayden	Brayden	NNP
 Braydon	Braydon	NNP
@@ -1483,6 +1483,7 @@ Broze	Broze	NNP
 bruh	bruh	NN
 bruhs	bruh	NNS
 Brulé	Brulé	NNP
+Bruneau	Bruneau	NNP
 Brustein	Brustein	NNP
 BTEC	BTEC	NNP
 Büchner	Büchner	NNP
@@ -2092,6 +2093,7 @@ coalized	coalize	VBN
 coalizes	coalize	VBZ
 coalizing	coalize	VBG
 Coatzacoalcos	Coatzacoalcos	NNP
+cob	cob	NN:U
 code-name	code-name	VB
 code-name	code-name	VBP
 code-named	code-name	VBD
@@ -2523,6 +2525,12 @@ cross-cut	cross-cut	VBP
 cross-cuts	cross-cut	VBZ
 cross-cutting	cross-cut	VBG
 CrossFit	CrossFit	NNP
+cross-link	cross-link	VB
+cross-link	cross-link	VBP
+cross-linked	cross-link	VBD
+cross-linked	cross-link	VBN
+cross-linking	cross-link	VBG
+cross-links	cross-link	VBZ
 crowdsource	crowdsource	VB
 crowdsource	crowdsource	VBP
 crowdsourced	crowdsource	VBD
@@ -4335,8 +4343,8 @@ encephalisation	encephalisation	NN:U
 encephalization	encephalization	NN:U
 encyclopædia	encyclopædia	NN
 encyclopædias	encyclopædia	NNS
-endomysium	endomysium	NN
 endomysia	endomysium	NNS
+endomysium	endomysium	NN
 endosymbiotic	endosymbiotic	JJ
 endosymbiotically	endosymbiotically	RB
 end-user	end-user	JJ
@@ -4982,6 +4990,7 @@ finalisers	finaliser	NNS
 financialisation	financialisation	NN:U
 financialization	financialization	NN:U
 fin-de-siècle	fin-de-siècle	JJ
+fine	fine	RB
 Finistère	Finistère	NNP
 Finlandise	Finlandise	VB
 Finlandise	Finlandise	VBP
@@ -5831,6 +5840,8 @@ haha	haha	UH
 Hailey	Hailey	NNP
 hakama	hakama	NN
 hakama	hakama	NNS
+half-marathon	half-marathon	NN
+half-marathons	half-marathon	NNS
 Halton	Halton	NNP
 Hambach	Hambach	NNP
 Hämeenlinna	Hämeenlinna	NNP
@@ -6557,7 +6568,13 @@ IMs	IM	NNS
 IMSaT	IMSaT	NNP
 in	in	RB
 inbox	inbox	NN
+inbox	inbox	VB
+inbox	inbox	VBP
+inboxed	inbox	VBD
+inboxed	inbox	VBN
 inboxes	inbox	NNS
+inboxes	inbox	VBZ
+inboxing	inbox	VBG
 incent	incent	VB
 incent	incent	VBP
 incented	incent	VBD
@@ -7033,6 +7050,7 @@ Karim	Karim	NNP
 Kármán	Kármán	NNP
 Kasia	Kasia	NNP
 Kaspersky	Kaspersky	NNP
+katakana	katakana	NN:U
 katal	katal	NN
 katals	katal	NNS
 Katarina	Katarina	NNP
@@ -8487,6 +8505,18 @@ monologized	monologize	VBD
 monologized	monologize	VBN
 monologizes	monologize	VBZ
 monologizing	monologize	VBG
+monophthongise	monophthongise	VB
+monophthongise	monophthongise	VBP
+monophthongised	monophthongise	VBD
+monophthongised	monophthongise	VBN
+monophthongises	monophthongise	VBZ
+monophthongising	monophthongise	VBG
+monophthongize	monophthongize	VB
+monophthongize	monophthongize	VBP
+monophthongized	monophthongize	VBD
+monophthongized	monophthongize	VBN
+monophthongizes	monophthongize	VBZ
+monophthongizing	monophthongize	VBG
 monopolizable	monopolizable	JJ
 monotonise	monotonise	VB
 monotonise	monotonise	VBP
@@ -9306,9 +9336,9 @@ OpenCL	OpenCL	NNP
 OpenCV	OpenCV	NNP
 OpenID	OpenID	NNP
 OpenShift	OpenShift	NNP
+open-source	open-source	JJ
 OpenSSH	OpenSSH	NNP
 OpenSSL	OpenSSL	NNP
-open-source	open-source	JJ
 OpenStreetMap	OpenStreetMap	NNP
 OpenWrt	OpenWrt	NNP
 Open-Xchange	Open-Xchange	NNP
@@ -10455,6 +10485,7 @@ Pietà	Pietà	NNP
 pietàs	pietà	NNS
 piledriver	piledriver	NN
 piledrivers	piledriver	NNS
+pilgrimage	pilgrimage	NN:U
 pilgrimise	pilgrimise	VB
 pilgrimise	pilgrimise	VBP
 pilgrimised	pilgrimise	VBD
@@ -10808,6 +10839,7 @@ pragmatized	pragmatize	VBD
 pragmatized	pragmatize	VBN
 pragmatizes	pragmatize	VBZ
 pragmatizing	pragmatize	VBG
+prairie	prairie	NN:U
 Prakash	Prakash	NNP
 prank	prank	VB
 prank	prank	VBP
@@ -10977,6 +11009,7 @@ pre-installs	pre-install	VBZ
 pre-IPO	pre-IPO	JJ
 pre-Islamic	pre-Islamic	JJ
 prejudiced	prejudiced	JJ
+prelab	prelab	JJ
 prelaw	prelaw	JJ
 preload	preload	NN
 preload	preload	VB
@@ -11085,6 +11118,7 @@ prerevolutionary	prerevolutionary	NN
 pre-revolutionary	pre-revolutionary	NN
 presale	presale	JJ
 pre-sale	pre-sale	JJ
+preschool	preschool	NN:U
 pre-season	pre-season	NN
 pre-seasons	pre-season	NNS
 preselect	preselect	VB
@@ -11464,6 +11498,7 @@ quantized	quantize	VBD
 quantized	quantize	VBN
 quantizes	quantize	VBZ
 quantizing	quantize	VBG
+quaternary	quaternary	JJ
 quattuordecillion	quattuordecillion	CD
 Québec	Québec	NNP
 Québécois	Québécois	NNP
@@ -11540,6 +11575,7 @@ ragù	ragù	NN:UN
 ragùs	ragù	NNS
 Rahim	Rahim	NNP
 Rahul	Rahul	NNP
+railway	railway	NN:U
 Rainsford	Rainsford	NNP
 Raja	Raja	NNP
 Rajeev	Rajeev	NNP
@@ -11558,6 +11594,12 @@ randomised	randomised	JJ
 Randstad	Randstad	NNP
 ranibizumab	ranibizumab	NN:U
 rap	rap	NN:U
+rapture	rapture	VB
+rapture	rapture	VBP
+raptured	rapture	VBD
+raptured	rapture	VBN
+raptures	rapture	VBZ
+rapturing	rapture	VBG
 rapturise	rapturise	VB
 rapturise	rapturise	VBP
 rapturised	rapturise	VBD
@@ -11772,6 +11814,7 @@ recover	recover	NN
 recovers	recover	NNS
 recrystallisation	recrystallisation	NN:UN
 recurring	recurring	JJ
+recursion	recursion	NN:U
 recurve	recurve	NN
 recurves	recurve	NNS
 recyclate	recyclate	NN:UN
@@ -12418,6 +12461,7 @@ restamped	restamp	VBD
 restamped	restamp	VBN
 restamping	restamp	VBG
 restamps	restamp	VBZ
+restartable	restartable	JJ
 restore	restore	NN
 restores	restore	NNS
 Restormel	Restormel	NNP
@@ -13511,6 +13555,7 @@ sovietised	sovietise	VBD
 sovietised	sovietise	VBN
 sovietises	sovietise	VBZ
 sovietising	sovietise	VBG
+spaceflight	spaceflight	NN:U
 SpaceX	SpaceX	NNP
 spam	spam	VB
 spam	spam	VBP
@@ -13845,6 +13890,12 @@ subvocalized	subvocalize	VBN
 subvocalizes	subvocalize	VBZ
 subvocalizing	subvocalize	VBG
 sucky	sucky	JJ
+suicide	suicide	VB
+suicide	suicide	VBP
+suicided	suicide	VBD
+suicided	suicide	VBN
+suicides	suicide	VBZ
+suiciding	suicide	VBG
 Sukhumvit	Sukhumvit	NNP
 sulfonate	sulfonate	VB
 sulfonate	sulfonate	VBP
@@ -13948,6 +13999,7 @@ syllogised	syllogise	VBD
 syllogised	syllogise	VBN
 syllogises	syllogise	VBZ
 syllogising	syllogise	VBG
+Sylvain	Sylvain	NNP
 Symantec	Symantec	NNP
 Symbian	Symbian	NNP
 Symbicort	Symbicort	NNP
@@ -14461,6 +14513,12 @@ titchy	titchy	JJ
 Tlalnepantla	Tlalnepantla	NNP
 Tlaquepaque	Tlaquepaque	NNP
 T-Mobile	T-Mobile	NNP
+toast	toast	VB
+toast	toast	VBP
+toasted	toast	VBD
+toasted	toast	VBN
+toasting	toast	VBG
+toasts	toast	VBZ
 Tobias	Tobias	NNP
 today	today	RB
 tögrög	tögrög	NN
@@ -14562,6 +14620,7 @@ travelling	travelling	JJ
 tredecillion	tredecillion	CD
 Trello	Trello	NNP
 Tremblay	Tremblay	NNP
+Trembley	Trembley	NNP
 Treviño	Treviño	NNP
 triage	triage	VB
 triage	triage	VBP
@@ -14675,6 +14734,7 @@ Uberizing	Uberize	VBG
 Übermensch	Übermensch	NN
 Übermenschen	Übermensch	NNS
 Ubisoft	Ubisoft	NNP
+Ubuntu	Ubuntu	NNP
 udātta	udātta	NN
 Udemy	Udemy	NNP
 UEFA	UEFA	NNP
@@ -14970,6 +15030,7 @@ unrealizing	unrealize	VBG
 unredeemedly	unredeemedly	RB
 unrufflable	unrufflable	JJ
 unruffleable	unruffleable	JJ
+unsampled	unsampled	JJ
 unsatisfaction	unsatisfaction	NN:U
 unselect	unselect	VB
 unselect	unselect	VBP
@@ -15081,6 +15142,7 @@ username	username	NN
 usernames	username	NNS
 USPTO	USPTO	NNP
 utilisable	utilisable	JJ
+utopia	utopia	NN:U
 utopian	utopian	JJ
 utopianise	utopianise	VB
 utopianise	utopianise	VBP
@@ -15513,7 +15575,13 @@ whittles	whittle	NN
 whoa	whoa	UH
 whomever	whomever	WP
 whomsoever	whomsoever	WP
+wick	wick	VB
+wick	wick	VBP
+wicked	wick	VBD
+wicked	wick	VBN
 Wickersham	Wickersham	NNP
+wicking	wick	VBG
+wicks	wick	VBZ
 widdershins	widdershins	RB
 Wi-Fi	Wi-Fi	NNP
 wiki	wiki	NN
