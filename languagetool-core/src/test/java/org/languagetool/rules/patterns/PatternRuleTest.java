@@ -348,7 +348,7 @@ public class PatternRuleTest extends AbstractPatternRuleTest {
       // necessary for XML Pattern rules containing <or>
       List<RuleMatch> matches = new ArrayList<>();
       for (Rule auxRule : rules) { 
-        matches.addAll(getMatches(auxRule, badSentence, lt));
+        matches.addAll(getMatchesForSingleSentence(auxRule, badSentence, lt));
       }
       
       if (rule instanceof RegexPatternRule || rule instanceof PatternRule && !((PatternRule)rule).isWithComplexPhrase()) {
@@ -393,7 +393,7 @@ public class PatternRuleTest extends AbstractPatternRuleTest {
           for (String replacement : matches.get(0).getSuggestedReplacements()) {
             String fixedSentence = badSentence.substring(0, fromPos)
                 + replacement + badSentence.substring(toPos);
-            matches = getMatches(rule, fixedSentence, lt);
+            matches = getMatchesForSingleSentence(rule, fixedSentence, lt);
             if (matches.size() > 0) {
                 fail("Incorrect input:\n"
                         + "  " + badSentence
@@ -408,7 +408,7 @@ public class PatternRuleTest extends AbstractPatternRuleTest {
         }
       } else { // for multiple rules created with complex phrases
 
-        matches = getMatches(rule, badSentence, lt);
+        matches = getMatchesForSingleSentence(rule, badSentence, lt);
         if (matches.isEmpty()
             && !complexRules.containsKey(rule.getId() + badSentence)) {
           complexRules.put(rule.getId() + badSentence, rule);
@@ -454,7 +454,7 @@ public class PatternRuleTest extends AbstractPatternRuleTest {
                                             AbstractPatternRule rule) throws IOException {
     for (ErrorTriggeringExample example : rule.getErrorTriggeringExamples()) {
       String sentence = cleanXML(example.getExample());
-      List<RuleMatch> matches = getMatches(rule, sentence, lt);
+      List<RuleMatch> matches = getMatchesForText(rule, sentence, lt);
       if (matches.isEmpty()) {
         fail(lang + ": " + rule.getFullId() + ": Example sentence marked with 'triggers_error' didn't actually trigger an error: '" + sentence + "'");
       }
@@ -502,7 +502,7 @@ public class PatternRuleTest extends AbstractPatternRuleTest {
       for (String replacement : matches.get(0).getSuggestedReplacements()) {
         String fixedSentence = badSentence.substring(0, fromPos)
             + replacement + badSentence.substring(toPos);
-        List<RuleMatch> tempMatches = getMatches(rule, fixedSentence, lt);
+        List<RuleMatch> tempMatches = getMatchesForSingleSentence(rule, fixedSentence, lt);
         assertEquals("Corrected sentence for rule " + rule.getFullId()
             + " triggered error: " + fixedSentence, 0, tempMatches.size());
       }
@@ -555,12 +555,26 @@ public class PatternRuleTest extends AbstractPatternRuleTest {
   }
 
   private boolean match(Rule rule, String sentence, JLanguageTool lt) throws IOException {
-    AnalyzedSentence analyzedSentence = lt.getAnalyzedSentence(sentence);
+    List<AnalyzedSentence> analyzedSentences = lt.analyzeText(sentence);
+    int matchCount = 0;
+    for (AnalyzedSentence analyzedSentence : analyzedSentences) {
     RuleMatch[] matches = rule.match(analyzedSentence);
-    return matches.length > 0;
+      matchCount += matches.length;
+    }
+    return matchCount > 0;
   }
 
-  private List<RuleMatch> getMatches(Rule rule, String sentence, JLanguageTool lt) throws IOException {
+  // Unlike getMatchesForSingleSentence() this splits the text at sentence boundaries
+  private List<RuleMatch> getMatchesForText(Rule rule, String sentence, JLanguageTool lt) throws IOException {
+    List<AnalyzedSentence> analyzedSentences = lt.analyzeText(sentence);
+    List<RuleMatch> matches = new ArrayList<>();
+    for (AnalyzedSentence analyzedSentence : analyzedSentences) {
+      matches.addAll(Arrays.asList(rule.match(analyzedSentence)));
+    }
+    return matches;
+  }
+
+  private List<RuleMatch> getMatchesForSingleSentence(Rule rule, String sentence, JLanguageTool lt) throws IOException {
     AnalyzedSentence analyzedSentence = lt.getAnalyzedSentence(sentence);
     RuleMatch[] matches = rule.match(analyzedSentence);
     if (CHECK_WITH_SENTENCE_SPLITTING) {

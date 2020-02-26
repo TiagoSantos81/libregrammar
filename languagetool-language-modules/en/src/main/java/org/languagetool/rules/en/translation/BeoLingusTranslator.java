@@ -38,7 +38,7 @@ import java.util.stream.Collectors;
 public class BeoLingusTranslator implements Translator {
 
   private static final Logger logger = LoggerFactory.getLogger(BeoLingusTranslator.class);
-  private static final Pattern enUsPattern = Pattern.compile(".*?\\w+ \\[(Br|Am)\\.\\]/\\w+ \\[(Br|Am)\\.\\].*");
+  private static final Pattern enUsPattern = Pattern.compile(".*?\\w+ \\[(Br|Am)\\.\\] ?/ ?\\w+ \\[(Br|Am)\\.\\].*");
 
   private static BeoLingusTranslator instance;
 
@@ -103,8 +103,8 @@ public class BeoLingusTranslator implements Translator {
     List<String> newParts = new ArrayList<>();
     for (String part : parts) {
       if (enUsPattern.matcher(part).matches()) {
-        String variant1 = part.replaceFirst("^(.*?)(\\w+) (\\[(?:Br|Am)\\.\\])/\\w+ \\[(?:Br|Am)\\.\\](.*)", "$1$2$4 $3");
-        String variant2 = part.replaceFirst("^(.*?)(\\w+) (\\[(?:Br|Am)\\.\\])/(\\w+) (\\[(?:Br|Am)\\.\\])(.*)", "$1$4$6 $5");
+        String variant1 = part.replaceFirst("^(.*?)(\\w+) (\\[(?:Br|Am)\\.\\]) ?/ ?\\w+ \\[(?:Br|Am)\\.\\](.*)", "$1$2$4 $3");
+        String variant2 = part.replaceFirst("^(.*?)(\\w+) (\\[(?:Br|Am)\\.\\]) ?/ ?(\\w+) (\\[(?:Br|Am)\\.\\])(.*)", "$1$4$6 $5");
         newParts.add(variant1);
         newParts.add(variant2);
       } else {
@@ -167,6 +167,57 @@ public class BeoLingusTranslator implements Translator {
     List<TranslationEntry> sortedList = new ArrayList<>(entries);
     Collections.sort(sortedList);
     return sortedList;
+  }
+
+  @Override
+  public String getMessage() {
+    return "Translate to English?";
+  }
+
+  @Override
+  public String cleanTranslationForReplace(String s, String prevWord) {
+    String clean = s
+      .replaceAll("\\[.*?\\]", "")   // e.g. "[coll.]", "[Br.]"
+      .replaceAll("\\{.*?\\}", "")   // e.g. "to go {went; gone}"
+      .replaceAll("\\(.*?\\)", "")   // e.g. "icebox (old-fashioned)"
+      .replaceAll("/[A-Z]+/", "")    // e.g. "heavy goods vehicle /HGV/"
+      .trim();
+    if ("to".equals(prevWord) && clean.startsWith("to ")) {
+      return clean.substring(3);
+    }
+    return clean;
+  }
+
+  @Override
+  public String cleanTranslationForSuffix(String s) {
+    StringBuilder sb = new StringBuilder();
+    List<String> lookingFor = new ArrayList<>();
+    for (int i = 0; i < s.length(); i++) {
+      char c = s.charAt(i);
+      if (c == '[') {
+        lookingFor.add("]");
+      } else if (c == ']' && lookingFor.contains("]")) {
+        sb.append(c);
+        sb.append(' ');
+        lookingFor.remove("]");
+      } else if (c == '(') {
+        lookingFor.add(")");
+      } else if (c == ')') {
+        sb.append(c);
+        sb.append(' ');
+        lookingFor.remove(")");
+      } else if (c == '{') {
+        lookingFor.add("}");
+      } else if (c == '}') {
+        sb.append(c);
+        sb.append(' ');
+        lookingFor.remove("}");
+      }
+      if (lookingFor.size() > 0) {
+        sb.append(c);
+      }
+    }
+    return sb.toString().trim();
   }
 
   @Override
