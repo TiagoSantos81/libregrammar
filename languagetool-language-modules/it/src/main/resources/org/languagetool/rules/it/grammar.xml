@@ -552,7 +552,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token>gratis</token>
                 </pattern>
                 <message>Si scrive <suggestion>gratis</suggestion> (senza la preposizione).</message>
-                <example correction="gratis">Ovviamente... è tutto <marker>a gratis</marker>!</example>
+                <example correction="gratis"><!--Ovviamente... -->è tutto <marker>a gratis</marker>!</example>
             </rule>
             <!-- a nome Giuliano -->
             <rule>
@@ -687,6 +687,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <message>Utilizzare la sigla corretta: <suggestion>S.p.A.</suggestion>.</message>
                 <example correction="S.p.A.">La Nomedifantasia <marker>spa</marker> offre nuovi servizi.</example>
             </rule>
+            <!-- does not work due to sentence splitting
             <rule>
                 <pattern case_sensitive="yes">
                     <token>S</token>
@@ -700,6 +701,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="S.p.A.">La Nomedifantasia <marker>S.P.A.</marker> offre nuovi servizi.</example>
                 <example>La Nomedifantasia <marker>S.p.A.</marker> offre nuovi servizi.</example>
             </rule>
+            -->
             <rule>
                 <pattern case_sensitive="yes">
                     <token>S</token>
@@ -720,6 +722,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <message>Utilizzare la sigla corretta: <suggestion>S.R.L.</suggestion>.</message>
                 <example correction="S.R.L.">La Nomedifantasia <marker>srl</marker> offre nuovi servizi.</example>
             </rule>
+            <!-- does not work due to sentence splitting
             <rule>
                 <pattern case_sensitive="yes">
                     <token>S</token>
@@ -733,6 +736,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="S.R.L.">La Nomedifantasia <marker>S.R.l.</marker> offre nuovi servizi.</example>
                 <example>La Nomedifantasia <marker>S.R.L.</marker> offre nuovi servizi.</example>
             </rule>
+            -->
             <rule>
                 <pattern case_sensitive="yes">
                     <token>S</token>
@@ -746,6 +750,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="S.R.L.">La Nomedifantasia <marker>S.r.l.</marker> offre nuovi servizi.</example>
             </rule>
             <!-- S.N.C. -->
+            <!-- does not work due to sentence splitting
             <rule>
                 <pattern>
                     <token>snc</token>
@@ -754,6 +759,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="S.N.C.">La Nomedifantasia <marker>snc</marker> offre nuovi servizi.</example>
                 <example>La Nomedifantasia <marker>S.R.L.</marker> offre nuovi servizi.</example>
             </rule>
+            -->
+            <!--does not work due to sentence splitting
             <rule>
                 <pattern case_sensitive="yes">
                     <token>S</token>
@@ -779,6 +786,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <message>Utilizzare la sigla corretta: <suggestion>S.N.C.</suggestion>.</message>
                 <example correction="S.N.C.">La Nomedifantasia <marker>S.n.c.</marker> offre nuovi servizi.</example>
             </rule>
+            -->
             <!-- S.A.S. -->
             <rule>
                 <pattern>
@@ -787,6 +795,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <message>Utilizzare la sigla corretta: <suggestion>S.A.S.</suggestion>.</message>
                 <example correction="S.A.S.">La Nomedifantasia <marker>sas</marker> offre nuovi servizi.</example>
             </rule>
+            <!-- does not work due to sentence splitting
             <rule>
                 <pattern case_sensitive="yes">
                     <token>S</token>
@@ -812,6 +821,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <message>Utilizzare la sigla corretta: <suggestion>S.A.S.</suggestion>.</message>
                 <example correction="S.A.S.">La Nomedifantasia <marker>S.a.s.</marker> offre nuovi servizi.</example>
             </rule>
+            -->
         </rulegroup>
     </category>
 

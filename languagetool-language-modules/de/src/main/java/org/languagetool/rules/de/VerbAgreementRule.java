@@ -191,6 +191,12 @@ public class VerbAgreementRule extends TextLevelRule {
      posRegex("VER:MOD:1:PLU:.+"),
      csToken("wir"),
      csToken("bitte")
+    ),
+    Arrays.asList( // Ohne sie hätte ich das nie geschafft.
+     token("ohne"),
+     token("sie"),
+     token("hätte"),
+     token("ich")
     )
   );
 
