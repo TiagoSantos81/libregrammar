@@ -2247,7 +2247,7 @@ title="Easy editing stylesheet" ?>
     </rule>
     <rule>
       <pattern>
-          <token postag_regexp='yes' postag='SENT_START|_PUNCT|C.+'/>
+          <token postag_regexp='yes' postag='SENT_START|_PUNCT|C.+|N..P.+'/>
         <marker>
           <token regexp='yes'>caso|embora|tomara</token><!-- XXX reconsider tomara-->
           <token min='0' postag_regexp='yes' postag='P.+'/>
@@ -2261,6 +2261,10 @@ title="Easy editing stylesheet" ?>
       <example correction='Embora seja'><marker>Embora é</marker> verdade, não me agrada.</example>
       <example><marker>Embora levar</marker> o cão não seja má ideia, vou concordar contigo.</example>
       <example correction='caso estes representem'>Variamos os argumentos, <marker>caso estes representam</marker> resultados fracos.</example>
+      <example correction='caso estes representem'>Variamos os argumentos <marker>caso estes representam</marker> resultados fracos.</example><!-- comma handled by another rule -->
+      <example correction='caso estes apresentem'>Variamos os argumentos <marker>caso estes apresentam</marker> resultados fracos.</example>
+      <example correction='caso estes mostrem'>Variamos os argumentos <marker>caso estes mostram</marker> resultados fracos.</example>
+      <example correction='caso estes facilitem'>Variamos os argumentos <marker>caso estes facilitam</marker> resultados fracos.</example>
     </rule>
   </rulegroup>
 
@@ -5340,7 +5344,7 @@ title="Easy editing stylesheet" ?>
       <example>Esses dois campos representam a união de disciplinas de astronomia e química.</example>
       <example>Não vale a pena.</example>
       <example>Certo, isto está bem. Este exemplo está correto. Certo que este também.</example>
-      <!--<example>Este exemplo está correto. Este segundo também. Este terceiro exemplo não.</example>-->
+      <!-- <example type='incorrect'>Este exemplo está correto. Este segundo também. <marker>Este terceiro exemplo não.</marker></example> FIXME after ed04b08 this test should trigger correctly, but it doesn't -->
       <example>Os melhores cumprimentos,</example>
       <example><marker>A.1.</marker> Primeiro Anexo</example>
       <example><marker>9.7.1.</marker> Subcapítulo</example>
@@ -5352,7 +5356,7 @@ title="Easy editing stylesheet" ?>
       <example>A guerra trouxe a ruína para o país.</example>
       <example>Olá a todos!</example>
       <example>Bom dia, Jessica!</example>
-      <example type='triggers_error'>Oi, Carolina. Tudo bem?</example><!-- FIXME java implementation bug. does not trigger error on the standalone tool -->
+      <example>Oi, Carolina. Tudo bem?</example>
       <example>Esta técnica falha 5 em cada 1000 ocorrências.</example>
       <example type='triggers_error'>Mudanças no comportamento, personalidade ou modo de pensar.</example><!-- correct since "modo the pensar", i.e., "way of thinking" is a noun phrase -->
       <example type='triggers_error'>Sistema de Crenças: São os argumentos e os pesos.</example><!-- correct. with this capitalization it implies 'São' as 'Saint'. -->
@@ -7455,8 +7459,8 @@ title="Easy editing stylesheet" ?>
     </rule>
   </rulegroup>
 
-    <!-- MULHER CARTEIRO carteira -->
     <rule id='MULHER_CARTEIRO' name="Carteira">
+    <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
       <pattern>
           <token>mulher</token>
           <token>carteiro</token>
@@ -7465,8 +7469,8 @@ title="Easy editing stylesheet" ?>
       <example correction="carteira">A Ana é <marker>mulher carteiro</marker>.</example>
     </rule>
 
-    <!-- MULHER MÚSICO música -->
     <rule id='MULHER_MÚSICO' name="Música">
+    <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
       <pattern>
           <token>mulher</token>
           <token>músico</token>
@@ -7475,40 +7479,43 @@ title="Easy editing stylesheet" ?>
       <example correction="música">A Ana é uma <marker>mulher músico</marker>.</example>
     </rule>
 
-    <!-- NÃO VEZ QUE não vês que -->
     <rule id='NÃO_VEZ_QUE' name="Confusão: vez - vês">
+    <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
       <pattern>
-          <token>não</token>
+          <token postag='CC|SENT_START|_PUNCT|R.+' postag_regexp='yes'/>
           <token>vez</token>
           <token>que</token>
       </pattern>
-      <message>Substitua por <suggestion>não vês que</suggestion>.</message>
+      <message>Substitua por <suggestion>\1 vês que</suggestion>.</message>
       <example correction="não vês que">Pai, <marker>não vez que</marker> eles estão errados?</example>
+      <example correction=", vês que">Pai<marker>, vez que</marker> eles estão errados?</example>
+      <example correction="Mas vês que"><marker>Mas vez que</marker> eles estão errados?</example>
+      <example correction="Vês que"><marker>Vez que</marker> eles estão errados?</example>
     </rule>
 
-    <!-- NESTA CASO neste caso -->
     <rule id='NESTA_CASO' name="Neste caso">
+    <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
       <pattern>
-          <token>nesta</token>
+          <token regexp='yes'>nestas?|nestes</token>
           <token>caso</token>
       </pattern>
       <message>Substitua por <suggestion>neste caso</suggestion>.</message>
       <example correction="neste caso">Quem está errado <marker>nesta caso</marker> é o Miguel.</example>
     </rule>
 
-    <!-- NO FAZ FALTA não faz falta -->
     <rule id='NO_FAZ_FALTA' name="Não faz falta">
+    <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
       <pattern>
           <token>no</token>
-          <token>faz</token>
+          <token inflected='yes'>fazer</token>
           <token>falta</token>
       </pattern>
       <message>Substitua por <suggestion>não faz falta</suggestion>.</message>
       <example correction="não faz falta">Isso <marker>no faz falta</marker> às pessoas.</example>
     </rule>
 
-    <!-- NOS + VERB - nós + verb -->
     <rule id='NOS_VERBO' name="Confusão: nos/nós + VERBO">
+    <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
       <pattern>
           <token case_sensitive="yes">Nos</token>
           <token postag_regexp='yes' postag="V.+">
@@ -7518,18 +7525,18 @@ title="Easy editing stylesheet" ?>
       <example correction="Nós sabemos"><marker>Nos sabemos</marker> a resposta.</example>
     </rule>
 
-    <!-- NUM SEI não sei -->
     <rule id='NUM_SEI' name="Confusão: num - não">
+    <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
       <pattern>
           <token>num</token>
-          <token>sei</token>
+          <token inflected='yes'>saber</token>
       </pattern>
       <message>Substitua por <suggestion>não sei</suggestion>.</message>
       <example correction="não sei">Como podes ver, <marker>num sei</marker> a resposta.</example>
     </rule>
 
-    <!-- O MAS o mais -->
     <rule id='O_MAS' name="O mais">
+    <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
       <pattern>
           <token>o</token>
           <token>mas</token>
@@ -7539,10 +7546,10 @@ title="Easy editing stylesheet" ?>
       <example correction="o mais rapidamente">Quero resultados <marker>o mas rapidamente</marker> possível</example>
     </rule>
 
-    <!-- O MESMO DO QUE o mesmo que -->
     <rule id='O_MESMO_DO_QUE' name="O mesmo que">
+    <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
       <pattern>
-          <token>o</token>
+          <token regexp='yes'>[dn]?[ao]s?</token>
           <token>mesmo</token>
           <token>do</token>
           <token>que</token>
@@ -7551,8 +7558,8 @@ title="Easy editing stylesheet" ?>
       <example correction="o mesmo que">Beber não é <marker>o mesmo do que</marker> comer.</example>
     </rule>
 
-    <!-- O MEU MUITO OBRIGADA o meu muito obrigado -->
     <rule id='O_MEU_MUITO_OBRIGADA' name="Masculino: Obrigado" default='off'>
+    <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
       <pattern>
         <marker>
           <token>obrigada</token>
@@ -7577,8 +7584,8 @@ title="Easy editing stylesheet" ?>
       <example correction="hora">Está na minha <marker>ora</marker> de refeição.</example>
     </rule>
 
-    <!-- PALAVRAS-CHAVES palavras-chave -->
     <rule id='PALAVRAS-CHAVES' name="Palavras-chave">
+    <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
       <pattern>
           <token>palavras</token>
           <token regexp='yes'>&tracos_de_separacao;</token>
@@ -7588,8 +7595,8 @@ title="Easy editing stylesheet" ?>
       <example correction="palavras-chave">Estas são as <marker>palavras-chaves</marker> da tese.</example>
     </rule>
 
-    <!-- PALAVRAS DE ORDENS palavras de ordem -->
     <rule id='PALAVRAS_DE_ORDENS' name="Palavras de ordem">
+    <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
       <pattern>
           <token>palavras</token>
           <token>de</token>
@@ -7609,36 +7616,34 @@ title="Easy editing stylesheet" ?>
       <example correction="prefere">A Ana <marker>prefere antes</marker> a Matemática.</example>
     </rule>
 
-    <!-- O MAIS + ADJ-PLURAL + POSSÍVEIS - o mais adj-plural possível -->
     <rule id='O_MAIS_ADJ-PLURAL_POSSÍVEIS' name="Erro de concordância de número - possíveis-possível">
+    <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
       <pattern>
           <token>o</token>
           <token>mais</token>
-          <token postag="AQ0CP0"/>
-        <marker>
+          <token postag="A...P." postag_regexp='yes'/>
           <token>possíveis</token>
-        </marker>
       </pattern>
       <message>&MSG_ECN;</message>
-        <suggestion>possível</suggestion>
-      <example correction="possível">Faz perguntas o mais abrangentes <marker>possíveis</marker>.</example>
+        <suggestion>\1 \2 \3 possível</suggestion>
+      <example correction="o mais abrangentes possível">Faz perguntas <marker>o mais abrangentes possíveis</marker>.</example>
     </rule>
 
-    <!-- PARA FICA para ficar -->
     <rule id='PARA_FICA' name="Confusão: fica - ficar">
+    <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
       <pattern>
           <token regexp='yes'>pa?ra</token>
-          <token>fica</token>
+          <token regexp='yes'>ficas?</token>
       </pattern>
       <message>Substitua por <suggestion>para ficar</suggestion>.</message>
       <example correction="para ficar">Esforça-te <marker>para fica</marker> bem.</example>
     </rule>
 
-    <!-- PEDIR UM CONCELHO pedir um conselho -->
     <rule id='PEDIR_UM_CONCELHO' name="Confusão: concelho - conselho">
+    <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
       <pattern>
           <token inflected='yes'>pedir</token>
-          <token>um</token>
+          <token min='0'>um</token>
           <token>concelho</token>
       </pattern>
       <message>Substitua por <suggestion>\1 um conselho</suggestion>.</message>
@@ -7649,14 +7654,11 @@ title="Easy editing stylesheet" ?>
     <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
       <pattern>
           <token inflected='yes'>perfilhar</token>
-        <marker>
           <token>da</token>
-        </marker>
           <token>doutrina</token>
-          <token>de</token>
       </pattern>
-      <message>Substitua por <suggestion>a</suggestion>.</message>
-      <example correction="a">O Rui perfilha <marker>da</marker> doutrina de Buda.</example>
+      <message>Substitua por <suggestion>\1 a \3</suggestion>.</message>
+      <example correction="perfilha a doutrina">O Rui <marker>perfilha da doutrina</marker> de Buda.</example>
     </rule>
 
     <!-- PIOR EDUCADO mais mal-educado -->
@@ -9331,7 +9333,7 @@ title="Easy editing stylesheet" ?>
       </antipattern>
       <antipattern>
           <token>como</token>
-          <token regexp="yes" spacebefore='no'>aliás|entretanto|todavia</token>
+          <token regexp="yes">aliás|entretanto|todavia</token>
       </antipattern>
       <antipattern>
           <token postag='SENT_START|_PUNCT' postag_regexp='yes'/>
