@@ -9391,6 +9391,43 @@ title="Easy editing stylesheet" ?>
       <example correction='intenções, mas'>…as políticas são feitas com as melhores <marker>intenções mas</marker>, porque não preveem os resultados colaterais, muitas vezes geram os resultados contrários…</example>
     </rule>
     <rule>
+      <antipattern>
+          <token regexp='yes'>&quot;</token>
+          <token regexp='yes'>caso|se</token>
+      </antipattern>
+      <antipattern>
+          <token>como</token>
+          <token>se</token>
+      </antipattern>
+      <antipattern><!-- reflexive without hyphen -->
+          <token postag='V...3.+' postag_regexp='yes'/>
+          <token>se</token>
+      </antipattern>
+      <antipattern><!-- subjunctive -->
+          <token>se</token>
+          <token postag='V.[^S].+' postag_regexp='yes'/>
+      </antipattern>
+      <pattern>
+        <marker>
+          <token>
+            <exception regexp="yes">“|«</exception>
+            <exception regexp='yes'>&separadores_de_oracoes;</exception>
+            <exception postag='SENT_START|(?:D|SP).+|A...P.+' postag_regexp='yes'/></token>
+          <token regexp="yes">caso|se</token>
+        </marker>
+          <token>
+            <exception spacebefore='no' regexp='yes'>[.!?»”\)\"]</exception>
+            <exception postag='SENT_END'/></token>
+      </pattern>
+      <message>Deve separar orações condicionais por vírgulas.</message>
+        <suggestion>\1, <match no='2' case_conversion="startlower"/></suggestion>
+      <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/pontuacao-virgula-antes-de-mas/7047</url>
+      <example correction="antecedência, caso">Terminei a prova com <marker>antecedência caso</marker> possa sair.</example>
+      <example correction="antecedência, se">Terminei a prova com <marker>antecedência se</marker> puder sair.</example>
+      <example><marker>Para se</marker> fazer isso, tem-se que marcar com antecedência.</example>
+      <example><marker>Elas se</marker> satisfizeram com aquela deixa.</example>
+    </rule>
+    <rule>
       <pattern>
         <marker>
           <token>não</token>
