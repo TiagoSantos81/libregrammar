@@ -1579,6 +1579,64 @@ title="Easy editing stylesheet" ?>
     </rule>
   </rulegroup>
 
+  <rulegroup id='EMPHATIC_PRONOUN_AGREEMENT' name='Concordância de pronomes enfáticos: p.ex. ele próprio'>
+    <!-- Created by Tiago F. Santos, 2020-02-27 -->
+    <rule>
+      <pattern>
+          <token regexp='yes'>eu|tu|você</token>
+          <token regexp='yes'>(?:mesm|própri)(?:as|os)</token>
+      </pattern>
+      <message>&MSG_ECN;</message>
+        <suggestion>\1 <match no='2' regexp_match='(mesm|própri)(.+?)s' regexp_replace='$1$2'/></suggestion>
+      <example correction="Eu mesmo">Foi <marker>eu mesmos</marker>.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token>ele</token>
+          <token regexp='yes'>(?:mesm|própri)(?:as?|os)</token>
+      </pattern>
+      <message>&MSG_ECN;</message>
+        <suggestion>\1 <match no='2' regexp_match='(mesm|própri)(.+)' regexp_replace='$1o'/></suggestion>
+      <example correction="Ele mesmo">Foi <marker>ele mesma</marker>.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token>ela</token>
+          <token regexp='yes'>(?:mesm|própri)(?:as|os)</token>
+      </pattern>
+      <message>&MSG_ECN;</message>
+        <suggestion>\1 <match no='2' regexp_match='(mesm|própri)(.+)' regexp_replace='$1a'/></suggestion>
+      <example correction="Ela mesma">Foi <marker>ela mesmas</marker>.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token regexp='yes'>nós|vós|vocês</token>
+          <token regexp='yes'>mesma|própria</token>
+      </pattern>
+      <message>&MSG_ECN;</message>
+        <suggestion>\1 <match no='2' regexp_match='(mesm|própri)(.+?)' regexp_replace='$1$2s'/></suggestion>
+      <example correction="vocês mesmas">Foram <marker>vocês mesma</marker>.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token>eles</token>
+          <token regexp='yes'>(?:mesm|própri)(?:as?)</token>
+      </pattern>
+      <message>&MSG_ECN;</message>
+        <suggestion>\1 <match no='2' regexp_match='(mesm|própri)(.+)' regexp_replace='$1os'/></suggestion>
+      <example correction="Eles mesmos">Foi <marker>eles mesma</marker>.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token>elas</token>
+          <token regexp='yes'>(?:mesm|própri)(?:a|os)</token>
+      </pattern>
+      <message>&MSG_ECN;</message>
+        <suggestion>\1 <match no='2' regexp_match='(mesm|própri)(.+)' regexp_replace='$1as'/></suggestion>
+      <example correction="Elas mesmas">Foi <marker>ela mesmas</marker>.</example>
+    </rule>
+  </rulegroup>
+
   <rulegroup id='TODOS_NUMBER_AGREEMENT' name='Concordância de determinantes: Todos os'>
     <!-- Created by Tiago F. Santos, 2019-03-24 -->
     <rule>
