@@ -1155,6 +1155,10 @@
 <beforebreak>\bJan\.\s</beforebreak>
 <afterbreak></afterbreak>
 </rule>
+<rule break="no"><!-- fix for EG_NO_COMMA subrule-->
+<beforebreak>\b[Ee][Gg]\.\s?</beforebreak>
+<afterbreak></afterbreak>
+</rule>
 <rule break="no">
 <beforebreak>\bFeb\.\s</beforebreak>
 <afterbreak></afterbreak>

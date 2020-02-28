@@ -38039,6 +38039,19 @@ The accident victim died from her injuries.
                 <pattern>
                     <marker>
                         <token>eg</token>
+                        <token>.</token>
+                    </marker>
+                    <token negate="yes">,</token>
+                </pattern>
+                <message>A comma and a dot are missing here: <suggestion>e.g.,</suggestion>.</message>
+                <short>Punctuation error</short>
+                <example>There are several grammar checkers for English, e.g., LanguageTool.</example>
+                <example correction="e.g.,">There are several grammar checkers for English, <marker>eg.</marker> LanguageTool.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <marker>
+                        <token>eg</token>
                     </marker>
                     <token negate="yes" regexp="yes">,|\.</token>
                 </pattern>
