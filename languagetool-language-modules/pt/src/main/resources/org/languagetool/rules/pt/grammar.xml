@@ -10635,9 +10635,8 @@ title="Easy editing stylesheet" ?>
     </rule>
   </rulegroup>
 
-     <!--  Based on the Catalan version, by Tiago F. Santos, 2017-02-22      -->
-     <!-- TODO: doesn't work due to sentence splitting
     <rule id='PUNCTUATION_IN_UNITS_OF_MEASURE' name="Abreviaturas de unidades de medida">
+     <!--  Based on the Catalan version, by Tiago F. Santos, 2017-02-22      -->
       <pattern case_sensitive='yes'>
           <token postag_regexp='yes' postag='Z.+'/>
         <marker>
@@ -10655,7 +10654,6 @@ title="Easy editing stylesheet" ?>
       <example>CUNNINGHAM, Philip A.; STARR, Arthur F.; Sharing Shalom: A Process for Local Interfaith D…</example>
       <example>"A lei e os profetas duraram até João"(cf. ; ).</example>
     </rule>
-    -->
 
   <rulegroup id='HOURS_ABREVIATION' name="Abreviatura de horas">
     <!-- Localized from Catalan, by Tiago F. Santos, 2017-05-16 -->
@@ -10669,7 +10667,6 @@ title="Easy editing stylesheet" ?>
       <short>Erro de abreviação</short>
       <example correction="15&#160;h">Às <marker>15hs</marker> em ponto.</example>
     </rule>
-    <!-- doesn't work due to sentence splitting
     <rule>
       <pattern>
           <token regexp="yes">\d+&#160;?(?:hr?s|horas?)</token>
@@ -10681,7 +10678,6 @@ title="Easy editing stylesheet" ?>
       <short>Erro de abreviação</short>
       <example correction="15&#160;h">Às <marker>15hs.</marker> em ponto.</example>
     </rule>
-    -->
     <rule>
       <pattern>
           <token regexp="yes">\d+</token>
@@ -10692,7 +10688,6 @@ title="Easy editing stylesheet" ?>
       <short>Erro de abreviação</short>
       <example correction="15&#160;h">Às <marker>15 hs</marker> em ponto.</example>
     </rule>
-    <!-- doesn't work due to sentence splitting
     <rule>
       <pattern>
           <token regexp="yes">\d+</token>
@@ -10705,7 +10700,6 @@ title="Easy editing stylesheet" ?>
       <short>Erro de abreviação</short>
       <example correction="15&#160;h">Às <marker>15 hs.</marker> em ponto.</example>
     </rule>
-    -->
     <rule>
       <pattern>
           <token regexp="yes">(?:[012]?\d:)?[012345]?\d</token>
@@ -10719,7 +10713,7 @@ title="Easy editing stylesheet" ?>
       <example correction="15:30 h">Às <marker>15:30 h.</marker> será a festa.</example>
       <example correction="5:30 h">Às <marker>5:30 h.</marker> será a festa.</example>
       <example>Chegará às 15:30 h.</example>
-    <!--example>Chegaram às 15 h. Eram de diferentes nacionalidades.</example--><!-- XXX This example works in practice but, it doesn't work in test rules. -->
+      <example>Chegaram às 15 h. Eram de diferentes nacionalidades.</example>
     </rule>
   </rulegroup>
 
@@ -31528,7 +31522,6 @@ TODO Write better examples
         <suggestion>engenheir<match no='2' regexp_match='(elétric)(.s?)' regexp_replace='$2'/> eletrotécnic<match no='2' regexp_match='(elétric)(.s?)' regexp_replace='$2'/></suggestion>
       <example correction="engenheiras eletrotécnicas">A proposta do <marker>engenheiro elétricas</marker> parece ser insuperável.</example>
     </rule>
-    <!-- doesn't work due to sentence splitting
     <rule>
       <pattern>
           <token>eng</token>
@@ -31540,7 +31533,6 @@ TODO Write better examples
       <short>Erro de tradução</short>
       <example correction="eng. eletrotécnico">A proposta do <marker>eng. elétrico</marker> parece ser insuperável.</example>
     </rule>
-    -->
   </rulegroup>
 
     <rule id='ESTIMAÇÃO_MÁXIMA_SEMELHANÇA' name="Erro de tradução: 'estimação máxima verosimilhança'">
