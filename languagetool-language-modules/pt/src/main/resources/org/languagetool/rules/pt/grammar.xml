@@ -27472,9 +27472,8 @@ TODO Write better examples
       <example type="incorrect">“Não me incomode com sua tagarelice infantil<marker>;”</marker> disse Maria; “eu escrevo versos imortais.”</example>
     </rule>
 
-   <!-- Localized from German grammar.xml by Tiago F. Santos,  2017-08-17      -->
   <rulegroup id="PARENTESESE_AND_QUOTES_SPACING" name="Espaçamento em volta de aspas ou parênteses">
-    <!-- doesn't work out due to sentence splitting
+   <!-- Localized from German grammar.xml by Tiago F. Santos,  2017-08-17      -->
     <rule>
       <antipattern>
           <token>,</token>
@@ -27530,7 +27529,6 @@ TODO Write better examples
       <example correction=".»">«O jardim», disse ele, «jardim é verdadeiramente bonito<marker>. »</marker></example>
       <example>Algumas palavras inglesas têm duas grafias, p.ex. "gray" e "grey".</example>
     </rule>
-    -->
     <rule>
       <antipattern>
           <token regexp="yes">„|»|«|"|\(|\{</token>
