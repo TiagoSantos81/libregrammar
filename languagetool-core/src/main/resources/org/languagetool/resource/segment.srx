@@ -5780,12 +5780,12 @@
 </rule>
 <!-- workaround for HOURS_ABREVIATION -->
 <rule break="no">
-<beforebreak>\b(\d+[\s&#160;]?(?:hr?s?|horas?))\.\s?</beforebreak>
+<beforebreak>\b(\d+[\s&#160;]?(hr?s?|horas?))\.\s?</beforebreak>
 <afterbreak>(\d+|\p{Ll}.+)</afterbreak>
 </rule>
 <!-- workaround for PUNCTUATION_IN_UNITS_OF_MEASURE -->
 <rule break="no">
-<beforebreak>(?:(?:[khdcmnµfYZEPTGM]|da)?(?:[gmlsJNWCVSFTHΩ]|Hz|cd|lm|mol|Pa|Wb|rad|sr|lx|Bq|Gy|Sv|kat|Np|eV)(?:⁻)?[23¹²³]?|º[CFK]|cv|k?cal|mmHg|atm|bpm|ton|kWh|GWa|MWd|MWh|mAh|min|ha)\.\s?</beforebreak>
+<beforebreak>\b(([khdcmnµfYZEPTGM]|da)?(?:[gmlsJNWCVSFTHΩ]|Hz|cd|lm|mol|Pa|Wb|rad|sr|lx|Bq|Gy|Sv|kat|Np|eV)(?:⁻)?[23¹²³]?|º[CFK]|cv|k?cal|mmHg|atm|bpm|ton|kWh|GWa|MWd|MWh|mAh|min|ha)\.\s?</beforebreak>
 <afterbreak>\p{Ll}.*|[,;\.\?]</afterbreak>
 </rule>
 <!-- workaround for PARENTESESE_AND_QUOTES_SPACING -->
