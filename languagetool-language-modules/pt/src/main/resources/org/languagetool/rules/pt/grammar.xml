@@ -3561,7 +3561,7 @@ title="Easy editing stylesheet" ?>
       <message>As ênclises terminadas em r, s ou z exigem alteração do pronome e do verbo. A palavra poderá exigir um acento adicional na forma verbal sugerido.</message>
         <suggestion><match no='1' regexp_match='(.+)ar$' regexp_replace='$1'/>á-l\3</suggestion>
       <url>https://pt.wikipedia.org/wiki/Coloca%C3%A7%C3%A3o_pronominal#.C3.8Anclise</url>
-      <example correction='dá-las'>Estas entradas são deliciosas. Vá! É <marker>dar-as</marker>.</example>
+      <example correction='dá-las'><!--Estas entradas são deliciosas. Vá!--> É <marker>dar-as</marker>.</example>
       <example>Ele teve-a como perdida.</example>
     </rule>
     <rule>
@@ -3573,7 +3573,7 @@ title="Easy editing stylesheet" ?>
       <message>As ênclises terminadas em r, s ou z exigem alteração do pronome e do verbo. A palavra poderá exigir um acento adicional na forma verbal sugerido.</message>
         <suggestion><match no='1' regexp_match='(.+)er$' regexp_replace='$1'/>ê-l\3</suggestion>
       <url>https://pt.wikipedia.org/wiki/Coloca%C3%A7%C3%A3o_pronominal#.C3.8Anclise</url>
-      <example correction='comê-las'>Estas entradas são deliciosas. Vá! É <marker>comer-as</marker>.</example>
+      <example correction='comê-las'><!--Estas entradas são deliciosas. Vá!--> É <marker>comer-as</marker>.</example>
       <example>Ele teve-a como perdida.</example>
     </rule>
     <rule>
@@ -3585,7 +3585,7 @@ title="Easy editing stylesheet" ?>
       <message>As ênclises terminadas em r, s ou z exigem alteração do pronome e do verbo. A palavra poderá exigir um acento adicional na forma verbal sugerido.</message>
         <suggestion><match no='1' regexp_match='(.+)ir$' regexp_replace='$1'/>i-l\3</suggestion>
       <url>https://pt.wikipedia.org/wiki/Coloca%C3%A7%C3%A3o_pronominal#.C3.8Anclise</url>
-      <example correction='pedi-las'>Estas entradas são deliciosas. Vá! É <marker>pedir-as</marker>.</example>
+      <example correction='pedi-las'><!--Estas entradas são deliciosas. Vá!--> É <marker>pedir-as</marker>.</example>
       <example>Ele teve-a como perdida.</example>
     </rule>
     <rule>
@@ -3597,7 +3597,7 @@ title="Easy editing stylesheet" ?>
       <message>As ênclises terminadas em r, s ou z exigem alteração do pronome e do verbo. A palavra poderá exigir um acento adicional na forma verbal sugerido.</message>
         <suggestion><match no='1' regexp_match='(.+)[oô]r$' regexp_replace='$1'/>ô-l\3</suggestion>
       <url>https://pt.wikipedia.org/wiki/Coloca%C3%A7%C3%A3o_pronominal#.C3.8Anclise</url>
-      <example correction='pô-las'>Estas entradas são deliciosas. Vá! É <marker>pôr-as</marker> na mesa.</example>
+      <example correction='pô-las'><!--Estas entradas são deliciosas. Vá!--> É <marker>pôr-as</marker> na mesa.</example>
       <example>Ele teve-a como perdida.</example>
     </rule>
   </rulegroup>
