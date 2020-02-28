@@ -9806,7 +9806,6 @@ USA
         </rule>
         <rulegroup id="HAVE_RB_HAVE" name="duplicated use of 'have'">
             <!-- TODO: add other verbs -->
-            <!-- TODO: check examples with "had ... had" (might be a style rule) -->
             <antipattern>
                 <token>have</token>
                 <token>to</token>
@@ -9845,13 +9844,6 @@ USA
                 <example correction="already have|have already">Since Enron let us know in October to not rely on Enron alone for vaccinations, most of you may <marker>have already have</marker> shots.</example>
                 <example correction="ever has|has ever">Neither Tom nor Mary <marker>has ever has</marker> been married.</example>
                 <example correction="really have|have really">Just out of curiosity, did you <marker>have really have</marker> any fun?</example>
-                <!-- might be grammatically correct but one "had" seems better (TODO: check, maybe create style rule)
-                <example correction="already had|had already">Didn’t know you <marker>had already had</marker> them listed before.</example>
-                <example correction="never had|had never">Tom <marker>had never had</marker> a job before.</example>
-                <example correction="ever had|had ever">Lhazang Khan, now acting as the only outright foreign ruler that Tibet <marker>had ever had</marker>.</example>
-                <example correction="never had|had never">I want to start over from scratch, as if I had never had a certificate before.</example>
-                <example correction="always had|had always">But for the previous 20 years, though he had long been without any official executive title, he <marker>had always had</marker> de facto control over the company.</example>
-                <example correction="never had|had never">Markku <marker>had never had</marker> a one-night stand; it wasn't his nature.</example> -->
                 <example>Yet I had not had the issue before the new struts.</example>
                 <example>The model that you have will have automatically factory reset.</example>
                 <example>However, the model that you have does have a Wi-Fi radio.</example>
@@ -12956,6 +12948,14 @@ USA
                 <token postag="RB" min="0" />
                 <token postag="VBP?" postag_regexp="yes" />
             </antipattern>
+            <antipattern><!-- From gray to gold to pink ... -->
+                <token>from</token>
+                <token postag="JJ.*|NN.*" postag_regexp="yes" min="1" max="2" />
+                <token>to</token>
+                <token postag="JJ.*|NN.*" postag_regexp="yes" />
+                <token>to</token>
+                <token postag="JJ.*|NN.*" postag_regexp="yes" />
+            </antipattern>
             <pattern>
                 <token>to</token>
                 <token postag="JJ">
@@ -12977,6 +12977,7 @@ USA
             <example>She told me to just to keep the peace.</example>
             <example>You have to go to china to learn about their culture.</example><!-- china should be China -->
             <example>So often, my grandmother had a spare bed she’d go to just to be able to sleep.</example>
+            <example>From gray to gold to pink.</example>
             <example>2 x VIP tickets for sale at face value due to unable to attend event.</example><!-- Not proper english (but very common), should be handled by different rule -->
         </rule>
         <rule id="BASE_FORM" name="base form after I/you/we/they">
@@ -27444,13 +27445,13 @@ USA
                     <token>priorities</token>
                 </antipattern>
                 <antipattern>
-                    <token regexp="yes">subject|responses?|addition|due|alternatives?|exposure|similar|comparable</token>
+                    <token regexp="yes">subject|responses?|addition|due|alternatives?|exposure|similar|comparable|access</token>
                     <token>to</token>
                 </antipattern>
                 <pattern>
                     <token>
                         to
-                        <exception regexp="yes" scope="previous" inflected="yes">refer|related|restrict|lead|respond|regard</exception>
+                        <exception regexp="yes" scope="previous" inflected="yes">refer|related|restrict|lead|respond|regard|compare</exception>
                     </token>
                     <token regexp="yes">priorities|priories</token>
                 </pattern>
@@ -27531,13 +27532,13 @@ USA
                     <token>emphasis</token>
                 </antipattern>
                 <antipattern>
-                    <token regexp="yes">subject|responses?|addition|due|alternatives?|exposure|similar|comparable</token>
+                    <token regexp="yes">subject|responses?|addition|due|alternatives?|exposure|similar|comparable|access</token>
                     <token>to</token>
                 </antipattern>
                 <pattern>
                     <token>
                         to
-                        <exception regexp="yes" scope="previous" inflected="yes">refer|related|restrict|lead|respond|regard</exception>
+                        <exception regexp="yes" scope="previous" inflected="yes">refer|related|restrict|lead|respond|regard|compare</exception>
                     </token>
                     <token>emphasis</token>
                 </pattern>
@@ -39680,9 +39681,13 @@ The accident victim died from her injuries.
         <rulegroup id="ADJECTIVE_ADVERB" name="adjective vs. adverb"><!-- TODO add more pairs (general(ly), direct(ly), eventual(ly), certain(ly), extreme(ly), immediate(ly), slow(ly) ...) -->
                 <url>https://www.ef.com/wwen/english-resources/english-grammar/forming-adverbs-adjectives/</url>
             <antipattern>
-                <token regexp="yes">subject|responses?|addition|due|alternatives?|exposure|similar|comparable</token>
+                <token regexp="yes">subject|responses?|addition|due|alternatives?|exposure|similar|comparable|access|regards?|related</token>
                 <token>to</token>
                 <token postag="JJ" />
+            </antipattern>
+            <antipattern>
+                <token inflected="yes" skip="1" regexp="yes">compare|refer|relate|restrict|lead|respond|regard</token>
+                <token>to</token>
             </antipattern>
             <antipattern>
                 <token skip="10">from</token>
@@ -39704,6 +39709,7 @@ The accident victim died from her injuries.
                 <token postag="IN" />
                 <token regexp="yes">it|you</token>
             </antipattern>
+            <!-- TODO add: "They didn't easy accomplish it" -->
             <rule><!-- MD + adjective ending in "le" + VB -->
                 <pattern>
                     <token postag="MD">
@@ -39823,7 +39829,7 @@ The accident victim died from her injuries.
                 <example>It is subject to tragic events.</example>
                 <example correction="economically">I think we should give consideration to <marker>economic</marker> using Gary's expertise on a part-time basis in Bakersfield and relocate and fill his position in Texas.</example>
             </rule>
-            <rule><!-- MD + (easy|literary|temporary) + VB -->
+            <rule><!-- MD + (easy|literary|temporary|necessary) + VB -->
                 <pattern>
                     <token postag="MD">
                         <exception postag="VB.*" postag_regexp="yes" />
@@ -39832,7 +39838,7 @@ The accident victim died from her injuries.
                     <token regexp="yes" min="0">(no)?t</token>
                     <?ignore
                     <marker>
-                        <token regexp="yes">easy|literary|temporary</token>
+                        <token regexp="yes">easy|literary|temporary|necessary</token>
                     </marker>
                     ?>
                     <marker>
@@ -39845,14 +39851,14 @@ The accident victim died from her injuries.
                 <example correction="easily">Two weeks is way to fast, we could <marker>easy</marker> run out of resources and then the Mystics would not stop till caught up!</example>
                 <example correction="easily">The actual search zone could <marker>easy</marker> be used to search in both languages.</example>
             </rule>
-            <rule><!-- PRP + (easy|literary|temporary) + VB -->
+            <rule><!-- PRP + (easy|literary|temporary|necessary) + VB -->
                 <pattern>
                     <token regexp="yes">
                         I|you|they|we|s?he|it
                     </token>
                     <?ignore
                     <marker>
-                        <token regexp="yes">easy|literary|temporary</token>
+                        <token regexp="yes">easy|literary|temporary|necessary</token>
                     </marker>
                     ?>
                     <marker>
@@ -39866,12 +39872,12 @@ The accident victim died from her injuries.
                 <example correction="temporarily">It is critical that we <marker>temporary</marker> stay our course.</example>
                 <example>Take it easy home.</example>
             </rule>
-            <rule><!-- to + (easy|literary|temporary) + VB -->
+            <rule><!-- to + (easy|literary|temporary|necessary) + VB -->
                 <pattern>
                     <token>to</token>
                     <?ignore
                     <marker>
-                        <token regexp="yes">easy|literary|temporary</token>
+                        <token regexp="yes">easy|literary|temporary|necessary</token>
                     </marker>
                     ?>
                     <marker>
@@ -39961,6 +39967,7 @@ The accident victim died from her injuries.
                 <example correction="cheaply">How to <marker>cheap</marker> create wildcard certifcates and then renew them?</example>
                 <example>It is subject to tragic events.</example>
                 <!--example correction="slowly">I think we should give consideration to <marker>slow</marker> using Gary's expertise on a part-time basis in Bakersfield and relocate and fill his position in Texas.</example--><!-- TODO add rule for ambiguous adjective/verb cases --> 
+                <example>Get access to actual pricing details.</example>
             </rule>
             <rule><!-- MD + automatic|accident + VB -->
                 <pattern>
