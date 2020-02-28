@@ -1588,7 +1588,7 @@ title="Easy editing stylesheet" ?>
       </pattern>
       <message>&MSG_ECN;</message>
         <suggestion>\1 <match no='2' regexp_match='(mesm|própri)(.+?)s' regexp_replace='$1$2'/></suggestion>
-      <example correction="Eu mesmo">Foi <marker>eu mesmos</marker>.</example>
+      <example correction="eu mesmo">Foi <marker>eu mesmos</marker>.</example>
     </rule>
     <rule>
       <pattern>
@@ -1597,7 +1597,7 @@ title="Easy editing stylesheet" ?>
       </pattern>
       <message>&MSG_ECN;</message>
         <suggestion>\1 <match no='2' regexp_match='(mesm|própri)(.+)' regexp_replace='$1o'/></suggestion>
-      <example correction="Ele mesmo">Foi <marker>ele mesma</marker>.</example>
+      <example correction="ele mesmo">Foi <marker>ele mesma</marker>.</example>
     </rule>
     <rule>
       <pattern>
@@ -1606,7 +1606,7 @@ title="Easy editing stylesheet" ?>
       </pattern>
       <message>&MSG_ECN;</message>
         <suggestion>\1 <match no='2' regexp_match='(mesm|própri)(.+)' regexp_replace='$1a'/></suggestion>
-      <example correction="Ela mesma">Foi <marker>ela mesmas</marker>.</example>
+      <example correction="ela mesma">Foi <marker>ela mesmas</marker>.</example>
     </rule>
     <rule>
       <pattern>
@@ -1624,7 +1624,7 @@ title="Easy editing stylesheet" ?>
       </pattern>
       <message>&MSG_ECN;</message>
         <suggestion>\1 <match no='2' regexp_match='(mesm|própri)(.+)' regexp_replace='$1os'/></suggestion>
-      <example correction="Eles mesmos">Foi <marker>eles mesma</marker>.</example>
+      <example correction="eles mesmos">Foi <marker>eles mesma</marker>.</example>
     </rule>
     <rule>
       <pattern>
@@ -1633,7 +1633,7 @@ title="Easy editing stylesheet" ?>
       </pattern>
       <message>&MSG_ECN;</message>
         <suggestion>\1 <match no='2' regexp_match='(mesm|própri)(.+)' regexp_replace='$1as'/></suggestion>
-      <example correction="Elas mesmas">Foi <marker>ela mesmas</marker>.</example>
+      <example correction="elas mesmas">Foi <marker>elas mesmos</marker>.</example>
     </rule>
   </rulegroup>
 
