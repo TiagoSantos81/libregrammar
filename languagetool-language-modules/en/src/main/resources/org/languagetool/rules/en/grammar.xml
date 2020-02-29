@@ -14854,7 +14854,7 @@ USA
             </rule>
             <rule>
                 <pattern case_sensitive="yes">
-                    <token>Cape</token>
+                    <token regexp='yes'>Cape|A(?:ntarctic|tlantic)|B(?:altic|lack|lue)|c(?:oastal|oastal|oral)|dried|f(?:ishing|reshwater)|Greenland|larval|Ling|M(?:aori|urray)|Norwegian|oceanic|Øresund|P(?:acific|otato)|r(?:eef|iver|ock)|s(?:alted|leepy)</token>
                     <marker><token>Code</token></marker>
                 </pattern>
                 <message>Did you mean <suggestion>Cod</suggestion>?</message>
