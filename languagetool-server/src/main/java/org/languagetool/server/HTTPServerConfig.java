@@ -105,6 +105,18 @@ public class HTTPServerConfig {
   protected int slowRuleLoggingThreshold = -1; // threshold in milliseconds, used by SlowRuleLogger; < 0 - disabled
 
   protected String abTest = null;
+
+  private static final List<String> KNOWN_OPTION_KEYS = Arrays.asList("abTest", "abTestClients", "abTestRollout",
+    "beolingusFile", "blockedReferrers", "cacheSize", "cacheTTLSeconds",
+    "dbDriver", "dbPassword", "dbUrl", "dbUsername", "disabledRuleIds", "fasttextBinary", "fasttextModel", "grammalectePassword",
+    "grammalecteServer", "grammalecteUser", "hiddenMatchesLanguages", "hiddenMatchesServer", "hiddenMatchesServerFailTimeout",
+    "hiddenMatchesServerTimeout", "ipFingerprintFactor", "languageModel", "maxCheckThreads", "maxCheckTimeMillis",
+    "maxCheckTimeWithApiKeyMillis", "maxErrorsPerWordRate", "maxPipelinePoolSize", "maxSpellingSuggestions", "maxTextHardLength",
+    "maxTextLength", "maxTextLengthWithApiKey", "maxWorkQueueSize", "neuralNetworkModel", "pipelineCaching",
+    "pipelineExpireTimeInSeconds", "pipelinePrewarming", "prometheusMonitoring", "prometheusPort", "remoteRulesFile",
+    "requestLimit", "requestLimitInBytes", "requestLimitPeriodInSeconds", "rulesFile", "secretTokenKey", "serverURL",
+    "skipLoggingChecks", "skipLoggingRuleMatches", "timeoutRequestLimit", "trustXForwardForHeader", "warmUp", "word2vecModel");
+
   /**
    * Create a server configuration for the default port ({@link #DEFAULT_PORT}).
    */
@@ -242,9 +254,18 @@ public class HTTPServerConfig {
         if (rulesConfigFilePath != null) {
           rulesConfigFile = new File(rulesConfigFilePath);
           if (!rulesConfigFile.exists() || !rulesConfigFile.isFile()) {
-            throw new RuntimeException("Rules Configuration file can not be found: " + rulesConfigFile);
+            throw new RuntimeException("Rules Configuration file cannot be found: " + rulesConfigFile);
           }
         }
+/* no remote rules usage on this project
+        String remoteRulesConfigFilePath = getOptionalProperty(props, "remoteRulesFile", null);
+        if (remoteRulesConfigFilePath != null) {
+          remoteRulesConfigFile = new File(remoteRulesConfigFilePath);
+          if (!remoteRulesConfigFile.exists() || !remoteRulesConfigFile.isFile()) {
+            throw new RuntimeException("Remote rules configuration file cannot be found: " + remoteRulesConfigFile);
+          }
+        }
+*/
         cacheSize = Integer.parseInt(getOptionalProperty(props, "cacheSize", "0"));
         if (cacheSize < 0) {
           throw new IllegalArgumentException("Invalid value for cacheSize: " + cacheSize + ", use 0 to deactivate cache");
@@ -291,6 +312,14 @@ public class HTTPServerConfig {
             globalConfig.setBeolingusFile(new File(beolingusFile));
           } else {
             throw new IllegalArgumentException("beolingusFile not found: " + beolingusFile);
+          }
+        }
+        for (Object o : props.keySet()) {
+          String key = (String)o;
+          if (!KNOWN_OPTION_KEYS.contains(key) && !key.matches("lang-[a-z]+-dictPath") && !key.matches("lang-[a-z]+")) {
+            System.err.println("***** WARNING: ****");
+            System.err.println("Key '" + key + "' from configuration file '" + file + "' is unknown. Please check the key's spelling (case is significant).");
+            System.err.println("Known keys: " + KNOWN_OPTION_KEYS);
           }
         }
 
