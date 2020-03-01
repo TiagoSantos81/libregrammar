@@ -53,7 +53,7 @@
   * rules added and improved
   * disambiguation improvements
   * POS and spelling improvements
-  * added new tag `ORD` for ordinal numbers (e.g., first, second, twenty-third etc.)
+  * added new part-of-speech tag `ORD` for ordinal numbers (e.g., first, second, twenty-third etc.)
 
 #### German
   * added and improved rules
