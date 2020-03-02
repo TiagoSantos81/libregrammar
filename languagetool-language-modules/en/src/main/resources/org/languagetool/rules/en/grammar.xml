@@ -43854,7 +43854,16 @@ The accident victim died from her injuries.
                 <token regexp="yes">calenders?</token>
             </pattern>
             <message>Did you mean <suggestion>calendar</suggestion>, a system of organizing days? A 'calender' is a machine.</message>
+            <url>https://en.wiktionary.org/wiki/calender#English</url>
             <example correction="calendar">A <marker>calender</marker> is a system of organizing days for social, religious, commercial or administrative purposes.</example>
+        </rule>
+        <rule id="WOT" name="wot (what)">
+            <pattern>
+                <token>wot</token>
+            </pattern>
+            <message>Did you mean <suggestion>what</suggestion>. 'Wot' is a form of the archaic verb 'wit', meaning to know.</message>
+            <url>https://en.wiktionary.org/wiki/wot#English</url>
+            <example correction="What"><marker>Wot</marker> does he know?</example>
         </rule>
         <rule id="DHOW" name="dhow (show)">
             <antipattern><!-- caught by DHOW_JONES -->
@@ -43864,7 +43873,8 @@ The accident victim died from her injuries.
             <pattern>
                 <token regexp="yes">dhows?</token>
             </pattern>
-            <message>Did you mean <suggestion>show<match no="1" regexp_match="[Dd]how(s)?" regexp_replace="$1"/></suggestion>, an exhibit? A 'show' is a boat.</message>
+            <message>Did you mean <suggestion>show<match no="1" regexp_match="[Dd]how(s)?" regexp_replace="$1"/></suggestion>, an exhibit? A 'dhow' is a boat.</message>
+            <url>https://en.wiktionary.org/wiki/dhow#English</url>
             <example correction="show">The <marker>dhow</marker> will start in seconds.</example>
         </rule>
       </rulegroup>
