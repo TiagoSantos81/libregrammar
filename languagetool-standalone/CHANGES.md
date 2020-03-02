@@ -54,7 +54,8 @@
   * disambiguation improvements
   * POS and spelling improvements
   * added new part-of-speech tag `ORD` for ordinal numbers (e.g., first, second, twenty-third etc.)
-
+  * updated en_GB spellchecker dictionary from https://github.com/marcoagpinto/aoo-mozilla-en-dict (Version 2.82 - 2020-03-01)
+  
 #### German
   * added and improved rules
   * `compounds.txt` now automatically expands `ß` to `ss` when using German (Switzerland)

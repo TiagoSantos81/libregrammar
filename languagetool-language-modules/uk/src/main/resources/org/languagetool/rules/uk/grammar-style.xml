@@ -1713,7 +1713,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token postag_regexp="yes" postag="noun.*v_oru.*"/>
             -->
               <token postag_regexp="yes" postag="noun:anim:.:v_oru.*">
-                <exception negate_pos="yes" postag_regexp="yes" postag="noun:anim:.:v_oru.*.*|SENT_END"/>
+                <exception negate_pos="yes" postag_regexp="yes" postag="noun:anim:.:v_oru.*.*|SENT_END|PARA_END"/>
                 <exception postag_regexp="yes" postag="noun.*?v_oru:&amp;pron.*"/>
                 <exception postag_regexp="yes" postag="&lt;(adv|insert)&gt;"/>
                 <exception>персоною</exception>
@@ -1853,6 +1853,18 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
       </pattern>
       <message>Краще: <suggestion>військовий вишкіл</suggestion></message>
       <example correction="військовий вишкіл"><marker>військової підготовки</marker></example>
+    </rule>
+
+    <rule id="v_mynulomu_roci" name="В минулому році">
+      <pattern>
+        <token regexp="yes">[ву]</token>
+        <token>минулому</token>
+        <token>році</token>
+      </pattern>
+      <message>Краще: <suggestion>торік</suggestion></message>
+      <suggestion>минулого року</suggestion>
+      <suggestion>того року</suggestion>
+      <example correction="торік|минулого року|того року"><marker>в минулому році</marker></example>
     </rule>
 
 <!--
