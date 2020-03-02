@@ -1591,7 +1591,7 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>eu|tu|você</token>
           <token regexp='yes'>(?:mesm|própri)(?:as|os)</token>
       </pattern>
-      <message>&MSG_ECN;</message>
+      <message>Possível erro de concordância.</message>
         <suggestion>\1 <match no='2' regexp_match='(mesm|própri)(.+?)s' regexp_replace='$1$2'/></suggestion>
       <example correction="eu mesmo">Foi <marker>eu mesmos</marker>.</example>
     </rule>
@@ -1600,7 +1600,7 @@ title="Easy editing stylesheet" ?>
           <token>ele</token>
           <token regexp='yes'>(?:mesm|própri)(?:as?|os)</token>
       </pattern>
-      <message>&MSG_ECN;</message>
+      <message>Possível erro de concordância.</message>
         <suggestion>\1 <match no='2' regexp_match='(mesm|própri)(.+)' regexp_replace='$1o'/></suggestion>
       <example correction="ele mesmo">Foi <marker>ele mesma</marker>.</example>
     </rule>
@@ -1609,7 +1609,7 @@ title="Easy editing stylesheet" ?>
           <token>ela</token>
           <token regexp='yes'>(?:mesm|própri)(?:as|os)</token>
       </pattern>
-      <message>&MSG_ECN;</message>
+      <message>Possível erro de concordância.</message>
         <suggestion>\1 <match no='2' regexp_match='(mesm|própri)(.+)' regexp_replace='$1a'/></suggestion>
       <example correction="ela mesma">Foi <marker>ela mesmas</marker>.</example>
     </rule>
@@ -1618,7 +1618,7 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>nós|vós|vocês</token>
           <token regexp='yes'>mesma|própria</token>
       </pattern>
-      <message>&MSG_ECN;</message>
+      <message>Possível erro de concordância.</message>
         <suggestion>\1 <match no='2' regexp_match='(mesm|própri)(.+?)' regexp_replace='$1$2s'/></suggestion>
       <example correction="vocês mesmas">Foram <marker>vocês mesma</marker>.</example>
     </rule>
@@ -1627,7 +1627,7 @@ title="Easy editing stylesheet" ?>
           <token>eles</token>
           <token regexp='yes'>(?:mesm|própri)(?:as?)</token>
       </pattern>
-      <message>&MSG_ECN;</message>
+      <message>Possível erro de concordância.</message>
         <suggestion>\1 <match no='2' regexp_match='(mesm|própri)(.+)' regexp_replace='$1os'/></suggestion>
       <example correction="eles mesmos">Foi <marker>eles mesma</marker>.</example>
     </rule>
@@ -1636,7 +1636,7 @@ title="Easy editing stylesheet" ?>
           <token>elas</token>
           <token regexp='yes'>(?:mesm|própri)(?:a|os)</token>
       </pattern>
-      <message>&MSG_ECN;</message>
+      <message>Possível erro de concordância.</message>
         <suggestion>\1 <match no='2' regexp_match='(mesm|própri)(.+)' regexp_replace='$1as'/></suggestion>
       <example correction="elas mesmas">Foi <marker>elas mesmos</marker>.</example>
     </rule>
