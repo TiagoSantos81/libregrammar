@@ -461,6 +461,7 @@ title="Easy editing stylesheet" ?>
         <marker>
           <token regexp='yes'>&contracoes_MS;
             <exception>nele</exception>
+            <exception postag_regexp='yes' postag='(?:[NZ].|A..)C[NS].+'/><!-- for special multiword chunker entries -->
             <exception postag_regexp='yes' postag='R.|NP.+|N.+_'/></token>
           <token min='0' regexp='yes'>&adverbios_de_intensidade;</token>
           <token min='0' postag='(?:A..|Z.)C[SN].+' postag_regexp='yes'>
@@ -554,6 +555,7 @@ title="Easy editing stylesheet" ?>
         <marker>
           <token regexp='yes'>&contracoes_MP;
             <exception>neles</exception>
+            <exception postag_regexp='yes' postag='(?:[NZ].|A..)C[NS].+'/><!-- for special multiword chunker entries -->
             <exception postag_regexp='yes' postag='R.|NP.+|N.+_'/></token>
           <token min='0' regexp='yes'>&adverbios_de_intensidade;</token>
           <token min='0' postag='(?:A..|Z.)C[NP].+' postag_regexp='yes'>
@@ -671,6 +673,7 @@ title="Easy editing stylesheet" ?>
         <marker>
           <token regexp='yes'>&contracoes_FS;
             <exception>nela</exception>
+            <exception postag_regexp='yes' postag='(?:[NZ].|A..)C[NS].+'/><!-- for special multiword chunker entries -->
             <exception postag_regexp='yes' postag='R.|NP.+|N.+_'/></token>
           <token min='0' regexp='yes'>&adverbios_de_intensidade;</token>
           <token min='0' postag='(?:A..|Z.)C[NS].+' postag_regexp='yes'>
@@ -686,6 +689,7 @@ title="Easy editing stylesheet" ?>
       <example correction='Alguma vaca'><marker>Alguma boi</marker> está no pasto.</example>
       <example>Leonardo da Vinci e Rafael mostraram grande interesse sobre a estru…</example>
       <example>Bacalhau à lagareiro</example>
+      <example>Tomou posse como Presidente da República interino.</example>
     </rule>
     <rule>
       <antipattern>
@@ -778,6 +782,7 @@ title="Easy editing stylesheet" ?>
         <marker>
           <token regexp='yes'>&contracoes_FP;
             <exception regexp='yes'>mas|nelas</exception>
+            <exception postag_regexp='yes' postag='(?:[NZ].|A..)C[NS].+'/><!-- for special multiword chunker entries -->
             <exception postag_regexp='yes' postag='R.|NP.+|N.+_'/></token>
           <token min='0' regexp='yes'>&adverbios_de_intensidade;</token>
           <token min='0' postag='(?:A..|Z.)C[NP].+' postag_regexp='yes'>
