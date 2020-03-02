@@ -52,16 +52,15 @@
 #### English
   * rules added and improved
   * disambiguation improvements
-  * POS and spelling improvements
-  * added new part-of-speech tag `ORD` for ordinal numbers (e.g., first, second, twenty-third etc.)
-  * updated en_GB spellchecker dictionary from https://github.com/marcoagpinto/aoo-mozilla-en-dict (Version 2.82 - 2020-03-01)
+  * POS and spelling improvements, including:
+    - updated en_GB spellchecker dictionary from https://github.com/marcoagpinto/aoo-mozilla-en-dict (Version 2.82 - 2020-03-01)
+    - new part-of-speech tag `ORD` for ordinal numbers (e.g., first, second, twenty-third etc.)
   
 #### German
   * added and improved rules
   * `compounds.txt` now automatically expands `ß` to `ss` when using German (Switzerland)
   * German `spelling.txt` now supports `prefix_verb` syntax like `vorüber_eilen` so
     the speller will accept all forms of "eilen" prefixed by "vorüber" 
-
 
 #### Irish
   * support now also available on upstream project
