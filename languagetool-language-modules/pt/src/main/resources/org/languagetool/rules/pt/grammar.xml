@@ -827,6 +827,7 @@ title="Easy editing stylesheet" ?>
     </rule>
   </rulegroup>
 
+  <?ignore superseeded by EMPHATIC_PRONOUN_AGREEMENT
   <rulegroup id='ELE_ELA_PROPRIO_PROPRIA' name="Ele(s)/Ela(s) próprio(s)/própria(s)">
 		<!--      Created by Marco A.G.Pinto, Portuguese rule - 2020-03-03   -->
 		<rule>
@@ -874,6 +875,7 @@ title="Easy editing stylesheet" ?>
 			<example correction="próprias">Elas <marker>próprios</marker> escolheram.</example>
 		</rule>
   </rulegroup>
+  ?>
 	
     <!-- Specific gender concordance errors - A > Masculine Noun -->
     <!-- Created by Tiago F. Santos, Portuguese rule, 2016-10-24 -->
