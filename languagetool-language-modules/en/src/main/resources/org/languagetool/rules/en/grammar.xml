@@ -26656,7 +26656,8 @@ USA
                 <antipattern><!-- #2419 we frogs have / we parents-->
                     <token regexp="yes" postag="PRP">we|they</token>
                     <token chunk="E-NP-plural" postag="NNS"/>
-                    <token postag_regexp="yes" postag="VB(P|D)?|RB"/>
+                    <token min='0' postag='RB'/>
+                    <token postag_regexp="yes" postag="VB(P|D)?"/>
                 </antipattern>
                 <pattern>
                     <token skip="1" regexp="yes" postag="PRP">we|they<exception scope="previous">Are</exception></token>
