@@ -22290,6 +22290,8 @@ USA
                 <example>All systems are go.</example>
                 <example>What is Google AMP?</example>
                 <example>You will be queen.</example><!-- #2123 -->
+                <example correction='believed|believing'>I am believe you.</example>
+                <example>I am believing you.</example>
             </rule>
             <rule>
                 <antipattern><!-- Cannot use a chunk in an exception. Thus, use an antipattern with a chunk in a token. -->
