@@ -89,6 +89,16 @@ public class AgreementRule extends Rule {
   private static final AnalyzedToken[] ZUR_REPLACEMENT = {new AnalyzedToken("der", "ART:DEF:DAT:SIN:FEM", "der")};
 
   private static final List<List<PatternToken>> ANTI_PATTERNS = Arrays.asList(
+    Arrays.asList(  // "Ich werde mich zurücknehmen und mich frischen Ideen zuwenden."
+      token("mich"),
+      posRegex("ADJ:.*"),
+      posRegex("SUB:.*"),
+      posRegex("VER:INF.*")
+    ),
+    Arrays.asList(  // "Besonders reizen mich Fahrräder."
+      token("mich"),
+      posRegex("SUB:.*")
+    ),
     Arrays.asList(  // "jenes Weges, den die Tausenden Juden 1945 ..."
       token("die"),
       token("Tausenden"),
@@ -538,6 +548,10 @@ public class AgreementRule extends Rule {
       csToken("League")
     ),
     Arrays.asList(
+      csToken("Mark"),
+      posRegex("EIG:.*")
+    ),
+    Arrays.asList(
       csToken("Sales"),
       tokenRegex("Agent")
     ),
@@ -557,6 +571,11 @@ public class AgreementRule extends Rule {
       token("die"),
       tokenRegex("Deutsch|Englisch|Spanisch|Französisch|Russisch|Polnisch|Holländisch|Niederländisch|Portugiesisch"),
       new PatternTokenBuilder().csToken("sprechen").matchInflectedForms().build()
+    ),
+    Arrays.asList( // "Ein Trainer, der zum einen Fußballspiele sehr gut lesen und analysieren kann"
+      token("zum"),
+      token("einen"),
+      posRegex("SUB:.*")
     )
   );
 
@@ -914,6 +933,9 @@ public class AgreementRule extends Rule {
   private RuleMatch getRuleMatch(AnalyzedTokenReadings token1, AnalyzedSentence sentence, AnalyzedTokenReadings nextToken, String testPhrase, String hyphenTestPhrase) {
     try {
       initLt();
+      if (nextToken.getReadings().stream().allMatch(k -> k.getPOSTag() != null && k.getPOSTag().startsWith("EIG:"))) {
+        return null;
+      }
       List<String> replacements = new ArrayList<>();
       if (lt.check(testPhrase).size() == 0 && nextToken.isTagged()) {
         replacements.add(testPhrase);

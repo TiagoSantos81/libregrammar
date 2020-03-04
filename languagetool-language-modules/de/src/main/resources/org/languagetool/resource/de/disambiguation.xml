@@ -495,10 +495,17 @@ Copyright © 2013 Markus Brenneis, Daniel Naber, Jan Schreiber
     <!-- ============================================================================================================== -->
     <rulegroup id="UNIFY_PRP_DET_SUB" name="NP with preposition unify">
         <rule>
+            <antipattern>
+                <!-- "Was ist denn das für ein ungewöhnlicher Name?" -->
+                <token regexp="yes">der|die|das</token>
+                <token>für</token>
+                <token regexp="yes">eine?</token>
+            </antipattern>
             <pattern>
                 <token postag_regexp="yes" postag="PRP.+">
                     <exception postag="PRP.+" postag_regexp="yes" negate_pos="yes"/>
                     <exception scope="previous">was</exception>
+                    <exception>plus</exception>
                 </token>
                 <marker>
                     <and>
@@ -3486,6 +3493,15 @@ Copyright © 2013 Markus Brenneis, Daniel Naber, Jan Schreiber
             <pattern case_sensitive="yes">
                 <token regexp="yes">Adjutant|Montana</token>
                 <token regexp="yes">Blacks?</token>
+            </pattern>
+            <disambig action="ignore_spelling"/>
+        </rule>
+    </rulegroup>
+    <rulegroup name="BLUE" id="BLUE">
+        <rule>
+            <pattern case_sensitive="yes">
+                <token>Blue</token>
+                <token regexp="yes">Origins?|Notes?|Babys?|Movies?|Box(es)?|Chips?|Screens?|Man|Bloods</token>
             </pattern>
             <disambig action="ignore_spelling"/>
         </rule>
