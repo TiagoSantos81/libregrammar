@@ -3128,7 +3128,7 @@ time-serving
 time-servings
 time-share
 time-shares
-time-work
+# time-work # lexico also knows "time work", also: "let the time work for us"
 tin-plate
 toll-house
 torch-bearer
@@ -4058,3 +4058,12 @@ sub-angular?
 pre-dominantly?
 pre-dominant?
 semi-monthly*
+geo-fence?
+geo-fences?
+geo-fenced?
+geo-fencing?
+geo-code?
+geo-codes?
+geo-coded?
+geo-coding?
+eco-sensitive*
