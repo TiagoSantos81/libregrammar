@@ -3503,6 +3503,14 @@ Copyright © 2013 Markus Brenneis, Daniel Naber, Jan Schreiber
             <disambig action="ignore_spelling"/>
         </rule>
     </rulegroup>
+    <rule id="HALL_OF_FAME" name="Hall of Fame">
+        <pattern case_sensitive="yes">
+            <token regexp="yes">Halls?|Walls?</token>
+            <token regexp="yes">[Oof]</token>
+            <token>Fame</token>
+        </pattern>
+        <disambig action="ignore_spelling"/>
+    </rule>
     <rulegroup name="BLUE" id="BLUE">
         <rule>
             <pattern case_sensitive="yes">
@@ -3545,6 +3553,15 @@ Copyright © 2013 Markus Brenneis, Daniel Naber, Jan Schreiber
         <pattern case_sensitive="yes">
             <token>Technical</token>
             <token regexp="yes">Support|Product|Sergeant</token>
+        </pattern>
+        <disambig action="ignore_spelling"/>
+    </rule>
+    <rule name="Let's Encrypt/Dance" id="LETS">
+        <pattern case_sensitive="yes">
+            <token>Let</token>
+            <token regexp="yes">[’']</token>
+            <token>s</token>
+            <token regexp="yes">Encrypts?|Dances?</token>
         </pattern>
         <disambig action="ignore_spelling"/>
     </rule>

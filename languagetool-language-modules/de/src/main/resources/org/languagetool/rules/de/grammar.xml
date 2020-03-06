@@ -1544,6 +1544,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token postag="VER:MOD:.*" postag_regexp="yes"/>
                 <token>wir</token>
             </antipattern>
+            <antipattern>
+                <token>wie</token>
+                <token>wir</token>
+                <token postag="PRP.*" postag_regexp="yes"/>
+            </antipattern>
             <pattern>
                 <token regexp="yes">gleich.+|.*selbe.*<exception>gleichzeitig</exception></token>
                 <token skip="1"><exception scope="next" postag="VER.*:1:PLU.*|UNKNOWN" postag_regexp="yes"/><exception>,</exception></token>
@@ -1561,6 +1566,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example>Gleich wissen <marker>wir</marker> die Wahrheit.</example>
             <example>Gleichwohl dürfen <marker>wir</marker> nicht zulassen, dass das erneut passiert.</example>
             <example>Diese Grundsätze der Gleichstellung halten wir ein, indem wir...</example>
+            <example>Dann habt ihr die gleichen Settings wie wir im Add-on.</example>
         </rule>
         <rule id="DU_DIE" name="'du (die)'">
             <antipattern>
@@ -34620,6 +34626,7 @@ Andere Projekte</example>
                     </token>
                     <token min="0" postag="ADV:MOD"/>
                     <token postag="ADJ:PRD:GRU">
+                        <exception case_sensitive="yes" regexp="yes">[A-ZÖÄÜ].+</exception>
                         <exception>wenig</exception>
                         <exception postag="ADV.*" postag_regexp="yes"/>
                     </token>
@@ -34634,6 +34641,7 @@ Andere Projekte</example>
                 <example>Habt <marker>ihr kurz Zeit</marker>?</example>
                 <example>Sein erst Anfang 1978 in Angriff genommenes Projekt</example>
                 <example>Ihre Rolle einer psychisch Kranken in dem Film</example>
+                <example>Er war Schüler einer Berliner Schule.</example>
             </rule>
             <rule>
                 <antipattern>
