@@ -61,11 +61,11 @@ public class EnglishAdjectiveNounConfusionRule extends Rule {
 
   private static final Map<String,String> ADJECTIVE_NOUN_DB = loadWordlist("en/adjective_nouns.txt", 0);
   private static final Pattern PRECEEDS_NOUN = Pattern.compile("[Tt]h(e|is)|[Aa]n?|[Mm]y|[Yy]?[Oo]ur|[Hh](is|er|a[ds]|ave)|[Tt]heir|[Ii]ts|[Aa]t|[In]n|[Oo][fn]|[Ff]or|[Ww]ith");
-  private static final Pattern FOLLOWS_NOUN = Pattern.compile("[Oo][fn]|[Ff]or|[\\.!\\?]");
+  private static final Pattern FOLLOWS_NOUN = Pattern.compile("[Oo][fn]|[Ff]or|[\\.!\\?\\:\\;–—]");
 
   private static final Map<String,String> NOUN_ADJECTIVE_DB = loadWordlist("en/adjective_nouns.txt", 1);
   private static final Pattern PRECEEDS_ADJECTIVE = Pattern.compile("[Ii]s|[Ww](as|ere)"); // + the most
-  private static final Pattern FOLLOWS_ADJECTIVE = Pattern.compile("[\\.!\\?]");
+  // private static final Pattern FOLLOWS_ADJECTIVE = Pattern.compile("[\\.!\\?]");
 
   @Override
   public List<DisambiguationPatternRule> getAntiPatterns() {
