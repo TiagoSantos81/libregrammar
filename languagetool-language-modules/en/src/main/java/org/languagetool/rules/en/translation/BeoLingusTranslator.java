@@ -54,18 +54,24 @@ public class BeoLingusTranslator implements Translator {
   private final Map<String,List<TranslationEntry>> en2de = new HashMap<>();
   private final Inflector inflector = new Inflector();
 
-  static synchronized public BeoLingusTranslator getInstance(GlobalConfig globalConfig) throws IOException {
+  public static synchronized BeoLingusTranslator getInstance(File beolingusFile) throws IOException {
+    GlobalConfig config = new GlobalConfig();
+    config.setBeolingusFile(beolingusFile);
+    return getInstance(config);
+  }
+
+  public static synchronized BeoLingusTranslator getInstance(GlobalConfig globalConfig) throws IOException {
     if (instance == null && globalConfig != null && globalConfig.getBeolingusFile() != null) {
       long t1 = System.currentTimeMillis();
       logger.info("Init dict from " + globalConfig.getBeolingusFile() + "...");
       instance = new BeoLingusTranslator(globalConfig.getBeolingusFile());
       long t2 = System.currentTimeMillis();
-      logger.info("Init dict done (" + (t2-t1) + "ms).");
+      logger.info("Init dict done (" + (t2-t1) + "ms) - loaded " + instance.getDeEnSize() + " de -> en items.");
     }
     return instance;
   }
-  
-  private BeoLingusTranslator(File file) throws IOException {
+
+  public BeoLingusTranslator(File file) throws IOException {
     tagger = Languages.getLanguageForShortCode("de").getTagger();
     List<String> lines = Files.readAllLines(file.toPath());
     for (String line : lines) {
@@ -122,6 +128,10 @@ public class BeoLingusTranslator implements Translator {
       }
     }
     return newParts;
+  }
+
+  int getDeEnSize() {
+    return de2en.size();
   }
 
   // split input like "family doctors; family physicians" at ";", unless it's in "{...}":
