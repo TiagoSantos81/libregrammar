@@ -21609,13 +21609,30 @@ USA
                 <example correction="are|were">Where <marker>is</marker> your dogs?</example>
                 <example correction="are|were">Where <marker>was</marker> the cars?</example>
             </rule>
-            <!-- Created by Tiago F. Santos, 2019-11-19 #2142-->
+            <rule>
+            <!-- Created by Tiago F. Santos, 2020-03-08 -->
+                <pattern>
+                    <token postag="SENT_START"/>
+                    <marker>
+                        <token postag="MD"/>
+                        <token postag="PRP|N.+" postag_regexp="yes"/>
+                        <token postag="V.+" postag_regexp="yes" skip='-1'>
+                            <exception postag="VB"/></token>
+                    </marker>
+                    <token>?</token>
+                </pattern>
+                <message>Possible agreement error. You should probably use <suggestion>\2 \3 <match no='4' postag='VB'/></suggestion>.</message>
+                <short>Possible agreement error</short>
+                <example correction="Can you be"><marker>Can you are</marker> sure?</example>
+                <example>Are you sure?</example><!-- XXX more common but with a slightly different meaning -->
+            </rule>
+            <!-- Created by Tiago F. Santos, 2019-11-19 #2142 -->
             <rule>
                 <pattern>
                     <token postag="SENT_START"/>
                     <marker>
                         <token>is</token>
-                        <token postag="NNP?S"  postag_regexp="yes" skip='-1'>
+                        <token postag="NNP?S" postag_regexp="yes" skip='-1'>
                             <exception postag="NN(:.+)?" postag_regexp="yes"/></token>
                     </marker>
                     <token>?</token>
