@@ -30103,7 +30103,7 @@ USA
             <pattern>
                 <marker>
                     <token regexp="yes">lots|plenty</token>
-                    <token>of</token>
+                    <token min='0'>of</token>
                     <token postag="NNP?" postag_regexp="yes"><exception postag="NN:.*|NNP?S|JJ.*" postag_regexp="yes"/></token>
                 </marker>
                 <token><exception postag="NNP?S|NN:U.*" postag_regexp="yes"/><exception regexp="yes">&apostrophe;</exception></token>
@@ -30111,8 +30111,49 @@ USA
             <message>Possible agreement error. The noun <match no="3"/> seems to be countable; consider using: <suggestion><match no="1"/> of <match no="3" postag="NNP?S" postag_regexp="yes"/></suggestion>.</message>
             <short>Grammatical problem</short>
             <example correction="lots of books">I have got <marker>lots of book</marker>.</example>
+            <example correction='lots of books'>I have got <marker>lots book</marker>.</example>
             <example>I have got <marker>lots of wine</marker>.</example>
         </rule>
+     <rulegroup id="LOT_NN" name="Collocation error: 'lot' + singular countable noun">
+            <!-- Created by Tiago F. Santos, 2020-03-08.-->
+            <short>Grammatical problem</short>
+        <rule>
+            <pattern>
+                <marker>
+                    <token>lot
+                      <exception scope='previous'>a</exception></token>
+                    <token postag="NNP?" postag_regexp="yes">
+                      <exception postag="NN:.*|NNP?S|JJ.*" postag_regexp="yes"/></token>
+                </marker>
+                <token>
+                  <exception postag="NNP?S|NN:U.*" postag_regexp="yes"/>
+                  <exception regexp="yes">&apostrophe;</exception></token>
+            </pattern>
+            <message>Possible agreement and collocation error.</message>
+              <suggestion>\1s of <match no="2" postag="NNP?S" postag_regexp="yes"/></suggestion>
+              <suggestion>a \1 of <match no="2" postag="NNP?S" postag_regexp="yes"/></suggestion>
+            <example correction="lots of books|a lot of books">I have got <marker>lot book</marker>.</example>
+            <example>I have got a <marker>lot book</marker>,</example><!-- XXX fixed by next rule -->
+            <example>In that bulk order, I have got <marker>lot wine</marker>.</example>
+        </rule>
+        <rule>
+            <pattern>
+                <marker>
+                    <token>a</token>
+                    <token>lot</token>
+                    <token postag="N.+" postag_regexp="yes">
+                      <exception postag="NNP?S|JJ.*" postag_regexp="yes"/></token>
+                </marker>
+                <token>
+                  <exception postag="NNP?S|NN:U.*" postag_regexp="yes"/>
+                  <exception regexp="yes">&apostrophe;</exception></token>
+            </pattern>
+            <message>Possible collocation error.</message>
+              <suggestion>\1 \2 of \3</suggestion>
+            <example correction="a lot of book">I have got <marker>a lot book</marker>. (book -> books is fixed on the second pass by the first rule)</example>
+            <example correction="a lot of wine">I have got <marker>a lot wine</marker>.</example>
+        </rule>
+    </rulegroup>
         <rule id="STARS_AND_STEPS" name="Missing hyphen: number + page/step/star">
             <pattern>
                 <marker>
