@@ -34473,9 +34473,19 @@ TODO Write better examples
       <pattern>
           <token regexp='yes'>bateiras?</token>
       </pattern>
-      <message>'Bateira' é um barco. O modo de alimentação escreve-se <suggestion>bateria</suggestion>.</message>
+      <message>'Bateira' é um barco. O modo de alimentação escreve-se <suggestion><match no='1' regexp_match='ateir' regexp_replace='ateri'/></suggestion>.</message>
       <url>https://pt.wiktionary.org/wiki/bateria</url>
       <example correction="bateria">Acabou a <marker>bateira</marker>.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token regexp='yes'>bots?</token>
+      </pattern>
+      <message>'Bot' é um programa que automatiza tarefas num computador ou rede. Por favor, confirme.</message>
+        <suggestion><match no='2' regexp_match='ot' regexp_replace='ota'/></suggestion>
+        <suggestion><match no='2' regexp_match='ot' regexp_replace='ote'/></suggestion>
+      <url>https://pt.wiktionary.org/wiki/bot</url>
+      <example correction="botas|botes">Calça as <marker>bots</marker>.</example>
     </rule>
     <rule>
       <pattern>
