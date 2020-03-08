@@ -21616,8 +21616,7 @@ USA
                     <marker>
                         <token postag="MD"/>
                         <token postag="PRP|N.+" postag_regexp="yes"/>
-                        <token postag="V.+" postag_regexp="yes" skip='-1'>
-                            <exception postag="VB"/></token>
+                        <token regexp='yes' skip='-1'>am|is|are|was|were</token>
                     </marker>
                     <token>?</token>
                 </pattern>
@@ -21625,6 +21624,7 @@ USA
                 <short>Possible agreement error</short>
                 <example correction="Can you be"><marker>Can you are</marker> sure?</example>
                 <example>Are you sure?</example><!-- XXX more common but with a slightly different meaning -->
+                <example>Can you relate?</example>
             </rule>
             <!-- Created by Tiago F. Santos, 2019-11-19 #2142 -->
             <rule>
@@ -21712,6 +21712,24 @@ USA
                 <example correction="Has computer"><marker>Have computer</marker> evolved?</example>
             </rule>
         </rulegroup>
+
+        <rule id="SPEND_TIME_PRESENT_PARTICIPLE" name="spend time + GERUND (waste time + PRESENT PARTICIPLE)">
+            <!-- Created by Tiago F. Santos, 2020-03-08 -->
+            <antipattern>
+                <token inflected='yes'>give</token>
+                <token>time</token>
+                <token>time</token>
+            </antipattern>
+            <pattern>
+                <token postag="VBP?" postag_regexp='yes'/>
+                <token>time</token>
+                <token postag="VBP?" postag_regexp='yes'/>
+            </pattern>
+            <message>Possible agreement error. Consider using: <suggestion>\1 \2 <match no="3" postag='VBG'/></suggestion></message>
+            <short>Possible agreement error</short>
+            <example correction="waste time saying">Why <marker>waste time say</marker> lots of words?</example>
+        </rule>
+
         <rule id="A_HUNDREDS" name="a hundreds (hundred)">
             <pattern>
                 <token regexp="yes">a|one</token>

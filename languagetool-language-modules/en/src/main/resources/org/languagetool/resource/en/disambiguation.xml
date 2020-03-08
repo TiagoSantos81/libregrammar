@@ -3412,6 +3412,11 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <token chunk="B-VP" postag="VBP"/>
             <token regexp="yes">&object_pronouns;</token>
         </antipattern>
+        <antipattern><!-- for SPEND_TIME_PRESENT_PARTICIPLE. FIXME raw_pos not working on main rule-->
+                <token postag="VBP?" postag_regexp='yes'/>
+                <token>time</token>
+                <token postag="VBP?" postag_regexp='yes'/>
+        </antipattern>
         <pattern>
             <token postag_regexp="yes" postag="DT|JJ|PRP\$">
                 <exception postag_regexp="yes" postag="WDT|RB"/></token>
@@ -3488,6 +3493,11 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <token>are</token>
             <token postag_regexp='yes' postag="VB[PD]?">
               <exception postag='VBN'/></token>
+        </antipattern>
+        <antipattern><!-- for SPEND_TIME_PRESENT_PARTICIPLE. FIXME raw_pos not working on main rule-->
+                <token postag="VBP?" postag_regexp='yes'/>
+                <token>time</token>
+                <token postag="VBP?" postag_regexp='yes'/>
         </antipattern>
         <pattern>
             <token postag_regexp="yes" postag="DT|JJ|PRP\$"/>
@@ -4578,6 +4588,11 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
     </rule>
 
     <rule id="PRP_VB_VBP" name="vb->vbp">
+    <antipattern>
+        <token postag="MD"/>
+        <token postag="PRP|N.+" postag_regexp="yes"/>
+        <token postag="VB" postag_regexp="yes"/>
+    </antipattern>
 		<pattern>
 			<token postag="PRP"><exception regexp="yes">me|her|its|him|us|them</exception></token>
 			<marker>
@@ -4590,6 +4605,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
 		<disambig postag="VBP"/>
 		<example type="untouched">Pigs know that.</example>
 		<example type="ambiguous" inputform="know[know/VB,know/VBP]" outputform="know[know/VBP]">We <marker>know</marker> that.</example>
+		<example type="untouched">Can you relate?</example>
     </rule>
     <rule id="PRP_NN_VBP" name="vb->vbp">
       <pattern>
