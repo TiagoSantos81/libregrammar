@@ -300,6 +300,7 @@ public class English extends Language implements AutoCloseable {
       case "TRANSLATION_RULE":          return 5;   // Premium
       case "WRONG_APOSTROPHE":          return 5;
       case "ADJECTIVE_ADVERB":          return 2;   // prefer over MODAL_VERB_FOLLOWED_BY_NOUN, PRP_MD_NN, and PRONOUN_NOUN
+      case "DOS_AND_DONTS":             return 2;
       case "LIGATURES":                 return 1;   // prefer over spell checker
       case "APPSTORE":                  return 1;   // prefer over spell checker
       case "INCORRECT_CONTRACTIONS":    return 1;   // prefer over EN_CONTRACTION_SPELLING
