@@ -16,6 +16,7 @@
 
 #### English
   * rules added and improved, including:
+     - agreement rules;
      - slang terms.
   * disambiguation improvements
   * POS and spelling improvements
@@ -75,6 +76,7 @@
   * [upstream hunspell support dropped for 32-bit systems](https://github.com/languagetool-org/languagetool/commit/b769f5ec319a53c10c45a8aa33a9fd6a4600792c).
   * `AbstractReplaceRule2` now accepts per entry custom messages
   * [translation framework for secondary languages in a text](https://github.com/languagetool-org/languagetool/commit/209fc7dc97bd5c92a3c87769795545491642df34).
+  * ~250 extra entries added to `spelling_global.txt`.
 
 #### LibreOffice / Apache OpenOffice Integration
   * more response rule queue mechanism thanks to Fred Kruse

@@ -30233,6 +30233,7 @@ USA
             <example correction='lots of books'>I have got <marker>lots book</marker>.</example>
             <example>I have got <marker>lots of wine</marker>.</example>
         </rule>
+
      <rulegroup id="LOT_NN" name="Collocation error: 'lot' + singular countable noun">
             <!-- Created by Tiago F. Santos, 2020-03-08.-->
             <short>Grammatical problem</short>
@@ -30273,6 +30274,7 @@ USA
             <example correction="a lot of wine">I have got <marker>a lot wine</marker>.</example>
         </rule>
     </rulegroup>
+
         <rule id="STARS_AND_STEPS" name="Missing hyphen: number + page/step/star">
             <pattern>
                 <marker>
@@ -50145,6 +50147,18 @@ The accident victim died from her injuries.
       <example correction="">You son of a <marker>bitch</marker>!</example>
       <example type='triggers_error'>...ond Washington, American gang leader, founder the Crips (b. 1953)</example>
       <!-- https://www.thefreedictionary.com/crip -->
+    </rule>
+    <rule>
+      <pattern>
+        <token regexp="yes">ass(es)?|arses?|buttocks</token>
+      </pattern>
+      <message>"\1" is potentially offensive wording.</message>
+        <suggestion>donkey</suggestion>
+        <suggestion>glutes</suggestion>
+        <suggestion>rear</suggestion>
+      <url>https://en.wikipedia.org/wiki/Ass</url>
+      <example correction="donkey|glutes|rear">She has a stain on her <marker>ass</marker>.</example>
+      <example>She has a stain on her rear.</example>
     </rule>
     <rule>
         <pattern>
