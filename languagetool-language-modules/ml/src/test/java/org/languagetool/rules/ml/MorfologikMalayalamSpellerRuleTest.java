@@ -51,7 +51,7 @@ public class MorfologikMalayalamSpellerRuleTest {
 
     //incorrect sentences:
 
-    matches = rule.match(langTool.getAnalyzedSentence("Zohw"));
+    matches = rule.match(langTool.getAnalyzedSentence("Zolw"));
     // check match positions:
     assertEquals(1, matches.length);
     assertEquals(0, matches[0].getFromPos());
