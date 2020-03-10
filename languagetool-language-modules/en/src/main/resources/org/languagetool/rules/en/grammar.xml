@@ -26825,6 +26825,12 @@ USA
                     <token>will</token>
                     <token postag="VB[DGZ]" postag_regexp="yes"/>
                 </antipattern>
+                <antipattern><!-- #2458 did courses that we -->
+                    <token>did</token>
+                    <token chunk="E-NP-plural" postag="NNS"/>
+                    <token regexp="yes">that|which</token>
+                    <token postag="PRP"/>
+                </antipattern>
                 <pattern>
                     <token><exception scope="previous" regexp="yes">than|what</exception><exception regexp="yes">free|than|wh(?:om?|ich)|a|the|neither|nor</exception></token>
                     <token skip="1" regexp="yes" postag="MD|VBD" postag_regexp="yes">did|will|could|can|should|would|does|ll|shall|cannot|might|may</token>
@@ -26854,6 +26860,7 @@ USA
                 <example correction="test">She did <marker>testing</marker> the samples.</example>
                 <example correction="convey">He may <marker>conveys</marker> the message.</example>
                 <example correction="show">He will <marker>shows</marker> you the samples.</example><!-- Premium #999 -->
+                <example correction="test">I just did <marker>tests</marker> that carefully.</example><!-- Compare with the correct #2458 example -->
                 <example>Confederate commanders would need it should troops pass that way in retreat.</example>
                 <example>Warnings did go ignored.</example>
                 <example>She did <marker>experiments</marker> to test the efficacy of the medication.</example>
@@ -26870,6 +26877,7 @@ USA
                 <example>The intensive course <marker>did marvels</marker> for my French.</example>
                 <example>This will costs €30.</example><!-- Premium #999. Treat as NN + VBZ, not as an error. -->
                 <example>The ability to model and modify systems at will affords science an ethical method of...</example><!-- Premium #999. -->
+                <example>I just did courses that we discussed.</example><!-- #2458 -->
                 <example type="triggers_error">John Smith did rewrites.</example><!-- 'rewrite' is transitive (www.ldoceonline.com/dictionary/rewrite). Thus, this sentence must be the correct interpretation (did + NNS). -->
                 <example type="triggers_error">John Smith did rewrites for the editorial department.</example>
                 <example type="triggers_error">Would logs help?</example>
@@ -30167,16 +30175,23 @@ USA
                     <token>dot</token>
                     <token postag="NNS"/>
                 </antipattern>
+                <antipattern>
+                    <token>chief</token>
+                    <token>of</token>
+                    <token>staff</token>
+                </antipattern>
                 <pattern>
                     <marker>
                         <token regexp="yes">&collective_nouns;</token>
                         <token>of</token>
                         <token chunk="E-NP-singular" postag="NN">
-                            <exception postag="NN:U|NNP?S|JJ.*|PRP\$" postag_regexp="yes"/></token>
+                            <exception postag="NN:U|NNP?S|JJ.*|PRP\$" postag_regexp="yes"/>
+                        </token>
                     </marker>
-                        <token>
-                            <exception postag="NNP?S" postag_regexp="yes"/>
-                            <exception regexp="yes">&apostrophe;</exception></token>
+                    <token>
+                        <exception postag="NNP?S" postag_regexp="yes"/>
+                        <exception regexp="yes">&apostrophe;</exception>
+                    </token>
                 </pattern>
                 <message>Possible agreement error. The noun '<match no="3"/>' seems to be countable; consider using: <suggestion><match no="1"/> of <match no="3" postag="NNS"/></suggestion>.</message>
                 <example correction="collection of books">The library has a <marker>collection of book</marker>.</example>
@@ -30191,6 +30206,7 @@ USA
                 <example>... was a stop-gap collection of Sketch magazine stories, for money when her husband left...</example>
                 <example>Here are a bunch of mine:</example><!-- Ambiguous. Can parse 'mine' as PRPS or NN. Found by A_LOT_OF_NN -->
                 <example>She bought two pairs of polka dot stockings.</example>
+                <example>He is chief of staff of army.</example>
                 <example type="triggers_error">The William Burges collection of armoury was bequeathed to the museum in 1881.</example><!-- I did not find 'armoury' as NN:U -->
             </rule>
             <rule><!-- Glossary of term and acronyms -->
@@ -31500,10 +31516,52 @@ USA
         </rule>
 
         <rule id="MUCH_COUNTABLE" name="'much' + countable noun, e.g. 'much (many) children'">
-            <antipattern>
+            <antipattern><!-- How much does it cost? [No chunk for 'does'] -->
                 <token>how</token>
                 <token>much</token>
-                <token postag="VB.*" postag_regexp="yes"/>
+                <token>does</token>
+                <token postag="PRP"/>
+            </antipattern>
+            <antipattern><!--  #2541 Drinking too much makes -->
+                <token regexp="yes">how|too|very</token>
+                <token>much</token>
+                <token chunk="B-VP" postag="VB.*" postag_regexp="yes"/>
+            </antipattern>
+            <antipattern><!-- #2541 www.lexico.com/definition/pretty_much -->
+                <token>pretty</token>
+                <token regexp="yes">much|well</token>
+                <token chunk="B-VP" postag="VB.*" postag_regexp="yes"/>
+            </antipattern>
+            <antipattern><!-- #2541 See how much muffins usually cost. -->
+                <token>how</token>
+                <token>much</token>
+                <token postag="NNS"/>
+                <token min="0" max="2" postag="RB"/>
+                <token>cost</token><!-- Seems to be some semantics. Refer to the 'break' example. -->
+                <token postag="SENT_END"/>
+            </antipattern>
+            <antipattern><!-- #2541 The supply of a good or service is how much -->
+                <token chunk="E-NP-singular" postag_regexp="yes" postag="NN(:UN?)?"/>
+                <token postag="IN"/>
+                <token postag="DT"/>
+                <token chunk="I-NP-singular" postag_regexp="yes" postag="NN(:UN?)?"/>
+                <token regexp="yes">and|or</token>
+                <token chunk="E-NP-singular" postag_regexp="yes" postag="NN(:UN?)?"/>
+                <token postag_regexp="yes" postag="VB[ZD]"/>
+                <token>how</token>
+                <token>much</token>
+            </antipattern>
+            <antipattern><!-- #2541 understand how much humans love themselves -->
+                <token postag_regexp="yes" postag="VB.*"/>
+                <token>how</token>
+                <token>much</token>
+                <token chunk="E-NP-plural" postag="NNS">
+                    <exception>does</exception>
+                    </token>
+                <token skip="-1" postag_regexp="yes" postag="VB[PD]">
+                    <exception scope="next">?</exception>
+                    </token>
+                <token postag="SENT_END"/>
             </antipattern>
             <pattern>
                 <marker>
@@ -31517,10 +31575,24 @@ USA
             <message>Use <suggestion>many</suggestion> with countable nouns.</message>
             <short>Grammatical problem with countable noun</short>
             <example correction="many">There are <marker>much</marker> children.</example>
+            <example correction="many">How <marker>much</marker> muffins usually cost more than 10 euros each?</example><!-- #2541 -->
+            <example correction="many">See how <marker>much</marker> muffins actually cost less than 10 euros each.</example><!-- #2541 -->
+            <example correction="many">In this test, see how <marker>much</marker> muffins usually break.</example><!-- #2541 -->
+            <example correction="many">How <marker>much</marker> cats love milk?</example><!-- #2541 -->
+            <example correction="many">... although you know how <marker>much</marker> does are in grazing the forest.</example><!-- #2541 -->
             <example>How much does it cost?</example>
             <example>We kindly ask you to provide as much data as possible.</example><!-- #1822 -->
             <example>...about people receiving an income according to how much others subjectively value their labor or what...</example>
+            <example>Drinking too much makes us dizzy.</example><!-- #2541 -->
+            <example>See how much muffins usually cost.</example><!-- #2541 -->
+            <example>Then he pretty much escapes that prison.</example><!-- #2541 -->
+            <example>The supply of a good or service is how much producers are willing to make at a given price.</example><!-- #2541 -->
+            <example>Everyone can understand how much humans love themselves.</example><!-- #2541 -->
+            <example>Everyone can see how much cats love themselves.</example><!-- #2541 -->
+            <example>Everyone can understand how much humans love beer.</example><!-- #2541 Possibly an error. -->
+            <example type="triggers_error">Whether measured as how much citizens worry about climate change or whether climate change poses a threat to them or their way of life.</example><!-- #2541 Possibly correct. -->
         </rule>
+
         <rule id="MANY_NN" name="Possible agreement error: 'many/several/few' + singular countable noun">
             <antipattern case_sensitive="yes">
                 <token>Many</token>
@@ -34376,6 +34448,7 @@ USA
 <!-- False negative. What is the problem with the 'skip' such that this is not found?--><example>Siu Yoke is one of the most well loved and <marker>frequent ordered</marker> meals in our restaurant.</example>
             </rule>
         </rulegroup>
+
         <rulegroup id="AUXILIARY_DO_WITH_INCORRECT_VERB_FORM" name="After auxiliary 'do', use the base form of a verb"><!-- #1871 -->
             <url>https://grammar.collinsdictionary.com/easy-learning/do</url>
             <short>Possible grammar error</short>
@@ -34520,6 +34593,11 @@ USA
                     <token>did</token>
                     <token>not</token>
                 </antipattern>
+                <antipattern><!-- 2458 do so using -->
+                    <token>do</token>
+                    <token>so</token>
+                    <token postag="VBG"/>
+                </antipattern>
                 <pattern>
                     <token postag_regexp="yes" postag="VB.*" regexp="yes">do(es)?|did</token>
                     <token min="0" max="2" postag="RB">
@@ -34621,6 +34699,7 @@ USA
                 <example>It very frequently had the same problem that any standard controller does using a new bulb profile.</example>
                 <example>They have the same problem that our standard controller did using a new bulb profile.</example>
                 <example>I’ll probably be back for more questions if the other 3 way switches don’t look quite the same as the one I just did looked.</example><!-- The final 'looked' is redundant. Compare: "I'll be back if the other switches don't work the same as the switch I just tested." But the sentence is correct in the context of this rule. -->
+                <example>You could do so using the Nexmo API.</example><!-- 2458 -->
                 <example>It has the same problems any RGBW controller does handling an RGBW bulb profile.</example>
                 <example type="triggers_error">It suffers the same issue any rgbw controller does using a rgbw bulb profile.</example><!-- The correct adjective capitalization is 'RGBW' -->
                 <example type="triggers_error">Inovelli makes one similar to the Zooz but for the same price also does <marker>dimming</marker>.</example><!-- Unlike 'lighting', dimming is not NN:U in standard English. -->
@@ -34709,6 +34788,7 @@ USA
                 <example>He did <marker>dancing</marker> and thinks that to be good, intense concentration is necessary.</example>
             </rule>-->
         </rulegroup>
+
         <rule id="ANYMORE_ADVERB" name="anymore (any more)"><!-- Premium #759 -->
             <antipattern>
                 <token>anymore</token>
@@ -34748,6 +34828,11 @@ USA
                 <token>the</token>
                 <token>long</token>
                 <token>run</token>
+            </antipattern>
+            <antipattern><!--  #2554 be relevant anymore -->
+                <token regexp="yes" inflected="yes">be|become</token>
+                <token postag_regexp="yes" postag="JJR?"/>
+                <token>anymore</token>
             </antipattern>
             <pattern>
                 <marker>
@@ -34791,6 +34876,7 @@ USA
             <example>Those who send in old junk they don't use anymore will, without exception, receive a present.</example>
             <example>Stop submitting the results, the test will not be completed anymore</example><!-- #2309. No full stop. -->
             <example>If we see that your plan isn't a good fit anymore in the long run, we'd contact you.</example><!-- #2368 -->
+            <example>(Includes old ones which might not be relevant any more).</example><!-- #2554 -->
             <example type="triggers_error">This is the first day of the new “My hips don’t hurt anymore” routine.</example>
         </rule>
         <rule id="HUNDREDS_OF_THOUSAND" name="hundreds of thousand (thousands of) users"><!-- #2512 -->
@@ -43084,6 +43170,7 @@ The accident victim died from her injuries.
                 <example>I tried also with AWLUnicode and Lucida Sans Unicode, but they too do not render correctly.</example><!-- #2198 -->
             </rule>
         </rulegroup>
+
         <rulegroup id="TO_TOO" name="to/two (too) late/soon/much">
             <url>https://en.wiktionary.org/wiki/too</url>
             <antipattern><!-- https://dictionary.cambridge.org/de/worterbuch/englisch/not-amount-to-much -->
@@ -43253,6 +43340,13 @@ The accident victim died from her injuries.
                     <token min="0" max="1" postag="JJR"/>
                     <token postag_regexp="yes" postag="NN:UN?|SENT_END"/>
                 </antipattern>
+                <antipattern><!-- #2460  He hasn't been up to much [www.ldoceonline.com/dictionary/not-be-up-to-much] -->
+                    <token regexp="yes">t|not</token>
+                    <token min="0" max="1">been</token>
+                    <token>up</token>
+                    <token>to</token>
+                    <token>much</token>
+                </antipattern>
                 <pattern>
                     <marker>
                         <token regexp="yes">tw?o</token>
@@ -43280,6 +43374,11 @@ The accident victim died from her injuries.
                 <example>... and this is also contributing to much poverty in this country.</example>
                 <example>We're  not going to go <marker>too much more</marker> into it.</example>
                 <example>I do not think that Chinese married women of respectability could be induced to emigrate to much extent.</example>
+                <example>He hasn't been up to much.</example><!-- #2460 -->
+                <example>The manager hasn't been up to much; he's quite boring.</example><!-- #2460 -->
+                <example>She's not up to much these days</example><!-- #2460 -->
+<!-- False negative --><example>The manager hasn't been up to much. He stays in his office downstairs and doesn't interfere.</example><!-- #2460 -->
+<!-- False negative --><example>The pressure hasn't been up to much recently; we can say that the adjustments to the valves are satisfactory.</example><!-- #2460 -->
                 <example correction="too">It broke because <marker>to</marker> much snow was on it.</example>
                 <example correction="too">I hate to replace them; they cost <marker>to</marker> much.</example>
                 <example correction="too">They cost <marker>two</marker> much money.</example>
@@ -43522,6 +43621,16 @@ The accident victim died from her injuries.
                     <token postag="RB" />
                     <token postag="VBP" />
                 </antipattern>
+                <antipattern><!-- #2460 want to either. -->
+                    <token postag_regexp="yes" postag="VB.*" regexp="yes" inflected="yes">want|need|hope</token>
+                    <token>to</token>
+                    <token regexp="yes">either|also</token>
+                </antipattern>
+                <antipattern><!-- #2460 the train to there -->
+                    <token chunk="E-NP-singular" postag_regexp="yes" postag="NN(:UN?)?"/>
+                    <token>to</token>
+                    <token>there</token>
+                </antipattern>
                 <pattern>
                     <marker><token>to</token></marker>
                     <token postag="RB">
@@ -43551,6 +43660,8 @@ The accident victim died from her injuries.
                 <example>I'm no one to bully.</example>
                 <example>From monthly to annually.</example>
                 <example>You should take the train to nowhere.</example>
+                <example>I don't want to either.</example><!-- #2460 -->
+                <example>The train to there.</example><!-- #2460 -->
             </rule>
             <rule>
                 <pattern>
