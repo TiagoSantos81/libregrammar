@@ -35,6 +35,11 @@
 #### General
   * 1547 species taxa entries added to `spelling_global.txt`.
   * revert remote rules implementation and Google's BERT suggestion sorting.
+  * false friends rules will not depend on n-grams, and they will always 
+  report false friends, since known words can be disabled individually.
+     N-grams usage is not promoted in this project since the files are too
+  big to be packaged with the main program, and they make the program to slow
+  to be used for real-time checking (see 1956c54).
   
 ### Other changes common to both projects
 
@@ -51,7 +56,11 @@
   * added and improved rules
 
 #### English
-  * rules added and improved
+  * significantly improve rule set, with many rules added and improved
+  * false friends improvements:
+    - 162 entries added to French for English natives;
+    - 184 entries added to English to French natives;
+    - EnglishForFrenchFalseFriendRule false friends n-gram based rule;
   * disambiguation improvements
   * POS and spelling improvements, including:
     - updated en_GB spellchecker dictionary from https://github.com/marcoagpinto/aoo-mozilla-en-dict (Version 2.82 - 2020-03-01)
