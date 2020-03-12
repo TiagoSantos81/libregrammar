@@ -294,10 +294,20 @@ public class JLanguageTool {
     this.cleanOverlappingMatches = true;
     try {
       activateDefaultPatternRules();
+      activateDefaultFalseFriendRules();
+      
+      /* a useful n-gram data set is too slow and does 
+         not come prebundled. 
+         Re-activate this code in case we find a better 
+         alternative to n-gram data for false-friends.
+         NOTE: word2vec data does not work with this
+         
       if (!language.hasNGramFalseFriendRule(motherTongue)) {
         // use the old false friends, which always match, not depending on context
         activateDefaultFalseFriendRules();
       }
+      */
+
       updateOptionalLanguageModelRules(null); // start out with rules without language model
     } catch (Exception e) {
       throw new RuntimeException("Could not activate rules", e);
