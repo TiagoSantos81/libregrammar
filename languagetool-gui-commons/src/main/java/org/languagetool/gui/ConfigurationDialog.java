@@ -1195,6 +1195,8 @@ public class ConfigurationDialog implements ActionListener {
           ((SavablePanel) extra).save();
         }
       }
+
+      /* remote server related (9b3a4b3)
       if(insideOffice && config.doRemoteCheck() && config.useOtherServer()) {
         String serverName = config.getServerUrl();
         if(serverName == null || (!serverName.startsWith("http://") && !serverName.startsWith("https://"))
@@ -1213,6 +1215,8 @@ public class ConfigurationDialog implements ActionListener {
           return;
         }
       }
+      */
+
       configChanged = true;
       dialog.setVisible(false);
     } else if (ACTION_COMMAND_CANCEL.equals(e.getActionCommand())) {
