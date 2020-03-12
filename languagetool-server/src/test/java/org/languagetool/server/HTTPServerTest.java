@@ -106,7 +106,7 @@ public class HTTPServerTest {
     assertTrue(checkV2(english, "Me & you you").contains("&"));
     // tests for mother tongue (copy from link {@link FalseFriendRuleTest})
     //assertTrue(checkV2(english, german, "My handy is broken.").contains("EN_FOR_DE_SPEAKERS_FALSE_FRIENDS"));  // only works with ngrams
-    assertFalse(checkV2(english, german, "We will berate you").contains("BERATE"));  // not active anymore now that we have EN_FOR_DE_SPEAKERS_FALSE_FRIENDS
+    assertTrue(checkV2(english, german, "We will berate you").contains("BERATE"));  // not active anymore now that we have EN_FOR_DE_SPEAKERS_FALSE_FRIENDS inLanguageTool, but LibreGrammar prefers full check and no n-gram usage
     assertTrue(checkV2(german, english, "Man sollte ihn nicht so beraten.").contains("BERATE"));
     assertTrue(checkV2(polish, english, "To jest frywolne.").contains("FRIVOLOUS"));
       
