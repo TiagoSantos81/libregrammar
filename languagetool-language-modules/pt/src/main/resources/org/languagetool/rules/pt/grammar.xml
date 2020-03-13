@@ -3596,6 +3596,13 @@ title="Easy editing stylesheet" ?>
   <rulegroup id='PRONOMIAL_COLOCATIONS_ADJUSTMENT_LOS' name='Colocações pronomiais: ênclise com o infinitivo (lo, la, los, las)'>
     <!-- Created by Tiago F. Santos, 2017-03-10 -->
     <rule>
+      <antipattern><!-- games-as-a-service -->
+          <token spacebefore='no' regexp='yes'>&hifen;</token>
+          <token spacebefore='no'>as</token>
+          <token spacebefore='no' regexp='yes'>&hifen;</token>
+          <token spacebefore='no'>a</token>
+          <token spacebefore='no' regexp='yes'>&hifen;</token>
+      </antipattern>
       <pattern>
           <token postag_regexp='yes' postag='V.+' regexp='yes'>.+(?:s|z)$</token>
           <token regexp='yes' spacebefore='no'>&tracos_de_separacao;</token>
@@ -24331,6 +24338,17 @@ TODO Write better examples
         <suggestion><match no='1' include_skipped='all'/> <match no='2' include_skipped='all'/> eutrófic<match no='3' regexp_match='.+?([ao]s?)$' regexp_replace='$1'/></suggestion>
       <url>https://pt.wiktionary.org/wiki/eutrófico</url>
       <example correction='um eutrófico'><marker>um eutrofico</marker>.</example>
+    </rule>
+    <rule id='PARONYM_PAGINA_616' name='Parónimo: página'>
+      <pattern>
+          <token regexp='yes'>&art_detecao_paronimos;</token>
+          <token min='0' postag='A.+' postag_regexp='yes'/>
+          <token regexp='yes'>páginas?</token>
+      </pattern>
+      <message>Esta palavra é um verbo. Se pretende referir-se a um nome ou adjetivo, deve utilizar a forma acentuada.</message>
+        <suggestion><match no='1' include_skipped='all'/> <match no='2' include_skipped='all'/> <match no='3' regexp_match='agi' regexp_replace='ági'/></suggestion>
+      <url>https://pt.wiktionary.org/wiki/página</url>
+      <example correction='na página'>Ver <marker>na pagina</marker> 3.</example>
     </rule>
   </rulegroup>
 
