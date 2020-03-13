@@ -127,7 +127,9 @@ public abstract class AbstractEnglishSpellerRule extends MorfologikSpellerRule {
     }
     // filter "re ..." (#2562):
     for (RuleMatch ruleMatch : ruleMatches) {
-      List<SuggestedReplacement> cleaned = ruleMatch.getSuggestedReplacementObjects().stream().filter(k -> !k.getReplacement().startsWith("re ")).collect(Collectors.toList());
+      List<SuggestedReplacement> cleaned = ruleMatch.getSuggestedReplacementObjects().stream()
+        .filter(k -> !k.getReplacement().startsWith("re ") && !k.getReplacement().endsWith(" ed"))
+        .collect(Collectors.toList());
       ruleMatch.setSuggestedReplacementObjects(cleaned);
     }
     return ruleMatches;
@@ -499,8 +501,6 @@ public abstract class AbstractEnglishSpellerRule extends MorfologikSpellerRule {
       return Arrays.asList("please");
     } else if ("Plz".equals(word)) {
       return Arrays.asList("Please");
-    } else if ("gmail".equals(word)) {
-      return Arrays.asList("Gmail");
       // AtD irregular plurals - START
     } else if ("addendums".equals(word)) {
       return Arrays.asList("addenda");

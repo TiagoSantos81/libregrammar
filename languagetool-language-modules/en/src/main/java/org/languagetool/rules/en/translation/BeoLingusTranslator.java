@@ -89,7 +89,7 @@ public class BeoLingusTranslator implements Translator {
       int i = 0;
       for (String germanPart : germanParts) {
         handleItem(de2en, germanParts, englishParts, i, germanPart);
-        handleItem(en2de, englishParts, germanParts, i, englishParts[i]);
+        //handleItem(en2de, englishParts, germanParts, i, englishParts[i]);  -- direction not supported yet
         i++;
       }
     }
@@ -176,9 +176,21 @@ public class BeoLingusTranslator implements Translator {
     if (entries != null) {
       entriesSet.addAll(entries);
     }
-    entriesSet.addAll(getTranslationsForBaseforms(term, map));
+    List<TranslationEntry> translationsForBaseforms = getTranslationsForBaseforms(term, map);
+    for (TranslationEntry trans : translationsForBaseforms) {
+      if (entries != null) {
+        Optional<TranslationEntry> first = entries.stream().filter(k -> k.getL1().equals(trans.getL1())).findFirst();
+        if (first.isPresent() && first.get().getL1().equals(trans.getL1())) {
+          // skip duplicates
+        } else {
+          entriesSet.add(trans);
+        }
+      } else {
+        entriesSet.add(trans);
+      }
+    }
     List<TranslationEntry> sortedList = new ArrayList<>(entriesSet);
-    Collections.sort(sortedList);
+    Collections.sort(sortedList, (t1, t2) -> Integer.compare(t2.getItemCount(), t1.getItemCount()));
     return sortedList;
   }
 

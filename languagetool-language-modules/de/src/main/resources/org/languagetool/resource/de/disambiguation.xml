@@ -937,6 +937,16 @@ Copyright © 2013 Markus Brenneis, Daniel Naber, Jan Schreiber
         </pattern>
         <disambig action="remove" postag="VER:.+"/>
     </rule>
+    <rule id="ERHALTENSWUERDIGEN" name="kein Verb: erhaltenswürdigen">
+        <pattern case_sensitive="yes">
+            <marker>
+                <token regexp="yes" postag_regexp="yes" postag="VER:.+">[a-zäöü]{6,}würdigen
+                    <exception postag_regexp="yes" postag="VER:.+" negate_pos="yes"/>
+                </token>
+            </marker>
+        </pattern>
+        <disambig action="remove" postag="VER:.+"/>
+    </rule>
     <rule id="SUBSTANTIVIERTES_VERB" name="kein Verb: substantiviertes Verb">
         <pattern case_sensitive="yes">
             <token postag="PRP:LOK:DAT|ART:DEF:.+:NEU" postag_regexp="yes"/>
@@ -3530,7 +3540,7 @@ Copyright © 2013 Markus Brenneis, Daniel Naber, Jan Schreiber
     </rule>
     <rule name="CONNECT" id="CONNECT">
         <pattern case_sensitive="yes">
-            <token regexp="yes">Spotify|Staples|Car</token>
+            <token regexp="yes">Spotify|Staples|Car|OpenID</token>
             <token>Connect</token>
         </pattern>
         <disambig action="ignore_spelling"/>
@@ -3665,13 +3675,13 @@ Copyright © 2013 Markus Brenneis, Daniel Naber, Jan Schreiber
     <rule name="PUBLIC" id="PUBLIC">
         <pattern case_sensitive="yes">
             <token>Public</token>
-            <token regexp="yes">(School|Viewing|Relation)s?</token>
+            <token regexp="yes">(School|Viewing|Relation)s?|Health</token>
         </pattern>
         <disambig action="ignore_spelling"/>
     </rule>
     <rule name="SCHOOL" id="SCHOOL">
         <pattern case_sensitive="yes">
-            <token regexp="yes">Business|Grammar|Public|Old</token>
+            <token regexp="yes">Business|Grammar|Public|Old|Media</token>
             <token regexp="yes">Schools?</token>
         </pattern>
         <disambig action="ignore_spelling"/>
@@ -3770,7 +3780,7 @@ Copyright © 2013 Markus Brenneis, Daniel Naber, Jan Schreiber
         <!-- https://de.wikipedia.org/wiki/Click_and_Collect -->
         <pattern case_sensitive="yes">
             <token>Click</token>
-            <token>&amp;|and</token>
+            <token regexp="yes">&amp;|and</token>
             <token>Collect</token>
         </pattern>
         <disambig action="ignore_spelling"/>
