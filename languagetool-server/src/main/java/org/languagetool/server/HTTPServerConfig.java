@@ -116,8 +116,11 @@ public class HTTPServerConfig {
     "pipelineExpireTimeInSeconds", "pipelinePrewarming", "prometheusMonitoring", "prometheusPort", "remoteRulesFile",
     "requestLimit", "requestLimitInBytes", "requestLimitPeriodInSeconds", "rulesFile", "secretTokenKey", "serverURL",
     "skipLoggingChecks", "skipLoggingRuleMatches", "timeoutRequestLimit", "trustXForwardForHeader", "warmUp", "word2vecModel",
+    "keystore", "password");
+    /* comment out revert of 19976af. No remote server features here.
     "keystore", "password", "maxTextLengthPremium", "maxTextLengthAnonymous", "maxTextLengthLoggedIn", "gracefulDatabaseFailure",
     "redisPassword", "redisHost", "dbLogging", "premiumOnly");
+    */
 
   /**
    * Create a server configuration for the default port ({@link #DEFAULT_PORT}).
