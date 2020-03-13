@@ -8506,6 +8506,8 @@ though, and has since been slightly modified)-->
         <antipattern>
             <token/>
             <token spacebefore="no">(</token>
+            <token spacebefore="no">e</token>
+            <token spacebefore="no">)</token>
         </antipattern>
         <antipattern>
             <token>box</token>
@@ -8514,10 +8516,6 @@ though, and has since been slightly modified)-->
         <antipattern>
             <token>royal</token>
             <token case_sensitive="yes">Air</token>
-        </antipattern>
-        <antipattern>
-            <token regexp="yes">appelée?s?</token>
-            <token/>
         </antipattern>
         <antipattern>
             <token>chapelle</token>
@@ -8565,7 +8563,7 @@ though, and has since been slightly modified)-->
             <token case_sensitive="yes">Peur</token>
         </antipattern>
         <antipattern>
-            <token regexp="yes" case_sensitive="yes">Claire|Ambre|Jade</token>
+            <token regexp="yes" case_sensitive="yes">Claire|Ambre|Jade|Jacques?</token>
         </antipattern>
         <antipattern>
             <token>la</token>
@@ -8582,27 +8580,17 @@ though, and has since been slightly modified)-->
             <token postag="N f .*" postag_regexp="yes"/>
         </antipattern>
         <antipattern>
-            <token>bac</token>
-            <token/>
-        </antipattern>
-        <antipattern>
-            <token>bac</token>
-            <token/>
-            <token/>
-        </antipattern>
-        <antipattern>
             <token case_sensitive="yes">Alliance</token>
             <token case_sensitive="yes">Française</token>
         </antipattern>
-        <antipattern>
-            <token regexp="yes">Jacques?</token>
-        </antipattern>
+  <?ignore
         <antipattern>
             <token>par</token>
             <token>la</token>
             <token>suite</token>
             <token postag="V.* ppa.*" postag_regexp="yes"/>
         </antipattern>
+        ?>
         <antipattern>
             <token regexp="yes">certaines?</token>
             <token>façon</token>
