@@ -58,14 +58,17 @@
 #### English
   * significantly improve rule set, with many rules added and improved
   * false friends improvements:
-    - 162 entries added to French for English natives;
-    - 184 entries added to English to French natives;
+    - 184 entries added to English for French natives;
     - EnglishForFrenchFalseFriendRule false friends n-gram based rule;
   * disambiguation improvements
   * POS and spelling improvements, including:
     - updated en_GB spellchecker dictionary from https://github.com/marcoagpinto/aoo-mozilla-en-dict (Version 2.82 - 2020-03-01)
     - new part-of-speech tag `ORD` for ordinal numbers (e.g., first, second, twenty-third etc.)
-  
+
+#### French
+  * false friends improvements:
+    - 162 entries added to French for English natives;
+
 #### German
   * added and improved rules
   * `compounds.txt` now automatically expands `ß` to `ss` when using German (Switzerland)
