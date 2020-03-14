@@ -384,8 +384,7 @@ public abstract class MorfologikSpellerRule extends SpellingCheckRule {
     int translationSuggestionCount = 0;
     boolean preventFurtherSuggestions = false;
     Translator translator = getTranslator(globalConfig);
-    if (translator != null && ruleMatch == null && motherTongue != null &&
-        language.getShortCode().equals("en") && motherTongue.getShortCode().equals("de")) {
+    if (translator != null && ruleMatch == null && motherTongue != null) {
       List<PhraseToTranslate> phrasesToTranslate = new ArrayList<>();
       if (idx + 1 < tokens.length) {
         String nextWord = tokens[idx + 1].getToken();
