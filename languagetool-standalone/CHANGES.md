@@ -40,7 +40,10 @@
      N-grams usage is not promoted in this project since the files are too
   big to be packaged with the main program, and they make the program to slow
   to be used for real-time checking (see 1956c54).
-  
+
+#### LibreOffice / Apache OpenOffice Integration
+  * default rule underline style is 'bold wave'. Only applies to LibreOffice version 6.3.0 or superior.
+
 ### Other changes common to both projects
 
 #### Arabic
@@ -91,7 +94,8 @@
   * ~250 extra entries added to `spelling_global.txt`.
 
 #### LibreOffice / Apache OpenOffice Integration
-  * more response rule queue mechanism thanks to Fred Kruse
+  * define and use custom underline types in LibreOffice 6.3.0 or superior, thanks to Fred Kruse
+  * more responsive rule queue mechanism, thanks to Fred Kruse
 
 ## 4.8 (released 2019-12-28)
 

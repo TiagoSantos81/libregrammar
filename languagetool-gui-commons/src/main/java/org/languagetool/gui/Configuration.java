@@ -880,7 +880,7 @@ public class Configuration {
     if (underlineTypes.containsKey(category)) {
       return underlineTypes.get(category);
     }
-    return UNDERLINE_WAVE;
+    return UNDERLINE_BOLDWAVE;
   }
 
   /**
