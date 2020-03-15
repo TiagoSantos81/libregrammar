@@ -398,6 +398,10 @@ public class ConfigurationDialog implements ActionListener {
       versionText.setForeground(Color.blue);
       jPane.add(versionText, cons);
       cons.gridy++;
+      JLabel versionText1 = new JLabel(messages.getString("guiUColorHint1"));
+      versionText1.setForeground(Color.blue);
+      jPane.add(versionText1, cons);
+      cons.gridy++;
     }
 
     cons.weightx = 2.0f;
@@ -1373,16 +1377,12 @@ public class ConfigurationDialog implements ActionListener {
 
   private void setUnderlineType(int index, String category) {
     if(index == 1) {
-//      JOptionPane.showMessageDialog(dialog, "Set Underline Type: " + Configuration.UNDERLINE_BOLDWAVE);
       config.setUnderlineType(category, Configuration.UNDERLINE_BOLDWAVE);
     } else if(index == 2) {
-//      JOptionPane.showMessageDialog(dialog, "Set Underline Type: " + Configuration.UNDERLINE_BOLD);
       config.setUnderlineType(category, Configuration.UNDERLINE_BOLD);
     } else if(index == 3) {
-//      JOptionPane.showMessageDialog(dialog, "Set Underline Type: " + Configuration.UNDERLINE_DASH);
       config.setUnderlineType(category, Configuration.UNDERLINE_DASH);
     } else {
-//      JOptionPane.showMessageDialog(dialog, "Set Underline Type: " + "Default");
       config.setDefaultUnderlineType(category);
     }
   }
@@ -1415,7 +1415,6 @@ public class ConfigurationDialog implements ActionListener {
         categories.add(category);
       }
     }
-    String[] ulTypes = { "Wave", "Bold Wave", "Bold", "Dashed" };
     List<JLabel> categorieLabel = new ArrayList<JLabel>();
     List<JLabel> underlineLabel = new ArrayList<JLabel>();
     List<JButton> changeButton = new ArrayList<JButton>();
@@ -1429,9 +1428,10 @@ public class ConfigurationDialog implements ActionListener {
       JLabel uLabel = underlineLabel.get(nCat);
       String cLabel = categories.get(nCat);
       panel.add(categorieLabel.get(nCat), cons);
+
+      underlineType.add(new JComboBox<String>(getUnderlineTypes()));
+      JComboBox<String> uLineType = underlineType.get(nCat);
       if(insideOffice) {
-        underlineType.add(new JComboBox<String>(ulTypes));
-        JComboBox<String> uLineType = underlineType.get(nCat);
         uLineType.setSelectedIndex(getUnderlineType(cLabel));
         uLineType.addItemListener(e -> {
           if (e.getStateChange() == ItemEvent.SELECTED) {
@@ -1460,12 +1460,27 @@ public class ConfigurationDialog implements ActionListener {
       defaultButton.get(nCat).addActionListener(e -> {
         config.setDefaultUnderlineColor(cLabel);
         uLabel.setForeground(config.getUnderlineColor(cLabel));
+        if(insideOffice) {
+          config.setDefaultUnderlineType(cLabel);
+          uLineType.setSelectedIndex(getUnderlineType(cLabel));
+        }
       });
       cons.gridx++;
       panel.add(defaultButton.get(nCat), cons);
       cons.gridx = 0;
       cons.gridy++;
     }
+    
+    if(insideOffice) {
+      JCheckBox markSingleCharBold = new JCheckBox(Tools.getLabel(messages.getString("guiMarkSingleCharBold")));
+      markSingleCharBold.setSelected(config.markSingleCharBold());
+      markSingleCharBold.addItemListener(e -> config.setMarkSingleCharBold(markSingleCharBold.isSelected()));
+      JLabel dummyLabel = new JLabel(" ");
+      panel.add(dummyLabel, cons);
+      cons.gridy++;
+      panel.add(markSingleCharBold, cons);
+    }
+
     return panel;
   }
 
