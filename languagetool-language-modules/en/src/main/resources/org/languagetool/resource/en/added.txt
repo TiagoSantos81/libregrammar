@@ -614,6 +614,7 @@ anticized	anticize	VBD
 anticized	anticize	VBN
 anticizes	anticize	VBZ
 anticizing	anticize	VBG
+anti-constitutional	anti-constitutional	JJ
 anti-government	anti-government	JJ
 antihermitian	antihermitian	JJ
 antilinear	antilinear	JJ
@@ -1482,6 +1483,7 @@ boomsets	boomset	NNS
 boomtown	boomtown	NN
 boomtowns	boomtown	NNS
 Boötes	Boötes	NNP
+Bordetella	Bordetella	NNP
 bored	bored	JJ
 borrow	borrow	NN
 borrows	borrow	NNS
@@ -2869,6 +2871,8 @@ dazed	dazed	JJ
 DAZN	DAZN	NNP
 dbs	db	NNS
 DBS	DBS	NNP
+DDoS	DDoS	NN
+DDoSes	DDoS	NNS
 dead-end	dead-end	VB
 dead-end	dead-end	VBP
 dead-ended	dead-end	VBD
@@ -4158,6 +4162,7 @@ dmed	dm	VBD
 dmed	dm	VBN
 dming	dm	VBG
 Dmitrovich	Dmitrovich	NNP
+Dmitriy	Dmitriy	NNP
 DMs	DM	NNS
 dms	dm	VBZ
 DNC	DNC	NNP
@@ -4259,6 +4264,7 @@ Dragonball	Dragonball	NNP
 dramatisers	dramatiser	NNS
 Draycott	Draycott	NNP
 Dreamweaver	Dreamweaver	NNP
+DreamWorks	DreamWorks	NNP
 Dreis-Tiefenbach	Dreis-Tiefenbach	NNP
 Drillisch	Drillisch	NNP
 driven	driven	JJ
@@ -5258,6 +5264,8 @@ Flipkart	Flipkart	NNP
 Flonase	Flonase	NNP
 Floréal	Floréal	NNP
 Florianópolis	Florianópolis	NNP
+flout	flout	NN
+flouts	flout	NNS
 flowy	flowy	JJ
 flügelhorn	flügelhorn	NN
 flügelhorns	flügelhorn	NNS
@@ -5544,6 +5552,12 @@ Gdańsk	Gdańsk	NNP
 GDAX	GDAX	NNP
 GDOT	GDOT	NNP
 GDPR	GDPR	NNP
+geek	geek	VB
+geek	geek	VBP
+geeked	geek	VBD
+geeked	geek	VBN
+geeks	geek	VBZ
+geeking	geek	VBG
 Geetha	Geetha	NNP
 gelatinise	gelatinise	VB
 gelatinise	gelatinise	VBP
@@ -6781,6 +6795,7 @@ ILS	ILS	NNP
 IM	IM	NN
 iMac	iMac	NN
 iMacs	iMac	NNS
+IMAX	IMAX	NNP
 IMDB	IMDB	NNP
 immanentise	immanentise	VB
 immanentise	immanentise	VBP
@@ -7415,6 +7430,12 @@ Khmelnytskyi	Khmelnytskyi	NNP
 Khoi	Khoi	NNP
 Kia	Kia	NNP
 Kiara	Kiara	NNP
+kibosh	kibosh	VB
+kibosh	kibosh	VBP
+kiboshed	kibosh	VBD
+kiboshed	kibosh	VBN
+kiboshes	kibosh	VBZ
+kiboshing	kibosh	VBG
 KiCad	KiCad	NNP
 kidnap	kidnap	NN:U
 kiloamperes	kiloampere	NNS
@@ -9693,6 +9714,12 @@ omelettes	omelette	NNS
 omertà	omertà	NN:U
 omnichannel	omnichannel	JJ
 onboarding	onboarding	NN:U
+onboard	onboard	VB
+onboard	onboard	VBP
+onboarded	onboard	VBD
+onboarded	onboard	VBN
+onboards	onboard	VBZ
+onboarding	onboard	VBG
 ondansetron	ondansetron	NN:U
 one-click	one-click	JJ
 OneDrive	OneDrive	NNP
@@ -11517,6 +11544,9 @@ prenegotiates	prenegotiate	VBZ
 prenegotiating	prenegotiate	VBG
 prenegotiation	prenegotiation	NN:UN
 prenegotiations	prenegotiation	NNS
+pre-open	pre-open	JJ
+preopening	preopening	JJ
+pre-opening	pre-opening	JJ
 preoperational	preoperational	JJ
 pre-operational	pre-operational	JJ
 pre-order	pre-order	NN
@@ -13283,6 +13313,7 @@ Ronaldo	Ronaldo	NNP
 Rondônia	Rondônia	NNP
 röntgen	röntgen	NN
 röntgens	röntgen	NNS
+Roomba	Roomba	NNP
 rope	rope	NN
 Rosado	Rosado	NNP
 Rosalina	Rosalina	NNP
@@ -14314,6 +14345,8 @@ stimulus	stimulus	NN:U
 Stonewall	Stonewall	NNP
 Stormtrooper	Stormtrooper	NNP
 Stormtroopers	Stormtrooper	NNPS
+stormwater	stormwater	NN:UN
+stormwaters	stormwater	NNS
 Stott	Stott	NNP
 STP	STP	NNP
 straight	straight	RB
@@ -14831,7 +14864,9 @@ telecomms	telecomms	NN:U
 teleconsultation	teleconsultation	NN:UN
 teleconsultations	teleconsultation	NNS
 Telefonica	Telefonica	NNP
+telehealth	telehealth	NN:U
 telematics	telematics	NN:U
+telemedicine	telemedicine	NN:U
 telenovela	telenovela	NN
 telenovelas	telenovela	NNS
 telepathise	telepathise	VB
@@ -15380,6 +15415,7 @@ Uberizing	Uberize	VBG
 Ubisoft	Ubisoft	NNP
 Ubuntu	Ubuntu	NNP
 UCAR	UCAR	NNP
+USCIS	USCIS	NNP
 UCSB	UCSB	NNP
 udātta	udātta	NN
 Udemy	Udemy	NNP

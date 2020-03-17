@@ -4663,10 +4663,24 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             </rule>
             <rule>
                 <antipattern>
-                    <token>genau</token>
                     <token>da</token>
                     <token inflected="yes">stellen</token>
-                    <token postag="PRO:PER.*|UNKNOWN|EIG:.*" postag_regexp="yes" />
+                    <token postag="PRO:PER.*|PRO:REF.*" postag_regexp="yes" />
+                </antipattern>
+                <antipattern>
+                    <token inflected="yes" skip="4">Frage</token>
+                    <token>da</token>
+                    <token inflected="yes">stellen</token>
+                </antipattern>
+                <antipattern>
+                    <token>da</token>
+                    <token inflected="yes" skip="4">stellen</token>
+                    <token inflected="yes">Frage</token>
+                </antipattern>
+                <antipattern>
+                    <token>da</token>
+                    <token inflected="yes" skip="2">stellen</token>
+                    <token>fest</token>
                 </antipattern>
                 <pattern>
                     <token>
@@ -4680,6 +4694,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <message>Möglicher Tippfehler: Meinten Sie das Verb <suggestion>dar\3</suggestion>?</message>
                 <example correction="dargestellt">Er hat die Sache ganz anders <marker>da gestellt</marker>.</example>
                 <example>Und genau da stellen sie auch fest, dass der Standard vielen Gamern, Technikfans und PC-Bastlern zu langweilig ist.</example>
+                <example>Die Frage die ich mir da stelle, als User, warum wird das überhaupt geändert?</example>
+                <example>Da stellt sich natürlich die Frage: Wie kommen die da automatisch rein?</example>
             </rule>
             <rule>
                 <pattern>
@@ -32623,11 +32639,12 @@ Andere Projekte</example>
             </rule>
             <rule>
                 <pattern>
-                    <token>zusammensein</token>
+                    <token case_sensitive="yes">zusammensein</token>
                 </pattern>
                 <message>Dieses Wort wird seit der neuen Rechtschreibung auseinander geschrieben.</message>
                 <suggestion>zusammen sein</suggestion>
                 <example correction="zusammen sein">Liebe bedeutet, <marker>zusammensein</marker> zu wollen.</example>
+                <example>Einmal berichtete sie über ihr Zusammensein mit Christoph.</example>
             </rule>
         </rulegroup>
         <rulegroup id="DEJA_VU" name="Déjà-vu">
@@ -38651,6 +38668,15 @@ Andere Projekte</example>
                     <token>,</token>
                     <token postag="VER:.+" postag_regexp="yes"/>
                 </antipattern>
+                   <antipattern>
+                    <token postag="VER:MOD:.*" postag_regexp="yes"/>
+                    <token skip="-1" />
+                    <token postag="VER:INF:.+" postag_regexp="yes"/>
+                     <token skip="-1"/>
+                    <token postag="VER:INF:.+" postag_regexp="yes"/>
+                    <token>,</token>
+                    <token postag="VER:.+" postag_regexp="yes"/>
+                </antipattern>
                 <pattern>
                     <token postag="SENT_START"/>
                     <token min="0" max="1" regexp="yes">„|»|«|"</token>
@@ -38674,6 +38700,7 @@ Andere Projekte</example>
                 <example>Mach es bitte ein zweites Mal.</example>
                 <example>Sollte das auch nicht klappen, werde ich Ihren Account manuell freischalten.</example>
                 <example>Sollte es damit Probleme geben, melden Sie sich bitte erneut per E-Mail bei uns.</example>
+                <example>Sollten einzelne Bestimmungen der AGB unwirksam oder undurchführbar sein oder unwirksam oder undurchführbar werden, bleibt davon die Wirksamkeit der AGB im Übrigen unberührt.</example>
             </rule>
             <rule>
                 <antipattern>
@@ -41890,15 +41917,16 @@ Andere Projekte</example>
                         <exception regexp="yes">,|-|„|»|«|"</exception>
                         <exception postag="SENT_START"/>
                     </token>
-                    <token  regexp="yes">ja|nein|oder</token>
-                    </marker>
-                    <token>?</token>
-                </pattern>
-                <message>Ein Komma vor '\2' setzen?</message>
-                <suggestion>\1, \2</suggestion>
-                <example correction='morgen, oder'>Du kommst <marker>morgen oder</marker>?</example>
-                <example>Ja oder nein?</example>
-            </rule>
+                    <token  regexp="yes">ja|nein|oder|richtig</token>
+                </marker>
+                <token>?</token>
+            </pattern>
+            <message>Ein Komma vor '\2' setzen?</message>
+            <suggestion>\1, \2</suggestion>
+            <example correction='morgen, oder'>Du kommst <marker>morgen oder</marker>?</example>
+            <example correction='melden, richtig'>Eine Kündigung muss ich bis 31. Januar 2021 bei dir <marker>melden richtig</marker>?</example>
+            <example>Ja oder nein?</example>
+        </rule>
             <rule>
                 <antipattern>
                     <token postag="SENT_START"/>
