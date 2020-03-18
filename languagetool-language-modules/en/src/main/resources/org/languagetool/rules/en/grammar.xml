@@ -45798,20 +45798,20 @@ The accident victim died from her injuries.
             <example correction="calendar">A <marker>calender</marker> is a system of organizing days for social, religious, commercial or administrative purposes.</example>
         </rule>
         <rule id="CHINA" name="china (China)">
-            <antipattern>
-                <token regexp="yes">white|antique|impeccable|porcelain|glass|fine|breakfast</token>
-                <token>china</token>
-            </antipattern>
-            <antipattern>
-                <token skip="1">china</token>
-                <token regexp="yes">cups?|porcelain|plates?|(dish|table)ware|closets?</token>
-            </antipattern>
+                <antipattern>
+                    <token regexp="yes">white|antique|impeccable|porcelain|glass|fine|breakfast</token>
+                    <token>china</token>
+                </antipattern>
+                <antipattern>
+                    <token skip="1">china</token>
+                    <token regexp="yes">cups?|porcelain|plates?|(dish|table)ware|closets?</token>
+                </antipattern>
                 <pattern>
                         <token case_sensitive="yes">china</token>
                 </pattern>
                 <message>Capitalize this word if you mean the country, instead of white porcelain.</message>
                 <suggestion><match no="2" case_conversion="startupper" /></suggestion>
-            <url>https://www.merriam-webster.com/dictionary/china</url>
+                <url>https://www.merriam-webster.com/dictionary/china</url>
                 <example correction="China">I was born in <marker>china</marker></example>
                 <example correction="China">I always wanted to visit <marker>china</marker></example>
                 <example>I won the bid for the china dishware last weekend.</example>

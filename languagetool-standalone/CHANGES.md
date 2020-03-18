@@ -38,7 +38,7 @@
   * false friends rules will not depend on n-grams, and they will always 
   report false friends, since known words can be disabled individually.
      N-grams usage is not promoted in this project since the files are too
-  big to be packaged with the main program, and they make the program to slow
+  big to be packaged with the main program, and they make the program too slow
   to be used for real-time checking (see 1956c54).
 
 #### LibreOffice / Apache OpenOffice Integration
