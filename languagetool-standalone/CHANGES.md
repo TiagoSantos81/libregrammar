@@ -84,6 +84,7 @@
   * rules added and improved.
 
 #### Portuguese
+  * some entries added to rules databases
   * POS and spelling improvements
 
 #### General
