@@ -7617,7 +7617,8 @@ title="Easy editing stylesheet" ?>
     <rule id='NÃO_VEZ_QUE' name="Confusão: vez - vês">
     <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
       <pattern>
-          <token postag='CC|SENT_START|_PUNCT|R.+' postag_regexp='yes'/>
+          <token postag='CC|SENT_START|_PUNCT|R.+' postag_regexp='yes'>
+            <exception>uma</exception></token>
           <token>vez</token>
           <token>que</token>
       </pattern>
@@ -7626,6 +7627,7 @@ title="Easy editing stylesheet" ?>
       <example correction=", vês que">Pai<marker>, vez que</marker> eles estão errados?</example>
       <example correction="Mas vês que"><marker>Mas vez que</marker> eles estão errados?</example>
       <example correction="Vês que"><marker>Vez que</marker> eles estão errados?</example>
+      <example>Concordo, uma vez que não tenho bons argumentos contra.</example>
     </rule>
 
     <rule id='NESTA_CASO' name="Neste caso">
@@ -9577,7 +9579,7 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>caso|se</token>
       </antipattern>
       <antipattern>
-          <token>como</token>
+          <token regexp='yes'>como|que</token>
           <token>se</token>
       </antipattern>
       <antipattern><!-- reflexive without hyphen -->
