@@ -20923,7 +20923,7 @@ USA
                 </marker>
             </pattern>
             <!--<filter class="org.languagetool.rules.en.AdverbFilter" args="adverb:\2 noun:\3"/> TODO: activate -->
-            <message>You used an adverb ('\2') instead an adjective, or a noun ('\3') instead of another adjective.</message>
+            <message>You used an adverb ('\2') instead of an adjective, or a noun ('\3') instead of another adjective.</message>
             <url>http://www.ucl.ac.uk/internet-grammar/adverbs/xadvb1.htm</url>
             <short>Grammatical problem: incorrect adverb</short>
             <example>This is a <marker>philosophical question</marker>.</example>
@@ -45975,7 +45975,7 @@ The accident victim died from her injuries.
             </pattern>
             <message>Did you mean <suggestion>martial</suggestion> (relating to war or a warrior)?</message>
             <url>https://grammarist.com/spelling/marshal-martial/</url>
-            <short>Possible typo</short>
+            <short>Possible word confusion</short>
             <example correction="martial">He is an experienced <marker>marshal</marker> artist.</example>
             <example correction="martial">He is an experienced <marker>marital</marker> artist.</example>
         </rule>
@@ -46022,6 +46022,7 @@ The accident victim died from her injuries.
             </rule>
         </rulegroup>
         <rulegroup id="CONFUSION_OF_GOLD_GOLF" name="gold (golf)">
+                <short>Possible typo</short>
             <rule>
                 <pattern>
                    <token inflected="yes" regexp='yes'>play|enjoy</token>
@@ -46054,6 +46055,7 @@ The accident victim died from her injuries.
             </rule>
         </rulegroup>
         <rulegroup id="CONFUSION_OF_JIB_JOB" name="jib (job)">
+                <short>Possible typo</short>
             <rule>
                 <pattern>
                    <token inflected="yes" regexp='yes'>get|do|find</token>
@@ -46099,6 +46101,7 @@ The accident victim died from her injuries.
                 <token regexp='yes'>behaviou?rs?|drugs?|game(play)?s?|nature|opiods?|painkillers?|substances?</token>
             </pattern>
             <message>Did you mean the adjective <suggestion>addictive</suggestion> instead of the verb form 'addicting'?</message>
+            <short>Word confusion</short>
             <example correction="addictive">Nicotine is the <marker>addicting</marker> drug in tobacco.</example>
         </rule>
         <rule id="DEEP_SEEDED" name="deep-seeded (deep-seated)">
@@ -46109,6 +46112,7 @@ The accident victim died from her injuries.
             </pattern>
             <message>Did you mean <suggestion>deep-seated</suggestion>?</message>
             <url>https://writingexplained.org/deep-seated-or-deep-seeded-difference</url>
+            <short>Word confusion</short>
             <example correction="deep-seated">He has a <marker>deep-seeded</marker> infection.</example>
         </rule>
         <rule id="DECEASE_DISEASE" name="decease (disease)">
@@ -46119,6 +46123,7 @@ The accident victim died from her injuries.
                 </marker>
             </pattern>
             <message>Did you mean <suggestion>disease</suggestion> (=sickness)?</message>
+            <short>Word confusion</short>
             <example correction="disease">He has a deadly <marker>decease</marker>.</example>
         </rule>
         <rule id="STRIPPED_STRIPED" name="stripped (striped)">
@@ -46130,6 +46135,7 @@ The accident victim died from her injuries.
             </pattern>
             <message>Did you mean <suggestion>striped</suggestion> (= having stripes)?</message>
             <url>https://www.merriam-webster.com/dictionary/striped</url>
+            <short>Word confusion</short>
             <example correction="striped">Did you see her <marker>stripped</marker> dress?</example>
         </rule>
         <rule id="STRIPED_STRIPPED" name="striped (stripped)">
