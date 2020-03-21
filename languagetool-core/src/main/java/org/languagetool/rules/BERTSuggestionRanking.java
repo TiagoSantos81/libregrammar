@@ -99,7 +99,7 @@ public class BERTSuggestionRanking extends RemoteRule {
   /**
    * transform suggestions before resorting, e.g. limit resorting to top-n candidates
    * @return transformed suggestions
-   */
+   *
   protected List<SuggestedReplacement> prepareSuggestions(List<SuggestedReplacement> suggestions) {
     // include more suggestions for resorting if there are translations included as original order isn't that good
     if (suggestions.stream().anyMatch(s -> s.getType() == SuggestedReplacement.SuggestionType.Translation)) {
