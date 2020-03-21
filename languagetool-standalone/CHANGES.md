@@ -87,6 +87,14 @@
   * some entries added to rules databases
   * POS and spelling improvements
 
+#### Russian
+  * small improvements
+
+#### Ukrainian
+  * dictionary update
+  * new rules
+  * tokenization and tagging improvements
+
 #### General
   * dependency security update
   * [upstream hunspell support dropped for 32-bit systems](https://github.com/languagetool-org/languagetool/commit/b769f5ec319a53c10c45a8aa33a9fd6a4600792c).
