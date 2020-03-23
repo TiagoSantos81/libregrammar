@@ -2399,17 +2399,5 @@ Copyright (C) 2008-2018 Ruud Baars, TaalTik
         <disambig action="add"><wd lemma="&quot;" pos="AHL:SLT">"</wd></disambig>        
 	</rule>	
 	-->
-	
-	<!-- define start elements to ignore -->
-	<rule id="START_IGNORE_01" name="">
-		<pattern>
-		<token postag_regexp="yes" postag="SENT_START|START"/>
-		<marker>
-			<token regexp="yes">[‘“'"]</token>
-		</marker>
-		</pattern>
-		<disambig action="add"><wd pos="START"/></disambig>
-	</rule>
-
 
 </rules>
