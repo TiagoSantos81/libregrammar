@@ -51,11 +51,11 @@ public class MorfologikMalayalamSpellerRuleTest {
 
     //incorrect sentences:
 
-    matches = rule.match(langTool.getAnalyzedSentence("Zohw"));
+    matches = rule.match(langTool.getAnalyzedSentence("Aagohw"));
     // check match positions:
     assertEquals(1, matches.length);
     assertEquals(0, matches[0].getFromPos());
-    assertEquals(4, matches[0].getToPos());
+    assertEquals(6, matches[0].getToPos());
     /* local is ok but travis fails. See 7b7807e and a89c7c0
     assertTrue(matches[0].getSuggestedReplacements().isEmpty());
     */

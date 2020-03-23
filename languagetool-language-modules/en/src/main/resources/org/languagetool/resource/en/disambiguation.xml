@@ -8,7 +8,7 @@
     <!ENTITY file_name_extensions "asp|aspx|avi|bak|bat|bmp|cab|cfg|cgi|com|cs[sv]|dat|dbf?|dll|eps|exe|flv|gif|htm|html|ibooks|ico|ini|jar|jpg|js|jsp|lnk|md|mdb|mid|mov|mp3|mp4|mpa|mpg|pdf|php|pl|png|pps|ppt|pptx|ps|psd|py|rss|sh|sql|svg|sys|tar|tif|tiff|tmp|txt|wav|wma|xhtml|xls|xlsx|xsl|xml|yaml|yml|zip|zipx">
     <!ENTITY subject_pronouns "I|you|he|she|it|we|they|one">
     <!ENTITY object_pronouns "me|you|him|her|it|us|them|one">
-    <!ENTITY hispanic_nnp "Ciudad|Playa|Casa|Puerto|Avenida|Santiago|Municipio|Paseo|Calle|Días|Di?os|Nacional|Villas|Cinco|Rancho|Cerro|Universidad|Copa|Academia|Plaza|Facultad|Torre|Camino">
+    <!ENTITY hispanic_nnp "Ciudad|Playa|Casa|Puerto|Avenida|Santiago|Municipio|Paseo|Calle|Días|Di?os|Nacional|Villas|Cinco|Rancho|Cerro|Universidad|Copa|Academia|Plaza|Facultad|Torre|Camino|Club|Tapas">
     <!ENTITY plural_adjectival_nouns "angry|blind|deaf|destitute|dead|dying|elderly|faithful|homeless|injured|insane|jobless|old|poor|rich|sick|squeamish|wealthy|wicked|wounded|young"><!-- One-word terms only, only after the word 'the': www.oxfordlearnersdictionaries.com/definition/english/rich, www.englishgrammar.org/adjectives-nouns/ -->
     <!ENTITY browser_protocols "(?:a(?:aas?|bout|cap|cct|cr|diumxtra|fp|fs|im|mss|pt|ttachment|w)|b(?:arion|eshare|itcoin|lob|olo)|c(?:allto|ap|hrome|id|oaps?|ontent|rid|vs)|da(?:b|ta|av)|d(?:ict|ns|ntp|rm|tn|vb)|e(?:d2k|xamples?)|fa(?:cetime|x)|f(?:eed|ile(?:system)?|i(?:nger|sh)|m|tp)|g(?:(?:eo|g)|i(?:t|zmoproject)|o(?:pher)?|talk)|h(?:323|cp|ttps?)|i(?:ax|cap|con|m(?:ap)?|nfo|otdisco|pn|pps?|ir(?:6?|cs|is|tms)|j(?:a(?:bber|r)|ms)|keyparc|l(?:astfm|daps?)|ma(?:gnet|ilserver|ilto|kes|ps|rket)|m(?:essage|id|ms|odem|snim|srps?|tqp|umble|update|vn)|n(?:ews|fs|i(?:h)?|ntp|otes)|obsolete|o(?:id|paquelocktoken)|pa(?:ck|lm|parazzi)|p(?:kcs11|latform|op|res|ro(?:spero|xy)|syc)|query|re(?:diss?|load|s(?:ource)?)|r(?:mi|sync|tmfp|t(?:mp|sp))|se(?:condlife|rvice|ssion)|s(?:ftp|gn|http|ieve|ips?|kype|mb|ms|n(?:ews|mp)|oldat|potify|sh|team|tuns?|vn)|t(?:ag|eamspeak|el(?:net)?|ftp|hings|hismessage|ip|n3270|urns?|v)|u(?:dp|nreal|rn|t2004)|v(?:e(?:mmi|ntrilo)|ideotex|nc))|w(?:ais|ebcal|ss?|tai|yciwyg)|x(?:con|fire|mpp|ri)|ymsgr)">
 
@@ -9872,6 +9872,15 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <pattern>
             <token>camino</token>
             <token regexp="yes">real(e?s)?</token>
+        </pattern>
+        <disambig action="ignore_spelling"/>
+    </rule>
+
+    <rule name="mumbo jumbo" id="MUMBO_JUMBO">
+        <!-- https://www.lexico.com/definition/mumbo_jumbo -->
+        <pattern>
+            <token>mumbo</token>
+            <token>jumbo</token>
         </pattern>
         <disambig action="ignore_spelling"/>
     </rule>
