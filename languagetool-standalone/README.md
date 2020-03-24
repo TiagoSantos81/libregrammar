@@ -21,14 +21,14 @@ https://www.languagetool.org
 
 ### LibreOffice/OpenOffice
 
-To integrate LanguageTool into LibreOffice or OpenOffice.org, you can use two methods:
+To integrate LibreGrammar into LibreOffice or OpenOffice.org, you can use two methods:
 
-* Double-click `LanguageTool-4.9.oxt`. The extension should
+* Double-click `LibreGrammar-4.9.oxt`. The extension should
    start installing. Follow the on-screen instructions.
 
 * If the above method doesn't work, call `Tools > Extension
    Manager > Add...` in LibreOffice/OpenOffice.org and browse for the
-   `LanguageTool-4.9.oxt` file.
+   `LibreGrammar-4.9.oxt` file.
 
 Close and restart LibreOffice/OpenOffice.org Writer. Remember to close
 the QuickStarter as well if you use it. Type text with
@@ -41,19 +41,19 @@ offers you a short description of the error and a correction ("free").
 
 If you are using LibreOffice and you want to check English or Russian texts:
 Use `Options -> Language Settings -> Writing Aids -> Edit...` in the
-`Tools` menu to disable LightProof and enable LanguageTool for English.
+`Tools` menu to disable LightProof and enable LibreGrammar for English.
 
-Note that there will also be a new menu item "LanguageTool"
+Note that there will also be a new menu item "LibreGrammar"
 under the `Tools` menu.
 If the native spelling and grammar dialog doesn't check grammar,
 make sure that the check box `Check Grammar` is checked in it
 (if the window closes because of no mistakes in the document,
 simply make any spelling mistake to make it open for a longer
-time, and check the box). Check also if LanguageTool is visible
+time, and check the box). Check also if LibreGrammar is visible
 under `Grammar` in `Tools > Options > Language Settings > Spelling`
 for your language. Note: you can disable the grammar check without
-uninstalling LanguageTool simply by clearing the check box next to
-LanguageTool in the same dialog.
+uninstalling LibreGrammar simply by clearing the check box next to
+LibreGrammar in the same dialog.
   
 Please see https://www.languagetool.org/issues/ if you experience problems.
 
@@ -97,9 +97,9 @@ at http://svn.code.sf.net/p/languagetool/code/trunk/languagetool/.
 ## License
  
 Unless otherwise noted, this software is distributed under
-the LGPL, see file [COPYING.txt](https://github.com/languagetool-org/languagetool/blob/master/languagetool-standalone/COPYING.txt)
+the LGPL, see file [COPYING.txt](https://github.com/TiagoSantos81/libregrammar/blob/master/languagetool-standalone/COPYING.txt)
 
-See [third-party-licenses/README.txt](https://github.com/languagetool-org/languagetool/blob/master/languagetool-standalone/src/main/resources/third-party-licenses/README.txt) for the copyright of the external libraries.
+See [third-party-licenses/README.txt](https://github.com/TiagoSantos81/libregrammar/blob/master/languagetool-standalone/src/main/resources/third-party-licenses/README.txt) for the copyright of the external libraries.
 
 #### Frequency data
 
