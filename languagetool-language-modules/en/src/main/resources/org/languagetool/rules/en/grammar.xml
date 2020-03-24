@@ -47327,7 +47327,6 @@ The accident victim died from her injuries.
                 <token postag="NN(:UN?)?|NNP?S" postag_regexp="yes">
                     <exception postag="JJ"/>
                     <exception regexp="yes">one|(some|every|any)(body|one)|still|right|in|kind|well|given|known|his</exception>
-                    <exception case_sensitive="yes">german</exception>
                 </token>
                 <token>
                     <exception regexp="yes">enough|\p{P}</exception>
@@ -47369,7 +47368,7 @@ The accident victim died from her injuries.
             <example>You're big on TV!</example>
             <example>... when you're most likely going to do it.</example>
             <example>Incorrect grammar: You're far better then that.</example>
-            <example>Because you're german and that matters.</example>
+            <example type='triggers_error'>Because you're german and that matters.</example>
         </rule>
         <rule id="IN_YOU_RE_NN" name="you're (your)">
             <pattern>
