@@ -64,8 +64,8 @@ public class AboutDialog {
 
     aboutPane.setText(String.format("<html>"
             + "<p>LibreGrammar %s (%s, %s)<br>"
-            + "Copyright (C) 2019 the LibreGrammar community and Tiago F. Santos<br>"
-            + "Copyright (C) 2005-2019 the LanguageTool community and Daniel Naber<br>"
+            + "Copyright (C) 2019-2020 the LibreGrammar community and Tiago F. Santos<br>"
+            + "Copyright (C) 2005-2020 the LanguageTool community and Daniel Naber<br>"
             + "This software is licensed under the GNU Lesser General Public License.<br>"
             /*+ "<a href=\"https://www.languagetool.org\">https://www.languagetool.org</a><br>"*/
             + "Java max/total/free memory: %sMB, %sMB, %sMB</p>"

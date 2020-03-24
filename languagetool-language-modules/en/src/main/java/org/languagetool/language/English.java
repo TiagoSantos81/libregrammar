@@ -306,6 +306,7 @@ public class English extends Language implements AutoCloseable {
       case "WRONG_APOSTROPHE":          return 5;
       case "ADJECTIVE_ADVERB":          return 2;   // prefer over MODAL_VERB_FOLLOWED_BY_NOUN, PRP_MD_NN, and PRONOUN_NOUN
       case "DOS_AND_DONTS":             return 2;
+      case "EN_COMPOUNDS":              return 1;
       case "APOSTROPHE_VS_QUOTE":       return 1;   // higher prio than EN_QUOTES
       case "COMMA_PERIOD":              return 1;   // higher prio than COMMA_PARENTHESIS_WHITESPACE
       case "HERE_HEAR":                 return 1;   // higher prio than ENGLISH_WORD_REPEAT_RULE
@@ -322,6 +323,7 @@ public class English extends Language implements AutoCloseable {
       case "CHILDISH_LANGUAGE":         return -8;  // prefer over spell checker
       case "EN_DIACRITICS_REPLACE":     return -9;  // prefer over spell checker (like PHRASE_REPETITION)
       case "WE_BE":                     return -1;
+      case "PLURAL_VERB_AFTER_THIS":    return -1;  // prefer other more specific rules (e.g. COMMA_TAG_QUESTION)
       case "BE_RB_BE":                  return -1;  // prefer other more specific rules
       case "IT_ITS":                    return -1;  // prefer other more specific rules
       case "ENGLISH_WORD_REPEAT_RULE":  return -1;  // prefer other more specific rules (e.g. IT_IT)
