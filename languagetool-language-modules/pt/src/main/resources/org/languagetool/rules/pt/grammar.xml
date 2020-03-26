@@ -7489,32 +7489,21 @@ title="Easy editing stylesheet" ?>
       <example correction="guarda-chuvas">Abram os <marker>guardas-chuvas</marker>.</example>
     </rule>
 
-	<rulegroup id='HAVER' name="Verbo haver">
+	<rulegroup id='IMPERSONAL_HAVER' name="Verbo haver como verbo impessoal">
 		<!-- Created by Marco A.G.Pinto 2020-03-26 -->
 		<rule>
 		<pattern>
-			<marker>
-				<token>houveram</token>
-			</marker>
-			<token postag_regexp='yes' postag='DI0MP0|NC[FM]P000'/>
+				<token inflected='yes' postag_regexp='yes' postag='V...3P.+'>haver</token>
+			  <token postag_regexp='yes' postag='(?:D.|N)..P.+'/>
 		</pattern>
 		<message>O verbo haver é impessoal no sentido de existir.</message>
-		<suggestion>houve</suggestion>
-		<example correction="houve">No passado <marker>houveram</marker> muitos acidentes.</example>
-		</rule>
-		<rule>
-		<pattern>
-			<marker>
-				<token>haverem</token>
-			</marker>
-			<token postag_regexp='yes' postag='DI0MP0|NC[FM]P000'/>
-		</pattern>
-		<message>O verbo haver é impessoal no sentido de existir.</message>
-		<suggestion>haver</suggestion>
-		<example correction="haver">Espero <marker>haverem</marker> respostas.</example>
+		  <suggestion><match no='1' postag='(V...3)P(.+)' postag_replace='$1S$2' postag_regexp='yes'/> \2</suggestion>
+		<example correction="houve muitos|houvera muitos">No passado, <marker>houveram muitos</marker> acidentes.</example>
+		<example correction="haver respostas">Espero <marker>haverem respostas</marker>.</example>
+		<example correction="havia umas">No passado, <marker>haviam umas</marker> estradas muito perigosas nesta zona.</example>
 		</rule>
 	</rulegroup>
-  
+    
     <rule id='JÁ_MAIS' name="Confusão: já mais - jamais" default='off'>
     <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
       <pattern>
