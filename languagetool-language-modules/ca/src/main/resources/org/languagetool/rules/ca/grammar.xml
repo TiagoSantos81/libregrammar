@@ -2191,21 +2191,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="diferent cava|diferents caves">Es poden visitar <marker>diferents cava</marker>.</example>
                 <example>Es poden visitar diferents caves.</example>
             </rule>
-            <rule> <!-- quan el nom pot ser també verb -->
-                <pattern>
-                    <token postag="SENT_START"/>
-                    <marker>
-                    <unify negate="yes">
-                        <feature id="nombre"/>
-                        <feature id="genere"/>
-                        <token postag="A.*" postag_regexp="yes"/>
-                        <token postag="N.*" postag_regexp="yes"/>
-                    </unify>
-                    </marker>
-                </pattern>
-                <message>Error de concordança.</message>
-                <example correction=""><marker>Bona tardes</marker></example>
-            </rule>
         </rulegroup>
         <rulegroup id="CONCORDANCES_PARTICIPI_NOM" name="Concordances participi i nom">
             <antipattern>
@@ -3571,6 +3556,24 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <message>Error de concordança. El nom "credencial" és femení.</message>
                 <example correction=""><marker>credencial incorrecte</marker></example>
                 <example correction=""><marker>credencials no vàlids</marker></example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token>bones</token>
+                    <token>tarda</token>
+                </pattern>
+                <message>Error de concordança</message>
+                <suggestion>bona tarda</suggestion>
+                <example correction="Bona tarda"><marker>Bones tarda</marker>!</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token>bona</token>
+                    <token>tardes</token>
+                </pattern>
+                <message>Error de concordança</message>
+                <suggestion>bona tarda</suggestion>
+                <example correction="Bona tarda"><marker>Bona tardes</marker>!</example>
             </rule>
         </rulegroup>
         <rulegroup id="PENDENT_CORRENT" name="pendent, corrent (nom masculí)">
@@ -30442,7 +30445,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             </rule>
             <rule>
                 <pattern>
-                    <token regexp="yes">[hj][aei]([hj][aei])+</token>
+                    <token regexp="yes">ha(ha)+|he(he)+|hi(hi)+|ja(ja)+|je(je)+|ji(ji)+</token>
                 </pattern>
                 <message>Onomatopeia de la rialla.</message>
                 <suggestion><match no="1" regexp_match="(?i).(.).*" regexp_replace="h$1"/>, <match no="1" regexp_match="(?i).(.).*" regexp_replace="h$1"/>, <match no="1" regexp_match="(?i).(.).*" regexp_replace="h$1"/></suggestion>
@@ -30453,6 +30456,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="hi, hi, hi"><marker>jijijiji</marker></example>
                 <example correction="hi, hi, hi"><marker>hihihihi</marker></example>
                 <example>Ja t'ho deia.</example>
+                <example>La hija de un rico.</example>
+                <example>Que haja sigut profitós.</example>
             </rule>
         </rulegroup>
         <rule id="GOM_A_GOM" name="gom a gom">
