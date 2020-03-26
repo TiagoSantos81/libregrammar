@@ -3130,10 +3130,10 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
                     <token postag="NN"/>
                 </and>
             </marker>
-            <token postag_regexp="yes" postag="PRP$|NNP"/>
+            <token postag_regexp="yes" postag="PRP\$|NNP"/>
         </pattern>
         <disambig postag="IN"/>
-        <example type="ambiguous" inputform="while[while/CC,while/IN,while/NN,while/VB,while/VBP]" outputform="while[while/IN]">CC: CDC officials have said that <marker>while</marker> it's clear asymptomatic spread does happen, it does not...</example><!-- WHY? Look at the 2nd token in the pattern. 'it' is PRP, not PRP$. (Also, PRP$ should probably be PRP\$, but that is a different problem.) -->
+        <example type="untouched">CC: CDC officials have said that <marker>while</marker> it's clear asymptomatic spread does happen, it does not...</example><!-- Premium #1079 -->
     </rule>
 
     <!-- the known good solution -->
@@ -3357,7 +3357,8 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <disambig><match no="3" postag_regexp="yes" postag="NN.*|JJ.*"/></disambig>
         </rule>
     </rulegroup>
-    <rule name="while (IN/NN/VBP) + PRP -&gt; while/IN" id="WHILE_IN_PRP">
+<!-- 2020-03-26 MFU. The disambiguated postag possibly should be CC. 'While' as a preposition is Northern BrE only: https://www.lexico.com/definition/while. Refer also to https://github.com/languagetooler-gmbh/languagetool-premium/issues/1079
+   <rule name="while (IN/NN/VBP) + PRP -&gt; while/IN" id="WHILE_IN_PRP">
         <pattern>
             <marker>
                 <token>while</token>
@@ -3366,6 +3367,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         </pattern>
         <disambig postag="IN"/>
     </rule>
+-->
     <rule name="Web page (noun/verb) -&gt; page (noun)" id="WEB_PAGE">
         <pattern>
             <token postag="NN">web</token>
@@ -9911,6 +9913,14 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <token>don</token>
             <token regexp="yes" spacebefore="no">&apostrophe;</token>
             <token spacebefore="no">ts</token>
+        </pattern>
+        <disambig action="ignore_spelling"/>
+    </rule>
+
+    <rule name="ribonucleic acid" id="RIBONUCLEIC_ACID">
+        <pattern><!-- https://www.lexico.com/definition/ribonucleic_acid-->
+            <token>ribonucleic</token>
+            <token>acid</token>
         </pattern>
         <disambig action="ignore_spelling"/>
     </rule>

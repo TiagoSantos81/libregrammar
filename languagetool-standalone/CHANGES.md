@@ -20,6 +20,7 @@
      - slang terms.
   * disambiguation improvements
   * POS and spelling improvements
+     - updated en_GB spellchecker dictionary from https://github.com/marcoagpinto/aoo-mozilla-en-dict (Version 2.83 - 2020-04-01)
      - scientific nomenclature POS support added
 
 #### Portuguese
