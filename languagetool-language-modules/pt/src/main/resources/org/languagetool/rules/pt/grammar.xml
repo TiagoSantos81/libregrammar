@@ -31850,14 +31850,15 @@ TODO Write better examples
 
  <category id='MISSPELLING' name="Erros Ortográficos" type="misspelling">
 
-    <rulegroup id="WHATSAPP" name="WhatsApp" default="temp_off">
+    <rulegroup id="WHATSAPP" name="WhatsApp">
+    <!-- Created by Christopher Blum, 2020-03-2025 -->
       <url>https://pt.wikipedia.org/wiki/WhatsApp</url>
       <rule>
         <pattern>
           <token>Whats</token>
           <token>app</token>
         </pattern>
-        <message>Pretende antes quis dizer <suggestion>WhatsApp</suggestion>?</message>
+        <message>Pretende dizer <suggestion>WhatsApp</suggestion>?</message>
         <example correction="WhatsApp"><marker>Whats app</marker> é um aplicativo multiplataforma de mensagens instantâneas.</example>
       </rule>
     </rulegroup>
@@ -31868,7 +31869,7 @@ TODO Write better examples
           <token>you</token>
           <token>tube</token>
         </pattern>
-        <message>Pretende antes quis dizer <suggestion>YouTube</suggestion>?</message>
+        <message>Pretende dizer <suggestion>YouTube</suggestion>?</message>
         <example correction="YouTube">O <marker>You tube</marker> utiliza o codec de vídeo VP9 primariamente para disponibilizar o conteúdo, mas é utilizado também H.264.</example>
       </rule>
     </rulegroup>
@@ -31879,7 +31880,7 @@ TODO Write better examples
           <token>face</token>
           <token>book</token>
         </pattern>
-        <message>Pretende antes quis dizer <suggestion>Facebook</suggestion>?</message>
+        <message>Pretende dizer <suggestion>Facebook</suggestion>?</message>
         <example correction="Facebook">O <marker>face book</marker> foi fundado por Mark Zuckerberg e por seus colegas de quarto da faculdade Eduardo Saverin, Dustin Moskovitz e Chris Hughes.</example>
       </rule>
     </rulegroup>
@@ -32199,7 +32200,7 @@ TODO Write better examples
   </rulegroup>
 
     <rule id="MENAGE_A_TROIS" name="Erro ortográfico: ménage à trois">
-    <!-- Localized from Catalan grammar by Tiago F. Santos, 08-05-2019 -->
+    <!-- Localized from Catalan grammar by Tiago F. Santos, 2019-05-08 -->
       <antipattern>
           <token>ménage</token>
           <token>à</token>
@@ -32247,7 +32248,7 @@ TODO Write better examples
   </rulegroup>
 
     <rule id="AU" name="Erro ortográfico: au/Au [unidade astronómica/ouro]">
-    <!-- Localized from English grammar by Tiago F. Santos, 12-08-2019 -->
+    <!-- Localized from English grammar by Tiago F. Santos, 2019-08-12 -->
       <pattern case_sensitive="yes">
           <token>au
             <exception scope="next" regexp="yes">beurre|courant|contraire|fait|fond|gratin|jus|naturel|revoir</exception><!-- French terms that are used in English -->
@@ -32261,7 +32262,7 @@ TODO Write better examples
     </rule>
 
     <rule id='NON_STANDARD_ALPHABETIC_CHARACTERS' name="Tipografia: Caratéres não-latinos">
-    <!-- based on English rule, Tiago F. Santos, 2020-01-06 -->
+    <!-- Based on English rule, Tiago F. Santos, 2020-01-06 -->
       <pattern>
         <and>
           <token regexp="yes">.*[A-Za-z].*</token>
