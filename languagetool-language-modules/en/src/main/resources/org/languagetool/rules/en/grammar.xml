@@ -17814,20 +17814,37 @@ USA
             <url>https://en.wikipedia.org/wiki/Game_Boy</url>
             <example correction="Game Boy">The <marker>Gameboy</marker> is an 8-bit handheld game console developed and manufactured by Nintendo.</example>
         </rule>
-        <rule id="FOX_NEWS" name="Fox News">
-            <antipattern case_sensitive="yes">
-                <token regexp="yes">Fox|FOX</token>
-                <token regexp="yes">News|NFL|Sports</token>
-            </antipattern>
-            <pattern>
-                <token>fox</token>
-                <token regexp="yes">news|nfl|sports</token>
-            </pattern>
-            <message>A proper noun needs to be capitalized.</message>
-            <suggestion><match no="1" case_conversion="startupper" /> <match no="2" case_conversion="startupper" /></suggestion>
-            <example correction="Fox News">I'm watching <marker>fox news</marker>.</example>
-            <example>FOX News</example>
-        </rule>
+        <rulegroup id="FOX_NEWS" name="Fox News">
+            <rule>
+                <antipattern case_sensitive="yes">
+                    <token regexp="yes">Fox|FOX</token>
+                    <token regexp="yes">News|NEWS|Sports|SPORTS</token>
+                </antipattern>
+                <pattern>
+                    <token>fox</token>
+                    <token regexp="yes">news|sports</token>
+                </pattern>
+                <message>A proper noun needs to be capitalized.</message>
+                <suggestion><match no="1" case_conversion="startupper" /> <match no="2" case_conversion="startupper" /></suggestion>
+                <example correction="Fox News">I'm watching <marker>fox news</marker>.</example>
+                <example>FOX News</example>
+                <example>FOX NEWS</example>
+            </rule>
+            <rule>
+                <antipattern case_sensitive="yes">
+                    <token regexp="yes">Fox|FOX</token>
+                    <token>NFL</token>
+                </antipattern>
+                <pattern>
+                    <token>fox</token>
+                    <token>nfl</token>
+                </pattern>
+                <message>A proper noun needs to be capitalized.</message>
+                <suggestion><match no="1" case_conversion="startupper" /> <match no="2" case_conversion="allupper" /></suggestion>
+                <example correction="Fox NFL">I'm watching <marker>fox nfl</marker>.</example>
+                <example>FOX NFL</example>
+            </rule>
+        </rulegroup>
         <rulegroup id="PRESIDENT_TRUMP" name="president trump (Trump)">
             <url>https://en.wikipedia.org/wiki/Donald_Trump</url>
             <rule>
@@ -42004,31 +42021,51 @@ The accident victim died from her injuries.
             <message>Did you mean <suggestion>is</suggestion>?</message>
             <example correction="is">What <marker>it</marker> the solution.</example>
         </rule>
-        <rule id="IT_IF" name="it vs. if">
-            <antipattern>
-                <token postag="JJR" />
-                <token>than</token>
-            </antipattern>
-            <pattern>
-                <token postag="SENT_START" />
-                <token regexp="yes" min="0">and|but</token>
-                <marker>
-                    <token>it</token>
-                </marker>
-                <token postag="DT|PRP|NNP" postag_regexp="yes" skip="8" />
-                <token>
-                    <exception scope="previous" postag="CC" />
-                    then
-                </token>
-                <token postag="DT|PRP|NNP" postag_regexp="yes" />
-                <token />
-                <token />
-            </pattern>
-            <message>Did you maybe mean <suggestion>if</suggestion>?</message>
-            <example correction="If"><marker>It</marker> the first one lights then it is working.</example>
-            <example correction="If"><marker>It</marker> it does, then the script will return "NOT_FOUND".</example>
-            <example>It all happened so fast and then it was over.</example>
-        </rule>
+        <rulegroup id="IT_IF" name="it vs. if">
+            <rule>
+                <antipattern>
+                    <token postag="JJR" />
+                    <token>than</token>
+                </antipattern>
+                <pattern>
+                    <token postag="SENT_START" />
+                    <token regexp="yes" min="0">and|but</token>
+                    <marker>
+                        <token>it</token>
+                    </marker>
+                    <token postag="DT|PRP|NNP" postag_regexp="yes" skip="8" />
+                    <token>
+                        <exception scope="previous" postag="CC" />
+                        then
+                    </token>
+                    <token postag="DT|PRP|NNP" postag_regexp="yes" />
+                    <token />
+                    <token />
+                </pattern>
+                <message>Did you maybe mean <suggestion>if</suggestion>?</message>
+                <example correction="If"><marker>It</marker> the first one lights then it is working.</example>
+                <example correction="If"><marker>It</marker> it does, then the script will return "NOT_FOUND".</example>
+                <example>It all happened so fast and then it was over.</example>
+            </rule>
+            <rule default="temp_off">
+                <antipattern><!-- that we go for if and only if -->
+                    <token>if</token>
+                    <token postag="CC" />
+                    <token postag="RB" />
+                    <token>if</token>
+                </antipattern>
+                <pattern>
+                    <token inflected="yes">go</token>
+                    <token>for</token>
+                    <marker>
+                        <token>if</token>
+                    </marker>
+                    <token postag="PCT|CC" postag_regexp="yes" />
+                </pattern>
+                <message>Did you mean <suggestion>it</suggestion>?</message>
+                <example correction="it">Go for <marker>if</marker>!</example>
+            </rule>
+        </rulegroup>
         <rule id="HAD_HARD" name="had vs. hard">
             <pattern>
                 <token inflected="yes">be</token>
@@ -42099,7 +42136,16 @@ The accident victim died from her injuries.
                 </antipattern>
                 <antipattern>
                     <token postag="SENT_START|PCT" postag_regexp="yes" />
+                    <token regexp="yes" min="0">or|and|but</token>
                     <token postag="MD" />
+                </antipattern>
+                <antipattern>
+                    <token postag="MD" />
+                    <token postag="RB" min="0" />
+                    <token>we</token>
+                    <token postag="RB" min="0" />
+                    <token postag="VB.*" postag_regexp="yes" skip="5" />
+                    <token>?</token>
                 </antipattern>
                 <pattern>
                     <token postag="MD" />
