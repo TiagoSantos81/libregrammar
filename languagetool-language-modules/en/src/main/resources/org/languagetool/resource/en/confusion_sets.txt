@@ -1310,7 +1310,7 @@ shows -> dhows; 100                                                             
 accessed;assessed;100                                # p=0.998, r=0.965, 1000+1000, 3grams, 2016-02-27
 additions; editions; 1000000;                        # p=1.000, r=0.327, 305+651, 3grams, 2016-11-04
 affluence;effluence;10000000                         # p=0.995, r=0.400, 1000+56, 3grams, 2016-04-19
-aids;aides;100                                      # p=0.992, r=0.775, 386+80, 3grams, 2015-12-10 -- would need to be case-sensitive b/c 'AIDS'
+# aids;aides;100                                      # p=0.992, r=0.775, 386+80, 3grams, 2015-12-10 -- would need to be case-sensitive b/c 'AIDS'
 aisle;isle;10000000                                  # p=0.995, r=0.282, 1000+994, 3grams, 2016-04-19
 aisles; isles; 100000;                               # p=1.000, r=0.552, 14+245, 3grams, 2016-11-04
 alliterate;illiterate;10000000                       # p=0.996, r=0.736, 35+1000, 3grams, 2016-04-19
