@@ -18,6 +18,8 @@
   * rules added and improved, including:
      - agreement rules;
      - slang terms.
+  * improves accuracy and recall of n-gram based confusion sets by using directional
+  n-grams.
   * disambiguation improvements
   * POS and spelling improvements
      - updated en_GB spellchecker dictionary from https://github.com/marcoagpinto/aoo-mozilla-en-dict (Version 2.83 - 2020-04-01)
