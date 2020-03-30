@@ -108,8 +108,9 @@
   * ~250 extra entries added to `spelling_global.txt`.
 
 #### LibreOffice / Apache OpenOffice Integration
-  * define and use custom underline types in LibreOffice 6.3.0 or superior, thanks to Fred Kruse
-  * more responsive rule queue mechanism, thanks to Fred Kruse
+  * define and use custom underline types in LibreOffice 6.3.0 or superior, thanks to Fred Kruse.
+  * more responsive rule queue mechanism, thanks to Fred Kruse.
+  * various optimizations and stability improvements, thanks to Fred Kruse.
 
 ## 4.8 (released 2019-12-28)
 
