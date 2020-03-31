@@ -118,6 +118,47 @@
       </pattern>
       <disambig action="replace"><wd pos="I"/><wd pos="I"/></disambig>
     </rule>
+    
+  <rulegroup id="PELO_NOUN" name="pelo como contração">
+    <rule>
+      <pattern>
+            <marker>
+              <token>pelo</token>
+            </marker>
+              <token postag="(N.|A..)MS.+" postag_regexp='yes'/>
+      </pattern>
+      <disambig action="filter" postag='S.+'/>
+      <example inputform="pelo[pelar/VMIP1S0,por+o/SPS00+DA]" outputform="por+o/SPS00+DA]" type='ambiguous' >Ele vai levar você <marker>pelo</marker> beiço.</example>
+    </rule>
+    <rule>
+      <pattern>
+            <marker>
+              <token>pelos</token>
+            </marker>
+              <token postag="(N.|A..)MP.+" postag_regexp='yes'/>
+      </pattern>
+      <disambig action="filter" postag='S.+'/>
+    </rule>
+    <rule>
+      <pattern>
+            <marker>
+              <token>pela</token>
+            </marker>
+              <token postag="(N.|A..)FS.+" postag_regexp='yes'/>
+      </pattern>
+      <disambig action="filter" postag='S.+'/>
+    </rule>
+    <rule>
+      <pattern>
+            <marker>
+              <token>pelas</token>
+            </marker>
+              <token postag="(N.|A..)FP.+" postag_regexp='yes'/>
+      </pattern>
+      <disambig action="filter" postag='S.+'/>
+    </rule>
+  </rulegroup>
+
   <rulegroup id="VAN_GOGH" name="Van Gogh">
     <!-- 	Rulegroup retrieved from Catalan grammar.xml	-->
     <rule>
