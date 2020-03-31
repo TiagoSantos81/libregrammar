@@ -4956,6 +4956,33 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <token postag="JJ"/>
             <token postag="PCT"/>
         </antipattern>
+        <antipattern><!-- #2584 I will be search for -->
+            <token regexp="yes">&subject_pronouns;</token>
+            <token postag="MD"/>
+            <token>be</token>
+            <token postag="VB"/>
+            <token postag="IN"/>
+        </antipattern>
+        <antipattern><!-- #2584 wish you good health! -->
+            <token inflected="yes">wish</token>
+            <token regexp="yes">&object_pronouns;</token>
+        </antipattern>
+        <antipattern><!-- #2584 you can text -->
+            <token regexp="yes">&subject_pronouns;</token>
+            <token chunk="B-VP" postag="MD"/>
+            <token postag="VB"/>
+        </antipattern>
+        <antipattern><!-- #2584 you better fucking call -->
+            <token regexp="yes">&subject_pronouns;</token>
+            <token>better</token>
+            <token postag="RB"/>
+            <token postag="VB"/>
+        </antipattern>
+        <antipattern><!-- #2584 some call it -->
+            <token regexp="yes">all|many|most|some</token>
+            <token postag_regexp="yes" postag="VB[PD]"/>
+            <token regexp="yes">&object_pronouns;</token>
+        </antipattern>
         <pattern>
             <marker>
                 <and>
@@ -5047,6 +5074,12 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <example type="untouched">The person i should ALWAYS pledge with is my friend.</example><!-- #2552 -->
         <example type="untouched">Play it quiet.</example><!-- #2570 -->
         <example type="untouched">Play it quiet, brother.</example><!-- #2570 -->
+        <example type="untouched">Incorrect grammar: I will be search for you.</example><!-- #2584 -->
+        <example type="untouched">Peter, wish you good health!</example><!-- #2584 -->
+        <example type="untouched">Something that you can text on</example><!-- #2584 -->
+        <example type="untouched">Seriously, you better fucking call me.</example><!-- #2584 -->
+        <example type="untouched">But some call it surfing, while others ...</example><!-- #2584 -->
+        <example type="untouched">But you know some call it surfing, while others ...</example><!-- #2584 -->
         <example type="ambiguous" inputform="claim[claim/NN:UN,claim/VB,claim/VBP]" outputform="claim[claim/NN:UN]">Morroco's disputed <marker>claim</marker> to portions of Algeria.</example>
         <example type="ambiguous" inputform="bark[bark/NN:UN,bark/VB,bark/VBP]" outputform="bark[bark/NN:UN]">Remove the old <marker>bark</marker> carefully.</example>
         <example type="ambiguous" inputform="work[work/JJ,work/NN:UN,work/VB,work/VBP]" outputform="work[work/NN:UN]">Does this <marker>work</marker> contain any errors?</example>
@@ -5439,33 +5472,44 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
       <example type="ambiguous" inputform="mine[mine/NN,mine/PRP$,mine/VB,mine/VBP]" outputform="mine[mine/PRP$]">It's <marker>mine</marker>.</example>
     </rule>
 
-		<rule id="VBP_NN_VBZ" name="company -> noun">
-			<antipattern>
-				<token regexp="yes">you|we|they</token>
-				<token>are</token>
-				<token postag="VB[ZP]?" postag_regexp="yes"/>
-				<token postag="IN"/>
-			</antipattern>
-			<pattern>
-				<token regexp="yes" postag="VB[ZPG]?" postag_regexp="yes" inflected="yes">be|have</token>
-				<marker>
-				<and>
-					<token postag="NN.*" postag_regexp="yes"><exception postag="NN|JJ.*" postag_regexp="yes"/><exception scope="next" postag="DT|RB" postag_regexp="yes"/></token>
-					<token postag="VB[ZP]?" postag_regexp="yes"/>
-				</and>
-				<token><exception postag_regexp="yes" postag="NNP|PRP"/></token>
-				</marker>
-			</pattern>
-			<disambig><match no="2" postag="NN.*" postag_regexp="yes"/></disambig>
-			<example type="untouched">It's still valid.</example>
-			<example type="untouched">Incorrect grammar. People have make many types of mistakes with verb agreement.</example>
-			<example type="untouched">Incorrect grammar. The technician has <marker>make</marker> about 20 errors this year.</example>
-			<example type="untouched">I have <marker>notice</marker> LanguageTool doesn't find all errors.</example><!-- Possibly a noun (=somebody has told me (that)), but possibly incorrect verb form (should be 'noticed') -->
-			<example type="untouched">Incorrect grammar. I have <marker>start</marker> he tomorrow.</example>
-			<example type="untouched">Incorrect grammar. They are build from wood.</example>
-			<example type="untouched">Incorrect grammar. We are drive to London.</example>
-			<example type="ambiguous" inputform="companies[company/NNS,company/VBZ]" outputform="companies[company/NNS]">They have <marker>companies</marker>.</example>
-		</rule>
+    <rule id="VBP_NN_VBZ" name="company -> noun">
+        <antipattern>
+            <token regexp="yes">you|we|they</token>
+            <token>are</token>
+            <token postag="VB[ZP]?" postag_regexp="yes"/>
+            <token postag="IN"/>
+        </antipattern>
+        <antipattern><!-- #2657 I will be search for -->
+            <token regexp="yes">&subject_pronouns;</token>
+            <token postag="MD"/>
+            <token>be</token>
+            <token postag="VB"/>
+            <token postag="IN"/>
+        </antipattern>
+        <pattern>
+            <token regexp="yes" postag="VB[ZPG]?" postag_regexp="yes" inflected="yes">be|have</token>
+            <marker>
+                <and>
+                    <token postag="NN.*" postag_regexp="yes">
+                        <exception postag="NN|JJ.*" postag_regexp="yes"/>
+                        <exception scope="next" postag="DT|RB" postag_regexp="yes"/>
+                        </token>
+                    <token postag="VB[ZP]?" postag_regexp="yes"/>
+                </and>
+                <token><exception postag_regexp="yes" postag="NNP|PRP"/></token>
+            </marker>
+        </pattern>
+        <disambig><match no="2" postag="NN.*" postag_regexp="yes"/></disambig>
+        <example type="untouched">It's still valid.</example>
+        <example type="untouched">Incorrect grammar. People have make many types of mistakes with verb agreement.</example>
+        <example type="untouched">Incorrect grammar. The technician has <marker>make</marker> about 20 errors this year.</example>
+        <example type="untouched">I have <marker>notice</marker> LanguageTool doesn't find all errors.</example><!-- Possibly a noun (=somebody has told me (that)), but possibly incorrect verb form (should be 'noticed') -->
+        <example type="untouched">Incorrect grammar. I have <marker>start</marker> he tomorrow.</example>
+        <example type="untouched">Incorrect grammar. They are build from wood.</example>
+        <example type="untouched">Incorrect grammar. We are drive to London.</example>
+        <example type="untouched">Incorrect grammar: I will be search for you.</example><!-- #2657 -->
+        <example type="ambiguous" inputform="companies[company/NNS,company/VBZ]" outputform="companies[company/NNS]">They have <marker>companies</marker>.</example>
+    </rule>
 
         <rule id="VBP_NN_VBZ_NN" name="have palm trees - palm is a noun">
             <pattern>
