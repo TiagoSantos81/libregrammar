@@ -128,7 +128,7 @@
               <token postag="(N.|A..)MS.+" postag_regexp='yes'/>
       </pattern>
       <disambig action="filter" postag='S.+'/>
-      <example inputform="pelo[pelar/VMIP1S0,por+o/SPS00+DA]" outputform="por+o/SPS00+DA]" type='ambiguous' >Ele vai levar você <marker>pelo</marker> beiço.</example>
+      <example inputform="pelo[pelar/VMIP1S0,por+o/SPS00+DA]" outputform="pelo[por+o/SPS00+DA]" type='ambiguous' >Ele vai levar você <marker>pelo</marker> beiço.</example>
     </rule>
     <rule>
       <pattern>
