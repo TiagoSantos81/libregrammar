@@ -2734,11 +2734,11 @@ title="Easy editing stylesheet" ?>
 	<!-- "As senhoras pouca resistência encontraram." -->
 	<!-- "Os senhores pouca resistência encontraram." -->
       <antipattern>
-		<token postag_regexp='yes' postag='DA0[FM]P0'></token>
-	    <token postag_regexp='yes' postag='NC[FMC]P000'></token>	  
-	    <token postag_regexp='no' postag='DI0FS0'></token>
-		<token postag_regexp='no' postag='NCFS000'></token>
-	    <token postag_regexp='yes' postag='VMIM3P0|VMIS3P0'></token>	  
+          <token postag_regexp='yes' postag='D...P.'/>
+          <token postag_regexp='yes' postag='N..P.+'/>
+          <token postag_regexp='yes' postag='D...S.'/>
+          <token postag_regexp='yes' postag='N..S.+'/>
+          <token postag_regexp='yes' postag='V...3P.+'/>
       </antipattern>	  
 <!-- MARCOAGPINTO 2020-04-01 *END* -->
       <pattern>
@@ -2763,6 +2763,9 @@ title="Easy editing stylesheet" ?>
       <example>Dizem que ela e o marido não concordam em nada.</example>
     <!-- example correction="minha semana tiveram|minha semana, tive">No início da <marker>minha semana tive</marker> um acidente.</example--><!-- XXX works but with messed up suggestions. needs java code fix -->
       <example>No início das <marker>minhas férias, tive</marker> um acidente.</example>
+      <example>Os rebeldes pouca resistência encontraram.</example>
+      <example>As senhoras pouca resistência encontraram.</example>
+      <example>Os senhores pouca resistência encontraram.</example>
     </rule>
   </rulegroup>
 
