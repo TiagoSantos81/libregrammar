@@ -4216,6 +4216,26 @@ Copyright (C) 2012 Jaume Ortolà i Font
         </rule>
         <rule>
             <pattern>
+                <token inflected="yes">donar</token>
+                <token>de</token>
+                <marker>
+                    <token>baixa</token>
+                </marker>
+            </pattern>
+            <disambig action="filter" postag="N.*"/>
+        </rule>
+        <rule>
+            <pattern>
+                <token inflected="yes">donar</token>
+                <token>de</token>
+                <marker>
+                    <token>baixa</token>
+                </marker>
+            </pattern>
+            <disambig action="add"><wd pos="_GV_"></wd></disambig>
+        </rule>
+        <rule>
+            <pattern>
                 <token inflected="yes">posar</token>
                 <token>en</token>
                 <marker>
@@ -7051,7 +7071,7 @@ Copyright (C) 2012 Jaume Ortolà i Font
                     <token postag="D[^R].*" postag_regexp="yes"/>
                     <token postag="A.*|V.P.*|DN.*" postag_regexp="yes"/>
                     <token postag="A.*|V.P.*" postag_regexp="yes"/>
-                    <token postag="N.*" postag_regexp="yes"><exception postag="DN.*|V.G.*" postag_regexp="yes"/><exception regexp="yes">si|passa|dins</exception></token>
+                    <token postag="N.*" postag_regexp="yes"><exception postag="DN.*|V.G.*" postag_regexp="yes"/><exception regexp="yes">si|passa|dins|era</exception></token>
                 </marker>
             </unify>
         </pattern>
@@ -10186,7 +10206,7 @@ Copyright (C) 2012 Jaume Ortolà i Font
     <rulegroup id="no_GV" name="neteja GV">
         <rule>
             <pattern>
-                <token postag="_GV_"><exception postag="P[P0].*|V.*" postag_regexp="yes"/><exception regexp="yes">falta|terme|origen|camí|corrent|relleu|compte</exception></token>
+                <token postag="_GV_"><exception postag="P[P0].*|V.*" postag_regexp="yes"/><exception regexp="yes">baixa|falta|terme|origen|camí|corrent|relleu|compte</exception></token>
             </pattern>
             <disambig action="remove"><wd pos="_GV_"></wd></disambig>
         </rule>

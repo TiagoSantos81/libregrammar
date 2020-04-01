@@ -1750,37 +1750,78 @@ RB => Règles Brutes
       </pattern>
       <disambig action="ignore_spelling"/>
     </rule>
-  
-  <rule name="Ignore spelling of numbered list items ('1-')" id="IGNORE_SPELLING_OF_LIST_ITEMS">
-    <pattern>
-      <token postag="SENT_START"/>
-      <marker>
-        <token regexp="yes">\d{1,2}\-</token>
-      </marker>
-      <token spacebefore="yes" />
-    </pattern>
-    <disambig action="ignore_spelling"/>
-  </rule>
-
-  <rule name="Ignore spelling of ('5e')" id="IGNORE_SPELLING_OF_NUMBERS">
-    <pattern>
-      <marker>
-        <token regexp="yes">\d+e\-?</token>
-      </marker>
-    </pattern>
-    <disambig action="ignore_spelling"/>
-  </rule>
-
-  <rule name="Ignore spelling of ('-15')" id="IGNORE_SPELLING_OF_NEGATIVE_NUMBERS">
-    <pattern>
-      <marker>
-        <token regexp="yes">\-\d+</token>
-      </marker>
-    </pattern>
-    <disambig action="ignore_spelling"/>
-  </rule>
-
   </rulegroup>
+
+  <rulegroup name="Ignore spelling of numbers" id="IGNORE_SPELLING_OF_NUMBERS">
+    <!--
+        In English, Spanish, German and many other languages, we simply allow numbers and letters next to each other
+        In French almost any number + any letter is marked as spelling error. The following rules allow some specific cases
+
+        TODO:
+        * 10hrs
+        * 90m3
+        * 10m2
+    -->
+    <rule>
+      <pattern><!-- inch 5'20 (Canadians colloquially use feet and inches, see https://www.tripadvisor.com/Travel-g153339-c15311/Canada:Metric.System.html) -->
+        <token regexp="yes">\d+</token>
+        <token spacebefore="no">'</token>
+        <token regexp="yes">\d+</token>
+      </pattern>
+      <disambig action="ignore_spelling"/>
+    </rule>
+    <rule>
+      <!-- numbering in lists: 6a, 6b, ... -->
+      <pattern>
+        <token regexp="yes">\d+[A-Z]</token>
+      </pattern>
+      <disambig action="ignore_spelling"/>
+    </rule>
+    <rule>
+      <!-- A4, B4, A380, BMW M4 ... -->
+      <pattern>
+        <token regexp="yes">[A-Z]\d+</token>
+      </pattern>
+      <disambig action="ignore_spelling"/>
+    </rule>
+    <rule>
+      <!-- list items, 1-, 2-, -->
+      <pattern>
+        <marker>
+          <token regexp="yes">\d{1,3}\-</token>
+        </marker>
+      </pattern>
+      <disambig action="ignore_spelling"/>
+    </rule>
+    <rule>
+      <!-- 5e, 6e, ... -->
+      <pattern>
+        <marker>
+          <token regexp="yes">\d+[eᵉ]\-?</token>
+        </marker>
+      </pattern>
+      <disambig action="ignore_spelling"/>
+    </rule>
+    <rule>
+      <!-- negative numbers: -1, -10, ... -->
+      <pattern>
+        <marker>
+          <token regexp="yes">\-\d+</token>
+        </marker>
+      </pattern>
+      <disambig action="ignore_spelling"/>
+    </rule>
+    <rule>
+      <!-- chapter-style numbering: -1-, -2-, ... -->
+      <pattern>
+        <marker>
+          <token regexp="yes">\-\d+\-</token>
+        </marker>
+      </pattern>
+      <disambig action="ignore_spelling"/>
+    </rule>
+  </rulegroup>
+
     <rule name="Ignore spelling of domain names" id="IGNORE_DOMAIN_NAMES">
       <pattern case_sensitive="yes">
           <token regexp="yes">[A-Za-z0-9\-]+</token>
