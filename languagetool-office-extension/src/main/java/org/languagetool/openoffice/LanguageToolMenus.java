@@ -80,7 +80,8 @@ public class LanguageToolMenus {
   void setConfigValues(Configuration config) {
     this.config = config;
     switchOff = config.isSwitchedOff();
-    isRemote = config.doRemoteCheck();
+    // isRemote = config.doRemoteCheck();
+    isRemote = false;
   }
   
   void removeListener() {
@@ -366,6 +367,10 @@ public class LanguageToolMenus {
               xContextMenu.insertByIndex(i + 2, xNewMenuEntry1);
               
               int nId = i + 4;
+              /* remote code is removed in LibreGrammar,
+               *but this code allows the user to verify 
+               * if during merges anything was changed.
+               */
               if(isRemote) {
                 XPropertySet xNewMenuEntry2 = UnoRuntime.queryInterface(XPropertySet.class,
                     xMenuElementFactory.createInstance("com.sun.star.ui.ActionTrigger"));
@@ -394,6 +399,10 @@ public class LanguageToolMenus {
         xContextMenu.insertByIndex(count, xSeparator);
         
         int nId = count + 1;
+              /* remote code is removed in LibreGrammar,
+               *but this code allows the user to verify 
+               * if during merges anything was changed.
+               */
         if(isRemote) {
           XPropertySet xNewMenuEntry2 = UnoRuntime.queryInterface(XPropertySet.class,
               xMenuElementFactory.createInstance("com.sun.star.ui.ActionTrigger"));
