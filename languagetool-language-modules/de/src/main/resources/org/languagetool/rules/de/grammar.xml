@@ -39525,6 +39525,16 @@ Andere Projekte</example>
             <example correction="5 * 5"><marker>5*5</marker>.</example>
             <example>Das Spiel endete <marker>3:5</marker>.</example>
         </rule>
+        <rule id="APRIL_APRIL" name="Komma in 'April April'" default="temp_off">
+            <pattern>
+                <token>April</token>
+                <token>April</token>
+            </pattern>
+            <message>Wenn sie den spottenden Zuruf nach einem Aprilscherz meinen, fehlt hier ein Komma.</message>
+            <suggestion>April, April</suggestion>
+            <url>https://www.duden.de/rechtschreibung/April</url>
+            <example correction="April, April"><marker>April April</marker>! Das war nur ein Scherz.</example>
+        </rule>
         <rulegroup id="KOMMA_AUFZAEHLUNG" name="Falsches Komma vor Konjunktion in Aufzählung (nur wenige Fälle)">
             <rule>
                 <pattern>
@@ -42420,6 +42430,10 @@ Andere Projekte</example>
                     <token>als</token>
                     <token>auch</token>
                 </antipattern>
+                <antipattern>
+                    <token postag="VER:AUX:.+" postag_regexp="yes"/>
+                    <token postag="PRO:PER:NOM:.+" postag_regexp="yes"/>
+                </antipattern>
                 <pattern>
                     <token postag="SENT_START"/>
                     <marker>
@@ -42445,6 +42459,7 @@ Andere Projekte</example>
                 <example>Da die Ausschussmehrheit sowohl die Detailarbeit lenken kann als auch den Bericht vorlegt, stellt der Untersuchungsausschuss Missstände meist nur in offensichtlichen Fällen fest.</example>
                 <example>Wie erfolgreich waren apologetische Bestrebungen, wenn sie doch verloren haben?</example>
                 <example>Wie konnten die Bakterien in die Milch gelangen?</example>
+                <example>Jetzt bin ich offen für viele Dinge, allerdings interessiere ich mich nun schon seit geraumer Zeit für die Ergreifung eines Sozialberufs.</example>
             </rule>
             <rule>
                 <antipattern>

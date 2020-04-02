@@ -4547,6 +4547,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
       <example type="untouched">Would you like a drink?</example>
       <example type="ambiguous" inputform="like[like/IN,like/JJ,like/NN,like/VB,like/VBP]" outputform="like[like/IN]">It's <marker>like</marker> a dream.</example>
     </rule>
+
     <rule name="Goin'" id="VBG_IN">
         <antipattern>
             <token spacebefore="no" regexp="yes">['’]</token>
@@ -4572,6 +4573,9 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
                 <token regexp="yes" postag="UNKNOWN">[a-z]+in</token>
             </marker>
             <token spacebefore="no" regexp="yes">['’]</token><!-- Not &apostrophe; because only text with a correct apostrophe must be tagged. -->
+            <token>
+                <exception>s</exception><!-- #2680 -->
+                </token>
         </pattern><!-- Cannot use filter NoDisambiguationEnglishPartialPosTagFilter because not all text before 'in' is the base form of the verb, for example 'Puttin'. -->
         <disambig postag="VBG"/>
         <example type="untouched">I'm in N.Y.</example>
@@ -4587,11 +4591,13 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <example type="untouched">I am hopin` that this test works.</example>
         <example type="untouched">Adjective: That laughin' woman is my boss.</example>
         <example type="untouched">Adjective: ... and smilin' people are not always truly happy.</example>
+        <example type="untouched">He wanted to help organistaoin’s become more efficient.</example><!-- #2680 -->
         <example type="ambiguous" inputform="goin[goin]" outputform="goin[goin/VBG]">I'm <marker>goin</marker>’ to fix this rule.</example>
         <example type="ambiguous" inputform="TESTIN[TESTIN]" outputform="TESTIN[TESTIN/VBG]">WE ARE <marker>TESTIN</marker>' THE SOFTWARE.</example>
         <example type="ambiguous" inputform="Puttin[Puttin]" outputform="Puttin[Puttin/VBG]"><marker>Puttin</marker>' on the Ritz!</example>
         <example type="ambiguous" inputform="smilin[smilin]" outputform="smilin[smilin/VBG]">She was actually <marker>smilin</marker>’ all the way to the office.</example>
     </rule>
+
     <rulegroup name="All but" id="all_but_rb">
         <rule>
             <pattern>
@@ -4990,6 +4996,21 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <token postag="RB"/>
             <token postag_regexp="yes" postag="VBP?"/>
         </antipattern>
+        <antipattern><!-- #2671 Miss you winding me up. The sentence is missing a pronoun. Thus, make this antipattern strict to prevent incorrect disambiguation. -->
+            <token postag="SENT_START"/>
+            <token postag="VBP"/>
+            <token regexp="yes">&object_pronouns;</token>
+            <token postag="VBG"/>
+            <token min="0" max="1" postag="RP"/>
+            <token chunk="B-NP-singular"/>
+        </antipattern>
+        <antipattern><!-- #2682 She does not much care for -->
+            <token regexp="yes">he|she|it</token>
+            <token regexp="yes">does|did</token>
+            <token>not</token>
+            <token postag="RB"/>
+            <token chunk="E-NP-singular" postag="VB"/>
+        </antipattern>
         <pattern>
             <marker>
                 <and>
@@ -5088,12 +5109,16 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <example type="untouched">But some call it surfing, while others ...</example><!-- #2584 -->
         <example type="untouched">But you know some call it surfing, while others ...</example><!-- #2584 -->
         <example type="untouched">I do not much care for this kind of drink.</example><!-- #2661 -->
+        <example type="untouched">Miss you winding me up.</example><!-- #2671 -->
+        <example type="untouched">Miss her winding up the grandfather clock every morning.</example><!-- #2671 -->
+        <example type="untouched">She does not much care for this kind of drink.</example><!-- #2682 -->
         <example type="ambiguous" inputform="claim[claim/NN:UN,claim/VB,claim/VBP]" outputform="claim[claim/NN:UN]">Morroco's disputed <marker>claim</marker> to portions of Algeria.</example>
         <example type="ambiguous" inputform="bark[bark/NN:UN,bark/VB,bark/VBP]" outputform="bark[bark/NN:UN]">Remove the old <marker>bark</marker> carefully.</example>
         <example type="ambiguous" inputform="work[work/JJ,work/NN:UN,work/VB,work/VBP]" outputform="work[work/NN:UN]">Does this <marker>work</marker> contain any errors?</example>
         <example type="ambiguous" inputform="work[work/JJ,work/NN:UN,work/VB,work/VBP]" outputform="work[work/NN:UN]">But will NOT <marker>work</marker> of any type help you to forget your troubles?</example><!--  #2326 Unusual capitalization of NOT. -->
         <example type="ambiguous" inputform="WORK[work/JJ,work/NN:UN,work/VB,work/VBP]" outputform="WORK[work/NN:UN]">BUT, WON'T <marker>WORK</marker> ON YOUR PART AFFECT THE COMPLETION TIME?</example>
         <example type="ambiguous" inputform="reference[reference/NN:UN,reference/VB,reference/VBP]" outputform="reference[reference/NN:UN]">The document does not show the can reference. Do you know the can <marker>reference</marker>?</example><!-- A 'can reference' is a possible technical term. -->
+        <example type="ambiguous" inputform="care[care/NN:UN,care/VB,care/VBP]" outputform="care[care/NN:UN]">Does not much <marker>care</marker> for the patient also cost much money?</example><!-- #2682 -->
     </rule>
 
     <rule id="E_NP_VBP" name="noun/verb after a plural NP -> verb">
@@ -10077,6 +10102,30 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <pattern><!-- https://www.lexico.com/definition/ribonucleic_acid-->
             <token>ribonucleic</token>
             <token>acid</token>
+        </pattern>
+        <disambig action="ignore_spelling"/>
+    </rule>
+
+    <rule name="^^" id="IGNORE_SPELLING_OF_MULTIPLE_CIRCUMFLEX">
+        <pattern>
+            <token regexp="yes">\^+</token>
+        </pattern>
+        <disambig action="ignore_spelling"/>
+    </rule>
+    <rule name="blastic crisis" id="IGNORE_SPELLING_OF_BLASTIC_CRISIS">
+        <!-- https://www.merriam-webster.com/medical/blastic%20crisis -->
+        <pattern>
+            <token>blastic</token>
+            <token regexp="yes">cris[ei]s</token>
+        </pattern>
+        <disambig action="ignore_spelling"/>
+    </rule>
+    
+    <rule name="haversian canal" id="IGNORE_SPELLING_OF_HAVERSIAN">
+        <!-- https://www.merriam-webster.com/dictionary/haversian -->
+        <pattern>
+            <token>haversian</token>
+            <token regexp="yes">(canal|system)s?</token>
         </pattern>
         <disambig action="ignore_spelling"/>
     </rule>
