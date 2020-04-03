@@ -844,6 +844,20 @@ public class GermanSpellerRule extends CompoundAwareHunspellRule {
     put("einamen", "Einnahmen");
     put("[eE]inbu(ss|ß)ung", "Einbuße");
     put("[eE]inbu(ss|ß)ungen", "Einbußen");
+    put("nachichten", "Nachrichten");
+    put("gegehen", "gegangen");
+    put("Ethnocid", "Ethnozid");
+    put("Exikose", "Exsikkose");
+    put("Schonvermögengrenze", "Schonvermögensgrenze");
+    put("kontest", "konntest");
+    put("pitza", "Pizza");
+    put("Tütü", "Tutu");
+    putRepl("Prokopfverbrauchs?", "Prokopfv", "Pro-Kopf-V"); // Duden
+    putRepl("[vV]ollrichtung(en)?", "oll", "er");
+    putRepl("[vV]ollrichtest", "oll", "er");
+    putRepl("[vV]ollrichten?", "oll", "er");
+    putRepl("[vV]ollrichtet(e([mnrs])?)?", "oll", "er");
+    putRepl("[bB]edingslos(e([mnrs])?)?", "ding", "dingung");
     putRepl("[eE]insichtbar(e[mnrs]?)?", "sicht", "seh");
     putRepl("asymetrisch(ere|ste)[mnrs]?$", "ym", "ymm");
     putRepl("alterwürdig(ere|ste)[mnrs]?$", "lter", "ltehr");
