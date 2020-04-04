@@ -51,7 +51,7 @@ public class PortugalPortuguesePreAO  extends Portuguese {
     List<Rule> rules = new ArrayList<>();
     rules.addAll(super.getRelevantRules(messages, userConfig, motherTongue, altLanguages));
     rules.add(new PreReformPortugueseCompoundRule(messages));
-    rules.add(new PreReformPortugueseDashRule());
+    rules.add(new PreReformPortugueseDashRule(messages));
     rules.add(new PortugalPortugueseReplaceRule(messages));
     rules.add(new PortuguesePreAgreementReplaceRule(messages));
     return rules;
