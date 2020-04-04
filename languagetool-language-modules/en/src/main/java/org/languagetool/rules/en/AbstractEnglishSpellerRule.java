@@ -20,11 +20,8 @@ package org.languagetool.rules.en;
 
 import org.jetbrains.annotations.Nullable;
 import org.languagetool.*;
-import org.languagetool.language.English;
 import org.languagetool.languagemodel.LanguageModel;
-import org.languagetool.rules.Example;
-import org.languagetool.rules.RuleMatch;
-import org.languagetool.rules.SuggestedReplacement;
+import org.languagetool.rules.*;
 import org.languagetool.rules.en.translation.BeoLingusTranslator;
 import org.languagetool.rules.spelling.morfologik.MorfologikSpellerRule;
 import org.languagetool.rules.translation.Translator;
@@ -38,7 +35,7 @@ import java.util.stream.Collectors;
 @SuppressWarnings("ArraysAsListWithZeroOrOneArgument")
 public abstract class AbstractEnglishSpellerRule extends MorfologikSpellerRule {
 
-  private static final EnglishSynthesizer synthesizer = new EnglishSynthesizer(new English());
+  private static final EnglishSynthesizer synthesizer = (EnglishSynthesizer) Languages.getLanguageForShortCode("en").getSynthesizer();
 
   private final BeoLingusTranslator translator;
 
@@ -198,7 +195,7 @@ public abstract class AbstractEnglishSpellerRule extends MorfologikSpellerRule {
       for (String suffix : suffixes) {
         if (word.endsWith(wordSuffix)) {
           String baseForm = word.substring(0, word.length() - suffix.length());
-          String[] forms = synthesizer.synthesize(new AnalyzedToken(word, null, baseForm), posTag);
+          String[] forms = Objects.requireNonNull(language.getSynthesizer()).synthesize(new AnalyzedToken(word, null, baseForm), posTag);
           List<String> result = new ArrayList<>();
           for (String form : forms) {
             if (!speller1.isMisspelled(form)) {
