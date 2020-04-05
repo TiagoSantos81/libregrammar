@@ -522,6 +522,15 @@ though, and has since been slightly modified)-->
       <message>« Réserver à l’avance » est un pléonasme. Employez <suggestion>\1</suggestion>.</message>
       <example correction="réserver"><marker>réserver à l’avance</marker></example>
     </rule>
+    <rule id="RISQUE_POTENTIEL" name="risque potentiel">
+      <pattern>
+        <token regexp="yes">risques?</token>
+        <token regexp="yes">potentiels?</token>
+      </pattern>
+      <message>« \1 \2 » est un pléonasme. Employez <suggestion>\1</suggestion>.</message>
+      <url>http://parler-francais.eklablog.com/un-risque-potentiel-a57602681</url>
+      <example correction="risque">Un <marker>risque potentiel</marker>.</example>
+    </rule>
   </category>
   <category id="CAT_HOMONYMES_PARONYMES" name="Confusion d’homonymes et paronymes">
     <rule id="GENTE_GENT" name="gente → gent">
@@ -11356,8 +11365,8 @@ though, and has since been slightly modified)-->
           </token>
           <marker>
             <token postag="V .*" postag_regexp="yes">
-              <exception postag="V .* 3 s" postag_regexp="yes"/>
-              <exception postag="V.* ppa .* s" postag_regexp="yes"/>
+              <exception postag="V .* 3 sp?" postag_regexp="yes"/>
+              <exception postag="V.* ppa .* sp?" postag_regexp="yes"/>
             </token>
           </marker>
         </pattern>
@@ -11372,6 +11381,8 @@ though, and has since been slightly modified)-->
         <example>Je trouve cela passionnant.</example>
         <example>Je pensais que vous trouveriez ça intéressant.</example>
         <example>Pierre et elle étaient fiancés.</example>
+        <example>Il a lui-même été contaminé.</example>
+        <example>Elle a elle-même été contaminée.</example>
       </rule>
       <rule name="ça + 0 tokens + Verbe">
         <pattern>
@@ -11581,7 +11592,7 @@ though, and has since been slightly modified)-->
           <token min="0" max="1" regexp="yes">[lmnst]e|la|les|[nv]ous|leur|lui|en|y</token>
           <marker>
             <token postag="V .*" postag_regexp="yes">
-              <exception postag="V .* 3 p|V .* ppr|V.* ppa .* p" postag_regexp="yes"/>
+              <exception postag="V .* 3 s?p|V .* ppr|V.* ppa .* s?p" postag_regexp="yes"/>
             </token>
           </marker>
         </pattern>
@@ -11600,6 +11611,7 @@ though, and has since been slightly modified)-->
         <example correction="">Ils vous <marker>étonnerons</marker> par leur efficacité.</example>
         <example>Ils vous étonneront par leur efficacité.</example>
         <example>Ceux-ci ayant été approuvés.</example>
+        <example>Ils ont eux-mêmes été contaminés.</example>
       </rule>
       <rule name="ils/elles + 2 tokens + Verbe">
         <antipattern>
@@ -28340,6 +28352,63 @@ though, and has since been slightly modified)-->
         <message>« \1 » est une faute de typographie. Employez <suggestion>tout à fait</suggestion>.</message>
         <example correction="Tout à fait"><marker>Tout-à-fait</marker></example>
       </rule>
+      <rule>
+        <pattern><token regexp="yes">compte?[-‑‐]rendus?</token></pattern>
+        <message>« \1 » s’écrit sans trait d’union.</message>
+        <suggestion><match no="1" regexp_match="[-‑‐]" regexp_replace=" "/></suggestion>
+        <url>https://www.projet-voltaire.fr/culture-generale/differents-emplois-trait-union/</url>
+        <example correction="compte rendu">Un <marker>compte-rendu</marker>.</example>
+      </rule>
+      <rule>
+        <pattern><token regexp="yes">directeurs?[-‑‐]adjoints?</token></pattern>
+        <message>« \1 » s’écrit sans trait d’union.</message>
+        <suggestion><match no="1" regexp_match="[-‑‐]" regexp_replace=" "/></suggestion>
+        <url>https://www.projet-voltaire.fr/culture-generale/differents-emplois-trait-union/</url>
+        <example correction="directeur adjoint">Un <marker>directeur-adjoint</marker>.</example>
+      </rule>
+      <rule>
+        <pattern><token regexp="yes">pommes?[-‑‐]de[-‑‐]terres?</token></pattern>
+        <message>« \1 » s’écrit sans trait d’union.</message>
+        <suggestion><match no="1" regexp_match="[-‑‐]" regexp_replace=" "/></suggestion>
+        <url>https://www.projet-voltaire.fr/culture-generale/differents-emplois-trait-union/</url>
+        <example correction="pomme de terre">Une <marker>pomme-de-terre</marker>.</example>
+      </rule>
+      <rule>
+        <pattern><token regexp="yes">lieux?[-‑‐]communs?</token></pattern>
+        <message>« \1 » s’écrit sans trait d’union.</message>
+        <suggestion><match no="1" regexp_match="[-‑‐]" regexp_replace=" "/></suggestion>
+        <url>https://www.projet-voltaire.fr/culture-generale/differents-emplois-trait-union/</url>
+        <example correction="lieu commun">Un <marker>lieu-commun</marker>.</example>
+      </rule>
+      <rule>
+        <pattern><token regexp="yes">opéras?[-‑‐]bouffes?</token></pattern>
+        <message>« \1 » s’écrit sans trait d’union.</message>
+        <suggestion><match no="1" regexp_match="[-‑‐]" regexp_replace=" "/></suggestion>
+        <url>https://www.projet-voltaire.fr/culture-generale/differents-emplois-trait-union/</url>
+        <example correction="opéra bouffe">Un <marker>opéra-bouffe</marker>.</example>
+      </rule>
+      <rule>
+        <pattern><token regexp="yes">maîtres?[-‑‐]chanteurs?</token></pattern>
+        <message>« \1 » s’écrit sans trait d’union.</message>
+        <suggestion><match no="1" regexp_match="[-‑‐]" regexp_replace=" "/></suggestion>
+        <url>https://www.projet-voltaire.fr/culture-generale/differents-emplois-trait-union/</url>
+        <example correction="maître chanteur">Un <marker>maître-chanteur</marker>.</example>
+      </rule>
+      <rule>
+        <pattern><token regexp="yes">raz[-‑‐]de[-‑‐]marées?</token></pattern>
+        <message>« \1 » s’écrit sans trait d’union.</message>
+        <suggestion><match no="1" regexp_match="[-‑‐]" regexp_replace=" "/></suggestion>
+        <url>https://www.projet-voltaire.fr/culture-generale/differents-emplois-trait-union/</url>
+        <example correction="raz de marée">Un <marker>raz-de-marée</marker>.</example>
+      </rule>
+      <rule>
+        <pattern><token regexp="yes">bandes?[-‑‐]dessinées?</token></pattern>
+        <message>« \1 » s’écrit sans trait d’union.</message>
+        <suggestion><match no="1" regexp_match="[-‑‐]" regexp_replace=" "/></suggestion>
+        <url>https://www.projet-voltaire.fr/culture-generale/differents-emplois-trait-union/</url>
+        <example correction="bande dessinée">Une <marker>bande-dessinée</marker>.</example>
+        <example correction="bandes dessinées">Des <marker>bandes-dessinées</marker>.</example>
+      </rule>
     </rulegroup>
     <rule id="CEST_A_DIRE" name="c’est à dire">
       <pattern>
@@ -28620,6 +28689,14 @@ though, and has since been slightly modified)-->
         <message>Voulez-vous dire <suggestion>\1-Comté</suggestion> ?</message>
         <example correction="Franche-Comté">Il habite en <marker>Franche Comté</marker>.</example>
         <example>Il habite en Franche-Comté.</example>
+      </rule>
+      <rule>
+        <regexp>\b(?-i)(?!Île-de-France\b)(?i)[IÎ]ll?es?[-‑‐  ]de[-‑‐  ]France\b</regexp>
+        <message>Écrivez <suggestion>Île-de-France</suggestion>.</message>
+        <url>https://en.wikipedia.org/wiki/%C3%8Ele-de-France</url>
+        <example correction="Île-de-France">En <marker>Ile-de-France</marker>.</example>
+        <example correction="Île-de-France">En <marker>Île-De-France</marker>.</example>
+        <example correction="Île-de-France">En <marker>Île de France</marker>.</example>
       </rule>
       <rule>
         <regexp>\b(?-i)(?!Clermont-Ferrand\b)(?i)Clermo[nm][dt]?s?[-‑‐  ]Ferr?[ae]n[dt]?s?\b</regexp>
