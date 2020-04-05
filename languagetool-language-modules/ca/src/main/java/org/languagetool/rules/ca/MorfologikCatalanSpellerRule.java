@@ -35,7 +35,7 @@ public final class MorfologikCatalanSpellerRule extends MorfologikSpellerRule {
   private String dictFilename;
   private static final String SPELLING_FILE = "/ca/spelling.txt";
   
-  private static final Pattern PARTICULA_INICIAL = Pattern.compile("^(els?|als?|pels?|dels?|de|per|uns?|una|unes|la|les|[tms]eus?) (..+)$",Pattern.CASE_INSENSITIVE|Pattern.UNICODE_CASE);
+  private static final Pattern PARTICULA_INICIAL = Pattern.compile("^(no|en|a|els?|als?|pels?|dels?|de|per|uns?|una|unes|la|les|[tms]eus?) (..+)$",Pattern.CASE_INSENSITIVE|Pattern.UNICODE_CASE);
   private static final Pattern PREFIX_AMB_ESPAI = Pattern.compile("^(des|avant|auto|ex|extra|macro|mega|meta|micro|multi|mono|mini|post|retro|semi|super|trans) (..+)$",Pattern.CASE_INSENSITIVE|Pattern.UNICODE_CASE);
   
   private static final Pattern APOSTROF_INICI_VERBS = Pattern.compile("^([lnmts])(h?[aeiouàéèíòóú].*)$",Pattern.CASE_INSENSITIVE|Pattern.UNICODE_CASE);
