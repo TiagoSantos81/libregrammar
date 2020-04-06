@@ -19,8 +19,8 @@
 package org.languagetool;
 
 import org.jetbrains.annotations.Nullable;
+import org.languagetool.broker.ResourceDataBroker;
 import org.languagetool.chunking.Chunker;
-import org.languagetool.databroker.ResourceDataBroker;
 import org.languagetool.language.Contributor;
 import org.languagetool.languagemodel.LanguageModel;
 import org.languagetool.languagemodel.LuceneLanguageModel;
@@ -32,10 +32,7 @@ import org.languagetool.tagging.Tagger;
 import org.languagetool.tagging.disambiguation.Disambiguator;
 import org.languagetool.tagging.disambiguation.xx.DemoDisambiguator;
 import org.languagetool.tagging.xx.DemoTagger;
-import org.languagetool.tokenizers.SentenceTokenizer;
-import org.languagetool.tokenizers.SimpleSentenceTokenizer;
-import org.languagetool.tokenizers.Tokenizer;
-import org.languagetool.tokenizers.WordTokenizer;
+import org.languagetool.tokenizers.*;
 
 import java.io.*;
 import java.util.*;
@@ -435,7 +432,7 @@ public abstract class Language {
       for (String fileName : getRuleFileNames()) {
         InputStream is = null;
         try {
-          is = this.getClass().getResourceAsStream(fileName);
+          is = JLanguageTool.getDataBroker().getAsStream(fileName);
           boolean ignore = false;
           if (is == null) {                     // files loaded via the dialog
             try {
