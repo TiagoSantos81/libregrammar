@@ -72,7 +72,7 @@
     - new part-of-speech tag `ORD` for ordinal numbers (e.g., first, second, twenty-third etc.)
 
 #### French
-  * various rules improvements, thanks to Theotime and vkyfox
+  * various rules improvements, thanks to Theotime, vkyfox and Dpelle
   * POS and spelling improvements
   * false friends improvements:
     - 162 entries added to French for English natives;
