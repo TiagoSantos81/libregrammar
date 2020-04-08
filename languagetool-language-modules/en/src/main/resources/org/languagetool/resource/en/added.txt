@@ -2909,7 +2909,8 @@ cyberbullying	cyberbully	VBG
 cyberbullying	cyberbullying	NN:U
 cybercafé	cybercafé	NN
 cybercafés	cybercafé	NNS
-cybercrime	cybercrime	NN:U
+cybercrime	cybercrime	NN:UN
+cybercrimes	cybercrime	NNS
 cybercriminal	cybercriminal	NN
 cybercriminals	cybercriminal	NNS
 cybersecurity	cybersecurity	NN:U
@@ -4217,6 +4218,8 @@ dispauperized	dispauperize	VBN
 dispauperizes	dispauperize	VBZ
 dispauperizing	dispauperize	VBG
 DisplayPort	DisplayPort	NNP
+dispreaded	dispread	VBD
+dispreaded	dispread	VBN
 diss	diss	NN
 disses	diss	NNS
 dissocialise	dissocialise	VB
@@ -5582,6 +5585,7 @@ frontend	frontend	NN
 frontends	frontend	NNS
 front-engined	front-engined	JJ
 Frontex	Frontex	NNP
+frontline	frontline	JJ
 frustrated	frustrated	JJ
 frustrating	frustrating	JJ
 FSN	FSN	NNP
@@ -5604,6 +5608,7 @@ fulgurated	fulgurated	JJ
 fulgurated	fulgurate	VBN
 fulgurates	fulgurate	VBZ
 fulgurating	fulgurate	VBG
+full-throated	full-throated	JJ
 fully-featured	fully-featured	JJ
 fully-fledged	fully-fledged	JJ
 funk	funk	NN:U
@@ -5680,6 +5685,7 @@ gameplay	gameplay	NN:U
 gamification	gamification	NN:U
 Ganesh	Ganesh	NNP
 Ganesha	Ganesha	NNP
+gaping	gaping	JJ
 García	García	NNP
 garçon	garçon	NN
 garçons	garçon	NNS
@@ -6766,6 +6772,7 @@ hydrolytically	hydrolytically	RB
 hydrolyzers	hydrolyzer	NNS
 hydronephrosis	hydronephrosis	NN
 hydronephroses	hydronephroses	NN
+hydroxychloroquine	hydroxychloroquine	NN:U
 hydroxylate	hydroxylate	VB
 hydroxylate	hydroxylate	VBP
 hydroxylated	hydroxylate	VBD
@@ -9727,6 +9734,7 @@ NGOs	NGO	NNS
 n-gram	n-gram	NN
 n-grams	n-gram	NNS
 NHD	NHD	NNP
+NHS	NHS	NNP
 Nicholls	Nicholls	NNP
 nickelise	nickelise	VB
 nickelise	nickelise	VBP
@@ -11337,6 +11345,7 @@ plagiarisers	plagiariser	NNS
 plain	plain	RB
 plane-maker	plane-maker	NN
 plane-makers	plane-maker	NNS
+Plaquenil	Plaquenil	NNP
 plastic	plastic	NN
 platinize	platinize	VB
 platinize	platinize	VBP
@@ -11717,6 +11726,18 @@ prebooking	prebook	VBG
 pre-booking	pre-book	VBG
 prebooks	prebook	VBZ
 pre-books	pre-book	VBZ
+prebuild	prebuild	VB
+prebuild	prebuild	VBP
+prebuilt	prebuild	VBD
+prebuilt	prebuild	VBN
+prebuilds	prebuild	VBZ
+prebuilding	prebuild	VBG
+pre-build	pre-build	VB
+pre-build	pre-build	VBP
+pre-built	pre-build	VBD
+pre-built	pre-build	VBN
+pre-builds	pre-build	VBZ
+pre-building	pre-build	VBG
 precalculate	precalculate	VB
 precalculate	precalculate	VBP
 precalculated	precalculate	VBD
@@ -11997,8 +12018,12 @@ preprogrammed	preprogramme	VBD
 preprogrammed	preprogramme	VBN
 preprogrammes	preprogramme	VBZ
 preprogramming	preprogramme	VBG
+pre-qualification	pre-qualification	NN:UN
+pre-qualifications	pre-qualification	NNS
 prequalified	prequalify	VBD
+pre-qualified	pre-qualified	JJ
 pre-qualified	pre-qualify	VBD
+prequalified	prequalified	JJ
 prequalified	prequalify	VBN
 pre-qualified	pre-qualify	VBN
 prequalifies	prequalify	VBZ
@@ -12074,6 +12099,9 @@ pretell	pretell	VB
 pretell	pretell	VBP
 pretold	pretell	VBD
 pretold	pretell	VBN
+pre-teen	pre-teen	JJ
+pre-teen	pre-teen	NN
+pre-teens	pre-teen	NNS
 pretells	pretell	VBZ
 pretelling	pretell	VBG
 pretest	pretest	NN
@@ -13956,6 +13984,7 @@ sanitiser	sanitiser	NN
 sanitisers	sanitiser	NNS
 Sanjay	Sanjay	NNP
 Sanjeev	Sanjeev	NNP
+Sanofi	Sanofi	NNP
 sans	sans	IN
 Santhosh	Santhosh	NNP
 Santino	Santino	NNP
