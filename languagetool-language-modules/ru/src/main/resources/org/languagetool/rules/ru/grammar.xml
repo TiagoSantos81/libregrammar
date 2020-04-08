@@ -2745,6 +2745,42 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="Привет, друзья"><marker>Привет друзья</marker>!</example>
             </rule>
         </rulegroup>
+        <rulegroup id="Kak_bi_to_ni_bilo" name="Устойчивое выражение «как бы то ни было»,..">
+            <rule>
+                <pattern>              
+                    <token>как</token>
+                    <token>бы</token>
+                    <token>то</token>
+                    <token>не</token>
+                    <token>было</token>
+                </pattern>
+                <message>Устойчивое выражение: <suggestion>\1 \2 \3 ни \5</suggestion></message>
+
+                <short>Устойчивое выражение.</short>
+                <example correction="как бы то ни было"><marker>как бы то не было</marker></example>
+            </rule>
+            <rule>
+                <pattern>              
+                    <token>как</token>
+                    <token>бы-то</token>
+                    <token regexp="yes">н[еи]</token>
+                    <token>было</token>
+                </pattern>
+                <message>Устойчивое выражение: <suggestion>\1 бы то ни \4</suggestion></message>
+                <short>Устойчивое выражение.</short>
+                <example correction="как бы то ни было"><marker>как бы-то ни было</marker></example>
+            </rule>
+            <rule>
+                <pattern>              
+                    <token>как-бы</token>
+                    <token>то</token>
+                </pattern>
+                <message>Устойчивое выражение: <suggestion>как бы \2</suggestion></message>
+                <short>Устойчивое выражение.</short>
+                <example correction="как бы то"><marker>как-бы то</marker></example>
+            </rule>            
+        </rulegroup>
+        
         <rulegroup id="POZHALUJSTA" name="«Пожалуйста» выделяется запятыми">
             <rule>
                 <pattern>
@@ -2786,6 +2822,19 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <url>http://ru.wikipedia.org/wiki/%D0%92%D0%B2%D0%BE%D0%B4%D0%BD%D1%8B%D0%B5_%D1%81%D0%BB%D0%BE%D0%B2%D0%B0</url>
                 <short>Пропущена запятая.</short>
                 <example correction="Пожалуйста, закройте"><marker>Пожалуйста закройте</marker> дверь.</example>
+            </rule>
+            <rule>
+                <pattern case_sensitive="yes">
+                    <token postag="SENT_START"></token>
+                    <marker>
+                        <token>Привет</token>
+                        <token negate="yes" regexp="yes">[\p{Punct}]</token>
+                    </marker>
+                </pattern>
+                <message>Пропущена запятая: <suggestion>\2, \3</suggestion>.</message>
+               
+                <short>Пропущена запятая.</short>
+                <example correction="Привет, я"><marker>Привет я</marker> новенький.</example>
             </rule>
         </rulegroup>
         
@@ -8134,6 +8183,19 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="Обо всём|О всём"><marker>Об всём</marker>.</example>
             </rule>
         </rulegroup>
+        
+        <rule id="Verb_IMP_OR_REAL" name="Глагол должен быть в настоящем времени">
+            <pattern>
+                <token regexp="yes">если|когда</token>
+                <token postag="PNN:.*" postag_regexp="yes"></token>
+                <marker>
+                    <token postag="VB:IMP:.*:.*:.*:.*" postag_regexp="yes"></token>
+                </marker>
+            </pattern>
+            <message>Глагол в настоящем времени не может быть в повелительном наклонении: <suggestion><match no="3" postag="VB:IMP:(.*)" postag_regexp="yes" postag_replace="VB:Real:$1"></match></suggestion></message>
+            <example correction="ищете">Если вы <marker>ищите</marker></example>
+            <example>Если  вы ищете</example>
+        </rule>        
         
         <rule default="on" id="Verb_and_Verb" name="Глагол и глагол">
 	        <antipattern>

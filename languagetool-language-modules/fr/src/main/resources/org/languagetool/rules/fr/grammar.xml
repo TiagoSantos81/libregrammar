@@ -8419,7 +8419,7 @@ though, and has since been slightly modified)-->
             <marker>
               <token postag="[JN] .* s" postag_regexp="yes">
                 <exception postag="V .*|.* sp" postag_regexp="yes"/>
-                <exception regexp="yes">bidon|cent|face|grâce|juste|internet|maximum|minimum|judoka|bleu|vert|jaune|rouge|noir|brun|gris|blanc|mauve|pourpre|violet|beige|châtain|rose|neuf</exception>
+                <exception regexp="yes">autour|bidon|cent|face|grâce|juste|internet|maximum|minimum|judoka|bleu|vert|jaune|rouge|noir|brun|gris|blanc|mauve|pourpre|violet|beige|châtain|rose|neuf</exception>
               </token>
             </marker>
           <token><exception>et</exception></token>
@@ -8468,6 +8468,7 @@ though, and has since been slightly modified)-->
         <example>Les imprimantes laser.</example>
         <example>Tous les lundis matin.</example>
         <example>Tous les lundis soir.</example>
+        <example>Les gens autour de nous.</example>
       </rule>
     </rulegroup>
     <rulegroup id="ACCORD_GENRE" name="Accord en genre">
@@ -11845,6 +11846,11 @@ though, and has since been slightly modified)-->
         <example>Veuillez m’en montrer un autre.</example>
       </rule>
       <rule>
+        <antipattern>
+          <token>Marine</token>
+          <token>le</token>
+          <token>Pen</token>
+        </antipattern>
         <pattern>
           <token postag="SENT_START|C coor" postag_regexp="yes"/>
           <marker>
@@ -11870,6 +11876,7 @@ though, and has since been slightly modified)-->
         <example>Lis le plus vite possible.</example>
         <example>Montez le son.</example>
         <example>Monte le son.</example>
+        <example>Marine le Pen.</example>
       </rule>
       <rule>
         <pattern>
@@ -19086,7 +19093,7 @@ though, and has since been slightly modified)-->
         <token regexp="yes">problèmes?|questions?</token>
       </pattern>
       <message>« Adresser un problème » est un anglicisme. Employez <suggestion>traiter un problème</suggestion>, <suggestion>aborder un problème</suggestion>.</message>
-      <url>http://www.bt-tb.tpsgc-pwgsc.gc.ca/btb.php?lang=fra&amp;cont=034</url>
+      <url>http://www.academie-francaise.fr/adresser-au-sens-daborder</url>
       <example correction="traiter un problème|aborder un problème"><marker>adresser un problème</marker></example>
       <example><marker>traiter un problème</marker></example>
       <example>Il lui a adressé des compliments.</example>
@@ -28695,7 +28702,7 @@ though, and has since been slightly modified)-->
       <rule>
         <regexp>\b(porte)[-‑‐  ](feuilles?)\b</regexp>
         <message>Écrivez <suggestion>\1\2</suggestion> sans trait d’union ni espace.</message>
-        <url>https://fr.wiktionary.org/wiki/portefeuille></url>
+        <url>https://fr.wiktionary.org/wiki/portefeuille</url>
         <example correction="portefeuille">Un <marker>porte-feuille</marker>.</example>
         <example correction="portefeuille">Un <marker>porte feuille</marker>.</example>
         <example correction="portefeuilles">Des <marker>porte-feuilles</marker>.</example>
@@ -28948,7 +28955,7 @@ though, and has since been slightly modified)-->
       </pattern>
       <message>Quand chez est suivi d’un pronom personnel et que l’ensemble forme un nom composé signifiant domicile, chez est suivi d’un trait d’union.</message>
       <suggestion>chez-\3</suggestion>
-      <url>http://www.bt-tb.tpsgc-pwgsc.gc.ca/btb.php?lang=fra&amp;cont=271</url>
+      <url>http://bdl.oqlf.gouv.qc.ca/bdl/gabarit_bdl.asp?id=4151</url>
       <example correction="chez-toi">Je me sens chez moi dans ton <marker>chez toi</marker>.</example>
       <example>Je me sens chez moi dans ton chez-toi.</example>
     </rule>

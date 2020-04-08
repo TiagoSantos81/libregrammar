@@ -3212,6 +3212,12 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
            <token postag="VBN"/>
            <token postag="VBD"/>
        </antipattern>
+       <antipattern><!--  #2722 was last seen taken care of -->
+           <token inflected="yes">be</token>
+           <token postag="RB"/>
+           <token postag="VBN"/>
+           <token postag="VBN"/>
+       </antipattern>
         <pattern>
             <marker>
                 <token postag="VBN">
@@ -3234,7 +3240,9 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <example type="untouched">In addition, she will assume the business lead role supporting new endeavors that our will group will become involved in, including the cost of funds and prepays activity.</example>
         <example type="untouched">Objects must orbit the Earth within this radius, or they can become unbound by the gravitational perturbation of the Sun.</example>
         <example type="untouched">Presently you can only set named tags via AppleScript.</example>
+        <example type="untouched">He was last seen taken care of by his mother.</example><!-- #2722 -->
     </rule>
+
     <rule name="of + VBN + JJ -&gt; JJ" id="OF_VBN_JJ">
         <pattern>
             <token>of</token>
@@ -5011,6 +5019,13 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <token postag="RB"/>
             <token chunk="E-NP-singular" postag="VB"/>
         </antipattern>
+        <antipattern><!-- #2704 You MAY use: -->
+            <token postag_regexp="yes" postag="SENT_START|PCT"/>
+            <token regexp="yes">&object_pronouns;</token>
+            <token postag="MD"/>
+            <token chunk="E-NP-singular" postag="VB"/>
+            <token>:</token><!-- The problem seems to occur only with a colon -->
+        </antipattern>
         <pattern>
             <marker>
                 <and>
@@ -5112,6 +5127,8 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <example type="untouched">Miss you winding me up.</example><!-- #2671 -->
         <example type="untouched">Miss her winding up the grandfather clock every morning.</example><!-- #2671 -->
         <example type="untouched">She does not much care for this kind of drink.</example><!-- #2682 -->
+        <example type="untouched">You MAY use:</example><!-- #2704 -->
+        <example type="untouched">If you prefer, you CAN use:</example><!-- #2704 -->
         <example type="ambiguous" inputform="claim[claim/NN:UN,claim/VB,claim/VBP]" outputform="claim[claim/NN:UN]">Morroco's disputed <marker>claim</marker> to portions of Algeria.</example>
         <example type="ambiguous" inputform="bark[bark/NN:UN,bark/VB,bark/VBP]" outputform="bark[bark/NN:UN]">Remove the old <marker>bark</marker> carefully.</example>
         <example type="ambiguous" inputform="work[work/JJ,work/NN:UN,work/VB,work/VBP]" outputform="work[work/NN:UN]">Does this <marker>work</marker> contain any errors?</example>
@@ -6093,6 +6110,12 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
                 <token regexp="yes">and|or</token>
                 <token postag_regexp="yes" postag="VB(P|D)?"/>
             </antipattern>
+            <antipattern><!-- #2723 can't rest and something -->
+                <token postag="MD"/>
+                <token regexp="yes">&apostrophe;</token>
+                <token>t</token>
+                <token postag_regexp="yes" postag="VBP?"/>
+            </antipattern>
             <pattern>
                 <marker>
                     <token postag="NN.*" postag_regexp="yes"><exception postag_regexp="yes" postag="RBR?|JJ"/></token>
@@ -6121,6 +6144,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <example type="untouched">She might possibly go and hangout.</example><!-- #2386 -->
             <example type="untouched">I can't restart or logoff.</example><!-- #2501 -->
             <example type="untouched">Currently we email and share the stuff.</example><!-- #2539 -->
+            <example type="untouched">They always can't rest and something is waiting for them.</example><!-- #2723 -->
             <example type="ambiguous" inputform="man[man/NN:UN,man/VB,man/VBP]" outputform="man[man/NN:UN]">They are now <marker>man</marker> and wife duly married.</example>
             <example type="ambiguous" inputform="husband[husband/NN,husband/VB,husband/VBP]" outputform="husband[husband/NN]">They were <marker>husband</marker> and wife.</example>
             <example type="untouched">I couldn't vote because nothing applied to me.</example>
@@ -10098,10 +10122,10 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <disambig action="ignore_spelling"/>
     </rule>
 
-    <rule name="ribonucleic acid" id="RIBONUCLEIC_ACID">
+    <rule name="ribonucleic acid" id="ACID">
         <pattern><!-- https://www.lexico.com/definition/ribonucleic_acid-->
-            <token>ribonucleic</token>
-            <token>acid</token>
+            <token regexp="yes">ribonucleic|glutamic</token>
+            <token regexp="yes">acids?</token>
         </pattern>
         <disambig action="ignore_spelling"/>
     </rule>
@@ -10130,6 +10154,14 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <disambig action="ignore_spelling"/>
     </rule>
 
+    <rule name="fata morgana" id="FATA_MORGANA_IGNORE_SPELLING">
+        <!-- https://www.merriam-webster.com/dictionary/fata%20morgana -->
+        <pattern>
+            <token>fata</token>
+            <token regexp="yes">morganas?</token>
+        </pattern>
+        <disambig action="ignore_spelling"/>
+    </rule>
 
     <rule name="Bon Voyage" id="IGNORE_SPELLING_OF_BON_VOYAGE">
         <!-- https://www.merriam-webster.com/dictionary/haversian -->

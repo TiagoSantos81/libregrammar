@@ -250,6 +250,7 @@ public abstract class AbstractEnglishSpellerRule extends MorfologikSpellerRule {
     s.put("Alot", Arrays.asList("A lot"));
     s.put("alot", Arrays.asList("a lot"));
     s.put("css", Arrays.asList("CSS"));
+    s.put("DDOS", Arrays.asList("DDoS"));
     s.put("async", Arrays.asList("asynchronous", "asynchronously"));
     s.put("Async", Arrays.asList("Asynchronous", "Asynchronously"));
     s.put("endevours", Arrays.asList("endeavours"));
@@ -350,6 +351,7 @@ public abstract class AbstractEnglishSpellerRule extends MorfologikSpellerRule {
     s.put("kiddin", Arrays.asList("kidding"));
     s.put("doin", Arrays.asList("doing"));
     s.put("nothin", Arrays.asList("nothing"));
+    s.put("SPOC", Arrays.asList("SpOC"));
     s.put("Thx", Arrays.asList("Thanks"));
     s.put("thx", Arrays.asList("thanks"));
     s.put("ty", Arrays.asList("thank you", "thanks"));
@@ -369,6 +371,8 @@ public abstract class AbstractEnglishSpellerRule extends MorfologikSpellerRule {
     s.put("sweetys", Arrays.asList("sweeties"));
     s.put("sowwy", Arrays.asList("sorry"));
     s.put("Sowwy", Arrays.asList("Sorry"));
+    s.put("grandmum", Arrays.asList("grandma", "grandmother"));
+    s.put("Grandmum", Arrays.asList("Grandma", "Grandmother"));
     s.put("Hongkong", Arrays.asList("Hong Kong"));
     // For non-US English
     s.put("center", Arrays.asList("centre"));
