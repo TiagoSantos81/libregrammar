@@ -8184,17 +8184,17 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             </rule>
         </rulegroup>
         
-        <rule id="Verb_IMP_OR_REAL" name="Глагол должен быть в настоящем времени">
+        <rule id="Verb_IMP_OR_REAL" name="Глагол должен быть в настоящем времени" default="temp_off">
             <pattern>
                 <token regexp="yes">если|когда</token>
                 <token postag="PNN:.*" postag_regexp="yes"></token>
                 <marker>
-                    <token postag="VB:IMP:.*:.*:.*:.*" postag_regexp="yes"></token>
+                    <token postag="VB:IMP:TRANS:IMPFV:.*:.*" postag_regexp="yes"><exception postag="VB:IMP:TRANS:IMPFV:.*:.*" postag_regexp="yes" negate_pos="yes"></exception></token>
                 </marker>
             </pattern>
             <message>Глагол в настоящем времени не может быть в повелительном наклонении: <suggestion><match no="3" postag="VB:IMP:(.*)" postag_regexp="yes" postag_replace="VB:Real:$1"></match></suggestion></message>
-            <example correction="ищете">Если вы <marker>ищите</marker></example>
-            <example>Если  вы ищете</example>
+            <example correction="ищете">Если вы <marker>ищите</marker> в этом месте.</example>
+            <example>Если вы ищете в этом месте.</example>
         </rule>        
         
         <rule default="on" id="Verb_and_Verb" name="Глагол и глагол">
@@ -9318,7 +9318,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example>Я спросил, что это за вода.</example>   <!-- check disambig -->
             <example>Однако из за уменьшения габаритов и веса комплектующих</example>  <!-- incorrect example, but for another rule -->
         </rule>
-        <rule id="PREP_Na_And_Noun" name="Предлог «на» и существительное" default="temp_off">
+        <rule id="PREP_Na_And_Noun" name="Предлог «на» и существительное" default="off">
             <pattern>
                 <token>на</token>
                 <token postag="NN:.*:.*:.*" postag_regexp="yes">
@@ -9682,6 +9682,49 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <short>Разговорная форма.</short>
                 <example>Иван Иванович</example>
                 <example correction="">Иван <marker>Иваныч</marker>.</example>
+            </rule>
+        </rulegroup>
+       <rulegroup default="temp_off" id="Word_root_repeat" name="Повтор однокоренных слов">
+            <rule>
+                <pattern>
+                    <token inflected="yes"  skip="-1">исследование</token>
+                    <token inflected="yes" regexp="yes">исследовать|исследоваться</token>                        
+                </pattern>
+                <message>Повтор однокоренных слов.</message>
+                 <short>Повтор слова.</short>
+                <example>При исследовании поглощения света наночастицами рассматривались трёхслойные частицы из заранее выбранных материалов.</example>
+                <example correction="">При <marker>исследовании поглощения света наночастицами исследовались</marker> трёхслойные частицы из заранее выбранных материалов.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token inflected="yes" regexp="yes" skip="-1">исследовать|исследоваться</token> 
+                    <token inflected="yes">исследование</token>      
+                </pattern>
+                <message>Повтор однокоренных слов.</message>
+                 <short>Повтор слова.</short>
+                <example>При исследовании поглощения света наночастицами рассматривались трёхслойные частицы из заранее выбранных материалов.</example>
+                <example correction=""><marker>Исследовались трёхслойные частицы из заранее выбранных материалов при исследовании</marker> поглощения света наночастицами.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token inflected="yes" skip="-1" >рассмотрение</token>
+                    <token inflected="yes" regexp="yes" >рассматривать|рассматриваться</token>                            
+                </pattern>
+                <message>Повтор однокоренных слов.</message>
+                 <short>Повтор слова.</short>
+                <example>При исследовании поглощения света наночастицами рассматривались трёхслойные частицы из заранее выбранных материалов.</example>
+                <example correction="">При <marker>рассмотрении поглощения света наночастицами рассматривались</marker> трёхслойные частицы из заранее выбранных материалов.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token inflected="yes" regexp="yes" skip="-1">рассматривать|рассматриваться</token>   
+                    <token inflected="yes"  >рассмотрение</token>
+                                         
+                </pattern>
+                <message>Повтор однокоренных слов.</message>
+                 <short>Повтор слова.</short>
+                <example>При исследовании поглощения света наночастицами рассматривались трёхслойные частицы из заранее выбранных материалов.</example>
+                <example correction=""><marker>Рассматривались трёхслойные частицы из заранее выбранных материалов при рассмотрении</marker> поглощения света наночастицами.</example>
             </rule>
         </rulegroup>
         <rule id="PARTICLE_JE" name="Избыточная частица «же»" default="off">
