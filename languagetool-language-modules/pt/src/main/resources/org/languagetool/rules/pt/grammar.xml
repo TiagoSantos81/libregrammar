@@ -9227,7 +9227,7 @@ title="Easy editing stylesheet" ?>
       <message>Sempre que possível, deve utilizar só um 'e' nas enumerações. Caso contrário, segmente a frase com pontuação ou considere utilizar a 'Oxford Comma'.</message>
         <suggestion>\1, <match no='3' include_skipped='all'/> \4 \5 <match no='6' include_skipped='all'/> \7</suggestion>
         <suggestion>\1 \2 <match no='3' include_skipped='all'/> \4, \5 <match no='6' include_skipped='all'/> \7</suggestion>
-      <url>https://superioringles.com.br/2016/09/27/virgula-oxford/</url>
+      <url>http://superioringles.com.br/2016/09/27/virgula-oxford/</url>
       <short>Reveja a pontuação em enumareções</short>
       <example correction="grande, confortável e bem|grande e confortável, e bem">A casa é <marker>grande e confortável e bem</marker> desenhada.</example>
       <example correction="sala, um quarto e uma cozinha|sala e um quarto, e uma cozinha">A casa tem uma <marker>sala e um quarto e uma cozinha</marker>.</example>
@@ -19011,11 +19011,11 @@ o tomate'>
           <token min='0' postag='A.+' postag_regexp='yes'/>
           <token regexp='yes'>especias?</token>
       </pattern>
-      <message>Esta palavra é um verbo. Se pretende referir-se a um nome ou adjetivo, deve utilizar a forma acentuada.</message>
+      <message>Esta palavra é um verbo. Se pretende referir-se a um nome ou adjetivo, deve utilizar a forma acentuada, ou mais use a forma mais comum <suggestion><match no='1' include_skipped='all'/> <match no='2' include_skipped='all'/> espécie<match no='3' regexp_match='.+?(s?)$' regexp_replace='$1'/></suggestion>.</message>
         <suggestion><match no='1' include_skipped='all'/> <match no='2' include_skipped='all'/> espécia<match no='3' regexp_match='.+?(s?)$' regexp_replace='$1'/></suggestion>
       <url>https://pt.wiktionary.org/wiki/espécia</url>
-      <example correction='da espécia'><marker>da especia</marker>.</example>
-      <example correction='das espécias'><marker>das especias</marker>.</example>
+      <example correction='da espécie|da espécia'><marker>da especia</marker>.</example>
+      <example correction='das espécies|das espécias'><marker>das especias</marker>.</example>
     </rule>
     <rule id='PARONYM_ESPERANCIA_114' name='Parónimo: esperancia'>
       <pattern>
@@ -19900,6 +19900,7 @@ o tomate'>
       <example correction='nas lixívias'><marker>nas lixivias</marker>.</example>
     </rule>
     <rule id='PARONYM_LIXIVIO_191' name='Parónimo: lixivio'>
+    <!-- adj. derivado relativo a lixívia -->
       <pattern>
           <token regexp='yes'>&art_detecao_paronimos;</token>
           <token min='0' postag='A.+' postag_regexp='yes'/>
@@ -24377,7 +24378,7 @@ TODO Write better examples
       <example correction='uma mágica'><marker>uma magica</marker>.</example>
       <example correction='uns mágicos'><marker>uns magicos</marker>.</example>
     </rule>
-    <rule id='PARONYM_ESPIA_614' name='Parónimo: espia'>
+    <!--rule id='PARONYM_ESPIA_614' name='Parónimo: espia'>
       <pattern>
           <token regexp='yes'>(?:(?:[mts]ua|minha|[nv]ossa)|(?:d|n|pel)?(?:outr)?a)s?|de|em|por|(alg|d|n)?(um(as?))</token>
           <token min='0' postag='A.+' postag_regexp='yes'/>
@@ -24385,10 +24386,10 @@ TODO Write better examples
       </pattern>
       <message>Esta palavra é um verbo. Se pretende referir-se a um nome ou adjetivo, deve utilizar a forma acentuada.</message>
         <suggestion><match no='1' include_skipped='all'/> <match no='2' include_skipped='all'/> <match no='3' regexp_match='[Aa]' regexp_replace='ã'/></suggestion>
-      <url>https://pt.wiktionary.org/wiki/espiã</url>
+      <url>https://pt.wiktionary.org/wiki/espia</url>
       <example correction='uma espiã'><marker>uma espia</marker>.</example>
       <example correction='umas espiãs'><marker>umas espias</marker>.</example>
-    </rule>
+    </rule-->
     <rule id='PARONYM_FLUIDO_614' name='Parónimo: fluído'>
       <pattern>
           <token regexp='yes'>&art_detecao_paronimos;</token>
@@ -32356,7 +32357,7 @@ TODO Write better examples
           <token regexp="yes">Garr?os</token>
       </pattern>
       <message>Escreva <suggestion>Roland Garros</suggestion> se se refere ao aviador francês.</message>
-      <url>https://pt.wikipedia.org/wiki/Rolland_Garros</url>
+      <url>https://pt.wikipedia.org/wiki/Torneio_de_Roland_Garros</url>
       <example correction="Roland Garros"><marker>Rolland Garros</marker></example>
     </rule>
     <rule>
