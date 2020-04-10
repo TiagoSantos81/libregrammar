@@ -31,7 +31,6 @@ import java.util.Objects;
  * User-specific configuration. So far, this contains a list of words and a settings map.
  * @since 4.2
  */
-@Experimental
 public class UserConfig {
 
   private final List<String> userSpecificSpellerWords;
