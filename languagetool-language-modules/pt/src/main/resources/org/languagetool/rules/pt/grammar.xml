@@ -19900,7 +19900,7 @@ o tomate'>
       <example correction='nas lixívias'><marker>nas lixivias</marker>.</example>
     </rule>
     <rule id='PARONYM_LIXIVIO_191' name='Parónimo: lixivio'>
-    <!-- adj. derivado relativo a lixívia -->
+    <!-- adj. derivado relativo a 'lixívia' -->
       <pattern>
           <token regexp='yes'>&art_detecao_paronimos;</token>
           <token min='0' postag='A.+' postag_regexp='yes'/>
@@ -23652,23 +23652,13 @@ TODO Write better examples
       <pattern>
           <token regexp='yes'>&art_detecao_paronimos;</token>
           <token min='0' postag='A.+' postag_regexp='yes'/>
-          <token regexp='yes'>psicanalises?</token>
+          <token regexp='yes'>psico?analises?</token>
       </pattern>
       <message>Esta palavra é um verbo. Se pretende referir-se a um nome ou adjetivo, deve utilizar a forma acentuada.</message>
         <suggestion><match no='1' include_skipped='all'/> <match no='2' include_skipped='all'/> psicanálise<match no='3' regexp_match='.+?(s?)$' regexp_replace='$1'/></suggestion>
       <url>https://pt.wiktionary.org/wiki/psicanálise</url>
       <example correction='na psicanálise'><marker>na psicanalise</marker>.</example>
       <example correction='nas psicanálises'><marker>nas psicanalises</marker>.</example>
-    </rule>
-    <rule id='PARONYM_PSICOANALISE_534' name='Parónimo: psicoanalise'>
-      <pattern>
-          <token regexp='yes'>&art_detecao_paronimos;</token>
-          <token min='0' postag='A.+' postag_regexp='yes'/>
-          <token regexp='yes'>psicoanalises?</token>
-      </pattern>
-      <message>Esta palavra é um verbo. Se pretende referir-se a um nome ou adjetivo, deve utilizar a forma acentuada.</message>
-        <suggestion><match no='1' include_skipped='all'/> <match no='2' include_skipped='all'/> psicoanálise<match no='3' regexp_match='.+?(s?)$' regexp_replace='$1'/></suggestion>
-      <url>https://pt.wiktionary.org/wiki/psicoanálise</url>
       <example correction='na psicoanálise'><marker>na psicoanalise</marker>.</example>
       <example correction='nas psicoanálises'><marker>nas psicoanalises</marker>.</example>
     </rule>
