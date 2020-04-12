@@ -93,7 +93,10 @@
   * POS and spelling improvements
 
 #### Russian
-  * small improvements
+  * rules added and improved
+
+#### Spanish
+  * rules added and improved, thanks to Jaume Órtola
 
 #### Ukrainian
   * dictionary update
