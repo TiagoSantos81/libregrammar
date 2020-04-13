@@ -180,6 +180,7 @@ renteplichtigen	renteplichtigen	ZNW:EKV:DE_
 rijksgestichten	rijksgestichten	ZNW:EKV:HET
 rooster	rooster	ZNW:EKV
 runderkroketten	runderkroketten	ZNW:MRV:DE_
+scherphoekvedermot	scherphoekvedermot	ZNW:EKV:DE_
 schoorsteenveeg	schoorsteenveeg	ZNW:EKV:DE_
 sedertdien	sedertdien	ZNW:EKV:DE_
 slachtofferleed	slachtofferleed	ZNW:EKV:HET
@@ -254,8 +255,11 @@ vooruitschoppen	vooruitschoppen	ZNW:MRV:DE_
 achteruitgezakt	achteruitgezakt	ZNW:EKV:HET
 langschedeligen	langschedeligen	ZNW:MRV:DE_
 ADHD	ADHD	ZNW:EKV:DE_
+Mercurius	Mercurius	ENM:LOC:PTS
+Nieuwgrieks	Nieuwgrieks	ZNW:EKV:HET
 Niue	Niue	ENM:LOC:LND
 Urdu	Urdu	ZNW:EKV:HET
+Oudgrieks	Oudgrieks	ZNW:EKV:HET
 post	post	ZNW:EKV
 meest	meest	VNW:OBP:ONV
 meeste	meest	VNW:OBP:ONV
@@ -265,6 +269,7 @@ aller	aller	VNW:OBP
 minder	minder	BNW:VGR:ONV
 rvs	rvs	ZNW:EKV:HET
 dude	dude	ZNW:EKV:DE_
+fruitmot	fruitmot	ZNW:EKV
 meelmot	meelmot	ZNW:EKV:DE_
 pool	pool	ZNW:EKV
 alsdan	alsdan	ZNW:EKV:DE_
@@ -293,7 +298,10 @@ no-budgetfilm	no-budgetfilm	ZNW:EKV:DE_
 pestcoördinator	pestcoördinator	ZNW:EKV:DE_
 Saturnus	Saturnus	ENM:LOC:PTS
 schilder-dichter	schilder-dichter	ZNW:EKV:DE_
+Sesamstraat	Sesamstraat	ENM:PRD
+Shakespeare	Shakespeare	ENM:PER:LST:NIX
 sms-bombardement	sms-bombardement	ZNW:EKV:HET
+Taipei	Taipei	ENM:LOC:PTS
 thermo-ondergoed	thermo-ondergoed	ZNW:EKV:HET
 vergeet-me-niet	vergeet-me-niet	ZNW:EKV:HET
 VS	VS	ZNW:EKV:DE_
@@ -302,6 +310,7 @@ tegenin	tegenin	ZNW:MRV:DE_
 Computable	Computable	ENM:ORG
 Nys	Nys	ENM:PER:LST:NIX
 alrede	alrede	BYW
+Wolgograd	Wolgograd	ENM:LOC:PTS
 aansluitpijp	aansluitpijp	ZNW:EKV:DE_
 aansluitpijpjes	aansluitpijp	ZNW:MRV:VRK:DE_
 aanzuigpijp	aanzuigpijp	ZNW:EKV:DE_
@@ -497,6 +506,7 @@ hardwaredeel	hardwaredeel	ZNW:EKV:HET
 luidsprekerstem	luidsprekerstem	ZNW:EKV:DE_
 wonderstuk	wonderstuk	ZNW:EKV:HET
 koelbatterijen	koelbatterijen	ZNW:MRV:DE_
+tv-verslaafde	tv-verslaafde	ZNW:EKV:DE_
 eiertaart	eiertaart	ZNW:EKV:DE_
 kinderwangen	kinderwangen	ZNW:MRV:DE_
 accijnstoren	accijnstoren	ZNW:EKV:DE_
@@ -15624,3 +15634,12 @@ Wyoming	Wyoming	ENM:LOC:RGN
 Dieppe	Dieppe	ENM:LOC:PTS
 Vesoul	Vesoul	ENM:LOC:RGN
 Enzinga	Enzinga	ENM:PER:LST:NIX
+Waterman	Waterman	ZNW:EKV:DE_
+tv-verslaafden	tv-verslaafde	ZNW:MRV:DE_
+tv-verslaafd	tv-verslaafd	BNW:STL:ONV
+tv-verslaafde	tv-verslaafd	BNW:STL:VRB
+tv-verslaafden	tv-verslaafd	BNW:STL:MRV:DE_
+Estisch	Estisch	ZNW:EKV:HET
+Ests	Ests	ZNW:EKV:HET
+Karelisch	Karelisch	ZNW:EKV:HET
+Koreaans	Koreaans	ZNW:EKV:HET

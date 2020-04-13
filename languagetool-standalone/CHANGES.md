@@ -71,6 +71,9 @@
     - updated en_GB spellchecker dictionary from https://github.com/marcoagpinto/aoo-mozilla-en-dict (Version 2.82 - 2020-03-01)
     - new part-of-speech tag `ORD` for ordinal numbers (e.g., first, second, twenty-third etc.)
 
+#### Esperanto
+  * added and improved rules
+
 #### French
   * various rules improvements, thanks to Theotime, vkyfox and Dpelle
   * POS and spelling improvements
@@ -97,6 +100,12 @@
 
 #### Spanish
   * rules added and improved, thanks to Jaume Órtola
+
+#### Spanish
+  * added and improved rules, including:
+    - SimpleReplaceRule;
+    - SimpleReplaceVerbsRule;
+    --SimpleReplaceAnglicismRule.
 
 #### Ukrainian
   * dictionary update
