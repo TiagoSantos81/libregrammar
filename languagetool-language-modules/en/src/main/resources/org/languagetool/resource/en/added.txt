@@ -144,6 +144,7 @@ ActiveCampaign	ActiveCampaign	NNP
 ActiveX	ActiveX	NNP
 Acura	Acura	NNP
 AdBlock	AdBlock	NNP
+ADCOM	ADCOM	NNP
 Adderall	Adderall	NNP
 Adeeb	Adeeb	NNP
 Adeel	Adeel	NNP
@@ -4495,6 +4496,7 @@ earbud	earbud	NNS
 earbuds	earbud	NNS
 EarPod	EarPod	NNP
 EarPods	EarPods	NNPS
+east	east	RB
 Eastburn	Eastburn	NNP
 Eastchester	Eastchester	NNP
 easterly	easterly	JJ
@@ -5576,6 +5578,7 @@ fractionizes	fractionize	VBZ
 fractionizing	fractionize	VBG
 Fráech	Fráech	NNP
 Français	Français	NNP
+Franceville	Franceville	NNP
 Francesco	Francesco	NNP
 Franche-Comté	Franche-Comté	NNP
 Francoist	Francoist	JJ
@@ -6568,6 +6571,12 @@ heroizes	heroize	VBZ
 heroizing	heroize	VBG
 herõon	herõon	NN
 herõons	herõon	NNS
+herringbone	herringbone	VB
+herringbone	herringbone	VBP
+herringboned	herringbone	VBD
+herringboned	herringbone	VBN
+herringbones	herringbone	VBZ
+herringboning	herringbone	VBG
 heterodimer	heterodimer	NN
 heterodimeric	heterodimeric	JJ
 heterodimerise	heterodimerise	VB
@@ -7534,6 +7543,7 @@ Jharkhand	Jharkhand	NNP
 JHH	JHH	NNP
 JHU	JHU	NNP
 Jiang	Jiang	NNP
+Jimbo	Jimbo	NNP
 Jimdo	Jimdo	NNP
 Jiménez	Jiménez	NNP
 Jimi	Jimi	NNP
@@ -7625,12 +7635,12 @@ Julieta	Julieta	NNP
 JULY	July	NNP
 Jumanji	Jumanji	NNP
 jump-start	jump-start	NN
-jump-starts	jump-start	NNS
 jump-start	jump-start	VB
 jump-start	jump-start	VBP
 jump-started	jump-start	VBD
 jump-started	jump-start	VBN
 jump-starting	jump-start	VBG
+jump-starts	jump-start	NNS
 jump-starts	jump-start	VBZ
 JUNE	June	NNP
 Jungheinrich	Jungheinrich	NNP
@@ -7806,6 +7816,7 @@ Kraków	Kraków	NNP
 Kramp-Karrenbauer	Kramp-Karrenbauer	NNP
 Krampus	Krampus	NNP
 Kremenchuk	Kremenchuk	NNP
+Kristalina	Kristalina	NNP
 Kristallnacht	Kristallnacht	NNP
 Kristang	Kristang	JJ
 Kristang	Kristang	NNP
@@ -8188,6 +8199,7 @@ Lutterell	Lutterell	NNP
 LV	LV	NNP
 Lviv	Lviv	NNP
 Lyft	Lyft	NNP
+lying	lying	JJ
 lyophilise	lyophilise	VB
 lyophilise	lyophilise	VBP
 lyophilised	lyophilise	VBD
@@ -9927,6 +9939,7 @@ Normanizing	Normanize	VBG
 normoactive	normoactive	JJ
 norteño	norteño	NN
 norteños	norteño	NNS
+north	north	RB
 Northbrook	Northbrook	NNP
 north-easterly	north-easterly	JJ
 northerly	northerly	JJ
@@ -10093,6 +10106,7 @@ ombrophilous	ombrophilous	JJ
 omelette	omelette	NN
 omelettes	omelette	NNS
 omertà	omertà	NN:U
+omniactive	omniactive	JJ
 omnichannel	omnichannel	JJ
 onboard	onboard	VB
 onboard	onboard	VBP
@@ -10276,8 +10290,8 @@ Osorio	Osorio	NNP
 osteoarthritic	osteoarthritic	JJ
 osteopenia	osteopenia	NN:UN
 osteopenias	osteopenia	NNS
-osteophytosis	osteophytosis	NN:UN
 osteophytoses	osteophytosis	NNS
+osteophytosis	osteophytosis	NN:UN
 ostracisable	ostracisable	JJ
 Oswaldo	Oswaldo	NNP
 OTA	OTA	NNP
@@ -11840,6 +11854,12 @@ precharged	precharge	VBN
 precharged	precharged	JJ
 precharges	precharge	VBZ
 precharging	precharge	VBG
+precheck	precheck	VB
+precheck	precheck	VBP
+prechecked	precheck	VBD
+prechecked	precheck	VBN
+prechecking	precheck	VBG
+prechecks	precheck	VBZ
 précis	précis	NN
 précis	précis	NNS
 précis	précis	VB
@@ -12211,6 +12231,8 @@ pre-trains	pre-train	VBZ
 pretravel	pretravel	JJ
 pre-travel	pre-travel	JJ
 pretty	pretty	RB
+preuniversity	preuniversity	JJ
+pre-university	pre-university	JJ
 preventatively	preventatively	RB
 preventible	preventible	JJ
 previse	previse	VB
@@ -14808,6 +14830,7 @@ SoundCloud	SoundCloud	NNP
 soundscape	soundscape	NN
 soundscapes	soundscape	NNS
 soupçon	soupçon	NN
+south	south	RB
 south-easterly	south-easterly	JJ
 southerly	southerly	JJ
 Southside	Southside	NNP
@@ -15828,6 +15851,7 @@ ticky	ticky	NN
 Tiguan	Tiguan	NNP
 TikTok	TikTok	NNP
 TikToks	TikTok	NNPS
+till	till	CC
 Tillerson	Tillerson	NNP
 Timberwolves	Timberwolves	NNPS
 time-lapse	time-lapse	JJ
@@ -16334,6 +16358,7 @@ unlinking	unlink	VBG
 unlinks	unlink	VBZ
 unlocalised	unlocalised	JJ
 unlocalized	unlocalized	JJ
+unmating	unmating	JJ
 unmerge	unmerge	VB
 unmerge	unmerge	VBP
 unmerged	unmerge	VBD
@@ -16981,6 +17006,7 @@ Wellingtonian	Wellingtonian	JJ
 Wellingtonian	Wellingtonian	NN
 Wellingtonians	Wellingtonian	NNS
 Wenliang	Wenliang	NNP
+west	west	RB
 westerly	westerly	JJ
 westerniser	westerniser	NN
 westernisers	westerniser	NNS
