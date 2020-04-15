@@ -1028,6 +1028,21 @@
     </rule>
   </rulegroup>
 
+  <rulegroup id="VERB_MORE_ADVERB_PLURAL" name="Verbo + modificador + advérbio + plural">
+    <!-- Created based by Tiago F. Santos, 2020-04-15	-->
+    <rule>
+      <pattern>
+          <token postag="V.+" postag_regexp="yes"/>
+        <marker>
+          <token regexp='yes'>mais|menos|tão</token>
+          <token postag="N..[SN].+" postag_regexp="yes"/>
+        </marker>
+          <token postag="N..[PN].+" postag_regexp="yes"/>
+      </pattern>
+      <disambig action="replace" postag="RG"/>
+    </rule>
+  </rulegroup>
+
   <rulegroup id="DET_VERBONOME" name="Det + Ver/Nom">
     <!-- Created by Tiago F. Santos, Portuguese rule  	-->
     <rule>
@@ -1937,8 +1952,12 @@
     <!-- Created by Tiago F. Santos, Portuguese rule, 2016-11-15  	-->
     <rule>
       <pattern>
+        <marker>
           <token>uma</token>
           <token>vez</token>
+        </marker>
+          <token>
+            <exception>que</exception></token><!-- uma vez que -> CS -->
       </pattern>
       <disambig action="replace"><wd pos="RG"/><wd pos="RG"/></disambig>
     </rule>
@@ -2011,6 +2030,11 @@
       <disambig action="add"><wd pos="Z0MS0"/></disambig>
     </rule>
     <rule>
+      <antipattern>
+          <token>uma</token>
+          <token>vez</token>
+          <token>que</token>
+      </antipattern>
       <pattern>
           <token regexp="yes">&numero_por_extenso_FS;</token>
       </pattern>
