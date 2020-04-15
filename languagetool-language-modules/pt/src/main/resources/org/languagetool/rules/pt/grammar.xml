@@ -1058,11 +1058,13 @@ title="Easy editing stylesheet" ?>
           <token postag="V...3P.+" postag_regexp='yes'>
             <exception inflected='yes' regexp='yes'>criar|matar</exception></token>
           <token postag='A..M.+' postag_regexp='yes'>
+            <exception>medo</exception>
             <exception postag="R.+" postag_regexp='yes'/></token>
       </pattern>
       <message>&MSG_ECG;</message>
         <suggestion>\1 \2 \3 <match no='4' postag='(A..)M.(.+)' postag_replace='$1FP$2' postag_regexp='yes'/></suggestion>
       <example correction='As cadelas são meigas'><marker>As cadelas são meigo</marker>.</example>
+      <example>As pessoas tinham medo, portanto, tomavam decisões imponderadas.</example>
     </rule>
     <rule>
       <pattern>
@@ -2390,6 +2392,10 @@ title="Easy editing stylesheet" ?>
   <rulegroup id='REFLEXIVO_CONJUNTIVO' name='Confusão de Tempo Verbal: Conjuntivo - Reflexivo'>
     <!-- Created by Tiago F. Santos, 2017-08-25 -->
       <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/as-formas-verbais-com-sse-ou-com--se/11603</url>
+      <antipattern>
+          <token regexp='yes'>[ao]s?|[mts]e|[nv]os|lhes?</token>
+          <token postag_regexp='yes' postag='VMSI.+' regexp='yes'>.+sse</token>
+      </antipattern>
     <rule>
       <pattern>
           <token postag='SENT_START' skip='-1'>
@@ -2403,6 +2409,7 @@ title="Easy editing stylesheet" ?>
       <message>O conjuntivo é utilizado em condicionais ('se ...'). Será que pretende utilizar a forma reflexiva?</message>
         <suggestion><match no='2' regexp_match='(.+)sse' regexp_replace='$1-se'/></suggestion>
       <example correction='chega-se'>Ela <marker>chegasse</marker> mais perto, a cada palavra.</example>
+      <example>Havia quem os acompanhasse.</example>
     </rule>
     <rule>
       <pattern>
@@ -2417,6 +2424,7 @@ title="Easy editing stylesheet" ?>
       <message>O conjuntivo é utilizado em condicionais ('se ...'). Será que pretende utilizar a forma reflexiva?</message>
         <suggestion><match no='2' regexp_match='(.+)sse' regexp_replace='$1-se'/></suggestion>
       <example correction='chega-se'>A cada palavra, ela <marker>chegasse</marker> mais perto.</example>
+      <example>António, havia quem os acompanhasse?</example>
     </rule>
   </rulegroup>
 
@@ -2733,6 +2741,13 @@ title="Easy editing stylesheet" ?>
           <token postag_regexp='yes' postag='[AN].+'/>
           <token postag='V.[CIS].3P.' postag_regexp='yes'/>
       </antipattern>
+      <antipattern>
+          <token regexp='yes'>(?:est|aquel)[ae]</token>
+          <token regexp='yes' case_sensitive='yes'>e|ou</token>
+          <token regexp='yes'>(?:est|aquel)[ae]</token>
+          <token postag_regexp='yes' postag='[AN].+' min='0'/>
+          <token postag='V.[CIS].3P.' postag_regexp='yes'/>
+      </antipattern>
 <!-- MARCOAGPINTO 2020-04-01 *START* -->
 	<!-- "Os rebeldes pouca resistência encontraram." -->
 	<!-- "As senhoras pouca resistência encontraram." -->
@@ -2770,6 +2785,7 @@ title="Easy editing stylesheet" ?>
       <example>Os rebeldes pouca resistência encontraram.</example>
       <example>As senhoras pouca resistência encontraram.</example>
       <example>Os senhores pouca resistência encontraram.</example>
+      <example>...que esta ou aquela família estão muito pior,...</example>
     </rule>
   </rulegroup>
 
@@ -3001,12 +3017,13 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes' inflected='yes'>ser|estar|ficar|permanecer|parecer
             <exception>seres</exception></token>
           <token min="0" max="3" postag_regexp='yes' postag='R.'/>
-          <token regexp='yes'>surpreendid[ao]s?</token>
+          <token regexp='yes'>surpreendid[o]s?</token><!-- XXX feminine forms are ambiguous -->
       </pattern>
       <message>Com o verbo '<match no='1' postag='VMN0000'/>' deve utilizar-se o particípio passado irregular.</message>
         <suggestion>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)(eendid)([ao]s?)' regexp_replace='$1es$3' suppress_misspelled='yes'/></suggestion>
     <!--suggestion>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)ad([ao]s?)' regexp_replace='$1ue' suppress_misspelled='yes'/></suggestion-->
       <example correction='Parece surpreso'><marker>Parece surpreendido</marker>.</example>
+      <example> As pessoas podem ficar surpreendidas com o que se avizinha.</example>
     </rule>
   </rulegroup>
 
@@ -3554,7 +3571,7 @@ title="Easy editing stylesheet" ?>
             <exception scope="previous" regexp="yes">até|o</exception></token>
         <marker>
           <token postag='V.IP.+' postag_regexp='yes'>
-            <exception postag='V.S.+|N.+|V.IC.+' postag_regexp='yes'/></token>
+            <exception postag='V.S.+|N.+|V.IC.+|SP.+' postag_regexp='yes'/></token>
         </marker>
       </pattern>
       <message>Tempo verbal incorreto.</message> <!-- VMIP3S00 -->
@@ -4031,6 +4048,11 @@ title="Easy editing stylesheet" ?>
     <!--       Created by Tiago F. Santos, 2017-01-27 -->
       <url>https://pt.wikipedia.org/wiki/Coloca%C3%A7%C3%A3o_pronominal</url>
       <short>Erro de colocação pronominal</short>
+      <antipattern>
+          <token postag='V.[NX].+'></token>
+          <token regexp='yes' spacebefore='no'>&tracos_de_separacao;</token>
+          <token regexp='yes' spacebefore='no'>[ln][ao]s?</token>
+      </antipattern>
     <rule>
       <pattern>
           <token regexp='yes'>tod[ao]s?|tudo|nada|pouc[ao]s?|muit[ao]s?|algo</token><!-- TODO Review algu[mn]a?s? -->
@@ -4601,7 +4623,7 @@ title="Easy editing stylesheet" ?>
           <token>a</token>
         </marker>
           <token postag_regexp='yes' postag='N.FS.+'>
-            <exception postag='D..F.+|R.+' postag_regexp='yes'/></token>
+            <exception postag='D..F.+|R.+|N.M.+' postag_regexp='yes'/></token>
       </pattern>
       <message>Esta palavra rege-se com a preposição “a”.</message>
         <suggestion>\1 <match no='2' include_skipped='all'/> à</suggestion>
@@ -4630,7 +4652,7 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>as?</token>
         </marker>
           <token postag_regexp='yes' postag='N.FP.+'>
-            <exception postag='D..F.+|R.+' postag_regexp='yes'/></token>
+            <exception postag='D..F.+|R.+|N.M.+' postag_regexp='yes'/></token>
       </pattern>
       <message>Esta palavra rege-se com a preposição “a”.</message>
         <suggestion>\1 <match no='2' include_skipped='all'/> às</suggestion>
@@ -7654,7 +7676,8 @@ title="Easy editing stylesheet" ?>
     <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
       <pattern>
           <token postag='CC|SENT_START|_PUNCT|R.+' postag_regexp='yes'>
-            <exception>uma</exception></token>
+            <exception regexp='yes'>cada|uma</exception>
+            <exception postag='D.+' postag_regexp='yes'/></token>
           <token>vez</token>
           <token>que</token>
       </pattern>
@@ -7664,6 +7687,7 @@ title="Easy editing stylesheet" ?>
       <example correction="Mas vês que"><marker>Mas vez que</marker> eles estão errados?</example>
       <example correction="Vês que"><marker>Vez que</marker> eles estão errados?</example>
       <example>Concordo, uma vez que não tenho bons argumentos contra.</example>
+      <example>...de cada vez que retirarmos uma medida...</example>
     </rule>
 
     <rule id='NESTA_CASO' name="Neste caso">
@@ -27730,7 +27754,7 @@ TODO Write better examples
       <pattern>
         <marker>
           <token regexp="yes">\.|\?|!</token>
-          <token spacebefore="yes" regexp="yes">“|»|«|"|\)|\}</token>
+          <token spacebefore="yes" regexp="yes">”|»|"|\)|\}</token>
         </marker>
       </pattern>
       <message>Espaçamento incorreto.</message>
@@ -27738,6 +27762,7 @@ TODO Write better examples
       <example correction=".»">«O jardim é verdadeiramente bonito<marker>. »</marker></example>
       <example correction=".»">«O jardim», disse ele, «jardim é verdadeiramente bonito<marker>. »</marker></example>
       <example>Algumas palavras inglesas têm duas grafias, p.ex. "gray" e "grey".</example>
+      <example>... na palavra equidade está o segredo. “Não é dar o mesmo [...] chegam”.</example>
     </rule>
     <rule>
       <antipattern>
@@ -34647,7 +34672,7 @@ TODO Write better examples
       </antipattern>
       <antipattern>
           <token inflected='yes' skip='-1'>concertar</token>
-          <token regexp='yes'>(?:bloquistas|comunista|democrata|republicano|socialista|sindica(?:to|lista)|BE|CDS|CGTP|PAN|PCP|PP|PSD?)s?|líder(?:es)?</token>
+          <token regexp='yes'>(?:bloquistas|comunista|democrata|republicano|socialista|sindica(?:to|lista)|BE|CDS|CGTP|PAN|PCP|PP|PSD?|europeu)s?|líder(?:es)?|nível|Europa</token>
       </antipattern>
       <pattern>
           <token inflected='yes'>concertar
