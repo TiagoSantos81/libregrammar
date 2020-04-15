@@ -58,11 +58,18 @@
   * compound rule added:
      - 4101 entries thanks to [Pierre Morvan](https://github.com/languagetool-org/languagetool/issues/2300).
 
-#### Dutch
+#### Catalan
   * added and improved rules
+  * spelling and POS improvements
+
+#### Dutch
+  * added and improved rules, including:
+    - MissingSpaceRule.
+  
 
 #### English
-  * significantly improve rule set, with many rules added and improved
+  * significantly improve rule set with many rules added and improved, including:
+    - rule to verify wrongly uppercased words.
   * false friends improvements:
     - 184 entries added to English for French natives;
     - EnglishForFrenchFalseFriendRule false friends n-gram based rule;
