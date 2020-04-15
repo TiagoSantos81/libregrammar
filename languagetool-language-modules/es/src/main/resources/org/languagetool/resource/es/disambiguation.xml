@@ -59,6 +59,301 @@ Copyright (C) 2011 Juan Martorell
             <disambig action="replace"><wd lemma="ratio" pos="NCFP000"/></disambig>
         </rule>
     </rulegroup>
+    <rulegroup id="NUMERALS" name="numerales">
+        <rule>
+            <pattern>
+                <marker>
+                    <token>mil</token>
+                    <token>y</token>
+                    <token>un</token>
+                </marker>
+            </pattern>
+            <disambig action="replace"><wd pos="DN0MP0"/><wd pos="DN0MP0"/><wd pos="DN0MP0"/></disambig>
+        </rule>
+        <rule>
+            <pattern>
+                <marker>
+                    <token>mil</token>
+                    <token>y</token>
+                    <token>una</token>
+                </marker>
+            </pattern>
+            <disambig action="replace"><wd pos="DN0FP0"/><wd pos="DN0FP0"/><wd pos="DN0FP0"/></disambig>
+        </rule>
+        <rule>
+            <pattern>
+                <marker>
+                    <token regexp="yes">[1234567890][1234567890., ]+[1234567890]</token>
+                </marker>
+            </pattern>
+            <disambig action="add"><wd lemma="numeral" pos="NCCN000"></wd></disambig>
+        </rule>
+        <rule>
+            <pattern>
+                <marker>
+                    <token regexp="yes">[1234567890][1234567890., ]+[1234567890]</token>
+                </marker>
+            </pattern>
+            <disambig action="add"><wd lemma="numeral" pos="DN0CP0"></wd></disambig>
+        </rule>
+        <rule>
+            <pattern>
+                <marker>
+                    <token regexp="yes">[1234567890]{1,2}</token>
+                </marker>
+            </pattern>
+            <disambig action="add"><wd lemma="numeral" pos="NCCN000"></wd></disambig>
+        </rule>
+        <rule>
+            <pattern>
+                <marker>
+                    <token regexp="yes">[1234567890]{1,2}</token>
+                </marker>
+            </pattern>
+            <disambig action="add"><wd lemma="numeral" pos="DN0CP0"></wd></disambig>
+        </rule>
+        <rule>
+            <pattern>
+                <marker>
+                    <token spacebefore="yes">1</token>
+                </marker>
+            </pattern>
+            <disambig action="add"><wd lemma="numeral" pos="DN0CS0"></wd></disambig>
+        </rule>
+        <rule>
+            <pattern>
+                <marker>
+                    <token spacebefore="yes">1</token>
+                </marker>
+            </pattern>
+            <disambig action="remove"><wd lemma="numeral" pos="DN0CP0"></wd></disambig>
+        </rule>
+        <rule>
+            <pattern>
+                <token regexp="yes">[^.,]*</token>
+                <marker>
+                    <token spacebefore="no">1</token>
+                </marker>
+            </pattern>
+            <disambig action="add"><wd lemma="numeral" pos="DN0CS0"></wd></disambig>
+        </rule>
+        <rule>
+            <pattern>
+                <token regexp="yes">[^.,]*</token>
+                <marker>
+                    <token spacebefore="no">1</token>
+                </marker>
+            </pattern>
+            <disambig action="remove"><wd lemma="numeral" pos="DN0CP0"></wd></disambig>
+        </rule>
+        <!-- ordinals -->
+        <rule>
+            <pattern>
+                <marker>
+                    <token regexp="yes">[1234567890]+º<exception postag="AO.*" postag_regexp="yes"/></token>
+                </marker>
+            </pattern>
+            <disambig action="add"><wd pos="AO0MS0"/></disambig>
+        </rule>
+        <rule>
+            <pattern>
+                <token>el</token>
+                <marker>
+                    <token regexp="yes">[1234567890]+</token>
+                </marker>
+            </pattern>
+            <disambig action="add"><wd pos="AO0MS0"/></disambig>
+        </rule>
+        <rule>
+            <pattern>
+                <marker>
+                    <token regexp="yes">[1234567890]+[aª]<exception postag="AO.*" postag_regexp="yes"/><exception>0a</exception></token>
+                </marker>
+            </pattern>
+            <disambig action="add"><wd pos="AO0FS0"/></disambig>
+        </rule>
+        <rule>
+            <pattern>
+                <token>la<exception scope="previous" postag="D..MS." postag_regexp="yes"/></token>
+                <marker>
+                    <token regexp="yes">[1234567890]+</token>
+                </marker>
+            </pattern>
+            <disambig action="add"><wd pos="AO0FS0"/></disambig>
+        </rule>
+        <!--<rule>
+            <pattern>
+                <marker>
+                    <token regexp="yes">[1234567890]+ns<exception postag="AO.*" postag_regexp="yes"/><exception regexp="yes">[01234]ns</exception></token>
+                </marker>
+            </pattern>
+            <disambig action="add"><wd pos="AO0MP0"/></disambig>
+        </rule>-->
+        <!--<rule>
+            <pattern>
+                <token>los</token>
+                <marker>
+                    <token regexp="yes">[1234567890]+</token>
+                </marker>
+            </pattern>
+            <disambig action="add"><wd pos="AO0MP0"/></disambig>
+        </rule>-->
+        <!--<rule>
+            <pattern>
+                <marker>
+                    <token regexp="yes">[1234567890]+es<exception postag="AO.*" postag_regexp="yes"/><exception>0es</exception></token>
+                </marker>
+            </pattern>
+            <disambig action="add"><wd pos="AO0FP0"/></disambig>
+        </rule>-->
+        <rule>
+            <pattern>
+                <token>las</token>
+                <marker>
+                    <token regexp="yes">[1234567890]+</token>
+                </marker>
+            </pattern>
+            <disambig action="add"><wd pos="AO0FP0"/></disambig>
+        </rule>
+        <!-- romans-->
+        <rule>
+            <pattern case_sensitive="yes">
+                <marker>
+                    <token regexp="yes">(?=.)M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})<exception postag="_enumeracio"/></token>
+                </marker>
+            </pattern>
+            <disambig action="add"><wd pos="AO0CN0"/></disambig>
+        </rule>
+        <rule>
+            <pattern case_sensitive="yes">
+                <marker>
+                    <token regexp="yes" spacebefore="yes">(?=.)m{0,4}(cm|cd|d?c{0,3})(xc|xl|l?x{0,3})(ix|iv|v?i{0,3})<exception regexp="yes">cm|mm</exception><exception postag="_enumeracio"/></token>
+                </marker>
+            </pattern>
+            <disambig action="add"><wd pos="AO0CN0"/></disambig>
+        </rule>
+        <rule>
+            <pattern case_sensitive="yes">
+                <token postag="SENT_START"/>
+                <marker>
+                    <token regexp="yes">(?=.)m{0,4}(cm|cd|d?c{0,3})(xc|xl|l?x{0,3})(ix|iv|v?i{0,3})</token>
+                </marker>
+            </pattern>
+            <disambig action="add"><wd pos="AO0CN0"/></disambig>
+        </rule>
+        <rule>
+            <pattern case_sensitive="yes">
+                <token>-</token>
+                <marker>
+                    <token regexp="yes">(?=.)m{0,4}(cm|cd|d?c{0,3})(xc|xl|l?x{0,3})(ix|iv|v?i{0,3})</token>
+                </marker>
+            </pattern>
+            <disambig action="add"><wd pos="AO0CN0"/></disambig>
+        </rule>
+        <!-- excepcions als numerals romans -->
+        <rule>
+            <pattern case_sensitive="yes">
+                <token postag="SENT_START"/>
+                <token min="0" max="3" postag="_PUNCT.*" postag_regexp="yes"/>
+                <marker>
+                    <token>I</token>
+                </marker>
+            </pattern>
+            <disambig action="remove"><wd pos="AO0CN0"/></disambig>
+        </rule>
+        <rule>
+            <pattern case_sensitive="yes">
+                <marker>
+                    <token regexp="yes">i|li|mi|vi|di</token>
+                </marker>
+            </pattern>
+            <disambig action="remove"><wd pos="AO0CN0"/></disambig>
+        </rule>
+        <rule>
+            <pattern>
+                <token regexp="yes">[1234567890., ]+</token>
+                <marker>
+                    <token>m</token>
+                </marker>
+            </pattern>
+            <disambig action="replace" postag="NCMP000" />
+        </rule>
+        <rule>
+            <pattern>
+                <token regexp="yes">1|/|por</token>
+                <marker>
+                    <token>m</token>
+                </marker>
+            </pattern>
+            <disambig action="replace" postag="NCMS000" />
+        </rule>
+        <rule id="la_numero_u" name="la número uno">
+            <pattern>
+                <marker>
+                    <token>la</token>
+                    <token>número</token>
+                    <token postag="AO0C[NS]0|DN0[^F]P0" postag_regexp="yes"><exception regexp="yes">.*un</exception></token>
+                </marker>
+            </pattern>
+            <disambig action="replace"><wd pos="_GN_FS"/><wd pos="_GN_FS"/><wd pos="_GN_FS"/></disambig>
+        </rule>
+        <rule>
+            <pattern>
+                <token postag="DN.*" postag_regexp="yes"/>
+                <marker>
+                    <token regexp="yes" case_sensitive="yes">aC|dC</token>
+                </marker>
+            </pattern>
+            <disambig action="replace"><wd pos="RG"/></disambig>
+        </rule>
+        <rule id="en_base" name="en base + numeral">
+            <pattern>
+                <token regexp="yes">en|de</token>
+                <token>base</token>
+                <marker>
+                    <token postag="DN.*" postag_regexp="yes"/>
+                </marker>
+            </pattern>
+            <disambig action="filter" postag="N.*" />
+        </rule>
+        <!-- Percentage -->
+        <rule id="percentage" name="porcentaje">
+            <pattern>
+                <token regexp="yes">[\d,. ]+[&#37;&#8240;&#8241;]</token>
+            </pattern>
+            <disambig action="replace"><wd pos="NCMS000"/></disambig>
+        </rule>
+        <rule id="numero_graus" name="grados">
+            <pattern>
+                <token regexp="yes">[\d,. ]+[°′″‴][CFKNSEW]?</token>
+            </pattern>
+            <disambig action="replace"><wd pos="NCMP000"/></disambig>
+        </rule>
+        <rule id="graus" name="graus">
+            <pattern>
+                <token regexp="yes">°[CFKNSEW]</token>
+            </pattern>
+            <disambig action="replace"><wd pos="NCMN000"/></disambig>
+        </rule>
+        <rule id="un_grau" name="1 grau">
+            <pattern>
+                <token regexp="yes">1°[CFNSEW]?</token>
+            </pattern>
+            <disambig action="replace"><wd pos="NCMS000"/></disambig>
+        </rule>
+        <rule id="veinte_aniversario" name="veinte aniversario">
+            <pattern>
+                <marker>
+                <and>
+                    <token postag="NCCN000"/>
+                    <token postag="DN0CP0"/>
+                </and>
+                </marker>
+                <token>aniversario</token>
+            </pattern>
+            <disambig action="replace" postag="AO0MS0"/>
+        </rule>
+    </rulegroup>
     <rule id="habemos" name="habemos">
             <pattern>
                     <token>nos</token>
@@ -215,20 +510,25 @@ Copyright (C) 2011 Juan Martorell
     <!--D_AN Detrás de un determinante, va el nombre y no el adjetivo-->
     <rule id="D_AN" name="Art + Nom/Adj = Nom">
         <pattern>
-            <token postag="D.*" postag_regexp="yes"><exception postag="R.*" postag_regexp="yes"/><exception>lo</exception></token>
-            <marker>
-                <and>
-                    <token postag="N.*" postag_regexp="yes"/>
-                    <token postag="A.*" postag_regexp="yes"><exception inflected="yes">nuevo</exception></token>
-                    <token negate_pos="yes" postag="V.*" postag_regexp="yes"/>
-                </and>
-            </marker>
+            <unify>
+                <feature id="number"/>
+                <feature id="gender"/>
+                <token postag="D.*" postag_regexp="yes"><exception postag="R.*" postag_regexp="yes"/><exception>lo</exception></token>
+                <marker>
+                    <and>
+                        <token postag="N.*" postag_regexp="yes"/>
+                        <token postag="A.*" postag_regexp="yes"><exception inflected="yes">nuevo</exception></token>
+                        <token negate_pos="yes" postag="V.*" postag_regexp="yes"/>
+                    </and>
+                </marker>
+            </unify>
             <token negate_pos="yes" postag="N.*" postag_regexp="yes"/>
         </pattern>
         <disambig action="filter" postag="N.*"/>
         <example inputform="blanca[blanco/AQ0FS0,blanco/NCFS000]" outputform="blanca[blanco/NCFS000]" type="ambiguous">Me gusta la <marker>blanca</marker>.</example>
         <example type="untouched">Eran demasiado siniestros.</example>
         <example type="untouched">Una nueva formula.</example>
+        <example type="untouched">Ya los estraño a todos.</example>
     </rule>
     <!-- D_N Cuando está delante de un nombre, se trata de un determinante.-->
     <rule id="D_N" name="Artículo + Nombre">
@@ -488,6 +788,31 @@ Copyright (C) 2011 Juan Martorell
         </pattern>
         <disambig action="filter" postag="NP.*"/>
     </rule>
+    <rulegroup id="possible_np" name="posible nombre propio">
+        <rule>
+            <pattern>
+                <token><exception postag="SENT_START"/><exception regexp="yes">[—–\-]</exception><exception regexp="yes">[¿¡"'«»‘“:]</exception></token>
+                <marker>
+                    <token postag="AQ.*|DA.*|PP.*|P0.*|V.[GMSIP].*|N.*|RG|DP.*|SPS00" postag_regexp="yes" regexp="yes">\p{Lu}.*</token>
+                </marker>
+            </pattern>
+            <disambig action="add">
+                <wd pos="_possible_NP"/>
+            </disambig>
+        </rule>
+        <rule>
+            <pattern>
+                <token><exception postag="SENT_START"/></token>
+                <token spacebefore="no">-</token>
+                <marker>
+                    <token spacebefore="no" postag="AQ.*|DA.*|PP.*|P0.*|V.[GMSI].*|N.*|RG|DP.*|SPS00" postag_regexp="yes" regexp="yes">\p{Lu}.*</token>
+                </marker>
+            </pattern>
+            <disambig action="add">
+                <wd pos="_possible_NP"/>
+            </disambig>
+        </rule>
+    </rulegroup>
         <rule name="Ignore spelling of url protocols" id="URI_PROTOCOL">
                 <pattern><!-- chrome://, ftp://, file:// -->
                     <marker>

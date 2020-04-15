@@ -2593,7 +2593,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="E-Mails">Er schickt mir viele <marker>e-mails</marker>.</example>
             </rule>
             <rule>
-                <regexp case_sensitive='yes'>(eMail|e-Mail|e-mail|E-mail|Email)-?([aA]dressen?|[aA]accounts?|[aA]nwendung(en)?|[cC]lients?|[kK]ontakte?|[kK]ont](os?|en)|[pP]ostf[aä]ch(er|es|s)?|[pP]rogramms?|[sS]oftware|[Vv]erkehrs?)</regexp>
+                <regexp case_sensitive='yes'>\b(eMail|e-Mail|e-mail|E-mail|Email)-?([aA]dressen?|[aA]accounts?|[aA]nwendung(en)?|[cC]lients?|[kK]ontakte?|[kK]ont](os?|en)|[pP]ostf[aä]ch(er|es|s)?|[pP]rogramms?|[sS]oftware|[Vv]erkehrs?)</regexp>
                 <message>Meinten Sie <suggestion><match no="0" regexp_match=".*ail(.*)" regexp_replace="E-Mail$1"/></suggestion>? (E-Mail = elektronische Post, Email = Schmelzüberzug)</message>
                 <short>Möglicher Tippfehler</short>
                 <example correction="E-Mail-Adresse">Das ist meine <marker>eMail-Adresse</marker>.</example>
@@ -2601,6 +2601,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="E-Mail-Anwendung">Ich benutze diese <marker>Email-Anwendung</marker>.</example>
                 <example correction="E-Mail-Kontakt">Ich werde diesen <marker>eMail-Kontakt</marker> hinzufügen.</example>
                 <example>Das ist <marker>Email</marker>.</example>
+                <example>Das Apple-Mail-Programm</example>
             </rule>
             <rule>
                 <regexp case_sensitive='yes'>E-Mailadresse</regexp>
@@ -28267,7 +28268,7 @@ Andere Projekte</example>
         <rulegroup id="ANGST_SUBST" name="'angst (Angst)'">
             <rule>
                 <pattern case_sensitive="yes">
-                    <token regexp="yes">vor|keine|große(r)?|grosse(r)?|lauter|ha[sb]?t|hatte(st|n)?|bekam(st|t|en)?</token>
+                    <token regexp="yes">vor|keine|große(r)?|grosse(r)?|lauter|ha[sb]?t|hatte(st|n)?|bek(a|om)m(st|t|en)?</token>
                     <marker>
                         <token>angst</token>
                     </marker>
@@ -28304,6 +28305,19 @@ Andere Projekte</example>
                 <short>&prgk;.</short>
                 <example correction="angst">Mir wurde <marker>Angst</marker>.</example>
                 <example>So sind <marker>Angst</marker>, Terror und Unterdrückung die Mittel der Diktatur.</example>
+            </rule>
+            <rule>
+                <pattern case_sensitive="yes">
+                    <token inflected="yes" regexp="yes">sein|werden</token>
+                    <token postag="PRO:PER:DAT:.+"  postag_regexp="yes"/>
+                    <marker>
+                        <token>Angst</token>
+                    </marker>
+                    <token postag="PKT"/>
+                </pattern>
+                <message>&inwend;<suggestion><match no="3" case_conversion="alllower"/></suggestion> werden/sein wird 'angst' kleingeschrieben.</message>
+                <short>&prgk;.</short>
+                <example correction="angst">Da wurde mir <marker>Angst</marker>.</example>
             </rule>
             <rule>
                 <pattern case_sensitive="yes">
@@ -28438,7 +28452,7 @@ Andere Projekte</example>
         <rulegroup id="TAGEN_SUBST" name="'unter tage (Tage)' etc.">
             <rule>
                 <pattern case_sensitive="yes">
-                    <token regexp="yes">[uU]nter|[aA]ller</token>
+                    <token regexp="yes">[uU]nter|[aA](ller|m)</token>
                     <marker>
                         <token>tage</token>
                     </marker>
@@ -28461,7 +28475,7 @@ Andere Projekte</example>
             </rule>
             <rule>
                 <pattern case_sensitive="yes">
-                    <token regexp="yes">[dD]ie</token>
+                    <token inflected="yes">der</token>
                     <marker>
                         <token>stunde</token>
                     </marker>
@@ -28474,9 +28488,9 @@ Andere Projekte</example>
             <rule>
                 <pattern case_sensitive="yes">
                     <marker>
-                        <token regexp="yes">tage|stunden</token>
+                        <token regexp="yes">tage|stunden?</token>
                     </marker>
-                    <token inflected="yes">dauern</token>
+                    <token inflected="yes" regexp="yes">dauern|(aus)?reichen</token>
                 </pattern>
                 <message>&subanfang;<suggestion><match no="1" case_conversion="startupper"/></suggestion>&subende;</message>
                 <short>&prgk;.</short>
