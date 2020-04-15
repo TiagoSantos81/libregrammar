@@ -2726,8 +2726,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example>Если постучится кто то дверь не открывай, а зови на помощь.</example> <!-- incorrect example, but it must detect with another rule -->
             <example correction=", то| – то">Если ты позвонил<marker> то</marker> говори.</example>
         </rule>
-        <rulegroup id="Nesmotrja_na_to_chto" name="Выражение «несмотря на то, что ...»" default="temp_off">
-       <!-- До тех пор, пока, "лучше, чем", "хуже, чем", "несмотря на то, что" -->    
+        <rulegroup id="Nesmotrja_na_to_chto" name="Выражение «несмотря на то, что ...»" >
+       <!-- До тех пор, пока, "лучше, чем", "хуже, чем", "несмотря на то, что" default="temp_off" -->    
           <rule>
             <pattern>
                 <token negate="yes" regexp="yes">[.(–-—,;:]</token>
@@ -3201,6 +3201,20 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             </rule>
 
         </rulegroup>
+        
+        <rule id="Comma_before_kak" name="Оборот обстоятельства, присоединённый союзом «как»">
+            <pattern>
+                <token>,</token>
+                <token>как</token>
+                <token postag_regexp="yes"    postag="NN:Inanim:.*:.*:Nom"></token>
+                <token regexp="yes">[.:;!?]</token>
+            </pattern>
+            <message>Запятая перед как не нужна: <suggestion> \2 \3\4</suggestion></message>
+            <short>Запятая не нужна</short>
+            <example correction=" как верёвка.">Извивалась<marker>, как верёвка.</marker></example>
+            <example>Извивалась как верёвка.</example>
+        </rule>
+        
         <rule id="GDE_COMMA" name="Запятая перед союзом «где»">
             <pattern>
                 <marker>
@@ -7369,6 +7383,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <!--<example correction="по весеннему">Лисица проваливалась <marker>по-весеннему</marker>, совсем талому снегу.</example>-->
             </rule>
         </rulegroup>
+        
+        
         <rulegroup default="on" id="Pravopisanie_slitno1" name="Правописание слов «наверху», «внизу» ...">
     
 
@@ -7626,6 +7642,18 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example correction="то же, что">Сегодня <marker>тоже, что</marker> и вчера.</example>           
          </rule>
         </rulegroup>
+ 
+        <rule id="TAK_JE" name="Правописание «также/так же»" default="temp_off">
+            <pattern>
+                <token>также<exception postag="NN:.*:.*:.*:.*" postag_regexp="yes" scope="previous"></exception></token>
+                <token>,</token>
+                <token>как</token>
+            </pattern>
+            <message>Пишется раздельно:<suggestion>так же\2 \3</suggestion>.</message>
+            <url>http://lik-bez.com/board/orfografija/slitno_razdelno_cherez_defis/to_zhe_tak_zhe/64-1-0-303</url>
+            <short>Пишется раздельно.</short>
+            <example correction="так же, как">Сегодня <marker>также, как</marker> и вчера.</example>           
+        </rule>
         <rulegroup default="on" id="i_tak_dalee" name="Словосочетание «и так далее»">
             <rule>
                 <pattern case_sensitive="no">
