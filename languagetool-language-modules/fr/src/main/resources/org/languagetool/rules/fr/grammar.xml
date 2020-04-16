@@ -8203,17 +8203,63 @@ though, and has since been slightly modified)-->
     </rulegroup>
     <rulegroup id="ACCORD_NOMBRE" name="Accord en nombre">
     <antipattern>
+        <token>conseillers</token>
+        <token postag_regexp="yes" postag="N . sp?"/>
+    </antipattern>
+    <antipattern>
+        <token regexp="yes">\d+</token>
+        <token regexp="yes">heures?</token>
+        <token regexp="yes">\d+</token>
+    </antipattern>
+    <antipattern>
+        <token regexp="yes">formule|saisons?|épisodes?|zones?</token>
+        <token regexp="yes">\d+</token>
+    </antipattern>
+    <antipattern>
+        <token regexp="yes">\d+</token>
+        <token>éditions</token>
+    </antipattern>
+    <antipattern>
+        <token regexp="yes">Windows|Apple|Galaxy</token>
+        <token regexp="yes">\d+</token>
+        <token postag=".*s" postag_regexp="yes"/>
+    </antipattern>
+    <antipattern>
         <token>couleur</token>
         <token min="0" max="2"/>
         <token regexp="yes">abricot|bistre|brique|bronze|carmin|crème|garance|grenat|indigo|kaki|lilas|marron|n[aâ]cre|noisette|olive|orange|paille|pastel|pervenche|sépia|turquoise|tilleul|vermillon</token>
     </antipattern>
-        <antipattern>
+    <antipattern>
             <token>couleur</token>
             <token min="0" max="2"/>
             <token regexp="yes">Abricot|Absinthe|Acajou|Albâtre|Alezane?s?|Amande|Amarante|Ambre jaune|Ambre rouge|Améthyste|Anthracite|Aquilaine?s?|Ardoise|Argent|Argile|Asperge|Aubergine|Auburn|Aurore|Avocat|Azur|Banane|Basanée?s?|Beiges?|Bistre|Bitume|Blancs|Blanches?|Bleue?s?|Blonde?s?|Bourgogne|Bronze|Brune?s?|Caca d’oie|Café|Capucine|Caramel|Carotte|Cassis|Cerise|Chair|Châtaine?s?|Cramoisie?s?|Denim|écarlates?|émeraude|Fauves?|Glauques?|Grise?s?|Incarnate?s?|Indigo|Jaunes?|Lavande|Lilas|Magenta|Marine|Mauves?|Menthe|Noire?s?|Noisette|Or|Orange|Pistache|Pourpres?|Prune|Puce|Roses?|Rouges?|Roux|Rousses?|Turquoise|Vermeils?|Vermeilles?|Verte?s?|Violets?|Violettes?</token>
             <token regexp="yes">Abricot|Absinthe|Acajou|Albâtre|Alezane?s?|Amande|Amarante|Ambre jaune|Ambre rouge|Améthyste|Anthracite|Aquilaine?s?|Ardoise|Argent|Argile|Asperge|Aubergine|Auburn|Aurore|Avocat|Azur|Banane|Basanée?s?|Beiges?|Bistre|Bitume|Blancs|Blanches?|Bleue?s?|Blonde?s?|Bourgogne|Bronze|Brune?s?|Caca d’oie|Café|Capucine|Caramel|Carotte|Cassis|Cerise|Chair|Châtaine?s?|Cramoisie?s?|Denim|écarlates?|émeraude|Fauves?|Glauques?|Grise?s?|Incarnate?s?|Indigo|Jaunes?|Lavande|Lilas|Magenta|Marine|Mauves?|Menthe|Noire?s?|Noisette|Or|Orange|Pistache|Pourpres?|Prune|Puce|Roses?|Rouges?|Roux|Rousses?|Turquoise|Vermeils?|Vermeilles?|Verte?s?|Violets?|Violettes?|Pastel|sang|acier|plastique</token>
         </antipattern>
+    <antipattern>
+        <token regexp="yes">langues?|masters?|licenses?</token>
+        <token postag_regexp="yes" postag="N . s"/>
+    </antipattern>
+    <antipattern>
+        <token>choux</token>
+        <token>de</token>
+        <token>Bruxelles</token>
+    </antipattern>
+    <antipattern>
+        <token>est</token>
+        <token>comme</token>
+    </antipattern>
       <rule name="nombre singulier suivi du pluriel">
+          <antipattern>
+              <token postag="N [fem] s" postag_regexp="yes"/>
+              <token regexp="yes">aux|à|de|du</token>
+              <token postag="N .*" postag_regexp="yes"/>
+              <token postag="J [fem] p" postag_regexp="yes"/>
+          </antipattern>
+          <antipattern>
+              <token regexp="yes">[2-9](\d+)?</token>
+              <token regexp="yes">[.,+-≠=()x]</token>
+              <token regexp="yes">\d+</token>
+          </antipattern>
           <antipattern>
               <token>top</token>
               <token postag="K"/>
@@ -8221,6 +8267,10 @@ though, and has since been slightly modified)-->
           <antipattern>
               <token>top</token>
               <token regexp="yes">[0-9]+</token>
+          </antipattern>
+          <antipattern>
+              <token>séparation</token>
+              <token regexp="yes">filles?|garçons?|hommes?|femmes?|blancs?|noirs?</token>
           </antipattern>
         <pattern>
           <token regexp="yes">[01]<exception regexp="yes" scope="previous">,|et|ou|que</exception></token>
@@ -8235,41 +8285,15 @@ though, and has since been slightly modified)-->
         <example>Cela coûte 2,1 Euros.</example>
         <example>Ils sont âgés de 4 et 1 ans.</example>
         <example>1 fois.</example>
-      </rule>
-      <rule>
-        <antipattern>
-          <token>top</token>
-          <token postag="K"/>
-        </antipattern>
-        <antipattern>
-          <token>top</token>
-          <token regexp="yes">[0-9]+</token>
-        </antipattern>
-        <pattern>
-          <token postag="K">
-            <exception scope="previous">numéro</exception>
-          </token>
-          <marker>
-          <token postag="[JN] . s" postag_regexp="yes">
-            <exception regexp="yes">neuf|été|janvier|février|avril|mai|juin|juillet|ao[ûu]t|septembre|octobre|novembre|décembre|vendémiaire|brumaire|frimaire|nivôse|pluviôse|ventôse|germinal|floréal|prairial|messidor|thermidor|fructidor|cent|mille|divisé|multiplié</exception>
-            <exception postag="N . s?p" postag_regexp="yes"/>
-          </token>
-        </marker>
-        </pattern>
-        <message>« \1 » et « \2 » ne semblent pas bien accordés en nombre.</message>
-        <suggestion><match no="2" postag="(J|N) (.) s" postag_regexp="yes" postag_replace="$1 $2 p"/></suggestion>
-        <example correction="enfants">J’ai quatre <marker>enfant</marker>.</example>
-        <example>J’ai quatre enfants.</example>
-        <example>Il est né le quatre <marker>janvier</marker>.</example>
-        <example>On estimait à seize mille les fusils de son armée.</example>
-        <example>Le patron du numéro deux allemand a démissionné.</example>
-        <example>Ils ont tous les trois <marker>été</marker> tués par balle.</example>
-        <example>Mille <marker>neuf</marker> cent quatre-vingt.</example>
-        <example>Les trois <marker>kanji</marker>.</example>
-        <example>L’intensité des rayons X ayant frappé la pellicule.</example>
-        <example>Henri VIII rencontre François Ier.</example>
+        <example>L'école acta une séparation filles garçons.</example>
       </rule>
       <rule name="nombre pluriel suivi du singulier">
+        <antipattern>
+            <token postag="N [fem] p" postag_regexp="yes"/>
+            <token regexp="yes">aux|à|de|du</token>
+            <token postag="N .*" postag_regexp="yes"/>
+            <token postag="J [fem] s" postag_regexp="yes"/>
+        </antipattern>
         <antipattern>
           <token>master</token>
           <token>2</token>
@@ -8277,6 +8301,11 @@ though, and has since been slightly modified)-->
         <antipattern>
           <token regexp="yes">\d{5}</token>
           <token/>
+        </antipattern>
+        <antipattern>
+            <token>n°</token>
+            <token regexp="yes">\d+</token>
+            <token postag=".*s" postag_regexp="yes"/>
         </antipattern>
         <pattern>
           <token regexp="yes">[2-9]|[1-9]\d+
@@ -8307,8 +8336,15 @@ though, and has since been slightly modified)-->
         <example>Une Peugeot 208 <marker>fabriquée</marker> en France.</example>
         <example>L’année 800 fut considérée comme une renaissance de l’Empire romain d’Occident.</example>
         <example>Contactez-moi au 0101010101 merci beaucoup !</example>
+        <example>Le passeport n° 157208191 délivré le 01/12/2015.</example>
       </rule>
       <rule name="singulier suivi du pluriel">
+          <antipattern>
+              <token postag="N [fem] s" postag_regexp="yes"/>
+              <token regexp="yes">aux|à|de|du</token>
+              <token postag="N .*" postag_regexp="yes"/>
+              <token postag="J [fem] p" postag_regexp="yes"/>
+          </antipattern>
           <antipattern>
               <token>top</token>
               <token postag="K"/>
@@ -8374,6 +8410,12 @@ though, and has since been slightly modified)-->
         <example>La couronne périphérique alterne falaises abruptes et plages.</example>
       </rule>
       <rule name="pluriel suivi du singulier">
+        <antipattern>
+            <token postag="N [fem] p" postag_regexp="yes"/>
+            <token regexp="yes">aux|à|de|du</token>
+            <token postag="N .*" postag_regexp="yes"/>
+            <token postag="J [fem] s" postag_regexp="yes"/>
+        </antipattern>
         <antipattern>
             <token regexp="yes" inflected="yes">considérer|imaginer|penser|dits|appeler</token>
             <token regexp="yes">selon|par|d\'après</token>
@@ -8472,6 +8514,41 @@ though, and has since been slightly modified)-->
         <example>Tous les lundis matin.</example>
         <example>Tous les lundis soir.</example>
         <example>Les gens autour de nous.</example>
+        <example>les conseillers environnement</example>
+      </rule>
+      <rule>
+          <antipattern>
+              <token>top</token>
+              <token postag="K"/>
+          </antipattern>
+          <antipattern>
+              <token>top</token>
+              <token regexp="yes">[0-9]+</token>
+          </antipattern>
+          <pattern>
+              <token postag="K">
+                  <exception scope="previous">numéro</exception>
+              </token>
+              <marker>
+                  <token postag="[JN] . s" postag_regexp="yes">
+                      <exception regexp="yes">neuf|été|janvier|février|avril|mai|juin|juillet|ao[ûu]t|septembre|octobre|novembre|décembre|vendémiaire|brumaire|frimaire|nivôse|pluviôse|ventôse|germinal|floréal|prairial|messidor|thermidor|fructidor|cent|mille|divisé|multiplié</exception>
+                      <exception postag="N . s?p" postag_regexp="yes"/>
+                  </token>
+              </marker>
+          </pattern>
+          <message>« \1 » et « \2 » ne semblent pas bien accordés en nombre.</message>
+          <suggestion><match no="2" postag="(J|N) (.) s" postag_regexp="yes" postag_replace="$1 $2 p"/></suggestion>
+          <example correction="enfants">J’ai quatre <marker>enfant</marker>.</example>
+          <example>J’ai quatre enfants.</example>
+          <example>Il est né le quatre <marker>janvier</marker>.</example>
+          <example>On estimait à seize mille les fusils de son armée.</example>
+          <example>Le patron du numéro deux allemand a démissionné.</example>
+          <example>Ils ont tous les trois <marker>été</marker> tués par balle.</example>
+          <example>Mille <marker>neuf</marker> cent quatre-vingt.</example>
+          <example>Les trois <marker>kanji</marker>.</example>
+          <example>L’intensité des rayons X ayant frappé la pellicule.</example>
+          <example>Henri VIII rencontre François Ier.</example>
+          <example>Mon téléphone Samsung Galaxy 9 fonctionne très bien.</example>
       </rule>
     </rulegroup>
     <rulegroup id="ACCORD_GENRE" name="Accord en genre">
@@ -8667,6 +8744,12 @@ though, and has since been slightly modified)-->
         </antipattern>
       <rule name="masculin suivi du féminin">
           <antipattern>
+              <token postag="N [me] [sp]" postag_regexp="yes"/>
+              <token regexp="yes">aux|à|de|du</token>
+              <token postag="N .*" postag_regexp="yes"/>
+              <token postag="J [me] [sp]" postag_regexp="yes"/>
+          </antipattern>
+          <antipattern>
               <token>moteur</token>
               <token>essence</token>
           </antipattern>
@@ -8740,6 +8823,12 @@ though, and has since been slightly modified)-->
       </rule>
       <rule name="nom masculin suivi du féminin">
         <antipattern>
+            <token postag="N [fe] [sp]" postag_regexp="yes"/>
+            <token regexp="yes">aux|à|de|du</token>
+            <token postag="N .*" postag_regexp="yes"/>
+            <token postag="J [fe] [sp]" postag_regexp="yes"/>
+        </antipattern>
+        <antipattern>
           <token>n</token>
           <token>composantes</token>
         </antipattern>
@@ -8812,6 +8901,12 @@ though, and has since been slightly modified)-->
       </rule>
       <rule name="féminin suivi du masculin">
         <antipattern>
+            <token postag="N [fe] [sp]" postag_regexp="yes"/>
+            <token regexp="yes">aux|à|de|du</token>
+            <token postag="N .*" postag_regexp="yes"/>
+            <token postag="J [fe] [sp]" postag_regexp="yes"/>
+        </antipattern>
+        <antipattern>
           <token>avenue</token>
           <token regexp="yes" postag="Z [em] .*" postag_regexp="yes">(?-i)\p{Lu}.*</token>
         </antipattern>
@@ -8882,6 +8977,12 @@ though, and has since been slightly modified)-->
         <example>L’imprimante laser.</example>
       </rule>
       <rule name="nom féminin suivi du masculin">
+        <antipattern>
+            <token postag="N [fe] [sp]" postag_regexp="yes"/>
+            <token regexp="yes">aux|à|de|du</token>
+            <token postag="N .*" postag_regexp="yes"/>
+            <token postag="J [fe] [sp]" postag_regexp="yes"/>
+        </antipattern>
         <antipattern>
           <token>orge</token>
           <token regexp="yes">perlé|mondé</token>
@@ -9494,7 +9595,7 @@ though, and has since been slightly modified)-->
         <pattern>
           <token regexp="yes">je|tu|ils?|on</token>
           <marker>
-            <token postag="[ACKNJZP].*" postag_regexp="yes">
+            <token postag="(?!PARA_END)[ACKNJZP].*" postag_regexp="yes">
               <exception postag="V.*" postag_regexp="yes"/>
               <exception regexp="yes">[lmnsty]|en|ou|ne?|soussignée?</exception>
             </token>
@@ -9513,7 +9614,7 @@ though, and has since been slightly modified)-->
           <token regexp="yes">je|tu|ils?|on</token>
           <token regexp="yes">[mnst]e|la|les?|[nv]ous|lui|leur|y|en</token>
           <marker>
-            <token postag="[ACKNJZP].*" postag_regexp="yes">
+            <token postag="(?!PARA_END)[ACKNJZP].*" postag_regexp="yes">
               <exception postag="V.*" postag_regexp="yes"/>
               <exception regexp="yes">y|en|[lmnst]</exception>
             </token>
@@ -9534,7 +9635,7 @@ though, and has since been slightly modified)-->
           <token regexp="yes">[lmnst]|[mnts]e|la|les?|[nv]ous|lui|leur</token>
           <token regexp="yes">[’´'‛′‘]|[mnt]e|la|les?|[vn]ous|en|y|lui|leur</token>
           <marker>
-            <token postag="[ACKNJZP].*" postag_regexp="yes">
+            <token postag="(?!PARA_END)[ACKNJZP].*" postag_regexp="yes">
               <exception postag="V.*" postag_regexp="yes"/>
               <exception regexp="yes">y|en</exception>
             </token>
@@ -9552,7 +9653,7 @@ though, and has since been slightly modified)-->
           <token regexp="yes">[lmst]|lui|leur|[nv]ous</token>
           <token regexp="yes">[’´'‛′‘]|y|en</token>
           <marker>
-            <token postag="[ACKNJZP].*" postag_regexp="yes">
+            <token postag="(?!PARA_END)[ACKNJZP].*" postag_regexp="yes">
               <exception postag="V.*" postag_regexp="yes"/>
               <exception regexp="yes">y|en</exception>
             </token>
@@ -11287,6 +11388,7 @@ though, and has since been slightly modified)-->
         <example correction="">Je ne l’y <marker>ait</marker> pas vu.</example>
         <example>Je ne l’y <marker>ai</marker> pas vu.</example>
       </rule>
+
       <rule name="tu token + verbe">
         <pattern>
           <token>tu</token>
@@ -11358,6 +11460,7 @@ though, and has since been slightly modified)-->
         <example correction="">Tu ne m’en <marker>parle</marker> pas</example>
         <example>Tu ne m’en <marker>parles</marker> pas</example>
       </rule>
+
       <rule name="il/elle/on + 0 tokens + Verbe">
         <pattern>
           <token postag="R pers suj 3 .* s|R dem . s" postag_regexp="yes">
@@ -11403,11 +11506,21 @@ though, and has since been slightly modified)-->
         <example>Et ça fonctionne.</example>
         <example>Je ne trouve pas ça intéressant.</example>
       </rule>
+
       <rule name="il/elle/on + 1 token + Verbe">
         <antipattern>
           <token postag="[NZ].*" postag_regexp="yes"/>
           <token>et</token>
           <token>elle</token>
+        </antipattern>
+        <antipattern>
+            <token postag="R pers suj 3 .* s|R dem . s" postag_regexp="yes">
+                <exception regexp="yes">ce|celle|cela</exception>
+                <exception scope="previous" postag="&lt;/DE&gt;"/>
+                <exception scope="previous" postag="P"/>
+            </token>
+            <token>en</token>
+            <token postag="V (etre |avoir )?ppr" postag_regexp="yes"/>
         </antipattern>
         <pattern>
           <token postag="R pers suj 3 .* s|R dem . s" postag_regexp="yes">
@@ -11428,6 +11541,7 @@ though, and has since been slightly modified)-->
         <example>Elle se demande.</example>
         <example>Il a converti cela en médailles.</example>
         <example>Dominique et elle les attendent.</example>
+        <example>Dit celui-ci en laissant retomber ses bras.</example>
       </rule>
       <rule name="ça + 1 tokens + Verbe">
         <pattern>
@@ -11445,6 +11559,7 @@ though, and has since been slightly modified)-->
         <example correction="">Personne ne <marker>peux</marker> me le dire.</example>
         <example>Personne ne <marker>peut</marker> me le dire.</example>
       </rule>
+
       <rule name="il/elle/on + 2 tokens + Verbe">
         <pattern>
           <token postag="R pers suj 3 .* s|R dem . s" postag_regexp="yes">
@@ -14341,7 +14456,6 @@ though, and has since been slightly modified)-->
         <example>Il sera là l’année prochaine.</example>
       </rule>
     </rulegroup>
-
     <rule id="MA_VOYELLE" name="ma + voyelle">
       <pattern>
         <token regexp="yes">[mst]a</token>
@@ -14607,6 +14721,15 @@ though, and has since been slightly modified)-->
           <token regexp="yes">les?|la</token>
           <token postag="V.*" postag_regexp="yes"><exception postag="V .*sub .*" postag_regexp="yes"/></token>
         </antipattern>
+        <antipattern>
+            <token postag="[ZR].*" postag_regexp="yes"/>
+            <and>
+                <token postag="V.*ind.*" postag_regexp="yes"/>
+                <token inflected="yes" regexp="yes">aimer|approuver|attendre|craindre|demander|déplorer|désirer|douter|exiger|falloir|importer|interdire|ordonner|permettre|préférer|refuser|regretter|souhaiter|suffire|suggérer|vouloir</token>
+            </and>
+            <token skip="-1">que</token>
+            <token postag="V .*sub .*" postag_regexp="yes"/>
+        </antipattern>
         <pattern>
           <token postag="[ZR].*" postag_regexp="yes"/>
           <and>
@@ -14624,6 +14747,7 @@ though, and has since been slightly modified)-->
         <example>Je souhaitais que tu <marker>fusses</marker> présent.</example>
         <example correction="soit">Il faut que la France <marker>est</marker> prête.</example>
         <example>Ce coup-ci, on ne se presse pas, on attend que la fumée se dissipe.</example>
+        <example>Je souhaite que ces quelques mots vous incitent à m’écrire.</example>
       </rule>
       <rule>
         <pattern>
@@ -15501,6 +15625,37 @@ though, and has since been slightly modified)-->
       <example correction="points de vue">Des <marker>points de vues</marker>.</example>
       <example>Des points de vue.</example>
     </rule>
+      <rule id="BIOS" name="Confusion bios/BIOS" default="temp_off">
+          <pattern>
+              <token postag="D m s"/>
+              <marker>
+                  <token case_sensitive="yes">bios</token>
+              </marker>
+          </pattern>
+          <message>L'élément informatique BIOS (Basic Input Output System) est un acronyme et s'écrit donc tout en majusucles. Ignorez cette règle si vous vouliez parler du « bios » selon Foucault.</message>
+          <suggestion>BIOS</suggestion>
+          <example correction="BIOS">Il faut le règler directement dans le <marker>bios</marker>.</example>
+      </rule>
+      <rulegroup id="TOUT_A_COMMENCE" name="Expression 'tout a commencé'" default="temp_off">
+          <rule name="Expression 'tout a/à commencé'">
+              <pattern>
+                  <token>tout</token>
+                  <token regexp="yes">a|à</token>
+                  <token regexp="yes">commenc(er|ée|ée?s)</token>
+              </pattern>
+              <message>Vouliez-vous dire <suggestion>tout a commencé</suggestion> ?</message>
+              <example correction="Tout a commencé"><marker>Tout à commencer</marker> ce matin.</example>
+          </rule>
+          <rule name="Expression 'tout a commencé' conjuguée">
+              <pattern>
+                  <token>tout</token>
+                  <token postag_regexp="yes" postag="V avoir.*"/>
+                  <token regexp="yes">commenc(er|ée|ée?s)</token>
+              </pattern>
+              <message>Vouliez-vous dire <suggestion>tout \2 commencé</suggestion> ?</message>
+              <example correction="Tout avait commencé"><marker>Tout avait commencer</marker> ce matin.</example>
+          </rule>
+      </rulegroup>
   </category>
   <category id="CAT_REGIONALISMES" name="Régionalismes" type="style">
     <!--The following rules were created by Hugo Voisard-->
@@ -28186,7 +28341,7 @@ though, and has since been slightly modified)-->
         <token regexp="yes">\d+.+</token>
       </antipattern>
       <pattern>
-        <token regexp="yes">\d+([kcmµn]?m|k?g|°C|m?l|(kilo|méga|giga|téra|péta)?watt|[TGMK]o|ohms?|kW|[MGTP]W|mph|fps|m²|m³|m?s|[GMkhdcm]N|V|min|px)</token>
+        <token regexp="yes">\d+([kcmµn]?m|k?g|°C|m?l|(kilo|méga|giga|téra|péta)?watt|[TGMK]o|ohms?|kW|[MGTP]W|mph|fps|m²|m³|m?s|[GMkhdcm]N|V|min|px|Mpx|[GM]Hz)</token>
       </pattern>
       <message>Il faut utiliser une espace insécable avant l’unité. Voulez-vous écrire <suggestion><match no="1" regexp_match="(\d+)(.*)" regexp_replace="$1 $2"/></suggestion> ?</message>
       <example correction="80 kg">Je pèse <marker>80kg</marker>.</example>
@@ -29093,20 +29248,62 @@ though, and has since been slightly modified)-->
       <example correction=", etc.">J’ai un chien, un chat, un lapin<marker> etc</marker>.</example>
       <example>J’ai un chien, un chat, un lapin, etc.</example>
     </rule>
-    <rulegroup id="HEURES" name="heures 20h30 → 20 h 30">
+    <rulegroup id="HEURES" name="heures 20h30 → 20 h 30 / 20:30">
+      <antipattern>
+        <token regexp="yes">([3-9]\d+|25|26|27|28|29)h.+</token><!-- invalid hour (already marked as misspelling) -->
+      </antipattern>
+      <antipattern>
+        <token regexp="yes" case_sensitive="yes">1H01|1H02|2H01|3H2|2H2|6H3|4H2</token><!-- chemical terms -->
+      </antipattern>
       <rule>
        <!-- <pattern><token regexp="yes">(?:1?\d|2[0-4])h(?:[0-5]?\d)</token></pattern> -->
         <pattern><token regexp="yes">(\d+)h(\d+)</token></pattern>
-        <message>La lettre h doit être espacée dans les heures abrégées. Voulez-vous écrire <suggestion><match no="1" regexp_match="(\d+)[hH](\d+)" regexp_replace="$1 h $2"/></suggestion> ?</message>
+        <message>La lettre h doit être espacée dans les heures abrégées.</message>
+        <suggestion><match no="1" regexp_match="(\d+)[hH](\d+)" regexp_replace="$1 h $2"/></suggestion>
+        <suggestion><match no="1" regexp_match="(\d+)[hH](\d+)" regexp_replace="$1:$2"/></suggestion>
         <url>https://fr.wikipedia.org/wiki/Heure#Typographie</url>
-        <example correction="20 h 30">Il est <marker>20h30</marker>.</example>
+        <example correction="20 h 30|20:30">Il est <marker>20h30</marker>.</example>
+      </rule>
+      <rule>
+        <pattern><token regexp="yes">(\d+)h-(\d+)h</token></pattern>
+        <message>La lettre h doit être espacée dans les heures abrégées.</message>
+        <suggestion><match no="1" regexp_match="(\d+)[hH]\-(\d+)[hH]" regexp_replace="$1 h - $2 h"/></suggestion>
+        <suggestion><match no="1" regexp_match="(\d+)[hH]\-(\d+)[hH]" regexp_replace="$1:00 - $2:00"/></suggestion>
+        <url>https://fr.wikipedia.org/wiki/Heure#Typographie</url>
+        <example correction="20 h - 22 h|20:00 - 22:00"><marker>20h-22h</marker></example>
+      </rule>
+      <rule>
+        <pattern><token regexp="yes">(\d+)h(\d{2})-(\d+)h(\d{2})</token></pattern>
+        <message>La lettre h doit être espacée dans les heures abrégées.</message>
+        <suggestion><match no="1" regexp_match="(\d+)[hH](\d{2})\-(\d+)[hH](\d{2})" regexp_replace="$1 h $2 - $3 h $4"/></suggestion>
+        <suggestion><match no="1" regexp_match="(\d+)[hH](\d{2})\-(\d+)[hH](\d{2})" regexp_replace="$1:$2 - $3:$4"/></suggestion>
+        <url>https://fr.wikipedia.org/wiki/Heure#Typographie</url>
+        <example correction="18 h 30 - 21 h 30|18:30 - 21:30"><marker>18h30-21h30</marker></example>
+      </rule>
+      <rule>
+        <pattern><token regexp="yes">(\d+)h-(\d+)h(\d{2})</token></pattern>
+        <message>La lettre h doit être espacée dans les heures abrégées.</message>
+        <suggestion><match no="1" regexp_match="(\d+)[hH]\-(\d+)[hH](\d{2})" regexp_replace="$1 h - $2 h $3"/></suggestion>
+        <suggestion><match no="1" regexp_match="(\d+)[hH]\-(\d+)[hH](\d{2})" regexp_replace="$1:00 - $2:$3"/></suggestion>
+        <url>https://fr.wikipedia.org/wiki/Heure#Typographie</url>
+        <example correction="18 h - 21 h 30|18:00 - 21:30"><marker>18h-21h30</marker></example>
+      </rule>
+      <rule>
+        <pattern><token regexp="yes">(\d+)h(\d{2})-(\d+)h</token></pattern>
+        <message>La lettre h doit être espacée dans les heures abrégées.</message>
+        <suggestion><match no="1" regexp_match="(\d+)[hH](\d{2})\-(\d+)[hH]" regexp_replace="$1 h $2 - $3 h"/></suggestion>
+        <suggestion><match no="1" regexp_match="(\d+)[hH](\d{2})\-(\d+)[hH]" regexp_replace="$1:$2 - $3:00"/></suggestion>
+        <url>https://fr.wikipedia.org/wiki/Heure#Typographie</url>
+        <example correction="18 h 30 - 21 h|18:30 - 21:00"><marker>18h30-21h</marker></example>
       </rule>
       <rule>
         <!-- <pattern><token regexp="yes">(?:1?\d|2[0-4])h</token></pattern> -->
         <pattern><token regexp="yes">(\d+)h</token></pattern>
-        <message>La lettre h doit être espacée dans les heures abrégées. Voulez-vous écrire <suggestion><match no="1" regexp_match="(\d+)[hH]" regexp_replace="$1 h"/></suggestion> ?</message>
+        <message>La lettre h doit être espacée dans les heures abrégées.</message>
+        <suggestion><match no="1" regexp_match="(\d+)[hH]" regexp_replace="$1 h"/></suggestion>
+        <suggestion><match no="1" regexp_match="(\d+)[hH]" regexp_replace="$1:00"/></suggestion>
         <url>https://fr.wikipedia.org/wiki/Heure#Typographie</url>
-        <example correction="20 h">Il est <marker>20h</marker>.</example>
+        <example correction="20 h|20:00">Il est <marker>20h</marker>.</example>
       </rule>
     </rulegroup>
   <rulegroup id="EQUAL_OR_X" name="Mathématique: &gt;= (≥)">
@@ -30540,6 +30737,12 @@ though, and has since been slightly modified)-->
       <example>Ils ont fait exploser le pont.</example>
     </rule>
     <rule id="AUTANT_POUR_MOI" name="autant pour moi → au temps pour moi">
+      <antipattern>
+          <token>autant</token>
+          <token>pour</token>
+          <token>moi</token>
+          <token>que</token>
+      </antipattern>
       <pattern>
         <token>autant</token>
         <token>pour</token>
@@ -30701,6 +30904,86 @@ though, and has since been slightly modified)-->
       <example correction="de sorte qu">Agissez <marker>de sorte à ce qu</marker>’on vous aime.</example>
       <example correction="de sorte que">Asseyez-vous, <marker>de sorte à ce que</marker> tous puissent voir le spectacle.</example>
     </rule>
+      <rulegroup id="Y_A" default="temp_off" name="Expression familière y'a">
+          <antipattern>
+              <token>y</token>
+              <token>'</token>
+              <token>a</token>
+              <token>pas</token>
+              <token regexp="yes">de?</token>
+              <token min="0" max="1">'</token>
+              <token>lézard</token>
+          </antipattern>
+          <antipattern>
+              <token>y</token>
+              <token>'</token>
+              <token>a</token>
+              <token>pas</token>
+              <token>photo</token>
+          </antipattern>
+          <rule name="Expression familière y'a (affirmatif)">
+              <antipattern>
+                  <token>y</token>
+                  <token>'</token>
+                  <token>a</token>
+                  <token>pas</token>
+                  <token><exception>mal</exception></token>
+              </antipattern>
+              <antipattern>
+                  <token>y</token>
+                  <token>'</token>
+                  <token>a</token>
+                  <token>bon</token>
+                  <token case_sensitive="yes">Awards</token>
+              </antipattern>
+              <pattern>
+                  <token>y</token>
+                  <token>'</token>
+                  <token>a</token>
+              </pattern>
+              <message>La formulation « y'a » est très familière. Vouliez-vous dire <suggestion>il y a</suggestion> ?</message>
+              <example correction="Il y a"><marker>Y'a</marker> pas mal de gens dehors.</example>
+              <example correction="Il y a"><marker>Y'a</marker> beaucoup de gens dehors.</example>
+              <example>Y'a pas de quoi.</example>
+          </rule>
+          <rule name="Expression familière y'a (négatif)">
+              <antipattern>
+                  <token>y</token>
+                  <token>'</token>
+                  <token>a</token>
+                  <token>pas</token>
+                  <token>mal</token>
+              </antipattern>
+              <pattern>
+                  <marker>
+                      <token>y</token>
+                      <token>'</token>
+                      <token>a</token>
+                  </marker>
+                  <token min="0" max="1" postag="A"/>
+                  <token>pas</token>
+              </pattern>
+              <message>La formulation « y'a » est très familière. Vouliez-vous dire <suggestion>il n'y a</suggestion> ?</message>
+              <example correction="Il n'y a"><marker>Y'a</marker> pas de quoi.</example>
+              <example correction="Il n'y a"><marker>Y'a</marker> franchement pas de quoi.</example>
+              <example>Y'a pas mal de gens.</example>
+          </rule>
+      </rulegroup>
+      <rule id="CHIFFRE_SIECLE" name="Chiffre suivi du mot siècle" default="temp_off">
+          <antipattern>
+              <token regexp="yes">en|durant|pendant</token>
+              <token regexp="yes">\d+</token>
+              <token>siècle</token>
+          </antipattern>
+          <pattern>
+              <token regexp="yes">\d+
+                  <exception>1</exception>
+              </token>
+              <token>siècle</token>
+          </pattern>
+          <message>Vouliez-vous dire <suggestion>\1ᵉ \2</suggestion> ?</message>
+          <example correction="21ᵉ siècle">Il aurait vécu durant le <marker>21 siècle</marker>.</example>
+      </rule>
   </category>
   <category id="CAT_MARQUES_DE_COMMERCE" name="Marques de commerce">
     <rule id="UBUNTU" name="Ubuntu-12.4 → Ubuntu-12.04">
