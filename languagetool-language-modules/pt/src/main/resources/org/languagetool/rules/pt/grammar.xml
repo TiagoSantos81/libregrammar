@@ -2830,17 +2830,6 @@ title="Easy editing stylesheet" ?>
           <token postag_regexp='yes' postag='V...3P.+'/>
       </antipattern>	  
 <!-- MARCOAGPINTO 2020-04-01 *END* -->
-<!-- MARCOAGPINTO 2020-04-16 *START* -->
-	<!-- "Para a semana vou telefonar à Ana." -->
-	<!-- "Para o mês vou telefonar à Ana." -->
-	<!-- "Para a semana vamos telefonar à Ana." -->
-	<!-- "Para o mês vamos telefonar à Ana." -->		
-      <antipattern>
-		<token postag_regexp='yes' postag='DA0[FM]S0'></token>
-	    <token postag_regexp='yes' postag='NC[FMC]S000'></token>	  		
-	    <token postag_regexp='yes' postag='VMIP1S0|VMIP1P0'></token>
-      </antipattern>	  
-<!-- MARCOAGPINTO 2020-04-16 *END* -->
       <pattern>
           <token postag_regexp='yes' postag='D...S.+'>
             <exception negate_pos='yes' postag_regexp='yes' postag='D...S.+'/></token>
