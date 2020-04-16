@@ -10016,6 +10016,10 @@ title="Easy editing stylesheet" ?>
           <token>se</token>
           <token postag='V.[^S].+' postag_regexp='yes'/>
       </antipattern>
+      <antipattern><!-- reflexive proclisis -->
+          <token>se</token>
+          <token postag='V.M.+' postag_regexp='yes'/>
+      </antipattern>
       <pattern>
         <marker>
           <token>
@@ -10026,7 +10030,7 @@ title="Easy editing stylesheet" ?>
         </marker>
           <token>
             <exception spacebefore='no' regexp='yes'>[.!?»”\)\"]</exception>
-            <exception postag='SENT_END'/></token>
+            <exception postag='SENT_END|_PUNCT' postag_regexp='yes'/></token>
       </pattern>
       <message>Se está a expressar uma condição, deve separar as orações por vírgulas.</message>
         <suggestion>\1, <match no='2' case_conversion="startlower"/></suggestion>
