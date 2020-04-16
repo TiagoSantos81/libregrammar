@@ -2911,7 +2911,9 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
     <rule name="NNP/VB + NNP -&gt; NNP" id="NNP_VB_NNP">
         <antipattern><!-- #2748 -->
             <token postag="SENT_START"/>
-            <token postag="VB"/>
+            <token postag="VB">
+                <exception postag="JJS"/><!-- Regression error for #2748: Best Art Direction -->
+                </token>
             <token postag="NNP"/>
         </antipattern>
         <antipattern>
@@ -2933,6 +2935,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <example type="untouched">On Tuesday, the rains will stop.</example>
         <example type="untouched">Be Guest Wordsmith for a week at A.Word.</example><!-- #2748 -->
         <example type="untouched">See Wikipedia for a list of TCP/UDP ports that are already used.</example><!-- #2748 -->11
+        <example type="ambiguous" inputform="Best[Best/NNP,best/NN:U,best/VB,best/VBP,good/JJS,well/RBS]" outputform="Best[Best/NNP]"><marker>Best</marker> Art Direction – Set Decoration</example>
     </rule>
 
     <rule name="Uppercase word/NNP|NN -&gt; NNP" id="UPPER_NNP">
@@ -3246,6 +3249,12 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
            <token postag="VBN"/>
            <token postag="VBN"/>
        </antipattern>
+       <antipattern><!-- #2754 The boy who cried spilt milk on the table -->
+           <token postag="WP"/>
+           <token chunk="B-VP" postag="VBN"/>
+           <token postag="VBD"/>
+           <token chunk="B-NP-singular"/>
+       </antipattern>
         <pattern>
             <marker>
                 <token postag="VBN">
@@ -3269,6 +3278,8 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <example type="untouched">Objects must orbit the Earth within this radius, or they can become unbound by the gravitational perturbation of the Sun.</example>
         <example type="untouched">Presently you can only set named tags via AppleScript.</example>
         <example type="untouched">He was last seen taken care of by his mother.</example><!-- #2722 -->
+        <example type="untouched">The boy who cried spilt milk on the table.</example><!-- #2754 -->
+        <example type="ambiguous" inputform="known[know/VBN,known/NN]" outputform="known[known/JJ]">... and his <marker>known</marker> written works are discussed in Chapter 3.</example>
     </rule>
 
     <rule name="of + VBN + JJ -&gt; JJ" id="OF_VBN_JJ">
@@ -3920,27 +3931,35 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
     </rulegroup>
 
     <rule name="plural noun + that/which etc. + plural verb/nn => verb" id="NNS_WDT_VBNNS_VBP">
-      <antipattern><!-- #2358 that league's 1948 title -->
-        <token postag="WDT"/>
-        <token postag="NN"/>
-        <token regexp="yes">&apostrophe;</token>
-        <token>s</token>
-      </antipattern>
-      <pattern>
-        <token postag="NNS"/>
-        <token postag="WDT"/>
-        <marker>
-        <and>
-        <token postag='VB[PD]' postag_regexp="yes"/>
-        <token postag="NN"/>
-        </and>
-        </marker>
-      </pattern>
-      <disambig action="filter" postag="VB[PD]"/>
-      <example type="untouched">I didn't know that they were happy.</example>
-      <example type="untouched">moved to the BAA and won that league's 1948 title.</example>
-      <example type="ambiguous" inputform="lay[lay/JJ,lay/NN,lay/VB,lay/VBP,lie/VBD]" outputform="lay[lay/VBP,lie/VBD]">Certain frogs that <marker>lay</marker> eggs underground have unpigmented eggs.</example>
+        <antipattern><!-- #2358 that league's 1948 title -->
+            <token postag="WDT"/>
+            <token postag="NN"/>
+            <token regexp="yes">&apostrophe;</token>
+            <token>s</token>
+        </antipattern>
+        <antipattern><!-- #2760 He states that spot sales in -->
+            <token chunk="B-VP" postag="VBZ"/>
+            <token postag="WDT"/>
+            <token chunk="B-NP-plural" postag="NN"/>
+            <token chunk="E-NP-plural" postag="NNS"/>
+        </antipattern>
+        <pattern>
+            <token postag="NNS"/>
+            <token postag="WDT"/>
+            <marker>
+                <and>
+                    <token postag='VB[PD]' postag_regexp="yes"/>
+                    <token postag="NN"/>
+                </and>
+            </marker>
+        </pattern>
+        <disambig action="filter" postag="VB[PD]"/>
+        <example type="untouched">I didn't know that they were happy.</example>
+        <example type="untouched">moved to the BAA and won that league's 1948 title.</example>
+        <example type="untouched">He states that spot sales in the Pacific Northwest...</example><!--- #2760 -->
+        <example type="ambiguous" inputform="lay[lay/JJ,lay/NN,lay/VB,lay/VBP,lie/VBD]" outputform="lay[lay/VBP,lie/VBD]">Certain frogs that <marker>lay</marker> eggs underground have unpigmented eggs.</example>
     </rule>
+
     <rule name="till (verb) -&gt; till/IN" id="TILL_IN">
         <pattern>
             <marker>
