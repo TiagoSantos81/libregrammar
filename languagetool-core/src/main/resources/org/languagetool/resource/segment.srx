@@ -5799,7 +5799,7 @@
 <!-- workaround for PARENTESESE_AND_QUOTES_SPACING -->
 <rule break="no">
 <beforebreak>[\.\?!]\s</beforebreak>
-<afterbreak>[“»«\"\)\}]</afterbreak>
+<afterbreak>[”»\"\)\}]</afterbreak>
 </rule>
 <!-- Break rules -->
 <rule break="yes">
