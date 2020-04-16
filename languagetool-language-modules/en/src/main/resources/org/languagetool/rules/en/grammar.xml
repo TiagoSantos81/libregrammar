@@ -15642,7 +15642,7 @@ USA
                 <token>don</token>
             </antipattern>
             <antipattern><!-- Qur'an -->
-                <token>Qur</token>
+                <token regexp="yes">Qur|Ma</token>
                 <token regexp="yes">&apostrophe;</token>
                 <token>an</token>
             </antipattern>
@@ -16235,7 +16235,7 @@ USA
                 <marker>
                     <token>an
                         <exception postag="NNP"/>
-                        </token>
+                    </token>
                     <token regexp="yes">aren?</token>
                 </marker>
             </pattern>
@@ -29989,6 +29989,24 @@ USA
                 <message>Did you mean <suggestion><match no="1" regexp_match="n$" regexp_replace="" /> \2</suggestion>?</message>
                 <example correction="do not">I <marker>don not</marker> know.</example>
             </rule>
+            <rule default="temp_off">
+                <antipattern><!-- "don" is also a rarely used verb -->
+                    <token regexp="yes">s?he|it</token>
+                    <token postag="RB" min="0" />
+                    <token>dons</token>
+                    <token regexp="yes">an?|that|this|my|y?our|his|her|their</token>
+                </antipattern>
+                <pattern>
+                    <token regexp="yes">I|we|they|s?he|you</token>
+                    <token postag="RB" min="0" />
+                    <marker>
+                        <token regexp="yes">dons</token>
+                    </marker>
+                    <token postag="VB.*" postag_regexp="yes" />
+                </pattern>
+                <message>Did you mean <suggestion>don't</suggestion> or <suggestion>doesn't</suggestion>?</message>
+                <example correction="don't|doesn't">I <marker>dons</marker> have an idea.</example>
+            </rule>
             <rule>
                 <antipattern><!-- "don" is also a rarely used verb -->
                     <token regexp="yes">I|you|we|they</token>
@@ -35197,7 +35215,7 @@ USA
                     <token>for</token>
                 </antipattern>
                 <antipattern>
-                    <token>Qur</token>
+                    <token regexp="yes">Qur|Ma</token>
                     <token regexp="yes">&apostrophe;</token>
                     <token>an</token>
                 </antipattern>
@@ -41283,11 +41301,11 @@ The accident victim died from her injuries.
         </rule>
     <rule id='UNLIKELY_OPENING_PUNCTUATION' name="Loose punctuation mark">
     <!-- Created by Tiago F. Santos, 2018-07-14 -->
-      <antipattern>
+      <antipattern><!-- smileys -->
           <token postag='SENT_START'></token>
           <token regexp="yes">[\:;]</token>
           <token min="0">-</token>
-          <token regexp="yes" >[()]</token>
+        <token regexp="yes">[()\/DPS\]\[]</token>
       </antipattern>
       <pattern>
           <token postag='SENT_START'/>
@@ -42957,6 +42975,10 @@ The accident victim died from her injuries.
                 </antipattern>
                 <antipattern>
                     <token>ans</token>
+                    <token regexp="yes" spacebefore="no">&apostrophe;</token>
+                </antipattern>
+                <antipattern>
+                    <token>ans</token>
                     <token postag="UNKNOWN" />
                 </antipattern>
                 <antipattern><!-- Names: Ans van Kemenade-->
@@ -42972,11 +42994,15 @@ The accident victim died from her injuries.
                     <token spacebefore="no">ans</token>
                 </antipattern>
                 <antipattern><!-- "ans" is an abbrev for "answer" ("the ans is correct") -->
-                    <token regexp="yes">the|an?|or|but|because</token>
+                    <token regexp="yes">the|an?|or|and|but|because</token>
                     <token>ans</token>
                 </antipattern>
+                <antipattern>
+                    <token>ans</token>
+                    <token>and</token>
+                </antipattern>
                 <antipattern><!-- "Ans" is a Dutch name -->
-                    <token regexp="yes">Hi|Heya?|Hello|Thanks|(Good\-?)Bye|Sorry|Dear(est)?</token>
+                    <token regexp="yes">Hi|Heya?|Hello|Thanks|(Good\-?)Bye|Howdy|Sorry|Dear(est)?|Welcome</token>
                     <token case_sensitive="yes">Ans</token>
                 </antipattern>
                 <antipattern>
@@ -43001,6 +43027,7 @@ The accident victim died from her injuries.
                 <example type="triggers_error">Ans may refer to:</example>
                 <example>The ANS Group of Companies is a news and broadcasting company in Azerbaijan.</example>
                 <example>The ans is correct.</example>
+                <example>Ans' new car is nice.</example>
             </rule>
         </rulegroup>
         <rulegroup id="GRATE_GREAT" name="grate (great)">
@@ -43141,7 +43168,7 @@ The accident victim died from her injuries.
                 <example>For example, if a guitarist played an open A Major chord.</example>
                 <example>Is there a way to internally rewire an off the shelf multi-speed portable fan.</example>
             </rule>
-            <rule default="temp_off">
+            <rule>
                 <pattern>
                     <token postag="NN.*|PRP" postag_regexp="yes" />
                     <token postag="RB" min="0" />
@@ -43198,7 +43225,7 @@ The accident victim died from her injuries.
                     <token spacebefore="no">an</token>
                 </antipattern>
                 <antipattern>
-                    <token>Qur</token>
+                    <token regexp="yes">Ma|Qur</token>
                     <token regexp="yes">&apostrophe;</token>
                     <token>an</token>
                 </antipattern>
