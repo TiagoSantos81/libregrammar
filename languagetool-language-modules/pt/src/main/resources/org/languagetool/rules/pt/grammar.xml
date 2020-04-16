@@ -836,14 +836,19 @@ title="Easy editing stylesheet" ?>
     <rule id='DEMASIADA_TARDE_CEDO_BOM' name="Demasiado tarde/cedo/bom">
     <!--      Created by Marco A.G.Pinto, Portuguese rule 2020-04-15     -->
       <pattern>
+          <token postag_regexp='yes' postag="V.+">
+            <exception postag_regexp='yes' postag="V.+" negate_pos='yes'></exception></token>
         <marker>
-			<token postag_regexp='no' postag="VMP00SF"/>	
+          <token postag_regexp='no' postag="VMP00SF">
+            <exception postag_regexp='no' postag="VMP00SF" negate_pos='yes'></exception></token>
+          <token postag_regexp='yes' postag="RG|(?:N.|A..)[FC][SN].+">
+            <exception postag_regexp='yes' postag="A..[FC][SN].+"></exception></token>
         </marker>
-		<token postag_regexp='yes' postag="RG|AQ0MS0"/>
       </pattern>
-      <message>&MSG_ECG;</message>
-      <suggestion><match no='1' postag="VMP00SF" postag_replace='VMP00SM' postag_regexp="yes"/></suggestion>
-      <example correction='demasiado'>É <marker>demasiada</marker> tarde para isso.</example>      
+      <message>&MSG_ECG; Se é um advérbio, não é flexionado.</message>
+      <suggestion><match no='2' postag="VMP00SF" postag_replace='VMP00SM' postag_regexp="yes"/> \3</suggestion>
+      <short>&MSG_ECG; </short>
+      <example correction='demasiado tarde'>É <marker>demasiada tarde</marker> para isso.</example>      
     </rule>	
 
   <?ignore superseeded by EMPHATIC_PRONOUN_AGREEMENT
@@ -2494,6 +2499,13 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes' case_sensitive='yes'>e|ou</token>
           <token>eu</token>
       </antipattern>
+      <antipattern>
+          <token postag='V.[CIS].1S0' postag_regexp='yes'/>
+          <token>eu</token>
+          <token min="0" max="3" postag='R.+' postag_regexp='yes'>
+            <exception scope='next'>,</exception></token>
+          <token postag='VMN0000'/>
+      </antipattern>
       <pattern>
           <token>eu</token>
           <token min="0" max="3" postag='R.+' postag_regexp='yes'>
@@ -2512,6 +2524,13 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes' case_sensitive='yes'>e|ou</token>
           <token>tu</token>
       </antipattern>
+      <antipattern>
+          <token postag='V.[CIS].2S0' postag_regexp='yes'/>
+          <token>tu</token>
+          <token min="0" max="3" postag='R.+' postag_regexp='yes'>
+            <exception scope='next'>,</exception></token>
+          <token postag='VMN0000'/>
+      </antipattern>
       <pattern>
           <token>tu</token>
           <token min="0" max="3" postag='R.+' postag_regexp='yes'>
@@ -2525,6 +2544,13 @@ title="Easy editing stylesheet" ?>
       <example>Tu preocupar-te-ias, talvez, com esta manifestação de ignorância.</example>
     </rule>
     <rule>
+      <antipattern>
+          <token postag='V.[CIS].3S0' postag_regexp='yes'/>
+          <token regexp="yes">el[ea]|você</token>
+          <token min="0" max="3" postag='R.+' postag_regexp='yes'>
+            <exception scope='next'>,</exception></token>
+          <token postag='VMN0000'/>
+      </antipattern>
       <antipattern>
           <token regexp='yes' case_sensitive='yes'>e|ou</token>
           <token regexp="yes">el[ea]|você</token>
@@ -2551,6 +2577,13 @@ title="Easy editing stylesheet" ?>
           <token min="0" max="3" postag='R.+' postag_regexp='yes'>
             <exception scope='next'>,</exception></token>
           <token postag='V.[CIS].3S0' postag_regexp='yes'/>
+      </antipattern>
+      <antipattern>
+          <token postag='V.[CIS].1P0' postag_regexp='yes'/>
+          <token>nós</token>
+          <token min="0" max="3" postag='R.+' postag_regexp='yes'>
+            <exception scope='next'>,</exception></token>
+          <token postag='VMN0000'/>
       </antipattern>
       <pattern>
           <token>nós</token>
@@ -2611,6 +2644,13 @@ title="Easy editing stylesheet" ?>
             <exception scope='next'>,</exception></token>
           <token postag='V.[CIS].3S0' postag_regexp='yes'/>
       </antipattern>
+      <antipattern>
+          <token postag='V.[CIS].2P0' postag_regexp='yes'/>
+          <token>vós</token>
+          <token min="0" max="3" postag='R.+' postag_regexp='yes'>
+            <exception scope='next'>,</exception></token>
+          <token postag='VMN0000'/>
+      </antipattern>
       <pattern>
           <token>vós</token>
           <token min="0" max="3" postag='R.+' postag_regexp='yes'>
@@ -2646,7 +2686,14 @@ title="Easy editing stylesheet" ?>
 			<token  postag_regexp="no" postag="VMIP1S0"/>
 			<token  postag_regexp="no" postag="NCMS000"/>			
       </antipattern>
-<!-- MARCOAGPINTO 2020-03-29 *END* -->	  
+<!-- MARCOAGPINTO 2020-03-29 *END* -->
+      <antipattern>
+          <token postag='V.[CIS].3P0' postag_regexp='yes'/>
+          <token regexp='yes'>el[ea]s|vocês</token>
+          <token min="0" max="3" postag='R.+' postag_regexp='yes'>
+            <exception scope='next'>,</exception></token>
+          <token postag='VMN0000'/>
+      </antipattern>
       <pattern>
           <token regexp='yes'>el[ea]s|vocês</token>
           <token min="0" max="3" postag='R.+' postag_regexp='yes'>
@@ -2701,6 +2748,14 @@ title="Easy editing stylesheet" ?>
             <exception negate_pos='yes' postag_regexp='yes' postag='R.+'/></token>
           <token postag='V.[CIS].3S.' postag_regexp='yes'/>
       </antipattern>
+      <antipattern>
+          <token postag='V.[CIS].3P.' postag_regexp='yes'/>
+          <token postag_regexp='yes' postag='D...P.+'/>
+          <token postag_regexp='yes' postag='(?:N..|A...)P.+'/>
+          <token min="0" max="3" postag='R.+' postag_regexp='yes'>
+            <exception negate_pos='yes' postag_regexp='yes' postag='R.+'/></token>
+          <token postag='VMN0000'/>
+      </antipattern>
       <pattern>
           <token postag_regexp='yes' postag='D...P.+'>
             <exception negate_pos='yes' postag_regexp='yes' postag='D...P.+'/></token>
@@ -2715,10 +2770,11 @@ title="Easy editing stylesheet" ?>
       <message>&MSG_ECV;</message>
         <suggestion><match no='1' include_skipped='all'/> <match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all' postag='(V.[CIS].).S(.)' postag_replace='$1\3P$2' postag_regexp='yes'/></suggestion>
         <suggestion><match no='1' include_skipped='all'/> <match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/>, \4</suggestion>
+        <suggestion><match no='1' include_skipped='all'/> <match no='2' include_skipped='all'/>, <match no='3' include_skipped='all'/> \4</suggestion>
       <example correction='Os médicos saíram|Os médicos, saíra'><marker>Os médicos saíra</marker> sem saber como dar a notícia.</example>
-      <example correction='meus amigos não bebem|meus amigos não, bebe'>Os <marker>meus amigos não bebe</marker> café.</example>
-      <example correction='meus amigos ainda não bebem|meus amigos ainda não, bebe'>Os <marker>meus amigos ainda não bebe</marker> café.</example>
-      <example>Nenhum dos meus amigos bebe café.</example>
+      <example correction='meus amigos não bebem|meus amigos não, bebe|meus amigos, não bebe'>Os <marker>meus amigos não bebe</marker> café.</example>
+      <example correction='meus amigos ainda não bebem|meus amigos ainda não, bebe|meus amigos ainda, não bebe'>Os <marker>meus amigos ainda não bebe</marker> café.</example>
+      <example>Nenhum dos meus amigos bebe café.</example><!-- XXX in third suggestion, the comma should be behind 'ainda' -->
       <example>Sem os grandes primatas, ficamos sem os nossos parentes mais próximos no reino animal.</example>
       <example>Outros governos preocupar-se-iam, talvez, com esta manifestação de ignorância.</example>
       <example>Este trabalho deu os primeiros passos há um ano.</example>
@@ -2730,6 +2786,7 @@ title="Easy editing stylesheet" ?>
       <example>Disposição para aceitar as responsabilidades é um sinal de maturidade.</example>
       <example correction="minhas férias tiveram|minhas férias, tive">No início das <marker>minhas férias tive</marker> um acidente.</example>
       <example>No início das <marker>minhas férias, tive</marker> um acidente.</example>
+      <example>Saberão os portugueses distinguir as informações credíveis das falsas?</example>
     </rule>
     <rule>
       <antipattern>
@@ -2798,6 +2855,7 @@ title="Easy editing stylesheet" ?>
       <message>&MSG_ECV;</message>
         <suggestion><match no='1' include_skipped='all'/> <match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all' postag='(V.[CIS].).P(.)' postag_replace='$1\3S$2' postag_regexp='yes'/></suggestion>
         <suggestion><match no='1' include_skipped='all'/> <match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/>, \4</suggestion>
+        <suggestion><match no='1' include_skipped='all'/> <match no='2' include_skipped='all'/>, <match no='3' include_skipped='all'/> \4</suggestion>
       <example correction='O médico novo saiu|O médico novo saíra|O médico novo, saíram'><marker>O médico novo saíram</marker> sem saber como dar a notícia.</example>
       <example>A sua polidez e o seu empenho fizeram com que todos o admirassem.</example>
       <example>A empresa e a ONG pretendem alertar as populações.</example>
@@ -2810,6 +2868,7 @@ title="Easy editing stylesheet" ?>
       <example>As senhoras pouca resistência encontraram.</example>
       <example>Os senhores pouca resistência encontraram.</example>
       <example>...que esta ou aquela família estão muito pior,...</example>
+      <example>No meio de tanta disrupção, não devemos esperar o surgimento espontâneo de uma economia ordenada.</example>
     </rule>
   </rulegroup>
 
@@ -4073,7 +4132,7 @@ title="Easy editing stylesheet" ?>
       <url>https://pt.wikipedia.org/wiki/Coloca%C3%A7%C3%A3o_pronominal</url>
       <short>Erro de colocação pronominal</short>
       <antipattern>
-          <token postag='V.[NX].+'></token>
+          <token postag='V.[NX].+' postag_regexp='yes'></token>
           <token regexp='yes' spacebefore='no'>&tracos_de_separacao;</token>
           <token regexp='yes' spacebefore='no'>[ln][ao]s?</token>
       </antipattern>
@@ -6479,39 +6538,33 @@ title="Easy editing stylesheet" ?>
     <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
       <pattern>
           <token regexp="yes">aulas?|ensino</token>
-        <marker>
           <token>a</token>
-        </marker>
           <token>distância</token>
       </pattern>
-      <message>Substitua por <suggestion>à</suggestion>.</message>
-      <example correction="à">O ensino <marker>a</marker> distância é muito útil.</example>
+      <message>Substitua por <suggestion>\1 à \3</suggestion>.</message>
+      <example correction="ensino à distância">O <marker>ensino a distância</marker> é muito útil.</example>
     </rule>
 
     <rule id='CAIXA_COM_FÓSFOROS' name="Caixa de fósforos">
     <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
       <pattern>
           <token regexp="yes">caixas?</token>
-        <marker>
           <token>com</token>
-        </marker>
           <token>fósforos</token>
       </pattern>
-      <message>Substitua por <suggestion>de</suggestion>.</message>
-      <example correction="de">Vou comprar uma caixa <marker>com</marker> fósforos.</example>
+      <message>Substitua por <suggestion>\1 de \3</suggestion>.</message>
+      <example correction="caixa de fósforos">Vou comprar uma <marker>caixa com fósforos</marker>.</example>
     </rule>
 
     <rule id='CALIBRAR_RODAS' name="equilibrar rodas">
     <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
       <pattern>
-        <marker>
           <token inflected='yes'>calibrar</token>
-        </marker>
           <token regexp="yes">as?|uma</token>
           <token regexp="yes">rodas?</token>
       </pattern>
-      <message>Substitua por <suggestion><match no='1' postag='V.+' postag_regexp='yes'>equilibrar</match></suggestion>.</message>
-      <example correction="equilibrar">A Ana vai <marker>calibrar</marker> as rodas do carro.</example>
+      <message>Substitua por <suggestion><match no='1' postag='V.+' postag_regexp='yes'>equilibrar</match> \2 \3</suggestion>.</message>
+      <example correction="equilibrar as rodas">A Ana vai <marker>calibrar as rodas</marker> do carro.</example>
     </rule>
 
     <rule id='CAPTURAR_IMAGENS' name="Captar imagens">
@@ -6615,15 +6668,12 @@ title="Easy editing stylesheet" ?>
     <rule id='DERIVADO_AO' name="Devido ao">
     <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
       <pattern>
-        <marker>
           <token>derivado</token>
-        </marker>
           <token>ao</token>
           <token regexp="yes">calor|frio</token>
       </pattern>
-      <message>Substitua por: </message>
-        <suggestion>devido</suggestion>
-      <example correction='devido'>Tudo isto é <marker>derivado</marker> ao calor.</example>
+      <message>Substitua por <suggestion>devido \2 \3</suggestion></message>
+      <example correction='devido ao calor'>Tudo isto é <marker>derivado ao calor</marker>.</example>
     </rule>
 
     <rule id='ENSINOS_SUPERIORES' name="Ensino superior">
@@ -7048,14 +7098,12 @@ title="Easy editing stylesheet" ?>
     <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
       <pattern>
           <token inflected='yes'>acabar</token>
-        <marker>
           <token>com</token>
           <token>o</token>
-        </marker>
           <token>namoro</token>
       </pattern>
-      <message>Substitua por <suggestion>o</suggestion>.</message>
-      <example correction="o">O Paulo acabou <marker>com o</marker> namoro.</example>
+      <message>Substitua por <suggestion>\1 o \4</suggestion>.</message>
+      <example correction="acabou o namoro">O Paulo <marker>acabou com o namoro</marker>.</example>
     </rule>
 
     <rule id='ADIVINHA_DISSO_QUE' name="Adivinha disso que">
@@ -9693,43 +9741,6 @@ title="Easy editing stylesheet" ?>
       <example correction='intenções, mas'>…as políticas são feitas com as melhores <marker>intenções mas</marker>, porque não preveem os resultados colaterais, muitas vezes geram os resultados contrários…</example>
     </rule>
     <rule>
-      <antipattern>
-          <token regexp='yes'>&quot;</token>
-          <token regexp='yes'>caso|se</token>
-      </antipattern>
-      <antipattern>
-          <token regexp='yes'>como|que</token>
-          <token>se</token>
-      </antipattern>
-      <antipattern><!-- reflexive without hyphen -->
-          <token postag='V...3.+' postag_regexp='yes'/>
-          <token>se</token>
-      </antipattern>
-      <antipattern><!-- subjunctive -->
-          <token>se</token>
-          <token postag='V.[^S].+' postag_regexp='yes'/>
-      </antipattern>
-      <pattern>
-        <marker>
-          <token>
-            <exception regexp="yes">“|«</exception>
-            <exception regexp='yes'>&separadores_de_oracoes;</exception>
-            <exception postag='SENT_START|(?:D|SP).+|A...P.+' postag_regexp='yes'/></token>
-          <token regexp="yes">caso|se</token>
-        </marker>
-          <token>
-            <exception spacebefore='no' regexp='yes'>[.!?»”\)\"]</exception>
-            <exception postag='SENT_END'/></token>
-      </pattern>
-      <message>Deve separar orações condicionais por vírgulas.</message>
-        <suggestion>\1, <match no='2' case_conversion="startlower"/></suggestion>
-      <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/pontuacao-virgula-antes-de-mas/7047</url>
-      <example correction="antecedência, caso">Terminei a prova com <marker>antecedência caso</marker> possa sair.</example>
-      <example correction="antecedência, se">Terminei a prova com <marker>antecedência se</marker> puder sair.</example>
-      <example><marker>Para se</marker> fazer isso, tem-se que marcar com antecedência.</example>
-      <example><marker>Elas se</marker> satisfizeram com aquela deixa.</example>
-    </rule>
-    <rule>
       <pattern>
         <marker>
           <token>não</token>
@@ -9986,6 +9997,46 @@ title="Easy editing stylesheet" ?>
       <example correction="aliás, está">Foi feito com distinção e, <marker>aliás está</marker> bem feito.</example>
     </rule>
   </rulegroup>
+
+    <rule id='CONDITIONAL_PHRASE_PUNCTUATION' name="Pontuação: oração condicional">
+      <antipattern>
+          <token regexp='yes'>&quot;</token>
+          <token regexp='yes'>caso|se</token>
+      </antipattern>
+      <antipattern>
+          <token regexp='yes'>como|que</token>
+          <token>se</token>
+      </antipattern>
+      <antipattern><!-- reflexive without hyphen -->
+          <token postag='V...3.+' postag_regexp='yes'/>
+          <token>se</token>
+      </antipattern>
+      <antipattern><!-- reflexive proclisis -->
+          <token postag='[PR].+' postag_regexp='yes'/>
+          <token>se</token>
+          <token postag='V.[^S].+' postag_regexp='yes'/>
+      </antipattern>
+      <pattern>
+        <marker>
+          <token>
+            <exception regexp="yes">“|«</exception>
+            <exception regexp='yes'>&separadores_de_oracoes;</exception>
+            <exception postag='SENT_START|(?:[CD]|SP).+|A...P.+' postag_regexp='yes'/></token>
+          <token regexp="yes">caso|se</token>
+        </marker>
+          <token>
+            <exception spacebefore='no' regexp='yes'>[.!?»”\)\"]</exception>
+            <exception postag='SENT_END'/></token>
+      </pattern>
+      <message>Se está a expressar uma condição, deve separar as orações por vírgulas.</message>
+        <suggestion>\1, <match no='2' case_conversion="startlower"/></suggestion>
+      <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/pontuacao-virgula-antes-de-mas/7047</url>
+      <example correction="antecedência, caso">Terminei a prova com <marker>antecedência caso</marker> possa sair.</example>
+      <example correction="antecedência, se">Terminei a prova com <marker>antecedência se</marker> puder sair.</example>
+      <example><marker>Para se</marker> fazer isso, tem-se que marcar com antecedência.</example>
+      <example><marker>Elas se</marker> satisfizeram com aquela deixa.</example>
+      <example>Só quando <marker>e se</marker> satisfizerem aquela queixa.</example>
+    </rule>
 
   <rulegroup id='VOCATIVE_PUNCTUATION' name="Pontuação: vocativo">
     <!-- Created by Tiago F. Santos, Portuguese rule, 2019-11-05 -->
@@ -27758,6 +27809,7 @@ TODO Write better examples
       <example correction="«O">Ela disse: <marker>« O</marker> jardim é verdadeiramente bonito.»</example>
       <example correction="«é">«O jardim», disse ela, <marker>« é</marker> verdadeiramente bonito.»</example>
       <example>A galinha diz "Quiquiriquiqui" o porco diz "Oinque, Oinque," o pato diz "Quá, Quá" e diz que o gato "Miau".</example>
+      <example>...istanciamento social”. “Este é o momento de abrir”</example>
     </rule>
     <rule>
       <antipattern>
