@@ -851,18 +851,18 @@ title="Easy editing stylesheet" ?>
       <example correction='demasiado tarde'>É <marker>demasiada tarde</marker> para isso.</example>      
     </rule>	
 
-   <rule id='DEMASIADA_TARDE_CEDO_BOM' name="Demasiado tarde/cedo/bom">
-    <!--      Created by Marco A.G.Pinto, Portuguese rule 2020-04-15     -->
+    <rule id='VERBO-FEMININO_ADJETIVO-MASCULINO' name="Verbo masculino + Adjetivo masculino">
+    <!--      Created by Marco A.G.Pinto, Portuguese rule 2020-04-15 + 2020-04-17 -->
       <pattern>
         <marker>
-			<token postag_regexp='no' postag="VMP00SF"/>
+			<token postag_regexp='no' postag="VMP00SF"/>	
         </marker>
-		<token postag_regexp='yes' postag="RG|AQ0MS0"/>
+		<token postag_regexp='no' postag="AQ0MS0"/>
       </pattern>
       <message>&MSG_ECG;</message>
       <suggestion><match no='1' postag="VMP00SF" postag_replace='VMP00SM' postag_regexp="yes"/></suggestion>
-      <example correction='demasiado'>É <marker>demasiada</marker> tarde para isso.</example>      
-    </rule>	
+      <example correction='demasiado'>É <marker>demasiada</marker> bom para isso.</example>      
+    </rule>
 
   <?ignore superseeded by EMPHATIC_PRONOUN_AGREEMENT
   <rulegroup id='ELE_ELA_PROPRIO_PROPRIA' name="Ele(s)/Ela(s) próprio(s)/própria(s)">
