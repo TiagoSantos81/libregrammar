@@ -834,19 +834,19 @@ title="Easy editing stylesheet" ?>
   </rulegroup>
 
     <rule id='ADVERB_AGREEMENT' name="Concordância de género: Advérbios">
-    <!--      Based on Marco A.G.Pinto rule, Portuguese rule 2020-04-15     -->
+    <!--      Created by Tiago F. Santos rule, Portuguese rule 2020-04-16     -->
       <pattern>
           <token postag_regexp='yes' postag="V.+">
             <exception postag_regexp='yes' postag="V.+" negate_pos='yes'></exception></token>
         <marker>
-          <token postag_regexp='no' postag="VMP00SF">
-            <exception postag_regexp='no' postag="VMP00SF" negate_pos='yes'></exception></token>
+          <token regexp='yes'>(?:mei|tod|demasiad|muit|pouc)as?</token>
           <token postag_regexp='yes' postag="RG|A..F[SN].+">
             <exception postag_regexp='yes' postag="A..[MC][SN].+"></exception></token>
         </marker>
       </pattern>
       <message>&MSG_ECG; Se é um advérbio, não é flexionado.</message>
       <suggestion><match no='2' postag="VMP00SF" postag_replace='VMP00SM' postag_regexp="yes"/> \3</suggestion>
+      <url>https://guiadoestudante.abril.com.br/estudo/esclarecemos-detalhes-em-flexoes-de-adverbios/</url>
       <short>&MSG_ECG; </short>
       <example correction='demasiado tarde'>É <marker>demasiada tarde</marker> para isso.</example>      
     </rule>	
