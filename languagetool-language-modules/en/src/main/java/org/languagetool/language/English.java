@@ -298,6 +298,8 @@ public class English extends Language implements AutoCloseable {
       case "ADJECTIVE_ADVERB":          return 2;   // prefer over MODAL_VERB_FOLLOWED_BY_NOUN, PRP_MD_NN, and PRONOUN_NOUN
       case "DOS_AND_DONTS":             return 2;
       case "EN_COMPOUNDS":              return 1;
+      case "IN_THIS_REGARDS":           return 1;   // higher prio than THIS_NNS
+      case "NO_WHERE":                  return 1;   // higher prio than NOW
       case "APOSTROPHE_VS_QUOTE":       return 1;   // higher prio than EN_QUOTES
       case "COMMA_PERIOD":              return 1;   // higher prio than COMMA_PARENTHESIS_WHITESPACE
       case "HERE_HEAR":                 return 1;   // higher prio than ENGLISH_WORD_REPEAT_RULE
