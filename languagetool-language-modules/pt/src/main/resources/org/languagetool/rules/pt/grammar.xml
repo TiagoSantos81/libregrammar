@@ -833,8 +833,8 @@ title="Easy editing stylesheet" ?>
     </rule>
   </rulegroup>
 
-    <rule id='DEMASIADA_TARDE_CEDO_BOM' name="Demasiado tarde/cedo/bom">
-    <!--      Created by Marco A.G.Pinto, Portuguese rule 2020-04-15     -->
+    <rule id='ABVERB_AGREEMENT' name="Concordância de género: Advérbios">
+    <!--      Based on Marco A.G.Pinto rule, Portuguese rule 2020-04-15     -->
       <pattern>
           <token postag_regexp='yes' postag="V.+">
             <exception postag_regexp='yes' postag="V.+" negate_pos='yes'></exception></token>
@@ -849,6 +849,19 @@ title="Easy editing stylesheet" ?>
       <suggestion><match no='2' postag="VMP00SF" postag_replace='VMP00SM' postag_regexp="yes"/> \3</suggestion>
       <short>&MSG_ECG; </short>
       <example correction='demasiado tarde'>É <marker>demasiada tarde</marker> para isso.</example>      
+    </rule>	
+
+   <rule id='DEMASIADA_TARDE_CEDO_BOM' name="Demasiado tarde/cedo/bom">
+    <!--      Created by Marco A.G.Pinto, Portuguese rule 2020-04-15     -->
+      <pattern>
+        <marker>
+			<token postag_regexp='no' postag="VMP00SF"/>
+        </marker>
+		<token postag_regexp='yes' postag="RG|AQ0MS0"/>
+      </pattern>
+      <message>&MSG_ECG;</message>
+      <suggestion><match no='1' postag="VMP00SF" postag_replace='VMP00SM' postag_regexp="yes"/></suggestion>
+      <example correction='demasiado'>É <marker>demasiada</marker> tarde para isso.</example>      
     </rule>	
 
   <?ignore superseeded by EMPHATIC_PRONOUN_AGREEMENT
