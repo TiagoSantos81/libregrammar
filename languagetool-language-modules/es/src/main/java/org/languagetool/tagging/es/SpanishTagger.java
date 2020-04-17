@@ -44,11 +44,16 @@ public class SpanishTagger extends BaseTagger {
 
   @Override
   public String getManualAdditionsFileName() {
-    return "/es/added.txt";
+    return "/es/manual-tagger.txt";
   }
 
   public SpanishTagger() {
-    super("/es/spanish.dict", new Locale("es"));
+    super("/es/es-ES.dict", new Locale("es"));
+  }
+  
+  @Override
+  public String getManualRemovalsFileName() {
+    return "/es/removed-tagger.txt";
   }
 
   @Override

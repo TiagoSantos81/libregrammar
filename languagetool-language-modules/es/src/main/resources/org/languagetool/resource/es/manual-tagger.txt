@@ -1,0 +1,9 @@
+# A POS tag dictionary that's used as an addition (or as a fix) to spanish.dict
+# These words are candidates to be added (or fixed) in spanish.dict in the future
+# File Encoding: UTF-8
+# Format: fullform baseform postags (tab separated)
+########## Dictionary fixes ##########
+########## Additions ##########
+interfaces	interfaz	NCFP000
+interfaz	interfaz	NCFS000
+érase	ser	VSII3S0+PP3CN000

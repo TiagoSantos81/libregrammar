@@ -3568,8 +3568,8 @@ Copyright © 2013 Markus Brenneis, Daniel Naber, Jan Schreiber
     </rule>
     <rule name="CONNECT" id="CONNECT">
         <pattern case_sensitive="yes">
-            <token regexp="yes">Spotify|Staples|Car|OpenID</token>
-            <token>Connect</token>
+            <token regexp="yes">Spotify|Staples|Car|OpenI|Conrad|digitec</token>
+            <token regexp="yes">Connects?</token>
         </pattern>
         <disambig action="ignore_spelling"/>
     </rule>
@@ -3709,7 +3709,7 @@ Copyright © 2013 Markus Brenneis, Daniel Naber, Jan Schreiber
     </rule>
     <rule name="SCHOOL" id="SCHOOL">
         <pattern case_sensitive="yes">
-            <token regexp="yes">Business|Grammar|Public|Old|Media|Law</token>
+            <token regexp="yes">Business|Grammar|Public|Old|Media|Law|Medical</token>
             <token regexp="yes">Schools?</token>
         </pattern>
         <disambig action="ignore_spelling"/>
@@ -3901,6 +3901,12 @@ Copyright © 2013 Markus Brenneis, Daniel Naber, Jan Schreiber
         <pattern>
             <token>.</token>
             <token spacebefore="no">-</token>
+        </pattern>
+        <disambig action="ignore_spelling"/>
+    </rule>
+    <rule id="HYPHENS" name="ignore spelling of multiple '-'">
+        <pattern>
+            <token regexp="yes">[\-]{3,}</token>
         </pattern>
         <disambig action="ignore_spelling"/>
     </rule>

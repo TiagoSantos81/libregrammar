@@ -1967,7 +1967,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <marker>
                     <token postag="ADJ:.*" postag_regexp="yes">
                         <exception postag="ADJ:PRD:(KOM|GRU)|SUB:.*" postag_regexp="yes"/>
-                        <exception regexp="yes">dehnbarer|andere|lange|höher|einige|solche|weitere|folgende[rs]?</exception>
+                        <exception regexp="yes">dehnbarer|andere|lange|höher|einige|solche|weitere|folgende[rs]?|öde|spitze</exception>
+                        <exception inflected="yes">andere</exception>
                     </token>
                 </marker>
                 <token postag="SENT_END" regexp="yes">[.!?]+</token>
@@ -1980,6 +1981,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example>Er war <marker>schneller</marker>.</example>
             <example>Sein Vater ist <marker>Japaner</marker>.</example>
             <example>Die ersten Erdbändiger waren blinde Dachsmaulwürfe.</example>
+            <example>Die Arbeit ist öde.</example>
+            <example>Das Essen war spitze.</example>
         </rule>
         <rule id="SO_SCHNELLE_WIE" name="'so schnelle (schnell) wie' etc.">
             <pattern>
@@ -4598,6 +4601,31 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <suggestion>\1\2</suggestion>
                 <example correction="zusammengeschrieben">Zusammenschreiben wird <marker>zusammen geschrieben</marker>.</example>
                 <example>Wir haben Oma zusammen geschrieben.</example>
+            </rule>
+        </rulegroup>
+        <rulegroup id="ALLEINLASSEN" name="allein lassen (alleinlassen)">
+            <url>https://www.korrekturen.de/wortliste/allein_lassen.shtml</url>
+            <rule>
+                <pattern>
+                    <token inflected="yes" skip="6">fühlen<exception scope="next" regexp="yes">[,;:]</exception></token>
+                    <marker>
+                        <token>allein</token>
+                        <token>gelassen</token>
+                    </marker>
+                </pattern>
+                <message>In der übertragenen Bedeutung von 'im Stich gelassen' wird <suggestion>alleingelassen</suggestion> zusammengeschrieben.</message>
+                <example correction="alleingelassen">Er fühlte sich von seinen Freunden wirklich <marker>allein gelassen</marker>.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <marker>
+                        <token>allein</token>
+                        <token>gelassen</token>
+                    </marker>
+                    <token inflected="yes">fühlen</token>
+                </pattern>
+                <message>In der übertragenen Bedeutung von 'im Stich gelassen' wird <suggestion>alleingelassen</suggestion> zusammengeschrieben.</message>
+                <example correction="alleingelassen">Weil er sich <marker>allein gelassen</marker> fühlte, rächte er sich an ihnen.</example>
             </rule>
         </rulegroup>
         <rulegroup id="INFOLGEDESSEN" name="infolge dessen (infolgedessen)">
@@ -7446,7 +7474,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <short>&getrennt;.</short>
             <example correction="WhatsApp">Wir schrieben per <marker>whats app</marker>.</example>
         </rule>
-        <rulegroup id="HEDGEFONDS" name="Hedge Fonds" default="temp_off">
+        <rulegroup id="HEDGEFONDS" name="Hedge Fonds (Hedgefonds)" default="temp_off">
             <url>https://www.duden.de/rechtschreibung/Hedgefonds</url>
             <rule>
                 <pattern>
@@ -42519,13 +42547,18 @@ Andere Projekte</example>
                     <token postag="VER.*:[1-3]:.*|VER:.*:[1-3]:.*|VER:IMP:.*" postag_regexp="yes">
                         <exception postag="VER:INF:.+|PA[12]:.+|SUB:.+|EIG:.*|PR[OP]:.*|AD[JV]:.*|ART:.*|NEG:.*|ABK:.+|ZUS|ZAL" postag_regexp="yes"/>
                         <exception  inflected="yes" regexp="yes">bleiben|lassen</exception>
-                       </token>
+                    </token>
                     <token>als</token>
                     <token>auch</token>
                 </antipattern>
                 <antipattern>
                     <token postag="VER:AUX:.+" postag_regexp="yes"/>
                     <token postag="PRO:PER:NOM:.+" postag_regexp="yes"/>
+                </antipattern>
+                <antipattern>
+                    <token postag="SENT_START"/>
+                    <token regexp="yes">da|weil|ob(wohl|gleich)?|da(mit|ss)|indem|wenn|falls|sofern|während|bevor|nachdem|seitdem|so(bald|dass|lange)|was|als|wie|bis|wer|wo(hin)?</token>
+                    <token postag="VER:.+" postag_regexp="yes"></token>
                 </antipattern>
                 <pattern>
                     <token postag="SENT_START"/>
@@ -42535,12 +42568,12 @@ Andere Projekte</example>
                         <exception postag="VER:INF:.*|VER:AUX:.*:KJ[12]|PA[12]:.*|SUB:.*|EIG:.*|PR[OP]:.*|AD[JV]:.*|ART:.*|NEG:.*|ABK:.*|ZUS.*|ZAL.*" postag_regexp="yes"/>
                         <exception  inflected="yes" regexp="yes">bleiben|lassen|gelingen</exception>
                         <exception regexp="yes" scope="next">,|\.|:|\?|!|;|-|–|\)|\(|„|“|»|«|"|und|oder</exception>
-                       </token>
+                    </token>
                     </marker>
                     <token postag="VER.*:[1-3]:.*|VER:.*:[1-3]:.*|VER:IMP:.*" postag_regexp="yes">
                         <exception postag="VER:INF:.*|PA[12]:.*|SUB:.*|EIG:.*|PR[OP]:.*|AD[JV]:.*|ART:.*|NEG:.*|ABK:.*|ZUS.*|ZAL.*" postag_regexp="yes"/>
                         <exception  inflected="yes" regexp="yes">bleiben|lassen|gelingen</exception>
-                       </token>
+                    </token>
                     <token/>
                 </pattern>
                 <message>Hier sollte ein Komma eingefügt werden, wenn es sich um einen Haupt- und Nebensatz oder zwei Hauptsätze handelt.</message>
@@ -42553,6 +42586,7 @@ Andere Projekte</example>
                 <example>Wie erfolgreich waren apologetische Bestrebungen, wenn sie doch verloren haben?</example>
                 <example>Wie konnten die Bakterien in die Milch gelangen?</example>
                 <example>Jetzt bin ich offen für viele Dinge, allerdings interessiere ich mich nun schon seit geraumer Zeit für die Ergreifung eines Sozialberufs.</example>
+                <example>Da, finde ich, kann auch noch was passieren.</example>
             </rule>
             <rule>
                 <antipattern>

@@ -25,12 +25,21 @@
      - updated en_GB spellchecker dictionary from https://github.com/marcoagpinto/aoo-mozilla-en-dict (Version 2.83 - 2020-04-01)
      - scientific nomenclature POS support added
 
+#### Esperanto
+  * added and improved rules
+
+#### French
+  * added and improved rules
+
 #### Portuguese
   * rules added and improved, including:
      - mesoclisis related rules added.
   * revert all `grammar.xml` commits from upstream project, and replace those with appropriate solutions for
     the false positives they try to fix. Most upstream solutions are either semantically incorrect, or too
     crippling to detection while not providing meaningful improvements to accuracy.
+
+#### Russian
+  * added and improved rules
 
 #### Spanish
   * add `SpanishStyleRepeatedWordRule`,
@@ -60,7 +69,7 @@
 
 #### Catalan
   * added and improved rules
-  * spelling and POS improvements
+  * updated dictionary (catalan-pos-dict-2.8), now with a specific dictionary file for spelling suggestions
 
 #### Dutch
   * added and improved rules, including:
@@ -113,6 +122,7 @@
     - SimpleReplaceRule;
     - SimpleReplaceVerbsRule;
     --SimpleReplaceAnglicismRule.
+  * new tagger dictionary by Jaume Ortolà, LGPL, source: https://github.com/jaumeortola/spanish-dict-tools
 
 #### Ukrainian
   * dictionary update
