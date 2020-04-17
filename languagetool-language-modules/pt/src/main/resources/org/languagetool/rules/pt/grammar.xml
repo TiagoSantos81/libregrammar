@@ -833,7 +833,7 @@ title="Easy editing stylesheet" ?>
     </rule>
   </rulegroup>
 
-    <rule id='ABVERB_AGREEMENT' name="Concordância de género: Advérbios">
+    <rule id='ADVERB_AGREEMENT' name="Concordância de género: Advérbios">
     <!--      Based on Marco A.G.Pinto rule, Portuguese rule 2020-04-15     -->
       <pattern>
           <token postag_regexp='yes' postag="V.+">
