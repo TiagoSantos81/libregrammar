@@ -851,7 +851,7 @@ title="Easy editing stylesheet" ?>
       <example correction='demasiado tarde'>É <marker>demasiada tarde</marker> para isso.</example>      
     </rule>	
 
-    <rule id='VERBO-FEMININO_ADJETIVO-MASCULINO' name="Verbo masculino + Adjetivo masculino">
+    <rule id='VERBO-FEMININO_ADJETIVO-MASCULINO' name="Verbo masculino + Adjetivo masculino" default='temp_off'>
     <!--      Created by Marco A.G.Pinto, Portuguese rule 2020-04-15 + 2020-04-17 -->
       <pattern>
         <marker>
