@@ -5667,7 +5667,7 @@
 </rule>
 <!-- English abbreviations - but these work globally for all languages -->
 <rule break="no">
-<beforebreak>\b(Mr|Mrs|No|pp|St|Jr|Bros|etc|vs|esp|[Ff]ig|PhD|al|cf|Inc|Ms|Gen|Sen|Prof|Corp|Co|Ltd)\.\s?</beforebreak>
+<beforebreak>\b(Mr|Mrs|No|pp|St|Jr|Bros|vs|esp|[Ff]ig|PhD|al|cf|Inc|Ms|Gen|Sen|Prof|Corp|Co|Ltd)\.\s?</beforebreak>
 <afterbreak></afterbreak>
 </rule>
 <!-- Latin abbreviations - but these work globally for all languages -->
