@@ -185,6 +185,7 @@ public class Spanish extends Language implements AutoCloseable{
     switch (id) {
       case "ACCENTUATION_CHECK_ES": return 10;
       case "HALLA_HAYA": return 10;
+      case "ES_WIKIPEDIA_COMMON_ERRORS": return -10;
     }
     return super.getPriorityForId(id);
   }
