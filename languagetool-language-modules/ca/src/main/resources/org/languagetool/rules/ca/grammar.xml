@@ -10164,22 +10164,24 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         <rulegroup id="MALGRAT" name="Usos incorrectes de 'malgrat'">
             <rule id="MALGRAT_QUE" name="malgrat (que)">
                 <antipattern>
-                    <marker>
-                        <token>malgrat</token>
-                        <token postag="V.N.*" postag_regexp="yes"/>
-                    </marker>
+                    <token>malgrat</token>
+                    <token postag="V.N.*" postag_regexp="yes"/>
+                </antipattern>
+                <antipattern>
+                    <token>malgrat</token>
+                    <token regexp="yes">tot|això|que|com</token>
                 </antipattern>
                 <pattern>
                     <marker>
-                        <token>malgrat<exception postag="_possible_nompropi"/></token>
+                        <token skip="9">malgrat<exception postag="_possible_nompropi"/><exception scope="next" regexp="yes">[;,–—\(\)\-]|que|quals?|què|com|perquè|qui</exception></token>
                     </marker>
-                    <token skip="9"><exception regexp="yes">tot|això|que|com</exception><exception scope="next" regexp="yes">[;,–—\(\)\-]|que|quals?|què|com|perquè|qui</exception></token>
                     <token postag="V.[IS].*" postag_regexp="yes"><exception postag="_possible_nompropi|.*LOC_ADV.*" postag_regexp="yes"/></token> <!-- <exception postag="_GN.*|V.N.*" postag_regexp="yes"/>-->
                 </pattern>
                 <message>Potser és <suggestion>malgrat que</suggestion> o falta una coma abans del verb.</message>
                 <short>Expressió incorrecta</short>
                 <example correction="malgrat que">No vidrà, <marker>malgrat</marker> li interessi molt.</example>
                 <example correction="Malgrat que"><marker>Malgrat</marker> li interessi molt, no vindrà</example>
+                <example correction="malgrat que">I, <marker>malgrat</marker> hi ha alguana excepció.</example>
                 <example>No vindrà, malgrat que li interessi.</example>
                 <example>Malgrat això que dius, m'alegro.</example>
                 <example>Malgrat reconèixer on anava, hi va anar.</example>
@@ -17195,7 +17197,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <marker>
                     <token>san<exception postag=".*NP.*" postag_regexp="yes"/></token>
                 </marker>
-                <token postag="NPMSSP0"><exception regexp="yes">Antonio|Pedro|José|Diego|Fernando|Miguel|Francisco|Giovanni</exception></token>
+                <token postag="NPMSSP0"><exception regexp="yes">Antonio|Pedro|José|Diego|Fernando|Miguel|Francisco|Giovanni|Jorge</exception></token>
             </pattern>
             <message>¿Volíeu dir <suggestion>sant</suggestion> en comptes de 'san' (=poble africà)?</message>
             <short>Possible confusió</short>
@@ -37029,7 +37031,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token inflected="yes">caser<exception postag="_possible_nompropi"/></token>
                 </marker>
             </pattern>
-            <message>Com a adjectiu, cal dir <suggestion><match no="2" postag="NC(..).*" postag_regexp="yes" postag_replace="AQ.$1.">casolà</match></suggestion>. Pot ser correcte en altres sentits.</message>
+            <message>Com a adjectiu, cal dir <suggestion><match no="1" postag="NC(..).*" postag_regexp="yes" postag_replace="AQ.$1.">casolà</match></suggestion>. Pot ser correcte en altres sentits.</message>
             <example correction="casolana">He fet una coca <marker>casera</marker>.</example>
             <example correction="casolans">He fet uns bunyols <marker>casers</marker>.</example>
             <example>La Borda del Caser.</example>
@@ -49787,7 +49789,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <pattern>
                     <marker>
                         <token postag="NC.*" postag_regexp="yes" regexp="yes">\p{Ll}[\p{Ll}·]+<exception postag="A.*|V.P.*|V.[NMSI].*|complement.*|DN.*|_GV_|.*LOC_ADV.*|_loc_meitat" postag_regexp="yes" /><exception regexp="yes">\p{Lu}.*</exception><exception regexp="yes" inflected="yes">símbols?|factors?|mots?|paraul(a|es)|termes?|expressi(ó|ons)|vocables?|nombres?|lletr(a|es)|colors?|vegad(a|es)|volt(a|es)|cops?|noms?|majoria|substantius?|objectes?|&dies_setmana;</exception></token>
-                        <token postag="NC.*" postag_regexp="yes" regexp="yes">\p{Ll}[\p{Ll}·]+<exception postag="A.*|V.P.*|V.[NMSI].*|_GN.*|DN.*|_loc_enma|.*LOC_ADV.*|_loc_meitat" postag_regexp="yes" /><exception regexp="yes">\p{Lu}.*|fra|don|&dies_setmana;|.+ador(a|s|es)?</exception></token>
+                        <token postag="NC.*" postag_regexp="yes" regexp="yes">\p{Ll}[\p{Ll}·]+<exception postag="A.*|V.P.*|V.[NMSI].*|_GN.*|DN.*|_loc_enma|.*LOC_ADV.*|_loc_meitat" postag_regexp="yes" /><exception regexp="yes">\p{Lu}.*|fra|don|&dies_setmana;|.+ador(a|s|es)?|caser(a|s|es)?</exception></token>
                     </marker>
                 </pattern>
                 <message>Reviseu: dos substantius junts. Potser hi falta algun element (una coma, una conjunció, una preposició).</message>
@@ -50070,7 +50072,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rule>
         <rulegroup id="PREP_VERB_CONJUGAT" name="combinació impossible: preposició + verb conjugat">
             <antipattern> <!-- té regla específica -->
-                <token>retràs</token>
+                <token regexp="yes">retràs|malgrat</token>
             </antipattern>
             <antipattern>
                 <token>en</token>
