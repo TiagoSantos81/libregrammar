@@ -976,7 +976,7 @@
           <token postag="A.+" postag_regexp="yes"/>
           <token postag="N.+" postag_regexp="yes">
             <exception postag="[DC].+|SPS00|(?:A..|N.)CN.+" postag_regexp="yes"/>
-            <exception regexp="yes">era|são|falha</exception></token>
+            <exception regexp="yes">era|são|falha|mais|menos</exception></token>
           </unify>
         </marker>
       </pattern>
@@ -984,6 +984,7 @@
       <example inputform="uma[um/DI0FS0,um/NCFS000,um/PI0FS000]" outputform="uma[um/DI0FS0]" type="ambiguous">É <marker>uma</marker> romântica ocasião.</example>
       <example type="untouched">É uma ocasião romântica.</example>
       <example type="untouched">...em 112 Trajano fixa o procedimento contra os cristãos.</example>
+      <example type="untouched">Todos juntos mais uma semana...</example>
     </rule>
 
     <!-- NSN : Nom + Nom/Prep + Nom/Adj = prep -->
