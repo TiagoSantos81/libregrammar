@@ -1250,6 +1250,14 @@ title="Easy editing stylesheet" ?>
           <token postag_regexp='yes' postag='Z.+'/>
           </unify>
       </antipattern>
+      <antipattern>
+          <token postag='(?:N.|A..).S.+' postag_regexp='yes'/>
+          <token regexp='yes' min='0'>&adverbios_de_intensidade;</token><!-- XXX use POS after disambiguation improvements -->
+          <token min='0' postag='(?:A..|Z.)C.+' postag_regexp='yes'>
+            <exception negate_pos='yes' postag_regexp='yes' postag='(?:[NZ].|A..)C.+'/></token>
+          <token postag='Z.[FC]P.+' postag_regexp='yes'/>
+          <token>vezes</token>
+      </antipattern>
     <rule>
       <antipattern>
           <token regexp='yes'>(?:&precede_nome_proprio_F;|&precede_nome_proprio_M;)s?</token>
@@ -4182,6 +4190,7 @@ title="Easy editing stylesheet" ?>
       <example>…l durante seu governo) e um dos pontos utilizados para atraí-los era, evidentemente, o apoio à construção de rodov…</example>
       <example>…ao juntar-se mostrou-se…</example>
       <example>O caso tornou-se um escândalo de saúde após a morte de várias crianças imunizadas…</example>
+      <example>...já mil pessoas se juntaram no grupo.</example>
     </rule>
     <rule>
       <pattern>
@@ -5145,6 +5154,13 @@ title="Easy editing stylesheet" ?>
           <token/>
           <token postag='_PUNCT'/>
       </antipattern>
+      <!--antipattern> TODO not working. debug.
+          <token regexp='yes'>tod[ao]s</token>
+          <token postag_regexp='yes' postag='A.+'>
+            <exception negate_pos='yes' postag_regexp='yes' postag='A.+'/></token>
+          <token>
+            <exception postag_regexp='yes' postag='N.+'/></token>
+      </antipattern-->
       <pattern>
           <token regexp='yes'>tod[ao]s</token>
           <token postag_regexp='yes' postag='(?:N|A).+'>
@@ -5159,10 +5175,10 @@ title="Easy editing stylesheet" ?>
       <example>Por favor, fiquem todos calmos.</example>
       <example>São todos iguais?</example>
       <example>Estão todos felizes?</example>
-      <example correction='todos os felizes'>Onde estão <marker>todos felizes</marker> convidados?</example>
       <example>Nisso somos todos iguais.</example>
       <example>Somos todos uns mimados.</example>
       <example>Os sócios, todos portugueses, fizeram o investimento inicial.</example>
+      <example>Todos juntos fazemos a diferença.</example>
     </rule>
 
     <rule id='DEMAIS_DE_MAIS' name="Confusão: 'de mais' com 'demais'">
@@ -10009,6 +10025,10 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>como|que</token>
           <token>se</token>
       </antipattern>
+      <antipattern>
+          <token>caso</token>
+          <token regexp='yes'>único|isolado</token>
+      </antipattern>
       <antipattern><!-- reflexive without hyphen -->
           <token postag='V...3.+' postag_regexp='yes'/>
           <token>se</token>
@@ -10016,11 +10036,20 @@ title="Easy editing stylesheet" ?>
       <antipattern><!-- reflexive proclisis -->
           <token postag='[PR].+' postag_regexp='yes'/>
           <token>se</token>
+          <token postag='R.+' postag_regexp='yes' min='0'/>
           <token postag='V.[^S].+' postag_regexp='yes'/>
       </antipattern>
       <antipattern><!-- reflexive proclisis -->
           <token>se</token>
+          <token postag='R.+' postag_regexp='yes' min='0'/>
           <token postag='V.M.+' postag_regexp='yes'/>
+      </antipattern>
+      <antipattern><!-- proclisis required -->
+          <token regexp='yes' skip='-1'>&introduz_proclise;
+            <exception scope='next' regexp='yes'>[\.,!\?—–‒\-\(]</exception></token>
+          <token>se</token>
+          <token postag='R.+' postag_regexp='yes' min='0'/>
+          <token postag='V...3.+' postag_regexp='yes'/>
       </antipattern>
       <pattern>
         <marker>
@@ -10042,6 +10071,8 @@ title="Easy editing stylesheet" ?>
       <example><marker>Para se</marker> fazer isso, tem-se que marcar com antecedência.</example>
       <example><marker>Elas se</marker> satisfizeram com aquela deixa.</example>
       <example>Só quando <marker>e se</marker> satisfizerem aquela queixa.</example>
+      <example>Enquanto que os restantes setores <marker>se mantêm</marker> encerrados, ninguém pode estar tranquilo.</example>
+      <example>Perguntam sempre se não temos sintomas.</example>
     </rule>
 
   <rulegroup id='VOCATIVE_PUNCTUATION' name="Pontuação: vocativo">
@@ -10629,6 +10660,8 @@ title="Easy editing stylesheet" ?>
             <exception regexp='yes' case_sensitive='yes'>\p{Lu}.+</exception>
             <exception postag='A.+|NP.+' postag_regexp='yes'/></token>
           <token>e</token>
+          <token>
+            <exception postag='[RSV].+' postag_regexp='yes'/></token>
       </pattern>
       <message>Pontuação em falta.</message>
         <suggestion><match no="1"/>,</suggestion>
@@ -10637,6 +10670,7 @@ title="Easy editing stylesheet" ?>
       <example>António Costa e Passos Coelho são figuras políticas portuguesas.</example>
       <example>Terão que contratar mais professores e administrativos. </example>
       <example>Estas são as práticas pedagógicas usadas por muitos professores.</example>
+      <example>Será feita de forma estanque e terá várias regras.</example>
     </rule>
   </rulegroup>
 
