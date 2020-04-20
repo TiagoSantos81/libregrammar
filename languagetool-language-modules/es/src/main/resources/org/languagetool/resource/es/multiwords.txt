@@ -1,3 +1,28 @@
+El Abra	NPCSG00
+tira y afloja	NCMN000
+Santa Claus	NPMNSP0
+ceda el paso	NCMN000
+Nueva York	NPFSG00
+euro-zona	NCFS000
+taca-taca	NCMS000
+el más allá	NCMS000
+boca a boca	NCMS000
+piedra-papel-tijera	NCMS000
+un boca sucia	NCMS000
+La Haya	NPFSG00
+punto y coma	NCMN000
+Mato Grosso	NPMSG00
+largo y tendido	LOC_ADV
+Santo Domingo	NPMSG00
+del todo	LOC_ADV
+piruvato deshidrogenasa	NCFS000
+CIA World Factbook	NPMSO00
+Luz de Gas	NPCSO00
+ADN polimerasa	NCFS000
+ADN polimerasas	NCFP000
+María del Carmen	NPFSSP0
+Royal Society	NPFSO00
+Royal Academy	NPFSO00
 Homo sapiens	NCMN000
 Homo habilis	NCMN000
 Homo erectus	NCMN000
@@ -1737,7 +1762,8 @@ dietética y nutrición	LOC_NCMS000
 dignidad humana	LOC_NCFS000
 dióxido de azufre	LOC_NCFS000
 dióxido de carbono	LOC_NCFS000
-Dir.ª	Y
+Dir.	NCMS000
+Dir.ª	NCFS000
 dirección administrativa	LOC_NCFS000
 dirección a	LOC_PREP
 dirección del viento	LOC_NCFS000
@@ -1792,10 +1818,10 @@ dotación presupuestaria	LOC_NC
 do ut des	LOC_ADV
 dpto.	Y
 D. P.	Y
-Dr.ª	Y
-Dra.	Y
+Dr.	NCMS000
+Dr.ª	NCFS000
+Dra.	NCFS000
 droga ilícita	LOC_NC
-Dr.	Y
 dto.	Y
 dupdo.	Y
 duración del contrato	LOC_NCFS000
@@ -1803,6 +1829,7 @@ duty free	LOC_ADJ
 duty free	LOC_AQ0CN0
 d/v	Y
 D.	Y
+Dña.	NCFS000
 eclipse total	LOC_NC
 economía aplicada	LOC_NCFS000
 economía de escala	LOC_NC

@@ -93,6 +93,11 @@ public class SpanishDiacriticsCheckRuleTest {
     assertIncorrect("La magnifica conservación del palacio.");
     assertIncorrect("Hace falta una nueva formula que la sustituya.");*/
     
+    //TODO assertIncorrect("El termino."); 
+    // por el ejercito; en el dialogo; El arbitro
+    // para el petroleo; el limite
+    // this sentences shouldn't be errors in rule EL_TILDE, PREPOSICION_VERBO
+    
     assertIncorrect("Formación del vehiculo en");
     assertIncorrect("Formación de vehiculo en");
     assertIncorrect("del diagnostico o grado");
