@@ -13021,7 +13021,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token postag="VER:.*" postag_regexp="yes">
                     <exception postag="VER:(AUX|MOD):.*|SUB:.*|PRP:.*" postag_regexp="yes"/>
                     <exception inflected="yes" regexp="yes">meinen|sein|einen|sieben|achten|einigen|äußern|äussern|fernsehen|proben</exception>
-                    <exception regexp="yes">(a[bn]|au[fs]|her|durch|weg|über|unter).*</exception>
+                    <exception regexp="yes">(a[bn]|au[fs]|her|durch|weg|über|unter|vor).*</exception>
                 </token>
                 </marker>
             </pattern>
@@ -19234,13 +19234,14 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <marker>
                     <token postag="VER:INF:.+" postag_regexp="yes" regexp="yes" case_sensitive="yes">[a-zäöüß]+
                         <exception inflected="yes" regexp="yes">einen|sein|sieben</exception>
-                        <exception postag="ADJ:.+" postag_regexp="yes"/>
+                        <exception postag="ADJ:.+|PRO:POS:.+" postag_regexp="yes"/>
                     </token>
                 </marker>
             </pattern>
             <message>Falls <suggestion><match no="2" case_conversion="startupper"/></suggestion> hier nominalisiert gebraucht wird, muss man es großschreiben.</message>
             <short>&prgk;.</short>
             <example correction="Einsetzen">Wir berechnen die Werte durch <marker>einsetzen</marker>.</example>
+            <example>Das sind Dinge, die ich durch meinen kleinen Betrieb den jungen Leute bieten kann.</example>
         </rule>
         <rulegroup id="IM_AUS" name="im aus (Aus)">
             <rule>
@@ -19267,6 +19268,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token postag="PRO:POS:GEN:.+" postag_regexp="yes" skip="-1"/>
                     <token postag="PA2.+" postag_regexp="yes"/>
                 </antipattern>
+                <antipattern>
+                    <token>das</token>
+                    <token case_sensitive="yes">aus</token>
+                    <token postag="PRO:POS:GEN:.+" postag_regexp="yes" skip="-1"/>
+                    <token>bestand</token>
+                </antipattern>
                 <pattern>
                     <token>das</token>
                     <marker>
@@ -19280,6 +19287,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>Sie war blind und er nutzte das aus.</example>
                 <example correction="Aus">Er wollte das <marker>aus</marker> seiner Mannschaft nicht kommentieren.</example>
                 <example>Das <marker>aus</marker> seiner Richtung geworfene Feuerzeug verfehlte ihn.</example>
+                <example>Sie trug ihr Kampfoutfit, das aus ihrer strahlend weißen Hose bestand.</example>
             </rule>
             <rule>
                 <antipattern>
@@ -19287,6 +19295,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token case_sensitive="yes">aus</token>
                     <token postag="PRO:POS:GEN:.+" postag_regexp="yes" skip="-1"/>
                     <token postag="PA2.+" postag_regexp="yes"/>
+                </antipattern>
+                <antipattern>
+                    <token>das</token>
+                    <token case_sensitive="yes">aus</token>
+                    <token postag="PRO:POS:GEN:.+" postag_regexp="yes" skip="-1"/>
+                    <token>bestand</token>
                 </antipattern>
                 <pattern>
                     <token>das</token>
@@ -19301,6 +19315,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="Aus">Er wollte das <marker>aus</marker> nicht kommentieren.</example>
                 <example correction="Aus">Er wollte das <marker>aus</marker> seiner Mannschaft nicht kommentieren.</example>
                 <example>Das <marker>aus</marker> seiner Richtung geworfene Feuerzeug verfehlte ihn.</example>
+                <example>Sie trug ihr Kampfoutfit, das aus ihrer strahlend weißen Hose bestand.</example>
             </rule>
         </rulegroup>
         <rulegroup id="IM_GESTERN" name="im gestern (Gestern) leben">
@@ -19338,7 +19353,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <marker>
                         <token regexp="yes">wesentlichen|voraus|ungewissen|speziellen|klaren|guten|ganzen|dunkeln|argen|besonderen|übrigen|trüben</token>
                     </marker>
-                    <token><exception postag="(SUB|ADJ|EIG):.*" postag_regexp="yes"/></token>
+                    <token><exception postag="(SUB|ADJ|EIG):.*|UNKNOWN" postag_regexp="yes"/></token>
                 </pattern>
                 <message>&inwend;'im <match case_conversion="startupper" no="2"/>' wird <suggestion><match case_conversion="startupper" no="2"/></suggestion> in der Regel großgeschrieben.</message>
                 <url>https://www.korrekturen.de/wortliste/i/</url>
@@ -19365,6 +19380,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="Klaren">Sie ist sich darüber überhaupt nicht im <marker>klaren</marker>.</example>
                 <example>Sie ist sich darüber nicht im <marker>Klaren</marker>.</example>
                 <example>Im <marker>klaren</marker> Wasser ist nichts zu sehen.</example>
+                <example>Es gibt Schulkantinen im ganzen Münsterland.</example>
             </rule>
         </rulegroup>
         <rulegroup id="LINKS_ADV" name="'Links (links)'">
@@ -35783,12 +35799,16 @@ Andere Projekte</example>
             <rule>
                 <pattern>
                     <token postag="PRP:TMP+MOD+CAU:DAT"/>
-                    <token postag="ADJ:.+" postag_regexp="yes" regexp="yes" case_sensitive="yes">[a-zäöüß].+<exception regexp="yes">.+weise</exception></token> 
+                    <token postag="ADJ:.+" postag_regexp="yes" regexp="yes" case_sensitive="yes">[a-zäöüß].+
+                        <exception regexp="yes">.+weise</exception>
+                        <exception postag="ADJ:NOM:SIN:MAS:GRU:SOL"/>
+                    </token> 
                     <token postag="SUB:.+" postag_regexp="yes"><exception postag="SUB:(GEN|DAT):.+" postag_regexp="yes"/></token>
                 </pattern>
                 <message>Die Präposition '\1' erfordert in der Regel den Dativ.</message>
                 <example correction="">Sie sprach <marker>mit wichtige Kunden</marker>.</example>
                 <example>Sie feierten mit kistenweise Champagner.</example>
+                <example>Wir machen Backversuche mit weniger Zuckeranteil.</example>
             </rule>
         </rulegroup>
         <rulegroup id="PRAEP_AKK" name="Präposition mit Akkusativ (ohne, für etc.)">
@@ -37033,16 +37053,32 @@ Andere Projekte</example>
         </rulegroup>
         <rulegroup id="ORDER_OF_WORDS" name="falsche Wortreihenfolge">
             <rule>
+                <antipattern>
+                    <token regexp="yes">damit|indem|weil|obwohl|nachdem</token>
+                    <token postag="PRO:PER:NOM:.*" postag_regexp="yes"/>
+                    <token postag="VER:[123]:.*PRÄ:.*" postag_regexp="yes"/>
+                    <token postag="VER:AUX:.+" postag_regexp="yes"/>
+                    <token>,</token>
+                    <token postag="VER:[123]:.*PRÄ:.*" postag_regexp="yes"/>
+                </antipattern>
+                <antipattern>
+                     <token regexp="yes">damit|indem|weil|obwohl|nachdem</token>
+                    <token postag="PRO:PER:NOM:.*" postag_regexp="yes"/>
+                    <token postag="VER:[123]:.*PRÄ:.*" postag_regexp="yes"/>
+                    <token>das</token>
+                </antipattern>
                 <pattern>
                     <marker>
-                        <token regexp="yes">damit|dass|indem|weil|obwohl|nachdem</token>
+                        <token regexp="yes">damit|indem|weil|obwohl|nachdem</token>
                         <token postag="PRO:PER:NOM:.*" postag_regexp="yes"/>
                         <token postag="VER:[123]:.*PRÄ:.*" postag_regexp="yes">
-                            <exception postag="SUB:.+|VER:(INF|EIZ):.*|PA[12]:.*|AD[JV]:.*" postag_regexp="yes"/>
+                            <exception postag="SUB:.+|VER:(INF|EIZ):.*|PA[12]:.*|AD[JV]:.*|PRO:.+" postag_regexp="yes"/>
                             <exception inflected="yes" regexp="yes">sieben|achten|einen</exception>
                         </token>
                     </marker>
-                    <token><exception postag="SENT_END|PKT|KON:NEB" postag_regexp="yes"/></token>
+                    <token>
+                        <exception postag="SENT_END|PKT|KON:.+|UNKNOWN|VER:AUX:.+|PRO:RIN:.+" postag_regexp="yes"/>
+                    </token>
                 </pattern>
                 <message>Überprüfen Sie die Reihenfolge von Subjekt und Prädikat.</message>
                 <example correction="">Er ist nicht mehr da, <marker>weil er ist</marker> gegangen.</example>
@@ -37052,6 +37088,11 @@ Andere Projekte</example>
                 <example>Warum spricht Tom so schlecht Koreanisch, obwohl er eine koreanische Freundin hat?</example>
                 <example>Er tut das, weil er Beweise sammeln muss.</example>
                 <example>Das wird ihnen Mut machen, wenn sie erfahren, dass sie lebt und sie Sakura jetzt retten können.</example>
+                <example>Dass du überreagiert hast, ist ja kein Wunder.</example>
+                <example>Schade, dass ich meine zu Hause gelassen habe.</example>
+                <example>Du hast Tom nicht gesagt, dass du verheiratest bist, oder?</example>
+                <example>Nachdem er festgestellt hatte, dass es sich um gefälschte Mineralstufen handelte, ärgerte er sich.</example>
+                <example>Wir können auch gerne privat sprechen, damit du merkst, dass ich ein ganz ehrlicher Mensch bin.</example>
             </rule>
         </rulegroup>
         <rulegroup id="FALSCHES_RELATIVPRONOMEN" name="Relativpronomen mit falschem Genus">
@@ -40188,7 +40229,7 @@ Andere Projekte</example>
                 <example correction="Geht-ja-überhaupt-gar-nicht-Einstellung">Du mit deiner <marker>„Geht ja überhaupt gar nicht“-Einstellung</marker>!</example>
             </rule>
         </rulegroup>
-<!--  Auskommentiert wegen Überschneidung mit neuen Regeln (siehe: <category id="HILFESTELLUNG_KOMMASETZUNG" name="Hilfestellung für Kommasetzung">)
+<!--  Auskommentiert wegen Überschneidung mit neuen Regeln (siehe: <category id="HILFESTELLUNG_KOMMASETZUNG" name="Kommasetzung">)
         <rulegroup id="KOMMA_VOR_INFINITIVGRUPPE" name="Komma vor Infinitivgruppen mit 'um, ohne, (an)statt, außer, als'">
             <rule>
                 <antipattern>
@@ -41742,7 +41783,7 @@ Andere Projekte</example>
    <!-- ====================================================================== -->
    <!-- Hilfestellung für Kommasetzung -->
    <!-- ====================================================================== -->
-   <category id="HILFESTELLUNG_KOMMASETZUNG" name="Hilfestellung für Kommasetzung">
+   <category id="HILFESTELLUNG_KOMMASETZUNG" name="Kommasetzung">
 
         <rule id="ADJ_SUB_VER_KOMMA_ADJ_SUB" name="Falsches Komma in z. B. '... erfordert, harte Stuhlrollen.'">
            <pattern>
