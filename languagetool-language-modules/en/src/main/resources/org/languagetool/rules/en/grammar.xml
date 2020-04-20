@@ -36105,18 +36105,6 @@ USA
                     <token postag="CD" />
                     <token postag="CD" />
                 </antipattern>
-                <antipattern><!-- unknown / misspelled words -->
-                    <token postag="UNKNOWN" />
-                    <token postag="UNKNOWN" />
-                    <token postag="UNKNOWN" />
-                    <token postag="UNKNOWN" />
-                </antipattern>
-                <antipattern><!-- single letters -->
-                    <token regexp="yes">[A-Z]</token>
-                    <token regexp="yes">[A-Z]</token>
-                    <token regexp="yes">[A-Z]</token>
-                    <token regexp="yes">[A-Z]</token>
-                </antipattern>
                 <antipattern><!-- comparison with a repeated adjective -->
                     <token>as</token>
                     <token postag="JJ"/>
@@ -36151,10 +36139,6 @@ USA
                     <token>wolf</token>
                 </antipattern>
                 <antipattern>
-                    <token regexp="yes">h[ieao]</token>
-                    <token regexp="yes">h[ieao]</token>
-                </antipattern>
-                <antipattern>
                     <token regexp="yes">[oa]h</token>
                     <token regexp="yes">[oa]h</token>
                 </antipattern>
@@ -36163,32 +36147,12 @@ USA
                     <token regexp="yes">blah?</token>
                 </antipattern>
                 <antipattern>
-                    <token>hello</token>
-                    <token>hello</token>
-                    <token>hello</token>
-                    <token>hello</token>
-                </antipattern>
-                <antipattern>
                     <token>dun</token>
                     <token>dun</token>
                 </antipattern>
                 <antipattern>
                     <token>doo</token>
                     <token>doo</token>
-                </antipattern>
-                <antipattern>
-                    <token>no</token>
-                    <token>no</token>
-                </antipattern>
-                <antipattern>
-                    <token>no</token>
-                    <token>no</token>
-                </antipattern>
-                <antipattern>
-                    <token regexp="yes">ok(ay)?</token>
-                    <token regexp="yes">ok(ay)?</token>
-                    <token regexp="yes">ok(ay)?</token>
-                    <token regexp="yes">ok(ay)?</token>
                 </antipattern>
                 <pattern>
                     <token negate_pos="yes" postag="SENT_START" regexp="yes"><exception>and</exception>\p{L}+</token>
@@ -38589,7 +38553,7 @@ USA
           <token postag="VBG"/>
       </antipattern>
       <antipattern><!-- MFU 2019-01-21 -->
-          <token postag="WRB"/>
+          <token postag="WRB|PCT" postag_regexp='yes'/>
           <token regexp="yes">do|does|did</token>
           <token skip="-1" postag="VBG"/>
           <token>?</token>
@@ -38622,7 +38586,7 @@ USA
           <marker>
             <token regexp="yes" inflected="yes">do|play</token>
             <token regexp="yes">
-                jogging|swimming|shopping|dancing|hiking|camping|kayaking|skating|riding|climbing|diving|hunting|bowling|surfing|trekking|backpacking|snowshoeing|rollerblading|biking|sailing|paddleboarding|fishing|picking|skiing|golfing|snowboarding|cheerleading
+                running|jogging|swimming|shopping|dancing|hiking|camping|kayaking|skating|riding|climbing|diving|hunting|bowling|surfing|trekking|backpacking|snowshoeing|rollerblading|biking|sailing|paddleboarding|fishing|picking|skiing|golfing|snowboarding|cheerleading
             </token>
           </marker>
           <token>
