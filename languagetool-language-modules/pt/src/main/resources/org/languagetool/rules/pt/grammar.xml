@@ -1765,6 +1765,12 @@ title="Easy editing stylesheet" ?>
           <token inflected='yes' postag_regexp='yes' postag='V....S.+' regexp='yes'>&verbos_de_ligacao;</token>
           <token regexp="yes">[\d,. ]+[&#37;&#8240;&#8241;]</token>
       </antipattern>
+      <antipattern>
+          <token postag_regexp='yes' postag='V....S.+'/>
+          <token regexp='yes'>superior|inferior</token>
+          <token>a</token>
+          <token regexp="yes">[\d,. ]+[&#37;&#8240;&#8241;]</token>
+      </antipattern>
       <pattern case_sensitive='yes'>
           <token inflected='yes' postag_regexp='yes' postag='V....S.+' regexp='yes'>&verbos_de_ligacao;
             <exception postag_regexp='yes' postag='V.[NP].+'/>
@@ -2422,6 +2428,10 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>[ao]s?|[mts]e|[nv]os|lhes?</token>
           <token postag_regexp='yes' postag='VMSI.+' regexp='yes'>.+sse</token>
       </antipattern>
+      <antipattern>
+          <token regexp='yes' skip='-1'>se|caso</token>
+          <token postag_regexp='yes' postag='VMSI.+' regexp='yes'>.+sse</token>
+      </antipattern>
     <rule>
       <pattern>
           <token postag='SENT_START' skip='-1'>
@@ -2444,6 +2454,7 @@ title="Easy editing stylesheet" ?>
             <exception scope='next' regexp='yes'>&introduz_conjuntivo;</exception></token>
         <marker>
           <token postag_regexp='yes' postag='VMSI.+' regexp='yes'>.+sse
+            <exception>tivesse</exception>
             <exception negate_pos='yes' postag_regexp='yes' postag='VMSI.+'/></token>
         </marker>
       </pattern>
@@ -10009,12 +10020,21 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>caso|se</token>
       </antipattern>
       <antipattern>
-          <token regexp='yes'>como|que</token>
+          <token regexp='yes' inflected='yes'>como|que|saber</token>
           <token>se</token>
       </antipattern>
       <antipattern>
           <token>caso</token>
           <token regexp='yes'>único|isolado</token>
+      </antipattern>
+      <antipattern>
+          <token regexp='yes'>\d+\.?º</token>
+          <token>caso</token>
+      </antipattern>
+      <antipattern>
+          <token postag='D..MS.+' postag_regexp='yes'/>
+          <token postag='A..MS.+' postag_regexp='yes'/>
+          <token>caso</token>
       </antipattern>
       <antipattern><!-- reflexive without hyphen -->
           <token postag='V...3.+' postag_regexp='yes'/>
