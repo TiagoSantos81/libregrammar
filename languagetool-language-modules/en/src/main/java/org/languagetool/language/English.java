@@ -238,6 +238,7 @@ public class English extends Language implements AutoCloseable {
         new EnglishEggcornsRule(messages),
         new EnglishWeaselWordsRule(messages),
         new EnglishStyleRepeatedWordRule(messages, this, userConfig),
+        new SimpleReplaceRule(messages),
         new ReadabilityRule(messages, this, userConfig, false),
         new ReadabilityRule(messages, this, userConfig, true)
     ));
@@ -298,6 +299,7 @@ public class English extends Language implements AutoCloseable {
       case "ADJECTIVE_ADVERB":          return 2;   // prefer over MODAL_VERB_FOLLOWED_BY_NOUN, PRP_MD_NN, and PRONOUN_NOUN
       case "DOS_AND_DONTS":             return 2;
       case "EN_COMPOUNDS":              return 1;
+      case "DO_TO":                     return 1;   // higher prio than HAVE_PART_AGREEMENT
       case "IN_THIS_REGARDS":           return 1;   // higher prio than THIS_NNS
       case "NO_WHERE":                  return 1;   // higher prio than NOW
       case "APOSTROPHE_VS_QUOTE":       return 1;   // higher prio than EN_QUOTES
@@ -319,6 +321,8 @@ public class English extends Language implements AutoCloseable {
       case "CHILDISH_LANGUAGE":         return -8;  // prefer over spell checker
       case "EN_DIACRITICS_REPLACE":     return -9;  // prefer over spell checker (like PHRASE_REPETITION)
       case "WE_BE":                     return -1;
+      case "IT_VBZ":                    return -1;
+      case "IT_IS_2":                   return -1;
       case "A_RB_NN":                   return -1;  // prefer other more specific rules (e.g. QUIET_QUITE)
       case "PLURAL_VERB_AFTER_THIS":    return -1;  // prefer other more specific rules (e.g. COMMA_TAG_QUESTION)
       case "BE_RB_BE":                  return -1;  // prefer other more specific rules
