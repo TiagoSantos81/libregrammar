@@ -26,6 +26,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 <!ENTITY pronombre_personal_atono "me|te|se|nos|os|le|les|lo|los|la|las">
 <!ENTITY nombre_fem_el "abra|África|aguadulce|acta|afta|agua|aguasal|aguaviva|ala|alba|alga|algia|alma|alta|alza|ama|anca|ancla|ansia|ara|arca|archa|aria|arma|arpa|arria|arte|asa|ascua|asma|aspa|asta|aula|aura|ave|aya|haba|habla|hacha|hada|hambre|hampa|haya|ágata|ágora|águila|álgebra|áncora|ánfora|ánima|área|árnica">
 <!ENTITY dias_semana_may "Lunes|Martes|Miércoles|Jueves|Viernes|Sábado|Domingo">
+<!ENTITY unidades "AM|PM|am|pm|mm|cm|dm|m|km|d|h|min|s|seg|g|kg|Hz|[kM]Hz|°[FC]|K|pts|ptes|[£€$]|(mm|cm|dm|m|km)[23²³]">
+<!ENTITY abreviaturas "Abg|acept|adm|admón|afma|afmo|Alfz|Almte|ap|apdo|aprox|Arq|art|Arz|atta|atte|atto|av|avd|avda|Barna|Bco|Bibl|Bma|Bmo|Bo|Brig|Bta|Bto|caj|cap|Cdad|cent|cf|cfr|cgo|cje|cl|Cmdt|Cmte|Cnel|col|Comod|Comp|Comte|Contralmte|coord|cp|crec|cta|Cte|cts|ctv|ctvo|cént|Cía|cód|cónf|cónfr|dcha|dcho|depto|diag|dicc|doc|dpto|dto|dupdo|ed|edit|edo|ef|ej|Emmo|entlo|etc|excl|Excma|Excmo|fasc|fca|Fdo|fig|fol|Fr|fra|féc|Gdor|Gdora|Gob|Gral|Hna|Hno|ib|ibíd|Il|Ilma|Ilmo|Iltre|imp|impr|impto|incl|Ing|Inst|izda|izdo|izq|izqda|izqdo|Jhs|Lcda|Lcdo|Lda|Ldo|Lic|Ltd|Ltda|Ltdo|Magfca|Magfco|Mons|mr|ms|máx|mín|nro|núm|Ob|Pat|Pbro|pdo|Pdta|Pdte|pg|pl|plza|Pnt|ppal|pral|Presb|Prof|prov|pról|pza|pág|párr|Rda|Rdo|reg|Rep|Rev|Rte|Rvd|Rvda|Rvdma|Rvdmo|Rvdo|Sdad|Sgto|sig|Soc|Sr|Sra|Srta|Sta|Sto|tel|teléf|tfno|trad|Tte|tít|Ud|Uds|Univ|Valmte|Vd|Vda|Vdo|Vds|vid|vol|vs|vta|vto|Xto|íd">
 
     <!ENTITY tabla_periodica "(?:[UVW]|C[adeflmnorsu]?|N[abdehiop]?|P[abdmortu]?|S[bcegimnr]?|T[abcehilms]|A[cglmrstu]|R[abefghnu]|B[aehikr]?|H[efgos]?|M[cdgnot]|F[elmr]?|L[airuv]|D[bsy]|E[rsu]|G[ade]|I[nr]?|O[gs]?|Z[nr]|Kr?|Yb?|Xe|[₁₂₃₄₅₆₇₈₉₀])">
     <!ENTITY hyphen "(?:[-‑])">
@@ -4196,10 +4198,85 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
     </rule>
   </rulegroup>
 
-        <rulegroup id="AM_PM" name="AM/PM">
+        <rulegroup id="PUNTO_EN_ABREVIATURAS" name="Punto en abreviaturas: pág., núm., etc." default="temp_off">
+            <antipattern>
+                <token/>
+                <token spacebefore="no" regexp="yes">\.|…</token>
+            </antipattern>
+            <rule>
+                <pattern case_sensitive="no">
+                    <marker>
+                        <token regexp="yes" postag="UNKNOWN">&abreviaturas;<exception regexp="yes">(?-i)dC|DJ|CF|AP|CT|AG|GR|CPT|DG|DOC</exception></token>
+                        <token spacebefore="yes">.</token>
+                    </marker>
+                </pattern>
+                <message>El punto debe ir junto a la abreviatura.</message>
+                <suggestion><match no="1"/>.</suggestion>
+                <example correction="núm.">Vive en el <marker>núm .</marker> 25 de la calle.</example>
+            </rule>
+            <rule>
+                <pattern case_sensitive="no">
+                    <marker>
+                        <token regexp="yes" postag="UNKNOWN">&abreviaturas;<exception regexp="yes">(?-i)dC|DJ|CF|AP|CT|AG|GR|CPT|DG|DOC</exception></token>
+                    </marker>
+                </pattern>
+                <message>Probablemente falta un punto después de la abreviatura.</message>
+                <suggestion><match no="1"/>.</suggestion>
+                <example correction="núm.">Vive en el <marker>núm</marker> 25 de la calle.</example>
+                <example>La vid del campo.</example>
+                <example>Fue en el año 453 dC, ¿verdad?</example>
+                <example>En la AP-7.</example>
+                <example>El DJ pinchó toda la noche.</example>
+                <example>Jugava en el Valencia CF el año pasado.</example>
+                <example>DG de Servicios Sociales.</example>
+                <example>Delantero del Valencia.</example>
+            </rule>
+        </rulegroup>
+        <rule id="P_EJ" name="Puntuación en: p. ej." default="temp_off">
+            <antipattern case_sensitive="yes">
+                <token regexp="yes">[Pp]</token>
+                <token spacebefore="no">.</token>
+                <token spacebefore="yes">ej</token>
+                <token spacebefore="no">.</token>
+            </antipattern>
+            <pattern>
+                <token>p</token>
+                <token min="0">.</token>
+                <token regexp="yes">ej?</token>
+                <token>.</token>
+            </pattern>
+            <message>Abreviatura de 'por ejemplo'.</message>
+            <suggestion>p. ej.</suggestion>
+            <example correction="P. ej."><marker>P .ej.</marker> el campo.</example>
+            <example correction="P. ej."><marker>P.ej.</marker> el campo.</example>
+            <example correction="P. ej."><marker>P .ej .</marker> el campo.</example>
+            <example correction="P. ej."><marker>P ej .</marker> el campo.</example>
+            <example correction="p. ej.">(<marker>p .ej.</marker> el campo).</example>
+            <example correction="p. ej.">(<marker>p .e.</marker> el campo).</example>
+            <example>P. ej. el campo.</example>
+        </rule>
+        <rule id="SPACE_UNITIES" name="espacio en unidadess" default="temp_off">
+            <antipattern>
+                <marker>
+                    <token regexp="yes">los|años</token>
+                    <token regexp="yes">\d*0s</token>
+                </marker>
+            </antipattern>
+            <pattern case_sensitive="yes">
+                <token regexp="yes">(\d[\d.,]+)?\d+(&unidades;)</token>
+            </pattern>
+            <message>Falta un espacio.</message>
+            <suggestion><match no="1" regexp_match="((\d[\d.,]+)?\d+)(&unidades;)" regexp_replace="$1&#8239;$3"/></suggestion>
+            <example correction="33,4&#8239;km">Había <marker>33,4km</marker>.</example>
+            <example correction="100&#8239;€">Cuesta <marker>100€</marker>.</example>
+            <example correction="13.000&#8239;km2"><marker>13.000km2</marker></example>
+            <example>Es de los años 50s.</example>
+            <example>Es de los 1950s.</example>
+        </rule>
+        <rulegroup id="AM_PM" name="AM/PM" default="off">
             <rule>
                 <pattern>
-                    <token regexp="yes">\d{1,2}</token>
+                    <token regexp="yes">[\d\.\,]+</token>
                     <marker>
                         <token regexp="yes">am|pm</token>
                         <token>.</token>
@@ -4216,7 +4293,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             </rule>
             <rule>
                 <pattern>
-                    <token regexp="yes">\d{1,2}</token>
+                    <token regexp="yes">[\d\.\,]+</token>
                     <marker>
                         <token regexp="yes">am|pm</token>
                     </marker>
@@ -4230,7 +4307,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>El servicio se realizará a las 5 <marker>a.m.</marker></example>
                 <example>De las cuales 36 son <marker>AM</marker> y 25 FM</example>
                 <example>Frankfurt <marker>am</marker> Main</example>
-
             </rule>
         </rulegroup>
   <rulegroup id="EQUAL_OR_X" name="Matemático: &gt;= (≥)">

@@ -26,12 +26,12 @@ import org.languagetool.rules.RuleMatch;
 
 import java.util.*;
 
-public class MissingSpaceRule extends Rule {
+public class SpaceInCompoundRule extends Rule {
 
   private static final Map<String, String> normalizedCompound2message = new HashMap<>();
   private static final AhoCorasickDoubleArrayTrie<String> trie = getTrie();
 
-  public MissingSpaceRule(ResourceBundle messages) {
+  public SpaceInCompoundRule(ResourceBundle messages) {
     setDefaultTempOff();  // TODO
   }
 
@@ -48,7 +48,7 @@ public class MissingSpaceRule extends Rule {
         throw new RuntimeException("Unexpected format in " + filename + ", expected 2 columns separated by '|': " + line);
       }
       String wordParts = lineParts[0];
-      String message = lineParts[1];
+      String message = "Bedoelt u misschien: "+lineParts[1];
       String[] words = wordParts.split(" ");
       generateVariants("", Arrays.asList(words), result);
       if (normalizedCompound2message.containsKey(removeSpaces(wordParts))) {
@@ -86,12 +86,12 @@ public class MissingSpaceRule extends Rule {
 
   @Override
   public String getId() {
-    return "NL_MISSING_SPACE";
+    return "NL_ADDED_SPACES";
   }
 
   @Override
   public String getDescription() {
-    return "Detects missing space in some nouns";
+    return "Detecteert spatiefouten";
   }
 
   @Override

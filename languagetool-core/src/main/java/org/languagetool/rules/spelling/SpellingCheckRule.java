@@ -117,8 +117,8 @@ public abstract class SpellingCheckRule extends Rule {
 
   /**
    *  @param word misspelled word that suggestions should be generated for
-   * @param userCandidates candidates from personal dictionary
-   * @param candidates candidates from default dictionary
+   * @param userCandidatesList candidates from personal dictionary
+   * @param candidatesList candidates from default dictionary
    * @param orderer model to rank suggestions / extract features, or null
    * @param match rule match to add suggestions to
    */
@@ -254,10 +254,10 @@ public abstract class SpellingCheckRule extends Rule {
    */
   protected List<SuggestedReplacement> getAdditionalTopSuggestions(List<SuggestedReplacement> suggestions, String word) throws IOException {
     List<String> moreSuggestions = new ArrayList<>();
-    if (("Languagetool".equals(word) || "languagetool".equals(word)) && !suggestions.contains(LANGUAGETOOL)) {
+    if (("Languagetool".equals(word) || "languagetool".equals(word)) && suggestions.stream().noneMatch(k -> k.getReplacement().equals(LANGUAGETOOL))) {
       moreSuggestions.add(LANGUAGETOOL);
     }
-    if (("Languagetooler".equals(word) || "languagetooler".equals(word)) && !suggestions.contains(LANGUAGETOOLER)) {
+    if (("Languagetooler".equals(word) || "languagetooler".equals(word)) && suggestions.stream().noneMatch(k -> k.getReplacement().equals(LANGUAGETOOLER))) {
       moreSuggestions.add(LANGUAGETOOLER);
     }
     return SuggestedReplacement.convert(moreSuggestions);
@@ -520,31 +520,6 @@ public abstract class SpellingCheckRule extends Rule {
       }
     }
     return spellingRules;
-  }
-
-  protected Language acceptedInAlternativeLanguage(String word) throws IOException {
-    if (word.length() <= 2) {
-      // it's strange if single characters are suddenly considered English
-      return null;
-    }
-    for (RuleWithLanguage altRule : altRules) {
-      AnalyzedToken token = new AnalyzedToken(word, null, null);
-      AnalyzedToken sentenceStartToken = new AnalyzedToken("", JLanguageTool.SENTENCE_START_TAGNAME, null);
-      AnalyzedTokenReadings startTokenReadings = new AnalyzedTokenReadings(sentenceStartToken, 0);
-      AnalyzedTokenReadings atr = new AnalyzedTokenReadings(token, 0);
-      RuleMatch[] matches = altRule.getRule().match(new AnalyzedSentence(new AnalyzedTokenReadings[]{startTokenReadings, atr}));
-      if (matches.length == 0) {
-        return altRule.getLanguage();
-      } else {
-        if (word.endsWith(".")) {
-          Language altLanguage = acceptedInAlternativeLanguage(word.substring(0, word.length() - 1));
-          if (altLanguage != null) {
-            return altLanguage;
-          }
-        }
-      }
-    }
-    return null;
   }
 
   /**

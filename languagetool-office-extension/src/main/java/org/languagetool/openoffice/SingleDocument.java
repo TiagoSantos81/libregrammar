@@ -213,11 +213,17 @@ class SingleDocument {
         MessageHandler.printToLogFile("paRes.aErrors.length: " + paRes.aErrors.length + "; docID: " + docID + OfficeTools.LOG_LINE_BREAK);
       }
       if(resetCheck) {
-        if(numParasToCheck != 0 && paraNum >= 0 && !useQueue) {
+        if(numParasToCheck != 0 && paraNum >= 0) {
           if (docCursor == null) {
             docCursor = new DocumentCursorTools(xComponent);
           }
-          remarkChangedParagraphs(changedParas, docCursor.getParagraphCursor(), flatPara);
+          if(useQueue && paragraphsCache.get(1).getEntryByParagraph(paraNum) != null) {
+            List<Integer> changedParas = new ArrayList<Integer>();
+            changedParas.add(paraNum);
+            remarkChangedParagraphs(changedParas, docCursor.getParagraphCursor(), flatPara);
+          } else if (!useQueue) {
+            remarkChangedParagraphs(changedParas, docCursor.getParagraphCursor(), flatPara);
+          }
         }
         resetCheck = false;
       }
@@ -864,6 +870,9 @@ class SingleDocument {
                 changedParas.add(chPara);
               }
             }
+            if(!changedParas.contains(paraNum)) {
+              changedParas.add(paraNum);
+            }
           } else {
             addChangedParas();
           }
@@ -1396,6 +1405,9 @@ class SingleDocument {
     if(numParasToCheck != 0) {
       List<Integer> changedParas = new ArrayList<>();
       changedParas.add(y);
+      if (docCursor == null) {
+        docCursor = new DocumentCursorTools(xComponent);
+      }
       remarkChangedParagraphs(changedParas, docCursor.getParagraphCursor(), flatPara);
     }
     if (debugMode > 0) {
