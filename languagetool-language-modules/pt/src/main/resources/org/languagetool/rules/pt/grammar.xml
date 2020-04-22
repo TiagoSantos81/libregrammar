@@ -9407,6 +9407,12 @@ title="Easy editing stylesheet" ?>
           <token regexp="yes">[\.!?]</token>
           <token regexp="yes" spacebefore='no'>”|»|&quot;</token>
       </antipattern>
+      <antipattern>
+          <token postag='SENT_START|_PUNCT' postag_regexp='yes'/>
+          <token>pois</token>
+          <token>bem</token>
+          <token postag='_PUNCT'/>
+      </antipattern>
     <rule>
       <antipattern>
           <token regexp='yes'>&quot;</token>
@@ -9700,12 +9706,6 @@ title="Easy editing stylesheet" ?>
       <antipattern>
           <token>como</token>
           <token regexp="yes">aliás|entretanto|todavia</token>
-      </antipattern>
-      <antipattern>
-          <token postag='SENT_START|_PUNCT' postag_regexp='yes'/>
-          <token>pois</token>
-          <token>bem</token>
-          <token postag='_PUNCT'/>
       </antipattern>
       <antipattern>
           <token postag='SENT_START|_PUNCT' postag_regexp='yes'/>
@@ -26739,6 +26739,18 @@ TODO Write better examples
           <token regexp='yes'>&hifen;</token>
       </antipattern>
     <rule>
+      <antipattern><!-- recipes and check-lists -->
+          <token postag='SENT_START'/>
+          <token regexp='yes'>-|–</token>
+          <token postag='Z.+' skip='-1' postag_regexp='yes'/>
+          <token regexp='yes'>[,;]</token>
+      </antipattern>
+      <antipattern><!-- recipes and check-lists -->
+          <token postag='SENT_START'/>
+          <token regexp='yes'>-|–</token>
+          <token regexp='yes' skip='-1'>\d+(&unidades_de_medida;)</token>
+          <token regexp='yes'>[,;]</token>
+      </antipattern>
       <pattern>
           <token postag='SENT_START'/>
           <token min='0' regexp='yes'>["'«»“”]</token>
@@ -26755,6 +26767,8 @@ TODO Write better examples
       <example>1139–1385 — Formação do Reino de Portugal</example>
       <example>2560-657 TORRES VEDRAS</example>
       <example>---------------------------------------</example>
+      <example>– um pouco de óleo;</example>
+      <example>- 150ml de natas;</example>
     </rule>
     <rule>
       <antipattern>
@@ -26953,7 +26967,8 @@ TODO Write better examples
           <token spacebefore="yes"/>
       </antipattern>
       <pattern>
-          <token/>
+          <token>
+            <exception postag='SENT_START'/></token>
           <token spacebefore="no" regexp='yes'>&tracos_de_separacao;</token>
           <token spacebefore="yes"/>
       </pattern>
@@ -26964,6 +26979,8 @@ TODO Write better examples
       <example correction='Trás-os|Trás — os'>Alfândega da Fé fica em <marker>Trás- os</marker>-Montes.</example>
       <example>-------------</example>
     <!--example>— Quantos é que vocês são?— Treze.— Treze?— Sim, sim.</example> XXX Can't test \n SENT_START -->
+      <example>– um pouco de óleo;</example>
+      <example>- 150ml de natas;</example>
     </rule>
   </rulegroup>
 
