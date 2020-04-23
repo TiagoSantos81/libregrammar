@@ -4217,6 +4217,21 @@ USA
                     <token postag_regexp="yes" postag="JJR?"/>
                     <token chunk="B-VP">to</token>
                 </antipattern>
+                <antipattern><!-- #2662 it's kind of hard to listen -->
+                    <token spacebefore="no" regexp="yes">&apostrophe;</token><!-- Without this token, the AP fails -->
+                    <token>s</token>
+                    <token>kind</token>
+                    <token>of</token>
+                    <token chunk="B-VP" postag="JJ"/>
+                    <token chunk="I-VP">to</token>
+                </antipattern>
+                <antipattern><!-- #2662 it's kind of her -->
+                    <token spacebefore="no" regexp="yes">&apostrophe;</token><!-- Without this token, the AP fails -->
+                    <token>s</token>
+                    <token>kind</token>
+                    <token>of</token>
+                    <token regexp="yes">&object_pronouns;</token>
+                </antipattern>
                 <pattern>
                     <token postag="VBG"><exception regexp="yes">saying|hoping|assuming|feeling|realizing|considering|guessing|pretending|thinking|knowing|denying|claiming|ranting|reali[sz]ing|praying|suggesting|meaning|wondering</exception></token>
                     <marker>
@@ -4228,11 +4243,14 @@ USA
                 </pattern>
                 <message>Did you mean <suggestion>its</suggestion> (possessive pronoun) instead of 'it's' (short form of 'it is')?</message>
                 <example correction="its">It does this by providing <marker>it's</marker> own open source based products.</example>
+                <example correction="its">Nevertheless, I'm emphasizing <marker>it's</marker> kind of problem is not the same as the problems of other disambiguators.</example><!-- #2662 -->
                 <example>Well, you know, kinda strange though, considering it's not Christmas.</example>
                 <example>I've been hearing it's supposed to snow tonight.</example>
                 <example>I'm assuming it's a suicide.</example>
                 <example>It starts slowly - once running it's difficult to stop.</example><!-- #2662 -->
                 <example>I am really emotional; when crying it's difficult to stop.</example><!-- #2662 -->
+                <example>And while I'm reading it's kind of hard to listen to you.</example><!-- #2662 -->
+                <example>Nevertheless, I'm emphasizing it's kind of her to do that.</example><!-- #2662 -->
             </rule>
             <rule>
                 <antipattern><!-- #2788 shows it's very similar. -->
@@ -4717,10 +4735,11 @@ USA
                         <token regexp="yes">its?</token>
                     </marker>
                     <token regexp="yes" min="0">all|both|being|feeling|doing|going|keeping|managing|recovering</token>
-                    <token regexp="yes" min="0" max="2">just|not|very|really|even|totally|absolutely|too|more</token>
-                    <token regexp="yes">ok(ay)?|fine|good|well|healthy|happy|successful|better|lucky|t?here|ready|sorry|glad|(un)?able|hungry|mad|busy|safe|welcome|angry|sick|proud|right|correct|wrong|crazy|great|cool|alone|amazing|beautiful|pretty|attractive|handsome|awesome|nice|(im)?possible|(un)?able|clear|helpful|important|time|nicer|best|similar|difficult|small|big|large|little|active|bad|wonderful|simple|easy|early|available|dangerous|enough|alright|sure|sexy|alone|nothing|free|cheap|expensive|annoying</token>
-                    <token min="0" regexp="yes">now|soon|together|tonight|today|yesterday|tomorrow</token>
-                    <token regexp="yes">\p{P}|of|at|for|in|to|because|with|about</token>
+                    <token regexp="yes" min="0" max="2">just|not|very|really|even|totally|absolutely|too|more|less</token>
+                    <!-- long list of adjectives is currently necessary due to wrong tagging -->
+                    <token regexp="yes">ok(ay)?|fine|good|well|healthy|happy|successful|better|lucky|t?here|ready|sorry|glad|(un)?able|hungry|mad|busy|safe|welcome|angry|sick|proud|right|correct|wrong|crazy|great|cool|alone|amazing|beautiful|pretty|attractive|handsome|awesome|nice|(im)?possible|(un)?able|clear|helpful|important|time|nicer|best|similar|difficult|small|big|large|little|active|bad|wonderful|simple|easy|early|available|dangerous|enough|alright|sure|sexy|alone|nothing|free|cheap|expensive|annoying|worth|different|popular|famous|useful|old|young|hot|sweet|cute|strong|interesting|intelligent|poor|huge|rare|aware|efficient|capable|powerful|sufficient|afraid|obvious|careful|(un)?acceptable|boring</token>
+                    <token min="0" regexp="yes">now|soon|together|tonight|today|yesterday|tomorrow|(any|some)more</token>
+                    <token regexp="yes">\p{P}|of|at|for|in|on|to|because|with|about|than</token>
                 </pattern>
                 <message>Did you mean <suggestion>it's</suggestion> (= it is)?</message>
                 <example correction="it's">I hope <marker>its</marker> great.</example>
@@ -7765,10 +7784,10 @@ USA
                         <token regexp="yes">your?</token>
                     </marker>
                     <token regexp="yes" min="0">all|both|being|feeling|doing|keeping|managing|recovering</token>
-                    <token regexp="yes" min="0" max="2">just|not|very|really|even|totally|absolutely|too|more</token>
-                    <token regexp="yes">ok(ay)?|fine|good|well|healthy|happy|successful|better|lucky|t?here|ready|sorry|glad|(un)?able|hungry|mad|busy|safe|welcome|angry|sick|proud|right|correct|wrong|crazy|great|cool|amazing|beautiful|pretty|attractive|handsome|awesome|nice|bad|wonderful|active|available|dangerous|enough|alright|sure|sexy|alone|nothing|free|cheap|expensive|annoying</token>
-                    <token min="0" regexp="yes">now|soon|together|tonight|today|yesterday|tomorrow</token>
-                    <token regexp="yes">\p{P}|of|at|for|in|to|because|with|about</token>
+                    <token regexp="yes" min="0" max="2">just|not|very|really|even|totally|absolutely|too|more|less</token>
+                    <token regexp="yes">ok(ay)?|fine|good|well|healthy|happy|successful|better|lucky|t?here|ready|sorry|glad|(un)?able|hungry|mad|busy|safe|welcome|angry|sick|proud|right|correct|wrong|crazy|great|cool|amazing|beautiful|pretty|attractive|handsome|awesome|nice|bad|wonderful|active|available|dangerous|enough|alright|sure|sexy|alone|nothing|free|cheap|expensive|annoying|worth|different|popular|famous|useful|old|young|hot|sweet|cute|strong|interesting|intelligent|poor|huge|rare|aware|efficient|capable|powerful|sufficient|afraid|obvious|careful|(un)?acceptable|boring</token>
+                    <token min="0" regexp="yes">now|soon|together|tonight|today|yesterday|tomorrow|anymore|(any|some)where</token>
+                    <token regexp="yes">\p{P}|of|at|for|in|on|to|because|with|about|than</token>
                 </pattern>
                 <message>Did you mean <suggestion>you're</suggestion> (= you are)?</message>
                 <example correction="you're">I hope <marker>your</marker> happy.</example>
@@ -10781,10 +10800,20 @@ USA
                 <token regexp="yes">bomb|nut|sea|egg|cockle|lamp|sub</token>
                 <token regexp="yes">shells?</token>
             </pattern>
-            <message>This word is spelled as one.</message>
+            <message>This word is normally spelled as one.</message>
             <suggestion><match no="1" case_conversion="alllower" /><match no="2" case_conversion="alllower" /></suggestion>
             <url>https://www.merriam-webster.com/dictionary/nutshell</url>
             <example correction="nutshell">I can explain it in a <marker>nut shell</marker>.</example>
+        </rule>
+        <rule id="SMART_COMPOUNDS" name="smart phone (smartphone)" default="temp_off">
+            <pattern>
+                <token>smart</token>
+                <token regexp="yes">phones?|watch(es)?|grass(es)?|weeds?</token>
+            </pattern>
+            <message>This word is normally spelled as one.</message>
+            <suggestion>smart<match no="2" case_conversion="alllower" /></suggestion>
+            <url>https://www.lexico.com/definition/smartphone</url>
+            <example correction="smartphone">He got a new <marker>smart phone</marker> for Christmas.</example>
         </rule>
         <rule id="NOW_ARE_THE_TIME" name="Now are (is) the time">
             <pattern>
@@ -20419,6 +20448,37 @@ USA
             <url>https://www.lexico.com/definition/high-end</url>
             <example correction="high-end">The <marker>high end</marker> computer.</example>
         </rule>
+        <rulegroup id="LOW_COST_HYPHEN" name="missing hyphen in 'low cost'" default="temp_off">
+            <url>https://www.lexico.com/definition/low-cost</url>
+            <rule>
+                <pattern>
+                    <marker>
+                        <token regexp="yes">(low|high)</token>
+                        <token>cost</token>
+                    </marker>
+                    <token postag="JJ.*" postag_regexp="yes" min="0" />
+                    <token regexp="yes">air(fare|line)s?|carriers?|operators?|operations?|apartments?|manufacturing|loans?|ads?|flights?|hos?tels?|holidays?|vacations?|cars?|housing|strategy|provider|laptops?|stocks?|smartphones?|events?|devices?|alternatives?|solutions?|ways?|producers?|systems?|options?|structures?|brands?|mortgages?|credits?|benefits?|problems?|materials?|services?|insurances?|industr(y|ies)|areas?|funds?|competitors?|tablets?|computers?|pcs?</token>
+                </pattern>
+                <message>It seems that a hyphen is missing in the adjective <suggestion>\1-\2</suggestion>.</message>
+                <example correction="low-cost">I will be flying with a <marker>low cost</marker> airline to save some money.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token postag="DT|PRP\$|IN" postag_regexp="yes" />
+                    <token postag="JJ.*" postag_regexp="yes" min="0" />
+                    <marker>
+                        <token regexp="yes">(low|high)</token>
+                        <token>cost</token>
+                    </marker>
+                    <token postag="NN.*" postag_regexp="yes">
+                        <exception postag="VB.*|IN|RB" postag_regexp="yes" />
+                    </token>
+                </pattern>
+                <message>It seems that a hyphen is missing in the adjective <suggestion>\3-\4</suggestion>.</message>
+                <example correction="low-cost">I will be flying with a <marker>low cost</marker> airline to save some money.</example>
+                <example>We had had to pay a high cost in men and material.</example>
+            </rule>
+        </rulegroup>
         <rule id="OPEN_PLAN_HYPHEN" name="missing hyphen in 'open plan'">
             <pattern>
                 <marker>
@@ -20433,13 +20493,17 @@ USA
         </rule>
         <rule id="MUCH_NEEDED_HYPHEN" name="missing hyphen in 'much needed'">
             <pattern>
-                <token postag="DT|PRP\$" postag_regexp="yes" />
+                <token postag="DT|PRP\$|IN" postag_regexp="yes" />
+                <token postag="JJ.*" postag_regexp="yes" min="0">
+                    <exception>very</exception>
+                </token>
                 <marker>
                     <token>much</token>
                     <token>needed</token>
                 </marker>
+                <token postag="NN.*|JJ.*" postag_regexp="yes" />
             </pattern>
-            <message>It seems that a hyphen is missing if you mean the adjective <suggestion>\2-\3</suggestion>.</message>
+            <message>It seems that a hyphen is missing if you mean the adjective <suggestion>\3-\4</suggestion>.</message>
             <url>https://www.lexico.com/definition/much-needed</url>
             <example correction="much-needed">The film gave a <marker>much needed</marker> boost to the country's tourist industry.</example>
             <example>Your help is very much needed.</example>
@@ -22904,6 +22968,7 @@ USA
                         <exception postag="JJ[RS]?|NN.*" postag_regexp="yes"/>
                         <exception regexp="yes">not|after|before|approx|while|bit|otherwise</exception>
                         <exception case_sensitive="yes">SO</exception>
+                        <exception>somewhat</exception><!-- can be a preposition according to https://www.merriam-webster.com/dictionary/somewhat -->
                     </token>
                     <token postag="NN(:UN?)?" postag_regexp="yes">
                         <exception postag="JJ[RS]?|VB[NG]" postag_regexp="yes" />
@@ -32616,20 +32681,6 @@ USA
             <example type="triggers_error">It became <marker>kind of</marker> a last minute decision.</example><!-- https://www.lexico.com/definition/kind_of  -->
             <example type="triggers_error">I was <marker>sort of</marker> a mascot; I would get them coffee or tea ...</example><!-- https://www.lexico.com/definition/sort_of -->
         </rule>
-        <rule id="REASON_IS_BECAUSE" name="'the reason... is because'">
-            <pattern>
-                <token>the</token>
-                <token skip="6">reason</token>
-                <marker>
-                    <token>is</token>
-                    <token>because</token>
-                </marker>
-            </pattern>
-            <!--  or &lt;suggestion&gt;because&lt;/suggestion&gt; -->
-            <message>Probably an incorrect phrase. Use 'the reason <suggestion>is that</suggestion>'.</message>
-            <short>Grammatical problem</short>
-            <example correction="is that">The reason we were late <marker>is because</marker> there was an accident.</example>
-        </rule>
         <rule id="BECAUSE_OF_I" name="because of we (because we)">
             <pattern>
                 <token>because</token>
@@ -32641,9 +32692,30 @@ USA
             <example correction="Because we"><marker>Because of we</marker> didn't want a big train, but we want a fast train.</example>
         </rule>
         <rulegroup id="CAUSE_BECAUSE" name="confusion of cause vs. because">
+            <url>https://dictionary.cambridge.org/grammar/british-grammar/because-because-of-and-cos-cos-of</url>
             <antipattern><!-- informal 'cause -->
                 <token regexp="yes">&apostrophe;</token>
                 <token spacebefore="no">cause</token>
+            </antipattern>
+            <antipattern>
+                <token postag="MD|TO" postag_regexp="yes" />
+                <token postag="RB" min="0" />
+                <token>cause</token>
+                <token postag="PRP" />
+            </antipattern>
+            <antipattern>
+                <token postag="MD" />
+                <token regexp="yes">&apostrophe;</token>
+                <token>t</token>
+                <token>cause</token>
+            </antipattern>
+            <antipattern>
+                <token>cause</token>
+                <token case_sensitive="yes" regexp="yes">Will|May</token>
+            </antipattern>
+            <antipattern>
+                <token>cause</token>
+                <token regexp="yes">cans|wills</token>
             </antipattern>
             <rule>
                 <pattern>
@@ -32658,19 +32730,29 @@ USA
             </rule>
             <rule>
                 <pattern>
-                    <token>
-                        <exception postag="MD|TO" postag_regexp="yes" />
-                    </token>
                     <marker>
                         <token>cause</token>
                     </marker>
                     <token regexp="yes">it|you</token>
                     <token min="0" regexp="yes">&apostrophe;</token>
+                    <token postag="RB" min="0" />
                     <token inflected="yes">be</token>
                 </pattern>
                 <message>Did you mean <suggestion>because</suggestion>?</message>
                 <example correction="because">I think it's great <marker>cause</marker> you're doing it.</example>
                 <example>This is currently hard to see because the only way to cause it is via troops that cause random effects.</example>
+            </rule>
+            <rule default="temp_off">
+                <pattern>
+                    <marker>
+                        <token>cause</token>
+                    </marker>
+                    <token regexp="yes">it|you|I|we|they|s?he</token>
+                    <token postag="RB" min="0" />
+                    <token inflected="yes" regexp="yes">do|will|can|have|shall|need|want|must|may</token>
+                </pattern>
+                <message>Did you mean <suggestion>because</suggestion>?</message>
+                <example correction="because">Please don’t just ignore it <marker>cause</marker> it can cause bigger problems.</example>
             </rule>
         </rulegroup>
         <rule id="PAYED" name="payed (paid)">
@@ -33557,7 +33639,7 @@ USA
                     <token>week</token>
                 </marker>
                 <token postag="JJ.*" postag_regexp="yes" min="0" />
-                <token regexp="yes">semester|pandemi[ac]|vacation|holiday|notice|diets?|periods?|moving|streak|cycles?|arrangements?|routine|gym|plan|work\-?out|project|pregnancy|fetus|trip|training|program|courses?|highs?|lows?|trial|rotation|intervals?|warranty|delivery|median|lockdown|shutdown</token>
+                <token regexp="yes">semester|pandemi[ac]|vacation|holiday|notice|diets?|periods?|moving|streak|cycles?|arrangements?|routine|gym|plan|work\-?out|project|pregnancy|fetus|trip|training|program|courses?|highs?|lows?|trial|rotation|intervals?|warranty|delivery|median|lockdown|shutdown|decline</token>
             </pattern>
             <message>It seems that a hyphen is missing.</message>
             <suggestion>\1-\2</suggestion>
@@ -33570,7 +33652,7 @@ USA
                     <token>month</token>
                 </marker>
                 <token postag="JJ.*" postag_regexp="yes" min="0" />
-                <token regexp="yes">routine|periods?|intervals?|cycles?|diets?|notice|plan|project|warranty|median|vacation|holiday|trip|milestone|pandemi[ac]|lockdown|shutdown|term|contract</token>
+                <token regexp="yes">routine|periods?|intervals?|cycles?|diets?|notice|plan|project|warranty|median|vacation|holiday|trip|milestone|pandemi[ac]|lockdown|shutdown|term|contract|decline</token>
             </pattern>
             <message>It seems that a hyphen is missing.</message>
             <suggestion>\1-\2</suggestion>
@@ -45622,10 +45704,10 @@ The accident victim died from her injuries.
                         <token>their</token>
                     </marker>
                     <token regexp="yes" min="0">all|both|being|feeling|doing|going|keeping|managing|recovering</token>
-                    <token regexp="yes" min="0" max="2">just|not|very|really|even|totally|absolutely|too|more</token>
-                    <token regexp="yes">ok(ay)?|fine|good|well|healthy|happy|successful|better|lucky|t?here|ready|sorry|glad|(un)?able|hungry|mad|busy|safe|welcome|angry|sick|proud|right|correct|wrong|crazy|great|cool|alone|amazing|beautiful|pretty|attractive|handsome|awesome|nice|(im)?possible|(un)?able|clear|helpful|important|time|nicer|best|similar|difficult|small|big|large|little|active|bad|wonderful|simple|easy|early|available|dangerous|enough|alright|sure|sexy|alone|nothing|free|cheap|expensive|annoying</token>
-                    <token min="0" regexp="yes">now|soon|together|tonight|today|yesterday|tomorrow</token>
-                    <token regexp="yes">\p{P}|of|at|for|in|to|because|with|about</token>
+                    <token regexp="yes" min="0" max="2">just|not|very|really|even|totally|absolutely|too|more|less</token>
+                    <token regexp="yes">ok(ay)?|fine|good|well|healthy|happy|successful|better|lucky|t?here|ready|sorry|glad|(un)?able|hungry|mad|busy|safe|welcome|angry|sick|proud|right|correct|wrong|crazy|great|cool|alone|amazing|beautiful|pretty|attractive|handsome|awesome|nice|(im)?possible|(un)?able|clear|helpful|important|time|nicer|best|similar|difficult|small|big|large|little|active|bad|wonderful|simple|easy|early|available|dangerous|enough|alright|sure|sexy|alone|nothing|free|cheap|expensive|annoying|worth|different|popular|famous|useful|old|young|hot|sweet|cute|strong|interesting|intelligent|poor|huge|rare|aware|efficient|capable|powerful|sufficient|afraid|obvious|careful|(un)?acceptable|boring</token>
+                    <token min="0" regexp="yes">now|soon|together|tonight|today|yesterday|tomorrow|anymore|(any|some)where</token>
+                    <token regexp="yes">\p{P}|of|at|for|in|on|to|because|with|about|than</token>
                 </pattern>
                 <message>Did you mean <suggestion>they're</suggestion> (= they are)?</message>
                 <example correction="they're">I hope <marker>their</marker> ok.</example>
@@ -50409,7 +50491,7 @@ The accident victim died from her injuries.
                 </token>
                 <token postag="NN(:UN?)?|NNP?S" postag_regexp="yes">
                     <exception postag="JJ.*" postag_regexp="yes" />
-                    <exception regexp="yes">one|(some|every|any)(body|one)|still|right|in|kind|well|given|known|his</exception>
+                    <exception regexp="yes">one|(some|every|any)(body|one)|still|right|in|kind|well|given|known|his|then</exception>
                 </token>
                 <token>
                     <exception regexp="yes">enough|\p{P}</exception>
@@ -50436,6 +50518,7 @@ The accident victim died from her injuries.
             <example>Maybe you're someone I know.</example>
             <example>The people you're friends with.</example>
             <example>It depends whether you're known as ...</example>
+            <example>Also, if you're sick then please stay at home.</example>
             <example>You're home early.</example>
             <example>You're geniuses.</example>
             <example>Because you're closer to him.</example>
@@ -51906,19 +51989,34 @@ The accident victim died from her injuries.
         </antipattern>
         <antipattern><!-- She's dumb but in a goofy way  -->
             <token>but</token>
-            <token min="0">more</token>
+            <token min="0" regexp="yes">more|less</token>
             <token>in</token>
             <token regexp="yes">an?</token>
         </antipattern>
         <antipattern><!-- in a nice fashion dress -->
             <token>in</token>
             <token>a</token>
-            <token postag="JJ" />
+            <token postag="JJ.*" postag_regexp="yes" />
             <token>fashion</token>
             <token postag="NN.*" postag_regexp="yes" />
         </antipattern>
         <antipattern><!-- He has done it clearly in a unusual way. -->
             <token postag="RB" regexp="yes">.+ly</token>
+            <token>in</token>
+            <token regexp="yes">an?</token>
+        </antipattern>
+        <antipattern><!-- He is scary in a funny way -->
+            <token inflected="yes" regexp="yes">be|look|behave|seem|sound|act</token>
+            <token postag="JJ.*" postag_regexp="yes" />
+            <token min="0" regexp="yes">more|less</token>
+            <token>in</token>
+            <token regexp="yes">an?</token>
+        </antipattern>
+        <antipattern><!-- He is very scary in a funny way -->
+            <token inflected="yes" regexp="yes">be|look|behave|seem|sound|act</token>
+            <token postag="RB" />
+            <token postag="JJ.*" postag_regexp="yes" />
+            <token min="0" regexp="yes">more|less</token>
             <token>in</token>
             <token regexp="yes">an?</token>
         </antipattern>
@@ -51932,6 +52030,7 @@ The accident victim died from her injuries.
             <message>Consider replacing this phrase with the adverb <suggestion><match no="3" regexp_match="(?i)y$" regexp_replace="ily" /></suggestion> to avoid wordiness.</message>
             <example correction="hastily">He did it <marker>in a hasty manner</marker>.</example>
             <example>Preferably in an easy way.</example>
+            <example>He is very scary in a funny way.</example>
         </rule>
         <rule>
             <pattern>
@@ -53945,6 +54044,30 @@ The accident victim died from her injuries.
     <!-- Style -->
     <!-- ====================================================================== -->
     <category id="STYLE" name="Style" type="style">
+        <rule id="REASON_IS_BECAUSE" name="'the reason... is because'">
+            <antipattern>
+                <token>that</token>
+                <token>is</token>
+                <token>because</token>
+            </antipattern>
+            <antipattern>
+                <token>because</token>
+                <token regexp="yes">of|that</token>
+            </antipattern>
+            <pattern>
+                <token>the</token>
+                <token skip="6">reason</token>
+                <marker>
+                    <token>is</token>
+                    <token>because</token>
+                </marker>
+            </pattern>
+            <!--  or &lt;suggestion&gt;because&lt;/suggestion&gt; -->
+            <message>The word "because" means "for the reason that" and thus introduces redundancy. Consider using 'the reason <suggestion>is that</suggestion>'.</message>
+            <url>https://onlinewritingtraining.com.au/the-reason-is-that-or-the-reason-is-because/</url>
+            <example correction="is that">The reason we were late <marker>is because</marker> there was an accident.</example>
+            <example>The root reason of his failure is because of his arrogance.</example>
+        </rule>
         <rulegroup id="ALINE" name="aline vs. align">
             <url>https://www.merriam-webster.com/dictionary/aline</url>
             <rule>

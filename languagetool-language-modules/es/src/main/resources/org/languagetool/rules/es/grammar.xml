@@ -528,6 +528,19 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="Cómo estás,">¿<marker>como estas</marker> guapo?</example>
             </rule>
         </rulegroup>
+        <rulegroup id="CUAL"  name="cual/cuál" default="temp_off">
+            <rule>
+                <pattern>
+                    <token regexp="yes">el|la|los|las|del|al</token>
+                    <marker>
+                        <token regexp="yes">cuál(es)?</token>
+                    </marker>
+                </pattern>
+                <message>Como relativo se escribe sin tilde.</message>
+                <suggestion><match no="2" regexp_match="(?iu)cuá(l.*)" regexp_replace="cua$1"/></suggestion>
+                <example correction="cual">hecho por el <marker>cuál</marker> se ha llegado a consolidar.</example>
+            </rule>
+        </rulegroup>
         <rulegroup id="DIACRITICS_OTHERS" name="otros casos de falta de tilde" default="on">
             <rule>
                 <pattern>
@@ -1496,6 +1509,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>El más allá.</example>
                 <example>Con el más que sorprendido oficinista.</example>
                 <example>¿Qué es el "a veces"?</example>
+                <example>En el mejor de los casos.</example>
+                <example>Nuestro restaurant es el mejor.</example>
             </rule>
 
             <!-- TU_PARTICULA_VERBO_P2 tu no te lo pierdas
@@ -3587,6 +3602,16 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rule>
     </category>
     <category id="CAT4" name="Estilo" type="style">
+        <rule id="MEXICO" name="México/Méjico" default="temp_off">
+            <pattern>
+                <token regexp="yes">.*mejic.*|Méjico|Tejas<exception postag="NCFP000">tejas</exception></token>
+            </pattern> <!--tejano-->
+            <message>Grafía recomendada.</message>
+            <suggestion><match no="1" regexp_match="(?iu)(.*)j(.*)" regexp_replace="$1x$2"/></suggestion>
+            <example correction="México">Soy de <marker>Méjico</marker>.</example>
+            <example correction="mexicanas">Son <marker>mejicanas</marker>.</example>
+            <example>No me quedan tejas.</example>
+        </rule>
         <rule id="ASI" name="así/asín/asina">
             <pattern>
                 <token regexp="yes">asín|asina<exception postag="_possible_NP"/></token>

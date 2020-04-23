@@ -1438,7 +1438,14 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         </pattern>
         <disambig postag="NNP"/>
     </rule>
+
     <rule name="kind (adj) + of -&gt; kind (n)" id="KIND_JJ">
+        <antipattern><!-- #2662 it's kind of her -->
+            <token regexp="yes">i?s|was</token>
+            <token>kind</token>
+            <token>of</token>
+            <token regexp="yes">&object_pronouns;</token>
+        </antipattern>
         <pattern>
             <marker>
                 <token postag="JJ">kind</token>
@@ -1446,7 +1453,12 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <token>of</token>
         </pattern>
         <disambig postag="NN"/>
+        <example type="untouched">Nevertheless, I'm emphasizing it's kind of her to do that.</example>
+        <example type="untouched">No, it's kind of them, in my opinion.</example>
+        <example type="untouched">Really, it was kind of you and your family.</example>
+        <example type="ambiguous" inputform="kind[kind/JJ,kind/NN:UN]" outputform="kind[kind/NN]">Nevertheless, I'm emphasizing it's <marker>kind</marker> of problem is not the same as the problems of other disambiguators.</example><!--  #2662 -->
     </rule>
+
     <rule name="the/a + mine = mine (noun)" id="MINE_NN">
         <pattern>
             <token postag_regexp="yes" postag="DT|PRP\$"/>
@@ -3945,8 +3957,15 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
                 <token chunk="I-VP" postag="VBP?" postag_regexp="yes"/>
                 <token>:</token>
             </antipattern>
+            <antipattern>
+                <token regexp="yes">your|their|its</token><!-- common confused words (its => it's, ...) -->
+                <token postag="JJ.*" postag_regexp="yes" />
+                <token postag="SENT_END" regexp="yes">\p{P}</token>
+            </antipattern>
             <pattern>
-                <token postag="DT|PRP\$" postag_regexp="yes"><exception regexp="yes">th[eo]se|no|much</exception></token>
+                <token postag="DT|PRP\$" postag_regexp="yes">
+                    <exception regexp="yes">th[eo]se|no|much</exception>
+                </token>
                 <marker>
                     <unify>
                         <feature id="number"/>
@@ -3965,6 +3984,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <example type="untouched">At the end of the party, they were both drunk.</example>
             <example type="untouched">My clothes were dirty, but at the end of the wash, they were all cleaner.</example>
             <example type="untouched">Adverb. We must do this now.</example>
+            <example type="untouched">Grammar error. I think its great.</example>
             <example type="untouched">Adjective. The <marker>basic</marker> installed software is not sufficient. We need the enhanced software.</example>
             <example type="untouched">Instead, we should either say:</example><!-- #2503 -->
             <example type="ambiguous" inputform="work[work/JJ,work/NN:UN,work/VB,work/VBP]" outputform="work[work/NN:UN]">How about we do this <marker>work</marker>?</example>
