@@ -158,6 +158,15 @@ public class AdverbFilter extends RuleFilter {
     put("usually", "usual");
     put("normally", "normal");
     put("deliciously", "delicious");
+    put("steadily", "steady");
+    put("actively", "active");
+    put("schematically", "schematic");
+    put("mindfully", "mindful");
+    put("statistically", "statistical");
+    put("culturally", "cultural");
+    put("vicariously", "vicarious");
+    put("vividly", "vivid");
+    put("partially", "partial");
 
     // TODO: add more or maybe use https://github.com/simplenlg/simplenlg?
     //put("", "");

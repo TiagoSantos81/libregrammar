@@ -73,19 +73,9 @@ public class SentenceSourceChecker {
     int maxArticles = Integer.parseInt(commandLine.getOptionValue("max-sentences", "0"));
     int maxErrors = Integer.parseInt(commandLine.getOptionValue("max-errors", "0"));
     int contextSize = Integer.parseInt(commandLine.getOptionValue("context-size", "50"));
-    String[] ruleIds = commandLine.hasOption('r') ? commandLine.getOptionValue('r').split(",") : null;
-    String[] categoryIds = commandLine.hasOption("also-enable-categories") ?
-                           commandLine.getOptionValue("also-enable-categories").split(",") : null;
-    String[] fileNames = commandLine.getOptionValues('f');
-    File languageModelDir = commandLine.hasOption("languagemodel") ?
-                            new File(commandLine.getOptionValue("languagemodel")) : null;
-    File word2vecModelDir = commandLine.hasOption("word2vecmodel") ?
-            new File(commandLine.getOptionValue("word2vecmodel")) : null;
-    File neuralNetworkModelDir = commandLine.hasOption("neuralnetworkmodel") ?
-      new File(commandLine.getOptionValue("neuralnetworkmodel")) : null;
-    Pattern filter = commandLine.hasOption("filter") ? Pattern.compile(commandLine.getOptionValue("filter")) : null;
-    prg.run(propFile, disabledRuleIds, languageCode, Arrays.asList(fileNames), ruleIds, categoryIds, maxArticles,
-      maxErrors, contextSize, languageModelDir, word2vecModelDir, neuralNetworkModelDir, filter);
+    prg.run(propFile, disabledRuleIds, languageCode, maxArticles,
+      maxErrors, contextSize,
+      commandLine);
   }
 
   private static void addDisabledRules(String languageCode, Set<String> disabledRuleIds, Properties disabledRules) {
@@ -138,6 +128,9 @@ public class SentenceSourceChecker {
     options.addOption(Option.builder().longOpt("filter").argName("regex").hasArg()
             .desc("Consider only sentences that contain this regular expression (for speed up)")
             .build());
+    options.addOption(Option.builder().longOpt("spelling")
+            .desc("Don't skip spell checking rules")
+            .build());
     try {
       CommandLineParser parser = new DefaultParser();
       return parser.parse(options, args);
@@ -152,10 +145,18 @@ public class SentenceSourceChecker {
     throw new IllegalStateException();
   }
 
-  private void run(File propFile, Set<String> disabledRules, String langCode, List<String> fileNames, String[] ruleIds,
-                   String[] additionalCategoryIds, int maxSentences, int maxErrors, int contextSize,
-                   File languageModelDir, File word2vecModelDir, File neuralNetworkModelDir, Pattern filter) throws IOException {
+  private void run(File propFile, Set<String> disabledRules, String langCode,
+                   int maxSentences, int maxErrors, int contextSize,
+                   CommandLine options) throws IOException {
     long startTime = System.currentTimeMillis();
+    String[] ruleIds = options.hasOption('r') ? options.getOptionValue('r').split(",") : null;
+    String[] additionalCategoryIds = options.hasOption("also-enable-categories") ? options.getOptionValue("also-enable-categories").split(",") : null;
+    String[] fileNames = options.getOptionValues('f');
+    File languageModelDir = options.hasOption("languagemodel") ? new File(options.getOptionValue("languagemodel")) : null;
+    File word2vecModelDir = options.hasOption("word2vecmodel") ? new File(options.getOptionValue("word2vecmodel")) : null;
+    File neuralNetworkModelDir = options.hasOption("neuralnetworkmodel") ? new File(options.getOptionValue("neuralnetworkmodel")) : null;
+    // File remoteRules = options.hasOption("remoterules") ? new File(options.getOptionValue("remoterules")) : null;
+    Pattern filter = options.hasOption("filter") ? Pattern.compile(options.getOptionValue("filter")) : null;
     Language lang = Languages.getLanguageForShortCode(langCode);
     MultiThreadedJLanguageTool lt = new MultiThreadedJLanguageTool(lang);
     lt.setCleanOverlappingMatches(false);
@@ -171,7 +172,7 @@ public class SentenceSourceChecker {
     for (Rule rule : lt.getAllRules()) {
       if (rule.isDefaultTempOff()) {
         if (rule instanceof AbstractPatternRule) {
-          System.out.println("Activating " + ((AbstractPatternRule) rule).getFullId() + ", which is default='temp_off'");
+          System.out.println("Activating " + rule.getFullId() + ", which is default='temp_off'");
         } else {
           System.out.println("Activating " + rule.getId() + ", which is default='temp_off'");
         }
@@ -187,7 +188,12 @@ public class SentenceSourceChecker {
       System.out.println("*** NOTE: only sentences that match regular expression '" + filter + "' will be checked");
     }
     activateAdditionalCategories(additionalCategoryIds, lt);
-    disableSpellingRules(lt);
+    if (options.hasOption("spelling")) {
+      System.out.println("Spelling rules active: yes (only if you're using a language code like en-US which comes with spelling)");
+    } else if (ruleIds == null) {
+      disableSpellingRules(lt);
+      System.out.println("Spelling rules active: no");
+    }
     System.out.println("Working on: " + StringUtils.join(fileNames, ", "));
     System.out.println("Sentence limit: " + (maxSentences > 0 ? maxSentences : "no limit"));
     System.out.println("Context size: " + contextSize);
@@ -203,7 +209,7 @@ public class SentenceSourceChecker {
       } else {
         resultHandler = new StdoutHandler(maxSentences, maxErrors, contextSize);
       }
-      MixingSentenceSource mixingSource = MixingSentenceSource.create(fileNames, lang, filter);
+      MixingSentenceSource mixingSource = MixingSentenceSource.create(Arrays.asList(fileNames), lang, filter);
       while (mixingSource.hasNext()) {
         Sentence sentence = mixingSource.next();
         try {
@@ -228,7 +234,7 @@ public class SentenceSourceChecker {
         float matchesPerSentence = (float)ruleMatchCount / sentenceCount;
         System.out.printf(lang + ": %d total matches\n", ruleMatchCount);
         System.out.printf(Locale.ENGLISH, lang + ": ø%.2f rule matches per sentence\n", matchesPerSentence);
-        long runTimeMillis = System.currentTimeMillis() - startTime;
+        //long runTimeMillis = System.currentTimeMillis() - startTime;
         //System.out.printf(Locale.ENGLISH, lang + ": Time: %.2f minutes\n", runTimeMillis/1000.0/60.0);
         try {
           resultHandler.close();
@@ -294,7 +300,6 @@ public class SentenceSourceChecker {
         lt.disableRule(rule.getId());
       }
     }
-    System.out.println("All spelling rules are disabled");
   }
 
 }
