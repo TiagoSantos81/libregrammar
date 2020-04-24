@@ -1,5 +1,34 @@
 # LibreGrammar Change Log
 
+## 5.0-SNAPSHOT (release planned for 2020-06-26)
+
+### This fork differences
+
+...
+
+### Other changes common to both projects
+
+#### Dutch
+  * added and improved rules
+
+#### English
+  * added and improved rules
+  * spelling and POS improvements
+
+#### French
+  * added and improved rules
+
+#### German
+  * added and improved rules
+  * spelling and POS improvements
+
+#### Russian
+  * added and improved rules
+
+#### Spanish
+  * added and improved rules
+  * spelling and POS improvements
+
 ## 4.9 (released 2020-04-24)
 
 ### This fork differences
@@ -75,7 +104,6 @@
   * added and improved rules, including:
     - MissingSpaceRule.
   
-
 #### English
   * significantly improve rule set with many rules added and improved, including:
     - rule to verify wrongly uppercased words.
