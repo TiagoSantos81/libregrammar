@@ -8085,7 +8085,66 @@ though, and has since been slightly modified)-->
   </category>
   <category id="CAT_GRAMMAIRE" name="Grammaire">
       <!-- Additions from the premium version -->
+      <rule id="TES_MA" name="Tes ma" default="temp_off">
+          <pattern>
+              <token>tes</token>
+              <token>ma</token>
+          </pattern>
+          <message>Les mots « \1 \2 » ne peuvent pas se suivre. Vouliez-vous dire <suggestion>t'es ma</suggestion> ?</message>
+          <example correction="T'es ma"><marker>Tes ma</marker> meilleure amie.</example>
+      </rule>
+      <rulegroup id="LIVRER_A_SOI_MEME" name="Livré à soi-même">
+          <rule name="Livré à lui-même" default="temp_off">
+              <pattern>
+                  <marker>
+                      <token>livrer</token>
+                  </marker>
+                  <token>à</token>
+                  <token>lui-même</token>
+              </pattern>
+              <message>Vouliez-vous dire <suggestion>livré</suggestion> ?</message>
+              <example correction="livré">Ils l'ont laissé <marker>livrer</marker> à lui-même.</example>
+          </rule>
+          <rule name="Livré à elle-même" default="temp_off">
+              <pattern>
+                  <marker>
+                      <token>livrer</token>
+                  </marker>
+                  <token>à</token>
+                  <token>elle-même</token>
+              </pattern>
+              <message>Vouliez-vous dire <suggestion>livrée</suggestion> ?</message>
+              <example correction="livrée">Ils l'ont laissée <marker>livrer</marker> à elle-même.</example>
+          </rule>
+          <rule name="Livrés à eux-même" default="temp_off">
+              <antipattern>
+                  <token>à</token>
+                  <token>livrer</token>
+              </antipattern>
+              <pattern>
+                  <marker>
+                      <token>livrer</token>
+                  </marker>
+                  <token>à</token>
+                  <token>eux-mêmes</token>
+              </pattern>
+              <message>Vouliez-vous dire <suggestion>livrés</suggestion> ?</message>
+              <example correction="livrés">Ils les ont laissés <marker>livrer</marker> à eux-mêmes.</example>
+          </rule>
+          <rule name="Livré à elles-même" default="temp_off">
+              <pattern>
+                  <marker>
+                      <token>livrer</token>
+                  </marker>
+                  <token>à</token>
+                  <token>elles-mêmes</token>
+              </pattern>
+              <message>Vouliez-vous dire <suggestion>livrées</suggestion> ?</message>
+              <example correction="livrées">Ils les ont laissées <marker>livrer</marker> à elles-mêmes.</example>
+          </rule>
+      </rulegroup>
       <rulegroup id="A_ACCENT" name="Usage de a/à">
+          <!-- Commented out until I know for certain there isn't more false positives.
           <rule>
               <antipattern>
                   <token>a</token>
@@ -8096,12 +8155,18 @@ though, and has since been slightly modified)-->
                   <token>a</token>
               </antipattern>
               <pattern>
-                  <token postag="V.*" postag_regexp="yes" skip="-1"><exception postag="M fin|M nonfin|SENT_END|C sub" postag_regexp="yes"/></token>
+                  <token postag="V.*" postag_regexp="yes" skip="-1">
+                      <exception scope="next" postag="M fin|M nonfin|SENT_END|C sub" postag_regexp="yes"/>
+                      <exception scope="next" regexp="yes">[«"']</exception>
+                      <exception postag="V.* ppa.*" postag_regexp="yes"/>
+                      <exception postag="V.* ppr.*" postag_regexp="yes"/>
+                      <exception postag="V.* inf" postag_regexp="yes"/>
+                  </token>
                   <marker>
                       <token postag="N [mfe] .*" postag_regexp="yes">
                           <exception>y</exception>
                       </token>
-                      <token>a</token>
+                      <token case_sensitive="yes">a</token>
                       <token postag="N [mfe].*" postag_regexp="yes">
                           <exception regexp="yes">une?|des?|pour</exception>
                           <exception postag_regexp="yes" postag="K|Y"/>
@@ -8113,7 +8178,10 @@ though, and has since been slightly modified)-->
               <example correction="couteau à beurre">Je me saisis de mon <marker>couteau a beurre</marker>, et m'apprête à tartiner.</example>
               <example type="correct">Je me dis que la <marker>France a mal</marker>.</example>
               <example type="correct">l'Allier a une majorité de droite de deux voix.</example>
+              <example>Pour ce faire, l' humanité a besoin d'un Guide spirituel (imam) pour transmettre l'exégèse spirituelle du Coran et actualiser le message</example>
+              <example>Clovis retrouve son écuyer et s'exécute : la guérison a lieu.</example>
           </rule>
+          -->
           <rule>
               <antipattern>
                   <token>a</token>
@@ -8137,7 +8205,8 @@ though, and has since been slightly modified)-->
               <example correction="râpe à fromage">La <marker>râpe a fromage</marker> est un instrument très utile.</example>
               <example correction="couteau à beurre">Mon <marker>couteau a beurre</marker> brille comme s'il était neuf !</example>
           </rule>
-          <rule>
+          <!-- Same as above
+          <rule default="off">
               <antipattern>
                   <token>a</token>
                   <token>a</token>
@@ -8178,9 +8247,10 @@ though, and has since been slightly modified)-->
               <example>Je ne pouvais pas le croire a priori.</example>
               <example>Elle continue a être gérée conjointement</example>
           </rule>
+          -->
       </rulegroup>
       <rulegroup id="AN_ANNEE" name="Confusion an/année">
-          <rule>
+          <rule >
               <antipattern>
                   <token>an</token>
                   <token>tamm</token>
@@ -8189,18 +8259,34 @@ though, and has since been slightly modified)-->
                   <token>kan</token>
                   <token>an</token>
               </antipattern>
+              <antipattern>
+                  <token regexp="yes">ans?</token>
+                  <token regexp="yes" case_sensitive="yes">(?=[MDCLXVI])M*(C[MD]|D?C*)(X[CL]|L?X*)(I[XV]|V?I*)
+                      <exception scope="next" regexp="yes">'</exception>
+                  </token>
+              </antipattern>
+              <antipattern>
+                  <token>an</token>
+                  <token postag="K|Y" postag_regexp="yes"/>
+              </antipattern>
+              <antipattern>
+                  <token>an</token>
+                  <token regexp="yes">\d+[-–—]\d+</token>
+              </antipattern>
+              <antipattern>
+                  <token>nouvel</token>
+                  <token>an</token>
+              </antipattern>
               <pattern>
                   <token>
                       <exception>par</exception>
                       <exception>un</exception>
                       <exception>'</exception>
-                      <exception>sept</exception>
-                      <exception>cent</exception>
-                      <exception>cents</exception>
                       <exception>/</exception>
                       <exception regexp="yes">Vendémiaire|Brumaire|Frimaire|Nivôse|Pluviôse|Ventôse|Germinal|Floréal|Prairial|Messidor|Thermidor|Fructidor</exception>
-                      <exception regexp="yes">\d+\-\d+</exception>
-                      <exception regexp="yes">\w+\-\w+</exception>
+                      <exception regexp="yes">\d+[-–—]\d+</exception>
+                      <exception regexp="yes">\d+O</exception>
+                      <exception regexp="yes">\w+[-–—]\w+</exception>
                       <exception postag="D e p"/>
                       <exception postag="K|Y" postag_regexp="yes"/>
                       <exception postag="SENT_START"/>
@@ -8209,9 +8295,13 @@ though, and has since been slightly modified)-->
                       <token regexp="yes">an|ans</token>
                   </marker>
               </pattern>
-              <message>On ne peut utiliser "an" qu'après des nombres cardinaux. Utilisez plutôt <suggestion>année</suggestion>."</message>
+              <message>On ne peut utiliser "an" qu'en concordance des nombres cardinaux. Utilisez plutôt <suggestion>année</suggestion>."</message>
               <example correction="année">Bon <marker>an</marker> !</example>
               <example correction="année">Chaque <marker>an</marker>, nous allons célébrer dans un grand restaurant.</example>
+              <example>Régiments de hussards (an IV).</example>
+              <example>Cinq ans après le diagnostic, 70 % des 15–45 ans survivent.</example>
+              <example>Il est venu chez nous fêter le nouvel an.</example>
+              <example>Je suis devenu membre du club il y a 1O ans.</example>
           </rule>
           <rule>
               <pattern>
@@ -8604,7 +8694,7 @@ though, and has since been slightly modified)-->
       </rule>
       <rule name="nombre pluriel suivi du singulier">
         <antipattern>
-            <token postag="N [fem] p" postag_regexp="yes"/>
+            <token postag="N [fem] s" postag_regexp="yes"/>
             <token regexp="yes">aux|à|de|du</token>
             <token postag="N .*" postag_regexp="yes"/>
             <token postag="J [fem] s" postag_regexp="yes"/>
@@ -8655,7 +8745,7 @@ though, and has since been slightly modified)-->
       </rule>
       <rule name="singulier suivi du pluriel">
           <antipattern>
-              <token postag="N [fem] s" postag_regexp="yes"/>
+              <token postag="N [fem] p" postag_regexp="yes"/>
               <token regexp="yes">aux|à|de|du</token>
               <token postag="N .*" postag_regexp="yes"/>
               <token postag="J [fem] p" postag_regexp="yes"/>
@@ -8726,7 +8816,7 @@ though, and has since been slightly modified)-->
       </rule>
       <rule name="pluriel suivi du singulier">
         <antipattern>
-            <token postag="N [fem] p" postag_regexp="yes"/>
+            <token postag="N [fem] s" postag_regexp="yes"/>
             <token regexp="yes">aux|à|de|du</token>
             <token postag="N .*" postag_regexp="yes"/>
             <token postag="J [fem] s" postag_regexp="yes"/>
@@ -9304,6 +9394,13 @@ though, and has since been slightly modified)-->
             <token postag="N .*" postag_regexp="yes"/>
             <token postag="J [fe] [sp]" postag_regexp="yes"/>
         </antipattern>
+          <antipattern>
+              <token postag="N m [sp]" postag_regexp="yes"/>
+              <token>et</token>
+              <token postag="D f [sp]" postag_regexp="yes"/>
+              <token postag="N f [sp]" postag_regexp="yes"/>
+              <token postag="(J|V ppa) m .*" postag_regexp="yes"/>
+          </antipattern>
         <antipattern>
           <token>orge</token>
           <token regexp="yes">perlé|mondé</token>
@@ -9375,9 +9472,81 @@ though, and has since been slightly modified)-->
         <example>Une documentation utilisateur.</example>
         <example>Code promo offert pour tous les entrants.</example>
         <example>Elle s’habitue à la <marker>situation petit</marker> à petit.</example>
+        <example>Je trouve le rythme et la mélodie combinés avec des rimes très beaux dans cette chanson.</example>
       </rule>
     </rulegroup>
-    <rulegroup id="ACCORD_CENTAINE_DE" name="centaine de">
+    <rulegroup id="NOM_DE_PAYS" name="Nom de pays sans majuscule" default="off">
+        <!-- TODO: Improve, capitalization is not consistent in french -->
+        <rule name="Noms de pays composés d'un token">
+            <antipattern>
+                <token regexp="yes">cochons?</token>
+                <token>d</token>
+                <token>'</token>
+                <token>inde</token>
+            </antipattern>
+            <antipattern>
+                <token>Gaule</token>
+                <token>belgique</token>
+            </antipattern>
+            <antipattern>
+                <token>bois</token>
+                <token>brésil</token>
+            </antipattern>
+            <antipattern>
+                <token regexp="yes">Helleborus|Lathyrus|Lasius|Pteropus</token>
+                <token>niger</token>
+            </antipattern>
+            <antipattern>
+                <token regexp="yes">chilis?</token>
+                <token>con</token>
+                <token>carne</token>
+            </antipattern>
+            <antipattern>
+                <token>papier</token>
+                <token>japon</token>
+            </antipattern>
+            <pattern>
+                <token regexp="yes" case_sensitive="yes">
+                    afghanistan|albanie|algérie|allemagne|andorre|angola|antigua-et-barbuda|arménie|australie|autriche|azerbaïdjan|bahamas|bahreïn|bangladesh|barbade|belgique|belize|bhoutan|biélorussie|birmanie|bolivie|bosnie-herzégovine|botswana|brésil|brunei|bulgarie|burundi|cambodge|cameroun|canada|cap-vert|chili|chine|chypre|colombie|comores|croatie|cuba|danemark|djibouti|dominique|égypte|érythrée|espagne|eswatini|estonie|états-unis|éthiopie|fidji|finlande|france|gabon|gambie|géorgie|ghana|grèce|guatemala|guinée|guinée-bissau|guyana|haïti|honduras|hongrie|inde|indonésie|irak|iran|irlande|islande|israël|italie|jamaïque|japon|jordanie|kazakhstan|kenya|kirghizistan|kiribati|koweït|laos|lesotho|lettonie|liban|liberia|libye|liechtenstein|lituanie|luxembourg|macédoine|madagascar|malaisie|malawi|maldives|mali|malte|maroc|maurice|mauritanie|mexique|micronésie|moldavie|monaco|mongolie|monténégro|mozambique|namibie|nauru|népal|nicaragua|niger|nigeria|niue|norvège|nouvelle-zélande|oman|ouganda|ouzbékistan|pakistan|palaos|palestine|panama|papouasie-nouvelle-guinée|paraguay|pays-bas|pérou|philippines|pologne|portugal|qatar|roumanie|royaume-uni|russie|rwanda|saint-kitts-et-nevis|saint-vincent-et-les-grenadines|sainte-lucie|saint-marin|salomon|salvador|samoa|sénégal|serbie|seychelles|singapour|slovaquie|slovénie|somalie|soudan|suède|suriname|syrie|tadjikistan|tanzanie|tchad|thaïlande|togo|tonga|trinité-et-tobago|tunisie|turkménistan|turquie|tuvalu|ukraine|uruguay|vanuatu|vatican|venezuela|yémen|zambie|zimbabwe
+                </token>
+            </pattern>
+            <message>S'il s'agit bien du nom du pays, il convient d'y mettre une majuscule.</message>
+            <suggestion><match no="1" case_conversion="startupper"/></suggestion>
+            <example correction="France">Aujourd'hui, la <marker>france</marker>, demain le Canada.</example>
+            <example correction="Canada">Aujourd'hui, la France, demain le <marker>canada</marker>.</example>
+        </rule>
+        <rule name="Noms de pays composés de deux tokens">
+            <pattern>
+                <token regexp="yes" case_sensitive="yes">arabie|burkina|costa|guinée|viêt|timor|îles|république|sri|são|sierra</token>
+                <token regexp="yes" case_sensitive="yes">saoudite|faso|rica|équatoriale|nam|oriental|cook|marshall|centrafricaine|tchèque|lanka|dominicaine|tomé-et-principe|leone</token>
+            </pattern>
+            <message>S'il s'agit bien du nom du pays, il convient d'y mettre une majuscule.</message>
+            <suggestion><match no="1" case_conversion="startupper"/> <match no="2" case_conversion="startupper"/></suggestion>
+            <example correction="République Tchèque">Aujourd'hui, la <marker>république tchèque</marker>, demain le Canada.</example>
+        </rule>
+        <rule name="Noms de pays composés de trois tokens">
+            <pattern>
+                <token regexp="yes" case_sensitive="yes">afrique|émirats|corée|soudan|république</token>
+                <token regexp="yes" case_sensitive="yes">du|arabes</token>
+                <token regexp="yes" case_sensitive="yes">sud|nord|unis|congo</token>
+            </pattern>
+            <message>S'il s'agit bien du nom du pays, il convient d'y mettre une majuscule.</message>
+            <suggestion><match no="1" case_conversion="startupper"/> <match no="2" case_conversion="startupper"/> <match no="3" case_conversion="startupper"/></suggestion>
+            <example correction="Corée Du Sud">Aujourd'hui, la <marker>corée du sud</marker>, demain le Canada.</example>
+        </rule>
+        <rule name="Noms de pays composés de quatre tokens">
+            <pattern>
+                <token regexp="yes" case_sensitive="yes">république|côte</token>
+                <token regexp="yes" case_sensitive="yes">démocratique|d</token>
+                <token regexp="yes" case_sensitive="yes">du|'</token>
+                <token regexp="yes" case_sensitive="yes">congo|ivoire</token>
+            </pattern>
+            <message>S'il s'agit bien du nom du pays, il convient d'y mettre une majuscule.</message>
+            <suggestion><match no="1" case_conversion="startupper"/> <match no="2" case_conversion="startupper"/> <match no="3" case_conversion="startupper"/> <match no="4" case_conversion="startupper"/></suggestion>
+            <example correction="République Démocratique Du Congo">Aujourd'hui, la <marker>république démocratique du congo</marker>, demain le Canada.</example>
+        </rule>
+    </rulegroup>
+      <rulegroup id="ACCORD_CENTAINE_DE" name="centaine de">
       <rule>
         <antipattern>
           <token>nombre</token>
@@ -17414,21 +17583,65 @@ though, and has since been slightly modified)-->
     </rule>
   </category>
   <category id="CAT_ANGLICISMES" name="Anglicismes (calques, emprunts directs, etc.)" type="style">
+      <rule id="TEMPLATE_ANGLICISME" name="Anglicisme : template" default="temp_off">
+          <pattern>
+              <token regexp="yes">templates?</token>
+          </pattern>
+          <message>« \1 » est un anglicisme. Vouliez-vous dire <suggestion><match no="1" regexp_match="template(s)?" regexp_replace="modèle$1"/></suggestion> (informatique, documents), <suggestion><match no="1" regexp_match="template(s)?" regexp_replace="patron$1"/></suggestion> (artisanat, art décoratif) ?</message>
+          <example correction="modèles|patrons">Ici, utilisez plutôt ces <marker>templates</marker>.</example>
+      </rule>
+      <rule id="ONLINE_ANGLICISME" name="Anglicisme : online" default="temp_off">
+          <pattern>
+              <token>online</token>
+          </pattern>
+          <message>« \1 » est un anglicisme. Vouliez-vous dire <suggestion>en ligne</suggestion> ?</message>
+          <example correction="en ligne">Je l'ai pourtant vu <marker>online</marker> pas plus tard qu'hier.</example>
+      </rule>
+      <rule id="WEBINAR_ANGLICISME" name="Anglicisme : webinar" default="temp_off">
+          <pattern>
+              <token regexp="yes">webinars?</token>
+          </pattern>
+          <message>« \1 » est un anglicisme. Vouliez-vous dire <suggestion><match no="1" regexp_match="webinar(s)?" regexp_replace="webinaire$1"/></suggestion>, ou <suggestion><match no="1" regexp_match="webinar(s)?" regexp_replace="séminaire$1"/> web</suggestion> ?</message>
+          <example correction="webinaire|séminaire web">Nous avons essayé de passer au format de <marker>webinar</marker> pour notre companie.</example>
+      </rule>
+      <rule id="SLIDER_ANGLICISME" name="Anglicisme : slider" default="temp_off">
+          <pattern>
+              <token regexp="yes" case_sensitive="yes">sliders?</token>
+          </pattern>
+          <message>« \1 » est un anglicisme. Vouliez-vous dire <suggestion><match no="1" regexp_match="slider(s)?" regexp_replace="curseur$1"/></suggestion> ?</message>
+          <example correction="curseur">Déplacez le <marker>slider</marker> tout à gauche.</example>
+      </rule>
+      <rule id="SLIDE_ANGLICISME" name="Anglicisme : slide" default="temp_off">
+          <antipattern>
+              <token>Charleston</token>
+              <token>slide</token>
+          </antipattern>
+          <antipattern>
+              <token>guitar</token>
+              <token>slide</token>
+          </antipattern>
+          <pattern>
+              <token regexp="yes" case_sensitive="yes">slides?</token>
+          </pattern>
+          <message>« \1 » est un anglicisme. Vouliez-vous dire <suggestion><match no="1" regexp_match="slide(s)?" regexp_replace="diapositive$1"/></suggestion> (informatique) ou <suggestion><match no="1" regexp_match="slide(s)?" regexp_replace="glisser"/></suggestion> (général) ?</message>
+          <example correction="diapositive|glisser">Passez à la <marker>slide</marker> suivante s'il vous plaît.</example>
+          <example correction="diapositive|glisser">On pose le PDG et PGF en arrière en fait glisser (<marker>slide</marker>) l'autre pied</example>
+      </rule>
       <rulegroup id="BYTES" name="Anglicisme byte/octet">
-          <rule name="poil">
+          <rule name="byte sans espace">
               <pattern>
                   <token regexp="yes">\d+[TGMKtgmk]B</token>
               </pattern>
-              <message>Les bytes anglais se traduisent pas des octets en français.</message>
+              <message>Les bytes anglais se traduisent par des octets en français.</message>
               <suggestion><match no="1" regexp_match="(\d+)([TGMKtgmk])B" regexp_replace="$1 $2o" case_conversion="startupper"/></suggestion>
               <example correction="41 Mo">Ce fichier pèse <marker>41MB</marker>.</example>
           </rule>
-          <rule name="bite">
+          <rule name="byte avec espace">
               <pattern>
                   <token regexp="yes">\d+</token>
                   <token regexp="yes">[TGMKtgmk]B</token>
               </pattern>
-              <message>Les bytes anglais se traduisent pas des octets en français.</message>
+              <message>Les bytes anglais se traduisent par des octets en français.</message>
               <suggestion><match no="1"/> <match no="2" regexp_match="([TGMKtgmk])B" regexp_replace="$1o" case_conversion="startupper"/></suggestion>
               <example correction="41 Mo">Ce fichier pèse <marker>41 MB</marker>.</example>
               <example correction="41 Mo">Ce fichier pèse <marker>41 MB</marker>.</example>

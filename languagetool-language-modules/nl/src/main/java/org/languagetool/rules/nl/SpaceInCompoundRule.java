@@ -23,8 +23,11 @@ import org.languagetool.AnalyzedSentence;
 import org.languagetool.JLanguageTool;
 import org.languagetool.rules.Rule;
 import org.languagetool.rules.RuleMatch;
-
 import java.util.*;
+
+import org.apache.commons.lang3.StringUtils;
+import static java.lang.Character.isLowerCase;
+import static java.lang.Character.isUpperCase;
 
 public class SpaceInCompoundRule extends Rule {
 
@@ -48,13 +51,13 @@ public class SpaceInCompoundRule extends Rule {
         throw new RuntimeException("Unexpected format in " + filename + ", expected 2 columns separated by '|': " + line);
       }
       String wordParts = lineParts[0];
-      String message = "Bedoelt u misschien: "+lineParts[1];
       String[] words = wordParts.split(" ");
       generateVariants("", Arrays.asList(words), result);
-      if (normalizedCompound2message.containsKey(removeSpaces(wordParts))) {
+      if (normalizedCompound2message.containsKey(Tools.glueParts(words))) {
         throw new RuntimeException("Duplicate item '" + wordParts + "' in file " + filename);
       }
-      normalizedCompound2message.put(removeSpaces(wordParts), message);
+      String message = "U bedoelt misschien: " + Tools.glueParts(words) + " (" + lineParts[1] + ").";
+      normalizedCompound2message.put(Tools.glueParts(words), message);
     }
     Map<String, String> map = new HashMap<>();
     for (String variant : result) {
@@ -63,10 +66,6 @@ public class SpaceInCompoundRule extends Rule {
     AhoCorasickDoubleArrayTrie<String> trie = new AhoCorasickDoubleArrayTrie<>();
     trie.build(map);
     return trie;
-  }
-
-  private static String removeSpaces(String s) {
-    return s.replaceAll(" ", "");
   }
 
   static void generateVariants(String soFar, List<String> l, Set<String> result) {
@@ -86,7 +85,7 @@ public class SpaceInCompoundRule extends Rule {
 
   @Override
   public String getId() {
-    return "NL_ADDED_SPACES";
+    return "NL_SPACE_IN_COMPOUND";
   }
 
   @Override
@@ -101,7 +100,7 @@ public class SpaceInCompoundRule extends Rule {
     List<AhoCorasickDoubleArrayTrie.Hit<String>> hits = trie.parseText(text);
     for (AhoCorasickDoubleArrayTrie.Hit<String> hit : hits) {
       String covered = text.substring(hit.begin, hit.end);
-      String coveredNoSpaces = removeSpaces(covered);
+      String coveredNoSpaces = Tools.glueParts(covered.split(" "));
       String message = normalizedCompound2message.get(coveredNoSpaces);
       RuleMatch match = new RuleMatch(this, sentence, hit.begin, hit.end, hit.begin, hit.end, message, null, false, "");
       match.setSuggestedReplacement(coveredNoSpaces);

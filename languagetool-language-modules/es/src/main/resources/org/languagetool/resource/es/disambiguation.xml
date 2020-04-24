@@ -50,13 +50,13 @@ Copyright (C) 2011 Juan Martorell
     </unification>
     <unification feature="persona">
         <equivalence type="primera">
-            <token postag="(P.|V.{3})[10].*" postag_regexp="yes"></token>
+            <token postag="(P.|V.{3})[10].*" postag_regexp="yes"/>
         </equivalence>
         <equivalence type="segona">
-            <token postag="(P.|V.{3})[20].*" postag_regexp="yes"></token>
+            <token postag="(P.|V.{3})[20].*" postag_regexp="yes"/>
         </equivalence>
         <equivalence type="tercera">
-            <token postag="(P.|V.{3})[30].*" postag_regexp="yes"></token>
+            <token postag="(P.|V.{3})[30].*" postag_regexp="yes"/>
         </equivalence>
     </unification>
     <!--<rulegroup id="DICT_FIXES" name="dictionary fixes">
@@ -516,10 +516,12 @@ Copyright (C) 2011 Juan Martorell
             <pattern>
                 <token regexp="yes">\$\d+</token>
             </pattern>
-            <disambig action="add"><wd pos="Z"></wd></disambig>
+            <disambig action="add">
+                <wd pos="Z"/>
+            </disambig>
         </rule>
     </rulegroup>
-        
+
     <rule id="habemos" name="habemos">
             <pattern>
                     <token>nos</token>
@@ -1362,7 +1364,7 @@ Copyright (C) 2011 Juan Martorell
             </disambig>
         </rule>
     </rulegroup>
-    
+
     <rule id="de_not_adj" name="de + no adj">
         <pattern>
             <token>de</token>
@@ -1371,7 +1373,7 @@ Copyright (C) 2011 Juan Martorell
             </marker>
             <token><exception postag="NC.*" postag_regexp="yes"/></token>
         </pattern>
-        <disambig action="remove" postag="AQ.*"></disambig>
+        <disambig action="remove" postag="AQ.*"/>
     </rule>
 
     <rule id="not_adj_no_agreement" name="not adjective if no agreement">
@@ -1383,7 +1385,7 @@ Copyright (C) 2011 Juan Martorell
         </pattern>
         <disambig action="remove" postag="A.*"/>
     </rule>
-    
+
     <rule id="not_participle" name="not participle">
         <antipattern>
             <token inflected="yes">haber</token>
@@ -1392,7 +1394,7 @@ Copyright (C) 2011 Juan Martorell
         <pattern>
             <token inflected="yes">diputado</token>
         </pattern>
-        <disambig action="remove" postag="V.P.*"></disambig>
+        <disambig action="remove" postag="V.P.*"/>
     </rule>
 
 
@@ -1447,12 +1449,12 @@ Copyright (C) 2011 Juan Martorell
             </disambig>
         </rule>
     </rulegroup>
-    
+
     <rule id="la_not_noun" name="la not noun">
         <pattern>
             <token>la<exception postag="_GN_MS"/></token>
         </pattern>
-        <disambig action="remove" postag="N.*"></disambig>
+        <disambig action="remove" postag="N.*"/>
     </rule>
 
     <rule id="not_verb_if_agreement" name="not verb if agreement">
@@ -1672,6 +1674,30 @@ Copyright (C) 2011 Juan Martorell
     </rulegroup>
 
     <!-- IGNORE SPELLING -->
+    <rule name="Ignore spelling pm/am" id="pm_am">
+        <!-- style rules can be suggested for these abbreviations -->
+        <pattern>
+            <token regexp="yes">([012][0-9][\.,])?[0-6]?[0-9]</token>
+            <token regexp="yes" case_sensitive="yes">pm|am|PM|AM|GMT|CEST|UTC|EST</token>
+        </pattern>
+        <disambig action="ignore_spelling"/>
+    </rule>
+    <rulegroup name="Ignore spelling: A380" id="letters_words">
+        <rule>
+            <pattern>
+                <token regexp="yes" case_sensitive="yes">[A-Z]+\d+</token>
+            </pattern>
+            <disambig action="ignore_spelling"/>
+        </rule>
+        <rule>
+            <pattern>
+                <token regexp="yes" case_sensitive="yes">[A-Z0-9]+</token>
+                <token spacebefore="no">-</token>
+                <token spacebefore="no" regexp="yes" case_sensitive="yes">[A-Z0-9]+</token>
+            </pattern>
+            <disambig action="ignore_spelling"/>
+        </rule>
+    </rulegroup>
         <rule name="Ignore spelling of url protocols" id="URI_PROTOCOL">
                 <pattern><!-- chrome://, ftp://, file:// -->
                     <marker>

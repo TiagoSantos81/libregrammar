@@ -3958,6 +3958,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
                 <token>:</token>
             </antipattern>
             <antipattern>
+                <token regexp="yes" inflected="yes">think|hope</token>
                 <token regexp="yes">your|their|its</token><!-- common confused words (its => it's, ...) -->
                 <token postag="JJ.*" postag_regexp="yes" />
                 <token postag="SENT_END" regexp="yes">\p{P}</token>
@@ -10359,6 +10360,15 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <pattern>
             <token>superoxide</token>
             <token>dismutase</token>
+        </pattern>
+        <disambig action="ignore_spelling"/>
+    </rule>
+
+    <rule id="GRANDE_ECOLE" name="grande école">
+        <!-- https://www.merriam-webster.com/dictionary/grande -->
+        <pattern>
+            <token>grande</token>
+            <token regexp="yes">école|champagne|écaille|passion|dame|tenue</token>
         </pattern>
         <disambig action="ignore_spelling"/>
     </rule>
