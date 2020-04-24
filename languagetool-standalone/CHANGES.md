@@ -1,6 +1,6 @@
 # LibreGrammar Change Log
 
-## 4.9-SNAPSHOT (release planned for mid April)
+## 4.9 (released 2020-04-24)
 
 ### This fork differences
 
