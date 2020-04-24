@@ -4,8 +4,8 @@
 	xmlns:xlink="http://www.w3.org/1999/xlink">
 	<identifier value="org.openoffice.languagetool.oxt" />
 	<display-name>
-		<name lang="en">LanguageTool</name>
-        <name lang="ar">LanguageTool. المدقق اللغوي مفتوح المصدر</name>
+		<name lang="en">LibreGrammar</name>
+    <name lang="ar">LibreGrammar. المدقق اللغوي مفتوح المصدر</name>
 	</display-name>
 	<extension-description>
 		<src xlink:href="description/desc_en.txt" lang="en" />
@@ -37,27 +37,27 @@
 		<src xlink:href="CHANGES.md" lang="en" />
 	</release-notes>
 	<icon>
-		<default xlink:href="images/LanguageToolBig.png" />
+		<default xlink:href="images/LibreGrammarBig.png" />
 	</icon>
 	<publisher>
-		<name xlink:href="https://www.languagetool.org/br" lang="br">LanguageTool</name>
-		<name xlink:href="https://www.languagetool.org/ca" lang="ca">LanguageTool</name>
-		<name xlink:href="https://www.languagetool.org/de" lang="de">LanguageTool</name>
-		<name xlink:href="https://www.languagetool.org" lang="en">LanguageTool</name>
-		<name xlink:href="https://www.languagetool.org/eo" lang="eo">LanguageTool</name>
-		<name xlink:href="https://www.languagetool.org/es" lang="es">LanguageTool</name>
-		<name xlink:href="https://www.languagetool.org/fr" lang="fr">LanguageTool</name>
-		<name xlink:href="https://www.languagetool.org/gl" lang="gl">LanguageTool</name>
-		<name xlink:href="https://www.languagetool.org/pl" lang="pl">LanguageTool</name>
-		<name xlink:href="https://www.languagetool.org/pt" lang="pt">LanguageTool</name>
-		<name xlink:href="https://www.languagetool.org/ru" lang="ru">LanguageTool</name>
-		<name xlink:href="https://www.languagetool.org/uk" lang="uk">LanguageTool</name>
-		<name xlink:href="https://www.languagetool.org/zh" lang="zh">LanguageTool</name>
+		<name xlink:href="https://https://github.com/TiagoSantos81" lang="br">LanguageTool</name>
+		<name xlink:href="https://https://github.com/TiagoSantos81" lang="ca">LanguageTool</name>
+		<name xlink:href="https://https://github.com/TiagoSantos81" lang="de">LanguageTool</name>
+		<name xlink:href="https://https://github.com/TiagoSantos81" lang="en">LanguageTool</name>
+		<name xlink:href="https://https://github.com/TiagoSantos81" lang="eo">LanguageTool</name>
+		<name xlink:href="https://https://github.com/TiagoSantos81" lang="es">LanguageTool</name>
+		<name xlink:href="https://https://github.com/TiagoSantos81" lang="fr">LanguageTool</name>
+		<name xlink:href="https://https://github.com/TiagoSantos81" lang="gl">LanguageTool</name>
+		<name xlink:href="https://https://github.com/TiagoSantos81" lang="pl">LanguageTool</name>
+		<name xlink:href="https://https://github.com/TiagoSantos81" lang="pt">LanguageTool</name>
+		<name xlink:href="https://https://github.com/TiagoSantos81" lang="ru">LanguageTool</name>
+		<name xlink:href="https://https://github.com/TiagoSantos81" lang="uk">LanguageTool</name>
+		<name xlink:href="https://https://github.com/TiagoSantos81" lang="zh">LanguageTool</name>
     </publisher>	
 	<dependencies>
 		<OpenOffice.org-minimal-version value="4.1" d:name="OpenOffice.org 4.1" />
 	</dependencies>
 	<update-information>
-	    <src xlink:href="http://www.languagetool.org/languagetool.update.xml" />
+	    <src xlink:href="https://https://github.com/TiagoSantos81/languagetool/.update.xml" />
 	</update-information>
 </description>
