@@ -2432,6 +2432,11 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes' skip='-1'>se|caso</token>
           <token postag_regexp='yes' postag='VMSI.+' regexp='yes'>.+sse</token>
       </antipattern>
+      <antipattern>
+          <token inflected='yes'>haver</token>
+          <token inflected='yes'>quem</token>
+          <token postag_regexp='yes' postag='VMSI.+' regexp='yes'>.+sse</token>
+      </antipattern>
     <rule>
       <pattern>
           <token postag='SENT_START' skip='-1'>
@@ -2446,6 +2451,7 @@ title="Easy editing stylesheet" ?>
         <suggestion><match no='2' regexp_match='(.+)sse' regexp_replace='$1-se'/></suggestion>
       <example correction='chega-se'>Ela <marker>chegasse</marker> mais perto, a cada palavra.</example>
       <example>Havia quem os acompanhasse.</example>
+      <example>Mas isso só é assim porque em 1975 houve quem resistisse, nos quartéis e nas ruas, à tentativa de tomada do poder pelo PCP.</example>
     </rule>
     <rule>
       <pattern>
@@ -7555,20 +7561,6 @@ title="Easy editing stylesheet" ?>
       </pattern>
       <message>Substitua por <suggestion>falou-se de</suggestion>.</message>
       <example correction="falou-se de">Hoje <marker>falaram-se de</marker> de vários problemas.</example>
-    </rule>
-
-    <rule id='FAZER_DESPORTO' name="Praticar desporto">
-    <!--      Created by Marco A.G.Pinto     -->
-      <pattern>
-        <marker>
-          <token inflected='yes'>fazer</token>
-        </marker>
-          <token min="0" regexp="yes">muito|pouco|algum|bastante|nenhum|mais|menos</token>
-          <token>desporto</token>
-      </pattern>
-      <message>Substitua por <suggestion><match no='1' postag='V.+' postag_regexp='yes'>praticar</match></suggestion>.</message>
-        <suggestion><match no='1' postag='V.+' postag_regexp='yes'>praticar</match></suggestion>
-      <example correction="praticar">Vou <marker>fazer</marker> muito desporto.</example>
     </rule>
 
     <rule id='FOI_ACEITADA' name="Foi aceite">
@@ -31818,6 +31810,20 @@ TODO Write better examples
  </category>
 
  <category id='REDACTION_TIPS' name='Dicas de redação' type='style' default='off'>
+
+    <rule id='FAZER_DESPORTO' name="Praticar desporto">
+    <!--      Created by Marco A.G.Pinto     -->
+      <pattern>
+        <marker>
+          <token inflected='yes'>fazer</token>
+        </marker>
+          <token min="0" regexp="yes">muito|pouco|algum|bastante|nenhum|mais|menos</token>
+          <token>desporto</token>
+      </pattern>
+      <message>Substitua por <suggestion><match no='1' postag='V.+' postag_regexp='yes'>praticar</match></suggestion>.</message>
+        <suggestion><match no='1' postag='V.+' postag_regexp='yes'>praticar</match></suggestion>
+      <example correction="praticar">Vou <marker>fazer</marker> muito desporto.</example>
+    </rule>
 
     <rule id='NA_MEDIDA_DO_POSSÍVEL' name="Na medida do possível">
     <!--     Created by Marco A.G. Pinto, 2017-03-19   -->
