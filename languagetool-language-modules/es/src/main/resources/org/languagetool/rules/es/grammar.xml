@@ -133,7 +133,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rule>
     </category>
     <category id="INCORRECT_EXPRESSIONS" name="expresiones incorrectas" type="grammar">
-        <rule id="ALTO_CARGO" name="*alta cargo/alto cargo" default="temp_off">
+        <rule id="ALTO_CARGO" name="*alta cargo/alto cargo" default="on">
             <pattern>
                 <token>alta</token>
                 <token>cargo</token>
@@ -498,7 +498,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="tenías" type="triggers_error" reason="rare">Las <marker>tenias</marker> son un gusano plateminto.</example>
             </rule>
         </rulegroup>
-        <rulegroup id="COMO" name="como/cómo" default="temp_off">
+        <rulegroup id="COMO" name="como/cómo" default="on">
             <rule>
                 <pattern>
                     <token regexp="yes">tal|tales</token>
@@ -528,7 +528,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="Cómo estás,">¿<marker>como estas</marker> guapo?</example>
             </rule>
         </rulegroup>
-        <rulegroup id="CUAL" name="cual/cuál" default="temp_off">
+        <rulegroup id="CUAL" name="cual/cuál" default="on">
             <rule>
                 <pattern>
                     <token regexp="yes">el|la|los|las|del|al</token>
@@ -568,7 +568,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="esté">Cuando se <marker>este</marker> bien aquí.</example>
                 <example correction="estén">Cuando se le <marker>esten</marker> cayendo.</example>
             </rule>
-            <rule default="temp_off">
+            <rule default="on">
                 <pattern>
                     <token regexp="yes" inflected="yes">condición|valor</token>
                     <marker>
@@ -580,7 +580,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="límite">Son condiciones <marker>limite</marker>.</example>
                 <example>Que limite las condiciones.</example>
             </rule>
-            <rule default="temp_off">
+            <rule default="on">
                 <pattern>
                     <token postag="D..MS.|SP\+DA" postag_regexp="yes"/>
                     <marker>
@@ -589,6 +589,48 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 </pattern>
                 <message>¿Quería decir <suggestion>inglés</suggestion>?</message>
                 <example correction="inglés">Me gusto mucho el <marker>ingles</marker>.</example>
+            </rule>
+            <rule>
+                <antipattern>
+                    <token>musica</token>
+                    <token postag="D.*" postag_regexp="yes"/>
+                    <token min="0" postag="A.*|V.P.*" postag_regexp="yes"/>
+                    <token postag="NC.*" postag_regexp="yes"/>
+                </antipattern>
+                <antipattern> <!-- Italiano -->
+                    <token regexp="yes">in|di|della|nella</token>
+                    <token>musica</token>
+                </antipattern>
+                <antipattern> <!-- Italiano -->
+                    <token regexp="yes">dramma|commedia</token>
+                    <token>per</token>
+                    <token>musica</token>
+                </antipattern>
+                <pattern>
+                    <token>musica</token>
+                </pattern>
+                <message>Si es sustantivo o adjetivo, se escribe con tilde.</message>
+                <suggestion>música</suggestion>
+                <example correction='música'>Vídeo, <marker>musica</marker>.</example>
+                <example>Sergio musica una traducción de la Biblioa.</example>
+                <example>Sergio musica un bello poema.</example>
+                <example>Dramma per musica</example>
+            </rule>
+            <rule>
+                <antipattern>
+                    <token>musico</token> <!-- infrequent -->
+                    <token postag="D.*" postag_regexp="yes"/>
+                    <token min="0" postag="A.*|V.P.*" postag_regexp="yes"/>
+                    <token postag="NC.*" postag_regexp="yes"/>
+                </antipattern>
+                <pattern>
+                    <token>musico</token>
+                </pattern>
+                <message>Si es sustantivo o adjetivo, se escribe con tilde.</message>
+                <suggestion>músico</suggestion>
+                <example correction='músico'>Soy <marker>musico</marker>.</example>
+                <example>Musico una traducción.</example>
+                <example>Musico un bonito poema.</example>
             </rule>
         </rulegroup>
     </category>
@@ -2823,12 +2865,16 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         <rule id="NO_IMPERATIVO" name="no + imperativo">
             <pattern>
                 <token regexp="yes">no|nunca|jamás</token>
-                <token postag="VMM.*" postag_regexp="yes"><exception negate_pos="yes" postag="VMM.*" postag_regexp="yes"/></token>
+                <marker>
+                    <token postag="VMM.*" postag_regexp="yes"><exception negate_pos="yes" postag="VMM.*" postag_regexp="yes"/></token>
+                </marker>
             </pattern>
-            <message>Con la partícula negativa \1, en lugar del imperativo \2 debe usarse el subjuntivo <suggestion>\1 <match no="2" postag="VMM.(.{3})" postag_regexp="yes" postag_replace="VMSP$1"/></suggestion>.</message>
+            <message>Con la partícula negativa \1, en lugar del imperativo \2 debe usarse el subjuntivo.</message> 
+            <suggestion><match no="2" postag="VMM.(.{3})" postag_regexp="yes" postag_replace="VMSP$1"/></suggestion>
             <url>http://roble.pntic.mec.es/acid0002/index_archivos/Gramatica/imperativo.htm</url>
             <short>Con sentido negado, en lugar del imperativo debe emplearse el subjuntivo.</short>
-            <example correction="No contéis"><marker>No contad</marker> con nosotros.</example>
+            <example correction="contéis">No <marker>contad</marker> con nosotros.</example>
+            <!--no sabé-->
             <example>Nunca contéis conmigo.</example>
         </rule>
         <rule id="ID_HUBO_HUBIERON" name="Uso incorrecto del plural del verbo haber">
@@ -3602,7 +3648,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rule>
     </category>
     <category id="CAT4" name="Estilo" type="style">
-        <rule id="MEXICO" name="México/Méjico" default="temp_off">
+        <rule id="MEXICO" name="México/Méjico" default="on">
             <pattern>
                 <token regexp="yes">.*mejic.*|Méjico|Tejas<exception postag="NCFP000">tejas</exception></token>
             </pattern>
@@ -3848,7 +3894,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <suggestion>\1 de mama</suggestion>
             <example correction="cáncer de mama">De <marker>cáncer de mana</marker>.</example>
         </rule>
-        <rule id="HE_HA" name="*he ha" default="temp_off">
+        <rule id="HE_HA" name="*he ha" default="on">
             <antipattern>
                 <token>he</token>
                 <token>habido</token>
@@ -3866,7 +3912,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example correction="Me|Le"><marker>He</marker> ha dicho que sí</example>
             <example>He habido de hacerlo.</example>
         </rule>
-        <rulegroup id="ERAR" name="erar/errar" default="temp_off">
+        <rulegroup id="ERAR" name="erar/errar" default="on">
             <rule>
                 <pattern>
                     <token>erase</token>
@@ -4443,7 +4489,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
     </rule>
   </rulegroup>
 
-        <rulegroup id="PUNTO_EN_ABREVIATURAS" name="Punto en abreviaturas: pág., núm., etc." default="temp_off">
+        <rulegroup id="PUNTO_EN_ABREVIATURAS" name="Punto en abreviaturas: pág., núm., etc." default="on">
             <url>https://www.rae.es/dpd/ayuda/abreviaturas</url>
             <antipattern>
                 <token/>
@@ -4504,7 +4550,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>Metropolitan Museum of Art</example>
             </rule>
         </rulegroup>
-        <rule id="P_EJ" name="Puntuación en: p. ej." default="temp_off">
+        <rule id="P_EJ" name="Puntuación en: p. ej." default="on">
             <antipattern case_sensitive="yes">
                 <token regexp="yes">[Pp]</token>
                 <token spacebefore="no">.</token>
@@ -4550,7 +4596,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example>Es de los 1950s.</example>
             <example>En los años 30s, 40s y 50s.</example>
         </rule>
-        <rulegroup id="DECADAS_1920" name="años *20's/*20s/20" default="temp_off">
+        <rulegroup id="DECADAS_1920" name="años *20's/*20s/20" default="on">
             <url>https://www.fundeu.es/recomendacion/decadas-ochenta-no-ochentas/</url>
             <rule>
                 <pattern>
@@ -4562,6 +4608,18 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <message>Las décadas se escriben sin 's'.</message>
                 <suggestion><match no="2" regexp_match="(.*)s" regexp_replace="$1"/></suggestion>
                 <example correction="1930">En los años <marker>1930s</marker>.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp="yes">\d+0s</token>
+                    <token regexp="yes">y|ni|,</token>
+                    <marker>
+                        <token regexp="yes">\d+0s</token>
+                    </marker>
+                </pattern>
+                <message>Las décadas se escriben sin 's'.</message>
+                <suggestion><match no="3" regexp_match="(.*)s" regexp_replace="$1"/></suggestion>
+                <example correction="30">En los años 20s y <marker>30s</marker>.</example>
             </rule>
             <rule>
                 <pattern>
