@@ -836,7 +836,7 @@ title="Easy editing stylesheet" ?>
     <rule id='ADVERB_AGREEMENT' name="Concordância de género: Advérbios">
     <!--      Created by Tiago F. Santos rule, Portuguese rule 2020-04-16     -->
       <pattern>
-          <token postag_regexp='yes' postag="V.+">
+          <token postag_regexp='yes' postag="V.[^P].+">
             <exception postag_regexp='yes' postag="V.+" negate_pos='yes'></exception></token>
         <marker>
           <token regexp='yes'>(?:mei|tod|demasiad|muit|pouc)as?</token>
@@ -1039,6 +1039,10 @@ title="Easy editing stylesheet" ?>
     <!-- Created by Tiago F. Santos, Portuguese rule, 2019-10-26 -->
       <url>https://web.archive.org/web/20180123191423/http://soportugues.com.br/secoes/sint/sint59.php</url>
     <rule>
+      <antipattern>
+          <token inflected='yes'>acusar</token>
+          <token regexp='yes'>(?:positivo|negativo)s?</token>
+      </antipattern>
       <pattern>
           <token postag='D..FS.+' postag_regexp='yes'/>
           <token postag='(?:[NZ].|A..)FS.+' postag_regexp='yes'>
@@ -1069,6 +1073,10 @@ title="Easy editing stylesheet" ?>
       <example>Este veneno mata baratas.</example>
     </rule>
     <rule>
+      <antipattern>
+          <token inflected='yes'>acusar</token>
+          <token regexp='yes'>(?:positivo|negativo)s?</token>
+      </antipattern>
       <pattern>
           <token postag='D..FP.+' postag_regexp='yes'/>
           <token postag='(?:[NZ].|A..)FP.+' postag_regexp='yes'>
@@ -1083,6 +1091,7 @@ title="Easy editing stylesheet" ?>
         <suggestion>\1 \2 \3 <match no='4' postag='(A..)M.(.+)' postag_replace='$1FP$2' postag_regexp='yes'/></suggestion>
       <example correction='As cadelas são meigas'><marker>As cadelas são meigo</marker>.</example>
       <example>As pessoas tinham medo, portanto, tomavam decisões imponderadas.</example>
+      <example>As grávidas acusam negativo para ...</example>
     </rule>
     <rule>
       <pattern>
@@ -4436,6 +4445,14 @@ title="Easy editing stylesheet" ?>
     </rule>
     <!--    Localized by Tiago F. Santos, Portuguese rule, 2016-10-28      -->
     <rule id='VERBO_DE_QUE' name="Verbo tipo pensar + de que">
+      <antipattern>
+          <token inflected='yes'>saber</token>
+          <token>de</token>
+          <token>que</token>
+          <token>forma|modo</token>
+          <token>
+            <exception postag="SENT_END|_PUNCT" postag_regexp="yes"/></token>
+      </antipattern>
       <pattern>
           <token inflected="yes" regexp="yes">aconselhar|acreditar|afirmar|antes|anunciar|comentar|comunicar|confessar|confirmar|constar|corroborar|declarar|deduzir|desmentir|dizer|expor|expresar|gostar|inferir|manifestar|noticiar|observar|opinar|ordenar|pensar|pretextar|proferir|publicitar|razoar|resultar|saber|ver
             <exception>razões</exception></token>
