@@ -2469,7 +2469,7 @@ title="Easy editing stylesheet" ?>
             <exception scope='next' regexp='yes'>&introduz_conjuntivo;</exception></token>
         <marker>
           <token postag_regexp='yes' postag='VMSI.+' regexp='yes'>.+sse
-            <exception>tivesse</exception>
+            <exception regexp='yes'>fizesse|pudesse|tivesse</exception>
             <exception negate_pos='yes' postag_regexp='yes' postag='VMSI.+'/></token>
         </marker>
       </pattern>
@@ -2477,6 +2477,7 @@ title="Easy editing stylesheet" ?>
         <suggestion><match no='2' regexp_match='(.+)sse' regexp_replace='$1-se'/></suggestion>
       <example correction='chega-se'>A cada palavra, ela <marker>chegasse</marker> mais perto.</example>
       <example>António, havia quem os acompanhasse?</example>
+      <example>Se, a cada desculpa, ela <marker>fizesse</marker> mais por si mesma.</example>
     </rule>
   </rulegroup>
 
