@@ -32163,7 +32163,7 @@ TODO Write better examples
         <pattern>
           <token case_sensitive="yes" regexp="yes">instagram|INSTAGRAM|InstaGram</token>
         </pattern>
-        <message>Você quis dizer <suggestion>Instagram</suggestion>?</message>
+        <message>Será que quis dizer <suggestion>Instagram</suggestion>?</message>
         <example correction="Instagram">O <marker>instagram</marker> foi criado por Kevin Systrom e Mike Krieger e lançado em outubro de 2010.</example>
       </rule>
     </rulegroup>
@@ -32173,7 +32173,7 @@ TODO Write better examples
         <pattern>
           <token case_sensitive="yes" regexp="yes">google|GOOGLE</token>
         </pattern>
-        <message>Você quis dizer <suggestion>Google</suggestion>?</message>
+        <message>Será que quis dizer <suggestion>Google</suggestion>?</message>
         <example correction="Google">O <marker>google</marker> hospeda e desenvolve uma série de serviços e produtos baseados na internet e gera lucro principalmente através da publicidade pelo AdWords.</example>
       </rule>
     </rulegroup>
@@ -32183,7 +32183,7 @@ TODO Write better examples
         <pattern>
           <token case_sensitive="yes" regexp="yes">excel|EXCEL</token>
         </pattern>
-        <message>Você quis dizer <suggestion>Excel</suggestion> (= Microsoft Excel)?</message>
+        <message>Será que quis dizer <suggestion>Excel</suggestion> (= Microsoft Excel)?</message>
         <example correction="Excel">O <marker>excel</marker> é um editor de planilhas.</example>
       </rule>
     </rulegroup>
@@ -32193,7 +32193,7 @@ TODO Write better examples
         <pattern>
           <token case_sensitive="yes" regexp="yes">powerpoint|POWERPOINT|Powerpoint</token>
         </pattern>
-        <message>Você quis dizer <suggestion>PowerPoint</suggestion> (= Microsoft PowerPoint)?</message>
+        <message>Será que quis dizer <suggestion>PowerPoint</suggestion> (= Microsoft PowerPoint)?</message>
         <example correction="PowerPoint">Microsoft <marker>Powerpoint</marker> é um programa utilizado para criação/edição.</example>
       </rule>
     </rulegroup>
@@ -32203,7 +32203,7 @@ TODO Write better examples
         <pattern>
           <token case_sensitive="yes" regexp="yes">linkedin|Linkedin|LINKEDIN|linkedIn</token>
         </pattern>
-        <message>Você quis dizer <suggestion>LinkedIn</suggestion>?</message>
+        <message>Será que quis dizer <suggestion>LinkedIn</suggestion>?</message>
         <example correction="LinkedIn"><marker>Linkedin</marker> é uma rede social de negócios fundada em dezembro de 2002 e lançada em 5 de maio de 2003.</example>
       </rule>
     </rulegroup>
