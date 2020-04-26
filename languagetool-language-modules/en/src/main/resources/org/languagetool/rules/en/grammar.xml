@@ -97,6 +97,8 @@ USA
     <!ENTITY not_really_verbs "self\-?(support|control)s?|overdrafts?|remotes?|nerds?|wrought|karates?|paths?|scapes?|videos?|fann(y|ies)?|bonus(es)?|back\-?ups?|pop\-?ups?|one\-?(shot|click)s?|idiot\-?proofs?|intakes?|rinds?|gaslits?|errors?|prox(y|ies)?|configs?|repros?|super\-?sets?|open\-?sources?|drag\-(and|n)\-drops?|hotfix(es)?|timeouts?|shutdowns?">
     <!ENTITY subject_pronouns "I|you|he|she|it|we|they|one">
     <!ENTITY object_pronouns "me|you|him|her|it|us|them|one">
+    <!ENTITY uom_abbreviations_SI "(Y|Z|E|P|T|G|M|k|h|da|d|c|m|µ|n|p|f|a|z|y)?(m|g|s|A|K|mol|cd|rad|sr|Hz|N|Pa|J|W|C|V|F|Ω|S|Wb|T|H|lm|lx|Bq|Gy|Sv|kat|min|h|d|L|t|Np|B|eV|u|ua)"><!-- https://physics.nist.gov/cuu/Units/units.html -->
+    <!ENTITY uom_abbreviations_other "bpm|ft|hr|km|kph|lm|mi|ml|mph|ppb|ppm|rpm"><!-- Not a full list. Why is km necessary? It is in uom_abbreviations_SI -->
     <!ENTITY ambiguous_date '
         <token regexp="yes">0?[1-9]|1[0-2]</token>
         <token>/</token>
@@ -10795,6 +10797,7 @@ USA
     <!-- Grammar -->
     <!-- ====================================================================== -->
     <category id="GRAMMAR" name="Grammar" type="grammar">
+
         <rule id="SHELL_COMPOUNDS" name="bomb shell (bombshell)">
             <pattern>
                 <token regexp="yes">bomb|nut|sea|egg|cockle|lamp|sub</token>
@@ -10815,7 +10818,7 @@ USA
             <url>https://www.lexico.com/definition/smartphone</url>
             <example correction="smartphone">He got a new <marker>smart phone</marker> for Christmas.</example>
         </rule>
-        <rulegroup id="AIR_COMPOUND" name="air line (air line)" default="temp_off">
+        <rulegroup id="AIR_COMPOUND" name="air line (air line)">
             <rule>
                 <pattern>
                     <token>air</token>
@@ -10826,7 +10829,7 @@ USA
                 <example correction="airport">Which <marker>air port</marker> are you arriving at?</example>
             </rule>
         </rulegroup>
-        <rule id="RAIN_COMPOUND" name="rain bow (rainbow)" default="temp_off">
+        <rule id="RAIN_COMPOUND" name="rain bow (rainbow)">
             <pattern>
                 <token>rain</token>
                 <token regexp="yes">bows?</token>
@@ -19882,7 +19885,7 @@ USA
             <url>https://en.wikipedia.org/wiki/WhatsApp</url>
             <example correction="WhatsApp|What's up">He is using <marker>Whats App</marker> to communicate with his friends.</example>
         </rule>
-        <rule id="DELTA_AIRLINES" name="Delta Air Lines" default="temp_off">
+        <rule id="DELTA_AIRLINES" name="Delta Air Lines">
             <pattern>
                 <token>Delta</token>
                 <token regexp="yes">Airlines?</token>
@@ -26473,6 +26476,10 @@ USA
       </rulegroup>
 
         <rulegroup id="TO_NON_BASE" name="'to' + non-base form">
+            <antipattern>
+                <token>to</token>
+                <token case_sensitive="yes">Drew</token><!-- name -->
+            </antipattern>
             <rule>
                 <antipattern>
                     <token inflected="yes" regexp="yes">speak|talk|go|happen|listen|attach|refer|lead|propose</token>
@@ -26679,16 +26686,24 @@ USA
                     <token>to</token>
                     <token>done</token>
                 </antipattern>
+                <antipattern><!-- Move a project to done -->
+                    <token inflected="yes" regexp="yes" skip="4">change|set|switch|move</token>
+                    <token>to</token>
+                    <token>done</token>
+                </antipattern>
                 <pattern>
                     <marker>
                         <token>to</token>
                         <token postag_regexp="yes" postag="VB[DN]"><exception postag="VB[PS]?|JJ|NN:UN" postag_regexp="yes"/></token>
                     </marker>
-                    <token postag="SENT_END"></token>
+                    <token postag="SENT_END" regexp="yes">\p{P}</token>
                 </pattern>
                 <message>Did you mean <suggestion>\1 <match no="2" postag="VB"/></suggestion>?</message>
                 <example correction="to buy">I've decided <marker>to bought</marker>.</example>
                 <example>Arabic is written from right to left.</example>
+                <example>They sit down next to Drew.</example>
+                <example>The person he was introduced to was Lennie</example>
+                <example>We really want to switch to hosted connections</example>
                 <example correction="to notice">Tom was the only one who seemed <marker>to noticed</marker>.</example>
                 <example>Desire is understood to be prior to thought.</example>
                 <example>Please change it from doing to done here</example><!-- #2536. Possibly italics in the original or possibly missing quote marks. -->
@@ -28595,6 +28610,14 @@ USA
                 <token>to</token>
                 <token postag="JJS" />
             </antipattern>
+            <antipattern>
+                <token>the</token>
+                <token regexp="yes">most|least</token>
+                <token postag="JJ" />
+                <token regexp="yes">,|and|&amp;</token>
+                <token regexp="yes">most|least</token>
+                <token postag="JJ" />
+            </antipattern>
             <rule>
                 <antipattern>
                     <token>best</token>
@@ -28698,6 +28721,7 @@ USA
                 <example correction="the least">The guy is <marker>least</marker> funny friend.</example>
                 <example>The guy <marker>is the least</marker> funny friend.</example>
                 <example>He is least likely to come.</example>
+                <example>The most effective, least addictive medicine.</example>
                 <example type="triggers_error">Given a wire contour, the surface of least area spanning ("filling") it is a minimal surface...</example><!-- possible technical term: https://cordis.europa.eu/project/rcn/104357/factsheet/en -->
             </rule>
             <rule>
@@ -34557,6 +34581,10 @@ USA
                 <token>sit</token>
                 <token>ups</token>
             </antipattern>
+            <antipattern><!-- #2787 The speedometer was indicating 95 mph. -->
+                <token postag="CD"/>
+                <token case_sensitive="yes" regexp="yes">&uom_abbreviations_SI;|&uom_abbreviations_other;</token><!-- Units of measurement are usually singular. MFU 2020-04-26: some of the exceptions in the pattern are probably not necessary with this antipattern. -->
+            </antipattern>
             <pattern>
                 <token postag="CD">
                     <exception scope="previous" spacebefore="no" regexp="yes">[^,]</exception>
@@ -34736,6 +34764,7 @@ USA
             <example>When they came back with a £33 billion bid, CBS could not refuse.</example><!-- #2440 -->
             <example>But then he got 502 bad gateway.</example>
             <example>Verb: ... and the other two <marker>chase</marker> her.</example><!-- #2652 chase/E-NP-singular -->
+            <example>The speedometer was indicating 95 mph.</example><!-- #2787 -->
             <example type="triggers_error">When Sony came back with a 2 billion bid, CBS could not refuse.</example><!-- #2440 -->
             <example type="triggers_error">England eventually faced a massive 707 run target for victory and failed, Australia winning the ...</example>
         </rule>
@@ -44251,7 +44280,7 @@ The accident victim died from her injuries.
     <!-- Commonly Confused Words -->
     <!-- ====================================================================== -->
     <category id="CONFUSED_WORDS" name="Commonly Confused Words" type="grammar">
-        <rule id="PLANE_PLAIN" name="plain vs plane" default="temp_off">
+        <rule id="PLANE_PLAIN" name="plain vs plane">
             <antipattern>
                 <token>plain</token>
                 <token regexp="yes">and|&amp;</token>
@@ -44271,7 +44300,7 @@ The accident victim died from her injuries.
             <example correction="plain and simple">It works just like that, <marker>plane and simple</marker>.</example>
             <example>Plain and simply the best SEO plugin.</example>
         </rule>
-        <rule id="CONFUSION_IT_IS" name="She it (is) happy" default="temp_off">
+        <rule id="CONFUSION_IT_IS" name="She it (is) happy">
             <antipattern>
                 <token inflected="yes">be</token>
                 <token regexp="yes">s?he</token>
@@ -46249,7 +46278,7 @@ The accident victim died from her injuries.
                 <example correction="their">They were <marker>there</marker> angels.</example>
                 <example>Since when are there fireworks?</example>
             </rule>
-            <rule default="temp_off">
+            <rule>
                 <pattern>
                     <token regexp="yes">heya?|hi|hello</token>
                     <marker>
@@ -46260,7 +46289,7 @@ The accident victim died from her injuries.
                 <message>Did you mean <suggestion>there</suggestion>?</message>
                 <example correction="there">Hi <marker>their</marker>.</example>
             </rule>
-            <rule default="temp_off">
+            <rule>
                 <pattern>
                     <token regexp="yes">heya?|hi|hello</token>
                     <marker>
@@ -53595,7 +53624,7 @@ The accident victim died from her injuries.
                 <token>general</token>
                 <token regexp="yes">public|consensus</token>
             </pattern>
-            <message>Consider using <suggestion>\2</suggestion>.</message>
+            <message>Consider using only <suggestion>\2</suggestion> to avoid wordiness.</message>
             <short>Redundant phrase</short>
             <example correction="public">We should show this to the <marker>general public</marker>.</example>
         </rule>
@@ -54173,6 +54202,19 @@ The accident victim died from her injuries.
     <!-- Style -->
     <!-- ====================================================================== -->
     <category id="STYLE" name="Style" type="style">
+        <rule id="MOST_OF_OUR_TIMES" name="Most of our times (time)" default="temp_off">
+            <pattern>
+                <token inflected="yes" regexp="yes" skip="2">spend|invest|enjoy</token>
+                <marker>
+                    <token>most</token>
+                    <token>of</token>
+                    <token regexp="yes">y?our|my|his|her|their|its</token>
+                    <token>times</token>
+                </marker>
+            </pattern>
+            <message>Did you mean the more common phrase <suggestion>\2 \3 \4 <match no="5" regexp_match="(?i)s" regexp_replace="" /></suggestion>?</message>
+            <example correction="most of our time">We spend <marker>most of our times</marker> here.</example>
+        </rule>
         <rule id="REASON_IS_BECAUSE" name="'the reason... is because'">
             <antipattern>
                 <token>that</token>
@@ -54181,7 +54223,7 @@ The accident victim died from her injuries.
             </antipattern>
             <antipattern>
                 <token>because</token>
-                <token regexp="yes">of|that</token>
+                <token regexp="yes">of|that|\p{P}</token>
             </antipattern>
             <pattern>
                 <token>the</token>

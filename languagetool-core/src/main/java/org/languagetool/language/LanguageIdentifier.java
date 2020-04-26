@@ -107,6 +107,7 @@ public class LanguageIdentifier {
         .withTextFilter(UrlTextFilter.getInstance())
         .withTextFilter(RemoveMinorityScriptsTextFilter.forThreshold(0.3))
         .withTextFilter(new RemoveEMailSignatureFilter())
+        .withTextFilter(new RemoveNonBreakingSpaces())
         .build();
     } catch (IOException e) {
       throw new RuntimeException("Could not set up language identifier", e);
@@ -177,11 +178,7 @@ public class LanguageIdentifier {
   @Nullable
   @Experimental
   DetectedLanguage detectLanguageWithDetails(String text) {
-    DetectedLanguage detectedLanguage = detectLanguage(text, Collections.emptyList(), Collections.emptyList());
-    if (detectedLanguage == null) {
-      return null;
-    }
-    return detectedLanguage;
+    return detectLanguage(text, Collections.emptyList(), Collections.emptyList());
   }
   
   /**
@@ -216,6 +213,7 @@ public class LanguageIdentifier {
         // (using it for optimaize is okay, assuming the same strong normalization was applied during training):
         shortText = UrlTextFilter.getInstance().filter(shortText);
         shortText = new RemoveEMailSignatureFilter().filter(shortText);
+        shortText = new RemoveNonBreakingSpaces().filter(shortText);
         shortText = shortText.replaceAll("\uFEFF+", " ");  // used by the browser add-on to filter HTML etc. (_ignoreText() in validator.js)
         Map<String, Double> scores = runFasttext(shortText, additionalLangs);
         result = getHighestScoringResult(scores);
@@ -352,10 +350,17 @@ public class LanguageIdentifier {
     }
   }
 
-  class RemoveEMailSignatureFilter implements TextFilter {
+  static class RemoveEMailSignatureFilter implements TextFilter {
     @Override
     public String filter(CharSequence text) {
       return SIGNATURE.matcher(text.toString()).replaceFirst("");
+    }
+  }
+
+  static class RemoveNonBreakingSpaces implements TextFilter {
+    @Override
+    public String filter(CharSequence text) {
+      return text.toString().replace('\u00A0', ' ');
     }
   }
 }

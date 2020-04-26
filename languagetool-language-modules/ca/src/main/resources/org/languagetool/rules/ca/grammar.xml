@@ -3937,6 +3937,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token regexp="yes">resta|majoria</token>
                 </marker>
             </antipattern>
+            <antipattern>
+                <token skip="2">en</token>
+                <token inflected="yes" regexp="yes">convergir|confluir</token>
+            </antipattern>
             <rule>
                 <pattern>
                     <token postag="SENT_START"/>
@@ -3967,6 +3971,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>Martin van Heemskerk</example>
                 <example>Esment especial mereixen els seus treballs</example>
                 <example>La resta demanaven pels resultats.</example>
+                <example>En Jesús convergeixen la llei i els profetes.</example>
             </rule>
             <rule>
                 <pattern>
@@ -12786,6 +12791,38 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rulegroup>
     </category>
     <category id="CONFUSIONS" name="Z1) Confusions" type="grammar">
+        <rulegroup id="EL_LA_EN_LA" name="*el/en la">
+            <antipattern>
+                <token skip="2">la</token>
+                <token regexp="yes">44[0-9](Hz)?</token>
+            </antipattern>
+            <rule>
+                 <pattern>
+                     <marker>
+                        <token>el</token>
+                        <token>la</token>
+                     </marker>
+                     <token postag="_GN_FS"/>
+                 </pattern>
+                 <message>¿Volíeu dir <suggestion>en la</suggestion>?</message>
+                 <example correction="En la"><marker>El la</marker> línia del que diu ell.</example>
+                <example>El la del diapasó.</example>
+                <example>El la sobreagut.</example>
+                <example>En el La a 440Hz.</example>
+                <example>En el la a 440 Hz.</example>
+                <example>En el La 440 Hz.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <marker>
+                        <token>el</token>
+                        <token regexp="yes">les|els|el</token>
+                    </marker>
+                </pattern>
+                <message>¿Volíeu dir <suggestion>en \2</suggestion>?</message>
+                <example correction="En les"><marker>El les</marker> línies indicades.</example>
+            </rule>
+        </rulegroup>
         <rule id="JA_INFINITIU" name="ja + infinitiu">
             <pattern>
                 <marker>
