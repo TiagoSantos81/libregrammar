@@ -979,12 +979,34 @@
             <exception regexp="yes">era|são|falha|mais|menos</exception></token>
           </unify>
         </marker>
+          <token>
+            <exception postag='N.+' postag_regexp='yes'/></token><!-- XXX dealt by DAAN -->
       </pattern>
       <disambig action="unify"/>
       <example inputform="uma[um/DI0FS0,um/NCFS000,um/PI0FS000]" outputform="uma[um/DI0FS0]" type="ambiguous">É <marker>uma</marker> romântica ocasião.</example>
       <example type="untouched">É uma ocasião romântica.</example>
       <example type="untouched">...em 112 Trajano fixa o procedimento contra os cristãos.</example>
       <example type="untouched">Todos juntos mais uma semana...</example>
+      <example type="untouched">A próxima grande pandemia será...</example>
+    </rule>
+
+    <rule id="DAAN" name="Det + Adj + Adj + Nom">
+      <pattern>
+        <marker>
+          <unify>
+            <feature id="gender"/>
+            <feature id="number"/>
+          <token postag="D.+" postag_regexp="yes"/>
+          <token postag="A.+" postag_regexp="yes"/>
+          <token postag="A.+" postag_regexp="yes"/>
+          <token postag="N.+" postag_regexp="yes">
+            <exception postag="[DC].+|SPS00|(?:A..|N.)CN.+" postag_regexp="yes"/>
+            <exception regexp="yes">era|são|falha|mais|menos</exception></token>
+          </unify>
+        </marker>
+      </pattern>
+      <disambig action="unify"/>
+      <example inputform="Uma[um/DI0FS0,um/NCFS000,um/PI0FS000]" outputform="Uma[um/DI0FS0]" type="ambiguous"><marker>Uma</marker> próxima grande pandemia será...</example>
     </rule>
 
     <!-- NSN : Nom + Nom/Prep + Nom/Adj = prep -->
