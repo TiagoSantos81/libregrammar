@@ -32155,7 +32155,7 @@ TODO Write better examples
           <token>app</token>
         </pattern>
         <message>Pretende dizer <suggestion>WhatsApp</suggestion>?</message>
-        <example correction="WhatsApp"><marker>Whats app</marker> é um aplicativo multiplataforma de mensagens instantâneas.</example>
+        <example correction="WhatsApp"><marker>Whats app</marker> é uma aplicação multiplataforma de mensagens instantâneas.</example>
       </rule>
     </rulegroup>
     <rulegroup id="INSTAGRAM" name="Instagram">
@@ -32175,7 +32175,7 @@ TODO Write better examples
           <token case_sensitive="yes" regexp="yes">google|GOOGLE</token>
         </pattern>
         <message>Será que quis dizer <suggestion>Google</suggestion>?</message>
-        <example correction="Google">O <marker>google</marker> hospeda e desenvolve uma série de serviços e produtos baseados na internet e gera lucro principalmente através da publicidade pelo AdWords.</example>
+        <example correction="Google">O <marker>google</marker> hospeda e desenvolve uma série de serviços...</example>
       </rule>
     </rulegroup>
     <rulegroup id="EXCEL" name="Excel">
@@ -32185,7 +32185,7 @@ TODO Write better examples
           <token case_sensitive="yes" regexp="yes">excel|EXCEL</token>
         </pattern>
         <message>Será que quis dizer <suggestion>Excel</suggestion> (= Microsoft Excel)?</message>
-        <example correction="Excel">O <marker>excel</marker> é um editor de planilhas.</example>
+        <example correction="Excel">O <marker>excel</marker> é uma folha de cálculo.</example>
       </rule>
     </rulegroup>
     <rulegroup id="POWERPOINT" name="PowerPoint" default="temp_off">
@@ -32194,7 +32194,7 @@ TODO Write better examples
         <pattern>
           <token case_sensitive="yes" regexp="yes">powerpoint|POWERPOINT|Powerpoint</token>
         </pattern>
-        <message>Será que quis dizer <suggestion>PowerPoint</suggestion> (= Microsoft PowerPoint)?</message>
+        <message>Será que quis dizer <suggestion>PowerPoint</suggestion>?</message>
         <example correction="PowerPoint">Microsoft <marker>Powerpoint</marker> é um programa utilizado para criação/edição.</example>
       </rule>
     </rulegroup>
