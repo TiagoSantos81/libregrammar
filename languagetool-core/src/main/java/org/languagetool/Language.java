@@ -68,7 +68,7 @@ public abstract class Language {
 
   private Disambiguator disambiguator;
   private Tagger tagger;
-  private SentenceTokenizer sentenceTokenizer;
+  public  SentenceTokenizer sentenceTokenizer; // public due to offline custom behaviour in LibreGrammar
   private Tokenizer wordTokenizer;
   private Chunker chunker;
   private Chunker postDisambiguationChunker;
