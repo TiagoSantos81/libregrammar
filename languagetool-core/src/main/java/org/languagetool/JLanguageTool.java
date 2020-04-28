@@ -875,7 +875,7 @@ public class JLanguageTool {
    * @param remoteRulesThreadPool when given, starts evaluating remote rules asynchronously before checking other rules,
    *                              then waits on result afterwards
    * @since 4.6
-   */
+   *
   public List<RuleMatch> check(AnnotatedText annotatedText, boolean tokenizeText, ParagraphHandling paraMode, RuleMatchListener listener, Mode mode, @Nullable ExecutorService remoteRulesThreadPool) throws IOException {
 */
     List<String> sentences;
@@ -927,6 +927,7 @@ public class JLanguageTool {
     return ruleMatches;
   }
 
+/*
   protected void fetchRemoteRuleResults(Mode mode, List<RuleMatch> remoteMatches,
                                         List<FutureTask<RemoteRuleResult>> remoteRuleTasks, List<RemoteRule> remoteRules,
                                         Map<AnalyzedSentence, List<RuleMatch>> cachedResults,
@@ -1040,6 +1041,7 @@ public class JLanguageTool {
       }
     }
   }
+*/
 
   /**
    * Use this method if you want to access LanguageTool's otherwise
