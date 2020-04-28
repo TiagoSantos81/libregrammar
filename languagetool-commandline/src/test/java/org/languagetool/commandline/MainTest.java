@@ -171,8 +171,7 @@ public class MainTest extends AbstractSecurityTestCase {
 
   @Test
   public void testEnglishFile() throws Exception {
-    String[] args = {"-l", "en", getTestFilePath()};
-
+    String[] args = {"-l", "en", "-d", "UPPERCASE_SENTENCE_START,PARAGRAPH_REPEAT_BEGINNING_RULE", getTestFilePath()};
     Main.main(args);
     String stdout = new String(this.out.toByteArray());
     String stderr = new String(this.err.toByteArray());
@@ -182,7 +181,7 @@ public class MainTest extends AbstractSecurityTestCase {
 
   @Test
   public void testEnglishFileAutoDetect() throws Exception {
-    String[] args = {"-adl", getTestFilePath()};
+    String[] args = {"-adl", "-d", "UPPERCASE_SENTENCE_START,PARAGRAPH_REPEAT_BEGINNING_RULE", getTestFilePath()};
 
     Main.main(args);
     String stdout = new String(this.out.toByteArray());
@@ -221,7 +220,7 @@ public class MainTest extends AbstractSecurityTestCase {
 
   @Test
   public void testEnglishFileVerbose() throws Exception {
-    String[] args = {"-l", "en", "-v", getTestFilePath()};
+    String[] args = {"-l", "en", "-v", "-d", "PARAGRAPH_REPEAT_BEGINNING_RULE", getTestFilePath()};
 
     Main.main(args);
     String stdout = new String(this.out.toByteArray());
@@ -296,7 +295,7 @@ public class MainTest extends AbstractSecurityTestCase {
   @Test
   public void testEnglishStdInJsonOutput() throws Exception {
     System.setIn(new FileInputStream(enTestFile));
-    String[] args = {"-l", "en", "--json", "-"};
+    String[] args = {"-l", "en", "-d", "PARAGRAPH_REPEAT_BEGINNING_RULE", "--json", "-"};
     Main.main(args);
     String output = new String(this.out.toByteArray());
     assertTrue("Got: " + output, output.contains("\"matches\":[{\"message\":\"Use \\\"a\\\" instead of 'an'"));
@@ -338,7 +337,7 @@ public class MainTest extends AbstractSecurityTestCase {
 
     Main.main(args);
     String output = new String(this.out.toByteArray());
-    assertEquals("This is what I mean\nAnd you know it.", output);
+    assertEquals("This is what I mean\nand you know it.", output);
   }
 
   @Test
