@@ -75,6 +75,15 @@ public interface ResourceDataBroker {
    * @throws RuntimeException if path cannot be found
    */
   URL getFromResourceDirAsUrl(String path);
+
+  /**
+   * Gets all resources in a form of URL from LanguageTool's {@code /resource}
+   * directory with the same {@code path}.
+   * @param path Path to an items from the {@code /resource} directory.
+   * @return A list of {@link URL} objects to the requested item
+   * @throws RuntimeException if path cannot be found
+   */
+  List<URL> getFromResourceDirAsUrls(String path);
   
   /**
    * Checks if a resource in the grammar checker's {@code /resource} exists.
@@ -123,6 +132,14 @@ public interface ResourceDataBroker {
    * @since 5.0
    */
   URL getAsURL(String path);
+
+  /**
+   * Get URLs from resource broker by a path file
+   * @param path Path to an item
+   * @return An list of {@link URL} objects to the requested item
+   * @since 5.0
+   */
+  List<URL> getAsURLs(String path);
 
   /**
    * Gets any resource from the grammar checker's {@code /rules} directory.

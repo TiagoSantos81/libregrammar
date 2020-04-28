@@ -88,13 +88,38 @@ public class FrenchCompoundAwareHunspellRule extends CompoundAwareHunspellRule {
 
   @Override
   protected List<SuggestedReplacement> getAdditionalTopSuggestions(List<SuggestedReplacement> suggestions, String word) throws IOException {
-    List<String> s;
+    String s = null;
     switch (word) {
-      case "Jai": s = Collections.singletonList("J'ai"); break;
-      case "jai": s = Collections.singletonList("j'ai"); break;
-      default: s = Collections.emptyList();
+      case "Jai": s = "J'ai"; break;
+      case "jai": s = "j'ai"; break;
+      case "Etais-tu": s = "Étais-tu"; break;
+      case "etais-tu": s = "étais-tu"; break;
+      case "Etes-vous": s = "Êtes-vous"; break;
+      case "etes-vous": s = "êtes-vous"; break;
+      case "Etiez-vous": s = "Êtiez-vous"; break;
+      case "etiez-vous": s = "êtiez-vous"; break;
+      case "Etait-ce": s = "Était-ce"; break;
+      case "etait-ce": s = "était-ce"; break;
+      case "Etait-il": s = "Était-il"; break;
+      case "etait-il": s = "était-il"; break;
+      case "Depeche-toi": s = "Dépêche-toi"; break;
+      case "depeche-toi": s = "dépêche-toi"; break;
+      case "preferes-tu": s = "préfères-tu"; break;
+      case "Preferes-tu": s = "Préfères-tu"; break;
+      /* a more generic solution could be like this, but which of the suggestions for the first part can be re-prepended?
+      Pattern p = Pattern.compile("([a-zA-Z]+)-(tu|vous|ce|il|toi)");
+      Matcher matcher = p.matcher(word);
+      if (matcher.matches()) {
+        System.out.println("-->" + matcher.group(1));
+        System.out.println("-->" + getSuggestions(matcher.group(1)));
+      }
+      */
     }
-    return SuggestedReplacement.convert(s);
+    if (s == null) {
+      return SuggestedReplacement.convert(Collections.emptyList());
+    } else {
+      return SuggestedReplacement.convert(Collections.singletonList(s));
+    }
   }
 
   @Override

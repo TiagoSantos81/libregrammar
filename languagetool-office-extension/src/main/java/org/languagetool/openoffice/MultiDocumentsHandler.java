@@ -77,6 +77,7 @@ public class MultiDocumentsHandler {
   private LinguisticServices linguServices = null;
   private SortedTextRules sortedTextRules;
   private Set<String> disabledRulesUI;      //  Rules disabled by context menu or spell dialog
+  private LtDictionary dictionary;
   
   private XComponentContext xContext;       //  The context of the document
   private List<SingleDocument> documents;   //  The List of LO documents to be checked
@@ -105,6 +106,7 @@ public class MultiDocumentsHandler {
     documents = new ArrayList<>();
     disabledRulesUI = new HashSet<>();
     // extraRemoteRules = new ArrayList<Rule>();
+    dictionary = new LtDictionary();
   }
   
   /**
@@ -584,6 +586,7 @@ public class MultiDocumentsHandler {
     for (SingleDocument document : documents) {
       document.resetCache();
     }
+    dictionary.setLtDictionary(xContext, langTool, configDir.getPath());
     if(useQueue) {
       if(textLevelQueue == null) {
         textLevelQueue = new TextLevelCheckQueue(this);

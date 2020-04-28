@@ -116,6 +116,7 @@ public class GermanSpellerRuleTest {
     assertThat(rule.match(lt.getAnalyzedSentence("Ventrolateral")).length, is(0));
     assertThat(rule.match(lt.getAnalyzedSentence("Kleindung")).length, is(1));  // ignored due to ignoreCompoundWithIgnoredWord(), but still in ignore.txt -> ignore.txt must override this
     assertThat(rule.match(lt.getAnalyzedSentence("Majonäse."))[0].getSuggestedReplacements().toString(), is("[Mayonnaise]"));
+    assertFirstSuggestion("Schöler-", "Schüler-", rule, lt);
     assertFirstSuggestion("wars.", "war's", rule, lt);
     assertFirstSuggestion("haben -sehr", "sehr", rule, lt);
     assertFirstSuggestion("konservierungsstoffe", "Konservierungsstoffe", rule, lt);
@@ -427,6 +428,7 @@ public class GermanSpellerRuleTest {
     assertFirstSuggestion("vollrichtest", "verrichtest", rule, lt);
     assertFirstSuggestion("Vollrichtet", "Verrichtet", rule, lt);
     assertFirstSuggestion("bedingslosem", "bedingungslosem", rule, lt);
+    assertFirstSuggestion("überstenden", "berstenden", rule, lt);
   }
 
   @Test

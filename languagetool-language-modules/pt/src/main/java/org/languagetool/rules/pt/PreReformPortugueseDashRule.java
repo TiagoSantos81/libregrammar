@@ -30,10 +30,10 @@ import java.util.ResourceBundle;
  */
 public class PreReformPortugueseDashRule extends AbstractDashRule {
 
-  private static final AhoCorasickDoubleArrayTrie<String> trie = loadCompoundFile("/pt/pre-reform-compounds.txt");
+  private static volatile AhoCorasickDoubleArrayTrie<String> trie;
   
   public PreReformPortugueseDashRule(ResourceBundle messages) {
-    super(trie, messages);
+    super(messages);
     setLocQualityIssueType(ITSIssueType.Typographical);
     setDefaultOff(); // Slows down start up and checking time too much. See: http://forum.languagetool.org/t/checking-portuguese-slow/1669/10
   }
@@ -56,6 +56,21 @@ public class PreReformPortugueseDashRule extends AbstractDashRule {
   @Override
   protected boolean isBoundary(String s) {
     return !s.matches("[a-zA-ZÂâÃãÇçÊêÓóÔôÕõü]");  // chars from http://unicode.e-workers.de/portugiesisch.php
+  }
+
+  @Override
+  protected AhoCorasickDoubleArrayTrie<String> getCompoundsData() {
+    AhoCorasickDoubleArrayTrie<String> data = trie;
+    if (data == null) {
+      synchronized (PreReformPortugueseDashRule.class) {
+        data = trie;
+        if (data == null) {
+          trie = data = loadCompoundFile("/pt/pre-reform-compounds.txt");
+        }
+      }
+    }
+
+    return data;
   }
 
 }

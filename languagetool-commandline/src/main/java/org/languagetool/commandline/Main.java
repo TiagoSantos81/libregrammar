@@ -84,7 +84,7 @@ class Main {
       lt.activateNeuralNetworkRules(options.getNeuralNetworkModel());
     }
     Tools.selectRules(lt, options.getDisabledCategories(), options.getEnabledCategories(),
-            new HashSet<>(options.getDisabledRules()), new HashSet<>(options.getEnabledRules()), options.isUseEnabledOnly());
+            new HashSet<>(options.getDisabledRules()), new HashSet<>(options.getEnabledRules()), options.isUseEnabledOnly(), options.isEnableTempOff());
   }
 
   private void addExternalRules(String filename) throws IOException {

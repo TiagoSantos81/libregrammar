@@ -27,7 +27,7 @@ Copyright (C) 2011 Juan Martorell
     <!ENTITY browser_protocols "(?:a(?:aas?|bout|cap|cct|cr|diumxtra|fp|fs|im|mss|pt|ttachment|w)|b(?:arion|eshare|itcoin|lob|olo)|c(?:allto|ap|hrome|id|oaps?|ontent|rid|vs)|da(?:b|ta|av)|d(?:ict|ns|ntp|rm|tn|vb)|e(?:d2k|xamples?)|fa(?:cetime|x)|f(?:eed|ile(?:system)?|i(?:nger|sh)|m|tp)|g(?:(?:eo|g)|i(?:t|zmoproject)|o(?:pher)?|talk)|h(?:323|cp|ttps?)|i(?:ax|cap|con|m(?:ap)?|nfo|otdisco|pn|pps?|ir(?:6?|cs|is|tms)|j(?:a(?:bber|r)|ms)|keyparc|l(?:astfm|daps?)|ma(?:gnet|ilserver|ilto|kes|ps|rket)|m(?:essage|id|ms|odem|snim|srps?|tqp|umble|update|vn)|n(?:ews|fs|i(?:h)?|ntp|otes)|obsolete|o(?:id|paquelocktoken)|pa(?:ck|lm|parazzi)|p(?:kcs11|latform|op|res|ro(?:spero|xy)|syc)|query|re(?:diss?|load|s(?:ource)?)|r(?:mi|sync|tmfp|t(?:mp|sp))|se(?:condlife|rvice|ssion)|s(?:ftp|gn|http|ieve|ips?|kype|mb|ms|n(?:ews|mp)|oldat|potify|sh|team|tuns?|vn)|t(?:ag|eamspeak|el(?:net)?|ftp|hings|hismessage|ip|n3270|urns?|v)|u(?:dp|nreal|rn|t2004)|v(?:e(?:mmi|ntrilo)|ideotex|nc))|w(?:ais|ebcal|ss?|tai|yciwyg)|x(?:con|fire|mpp|ri)|ymsgr)">
     <!ENTITY pronombre_personal_atono "me|te|se|nos|os|le|les|lo|los|la|las">
     <!ENTITY nombre_fem_el "África|aguadulce|acta|afta|agua|aguasal|aguaviva|ala|alba|alga|algia|alma|alta|alza|ama|anca|ancla|ansia|ara|arca|archa|aria|arma|arpa|arria|arte|asa|ascua|asma|aspa|asta|aula|aura|ave|aya|haba|habla|hacha|hada|hambre|hampa|haya|ágata|ágora|águila|álgebra|áncora|ánfora|ánima|área|árnica">
-    <!ENTITY pronombre_personal_atono_POS "PP3..A.*|PP[123]C[SP]000|P0[123].*">
+    <!ENTITY pronombre_personal_atono_POS "PP3..A.*|PP[123]C[SP][0D]00|P0[123].*">
 
 ]>
 
@@ -975,6 +975,11 @@ Copyright (C) 2011 Juan Martorell
     </rule>
 
     <rulegroup id="verbnoun_verb" name="verb/noun + verb">
+        <antipattern>
+            <token postag="&pronombre_personal_atono_POS;" postag_regexp="yes"/>
+            <token postag="&pronombre_personal_atono_POS;" postag_regexp="yes"/>
+            <token postag="V.[IS].*" postag_regexp="yes"/>
+        </antipattern>
         <rule>
             <pattern>
                 <token postag="D[DAIP].[MF].*" postag_regexp="yes"/>

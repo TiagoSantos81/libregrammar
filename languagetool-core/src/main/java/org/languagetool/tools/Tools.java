@@ -278,14 +278,22 @@ public final class Tools {
     disabledRuleIdsSet.addAll(disabledRuleIds);
     Set<String> enabledRuleIdsSet = new HashSet<>();
     enabledRuleIdsSet.addAll(enabledRuleIds);
-    selectRules(lt, Collections.emptySet(), Collections.emptySet(), disabledRuleIdsSet, enabledRuleIdsSet, useEnabledOnly);
+    selectRules(lt, Collections.emptySet(), Collections.emptySet(), disabledRuleIdsSet, enabledRuleIdsSet, useEnabledOnly, false);
   }
 
   /**
    * @since 3.3
    */
   public static void selectRules(JLanguageTool lt, Set<CategoryId> disabledCategories, Set<CategoryId> enabledCategories,
-                                 Set<String> disabledRules, Set<String> enabledRules, boolean useEnabledOnly) {
+                                 Set<String> disabledRules, Set<String> enabledRules, boolean useEnabledOnly, boolean enableTempOff) {
+    if (enableTempOff) {
+      for (Rule rule : lt.getAllRules()) {
+        if (rule.isDefaultTempOff()) {
+          System.out.println("Activating " + rule.getFullId() + ", which is default='temp_off'");
+          lt.enableRule(rule.getId());
+        }
+      }
+    }
     for (CategoryId id : disabledCategories) {
       lt.disableCategory(id);
     }

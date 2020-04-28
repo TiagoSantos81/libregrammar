@@ -72,12 +72,6 @@ public class English extends Language implements AutoCloseable {
 
   private static final Language AMERICAN_ENGLISH = new AmericanEnglish();
 
-  private Tagger tagger;
-  private Chunker chunker;
-  private SentenceTokenizer sentenceTokenizer;
-  private Synthesizer synthesizer;
-  private Disambiguator disambiguator;
-  private WordTokenizer wordTokenizer;
   private LanguageModel languageModel;
 
   /**
@@ -94,7 +88,7 @@ public class English extends Language implements AutoCloseable {
   }
 
   @Override
-  public SentenceTokenizer getSentenceTokenizer() {
+  public SentenceTokenizer createDefaultSentenceTokenizer() {
     if (sentenceTokenizer == null) {
       sentenceTokenizer = new SRXSentenceTokenizer(this);
     }
@@ -117,47 +111,32 @@ public class English extends Language implements AutoCloseable {
     return new String[]{};
   }
 
+  @NotNull
   @Override
-  public Tagger getTagger() {
-    if (tagger == null) {
-      tagger = new EnglishTagger();
-    }
-    return tagger;
+  public Tagger createDefaultTagger() {
+    return new EnglishTagger();
   }
 
-  /**
-   * @since 2.3
-   */
+  @Nullable
   @Override
-  public Chunker getChunker() {
-    if (chunker == null) {
-      chunker = new EnglishChunker();
-    }
-    return chunker;
+  public Chunker createDefaultChunker() {
+    return new EnglishChunker();
   }
 
+  @Nullable
   @Override
-  public Synthesizer getSynthesizer() {
-    if (synthesizer == null) {
-      synthesizer = new EnglishSynthesizer(this);
-    }
-    return synthesizer;
+  public Synthesizer createDefaultSynthesizer() {
+    return new EnglishSynthesizer(this);
   }
 
   @Override
-  public Disambiguator getDisambiguator() {
-    if (disambiguator == null) {
-      disambiguator = new EnglishHybridDisambiguator();
-    }
-    return disambiguator;
+  public Disambiguator createDefaultDisambiguator() {
+    return new EnglishHybridDisambiguator();
   }
 
   @Override
-  public WordTokenizer getWordTokenizer() {
-    if (wordTokenizer == null) {
-      wordTokenizer = new EnglishWordTokenizer();
-    }
-    return wordTokenizer;
+  public Tokenizer createDefaultWordTokenizer() {
+    return new EnglishWordTokenizer();
   }
 
   @Override
@@ -297,8 +276,9 @@ public class English extends Language implements AutoCloseable {
       case "TRANSLATION_RULE":          return 5;   // Premium
       case "WRONG_APOSTROPHE":          return 5;
       case "ADJECTIVE_ADVERB":          return 2;   // prefer over MODAL_VERB_FOLLOWED_BY_NOUN, PRP_MD_NN, and PRONOUN_NOUN
-      case "DOS_AND_DONTS":             return 2;
-      case "EN_COMPOUNDS":              return 1;
+      case "DOS_AND_DONTS":             return 3;
+      case "EN_COMPOUNDS":              return 2;
+      case "BORN_IN":                   return 1;   // higher prio than PRP_PAST_PART
       case "DO_TO":                     return 1;   // higher prio than HAVE_PART_AGREEMENT
       case "IN_THIS_REGARDS":           return 1;   // higher prio than THIS_NNS
       case "NO_WHERE":                  return 1;   // higher prio than NOW
