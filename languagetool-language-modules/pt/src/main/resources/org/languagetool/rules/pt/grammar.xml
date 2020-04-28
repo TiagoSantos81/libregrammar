@@ -2998,7 +2998,7 @@ title="Easy editing stylesheet" ?>
             <exception regexp='yes'>(?:aces|ganh|gast|mort|pag|salv|eleit|expuls)[ao]s?|entregues?|aceites?|oculto|(?:surpres|vag)as?</exception></token><!-- XXX significado distintos. Removidos: incluso|tinto -->
       </pattern>
       <message>Com o verbo '<match no='1' postag='VMN0000'/>' deve utilizar-se o particípio passado regular.</message>
-    <!--suggestion>\1 <match no='2' include_skipped='all'/> <match no='3' postag_match='VMP00(.)(.)' postag_replace='VMIP1$20' suppress_misspelled='yes'/></suggestion-->
+    <!--suggestion suppress_misspelled='yes'>\1 <match no='2' include_skipped='all'/> <match no='3' postag_match='VMP00(.)(.)' postag_replace='VMIP1$20'/></suggestion-->
         <suggestion suppress_misspelled='yes'>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)([ao]s?)' regexp_replace='$1ad$2'/></suggestion>
       <example correction='ter discretamente limpado'>Depois de <marker>ter discretamente limpo</marker> o carro, foi desculpado.</example>
       <example>Depois de <marker>ter discretamente limpado</marker> o carro, foi desculpado.</example>
@@ -3017,7 +3017,7 @@ title="Easy editing stylesheet" ?>
       </pattern>
       <message>Com o verbo '<match no='1' postag='VMN0000'/>' deve utilizar-se o particípio passado irregular.</message>
         <suggestion suppress_misspelled='yes'>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)ad([ao]s?)' regexp_replace='$1$2'/></suggestion>
-    <!--suggestion>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)ad([ao]s?)' regexp_replace='$1ue' suppress_misspelled='yes'/></suggestion-->
+    <!--suggestion suppress_misspelled='yes'>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)ad([ao]s?)' regexp_replace='$1ue'/></suggestion-->
       <example correction='foi gasto'>O dinheiro <marker>foi gastado</marker> o mês passado.</example>
       <example type='triggers_error'>A piscina <marker>foi enchida</marker> o mês passado.</example>
       <example>A piscina <marker>foi cheia</marker> o mês passado.</example>
@@ -3038,7 +3038,7 @@ title="Easy editing stylesheet" ?>
       </pattern>
       <message>A forma correta deste particípio é <match no='3' regexp_match='(.+)([ao])(s?)' regexp_replace='$1e$3'/>.</message>
         <suggestion>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)([ao])(s?)' regexp_replace='$1e$3'/></suggestion>
-    <!--suggestion>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)ad([ao]s?)' regexp_replace='$1ue' suppress_misspelled='yes'/></suggestion-->
+    <!--suggestion suppress_misspelled='yes'>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)ad([ao]s?)' regexp_replace='$1ue'/></suggestion-->
       <example correction='foi aceite'>O projeto <marker>foi aceito</marker>.</example>
       <example correction='foi aceite'>A China <marker>foi aceita</marker> na Organização Mundial do Comércio.</example>
       <example correction='serem aceites'>Que ser de um certo tamanho e qualidade antes de <marker>serem aceitas</marker> pelos praticantes da MTC e consumidores.</example>
@@ -3051,8 +3051,8 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>(?:benzid|volvid)[ao]s?</token>
       </pattern>
       <message>Com o verbo '<match no='1' postag='VMN0000'/>' deve utilizar-se o particípio passado irregular.</message>
-        <suggestion>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)([vz]id)([ao]s?)' regexp_replace='$1t$3' suppress_misspelled='yes'/></suggestion>
-    <!--suggestion>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)ad([ao]s?)' regexp_replace='$1ue' suppress_misspelled='yes'/></suggestion-->
+        <suggestion suppress_misspelled='yes'>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)([vz]id)([ao]s?)' regexp_replace='$1t$3'/></suggestion>
+    <!--suggestion suppress_misspelled='yes'>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)ad([ao]s?)' regexp_replace='$1ue'/></suggestion-->
       <example correction='foi bento'>O filho <marker>foi benzido</marker> pelo bispo.</example>
       <example correction='é volto'>O filho <marker>é volvido</marker> a casa.</example>
     </rule>
@@ -3064,8 +3064,8 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>(?:re)?elegid[ao]s?</token>
       </pattern>
       <message>Com o verbo '<match no='1' postag='VMN0000'/>' deve utilizar-se o particípio passado irregular.</message>
-        <suggestion>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)gid([ao]s?)' regexp_replace='$1it$2' suppress_misspelled='yes'/></suggestion>
-    <!--suggestion>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)ad([ao]s?)' regexp_replace='$1ue' suppress_misspelled='yes'/></suggestion-->
+        <suggestion suppress_misspelled='yes'>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)gid([ao]s?)' regexp_replace='$1it$2'/></suggestion>
+    <!--suggestion suppress_misspelled='yes'>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)ad([ao]s?)' regexp_replace='$1ue'/></suggestion-->
       <example correction='foi eleito'>O presidente <marker>foi elegido</marker> o mês passado.</example>
     </rule>
     <rule>
@@ -3076,8 +3076,8 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>(?:[ei]|sub)mergid[ao]s?</token>
       </pattern>
       <message>Com o verbo '<match no='1' postag='VMN0000'/>' deve utilizar-se o particípio passado irregular.</message>
-        <suggestion>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)gid([ao]s?)' regexp_replace='$1s$2' suppress_misspelled='yes'/></suggestion>
-    <!--suggestion>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)ad([ao]s?)' regexp_replace='$1ue' suppress_misspelled='yes'/></suggestion-->
+        <suggestion suppress_misspelled='yes'>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)gid([ao]s?)' regexp_replace='$1s$2'/></suggestion>
+    <!--suggestion suppress_misspelled='yes'>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)ad([ao]s?)' regexp_replace='$1ue'/></suggestion-->
       <example correction='foi imerso'>O cálice <marker>foi imergido</marker> na pia.</example>
       <example correction='foi submerso'>O cálice <marker>foi submergido</marker> na pia.</example>
     </rule>
@@ -3089,8 +3089,8 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>omitid[ao]s?</token>
       </pattern>
       <message>Com o verbo '<match no='1' postag='VMN0000'/>' deve utilizar-se o particípio passado irregular.</message>
-        <suggestion>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)itid([ao]s?)' regexp_replace='$1iss$2' suppress_misspelled='yes'/></suggestion>
-    <!--suggestion>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)ad([ao]s?)' regexp_replace='$1ue' suppress_misspelled='yes'/></suggestion-->
+        <suggestion suppress_misspelled='yes'>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)itid([ao]s?)' regexp_replace='$1iss$2'/></suggestion>
+    <!--suggestion suppress_misspelled='yes'>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)ad([ao]s?)' regexp_replace='$1ue'/></suggestion-->
       <example correction='era omisso'>O relatório <marker>era omitido</marker> em relação às inconformidades.</example>
     </rule>
     <rule>
@@ -3101,8 +3101,8 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>(?:(?:ex|o)primid|imprimid)[ao]s?</token>
       </pattern>
       <message>Com o verbo '<match no='1' postag='VMN0000'/>' deve utilizar-se o particípio passado irregular.</message>
-        <suggestion>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)imid([ao]s?)' regexp_replace='$1ess$2' suppress_misspelled='yes'/></suggestion>
-    <!--suggestion>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)ad([ao]s?)' regexp_replace='$1ue' suppress_misspelled='yes'/></suggestion-->
+        <suggestion suppress_misspelled='yes'>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)imid([ao]s?)' regexp_replace='$1ess$2'/></suggestion>
+    <!--suggestion suppress_misspelled='yes'>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)ad([ao]s?)' regexp_replace='$1ue'/></suggestion-->
       <example correction='foi opresso'>O povo <marker>foi oprimido</marker> o mês passado.</example>
       <example correction='foi bem expressa'>A ideia <marker>foi bem exprimida</marker>.</example>
       <example correction='fica bem impresso'>Confirma se <marker>fica bem imprimido</marker>.</example>
@@ -3115,8 +3115,8 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>prendid[ao]s?</token>
       </pattern>
       <message>Com o verbo '<match no='1' postag='VMN0000'/>' deve utilizar-se o particípio passado irregular.</message>
-        <suggestion>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)(endid)([ao]s?)' regexp_replace='$1es$3' suppress_misspelled='yes'/></suggestion>
-    <!--suggestion>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)ad([ao]s?)' regexp_replace='$1ue' suppress_misspelled='yes'/></suggestion-->
+        <suggestion suppress_misspelled='yes'>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)(endid)([ao]s?)' regexp_replace='$1es$3'/></suggestion>
+    <!--suggestion suppress_misspelled='yes'>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)ad([ao]s?)' regexp_replace='$1ue'/></suggestion-->
       <example correction='será preso'>O bispo <marker>será prendido</marker> já pela madrugada.</example>
     </rule>
     <rule>
@@ -3127,8 +3127,8 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>surpreendid[o]s?</token><!-- XXX feminine forms are ambiguous -->
       </pattern>
       <message>Com o verbo '<match no='1' postag='VMN0000'/>' deve utilizar-se o particípio passado irregular.</message>
-        <suggestion>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)(eendid)([ao]s?)' regexp_replace='$1es$3' suppress_misspelled='yes'/></suggestion>
-    <!--suggestion>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)ad([ao]s?)' regexp_replace='$1ue' suppress_misspelled='yes'/></suggestion-->
+        <suggestion suppress_misspelled='yes'>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)(eendid)([ao]s?)' regexp_replace='$1es$3'/></suggestion>
+    <!--suggestion suppress_misspelled='yes'>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)ad([ao]s?)' regexp_replace='$1ue'/></suggestion-->
       <example correction='Parece surpreso'><marker>Parece surpreendido</marker>.</example>
       <example> As pessoas podem ficar surpreendidas com o que se avizinha.</example>
     </rule>

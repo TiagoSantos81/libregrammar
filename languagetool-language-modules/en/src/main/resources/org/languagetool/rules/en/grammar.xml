@@ -5469,7 +5469,7 @@ USA
                 ?>
                 <message>If you mean '\4 of the \3', an apostrophe might be missing. Otherwise, a comma might be missing.</message>
                   <suggestion><match no="3"/>'</suggestion>
-                  <suggestion><match suppress_misspelled="yes" no="3" postag="NN(P)?S" postag_regexp="yes" postag_replace="NN$1(:U.?)?" setpos="no"/>'s</suggestion>
+                  <suggestion suppress_misspelled="yes"><match no="3" postag="NN(P)?S" postag_regexp="yes" postag_replace="NN$1(:U.?)?" setpos="no"/>'s</suggestion>
                   <suggestion><match no="3"/>,</suggestion>
                 <short>Possible typo</short>
                 <example correction="presidents'|president's|presidents,">This is a transcript of the <marker>presidents</marker> speech from March.</example>
@@ -5515,8 +5515,8 @@ USA
                 <example>The American Film Institute was founded in 1967 as a national arts organization to preserve the legacy of American film heritage, educate the next generation of filmmakers.</example>
                 <example>As of 2001, he was still a part-time martial arts instructor there.</example>
                 <example type="triggers_error">The new restaurant was making the <marker>owners</marker> money hand over fist.</example>
-                <example correction="clothes'">Blank noise doing a <marker>clothes</marker> installation to say</example>
-                <example correction="Reuters'">including a <marker>Reuters</marker> photographer Gleb Garanich</example>
+                <example correction="clothes'|clothes,">Blank noise doing a <marker>clothes</marker> installation to say</example>
+                <example correction="Reuters'|Reuters,">including a <marker>Reuters</marker> photographer Gleb Garanich</example>
             </rule>
             <rule>
                 <antipattern>
