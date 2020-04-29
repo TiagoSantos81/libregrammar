@@ -7796,7 +7796,6 @@ title="Easy editing stylesheet" ?>
       </antipattern>
       <pattern>
           <token postag='CC|SENT_START|_PUNCT|R.+' postag_regexp='yes'>
-            <exception regexp='yes'>cada|uma</exception>
             <exception postag='Z.+|D..[FC][SN].+' postag_regexp='yes'/></token>
           <token>vez</token>
       </pattern>
