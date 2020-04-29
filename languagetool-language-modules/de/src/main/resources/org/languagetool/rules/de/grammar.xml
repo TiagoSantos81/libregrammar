@@ -10985,13 +10985,14 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token>rund</token>
                     <token>um</token>
                 </marker>
-                <token postag="(ADJ:|VER:).+" postag_regexp="yes"><exception inflected="yes">ein</exception></token>
+                <token postag="(ADJ:PRD:.+|VER:).+" postag_regexp="yes"><exception inflected="yes">ein</exception></token>
             </pattern>
             <message>Das Adverb <suggestion>rundum</suggestion> wird zusammengeschrieben.</message>
             <url>https://www.duden.de/rechtschreibung/rundum</url>
             <short>&getrennt;.</short>
             <example correction="Rundum"><marker>Rund um</marker> zufrieden.</example>
             <example>Die Diskussion drehte sich rund um eine geplante Asylunterkunft.</example>
+            <example>Die Vorwürfe rund um mutmaßliche Bilanzfälschungen konnten nicht entlastet werden.</example>
         </rule>
         <rulegroup id="EIN_DANKE_SCHOEN" name="'ein danke schön (Dankeschön)'">
             <rule>
@@ -18619,9 +18620,15 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token>ein</token>
                 <token>sieben</token>
             </antipattern>
+            <antipattern>
+                <token postag="PRP:.+" postag_regexp="yes"/>
+                <token>ein</token>
+                <token postag="ADJ:.+" postag_regexp="yes"/>
+                <token postag="VER:INF:SFT"/>
+            </antipattern>
             <pattern>
                 <token>ein</token>
-                <token postag_regexp="yes" postag="ADJ:.*" min="0"><exception regexp="yes">wenig|sieben|anderer</exception></token>
+                <token postag_regexp="yes" postag="ADJ:.*" min="0"><exception regexp="yes">wenig|sieben|anderer|weit</exception></token>
                 <marker>
                     <token postag="VER:INF:SFT" case_sensitive="yes" regexp="yes">[a-zöäü]+<exception>einen</exception></token>
                 </marker>
@@ -18633,6 +18640,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example>Lass mich dir ein neues kaufen!</example>
             <example>Sie sollten ein neues kaufen.</example>
             <example>Was ein Mensch erfinden kann, kann ein anderer entdecken.</example>
+            <example>Der Notdienst kann das Schloss durch ein neues austauschen und auch den Schlüssel nachmachen.</example>
         </rule>
         <rule id="EIN_FUENFTEL" name="ein fünftel (Fünftel) etc.">
             <pattern>
@@ -32479,6 +32487,11 @@ Andere Projekte</example>
             </rule>
         </rulegroup>
         <rule id="DAS_FARBE_GENITIV" name="das + 'Farbe' + Genitiv ('das Weiß ihres Kleides')">
+            <antipattern>
+                <token>weiß</token>
+                <token postag="(ART:DEF|PRO:POS):GEN:[^ ]*" postag_regexp="yes"/>
+                <token postag="ADJ:.+|SUB:.+" postag_regexp="yes"/>
+            </antipattern>
             <pattern>
                 <token>das</token>
                 <marker><token case_sensitive="yes" regexp="yes">&farbadj;</token></marker>
@@ -32490,6 +32503,8 @@ Andere Projekte</example>
             <example correction="Rot">Das <marker>rot</marker> ihrer Haare werde ich nie vergessen.</example>
             <example correction="Blau">Ich werde nie das <marker>blau</marker> des Meeres vergessen.</example>
             <example>Das <marker>lila</marker> Kleid gefällt.</example>
+            <example>Das weiß der stolze Citoyen mehr als der bequeme Bourgeois.</example>
+            <example>Das weiß er ganz genau.</example>
         </rule>
         <rulegroup id="FARBE_IN_WENDUNG" name="Karpfen Blau (blau)">
             <rule>
