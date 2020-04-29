@@ -24,7 +24,7 @@ import com.google.common.cache.Weigher;
 import org.languagetool.rules.RuleMatch;
 
 import java.util.List;
-import java.util.Map;
+// import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
