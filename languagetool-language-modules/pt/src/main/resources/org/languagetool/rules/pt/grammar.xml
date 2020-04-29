@@ -7783,22 +7783,31 @@ title="Easy editing stylesheet" ?>
       <example correction="música">A Ana é uma <marker>mulher músico</marker>.</example>
     </rule>
 
-    <rule id='NÃO_VEZ_QUE' name="Confusão: vez - vês">
+    <rule id='VEZ_VES_CONFUSION' name="Confusão: vez - vês">
     <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
+      <antipattern>
+          <token regexp='yes'>&contracoes_FS;</token>
+          <token>vez</token>
+      </antipattern>
+      <antipattern>
+          <token>em</token>
+          <token>vez</token>
+          <token>de</token>
+      </antipattern>
       <pattern>
           <token postag='CC|SENT_START|_PUNCT|R.+' postag_regexp='yes'>
             <exception regexp='yes'>cada|uma</exception>
-            <exception postag='D.+' postag_regexp='yes'/></token>
+            <exception postag='Z.+|D..[FC][SN].+' postag_regexp='yes'/></token>
           <token>vez</token>
-          <token>que</token>
       </pattern>
-      <message>Substitua por <suggestion>\1 vês que</suggestion>.</message>
-      <example correction="não vês que">Pai, <marker>não vez que</marker> eles estão errados?</example>
-      <example correction=", vês que">Pai<marker>, vez que</marker> eles estão errados?</example>
-      <example correction="Mas vês que"><marker>Mas vez que</marker> eles estão errados?</example>
-      <example correction="Vês que"><marker>Vez que</marker> eles estão errados?</example>
+      <message>Substitua por <suggestion>\1 vês</suggestion>.</message>
+      <example correction="não vês">Pai, <marker>não vez</marker> que eles estão errados?</example>
+      <example correction=", vês">Pai<marker>, vez</marker> que eles estão errados?</example>
+      <example correction="Mas vês"><marker>Mas vez</marker> que eles estão errados?</example>
+      <example correction="Vês"><marker>Vez</marker> que eles estão errados?</example>
       <example>Concordo, uma vez que não tenho bons argumentos contra.</example>
       <example>...de cada vez que retirarmos uma medida...</example>
+      <example correction="assim vês">... <marker>assim vez</marker> o que digo.</example>
     </rule>
 
     <rule id='NESTA_CASO' name="Neste caso">
@@ -7833,13 +7842,14 @@ title="Easy editing stylesheet" ?>
       <example correction="Nós sabemos"><marker>Nos sabemos</marker> a resposta.</example>
     </rule>
 
-    <rule id='NUM_SEI' name="Confusão: num - não">
+    <rule id='NUM_VERBO' name="Confusão: num - não">
     <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
       <pattern>
           <token>num</token>
-          <token inflected='yes'>saber</token>
+          <token postag='V.+' postag_regexp='yes'>
+            <exception postag='V.+' postag_regexp='yes' negate_pos='yes'/></token>
       </pattern>
-      <message>Substitua por <suggestion>não sei</suggestion>.</message>
+      <message>'\1' é a contração de 'em' com 'um'. Substitua por <suggestion>não \2</suggestion>.</message>
       <example correction="não sei">Como podes ver, <marker>num sei</marker> a resposta.</example>
     </rule>
 
