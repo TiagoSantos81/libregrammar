@@ -50846,6 +50846,28 @@ The accident victim died from her injuries.
             <url>https://en.wiktionary.org/wiki/dhow#English</url>
             <example correction="show">The <marker>dhow</marker> will start in seconds.</example>
         </rule>
+        <rule id="TAT" name="tat (that)">
+            <antipattern>
+                <token>tit</token>
+                <token>for</token>
+                <token>tat</token>
+            </antipattern>
+            <antipattern>
+                <token regexp='yes'>cheap|old|souvenir|probes?|th(?:at|is)</token>
+                <token>tat</token>
+            </antipattern>
+            <antipattern>
+                <token regexp='yes'>[Tt]at</token>
+                <token regexp='yes'>proteins?</token>
+            </antipattern>
+            <pattern>
+                <token regexp="yes" case_sensitive='yes'>[Tt]at</token>
+            </pattern>
+            <message>Did you mean <suggestion>that</suggestion>? 'Tat' is a trinket, or the art of making clothes through loops and knots.</message>
+            <url>https://en.wiktionary.org/wiki/tat#English</url>
+            <example correction="That"><marker>Tat</marker> is not right!</example>
+            <example>Finally, she got rid of that old tat.</example>
+        </rule>
       </rulegroup>
         <rule id="ON_BEHAVE" name="on behave (on behalf)">
             <pattern>
