@@ -636,14 +636,6 @@ title="Easy editing stylesheet" ?>
     <!--token min='0' postag='(?:A..|Z.)C.+' postag_regexp='yes'-->
           <token postag='(?:[NZ].|A..)M[NP].+' postag_regexp='yes'/>
       </antipattern>
-	<!-- Added by Marco A.G.Pinto - 2020-04-30 ***START***-->
-	<!-- "Manaus concentrava sozinha 81,6% do total do PIB estadual." -->
-      <antipattern>
-		  <token postag='VMII1S0|VMII2S0|VMII3S0' postag_regexp='yes'/>
-		  <token postag='AQCFS0' postag_regexp='no'/>
-          <token postag='NCMP000' postag_regexp='no'/>
-      </antipattern>
-	<!-- Added by Marco A.G.Pinto - 2020-04-30 ***END***-->  
       <pattern>
           <token negate='yes' regexp='yes'>e|de|&hifen;</token>
         <marker>
