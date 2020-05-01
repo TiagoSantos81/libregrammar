@@ -3855,28 +3855,18 @@ title="Easy editing stylesheet" ?>
   <rulegroup id="MUITOS_MUITO" name="Advérbios: muitos/muito contentes">
     <!-- Based on Catalan grammar.xml by Tiago F. Santos, 2018-07-13 -->
       <antipattern>
-        <marker>
           <token regexp="yes">muit[ao]s|pouc[ao]s</token>
           <token max="3" postag="A..[MC][PN]." postag_regexp="yes"/>
           <token postag="N.[MC][PN].*|PI.[MC]P.*" postag_regexp="yes"/>
-        </marker>
       </antipattern>
       <antipattern>
-        <marker>
           <token regexp="yes">uns|umas</token>
           <token regexp="yes">pouc[ao]s</token>
-        </marker>
       </antipattern>
-    <!--antipattern>
-        <marker>
-          <token>n'</token>
-          <token>hi</token>
-          <token inflected="yes">haver</token>
-          <token regexp="yes">molts|pocs</token>
-        </marker>
-      </antipattern-->
     <rule>
       <pattern>
+          <token postag="V.+" postag_regexp="yes" skip='-1'>
+            <exception scope="next" postag="_PUNCT"/></token>
         <marker>
           <token regexp="yes">muit(?:a|os)|pouc(?:a|os)
             <exception scope="previous" inflected='yes'>haver</exception>
@@ -3885,7 +3875,7 @@ title="Easy editing stylesheet" ?>
           <token postag="AQ.[MC][PN]." postag_regexp="yes">
             <exception postag="N.[MC][PN].*|PI.[MC]P.*" postag_regexp="yes"/></token>
       </pattern>
-      <message>“Muito” e “pouco” são invariáveis como advérbio. Pretende dizer <suggestion><match no='1' regexp_match="(muit|pouc)[ao]s" regexp_replace="$1o"/></suggestion>?</message>
+      <message>“Muito” e “pouco” são invariáveis como advérbio. Pretende dizer <suggestion><match no='2' regexp_match="(muit|pouc)[ao]s" regexp_replace="$1o"/></suggestion>?</message>
       <example correction="muito">Estamos <marker>muitos</marker> contentes.</example>
       <example correction="pouco">São <marker>poucos</marker> usuais.</example>
       <example>Muitos grandes cantores.</example>
@@ -3895,9 +3885,12 @@ title="Easy editing stylesheet" ?>
       <example>Muitos asiáticos e uns poucos europeus.</example>
       <example>…há muitos disponíveis por outros meios.</example>
       <example>Trabalhamos com muitos autónomos.</example>
+      <example>Muitos idosos morreram por falta de cuidados hospitalares adequados…</example>
     </rule>
     <rule>
       <pattern>
+          <token postag="V.+" postag_regexp="yes" skip='-1'>
+            <exception scope="next" postag="_PUNCT"/></token>
         <marker>
           <token regexp="yes">muitas?|poucas?
             <exception scope="previous" inflected='yes'>haver</exception>
@@ -3906,7 +3899,7 @@ title="Easy editing stylesheet" ?>
           <token postag="AQ.[FC][PN]." postag_regexp="yes">
             <exception postag="N.[FC][PN].*|PI.[FC]P.*" postag_regexp="yes"/></token>
       </pattern>
-      <message>“Muito” e “pouco” são invariáveis como advérbio. Pretende dizer <suggestion><match no='1' regexp_match="(muit|pouc)[ao]s" regexp_replace="$1o"/></suggestion>?</message>
+      <message>“Muito” e “pouco” são invariáveis como advérbio. Pretende dizer <suggestion><match no='2' regexp_match="(muit|pouc)[ao]s" regexp_replace="$1o"/></suggestion>?</message>
       <example correction="muito">Estamos <marker>muitas</marker> embriagadas.</example>
       <example correction="pouco">São <marker>poucas</marker> escassas.</example>
       <example>Muitos grandes cantores.</example>
@@ -25828,7 +25821,7 @@ TODO Write better examples
     <rule>
       <pattern>
           <token>aonde</token>
-          <token regexp='yes' inflected='yes'>estar|viver|morar|trabalhar</token>
+          <token regexp='yes' inflected='yes'>estar|ficar|viver|morar|trabalhar</token>
       </pattern>
       <message>\1 pode ser subsituido 'para que lugar'. Pretende dizer:<suggestion>onde \2</suggestion>?</message>
       <example correction="Onde trabalha"><marker>Aonde trabalha</marker>?</example>
@@ -25843,7 +25836,7 @@ TODO Write better examples
     </rule>
     <rule>
       <antipattern>
-          <token regexp='yes'>até|de</token>
+          <token regexp='yes'>até|de|para</token>
           <token>onde</token>
       </antipattern>
       <antipattern><!-- futuro perifrásico -->
@@ -25852,17 +25845,16 @@ TODO Write better examples
       </antipattern>
       <pattern>
           <token>onde</token>
-          <token regexp='yes' inflected='yes'>ir|partir|voar|navegar|voltar
+          <token regexp='yes' inflected='yes'>partir|voar|navegar|rumar|voltar
             <exception inflected='yes'>ser</exception></token>
       </pattern>
-      <message>'<match no='1' case_conversion='startupper'/>' pode ser subsituido 'em que lugar'. Pretende dizer: <suggestion>aonde \2</suggestion> ou <suggestion>donde \2</suggestion>?</message>
-      <example correction="Aonde vais|Donde vais"><marker>Onde vais</marker>?</example>
+      <message>'<match no='1' case_conversion='startupper'/>' pode ser subsituido 'em que lugar'. Pretende dizer: <suggestion>aonde \2</suggestion>, <suggestion>donde \2</suggestion> ou <suggestion>de onde \2</suggestion>?</message>
+      <example correction="Aonde voas|Donde voas|De onde voas"><marker>Onde voas</marker>?</example>
       <example>É servida pelo terminal rodoviário de Retiro, de onde partem e chegam linhas de autocarros para todas…</example>
-      <example>…o invólucro onde vão assentar os livros encaixa dentro do tronco da árvore.</example>
     </rule>
     <rule>
       <antipattern>
-          <token regexp='yes'>até|de</token>
+          <token regexp='yes'>até|de|para</token>
           <token>onde</token>
       </antipattern>
       <antipattern><!-- vir como auxiliar -->
@@ -25877,6 +25869,25 @@ TODO Write better examples
       </pattern>
       <message>'<match no='1' case_conversion='startupper'/>' pode ser subsituido 'em que lugar'. Pretende dizer: <suggestion>donde \2</suggestion> ou <suggestion>de onde \2</suggestion>?</message>
       <example correction="Donde vens|De onde vens"><marker>Onde vens</marker>?</example>
+    </rule>
+    <rule>
+      <antipattern>
+          <token regexp='yes'>até|de|para</token>
+          <token>onde</token>
+      </antipattern>
+      <antipattern><!-- futuro perifrásico -->
+          <token inflected='yes'>ir</token>
+          <token postag='VMN0000'/><!-- TODO add exceptions. e.g. "Onde vamos comer?" "Nós não decidimos onde vamos descansar."-->
+      </antipattern>
+      <pattern>
+          <token>onde</token>
+          <token inflected='yes'>ir
+            <exception inflected='yes' regexp='yes'>ser|vir</exception></token>
+      </pattern>
+      <message>'<match no='1' case_conversion='startupper'/>' pode ser subsituido 'em que lugar'. Pretende dizer: <suggestion>aonde \2</suggestion>?</message>
+      <example correction="Aonde vais"><marker>Onde vais</marker>?</example>
+      <example>…o invólucro onde vão assentar os livros encaixa dentro do tronco da árvore.</example>
+      <example>Ainda não sei para onde vou.</example>
     </rule>
   </rulegroup>
 
@@ -27784,7 +27795,8 @@ TODO Write better examples
     <rule>
       <pattern>
           <token regexp="yes" skip="2">[012]?\d[,\.][012345]\d</token>
-          <token regexp="yes" inflected="yes">&partes_do_dia;</token>
+          <token regexp="yes" inflected="yes">&partes_do_dia;
+            <exception>noites</exception></token>
       </pattern>
       <message>Em expressões de horas, utilize dois pontos.</message>
         <suggestion><match no='1' include_skipped='all' regexp_match='(\d+)[,\.](\d+)' regexp_replace='$1:$2'/> <match no='2' include_skipped='all'/></suggestion>
