@@ -1090,6 +1090,7 @@
     <rule>
       <pattern>
           <token regexp="yes">&art_detecao_paronimos;
+            <exception postag='SPS00'/><!-- XXX because it is disambiguated by S_V -->
             <exception regexp='yes'>[ao]s?|nos</exception></token>
         <marker>
         <and>
@@ -1303,12 +1304,18 @@
         <token postag='VMN0000'/>
         <token postag='N.F.+' postag_regexp='yes'/>
       </antipattern>
+      <antipattern><!-- e.g. 'modo de pensar' -->
+        <token postag='N.+' postag_regexp='yes'/>
+        <token>de</token>
+        <token postag='VMN0000'/>
+      </antipattern>
       <pattern>
           <token postag="SPS00" postag_regexp="no">
             <exception postag="SP.+" postag_regexp="yes" negate_pos='yes'/></token>
         <marker>
         <and>
-          <token postag="V.+" postag_regexp="yes"/>
+          <token postag="V.+" postag_regexp="yes">
+            <exception postag='VMN0000'/></token>
           <token postag="N.+" postag_regexp="yes"/>
         </and>
         </marker>
@@ -1320,10 +1327,10 @@
     </rule>
     <rule>
       <pattern>
-        <token postag='[VR].+' postag_regexp='yes'/>
-        <token>a</token>
+          <token postag='[VR].+' postag_regexp='yes'/>
+          <token regexp='yes'>a|de|em</token>
         <marker>
-        <token postag='VMN0000'/>
+          <token postag='VMN0000'/>
         </marker>
       </pattern>
       <disambig action='filter' postag="VMN0000"/>
@@ -1331,14 +1338,64 @@
     </rule>
     <rule>
       <pattern>
-          <token>a</token>
+          <token regexp='yes'>a|de|em</token>
         <marker>
-        <token postag='VMN0000'/>
+          <token postag='VMN0000'/>
         </marker>
-        <token postag='N.F.+' postag_regexp='yes'/>
+          <token postag='N.F.+' postag_regexp='yes'/>
       </pattern>
       <disambig action='filter' postag="VMN0000"/>
       <!-- e.g. Estavam 'a sentir pressões' -->
+    </rule>
+  </rulegroup>
+
+  <rulegroup id="NOUN_SP_INFINITIVE" name="Locuções nominais: Nome + Preposição + Infinitivo">
+    <rule>
+      <pattern><!-- e.g. maneira de pensar -->
+          <token postag='NCFS000'>
+            <exception postag_regexp='yes' postag='N.[^F][^S].+|V.+'/></token>
+          <token regexp='yes'>a|de|em</token>
+          <token postag='VMN0000'/>
+      </pattern>
+      <disambig action='replace'><wd pos="NCFS000"/><wd pos="SPS00"/><wd pos="NCFS000"/></disambig>
+    </rule>
+    <rule>
+      <pattern><!-- e.g. maneiras de pensar -->
+          <token postag='NCFP000'>
+            <exception postag_regexp='yes' postag='N.[^F][^P].+|V.+'/></token>
+          <token regexp='yes'>a|de|em</token>
+          <token postag='VMN0000'/>
+      </pattern>
+      <disambig action='replace'><wd pos="NCFP000"/><wd pos="SPS00"/><wd pos="NCFP000"/></disambig>
+    </rule>
+    <rule>
+      <pattern><!-- e.g. modo de pensar -->
+          <token postag='NCMS000'>
+            <exception postag_regexp='yes' postag='N.[^M][^S].+|V.+'/></token>
+          <token regexp='yes'>a|de|em</token>
+          <token postag='VMN0000'/>
+      </pattern>
+      <disambig action='replace'><wd pos="NCMS000"/><wd pos="SPS00"/><wd pos="NCMS000"/></disambig>
+    </rule>
+    <rule>
+      <pattern><!-- e.g. modos de pensar -->
+          <token postag='NCMP000'>
+            <exception postag_regexp='yes' postag='N.[^M][^P].+|V.+'/></token>
+          <token regexp='yes'>a|de|em</token>
+          <token postag='VMN0000'/>
+      </pattern>
+      <disambig action='replace'><wd pos="NCMP000"/><wd pos="SPS00"/><wd pos="NCMP000"/></disambig>
+    </rule>
+    <rule><!-- ambiguous forms -->
+      <pattern><!-- e.g. maneira de pensar -->
+          <token postag_regexp='yes' postag='D..FS.+'/>
+        <marker>
+          <token>forma</token>
+          <token regexp='yes'>a|de|em</token>
+          <token postag='VMN0000'/>
+        </marker>
+      </pattern>
+      <disambig action='replace'><wd pos="NCFS000"/><wd pos="SPS00"/><wd pos="NCFS000"/></disambig>
     </rule>
   </rulegroup>
 
@@ -2287,8 +2344,8 @@
     <rule>
       <pattern>
           <token regexp="yes">[\d,. ]+[º°′″‴][CFKNSEWO]?
-            <exception regexp='yes'>1[º°′″‴].?</exception>
-            <exception regexp='yes'>\d+º</exception></token>
+            <exception regexp='yes'>1\.?[º°′″‴].?</exception>
+            <exception regexp='yes'>\d+\.?º</exception></token>
       </pattern>
       <disambig action="replace"><wd pos="NCMP000"/></disambig>
     </rule>
@@ -2339,25 +2396,25 @@
       <pattern>
           <token regexp='yes'>\d+[\.&#57347;]?[oº]</token>
       </pattern>
-      <disambig action="replace"><wd pos="NCMS000"/></disambig>
+      <disambig action="replace"><wd pos="AO0MS0"/></disambig>
     </rule>
     <rule>
       <pattern>
           <token regexp="yes">\d+[\.&#57347;]?[oº][sˢ]</token>
       </pattern>
-      <disambig action="replace"><wd pos="NCMP000"/></disambig>
+      <disambig action="replace"><wd pos="AO0MP0"/></disambig>
     </rule>
     <rule>
       <pattern>
           <token regexp='yes'>\d+[\.&#57347;]?ª</token>
       </pattern>
-      <disambig action="replace"><wd pos="NCFS000"/></disambig>
+      <disambig action="replace"><wd pos="AO0FS0"/></disambig>
     </rule>
     <rule>
       <pattern>
           <token regexp="yes">\d+[\.&#57347;]?[aª][sˢ]</token>
       </pattern>
-      <disambig action="replace"><wd pos="NCFP000"/></disambig>
+      <disambig action="replace"><wd pos="AO0FP0"/></disambig>
     </rule>
   </rulegroup>
 
