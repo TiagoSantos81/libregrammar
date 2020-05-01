@@ -61,7 +61,7 @@ USA
     <!ENTITY adjective_material "glass|wooden|cloth|concrete|fabric|cotton|plastic|leather|ceramic|china|metal|steel|silicon">
     <!ENTITY adjective_purpose "folding|swinging|work|racing|cooking|sleeping|dance|rolling|walking">
 
-    <!ENTITY short_adjectives "bad|big|black|bland|blue|bold|brave|brief|bright|broad|calm|cheap|chewy|clean|close|coarse|cold|cool|cruel|cute|damp|dark|deep|dense|dry|dull|dumb|early|easy|faint|fair|fa[rt]|fast|few|fierce|fine|firm|fit|flat|fresh|full|good|grand|grave|great|gross|hard|harsh|high|hip|hot|humble|kind|large|late|light|little|long|loud|low|mad|mean|mild|moist|narrow|nea[rt]|new|nice|o[dl]d|off|plain|poor|proud|pure|quick|quiet|rare|raw|rich|ripe|rough|rude|sad|sa[fn]e|shallow|sharp|short|shy|silly|simple|sincere|slim|slow|small|smart|smooth|soft|soon|sore|sour|steep|strange|strict|strong|sweet|tall|tan|thick|thin|tiny|tough|true|ugly|warm|weak|weird|wet|wide|wild|wise|young">
+    <!ENTITY short_adjectives "bad|big|black|bland|blue|bold|brave|brief|bright|broad|calm|cheap|chewy|clean|close|coarse|cold|cool|cruel|cute|damp|dark|deep|dense|dry|dull|dumb|early|easy|faint|fair|fa[rt]|fast|few|fierce|fine|firm|fit|flat|fresh|full|good|grand|great|gross|hard|harsh|high|hip|hot|humble|kind|large|late|light|little|long|loud|low|mad|mean|mild|moist|narrow|nea[rt]|new|nice|o[dl]d|off|plain|poor|proud|pure|quick|quiet|rare|raw|rich|ripe|rough|rude|sad|sa[fn]e|shallow|sharp|short|shy|silly|simple|sincere|slim|slow|small|smart|smooth|soft|soon|sore|sour|steep|strange|strict|strong|sweet|tall|tan|thick|thin|tiny|tough|true|ugly|warm|weak|weird|wet|wide|wild|wise|young">
     <!ENTITY optional_short_adjectives "angry|bitter|bloody|bossy|busy|chubby|classy|clear|clever|cloudy|clumsy|crazy|creamy|creepy|crispy|crunchy|curly|curvy|deadly|dirty|dusty|fancy|filthy|flaky|friendly|funny|gentle|gloomy|greasy|greedy|guilty|hairy|handy|happy|healthy|heavy|hungry|icy|itchy|juicy|lazy|likely|lively|lonely|lovely|messy|nasty|naughty|needy|noisy|oily|polite|pretty|risky|roomy|rusty|salty|scary|shiny|skinny|sleepy|slimy|smelly|smoky|sorry|spicy|stingy|sunny|sweaty|tasty|thirsty|wealthy|windy|worldly|worthy">
     <!ENTITY extreme_qualifiers "ex(?:treme(?:ly)?|ceedingly|ceptionally|tra(ordinarily)?)|fault|tremendously|immensely|vastly|hugely|abundantly|intensely|acutely|singularly|significantly|distinctly|outstandingly|uncommonly|unusually|decidedly|particularly|eminently|supremely|highly|remarkably|really|truly|mightily|thoroughly|utmost|super|hiper|ultra">
     <!ENTITY ambiguous_past_tense_forms "babysat|backlighted|backlit|bare|bended|bode|bore|bound|brake|breastfed|burst|bust|clang|clave|could|crew|drunk|fell|felt|found|girt|green-lighted|green-lit|grove|hand-fed|hand-knit|hand-knitted|hew|hoist|knit|lope|low|misfit|missaw|outdrank|outdrunk|outflew|overbred|overdrank|overdrunk|overgot|overstrung|quick-froze|quod|quoth|re-laid|resent|reshowed|retread|retrodden|rewed|rid|rove|sate|self-fed|saw|shitted|shore|should|slang|slayed|slew|smelt|sod|span|spat|spoke|stringed|sung|swank|sweat|swum|test-flew|thrust|tread|trodden|unheard|upheaved|upswept|was|wed|were|wet|worth|worthed|would|wrack|writ|wrought"><!-- XXX excluded: bet|bid|book|lay|let|overlay|quit|read|rent|sew|shove|straight|sublet|tow|underlay|underlet| -->
@@ -3704,7 +3704,7 @@ USA
                         <token>its</token>
                     </marker>
                     <token postag="RB" min="0" />
-                    <token postag="SENT_END" regexp="yes">everyday|wrong|(in)?correct|sure|on|off|out|in|fine|ok(ay)?|(al)?right|left|awesome|available|beautiful|ready|(im)?possible|dangerous|different|enough|t?here|sexy|&short_adjectives;|&optional_short_adjectives;</token>
+                    <token postag="SENT_END" regexp="yes">free|expensive|cheap|new|old|everyday|wrong|(in)?correct|sure|on|off|out|in|fine|ok(ay)?|(al)?right|left|awesome|available|beautiful|ready|(im)?possible|dangerous|different|enough|t?here|sexy|&short_adjectives;|&optional_short_adjectives;</token>
                 </pattern>
                 <message>Did you mean <suggestion>it's</suggestion> (=<suggestion>it is</suggestion>) instead of 'its' (possessive pronoun)?</message>
                 <short>Possible typo</short>
@@ -3726,7 +3726,7 @@ USA
                         <token>its</token>
                     </marker>
                     <token postag="RB" min="0" />
-                    <token regexp="yes" postag="SENT_END">everyday|sure|on|off|out|in|fine|ok(ay)?|(al)?right|left|awesome|available|beautiful|ready|(im)?possible|dangerous|different|enough|t?here|sexy|&short_adjectives;|&optional_short_adjectives;</token>
+                    <token postag="SENT_END" regexp="yes">free|expensive|cheap|new|old|everyday|wrong|(in)?correct|sure|on|off|out|in|fine|ok(ay)?|(al)?right|left|awesome|available|beautiful|ready|(im)?possible|dangerous|different|enough|t?here|sexy|&short_adjectives;|&optional_short_adjectives;</token>
                 </pattern>
                 <message>Did you mean <suggestion>it's</suggestion> (=<suggestion>it is</suggestion>) instead of 'its' (possessive pronoun)?</message>
                 <short>Possible typo</short>
@@ -3742,7 +3742,7 @@ USA
                         <token>its</token>
                     </marker>
                     <token postag="RB" min="0" />
-                    <token regexp="yes">everyday|wrong|(in)?correct|sure|on|off|out|in|fine|ok(ay)?|(al)?right|left|awesome|available|beautiful|ready|(im)?possible|dangerous|different|enough|t?here|sexy|&short_adjectives;|&optional_short_adjectives;</token>
+                    <token regexp="yes">free|expensive|cheap|new|old|everyday|wrong|(in)?correct|sure|on|off|out|in|fine|ok(ay)?|(al)?right|left|awesome|available|beautiful|ready|(im)?possible|dangerous|different|enough|t?here|sexy|&short_adjectives;|&optional_short_adjectives;</token>
                     <token postag="SENT_END" regexp="yes">\p{P}</token>
                 </pattern>
                 <message>Did you mean <suggestion>it's</suggestion> (=<suggestion>it is</suggestion>) instead of 'its' (possessive pronoun)?</message>
@@ -4616,7 +4616,7 @@ USA
         </rulegroup>
 
         <rulegroup id="IT_IS_2" name="its vs it is">
-            <rule default="temp_off">
+            <rule>
                 <antipattern>
                     <token regexp="yes">since|until|after|before</token>
                     <token>its</token>
@@ -4799,9 +4799,9 @@ USA
                         <token regexp="yes">its?</token>
                     </marker>
                     <token regexp="yes" min="0">all|both|being|feeling|doing|going|keeping|managing|recovering</token>
-                    <token regexp="yes" min="0" max="2">just|not|very|really|even|totally|absolutely|too|more|less|always|never|pretty|perfectly|obviously|normally|usually|actually|kinda|probably|almost|basically|currently|only|also|exactly|definitely|much|still</token>
+                    <token regexp="yes" min="0" max="2">just|not|very|really|even|totally|absolutely|extremely|too|more|less|always|never|pretty|perfectly|obviously|normally|usually|actually|kinda|probably|almost|basically|currently|only|also|exactly|definitely|much|still</token>
                     <!-- long list of adjectives is currently necessary due to wrong tagging -->
-                    <token regexp="yes">ok(ay)?|fine|good|well|healthy|happy|successful|better|lucky|t?here|ready|sorry|glad|(un)?able|hungry|mad|busy|safe|welcome|angry|sick|proud|right|correct|wrong|crazy|great|cool|alone|amazing|beautiful|pretty|attractive|handsome|awesome|nice|(im)?possible|(un)?able|(un)?clear|helpful|important|time|nicer|best|similar|difficult|small|big|large|little|active|bad|wonderful|simpler?|easy|early|available|dangerous|enough|alright|sure|sexy|alone|nothing|free|cheap|expensive|annoying|worth|different|popular|famous|useful|old|young|hot|sweet|cute|strong|interesting|intelligent|poor|huge|rare|aware|efficient|capable|powerful|sufficient|afraid|obvious|careful|(un)?acceptable|boring|weird|valid|late|early|soon|smart|easier|useless|fantastic|hard|handy|related|relevant|normal|restricted|harm(ful|less)|one|up|clever|fair|just|only|meaningless|(un)?necessary|essential|foolish|natural|true|splendid|unlikely|(in)?appropriate|significant|special|confused|(un)?real|fake|perfect|dead|alive|red|green|blue|yellow|black|white|pink|purple|grey|gray|golden|broken</token>
+                    <token regexp="yes">ok(ay)?|next|fine|good|well|healthy|happy|successful|better|lucky|t?here|ready|sorry|glad|(un)?able|hungry|mad|busy|safe|welcome|angry|sick|proud|right|correct|wrong|crazy|great|cool|alone|amazing|beautiful|pretty|attractive|handsome|awesome|nice|(im)?possible|(un)?able|(un)?clear|helpful|important|time|nicer|best|similar|difficult|small|big|large|little|active|bad|wonderful|simpler?|easy|early|available|dangerous|enough|alright|sure|sexy|alone|nothing|free|cheap|expensive|annoying|worth|different|popular|famous|useful|old|young|hot|sweet|cute|strong|interesting|intelligent|poor|huge|rare|aware|efficient|capable|powerful|sufficient|afraid|obvious|careful|(un)?acceptable|boring|weird|valid|late|early|soon|smart|easier|useless|fantastic|hard|handy|related|relevant|normal|restricted|harm(ful|less)|one|up|clever|fair|just|only|meaningless|(un)?necessary|essential|foolish|natural|true|splendid|unlikely|(in)?appropriate|significant|special|confused|(un)?real|fake|perfect|dead|alive|red|green|blue|yellow|black|white|pink|purple|grey|gray|golden|broken</token>
                     <token min="0" regexp="yes">now|soon|together|tonight|today|yesterday|tomorrow|(any|some)more|t?here</token>
                     <token regexp="yes">
                         \p{P}|of|at|for|in|on|to|because|with|about|than
@@ -5460,6 +5460,10 @@ USA
                 <token regexp="yes">rights|resources|ingredients</token>
             </antipattern>
             <antipattern>
+                <token regexp="yes">LGBTQ?</token>
+                <token>rights</token>
+            </antipattern>
+            <antipattern>
                 <token>dangerous</token>
                 <token>goods</token>
             </antipattern>
@@ -5473,7 +5477,7 @@ USA
             </antipattern>
             <antipattern><!-- www.investopedia.com/terms-beginning-with-e-4769355 and others-->
                 <token>earnings</token>
-                <token regexp="yes">announcement|estimate|management|multiplier|news|report|season|yield|release|date</token><!-- (This is a full list, not only non-count nouns.) 'news' is not in the dictionary, but many web pages show it as a singular compound noun. -->
+                <token regexp="yes">announcement|estimate|management|multiplier|news|report|season|yield|release|date|measurement</token><!-- (This is a full list, not only non-count nouns.) 'news' is not in the dictionary, but many web pages show it as a singular compound noun. -->
             </antipattern>
             <rule>
                 <antipattern><!-- Allow "Tom hates / likes / play ...." -->
@@ -5501,6 +5505,11 @@ USA
                     <token postag_regexp="yes" postag="NNP?S"/>
                     <token chunk="B-VP"/>
                 </antipattern>
+                <antipattern><!--  -->
+                    <token postag_regexp="yes" postag="NNP?S"/>
+                    <token regexp="yes">kind|sort</token>
+                    <token>of</token>
+                </antipattern>
                 <antipattern case_sensitive="yes"><!-- the City Lights manager -->
                     <token chunk="B-NP-plural" regexp="yes" postag="DT">\p{Ll}+</token>
                     <token postag_regexp="yes" postag="JJ.*" regexp="yes">\p{Lu}\p{Ll}+</token>
@@ -5512,11 +5521,37 @@ USA
                     <token>reduction</token>
                     <token postag_regexp="yes" postag="NN.*" regexp="yes" inflected="yes">conference|discussion|talk|treaty</token>
                 </antipattern>
+                <antipattern><!-- introductory phrase-->
+                    <token>for</token>
+                    <token regexp="yes">th[eo]se|some</token>
+                    <token>reasons</token>
+                </antipattern>
+                <antipattern><!-- introductory phrase-->
+                    <token regexp="yes">one|two</token>
+                    <token>of</token>
+                    <token>the</token>
+                    <token>reasons</token>
+                </antipattern>
+                <antipattern><!-- introductory phrase-->
+                    <token>in</token>
+                    <token regexp="yes">th[eo]se|some|many|all</token>
+                    <token>cases</token>
+                </antipattern>
+                <antipattern case_sensitive="yes"><!-- company -->
+                    <token>Epic</token>
+                    <token>Games</token>
+                </antipattern>
                 <pattern>
                     <token><exception postag="PRP$"/><exception inflected="yes" regexp="yes">give|avail|serve</exception></token>
                     <token postag="DT|JJ.*" postag_regexp="yes"><exception postag="CD"/></token>
                     <marker>
-                        <token postag="NNP?S" postag_regexp="yes" regexp="yes">\p{Lu}?\p{Ll}*s<exception regexp="yes">eats|says|likes|loves|hates|customs|sports|decreases|does|his|ones|relations|affairs|weapons|crimes|arts</exception><exception postag="VBZ|RB|IN|JJ|NN:.*|NNP?" postag_regexp="yes"/></token>
+                        <token postag="NNP?S" postag_regexp="yes" regexp="yes">
+                            \p{Lu}?\p{Ll}*s
+                            <exception regexp="yes">eats|says|likes|loves|hates|customs|sports|decreases|does|his|ones|relations|affairs|weapons|crimes|arts|maths</exception>
+                            <exception postag="VBZ|RB|IN|JJ|NN:.*|NNP?" postag_regexp="yes"/>
+                            <exception case_sensitive="yes" regexp="yes">Avengers|Yankees</exception><!-- movie -->
+                            <exception>continuos</exception><!-- not in our dict, probably misspelling of "continuous" -->
+                        </token>
                     </marker>
                     <token postag="NN(:.+)?" postag_regexp="yes" regexp="yes">\p{Ll}{2,}<exception regexp="yes">nothing|(any|some)thing|equipment|department|sector|exam|faculty|given|can|today|yesterday|tomorrow|now|in|are</exception><exception postag="VBG|VB|VBP|VB[DN]|RB|MD|IN|JJ.*|CC|PRP|NNP.*" postag_regexp="yes"/></token>
                     <token><exception regexp="yes">\p{Punct}|and|or</exception></token>
@@ -5566,6 +5601,9 @@ USA
                 <example>...land and Australia was played in 1877, though the Ashes legend started later, after the ninth Test.</example>
                 <example>The upcoming Ashes series in 2013 will be held in England.</example>
                 <example>But not all the earnings news was cheery.</example>
+                <example>For these reasons marijuana cannot be legalized.</example>
+                <example>Every Avengers movie is great.</example>
+                <example>He is a maths genius.</example>
                 <example>The earnings release was scheduled for May.</example>
                 <example>... voted against the ratification of New Start, a nuclear <marker>arms reduction treaty</marker> between the United States and Russian Federation.</example><!-- #2423 -->
                 <example correction="days'|day's|days,">In the old <marker>days</marker> friendship had more meaning.</example><!-- https://forum.languagetool.org/t/en-possible-false-positive-2020-02-11/5368 -->
@@ -5604,7 +5642,7 @@ USA
                     <marker>
                         <token postag="NNP?S" postag_regexp="yes" regexp="yes">(\p{Ll}|-)*s<exception regexp="yes">sports|eats|says|likes|loves|hates|desires|his|ones|relations|affairs|weapons|crimes</exception><exception postag="VBZ|RB|IN|JJ|NN:.*|NNP?" postag_regexp="yes"/></token>
                     </marker>
-                    <token postag="NN(:.+)?" postag_regexp="yes" regexp="yes">\p{Ll}{2,}<exception regexp="yes">sector|department|given|exam|faculty|factory|today|yesterday|tomorrow|now|in</exception><exception postag="RB|MD|IN|JJ.*|CC|VB[GDP]" postag_regexp="yes"/></token>
+                    <token postag="NN(:.+)?" postag_regexp="yes" regexp="yes">\p{Ll}{2,}<exception regexp="yes">nothing|(any|some)thing|sector|department|given|exam|faculty|factory|today|yesterday|tomorrow|now|in</exception><exception postag="RB|MD|IN|JJ.*|CC|VB[GDP]" postag_regexp="yes"/></token>
                     <token regexp="yes">\p{Punct}</token>
                 </pattern>
                 <message>Possible typo: apostrophe is missing. Did you mean <suggestion><match no="3"/>'</suggestion> or <suggestion><match no="3" postag="NN(P)?S" postag_regexp="yes" postag_replace="NN$1(:U.?)?" setpos="no"/>'s</suggestion>?</message>
@@ -5675,7 +5713,7 @@ USA
                 <example>Is every Robbins algebra a Boolean algebra?</example>
                 <example>Formula One drivers pay a FIA Super Licence fee, which in 2013 was €10,000 plus €1,000 per point.</example>
             </rule>
-            <rule default="temp_off">
+            <rule>
                 <pattern>
                     <token regexp="yes">in|for</token>
                     <marker>
@@ -5687,6 +5725,25 @@ USA
                 <suggestion><match no="2" regexp_match="(?i)(god|fuck|hell|christ|heaven|goodness|goddess).*$" regexp_replace="$1's" /> \3</suggestion>
                 <example correction="God's name">In <marker>Gods name</marker>, please move!</example>
                 <example correction="goodness's sake">For <marker>goodness sake</marker>, don't scare me like that!</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp="yes">(some|any|every)(thing)s</token>
+                </pattern>
+                <message>It seems that a possessive apostrophe is missing or the word is misspelled.</message>
+                <suggestion><match no="1" regexp_match="(?i)things" regexp_replace="" />thing's</suggestion>
+                <suggestion><match no="1" regexp_match="(?i)things" regexp_replace="" /> things</suggestion>
+                <suggestion><match no="1" regexp_match="(?i)things" regexp_replace="" />thing</suggestion>
+                <example correction="something's|some things|something">He's eating someones or <marker>somethings</marker> lunch.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp="yes">(some|any|every)(where|one|body)s</token>
+                </pattern>
+                <message>It seems that a possessive apostrophe is missing or the word is misspelled.</message>
+                <suggestion><match no="1" regexp_match="(?i)(some|any|every)(where|one|body)s" regexp_replace="$1" /><match no="1" regexp_match="(?i)(some|any|every)(where|one|body)s" regexp_replace="$2" />'s</suggestion>
+                <suggestion><match no="1" regexp_match="(?i)(some|any|every)(where|one|body)s" regexp_replace="$1" /><match no="1" regexp_match="(?i)(some|any|every)(where|one|body)s" regexp_replace="$2" /></suggestion>
+                <example correction="someone's|someone">I think this goes against <marker>someones</marker> principles.</example>
             </rule>
         </rulegroup>
         <rulegroup id="APOSTROPHE_PLURAL" name="Possessive form instead of plural">
@@ -7744,7 +7801,7 @@ USA
                 <token>
                     <exception regexp="yes">not|out</exception>
                     <exception postag="DT|IN|UNKNOWN" postag_regexp="yes" />
-                    <exception postag="SENT_END" regexp="yes">&optional_short_adjectives;|&short_adjectives;|awesome|beautiful|ready|possible|dangerous|different|enough|t?here|right|wrong|left</exception>
+                    <exception postag="SENT_END" regexp="yes">&optional_short_adjectives;|&short_adjectives;|awesome|beautiful|ready|possible|dangerous|different|enough|t?here|right|wrong|left|free</exception>
                 </token>
             </pattern>
             <message>Did you mean <suggestion><match no="1"/> your</suggestion>?</message>
@@ -8136,9 +8193,9 @@ USA
                         <token regexp="yes">your?|ur</token>
                     </marker>
                     <token regexp="yes" min="0">all|both|being|feeling|doing|keeping|managing|recovering</token>
-                    <token regexp="yes" min="0" max="2">just|not|very|really|even|totally|absolutely|too|more|less|always|never|pretty|perfectly|obviously|normally|usually|actually|kinda|probably|almost|basically|currently|only|also|exactly|definitely|much|still</token>
+                    <token regexp="yes" min="0" max="2">just|not|very|really|even|totally|absolutely|extremely|too|more|less|always|never|pretty|perfectly|obviously|normally|usually|actually|kinda|probably|almost|basically|currently|only|also|exactly|definitely|much|still</token>
                     <!-- long list of adjectives is currently necessary due to wrong tagging -->
-                    <token regexp="yes">ok(ay)?|fine|good|well|healthy|happy|successful|better|lucky|t?here|ready|sorry|glad|(un)?able|hungry|mad|busy|safe|welcome|angry|sick|proud|right|correct|wrong|crazy|great|cool|alone|amazing|beautiful|pretty|attractive|handsome|awesome|nice|(im)?possible|(un)?able|(un)?clear|helpful|important|time|nicer|best|similar|difficult|small|big|large|little|active|bad|wonderful|simpler?|easy|early|available|dangerous|enough|alright|sure|sexy|alone|nothing|free|cheap|expensive|annoying|worth|different|popular|famous|useful|old|young|hot|sweet|cute|strong|interesting|intelligent|poor|huge|rare|aware|efficient|capable|powerful|sufficient|afraid|obvious|careful|(un)?acceptable|boring|weird|valid|late|early|soon|smart|easier|useless|fantastic|hard|handy|related|relevant|normal|restricted|harm(ful|less)|one|up|clever|fair|just|only|meaningless|(un)?necessary|essential|foolish|natural|true|splendid|unlikely|(in)?appropriate|significant|special|confused|(un)?real|fake|perfect|dead|alive|red|green|blue|yellow|black|white|pink|purple|grey|gray|golden|broken</token>
+                    <token regexp="yes">ok(ay)?|next|fine|good|well|healthy|happy|successful|better|lucky|t?here|ready|sorry|glad|(un)?able|hungry|mad|busy|safe|welcome|angry|sick|proud|right|correct|wrong|crazy|great|cool|alone|amazing|beautiful|pretty|attractive|handsome|awesome|nice|(im)?possible|(un)?able|(un)?clear|helpful|important|time|nicer|best|similar|difficult|small|big|large|little|active|bad|wonderful|simpler?|easy|early|available|dangerous|enough|alright|sure|sexy|alone|nothing|free|cheap|expensive|annoying|worth|different|popular|famous|useful|old|young|hot|sweet|cute|strong|interesting|intelligent|poor|huge|rare|aware|efficient|capable|powerful|sufficient|afraid|obvious|careful|(un)?acceptable|boring|weird|valid|late|early|soon|smart|easier|useless|fantastic|hard|handy|related|relevant|normal|restricted|harm(ful|less)|one|up|clever|fair|just|only|meaningless|(un)?necessary|essential|foolish|natural|true|splendid|unlikely|(in)?appropriate|significant|special|confused|(un)?real|fake|perfect|dead|alive|red|green|blue|yellow|black|white|pink|purple|grey|gray|golden|broken</token>
                     <token min="0" regexp="yes">now|soon|together|tonight|today|yesterday|tomorrow|(any|some)more|t?here</token>
                     <token regexp="yes">
                         \p{P}|of|at|for|in|on|to|because|with|about|than
@@ -8256,10 +8313,7 @@ USA
                         <token regexp="yes">your|ur|ya</token>
                     </marker>
                     <token postag="RB" min="0" />
-                    <token postag="SENT_END" regexp="yes">
-                        everyday|sure|on|off|out|in|fine|ok(ay)?|(al)?right|left|awesome|available|beautiful|ready|possible|dangerous|different|enough|t?here|sexy|&short_adjectives;|&optional_short_adjectives;
-                        <exception>grave</exception>
-                    </token>
+                    <token postag="SENT_END" regexp="yes">free|expensive|cheap|new|old|everyday|wrong|(in)?correct|sure|on|off|out|in|fine|ok(ay)?|(al)?right|left|awesome|available|beautiful|ready|(im)?possible|dangerous|different|enough|t?here|sexy|&short_adjectives;|&optional_short_adjectives;</token>
                 </pattern>
                 <message>Did you mean <suggestion>you're</suggestion>?</message>
                 <example correction="you're">But <marker>your</marker> so beautiful</example>
@@ -8276,7 +8330,7 @@ USA
                         <token regexp="yes">your|ur|ya</token>
                     </marker>
                     <token postag="RB" min="0" />
-                    <token regexp="yes">everyday|sure|on|off|out|in|fine|ok(ay)?|(al)?right|left|awesome|available|beautiful|ready|possible|dangerous|different|enough|t?here|sexy|&short_adjectives;|&optional_short_adjectives;</token>
+                    <token regexp="yes">free|expensive|cheap|new|old|everyday|wrong|(in)?correct|sure|on|off|out|in|fine|ok(ay)?|(al)?right|left|awesome|available|beautiful|ready|(im)?possible|dangerous|different|enough|t?here|sexy|&short_adjectives;|&optional_short_adjectives;</token>
                     <token postag="SENT_END" regexp="yes">\p{P}</token>
                 </pattern>
                 <message>Did you mean <suggestion>you're</suggestion>?</message>
@@ -8291,7 +8345,7 @@ USA
                         <token regexp="yes">your|ur|ya</token>
                     </marker>
                     <token postag="RB" min="0" />
-                    <token postag="SENT_END" regexp="yes">everyday|sure|on|off|out|in|fine|ok(ay)?|(al)?right|left|awesome|available|beautiful|ready|possible|dangerous|different|enough|t?here|sexy|&short_adjectives;|&optional_short_adjectives;</token>
+                    <token postag="SENT_END" regexp="yes">free|expensive|cheap|new|old|everyday|wrong|(in)?correct|sure|on|off|out|in|fine|ok(ay)?|(al)?right|left|awesome|available|beautiful|ready|(im)?possible|dangerous|different|enough|t?here|sexy|&short_adjectives;|&optional_short_adjectives;</token>
                 </pattern>
                 <message>Did you mean <suggestion>you're</suggestion>?</message>
                 <example correction="you're">Yes <marker>your</marker> so beautiful</example>
@@ -11115,7 +11169,7 @@ USA
             <example type="triggers_error">returnMessage = (returnMessage + " IM Used");</example>
         </rule>
 
-        <rule id="ER" name="er (her, err, Er)" default="temp_off"><!-- #2822 -->
+        <rule id="ER" name="er (her, err, Er)"><!-- #2822 -->
             <antipattern><!-- quoted text -->
                 <token skip="-1" regexp="yes">["“]</token>
                 <token skip="-1">er</token>
@@ -11190,6 +11244,76 @@ USA
             <example type="triggers_error">The er in err?</example>
 <!-- Not found --><example>er name is Mary.</example>
         </rule>
+
+        <rulegroup id="NON_STANDARD_WORD" name="Non-standard word"><!-- #2833 -->
+            <rule><!-- For 's -->
+                <antipattern>
+                    <token spacebefore="no">(</token>
+                    <token spacebefore="no">s</token> 
+                    <token spacebefore="no">)</token>
+                </antipattern>
+                <antipattern>
+                    <token spacebefore="no">[</token>
+                    <token spacebefore="no">s</token> 
+                    <token spacebefore="no">]</token>
+                </antipattern>
+                <antipattern>
+                    <token>[</token>
+                    <token spacebefore="no"/>
+                    <token spacebefore="no">]</token>
+                    <token spacebefore="no">s</token> 
+                </antipattern>
+                <antipattern>
+                    <token>"</token>
+                    <token spacebefore="no"/>
+                    <token spacebefore="no">"</token>
+                    <token spacebefore="no">s</token> 
+                </antipattern>
+                <antipattern>
+                    <token regexp="yes">(non-)?\p{Lu}</token>
+                    <token spacebefore="no">.</token>
+                    <token spacebefore="no" case_sensitive="yes">S</token>
+                </antipattern>
+                <antipattern case_sensitive="yes"><!-- do not create false alarm for programming language constants: "FOO_S" -->
+                    <token regexp="yes">[A-Z0-9]+</token>
+                    <token regexp="yes">_|-</token>
+                    <token>S</token>
+                </antipattern>
+                <antipattern><!-- Premium #845 compare(S,T) -->
+                    <token/>
+                    <token>(</token>
+                    <token regexp="yes">[a-z]</token>
+                    <token>,</token>
+                    <token regexp="yes">[a-z]</token>
+                    <token>)</token>
+                </antipattern>
+                <pattern>
+                    <token><exception postag_regexp="yes" postag="UNKNOWN|SYM"/></token>
+                    <token spacebefore="no" regexp="yes">.<exception regexp="yes">['’/]</exception></token>
+                    <token spacebefore="no">s</token>
+                </pattern>
+                <message>The word '\1\2\3' is not standard English. Did you mean <suggestion>\1’\3</suggestion> (curly apostrophe) or <suggestion>\1'\3</suggestion> (straight apostrophe)?</message>
+                <short>Possible typo</short>
+                <example correction="it’s|it's">… and <marker>it#s</marker> part of the test.</example>
+                <example correction="book’s|book's">My <marker>book;s</marker> on the shelf.</example>
+                <example correction="text’s|text's">Read your <marker>text(s</marker> very carefully.</example>
+                <example correction="what’s|what's">The 'apostrophe' in "<marker>what´s</marker>" has the ANSI value 180. It is an acute accent: www.alanwood.net/demos/ansi.html.</example>
+                <example>… and <marker>it's</marker> part of the test.</example>
+                <example>Read the <marker>document(s)</marker> carefully.</example>
+                <example>The <marker>U.S. Government</marker> will...</example>
+                <example>The acronym <marker>A.B.S.</marker> can mean...</example>
+                <example>... when he wrote, "<marker>[I]s</marker> this correct?"</example>
+                <example>... against the dishes as she "… <marker>think[s]</marker> it an odd jumble of trash."</example>
+                <example>... at approximately 10 cm/s on average.</example>
+                <example>... distinguishes between dotted and dotless "I"s.</example>
+                <example>... cardinal number system, e.g., ḫamsat ʾayyām →<marker>ḫam(a)s</marker> tiyyām, where certain words have a special plural...</example>
+                <example>... including the first non-U.S. team (the Montreal Expos)</example><!-- Premium #815 -->
+                <example>... with an operation compare(S,T) that checks whether the stacks S and T...</example>
+<!-- False negative, because of the exception for /s --><example>...or complete connection loss of the Bluetooth <marker>device/s</marker> connected to a computer.</example>
+<!-- False negative, out of scope --><example>If the <marker>result #s</marker> are incorrect, do the test again.</example>
+                <example type="triggers_error">{{cite web |last=Simmons |<marker>first=S</marker> |title=Philosophical Dimension of Drawing In...</example>
+            </rule>
+      </rulegroup>
 
     </category>
 
@@ -20376,7 +20500,7 @@ USA
             <url>https://en.wikipedia.org/wiki/WhatsApp</url>
             <example correction="WhatsApp|What's up">He is using <marker>Whats App</marker> to communicate with his friends.</example>
         </rule>
-        <rule id="ASSASSINS_CREED" name="Assassin's Creed" default="temp_off">
+        <rule id="ASSASSINS_CREED" name="Assassin's Creed">
             <antipattern case_sensitive="yes">
                 <token regexp="yes">Assassin|ASSASSIN</token>
                 <token regexp="yes">&apostrophe;</token>
@@ -43079,7 +43203,7 @@ The accident victim died from her injuries.
             <example correction="it, girls">Go for <marker>it girls</marker>!</example>
             <example correction="it, guys">Get ready for <marker>it guys</marker>!</example>
         </rule>
-        <rule id="GOD_COMMA" name="Comma after 'Oh my god'" default="temp_off">
+        <rule id="GOD_COMMA" name="Comma after 'Oh my god'">
             <antipattern>
                 <token>
                     <exception regexp="yes">my|oh</exception>
@@ -43102,7 +43226,7 @@ The accident victim died from her injuries.
             <example correction="God,">Oh my <marker>God</marker> it's terrible.</example>
             <example>Days I love:</example>
         </rule>
-        <rule id="FOR_GODS_SAKE_COMMA" name="Comma after 'for god's sake" default="temp_off">
+        <rule id="FOR_GODS_SAKE_COMMA" name="Comma after 'for god's sake">
             <pattern>
                 <token postag="SENT_START" />
                 <token regexp="yes" min="0">but|and|because|or</token>
@@ -44837,18 +44961,20 @@ The accident victim died from her injuries.
             <rule>
                 <pattern>
                     <token regexp="yes">an?|the|my|his|her|its|their|our|your|s</token>
+                    <token postag="JJ.*" postag_regexp="yes" min="0" />
                     <marker>
                         <token postag="CD"/>
                         <token regexp="yes">second|min(ute)?|hour|day|week|month|year|foot|met(er|re)|mile|inch|page|store?y</token>
                         <token regexp="yes">high|old|long</token>
                     </marker>
                     <token postag="JJ.*" postag_regexp="yes" min="0" />
-                    <token postag="NN.*|PCT" postag_regexp="yes"/>
+                    <token postag="NN.*|PCT|CC" postag_regexp="yes"/>
                 </pattern>
-                <message>When a number forms part of an adjectival compound, use hyphens: <suggestion>\2-\3-\4</suggestion></message>
+                <message>When a number forms part of an adjectival compound, use hyphens: <suggestion>\3-\4-\5</suggestion></message>
                 <url>https://dictionary.cambridge.org/us/grammar/british-grammar/word-formation/compounds</url>
                 <short>Missing hyphens</short>
                 <example correction="two-year-old">Rudolph is a <marker>two year old</marker> reindeer.</example>
+                <example correction="29-year-old">She is an adorable <marker>29 year old</marker> cat.</example>
                 <example>Rudolph is two years old.</example>
                 <example>Rudolph is two years old actually</example>
             </rule>
@@ -44906,7 +45032,7 @@ The accident victim died from her injuries.
                         <token postag="CD"></token>
                         <token regexp="yes">second|min(ute)?|hour|day|week|month|year|foot|met(er|re)|mile|inch|page|store?y</token>
                     </marker>
-                    <token postag="NN.*|JJ" postag_regexp="yes"/>
+                    <token postag="NN.*|JJ" postag_regexp="yes" />
                 </pattern>
                 <message>When a number forms part of an adjectival compound, use a hyphen: <suggestion>\3-\4</suggestion></message>
                 <url>https://dictionary.cambridge.org/us/grammar/british-grammar/word-formation/compounds</url>
@@ -46863,11 +46989,14 @@ The accident victim died from her injuries.
                         <token regexp="yes">their|they</token>
                     </marker>
                     <token regexp="yes" min="0">all|both|being|feeling|doing|going|keeping|managing|recovering</token>
-                    <token regexp="yes" min="0" max="2">just|not|very|really|even|totally|absolutely|too|more|less|always|never|pretty|perfectly</token>
+                    <token regexp="yes" min="0" max="2">just|not|very|really|even|totally|absolutely|extremely|too|more|less|always|never|pretty|perfectly|obviously|normally|usually|actually|kinda|probably|almost|basically|currently|only|also|exactly|definitely|much|still</token>
                     <!-- long list of adjectives is currently necessary due to wrong tagging -->
-                    <token regexp="yes">ok(ay)?|fine|good|well|healthy|happy|successful|better|lucky|t?here|ready|sorry|glad|(un)?able|hungry|mad|busy|safe|welcome|angry|sick|proud|right|correct|wrong|crazy|great|cool|alone|amazing|beautiful|pretty|attractive|handsome|awesome|nice|(im)?possible|(un)?able|(un)?clear|helpful|important|time|nicer|best|similar|difficult|small|big|large|little|active|bad|wonderful|simple|easy|early|available|dangerous|enough|alright|sure|sexy|alone|nothing|free|cheap|expensive|annoying|worth|different|popular|famous|useful|old|young|hot|sweet|cute|strong|interesting|intelligent|poor|huge|rare|aware|efficient|capable|powerful|sufficient|afraid|obvious|careful|(un)?acceptable|boring|weird|valid|late|early|soon|smart|easier|useless|fantastic|hard|handy|related|relevant|normal|restricted|harm(ful|less)|one|up|clever|fair|just|only|meaningless|(un)?necessary|essential|foolish|natural|true|splendid|unlikely|(in)?appropriate|significant|special|confused</token>
-                    <token min="0" regexp="yes">now|soon|together|tonight|today|yesterday|tomorrow|(any|some)more</token>
-                    <token regexp="yes">\p{P}|of|at|for|in|on|to|because|with|about|than</token>
+                    <token regexp="yes">ok(ay)?|next|fine|good|well|healthy|happy|successful|better|lucky|t?here|ready|sorry|glad|(un)?able|hungry|mad|busy|safe|welcome|angry|sick|proud|right|correct|wrong|crazy|great|cool|alone|amazing|beautiful|pretty|attractive|handsome|awesome|nice|(im)?possible|(un)?able|(un)?clear|helpful|important|time|nicer|best|similar|difficult|small|big|large|little|active|bad|wonderful|simpler?|easy|early|available|dangerous|enough|alright|sure|sexy|alone|nothing|free|cheap|expensive|annoying|worth|different|popular|famous|useful|old|young|hot|sweet|cute|strong|interesting|intelligent|poor|huge|rare|aware|efficient|capable|powerful|sufficient|afraid|obvious|careful|(un)?acceptable|boring|weird|valid|late|early|soon|smart|easier|useless|fantastic|hard|handy|related|relevant|normal|restricted|harm(ful|less)|one|up|clever|fair|just|only|meaningless|(un)?necessary|essential|foolish|natural|true|splendid|unlikely|(in)?appropriate|significant|special|confused|(un)?real|fake|perfect|dead|alive|red|green|blue|yellow|black|white|pink|purple|grey|gray|golden|broken</token>
+                    <token min="0" regexp="yes">now|soon|together|tonight|today|yesterday|tomorrow|(any|some)more|t?here</token>
+                    <token regexp="yes">
+                        \p{P}|of|at|for|in|on|to|because|with|about|than
+                        <exception regexp="yes">&apostrophe;</exception>
+                    </token>
                 </pattern>
                 <message>Did you mean <suggestion>they're</suggestion> (= they are)?</message>
                 <example correction="they're">I hope <marker>their</marker> ok.</example>
@@ -60268,7 +60397,7 @@ The accident victim died from her injuries.
             <message>It seems that an apostrophe is missing. Did you mean <suggestion>\1'\2</suggestion>?</message>
             <example correction="He'd"><marker>He d</marker> do it.</example>
         </rule>
-        <rule default="temp_off">
+        <rule>
             <pattern>
                 <marker>
                     <token regexp="yes">t?here|[wt]hat|who</token>
@@ -60722,7 +60851,7 @@ The accident victim died from her injuries.
                 </pattern>
                 <message>The character between '\1' and '\3' is an accent character, not a standard apostrophe character. Use <suggestion>\1’\3</suggestion> (curly apostrophe) or <suggestion>\1'\3</suggestion> (straight apostrophe).</message>
                 <short>Accent character misused as apostrophe</short>
-                <example correction="What’s|What's"><marker>What´s</marker> the problem?</example><!-- ANSI value 180. Also found by grammar-premium4 NON_STANDARD_WORD. This rule gives a more specific message. -->
+                <example correction="What’s|What's"><marker>What´s</marker> the problem?</example><!-- ANSI value 180. Also found by NON_STANDARD_WORD. This rule gives a more specific message. -->
                 <example correction="what’ll|what'll">... and <marker>what`ll</marker> you do?</example><!-- ANSI value 96. -->
                 <example correction="who’d|who'd">... but <marker>who´d</marker> do it?</example>
                 <example correction="that’d|that'd">... and <marker>that`d</marker> be a problem for us.</example>

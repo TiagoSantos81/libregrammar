@@ -2546,7 +2546,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             </rule>
             <rule>
                 <antipattern>
-                    <token>wo</token>
+                    <token regexp="yes">wo|de.</token>
                     <token>aus</token>
                 </antipattern>
                 <antipattern>
@@ -2561,6 +2561,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="mit mir|mit sich">Du kommst <marker>mit mich</marker>.</example>
                 <example>Es schwebt sozusagen schwerelos im ihn umgebenden Fluid.</example>
                 <example>Sie zog nach Nancy, von wo aus sie sich nach Paris begab.</example>
+                <example>Das Haus, von dem aus es sichtbar war,...</example>
             </rule>
         </rulegroup>
         <rule id="ER_EINZIGE" name="'er (der) einzige'">
@@ -2698,7 +2699,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token>wenigsten</token>
             </antipattern>
             <pattern>
-                <token regexp="yes" negate="yes">am|den|die|des|der</token>
+                <token regexp="yes" negate="yes">am|de[nrs]|die</token>
                 <marker>
                     <token>wenigsten</token>
                 </marker>
@@ -2773,6 +2774,28 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example>Seine Augen starrten ins <marker>Leere</marker>.</example>
             <example>Die Kampagne lief ins <marker>Leere</marker>.</example>
             <example correction="Leere">Das Gefühl der inneren <marker>Lehre</marker> wurde stärker.</example>
+        </rule>
+        <rule id="PREIS-LEISTUNGS-VERHAELTNIS" name="'Preis-/Leistungsverhältnis (Preis-Leistungsverhältnis)'">
+            <pattern case_sensitive="yes">
+                <token>Preis-</token>
+                <token>/</token>
+                <token regexp="yes">Leistungsverhältnis(ses)?</token>
+            </pattern>
+            <message>Meinten Sie <suggestion>Preis-Leistungs-<match no="3" regexp_match="Leistungsv" regexp_replace="V"/></suggestion>?</message>
+            <url>https://www.korrekturen.de/beliebte_fehler/preis-leistungsverhaeltnis.shtml</url>
+            <short>Möglicher Tippfehler</short>
+            <example correction="Preis-Leistungs-Verhältnis">Es zählt nur das <marker>Preis-/Leistungsverhältnis</marker>.</example>
+        </rule>
+        <rule id="BESCHRANKT_BESCHRAENKT" name="'beschränkt (beschrankt)'">
+            <pattern case_sensitive="yes">
+                <marker><token regexp="yes">(un)?beschränkt(e?[nmr])?</token></marker>
+                <token regexp="yes" inflected="yes">Bahnübergang|Übergang</token>
+            </pattern>
+            <message>Meinten Sie <suggestion><match no="1" regexp_match="ä" regexp_replace="a"/></suggestion>?</message>
+
+            <short>Möglicher Tippfehler</short>
+            <example correction="beschrankten">Sie überquerten einen <marker>beschränkten</marker> Bahnübergang.</example>
+            <example correction="unbeschrankten">Sie überquerten einen <marker>unbeschränkten</marker> Bahnübergang.</example>
         </rule>
         <rulegroup id="LEERE_DROHUNG" name="'lehre (leere) Drohungen' etc.">
             <rule>
@@ -9013,7 +9036,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
     <!-- Siehe auch ../../resource/de/compounds.txt -->
     <!-- ====================================================================== -->
     <category id="COMPOUNDING" name="Zusammen-/Getrenntschreibung">
-        <rule id="MUTMASSLICH" name="mut maßlich (mutmaßlich)" default="temp_off">
+        <rule id="MUTMASSLICH" name="mut maßlich (mutmaßlich)">
             <pattern>
                 <token case_sensitive="no">mut</token>
                 <token regexp="yes">ma(ss|ß)(lich(e|er|es|en|em)?|los|end?)</token>
@@ -32496,7 +32519,7 @@ Andere Projekte</example>
         </rulegroup>
         <rule id="DAS_FARBE_GENITIV" name="das + 'Farbe' + Genitiv ('das Weiß ihres Kleides')">
             <antipattern>
-                <token>weiß</token>
+                <token regexp="yes">wei(ß|ss)</token>
                 <token postag="(ART:DEF|PRO:POS):GEN:[^ ]*" postag_regexp="yes"/>
                 <token postag="ADJ:.+|SUB:.+" postag_regexp="yes"/>
             </antipattern>
