@@ -17618,6 +17618,29 @@ o tomate'>
     </rule>
   </rulegroup>
 
+  <rulegroup id='VOA_BOA' name="Confusão: voa - boa">
+    <!--      Created by Tiago F. Santos, 2020-05-01      -->
+    <rule>
+      <pattern>
+          <token>voa</token>
+          <token postag_regexp='yes' postag='N.FS.+' regexp='yes'>\p{Ll}+</token>
+      </pattern>
+      <message>Possível confusão de termos. Pretende dizer <suggestion>boa \2</suggestion>?</message>
+        <suggestion>\1, \2</suggestion>
+      <example correction="Boa noite|Voa, noite"><marker>Voa noite</marker>!</example>
+      <example>Voa, andorinha!</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token>voas</token>
+          <token postag_regexp='yes' postag='N.FP.+' regexp='yes'>\p{Ll}+</token>
+      </pattern>
+      <message>Possível confusão de termos. Pretende dizer <suggestion>boas \2</suggestion>?</message>
+        <suggestion>\1, \2</suggestion>
+      <example correction="Boas notícias|Voas, notícias"><marker>Voas notícias</marker>!</example>
+    </rule>
+  </rulegroup>
+
     <rule id='HÁS_VEZES' name="Confusão: hás vezes - às vezes">
     <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
       <pattern>
