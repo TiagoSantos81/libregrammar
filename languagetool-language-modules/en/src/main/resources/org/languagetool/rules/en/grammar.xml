@@ -43252,7 +43252,7 @@ The accident victim died from her injuries.
                     <token inflected="yes" regexp="yes">Can|(Wi|Sha)ll|Should|Do|Be|Have</token>
                     <token spacebefore="no" regexp="yes" min="0">&apostrophe;</token>
                     <token spacebefore="no" min="0">t</token>
-                    <token regexp="yes" skip="-1">I|you|we|they|he|she</token>
+                    <token regexp="yes" skip="-1">It?|you|we|they|he|she</token>
                     <marker>
                         <token postag="SENT_END" spacebefore="no">
                             .
@@ -53061,6 +53061,10 @@ The accident victim died from her injuries.
                 <token spacebefore="no">tat</token>
                 <token spacebefore="no" postag="PCT"/>
             </antipattern>
+            <antipattern><!-- just a tat -->
+                <token postag="DT"/>
+                <token spacebefore="no">tat</token>
+            </antipattern>
             <antipattern>
                 <token regexp="yes">cheap|old|souvenir</token>
                 <token>tat</token>
@@ -53101,6 +53105,7 @@ The accident victim died from her injuries.
             <example correction="that">Although I think that <marker>tat</marker> can be used effectively in some furnishing contexts...</example><!-- Ambiguous, but probably an error. -->
             <example>I think <marker>that</marker> is correct.</example>
             <example>Finally, she got rid of that old tat.</example>
+            <example>Finally, she got rid of that tat.</example>
             <example>She can also tat and crochet lace.</example>
             <example>The general mechanism involved in Tat activation of RNA Polymerase II (RNAP II) elongation... [www.ncbi.nlm.nih.gov/pmc/articles/PMC5700838/]</example>
             <example>nhac.tat.nguyen:</example>
