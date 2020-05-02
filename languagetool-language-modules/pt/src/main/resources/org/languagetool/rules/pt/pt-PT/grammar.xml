@@ -2021,7 +2021,7 @@ title="Easy editing stylesheet" ?>
     </rule>
     <rule>
       <pattern case_sensitive='yes'>
-          <token regexp='yes'>[Pp]ólo|[Zz]onas?|[Rr]egi(ão|ões)|[Vv]entos?|[Oo]ndas?|[Oo]ndulação|[Ss]well|[Direc?ção]|[Oo]|[Dd]o|[Nn]o|-</token>
+          <token regexp='yes'>[Pp]ólo|[Zz]onas?|[Rr]egi(ão|ões)|[Vv]entos?|[Oo]ndas?|[Oo]ndulação|[Ss]well|[Dd]irec?ção|[Oo]|[Dd]o|[Nn]o|&hifen;</token>
           <token min='0'>a</token>
           <token regexp='yes'>l?este</token>
       </pattern>

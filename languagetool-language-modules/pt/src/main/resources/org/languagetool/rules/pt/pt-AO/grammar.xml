@@ -32,6 +32,8 @@ title="Easy editing stylesheet" ?>
     <!ENTITY dias_semana "segunda|terça|quarta|quinta|sexta|sábado|domingo">
     <!ENTITY expressoes_de_tempo "(segundo|minuto|hora|dia|semana|(bi|tri|quadri|se)mestre|ano|década|decénio|mil[éê]nio)s?|mês|meses">
 
+    <!ENTITY hifen "[-‑]">
+
     <!ENTITY pontos_cardeais "norte|sul|este|oeste|ocidente|oriente|nascente|poente|nordeste|sudeste|noroeste|sudoeste">
 
 ]>
@@ -202,33 +204,43 @@ title="Easy editing stylesheet" ?>
     </rule>
   </rulegroup>
 
-  <rulegroup id='AO45_CARDINAL_POINTS_CASING' type='grammar' name='AO45: Capitalização de Pontos Cardeais'>
+  <rulegroup id='AO45_CARDINAL_POINTS_CASING' name='AO45: Capitalização de Pontos Cardeais' type='misspelling'>
     <!-- Created by  Tiago F. Santos , Portuguese rule, 2017-XX-XX -->
+      <url>http://www.uc.pt/noticias/02_NL_2011/05_2011/2011_05_ManualNovoAcordoOrtografico.pdf/</url>
     <rule>
       <pattern case_sensitive='yes'>
         <marker>
           <token regexp='yes'>&pontos_cardeais;
             <exception>este</exception></token>
         </marker>
-          <token negate='yes'>-</token>
+          <token negate='yes' regexp='yes'>&hifen;</token>
       </pattern>
       <message>Segundo o Acordo Ortográfico de 45, os pontos cardeais são capitalizados.</message>
         <suggestion><match no='1' case_conversion='startupper'/></suggestion>
-      <url>http://www.uc.pt/noticias/02_NL_2011/05_2011/2011_05_ManualNovoAcordoOrtografico.pdf/</url>
       <example correction='Sul'>Trás-os-Montes é a <marker>sul</marker> do rio Douro.</example>
       <example>Devolva este livro assim que puder.</example>
     </rule>
-<!-- TODO resolve Este e este confusion through wrong word in context
     <rule>
-      <pattern case_sensitive='yes'>
-          <token>este</token>
-          <token>de</token>
+      <pattern>
+          <token regexp='yes'>[Pp]ólo|[Zz]onas?|[Rr]egi(ão|ões)|[Vv]entos?|[Oo]ndas?|[Oo]ndulação|[Ss]well|[Dd]irec?ção|[Oo]|[Dd]o|[Nn]o|&hifen;</token>
+          <token min='0'>a</token>
+          <token regexp='yes' case_sensitive='yes'>l?este</token>
       </pattern>
       <message>Segundo o Acordo Ortográfico de 45, os pontos cardeais são capitalizados.</message>
-        <suggestion><match no='1' case_conversion='startupper'/></suggestion>
-      <url>http://www.uc.pt/noticias/02_NL_2011/05_2011/2011_05_ManualNovoAcordoOrtografico.pdf/</url>
-      <example correction='Sul'>Trás-os-Montes é a <marker>sul</marker> do rio Douro.</example>
-    </rule>-->
+        <suggestion><match no='1' include_skipped='all'/> <match no='2' include_skipped='all'/> <match no='3' case_conversion='startupper'/></suggestion>
+      <example correction='zona Este'>Os biomas são mais diversos na <marker>zona este</marker> da Europa.</example>
+      <example>A democracia carece do Estado de direito e este,...</example>
+    </rule>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes'>[Aa]</token>
+          <token regexp='yes'>l?este</token>
+          <token regexp='yes'>[dn][eao]s?</token>
+      </pattern>
+      <message>Segundo o Acordo Ortográfico de 45, os pontos cardeais são capitalizados.</message>
+        <suggestion>\1 <match no='2' case_conversion='startupper'/> \3</suggestion>
+      <example correction='A Este da'><marker>A este da</marker> Europa, os biomas são mais diversos.</example>
+    </rule>
   </rulegroup>
 
     <rule id="MUITO_PELO_É" name="AO45: Confusão: pelo - pêlo">
