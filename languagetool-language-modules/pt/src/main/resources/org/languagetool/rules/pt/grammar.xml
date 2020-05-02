@@ -9567,6 +9567,11 @@ title="Easy editing stylesheet" ?>
           <token>prática</token>
           <token postag_regexp='yes' postag='A..FS.+'/>
       </antipattern>
+      <antipattern>
+          <token>na</token>
+          <token>prática</token>
+          <token regexp='yes'>d[eao]s?</token>
+      </antipattern>
       <pattern>
           <token>
             <exception regexp="yes">“|«</exception>
@@ -9875,6 +9880,11 @@ title="Easy editing stylesheet" ?>
           <token>na</token>
           <token>prática</token>
           <token postag_regexp='yes' postag='A..FS.+'/>
+      </antipattern>
+      <antipattern>
+          <token>na</token>
+          <token>prática</token>
+          <token regexp='yes'>d[eao]s?</token>
       </antipattern>
       <pattern>
         <marker>
@@ -11126,12 +11136,23 @@ title="Easy editing stylesheet" ?>
     <rule>
       <pattern>
           <token regexp='yes'>(?:\d+)[ºo]\.?([sˢ]?)
+            <exception>360º</exception>
             <exception scope='next' regexp='yes' case_sensitive='yes'>[CFNSEW]|[Gg]raus?|[\d,. ]+[′''][CFKNSEWO]?</exception></token>
     <!--token min='0' spacebefore='no'>.</token-->
       </pattern>
       <message>A abreviatura deste ordinal é: <suggestion><match no='1' regexp_match='(\d+)[ºo]\.?([sˢ]?)\.?' regexp_replace='$1.º$2'/></suggestion>. Note que graus não são ordinais.</message>
       <example correction="12.º">O premiado é o <marker>12o</marker> da lista.</example>
       <example>Temperatura máxima prevista de 38º C.</example><!-- formatting of degrees done by DEGREE_SYMBOL -->
+    </rule>
+    <rule>
+      <pattern>
+          <token>360º
+            <exception scope='next' regexp='yes' case_sensitive='yes'>[CFNSEW]|[Gg]raus?|[\d,. ]+[′''][CFKNSEWO]?</exception></token>
+    <!--token min='0' spacebefore='no'>.</token-->
+      </pattern>
+      <message>A abreviatura de '360 graus' <suggestion>360°</suggestion>.Caso se esteja a referir-se ao ordinal, pontue a abreviatura.</message>
+        <suggestion>360.º</suggestion>
+      <example correction="360°|360.º">Deu uma volta de <marker>360º</marker>.</example>
     </rule>
     <rule>
       <pattern>
