@@ -1144,6 +1144,14 @@ title="Easy editing stylesheet" ?>
       <antipattern>
           <token case_sensitive='yes'>Podemos</token>
       </antipattern>
+<!-- MARCOAGPINTO 2020-05-03 *START* -->
+<!-- "Quem quiser pode ficar. " -->
+      <antipattern>
+          <token postag_regexp="yes" postag="VMSF[13]S0"></token>
+		  <token postag_regexp="yes" postag="VMIP3S0|VMM0[23]S0|VMSP[13]S0"></token>
+          <token postag_regexp="no" postag="VMN0000"></token>
+      </antipattern>
+<!-- MARCOAGPINTO 2020-05-03 *END* -->
     <rule>
       <pattern>
           <token inflected="yes" regexp='yes'>&verbos_auxiliares_aspectuais;|&verbos_auxiliares_modais;
@@ -2893,6 +2901,15 @@ title="Easy editing stylesheet" ?>
           <token postag_regexp='yes' postag='V...3P.+'/>
       </antipattern>	  
 <!-- MARCOAGPINTO 2020-04-01 *END* -->
+<!-- MARCOAGPINTO 2020-05-03 *START* -->
+<!-- "A água bebi/beberemos." -->
+<!-- "O vinho bebi/beberemos." -->
+      <antipattern>
+		<token postag_regexp='yes' postag='DA0[FM]S0'></token>
+		<token postag_regexp='yes' postag='NC[CFM]S000'></token>
+		<token postag_regexp='yes' postag='VMIS1S0|VMIF1P0|VMM01P0|VMSP1P0'></token>
+      </antipattern>	  	  
+<!-- MARCOAGPINTO 2020-05-03 *END* -->
       <pattern>
           <token postag_regexp='yes' postag='D...S.+'>
             <exception negate_pos='yes' postag_regexp='yes' postag='D...S.+'/></token>
