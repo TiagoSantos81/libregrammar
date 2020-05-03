@@ -1144,14 +1144,6 @@ title="Easy editing stylesheet" ?>
       <antipattern>
           <token case_sensitive='yes'>Podemos</token>
       </antipattern>
-<!-- MARCOAGPINTO 2020-05-03 *START* -->
-<!-- "Quem quiser pode ficar. " -->
-      <antipattern>
-          <token postag_regexp="yes" postag="VMSF[13]S0"></token>
-		  <token postag_regexp="yes" postag="VMIP3S0|VMM0[23]S0|VMSP[13]S0"></token>
-          <token postag_regexp="no" postag="VMN0000"></token>
-      </antipattern>
-<!-- MARCOAGPINTO 2020-05-03 *END* -->
     <rule>
       <pattern>
           <token inflected="yes" regexp='yes'>&verbos_auxiliares_aspectuais;|&verbos_auxiliares_modais;
@@ -1178,6 +1170,7 @@ title="Easy editing stylesheet" ?>
       <example>Não podem é impor que alguém seja forçado a trabalhar.</example>
       <example correction="vem i|vem ir|vem irar|vem a i|vem a ir|vem a irar|vem indo|vem irando|vem, irei">Na semana que <marker>vem irei</marker> trabalhar em Tóquio.</example><!-- XXX i as contracted infinitive -->
       <example>Na semana que vem, irei trabalhar em Tóquio.</example>
+      <example>Quem quiser, pode ficar. </example>
     </rule>
     <rule>
       <pattern>
