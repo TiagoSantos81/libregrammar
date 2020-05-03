@@ -53050,7 +53050,7 @@ The accident victim died from her injuries.
             <example type="triggers_error">What do you think about the <marker>state of art</marker> in Britain today?</example>
         </rule>
 
-        <rule id="TAT" name="tat (that)" default="temp_off"><!-- #2837 -->
+        <rule id="TAT" name="tat (that)"><!-- #2837 -->
             <antipattern><!-- www.lexico.com/definition/tit_for_tat -->
                 <token>tit</token>
                 <token>for</token>
@@ -53063,7 +53063,7 @@ The accident victim died from her injuries.
             </antipattern>
             <antipattern><!-- just a tat -->
                 <token postag="DT"/>
-                <token spacebefore="no">tat</token>
+                <token>tat</token>
             </antipattern>
             <antipattern>
                 <token regexp="yes">cheap|old|souvenir</token>
@@ -53095,14 +53095,14 @@ The accident victim died from her injuries.
             <example correction="That"><marker>Tat</marker> is not correct.</example>
             <example correction="That"><marker>Tat</marker>, spoken in a hurry, sounds weird.</example>
             <example correction="that">Although I think <marker>tat</marker> that is sometimes a...</example>
-            <example correction="that">The manager thinks that <marker>tat</marker> must be decided later.</example>
+            <example>The manager thinks that <marker>tat</marker> must be decided later.</example><!-- ambiguous, but probably wrong correction here -->
             <example correction="that">The mechanism involved in <marker>tat</marker> activation is not known.</example>
             <example correction="that">3. `&lt;client-resource>` <marker>tat</marker> loads a js script that waits for a button to appear...</example>
             <example correction="that">... it damages your camshafts (been there, seen <marker>tat</marker>) and can lead to catastrophic damage.</example>
             <example correction="that">I told her <marker>tat</marker> she must not do it.</example>
             <example correction="that">Unfortunately, <marker>tat</marker> gene is defective.</example>
             <example correction="that">Biology courses teach us <marker>tat</marker> proteins are essential for the organism.</example>
-            <example correction="that">Although I think that <marker>tat</marker> can be used effectively in some furnishing contexts...</example><!-- Ambiguous, but probably an error. -->
+            <example>Although I think that <marker>tat</marker> can be used effectively in some furnishing contexts...</example>
             <example>I think <marker>that</marker> is correct.</example>
             <example>Finally, she got rid of that old tat.</example>
             <example>Finally, she got rid of that tat.</example>
