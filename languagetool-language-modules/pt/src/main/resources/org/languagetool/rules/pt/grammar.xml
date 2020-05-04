@@ -2627,19 +2627,6 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes' case_sensitive='yes'>e|ou</token>
           <token regexp="yes">el[ea]|você</token>
       </antipattern>
-<!-- MARCOAGPINTO 2020-05-04 *START* -->
-<!-- "Agradeço a você pelo empréstimo." -->
-<!-- "Agradeço a vocês pelo empréstimo." -->
-<!-- "Ela pelo mundo todo irá." -->
-<!-- "Elas pelo mundo todo irão." -->
-<!-- "Falei com ele pelo telefone." -->
-<!-- "Falei com eles pelo telefone." -->
-      <antipattern>
-			<token  postag_regexp="yes" postag="PP3[FMC][SP]000"/>
-			<token  postag_regexp="no" postag="VMIP1S0"/>
-			<token  postag_regexp="no" postag="NCMS000"/>			
-      </antipattern>
-<!-- MARCOAGPINTO 2020-05-04 *END* -->
       <pattern>
           <token regexp="yes">el[ea]|você</token>
           <token min="0" max="3" postag='R.+' postag_regexp='yes'>
@@ -2653,6 +2640,12 @@ title="Easy editing stylesheet" ?>
       <example correction='Ele não passeia'><marker>Ele não passeiam</marker> na praia.</example>
       <example>Ele preocupar-se-ia, talvez, com esta manifestação de ignorância.</example>
       <example>Ele vai levar você pelo beiço.</example>
+      <example>Agradeço a você pelo empréstimo.</example>
+      <example>Agradeço a vocês pelo empréstimo.</example>
+      <example>Ela pelo mundo todo irá.</example>
+      <example>Elas pelo mundo todo irão.</example>
+      <example>Falei com ele pelo telefone.</example>
+      <example>Falei com eles pelo telefone.</example>
     </rule>
     <rule>
       <antipattern>
