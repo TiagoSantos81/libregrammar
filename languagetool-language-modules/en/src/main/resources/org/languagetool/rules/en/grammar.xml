@@ -56813,8 +56813,9 @@ The accident victim died from her injuries.
     </rule>
   </rulegroup>
 
-  <rulegroup id="ARCHAISMS" name="Archaic lang">
+  <rulegroup id="ARCHAISMS" name="Archaic language">
   <!-- Created by Tiago F. Santos, 2020-05-04 -->
+      <short>Archaism</short>
     <rule>
       <regexp>\b(&archaisms;)\b</regexp>
       <message>This expression is archaic and should only be used for poetical reasons in literary texts.</message>
@@ -56875,13 +56876,18 @@ The accident victim died from her injuries.
     </rule>
     <rule>
       <pattern>
-        <token regexp='yes'>i</token>
-        <token regexp='yes' spacebefore='no'>&apostrophe;</token>
+        <marker>
+          <token regexp='yes'>i</token>
+          <token regexp='yes' spacebefore='no'>&apostrophe;</token>
+        </marker>
+          <token>
+            <exception regexp='yes'>m|d|ve</exception></token>
       </pattern>
       <message>This contraction is archaic and should only be used for poetical reasons in literary texts.</message>
         <suggestion>in</suggestion>
       <url>https://en.wikipedia.org/wiki/Poetic_contraction</url>
-      <example correction="in"><marker>i'</marker></example>
+      <example correction="in"><marker>i'</marker>.</example>
+      <example>I've had this one.</example>
     </rule>
     <rule>
       <pattern>
