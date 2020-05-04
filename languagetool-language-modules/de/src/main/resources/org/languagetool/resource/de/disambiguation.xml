@@ -3896,6 +3896,34 @@ Copyright © 2013 Markus Brenneis, Daniel Naber, Jan Schreiber
             <disambig action="ignore_spelling"/>
         </rule>
     </rulegroup>
+    
+    <rule id="EVERYBODYS_DARLING" name="Ignore spelling of 'Everybody's Darling'">
+        <pattern>
+            <token>Everybody</token>
+            <token spacebefore="no" regexp="yes">['’`´‘]</token>
+            <token spacebefore="no">s</token>
+            <token>Darling</token>
+        </pattern>
+        <disambig action="ignore_spelling"/>
+    </rule>
+
+    <rule id="ON_DEMAND" name="Ignore spelling of 'on demand'">
+        <pattern>
+            <token>on</token>
+            <token regexp="yes">demand|air|top|call</token>
+        </pattern>
+        <disambig action="ignore_spelling"/>
+    </rule>
+
+    <rule id="ON_THE_ROAD" name="Ignore spelling of 'on the road'">
+        <pattern>
+            <token>on</token>
+            <token>the</token>
+            <token regexp="yes">road|rocks</token>
+        </pattern>
+        <disambig action="ignore_spelling"/>
+    </rule>
+
     <rule id="DOT_HYPHEN" name="ignore spelling of '.-'">
         <!-- ".-" was marked as a spelling mistake -->
         <pattern>

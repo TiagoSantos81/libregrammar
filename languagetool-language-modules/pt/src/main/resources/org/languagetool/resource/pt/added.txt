@@ -57,6 +57,7 @@ acreditar	acreditar	VMN01S0
 acreditar	acreditar	VMN03S0
 acreditarmos	acreditar	VMN01P0
 acusticamente	acústico	RG
+adenovírus	adenovírus	NCMN000
 adequem	adequar	VMM03P0
 adequem	adequar	VMSP3P0
 adivinhatório	adivinhatório	AQ0MS0
@@ -767,6 +768,7 @@ digitalizador	digitalizador	NCMS000
 digitalizadores	digitalizador	NCMP000
 direcionamento	direcionamento	NCMS000
 direcionamentos	direcionamento	NCMP000
+discricionariamente	discricionariamente	RG
 disruptiva	disruptivo	AQ0FS0
 disruptivas	disruptivo	AQ0FP0
 disruptivo	disruptivo	AQ0MS0
@@ -1304,6 +1306,7 @@ laranja	laranja	AQ0CS0
 laranjas	laranja	AQ0CP0
 lasers	laser	NCMP000
 lateralização	lateralização	NCFS000
+led	led	NCMN000
 leem	ler	VMIP3P0
 LEGO	LEGO	NPMS000
 legos	LEGO	NCMP000
@@ -1435,6 +1438,7 @@ Minecraft	Minecraft	NPMS000
 ministração	ministração	NCFS000
 mirtilo	mirtilo	NCMS000
 mirtilos	mirtilo	NCMP000
+mitocondrial	mitocondrial	AQ0CS0
 modelização	modelização	NCFS000
 modelo	modelo	NCCS000
 modelos	modelo	NCCP000
@@ -1661,6 +1665,7 @@ playstation	playstation	NCMS000
 playstations	playstation	NCMP000
 plotter	plotter	NCFS000
 plotters	plotter	NCFP000
+PNB	PNB	NCMS000
 polibã	polibã	NCMS000
 polibãs	polibã	NCMP000
 poliestireno	poliestireno	NCMS000
@@ -1911,6 +1916,7 @@ ritornelo	ritornelo	NCMS000
 ritornelos	ritornelos	NCMP000
 ritualizada	ritualizar	VMP00SF
 ritualizadas	ritualizar	VMP00PF
+RNA	RNA	NCMN000
 roteadores	roteador	AQ0MP0
 roteadores	roteador	NCMP000
 roteador	roteador	AQ0MS0
@@ -2708,6 +2714,20 @@ zumbi	zumbir	VMX0000
 zuni	zunir	VMX0000
 zurzi	zurzir	VMX0000
 #
+# Months abbreviated:
+jan	jan	NCMS000
+fev	fev	NCMS000
+mar	mar	NCMS000
+abr	abr	NCMS000
+mai	mai	NCMS000
+jun	jun	NCMS000
+jul	jul	NCMS000
+ago	ago	NCMS000
+set	set	NCMS000
+out	out	NCMS000
+nov	nov	NCMS000
+dez	dez	NCMS000
+#
 # Mozilla
 Mozilla	Mozilla	NPFS000
 Fenix	Fenix	NPMS000
@@ -2780,6 +2800,7 @@ cracker	cracker	NCCS000
 crackers	cracker	NCCP000
 cracking	cracking	NCMS000
 cyberbullying	cyberbullying	NCMS000
+DALnet	DALnet	NPFS000
 database	database	NCFS000
 databases	database	NCFP000
 Debian	Debian	NPMS000
@@ -2813,6 +2834,10 @@ GitHub	GitHub	NCMS000
 Gpg4win	Gpg4win	NPMS000
 hackers	hacker	NCCP000
 hacking	hacking	NCMS000
+hashtag	hashtag	NCFS000
+hashtag	hashtag	NCMS000
+hashtags	hashtag	NCFP000
+hashtags	hashtag	NCMP000
 hiperligação	hiperligação	NCFS000
 hiperligações	hiperligações	NCFP000
 homebanking	homebanking	NCMS000
@@ -2823,6 +2848,10 @@ hosts	host	NCMP000
 Hunspell	Hunspell	NPMS000
 HTML	HTML	AQ0CN0
 inputs	input	NCMP000
+IRCop	IRCop	AQ0CS0
+IRCop	IRCop	NCCS000
+IRCops	IRCop	AQ0CP0
+IRCops	IRCop	NCCP000
 kilobit	kilobit	NCMS000
 kilobits	kilobit	NCMP000
 kilobyte	kilobyte	NCMS000
@@ -2836,8 +2865,10 @@ loopings	looping	NCMP000
 Lubuntu	Lubuntu	NPMS000
 Mac	Mac	NPMS000
 macOS	macOS	NPMS000
+MailChimp	MailChimp	NPMS000
 mainframe	mainframe	NCMS000
 mainframes	mainframe	NCMP000
+Mathematica	Mathematica	NPMS000
 megabit	megabit	NCMS000
 megabits	megabit	NCMP000
 megabyte	megabyte	NCMS000
@@ -2871,6 +2902,7 @@ pixelização	pixelização	NCFS000
 Photoshop	Photoshop	NPMS000
 Pootle	Pootle	NPMS000
 PowerPC	PowerPC	NCMN000
+PTnet	PTnet	NPFS000
 Python	Python	NPMS000
 RISC	RISC	NCMS000
 roaming	roaming	NCMS000
@@ -3022,6 +3054,7 @@ Cáritas	Cáritas	NPFS000
 Champalimaud	Champalimaud	NPCS000
 Cher	Cher	NPFS000
 Chris	Chris	NPMS000
+Cicciolina	Cicciolina	NPFS000
 CITES	CITES	NPFS000
 Coentrão	Coentrão	NPCS000
 Constantina	Constantina	NPFS000
@@ -3031,7 +3064,6 @@ Crowley	Crowley	NPMS000
 Dácia	Dácia	NPFS000
 Daesh	Daesh	NPMS000
 Daguerre	Daguerre	NPMS000
-DALnet	DALnet	NPFS000
 Danielle	Danielle	NPFS000
 DHL	DHL	NPMS000
 Dijkstra	Dijkstra	NPMS000
@@ -3106,6 +3138,7 @@ Morávia	Morávia	NPFS000
 Muhammad	Muhammad	NPMS000
 Multicare	Multicare	NPFS000
 Nara	Nara	NPFS000
+Nathalia	Nathalia	NPFS000
 Nélio	Nélio	NPMS000
 Neumann	Neumann	NPMS000
 Neves	Neves	NPCNS00
@@ -3121,6 +3154,7 @@ Palestina	Palestina	NPFS000
 Patrícia	Patrícia	NPFS000
 Peru	Peru	NPMSG00
 Perú	Perú	NPMSG00
+Pinto	Pinto	NPMS000
 Prosegur	Prosegur	NPFS000
 PSOE	PSOE	NPMS000
 Pushkin	Pushkin	NPMS000

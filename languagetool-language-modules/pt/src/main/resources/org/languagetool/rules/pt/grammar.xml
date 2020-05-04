@@ -652,6 +652,14 @@ title="Easy editing stylesheet" ?>
     <!--token min='0' postag='(?:A..|Z.)C.+' postag_regexp='yes'-->
           <token postag='(?:[NZ].|A..)MS.+' postag_regexp='yes'/>
       </antipattern>
+	<!-- Added by Marco A.G.Pinto - 2020-05-04 ***START***-->
+	<!-- "A senhora Pinto é simpática." -->
+	<!-- "A senhorita Pinto é simpática." -->
+      <antipattern>
+		  <token regexp='yes'>senhora|senhorita|menina</token>
+          <token postag='NPMS000' postag_regexp='no'/>
+      </antipattern>
+	<!-- Added by Marco A.G.Pinto - 2020-05-04 ***END***-->  
       <pattern>
           <token negate='yes' regexp='yes'>e|&hifen;</token>
         <marker>

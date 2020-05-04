@@ -84,7 +84,10 @@ public class ProhibitedCompoundRule extends Rule {
   private static GermanSpellerRule spellerRule;
   private static LinguServices linguServices;
   private static final List<String> ignoreWords = Arrays.asList("Die", "De");
-  private static final List<String> blacklistRegex = Arrays.asList("gra(ph|f)ie");
+  private static final List<String> blacklistRegex = Arrays.asList(
+    "gra(ph|f)ie",  // Geographie
+    "Gra(ph|f)it"   // Grafit/Graphit
+  );
   private static final Set<String> blacklist = new HashSet<>(Arrays.asList(
           "Gründertag",
           "Korrekturlösung",
@@ -155,7 +158,23 @@ public class ProhibitedCompoundRule extends Rule {
           "Maskenherstellers",
           "Maskenherstellern",
           "Firmenvokabular",
-          "Maskenproduktion"
+          "Maskenproduktion",
+          "Maskenpflicht",
+          "Nachmiete",
+          "Ringseil",
+          "Ringseilen",
+          "Jagdschule",
+          "Tachograf",
+          "Tachografs",
+          "Tachografen",
+          "Grafitpulver",
+          "Grafitmine",
+          "Grafitminen",
+          "Nesselstraße",
+          "Reitsachen",
+          "Mehrfachabrechnung",
+          "Stuhlrolle",
+          "Stuhlrollen"
   ));
 
   // have per-class static list of these and reference that in instance
