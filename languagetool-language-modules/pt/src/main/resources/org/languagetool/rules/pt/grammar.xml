@@ -10095,7 +10095,7 @@ title="Easy editing stylesheet" ?>
     </rule>
   </rulegroup>
 
-    <rule id='CONDITIONAL_PHRASE_PUNCTUATION' name="Pontuação: oração condicional">
+    <rule id='CONDITIONAL_CLAUSE_PUNCTUATION' name="Pontuação: oração condicional">
       <antipattern>
           <token regexp='yes'>&quot;</token>
           <token regexp='yes'>caso|se</token>
@@ -10157,7 +10157,7 @@ title="Easy editing stylesheet" ?>
       </pattern>
       <message>Se está a expressar uma condição, deve separar as orações por vírgulas.</message>
         <suggestion>\1, <match no='2' case_conversion="startlower"/></suggestion>
-      <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/pontuacao-virgula-antes-de-mas/7047</url>
+      <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/virgulas-e-oracoes-i/15645</url>
       <example correction="antecedência, caso">Terminei a prova com <marker>antecedência caso</marker> possa sair.</example>
       <example correction="antecedência, se">Terminei a prova com <marker>antecedência se</marker> puder sair.</example>
       <example><marker>Para se</marker> fazer isso, tem-se que marcar com antecedência.</example>
