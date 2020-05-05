@@ -1304,18 +1304,19 @@
         <token postag='VMN0000'/>
         <token postag='N.F.+' postag_regexp='yes'/>
       </antipattern>
+      <?ignore fix NOUN_SP_INFINITIVE first
       <antipattern><!-- e.g. 'modo de pensar' -->
         <token postag='N.+' postag_regexp='yes'/>
         <token>de</token>
         <token postag='VMN0000'/>
       </antipattern>
+      ?>
       <pattern>
           <token postag="SPS00" postag_regexp="no">
             <exception postag="SP.+" postag_regexp="yes" negate_pos='yes'/></token>
         <marker>
         <and>
-          <token postag="V.+" postag_regexp="yes">
-            <exception postag='VMN0000'/></token>
+          <token postag="V.+" postag_regexp="yes"/>
           <token postag="N.+" postag_regexp="yes"/>
         </and>
         </marker>
@@ -1349,11 +1350,18 @@
     </rule>
   </rulegroup>
 
+  <?ignore causes too many times false positives in nominal agreement rules. needs more work.
   <rulegroup id="NOUN_SP_INFINITIVE" name="Locuções nominais: Nome + Preposição + Infinitivo">
     <rule>
+      <antipattern>
+          <token postag='D..FS.+'/>
+          <token>questão</token>
+          <token>de</token>
+          <token>haver</token>
+      </antipattern>
       <pattern><!-- e.g. maneira de pensar -->
           <token postag='NCFS000'>
-            <exception postag_regexp='yes' postag='N.[^F][^S].+|V.+'/></token>
+            <exception postag_regexp='yes' postag='N.[^F][^S].+|V.+|RG'/></token>
           <token regexp='yes'>a|de|em</token>
           <token postag='VMN0000'/>
       </pattern>
@@ -1398,6 +1406,7 @@
       <disambig action='replace'><wd pos="NCFS000"/><wd pos="SPS00"/><wd pos="NCFS000"/></disambig>
     </rule>
   </rulegroup>
+  ?>
 
     <rule id="PARA_WORKAROUND" name="Para">
       <pattern>
