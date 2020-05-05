@@ -4,7 +4,12 @@
 
 ### This fork differences
 
-...
+#### English
+  * added and improved rules, incluing:
+    - archaic language detection.
+
+#### Portuguese
+  * added and improved rules
 
 ### Other changes common to both projects
 
