@@ -8876,27 +8876,28 @@ though, and has since been slightly modified)-->
           </marker>
         </pattern>
         <message>« \1 » et « \2 » ne semblent pas bien accordés en nombre.</message>
+          <suggestion><match no="1" include_skipped='all'/> <match no="2" postag="(J|N|Z) (.) p" postag_regexp="yes" postag_replace="$1 $2 s" include_skipped='all'/></suggestion>
         <example>un canard</example>
         <example>des oies dodues</example>
         <example>au cours de l’année</example>
-        <example correction=""><marker>un vaches</marker> laitière.</example>
-        <example correction="">une <marker>vache laitières</marker>.</example>
+        <example correction="un vache"><marker>un vaches</marker> laitière.</example>
+        <example correction="vache laitière">une <marker>vache laitières</marker>.</example>
         <example>Les taux d’intérêt <marker>domestiques</marker>.</example>
-        <example correction=""><marker>Un atlas chers</marker>.</example>
+        <example correction="Un atlas cher"><marker>Un atlas chers</marker>.</example>
         <example>Un atlas cher.</example>
-        <example correction="">Un <marker>camion très lourds</marker>.</example>
+        <example correction="camion très lourd">Un <marker>camion très lourds</marker>.</example>
         <example>Un camion très lourd.</example>
         <example>Vous êtes bon fils.</example>
         <example>On voyait ses joues <marker>devenir rouges</marker>.</example>
         <example>Des filles <marker>un peu pâles</marker>.</example>
         <example>Même <marker>vainqueurs</marker> ils sont mécontents.</example>
-        <example correction=""><marker>Une vaches</marker> laitière</example>
+        <example correction="Une vache"><marker>Une vaches</marker> laitière</example>
         <example>Une <marker>vache</marker> laitière</example>
         <example>Les premier et deuxième trimestres.</example>
         <example>Les montagnes ont l’air belles.</example>
         <example>Les pâtes ne sont pas bonnes car trop cuites.</example>
         <example>Il est parti aux États-Unis pour étudier.</example>
-        <example correction=""><marker>Une fautes</marker>.</example>
+        <example correction="Une faute"><marker>Une fautes</marker>.</example>
         <example>Une faute.</example>
         <example>Ils sont en général jeunes.</example>
         <example>Les lois antitrust américaines.</example>
@@ -8973,17 +8974,18 @@ though, and has since been slightly modified)-->
           <token><exception>et</exception></token>
         </pattern>
         <message>« \2 » et « \3 » ne semblent pas bien accordés en nombre.</message>
+          <suggestion><match no="2" include_skipped='all'/> <match no="3" postag="(J|N) (.*) s" postag_regexp="yes" postag_replace="$1 $2 p" include_skipped='all'/></suggestion>
         <example>un canard gras</example>
         <example>des oies</example>
-        <example correction=""><marker>Des poulet</marker> fermiers</example>
+        <example correction="Des poulets"><marker>Des poulet</marker> fermiers</example>
         <example>Des <marker>poulets</marker> fermiers</example>
         <example>Les hérétiques <marker>ayant</marker> reconnu la foi catholique.</example>
         <example>Les voitures <marker>verte</marker> et rouge.</example>
         <example>Des livres <marker>audio</marker></example>
         <example>L’institut de recherches <marker>britannique</marker></example>
-        <example correction="">Les <marker>camions très lourd</marker>.</example>
+        <example correction="camions très lourds">Les <marker>camions très lourd</marker>.</example>
         <example>Les camions très <marker>lourds</marker>.</example>
-        <example correction=""><marker>Les atlas cher</marker>.</example>
+        <example correction="Les atlas chers"><marker>Les atlas cher</marker>.</example>
         <example>Les atlas <marker>chers</marker>.</example>
         <example>Fils <marker>naturel</marker> de Richard</example>
         <example>Faites <marker>attention</marker>.</example>
@@ -8993,12 +8995,12 @@ though, and has since been slightly modified)-->
         <example>Deux immeubles juste en face de toi.</example>
         <example>Les communications Internet.</example>
         <example>Un catalogue des animaux commode à consulter</example>
-        <example correction="">J’aime jouer <marker>aux carte</marker>.</example>
+        <example correction="aux cartes">J’aime jouer <marker>aux carte</marker>.</example>
         <example>J’aime jouer aux <marker>cartes</marker>.</example>
         <example>Pauvres du monde</example>
         <example>Quarante pour cent des femmes</example>
         <example>Vos nom et prénom, s’il vous plaît.</example>
-        <example correction=""><marker>Des faute</marker>.</example>
+        <example correction="Des fautes"><marker>Des faute</marker>.</example>
         <example>Des fautes.</example>
         <example>Les ayants droit.</example>
         <example>Nous aurons les résultats dans 4 heures <marker>maximum</marker>.</example>
@@ -9007,7 +9009,7 @@ though, and has since been slightly modified)-->
         <example>Ces analyses <marker>bidon</marker>.</example>
         <example>Ces don Juan.</example>
         <example>En 1779 débute la première des <marker>neuf</marker> guerres.</example>
-        <example correction=""><marker>Les véhicule</marker>.</example>
+        <example correction="Les véhicules"><marker>Les véhicule</marker>.</example>
         <example>Les véhicules.</example>
         <example>Les ondes radio.</example>
         <example>Des événements différents ayant lieu en même temps.</example>
