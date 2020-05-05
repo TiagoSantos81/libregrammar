@@ -32867,6 +32867,7 @@ Andere Projekte</example>
             <example correction="Who's who">Das <marker>Who is Who</marker> des deutschen Fußballs war dort.</example>
         </rule>
         <rulegroup id="KO" name="KO (K. o.)">
+            <url>https://www.duden.de/suchen/dudenonline/K.-o.-Kriterium</url>
             <antipattern><!-- domain -->
                 <token>ko</token>
                 <token spacebefore="no">.</token>
@@ -32880,6 +32881,35 @@ Andere Projekte</example>
                 <token>ko</token>
                 <token regexp="yes">phi.*|ah\-.+|gi\-.+|a\-.+|e|euna?.*|ping.*|chiao.*|phra.*|chang?s?|nangs?|ph?an.gans?|uns?|donckers?|laks?|lantas?|willems|un|newcastle|phukets?|phayams?|andos?|arimas?|bylanz.*|brags?|bergmann?s?|götz|hung.*|hy.*|index(es)?|iwa|jon.*|jeon.*|joon.*|ko|kho|kha.*|kut|kret|kradats?|kyaws?|lai.*|mak|magazines?|machidas?|masakis?|matsushitas?|myongs?|ngais?|nakahiras?|nakajimas?|oks?|orbital|rent.*|rayas?|rangs?|samuis?|sa[mk]ets?|suur.*|surins?|so\-?you.*|sung.*|shamos?|sichang.*|soto.*|tao.*|taen.*|takamoros?|tt.*|wais?|wen\-?jes?|yong.*</token>
             </antipattern>
+            <rule default="temp_off">
+                <pattern>
+                    <token>KO</token>
+                    <token regexp="yes">Kriteriums?|Kriterien|Niederlagen?|Runde|Tropfen|Siegs?|Schlags?|Schläge|Siegers?(in)?</token>
+                </pattern>
+                <message>Dieses Nomen wird mit Bindestrichen zusammengeschrieben.</message>
+                <suggestion>K.-o.-<match no="2" case_conversion="startupper" /></suggestion>
+                <example correction="K.-o.-Tropfen">Ihr wurden auf einer Party <marker>KO Tropfen</marker> verabreicht.</example>
+            </rule>
+            <rule default="temp_off">
+                <pattern>
+                    <token>K</token>
+                    <token>.</token>
+                    <token regexp="yes">[Oo]</token>
+                    <token>.</token>
+                    <token regexp="yes">Kriteriums?|Kriterien|Niederlagen?|Runde|Tropfen|Siegs?|Schlags?|Schläge|Siegers?(in)?</token>
+                </pattern>
+                <message>Dieses Nomen wird mit Bindestrichen zusammengeschrieben.</message>
+                <suggestion>K.-o.-<match no="5" case_conversion="startupper" /></suggestion>
+                <example correction="K.-o.-Tropfen">Ihr wurden auf einer Party <marker>K.O. Tropfen</marker> verabreicht.</example>
+            </rule>
+            <rule default="temp_off">
+                <pattern>
+                    <token regexp="yes">K[Oo]-(Kriteriums?|Kriterien|Niederlagen?|Runde|Tropfen|Siegs?|Schlags?|Schläge|Siegers?(in)?)</token>
+                </pattern>
+                <message>Dieses Nomen wird mit Bindestrichen zusammengeschrieben.</message>
+                <suggestion>K.-o.-<match no="1" regexp_match="K[Oo]\-" regexp_replace="" /></suggestion>
+                <example correction="K.-o.-Tropfen">Ihr wurden auf einer Party <marker>KO-Tropfen</marker> verabreicht.</example>
+            </rule>
             <rule>
                 <pattern>
                     <token>KO</token>
@@ -33498,40 +33528,53 @@ Andere Projekte</example>
                 <example correction="Trial-and-Error">Er probierte es mit <marker>Try and Error</marker>.</example>
             </rule>
         </rulegroup>
-        <rulegroup id="ON_AIR" name="on air">
+        <rulegroup id="ON_AIR" name="on air" default="temp_off">
             <url>https://www.duden.de/rechtschreibung/on_air</url>
-            <antipattern>
+            <antipattern case_sensitive="no">
                 <token>Air</token>
                 <token>Force</token>
+            </antipattern>
+            <antipattern case_sensitive="no">
+                <token>top</token>
+                <token>of</token>
+            </antipattern>
+            <antipattern case_sensitive="no">
+                <token postag="UNKNOWN" regexp="yes">.*[a-z].*</token>
+                <token>on</token>
+            </antipattern>
+            <antipattern case_sensitive="no">
+                <token regexp="yes">video|audio</token>
+                <token>on</token>
+                <token>demand</token>
             </antipattern>
             <rule>
                 <antipattern case_sensitive="yes">
                     <token>On</token>
-                    <token>air</token>
+                    <token regexp="yes">air|top|call|demand</token>
                 </antipattern>
                 <pattern case_sensitive="yes">
                     <token postag="SENT_START" />
                     <marker>
                         <token regexp="yes">[Oo]n</token>
-                        <token regexp="yes">[Aa]ir</token>
+                        <token regexp="yes">[Aa]ir|[Tt]op|[Cc]all|[Dd]emand</token>
                     </marker>
                 </pattern>
-                <message>Das Adverb <suggestion><match no="2" case_conversion="startupper" /> <match no="3" case_conversion="alllower" /></suggestion> wird kleingeschrieben.</message>
+                <message>Der Anglizismus <suggestion><match no="2" case_conversion="startupper" /> <match no="3" case_conversion="alllower" /></suggestion> wird im Deutschen meist kleingeschrieben.</message>
                 <example correction="On air"><marker>On Air</marker> erlaubte er sich keine Aussetzer.</example>
             </rule>
             <rule>
                 <antipattern case_sensitive="yes">
                     <token>on</token>
-                    <token>air</token>
+                    <token regexp="yes">air|top|call|demand</token>
                 </antipattern>
                 <pattern>
                     <token><exception postag="SENT_START" /></token>
                     <marker>
                         <token regexp="yes">[Oo]n</token>
-                        <token regexp="yes">[Aa]ir</token>
+                        <token regexp="yes">[Aa]ir|[Tt]op|[Cc]all|[Dd]emand</token>
                     </marker>
                 </pattern>
-                <message>Das Adverb <suggestion><match no="2" case_conversion="alllower" /> <match no="3" case_conversion="alllower" /></suggestion> wird kleingeschrieben.</message>
+                <message>Der Anglizismus <suggestion><match no="2" case_conversion="alllower" /> <match no="3" case_conversion="alllower" /></suggestion> wird im Deutschen meist kleingeschrieben.</message>
                 <example correction="on air">Er war <marker>On Air</marker>.</example>
             </rule>
         </rulegroup>
@@ -33554,7 +33597,7 @@ Andere Projekte</example>
             <example correction="Plug-and-play">Das Feature funktioniert dank <marker>Plug und Play</marker>.</example>
             <example>Plug and Play ACPI device</example>
         </rule>
-        <rule id="EVERBODYS_DARLING" name="Everybody's Darling" default="temp_off">
+        <rule id="EVERBODYS_DARLING" name="Everybody's Darling">
             <antipattern case_sensitive="yes">
                 <token>Everybody</token>
                 <token spacebefore="no" regexp="yes">['’`´‘]</token>
