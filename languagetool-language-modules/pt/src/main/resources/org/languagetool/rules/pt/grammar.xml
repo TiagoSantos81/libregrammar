@@ -114,10 +114,10 @@ title="Easy editing stylesheet" ?>
     <!ENTITY barbarismos2 "b(?:irdwatching|lockchains?|odyboarders?)|backdoors?|bots?|c(?:hipset|rowdfunding)s?|desktops?|DNA|dominatrix(?:es)?|draft|geocach(?:ing|ers?)|h(?:atchback|ijab|otspot|overboard)s?|icebergs?|jetpacks?|k(?:ernels?|evlar)|m(?:alware|illennial)s?|n(?:etworking|otch|uggets?)|overclock(?:ings?)|p(?:arkour|hishing|odcast|unchline)s?|RNA|s(?:martwatch(?:es)|ext(?:ing|ortion)|tormtroppers?|treaming)|trackpads?|w(?:ebsite|halewatching|oks?)">
     <!--
     <!ENTITY barbarismos3 "aliens?|applets?|backbones?|bits?|bluetooth|bookmarks?|bullying|carjacking|crackers?|cracking|cyberbullying|exabits?|exabytes?|feeders?|führers?|gigabits?|gigabytes?|homebanking|homepages?|hosts?|kilobits?|kilobytes?|loops?|maydays?|megabits?|megabytes?|milkshakes?|newsgroups?|nicknames?|petabits?|petabytes?|royalty|royalties|screenshots?|stalking|tablets?|tags?|terabits?|terabytes?|tweeters?|woofers?|yottabits?|yottabytes?|zettabits?|zettabytes?">
-    -->
-    <!ENTITY barbarismos3 "applets?|backbones?|bluetooth|bullying|carjacking|crackers?|cracking|führers?|tablets?|tags?">
     <!ENTITY barbarismosE
 	"bullying|manuals?">	
+    -->
+    <!ENTITY barbarismos3 "applets?|backbones?|bluetooth|bullying|carjacking|crackers?|cracking|führers?|tablets?|tags?">
 
     <!ENTITY infantil "(?:b[aá]bá|bichano|bilau|bobalhão|bumbum|caca|cachorrês|cocó|cocô|cuti|dodói|escapulir|flango|formiguês|lelé|mamã|maminha|miau|mimir|nananinanão|nana[rs]|oba|oiê|ohoh|olhinho|papá|Papai|pap(?:ar|ei|aste|ou)|peixa|pepeta|pipi|piu|pum|susu|titi[ao]|totó|totô|vovô|xixi)">
     <!ENTITY informal "chaval[ao]s?|porreiros?|(?:a(?:bafar|dultescente|ham|nh.+)|b(?:abado|adalhoc[ao]|adalo|adamec[ao]|adana|agarai|agunça|aita|aixinh[ao]|alof[ao]|ate-papo|atelada|eiço|ejeca|elê|ichan[ao]|ichinh[ao]|iscate|itaite|js|lablablá|ófia|orrachão|otequeir[ao]|razuca|reaco|rega)|c(?:abaço|acilda|adê|adé|alhamaço|apar|arago|arango|asinha|asório|Dcê|ertinh[ao]|hantar|huninha|huto|obrão|ocó|ocô|oisar|opião|ornear|utucar)|d(?:anad[ao]|anar|aonde|esmiolad[ao]|ocinh[ao]|oíd[ao])|e(?:spertalh(?:ão|ona)|spigadote|strilho|strovenga)|f(?:ilar|ixe|loripa|of[ao]|uxicar|uxiqueir[ao])|g(?:agá|aj[ao]|alera|atunar|elô|oró|osma|ranel|uit[ao]|una|urizada)|herman[ao]|irad[ao]|j(?:avardice|ola)|l(?:aivo|aracha|elé|ogar|ulopetismo)|m(?:acarrone|agrel[ao]|amaã|anda-chuva|ânfi[ao]|an[ao]|atraca|eia-boca|itra|oçada|oina|orcão|otoqueir[oa]|uvuca)|n(?:intendinho|op|ovat[ao])|o(?:i|iê|lhômetro|lh[ôó]metro)|p(?:andeiro|apão|apo|atada|eixão|ejada|elar|epeta|erua|etiz|indaíba|ixulé|ixuleco|orn[oô]|orrad[ao]|orre|r[aáoó]|romo|rum|ruma|runs|uto)|q(?:uebra-galho|ueca)|r(?:acha|anho|apaziada|emexer|emexida|icardão|olê)|s(?:acana|ave|elinho|úper)|surripi.+|t(?:abefe|antã|ascar|ime|ótil|rampar|rampo|ransar|reta|rocentos|rouxa|rucid.+|uga.+)|v(?:acil.+|aquinha|egetar|elhot[ae]|ó|ô)|x(?:i|ixi)|z(?:en|i[il]h(ão|ões)))">
@@ -29807,15 +29807,7 @@ TODO Write better examples
           <token spacebefore='no'/>
           <token/>
           <token regexp='yes' spacebefore='no'>["”]</token>
-      </antipattern>
-<!-- MARCOAGPINTO 2020-05-06 *START* -->
-<!-- Avoid foreign words that have an "e-", for example: "e-bullying" -->
-      <antipattern>
-        <token>e</token>
-        <token>-</token>
-        <token regexp='yes'>(?:&barbarismosE;)s?</token>
       </antipattern>	  
-<!-- MARCOAGPINTO 2020-05-06 *END* --> 	  
       <antipattern>
           <token regexp='yes'>['‘]</token>
           <token spacebefore='no'/>
@@ -29851,6 +29843,34 @@ TODO Write better examples
         <suggestion>‘\2’</suggestion>
         <suggestion>“\2”</suggestion>
       <example correction='‘Software’|“Software”'><marker>Software</marker> de código aberto tem várias vantagens.</example>
+    </rule>
+    <rule>
+      <antipattern>
+          <token regexp='yes'>["“]</token>
+          <token>e</token>
+          <token regexp='yes' spacebefore='no'>&hifen;</token>
+          <token spacebefore='no'/>
+          <token regexp='yes'>["”]</token>
+      </antipattern>
+      <antipattern>
+          <token regexp='yes'>['‘]</token>
+          <token>e</token>
+          <token regexp='yes' spacebefore='no'>&hifen;</token>
+          <token spacebefore='no'/>
+          <token regexp='yes'>['’]</token>
+      </antipattern>
+      <pattern>
+        <token>e</token>
+        <token spacebefore='no' regexp='yes'>&hifen;</token>
+        <token spacebefore='no'/>
+      </pattern>
+      <message>Os estrangeirismos devem estar entre aspas ou ser italizados.</message>
+        <suggestion>‘\1\2\3’</suggestion>
+        <suggestion>“\1\2\3”</suggestion>
+        <suggestion>\3 <match no='3' regexp_match='(.+?)(s?)$' regexp_replace='eletrónico$2'/></suggestion>
+      <example correction='‘e-manual’|“e-manual”|manual eletrónico'>O <marker>e-manual</marker> já está disponível.</example>
+      <example>Os manuais eletrónicos já estão disponíveis.</example>
+      <example correction='‘e-manuals’|“e-manuals”|manuals eletrónicos'>Os <marker>e-manuals</marker> já estão disponíveis.</example><!-- XXX if required, other rule matches will handle translation and agreement-->
     </rule>
     <rule>
       <antipattern>
