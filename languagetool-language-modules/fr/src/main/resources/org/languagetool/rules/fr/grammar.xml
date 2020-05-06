@@ -7983,7 +7983,7 @@ though, and has since been slightly modified)-->
       </antipattern>
       <pattern>
         <token regexp="yes">[dljmnst]e|la|jusque|que</token>
-        <token regexp="yes">h?[àâaéêèeiîou]\D.*|à|hy\D.*
+        <token regexp="yes">h?[àâaéêèeiîou]\D.*|à|hy\D.*|y[pts].*
           <exception inflected="yes" regexp="yes">&exceptions_ELISION1;</exception>
           <exception regexp="yes">&exceptions_ELISION2;</exception><!-- https://fr.wikipedia.org/wiki/La_Haye -->
           <exception postag="UNKNOWN|Z.*" postag_regexp="yes" regexp="yes">h.+</exception><!-- no error for unknown words or proper names -->
@@ -8020,6 +8020,8 @@ though, and has since been slightly modified)-->
       <example>Le béton du Hoover Dam n'est pas sujet à la réaction sulfatique interne liée à une réaction chimique entre ses différents composants qui a fragilisé le béton d'autres barrages.</example>
       <example>Dans les environs d'Aix-la-Chapelle, dans le district de Heinsberg, il y avait déjà un grand nombre de cas de Covid en février.</example>
       <example>De Harvard.</example>
+      <example correction="L’ytterbium"><marker>Le ytterbium</marker></example> <!-- See: https://fr.wikipedia.org/wiki/Ytterbium-->
+      <example correction="L’hydrocarbure"><marker>Le hydrocarbure</marker>.</example>
     </rule>
     <rule id="EL_SI" name="Élision de si">
       <pattern>
@@ -8574,7 +8576,7 @@ though, and has since been slightly modified)-->
               <marker>
                   <token>ce</token>
               </marker>
-              <token postag="N m s" regexp="yes">h?[àâaéêèeiîouy].*|hy.*
+              <token postag="N m s" regexp="yes">h?[àâaéêèeiîou].*|hy.*|y[pts].*
                   <exception inflected="yes" regexp="yes">&exceptions_ELISION1;</exception>
                   <exception regexp="yes">&exceptions_ELISION2;</exception>
                   <exception postag="UNKNOWN|Z.*" postag_regexp="yes" regexp="yes">h.+</exception><!-- no error for unknown words or proper names -->
@@ -8585,6 +8587,10 @@ though, and has since been slightly modified)-->
           <example correction="Cet"><marker>Ce</marker> homme.</example>
           <example correction="Cet"><marker>Ce</marker> arbre.</example>
           <example correction="Cet"><marker>Ce</marker> été.</example>
+          <example>Cet hydrocarbure.</example>
+          <example correction="Cet"><marker>Ce</marker> hydrocarbure.</example>
+          <example correction="Cet"><marker>Ce</marker> yttrium.</example>
+          <example>Ce yaourt</example>
           <example>Est-ce utile?</example>
           <example>Ce hibou</example>
       </rule>
@@ -9056,6 +9062,10 @@ though, and has since been slightly modified)-->
       </rule>
     </rulegroup>
     <rulegroup id="ACCORD_GENRE" name="Accord en genre">
+        <antipattern>
+            <token regexp="yes">terminal|master|numéro|variante|option|total</token>
+            <token regexp="yes">\d+</token>
+        </antipattern>
         <antipattern>
             <token regexp="yes">images?</token>
             <token regexp="yes">virtuelles?</token>

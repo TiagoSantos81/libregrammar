@@ -258,6 +258,20 @@ Copyright (C) 2011 Juan Martorell
         <rule>
             <pattern>
                 <marker>
+                    <token regexp="yes">[13]|[2-9][13]</token>
+                    <token spacebefore="no">.</token>
+                    <token spacebefore="no">er</token>
+                </marker>
+            </pattern>
+            <disambig action="replace">
+                <wd pos="AO0MS0"/>
+                <wd pos="AO0MS0"/>
+                <wd pos="AO0MS0"/>
+            </disambig>
+        </rule>
+        <rule>
+            <pattern>
+                <marker>
                     <token regexp="yes">[1234567890]+º<exception postag="AO.*" postag_regexp="yes"/></token>
                 </marker>
             </pattern>
@@ -565,10 +579,21 @@ Copyright (C) 2011 Juan Martorell
     <rulegroup id="CURRENCIES" name="monedas">
         <rule>
             <pattern>
-                <token regexp="yes">\$\d+</token>
+                <token regexp="yes">[\$€£][\d\.,]+</token>
             </pattern>
             <disambig action="add">
                 <wd pos="Z"/>
+            </disambig>
+        </rule>
+        <rule>
+            <pattern>
+                <token regexp="yes">[\$€£]?[\d\.,]+</token>
+                <marker>
+                    <token regexp="yes" case_sensitive="yes">USD|EUR</token>
+                </marker>
+            </pattern>
+            <disambig action="add">
+                <wd pos="NCMN000"/>
             </disambig>
         </rule>
     </rulegroup>

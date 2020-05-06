@@ -72,6 +72,8 @@ public class SpanishSentenceTokenizerTest {
     testSplit("P. ej. esto.");
     testSplit("Ahora p. ej. esto.");
     testSplit("Ahora p. e. esto.");
+    testSplit("Son las 5hrs. del domingo.");
+    testSplit("Son las 2as. jornadas.");
 
     // Exception to abbreviations    
     testSplit("Esto pasa el PP. ", "Pero, por otra parte,");
