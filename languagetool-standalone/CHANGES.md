@@ -4,6 +4,10 @@
 
 ### This fork differences
 
+#### Arabic
+  * added and improved rules (PR #2848 [WIP])
+  * POS and spelling improvements (PR #2848)
+
 #### English
   * added and improved rules, incluing:
     - archaic language detection.
@@ -124,7 +128,7 @@
   * added and improved rules
 
 #### French
-  * various rules improvements, thanks to Theotime, vkyfox and Dpelle
+  * various rules improvements, thanks to Rigaut Theótime (vkyfox) and Dpelle
   * POS and spelling improvements
   * false friends improvements:
     - 162 entries added to French for English natives;
