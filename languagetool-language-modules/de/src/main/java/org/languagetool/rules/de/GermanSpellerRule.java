@@ -71,6 +71,7 @@ public class GermanSpellerRule extends CompoundAwareHunspellRule {
     put("lieder", w -> Arrays.asList("leider", "Lieder"));
     put("inbetracht", "in Betracht");
     put("einlogen", "einloggen");
+    put("Kruks", "Krux");
     putRepl("wiedersteh(en|st|t)", "wieder", "wider");
     putRepl("wiederstan(d|den|dest)", "wieder", "wider");
     putRepl("wiedersprach(st|t|en)?", "wieder", "wider");
@@ -81,6 +82,7 @@ public class GermanSpellerRule extends CompoundAwareHunspellRule {
     putRepl("wiedersetz(e|t|en|te|ten)?", "wieder", "wider");
     put("wiederspiegelten", "widerspiegelten");
     put("wiedererwarten", "wider Erwarten");
+    put("wiederhohlen", "wiederholen");
     put("herrunterladen", "herunterladen");
     put("dastellen", "darstellen");
     put("zuviel", "zu viel");
