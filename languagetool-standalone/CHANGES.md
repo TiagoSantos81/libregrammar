@@ -10,7 +10,8 @@
 
 #### English
   * added and improved rules, incluing:
-    - archaic language detection.
+    - archaic language detection;
+    - explanation URLs added to ~600 rules.
 
 #### Portuguese
   * added and improved rules
