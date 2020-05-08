@@ -207,6 +207,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token postag="(NOUN-F.s)|(ADJ.*\+f\+s)" postag_regexp="yes"><exception postag="(NOUN-F.p)|(ADJ.*\+f\+p)|(NOUN-M.s)|(ADJ.*\+m\+s)|(ADV)" postag_regexp="yes"/></token>
                 </pattern>
                 <message>L'articolo non concorda, usare: <suggestion>una</suggestion>.</message>
+                <url>https://it.wiktionary.org/wiki/una</url>
                 <example correction="una">Vidi <marker>un</marker> mucca pascolare nel campo.</example>
                 <example>Vidi <marker>una</marker> mucche pascolare nel campo.</example>
             </rule>
@@ -264,6 +265,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token postag="(NOUN-M.p)|(ADJ.*\+m\+p)" postag_regexp="yes" regexp="yes">[zx].*|s[bcdfghlmnpqrstv].*|p[ns].*|gn.*|[iy][aeiou].*<exception postag="(NOUN-M.s)|(ADJ.*\+m\+s)|(NOUN-F.p)|(ADJ.*\+f\+p)|(ADV)" postag_regexp="yes"/></token>
                 </pattern>
                 <message>L'articolo non concorda, usare: <suggestion>gli</suggestion>.</message>
+                <url>https://it.wiktionary.org/wiki/gli</url>
                 <example correction="gli">Come raccontano <marker>i</marker> storici...</example>
             </rule>
             <!-- uno -->
@@ -279,6 +281,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <!-- 2957133 - -->
                 </pattern>
                 <message>L'articolo non concorda, usare: <suggestion>uno</suggestion>.</message>
+                <url>https://it.wiktionary.org/wiki/uno</url>
                 <example correction="uno">Devi andare da <marker>un</marker> psicologo.</example>
             </rule>
 <!-- PB012 + -->            
@@ -289,6 +292,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token>dei</token>
                 </pattern>
                 <message>L'articolo non concorda, usare: <suggestion>gli</suggestion>.</message>
+                <url>https://it.wiktionary.org/wiki/gli</url>
                 <example correction="gli">Adoravano <marker>i</marker> dei del suono.</example>
             </rule>
 <!-- PB012 - -->
@@ -543,6 +547,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     </marker>
                 </pattern>
                 <message>Non si insiste a, si insiste <suggestion>nel</suggestion></message>
+                <url>https://it.wiktionary.org/wiki/nel</url>
                 <example correction="nel">Insisto <marker>a</marker> dire che è così.</example>
             </rule>
             <!-- a gratis -->
@@ -552,6 +557,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token>gratis</token>
                 </pattern>
                 <message>Si scrive <suggestion>gratis</suggestion> (senza la preposizione).</message>
+                <url>https://it.wiktionary.org/wiki/gratis</url>
                 <example correction="gratis">Ovviamente... è tutto <marker>a gratis</marker>!</example>
             </rule>
             <!-- a nome Giuliano -->
@@ -1139,6 +1145,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                             <token>gratis</token>
                         </pattern>
                         <message>Si scrive <suggestion>gratis</suggestion> (senza la preposizione).</message>
+                        <url>https://it.wiktionary.org/wiki/gratis</url>
                         <example>Ovviamente... è tutto <marker>gratis</marker>!</example>
                         <example correction="attimo">Ovviamente... è tutto <marker>a gratis</marker>!</example>
                     </rule>
@@ -1155,6 +1162,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token>attimino</token>
                 </pattern>
                 <message>Si consiglia di utilizzare <suggestion>attimo</suggestion>.</message>
+                <url>https://it.wiktionary.org/wiki/attimo</url>
                 <example>Mi aspetti un <marker>attimo</marker>?</example>
                 <example correction="attimo">Mi aspetti un <marker>attimino</marker>?</example>
             </rule>
@@ -1164,6 +1172,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token>momentino</token>
                 </pattern>
                 <message>Si consiglia di utilizzare <suggestion>momento</suggestion>.</message>
+                <url>https://it.wiktionary.org/wiki/momento</url>
                 <example correction="momento">Mi aspetti un <marker>momentino</marker>?</example>
             </rule>
         </rulegroup>
@@ -1268,6 +1277,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token>poco</token>
                 </pattern>
                 <message>E' un errore creare il comparativo di maggioranza degli avverbi molto e poco. Si scrive <suggestion>meno</suggestion>.</message>
+                <url>https://it.wiktionary.org/wiki/meno</url>
                 <example correction="meno">Stasera abbiamo ballato <marker>più poco</marker> del solito.</example>
                 <example>Stasera abbiamo ballato meno del solito.</example>
             </rule>
@@ -1279,6 +1289,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token regexp="yes">anguria|angurie</token>
                 </pattern>
                 <message>Sostituire forme dialettali con l'equivalente Italiano per migliorare al leggibilità: <suggestion>cocomero</suggestion>.</message>
+                <url>https://it.wiktionary.org/wiki/cocomero</url>
                 <example correction="cocomero">Abbiamo mangiato un'<marker>anguria</marker>.</example>
                 <example>Abbiamo mangiato un <marker>cocomero</marker>.</example>
             </rule>
@@ -1288,6 +1299,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token>asparagio</token>
                 </pattern>
                 <message>Sostituire forme dialettali con l'equivalente Italiano per migliorare al leggibilità: <suggestion>asparago</suggestion>.</message>
+                <url>https://it.wiktionary.org/wiki/asparago</url>
                 <example correction="asparago">Ho colto un <marker>asparagio</marker>.</example>
             </rule>
             <!-- pedalino -->
@@ -1296,6 +1308,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token regexp="yes">pedalino|pedalini</token>
                 </pattern>
                 <message>Sostituire forme dialettali con l'equivalente Italiano per migliorare al leggibilità: <suggestion>calza</suggestion>.</message>
+                <url>https://it.wiktionary.org/wiki/calza</url>
                 <example correction="calza">Mauro portava un paio di <marker>pedalini</marker> bianchi.</example>
                 <example>Mauro portava un paio di <marker>calze</marker> bianche.</example>
             </rule>
@@ -1305,6 +1318,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token regexp="yes">pomidoro|pomidori</token>
                 </pattern>
                 <message>Sostituire forme dialettali con l'equivalente Italiano per migliorare al leggibilità: <suggestion>pomodoro</suggestion>.</message>
+                <url>https://it.wiktionary.org/wiki/pomodoro</url>
                 <example correction="pomodoro">Il <marker>pomidoro</marker> era maturo.</example>
             </rule>
         </rulegroup>
@@ -1315,6 +1329,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token>budget</token>
                 </pattern>
                 <message><suggestion>bilancio</suggestion> <suggestion>bilancio di previsione</suggestion> <suggestion>stanziamento</suggestion></message>
+                <url>https://it.wiktionary.org/wiki/stanziamento</url>
                 <example correction="bilancio|bilancio di previsione|stanziamento"><marker>budget</marker></example>
                 <example><marker>bilancio</marker></example>
             </rule>
@@ -1324,6 +1339,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token>input</token>
                 </pattern>
                 <message><suggestion>ingresso</suggestion> <suggestion>entrata</suggestion> <suggestion>immissione</suggestion></message>
+                <url>https://it.wiktionary.org/wiki/entrata</url>
                 <example correction="ingresso|entrata|immissione"><marker>input</marker></example>
                 <example><marker>ingresso</marker></example>
             </rule>
@@ -1333,6 +1349,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token>output</token>
                 </pattern>
                 <message><suggestion>uscita</suggestion> <suggestion>prodotto</suggestion> <suggestion>produzione</suggestion></message>
+                <url>https://it.wiktionary.org/wiki/prodotto</url>
                 <example correction="uscita|prodotto|produzione"><marker>output</marker></example>
                 <example><marker>uscita</marker></example>
             </rule>
@@ -1342,6 +1359,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token>penalty</token>
                 </pattern>
                 <message><suggestion>rigore</suggestion> <suggestion>calcio di rigore</suggestion> <suggestion>punizione</suggestion></message>
+                <url>https://it.wiktionary.org/wiki/punizione</url>
                 <example correction="rigore|calcio di rigore|punizione"><marker>penalty</marker></example>
                 <example><marker>rigore</marker></example>
             </rule>
@@ -1359,6 +1377,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token>trend</token>
                 </pattern>
                 <message><suggestion>tendenza</suggestion> <suggestion>orientamento</suggestion> <suggestion>corso</suggestion> <suggestion>evoluzione</suggestion></message>
+                <url>https://it.wiktionary.org/wiki/orientamento</url>
                 <example correction="tendenza|orientamento|corso|evoluzione"><marker>trend</marker></example>
                 <example><marker>tendenza</marker></example>
             </rule>
@@ -1689,6 +1708,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token>ai</token>
                 </pattern>
                 <message>Forse volevi dire <suggestion>hai</suggestion>?</message>
+                <url>https://it.wiktionary.org/wiki/hai</url>
                 <example correction="hai">Piero, tu <marker>ai</marker> un cane?</example>
                 <example>Piero, tu <marker>hai</marker> un cane?</example>
             </rule>
