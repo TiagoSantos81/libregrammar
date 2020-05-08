@@ -84,10 +84,7 @@ public class SimpleReplaceVerbsRuleTest {
     assertEquals("(fer-se fotre)", matches[0].getSuggestedReplacements().get(7));
     */
 
-    RuleMatch[] matches = rule.match(langTool.getAnalyzedSentence("abarca"));
-    /*
     matches = rule.match(langTool.getAnalyzedSentence("abarca"));
-    */
     assertEquals(1, matches.length);
     assertEquals("abraça", matches[0].getSuggestedReplacements().get(0));
     assertEquals("abasta", matches[0].getSuggestedReplacements().get(1));
