@@ -75,6 +75,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <token inflected="yes">reportisto</token>
         </pattern>
         <message>Plej verŝajne vi intencis skribi <suggestion>raportisto</suggestion> anstataŭ «\1»?</message>
+        <url>https://eo.wiktionary.org/wiki/raportisto</url>
         <example correction="raportisto">La <marker>reportistoj</marker> havis neniun novaĵon.</example>
       </rule>
       <rule>
@@ -602,6 +603,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         <token regexp="yes">utf.*|latin\d+|ASCII|big.*|CP-?\d+|windows.*|ISO.*|UCS.*|IBM.*|EBCDIC.*|ECMA.*|ANSI.*|8859.*</token>
       </pattern>
       <message>Ne uzu «kodigo» tiusence. Uzu <suggestion>kodoprezento</suggestion>.</message>
+      <url>https://eo.wiktionary.org/wiki/kodoprezento</url>
       <example correction="kodoprezento">Dosiero en la <marker>kodigo</marker> UTF-8.</example>
     </rule>
     <rule id="BLANKKOLUMULO" name="blankkolumulo">
@@ -1305,6 +1307,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <token regexp="yes">[mcvlŝn]i|ili|oni</token>
         </pattern>
         <message>Laŭ ReVo, tiu uzo de «\1» estas arkaismo. Uzu <suggestion>krom</suggestion>.</message>
+        <url>https://eo.wiktionary.org/wiki/krom</url>
         <example correction="krom">Ĉiuj <marker>ekster</marker> mi sciis pri tio.</example>
       </rule>
       <rule>
@@ -3981,6 +3984,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <token>kial</token>
         </pattern>
         <message>Oni ne uzas «\1, \2». Konsideru uzi <suggestion>pro la sama kaŭzo, kial</suggestion>, <suggestion>pro la sama kaŭzo, pro kio</suggestion> aŭ <suggestion>ĉar</suggestion>.</message>
+        <url>https://eo.wiktionary.org/wiki/ĉar</url>
         <example correction="pro la sama kaŭzo, kial|pro la sama kaŭzo, pro kio|ĉar">Ili foriris <marker>tial kial</marker> mi foriris.</example>
       </rule>
       <rule>
@@ -3990,6 +3994,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <token>kial</token>
         </pattern>
         <message>Oni ne uzas «\1, \2». Konsideru uzi <suggestion>pro la sama kaŭzo, kial</suggestion>, <suggestion>pro la sama kaŭzo, pro kio</suggestion> aŭ <suggestion>ĉar</suggestion>.</message>
+        <url>https://eo.wiktionary.org/wiki/ĉar</url>
         <example correction="pro la sama kaŭzo, kial|pro la sama kaŭzo, pro kio|ĉar">Ili foriris <marker>tial, kial</marker> mi foriris.</example>
         <example>Ili foriris pro la sama kaŭzo, kial mi foriris.</example>
       </rule>
@@ -4192,6 +4197,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <token>kiam</token>
         </pattern>
         <message>Oni de uzas «dum kiam». Uzi <suggestion>dum</suggestion>.</message>
+        <url>https://eo.wiktionary.org/wiki/dum</url>
         <example correction="dum">Tio okazas <marker>dum kiam</marker> mi estas hejme.</example>
       </rule>
       <rule>
@@ -4201,6 +4207,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <token>ke</token>
         </pattern>
         <message>Oni de uzas «dum tio ke». Uzi <suggestion>dum</suggestion>.</message>
+        <url>https://eo.wiktionary.org/wiki/dum</url>
         <example correction="dum">Tio okazas <marker>dum tio ke</marker> mi estas hejme.</example>
       </rule>
       <rule>
@@ -4211,6 +4218,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <token>ke</token>
         </pattern>
         <message>Oni de uzas «dum tio, ke». Uzi <suggestion>dum</suggestion>.</message>
+        <url>https://eo.wiktionary.org/wiki/dum</url>
         <example correction="dum">Tio okazas <marker>dum tio, ke</marker> mi estas hejme.</example>
       </rule>
     </rulegroup>
