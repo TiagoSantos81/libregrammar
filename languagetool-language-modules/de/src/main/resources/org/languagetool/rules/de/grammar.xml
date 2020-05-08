@@ -412,6 +412,29 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="wurst">Von daher ist das alles eh <marker>Wurst</marker>.</example>
             </rule>
         </rulegroup>
+        <rulegroup id="AUS_DEM_EFFEFF" name="Redewendung: aus dem Effeff" default="temp_off">
+            <url>https://de.wikipedia.org/wiki/Effeff_(Redewendung)</url>
+            <rule>
+                <pattern case_sensitive="no">
+                    <token>aus</token>
+                    <token>dem</token>
+                    <token regexp="yes">e?ff?</token>
+                    <token min="0">.</token>
+                    <token regexp="yes">e?ff?</token>
+                </pattern>
+                <message>Meinten Sie die Redewendung <suggestion>aus dem Effeff</suggestion>?</message>
+                <example correction="aus dem Effeff">Er kann das <marker>aus dem Eff Eff</marker>.</example>
+            </rule>
+            <rule>
+                <pattern case_sensitive="no">
+                    <token>aus</token>
+                    <token>dem</token>
+                    <token regexp="yes">F\-?F|Ef\-?ef|Eff-Eff</token>
+                </pattern>
+                <message>Meinten Sie die Redewendung <suggestion>aus dem Effeff</suggestion>?</message>
+                <example correction="aus dem Effeff">Er kann das <marker>aus dem FF</marker>.</example>
+            </rule>
+        </rulegroup>
         <rulegroup id="ENTGEHEN_LASSEN" name="entgegen (entgehen) lassen">
             <rule>
                 <pattern case_sensitive="yes">
@@ -30855,12 +30878,20 @@ Andere Projekte</example>
             <example correction="Suche">Die binäre <marker>suche</marker> sollte jeder Informatiker verstehen.</example>
         </rule>
         <rule id="DES_WEITEREN" name="'des weiteren (Weiteren)'">
+            <antipattern>
+                <token>weiteren</token>
+                <token postag="(SUB|EIG|UNKNOWN).*" postag_regexp="yes" />
+            </antipattern>
+            <antipattern>
+                <token>weiteren</token>
+                <token postag="KON.*" postag_regexp="yes" />
+                <token postag="UNKNOWN|.*ADJ.*" postag_regexp="yes" />
+            </antipattern>
             <pattern>
                 <token regexp="yes">des|im</token>
                 <marker>
-                    <token case_sensitive="yes" regexp="yes">weiteren|öftere?n</token>
+                    <token case_sensitive="yes" regexp="yes">weitere?n|öftere?n</token>
                 </marker>
-                <token postag="VER:.*" postag_regexp="yes"><exception postag="SUB:.*" postag_regexp="yes"/></token>
             </pattern>
             <message>&inwend;'\1 <match no="2" case_conversion="startupper"/>' wird <suggestion><match no="2" case_conversion="startupper"/></suggestion> großgeschrieben.</message>
             <short>&prgk;.</short>
@@ -30872,6 +30903,9 @@ Andere Projekte</example>
             <example correction="Weiteren">Und des <marker>weiteren</marker> waren alle Katzen blau.</example>
             <example correction="Weiteren">Und im <marker>weiteren</marker> soll es genau darum gehen.</example>
             <example correction="Öfteren">Des <marker>öfteren</marker> besucht mich mein Sohn.</example>
+            <example correction="Öfteren">Zwar habe ich bereits in der Vergangenheit des <marker>öfteren</marker> kleine Sachen per PHP Programmiert, es wird aber für hier nicht ausreichen.</example>
+            <example correction="Weiteren">1177 wurde hier von Lord Rhys of Deheubarth eine Burg errichtet, die im <marker>weiteren</marker> stark umkämpft war und bereits 1231 niedergebrannt wurde.</example>
+            <example correction="Öfteren">Ihr sprecht des <marker>öfteren</marker> Discord als Kontaktmöglichkeit an, jedoch vermisse ich einen diesbezüglichen Invite Link in den betreffenden Channel.</example>
         </rule>
         <rule id="DES_NACHTS" name="'des nachts (Nachts), eines nachts (Nachts)'">
             <pattern case_sensitive="yes">
@@ -32896,7 +32930,7 @@ Andere Projekte</example>
                 <token>ko</token>
                 <token regexp="yes">phi.*|ah\-.+|gi\-.+|a\-.+|e|euna?.*|ping.*|chiao.*|phra.*|chang?s?|nangs?|ph?an.gans?|uns?|donckers?|laks?|lantas?|willems|un|newcastle|phukets?|phayams?|andos?|arimas?|bylanz.*|brags?|bergmann?s?|götz|hung.*|hy.*|index(es)?|iwa|jon.*|jeon.*|joon.*|ko|kho|kha.*|kut|kret|kradats?|kyaws?|lai.*|mak|magazines?|machidas?|masakis?|matsushitas?|myongs?|ngais?|nakahiras?|nakajimas?|oks?|orbital|rent.*|rayas?|rangs?|samuis?|sa[mk]ets?|suur.*|surins?|so\-?you.*|sung.*|shamos?|sichang.*|soto.*|tao.*|taen.*|takamoros?|tt.*|wais?|wen\-?jes?|yong.*</token>
             </antipattern>
-            <rule default="temp_off">
+            <rule>
                 <pattern>
                     <token>KO</token>
                     <token regexp="yes">Kriteriums?|Kriterien|Niederlagen?|Runde|Tropfen|Siegs?|Schlags?|Schläge|Siegers?(in)?</token>
@@ -32905,7 +32939,7 @@ Andere Projekte</example>
                 <suggestion>K.-o.-<match no="2" case_conversion="startupper" /></suggestion>
                 <example correction="K.-o.-Tropfen">Ihr wurden auf einer Party <marker>KO Tropfen</marker> verabreicht.</example>
             </rule>
-            <rule default="temp_off">
+            <rule>
                 <pattern>
                     <token>K</token>
                     <token>.</token>
@@ -32917,7 +32951,7 @@ Andere Projekte</example>
                 <suggestion>K.-o.-<match no="5" case_conversion="startupper" /></suggestion>
                 <example correction="K.-o.-Tropfen">Ihr wurden auf einer Party <marker>K.O. Tropfen</marker> verabreicht.</example>
             </rule>
-            <rule default="temp_off">
+            <rule>
                 <pattern>
                     <token regexp="yes">K[Oo]-(Kriteriums?|Kriterien|Niederlagen?|Runde|Tropfen|Siegs?|Schlags?|Schläge|Siegers?(in)?)</token>
                 </pattern>
@@ -33543,7 +33577,7 @@ Andere Projekte</example>
                 <example correction="Trial-and-Error">Er probierte es mit <marker>Try and Error</marker>.</example>
             </rule>
         </rulegroup>
-        <rulegroup id="ON_AIR" name="on air" default="temp_off">
+        <rulegroup id="ON_AIR" name="on air">
             <url>https://www.duden.de/rechtschreibung/on_air</url>
             <antipattern case_sensitive="no">
                 <token>Air</token>
