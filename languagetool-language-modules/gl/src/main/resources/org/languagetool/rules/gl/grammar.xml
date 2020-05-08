@@ -2790,6 +2790,7 @@
           <token postag="(VMN0000|VSN0000).*" postag_regexp="yes"/>
       </pattern>
       <message>A forma 'compre', cando é do verbo &quot;cumprir&quot; (ser necesario), leva til para distinguila do verbo 'comprar'. Quería vostede dicir <suggestion>cómpre</suggestion>?</message>
+      <url>https://gl.wiktionary.org/wiki/cómpre</url>
       <example correction="cómpre">Agora <marker>compre</marker> analizar o proceso de constitución das listas.</example>
     </rule>
     <!-- compre + adverbio + VINF (cómpre agora ignorar a provocación) -->
@@ -2803,6 +2804,7 @@
           <token postag="(VMN0000|VSN0000).*" postag_regexp="yes"/>
       </pattern>
       <message>A forma 'compre', cando é do verbo &quot;cumprir&quot; (ser necesario), leva til para distinguila do verbo 'comprar'. Quería vostede dicir <suggestion>cómpre</suggestion>?</message>
+      <url>https://gl.wiktionary.org/wiki/cómpre</url>
       <example correction="Cómpre"><marker>Compre</marker> agora analizar o proceso de constitución das listas.</example>
     </rule>
     <!-- compre + que -->
@@ -2815,6 +2817,7 @@
           <token>que</token>
       </pattern>
       <message>A forma 'compre', cando é do verbo &quot;cumprir&quot; (ser necesario), leva til para distinguila do verbo 'comprar'. Quería vostede dicir <suggestion>cómpre</suggestion>?</message>
+      <url>https://gl.wiktionary.org/wiki/cómpre</url>
       <example correction="Cómpre"><marker>Compre</marker> que a arquitectura das Nacións Unidas se axuste a ese concepto.</example>
     </rule>
   </rulegroup>
@@ -2979,6 +2982,7 @@
         </marker>
       </pattern>
       <message>A palabra '\2' semella corresponderse neste contexto co adverbio 'fóra', que leva til para diferenciarse das formas dos verbos 'ser' ou 'ir'. Quería vostede dicir <suggestion>fóra</suggestion>?</message>
+      <url>https://gl.wiktionary.org/wiki/fóra</url>
       <example correction="fóra">O novo profesor é de <marker>fora</marker>.</example>
     </rule>
     <!-- cando os deixaran fora terrible
@@ -3001,6 +3005,7 @@
           <token>quenes</token>
       </pattern>
       <message>En galego o pronome 'quen' carece de plural. Empregue mellor <suggestion>quen</suggestion> ou <suggestion>os que</suggestion> segundo o contexto.</message>
+      <url>https://gl.wiktionary.org/wiki/quen</url>
       <example correction="quen|os que">Non saben <marker>quenes</marker> son os encargados.</example>
       <example>Non saben <marker>quen</marker> son os encargados.</example>
       <example correction="quen|os que">Seguramente <marker>quenes</marker> máis protestan serán os que máis se beneficien.</example>
@@ -3019,6 +3024,7 @@
           </token>
       </pattern>
       <message>O adxectivo &quot;grande&quot; vai apocopado cando precede a un substantivo (agás cando este comeza por vogal). Quería vostede dicir <suggestion>gran</suggestion>?</message>
+      <url>https://gl.wiktionary.org/wiki/gran</url>
       <example correction="gran">Resultou ser un <marker>grande</marker> curso.</example>
       <example>Resultou ser un <marker>gran</marker> curso.</example>
     </rule>
@@ -3031,6 +3037,7 @@
           <token postag="NC.S000" postag_regexp="yes" regexp="yes">^[aeiouáéíóú].*</token>
       </pattern>
       <message>O adxectivo &quot;grande&quot; non vai nunca apocopado cando precede a un substantivo que comeza por vogal. Quería vostede dicir <suggestion>grande</suggestion>?</message>
+      <url>https://gl.wiktionary.org/wiki/grande</url>
       <example correction="grande">Resultou ser un <marker>gran</marker> amigo.</example>
       <example>Resultou ser un <marker>grande</marker> amigo.</example>
     </rule>
@@ -3043,6 +3050,7 @@
           <token postag="NCMS000"/>
       </pattern>
       <message>O adxectivo &quot;malo&quot; vai apocopado cando precede a un substantivo masculino singular. Quería vostede dicir <suggestion>mal</suggestion>?</message>
+      <url>https://gl.wiktionary.org/wiki/mal</url>
       <example correction="mal">Resultou ser un <marker>malo</marker> ano.</example>
       <example>Resultou ser un <marker>mal</marker> ano.</example>
     </rule>
@@ -3056,6 +3064,7 @@
           <token regexp="yes">^[aeiouáéíóú].*</token>
       </pattern>
       <message>O adxectivo &quot;santo&quot; non vai apocopado cando precede a palabras que comezan por vogal. Quería vostede dicir <suggestion>santo</suggestion>?</message>
+      <url>https://gl.wiktionary.org/wiki/santo</url>
       <example correction="santo">Foi á romaría de <marker>san</marker> Andrés.</example>
       <example>Foi á romaría de <marker>santo</marker> Andrés.</example>
     </rule>
@@ -3068,6 +3077,7 @@
           <token regexp="yes" negate="yes">^[aeiouáéíóú].*</token>
       </pattern>
       <message>O adxectivo &quot;santo&quot; vai apocopado cando precede a palabras que comezan por consoante. Quería vostede dicir <suggestion>san</suggestion>?</message>
+      <url>https://gl.wiktionary.org/wiki/san</url>
       <example correction="san">Foi á romaría de <marker>santo</marker> Domingo.</example>
       <example>Foi á romaría de <marker>san</marker> Domingo.</example>
     </rule>
@@ -3420,6 +3430,7 @@
         </marker>
       </pattern>
       <message>Posíbel incorrección: non se debe usar '\2' despois dunha negación. Empregue mellor <suggestion>nin</suggestion>.</message>
+      <url>https://gl.wiktionary.org/wiki/nin</url>
       <example correction="nin">Non se pode presentar máis dunha solicitude por persoa <marker>e</marker> grupo.</example>
       <example>Non se pode presentar máis dunha solicitude por persoa <marker>nin</marker> grupo.</example>
     </rule>
@@ -3447,6 +3458,7 @@
         </marker>
       </pattern>
       <message>'Elo' é en galego un substantivo masculino que significa 'aro ou anel dunha cadea'. Quería vostede dicir <suggestion>isto</suggestion> ou <suggestion>iso</suggestion>?</message>
+      <url>https://gl.wiktionary.org/wiki/isto</url>
       <example correction="isto|iso">Con <marker>elo</marker> conseguimos mellorar o rendemento do proceso.</example>
       <example>Con <marker>iso</marker> conseguimos mellorar o rendemento do proceso.</example>
     </rule>
@@ -3459,6 +3471,7 @@
         </marker>
       </pattern>
       <message>'Elo' é en galego un substantivo masculino que significa 'aro ou anel dunha cadea'. Quería vostede dicir <suggestion>isto</suggestion> ou <suggestion>iso</suggestion>?</message>
+      <url>https://gl.wiktionary.org/wiki/isto</url>
       <example correction="isto|iso">No centro de todo <marker>elo</marker> sitúase o escudo da vila.</example>
       <example>No centro de todo <marker>isto</marker> sitúase o escudo da vila.</example>
     </rule>
@@ -3550,6 +3563,7 @@
           <token regexp="yes">cont[áa]iner(es)?</token>
       </pattern>
       <message>A palabra '<match no="1"/>' é un anglicismo. Empregue mellor <suggestion>colector</suggestion>.</message>
+      <url>https://gl.wiktionary.org/wiki/colector</url>
       <example correction="colector">O <marker>container</marker> do lixo apareceu queimado.</example>
     </rule>
 
@@ -3559,6 +3573,7 @@
           <token regexp="yes">w[aá]ter(es)?</token>
       </pattern>
       <message>A palabra '<match no="1"/>' é un anglicismo. Empregue mellor <suggestion>váter</suggestion>.</message>
+      <url>https://gl.wiktionary.org/wiki/váter</url>
       <example correction="váter">O <marker>wáter</marker> estaba limpo.</example>
     </rule>
 
@@ -3599,6 +3614,7 @@
           <token regexp="yes">e?str[eé]ss?</token>
       </pattern>
       <message>A palabra '<match no="1"/>' é un anglicismo. Empregue mellor <suggestion>tensión</suggestion>.</message>
+      <url>https://gl.wiktionary.org/wiki/tensión</url>
       <example correction="tensión">O seu é un traballo de moito <marker>stres</marker>.</example>
       <example>O seu é un traballo de moita <marker>tensión</marker>.</example>
     </rule>
@@ -3610,6 +3626,7 @@
             <exception scope="previous">the</exception></token>
       </pattern>
       <message>A palabra '<match no="1"/>' é un anglicismo. Empregue mellor <suggestion>marca</suggestion> (feminino).</message>
+      <url>https://gl.wiktionary.org/wiki/marca</url>
       <example correction="marca">O atleta non conseguíu bater o <marker>record</marker>.</example>
       <example>O atleta non conseguíu bater a <marker>marca</marker>.</example>
     </rule>
@@ -3720,6 +3737,7 @@
           <token inflected="yes">rape</token>
       </pattern>
       <message>Posíbel castelanismo: o substantivo &quot;\1&quot; significa en galego &quot;acción ou efecto de rapar&quot;. A forma correcta en galego para o peixe é <suggestion>rabada</suggestion> (feminino) ou <suggestion>peixe sapo</suggestion>.</message>
+      <url>https://gl.wiktionary.org/wiki/rabada</url>
       <example correction="rabada|peixe sapo">Merquei un par de <marker>rapes</marker> na praza.</example>
       <example>Merquei un par de <marker>rabadas</marker> na praza.</example>
     </rule>
@@ -3735,6 +3753,7 @@
           <token regexp="yes">pescador(es)?</token>
       </pattern>
       <message>Palabra incorrecta: a forma &quot;\1 \2&quot; non existe en galego. Quería vostede dicir <suggestion>picapeixe</suggestion>?</message>
+      <url>https://gl.wiktionary.org/wiki/picapeixe</url>
       <example correction="picapeixe">O <marker>martín pescador</marker> non é un paxaro fácil de fotografar.</example>
     </rule>
 
@@ -3753,6 +3772,7 @@
           <token regexp="yes">conce(ll|x)a(l|is|es)</token>
       </pattern>
       <message>Palabra incorrecta: a forma &quot;\1&quot; non existe en galego. Quería vostede dicir <suggestion>concelleiro</suggestion>?</message>
+      <url>https://gl.wiktionary.org/wiki/concelleiro</url>
       <example correction="concelleiro">Mañá será oficial o seu cesamento no cargo de <marker>concellal</marker>.</example>
     </rule>
 
@@ -3762,6 +3782,7 @@
           <token regexp="yes">deterioros?</token>
       </pattern>
       <message>Palabra incorrecta: a forma &quot;\1&quot; non existe en galego. Quería vostede dicir <suggestion>deterioración</suggestion> (feminino)?</message>
+      <url>https://gl.wiktionary.org/wiki/deterioración</url>
       <example correction="deterioración">Denunciamos o <marker>deterioro</marker> da diversificación na oferta educativa.</example>
       <example>Denunciamos a <marker>deterioración</marker> da diversificación na oferta educativa.</example>
     </rule>
@@ -3772,6 +3793,7 @@
           <token regexp="yes">basuras?</token>
       </pattern>
       <message>Palabra incorrecta: a forma &quot;\1&quot; non existe en galego. Quería vostede dicir <suggestion>lixo</suggestion> (masculino)?</message>
+      <url>https://gl.wiktionary.org/wiki/lixo</url>
       <example correction="lixo">Hoxe teño que sacar eu a <marker>basura</marker>.</example>
       <example>Hoxe teño que sacar eu o <marker>lixo</marker>.</example>
     </rule>
@@ -3782,6 +3804,7 @@
           <token regexp="yes">asignaturas?</token>
       </pattern>
       <message>Palabra incorrecta: a forma &quot;\1&quot; non existe en galego. Quería vostede dicir <suggestion>materia</suggestion> ou <suggestion>disciplina</suggestion>?</message>
+      <url>https://gl.wiktionary.org/wiki/materia</url>
       <example correction="materia|disciplina">Este ano teño só tres <marker>asignaturas</marker>.</example>
       <example>Este ano teño só tres <marker>materias</marker>.</example>
     </rule>
@@ -3792,6 +3815,7 @@
           <token regexp="yes">veletas?</token>
       </pattern>
       <message>Palabra incorrecta: a forma &quot;\1&quot; non existe en galego. Quería vostede dicir <suggestion>catavento</suggestion> (masculino)?</message>
+      <url>https://gl.wiktionary.org/wiki/catavento</url>
       <example correction="catavento">Ten unha <marker>veleta</marker> no pincho da casa.</example>
       <example>Ten un <marker>catavento</marker> no pincho da casa.</example>
     </rule>
@@ -3802,6 +3826,7 @@
           <token regexp="yes">ventanillas?</token>
       </pattern>
       <message>Palabra incorrecta: a forma &quot;\1&quot; non existe en galego. Quería vostede dicir <suggestion>portelo</suggestion> (masculino)?</message>
+      <url>https://gl.wiktionary.org/wiki/portelo</url>
       <example correction="portelo">Abre a <marker>ventanilla</marker> do coche.</example>
       <example>Abre o <marker>portelo</marker> do coche.</example>
     </rule>
@@ -3822,6 +3847,7 @@
           <token regexp="yes">aforos?</token>
       </pattern>
       <message>Palabra incorrecta: a forma &quot;\1&quot; non existe en galego. Quería vostede dicir <suggestion>capacidade</suggestion> (feminino)?</message>
+      <url>https://gl.wiktionary.org/wiki/capacidade</url>
       <example correction="capacidade">No concerto sobrepasouse o <marker>aforo</marker> do recinto.</example>
       <example>No concerto sobrepasouse a <marker>capacidade</marker> do recinto.</example>
     </rule>
@@ -3832,6 +3858,7 @@
           <token regexp="yes">promedios?</token>
       </pattern>
       <message>Palabra incorrecta: a forma &quot;\1&quot; non existe en galego. Quería vostede dicir <suggestion>media</suggestion> (feminino) ou <suggestion>termo medio</suggestion>?</message>
+      <url>https://gl.wiktionary.org/wiki/media</url>
       <example correction="media|termo medio">Precisa pescudar o <marker>promedio</marker> de litros caídos en Santiago durante o ano 2000.</example>
       <example>Precisa pescudar a <marker>media</marker> de litros caídos en Santiago durante o ano 2000.</example>
     </rule>
@@ -3861,6 +3888,7 @@
           <token regexp="yes">cupos?</token>
       </pattern>
       <message>Palabra incorrecta: a forma &quot;\1&quot; non existe en galego. Quería vostede dicir <suggestion>cota</suggestion> (feminino)?</message>
+      <url>https://gl.wiktionary.org/wiki/cota</url>
       <example correction="cota">Non chegaron ao <marker>cupo</marker> de matriculados.</example>
       <example>Non chegaron á <marker>cota</marker> de matriculados.</example>
     </rule>
@@ -3871,6 +3899,7 @@
           <token regexp="yes">(callexón|calei?xón)s?</token>
       </pattern>
       <message>Palabra incorrecta: a forma &quot;\1&quot; non existe en galego. Quería vostede dicir <suggestion>canella</suggestion> (feminino)?</message>
+      <url>https://gl.wiktionary.org/wiki/canella</url>
       <example correction="canella">A discusión acabou nun <marker>calexón</marker> sen saída.</example>
       <example>A discusión acabou nunha <marker>canella</marker> sen saída.</example>
     </rule>
@@ -3881,6 +3910,7 @@
           <token regexp="yes">sabañóns?</token>
       </pattern>
       <message>Palabra incorrecta: a forma &quot;\1&quot; non existe en galego. Quería vostede dicir <suggestion>frieira</suggestion> (feminino)?</message>
+      <url>https://gl.wiktionary.org/wiki/frieira</url>
       <example correction="frieira">Teño un <marker>sabañón</marker> nunha man.</example>
       <example>Teño unha <marker>frieira</marker> nunha man.</example>
     </rule>
@@ -3891,6 +3921,7 @@
           <token regexp="yes">rincóns?</token>
       </pattern>
       <message>Palabra incorrecta: a forma &quot;\1&quot; non existe en galego. Quería vostede dicir <suggestion>recuncho</suggestion> ou <suggestion>cornello</suggestion>?</message>
+      <url>https://gl.wiktionary.org/wiki/recuncho</url>
       <example correction="recuncho|cornello">Puxo ao neno nun <marker>rincón</marker>.</example>
       <example>Puxo ao neno nun <marker>recuncho</marker>.</example>
     </rule>
@@ -3901,6 +3932,7 @@
           <token regexp="yes">carcomas?</token>
       </pattern>
       <message>Palabra incorrecta: a forma &quot;\1&quot; non existe en galego. Quería vostede dicir <suggestion>caruncho</suggestion> (masculino) ou <suggestion>couza</suggestion>?</message>
+      <url>https://gl.wiktionary.org/wiki/caruncho</url>
       <example correction="caruncho|couza">O mastro do barco ten <marker>carcoma</marker>.</example>
       <example>O mastro do barco ten <marker>caruncho</marker>.</example>
     </rule>
@@ -3911,6 +3943,7 @@
           <token regexp="yes">rasgos?</token>
       </pattern>
       <message>Palabra incorrecta: a forma &quot;\1&quot; non existe en galego. Quería vostede dicir <suggestion>trazo</suggestion> (liña trazada ou característica dunha persoa ou cousa) ou <suggestion>risco</suggestion> (liña longa)?</message>
+      <url>https://gl.wiktionary.org/wiki/trazo</url>
       <example correction="trazo|risco">A ausencia de melanina é un <marker>rasgo</marker> característico do albinismo.</example>
       <example>A ausencia de melanina é un <marker>trazo</marker> característico do albinismo.</example>
     </rule>
@@ -3941,6 +3974,7 @@
           <token regexp="yes">brúxulas?</token>
       </pattern>
       <message>Palabra incorrecta: a forma &quot;<match no="1"/>&quot; non existe en galego. Quería vostede dicir <suggestion>compás</suggestion> (masculino)?</message>
+      <url>https://gl.wiktionary.org/wiki/compás</url>
       <example correction="compás">Unha <marker>brúxula</marker> sinala sempre ao norte.</example>
       <example>Un <marker>compás</marker> sinala sempre ao norte.</example>
     </rule>
@@ -3951,6 +3985,7 @@
           <token regexp="yes">corbata?</token>
       </pattern>
       <message>Palabra incorrecta: a forma &quot;<match no="1"/>&quot; non existe en galego. Quería vostede dicir <suggestion>garavata</suggestion> ou <suggestion>gravata</suggestion>?</message>
+      <url>https://gl.wiktionary.org/wiki/garavata</url>
       <example correction="garavata|gravata">Vai traballar tódolos días vestido de <marker>corbata</marker>.</example>
       <example>Vai traballar tódolos días vestido de <marker>gravata</marker>.</example>
     </rule>
@@ -3961,6 +3996,7 @@
           <token regexp="yes">contraseñas?</token>
       </pattern>
       <message>Palabra incorrecta: a forma &quot;<match no="1"/>&quot; non existe en galego. Quería vostede dicir <suggestion>contrasinal</suggestion> (masculino)?</message>
+      <url>https://gl.wiktionary.org/wiki/contrasinal</url>
       <example correction="contrasinal">Tivo que cambiar a súa <marker>contraseña</marker> de entrada.</example>
       <example>Tivo que cambiar o seu <marker>contrasinal</marker> de entrada.</example>
     </rule>
@@ -3971,6 +4007,7 @@
           <token regexp="yes">grullas?</token>
       </pattern>
       <message>Palabra incorrecta: a forma &quot;<match no="1"/>&quot; non existe en galego. Quería vostede dicir <suggestion>grou</suggestion> (masculino) ou <suggestion>grúa</suggestion>?</message>
+      <url>https://gl.wiktionary.org/wiki/grou</url>
       <example correction="grou|grúa">En novembro é cando as <marker>grullas</marker> inician a súa migración.</example>
       <example>En novembro é cando as <marker>grúas</marker> inician a súa migración.</example>
     </rule>
@@ -3981,6 +4018,7 @@
           <token regexp="yes">libretas?</token>
       </pattern>
       <message>Palabra incorrecta: a forma &quot;<match no="1"/>&quot; non existe en galego. Quería vostede dicir <suggestion>caderno</suggestion> (masculino)?</message>
+      <url>https://gl.wiktionary.org/wiki/caderno</url>
       <example correction="caderno">Andrés foi mercar unha <marker>libreta</marker> para a escola.</example>
       <example>Andrés foi mercar un <marker>caderno</marker> para a escola.</example>
     </rule>
@@ -3991,6 +4029,7 @@
           <token regexp="yes">tizas?</token>
       </pattern>
       <message>Palabra incorrecta: a forma &quot;<match no="1"/>&quot; non existe en galego. Quería vostede dicir <suggestion>xiz</suggestion> (masculino)?</message>
+      <url>https://gl.wiktionary.org/wiki/xiz</url>
       <example correction="xiz">Na aula do segundo curso non hai <marker>tiza</marker>.</example>
     </rule>
 
@@ -4001,6 +4040,7 @@
           <token regexp="yes">tragalu(z|ces)</token>
       </pattern>
       <message>Palabra incorrecta: a forma &quot;<match no="1"/>&quot; non existe en galego. Quería vostede dicir <suggestion>bufarda</suggestion> (feminino)?</message>
+      <url>https://gl.wiktionary.org/wiki/bufarda</url>
       <example correction="bufarda">Puxo un <marker>tragaluz</marker> na casa.</example>
       <example>Puxo unha <marker>bufarda</marker> na casa.</example>
     </rule>
@@ -4012,6 +4052,7 @@
           <token regexp="yes">xorobas?</token>
       </pattern>
       <message>Palabra incorrecta: a forma &quot;<match no="1"/>&quot; non existe en galego. Quería vostede dicir <suggestion>chepa</suggestion> ou <suggestion>carrumba</suggestion>?</message>
+      <url>https://gl.wiktionary.org/wiki/chepa</url>
       <example correction="chepa|carrumba">O dromedario ten unha única <marker>xoroba</marker>.</example>
       <example>O dromedario ten unha única <marker>chepa</marker>.</example>
     </rule>
@@ -4023,6 +4064,7 @@
           <token regexp="yes">xarróns?</token>
       </pattern>
       <message>Palabra incorrecta: a forma &quot;<match no="1"/>&quot; non existe en galego. Quería vostede dicir <suggestion>floreiro</suggestion> ou <suggestion>vaso</suggestion>?</message>
+      <url>https://gl.wiktionary.org/wiki/floreiro</url>
       <example correction="floreiro|vaso">Rompín o <marker>xarrón</marker> que lle mercara á túa nai.</example>
       <example>Rompín o <marker>floreiro</marker> que lle mercara á túa nai.</example>
     </rule>
@@ -4321,6 +4363,7 @@
           <token regexp="yes">acc[eé]sits</token>
       </pattern>
       <message>A palabra 'accésit' non varía no plural. Empregue mellor <suggestion>accésit</suggestion>.</message>
+      <url>https://gl.wiktionary.org/wiki/accésit</url>
       <example correction="accésit">Como narrador gaña dous <marker>accésits</marker> do Pedrón de Ouro.</example>
     </rule>
   </rulegroup>
