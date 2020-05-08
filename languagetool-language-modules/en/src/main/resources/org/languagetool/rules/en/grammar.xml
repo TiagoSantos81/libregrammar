@@ -11504,7 +11504,7 @@ USA
 
         <rule id="TIS" name="tis (this)"><!-- #2821 -->
             <antipattern>
-                 <token regexp="yes">['’]</token>
+                 <token regexp="yes">['‘]</token>
                  <token spacebefore="no">tis</token>
             </antipattern>
             <?ignore make a looser detection
@@ -11536,19 +11536,19 @@ USA
                     ?>
                     </token>
             </pattern>
-            <message>Did you mean <suggestion>this</suggestion> or the literary contraction <suggestion>'\1</suggestion> (straight quote) or <suggestion>’\1</suggestion> (curly quote) as an alternative for <suggestion>it is</suggestion>?</message>
+            <message>Did you mean <suggestion>this</suggestion> or the literary contraction <suggestion>'\1</suggestion> (straight quote) or <suggestion>‘\1</suggestion> (curly quote) as an alternative for <suggestion>it is</suggestion>?</message>
             <!--<url>https://www.lexico.com/definition/'tis</url>-->
             <url>https://www.dictionary.com/browse/tis</url>
             <short>Possible typo</short>
-            <example correction="this|'tis|’tis|it is">Is <marker>tis</marker> sentence correct?</example>
-            <example correction="This|'Tis|’Tis|It is"><marker>Tis</marker> sentence contains an error.</example>
-            <example correction="this|'tis|’tis|it is">What would the rule editor do on <marker>tis</marker> warning?</example>
-            <example correction="This|'Tis|’Tis|It is"><marker>Tis</marker> a bright and sunny morn in the hamlet.</example>
-            <example correction="this|'tis|’tis|it is">I think <marker>tis</marker> a difficult problem to solve.</example>
-            <example correction="This|'Tis|’Tis|It is"><marker>Tis</marker> the season to be thankful.</example>
-            <example correction="This|'Tis|’Tis|It is"><marker>Tis</marker> well is deep and dangerous.</example>
-            <example correction="This|'Tis|’Tis|It is">... when Mike wrote, "<marker>Tis</marker> time it will work!"</example>
-            <example correction="This|'Tis|’Tis|It is">..written at the same time, Brontë wrote "<marker>Tis</marker> bitter sometimes to recall/Illusions once deemed fair".</example><!-- 2020-05-04 MFU: Books of literary criticism that that I have seen with a Google search show that Brontë wrote 'Tis. -->
+            <example correction="this|'tis|‘tis|it is">Is <marker>tis</marker> sentence correct?</example>
+            <example correction="This|'Tis|‘Tis|It is"><marker>Tis</marker> sentence contains an error.</example>
+            <example correction="this|'tis|‘tis|it is">What would the rule editor do on <marker>tis</marker> warning?</example>
+            <example correction="This|'Tis|‘Tis|It is"><marker>Tis</marker> a bright and sunny morn in the hamlet.</example>
+            <example correction="this|'tis|‘tis|it is">I think <marker>tis</marker> a difficult problem to solve.</example>
+            <example correction="This|'Tis|‘Tis|It is"><marker>Tis</marker> the season to be thankful.</example>
+            <example correction="This|'Tis|‘Tis|It is"><marker>Tis</marker> well is deep and dangerous.</example>
+            <example correction="This|'Tis|‘Tis|It is">... when Mike wrote, "<marker>Tis</marker> time it will work!"</example>
+            <example correction="This|'Tis|‘Tis|It is">..written at the same time, Brontë wrote "<marker>Tis</marker> bitter sometimes to recall/Illusions once deemed fair".</example><!-- 2020-05-04 MFU: Books of literary criticism that that I have seen with a Google search show that Brontë wrote 'Tis. -->
             <example>Is <marker>this</marker> sentence correct?</example>
             <example>The whole story is just a tis...</example>
             <example>The Gallipoli peninsula (Chersónisos tis Kallípolis) is located in the southern part of East Thrace.</example>
@@ -11562,6 +11562,7 @@ USA
             <example>1831 – Samuel Francis Smith writes "My Country, 'Tis of Thee" for the Boston, Massachusetts July 4 festivities.</example>
             <example>Of course, 'tis the season, and the staff at Control Solutions wishes you a happy, healthy holiday, and a prosperous 2002.</example><!-- www.merriam-webster.com/words-at-play/why-we-say-tis-the-season -->
             <example>Washington said, "Tis well."</example>
+            <example>Anyone, ‘tis all</example><!--  #2882 -->
 <!-- Not found --><example>When the manager said, '<marker>tis</marker> your problem, not mine,' I was angry.</example>
             <example>Best to put the tis before the fas.</example>
         </rule>
@@ -18189,7 +18190,7 @@ USA
             <rule>
                 <antipattern><!-- adjective without hyphen "This book is a must-read" -->
                     <token>must</token>
-                    <token regexp="yes">have|read|go|see|visit|be|do|offer|take|watch|trip</token>
+                    <token regexp="yes">have|read|go|see|visit|be|do|offer|take|watch|trip|fix</token>
                 </antipattern>
                 <antipattern case_sensitive="yes"><!-- the Will.I.Am Song -->
                     <token>the</token>
@@ -18201,7 +18202,9 @@ USA
                     <token postag="MD" />
                     <token min="0" regexp="yes">&apostrophe;</token>
                     <token postag="RB" min="0" />
-                    <token postag="VBP?" postag_regexp="yes" />
+                    <token postag="VBP?" postag_regexp="yes">
+                        <exception postag="IN" />
+                    </token>
                 </pattern>
                 <message>Did you mean <suggestion>they</suggestion>, <suggestion>that</suggestion> or <suggestion>there</suggestion>?</message>
                 <short>Possible typo</short>
@@ -18214,6 +18217,7 @@ USA
                 <example>On any Day, if the Must Offer Generator cannot generate the full PMax it must file a generation outage report.</example>
                 <example>The must have toy this year...</example>
                 <example>Justify the need.</example>
+                <example>Ripping the will up after all.</example>
             </rule>
             <rule>
                 <pattern>
@@ -24234,12 +24238,16 @@ USA
                 <token regexp="yes">&nouns_with_a;</token>
                 <token>a</token>
             </antipattern>
+            <antipattern>
+                <token>rather</token>
+                <token>out</token>
+            </antipattern>
             <pattern>
                 <token inflected="yes">a</token>
                 <marker>
                     <token postag="RB">
                         <exception postag="JJ[RS]?|NN.*" postag_regexp="yes"/>
-                        <exception regexp="yes">not|after|before|approx|while|bit|otherwise</exception>
+                        <exception regexp="yes">not|after|before|approx|while|bit|otherwise|multiply</exception>
                         <exception case_sensitive="yes">SO</exception>
                         <exception>somewhat</exception><!-- can be a preposition according to https://www.merriam-webster.com/dictionary/somewhat -->
                     </token>
@@ -24261,6 +24269,7 @@ USA
             <example>That was a really kind of weird conversation.</example>
             <example>A completely oil based solution.</example>
             <example>It requires a SO number.</example>
+            <example>Make a multiply equation.</example>
             <example>Such a person may once in a while see a good person.</example>
             <example><marker>Once in a while</marker> everything goes wrong.</example>
             <example correction="philosophical question">This is a <marker>philosophically question</marker>.</example>
@@ -33286,6 +33295,7 @@ USA
                 <example>The Hell's Angels came in on motorcycles and slashed banners while yelling "Go back to Russia, you fucking communists!" at the protesters.</example>
             </rule>
         </rulegroup>
+
         <rulegroup id="HE_VERB_AGR" name="Agreement error: Non-third person/past tense verb with 'he/she/it' or a pronoun">
             <short>Agreement error</short>
             <antipattern><!-- nobody having any question. Applicable to rule 1 and rule 7. -->
@@ -33407,6 +33417,37 @@ USA
                     <token>listen</token>
                     <token>up</token>
                 </antipattern>
+                <antipattern><!-- #2854 is probably someone using -->
+                    <token chunk="B-VP" postag_regexp="yes" postag="VB[DZ]"/>
+                    <token min="0" max="2" postag="RB"/>
+                    <token regexp="yes">(any|every|no|some)(one|body)</token>
+                    <token postag="VBG"/>
+                </antipattern>
+                <antipattern><!-- #2854 To everybody writing on -->
+                    <token>to</token>
+                    <token regexp="yes">(any|every|no|some)(one|body)</token>
+                    <token min="0" max="3" postag="RB"/>
+                    <token postag="VBG"/>
+                    <token postag="IN"/>
+                </antipattern>
+                <antipattern><!-- #2854 everybody writing on this rather unusual topic thinks -->
+                    <token regexp="yes">(any|every|no|some)(one|body)</token>
+                    <token postag="VBG"/>
+                    <token postag="IN"/>
+                    <token chunk="B-NP-singular"/>
+                    <token min="0" max="3" chunk="I-NP-singular"/>
+                    <token chunk="E-NP-singular"/>
+                    <token chunk="B-VP" postag_regexp="yes" postag="VB[DZ]"/>
+                </antipattern>
+                <antipattern><!-- #2854 chunker error: everybody writing on this topic divides Germany  -->
+                    <token regexp="yes">(any|every|no|some)(one|body)</token>
+                    <token postag="VBG"/>
+                    <token postag="IN"/>
+                    <token chunk="B-NP-plural"/>
+                    <token min="0" max="3" chunk="I-NP-plural"/>
+                    <token chunk="E-NP-plural" postag="VBZ"/>
+                    <token postag="NNP"/>
+                </antipattern>
                 <pattern>
                     <token negate="yes" regexp="yes"><exception inflected="yes" regexp="yes">feel|hear|see|insist|suggest|help|prevent|stop|of|have|be|notice</exception>(that|how|will|must|could|can|should|would|does|did|may|might|t|let|dare|lest|into)</token>
                     <token regexp="yes">s?he|(any|every|no|some)(one|body)</token>
@@ -33469,6 +33510,14 @@ USA
                 <example>She wasn't letting anyone see the doctor.</example>
                 <example>But letting everybody hear about your problems is rather indiscreet.</example>
                 <example>He stated, "[T]he Act of Congress which prohibited a citizen from holding and owning slaves".</example>
+                <example>I would say that is probably someone using dirty clothes.</example><!-- #2854 -->
+                <example>I would say that was probably someone doing the dirty work.</example><!-- #2854 -->
+                <example>... but rather, the photograph showed somebody cleaning dirty clothes.</example><!-- #2854 -->
+                <example>To everybody writing on this forum, thank you...</example><!-- #2854 -->
+                <example>To everybody actually writing on this forum, thank you!</example><!-- #2854 -->
+                <example>... and because almost everybody writing on this rather unusual topic thinks that they have an answer...</example><!-- #2854 -->
+                <example>... we note that almost everybody writing on this topic divided Germany into two groups.</example><!-- #2854 -->
+                <example>Virtually everybody writing on this topic divides Germany into two groups.</example><!-- #2854 divides/E-NP-plural -->
             </rule>
             <rule>
                 <antipattern><!-- #2223 we will usually receive it so don't listen -->
@@ -33510,6 +33559,13 @@ USA
                 <example>She doesn't know anyone therefore don't expect her to go to the party.</example><!-- #2223 -->
             </rule>
             <rule>
+                <antipattern><!-- #2854 to everybody actually writing about -->
+                    <token>to</token>
+                    <token regexp="yes">(any|every|no|some)(one|body)</token>
+                    <token min="1" max="3" postag="RB"/>
+                    <token postag="VBG"/>
+                    <token postag="IN"/>
+                </antipattern>
                 <pattern>
                     <token negate="yes" regexp="yes"><exception inflected="yes" regexp="yes">feel|hear|see|prevent|help|stop|suggest</exception>(that|ha[sd]|will|must|could|can|should|would|does|did|is|may|might|t|was|dare|lest|without)</token>
                     <token regexp="yes">s?he|(any|every|no|some)(one|body)</token>
@@ -33529,6 +33585,7 @@ USA
                 <example>He always <marker>walked</marker> to the building.</example>
                 <example>He really don't like it.</example><!-- #1907 -->
                 <example>He then summons them.</example><!-- #2222 -->
+                <example>... and to everybody actually writing about this topic, I just want to say... </example><!-- #2854 -->
             </rule>
             <rule>
                 <antipattern>
@@ -33582,39 +33639,6 @@ USA
                 <example>She recommended that he <marker>walk</marker> to the building.</example>
                 <example correction="walk">She recommended that he <marker>walking</marker> to the building.</example>
                 <example>He <marker>walked</marker> to the building.</example>
-            </rule>
-            <!--  subjunctive without 'that' -->
-            <rule>
-                <pattern>
-                    <token postag="VB.*" postag_regexp="yes">
-                        <exception inflected="yes" regexp="yes">feel|hear|see|help|prevent|stop|be|have</exception>
-                        <exception postag="CC"/>
-                        </token>
-                    <token regexp="yes">s?he|(?:any|no|some)(?:one|body)</token>
-                    <token postag="RB" min='0' max='3'>
-                        <exception regexp="yes">before|after|needs|live</exception>
-                        <exception postag="VBD"/>
-                    </token>
-                    <marker>
-                        <token postag="VBG">
-                            <exception postag="IN"/></token>
-                    </marker>
-                </pattern>
-                <message>With the word '<match no="2"/>' in a subjunctive clause, use the base form of a verb: <suggestion><match no="4" postag="VB"/></suggestion>.</message>
-                <example>She recommended he <marker>walk</marker> to the building.</example>
-                <example correction="walk">She recommended he <marker>walking</marker> to the building.</example>
-                <example>He <marker>walked</marker> to the building.</example>
-                <example>What is he doing here at this hour?</example>
-                <example>And why was she crying?</example>
-                <example>What's he going to do?</example>
-                <example>He loved someone before knowing Rose.</example>
-                <example>I don't want <marker>anyone touching my car</marker>.</example>
-                <example>Can you ask anyone regarding the new concept?</example><!-- 1825 -->
-                <example>(T)he conditioning of petty criminals with the whip, or some more...</example>
-                <example>...is an acoustician while someone working in the field of acoustics technology may be called an acoustical engineer.</example><!-- #2635 -->
-                <example type="triggers_error">You can ask anyone walking to the city about the bus drivers' strike!</example>
-                <example type="triggers_error">She recommended anyone walking to take the bus.</example>
-                <example type="triggers_error">The fearful noise astonished anyone coming for the first time.</example>
             </rule>
             <rule>
                 <antipattern>
@@ -33904,6 +33928,7 @@ USA
                 <example>How are Theodore and Jimbo related?</example><!-- #2663 -->
             </rule>
         </rulegroup>
+
         <rule id="BORN_IN" name="I (was) born in the USA">
             <antipattern>
                 <token inflected="yes">be</token>
@@ -37963,7 +37988,7 @@ USA
                 <example>It starts with an “A”.</example>
             </rule>
         </rulegroup>
-        <rulegroup id="THE_US" name="In the us (US)" default="temp_off">
+        <rulegroup id="THE_US" name="In the us (US)">
             <rule>
                 <pattern>
                     <token regexp="yes">the|an?|y?our|my|their|her|his</token>
