@@ -5524,6 +5524,7 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>bo[am]</token>
       </pattern>
       <message>Substitua por <suggestion>melhor</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/melhor</url>
       <example correction="melhor">Aquele artigo é <marker>mais bom</marker> que o outro.</example>
     </rule>
     <rule>
@@ -5542,6 +5543,7 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>bo[an]s</token>
       </pattern>
       <message>Substitua por <suggestion>melhores</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/melhores</url>
       <example correction="melhores">Aqueles artigo são <marker>mais bons</marker> que o outros.</example>
     </rule>
     <rule>
@@ -5556,6 +5558,7 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>m(?:á|au)</token>
       </pattern>
       <message>Substitua por <suggestion>pior</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/pior</url>
       <example correction="pior">A Ana é a <marker>mais má</marker> da turma.</example>
     </rule>
     <rule>
@@ -5574,6 +5577,7 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>m(?:á|au)s</token>
       </pattern>
       <message>Substitua por <suggestion>piores</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/piores</url>
       <example correction="piores">A Ana e a Maria são as <marker>mais más</marker> da turma.</example>
       <example>A Ana teve mais más avaliações que a Maria.</example>
     </rule>
@@ -6535,6 +6539,7 @@ title="Easy editing stylesheet" ?>
           <token>mão</token>
       </pattern>
       <message>Substitua por <suggestion>antemão</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/antemão</url>
       <example correction="antemão">Não é possível dizer de <marker>ante mão</marker>.</example>
     </rule>
 
@@ -6562,6 +6567,7 @@ title="Easy editing stylesheet" ?>
           <token regexp="yes">sejam?</token>
       </pattern>
       <message>Substitua por <suggestion>que</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/que</url>
       <example correction="que">Vamos ambicionar <marker>a que</marker> seja uma vitória.</example>
     </rule>
 
@@ -6597,6 +6603,7 @@ title="Easy editing stylesheet" ?>
           <token inflected='yes'>estar</token>
       </pattern>
       <message>Substitua por <suggestion>onde</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/onde</url>
       <example correction="onde">Diga-me <marker>aonde</marker> está o livro.</example>
     </rule>
 
@@ -6919,6 +6926,7 @@ title="Easy editing stylesheet" ?>
           <token>dentro</token>
       </pattern>
       <message>Substitua por <suggestion>adentro</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/adentro</url>
       <example correction="adentro">Ele atreveu-se rio <marker>a dentro</marker>.</example>
     </rule>
 
@@ -7018,6 +7026,7 @@ title="Easy editing stylesheet" ?>
           <token>quando</token>
       </pattern>
       <message>Substitua por <suggestion>aquando</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/aquando</url>
       <example correction="aquando">Vamos tratar disso <marker>a quando</marker> da ida do Rui.</example>
     </rule>
 
@@ -7050,6 +7059,7 @@ title="Easy editing stylesheet" ?>
           <token case_sensitive='yes'>trás</token>
       </pattern>
       <message>Substitua por <suggestion>atrás</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/atrás</url>
       <example correction="atrás">Vê <marker>a trás</marker> da porta.</example>
     </rule>
 
@@ -7254,6 +7264,7 @@ title="Easy editing stylesheet" ?>
           <token>vírus</token>
       </pattern>
       <message>Substitua por <suggestion>antivírus</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/antivírus</url>
       <example correction="antivírus">Actualiza sempre o <marker>anti vírus</marker>.</example>
     </rule>
 
@@ -7322,6 +7333,7 @@ title="Easy editing stylesheet" ?>
           <token>falante</token>
       </pattern>
       <message>Substitua por <suggestion>altifalante</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/altifalante</url>
       <example correction="altifalante">O <marker>auto-falante</marker> está avariado.</example>
     </rule>
     <rule>
@@ -7331,6 +7343,7 @@ title="Easy editing stylesheet" ?>
           <token>falantes</token>
       </pattern>
       <message>Substitua por <suggestion>altifalantes</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/altifalantes</url>
       <example correction="altifalantes">Os <marker>auto-falantes</marker> estão avariados.</example>
     </rule>
   </rulegroup>
@@ -7443,6 +7456,7 @@ title="Easy editing stylesheet" ?>
             <exception regexp="yes">valor|montante|assunto|tema|produto|modo|indivíduo|período</exception></token>
       </pattern>
       <message>'De certo' equivale a 'de determinado'. Se pretende indicar certeza utilize <suggestion>decerto</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/decerto</url>
       <example correction="decerto">Isso irá <marker>de certo</marker> lesar os trabalhadores.</example>
     </rule>
 
@@ -7600,6 +7614,7 @@ title="Easy editing stylesheet" ?>
           <token>te</token>
       </pattern>
       <message>Substitua por <suggestion>entraste</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/entraste</url>
       <example correction="entraste">Então <marker>entras te</marker> bem o ano.</example>
     </rule>
 
@@ -7627,6 +7642,7 @@ title="Easy editing stylesheet" ?>
           <token regexp="yes">d[aeo]s?</token>
       </pattern>
       <message>Substitua por <suggestion>sob</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/sob</url>
       <example correction="sob">Ele <marker>estava sobre o efeito</marker> de drogas.</example>
     </rule>
 
@@ -7682,6 +7698,7 @@ title="Easy editing stylesheet" ?>
           <token>quais</token>
       </pattern>
       <message>Substitua por <suggestion>pelas</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/pelas</url>
       <example correction="pelas">Foi <marker>através das</marker> quais que ele estudou.</example>
     </rule>
 
@@ -7802,6 +7819,7 @@ title="Easy editing stylesheet" ?>
         </marker>
       </pattern>
       <message>Substitua por <suggestion>massagem</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/massagem</url>
       <example correction="massagem">Quero uma <marker>massajem</marker> relaxante.</example>
     </rule>
 
@@ -7815,6 +7833,7 @@ title="Easy editing stylesheet" ?>
         </marker>
       </pattern>
       <message>Substitua por <suggestion>étnica</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/étnica</url>
       <example correction="étnica">É uma minoria <marker>ética</marker> importante.</example>
     </rule>
     <rule>
@@ -7825,6 +7844,7 @@ title="Easy editing stylesheet" ?>
         </marker>
       </pattern>
       <message>Substitua por <suggestion>étnicas</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/étnicas</url>
       <example correction="étnicas">As minorias <marker>éticas</marker> são importantes.</example>
     </rule>
   </rulegroup>
@@ -7836,6 +7856,7 @@ title="Easy editing stylesheet" ?>
           <token>carteiro</token>
       </pattern>
       <message>Substitua por <suggestion>carteira</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/carteira</url>
       <example correction="carteira">A Ana é <marker>mulher carteiro</marker>.</example>
     </rule>
 
@@ -7846,6 +7867,7 @@ title="Easy editing stylesheet" ?>
           <token>músico</token>
       </pattern>
       <message>Substitua por <suggestion>música</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/música</url>
       <example correction="música">A Ana é uma <marker>mulher músico</marker>.</example>
     </rule>
 
@@ -7950,6 +7972,7 @@ title="Easy editing stylesheet" ?>
         </marker>
       </pattern>
       <message>Se o orador é do sexo masculino, utilize <suggestion>obrigado</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/obrigado</url>
       <example correction="obrigado">O meu muito <marker>obrigada</marker> por tudo.</example>
     </rule>
 
@@ -7965,6 +7988,7 @@ title="Easy editing stylesheet" ?>
           <token>refeição</token>
       </pattern>
       <message>Substitua por <suggestion>hora</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/hora</url>
       <example correction="hora">Está na minha <marker>ora</marker> de refeição.</example>
     </rule>
 
@@ -8075,6 +8099,7 @@ title="Easy editing stylesheet" ?>
           <token>que</token>
       </pattern>
       <message>Substitua por <suggestion>porque</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/porque</url>
       <example correction="porque">Fiquei contente <marker>por causa que</marker> ninguém se feriu.</example>
     </rule -->
 
@@ -8141,6 +8166,7 @@ title="Easy editing stylesheet" ?>
         </marker>
       </pattern>
       <message>Substitua por <suggestion>básico</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/básico</url>
       <example correction="básico">Este é o problema <marker>basilar</marker> da questão.</example>
     </rule>
 
@@ -8191,6 +8217,7 @@ title="Easy editing stylesheet" ?>
           <token>ser</token>
       </pattern>
       <message>Substitua por <suggestion>puder</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/puder</url>
       <example correction="puder">Avise quando <marker>possa</marker> ser a melhor altura.</example>
     </rule>
 
@@ -8204,6 +8231,7 @@ title="Easy editing stylesheet" ?>
         </marker>
       </pattern>
       <message>Substitua por <suggestion>recomendável</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/recomendável</url>
       <example correction="recomendável">É <marker>recomendável de</marker> fazer um backup mensal.</example>
     </rule>
 
@@ -8228,6 +8256,7 @@ title="Easy editing stylesheet" ?>
           <token inflected='yes'>fazer</token>
       </pattern>
       <message>Substitua por <suggestion>para</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/para</url>
       <example correction="para">O martelo serviu <marker>a</marker> fazer o banco.</example>
     </rule>
 
@@ -8252,6 +8281,7 @@ title="Easy editing stylesheet" ?>
           <token>vez</token>
       </pattern>
       <message>Substitua por <suggestion>talvez</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/talvez</url>
       <example correction="talvez">Amanhã <marker>tal vez</marker> seja possível.</example>
     </rule>
 
@@ -8276,6 +8306,7 @@ title="Easy editing stylesheet" ?>
         </marker>
       </pattern>
       <message>Substitua por <suggestion>têm</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/têm</url>
       <example correction="têm">Uns <marker>tem</marker> sorte no jogo.</example>
     </rule>
 
@@ -8327,6 +8358,7 @@ title="Easy editing stylesheet" ?>
         </marker>
       </pattern>
       <message>Substitua por <suggestion>remunerado</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/remunerado</url>
       <example correction="remunerado">O Rui faz trabalho não <marker>pago</marker> de noite.</example>
     </rule>
 
@@ -8341,6 +8373,7 @@ title="Easy editing stylesheet" ?>
           <token>arte</token>
       </pattern>
       <message>Substitua por <suggestion>mostra</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/mostra</url>
       <example correction="mostra">Quero ver a <marker>amostra</marker> de arte.</example>
     </rule>
 
@@ -8437,6 +8470,7 @@ title="Easy editing stylesheet" ?>
           </marker>
       </pattern>
       <message>Substitua por <suggestion>vossa</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/vossa</url>
       <example correction="vossa">A sorte é <marker>de vocês</marker>.</example>
     </rule>
     <rule>
@@ -8450,6 +8484,7 @@ title="Easy editing stylesheet" ?>
           </marker>
       </pattern>
       <message>Substitua por <suggestion>vossas</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/vossas</url>
       <example correction="vossas">As casas são <marker>de vocês</marker>.</example>
     </rule>
 
@@ -8464,6 +8499,7 @@ title="Easy editing stylesheet" ?>
           </marker>
       </pattern>
       <message>Substitua por <suggestion>vosso</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/vosso</url>
       <example correction="vosso">O cão é <marker>de vocês</marker>.</example>
     </rule>
     <rule>
@@ -8477,6 +8513,7 @@ title="Easy editing stylesheet" ?>
           </marker>
       </pattern>
       <message>Substitua por <suggestion>vossos</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/vossos</url>
       <example correction="vossos">Os cães são <marker>de vocês</marker>.</example>
     </rule>
   </rulegroup>	
@@ -8887,6 +8924,7 @@ title="Easy editing stylesheet" ?>
           <token negate_pos='yes' postag='V.+' postag_regexp='yes'/>
       </pattern>
       <message>Será que quis dizer <suggestion>aonde</suggestion>?</message>
+      <url>https://pt.wiktionary.org/wiki/aonde</url>
       <example correction='aonde'><marker>a onde</marker>.</example>
     </rule>
     <rule id='CONTRACAO_DELA' name='De + ela'>
@@ -8952,6 +8990,7 @@ title="Easy editing stylesheet" ?>
           <token min='0' negate_pos='yes' postag='V.+' postag_regexp='yes'/>
       </pattern>
       <message>Será que quis dizer <suggestion>donde</suggestion>?</message>
+      <url>https://pt.wiktionary.org/wiki/donde</url>
       <example correction='donde'><marker>de onde</marker>.</example>
     </rule>
     <rule id='CONTRACAO_DACOLÁ' name='De + artigos'><!-- default='off' -->
@@ -12439,6 +12478,7 @@ tokenizer spreadsheet in the forum	     -->
           <token>grande</token>
       </pattern>
       <message>Se não se refere a pessoas, considere substituir por <suggestion>maior</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/maior</url>
       <example correction="maior">Aquele artigo é <marker>mais grande</marker> que o outro.</example>
     </rule>
     <rule>
@@ -12453,6 +12493,7 @@ tokenizer spreadsheet in the forum	     -->
           <token>grandes</token>
       </pattern>
       <message>Se não se refere a pessoas, considere substituir por <suggestion>maiores</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/maiores</url>
       <example correction="maiores">Aqueles artigos são <marker>mais grandes</marker> que o outro.</example>
     </rule>
     <rule>
@@ -12467,6 +12508,7 @@ tokenizer spreadsheet in the forum	     -->
           <token>pequeno</token>
       </pattern>
       <message>Se não se refere a pessoas, considere substituir por <suggestion>menor</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/menor</url>
       <example correction="menor">Aquele artigo é <marker>mais pequeno</marker> que o outro.</example>
     </rule>
     <rule>
@@ -12481,6 +12523,7 @@ tokenizer spreadsheet in the forum	     -->
           <token>pequenos</token>
       </pattern>
       <message>Se não se refere a pessoas, considere substituir por <suggestion>menores</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/menores</url>
       <example correction="menores">Aqueles artigos são <marker>mais pequenos</marker> que o outro.</example>
     </rule>
   </rulegroup>
@@ -17517,6 +17560,7 @@ o tomate'>
           <token>com</token>
       </pattern>
       <message>Substitua por <suggestion>contando</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/contando</url>
       <example correction="contando">Isto já <marker>contanto</marker> com o jantar.</example>
     </rule>
 
@@ -17719,6 +17763,7 @@ o tomate'>
         </marker>
       </pattern>
       <message>Substitua por <suggestion>trás</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/trás</url>
       <example correction="trás">A Ana deve viajar no banco de <marker>traz</marker>.</example>
     </rule>
     <rule>
@@ -17736,6 +17781,7 @@ o tomate'>
         </marker>
       </pattern>
       <message>Substitua por <suggestion>traz</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/traz</url>
       <example correction="traz">O Rui <marker>trás</marker> o material.</example>
       <example>Universidade de Trás-os-Montes e Alto Douro</example>
     </rule>
@@ -22015,6 +22061,7 @@ o tomate'>
           <token regexp="yes">d[eao]s?</token>
       </pattern>
       <message>Substitua por <suggestion>análise</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/análise</url>
       <example correction="análise">Quero uma <marker>analise</marker> do problema.</example>
     </rule>
     <rule id='PARONYM_ARICA_364' name='Parónimo: arica'>
@@ -26208,6 +26255,7 @@ TODO Write better examples
           <token>em</token>
       </pattern>
       <message>Substitua por <suggestion>pôr em</suggestion> ou <suggestion>porém</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/porém</url>
       <example correction="pôr em|porém">Temos de <marker>por em</marker> prática tudo o que aprendemos!</example>
     </rule>
   </rulegroup>
@@ -28364,6 +28412,7 @@ TODO Write better examples
     <rule>
       <regexp>\bOpen (Street Maps?|Streetmaps?)\b</regexp>
       <message>Pretende referir-se ao programa de mapas gratuito <suggestion>OpenStreetMap</suggestion>?</message>
+      <url>https://pt.wiktionary.org/wiki/OpenStreetMap</url>
       <example>O <marker>openstreetmap.org</marker> é um programa de mapas livre e gratuito.</example>
       <example correction="OpenStreetMap">O <marker>Open Street Map</marker> é um programa de mapas livre e gratuito.</example>
       <example correction="OpenStreetMap">O <marker>Open Streetmaps</marker> é um programa de mapas livre e gratuito.</example>
@@ -28424,6 +28473,7 @@ TODO Write better examples
           <token regexp="yes">rodas?|pneus?</token>
       </pattern>
       <message>Substitua por <suggestion>aderência</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/aderência</url>
       <example correction="aderência">A <marker>adesão</marker> do pneu é boa.</example>
     </rule>
 
@@ -29691,6 +29741,7 @@ TODO Write better examples
           <token>diante</token>
       </pattern>
       <message>Substitua por <suggestion>doravante</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/doravante</url>
       <example correction="doravante">Isto deve ser feito <marker>daqui em diante</marker>.</example>
     </rule>
     <rule>
@@ -29702,6 +29753,7 @@ TODO Write better examples
           <token>futuro</token>
       </pattern>
       <message>Substitua por <suggestion>doravante</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/doravante</url>
       <example correction="doravante">Isto deve ser feito <marker>de hoje para o futuro</marker>.</example>
     </rule>
   </rulegroup>
@@ -29729,6 +29781,7 @@ TODO Write better examples
             <exception>amanhã</exception></token>
       </pattern>
       <message>Substitua por <suggestion>após</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/após</url>
       <example correction="após">Faz isso <marker>depois de</marker> saber os resultados.</example>
     </rule>
 
@@ -29742,6 +29795,7 @@ TODO Write better examples
           <token>ser</token>
       </pattern>
       <message>Substitua por <suggestion>puder</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/puder</url>
       <example correction="puder">Vou estudar enquanto <marker>possa</marker> ser possível.</example>
     </rule>
 
@@ -29752,6 +29806,7 @@ TODO Write better examples
           <token>que</token>
       </pattern>
       <message>Substitua por <suggestion>enquanto</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/enquanto</url>
       <example correction="enquanto">O Miguel estudava <marker>enquanto que</marker> os amigos brincavam.</example>
     </rule>
 
@@ -29762,6 +29817,7 @@ TODO Write better examples
           <token>que</token>
       </pattern>
       <message>Substitua por <suggestion>evidentemente</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/evidentemente</url>
       <example correction="evidentemente">O Rui <marker>evidentemente que</marker> cometeu um erro.</example>
     </rule>
 
@@ -31979,6 +32035,7 @@ TODO Write better examples
           <token regexp="yes">Deus|Satanás</token>
       </pattern>
       <message>Substitua por <suggestion>bendito</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/bendito</url>
       <example correction="bendito">És a vida, <marker>bem dito</marker> Deus.</example>
     </rule>
 
@@ -31992,6 +32049,7 @@ TODO Write better examples
           <token>espera</token>
       </pattern>
       <message>Substitua por <suggestion>fila</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/fila</url>
       <example correction="fila">Estou na <marker>bicha</marker> de espera.</example>
     </rule>
  </category>
@@ -32443,6 +32501,7 @@ TODO Write better examples
           <token>app</token>
         </pattern>
         <message>Pretende dizer <suggestion>WhatsApp</suggestion>?</message>
+        <url>https://pt.wiktionary.org/wiki/WhatsApp</url>
         <example correction="WhatsApp"><marker>Whats app</marker> é uma aplicação multiplataforma de mensagens instantâneas.</example>
       </rule>
     </rulegroup>
@@ -32453,6 +32512,7 @@ TODO Write better examples
           <token case_sensitive="yes" regexp="yes">instagram|INSTAGRAM|InstaGram</token>
         </pattern>
         <message>Será que quis dizer <suggestion>Instagram</suggestion>?</message>
+        <url>https://pt.wiktionary.org/wiki/Instagram</url>
         <example correction="Instagram">O <marker>instagram</marker> foi criado por Kevin Systrom e Mike Krieger e lançado em outubro de 2010.</example>
       </rule>
     </rulegroup>
@@ -32463,6 +32523,7 @@ TODO Write better examples
           <token case_sensitive="yes" regexp="yes">google|GOOGLE</token>
         </pattern>
         <message>Será que quis dizer <suggestion>Google</suggestion>?</message>
+        <url>https://pt.wiktionary.org/wiki/Google</url>
         <example correction="Google">O <marker>google</marker> hospeda e desenvolve uma série de serviços...</example>
       </rule>
     </rulegroup>
@@ -32473,6 +32534,7 @@ TODO Write better examples
           <token case_sensitive="yes" regexp="yes">excel|EXCEL</token>
         </pattern>
         <message>Será que quis dizer <suggestion>Excel</suggestion> (= Microsoft Excel)?</message>
+        <url>https://pt.wiktionary.org/wiki/Excel</url>
         <example correction="Excel">O <marker>excel</marker> é uma folha de cálculo.</example>
       </rule>
     </rulegroup>
@@ -32483,6 +32545,7 @@ TODO Write better examples
           <token case_sensitive="yes" regexp="yes">powerpoint|POWERPOINT|Powerpoint</token>
         </pattern>
         <message>Será que quis dizer <suggestion>PowerPoint</suggestion>?</message>
+        <url>https://pt.wiktionary.org/wiki/PowerPoint</url>
         <example correction="PowerPoint">Microsoft <marker>Powerpoint</marker> é um programa utilizado para criação/edição.</example>
       </rule>
     </rulegroup>
@@ -32493,6 +32556,7 @@ TODO Write better examples
           <token case_sensitive="yes" regexp="yes">linkedin|Linkedin|LINKEDIN|linkedIn</token>
         </pattern>
         <message>Será que quis dizer <suggestion>LinkedIn</suggestion>?</message>
+        <url>https://pt.wiktionary.org/wiki/LinkedIn</url>
         <example correction="LinkedIn"><marker>Linkedin</marker> é uma rede social de negócios fundada em dezembro de 2002 e lançada em 5 de maio de 2003.</example>
       </rule>
     </rulegroup>
@@ -32504,6 +32568,7 @@ TODO Write better examples
           <token>tube</token>
         </pattern>
         <message>Pretende dizer <suggestion>YouTube</suggestion>?</message>
+        <url>https://pt.wiktionary.org/wiki/YouTube</url>
         <example correction="YouTube">O <marker>You tube</marker> utiliza o codec de vídeo VP9 primariamente para disponibilizar o conteúdo, mas é utilizado também H.264.</example>
       </rule>
     </rulegroup>
@@ -32515,6 +32580,7 @@ TODO Write better examples
           <token>book</token>
         </pattern>
         <message>Pretende dizer <suggestion>Facebook</suggestion>?</message>
+        <url>https://pt.wiktionary.org/wiki/Facebook</url>
         <example correction="Facebook">O <marker>face book</marker> foi fundado por Mark Zuckerberg e por seus colegas de quarto da faculdade Eduardo Saverin, Dustin Moskovitz e Chris Hughes.</example>
       </rule>
     </rulegroup>
@@ -33746,6 +33812,7 @@ TODO Write better examples
         <marker><token>Cohen</token></marker>
       </pattern>
       <message>Escreva <suggestion>Coen</suggestion> se se refere ao cineasta americano.</message>
+      <url>https://pt.wiktionary.org/wiki/Coen</url>
       <example correction="Coen">Joel and Ethan <marker>Cohen</marker></example>
     </rule>
     <rule>
@@ -35274,6 +35341,7 @@ TODO Write better examples
         </marker>
       </pattern>
       <message>'\2' é o plural de 'i'. Possível confusão com <suggestion>ides</suggestion> ou <suggestion>íeis</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/ides</url>
       <example correction="ides|íeis">Porque não <marker>is</marker> dar uma volta?</example>
       <example>Foi preciso por os pontos nos is.</example>
       <example>A vogais são os 'as', 'es', 'is', 'os', e 'us'.</example>
