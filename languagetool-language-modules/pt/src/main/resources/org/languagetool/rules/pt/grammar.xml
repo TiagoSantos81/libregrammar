@@ -2907,8 +2907,10 @@ title="Easy editing stylesheet" ?>
           <token postag_regexp='yes' postag='[AN].+'/>
           <token regexp='yes' case_sensitive='yes'>e|ou</token>
           <token max='2' postag_regexp='yes' postag='D...S.+'>
-            <exception negate_pos='yes' postag_regexp='yes' postag='D...S.+'/></token>
+            <exception negate_pos='yes' postag_regexp='yes' postag='D...[SN].+'/></token>
           <token postag_regexp='yes' postag='[AN].+'/>
+          <token min="0" max="3" postag='R.+' postag_regexp='yes'>
+            <exception negate_pos='yes' postag_regexp='yes' postag='R.+'/></token>
           <token postag='V.[CIS].3P.' postag_regexp='yes'/>
       </antipattern>
       <antipattern>
@@ -2916,20 +2918,36 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes' case_sensitive='yes'>e|ou</token>
           <token regexp='yes'>(?:est|aquel)[ae]</token>
           <token postag_regexp='yes' postag='[AN].+' min='0'/>
+          <token min="0" max="3" postag='R.+' postag_regexp='yes'>
+            <exception negate_pos='yes' postag_regexp='yes' postag='R.+'/></token>
           <token postag='V.[CIS].3P.' postag_regexp='yes'/>
       </antipattern>
-<!-- MARCOAGPINTO 2020-04-01 *START* -->
-	<!-- "Os rebeldes pouca resistência encontraram." -->
-	<!-- "As senhoras pouca resistência encontraram." -->
-	<!-- "Os senhores pouca resistência encontraram." -->
+      <!-- MARCOAGPINTO 2020-04-01 *START* -->
+	    <!-- "Os rebeldes pouca resistência encontraram." -->
       <antipattern>
-          <token postag_regexp='yes' postag='D...P.'/>
-          <token postag_regexp='yes' postag='N..P.+'/>
-          <token postag_regexp='yes' postag='D...S.'/>
-          <token postag_regexp='yes' postag='N..S.+'/>
-          <token postag_regexp='yes' postag='V...3P.+'/>
+          <token postag_regexp='yes' postag='D...P.'>
+            <exception postag_regexp='yes' postag='D...[PN].+' negate_pos='yes'/></token>
+          <token postag_regexp='yes' postag='N..P.+'>
+            <exception postag_regexp='yes' postag='(?:A..|N.).[PN].+' negate_pos='yes'/></token>
+          <token postag_regexp='yes' postag='D...S.'>
+            <exception postag_regexp='yes' postag='D...[SN].+' negate_pos='yes'/></token>
+          <token postag_regexp='yes' postag='N..S.+'>
+            <exception postag_regexp='yes' postag='(?:A..|N.).[SN].+' negate_pos='yes'/></token>
       </antipattern>	  
-<!-- MARCOAGPINTO 2020-04-01 *END* -->
+      <!-- MARCOAGPINTO 2020-04-01 *END* -->
+      <antipattern>
+          <token postag_regexp='yes' postag='SENT_START|_PUNCT'/>
+          <token postag_regexp='yes' postag='D...P.'>
+            <exception postag_regexp='yes' postag='D...[PN].+' negate_pos='yes'/></token>
+          <token postag_regexp='yes' postag='N..P.+'>
+            <exception postag_regexp='yes' postag='(?:A..|N.).[PN].+' negate_pos='yes'/></token>
+          <token postag_regexp='yes' postag='S.+'>
+            <exception postag_regexp='yes' postag='S.+' negate_pos='yes'/></token>
+          <token postag_regexp='yes' postag='D...S.'>
+            <exception postag_regexp='yes' postag='D...[SN].+' negate_pos='yes'/></token>
+          <token postag_regexp='yes' postag='N..S.+'>
+            <exception postag_regexp='yes' postag='(?:A..|N.).[SN].+' negate_pos='yes'/></token>
+      </antipattern>
       <pattern>
           <token postag_regexp='yes' postag='D...S.+'>
             <exception negate_pos='yes' postag_regexp='yes' postag='D...S.+'/></token>
@@ -2960,6 +2978,7 @@ title="Easy editing stylesheet" ?>
       <example>No meio de tanta disrupção, não devemos esperar o surgimento espontâneo de uma economia ordenada.</example>
       <example>A água, bebi.</example>
       <example>O vinho, beberemos.</example>
+      <example><marker>As pessoas no meu trabalho infelizmente não falam</marker> Alemão, apenas português.</example>
     </rule>
   </rulegroup>
 
