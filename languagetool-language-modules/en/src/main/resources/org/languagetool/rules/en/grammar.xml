@@ -33640,6 +33640,39 @@ USA
                 <example correction="walk">She recommended that he <marker>walking</marker> to the building.</example>
                 <example>He <marker>walked</marker> to the building.</example>
             </rule>
+            <!--  subjunctive without 'that' -->
+            <rule>
+                <pattern>
+                    <token postag="VB.*" postag_regexp="yes">
+                        <exception inflected="yes" regexp="yes">feel|hear|see|help|prevent|stop|be|have</exception>
+                        <exception postag="CC"/>
+                        </token>
+                    <token regexp="yes">s?he|(?:any|no|some)(?:one|body)</token>
+                    <token postag="RB" min='0' max='3'>
+                        <exception regexp="yes">before|after|needs|live</exception>
+                        <exception postag="VBD"/>
+                    </token>
+                    <marker>
+                        <token postag="VBG">
+                            <exception postag="IN"/></token>
+                    </marker>
+                </pattern>
+                <message>With the word '<match no="2"/>' in a subjunctive clause, use the base form of a verb: <suggestion><match no="4" postag="VB"/></suggestion>.</message>
+                <example>She recommended he <marker>walk</marker> to the building.</example>
+                <example correction="walk">She recommended he <marker>walking</marker> to the building.</example>
+                <example>He <marker>walked</marker> to the building.</example>
+                <example>What is he doing here at this hour?</example>
+                <example>And why was she crying?</example>
+                <example>What's he going to do?</example>
+                <example>He loved someone before knowing Rose.</example>
+                <example>I don't want <marker>anyone touching my car</marker>.</example>
+                <example>Can you ask anyone regarding the new concept?</example><!-- 1825 -->
+                <example>(T)he conditioning of petty criminals with the whip, or some more...</example>
+                <example>...is an acoustician while someone working in the field of acoustics technology may be called an acoustical engineer.</example><!-- #2635 -->
+                <example type="triggers_error">You can ask anyone walking to the city about the bus drivers' strike!</example>
+                <example type="triggers_error">She recommended anyone walking to take the bus.</example>
+                <example type="triggers_error">The fearful noise astonished anyone coming for the first time.</example>
+            </rule>
             <rule>
                 <antipattern>
                     <token chunk="B-NP-singular"/><!-- Medical -->
