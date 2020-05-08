@@ -1100,7 +1100,6 @@ USA
                     <token postag="VB.?|MD" postag_regexp="yes"/>
                 </pattern>
                 <message>Did you mean <suggestion>I</suggestion>?</message>
-                <url>https://en.wiktionary.org/wiki/I#English</url>
                 <example correction="I">My mother and <marker>me</marker> went to California.</example>
                 <example correction="I">My brother and <marker>me</marker> would often go to the cinema.</example>
             </rule>
@@ -1112,7 +1111,6 @@ USA
                     <token postag="VB.?" postag_regexp="yes"></token>
                 </pattern>
                 <message>When referring to yourself and somebody else, put their name first. Also check whether the nominative form <suggestion>I</suggestion> is required here.</message>
-                <url>https://en.wiktionary.org/wiki/I#English</url>
                 <example correction="I"><marker>Me</marker> and John work together.</example>
                 <example><marker>John</marker> and I work together.</example>
             </rule>
@@ -1126,7 +1124,6 @@ USA
                     <token postag="VB.?|MD" postag_regexp="yes"/>
                 </pattern>
                 <message>Did you mean <suggestion>he</suggestion>?</message>
-                <url>https://en.wiktionary.org/wiki/he#English</url>
                 <example correction="he">My mother and <marker>him</marker> went to California.</example>
                 <example correction="he">My sister and <marker>him</marker> might go to Paris.</example>
             </rule>
@@ -1878,7 +1875,6 @@ USA
                     <token postag="V.+" postag_regexp="yes"></token>
                 </pattern>
                 <message>Is this the personal pronoun <suggestion>I</suggestion>? It is spelled uppercase.</message>
-                <url>https://en.wiktionary.org/wiki/I#English</url>
                 <example correction="I">Way back in the day, I had no tonality whatsoever when <marker>i</marker> talked.</example>
                 <example>The table of contents can be found on page i.</example>
                 <example>Items i) and j) support this point of view.</example>
@@ -12050,7 +12046,6 @@ USA
                 <token chunk="E-NP-singular" postag="NN.*" postag_regexp="yes" />
             </pattern>
             <message>Did you mean <suggestion>is</suggestion>?</message>
-            <url>https://en.wiktionary.org/wiki/is#English</url>
             <example correction="is">Now <marker>are</marker> the time.</example>
             <example>The limitations right now are the inability to have them respond autonomously.</example>
         </rule>
@@ -12660,7 +12655,6 @@ USA
                     </marker>
                 </pattern>
                 <message>It seems you either mean <suggestion>it is</suggestion>, <suggestion>it</suggestion> or there is a comma missing: <suggestion>it, it</suggestion>.</message>
-                <url>https://en.wiktionary.org/wiki/it#English</url>
                 <example correction="it is|it|it, it">But I can’t tell if <marker>it it</marker>’s a discontinued product or not.</example>
             </rule>
             <rule>
@@ -12673,7 +12667,6 @@ USA
                     <token regexp="yes">i?s</token>
                 </pattern>
                 <message>It seems you either mean <suggestion>if it</suggestion>, <suggestion>it</suggestion> or there is a comma missing: <suggestion>it, it</suggestion>.</message>
-                <url>https://en.wiktionary.org/wiki/it#English</url>
                 <example correction="if it|it|it, it">But I can’t tell <marker>it it</marker>’s a discontinued product or not.</example>
             </rule>
             <rule>
@@ -12682,7 +12675,6 @@ USA
                     <token case_sensitive="yes" regexp="yes">[Ii]t</token>
                 </pattern>
                 <message>It seems you either mean <suggestion>it is</suggestion>, <suggestion>if it</suggestion>, <suggestion>it</suggestion> or there is a comma missing: <suggestion>it, it</suggestion>.</message>
-                <url>https://en.wiktionary.org/wiki/it#English</url>
                 <example correction="it is|if it|it|it, it">And if <marker>it it</marker> normal and I were to block it, what would happen to my functionality.</example>
                 <example correction="it is|if it|it|it, it">On one server <marker>it it</marker> working fine and showing data.</example>
             </rule>
@@ -13141,7 +13133,6 @@ USA
                     </token>
                 </pattern>
                 <message>Did you mean <suggestion>is</suggestion> or <suggestion>it is</suggestion>?</message>
-                <url>https://en.wiktionary.org/wiki/is#English</url>
                 <example correction="is|it is">He told me that <marker>it</marker> not working.</example>
                 <example correction="is|it is">Session trace data is not sent to Insights, so <marker>it</marker> not possible to query or filter session traces (on any attribute).</example>
                 <example correction="is|it is">... that the script <marker>it</marker> not visible on the screen.</example>
@@ -13199,7 +13190,6 @@ USA
                     </token>
                 </pattern>
                 <message>Did you mean <suggestion>is</suggestion> or <suggestion>it is</suggestion>?</message>
-                <url>https://en.wiktionary.org/wiki/is#English</url>
                 <example correction="is|it is">Yesterday we could view all our metrics in our dashboard however this morning nothing <marker>it</marker> working.</example>
                 <example correction="is|it is">You need to create a companion App that <marker>it</marker> responsible for handling the REST calls.</example>
                 <example correction="is|it is">So I now have a 3v power supply, and that <marker>it</marker> working great.</example>
@@ -15550,7 +15540,6 @@ USA
                 <marker><token>be</token></marker>
             </pattern>
             <message>Did you mean <suggestion>is</suggestion> or <suggestion>can be</suggestion>?</message>
-            <url>https://en.wiktionary.org/wiki/is#English</url>
             <example correction="is|can be">Grammar checking <marker>be</marker> difficult.</example>
             <example>Can the meeting be finished within two hours?</example>
             <example>Could nitroglycerine poisoning be the cause of Alfred Nobel's anginal pains?</example>
@@ -15904,7 +15893,6 @@ USA
                 <token><exception postag="VB.*" postag_regexp="yes"/></token>
             </pattern>
             <message>Did you mean <suggestion>I</suggestion>, <suggestion>He</suggestion>, <suggestion>She</suggestion>, or <suggestion>They</suggestion>?</message>
-            <url>https://en.wiktionary.org/wiki/I#English</url>
             <example correction="I|He|She|They"><marker>Her</marker> has many animals.</example>
         </rule>
         <rule id="TOO_ADJECTIVE_TO" name="too ADJECTIVE to">
@@ -17181,7 +17169,6 @@ USA
                     <token>m</token>
                 </pattern>
                 <message>Did you mean <suggestion>at</suggestion>?</message>
-                <url>https://en.wiktionary.org/wiki/at#English</url>
                 <example correction="at">She came <marker>on</marker> 7:30 p.m.</example>
                 <example correction="at">She came <marker>on</marker> 7 p.m.</example>
                 <example>1,500 workers are on the job, starting as early as 5 a.m. to avoid the 110-degree afternoon heat.</example>
@@ -17206,7 +17193,6 @@ USA
                     <token>clock</token>
                 </pattern>
                 <message>Did you mean <suggestion>at</suggestion>?</message>
-                <url>https://en.wiktionary.org/wiki/at#English</url>
                 <example correction="at">She came <marker>on</marker> 7 o'clock.</example>
                 <example>She came <marker>at</marker> 7 o'clock.</example>
                 <example>She has an 11 o'clock meeting, so she cannot see you.</example>
@@ -17246,7 +17232,6 @@ USA
                 <token>addition</token>
             </pattern>
             <message>Did you mean <suggestion>in</suggestion>?</message>
-            <url>https://en.wiktionary.org/wiki/in#English</url>
             <example correction='In'><marker>On</marker> addition, ...</example>
         </rule>
         <rule id="LEARN_NNNNS_ON_DO" name="wrong preposition: 'learn sth on do' (to do)">
@@ -17259,7 +17244,6 @@ USA
                 <token postag='VB'/>
             </pattern>
             <message>Did you mean <suggestion>to</suggestion>?</message>
-            <url>https://en.wiktionary.org/wiki/to#English</url>
             <example correction='to'>We can learn ways <marker>on</marker> manage complex relationships with colleagues.</example>
         </rule>
         <rule id="ESSENTIAL_ESSENTIALLY" name="essentially">
@@ -17341,7 +17325,6 @@ USA
                 <token postag='VBG'/>
             </pattern>
             <message>Did you mean <suggestion>of</suggestion>?</message>
-            <url>https://en.wiktionary.org/wiki/of#English</url>
             <example correction='of'>Children are fond <marker>to</marker> skipping.</example>
         </rule>
         <rule id="A_GREAT_NUMBER_OF_NN" name="a great number of + singular (plural)">
@@ -18503,7 +18486,6 @@ USA
                 <token postag="VBN" />
             </pattern>
             <message>Did you mean <suggestion>I</suggestion>?</message>
-            <url>https://en.wiktionary.org/wiki/I#English</url>
             <example correction="I"><marker>A</marker> have never been there.</example>
             <example correction="I"><marker>A</marker> have witnessed the biggest event ever.</example>
             <example>Several cases of hepatitis A have been diagnosed in Denver.</example>
@@ -23311,7 +23293,6 @@ USA
                     <token regexp="yes">I|you|we|they</token>
                 </pattern>
                 <message>Did you mean <suggestion>do</suggestion>? 'does' is only used for the third person singular (he/she/it).</message>
-                <url>https://en.wiktionary.org/wiki/do#English</url>
                 <example correction="Do"><marker>Does</marker> you have your glasses?</example>
                 <example>Smoking does you harm.</example>
                 <example correction="Do"><marker>Does</marker> I have to go there?</example>
@@ -23325,7 +23306,6 @@ USA
                     <token regexp="yes">I|you|we|they</token>
                 </pattern>
                 <message>Did you mean <suggestion>do</suggestion>? 'does' is only used for the third person singular (he/she/it).</message>
-                <url>https://en.wiktionary.org/wiki/do#English</url>
                 <example correction="Do">But <marker>Does</marker> you have your glasses?</example>
                 <example>But do you have your glasses?</example>
                 <example>Smoking does you harm.</example>
@@ -32024,7 +32004,6 @@ USA
                     <token>I</token>
                 </pattern>
                 <message>The pronoun '\3' must be used with <suggestion>Am</suggestion>.</message>
-                <url>https://en.wiktionary.org/wiki/Am#English</url>
                 <example correction="Am"><marker>Is</marker> I crazy?</example>
                 <example>Is this true?</example>
             </rule>
@@ -32052,7 +32031,6 @@ USA
                     <token>I</token>
                 </pattern>
                 <message>The pronoun '\3' must be used with <suggestion>am</suggestion>.</message>
-                <url>https://en.wiktionary.org/wiki/am#English</url>
                 <example correction="am">Why <marker>is</marker> I in love?</example>
                 <example>Why am I doing this?</example>
             </rule>
@@ -32501,7 +32479,6 @@ USA
                     <token postag="VB.*" postag_regexp="yes" />
                 </pattern>
                 <message>Did you mean <suggestion>I</suggestion>?</message>
-                <url>https://en.wiktionary.org/wiki/I#English</url>
                 <example correction="I"><marker>A</marker> would not do it like that.</example>
                 <example>A can be regarded as a function of a real variable.</example>
                 <example>If N is 7, A would be 4 and B would be 3.</example>
@@ -32522,7 +32499,6 @@ USA
                     <token postag="VB.*" postag_regexp="yes" />
                 </pattern>
                 <message>Did you mean <suggestion>I</suggestion>?</message>
-                <url>https://en.wiktionary.org/wiki/I#English</url>
                 <example correction="I"><marker>A</marker> didn't do it.</example>
                 <example>A can be regarded as a function of a real variable.</example>
                 <example>If N is 7, A would be 4 and B would be 3.</example>
@@ -32611,7 +32587,6 @@ USA
                     </token>
                 </pattern>
                 <message>Did you mean <suggestion>is</suggestion>?</message>
-                <url>https://en.wiktionary.org/wiki/is#English</url>
                 <example correction="is">He <marker>his</marker> great!</example>
                 <example>Please make it his favorite song.</example>
                 <example>He his dad and I were going to the barbecue.</example>
@@ -32626,7 +32601,6 @@ USA
                     <token />
                 </pattern>
                 <message>Did you mean <suggestion>is</suggestion>?</message>
-                <url>https://en.wiktionary.org/wiki/is#English</url>
                 <example correction="is">He <marker>his</marker> the best!</example>
             </rule>
         </rulegroup>
@@ -35249,7 +35223,6 @@ USA
                 <token postag="VB" />
             </pattern>
             <message>Did you mean <suggestion>to</suggestion>?</message>
-            <url>https://en.wiktionary.org/wiki/to#English</url>
             <example correction="to">They wanted <marker>too</marker> have more.</example>
             <example correction="to">They had <marker>too</marker> short it.</example>
             <example correction="to">Democrats would have <marker>too</marker> narrow a majority and each senator's individual power in the legislative process is too great for that.</example>
@@ -37883,7 +37856,6 @@ USA
                     <token postag="PRP|NNP" postag_regexp="yes"/>
                 </pattern>
                 <message>Did you mean <suggestion>to</suggestion> ('to mean something to somebody')?</message>
-                <url>https://en.wiktionary.org/wiki/to#English</url>
                 <example correction="to">This trophy meant a lot <marker>for</marker> me.</example>
                 <example correction="to">She means so much <marker>for</marker> Tom.</example>
                 <example>Recommended changes included providing means for Congress to collect money from state treasuries.</example>
@@ -37898,7 +37870,6 @@ USA
                     <token postag="PRP|NNP" postag_regexp="yes"/>
                 </pattern>
                 <message>Did you mean <suggestion>to</suggestion> ('to mean something to somebody')?</message>
-                <url>https://en.wiktionary.org/wiki/to#English</url>
                 <example correction="to">Does she know what she means <marker>for</marker> me?</example>
                 <example>Recommended changes included providing means for Congress to collect money from state treasuries.</example>
             </rule>
@@ -46724,7 +46695,6 @@ The accident victim died from her injuries.
                     </token>
                 </pattern>
                 <message>Did you mean <suggestion>is</suggestion>?</message>
-                <url>https://en.wiktionary.org/wiki/is#English</url>
                 <example correction="is">But this <marker>it</marker> just so good.</example>
                 <example correction="is">Not sure if this <marker>it</marker> intended or not?</example>
             </rule>
@@ -46778,7 +46748,6 @@ The accident victim died from her injuries.
                     <token postag="VBP?" postag_regexp="yes" />
                 </pattern>
                 <message>Did you mean <suggestion>to</suggestion>?</message>
-                <url>https://en.wiktionary.org/wiki/to#English</url>
                 <example correction="to">I had <marker>do</marker> go there</example>
                 <example correction="to">Sami wants <marker>do</marker> dye his hair.</example>
                 <example correction="to">This has <marker>do</marker> be done only while running the macro.</example>
@@ -46988,7 +46957,6 @@ The accident victim died from her injuries.
                 <token>twice</token>
             </pattern>
             <message>Did you mean <suggestion>or</suggestion>?</message>
-            <url>https://en.wiktionary.org/wiki/or#English</url>
             <example correction="or">He wants to do it once <marker>a</marker> twice a month.</example>
         </rule>
         <rulegroup id="AN_AND" name="confusion of 'an' and 'and'">
@@ -47115,7 +47083,6 @@ The accident victim died from her injuries.
                 </marker>
             </pattern>
             <message>Did you mean <suggestion>us</suggestion> or <suggestion>it</suggestion>?</message>
-            <url>https://en.wiktionary.org/wiki/us#English</url>
             <example correction="us|it">Let <marker>is</marker> know if you have time.</example>
         </rule>
         <rule id="WHAT_IT_HAPPENING" name="what it (is) happening">
@@ -47128,7 +47095,6 @@ The accident victim died from her injuries.
                 <token postag="VBG" /><!-- mostly: going|happening|causing|coming -->
             </pattern>
             <message>Did you mean <suggestion>is</suggestion>?</message>
-            <url>https://en.wiktionary.org/wiki/is#English</url>
             <example correction="is">He didn't know what <marker>it</marker> going on.</example>
             <example correction="is">Don't you know anything else about what <marker>it</marker> happening?</example>
             <example correction="is">At least give me an idea about what <marker>it</marker> coming, some sooner than others.</example>
@@ -47143,7 +47109,6 @@ The accident victim died from her injuries.
                 <token regexp="yes">the|an?</token>
             </pattern>
             <message>Did you mean <suggestion>is</suggestion>?</message>
-            <url>https://en.wiktionary.org/wiki/is#English</url>
             <example correction="is">What <marker>it</marker> the solution.</example>
         </rule>
         <rulegroup id="IT_IF" name="it vs. if">
@@ -47159,7 +47124,6 @@ The accident victim died from her injuries.
                     <token postag="VB.*|MD" postag_regexp="yes" />
                 </pattern>
                 <message>Did you mean <suggestion>if</suggestion>?</message>
-                <url>https://en.wiktionary.org/wiki/if#English</url>
                 <example correction="if">Catch me <marker>it</marker> you can.</example>
             </rule>
             <rule>
@@ -47183,7 +47147,6 @@ The accident victim died from her injuries.
                     <token />
                 </pattern>
                 <message>Did you maybe mean <suggestion>if</suggestion>?</message>
-                <url>https://en.wiktionary.org/wiki/if#English</url>
                 <example correction="If"><marker>It</marker> the first one lights then it is working.</example>
                 <example correction="If"><marker>It</marker> it does, then the script will return "NOT_FOUND".</example>
                 <example>It all happened so fast and then it was over.</example>
@@ -47204,7 +47167,6 @@ The accident victim died from her injuries.
                     <token postag="PCT|CC" postag_regexp="yes" />
                 </pattern>
                 <message>Did you mean <suggestion>it</suggestion>?</message>
-                <url>https://en.wiktionary.org/wiki/it#English</url>
                 <example correction="it">Go for <marker>if</marker>!</example>
             </rule>
 
@@ -47225,7 +47187,6 @@ The accident victim died from her injuries.
                     <token regexp="yes">than|after|before|compared|when|if|\.|\!|\?|…</token>
                 </pattern>
                 <message>Did you mean <suggestion>is</suggestion>?</message>
-                <url>https://en.wiktionary.org/wiki/is#English</url>
                 <example correction="is">The order <marker>if</marker> worse after resorting.</example>
             </rule>
         </rulegroup>
@@ -47347,7 +47308,6 @@ The accident victim died from her injuries.
                     <token postag="JJ.*" postag_regexp="yes" />
                 </pattern>
                 <message>Did you mean <suggestion>be</suggestion>?</message>
-                <url>https://en.wiktionary.org/wiki/be#English</url>
                 <example correction="be">Having a new car would probably <marker>we</marker> great.</example>
                 <example correction="be">That would <marker>we</marker> very helpful.</example>
                 <example>What time shall we meet tomorrow?</example>
@@ -47366,7 +47326,6 @@ The accident victim died from her injuries.
                     <token regexp="yes">worth|great|nice</token>
                 </pattern>
                 <message>Did you mean <suggestion>be</suggestion>?</message>
-                <url>https://en.wiktionary.org/wiki/be#English</url>
                 <example correction="be">It might <marker>we</marker> worth doing it now.</example>
             </rule>
         </rulegroup>
@@ -47596,7 +47555,6 @@ The accident victim died from her injuries.
                     <token postag="MD|VB.*" postag_regexp="yes" />
                 </pattern>
                 <message>"Wen" is the name of a cyst. Did you maybe mean <suggestion>we</suggestion> or <suggestion>when</suggestion>?</message>
-                <url>https://en.wiktionary.org/wiki/we#English</url>
                 <example correction="We|When"><marker>Wen</marker> can do it.</example>
                 <example>Mr. Wen was a smart guy.</example>
             </rule>
@@ -47610,7 +47568,6 @@ The accident victim died from her injuries.
                     <token postag="VB.*" postag_regexp="yes" />
                 </pattern>
                 <message>"Wen" is the name of a cyst. Did you maybe mean <suggestion>we</suggestion>?</message>
-                <url>https://en.wiktionary.org/wiki/we#English</url>
                 <example correction="we">Can <marker>wen</marker> check it now?</example>
             </rule>
         </rulegroup>
@@ -48094,7 +48051,6 @@ The accident victim died from her injuries.
                     </token>
                 </pattern>
                 <message>Did you mean <suggestion>to</suggestion>, <suggestion>you</suggestion> or <suggestion>your</suggestion>?</message>
-                <url>https://en.wiktionary.org/wiki/to#English</url>
                 <example correction="to|you|your">I wanted <marker>yo</marker> play League of Legends.</example>
                 <example correction="to|you|your">What do <marker>yo</marker> think?</example>
                 <example correction="to|you|your">Please tell him <marker>yo</marker> go.</example>
@@ -48191,7 +48147,6 @@ The accident victim died from her injuries.
                     <token>as</token>
                 </pattern>
                 <message>Did you mean <suggestion>as</suggestion>?</message>
-                <url>https://en.wiktionary.org/wiki/as#English</url>
                 <example correction="As"><marker>Has</marker> far as I can tell.</example>
             </rule>
             <rule>
@@ -48203,7 +48158,6 @@ The accident victim died from her injuries.
                     </marker>
                 </pattern>
                 <message>Did you mean <suggestion>as</suggestion>?</message>
-                <url>https://en.wiktionary.org/wiki/as#English</url>
                 <example correction="as">As far <marker>has</marker> I can tell.</example>
             </rule>
         </rulegroup>
@@ -49153,7 +49107,6 @@ The accident victim died from her injuries.
                 <token><exception>of</exception></token>
             </pattern>
             <message>Did you mean <suggestion>of</suggestion>?</message>
-            <url>https://en.wiktionary.org/wiki/of#English</url>
             <example correction="of">This tool will help you to reduce the number <marker>or</marker> errors.</example>
             <example>There are no limitations to the number or types of sounds that can be produced.</example>
         </rule>
@@ -49300,7 +49253,6 @@ The accident victim died from her injuries.
                     <token inflected="yes">be</token>
                 </pattern>
                 <message>Did you mean <suggestion>do</suggestion>?</message>
-                <url>https://en.wiktionary.org/wiki/do#English</url>
                 <example correction="do">All I can <marker>due</marker> is help you as best as I can.</example>
             </rule>
             <rule>
@@ -49314,7 +49266,6 @@ The accident victim died from her injuries.
                     <token>it</token>
                 </pattern>
                 <message>Did you mean <suggestion>do</suggestion>?</message>
-                <url>https://en.wiktionary.org/wiki/do#English</url>
                 <example correction="do">I can <marker>due</marker> it until tomorrow.</example>
             </rule>
             <rule>
@@ -49328,7 +49279,6 @@ The accident victim died from her injuries.
                     <token regexp="yes">its|my|mine|hi[sm]|hers?|y?ours?|theirs?|the|that|this|an?</token>
                 </pattern>
                 <message>Did you mean <suggestion>do</suggestion> or <suggestion>due to</suggestion>?</message>
-                <url>https://en.wiktionary.org/wiki/do#English</url>
                 <example correction="do|due to">I can <marker>due</marker> his homework.</example>
                 <example correction="do|due to">I will <marker>due</marker> my best on the Thursday deadline.</example>
                 <example correction="do|due to">I think I can get some big rocks and tires really easily though, so I may <marker>due</marker> that.</example>
@@ -49416,7 +49366,6 @@ The accident victim died from her injuries.
                 <token><exception regexp="yes">&apostrophe;</exception></token>
             </pattern>
             <message>Did you mean <suggestion>On</suggestion>?</message>
-            <url>https://en.wiktionary.org/wiki/On#English</url>
             <example correction="On"><marker>In</marker> Friday afternoon, the President announced the embargo.</example>
             <example>In Friday night's press briefing, police said they had adequate reason to take the child.</example>
         </rule>
@@ -50266,7 +50215,6 @@ The accident victim died from her injuries.
                         <exception postag="RB"/></token>
                 </pattern>
                 <message>Did you mean <suggestion>to</suggestion>?</message>
-                <url>https://en.wiktionary.org/wiki/to#English</url>
                 <example correction="to">I would like her <marker>too</marker> do it now.</example>
                 <example correction="to">... and decided himself <marker>too</marker> start the work.</example>
                 <example>Don't mourn over the loss of your loved one too long.</example>
@@ -51919,7 +51867,6 @@ The accident victim died from her injuries.
                 <token postag='VBG'><exception>clothing</exception></token>
             </pattern>
             <message>Did you mean <suggestion>by</suggestion>?</message>
-            <url>https://en.wiktionary.org/wiki/by#English</url>
             <example correction='by'>We exploit these two features <marker>buy</marker> using Named Entity recognition.</example>
             <example correction="By"><marker>Buy</marker> making it our top pick in the sector.</example>
             <example correction="by">Get some <marker>buy</marker> doing treasure maps.</example>
@@ -53030,7 +52977,6 @@ The accident victim died from her injuries.
                     <token>seems</token>
                 </pattern>
                 <message>Did you mean <suggestion>it</suggestion>?</message>
-                <url>https://en.wiktionary.org/wiki/it#English</url>
                 <example correction="it">Being vegan easier than <marker>it's</marker> seems, experts say.</example>
             </rule>
             <rule>
@@ -54221,7 +54167,6 @@ The accident victim died from her injuries.
                 </marker>
             </pattern>
             <message>Did you mean <suggestion>by</suggestion> or <suggestion>to buy</suggestion>?</message>
-            <url>https://en.wiktionary.org/wiki/by#English</url>
             <example correction="by|to buy">I was asked <marker>buy</marker> one of my friends…</example>
             <example correction="by|to buy">They were not frequently requested <marker>buy</marker> double glazing.</example>
             <example correction="by|to buy">Torque converter engagement is commanded <marker>buy</marker> the PCM or TCM.</example>
