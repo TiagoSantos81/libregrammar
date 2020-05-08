@@ -6,15 +6,25 @@
 
 #### Arabic
   * added and improved rules (PR #2848 [WIP])
-  * POS and spelling improvements (PR #2848)
+  * POS and spelling improvements (PR #2848 [WIP])
+
+#### Esperanto
+  * add URLs explaining most single word suggestions
 
 #### English
   * added and improved rules, incluing:
     - archaic language detection;
     - explanation URLs added to ~600 rules.
 
+#### Galician
+  * add URLs explaining most single word suggestions
+
+#### Italian
+  * add URLs explaining most single word suggestions
+
 #### Portuguese
   * added and improved rules
+  * add URLs explaining most single word suggestions
 
 ### Other changes common to both projects
 
