@@ -2949,12 +2949,6 @@ title="Easy editing stylesheet" ?>
             <exception postag_regexp='yes' postag='(?:A..|N.).[SN].+' negate_pos='yes'/></token>
       </antipattern>
       <pattern>
-<!-- MARCOAGPINTO 2020-05-09 *START* -->
-<!-- "As pessoas no meu trabalho infelizmente não falam Alemão, apenas português." -->	  
-		  <token negate_pos='yes' postag_regexp='yes' postag='NC[FMC]P000'></token>
-		  <token negate_pos='yes' postag_regexp='no' postag='SPS00'></token>
-<!-- MARCOAGPINTO 2020-05-09 *END* -->	
-<marker>
           <token postag_regexp='yes' postag='D...S.+'>
             <exception negate_pos='yes' postag_regexp='yes' postag='D...S.+'/></token>
           <token max="3" postag_regexp='yes' postag='(?:N..|A...)S.+'>
@@ -2964,7 +2958,6 @@ title="Easy editing stylesheet" ?>
           <token postag='V.[CIS].([123]P|[12]S).' postag_regexp='yes'>
             <exception postag='V.[CIS].3S.' postag_regexp='yes'/>
             <exception negate_pos='yes' postag_regexp='yes' postag='V.+'/></token>
-</marker>
       </pattern>
       <message>&MSG_ECV;</message>
         <suggestion><match no='1' include_skipped='all'/> <match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all' postag='(V.[CIS].).P(.)' postag_replace='$1\3S$2' postag_regexp='yes'/></suggestion>
@@ -2985,7 +2978,7 @@ title="Easy editing stylesheet" ?>
       <example>No meio de tanta disrupção, não devemos esperar o surgimento espontâneo de uma economia ordenada.</example>
       <example>A água, bebi.</example>
       <example>O vinho, beberemos.</example>
-      <example><marker>As pessoas no meu trabalho infelizmente não falam</marker> Alemão, apenas português.</example>
+      <example><marker>As pessoas no meu trabalho infelizmente não falam</marker> Português, apenas alemão.</example>
     </rule>
   </rulegroup>
 
