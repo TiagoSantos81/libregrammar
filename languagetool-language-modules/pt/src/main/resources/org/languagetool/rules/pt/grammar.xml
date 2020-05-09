@@ -8295,7 +8295,6 @@ title="Easy editing stylesheet" ?>
       <example correction="te dê">Talvez <marker>te de</marker> mais novidades.</example>
     </rule>
 
-
     <rule id='TEM_TÊM' name="Confusão: tem - têm">
     <!-- Created by Marco A.G. Pinto, Portuguese rule -->
       <pattern>
@@ -31881,7 +31880,6 @@ TODO Write better examples
     </rule>
   </rulegroup>
 
-
     <rule id='IR_AOS_POUCOS_BOCADOS_BOCADINHOS' name="gradualmente">
     <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
       <pattern>
@@ -31985,7 +31983,6 @@ TODO Write better examples
           <token>litro</token>
         </marker>
           <token>
-
             <exception regexp="yes">das?|de|dos?</exception>
           </token>
       </pattern>
@@ -32055,6 +32052,29 @@ TODO Write better examples
  </category>
 
  <category id='EGGCORNS' name="Calinadas">
+
+  <rulegroup id='DE_VEZ_EM_QUANDO' name='Expressão: de vez em quando'>
+    <!--       Created by Tiago F. Santos, 2020-03-17 -->
+    <rule>
+      <pattern>
+          <token>de</token>
+          <token>vês</token>
+          <token>em</token>
+          <token>quando</token>
+      </pattern>
+      <message>Esta expressão escreve-se <suggestion>de vez em quando</suggestion>.</message>
+      <example correction='de vez em quando'><marker>de vês em quando</marker></example>
+    </rule>
+    <rule>
+      <pattern>
+          <token>deves</token>
+          <token>em</token>
+          <token>quando</token>
+      </pattern>
+      <message>Esta expressão escreve-se <suggestion>de vez em quando</suggestion>.</message>
+      <example correction='de vez em quando'><marker>deves em quando</marker></example>
+    </rule>
+  </rulegroup>
 
     <rule id='EM_LONGO_PRAZO' name='Expressão: a largo prazo'>
     <!--       Created by Tiago F. Santos, 2019-03-17 -->
@@ -32491,6 +32511,23 @@ TODO Write better examples
  </category>
 
  <category id='MISSPELLING' name="Erros Ortográficos" type="misspelling">
+
+  <rulegroup id='NOT_HIPHENIZED_PREFIXES' name="Prefixos não hifenizados">
+  <!-- Created by Tiago Santos, 2020-05-09 -->
+    <rule>
+      <antipattern>
+          <token>des</token>
+          <token regexp='yes' spacebefore='no'>&hifen;</token>
+      </antipattern>
+      <pattern>
+          <token>des</token>
+      </pattern>
+      <message>'des' é um prefixo que nunca é hifenizado. A forma do verbo 'dar' escreve-se <suggestion>dês</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/dês</url>
+      <example correction="dês">Usa o LibreGrammar para que não <marker>des</marker> erros.</example>
+      <example>O significado da palavra é invertido com o prefixo des-.</example>
+    </rule>
+  </rulegroup>
 
     <rulegroup id="WHATSAPP" name="WhatsApp">
     <!-- Created by Christopher Blum, 2020-03-2025 -->
