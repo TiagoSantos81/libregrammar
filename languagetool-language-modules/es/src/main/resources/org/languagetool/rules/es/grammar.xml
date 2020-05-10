@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 <!ENTITY unidades "AM|PM|am|pm|mm|cm|dm|m|km|h|min|s|seg|g|kg|Hz|[kM]Hz|°[FC]|pts|ptes|[£€$]|(mm|cm|dm|m|km)[23²³]"> 
 <!ENTITY abreviaturas "Dir|Dr|Dra|Abg|acept|adm|admón|afma|afmo|Alfz|Almte|ap|apdo|aprox|Arq|art|Arz|atta|atte|atto|av|avd|avda|Barna|Bco|Bibl|Bma|Bmo|Bo|Brig|Bta|Bto|caj|cap|Cdad|cent|cf|cfr|cgo|cje|cl|Cmdt|Cmte|Cnel|col|Comod|Comp|Comte|Contralmte|coord|cp|crec|cta|Cte|cts|ctv|ctvo|cént|Cía|cód|cónf|cónfr|dcha|dcho|depto|diag|dicc|doc|dpto|dto|dupdo|ed|edit|edo|ef|ej|Emmo|entlo|etc|excl|Excma|Excmo|fasc|fca|Fdo|fig|fol|Fr|fra|féc|Gdor|Gdora|Gob|Gral|Hna|Hno|ib|ibíd|Il|Ilma|Ilmo|Iltre|imp|impr|impto|incl|Ing|Inst|izda|izdo|izq|izqda|izqdo|Jhs|Lcda|Lcdo|Lda|Ldo|Lic|Ltd|Ltda|Ltdo|Magfca|Magfco|Mons|mr|ms|máx|mín|nro|núm|Ob|Pat|Pbro|pdo|Pdta|Pdte|pg|pl|plza|Pnt|ppal|pral|Presb|Prof|prov|pról|pza|pág|párr|Rda|Rdo|reg|Rep|Rev|Rte|Rvd|Rvda|Rvdma|Rvdmo|Rvdo|Sdad|Sgto|sig|Soc|Sr|Sra|Srta|Sta|Sto|tel|teléf|tfno|trad|Tte|tít|Ud|Uds|Univ|Valmte|Vd|Vda|Vdo|Vds|vid|vol|vs|vta|vto|Xto|íd">
 <!ENTITY context_te "abedul|alpiste|arroz|banana|boldo|buganvilia|burbujas|burro|calidad|campana|canela|castaño|clavo|compost|congorosa|damiana|diente|epazote|equinácea|eucalipto|fenogreco|flor|fourche|frambuesa|frutas|frutos|ginkgo|herbalife|hibisco|hierbabuena|hierbas|hinojo|hums|jamaica|jazmín|jengibre|jesuitas|kava|kombucha|laurel|lavanda|lechuga|limón|lino|manzana|manzanilla|matcha|melisa|menta|montaña|naranja|navidad|neem|nuez|níspero|oolong|ortiga|orégano|pasiflora|perejil|piña|quina|roca|romero|rooibos|rosas|ruda|sabor|sabores|salón|sauco|semilla|suerte|tilo|tomillo|toronjil|uva|vainilla|valeriana|verbena|walamo|wereke|yerba|yerbabuena|yuja|zacate|zanahoria|zapote|zarzaparrilla|zen|zorrillo">
-<!ENTITY exceptions_Paris "Helena|Elena|Menelao|Héctor|Troya|Atena|Atenea|Atenas|Esparta|príncipe|troyano|Himeneo|juicio">
+<!ENTITY exceptions_Paris "Afrodita|Helena|Elena|Menelao|Héctor|Troya|Atena|Atenea|Atenas|Esparta|príncipe|troyano|Himeneo|juicio">
 
     <!ENTITY tabla_periodica "(?:[UVW]|C[adeflmnorsu]?|N[abdehiop]?|P[abdmortu]?|S[bcegimnr]?|T[abcehilms]|A[cglmrstu]|R[abefghnu]|B[aehikr]?|H[efgos]?|M[cdgnot]|F[elmr]?|L[airuv]|D[bsy]|E[rsu]|G[ade]|I[nr]?|O[gs]?|Z[nr]|Kr?|Yb?|Xe|[₁₂₃₄₅₆₇₈₉₀])">
     <!ENTITY hyphen "(?:[-‑])">
@@ -175,21 +175,35 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rule>
     </category>
     <category id="INCORRECT_EXPRESSIONS" name="Expresiones incorrectas" type="grammar">
+        <rule id="EXCESO_DE_AFORO" name="exceso de aforo">
+            <pattern>
+                <token>exceso</token>
+                <token>de</token>
+                <token>aforo</token>
+            </pattern>
+            <message>Incorrecto en el sentido de <suggestion>exceso de asistentes</suggestion>.</message>
+            <suggestion>sobreaforo</suggestion>
+            <suggestion>sobrecupo</suggestion>
+            <suggestion>exceso del aforo</suggestion>
+            <url>https://www.fundeu.es/recomendacion/exceso-de-aforo-sobreaforo-sobrecupo/</url>
+            <example correction="exceso de asistentes|sobreaforo|sobrecupo|exceso del aforo">Hubo un <marker>exceso de aforo</marker>.</example>
+        </rule>
         <rule id="DHONDT" name="D'Hondt">
             <antipattern case_sensitive="yes">
                 <token>D</token>
-                <token regexp="yes">&apostrophe;</token>
-                <token>Hondt</token>
+                <token regexp="yes" spacebefore="no">&apostrophe;</token>
+                <token spacebefore="no">Hondt</token>
             </antipattern>
             <pattern>
-                <token>d</token>
-                <token regexp="yes">&apostrophe;</token>
+                <token regexp="yes">de?</token>
+                <token regexp="yes" min="0">&apostrophe;</token>
                 <token regexp="yes">Hond?t?</token>
             </pattern>
             <message>Error ortográfico.</message>
             <suggestion>D'Hondt</suggestion>
             <example correction="D'Hondt">La regla <marker>d'Hondt</marker>.</example>
             <example correction="D'Hondt">La regla <marker>d'Hont</marker>.</example>
+            <example correction="D'Hondt">La regla <marker>de Hondt</marker>.</example>
             <example>La fórmula D'Hondt.</example>
         </rule>
         <rule id="PRET_A_PORTER" name="prêt-à-porter">
@@ -745,6 +759,174 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="cual">hecho por el <marker>cuál</marker> se ha llegado a consolidar.</example>
             </rule>
         </rulegroup>
+        <rulegroup id="FUTURO_SUBJ_IND" name="confusión cantareis/cantaréis, cantare/cantaré" default="temp_off">
+            <rule>
+                <pattern>
+                    <and>
+                        <token inflected="yes" regexp="yes">.*ar</token>
+                        <token postag="VMSF2P0"/>
+                    </and>
+                </pattern>
+                <message>Probablemente falta una tilde.</message>
+                <!--Correcto si es futuro de subjuntivo (sentido hipotético).-->
+                <suggestion><match no="1" postag="VMSF2P0" postag_regexp="yes" postag_replace="VMIF2P0"/></suggestion>
+                <example correction="cantaréis">¿Cuándo <marker>cantareis</marker>?</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <and>
+                        <token inflected="yes" regexp="yes">.*ar</token>
+                        <token postag="VMSF3S0"/>
+                    </and>
+                </pattern>
+                <message>Probablemente falta una tilde.</message>
+                <!--Correcto si es futuro de subjuntivo (sentido hipotético).-->
+                <suggestion><match no="1" postag="VMSF3S0" postag_regexp="yes" postag_replace="VMIF1S0"/></suggestion>
+                <example correction="cantaré">¿Cuándo <marker>cantare</marker>?</example>
+            </rule>
+        </rulegroup>
+        <rulegroup id="SUBJUNTIVO_FUTURO" name="confusión cantara/cantará" default="temp_off">
+            <rule>
+                <antipattern>
+                    <token postag="CS|LOC_CS" postag_regexp="yes" skip="20"/>
+                    <token postag="VMSI(3S|3P|2S)0" postag_regexp="yes"/>
+                </antipattern>
+                <antipattern>
+                    <token postag="VMSI(3S|3P|2S)0" postag_regexp="yes"/>
+                    <token postag="DA.*" postag_regexp="yes" min="0"/>
+                    <token postag="P[RT].*" postag_regexp="yes"/>
+                    <token><match no="0"/></token>
+                </antipattern>
+                <pattern>
+                    <and>
+                        <token inflected="yes" regexp="yes">.*ar</token>
+                        <token postag="VMSI(3S|3P|2S)0" postag_regexp="yes" regexp="yes">.+(ara|aran|aras)<exception postag="_possible_NP"/></token>
+                    </and>
+                </pattern>
+                <message>Si es futuro, se escribe con tilde.</message>
+                <suggestion><match no="1" postag="VMSI(3S|3P|2S)0" postag_regexp="yes" postag_replace="VMIF$10"/></suggestion>
+                <example correction="Cantará"><marker>Cantara</marker> mañana.</example>
+                <example correction="Cantarán"><marker>Cantaran</marker> mañana.</example>
+                <example correction="Cantarás"><marker>Cantaras</marker> mañana.</example>
+                <example correction="cantarás">¿Cuándo <marker>cantaras</marker>?</example>
+                <example correction="ganarás">¿Cuánto <marker>ganaras</marker>?</example>
+                <example>Si cantaras bien, tendrías éxito.</example>
+                <example>Si cantaran bien, tendrían éxito.</example>
+                <example>Que hablaras así no implica nada.</example>
+                <example>Hablara como hablara no importa.</example>
+                <example>Hablara quien hablara no importa.</example>
+                <example>Pensara lo que pensara no importa.</example>
+                <example>Cantara cuanto cantara</example>
+                <example>Cantara cuánto cantara</example>
+                <example>Diera resultado o no.</example>
+                <example>En el caso de que cantara bien, tendría éxito.</example>
+            </rule>
+            <rule>
+                <antipattern>
+                    <token regexp="yes">solo|sólo|únicamente|solamente</token>
+                    <token>porque</token>
+                </antipattern>
+                <antipattern>
+                    <token inflected="yes" regexp="yes">luchar|esforzar|interesar|posible|pelear</token>
+                    <token>porque</token>
+                </antipattern>
+                <antipattern>
+                    <token skip="15">no</token>
+                    <token>porque</token>
+                </antipattern>
+                <pattern>
+                    <token>porque</token>
+                    <marker>
+                        <and>
+                            <token inflected="yes" regexp="yes">.*ar</token>
+                            <token postag="VMSI(3S|3P|2S)0" postag_regexp="yes" regexp="yes">.+(ara|aran|aras)<exception postag="_possible_NP"/></token>
+                        </and>
+                    </marker>
+                </pattern>
+                <message>Si es futuro, se escribe con tilde.</message>
+                <suggestion><match no="2" postag="VMSI(3S|3P|2S)0" postag_regexp="yes" postag_replace="VMIF$10"/></suggestion>
+                <example correction="ganarás">Es así porque <marker>ganaras</marker> más.</example>
+                <example>No le puse el título porque pensara solo en ella.</example>
+                <example>Sólo porque pensara que era lo más correcto.</example>
+                <example>No ha sido porque pensara en él </example>
+                <!--<example>Sigo enfadada porque pensaras eso de mí.</example>-->
+                <example>Permaneció al margen, fuera porque ignorase los hechos producidos o por...</example>
+                <example>Peleó porque llegara la luz.</example>
+            </rule>
+        </rulegroup>
+        <rulegroup id="SUBJUNTIVO_PASADO" name="confusión cante/canté" default="temp_off">
+            <!-- Needs much better disambiguation -->
+            <rule>
+                <antipattern>
+                    <token postag="CS|LOC_CS|P[RT].*" postag_regexp="yes" skip="20"/>
+                    <token postag="VMSP[13]S0" postag_regexp="yes"/>
+                </antipattern>
+                <antipattern>
+                    <token postag="VMSP[13]S0" postag_regexp="yes" skip="15"/>
+                    <token postag="VMSP[13]S0" postag_regexp="yes"/>
+                </antipattern>
+                <antipattern>
+                    <token postag="VMSP[13]S0" postag_regexp="yes"/>
+                    <token postag="DA.*" postag_regexp="yes" min="0"/>
+                    <token postag="P[RT].*" postag_regexp="yes"/>
+                    <token><match no="0"/></token>
+                </antipattern>
+                <antipattern>
+                    <token postag="SENT_START"/>
+                    <token postag="_PUNCT.*" postag_regexp="yes" min="0" max="3"/>
+                    <token postag="VMM.*" postag_regexp="yes"/>
+                </antipattern>
+                <antipattern>
+                    <token>no</token>
+                    <token postag_regexp="yes" postag="&pronombre_personal_atono_POS;" min="0" max="2"/>
+                    <token postag="VMSP[13]S0" postag_regexp="yes"/>
+                </antipattern>
+                <antipattern>
+                    <token>Dios</token>
+                    <token>te</token>
+                    <token>salve</token>
+                </antipattern>
+                <pattern>
+                    <and>
+                        <token inflected="yes" regexp="yes">.*ar<exception postag="_GN_.*|RG|[NA].*|VMIP.*|V.N.*" postag_regexp="yes"/><exception scope="previous">se</exception></token>
+                        <token postag="VMSP[13]S0" postag_regexp="yes" regexp="yes">.+e<exception postag="_possible_NP"/><exception regexp="yes">.+[ui]e.+</exception></token>
+                    </and>
+                </pattern>
+                <message>Si es pasado, se escribe con tilde.</message>
+                <suggestion><match no="1" postag="VMSP[13]S0" postag_regexp="yes" postag_replace="VMIS1S0"/></suggestion>
+                <example correction="analicé">Yo lo <marker>analice</marker> ayer.</example>
+                <example correction="canté">Yo <marker>cante</marker> esto.</example>
+                <example correction="limité">Me <marker>limite</marker> a archivar las fichas.</example>
+                <example correction="celebré">dando origen al tristemente <marker>celebre</marker> episodio</example>
+                <!-- TODO: better suggestion: célebre -->
+                <example>Cante usted esto.</example>
+                <example>No cante tan alto.</example>
+                <example>No nos lo cante tan alto.</example>
+                <example>No lo analice así.</example>
+                <example>Cuando lo analice mañana.</example>
+                <!-- TODO: with mark of past: ayer -->
+                <example>El cante jondo.</example>
+                <example>Que cante bien, no implica nada.</example>
+                <example>Hable como hable no importa.</example>
+                <example>Cuando hable con él, explíqueselo.</example>
+                <example>Piense lo que piense.</example>
+                <example>Más tarde, empezó a escribir.</example>
+                <example>Además, suele ser colaborador.</example>
+                <example>pero se vende equipamiento</example>
+                <example>En caso de que un mismo equipo dispute las dos finales del año y no llegue a ganar ninguna.</example>
+                <example>Aún pueden verse hoy en día.</example>
+                <example>Se cree que las lenguas.</example>
+                <example>No importa a quién vote el pueblo.</example>
+                <example>sin importar qué sistema de unidades de medida se utilice</example>
+                <example>"Disculpe", me dijo.</example>
+                <example>Estamos de acuerdo se publique.</example>
+                <example>Aunque se considere ya gótica.</example>
+                <example>Aunque lo considere extraño.</example>
+                <example>Y pese a ello fue un éxito.</example>
+                <example>siempre y cuando respete las preferencias</example>
+                <example>Dios te salve, María.</example>
+            </rule>
+        </rulegroup>
         <rulegroup id="DIACRITICS_OTHERS" name="otros casos de falta de tilde" default="on">
             <rule>
                 <pattern>
@@ -979,7 +1161,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             </rule>
             <!-- TODO: lucido/lúcido, cesar/césar, revolver/revólver -->
         </rulegroup>
-        <rulegroup id="PARIS" name="Paris/París" default="temp_off">
+        <rulegroup id="PARIS" name="Paris/París" default="on">
             <antipattern>
                 <token postag="SENT_START" skip="-1"/>
                 <token regexp="yes" skip="-1">&exceptions_Paris;</token>
@@ -998,7 +1180,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <marker>
                         <token skip="-1">Paris</token>
                     </marker>
-                    <token postag="NP..G.*" postag_regexp="yes"></token>
+                    <token postag="NP..G.*" postag_regexp="yes"/>
                 </pattern>
                 <message>¿Quería decir <suggestion>París</suggestion> (ciudad) en vez de Paris (personaje)?</message>
                 <example correction="París">En <marker>Paris</marker> y Londres.</example>
@@ -4532,6 +4714,23 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example correction="revestía">Esto <marker>revertía</marker> gravedad.</example>
         </rule>
     </category>
+    <category id="CONTEXT" name="Errores según el contexto">
+        <rule id="AFORO" name="aforo/afluencia">
+            <pattern>
+                <marker>
+                    <token skip="5">aforo</token>
+                </marker>
+                <token>fue</token>
+            </pattern>
+            <message>Uso inadecuado en el sentido de 'cantidad de asistentes a un acto'. Correcto si significa 'número máximo autorizado de personas'.</message>
+            <suggestion>afluencia</suggestion>
+            <suggestion>asistentes</suggestion>
+            <url>https://www.fundeu.es/recomendacion/aforo-afluencia/</url>
+            <short>Uso inadecuado en el sentido de 'cantidad de asistentes a un acto'.</short>
+            <example correction="afluencia|asistentes">El <marker>aforo</marker> fue de 5000 personas.</example>
+            <example>El aforo del pabellón es de 5000 personas.</example>
+        </rule>
+    </category>
     <category id="PREPOSITIONS" name="Preposiciones">
         <rule id="INSISTIR_DE" name="insistir *de/en">
             <pattern>
@@ -5174,6 +5373,36 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <rule>
                 <pattern>
                     <token regexp="yes">1e?ro|2do|3e?ro|4to|5to|6to|7mo|8vo|9no</token>
+                    <token>.<exception postag="SENT_END"/></token>
+                </pattern>
+                <message>Abreviatura de número ordinal.</message>
+                <suggestion><match no="1" regexp_match="(\d).+" regexp_replace="$1.º"/></suggestion>
+                <example correction="2.º">En el <marker>2do.</marker> caso.</example>
+                <example correction="5.º">En el <marker>5to.</marker> puesto.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp="yes">1e?ra|2da|3e?ra|4ta|5ta|6ta|7ma|8va|9na</token>
+                    <token>.<exception postag="SENT_END"/></token>
+                </pattern>
+                <message>Abreviatura de número ordinal.</message>
+                <suggestion><match no="1" regexp_match="(\d).+" regexp_replace="$1.ª"/></suggestion>
+                <example correction="2.ª">En la <marker>2da.</marker> ronda.</example>
+                <example correction="5.ª">En la <marker>5ta.</marker> posición.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp="yes">[2-9]?[13]e?r</token>
+                    <token>.<exception postag="SENT_END"/></token>
+                </pattern>
+                <message>Abreviatura de número ordinal.</message>
+                <suggestion><match no="1" regexp_match="(\d+)e?r" regexp_replace="$1.er"/></suggestion>
+                <example correction="1.er">En el <marker>1r.</marker> caso.</example>
+                <example correction="1.er">En el <marker>1er.</marker> caso.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp="yes">1e?ro|2do|3e?ro|4to|5to|6to|7mo|8vo|9no</token>
                 </pattern>
                 <message>Abreviatura de número ordinal.</message>
                 <suggestion><match no="1" regexp_match="(\d).+" regexp_replace="$1.º"/></suggestion>
@@ -5191,12 +5420,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             </rule>
             <rule>
                 <pattern>
-                    <token regexp="yes">[13]e?r</token>
+                    <token regexp="yes">[2-9]?[13]e?r</token>
                 </pattern>
                 <message>Abreviatura de número ordinal.</message>
-                <suggestion><match no="1" regexp_match="(\d).+" regexp_replace="$1.er"/></suggestion>
+                <suggestion><match no="1" regexp_match="(\d+)e?r" regexp_replace="$1.er"/></suggestion>
                 <example correction="1.er">En el <marker>1r</marker> caso.</example>
-                <example correction="1.er">En el <marker>1er</marker> caso.</example>
+                <example correction="31.er">En el <marker>31er</marker> caso.</example>
             </rule>
         </rulegroup>
         <rule id="P_EJ" name="Puntuación en: p. ej." default="on">

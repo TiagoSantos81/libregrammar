@@ -195,7 +195,6 @@ public class English extends Language implements AutoCloseable {
         new PunctuationMarkAtParagraphEnd(messages, this),
         new PunctuationMarkAtParagraphEnd2(messages, this),
         // specific to English:
-        new UpperCaseRule(messages, this),
         new SpecificCaseRule(messages),
         new EnglishUnpairedBracketsRule(messages, this),
         new EnglishWordRepeatRule(messages, this),
@@ -227,6 +226,7 @@ public class English extends Language implements AutoCloseable {
   @Override
   public List<Rule> getRelevantLanguageModelRules(ResourceBundle messages, LanguageModel languageModel, UserConfig userConfig) throws IOException {
     return Arrays.asList(
+        new UpperCaseNgramRule(messages, languageModel, this),
         new EnglishConfusionProbabilityRule(messages, languageModel, this),
         new EnglishNgramProbabilityRule(messages, languageModel, this)
     );
