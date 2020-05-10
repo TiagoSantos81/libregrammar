@@ -18,6 +18,7 @@
  */
 package org.languagetool.rules.en;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.languagetool.*;
 import org.languagetool.languagemodel.LuceneLanguageModel;
@@ -50,6 +51,7 @@ public class UpperCaseNgramRuleTest {
   }
 
   @Test
+  @Ignore("interferes with LuceneSingleIndexLanguageModel")
   public void testFirstLongWordToLeftIsUppercase() throws IOException, URISyntaxException {
     URL ngramUrl = JLanguageTool.getDataBroker().getFromResourceDirAsUrl("/yy/ngram-index");
     try (LuceneLanguageModel lm = new LuceneLanguageModel(new File(ngramUrl.toURI()))) {
