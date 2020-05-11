@@ -31,6 +31,12 @@
   * activated generic Java rules, including:
      - `WhiteSpaceBeforeParagraphEnd`, `EmptyLineRule`, `PunctuationMarkAtParagraphEnd`.
 
+#### Ukranian
+  * activated generic Java rules, including:
+     - `LongSentenceRule`, `LongParagraphRule`,  `SentenceWhitespaceRule`,
+     `WhiteSpaceAtBeginOfParagraph`, `WhiteSpaceBeforeParagraphEnd`, `EmptyLineRule`,
+     `ParagraphRepeatBeginningRule`, `PunctuationMarkAtParagraphEnd`.
+
 ### Other changes common to both projects
 
 #### Dutch

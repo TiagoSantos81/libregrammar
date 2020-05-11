@@ -138,9 +138,19 @@ public class Ukrainian extends Language {
 
         new MultipleWhitespaceRule(messages, this),
         new UkrainianWordRepeatRule(messages, this),
-
-        // TODO: does not handle !.. and ?..
-        //            new DoublePunctuationRule(messages),
+        //  new PunctuationMarkAtParagraphEnd2(messages, this),
+        //  new ReadabilityRule(messages, this, userConfig, false), // need use localise rule
+        //  new ReadabilityRule(messages, this, userConfig, true),  // need use localise rule
+        new SentenceWhitespaceRule(messages),
+        new WhiteSpaceBeforeParagraphEnd(messages, this),
+        new WhiteSpaceAtBeginOfParagraph(messages),
+        new EmptyLineRule(messages, this),
+        new LongSentenceRule(messages, userConfig),
+        new LongParagraphRule(messages, this, userConfig),
+        new ParagraphRepeatBeginningRule(messages, this),
+        new PunctuationMarkAtParagraphEnd(messages, this), // TODO: does not handle !.. and ?..
+        new DoublePunctuationRule(messages),
+        //specific to Ukraninan
         morfologikSpellerRule,
 
         new MissingHyphenRule(messages, ((UkrainianTagger)getTagger()).getWordTagger()),
