@@ -25551,7 +25551,7 @@ TODO Write better examples
       <antipattern>
           <token postag_regexp='yes' postag='SENT_START|_PUNCT|CC'/>
           <token>duvida</token>
-          <token>d[aeo]s?</token>
+          <token regexp='yes'>d[aeo]s?</token>
       </antipattern>
       <pattern>
           <token regexp='yes'>à|a(?:lguma|quela)?|boa|c(?:erta|omo)|d[aeo]s?|deix.+|d(?:essa|esta)|É|e(?:m|ssa|sta)?|faz|grande|h(?:a|á|aja|avendo|aver|averá|avia|ouve|ouver)|l(?:evantar|eve|igeira)|m(?:ais|enor|esma|inha|ínima|uita)|n(?:a|aquela|enhuma|essa|esta|ossa|uma)|o(?:corer|ferecia|u|utra)|p(?:adecia|ara|ela|õe|onha|onho|or|ôr|orá|orei|ôs|rimeira|rincipal|rópria|unha)|q(?:ualquer|ue)|r(?:esta|estava)|s(?:em|imples|ofria|ua)|t(?:em|êm|emos)|tenh[ao]|t(?:enham|enhas|enho|er|eria|eve|inha|ive|iver|ivessem|oda)|uma|única</token><!-- XXX add in new rule [A-Za-zçáê]+(-se|-lhes?|-o|-me|-nos|-la|-lo|-te) -->
@@ -25567,7 +25567,7 @@ TODO Write better examples
       <antipattern>
           <token postag_regexp='yes' postag='SENT_START|_PUNCT|CC'/>
           <token>duvidas</token>
-          <token>d[aeo]s?</token>
+          <token regexp='yes'>d[aeo]s?</token>
       </antipattern>
       <pattern>
           <token regexp='yes'>[A-Za-zçáê]+(-se|-lhes?|-o|-me|-nos|-la|-lo|-te)|a(?:dmite|dmitia|dmitindo|gora|lanceantes)?|algumas?|a(?:limentar|placava|presentando|quelas|s)|às|atiçavam|c(?:ausam|ausando|ausar|ertas|erto|olocam|olocar|om|ompartilham|ortar|riar|ultivar)|d(?:as|e|eixa|eixado|eixam|eixando|eixar|eixara|eixarei|eixasse|eixava|eixavam|eixou|emais|estas|irimir|iscute|issipar|iversas|uas)|e(?:m|ntre|ra|sclarecendo|sclarecer|spalhar|spírito|squecendo|ssas|stas|ventuais|vitar|xistam|xistem|xistindo|xistirem|xplicar)?|ficam|f(?:icaram|icassem|icavam|iquem|ortes|requentes|undadas)|g(?:erar|randes)|há|h(?:aja|avendo|aver|averá|averia|avia|ouve|ouver|ouvesse)|i(?:nfindas|njustas|nsinuando|ntermináveis|númeras|sso)|já|l(?:ançam|ançar|ancinantes|ançou|evanta|evantadas|evantam|evantando|evantar|evantaram|evantou)|maiores|m(?:ais|anifestou|as|enos|esmas|il|inhas|ostrando|uitas)|n(?:as|ossa|ossas|ovas|ovo|utria|utrir)|o(?:ferece|u|utras)|p(?:airem|ara|are|elas|equenas|ermanecem|ermitem|ermitiam|ersistam|ersistem|erturbantes|onho|or|ôr|orque|oucas|rimeiras|rincipais|rincípio|róprias|rovocava)|q(?:uaisquer|uantas|ue|ueria|uero)|reinam|r(?:esolver|estam|estar|estaram|estarem|estassem|estavam|estem|esultaram|evisor)|s(?:anar|ão|e|em|emelhantes|érias|imples|ob|obraram|obre|obrevivem|ofreu|ofria|uas|ubsistam|ubsistem|ubsistiam|ucessivas|ugeriu|urgem|urgir|urgiram|urgirem|uscita|uscitam|uscitar|uscitou)|t(?:ais|ambém|antas|em|êm)|têm-se|t(?:emos|endo|enha|enham|enhamos|enhas|enho|ens|er|erei|eríveis|estassem|eve|inha|inham|ira|irando|irar|ire|ive|iver|ivera|iveram|iverem|ivesse|ransformou|ransparecer|uas)|últimas|v(?:árias|arer|ez|ezes)|vinham</token>
