@@ -15,6 +15,7 @@
   * added and improved rules, incluing:
     - archaic language detection;
     - explanation URLs added to ~600 rules.
+  * use `UpperCaseRule` instead of `UpperCaseNgramRule` by default.
 
 #### Galician
   * add URLs explaining most single word suggestions
@@ -26,13 +27,19 @@
   * added and improved rules
   * add URLs explaining most single word suggestions
 
+#### Russian
+  * activated generic Java rules, including:
+     - `WhiteSpaceBeforeParagraphEnd`, `EmptyLineRule`, `PunctuationMarkAtParagraphEnd`.
+
 ### Other changes common to both projects
 
 #### Dutch
   * added and improved rules
 
 #### English
-  * added and improved rules
+  * added and improved rules, including:
+    - `UpperCaseNgramRule`, a stricter version of `UpperCaseRule` that
+    requires n-gram data
   * spelling and POS improvements
 
 #### French
@@ -43,7 +50,9 @@
   * spelling and POS improvements
 
 #### Russian
-  * added and improved rules
+  * added and improved rules, including:
+    - `WhiteSpaceAtBeginOfParagraph`, `LongSentenceRule`, `LongParagraphRule`
+    `ParagraphRepeatBeginningRule`, `RussianFillerWordsRule`. 
 
 #### Spanish
   * added and improved rules
