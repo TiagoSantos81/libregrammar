@@ -102,7 +102,7 @@ USA
     <!ENTITY subject_pronouns "I|you|he|she|it|we|they|one">
     <!ENTITY object_pronouns "me|you|him|her|it|us|them|one">
     <!ENTITY uom_abbreviations_SI "(Y|Z|E|P|T|G|M|k|h|da|d|c|m|µ|n|p|f|a|z|y)?(m|g|s|A|K|mol|cd|rad|sr|Hz|N|Pa|J|W|C|V|F|Ω|S|Wb|T|H|lm|lx|Bq|Gy|Sv|kat|min|h|d|L|t|Np|B|eV|u|ua)"><!-- https://physics.nist.gov/cuu/Units/units.html -->
-    <!ENTITY uom_abbreviations_other "bpm|ft|hr|in|ipm|km|kph|lb|lm|mi|min|ml|mpg|mph|ppb|ppm|rpm|yd"><!-- Not a full list. Last updated 2020-04-27. Why is km necessary? It is in uom_abbreviations_SI. -->
+    <!ENTITY uom_abbreviations_other "bpm|ft|hr|in|ipm|km|kph|lb|lm|mcg|mi|min|ml|mpg|mph|ppb|ppm|rpm|yd"><!-- Not a full list. Last updated 2020-05-11. Why is km necessary? It is in uom_abbreviations_SI. -->
     <!ENTITY ambiguous_date '
         <token regexp="yes">0?[1-9]|1[0-2]</token>
         <token>/</token>
@@ -11831,7 +11831,34 @@ USA
             <url>https://www.merriam-webster.com/dictionary/nutshell</url>
             <example correction="nutshell">I can explain it in a <marker>nut shell</marker>.</example>
         </rule>
-        <rule id="NEWS_COMPOUNDS" name="news paper (newspaper)" default="temp_off">
+        <rule id="MAKER_COMPOUNDS" name="trouble maker (troublemaker)" default="temp_off">
+            <pattern>
+                <token regexp="yes">trouble|cabinet|clock|holiday|coffee|boiler|phrase|peace|match|dress|watch|movie|policy|taste|noise|glass|plate|steel|paper|shirt|print|money|merry|auto|shoe|film|pace|rain|home|play|news|king|tool|ods|sail|myth|snow|tent|lock|drug|love|wine|law|car|hay|map|ice|bed|tea|die|wig|war|cap|hat</token>
+                <token regexp="yes">makers?</token>
+            </pattern>
+            <message>This noun is normally spelled as one word.</message>
+            <suggestion><match no="1" case_conversion="alllower" /><match no="2" case_conversion="alllower" /></suggestion>
+            <example correction="troublemaker">He's such a <marker>trouble maker</marker>.</example>
+        </rule>
+        <rule id="SUPER_COMPOUNDS" name="super market (supermarket)" default="temp_off">
+            <pattern>
+                <token>super</token>
+                <token regexp="yes">markets?|moons?|delegates?|tankers?</token>
+            </pattern>
+            <message>This is normally spelled as one word.</message>
+            <suggestion><match no="1" case_conversion="alllower" /><match no="2" case_conversion="alllower" /></suggestion>
+            <example correction="supermarket">I need to buy some groceries at the <marker>super market</marker>.</example>
+        </rule>
+        <rule id="TAIL_COMPOUNDS" name="cock tail (cocktail)" default="temp_off">
+            <pattern>
+                <token regexp="yes">cock|pig|mock|duck|bob|pony|whip</token>
+                <token regexp="yes">tails?</token>
+            </pattern>
+            <message>This is normally spelled as one word.</message>
+            <suggestion><match no="1" case_conversion="alllower" /><match no="2" case_conversion="alllower" /></suggestion>
+            <example correction="cocktail">I would like to drink a <marker>cock tail</marker>.</example>
+        </rule>
+        <rule id="NEWS_COMPOUNDS" name="news paper (newspaper)">
             <antipattern case_sensitive="yes">
                 <token>News</token>
                 <token>Group</token>
@@ -11950,7 +11977,7 @@ USA
                 <token regexp="yes">Ship|SHIP</token>
             </antipattern>
             <pattern>
-                <token regexp="yes">space|relation|intern|member|leader|mentor|flag|town</token>
+                <token regexp="yes">space|relation|intern|member|leader|mentor|flag|town|trainee</token>
                 <token regexp="yes">ships?</token>
             </pattern>
             <message>This noun is normally spelled as one.</message>
@@ -12210,8 +12237,8 @@ USA
             </antipattern>
             <antipattern>
                 <token>under</token>
-                <token>line</token>
-                <token min="0" regexp="yes">#|no|nr</token>
+                <token regexp="yes">line|rate|estimate</token>
+                <token min="0" regexp="yes" skip="1">#|no|nr|number</token>
                 <token postag="CD" />
             </antipattern>
             <antipattern>
@@ -12222,12 +12249,13 @@ USA
             </antipattern>
             <pattern>
                 <token>under</token>
-                <token inflected="yes" regexp="yes">appreciate|estimate|achieve|whelm|line</token>
+                <token inflected="yes" regexp="yes">appreciate|estimate|achieve|whelm|line|rate</token>
             </pattern>
             <message>This is normally spelled as one word.</message>
             <suggestion>\1<match no="2" case_conversion="alllower" /></suggestion>
             <example correction="underappreciates">He <marker>under appreciates</marker> her skills.</example>
             <example>Just add this under line 302.</example>
+            <example>I explained to her that we had been a customer under Rate No. 21 since July but only obtained access recently.</example>
         </rule>
         <rulegroup id="FEED_BACK" name="feed back (feedback)">
             <antipattern>
@@ -30002,13 +30030,13 @@ USA
             <pattern>
                 <marker>
                     <token postag='JJS?' postag_regexp='yes'>
-                      <exception regexp='yes'>more|less|rather|other(?:wise)?|different|inferior|superior|back|meaning</exception>
+                      <exception regexp='yes'>more|less|rather|other(?:wise)?|different|inferior|superior|back|meaning|else</exception>
                       <exception postag='JJR|IN' postag_regexp='yes'/>
                     </token>
                     <token>than</token>
                 </marker>
             </pattern>
-            <message>Use <suggestion suppress_misspelled="yes"><match no='1' postag='JJ.?' postag_regexp='yes' postag_replace='JJR'/> \2</suggestion> to make a comparison with this adjective.</message>
+            <message suppress_misspelled="yes">Use <suggestion><match no='1' postag='JJ.?' postag_regexp='yes' postag_replace='JJR'/> \2</suggestion> to make a comparison with this adjective.</message>
             <example correction="iller than|worse than">That's <marker>worst than</marker> before!</example>
             <example correction="more than">Tom has been <marker>most than</marker> generous. </example>
             <example correction="greater than"> I want to do a routine, if sensor <marker>great than</marker> x° do something.</example>
@@ -30021,6 +30049,7 @@ USA
             <example>All animals are equal, but some animals are more equal than others</example>
             <example>I would rather go out than stay at home.</example>
             <example>I prefer to be crazy than sad.</example>
+            <example>They do better together than apart.</example>
             <example>I may as well go out than stay at home.</example>
             <example>While no nation other than the Russian Federation (and previously the f...</example>
             <example>No sooner had I gone out than it began to rain.</example>
@@ -34104,6 +34133,18 @@ USA
                     <token>Gantt</token>
                     <token>chart</token>
                 </antipattern>
+                <antipattern><!-- www.lexico.com/definition/beta_decay -->
+                    <token>beta</token>
+                    <token>decay</token>
+                </antipattern>
+                <antipattern><!-- Elevations in the Lesser Caucasus vary -->
+                    <token postag="NNS"/>
+                    <token postag="IN"/>
+                    <token chunk="B-NP-singular" postag="DT"/>
+                    <token min="0" max="3" chunk="I-NP-singular"/>
+                    <token chunk="E-NP-singular"/>
+                    <token postag_regexp="yes" postag="VBP?"/>
+                </antipattern>
                 <pattern>
                     <token>
                         <exception regexp="yes">(that|ha[ds]|will|must|could|can|should|would|does|did|may|might|t|let)</exception>
@@ -34112,12 +34153,12 @@ USA
                         <exception scope="previous" postag="PRP$"/>
                         <exception regexp="yes">initials|let(ter)?s</exception>
                     </token>
-                    <token postag="NNP" regexp="yes">.{2,}<exception postag="JJ|CC|RP|DT|PRP\$?|NNP?S|IN|RB|WRB|VBN" postag_regexp="yes"/></token>
+                    <token postag="NNP" regexp="yes">.{2,}<exception postag="JJ|CC|RP|DT|PRP\$?|NNP?S|IN|RB|WRB|VBN|UH" postag_regexp="yes"/></token>
                     <marker>
                         <token postag="VBP?" postag_regexp="yes" regexp="yes">
                             \p{Lower}+
                             <exception postag="VB[ND]|JJ|IN|MD" postag_regexp="yes"/>
-                            <exception>people</exception>
+                            <exception>people</exception><!-- uncommon verbs -->
                         </token>
                     </marker>
                     <token postag="IN|DT" postag_regexp="yes"/>
@@ -34125,6 +34166,7 @@ USA
                 <message>The singular proper name '<match no="2"/>' must be used with a third-person or a past tense verb: <suggestion><match no="3" postag="VBZ"/></suggestion>, <suggestion><match no="3" postag="VBD"/></suggestion>.</message>
                 <example correction="walks|walked">Ann <marker>walk</marker> to the building.</example>
                 <example correction="speaks|spoke">Microsoft <marker>speak</marker> to the customers.</example>
+                <example correction="provides|provided">Art <marker>provide</marker> a means to express the...</example><!-- Ambiguous. Possibly 'Art' is a proper noun, possibly it is a common noun. Either way, 'provide' is not correct. -->
                 <example>Bill <marker>walks</marker> to the building.</example>
                 <example>Guinness <marker>walked</marker> to the building.</example>
                 <example>Roosevelt and Hoover speak each other's lines.</example>
@@ -34133,6 +34175,7 @@ USA
                 <example>Boys are at higher risk for autism than girls.</example>
                 <example>In reply, he said he was too old for this.</example>
                 <example>I can see Bill looking through the window.</example>
+                <example>Ah yes the wonderful world.</example>
                 <example>Richard J. Hughes made his Morris County debut in his bid for the Democratic gubernatorial elections.</example>
                 <example>... last night got its seven-concert Beethoven cycle at Carnegie Hall off to a good start.</example>
                 <example>... and through knowing Him better to become happier and more effective people.</example>
@@ -34179,6 +34222,10 @@ USA
                 <example>You can expect <marker>a new Chrome release</marker> every six weeks.</example><!-- #2395 release/E-NP-plural -->
                 <example>You can expect <marker>the newer LanguageTool release</marker> every six weeks.</example><!-- release/E-NP-plural -->
                 <example>You can expect <marker>the new LanguageTool release</marker> after three weeks.</example><!-- release/E-NP-singular -->
+                <example>Beta decay either increases or decreases the atomic number of the nucleus by one.</example>
+                <example>Elevations in the Lesser Caucasus vary between...</example>
+                <example type="triggers_error">1802 – William Wordsworth and his sister, Dorothy see a "long belt" of daffodils...</example><!-- Missing comma after "Dorothy" -->
+                <example type="triggers_error">Online Athens guide with news and events</example>
             </rule>
             <rule>
                 <pattern case_sensitive="yes">
@@ -34468,6 +34515,21 @@ USA
             <example correction="whether or not">It's not certain whether communication with the site's customer service has led it to be clear <marker>if or not</marker> this is true.</example>
         </rule>
         <rule id="KIND_OF_A" name="'kind/type/sort of a/an'">
+            <antipattern>
+                <token postag="VB.*|SENT_START" postag_regexp="yes" />
+                <token postag="RB" min="0" />
+                <token regexp="yes">kind|sort</token>
+                <token>of</token>
+                <token regexp="yes">an?</token>
+            </antipattern>
+            <antipattern>
+                <token>a</token>
+                <token>hurry</token>
+            </antipattern>
+            <antipattern>
+                <token>device</token>
+                <token>type</token>
+            </antipattern>
             <pattern>
                 <token regexp="yes">kind|sort|type</token>
                 <token>of</token>
@@ -34476,9 +34538,10 @@ USA
             <message>If '\1' is a classification term, '\3' is not necessary. Use <suggestion>\1 \2</suggestion>. (The phrases 'kind of' and 'sort of' are informal if they mean 'to some extent'.)</message>
             <short>Grammatical problem: possible unnecessary 'a/an'</short>
             <example correction="kind of">What <marker>kind of a</marker> man is Bush?</example>
+            <example correction="kind of">Do you have any <marker>kind of an</marker> alibi?</example>
             <example>What <marker>kind of</marker> man is Bush?</example>
-            <example type="triggers_error">It became <marker>kind of</marker> a last minute decision.</example><!-- https://www.lexico.com/definition/kind_of  -->
-            <example type="triggers_error">I was <marker>sort of</marker> a mascot; I would get them coffee or tea ...</example><!-- https://www.lexico.com/definition/sort_of -->
+            <example>It became <marker>kind of</marker> a last minute decision.</example><!-- https://www.lexico.com/definition/kind_of  -->
+            <example>I was <marker>sort of</marker> a mascot; I would get them coffee or tea ...</example><!-- https://www.lexico.com/definition/sort_of -->
         </rule>
         <rule id="BECAUSE_OF_I" name="because of we (because we)">
             <pattern>
@@ -34959,15 +35022,29 @@ USA
                     <token>up</token>
                     <token>lights</token>
                 </antipattern>
+                <antipattern><!-- #2897 very few left [=very few that are left] -->
+                    <token chunk="E-NP-singular">few</token>
+                    <token chunk="B-VP" postag="VBN"/>
+                </antipattern>
+                <antipattern><!-- #2897 a few of / a computer of / a couple in. In "a X", the suggestion "a Xs" is always incorrect. -->
+                    <token regexp="yes">an?</token>
+                    <token chunk="E-NP-singular"/>
+                </antipattern>
+                <antipattern><!-- #2897 a few letter sounds we -->
+                    <token>a</token>
+                    <token chunk="I-NP-singular">few</token>
+                    <token postag_regexp="yes" postag="JJ|NN"/>
+                    <token postag="NNS"/><!-- sounds/B-VP -->
+                    <token regexp="yes">&subject_pronouns;</token>
+                </antipattern>
                 <pattern>
                     <token>there</token>
                     <token>are</token>
                     <token chunk="B-NP-singular" min="0" max="1"/>
-                    <token chunk="I-NP-singular" min="0" max="-1"/>
+                    <token chunk="I-NP-singular" min="0" max="1"/>
                     <marker>
                         <token chunk="E-NP-singular" postag_regexp="yes" postag="NNP?">
                             <exception postag_regexp="yes" postag="CD|NN(PS|:UN?)"/>
-                            <exception regexp="yes">variety|number|couple|pair|boatload|litany|lot</exception><!-- there are a number of -->
                         </token>
                     </marker>
                 </pattern>
@@ -34976,6 +35053,10 @@ USA
                 <example correction="problems">There are many <marker>problem</marker> in Iraq.</example>
                 <example correction="problems">There are a lot <marker>problem</marker> in Iraq but it is not a terrible situation.</example>
                 <example correction="glows">There are <marker>glow</marker> under lights; the reflections on the water are beautiful.</example><!-- #2597 Missing article before 'lights', but that is a different problem. -->
+                <example correction="defects">There are few <marker>defect</marker> with this test.</example>
+                <example correction="computers">There are a few <marker>computer</marker> to test.</example>
+                <example correction="groups">There are many <marker>group</marker> that we can use.</example>
+                <example correction="couples">There are <marker>couple</marker> in the corner.</example>
                 <example>There are many <marker>problems</marker> in Iraq.</example>
                 <example>Other than this, there are no known surviving texts.</example>
                 <example>There are many other deliberately insulting terms.</example>
@@ -34992,6 +35073,12 @@ USA
                 <example>There are many small to middle wounds.</example><!-- #2597 -->
                 <example>There are glow up lights.</example><!-- #2597 -->
                 <example>Among the most noted interpreters, there are Bahdja Rahal, Cheikh El Hadj Mohamed El Ghafour...</example><!-- #2787 -->
+                <example>There are very few left by what I understand.</example><!-- #2897 -->
+                <example>There are only a few of them.</example><!-- #2897 -->
+                <example>There are Christmas, Easter and Mother's Day.</example><!-- #2897 -->
+                <example>There are a few letter sounds we can use.</example><!-- #2897 -->
+                <example>There are a group of people.</example><!-- #2897 -->
+                <example>There are a computer of mine that needs repairing.</example><!-- #2897. Found by Premium. -->
             </rule>
         </rulegroup>
 
@@ -35309,7 +35396,7 @@ USA
             <url>https://en.wikipedia.org/wiki/Multi-factor_authentication</url>
             <example correction="2-factor">He enabled <marker>2 factor</marker> auth to protect his Facebook account.</example>
         </rule>
-        <rule id="WEEK_LONG_HYPHEN" name="A week long (week-long) vacation" default="temp_off">
+        <rule id="WEEK_LONG_HYPHEN" name="A week long (week-long) vacation">
             <pattern>
                 <token regexp="yes">an?|the|this|th[oe]se|my|y?our|their|his|her|s|of</token>
                 <token postag="JJ.*" postag_regexp="yes" min="0">
@@ -35490,7 +35577,7 @@ USA
                     <token>month</token>
                 </marker>
                 <token postag="JJ.*" postag_regexp="yes" min="0" />
-                <token regexp="yes">routine|periods?|intervals?|cycles?|diets?|notice|plan|project|warranty|median|vacation|holiday|trip|milestone|pandemi[ac]|lockdown|shutdown|term|contract|decline</token>
+                <token regexp="yes">routine|periods?|intervals?|cycles?|diets?|notice|plan|project|warranty|median|vacation|holiday|trip|milestone|pandemi[ac]|lockdown|shutdown|term|contract|decline|sentence|calendar|internships?|training|traineeships?|loans?</token>
             </pattern>
             <message>It seems that a hyphen is missing.</message>
             <suggestion>\1-\2</suggestion>
@@ -35503,7 +35590,7 @@ USA
                     <token>year</token>
                 </marker>
                 <token postag="JJ.*" postag_regexp="yes" min="0" />
-                <token regexp="yes">routine|periods?|intervals?|cycles?|notice|plan|project|warranty|median|reign|span</token>
+                <token regexp="yes">routine|periods?|intervals?|cycles?|notice|plan|project|warranty|median|reign|span|sentences?|mortgages?|anniversar(y|ies)|refinance|milestones?|loans?</token>
             </pattern>
             <message>It seems that a hyphen is missing.</message>
             <suggestion>\1-\2</suggestion>
@@ -36742,6 +36829,30 @@ USA
                     </token>
                 <token postag="SENT_END"/>
             </antipattern>
+            <antipattern><!--  #2828 depending on how much firms know www.lexico.com/definition/depending_on-->
+                <token>depending</token>
+                <token>on</token>
+                <token>how</token>
+                <token>much</token>
+                <token chunk="E-NP-plural" postag="NNS"/>
+                <token min="0" max="1" postag="RB"/>
+                <token chunk="B-VP" postag_regexp="yes" postag="VB[PD]"/>
+            </antipattern>
+            <antipattern><!--  #2828 depending on (a) ... (b) how much firms know -->
+                <token>depending</token>
+                <token>on</token>
+                <token>(</token>
+                <token regexp="yes">a|1</token>
+                <token skip="-1">)</token>
+                <token>(</token>
+                <token regexp="yes">[b-z]|[2-9]</token>
+                <token>)</token>
+                <token>how</token>
+                <token>much</token>
+                <token chunk="E-NP-plural" postag="NNS"/>
+                <token min="0" max="1" postag="RB"/>
+                <token chunk="B-VP" postag_regexp="yes" postag="VB[PD]"/>
+            </antipattern>
             <pattern>
                 <marker>
                     <token>much</token>
@@ -36759,6 +36870,7 @@ USA
             <example correction="many">In this test, see how <marker>much</marker> muffins usually break.</example><!-- #2541 -->
             <example correction="many">How <marker>much</marker> cats love milk?</example><!-- #2541 -->
             <example correction="many">... although you know how <marker>much</marker> does are in grazing the forest.</example><!-- #2541 -->
+            <example correction="many">It varies depending on how <marker>much</marker> computers you want to test.</example><!--  #2828 -->
             <example>How much does it cost?</example>
             <example>We kindly ask you to provide as much data as possible.</example><!-- #1822 -->
             <example>...about people receiving an income according to how much others subjectively value their labor or what...</example>
@@ -36769,6 +36881,9 @@ USA
             <example>Everyone can understand how much humans love themselves.</example><!-- #2541 -->
             <example>Everyone can see how much cats love themselves.</example><!-- #2541 -->
             <example>Everyone can understand how much humans love beer.</example><!-- #2541 Possibly an error. -->
+            <example>... depending on how much firms actually know about the law.</example><!--  #2828 -->
+            <example>Consumers get good or bad deals from sellers depending on how much firms know about consumer preferences.</example><!--  #2828 -->
+            <example>Consumers get good or bad deals from sellers depending on (a) how much they know about the offerings of different firms and, conversely, (b) how much firms know about consumer preferences.</example><!--  #2828 -->
             <example type="triggers_error">Whether measured as how much citizens worry about climate change or whether climate change poses a threat to them or their way of life.</example><!-- #2541 Possibly correct. -->
         </rule>
 
@@ -46505,6 +46620,51 @@ The accident victim died from her injuries.
     <!-- Commonly Confused Words -->
     <!-- ====================================================================== -->
     <category id="CONFUSED_WORDS" name="Commonly Confused Words" type="grammar">
+        <rulegroup id="LES_LESS" name="les vs. less" default="temp_off">
+            <rule>
+                <pattern>
+                    <marker>
+                        <token case_sensitive="yes" skip="2">les</token>
+                    </marker>
+                    <token>than</token>
+                </pattern>
+                <message>Did you mean <suggestion>less</suggestion> instead of the French article "les"?</message>
+                <example correction="less">It is <marker>les</marker> than what I expected.</example>
+            </rule>
+            <rule>
+                <antipattern>
+                    <token postag="UNKNOWN" regexp="yes">.*[a-z].*</token>
+                    <token>les</token>
+                </antipattern>
+                <antipattern>
+                    <token>les</token>
+                    <token postag="UNKNOWN" regexp="yes">.*[a-z].*</token>
+                </antipattern>
+                <antipattern>
+                    <token regexp="yes">pour|chez|dans</token>
+                    <token>les</token>
+                </antipattern>
+                <antipattern>
+                    <token regexp="yes">\p{P}</token>
+                    <token>les</token>
+                    <token regexp="yes">\p{P}</token>
+                </antipattern>
+                <antipattern>
+                    <token>les</token>
+                    <token regexp="yes">amis|grands|mis.rables|trois|objets|mots|mains</token>
+                </antipattern>
+                <antipattern>
+                    <token regexp="yes" skip="1">["”]</token>
+                    <token skip="1">les</token>
+                    <token regexp="yes">["”]</token>
+                </antipattern>
+                <pattern>
+                    <token case_sensitive="yes">les</token>
+                </pattern>
+                <message>Did you mean <suggestion>less</suggestion> instead of the French article "les"?</message>
+                <example correction="less">It is <marker>les</marker> than what I expected.</example>
+            </rule>
+        </rulegroup>
         <rulegroup id="WURST_WORST" name="wurst vs worst">
             <rule>
                 <pattern>
