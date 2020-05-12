@@ -55,7 +55,7 @@ public class UppercaseSentenceStartRuleTest {
 
     // assertEquals(new ArrayList<RuleMatch>(), lt.check("Цей список з декількох рядків:\n\nрядок 1,\n\nрядок 2,\n\nрядок 3."));
     // XXX works well but conflicts with PARAGRAPH_REPEAT_BEGINNING_RULE since 5429aa6
-    assertEquals(0, lt.check("Цей список з декількох рядків:\n\nрядок 1;\n\nрядок 2;\n\nрядок 3.").size());
+    assertEquals(3, lt.check("Цей список з декількох рядків:\n\nрядок 1;\n\nрядок 2;\n\nрядок 3.").size()); // XXX 3 matches from PARAGRAPH_REPEAT_BEGINNING_RULE since 5429aa6
     assertEquals(0, lt.check("Цей список з декількох рядків:\n\n 1) рядок 1;\n\n2) рядок 2;\n\n3)рядок 3.").size());
   }
 
