@@ -6,7 +6,8 @@ Polish, Portuguese, Russian, and [other 29 languages](https://github.com/TiagoSa
 Due to increased hostility related to development divergences, the need for another fork arose. 
 More noticeably since late 2017, LanguageTool has had its development constrained by several factors, namely the 
 conflict of interests inherent to the existence of a Freemium sister project and the integration 
-of contributors owning other derivative commercial projects.
+of contributors owning other derivative commercial projects. LanguageTool development constrains
+seem to have been partially addressed since LibreGrammar's inception.
 
 This fork intends to be a **pure free and open-source software** 'editor', developed for [end users](https://en.wikipedia.org/wiki/End_user), so, 
 it enables several rules not allowed to be enabled by default in the open-source component, reverts commits in the main branch that degrade the work previously done, and adds rules 

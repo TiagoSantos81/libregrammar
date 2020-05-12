@@ -8,6 +8,9 @@
   * added and improved rules (PR #2848 [WIP])
   * POS and spelling improvements (PR #2848 [WIP])
 
+#### Dutch
+  * restored 256 word confusion rules (ff74bea)
+
 #### Esperanto
   * add URLs explaining most single word suggestions
 
