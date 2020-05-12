@@ -2765,15 +2765,6 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>de|entre</token>
           <token regexp='yes'>el[ea]s|vocês</token>
       </antipattern>
-<!-- MARCOAGPINTO 2020-03-29 *START* -->
-<!-- "Ele vai levar vocês pelo beiço." -->
-      <antipattern>
-			<token  postag_regexp="no" postag="VMN0000"/>
-			<token  postag_regexp="no" postag="PP3CP000"/>
-			<token  postag_regexp="no" postag="VMIP1S0"/>
-			<token  postag_regexp="no" postag="NCMS000"/>			
-      </antipattern>
-<!-- MARCOAGPINTO 2020-03-29 *END* -->
       <antipattern>
           <token postag='V.[CIS].3P0' postag_regexp='yes'/>
           <token regexp='yes'>el[ea]s|vocês</token>
@@ -2781,34 +2772,13 @@ title="Easy editing stylesheet" ?>
             <exception scope='next'>,</exception></token>
           <token postag='VMN0000'/>
       </antipattern>
-<!-- MARCOAGPINTO 2020-05-04 *START* -->
-<!-- "Agradeço a você pelo empréstimo." -->
-<!-- "Agradeço a vocês pelo empréstimo." -->
-<!-- "Ela pelo mundo todo irá." -->
-<!-- "Elas pelo mundo todo irão." -->
-<!-- "Falei com ele pelo telefone." -->
-<!-- "Falei com eles pelo telefone." -->
-      <antipattern>
-			<token  postag_regexp="yes" postag="PP3[FMC][SP]000"/>
-			<token  postag_regexp="no" postag="VMIP1S0"/>
-			<token  postag_regexp="no" postag="NCMS000"/>			
-      </antipattern>
-<!-- MARCOAGPINTO 2020-05-04 *END* -->
-<!-- MARCOAGPINTO 2020-05-12 *START* -->
-<!-- "E entre/dentre eles/elas destacamos/destacámos/destacaremos a/o capital/dinheiro." -->
-	  <antipattern>
-		  <token regexp='yes'>entre|dentre</token>
-		  <token postag='PP3[FM]P000' postag_regexp='yes'/>
-		  <token postag='VMI[FSP]1P0' postag_regexp='yes'/>
-      </antipattern>
-<!-- MARCOAGPINTO 2020-05-12 *END* -->
       <pattern>
           <token regexp='yes'>el[ea]s|vocês</token>
           <token min="0" max="3" postag='R.+' postag_regexp='yes'>
             <exception scope='next'>,</exception></token>
           <token postag='V.[CIS].([12]P|[123]S).' postag_regexp='yes'>
             <exception postag='V.[CIS].3P0' postag_regexp='yes'/>
-            <exception>como</exception></token>
+            <exception regexp='yes'>como|pelo</exception></token>
       </pattern>
       <message>&MSG_ECV;</message>
         <suggestion><match no='1' include_skipped='all'/> <match no='2' include_skipped='all'/> <match no='3' include_skipped='all' postag='(V.[CIS].)..(.)' postag_replace='$1\3P$2' postag_regexp='yes'/></suggestion>
@@ -2821,6 +2791,10 @@ title="Easy editing stylesheet" ?>
       <example>Vocês preocupar-se-iam, talvez, com esta manifestação de ignorância.</example>
       <example>Um de vocês não leu as notícias.</example>
       <example>Alguns colegas meus são noobs totais; eles não sabem nada de ciência da computação.</example>
+      <example>Ele vai levar vocês pelo beiço.</example>
+      <example>Agradeço a você pelo empréstimo.</example>
+      <example>E entre eles, destacamos o capital.</example>
+      <!--example correction='eles destacam|eles, destacamos'>E entre <marker>eles destacamos</marker> o capital.</example>< TODO add punctuation suggestion -->
     </rule>
     <rule>
       <antipattern>
