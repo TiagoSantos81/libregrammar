@@ -6,7 +6,10 @@
 
 #### Arabic
   * added and improved rules (PR #2848 [WIP])
-  * POS and spelling improvements (PR #2848 [WIP])
+  * updated POS dictionary (Arramooz [#4ff0aa8](https://github.com/linuxscout/arramooz/commit/4ff0aa8c9df1dcb4d588a4a353b044dfa193d91c))
+  * remove the Algerian variant (ar-DZ)
+  * add support of ngram data ([languagetool-tools-ar](https://github.com/sohaibafifi/languagetool-tools-ar))
+  * add Darja, Diacritics, Redundancy, WrongWordInContext, Wordiness and WordCoherency rules.
 
 #### Dutch
   * restored 256 word confusion rules (ff74bea)
@@ -41,6 +44,10 @@
      `ParagraphRepeatBeginningRule`, `PunctuationMarkAtParagraphEnd`.
 
 ### Other changes common to both projects
+
+#### Catalan
+  * added and improved rules
+  * updated dictionary (catalan-pos-dict-2.8), now with a specific dictionary file for spelling suggestions
 
 #### Dutch
   * added and improved rules
