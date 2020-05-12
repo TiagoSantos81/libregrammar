@@ -208,7 +208,7 @@ class PipelinePool {
     }
     if (params.useQuerySettings) {
       Tools.selectRules(lt, new HashSet<>(params.disabledCategories), new HashSet<>(params.enabledCategories),
-        new HashSet<>(params.disabledRules), new HashSet<>(params.enabledRules), params.useEnabledOnly, false);
+        new HashSet<>(params.disabledRules), new HashSet<>(params.enabledRules), params.useEnabledOnly, params.enableTempOffRules);
     }
     if (userConfig.filterDictionaryMatches()) {
       lt.addMatchFilter(new DictionaryMatchFilter(userConfig));
