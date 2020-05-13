@@ -11732,12 +11732,10 @@ USA
         </rulegroup>
         <rule id="DON_T_AREN_T" name="don't aren't">
             <antipattern>
-                <token regexp="yes" skip="2">who|which|that</token>
-                <token regexp="yes">&apostrophe;</token>
-                <token>t</token>
-            </antipattern>
-            <antipattern>
-                <token skip="2">if</token>
+                <token>the</token>
+                <token>ones</token>
+                <token regexp="yes">who|which|that</token>
+                <token>
                 <token regexp="yes">&apostrophe;</token>
                 <token>t</token>
             </antipattern>
@@ -11749,10 +11747,13 @@ USA
                 <token regexp="yes" spacebefore="no">&apostrophe;</token>
                 <token spacebefore="no">t</token>
             </pattern>
-            <message>Two consecutive contractions are very uncommon. Did you maybe just mean <suggestion>\1\2\3</suggestion> or <suggestion>\4\5\6</suggestion>?</message>
-            <example correction="aren't|don't">They <marker>aren't don't</marker> really happy.</example>
+            <message>Possible fragment.</message>
+              <suggestion>\1\2\3</suggestion>
+              <suggestion>\4\5\6</suggestion>
+              <suggestion>\1\2\3, \4\5\6</suggestion>
+            <example correction="aren't|don't|aren't, don't">They <marker>aren't don't</marker> really happy.</example>
             <example>The ones who don't won't be around very long.</example>
-            <example>If it isn’t don’t say things that could be considered offensive.</example>
+            <example correction="isn't|don't|isn't, don't">If it isn’t don’t say things that could be considered offensive.</example>
         </rule>
         <rule id="WON_T_TO" name="I won't (want) to be">
             <pattern>
