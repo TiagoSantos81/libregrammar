@@ -10,17 +10,13 @@ email	e-mail	em	e-m	.*(pot|pan|brons|edelste).*	.*((ver){0,1}stuur.*|(ver){0,1}s
 biljard	biljart	d	t	.*(miljard|berekening|euro|dollar|yen|bedrag).*	.*(bal|keu|café|bar).*	grote hoeveelheid	een spel.
 reist	rijst	ei	ij	.*(naar|door|wereld|af|vervoer|trein|auto|chipkaart).*	.*(trouw|rozijn|vlees|gaar|spatel|witte|schep|afgekoel|afkoel|graan|gewas|plant|bereiding|vraag|of|paella|kook|koken).*	verplaatsen	omhoog komen, opkomen, graansoort.
 #
-reizen	rijzen	ei 	ij	.* (van|naar|om|met|per) .*	.* (vragen|problemen|pan) .*	verplaatsen	ontstaan, groter worden.
+reizen	rijzen	ei	ij	.* (van|naar|om|met|per) .*	.* (vragen|problemen|pan) .*	verplaatsen	ontstaan, groter worden.
 #
 leverproblemen	Leveringsproblemen	lever	leverings	.*(hartspier|ernstige|ziek|ziekenhuis|ontsteking|veroorzaken|mensen).*	.*(bestelling|order|winkel|leverancier|voorraad| de rijst ).*	ziekte	je krijgt niet geleverd.
 #
 Nyenrode	Nijenrode	y	ij	.* (Business|Universiteit|onderzoek|Management|hoogleraar) .*	.*kasteel.*	opleidingsinstituut	het kasteel.
 #
 werkeloos	werkloos	werke	werk	.*(toezie).*	.*(baan|werknemer|uitkering|WW).*	zonder iets te doen	zonder baan.
-#
-palet	pallet	ale	alle	.* (aan|kleur|breed|kleuren|rijk) .*	.* (op|goederen|dozen|folie) .*	schilderplankje	om op te stapelen
-#
-steil	stijl	ei	ij	.* (naar|omhoog|weg|pad|beneden|minder) .*	.* (in|eigen|nieuwe|oude) .*	erg schuin	uitingsvorm
 #
 katheder	katheter	d	t	achter|op|vanaf	via|blaas|ingebracht|urine|hart		spreekgestoelte	medisch instrument.
 #
@@ -29,6 +25,7 @@ bolus	bonus	l	n	.*(Zeeuws|koffie|bakker|Zeeland).*	.*(jaar|euro|miljoen|krijg).*
 service	servies	ice	ies	.*(professio|handel|dienst|oprecht|venaard|kwaliteit|klant|bied).*	.*(bestek|bord|kop|mooi|tafel|verleen|verlenen).*	dienstverlening	borden en kopjes.
 #
 toost	toast	oo	oa	.*(glas|hief|hef|heft|brachten|uitbrengen|champagne|uitgebracht|uit te brengen|glazen|glas|wijn).*	.*(gebakken|brood|keuken|eieren|marmelade|snee|roerei|smeerde|jam|bacon|spek|oude|boter).*	heildronk	gebakken brood
+#
 uitreding	uittreding	uitr	uittr	.*schepen*	.*(EU|pensioen).*	verschepen	vertrekken
 (?-i)mohawk	(?-i)Mohawk	m	M	.*(hanenkam|kapsel|baard|oranje|blauw|krultang|lokken|punk).*	.*(indiaan|indianen|volk|Iroquois|muziek|industries).*	kapsel	indiaan, merk, band
 #
@@ -46,6 +43,13 @@ brein	brijn	ei	ij	mijn|naar|zich|heeft|menselijk|kunnen|onze|veel|iets|werking|l
 cool	koel	coo	koe	super|ontzettend|hartstikke|vonden|gaaf|stoer|wauw|look|onwijs|jongeren|trendy|mega|relaxed|haha|site|that|meiden|live|klas|nagellak|hippe|nederlands|sowieso|play|this|fucking|snap|sport|gitaar|pretty	heerlijk|aangenaam|droog|buiten|zomer|helder|vochtig|afstandelijk|huid|zomers|winter|bewaar|graden|temperatuur|schaduw|hitte|zakelijk|warmte|relatief|mevrouw|winters|nachten|gils|schoon|muren|rhodan|biggles|verfrissend|constance|scheen	gaaf	koud
 #
 maan	naan	m	n	volle|licht|aarde|sterren|nieuwe|onder|deze|eerste|nacht|werd|zien|heeft|hemel|halve|boven|tussen|andere|worden|kunnen|wolken|keek|bijna|water|achter|planeten|tijdens|staat|donkere|zonder|kwam	rijst|brood|groenten|gebakken|indiaas|soorten|lekker|roti|groente|peshwari|saag|hassan|paratha|gehakt|perfect|indiase|zoet|oftewel|schaal|suiker|chapati|platbrood|recept|koriander|biryani|saus|broden|soep|tortilla|gewikkeld	hemellichaam	broodje
+#
+steil	stijl	ei	ij	helling|smal|trap|beneden|klim|omhoog|afdaling|hellingen|glad|berg|klimmen|route|oever|sneeuw|blond|omlaag|rotsen|oevers|beklimming|rots|ravijn|rotswand|bochten|tocht|bochtig|kloof|kilometers|heuvels|kust|opperarm	nieuwe|eeuw|kerk|klassieke|moderne|persoonlijke|neogotische|gotische|unieke|traditionele|franse|muziek|gebouwen|ontworpen|geschreven|landelijke|ontwikkelde|romaanse|sfeer|engelse|italiaanse|ontwerp|neoclassicistische|interieur|inhoud|eclectische|koloniale|typische|elementen|vrije	erg schuin	uitingswijze
+#
+#
+palet	pallet	l	ll	penselen|vormen|licht|olieverf|schilderij|kwasten|begon|kunst|schilderen|witte|klik|creatief|ezel|gemengd|geschilderd|helder|muziek|schildersezel|woorden|artistieke|opname|tubes|kunstschilder|schilderijen|gevarieerd|prachtige|tube|leek|bruin|filters	pallets|doos|stuks|geleverd|goederen|locatie|krat|container|folie|geperste|verzending|stapelen|meter|colli|standaard|geplaatst|lading|rolcontainer|leveren|heftruck|machine|pool|opslag|minimaal|positie|houtvezel|verpakkingen|bigbags|koop|zout	om op te stapelen
+#
+eis	ijs	ei	ij	voldoet|voldoen|artikel|gestelde|voldaan|indien|geldt|eisen|stelt|wettelijke|besluit|gesteld|nadere|wijziging|vermeerdering|conclusie|rechtbank|wens|verzoek|minimale|bedoeld|conform|dient|betrekking|toepassing|vordering|voldeed|minimaal|dagvaarding|onredelijke	sneeuw|water|nacht|glad|bedekt|koud|laag|schaatsen|winter|bevroren|chocolade|koffie|fruit|heerlijk|laagje|wind|dikke|koude|slagroom|vuur|warme|verse|melk|whisky|vers|yoghurt|bolletje|snoep|begeeft|gebak
 #
 peil	pijl	ei	ij	[ ](houden|kennis|kwaliteit|verbeteren|vaardigheden|belang|laagste|procent|maatregelen|onderwijs|noodzakelijk|verhogen|lichaamstemperatuur|economische|voorzieningen|groei|gezondheid|Europese|investeringen|dienstverlening|medewerkers|miljoen|koopkracht|middelen|overheid|vochtgehalte|vakkennis|financiële|omzet|voorraden)[,;:. ]	[ ](boog|schoot|schieten|pees|trok|wees|vloog|borst|rechts|trof|stak|links|schiet|legde|bord|zette|afgeschoten|pijlen|schouder|koker|geschoten|pakte|boorde|kruisboog|richtte|schacht|zwaard|dwars|spande|muur)[,;:. ]	niveau	richtingaanduiding
 kinderen	minderen	k	m	[ ](ouders|school|volwassenen|onderwijs|ontwikkeling|wonen|moeders|leuke|kleinkinderen|jonger|huwelijk|opvang|basisschool|Ouders|taal|vonden|opvoeding|Kinderen|verhalen|Buiten|kamer|opgroeien|jong|leerkrachten|speelden|speelgoed|leerkracht|jongste|vaders|adolescenten)[,;:. ]	[ ](vaart|stoppen|snelheid|Zonder|bocht|reed|suiker|meerderen|vlees|officieren|motor|zeil|knopen|koolhydraten|koers|remmen|stilstand|beval|chauffeur|rang|alcoholgebruik|Probeer|passeerde|helling|drastisch|voer|automobilisten|sigaret|bereikte|suikers)[,;:. ]

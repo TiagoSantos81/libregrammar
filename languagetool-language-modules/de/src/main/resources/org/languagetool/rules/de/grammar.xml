@@ -17844,16 +17844,32 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example>Das <marker>letzte</marker> der drei Bücher</example>
         </rule>
         -->
-        <rule id="FRAGE_KLEIN" name="eine frage (Frage)">
-            <pattern>
-                <token regexp="yes">einer?</token>
-                <marker>
-                    <token case_sensitive="yes">frage</token>
-                </marker>
-            </pattern>
-            <message>Meinten Sie das Nomen <suggestion>Frage</suggestion> (als Nomen großgeschrieben)?</message>
-            <example correction="Frage">Ich habe noch eine <marker>frage</marker>.</example>
-        </rule>
+        <rulegroup id="FRAGE_KLEIN" name="eine frage (Frage)">
+            <rule>
+                <pattern>
+                    <token regexp="yes">einer?</token>
+                    <marker>
+                        <token case_sensitive="yes">frage</token>
+                    </marker>
+                </pattern>
+                <message>Meinten Sie das Nomen <suggestion>Frage</suggestion> (als Nomen großgeschrieben)?</message>
+                <example correction="Frage">Ich habe noch eine <marker>frage</marker>.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <or>
+                        <token postag="ZAL"></token>
+                        <token regexp="yes">[0-9]+</token>
+                    </or>
+                    <marker>
+                        <token case_sensitive="yes">fragen</token>
+                    </marker>
+                </pattern>
+                <message>Meinten Sie das Nomen <suggestion>Fragen</suggestion> (als Nomen großgeschrieben)?</message>
+                <example correction="Fragen">Ich habe noch ein, zwei <marker>fragen</marker>.</example>
+                <example correction="Fragen">Die Liste enthielt 5 <marker>fragen</marker>.</example>
+            </rule>
+        </rulegroup>
         <rule id="RECHT_MACHEN" name="Kleinschreibung 'recht' in 'es allen recht machen'">
             <antipattern>
                 <token regexp="yes">zum|mit</token>
@@ -37302,7 +37318,7 @@ Andere Projekte</example>
                     <marker>
                         <token>im</token>
                     </marker>
-                    <token regexp="yes">de[mr]|das</token>
+                    <token regexp="yes">de[mnr]|das</token>
                 </pattern>
                 <message>Meinten Sie <suggestion>in</suggestion>?</message>
                 <example correction="in">Danach lernte er ab 1910 <marker>im</marker> der Hamburger Niederlassung.</example>
@@ -37320,6 +37336,15 @@ Andere Projekte</example>
                 <url>https://www.korrekturen.de/beliebte_fehler/in_nullkommanichts.shtml</url>
                 <example correction="im">Er erledigte es <marker>in</marker> Nullkommanichts.</example>
                 <example correction="im">Er erledigte es <marker>in</marker> Nullkommanix.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <marker><token>in</token></marker>
+                    <token regexp="yes" case_sensitive="yes">Januar|Februar|März|April|Mai|Ju[ln]i|September|Oktober|November|Dezember</token>
+               </pattern>
+               <message>Meinten Sie <suggestion><match no="1" regexp_match="n" regexp_replace="m"/></suggestion>?</message>
+               <example correction="im">Wir ziehen <marker>in</marker> Januar um.</example>
+               <example>1915 trat sie in Norwegen und Schweden in August Strindbergs Totentanz auf.</example>
             </rule>
         </rulegroup>
         <rulegroup id="ORDER_OF_WORDS" name="falsche Wortreihenfolge">
