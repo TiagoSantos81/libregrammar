@@ -44,7 +44,7 @@
      `ParagraphRepeatBeginningRule`, `PunctuationMarkAtParagraphEnd`.
 
 #### General
-  * all new remote code commits commented out so they become inactive
+  * commented out all new remote code commits, so they become inactive (e.g. https://github.com/TiagoSantos81/languagetool/commit/ac960f9b24a41b53ec245ee6fab3aad2c454b020)
 
 ### Other changes common to both projects
 
