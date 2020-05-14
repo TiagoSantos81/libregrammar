@@ -142,6 +142,7 @@ public class German extends Language implements AutoCloseable {
                     Example.fixed("Das Haus ist alt. <marker>Es</marker> wurde 1950 gebaut.")),
             new MultipleWhitespaceRule(messages, this),
             // specific to German:
+            new SimpleReplaceRule(messages),
             new OldSpellingRule(messages),
             new SentenceWhitespaceRule(messages),
             new GermanDoublePunctuationRule(messages),
@@ -268,6 +269,7 @@ public class German extends Language implements AutoCloseable {
       case "EBEN_FALLS": return 1;
       case "UST_ID": return 1;
       case "DASS_MIT_VERB": return 1; // prefer over SUBJUNKTION_KOMMA ("Dass wird Konsequenzen haben.")
+      case "AB_TEST": return 1; // prefer over spell checker and agreement
       // default is 0
       case "DE_AGREEMENT": return -1;  // prefer RECHT_MACHEN, MONTAGS, KONJUNKTION_DASS_DAS, DESWEITEREN and other
       case "COMMA_IN_FRONT_RELATIVE_CLAUSE": return -1; // prefer other rules (KONJUNKTION_DASS_DAS)

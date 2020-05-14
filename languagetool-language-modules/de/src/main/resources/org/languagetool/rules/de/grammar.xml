@@ -143,6 +143,13 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
     <!-- Tippfehler -->
     <!-- ====================================================================== -->
     <category id="TYPOS" name="Mögliche Tippfehler">
+        <rule id="WEISS" name="weiss (weiß)">
+            <pattern>
+                <token>weiss</token>
+            </pattern>
+            <message><suggestion>weiß</suggestion> als Farbe und Form von 'wissen' wird mit 'ß' geschrieben. 'Weiss' kann als Nachname vorkommen.</message>
+            <example correction="weiß">Das <marker>weiss</marker> ich auch.</example>
+        </rule>
         <rule id="ZEIL" name="Möglicher Tippfehler 'Zeil'">
             <antipattern>
                 <token regexp="yes">auf|an</token>
@@ -37347,7 +37354,7 @@ Andere Projekte</example>
                <example>1915 trat sie in Norwegen und Schweden in August Strindbergs Totentanz auf.</example>
             </rule>
         </rulegroup>
-        <rulegroup id="ORDER_OF_WORDS" name="falsche Wortreihenfolge">
+        <rulegroup id="ORDER_OF_WORDS" name="falsche Wortreihenfolge"><!-- picky -->
             <rule>
                 <antipattern>
                     <token regexp="yes">damit|indem|weil|obwohl|nachdem</token>
@@ -37376,7 +37383,8 @@ Andere Projekte</example>
                         <exception postag="SENT_END|PKT|KON:.+|UNKNOWN|VER:AUX:.+|PRO:RIN:.+" postag_regexp="yes"/>
                     </token>
                 </pattern>
-                <message>Überprüfen Sie die Reihenfolge von Subjekt und Prädikat.</message>
+                <message>Standardsprachlich steht in Sätzen mit '\1' das Verb am Ende ('weil sie gegangen ist' statt 'weil sie ist gegangen').</message>
+                <url>https://www.duden.de/sprachwissen/sprachratgeber/Satzbau-nach-weil</url>
                 <example correction="">Er ist nicht mehr da, <marker>weil er ist</marker> gegangen.</example>
                 <example>Papa ist in der Küche, weil er kocht.</example>
                 <example>Diese Übersetzung gefällt mir, weil ich fühle, dass sie zum Singen geeignet ist.</example>
@@ -43614,6 +43622,37 @@ Andere Projekte</example>
         </rulegroup>
     </category>
     <category id="EMPFOHLENE_RECHTSCHREIBUNG" name="Empfohlene/Modernere Rechtschreibung" type="style">
+        <rulegroup id="AB_TEST" name="A/B-Test" default="temp_off">
+            <url>https://de.wikipedia.org/wiki/A/B-Test</url>
+            <rule>
+                <pattern case_sensitive="no">
+                    <token regexp="yes">A[\-\/]?B</token>
+                    <token regexp="yes">Test(ing|s|er[sn]?)?</token>
+                </pattern>
+                <message>Die empfohlene Schreibweise ist <suggestion>A/B-<match no="2" case_conversion="startupper" /></suggestion>.</message>
+                <example correction="A/B-Test">Wir machen einen <marker>A-B Test</marker>.</example>
+            </rule>
+            <rule>
+                <pattern case_sensitive="no">
+                    <token>A</token>
+                    <token regexp="yes" min="0">[\-\/]</token>
+                    <token>B</token>
+                    <token regexp="yes">Test(ing|s|er[sn]?)?</token>
+                </pattern>
+                <message>Die empfohlene Schreibweise ist <suggestion>A/B-<match no="4" case_conversion="startupper" /></suggestion>.</message>
+                <example correction="A/B-Test">Wir machen einen <marker>A - B Test</marker>.</example>
+            </rule>
+            <rule>
+                <antipattern>
+                    <token regexp="yes" case_sensitive="yes">A/B-Test.*</token>
+                </antipattern>
+                <pattern>
+                    <token regexp="yes">A[\-\/]?B-Test(ing|s|er[sn]?)?</token>
+                </pattern>
+                <message>Die empfohlene Schreibweise ist <suggestion>A/B-<match no="1" regexp_match="(?i)A[\-\/]?B-" regexp_replace="" case_conversion="startupper" /></suggestion>.</message>
+                <example correction="A/B-Tester">Wir schicken das Release an all <marker>A-B-Tester</marker>.</example>
+            </rule>
+        </rulegroup>
         <rulegroup id="F_ANSTATT_PH" name="Worte mit F anstatt Ph">
             <rule>
                 <pattern>

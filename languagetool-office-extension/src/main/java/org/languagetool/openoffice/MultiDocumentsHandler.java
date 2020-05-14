@@ -133,7 +133,7 @@ public class MultiDocumentsHandler {
         }
         langTool = initLanguageTool();
         initCheck(langTool);
-        initDocuments();
+        initDocuments(locale);
       }
     }
     docNum = getNumDoc(paRes.aDocumentIdentifier);
@@ -580,13 +580,13 @@ public class MultiDocumentsHandler {
   /**
    * Initialize single documents, prepare text level rules and start queue
    */
-  void initDocuments() {
+  void initDocuments(Locale locale) {
     setConfigValues(config, langTool);
     sortedTextRules = new SortedTextRules();
     for (SingleDocument document : documents) {
       document.resetCache();
     }
-    dictionary.setLtDictionary(xContext, langTool, configDir.getPath());
+    dictionary.setLtDictionary(xContext, locale, configDir.getPath());
     if(useQueue) {
       if(textLevelQueue == null) {
         textLevelQueue = new TextLevelCheckQueue(this);

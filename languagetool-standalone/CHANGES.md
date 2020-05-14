@@ -57,6 +57,7 @@
     - `UpperCaseNgramRule`, a stricter version of `UpperCaseRule` that
     requires n-gram data
   * spelling and POS improvements
+  * updated en_GB spellchecker dictionary from https://github.com/marcoagpinto/aoo-mozilla-en-dict (Version 2.83 - 2020-04-01)
 
 #### French
   * added and improved rules
