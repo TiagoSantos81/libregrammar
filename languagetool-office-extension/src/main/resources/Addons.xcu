@@ -47,7 +47,7 @@
         <node oor:name="OfficeToolBar">
             <node oor:name="org.languagetool.openoffice.Main.toolbar" oor:op="replace">
                 <prop oor:name="Title" oor:type="xs:string">
-                    <value>LanguageTool</value>
+                    <value>LibreGrammar</value>
                 </prop>
                 <node oor:name="T1" oor:op="replace">
                     <prop oor:name="URL" oor:type="xs:string">
@@ -183,23 +183,23 @@
           <node oor:name="MenuItems">
             <node oor:name="M0" oor:op="replace">
               <prop oor:name="Title">
-                <value xml:lang="en-US">LanguageTool</value>
-                <value xml:lang="sk">Gramatika - LanguageTool</value>
-                <value xml:lang="sl">Skladnja (LanguageTool) ...</value>
-                <value xml:lang="ru">Грамматика – LanguageTool</value>
-                <value xml:lang="uk">Граматика - LanguageTool</value>
-                <value xml:lang="is">Málfar (LanguageTool)</value>
-                <value xml:lang="be">Правапіс (LanguageTool)</value>
-                <value xml:lang="eo">Lingvoilo (LanguageTool)</value>
-                <value xml:lang="br">Yezhadur (LanguageTool)</value>
-                <value xml:lang="fr">Grammaire (LanguageTool)</value>
+                <value xml:lang="en-US">LibreGrammar</value>
+                <value xml:lang="sk">Gramatika - LibreGrammar</value>
+                <value xml:lang="sl">Skladnja (LibreGrammar) ...</value>
+                <value xml:lang="ru">Грамматика – LibreGrammar</value>
+                <value xml:lang="uk">Граматика - LibreGrammar</value>
+                <value xml:lang="is">Málfar (LibreGrammar)</value>
+                <value xml:lang="be">Правапіс (LibreGrammar)</value>
+                <value xml:lang="eo">Lingvoilo (LibreGrammar)</value>
+                <value xml:lang="br">Yezhadur (LibreGrammar)</value>
+                <value xml:lang="fr">Grammaire (LibreGrammar)</value>
                 <value xml:lang="pt">Gramática</value>
                 <value xml:lang="gl">Gramática</value>
-                <value xml:lang="es">Gramática (LanguageTool)</value>
-                <value xml:lang="el">Γραμματική (LanguageTool)</value>
-                <value xml:lang="ca">Gramàtica (LanguageTool)</value>
+                <value xml:lang="es">Gramática (LibreGrammar)</value>
+                <value xml:lang="el">Γραμματική (LibreGrammar)</value>
+                <value xml:lang="ca">Gramàtica (LibreGrammar)</value>
                 <value xml:lang="ta">லேங்குவேஜ் டூல்</value>
-                <value xml:lang="sr">Правопис (LanguageTool)</value>
+                <value xml:lang="sr">Правопис (LibreGrammar)</value>
 				<value xml:lang="ar">التدقيق النحوي</value>
                 </prop>
               <node oor:name="Submenu">
@@ -355,25 +355,25 @@
                     <value xml:lang="de">Über...</value>
                     <value xml:lang="pl">Informacje...</value>
                     <value xml:lang="sl">O razširitvi ...</value>
-                    <value xml:lang="sk">O LanguageTool...</value>
-                    <value xml:lang="ru">О программе LanguageTool...</value>
-                    <value xml:lang="uk">Про програму LanguageTool...</value>   
+                    <value xml:lang="sk">O LibreGrammar...</value>
+                    <value xml:lang="ru">О программе LibreGrammar...</value>
+                    <value xml:lang="uk">Про програму LibreGrammar...</value>   
                     <value xml:lang="is">Upplýsingar...</value>    
-                    <value xml:lang="da">Om LanguageTool</value>
+                    <value xml:lang="da">Om LibreGrammar</value>
                     <value xml:lang="gl">Sobre...</value>
                     <value xml:lang="pt">Sobre...</value>
-                    <value xml:lang="es">Acerca de LanguageTool</value>
-                    <value xml:lang="be">Пра LanguageTool</value>
+                    <value xml:lang="es">Acerca de LibreGrammar</value>
+                    <value xml:lang="be">Пра LibreGrammar</value>
                     <value xml:lang="eo">Pri...</value>
                     <value xml:lang="fr">À propos...</value>
                     <value xml:lang="ast">Tocante a...</value>
                     <value xml:lang="zh-CN">关于...</value>
                     <value xml:lang="zh-TW">關於...</value>
                     <value xml:lang="br">Diwar-benn...</value>
-                    <value xml:lang="el">Σχετικά με το LanguageTool</value>
+                    <value xml:lang="el">Σχετικά με το LibreGrammar</value>
                     <value xml:lang="ca">Sobre...</value>
                     <value xml:lang="ta">எங்களைப் பற்றி...</value>
-                    <value xml:lang="sr">О програму LanguageTool ...</value>
+                    <value xml:lang="sr">О програму LibreGrammar ...</value>
 					<value xml:lang="ar">حول...</value>
                   </prop>
                   <prop oor:name="Target" oor:type="xs:string">

@@ -8,10 +8,10 @@
 			<!-- Used to dock the toolbar in the first toolbar row (by default it's floating) -->
 			<node oor:name="private:resource/toolbar/addon_org.languagetool.openoffice.Main.toolbar" oor:op="replace">
 				<prop oor:name="UIName" oor:type="xs:string">
-					<value>LanguageTool</value>
+					<value>LibreGrammar</value>
 				</prop>
 					<prop oor:name="ImageURL" oor:type="xs:string">
-						<value>//org.openoffice.languagetool.oxt/images/LanguageToolBig.png</value>
+						<value>//org.openoffice.languagetool.oxt/images/LibreGrammarBig.png</value>
 		        </prop>
 				<prop oor:name="DockPos" oor:type="xs:string">
 					<value>1,0</value>
