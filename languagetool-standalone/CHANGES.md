@@ -5,7 +5,7 @@
 ### This fork differences
 
 #### Arabic
-  * added and improved rules (PR #2848 [WIP])
+  * added and improved rules (https://github.com/linuxscout/languagetool and PR #2848)
   * updated POS dictionary (Arramooz [#4ff0aa8](https://github.com/linuxscout/arramooz/commit/4ff0aa8c9df1dcb4d588a4a353b044dfa193d91c))
   * remove the Algerian variant (ar-DZ)
   * add support of ngram data ([languagetool-tools-ar](https://github.com/sohaibafifi/languagetool-tools-ar))
@@ -43,6 +43,9 @@
      `WhiteSpaceAtBeginOfParagraph`, `WhiteSpaceBeforeParagraphEnd`, `EmptyLineRule`,
      `ParagraphRepeatBeginningRule`, `PunctuationMarkAtParagraphEnd`.
 
+#### General
+  * all new remote code commits commented out so they become inactive
+
 ### Other changes common to both projects
 
 #### Catalan
@@ -60,7 +63,7 @@
   * updated en_GB spellchecker dictionary from https://github.com/marcoagpinto/aoo-mozilla-en-dict (Version 2.83 - 2020-04-01)
 
 #### French
-  * added and improved rules
+  * added and improved rules, thanks to Rigaut Theótime (vkyfox)
 
 #### German
   * added and improved rules
@@ -74,6 +77,13 @@
 #### Spanish
   * added and improved rules
   * spelling and POS improvements
+
+#### Ukranian
+  * added and improved rules
+  * spelling and POS improvements
+
+#### LibreOffice / Apache OpenOffice Integration
+  * now the add-on has a toolbar, thanks to Fred Kruse.
 
 ## 4.9 (released 2020-04-24)
 
