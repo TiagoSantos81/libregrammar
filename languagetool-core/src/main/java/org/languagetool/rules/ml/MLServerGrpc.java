@@ -1,3 +1,4 @@
+/*
 package org.languagetool.rules.ml;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
@@ -16,7 +17,7 @@ import static io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall;
 import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
 
 /**
- */
+ *
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.27.1)",
     comments = "Source: ml_server.proto")
@@ -60,7 +61,7 @@ public final class MLServerGrpc {
 
   /**
    * Creates a new async stub that supports all call types for the service
-   */
+   *
   public static MLServerStub newStub(io.grpc.Channel channel) {
     io.grpc.stub.AbstractStub.StubFactory<MLServerStub> factory =
       new io.grpc.stub.AbstractStub.StubFactory<MLServerStub>() {
@@ -74,7 +75,7 @@ public final class MLServerGrpc {
 
   /**
    * Creates a new blocking-style stub that supports unary and streaming output calls on the service
-   */
+   *
   public static MLServerBlockingStub newBlockingStub(
       io.grpc.Channel channel) {
     io.grpc.stub.AbstractStub.StubFactory<MLServerBlockingStub> factory =
@@ -89,7 +90,7 @@ public final class MLServerGrpc {
 
   /**
    * Creates a new ListenableFuture-style stub that supports unary calls on the service
-   */
+   *
   public static MLServerFutureStub newFutureStub(
       io.grpc.Channel channel) {
     io.grpc.stub.AbstractStub.StubFactory<MLServerFutureStub> factory =
@@ -103,11 +104,11 @@ public final class MLServerGrpc {
   }
 
   /**
-   */
+   *
   public static abstract class MLServerImplBase implements io.grpc.BindableService {
 
     /**
-     */
+     *
     public void match(org.languagetool.rules.ml.MLServerProto.MatchRequest request,
         io.grpc.stub.StreamObserver<org.languagetool.rules.ml.MLServerProto.MatchResponse> responseObserver) {
       asyncUnimplementedUnaryCall(getMatchMethod(), responseObserver);
@@ -127,7 +128,7 @@ public final class MLServerGrpc {
   }
 
   /**
-   */
+   *
   public static final class MLServerStub extends io.grpc.stub.AbstractAsyncStub<MLServerStub> {
     private MLServerStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
@@ -141,7 +142,7 @@ public final class MLServerGrpc {
     }
 
     /**
-     */
+     *
     public void match(org.languagetool.rules.ml.MLServerProto.MatchRequest request,
         io.grpc.stub.StreamObserver<org.languagetool.rules.ml.MLServerProto.MatchResponse> responseObserver) {
       asyncUnaryCall(
@@ -150,7 +151,7 @@ public final class MLServerGrpc {
   }
 
   /**
-   */
+   *
   public static final class MLServerBlockingStub extends io.grpc.stub.AbstractBlockingStub<MLServerBlockingStub> {
     private MLServerBlockingStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
@@ -164,7 +165,7 @@ public final class MLServerGrpc {
     }
 
     /**
-     */
+     *
     public org.languagetool.rules.ml.MLServerProto.MatchResponse match(org.languagetool.rules.ml.MLServerProto.MatchRequest request) {
       return blockingUnaryCall(
           getChannel(), getMatchMethod(), getCallOptions(), request);
@@ -172,7 +173,7 @@ public final class MLServerGrpc {
   }
 
   /**
-   */
+   *
   public static final class MLServerFutureStub extends io.grpc.stub.AbstractFutureStub<MLServerFutureStub> {
     private MLServerFutureStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
@@ -186,7 +187,7 @@ public final class MLServerGrpc {
     }
 
     /**
-     */
+     *
     public com.google.common.util.concurrent.ListenableFuture<org.languagetool.rules.ml.MLServerProto.MatchResponse> match(
         org.languagetool.rules.ml.MLServerProto.MatchRequest request) {
       return futureUnaryCall(
@@ -286,3 +287,4 @@ public final class MLServerGrpc {
     return result;
   }
 }
+*/

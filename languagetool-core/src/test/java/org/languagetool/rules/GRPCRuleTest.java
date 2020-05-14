@@ -17,7 +17,7 @@
  *  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301
  *  * USA
  *
- */
+ *
 
 package org.languagetool.rules;
 
@@ -71,3 +71,4 @@ public class GRPCRuleTest {
     Arrays.asList(rule.match(s)).forEach(System.out::println);
   }
 }
+*/

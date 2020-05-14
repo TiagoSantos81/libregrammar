@@ -17,7 +17,7 @@
  *  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301
  *  * USA
  *
- */
+ *
 
 package org.languagetool.rules;
 
@@ -66,7 +66,7 @@ import java.util.stream.Collectors;
    }
   </code>
 
- */
+ *
 public abstract class GRPCRule extends RemoteRule {
   private static final Logger logger = LoggerFactory.getLogger(GRPCRule.class);
 
@@ -197,7 +197,7 @@ public abstract class GRPCRule extends RemoteRule {
    * @param descriptionKey key in MessageBundle.properties for rule description
    * @param messagesByID mapping match.sub_id -> key in MessageBundle.properties for RuleMatch's message
    * @return instance of RemoteMLRule
-   */
+   *
   public static GRPCRule create(ResourceBundle messages, RemoteRuleConfig config,
                                 String id, String descriptionKey, Map<String, String> messagesByID) {
     return new GRPCRule(messages, config) {
@@ -220,3 +220,4 @@ public abstract class GRPCRule extends RemoteRule {
     };
   }
 }
+*/
