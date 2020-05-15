@@ -46,10 +46,30 @@ public class UpperCaseNgramRule extends Rule {
   private static MorfologikAmericanSpellerRule spellerRule;
   private static Set<String> exceptions = new HashSet<>(Arrays.asList(
     "Bin", "Spot",  // names
+    "Go",           // common usage, as in "Go/No Go decision"
     "French", "Roman", "Hawking", "Square", "Japan", "Premier", "Allied"
   ));
   private static final AhoCorasickDoubleArrayTrie<String> exceptionTrie = new AhoCorasickDoubleArrayTrie<>();
   private static final List<List<PatternToken>> ANTI_PATTERNS = Arrays.asList(
+    Arrays.asList(
+      tokenRegex("[A-Z].+"),  // e.g. Kuiper’s Belt
+      tokenRegex("['’`´‘]"),
+      token("s"),
+      tokenRegex("[A-Z].+")
+    ),
+    Arrays.asList(
+      tokenRegex("[A-Z].+"),  // e.g. "Culture, People , Nature", probably a title
+      token(","),
+      tokenRegex("[A-Z].+"),
+      token(","),
+      tokenRegex("[A-Z].+")
+    ),
+    Arrays.asList(
+      tokenRegex("The"),  // e.g. "The Sea is Watching", probably a title
+      tokenRegex("[A-Z].+"),
+      token("is"),
+      tokenRegex("[A-Z].+")
+    ),
     Arrays.asList(
       token("Professor"),
       tokenRegex("[A-Z].+")
@@ -152,7 +172,7 @@ public class UpperCaseNgramRule extends Rule {
           double ratio = lcProb.getProb() / ucProb.getProb();
           //System.out.println("-->" + ucProb + ", lc: " + lcProb + " ==> " + ratio);
           if (ratio > THRESHOLD) {
-            String msg = "Only proper nouns start with an uppercase character (there are exceptions for headlines). " + ratio;
+            String msg = "Only proper nouns start with an uppercase character (there are exceptions for headlines).";
             RuleMatch match = new RuleMatch(this, sentence, token.getStartPos(), token.getEndPos(), msg);
             match.setSuggestedReplacement(StringTools.lowercaseFirstChar(tokenStr));
             matches.add(match);

@@ -95,7 +95,7 @@ USA
     <!ENTITY verb_abbreviations "fwds?|rsvps?|dms?|pms?|execs?|reps?|mods?|noms?|intros?|intercoms?|bbqs?|chgs?|fts?|recs?|exps?|collab|repro">
 
     <!-- verbs that when spelled as one word become a noun -->
-    <!ENTITY incorrect_noun_verbs "hide\-?out|charge\-?back|sign\-?off|tie\-?up|stand\-?still|back\-?down|roll\-?over|take\-?away|take\-?up|write\-?off|mix\-?up|walk\-?in|bail\-?out|fill\-?in|give\-?away|pay\-?out|pay\-?off|pay\-?back|run\-?in|fail\-?over|go\-?ahead|trade\-?in|sit\-?up|kick\-?back|top\-?up|warm\-?up|run\-?up|run\-?off|freak\-?out|slow\-?down|white\-list|roll\-?back|hang\-?up|hang\-?out|hand\-?off|shout\-?out|plug\-?in|drop\-?down|sleep\-?over|start\-?up|pop\-?up|voiceover|cash\-?out|print\-?out|line\-?up|catch\-?up|call\-?back|stand\-?by|try\-?out|kick\-off|stand\-?up|come\-?back|stand\-?alone|lay\-?off|burn\-?out|sign\-?up|sign\-?in|sign\-?out|log\-?out|log\-?in|take\-?over|mark\-?up|log\-?on|set\-?up|pick\-?up|feed\-?back|back\-?up|walk\-?through|break\-?out|break\-?through|hook\-?up|shut\-?off|break\-?down|pay\-off|time\-?out|clean\-?up|look\-?up|look\-?out|roll\-?out|work\-?out|make\-?up|follow\-?up|check\-?out|check\-?in|lay\-?out|work\-?around|shut\-?down|fall\-?back">
+    <!ENTITY incorrect_noun_verbs "pull\-?up|take\-?off|hide\-?out|charge\-?back|sign\-?off|tie\-?up|stand\-?still|back\-?down|roll\-?over|take\-?away|take\-?up|write\-?off|mix\-?up|walk\-?in|bail\-?out|fill\-?in|give\-?away|pay\-?out|pay\-?off|pay\-?back|run\-?in|fail\-?over|go\-?ahead|trade\-?in|sit\-?up|kick\-?back|top\-?up|warm\-?up|run\-?up|run\-?off|freak\-?out|slow\-?down|white\-list|roll\-?back|hang\-?up|hang\-?out|hand\-?off|shout\-?out|plug\-?in|drop\-?down|sleep\-?over|start\-?up|pop\-?up|voiceover|cash\-?out|print\-?out|line\-?up|catch\-?up|call\-?back|stand\-?by|try\-?out|kick\-off|stand\-?up|come\-?back|stand\-?alone|lay\-?off|burn\-?out|sign\-?up|sign\-?in|sign\-?out|log\-?out|log\-?in|take\-?over|mark\-?up|log\-?on|set\-?up|pick\-?up|feed\-?back|back\-?up|walk\-?through|break\-?out|break\-?through|hook\-?up|shut\-?off|break\-?down|pay\-off|time\-?out|clean\-?up|look\-?up|look\-?out|roll\-?out|work\-?out|make\-?up|follow\-?up|check\-?out|check\-?in|lay\-?out|work\-?around|shut\-?down|fall\-?back">
     
     <!-- words that are informally used as verbs but aren't tagged and shouldn't be tagged as a verb -->
     <!ENTITY not_really_verbs "self\-?(support|control)s?|overdrafts?|remotes?|nerds?|wrought|karates?|paths?|scapes?|videos?|fann(y|ies)?|bonus(es)?|back\-?ups?|pop\-?ups?|one\-?(shot|click)s?|idiot\-?proofs?|intakes?|rinds?|gaslits?|errors?|prox(y|ies)?|configs?|repros?|super\-?sets?|open\-?sources?|drag\-(and|n)\-drops?|hotfix(es)?|timeouts?|shutdowns">
@@ -3814,7 +3814,7 @@ USA
                         <token>its</token>
                     </marker>
                     <token postag="RB" min="0" />
-                    <token postag="SENT_END" regexp="yes">stupid|dumb|free|expensive|cheap|new|old|everyday|wrong|(in)?correct|sure|on|off|out|in|fine|ok(ay)?|(al)?right|left|awesome|available|beautiful|ready|(im)?possible|dangerous|different|enough|t?here|sexy|delicious|&short_adjectives;|&optional_short_adjectives;</token>
+                    <token postag="SENT_END" regexp="yes">stupid|boring|annoying|dumb|free|expensive|cheap|new|old|everyday|wrong|(in)?correct|sure|on|off|out|in|fine|ok(ay)?|(al)?right|left|awesome|available|beautiful|ready|(im)?possible|dangerous|different|enough|t?here|sexy|delicious|&short_adjectives;|&optional_short_adjectives;</token>
                 </pattern>
                 <message>Did you mean <suggestion>it's</suggestion> (=<suggestion>it is</suggestion>) instead of 'its' (possessive pronoun)?</message>
                 <short>Possible typo</short>
@@ -3836,7 +3836,7 @@ USA
                         <token>its</token>
                     </marker>
                     <token postag="RB" min="0" />
-                    <token postag="SENT_END" regexp="yes">stupid|dumb|free|expensive|cheap|new|old|everyday|wrong|(in)?correct|sure|on|off|out|in|fine|ok(ay)?|(al)?right|left|awesome|available|beautiful|ready|(im)?possible|dangerous|different|enough|t?here|sexy|delicious|&short_adjectives;|&optional_short_adjectives;</token>
+                    <token postag="SENT_END" regexp="yes">stupid|boring|annoying|dumb|free|expensive|cheap|new|old|everyday|wrong|(in)?correct|sure|on|off|out|in|fine|ok(ay)?|(al)?right|left|awesome|available|beautiful|ready|(im)?possible|dangerous|different|enough|t?here|sexy|delicious|&short_adjectives;|&optional_short_adjectives;</token>
                 </pattern>
                 <message>Did you mean <suggestion>it's</suggestion> (=<suggestion>it is</suggestion>) instead of 'its' (possessive pronoun)?</message>
                 <short>Possible typo</short>
@@ -3852,8 +3852,8 @@ USA
                         <token>its</token>
                     </marker>
                     <token postag="RB" min="0" />
-                    <token regexp="yes">stupid|dumb|free|expensive|cheap|new|old|everyday|wrong|(in)?correct|sure|on|off|out|in|fine|ok(ay)?|(al)?right|left|awesome|available|beautiful|ready|(im)?possible|dangerous|different|enough|t?here|sexy|delicious|&short_adjectives;|&optional_short_adjectives;</token>
-                    <token postag="SENT_END" regexp="yes">\p{P}</token>
+                    <token regexp="yes">stupid|boring|annoying|dumb|free|expensive|cheap|new|old|everyday|wrong|(in)?correct|sure|on|off|out|in|fine|ok(ay)?|(al)?right|left|awesome|available|beautiful|ready|(im)?possible|dangerous|different|enough|t?here|sexy|delicious|&short_adjectives;|&optional_short_adjectives;</token>
+                    <token regexp="yes">\.|\!|…|\?|\;|\:|that|because|to|since|for|in|on|at|with(in|out)?|from|now|but|if|when</token>
                 </pattern>
                 <message>Did you mean <suggestion>it's</suggestion> (=<suggestion>it is</suggestion>) instead of 'its' (possessive pronoun)?</message>
                 <short>Possible typo</short>
@@ -8504,7 +8504,7 @@ USA
                 <example>I think you mean:</example>
                 <example>I think your best, if not only, bet is an AppleScript applet that accomplishes the same thing.</example>
             </rule>
-            <rule default="temp_off">
+            <rule>
                 <pattern>
                     <token regexp="yes">when|while|after|before|if|once|as</token>
                     <marker>
@@ -8521,7 +8521,7 @@ USA
                 <example correction="you're">It's very casual, so if <marker>your</marker> in the neighborhood, stop by and have a glass of wine.</example>
                 <example correction="you're">While <marker>your</marker> at it.</example>
             </rule>
-            <rule default="temp_off">
+            <rule>
                 <pattern>
                     <token regexp="yes">when|while|after|before|if|once|as</token>
                     <marker>
@@ -8533,7 +8533,7 @@ USA
                 <message>Did you mean <suggestion>you're</suggestion> (= you are)?</message>
                 <example correction="you're">Please talk to me when <marker>your</marker> at the offices.</example>
             </rule>
-            <rule default="temp_off">
+            <rule>
                 <pattern>
                     <marker>
                         <token>your</token>
@@ -11743,6 +11743,51 @@ USA
     <!-- Grammar -->
     <!-- ====================================================================== -->
     <category id="GRAMMAR" name="Grammar" type="grammar">
+        <rule id="THANK_YOU_MUCH" name="Thank you much" default="temp_off">
+            <antipattern>
+                <token>much</token>
+                <token>appreciated</token>
+            </antipattern>
+            <pattern>
+                <token>thank</token>
+                <token>you</token>
+                <token>much</token>
+            </pattern>
+            <message>This phrase is non-standard. Consider replacing it.</message>
+            <suggestion>\1 \2 so \3</suggestion>
+            <suggestion>\1 \2 very \3</suggestion>
+            <example correction="Thank you so much|Thank you very much"><marker>Thank you much</marker>.</example>
+        </rule>
+        <rule id="WOULD_BE_JJ_VB" name="It would be great (to) write" default="temp_off">
+            <antipattern>
+                <token>thank</token>
+                <token>you</token>
+            </antipattern>
+            <antipattern>
+                <token>let</token>
+                <token regexp="yes">me|us|them|him|her|it</token>
+                <token>know</token>
+            </antipattern>
+            <pattern>
+                <token postag="MD">
+                    <exception>need</exception>
+                </token>
+                <marker>
+                    <token>be</token>
+                    <token postag="JJ" />
+                    <token postag="VB" chunk="B-VP" />
+                </marker>
+            </pattern>
+            <message>The infinitive "\4" after "be" requires "to". Did you mean <suggestion>\2 \3 to \4</suggestion>?</message>
+            <example correction="be great to write">It would <marker>be great write</marker> a story.</example>
+            <example correction="be able to do">Tom thought he might <marker>be able do</marker> that.</example>
+            <example correction="be able to do">I know Tom will <marker>be able do</marker> that.</example>
+            <example correction="be able to think">Hope one day i will <marker>be able think</marker> like you, thank you Michael.</example>
+            <example correction="be able to come">Tom doesn't think he'll <marker>be able come</marker> tomorrow.</example>
+            <example correction="be able to provide">They will also be interested in discussing the interim service agreement and what services we will <marker>be able provide</marker>.</example>
+            <example correction="be available to come">Could we please get together with Brent Price and Mike Jordan and discuss whether Todd would <marker>be available come</marker> over.</example>
+            <example>Any feedback would be great thank you.</example>
+        </rule>
         <rulegroup id="OKEY_DOKEY" name="okey-dokey">
             <url>https://www.lexico.com/definition/okey-dokey</url>
             <antipattern>
@@ -13484,7 +13529,7 @@ USA
                         <token regexp="yes" case_sensitive="yes">[Ww]e</token>
                         <token postag="RB" min="0" />
                         <token regexp="yes">
-                            sorry|thankful|happy|glad|(un)?able|good|hungry|certain|mad|ok(ay)?
+                            sorry|thankful|happy|glad|(un)?able|good|hungry|certain|mad|ok(ay)?|strong
                         </token>
                     </marker>
                     <token regexp="yes">to|about|that|with|for|\.|\!|\,</token>
@@ -16849,6 +16894,19 @@ USA
                 <token chunk="I-VP" postag="VB"/>
                 <token chunk="E-NP-plural">people</token>
             </antipattern>
+            <antipattern><!-- #2820 test for most people is -->
+                <token chunk="E-NP-singular" postag_regexp="yes" postag="NN(:UN?)?"/>
+                <token postag="IN"/>
+                <token postag="JJS"/>
+                <token chunk="E-NP-plural">people</token>
+            </antipattern>
+            <antipattern><!-- #2820 that extreme for most people is -->
+                <token>that</token>
+                <token postag_regexp="yes" postag="JJ|NN(:UN?)?"/>
+                <token postag="IN"/>
+                <token postag="JJS"/>
+                <token chunk="E-NP-plural">people</token>
+            </antipattern>
             <pattern>
                 <token>people<exception scope="previous" regexp="yes">no|of</exception></token>
                 <token min="0">who</token>
@@ -16861,12 +16919,13 @@ USA
             <example correction='think'>Some people <marker>thinks</marker> that space is endless.</example>
             <example correction='have|haven'>We are looking for people who <marker>has</marker> expertise in this area.</example>
             <example correction='do'>Also, these people <marker>does</marker> not know the answer.</example>
+            <example correction="am|are|aren">Our people <marker>is</marker> being encouraged to find any way to avoid the tax.</example>
+            <example correction="am|are|aren">This won't work, for most people <marker>is</marker> is quite lazy.</example>
             <example>As the number of older, wealthier people <marker>grows</marker>, so does the number of people eager to prey on them.</example>
             <example>I'm one of those people who has trouble sitting still.</example>
             <example>I'm one of the many people who has trouble sitting still.</example>
             <example>Naming these people <marker>does</marker> not imply their agreement.</example>
             <example>Helping people <marker>is</marker> our duty.</example>
-            <example correction="am|are|aren">Our people <marker>is</marker> being encouraged to find any way to avoid the tax.</example>
             <example>My usual advice to people is just be focused on the problem, learn about the...</example>
             <example>And that no people has a greater claim to that flag than us.</example>
             <example>... believed that <marker>the freedom given to people</marker> leaves the human in a constant fear of failing his/her ...</example>
@@ -16875,6 +16934,8 @@ USA
             <example>PHE says the risk to people is still “very low”.</example><!--  #2095 -->
             <example>PHE says the risk for people is still “very low”.</example><!--  #2095 -->
             <example>To criticize people is not good.</example><!-- #2820 -->
+            <example>The test for most people is relatively simple.</example><!-- #2755 -->
+            <example>Whether the effects will be that extreme for most people is yet to be seen.</example><!-- #2755 -->
         </rule>
 
         <rule id="WE_RB_ARE_VB" name="we + ... + are + base form verb (gerund)">
@@ -18044,6 +18105,10 @@ USA
         </rule>
         <rulegroup id="THE_FRENCH" name="the french (French)">
             <url>https://www.merriam-webster.com/dictionary/French</url>
+            <antipattern><!-- https://www.merriam-webster.com/dictionary/french%20fries (both lower- and uppercase allowed) -->
+                <token>french</token>
+                <token regexp="yes">fr(y|ies)</token>
+            </antipattern>
             <rule>
                 <pattern>
                     <token regexp="yes" inflected="yes">pardon|excuse</token>
@@ -18063,7 +18128,7 @@ USA
                         <token case_sensitive="yes">french</token>
                     </marker>
                     <token postag="JJ.*" postag_regexp="yes" min="0" />
-                    <token regexp="yes">presidents?|riviera|expressions?|novels?|bulldogs?|protestants?|wars?|versions?|manicures?|websites?|sites?|university|universities|side|governments?|keyboards?|learners?|organi[zs]ations?|associations?|food|restaurants?|tutors?|lessons?|teachers?|students?|residents?|colleagues?|cars?|speakers?|press|translations?|translators?|regions?|military|guys?|toast|country|city|cities|community|towns?|accents?|people|villages?|words?|languages?|states?|citizens?|football|literature|laws?|revolution|\.|\!|\?</token>
+                    <token regexp="yes">presidents?|speaking|riviera|expressions?|novels?|bulldogs?|tutors?|individualists?|poetr(y|ies)|protestants?|wars?|versions?|manicures?|websites?|sites?|university|universities|side|governments?|keyboards?|learners?|organi[zs]ations?|associations?|food|restaurants?|tutors?|lessons?|teachers?|students?|residents?|colleagues?|cars?|speakers?|press|translations?|translators?|regions?|military|guys?|toast|country|city|cities|community|towns?|accents?|people|villages?|words?|languages?|states?|citizens?|football|literature|laws?|revolution|\.|\!|\?</token>
                 </pattern>
                 <message><suggestion>French</suggestion> needs to be capitalized when not used as a verb.</message>
                 <url>https://en.wiktionary.org/wiki/French#English</url>
@@ -18085,10 +18150,6 @@ USA
                 <example correction="French">He's learning <marker>french</marker>.</example>
             </rule>
             <rule>
-                <antipattern><!-- https://www.merriam-webster.com/dictionary/french%20fries (both lower- and uppercase allowed) -->
-                    <token>french</token>
-                    <token regexp="yes">fr(y|ies)</token>
-                </antipattern>
                 <antipattern>
                     <token postag="VB.*" postag_regexp="yes" />
                     <token>her</token>
@@ -18111,6 +18172,33 @@ USA
                 <url>https://en.wiktionary.org/wiki/French#English</url>
                 <example correction="French">The <marker>french</marker> won the Soccer World Cup in 2018.</example>
                 <example>Don't eat my french fries.</example>
+            </rule>
+            <rule default="temp_off">
+                <pattern>
+                    <token skip="-1" regexp="yes">german|russian|english|spanish|catalan|arabic|turkish|ukrainian|italian|chinese|czech|dutch|portuguese|canadian|swiss|belgian|belgium|canada|france|poland|morocco|switzerland|monaco|swedish|european|american|usa|paris|warsaw</token>
+                    <marker>
+                        <token case_sensitive="yes" regexp="yes">polish|french</token>
+                    </marker>
+                </pattern>
+                <message><suggestion><match no="2" case_conversion="startupper" /></suggestion> needs to be capitalized when you are referring to the language or country.</message>
+                <example correction="Polish">He's having english and <marker>polish</marker> lessons.</example>
+                <example>Belgium is famous for beer, chocolate, waffles and french fries with mayonnaise.</example>
+            </rule>
+            <rule default="temp_off">
+                <antipattern>
+                    <token>polish</token>
+                    <token regexp="yes">your|my</token>
+                </antipattern>
+                <pattern>
+                    <marker>
+                        <token case_sensitive="yes" skip="-1" regexp="yes">polish|french</token>
+                    </marker>
+                    <token regexp="yes">german|russian|english|spanish|catalan|arabic|turkish|ukrainian|italian|chinese|czech|dutch|portuguese|canadian|swiss|belgian|belgium|canada|france|poland|morocco|switzerland|monaco|swedish|european|american|usa|paris|warsaw</token>
+                </pattern>
+                <message><suggestion><match no="1" case_conversion="startupper" /></suggestion> needs to be capitalized when you are referring to the language or country.</message>
+                <example correction="Polish">He's having <marker>polish</marker> and English lessons.</example>
+                <example>Contrary to their name, french fries are claimed to have originated in Belgium, although their exact place of origin is uncertain.</example>
+                <example>I have to polish my English.</example>
             </rule>
         </rulegroup>
         <?ignore moved to rare words and simplified
@@ -21521,7 +21609,7 @@ USA
             <url>https://en.wikipedia.org/wiki/WhatsApp</url>
             <example correction="WhatsApp|What's up">He is using <marker>Whats App</marker> to communicate with his friends.</example>
         </rule>
-        <rulegroup id="Z_WAVE" name="Z-Wave" default="temp_off">
+        <rulegroup id="Z_WAVE" name="Z-Wave">
             <url>https://en.wikipedia.org/wiki/Z-Wave</url>
             <rule>
                 <pattern>
@@ -22035,7 +22123,7 @@ USA
                 <example correction="Windows">The <marker>windows</marker> 10 update failed.</example>
                 <example correction="Windows">It runs on a <marker>windows</marker> 2012 server.</example>
             </rule>
-            <rule default="temp_off">
+            <rule>
                 <pattern>
                     <token>on</token>
                     <marker>
@@ -22219,7 +22307,7 @@ USA
             <url>https://www.lexico.com/definition/work-life_balance</url>
             <example correction="Work-life"><marker>Work life</marker> balance is having enough time for work and enough to have a life.</example>
         </rule>
-        <rule id="RUN_ON_HYPHEN" name="missing hyphen in 'run on'" default="temp_off">
+        <rule id="RUN_ON_HYPHEN" name="missing hyphen in 'run on'">
             <pattern>
                 <marker>
                     <token>run</token>
@@ -22230,6 +22318,26 @@ USA
             <message>The adjective <suggestion>\1-\2</suggestion> is spelled with a hyphen.</message>
             <url>https://www.merriam-webster.com/dictionary/run-on</url>
             <example correction="run-on">I'm using a tool to fix my <marker>run on</marker> sentences.</example>
+        </rule>
+        <rule id="BUTTON_UP_HYPHEN" name="missing hyphen in 'run on'" default="temp_off">
+            <pattern>
+                <token postag="IN|DT|PRP.*" postag_regexp="yes">
+                    <exception>to</exception>
+                </token>
+                <token postag="JJ.*" postag_regexp="yes" min="0" />
+                <marker>
+                    <token>button</token>
+                    <token>up</token>
+                </marker>
+                <token min="0">
+                    <exception postag="PRP.*|DT|IN" postag_regexp="yes" />
+                </token>
+                <token regexp="yes">t-?shirts?|shirts?|sweaters?|sweat-?shirts?|tanks?|dress(es)?|blouses?|tops?|vests?|jackets?|cardigans?|jeans?|trousers?</token>
+            </pattern>
+            <message>The adjective <suggestion>\3-\4</suggestion> is spelled with a hyphen.</message>
+            <url>https://www.merriam-webster.com/dictionary/button-up</url>
+            <example correction="button-up">I'm wearing a <marker>button up</marker> shirt.</example>
+            <example>Tom began to button up his shirt.</example>
         </rule>
         <rule id="HIGH_END_HYPHEN" name="missing hyphen in 'high end'">
             <pattern>
@@ -26900,7 +27008,7 @@ USA
                 <example>I expressed a warm thanks.</example><!-- MFU 2019-10-11. Although 'a warm thanks' is possibly a FP, the 'correction' is '(thanks)'. Thus, I added an exception.-->
                 <example>He made a bad graffiti with his hands.</example><!-- #2250 -->
                 <example>I'm going to sign up for a German class right now.</example>
-                <example type="triggers_error">Generally speaking, any talents that happen after an enemy dies are too slow to matter.</example><!-- see #2921 -->
+                <example>Generally speaking, any talents that happen after an enemy dies are too slow to matter.</example><!-- #2921 -->
                 <example>A martial arts strike.</example><!-- see #2923 -->
                 <example>You would need a simple mains relay such as ...</example><!-- see #2923 -->
                 <example type="triggers_error">The American Military authorities established a displaced persons (DP) camp in what used to be a sanatorium...</example>
@@ -26979,12 +27087,12 @@ USA
                 <example>But if a low rank needs to play against a warlord VI then it`s just impossible to win.</example>
                 <example>An external service sounds like a good idea!</example>
                 <example type="triggers_error">A New Mythic Approaches - Queen of Sin</example>
-                <example type="triggers_error">I wish you a good party guys and don't drink too much.</example><!-- #2926 -->
+                <example>I wish you a good party guys and don't drink too much.</example><!-- #2926, #2931 -->
                 <example>That’s not a luxury starting players enjoy.</example>
                 <example>You may be able to use a NRQL alert condition to notify you if a particular service restarts X times in Y minutes.</example><!-- #2926 -->
                 <example>If you’ve seen this and were thrown off by it, then there’s a chance other users have been as well!</example>
                 <example>Is there any way to set a threshold that an alert only fires if multiple locations signal the same problem?</example>
-                <example type="triggers_error">It’s also handy to see how the cost of a given service increases as the month goes by.</example><!-- #2921 -->
+                <example>It’s also handy to see how the cost of a given service increases as the month goes by.</example><!-- #2921 -->
                 <example>A little less points are required.</example>
                 <example>Maybe a random dwarf gains 2 mana on brown gems.</example><!-- #2926 -->
                 <example>A full team deals 5 dmg/turn!</example><!-- #2926 -->
@@ -47815,7 +47923,52 @@ The accident victim died from her injuries.
     <!-- Commonly Confused Words -->
     <!-- ====================================================================== -->
     <category id="CONFUSED_WORDS" name="Commonly Confused Words" type="grammar">
-        <rulegroup id="HART_HARD" name="hart vs hard" default="temp_off">
+        <rulegroup id="WAN_WANT" name="wan vs want" default="temp_off">
+            <antipattern><!-- caught by WAN_T -->
+                <token>wan</token>
+                <token regexp="yes" min="0">&apostrophe;</token>
+                <token>t</token>
+            </antipattern>
+            <rule>
+                <antipattern>
+                    <token postag="IN" />
+                    <token>you</token>
+                </antipattern>
+                <pattern>
+                    <token case_sensitive="yes" regexp="yes">[Yy]ou|[Tt]hey|[Ww]e|I</token>
+                    <token postag="RB" min="0" />
+                    <marker>
+                        <token case_sensitive="yes" regexp="yes">[Ww]an</token>
+                    </marker>
+                </pattern>
+                <message>Did you mean <suggestion>want</suggestion>?</message>
+                <example correction="want">I <marker>wan</marker> this!</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <marker>
+                        <token case_sensitive="yes" regexp="yes">[Ww]an</token>
+                    </marker>
+                    <token case_sensitive="yes">to</token>
+                    <token postag="VBP" />
+                </pattern>
+                <message>Did you mean <suggestion>want</suggestion>?</message>
+                <example correction="want">I don't <marker>wan</marker> to pay for this.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token inflected="yes">do</token>
+                    <token regexp="yes">&apostrophe;</token>
+                    <token>t</token>
+                    <marker>
+                        <token case_sensitive="yes" regexp="yes">[Ww]an</token>
+                    </marker>
+                </pattern>
+                <message>Did you mean <suggestion>want</suggestion>?</message>
+                <example correction="want">I don't <marker>wan</marker> to pay for this.</example>
+            </rule>
+        </rulegroup>
+        <rulegroup id="HART_HARD" name="hart vs hard">
             <rule>
                 <pattern>
                     <token inflected="yes">be</token>
@@ -47859,7 +48012,7 @@ The accident victim died from her injuries.
                 <example correction="hard">She had a <marker>hart</marker> time there.</example>
             </rule>
         </rulegroup>
-        <rulegroup id="GIT_GET" name="git vs get" default="temp_off">
+        <rulegroup id="GIT_GET" name="git vs get">
             <antipattern>
                 <token>git</token>
                 <token regexp="yes">repositor.*|server.*|clone.*|issue.*|commit.*|conf.*|push.*|pull.*|log.*|doc.*|director.*|dirs?|ci|branch.*|br|hubs?</token>
@@ -49801,7 +49954,7 @@ The accident victim died from her injuries.
                         <token>their</token>
                     </marker>
                     <token postag="RB" min="0" />
-                    <token postag="SENT_END" regexp="yes">stupid|dumb|free|expensive|cheap|new|old|everyday|wrong|(in)?correct|sure|on|off|out|in|fine|ok(ay)?|(al)?right|left|awesome|available|beautiful|ready|(im)?possible|dangerous|different|enough|t?here|sexy|delicious|&short_adjectives;|&optional_short_adjectives;</token>
+                    <token postag="SENT_END" regexp="yes">stupid|annoying|dumb|free|expensive|cheap|new|old|everyday|wrong|(in)?correct|sure|on|off|out|in|fine|ok(ay)?|(al)?right|left|awesome|available|beautiful|ready|(im)?possible|dangerous|different|enough|t?here|sexy|delicious|&short_adjectives;|&optional_short_adjectives;</token>
                 </pattern>
                 <message>Did you mean <suggestion>they're</suggestion> (=<suggestion>they are</suggestion>) instead of 'their' (possessive pronoun)?</message>
                 <short>Possible typo</short>
@@ -49815,7 +49968,7 @@ The accident victim died from her injuries.
                         <token>their</token>
                     </marker>
                     <token postag="RB" min="0" />
-                    <token postag="SENT_END" regexp="yes">stupid|dumb|free|expensive|cheap|new|old|everyday|wrong|(in)?correct|sure|on|off|out|in|fine|ok(ay)?|(al)?right|left|awesome|available|beautiful|ready|(im)?possible|dangerous|different|enough|t?here|sexy|delicious|&short_adjectives;|&optional_short_adjectives;</token>
+                    <token postag="SENT_END" regexp="yes">stupid|annoying|dumb|free|expensive|cheap|new|old|everyday|wrong|(in)?correct|sure|on|off|out|in|fine|ok(ay)?|(al)?right|left|awesome|available|beautiful|ready|(im)?possible|dangerous|different|enough|t?here|sexy|delicious|&short_adjectives;|&optional_short_adjectives;</token>
                 </pattern>
                 <message>Did you mean <suggestion>they're</suggestion> (=<suggestion>they are</suggestion>) instead of 'their' (possessive pronoun)?</message>
                 <short>Possible typo</short>
@@ -49831,7 +49984,7 @@ The accident victim died from her injuries.
                         <token>their</token>
                     </marker>
                     <token postag="RB" min="0" />
-                    <token regexp="yes">stupid|dumb|free|expensive|cheap|new|old|everyday|wrong|(in)?correct|sure|on|off|out|in|fine|ok(ay)?|(al)?right|left|awesome|available|beautiful|ready|(im)?possible|dangerous|different|enough|t?here|sexy|delicious|&short_adjectives;|&optional_short_adjectives;</token>
+                    <token regexp="yes">stupid|annoying|dumb|free|expensive|cheap|new|old|everyday|wrong|(in)?correct|sure|on|off|out|in|fine|ok(ay)?|(al)?right|left|awesome|available|beautiful|ready|(im)?possible|dangerous|different|enough|t?here|sexy|delicious|&short_adjectives;|&optional_short_adjectives;</token>
                     <token postag="SENT_END" regexp="yes">\p{P}</token>
                 </pattern>
                 <message>Did you mean <suggestion>they're</suggestion> (=<suggestion>they are</suggestion>) instead of 'their' (possessive pronoun)?</message>
