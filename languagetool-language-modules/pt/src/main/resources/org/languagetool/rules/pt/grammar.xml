@@ -27418,7 +27418,8 @@ TODO Write better examples
     </rule>
     <rule>
       <pattern case_sensitive='yes'>
-          <token regexp='yes'>(?:\d+)?(?:&tabela_periodica;)+3((?:&tabela_periodica;)+)?2((?:&tabela_periodica;)+)?</token>
+          <token regexp='yes'>(?:\d+)?(?:&tabela_periodica;)+3((?:&tabela_periodica;)+)?2((?:&tabela_periodica;)+)?
+            <exception>H3N2</exception></token>
       </pattern>
       <message>Os números nas fórmulas químicas devem estar em subscrito.</message>
         <suggestion><match no='1' regexp_match='((&tabela_periodica;)+)3(((&tabela_periodica;)+)?)2(((&tabela_periodica;)+)?)' regexp_replace='$1₃$3₂$6'/></suggestion>

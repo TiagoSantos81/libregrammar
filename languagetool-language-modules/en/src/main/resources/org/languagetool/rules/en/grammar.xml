@@ -64115,7 +64115,8 @@ The accident victim died from her injuries.
     </rule>
     <rule>
       <pattern case_sensitive='yes'>
-          <token regexp='yes'>(?:\d+)?(?:&periodic_table;)+3((?:&periodic_table;)+)?2((?:&periodic_table;)+)?</token>
+          <token regexp='yes'>(?:\d+)?(?:&periodic_table;)+3((?:&periodic_table;)+)?2((?:&periodic_table;)+)?
+            <exception>H3N2</exception></token>
       </pattern>
       <message>Chemical formulas' numbers should be written in subscript.</message>
         <suggestion><match no='1' regexp_match='((&periodic_table;)+)3(((&periodic_table;)+)?)2(((&periodic_table;)+)?)' regexp_replace='$1₃$3₂$6'/></suggestion>
