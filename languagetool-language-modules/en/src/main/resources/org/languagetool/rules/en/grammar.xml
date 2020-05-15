@@ -45525,6 +45525,7 @@ The accident victim died from her injuries.
             </rule>
         </rulegroup>
         <rulegroup id="QUESTION_MARK" name="Missing question mark">
+        <!-- Created by Valerie Parham-Thompson, 2020-05-02 -->
             <rule>
                 <pattern case_sensitive="yes">
                     <token postag="SENT_START" skip="1"/>
