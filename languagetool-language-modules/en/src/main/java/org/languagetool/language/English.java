@@ -272,6 +272,7 @@ public class English extends Language implements AutoCloseable {
   @Override
   public int getPriorityForId(String id) {
     switch (id) {
+      case "THE_INS_RULE": return 50; // higher priority for testing/evaluation; only activated by configuring remote rule
       case "I_E":                       return 10; // needs higher prio than EN_COMPOUNDS ("i.e learning")
       case "MISSING_HYPHEN":            return 5;
       case "TRANSLATION_RULE":          return 5;   // Premium
@@ -283,12 +284,12 @@ public class English extends Language implements AutoCloseable {
       case "WON_T_TO":                  return 1;   // higher prio than DON_T_AREN_T
       case "WAN_T":                     return 1;   // higher prio than DON_T_AREN_T
       case "THE_US":                    return 1;   // higher prio than DT_PRP
-      case "A_HUNDREDS":                return 1;   // higher prio than A_PLURAL/A_NNS
-      case "NOW_A_DAYS":                return 1;   // higher prio than A_PLURAL/A_NNS
-      case "COUPLE_OF_TIMES":           return 1;   // higher prio than A_PLURAL/A_NNS
-      case "A_WINDOWS":                 return 1;   // higher prio than A_PLURAL/A_NNS
-      case "A_SCISSOR":                 return 1;   // higher prio than A_PLURAL/A_NNS
-      case "ROUND_A_BOUT":              return 1;   // higher prio than A_PLURAL/A_NNS
+      case "A_HUNDREDS":                return 1;   // higher prio than A_NNS
+      case "NOW_A_DAYS":                return 1;   // higher prio than A_NNS
+      case "COUPLE_OF_TIMES":           return 1;   // higher prio than A_NNS
+      case "A_WINDOWS":                 return 1;   // higher prio than A_NNS
+      case "A_SCISSOR":                 return 1;   // higher prio than A_NNS
+      case "ROUND_A_BOUT":              return 1;   // higher prio than A_NNS
       case "SEEM_SEEN":                 return 1;   // higher prio than HAVE_PART_AGREEMENT and PRP_HAVE_VB
       case "BORN_IN":                   return 1;   // higher prio than PRP_PAST_PART
       case "DO_TO":                     return 1;   // higher prio than HAVE_PART_AGREEMENT
@@ -386,6 +387,24 @@ public class English extends Language implements AutoCloseable {
       }
       return fallback.apply(original);
     };
+  }
+
+  @Override
+  public List<Rule> getRelevantRemoteRules(ResourceBundle messageBundle, List<RemoteRuleConfig> configs, GlobalConfig globalConfig, UserConfig userConfig, Language motherTongue, List<Language> altLanguages) throws IOException {
+    List<Rule> rules = new ArrayList<>(super.getRelevantRemoteRules(
+      messageBundle, configs, globalConfig, userConfig, motherTongue, altLanguages));
+    String theInsertionID = "THE_INS_RULE";
+    RemoteRuleConfig theInsertionConfig = RemoteRuleConfig.getRelevantConfig(theInsertionID, configs);
+    if (theInsertionConfig != null) {
+      Map<String, String> theInsertionMessages = new HashMap<>();
+      theInsertionMessages.put("THE_INS", "the_ins_rule_del_the");
+      theInsertionMessages.put("INS_THE", "the_ins_rule_ins_the");
+      Rule theInsertionRule = GRPCRule.create(messageBundle,
+        theInsertionConfig,
+        theInsertionID, "the_ins_rule_description", theInsertionMessages);
+      rules.add(theInsertionRule);
+    }
+    return rules;
   }
   */
 }
