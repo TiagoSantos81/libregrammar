@@ -154,14 +154,14 @@ public class RuleMatch implements Comparable<RuleMatch> {
         replacement = StringTools.uppercaseFirstChar(replacement);
       }
       SuggestedReplacement repl = new SuggestedReplacement(replacement);
-      /*if (getRule() instanceof AbstractPatternRule) {
+      if (getRule() instanceof AbstractPatternRule) {
         String covered = sentence.getText().substring(fromPos, toPos);
         if (covered.equals(repl.getReplacement()) && ((AbstractPatternRule) getRule()).getFilter() == null) {
           // only for development:
-          //System.out.println("WARN: suggestion == covered text for rule " + getRule().getFullId() + ", covered: " + covered + ", " + sentence.getText());
-          System.out.println("WARN: suggestion == covered text for rule " + getRule().getFullId());
+          System.out.println("WARN: suggestion == covered text for rule " + getRule().getFullId() + ", covered: " + covered + ", " + sentence.getText());
+          // System.out.println("WARN: suggestion == covered text for rule " + getRule().getFullId());
         }
-      }*/
+      }
       if (!suggestedReplacements.contains(repl)) {
         suggestedReplacements.add(repl);
       }
