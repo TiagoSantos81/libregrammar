@@ -7871,13 +7871,20 @@ title="Easy editing stylesheet" ?>
           <token>vez</token>
           <token>de</token>
       </antipattern>
+      <antipattern>
+          <token>uma</token>
+          <token>só</token>
+          <token>vez</token>
+      </antipattern>
       <pattern>
           <token postag='CC|SENT_START|_PUNCT|R.+' postag_regexp='yes'>
             <exception regexp='yes'>alguma|cada|de(?:sta)?|em|muitas|outra|uma|primeira</exception>
             <exception postag='Z.+|D..[FC][SN].+' postag_regexp='yes'/></token>
           <token>vez</token>
       </pattern>
-      <message>Substitua por <suggestion>\1 vês</suggestion>.</message>
+      <message>Possível confusão de termos. '\2' refere-se a turno, ou ocasião.</message>
+        <suggestion>\1 vês</suggestion>
+      <url>https://pt.wiktionary.org/wiki/v%C3%AAs</url>
       <example correction="não vês">Pai, <marker>não vez</marker> que eles estão errados?</example>
       <example correction=", vês">Pai<marker>, vez</marker> que eles estão errados?</example>
       <example correction="Mas vês"><marker>Mas vez</marker> que eles estão errados?</example>
@@ -7911,11 +7918,14 @@ title="Easy editing stylesheet" ?>
     <rule id='NOS_VERBO' name="Confusão: nos/nós + VERBO">
     <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
       <pattern>
-          <token case_sensitive="yes">Nos</token>
+          <token postag="SENT_START"/>
+        <marker>
+          <token>Nos</token>
           <token postag_regexp='yes' postag="V.+">
             <exception negate_pos='yes' postag_regexp='yes' postag='V.+'/></token>
+        </marker>
       </pattern>
-      <message>Substitua por <suggestion>Nós \2</suggestion>.</message>
+      <message>Substitua por <suggestion>Nós \3</suggestion>.</message>
       <example correction="Nós sabemos"><marker>Nos sabemos</marker> a resposta.</example>
     </rule>
 
