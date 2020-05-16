@@ -29,6 +29,10 @@
 #### Italian
   * add URLs explaining most single word suggestions
 
+#### Papamiento
+  * initial support added thanks to [Manuel Ortega](https://github.com/ortegacmanuel)
+    - only spellchecking support added
+
 #### Portuguese
   * added and improved rules
   * add URLs explaining most single word suggestions
