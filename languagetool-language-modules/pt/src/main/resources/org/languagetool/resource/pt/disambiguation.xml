@@ -1484,6 +1484,53 @@
       <disambig action="filterall"/>
     </rule>
 
+  <rulegroup id="A_QUEM_PREPOSITION" name="a quem + prep + verbo">
+    <!-- 		Created by Tiago F. Santos, 2020-05-26		-->
+    <rule>
+      <pattern>
+        <token regexp='yes'>de|a|com|eu|tu|el[ea]s?|[nv]ós</token>
+        <token regexp='yes'>quem?|qual</token>
+      </pattern>
+      <disambig action="replace"><wd pos="PR0CN000"/><wd pos="PR0CN000"/></disambig>
+    </rule>
+    <rule>
+      <pattern>
+        <token regexp='yes'>[adn]o</token>
+      <marker>
+        <token>qual</token>
+      </marker>
+      </pattern>
+      <disambig action="replace"><wd pos="PR0MS000"/></disambig>
+    </rule>
+    <rule>
+      <pattern>
+        <token regexp='yes'>[adn]os</token>
+      <marker>
+        <token>quais</token>
+      </marker>
+      </pattern>
+      <disambig action="replace"><wd pos="PR0MP000"/></disambig>
+    </rule>
+    <rule>
+      <pattern>
+        <token regexp='yes'>à|[nd]a</token>
+      <marker>
+        <token>qual</token>
+      </marker>
+      </pattern>
+      <disambig action="replace"><wd pos="PR0FS000"/></disambig>
+    </rule>
+    <rule>
+      <pattern>
+        <token regexp='yes'>(?:à|[nd]a)s</token>
+      <marker>
+        <token>quais</token>
+      </marker>
+      </pattern>
+      <disambig action="replace"><wd pos="PR0FP000"/></disambig>
+    </rule>
+  </rulegroup>
+
   <rulegroup id="JUNTA_VERBO" name="junta como verbo">
     <!-- 		Created by Tiago F. Santos, 2019-09-06		-->
     <rule>
