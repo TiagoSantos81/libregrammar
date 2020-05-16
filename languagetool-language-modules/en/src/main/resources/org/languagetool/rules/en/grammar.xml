@@ -11743,7 +11743,7 @@ USA
     <!-- Grammar -->
     <!-- ====================================================================== -->
     <category id="GRAMMAR" name="Grammar" type="grammar">
-        <rule id="THANK_YOU_MUCH" name="Thank you much" default="temp_off">
+        <rule id="THANK_YOU_MUCH" name="Thank you much">
             <antipattern>
                 <token>much</token>
                 <token>appreciated</token>
@@ -11758,7 +11758,7 @@ USA
             <suggestion>\1 \2 very \3</suggestion>
             <example correction="Thank you so much|Thank you very much"><marker>Thank you much</marker>.</example>
         </rule>
-        <rule id="WOULD_BE_JJ_VB" name="It would be great (to) write" default="temp_off">
+        <rule id="WOULD_BE_JJ_VB" name="It would be great (to) write">
             <antipattern>
                 <token>thank</token>
                 <token>you</token>
@@ -18177,7 +18177,7 @@ USA
                 <example correction="French">The <marker>french</marker> won the Soccer World Cup in 2018.</example>
                 <example>Don't eat my french fries.</example>
             </rule>
-            <rule default="temp_off">
+            <rule>
                 <pattern>
                     <token skip="-1" regexp="yes">german|russian|english|spanish|catalan|arabic|turkish|ukrainian|italian|chinese|czech|dutch|portuguese|canadian|swiss|belgian|belgium|canada|france|poland|morocco|switzerland|monaco|swedish|european|american|usa|paris|warsaw</token>
                     <marker>
@@ -18188,7 +18188,7 @@ USA
                 <example correction="Polish">He's having english and <marker>polish</marker> lessons.</example>
                 <example>Belgium is famous for beer, chocolate, waffles and french fries with mayonnaise.</example>
             </rule>
-            <rule default="temp_off">
+            <rule>
                 <antipattern>
                     <token>polish</token>
                     <token regexp="yes">your|my</token>
@@ -20873,7 +20873,7 @@ USA
                 <suggestion><match no="1" regexp_match="(?i)gameboy" regexp_replace="Game Boy" /></suggestion>
                 <example correction="Game Boy">The <marker>Gameboy</marker> is an 8-bit handheld game console developed and manufactured by Nintendo.</example>
             </rule>
-            <rule default="temp_off">
+            <rule>
                 <antipattern case_sensitive="yes">
                     <token regexp="yes">Game|GAME</token>
                     <token regexp="yes">Boy|BOY</token>
@@ -21453,7 +21453,7 @@ USA
                 <suggestion>Apple <match no="1" regexp_match="(?i)apple" regexp_replace="" case_conversion="startupper" /></suggestion>
                 <example correction="Apple Pay"><marker>ApplePay</marker> is a mobile payment and digital wallet service by Apple Inc.</example>
             </rule>
-            <rule default="temp_off">
+            <rule>
                 <pattern>
                     <token>mac</token>
                     <token regexp="yes">books?</token>
@@ -22348,7 +22348,7 @@ USA
             <url>https://www.merriam-webster.com/dictionary/run-on</url>
             <example correction="run-on">I'm using a tool to fix my <marker>run on</marker> sentences.</example>
         </rule>
-        <rule id="BUTTON_UP_HYPHEN" name="missing hyphen in 'run on'" default="temp_off">
+        <rule id="BUTTON_UP_HYPHEN" name="missing hyphen in 'run on'">
             <pattern>
                 <token postag="IN|DT|PRP.*" postag_regexp="yes">
                     <exception>to</exception>
@@ -24810,7 +24810,7 @@ USA
             </antipattern>
             <pattern>
                 <token postag='RB'>
-                    <exception regexp="yes">as|in</exception>
+                    <exception regexp="yes">as|in|nothing</exception>
                 </token>
                 <token postag='V.+' postag_regexp='yes'>
                     <exception>yes</exception>
@@ -24830,6 +24830,7 @@ USA
             <example>... marine foods such as fish and algae, and also in mushrooms in larger concentrations.</example>
             <example>Actinium is found only in traces in uranium ores as 227Ac – one tonne of ore contains...</example>
             <example>Don't watch T.V.</example>
+            <example>Those who possess nothing lose nothing.</example>
             <example>Enough is enough!</example>
         </rule>
         <rule id="GOING_TO_VBD" name="Use of past form with 'going to ...'">
@@ -27390,8 +27391,13 @@ USA
             </rule>
             <rule>
                 <antipattern><!-- www.ldoceonline.com/dictionary/far -->
-                    <token>far</token>
+                    <token regexp="yes" >far|way</token>
                     <token>better</token>
+                </antipattern>
+                <antipattern><!-- I have way better Internet -->
+                    <token regexp="yes" postag="VB.?" postag_regexp="yes">ha[ds]|(?:ha)?ve</token>
+                    <token regexp="yes">way|far</token>
+                    <token postag="JJR" />
                 </antipattern>
                 <antipattern><!-- has only ray florets -->
                     <token regexp="yes" postag="VB.?" postag_regexp="yes">ha[ds]|have</token>
@@ -27402,7 +27408,7 @@ USA
                 <pattern>
                     <token regexp="yes" postag="VB.?" postag_regexp="yes">ha[ds]|(?:ha)?ve</token>
                     <token postag="RB">
-                        <exception regexp="yes">no|little|much|enough</exception><!-- 2020-02-01 regression MFU. Quick win as an alternative to an AP, because I cannot find a sentence in which 'enough' comes before a verb. -->
+                        <exception regexp="yes">no|little|much|enough|nothing</exception><!-- 2020-02-01 regression MFU. Quick win as an alternative to an AP, because I cannot find a sentence in which 'enough' comes before a verb. -->
                         <exception postag="IN|RP|CC" postag_regexp="yes"/>
                         </token>
                     <marker>
@@ -27418,6 +27424,8 @@ USA
                 <example correction="been">Had there <marker>was</marker> a problem, you could have...</example>
                 <example>I have already <marker>forgotten</marker> their names.</example>
                 <example>I have always done that.</example>
+                <example>I have nothing better to do.</example>
+                <example>I have way better to do.</example>
                 <example>I have always liked her.</example>
                 <example>The country is dry: it had little <marker>rain</marker> this summer.</example>
                 <example>I'm always bored with films that have little <marker>action</marker>.</example>
@@ -36567,7 +36575,7 @@ USA
                     <token regexp="yes">8|16|32|64|128|256|512|1024|2048|4096</token>
                     <token>bit</token>
                 </marker>
-                <token regexp="yes">systems?|computers?|processors?|tokens?|handhelds?|games?|apple|windows|intel|crc|arm|rsa|ssh|ssl|aes|sha|cpus?|ids?|gpus?|pcs?|monitors?|hash(es)?|music|arts?|floats?|pixels?|wep|decimal|random|keys?|encryption|encrypted|signed|memory|operating|os|data|personal|audio|address|graphics?|colou?rs?|coin|integers?|units?|java|jre|jdk|microprocessors?|microcontrollers?|linux|kernels?|arch(itectures)?s?|check|android|numbers?</token>
+                <token regexp="yes">systems?|platforms?|computers?|processors?|tokens?|hand\-?helds?|games?|apple|windows|intel|crc|arm|rsa|ssh|ssl|aes|sha|cpus?|ids?|gpus?|pcs?|monitors?|hash(es)?|music|arts?|floats?|pixels?|wep|decimal|random|keys?|encryption|encrypted|signed|memory|operating|os|data|personal|audio|address|graphics?|colou?rs?|coin|integers?|units?|java|jre|jdk|microprocessors?|microcontrollers?|linux|kernels?|arch(itectures)?s?|check|android|numbers?</token>
             </pattern>
             <message>It appears that a hyphen is missing.</message>
             <suggestion>\1-\2</suggestion>
@@ -47756,7 +47764,7 @@ The accident victim died from her injuries.
     <!-- Commonly Confused Words -->
     <!-- ====================================================================== -->
     <category id="CONFUSED_WORDS" name="Commonly Confused Words" type="grammar">
-        <rulegroup id="WAN_WANT" name="wan vs want" default="temp_off">
+        <rulegroup id="WAN_WANT" name="wan vs want">
             <antipattern><!-- caught by WAN_T -->
                 <token>wan</token>
                 <token regexp="yes" min="0">&apostrophe;</token>
@@ -52328,7 +52336,7 @@ The accident victim died from her injuries.
                 <pattern>
                     <marker><token>to</token></marker>
                     <token postag="RB">
-                      <exception regexp="yes">outside|before|after|why|(any|some)(where|how|one|more)|nowhere|not|yes|no|multiply|tomorrow|today|tonight|yesterday|here|wheresoever|always|accordingly|never|nowadays|again|n?either|also|t?here|annually|yearly|sometimes</exception><!-- 'too X' is not standard English. -->
+                      <exception regexp="yes">nothing|outside|before|after|why|(any|some)(where|how|one|more)|nowhere|not|yes|no|multiply|tomorrow|today|tonight|yesterday|here|wheresoever|always|accordingly|never|nowadays|again|n?either|also|t?here|annually|yearly|sometimes</exception><!-- 'too X' is not standard English. -->
                       <exception postag_regexp="yes" postag="JJR?|VBP|NNP"/>
                     </token>
                     <token postag="SENT_END" regexp="yes">\p{P}</token>
@@ -52348,6 +52356,7 @@ The accident victim died from her injuries.
                 <example>There's no reason to not go there.</example>
                 <example>I can show you how to properly drive a car.</example>
                 <example>Set that field to Yes.</example>
+                <example>For example, the sentence "the gain of a system should be doubled", without context, means close to nothing.</example>
                 <example>It begins to rapidly increase.</example>
                 <example>I don't know what he is referring to here.</example>
                 <example>Something to multiply.</example>

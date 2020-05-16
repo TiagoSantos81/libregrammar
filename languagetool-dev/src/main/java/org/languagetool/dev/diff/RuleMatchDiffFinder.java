@@ -202,7 +202,7 @@ public class RuleMatchDiffFinder {
       fw.write("<head>\n");
       fw.write("  <title>" + title + "</title>\n");
       fw.write("  <meta charset='utf-8'>\n");
-      fw.write("  <script src='/regression-tests/tablefilter/tablefilter.js'></script>\n");  // https://github.com/koalyptus/TableFilter/
+      fw.write("  <script src='https://unpkg.com/tablefilter@0.7.0/dist/tablefilter/tablefilter.js'></script>\n");  // https://github.com/koalyptus/TableFilter/
       fw.write("  <style>\n");
       fw.write("    .sentence { color: #666; }\n");
       fw.write("    .marker { text-decoration: underline; }\n");
@@ -215,7 +215,7 @@ public class RuleMatchDiffFinder {
       print(diffs, fw);
       fw.write("<script>\n" +
                "var tf = new TableFilter(document.querySelector('.sortable_table'), {\n" +
-               "    base_path: '../tablefilter/',\n" +
+               "    base_path: 'https://unpkg.com/tablefilter@0.7.0/dist/tablefilter/',\n" +
                "    col_0: 'select',\n" +
                "    col_1: 'select',\n" +
                "    auto_filter: { delay: 100 },\n" +
