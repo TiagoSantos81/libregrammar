@@ -76,7 +76,11 @@
 #### Russian
   * added and improved rules, including:
     - `WhiteSpaceAtBeginOfParagraph`, `LongSentenceRule`, `LongParagraphRule`
-    `ParagraphRepeatBeginningRule`, `RussianFillerWordsRule`. 
+    `ParagraphRepeatBeginningRule`, `RussianFillerWordsRule`,
+    `MorfologikRussianYOSpellerRule`.
+   * added new Java rules
+   * rebuilded and improved main spellchecker dictionary
+   * new variant (only yo "ё") spellchecker dictionary and new java rule for it
 
 #### Spanish
   * added and improved rules

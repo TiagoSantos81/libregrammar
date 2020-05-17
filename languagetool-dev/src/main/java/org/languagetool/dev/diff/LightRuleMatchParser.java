@@ -20,6 +20,7 @@ package org.languagetool.dev.diff;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
@@ -80,13 +81,25 @@ class LightRuleMatchParser {
     int contextLength = match.get("context").get("length").asInt();
     String context = match.get("context").get("text").asText();
     int maxEnd = Math.min(contextOffset + contextLength, context.length());
-    context = getContextWithSpan(match.get("context").get("text").asText(), contextOffset, maxEnd);
     String coveredText = context.substring(contextOffset, contextOffset + contextLength);
+    context = getContextWithSpan(match.get("context").get("text").asText(), contextOffset, maxEnd);
+    if (match.get("sentence") != null) {
+      String sentence = match.get("sentence").asText();
+      if (StringUtils.countMatches(sentence, coveredText) == 1) {
+        int idx = sentence.indexOf(coveredText);
+        context = getContextWithSpan(sentence, idx, idx + coveredText.length());
+      }
+    }
     JsonNode replacements = match.get("replacements");
     List<String> replacementList = new ArrayList<>();
     if (replacements != null) {
+      int i = 0;
       for (JsonNode replacement : replacements) {
         replacementList.add(replacement.get("value").asText());
+        i++;
+        if (i >= 5) {
+          break;
+        }
       }
     }
     String suggestions = String.join(", ", replacementList);
