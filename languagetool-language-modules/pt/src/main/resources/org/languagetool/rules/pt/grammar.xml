@@ -3086,7 +3086,7 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes' inflected='yes'>ser|estar|ficar|permanecer|parecer
             <exception>seres</exception></token>
           <token min="0" max="3" postag_regexp='yes' postag='R.'/>
-          <token regexp='yes'>(?:a(?:ceitad|ntepagad|prisionad|ssentad)|d(?:espertad|ispersad)|e(?:nchid|ntregad|nxugad|xaurid|xpelid|xpressad|xpulsad|xtinguid)|f(?:indad|ixad|rigid|ritad)|g(?:anhad|astad)|i(?:ncurrid|sentad)|limpad|m(?:algastad|alquerid|anifestad|atad|orrido)|p(?:agad|asmad)|r(?:epelid|evolvid|ompid)|s(?:alvad|egurad|oltad|ujad|ujeitad|uspendid)|v(?:agad|olvid))[ao]s?</token>
+          <token regexp='yes'>(?:a(?:ceitad|ntepagad|prisionad|ssentad)|d(?:espertad|ispersad)|e(?:ntregad|nxugad|xaurid|xpelid|xpressad|xpulsad|xtinguid)|f(?:indad|ixad|rigid|ritad)|g(?:anhad|astad)|i(?:ncurrid|sentad)|limpad|m(?:algastad|alquerid|anifestad|atad|orrido)|p(?:agad|asmad)|r(?:epelid|evolvid|ompid)|s(?:alvad|egurad|oltad|ujad|ujeitad|uspendid)|v(?:agad|olvid))[ao]s?</token>
     <!-- XXX Removidos: absorvido|acendido|anexado|concluído|cultivado|defendido|desenvolvido|dissolvido|distinguido|envolvido|erigido|incluído|inserido|ocultado|pegado|sepultado|suprimido|tingido
            Formas não reconhecidas como verbo abuntante por todos os dicionários, em desuso, ou com significados distintos.  -->
       </pattern>
@@ -3094,8 +3094,6 @@ title="Easy editing stylesheet" ?>
         <suggestion suppress_misspelled='yes'>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)ad([ao]s?)' regexp_replace='$1$2'/></suggestion>
     <!--suggestion suppress_misspelled='yes'>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)ad([ao]s?)' regexp_replace='$1ue'/></suggestion-->
       <example correction='foi gasto'>O dinheiro <marker>foi gastado</marker> o mês passado.</example>
-      <example type='triggers_error'>A piscina <marker>foi enchida</marker> o mês passado.</example>
-      <example>A piscina <marker>foi cheia</marker> o mês passado.</example>
       <example>Em algumas fontes, alguns territórios não estão incluídos na Europa, enquanto noutras incluem-nos.</example>
       <example>O mais recente estado, o Havaí, foi anexado em 21 de agosto de 1959.</example>
       <example>O jazz foi desenvolvido por artistas inovadores, tais como Louis Armstrong.</example>
@@ -3142,6 +3140,18 @@ title="Easy editing stylesheet" ?>
         <suggestion suppress_misspelled='yes'>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)gid([ao]s?)' regexp_replace='$1it$2'/></suggestion>
     <!--suggestion suppress_misspelled='yes'>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)ad([ao]s?)' regexp_replace='$1ue'/></suggestion-->
       <example correction='foi eleito'>O presidente <marker>foi elegido</marker> o mês passado.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token regexp='yes' inflected='yes'>ser|estar|ficar|permanecer|parecer
+            <exception>seres</exception></token>
+          <token min="0" max="3" postag_regexp='yes' postag='R.'/>
+          <token regexp='yes'>enchid[ao]s?</token>
+      </pattern>
+      <message>Com o verbo '<match no='1' postag='VMN0000'/>' deve utilizar-se o particípio passado irregular.</message>
+        <suggestion suppress_misspelled='yes'>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='enchid([ao]s?)' regexp_replace='chei$1'/></suggestion>
+    <!--suggestion suppress_misspelled='yes'>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)ad([ao]s?)' regexp_replace='$1ue'/></suggestion-->
+      <example correction='foi cheia'>A piscina <marker>foi enchida</marker> o mês passado.</example>
     </rule>
     <rule>
       <pattern>
@@ -10160,7 +10170,10 @@ title="Easy editing stylesheet" ?>
     </rule>
   </rulegroup>
 
-    <rule id='CONDITIONAL_CLAUSE_PUNCTUATION' name="Pontuação: oração condicional">
+  <rulegroup id='CONDITIONAL_CLAUSE_PUNCTUATION' name="Pontuação: oração condicional">
+    <!-- Created by Tiago F. Santos, 2020-04-16 -->
+      <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/virgulas-e-oracoes-i/15645</url>
+    <rule>
       <antipattern>
           <token regexp='yes'>&quot;</token>
           <token regexp='yes'>caso|se</token>
@@ -10222,7 +10235,6 @@ title="Easy editing stylesheet" ?>
       </pattern>
       <message>Se está a expressar uma condição, deve separar as orações por vírgulas.</message>
         <suggestion>\1, <match no='2' case_conversion="startlower"/></suggestion>
-      <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/virgulas-e-oracoes-i/15645</url>
       <example correction="antecedência, caso">Terminei a prova com <marker>antecedência caso</marker> possa sair.</example>
       <example correction="antecedência, se">Terminei a prova com <marker>antecedência se</marker> puder sair.</example>
       <example><marker>Para se</marker> fazer isso, tem-se que marcar com antecedência.</example>
@@ -10234,6 +10246,24 @@ title="Easy editing stylesheet" ?>
       <example>O 1.º caso em Portugal foi identificado a...</example>
       <example>...muito antes do primeiro caso oficial de...</example>
     </rule>
+    <rule>
+      <pattern>
+          <token postag='SENT_START'/>
+          <token skip="-1" regexp='yes'>como|d?onde|quan[dt][ao]s?|quem|qual|quais|porqu[eê]|quê</token>
+        <marker>
+          <token postag_regexp='yes' postag='V.+'>
+            <exception postag_regexp='yes' postag='V.+' negate_pos='yes'/></token>
+          <token postag_regexp='yes' postag='V.+'>
+            <exception postag_regexp='yes' postag='VM[NG]0000|V.P.+'/>
+            <exception postag_regexp='yes' postag='V.+' negate_pos='yes'/></token>
+        </marker>
+      </pattern>
+      <message>Se está a expressar uma condição, deve separar as orações por vírgulas.</message>
+        <suggestion>\3, \4</suggestion>
+      <example correction="viver, verá">Quem <marker>viver verá</marker> possa sair.</example>
+      <example correction="trabalha, vence">Quem <marker>trabalha vence</marker>.</example>
+    </rule>
+  </rulegroup>
 
   <rulegroup id='VOCATIVE_PUNCTUATION' name="Pontuação: vocativo">
     <!-- Created by Tiago F. Santos, Portuguese rule, 2019-11-05 -->
@@ -11427,6 +11457,16 @@ title="Easy editing stylesheet" ?>
       <antipattern>
           <token>.</token>
           <token>.</token>
+          <token postag='SENT_END'>.</token>
+      </antipattern>
+      <antipattern><!-- handled by CONDITIONAL_CLAUSE_PUNCTUATION -->
+          <token postag='SENT_START'/>
+          <token skip="-1" regexp='yes'>como|d?onde|quan[dt][ao]s?|quem|qual|quais|porqu[eê]|quê</token>
+          <token postag_regexp='yes' postag='V.+'>
+            <exception postag_regexp='yes' postag='V.+' negate_pos='yes'/></token>
+          <token postag_regexp='yes' postag='V.+'>
+            <exception postag_regexp='yes' postag='VM[NG]0000|V.P.+'/>
+            <exception postag_regexp='yes' postag='V.+' negate_pos='yes'/></token>
           <token postag='SENT_END'>.</token>
       </antipattern>
     <rule>
