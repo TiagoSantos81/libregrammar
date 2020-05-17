@@ -115,15 +115,15 @@ a barlovento	LOC_ADV
 a barrisco	LOC_ADV
 a base de bien	LOC_ADV
 a base de	LOC_PREP
-abastecimiento de agua	LOC_NCMS000
-abastecimiento de agua potable	LOC_NCMS000
+abastecimiento de agua	NCMS000
+abastecimiento de agua potable	NCMS000
 Abg.	Y
 ab initio	LOC_ADV
 ab intestato	LOC_ADV
 ab irato	LOC_ADV
 a boca de cañón	LOC_ADV
 a bocajarro	LOC_ADV
-abogado defensor	LOC_NC
+abogado defensor	NCMS000
 a bombo y platillo	LOC_ADV
 a borbollones	LOC_ADV
 a borbotones	LOC_ADV
@@ -148,7 +148,7 @@ a cada paso	LOC_ADV
 a cada rato	LOC_ADV
 a cada trique	LOC_ADV
 a cada triquitraque	LOC_ADV
-academia de bellas artes	LOC_NC
+academia de bellas artes	NCFS000
 a caja y espiga	LOC_ADV
 a caliche	LOC_ADV
 a cal y canto	LOC_ADV
@@ -168,12 +168,12 @@ a carta cabal	LOC_ADV
 a casquete quitado	LOC_ADV
 a causa de	LOC_PREP
 a causa de que	LOC_CS
-accidente de trabajo	LOC_NC
-accidente laboral	LOC_NC
-acción educativa	LOC_NC
-acción militar	LOC_NC
-acción pública	LOC_NC
-aceite de oliva virgen	LOC_NCMS000
+accidente de trabajo	NCMS000
+accidente laboral	NCMS000
+acción educativa	NCFS000
+acción militar	NCFS000
+acción pública	NCFS000
+aceite de oliva virgen	NCMS000
 a centenares	LOC_ADV
 a cepillo	LOC_ADV
 acept.	Y
@@ -182,12 +182,12 @@ acerca de	LOC_PREP
 a cercen	LOC_ADV
 a cercén	LOC_ADV
 a chorros	LOC_ADV
-ácido acético	LOC_NCMS000
-ácido clorhídrico	LOC_NCMS000
-ácido fólico	LOC_NCMS000
-ácido láctico	LOC_NCMS000
-ácido sulfúrico	LOC_NCMS000
-ácido úrico	LOC_NCMS000
+ácido acético	NCMS000
+ácido clorhídrico	NCMS000
+ácido fólico	NCMS000
+ácido láctico	NCMS000
+ácido sulfúrico	NCMS000
+ácido úrico	NCMS000
 a cielo descubierto	LOC_ADV
 a ciencia cierta	LOC_ADV
 a codazo limpio	LOC_ADV
@@ -208,31 +208,31 @@ a cordel	LOC_ADV
 a coro	LOC_ADV
 a costillas	LOC_ADV
 a coxcojilla	LOC_ADV
-acre pie	LOC_NC
+# acre pie	LOC_NC
 a cruz y escuadra	LOC_ADV
-acta de nacimiento	LOC_NC
-acta final	LOC_NC
-actividad artística	LOC_NC
-actividad económica	LOC_NC
-actividad empresarial	LOC_NC
-actividades al aire libre	LOC_NCFP000
-actividad extraescolar	LOC_NC
-actividad financiera	LOC_NC
-actividad humana	LOC_NC
-actividad industrial	LOC_NC
-actividad pesquera	LOC_NC
-acto administrativo	LOC_NC
-acto impugnado	LOC_NC
-acto jurídico	LOC_NC
-actuación administrativa	LOC_NC
-actuación judicial	LOC_NC
+acta de nacimiento	NCFS000
+acta final	NCFS000
+actividad artística	NCFS000
+actividad económica	NCFS000
+actividad empresarial	NCFS000
+actividades al aire libre	NCFP000
+actividad extraescolar	NCFS000
+actividad financiera	NCFS000
+actividad humana	NCFS000
+actividad industrial	NCFS000
+actividad pesquera	NCFS000
+acto administrativo	NCMS000
+acto impugnado	NCMS000
+acto jurídico	NCMS000
+actuación administrativa	NCFS000
+actuación judicial	NCFS000
 a cuál más	LOC_ADV
 a cuatro patas	LOC_ADV
 a cuatro pies	LOC_ADV
 a cubos	LOC_ADV
 a cuenta de	LOC_PREP
-acuerdo de paz	LOC_NC
-acuerdo internacional	LOC_NC
+acuerdo de paz	NCMS000
+acuerdo internacional	NCMS000
 a cuerpo de rey	LOC_ADV
 a cuerpo descubierto	LOC_ADV
 a/c	Y
@@ -267,11 +267,11 @@ ad libitum	LOC_ADV
 ad lib	LOC_ADV
 ad litem	LOC_ADV
 ad litteram	LOC_ADV
-administración civil	LOC_NC
-administración del estado	LOC_NC
-administración educativa	LOC_NC
-administración general	LOC_NC
-administración municipal	LOC_NC
+administración civil	NCFS000
+administración del estado	NCFS000
+administración educativa	NCFS000
+administración general	NCFS000
+administración municipal	NCFS000
 admón.	Y
 adm.	Y
 # a donde	LOC_ADV
@@ -287,7 +287,7 @@ A. D.	Y
 a efecto de que	LOC_CS
 a efectos de	LOC_PREP
 a empellones	LOC_ADV
-aeropuerto internacional	LOC_NC
+aeropuerto internacional	NCMS000
 a escape	LOC_ADV
 a escondidas	LOC_ADV
 a escondidillas	LOC_ADV
@@ -322,24 +322,24 @@ a fuerza de que	LOC_CS
 a/f	Y
 a gachas	LOC_ADV
 a gatas	LOC_ADV
-agencia de protección de datos	LOC_NC
-agencia de viajes	LOC_NC
-agencia espacial europea	LOC_NCFS000
-agenda electrónica	LOC_NC
-agente social	LOC_NC
+agencia de protección de datos	NCFS000
+agencia de viajes	NCFS000
+agencia espacial europea	NCFS000
+agenda electrónica	NCFS000
+# agente social	LOC_NC
 Agnus Dei	NCMS000
 a gogó	LOC_ADV
 a grandes rasgos	LOC_ADV
 a granel	LOC_ADV
 a graves penas	LOC_ADV
-agresión sexual	LOC_NC
-agua destilada	LOC_NCFS000
-agua dulce	LOC_NCFS000
-aguas continentales	LOC_NCFP000
-aguas pluviales	LOC_NCFP000
-aguas territoriales	LOC_NCFP000
-agua subterránea	LOC_NC
-agua superficial	LOC_NC
+agresión sexual	NCFS000
+agua destilada	NCFS000
+agua dulce	NCFS000
+aguas continentales	NCFP000
+aguas pluviales	NCFP000
+aguas territoriales	NCFP000
+agua subterránea	NCFS000
+agua superficial	NCFS000
 a guisa de	LOC_PREP
 ahí es nada	LOC_ADV
 ahí le duele	LOC_ADV
@@ -347,8 +347,8 @@ a hito	LOC_ADV
 ahora bien	LOC_ADV
 a horcajadas	LOC_ADV
 a hurtadillas	LOC_ADV
-aire puro	LOC_NCMS000
-aislamiento térmico	LOC_NC
+aire puro	NCMS000
+aislamiento térmico	NCMS000
 A. I.	Y
 a jarros	LOC_ADV
 a. J. C.	Y
@@ -405,7 +405,7 @@ a la vuelta de	LOC_PREP
 a la zona de	LOC_PREP
 al bies	LOC_ADV
 al cabo de	LOC_PREP
-alcaldía mayor	LOC_NCFS000
+alcaldía mayor	NCFS000
 al calor de	LOC_PREP
 al carboncillo	LOC_ADV
 al cargo de	LOC_PREP
@@ -414,7 +414,7 @@ al chas chas	LOC_ADV
 al cien por cien	LOC_ADV
 al cierre del ejercicio	LOC_ADV
 al clarear el día	LOC_ADV
-alcohol etílico	LOC_NCMS000
+alcohol etílico	NCMS000
 al compás de	LOC_PREP
 al conjuro de	LOC_PREP
 al correr de la pluma	LOC_ADV
@@ -446,7 +446,7 @@ al gusto de	LOC_PREP
 al hilo del viento	LOC_ADV
 al hilo de mediodía	LOC_ADV
 al hilo	LOC_ADV
-alianza estratégica	LOC_NC
+alianza estratégica	NCFS000
 a libre plática	LOC_ADV
 al igual que	LOC_CS
 a línea tirada	LOC_ADV
@@ -460,7 +460,7 @@ allá se van	LOC_ADV
 allende de	LOC_PREP
 al libre albedrío	LOC_ADV
 al lucero del alba	LOC_ADV
-alma humana	LOC_NC
+alma humana	NCFS000
 alma mater	NCFS000
 al mejor tiempo	LOC_ADV
 al modo de	LOC_PREP
@@ -515,14 +515,14 @@ al sesgo	LOC_ADV
 al socaire de	LOC_PREP
 al socaire	LOC_ADV
 al tanto de	LOC_PREP
-altar mayor	LOC_NCMS000
+altar mayor	NCMS000
 al temple	LOC_ADV
 al tendido	LOC_ADV
 al tenor de	LOC_PREP
 alter ego	NCMN000
 al tiempo que	LOC_CS
-alto comisionado de las naciones unidas para los refugiados	LOC_NCMN000
-alto el fuego	LOC_NCMS000
+alto comisionado de las naciones unidas para los refugiados	NCMN000
+alto el fuego	NCMS000
 al tresbolillo	LOC_ADV
 a lumbre de pajas	LOC_ADV
 a lumbre mansa	LOC_ADV
@@ -550,11 +550,11 @@ a mata caballo	LOC_ADV
 a matacaballo	LOC_ADV
 a mayor abundamiento	LOC_ADV
 a mazo y escoplo	LOC_ADV
-ambiente de trabajo	LOC_NC
-ambiente familiar	LOC_NC
-ambiente social	LOC_NC
-ámbito de aplicación	LOC_NC
-ámbito territorial	LOC_NC
+ambiente de trabajo	NCMS000
+ambiente familiar	NCMS000
+ambiente social	NCMS000
+ámbito de aplicación	NCMS000
+ámbito territorial	NCMS000
 A. M. D. G.	Y
 a mediados de	LOC_PREP
 a media ladera	LOC_ADV
@@ -584,44 +584,44 @@ a muerte o vida	LOC_ADV
 a mujeriega	LOC_ADV
 a. m.	Y
 a nado	LOC_ADV
-análisis clínico	LOC_NC
-análisis comparativo	LOC_NC
-análisis cualitativo	LOC_NC
-análisis cuantitativo	LOC_NC
-análisis de datos	LOC_NCMN000
-análisis del discurso	LOC_NCMN000
-análisis de sangre	LOC_NCMN000
-análisis económico	LOC_NC
-análisis estadístico	LOC_NC
-análisis funcional	LOC_NC
-análisis histórico	LOC_NC
-análisis químico	LOC_NC
-anatomía humana	LOC_NCMS000
-anatomía patológica	LOC_NCMS000
-ancho de banda	LOC_NCMS000
+análisis clínico	NCMS000
+análisis comparativo	NCMS000
+análisis cualitativo	NCMS000
+análisis cuantitativo	NCMS000
+análisis de datos	NCMN000
+análisis del discurso	NCMN000
+análisis de sangre	NCMN000
+análisis económico	NCMS000
+análisis estadístico	NCMS000
+análisis funcional	NCMS000
+análisis histórico	NCMS000
+análisis químico	NCMS000
+anatomía humana	NCMS000
+anatomía patológica	NCMS000
+ancho de banda	NCMS000
 ángela maría	LOC_I
-animal salvaje	LOC_NC
-año de servicio	LOC_NC
-año fiscal	LOC_NC
+# animal salvaje	LOC_NC
+año de servicio	NCMS000
+año fiscal	NCMS000
 a nombre de	LOC_PREP
-año natural	LOC_NC
-año sabático	LOC_NC
+año natural	NCMS000
+año sabático	NCMS000
 a no ser que	LOC_CS
-antecedente personal	LOC_NC
+# antecedente personal	LOC_NC
 ante diem	LOC_ADV
 ante meridiem	LOC_ADV
 anterior a	LOC_PREP
 antes bien	LOC_ADV
 antes pues	LOC_ADV
 antes que nada	LOC_ADV
-antiguo régimen	LOC_NCMS000
-antropología cultural	LOC_NCMS000
-antropología filosófica	LOC_NCMS000
-anuario estadístico	LOC_NCMS000
+antiguo régimen	NCMS000
+antropología cultural	NCMS000
+antropología filosófica	NCMS000
+anuario estadístico	NCMS000
 a ojo de buen cubero	LOC_ADV
 a ojos vistas	LOC_ADV
 a pan y cuchillo	LOC_ADV
-apartado de correos	LOC_NC
+apartado de correos	NCMS000
 aparte de	LOC_PREP
 a partir de	LOC_PREP
 a pasatoro	LOC_ADV
@@ -646,7 +646,7 @@ a pipiricojo	LOC_ADV
 a pique de maceta	LOC_ADV
 a plazo fijo	LOC_ADV
 a plazos	LOC_ADV
-aplicación informática	LOC_NC
+aplicación informática	NCFS000
 a plomo	LOC_ADV
 a poco que	LOC_CS
 a poco rato	LOC_ADV
@@ -656,15 +656,15 @@ a porrillo	LOC_ADV
 a pospelo	LOC_ADV
 a posteriori	LOC_ADV
 a pote	LOC_ADV
-apoyo docente	LOC_NC
-apoyo escolar	LOC_NC
-apoyo financiero	LOC_NC
-apoyo logístico	LOC_NC
-apoyo psicológico	LOC_NC
-apoyo social	LOC_NC
-apoyo técnico	LOC_NC
+apoyo docente	NCMS000
+apoyo escolar	NCMS000
+apoyo financiero	NCMS000
+apoyo logístico	NCMS000
+apoyo psicológico	NCMS000
+apoyo social	NCMS000
+apoyo técnico	NCMS000
 a precio de coste	LOC_ADV
-aprendizaje significativo	LOC_NCMS000
+aprendizaje significativo	NCMS000
 a primera sangre	LOC_ADV
 a primera sangre	LOC_AQ0CN0
 a principios de	LOC_PREP
@@ -704,9 +704,9 @@ arate cavate	LOC_ADV
 a ratos perdidos	LOC_ADV
 a raudales	LOC_ADV
 a razón de	LOC_PREP
-árbol frutal	LOC_NC
-árbol genealógico	LOC_NC
-archivo general	LOC_NC
+# árbol frutal	LOC_NC
+# árbol genealógico	LOC_NC
+archivo general	NCMS000
 a reculones	LOC_ADV
 a regaña dientes	LOC_ADV
 a regañadientes	LOC_ADV
@@ -729,28 +729,28 @@ a rienda suelta	LOC_ADV
 a riesgo de	LOC_PREP
 a riesgo y ventura	LOC_ADV
 a río revuelto	LOC_ADV
-arma biológica	LOC_NC
-arma nuclear	LOC_NC
-arma química	LOC_NC
+arma biológica	NCFS000
+arma nuclear	NCFS000
+arma química	NCFS000
 a rodeabrazo	LOC_ADV
 a rompejunta	LOC_ADV
 a rostro firme	LOC_ADV
-arquitecto técnico	LOC_NC
-arquitectura popular	LOC_NCFS000
+arquitecto técnico	NCMS000
+arquitectura popular	NCFS000
 Arq.	Y
-arreglo floral	LOC_NC
+arreglo floral	NCMS000
 arroz abanda	NCMS000
-arroz blanco	LOC_NCMS000
+arroz blanco	NCMS000
 art déco	AQ0CN0
-arte contemporáneo	LOC_NCCS000
-arte dramático	LOC_NCCS000
-arte medieval	LOC_NCCS000
-arte moderno	LOC_NCCS000
-arte popular	LOC_NC
-artes aplicadas	LOC_NCCP000
-artes audiovisuales	LOC_NCCP000
+arte contemporáneo	NCCS000
+arte dramático	NCCS000
+arte medieval	NCCS000
+arte moderno	NCCS000
+# arte popular	LOC_NC
+artes aplicadas	NCCP000
+artes audiovisuales	NCCP000
 art nouveau	AQ0CN0
-art nouveau	LOC_NCMS000
+art nouveau	NCMS000
 art.º	Y
 art.	Y
 a ruche	LOC_ADV
@@ -759,12 +759,12 @@ Arz.	Y
 a sabiendas	LOC_ADV
 a salto de mata	LOC_ADV
 a saltos	LOC_ADV
-asamblea general extraordinaria	LOC_NCFS000
-asamblea general	LOC_NCFS000
-asamblea general ordinaria	LOC_NCFS000
-asamblea nacional constituyente	LOC_NCFS000
-asamblea plenaria	LOC_NCFS000
-asamblea popular	LOC_NCFS000
+asamblea general extraordinaria	NCFS000
+asamblea general	NCFS000
+asamblea general ordinaria	NCFS000
+asamblea nacional constituyente	NCFS000
+asamblea plenaria	NCFS000
+asamblea popular	NCFS000
 a sangre caliente	LOC_ADV
 a sangre fría	LOC_ADV
 a sangre y fuego	LOC_ADV
@@ -772,31 +772,31 @@ a santo de qué	LOC_ADV
 a sardinel	LOC_ADV
 a seguir bien	LOC_ADV
 a semejanza de	LOC_PREP
-asesor fiscal	LOC_NC
-asesoría jurídica	LOC_NC
-asesoría legal	LOC_NC
-asesor jurídico	LOC_NC
-asesor legal	LOC_NC
-asesor técnico	LOC_NC
+asesor fiscal	NCMS000
+asesoría jurídica	NCFS000
+asesoría legal	NCFS000
+asesor jurídico	NCMS000
+asesor legal	NCMS000
+asesor técnico	NCMS000
 así como también	LOC_ADV
 así como tampoco	LOC_ADV
-asilo político	LOC_NCMS000
+asilo político	NCMS000
 así pues	LOC_ADV
-asistencia legal	LOC_NC
-asistencia sanitaria	LOC_NCFS000
-asistencia técnica	LOC_NCFS000
+asistencia legal	NCFS000
+asistencia sanitaria	NCFS000
+asistencia técnica	NCFS000
 así y todo	LOC_ADV
-asma bronquial	LOC_NCFS000
+asma bronquial	NCFS000
 a sobre haz	LOC_ADV
 a sobremano	LOC_ADV
 a sobre peine	LOC_ADV
 a so capa	LOC_ADV
 a socapa	LOC_ADV
-asociación civil	LOC_NC
-asociación de empresarios	LOC_NC
-asociación de vecinos	LOC_NC
-asociación empresarial	LOC_NC
-asociación profesional	LOC_NC
+asociación civil	NCFS000
+asociación de empresarios	NCFS000
+asociación de vecinos	NCFS000
+asociación empresarial	NCFS000
+asociación profesional	NCFS000
 a soga	LOC_ADV
 a solapo	LOC_ADV
 a solas	LOC_ADV
@@ -810,13 +810,13 @@ a sus anchas	LOC_ADV
 A. S.	Y
 a tal punto que	LOC_CS
 a teja vana	LOC_ADV
-atención al cliente	LOC_NCFS000
-atención directa	LOC_NCFS000
-atención domiciliaria	LOC_NCFS000
-atención médica	LOC_NCFS000
-atención personal	LOC_NCFS000
-atención sanitaria	LOC_NCFS000
-atención temprana	LOC_NCFS000
+atención al cliente	NCFS000
+atención directa	NCFS000
+atención domiciliaria	NCFS000
+atención médica	NCFS000
+atención personal	NCFS000
+atención sanitaria	NCFS000
+atención temprana	NCFS000
 a tenor de	LOC_PREP
 a tientas	LOC_ADV
 a tiento	LOC_ADV
@@ -884,15 +884,15 @@ a tuertas o a derechas	LOC_ADV
 a tuerto o a derecho	LOC_ADV
 a tutiplén	LOC_ADV
 A. T.	Y
-audición y lenguaje	LOC_NCFS000
-audiencia nacional	LOC_NCFS000
-audiencia provincial	LOC_NC
-auditoría de cuentas	LOC_NC
-auditoría externo	LOC_NC
-auditoría interno	LOC_NC
-aula de informática	LOC_NC
+audición y lenguaje	NCFS000
+audiencia nacional	NCFS000
+audiencia provincial	NCFS000
+auditoría de cuentas	NCFS000
+auditoría externo	NCFS000
+auditoría interno	NCFS000
+aula de informática	NCFS000
 a ultranza	LOC_ADV
-aumento de precio	LOC_NC
+aumento de precio	NCMS000
 aún así	LOC_ADV
 aún con eso	LOC_ADV
 aún cuando	LOC_ADV
@@ -903,12 +903,12 @@ a un solo efecto	LOC_ADV
 a upa	LOC_ADV
 aurea mediocritas	LOC_ADV
 a usanza de	LOC_PREP
-automóvil club	LOC_NCMS000
-autonomía personal	LOC_NCFS000
-autoridad laboral	LOC_NC
-autorización expresa	LOC_NC
-autorización judicial	LOC_NC
-autorización previa	LOC_NC
+automóvil club	NCMS000
+autonomía personal	NCFS000
+# autoridad laboral	LOC_NC
+autorización expresa	NCFS000
+autorización judicial	NCFS000
+autorización previa	NCFS000
 avda.	Y
 avd.	Y
 a veces	LOC_ADV
@@ -1112,9 +1112,9 @@ av.	Y
 avd.	Y
 avda.	Y
 ayer noche	LOC_ADV
-ayuda a domicilio	LOC_NCFS000
-ayuda humanitaria	LOC_NCFS000
-ayuda oficial	LOC_NC
+ayuda a domicilio	NCFS000
+ayuda humanitaria	NCFS000
+ayuda oficial	NCFS000
 bajo cuerda	LOC_ADV
 bajo el poder de	LOC_PREP
 bajo juramento	LOC_ADV
@@ -1123,53 +1123,53 @@ bajo llave	LOC_ADV
 bajo mano	LOC_ADV
 bajo ningún concepto	LOC_ADV
 bajo siete llaves	LOC_ADV
-banco bilbao vizcaya argentaria	LOC_NCMS000
-banco central europeo	LOC_NCMS000
-banco de pruebas	LOC_NC
-banco de sangre	LOC_NC
-banco mundial	LOC_NCMS000
-banco nacional	LOC_NCMS000
-banco santander central hispano	LOC_NCMS000
-banda ancha	LOC_NCFS000
-bandera nacional	LOC_NC
-bandera roja	LOC_NCFS000
+banco bilbao vizcaya argentaria	NCMS000
+banco central europeo	NCMS000
+banco de pruebas	NCMS000
+banco de sangre	NCMS000
+banco mundial	NCMS000
+banco nacional	NCMS000
+banco santander central hispano	NCMS000
+banda ancha	NCFS000
+bandera nacional	NCFS000
+bandera roja	NCFS000
 Barna.	Y
-base de cálculo	LOC_NC
-base jurídica	LOC_NC
+base de cálculo	NCFS000
+base jurídica	NCFS000
 Bco.	Y
 bel canto	NCMS000
 belle époque	NCFS000
 best seller	NCMN000
-biblioteca pública	LOC_NC
+biblioteca pública	NCFS000
 Bibl.	Y
-bien de capital	LOC_NC
+# bien de capital	LOC_NC
 bien entendido que	LOC_CS
-bienestar social	LOC_NCMS000
+bienestar social	NCMS000
 bien mirado	LOC_ADV
-bien patrimonial	LOC_NC
-bien público	LOC_NC
+# bien patrimonial	LOC_NC
+# bien público	LOC_NC
 bien que mal	LOC_ADV
 bien sabe Dios que	LOC_CS
 big band	NCMS000
 big bands	NCMP000
 big bang	NCMS000
 Big Bang	NCMS000
-biología molecular	LOC_NCMS000
-bioquímica clínica	LOC_NCMS000
+biología molecular	NCMS000
+bioquímica clínica	NCMS000
 black jack	NCMS000
 b. l. m.	Y
-bloqueo económico	LOC_NCMS000
+bloqueo económico	NCMS000
 blue jean	NCMS000
 blue jeans	NCMP000
 Bma.	Y
 Bmo.	Y
 bóbilis bóbilis	LOC_ADV
 boca arriba	LOC_ADV
-boletín oficial del estado	LOC_NCMS000
-boletín oficial de navarra	LOC_NCMS000
-bolsa de comercio	LOC_NCFS000
-bolsa de plástico	LOC_NC
-bosque tropical	LOC_NC
+boletín oficial del estado	NCMS000
+boletín oficial de navarra	NCMS000
+bolsa de comercio	NCFS000
+bolsa de plástico	NCFS000
+# bosque tropical	LOC_NC
 B.º	Y
 Bo.	Y
 boy scout	NCMS000
@@ -1184,74 +1184,74 @@ Bta.	Y
 Bto.	Y
 Buenos Aires	NPCSG00
 Burkina Faso	NPCSG00
-buzón de correo electrónico	LOC_NC
-buzón de correo	LOC_NC
+# buzón de correo electrónico	LOC_NC
+# buzón de correo	LOC_NC
 B.	Y
 cada cosa por su lado	LOC_ADV
 cada dos por tres	LOC_ADV
 cada quisque	NCMS000
-cadena de producción	LOC_NC
-cadena de tiendas	LOC_NC
-caja de herramientas	LOC_NC
+cadena de producción	NCFS000
+cadena de tiendas	NCFS000
+caja de herramientas	NCFS000
 caj.	Y
 calamo currente	LOC_ADV
 cálamo currente	LOC_ADV
-calidad asistencial	LOC_NCFS000
-calidad del agua	LOC_NCFS000
-calidad de vida	LOC_NCFS000
-cámara alta	LOC_NCFS000
-cámara baja	LOC_NCFS000
-cámara de representantes	LOC_NCFS000
-cámara web	LOC_NC
-cambio climático	LOC_NCMS000
-cambio de gobierno	LOC_NC
-cambio de uso	LOC_NCMS000
-campaña de promoción	LOC_NC
-campaña electoral	LOC_NC
-campaña política	LOC_NC
-campeonato mundial	LOC_NC
-campeonato nacional	LOC_NC
-campeón mundial	LOC_NC
-campo de aplicación	LOC_NC
-campo de fútbol	LOC_NC
-campo de golf	LOC_NC
-campo de juego	LOC_NC
-campo eléctrico	LOC_NC
-campo magnético	LOC_NC
-campus universitario	LOC_NC
-canción de amor	LOC_NC
-cantidad de energía	LOC_NCFS000
-cantidad de información	LOC_NCFS000
-capacidad creativa	LOC_NC
-capacidad de aprendizaje	LOC_NCFS000
-capacidad de obrar	LOC_NCFS000
-capacidad jurídica	LOC_NC
-capacidad legal	LOC_NC
-capacidad operativa	LOC_NC
+calidad asistencial	NCFS000
+calidad del agua	NCFS000
+calidad de vida	NCFS000
+cámara alta	NCFS000
+cámara baja	NCFS000
+cámara de representantes	NCFS000
+cámara web	NCFS000
+cambio climático	NCMS000
+cambio de gobierno	NCMS000
+cambio de uso	NCMS000
+campaña de promoción	NCFS000
+campaña electoral	NCFS000
+campaña política	NCFS000
+campeonato mundial	NCMS000
+campeonato nacional	NCMS000
+# campeón mundial	LOC_NC
+campo de aplicación	NCMS000
+campo de fútbol	NCMS000
+campo de golf	NCMS000
+campo de juego	NCMS000
+campo eléctrico	NCMS000
+campo magnético	NCMS000
+# campus universitario	LOC_NC
+canción de amor	NCFS000
+cantidad de energía	NCFS000
+cantidad de información	NCFS000
+capacidad creativa	NCFS000
+capacidad de aprendizaje	NCFS000
+capacidad de obrar	NCFS000
+capacidad jurídica	NCFS000
+capacidad legal	NCFS000
+capacidad operativa	NCFS000
 Cap. Fed.	Y
 capin melao	LOC_ADV
-capital de riesgo	LOC_NCFS000
-capital humano	LOC_NCFS000
-capital riesgo	LOC_NCFS000
+capital de riesgo	NCFS000
+capital humano	NCFS000
+capital riesgo	NCFS000
 cap.º	Y
-captura de datos	LOC_NC
+captura de datos	NCFS000
 Cap.	Y
 cap.	Y
 cara abajo	LOC_ADV
 cara a cara	LOC_ADV
 cara arriba	LOC_ADV
-carga de trabajo	LOC_NC
-carga eléctrica	LOC_NC
-carnet de conducir	LOC_NC
+carga de trabajo	NCFS000
+carga eléctrica	NCFS000
+# carnet de conducir	LOC_NC
 carpe diem	LOC_ADV
-carta apostólica	LOC_NC
-carta certificada	LOC_NC
-carta de las naciones unidas	LOC_NCFS000
-carta magna	LOC_NC
-cartera de clientes	LOC_NC
-cartera de valores	LOC_NC
+carta apostólica	NCFS000
+carta certificada	NCFS000
+carta de las naciones unidas	NCFS000
+carta magna	NCFS000
+cartera de clientes	NCFS000
+cartera de valores	NCFS000
 casa museo	NCFS000
-casa rural	LOC_NC
+casa rural	NCFS000
 casas museo	NCFP000
 casi geostrófico	LOC_ADV
 casi que	LOC_CS
@@ -1263,38 +1263,38 @@ c/c	Y
 C. C.	Y
 c. c.	Y
 Cdad.	Y
-celebración eucarística	LOC_NC
-censo de población	LOC_NC
-centímetro cuadrado	LOC_NC
-centímetro cúbico Fh segundo	LOC_NC
-centímetro cúbico	LOC_NC
-centímetro cúbico por segundo	LOC_NC
-centímetro de hg	LOC_NC
-centímetro de mercurio	LOC_NC
-centímetro Fh segundo	LOC_NC
-centímetro Fh s	LOC_NC
-centímetro por segundo	LOC_NC
-centímetro segundo	LOC_NC
-central hidroeléctrica	LOC_NC
-central nuclear	LOC_NC
-central térmica	LOC_NC
-centro asistencial	LOC_NC
-centro cívico	LOC_NC
-centro de atención al cliente	LOC_NC
-centro de día	LOC_NC
-centro de documentación	LOC_NC
-centro de gestión	LOC_NC
-centro de rehabilitación	LOC_NC
-centro escolar	LOC_NC
-centro hospitalario	LOC_NC
-centro penitenciario	LOC_NC
+celebración eucarística	NCFS000
+censo de población	NCMS000
+centímetro cuadrado	NCMS000
+centímetro cúbico Fh segundo	NCMS000
+centímetro cúbico	NCMS000
+centímetro cúbico por segundo	NCMS000
+centímetro de hg	NCMS000
+centímetro de mercurio	NCMS000
+centímetro Fh segundo	NCMS000
+centímetro Fh s	NCMS000
+centímetro por segundo	NCMS000
+centímetro segundo	NCMS000
+central hidroeléctrica	NCFS000
+central nuclear	NCFS000
+central térmica	NCFS000
+centro asistencial	NCMS000
+centro cívico	NCMS000
+centro de atención al cliente	NCMS000
+centro de día	NCMS000
+centro de documentación	NCMS000
+centro de gestión	NCMS000
+centro de rehabilitación	NCMS000
+centro escolar	NCMS000
+centro hospitalario	NCMS000
+centro penitenciario	NCMS000
 cent.	Y
 cént.	Y
-cepillo de dientes	LOC_NC
-ceremonia de clausura	LOC_NC
-certificado de asistencia	LOC_NC
-certificado de estudios	LOC_NC
-certificado de nacimiento	LOC_NC
+cepillo de dientes	NCMS000
+ceremonia de clausura	NCFS000
+certificado de asistencia	NCMS000
+certificado de estudios	NCMS000
+certificado de nacimiento	NCMS000
 c. e.	Y
 cfr.	Y
 c. f. s.	Y
@@ -1302,86 +1302,86 @@ C. F.	Y
 cf.	Y
 cgo.	Y
 chaise longue	NCFS000
-cheque certificado	LOC_NC
+# cheque certificado	LOC_NC
 chill out	NCMS000
-chino mandarín	LOC_NC
-chorro de agua	LOC_NC
+chino mandarín	NCMS000
+chorro de agua	NCMS000
 ch/	Y
 Cía.	Y
-ciclo económico	LOC_NC
-ciclo formativo	LOC_NC
-ciclo vital	LOC_NC
-ciencia biológica	LOC_NC
-ciencia de la educación	LOC_NC
-ciencia de la naturaleza	LOC_NC
-ciencia empresarial	LOC_NC
+ciclo económico	NCMS000
+ciclo formativo	NCMS000
+ciclo vital	NCMS000
+ciencia biológica	NCFS000
+ciencia de la educación	NCFS000
+ciencia de la naturaleza	NCFS000
+ciencia empresarial	NCFS000
 cien por cien	LOC_ADV
 ciento por ciento	LOC_ADV
 ciento y la madre	LOC_ADV
-cifra de negocio	LOC_NC
-cine de terror	LOC_NCMS000
-cine documental	LOC_NCMS000
-cine erótico	LOC_NCMS000
-cine fantástico	LOC_NCMS000
-cinta adhesiva	LOC_NCFS000
-circuito cerrado	LOC_NC
-circulación sanguínea	LOC_NCFS000
-cirugía torácica	LOC_NCFS000
-cirugía vascular	LOC_NCFS000
+cifra de negocio	NCFS000
+cine de terror	NCMS000
+cine documental	NCMS000
+cine erótico	NCMS000
+cine fantástico	NCMS000
+cinta adhesiva	NCFS000
+circuito cerrado	NCMS000
+circulación sanguínea	NCFS000
+cirugía torácica	NCFS000
+cirugía vascular	NCFS000
 C. I.	Y
 cje.	Y
-clase obrera	LOC_NCFS000
-clase política	LOC_NCFS000
-clase social	LOC_NC
-clase trabajadora	LOC_NC
-claustro de profesores	LOC_NC
-clave de acceso	LOC_NC
-clima mediterráneo	LOC_NCMS000
-clima templado	LOC_NCMS000
-clima tropical	LOC_NCMS000
+clase obrera	NCFS000
+clase política	NCFS000
+clase social	NCFS000
+clase trabajadora	NCFS000
+claustro de profesores	NCMS000
+# clave de acceso	LOC_NC
+clima mediterráneo	NCMS000
+clima templado	NCMS000
+clima tropical	NCMS000
 cl.	Y
-cm3 Fh seg	LOC_NCFS000
-cm3 Fh s	LOC_NCFS000
+cm3 Fh seg	NCFS000
+cm3 Fh s	NCFS000
 Cmdt.	Y
-cm Fh s	LOC_NCFS000
+cm Fh s	NCFS000
 Cmte.	Y
 Cnel.	Y
 cochite hervite	LOC_ADV
-código de comercio	LOC_NC
-código de identificación	LOC_NC
-código ético	LOC_NC
-código fuente	LOC_NCMS000
-código genético	LOC_NCMS000
+código de comercio	NCMS000
+código de identificación	NCMS000
+código ético	NCMS000
+código fuente	NCMS000
+código genético	NCMS000
 codo a codo	LOC_ADV
 codo con codo	LOC_ADV
 cód.	Y
 coitus interruptus	NCMN000
-colección privada	LOC_NC
-colegio de abogados	LOC_NC
-colegio nacional	LOC_NC
-colegio público	LOC_NC
+colección privada	NCFS000
+colegio de abogados	NCMS000
+colegio nacional	NCMS000
+colegio público	NCMS000
 Col.	Y
 col.	Y
-comandante en jefe	LOC_NCCS000
-comercio bilateral	LOC_NCMS000
-comercio justo	LOC_NCMS000
-comisión asesora	LOC_NC
-comisión de evaluación	LOC_NC
-comisión de gobierno	LOC_NC
-comisión económica	LOC_NC
-comisión ejecutiva	LOC_NC
-comisiones obreras	LOC_NCFP000
-comisión europea	LOC_NCFS000
-comisión mixta	LOC_NC
-comisión nacional del mercado de valores	LOC_NCFS000
-comisión negociadora	LOC_NC
-comisión paritaria	LOC_NC
-comisión parlamentaria	LOC_NC
-comité central del partido	LOC_NCMS000
-comité económico y social	LOC_NCMS000
-comité ejecutivo	LOC_NCMS000
-comité olímpico internacional	LOC_NCMS000
-comité organizador	LOC_NCMS000
+comandante en jefe	NCCS000
+comercio bilateral	NCMS000
+comercio justo	NCMS000
+comisión asesora	NCFS000
+comisión de evaluación	NCFS000
+comisión de gobierno	NCFS000
+comisión económica	NCFS000
+comisión ejecutiva	NCFS000
+comisiones obreras	NCFP000
+comisión europea	NCFS000
+comisión mixta	NCFS000
+comisión nacional del mercado de valores	NCFS000
+comisión negociadora	NCFS000
+comisión paritaria	NCFS000
+comisión parlamentaria	NCFS000
+comité central del partido	NCMS000
+comité económico y social	NCMS000
+comité ejecutivo	NCMS000
+comité olímpico internacional	NCMS000
+comité organizador	NCMS000
 como ahora es de día	LOC_ADV
 como alma que lleva el diablo	LOC_ADV
 como a los ojos de su cara	LOC_ADV
@@ -1414,59 +1414,59 @@ como quiera que	LOC_CS
 como si no hubiera dicho nada	LOC_ADV
 como si tal cosa	LOC_ADV
 como un pepe	LOC_ADV
-compact disc	LOC_NCMS000
-compañero de equipo	LOC_NC
-compañía aérea	LOC_NC
-compañía de jesús	LOC_NCFS000
-compensación económica	LOC_NC
-complejo turístico	LOC_NC
-comportamiento humano	LOC_NCMS000
-comportamiento sexual	LOC_NC
-comportamiento social	LOC_NC
-composición musical	LOC_NC
-comprensión lectora	LOC_NCFS000
-compromiso político	LOC_NC
+compact disc	NCMS000
+compañero de equipo	NCMS000
+compañía aérea	NCFS000
+compañía de jesús	NCFS000
+compensación económica	NCFS000
+complejo turístico	NCMS000
+comportamiento humano	NCMS000
+comportamiento sexual	NCMS000
+comportamiento social	NCMS000
+composición musical	NCFS000
+comprensión lectora	NCFS000
+compromiso político	NCMS000
 Comp.	Y
 Comte.	Y
-comunicación de datos	LOC_NCFS000
-comunicación oral	LOC_NCFS000
-comunicación verbal	LOC_NCFS000
-comunidad económica europea	LOC_NCFS000
-comunidad europea	LOC_NCFS000
-comunidad humana	LOC_NC
+comunicación de datos	NCFS000
+comunicación oral	NCFS000
+comunicación verbal	NCFS000
+comunidad económica europea	NCFS000
+comunidad europea	NCFS000
+# comunidad humana	LOC_NC
 con carácter de	LOC_PREP
-concesión administrativa	LOC_NC
-conciencia colectiva	LOC_NCFS000
-conciencia nacional	LOC_NCFS000
-conciencia pública	LOC_NCFS000
-conciencia social	LOC_NCFS000
-concilio vaticano II	LOC_NCMN000
+concesión administrativa	NCFS000
+conciencia colectiva	NCFS000
+conciencia nacional	NCFS000
+conciencia pública	NCFS000
+conciencia social	NCFS000
+concilio vaticano II	NCMN000
 con claridad meridiana	LOC_ADV
 con conocimiento de causa	LOC_ADV
 con creces	LOC_ADV
-condiciones ambientales	LOC_NCFP000
-condiciones atmosféricas	LOC_NCFP000
-condiciones de venta	LOC_NCFP000
-condiciones de vida	LOC_NCFP000
-condiciones económicas	LOC_NCFP000
-condiciones generales	LOC_NCFP000
-conducta humana	LOC_NCFS000
+condiciones ambientales	NCFP000
+condiciones atmosféricas	NCFP000
+condiciones de venta	NCFP000
+condiciones de vida	NCFP000
+condiciones económicas	NCFP000
+condiciones generales	NCFP000
+conducta humana	NCFS000
 con efecto desde	LOC_PREP
 con el culo al aire	LOC_ADV
 con el ojo tan largo	LOC_ADV
 con el sudor de la frente	LOC_ADV
 con excepción de	LOC_PREP
-conexión a la red	LOC_NCFS000
-conferencia episcopal	LOC_NCFS000
-conferencia mundial	LOC_NCFS000
-conflicto armado	LOC_NC
-conflicto social	LOC_NC
+conexión a la red	NCFS000
+conferencia episcopal	NCFS000
+conferencia mundial	NCFS000
+conflicto armado	NCMS000
+conflicto social	NCMS000
 conforme a	LOC_PREP
 cónfr.	Y
 cónf.	Y
-congregación para la doctrina de la fe	LOC_NCMN000
-congreso eucarístico	LOC_NCMS000
-congreso nacional	LOC_NCMS000
+congregación para la doctrina de la fe	NCMN000
+congreso eucarístico	NCMS000
+congreso nacional	NCMS000
 con honores de	LOC_PREP
 con la ayuda de Dios	LOC_ADV
 con la boca abierta	LOC_ADV
@@ -1504,8 +1504,8 @@ con mucho gusto	LOC_ADV
 con objeto de	LOC_PREP
 con objeto que	LOC_CS
 con ocasión de	LOC_PREP
-conocimiento científico	LOC_NCMS000
-conocimiento humano	LOC_NCMS000
+conocimiento científico	NCMS000
+conocimiento humano	NCMS000
 con pelos y señales	LOC_ADV
 con pies de plomo	LOC_ADV
 con puntos y comas	LOC_ADV
@@ -1513,31 +1513,31 @@ con relación a	LOC_PREP
 con respecto a	LOC_PREP
 con respecto de	LOC_PREP
 consecutio temporum	LOC_ADV
-consejo de estado	LOC_NC
-consejo de europa	LOC_NCMS000
-consejo de la unión europea	LOC_NCMS000
-consejo de ministros	LOC_NC
-consejo de seguridad de las naciones unidas	LOC_NCMS000
-consejo de seguridad	LOC_NCMS000
-consejo directivo	LOC_NC
-consejo económico y social	LOC_NCMS000
-consejo ejecutivo	LOC_NC
-consejo municipal	LOC_NC
-consejo nacional	LOC_NC
-consejo permanente	LOC_NC
-conservatorio de música	LOC_NC
+consejo de estado	NCMS000
+consejo de europa	NCMS000
+consejo de la unión europea	NCMS000
+consejo de ministros	NCMS000
+consejo de seguridad de las naciones unidas	NCMS000
+consejo de seguridad	NCMS000
+consejo directivo	NCMS000
+consejo económico y social	NCMS000
+consejo ejecutivo	NCMS000
+consejo municipal	NCMS000
+consejo nacional	NCMS000
+consejo permanente	NCMS000
+conservatorio de música	NCMS000
 con solo que	LOC_CS
 con sordina	LOC_ADV
-construcción naval	LOC_NCFS000
-consulta popular	LOC_NC
-contabilidad financiera	LOC_NCFS000
+construcción naval	NCFS000
+consulta popular	NCFS000
+contabilidad financiera	NCFS000
 con tal de	LOC_PREP
 con tal de que	LOC_CS
 con tal que	LOC_CS
-contaminación acústica	LOC_NCFS000
-contaminación ambiental	LOC_NCFS000
-contaminación atmosférica	LOC_NCFS000
-contaminación del agua	LOC_NCFS000
+contaminación acústica	NCFS000
+contaminación ambiental	NCFS000
+contaminación atmosférica	NCFS000
+contaminación del agua	NCFS000
 con toda la barba	LOC_ADV
 con toda la boca	LOC_ADV
 con toda normalidad	LOC_ADV
@@ -1547,49 +1547,49 @@ contradictio in terminis	NCFS000
 Contralmte.	Y
 contra reloj	LOC_ADV
 contra rembolso	LOC_ADV
-contratación de personal	LOC_NCFS000
-contrato de obra	LOC_NC
-contrato social	LOC_NC
+contratación de personal	NCFS000
+contrato de obra	NCMS000
+contrato social	NCMS000
 contra viento y marea	LOC_ADV
-control de flujo	LOC_NCMS000
-control de gestión	LOC_NCMS000
-control médico	LOC_NC
-control numérico	LOC_NCMS000
+control de flujo	NCMS000
+control de gestión	NCMS000
+# control médico	LOC_NC
+control numérico	NCMS000
 con uñas y dientes	LOC_ADV
 con un palmo de lengua	LOC_ADV
 con valor de	LOC_PREP
-convención de ginebra	LOC_NCMS000
-convención europea	LOC_NC
+convención de ginebra	NCMS000
+convención europea	NCFS000
 con viento fresco	LOC_ADV
 con vistas a	LOC_PREP
 con zurrapas	LOC_ADV
-cooperación económica	LOC_NCFS000
+cooperación económica	NCFS000
 coord.ª	Y
-coordenadas geográficas	LOC_NCFS000
+coordenadas geográficas	NCFS000
 coord.	Y
-copa de europa	LOC_NC
-copa intercontinental	LOC_NC
+copa de europa	NCFS000
+copa intercontinental	NCFS000
 coram populo	LOC_ADV
 córam pópulo	LOC_ADV
 corpore insepulto	LOC_ADV
-correlación de fuerzas	LOC_NCFS000
-correo basura	LOC_NCFS000
-correo no deseado	LOC_NCFS000
+correlación de fuerzas	NCFS000
+correo basura	NCFS000
+correo no deseado	NCFS000
 corriente y moliente	AQ0CS0
-cortes generales	LOC_NCFP000
-corte suprema	LOC_NCFS000
-corteza cerebral	LOC_NCFS000
-cosa juzgada	LOC_NCFS000
+cortes generales	NCFP000
+corte suprema	NCFS000
+corteza cerebral	NCFS000
+cosa juzgada	NCFS000
 C. por A.	Y
 C. P.	Y
 cp.	Y
-crecimiento de la población	LOC_NCMS000
-crecimiento urbano	LOC_NCMS000
+crecimiento de la población	NCMS000
+crecimiento urbano	NCMS000
 crec.	Y
-crédito personal	LOC_NC
-crisis económica	LOC_NC
-cruz roja internacional	LOC_NCFS000
-cruz roja	LOC_NCFS000
+crédito personal	NCMS000
+# crisis económica	LOC_NC
+cruz roja internacional	NCFS000
+cruz roja	NCFS000
 cta. cte.	Y
 cta.	Y
 Cte.	Y
@@ -1597,36 +1597,36 @@ cts.	Y
 ctvo.	Y
 ctv.	Y
 cuanto antes	LOC_ADV
-cubierta vegetal	LOC_NC
-cuello uterino	LOC_NCMS000
-cuenta de ahorro	LOC_NC
-cuenta de pérdidas y ganancias	LOC_NC
-cuenta de resultados	LOC_NC
-cuerpo de bomberos	LOC_NC
-cuerpo diplomático	LOC_NC
-cuerpo docente	LOC_NC
-cuerpo legislativo	LOC_NC
-cuidado médico	LOC_NC
-cultura clásica	LOC_NCFS000
+cubierta vegetal	NCFS000
+cuello uterino	NCMS000
+cuenta de ahorro	NCFS000
+cuenta de pérdidas y ganancias	NCFS000
+cuenta de resultados	NCFS000
+cuerpo de bomberos	NCMS000
+cuerpo diplomático	NCMS000
+cuerpo docente	NCMS000
+cuerpo legislativo	NCMS000
+cuidado médico	NCMS000
+cultura clásica	NCFS000
 cum laude	LOC_ADJ
 cum laude	LOC_ADV
 cum laude	LOC_AQ0CN0
 curriculum vitae	LOC_ADV
 curriculum vitae	NCMN000
-curso académico	LOC_NC
-curso intensivo	LOC_NC
+curso académico	NCMS000
+curso intensivo	NCMS000
 c/u	Y
 c/	Y
 c.	Y
 da capo	LOC_ADV
 dado que	LOC_CS
 dalái lama	NPMNSP0
-daño cerebral	LOC_NC
-daño material	LOC_NC
+daño cerebral	NCMS000
+daño material	NCMS000
 darse de alta	LOC_ADV
-dato económico	LOC_NC
-dato personal	LOC_NC
-datos bancario	LOC_NC
+dato económico	NCMS000
+dato personal	NCMS000
+# datos bancario	LOC_NC
 D.ª	Y
 dcha.	Y
 dcho.	Y
@@ -1661,7 +1661,7 @@ de bajo vuelo	LOC_ADV
 de balde	LOC_ADV
 de ballesta	LOC_ADV
 de barra a barra	LOC_ADV
-debate parlamentario	LOC_NC
+# debate parlamentario	LOC_NC
 debido a	LOC_PREP
 de bóbilis	LOC_ADV
 de boca en boca	LOC_ADV
@@ -1692,14 +1692,14 @@ de chipén	LOC_ADV
 de churro	LOC_ADV
 de ciencia cierta	LOC_ADV
 de circunvalación	LOC_ADV
-declaración de guerra	LOC_NCFS000
-declaración de principios	LOC_NCFS000
-declaración jurada	LOC_NC
+declaración de guerra	NCFS000
+declaración de principios	NCFS000
+declaración jurada	NCFS000
 de coña	LOC_ADV
 de consuno	LOC_ADV
 de corredera	LOC_ADV
 de cortos vuelos	LOC_ADV
-decreto ley	LOC_NC
+decreto ley	NCMS000
 decreto ley	NCMS000
 decretos leyes	NCMS000
 de cuajo	LOC_ADV
@@ -1752,10 +1752,10 @@ delante de Dios y de todo el	LOC_ADV
 delante de	LOC_PREP
 de la puñeta	LOC_ADV
 de la zona de	LOC_PREP
-delegación territorial	LOC_NC
+delegación territorial	NCFS000
 de lengua en lengua	LOC_ADV
 delirium tremens	NCMN000
-delito doloso	LOC_NCMS000
+delito doloso	NCMS000
 de lo contrario	LOC_ADV
 de lo lindo	LOC_ADV
 del otro lado de	LOC_PREP
@@ -1783,9 +1783,9 @@ de mal grado	LOC_ADV
 de mal tono	LOC_ADV
 de mal vivir	LOC_ADV
 de mancomún	LOC_ADV
-demanda agregada	LOC_NCFS000
-demanda de empleo	LOC_NC
-demandante de empleo	LOC_NC
+demanda agregada	NCFS000
+demanda de empleo	NCFS000
+# demandante de empleo	LOC_NC
 de mano derecha	LOC_ADV
 de mano en mano	LOC_ADV
 de mano izquierda	LOC_ADV
@@ -1805,7 +1805,7 @@ de mil diablos	LOC_ADV
 de mírame y no me toques	LOC_ADV
 de miranda	LOC_ADV
 de misa y olla	LOC_ADV
-democracia participativa	LOC_NCFS000
+democracia participativa	NCFS000
 de modo que	LOC_CS
 de momio	LOC_ADV
 de morondanga	LOC_ADV
@@ -1814,7 +1814,7 @@ de muchas leguas	LOC_ADV
 de mucho efecto	LOC_ADV
 de mucho trote	LOC_ADV
 de ninguna manera	LOC_ADV
-denominación social	LOC_NCFS000
+denominación social	NCFS000
 de nueva planta	LOC_ADV
 de nuevo cuño	LOC_ADV
 de nunca acabar	LOC_ADV
@@ -1831,16 +1831,16 @@ Deo volente	LOC_ADV
 de pacotilla	LOC_ADV
 de padre y muy señor mío	LOC_ADV
 de palabra en palabra	LOC_ADV
-departamento de agricultura	LOC_NCMS000
-departamento de educación	LOC_NCMS000
-departamento de industria , comercio y turismo	LOC_NCMS000
-departamento de justicia	LOC_NCMS000
-departamento de medio ambiente	LOC_NCMS000
+departamento de agricultura	NCMS000
+departamento de educación	NCMS000
+departamento de industria , comercio y turismo	NCMS000
+departamento de justicia	NCMS000
+departamento de medio ambiente	NCMS000
 de pascuas a ramos	LOC_ADV
 de pe a pa	LOC_ADV
 de pega	LOC_ADV
 de pelo en pecho	LOC_ADV
-dependencia económica	LOC_NCFS000
+dependencia económica	NCFS000
 de perdidos al río	LOC_ADV
 de perilla	LOC_ADV
 de perillas	LOC_ADV
@@ -1861,8 +1861,8 @@ de popa a proa	LOC_ADV
 de por junto	LOC_ADV
 de por medio	LOC_ADV
 de por sí	LOC_ADV
-deporte de aventura	LOC_NC
-deporte profesional	LOC_NCMS000
+# deporte de aventura	LOC_NC
+deporte profesional	NCMS000
 de por vida	LOC_ADV
 de postín	LOC_ADV
 de potencia en potencia	LOC_ADV
@@ -1886,8 +1886,8 @@ de puño y letra	LOC_ADV
 de punta a cabo	LOC_ADV
 de punta a punta	LOC_ADV
 de pura cepa	LOC_ADV
-depuración de aguas	LOC_NCMS000
-depuración de aguas residuales	LOC_NCMS000
+depuración de aguas	NCMS000
+depuración de aguas residuales	NCMS000
 de puta madre	LOC_ADV
 de puta pena	LOC_ADV
 de putifa	LOC_ADV
@@ -1899,29 +1899,29 @@ de raro en raro	LOC_ADV
 de rato en rato	LOC_ADV
 de rebato	LOC_ADV
 de rebote	LOC_ADV
-derecho adquirido	LOC_NC
-derecho a participar	LOC_NCMS000
-derecho civil	LOC_NC
-derecho de asociación	LOC_NCMS000
-derecho de autodeterminación	LOC_NCMS000
-derecho de familia	LOC_NCMS000
-derecho de huelga	LOC_NCMS000
-derecho del hombre	LOC_NC
-derecho de petición	LOC_NCMS000
-derecho de uso	LOC_NCMS000
-derecho de voto	LOC_NCMS000
-derecho fiscal	LOC_NCMS000
-derecho fundamental	LOC_NC
-derecho humano	LOC_NC
-derecho individual	LOC_NCMS000
-derecho nacional	LOC_NCMS000
-derecho natural	LOC_NCMS000
-derecho político	LOC_NC
-derecho positivo	LOC_NCMS000
-derecho privado	LOC_NCMS000
-derecho público	LOC_NCMS000
-derecho subjetivo	LOC_NCMS000
-derecho tributario	LOC_NCMS000
+derecho adquirido	NCMS000
+derecho a participar	NCMS000
+derecho civil	NCMS000
+derecho de asociación	NCMS000
+derecho de autodeterminación	NCMS000
+derecho de familia	NCMS000
+derecho de huelga	NCMS000
+derecho del hombre	NCMS000
+derecho de petición	NCMS000
+derecho de uso	NCMS000
+derecho de voto	NCMS000
+derecho fiscal	NCMS000
+derecho fundamental	NCMS000
+derecho humano	NCMS000
+derecho individual	NCMS000
+derecho nacional	NCMS000
+derecho natural	NCMS000
+derecho político	NCMS000
+derecho positivo	NCMS000
+derecho privado	NCMS000
+derecho público	NCMS000
+derecho subjetivo	NCMS000
+derecho tributario	NCMS000
 de rechupete	LOC_ADV
 de refilón	LOC_ADV
 de relumbrón	LOC_ADV
@@ -1936,13 +1936,13 @@ de revuelo	LOC_ADV
 de rodilla en rodilla	LOC_ADV
 de rompe y rasga	LOC_ADV
 de rondón	LOC_ADV
-desarrollo de la personalidad	LOC_NCMS000
-desarrollo económico	LOC_NCMS000
-desarrollo rural	LOC_NCMS000
-desarrollo urbano	LOC_NCMS000
-desastre ecológico	LOC_NC
-desastre natural	LOC_NC
-descarga eléctrica	LOC_NC
+desarrollo de la personalidad	NCMS000
+desarrollo económico	NCMS000
+desarrollo rural	NCMS000
+desarrollo urbano	NCMS000
+desastre ecológico	NCMS000
+desastre natural	NCMS000
+descarga eléctrica	NCFS000
 desct.º	Y
 desde cero	LOC_ADV
 desde el momento en que	LOC_CS
@@ -2001,179 +2001,179 @@ de viva voz	LOC_ADV
 de volatería	LOC_ADV
 d/f	Y
 D. F.	Y
-día de acción de gracias	LOC_NCMS000
-día de descanso	LOC_NC
-día de fiesta	LOC_NC
-diagnóstico clínico	LOC_NC
-diagnóstico médico	LOC_NC
-diagnóstico precoz	LOC_NC
+día de acción de gracias	NCMS000
+día de descanso	NCFS000
+día de fiesta	NCFS000
+diagnóstico clínico	NCMS000
+diagnóstico médico	NCMS000
+diagnóstico precoz	NCMS000
 diag.	Y
-diario oficial de la unión europea	LOC_NCMS000
-dibujo animado	LOC_NC
+diario oficial de la unión europea	NCMS000
+dibujo animado	NCMS000
 dicc.	Y
-dictadura militar	LOC_NC
+dictadura militar	NCFS000
 dies irae	NCMS000
-dieta equilibrada	LOC_NC
-dietética y nutrición	LOC_NCMS000
-dignidad humana	LOC_NCFS000
-dióxido de azufre	LOC_NCFS000
-dióxido de carbono	LOC_NCFS000
+dieta equilibrada	NCFS000
+dietética y nutrición	NCMS000
+dignidad humana	NCFS000
+dióxido de azufre	NCFS000
+dióxido de carbono	NCFS000
 Dir.	NCMS000
 Dir.ª	NCFS000
-dirección administrativa	LOC_NCFS000
+dirección administrativa	NCFS000
 dirección a	LOC_PREP
-dirección del viento	LOC_NCFS000
-dirección de recursos humanos	LOC_NCFS000
-dirección general de carreteras	LOC_NCFS000
-dirección general de cultura	LOC_NCFS000
-dirección general de los registros y del notariado	LOC_NCFS000
-dirección general de seguros	LOC_NCFS000
-dirección general de servicios	LOC_NCFS000
-dirección general de tráfico	LOC_NCFS000
-dirección general	LOC_NCFS000
-dirección ip	LOC_NCFS000
-dirección url	LOC_NCFS000
-director adjunto	LOC_NC
-director administrativo	LOC_NC
-director artístico	LOC_NC
-director de fotografía	LOC_NC
-director de orquesta	LOC_NC
-director general	LOC_NC
-director gerente	LOC_NC
-directorio raíz	LOC_NCFS000
-director técnico	LOC_NC
+dirección del viento	NCFS000
+dirección de recursos humanos	NCFS000
+dirección general de carreteras	NCFS000
+dirección general de cultura	NCFS000
+dirección general de los registros y del notariado	NCFS000
+dirección general de seguros	NCFS000
+dirección general de servicios	NCFS000
+dirección general de tráfico	NCFS000
+dirección general	NCFS000
+dirección ip	NCFS000
+dirección url	NCFS000
+director adjunto	NCMS000
+director administrativo	NCMS000
+director artístico	NCMS000
+director de fotografía	NCMS000
+director de orquesta	NCMS000
+director general	NCMS000
+director gerente	NCMS000
+directorio raíz	NCFS000
+director técnico	NCMS000
 Dir.	Y
-disc jockey	LOC_NCFS000
-diseño asistido por ordenador	LOC_NCMS000
-diseño editorial	LOC_NCMS000
-diseño industrial	LOC_NCMS000
-disfunción eréctil	LOC_NC
-disposición legal	LOC_NC
-distribución espacial	LOC_NCFS000
-distribución geográfica	LOC_NCFS000
-distribución normal	LOC_NCFS000
-distrito electoral	LOC_NC
-diversidad biológica	LOC_NCFS000
-división de poderes	LOC_NCFS000
+disc jockey	NCFS000
+diseño asistido por ordenador	NCMS000
+diseño editorial	NCMS000
+diseño industrial	NCMS000
+disfunción eréctil	NCFS000
+disposición legal	NCMS000
+distribución espacial	NCFS000
+distribución geográfica	NCFS000
+distribución normal	NCFS000
+distrito electoral	NCMS000
+diversidad biológica	NCFS000
+división de poderes	NCFS000
 d. J. C.	Y
 D. L.	Y
 D. m.	Y
 Dña.	Y
-doble imposición	LOC_NCCS000
-doble nacionalidad	LOC_NCCS000
-doctor en derecho	LOC_NC
-documentación administrativa	LOC_NCFS000
-documento de identidad	LOC_NC
-documento html	LOC_NCMS000
+doble imposición	NCCS000
+doble nacionalidad	NCCS000
+# doctor en derecho	LOC_NC
+documentación administrativa	NCFS000
+documento de identidad	NCMS000
+documento html	NCMS000
 doc.	Y
-dolor de cabeza	LOC_NC
-domiciliación bancaria	LOC_NC
-domicilio legal	LOC_NCMS000
-domicilio social	LOC_NCMS000
-dotación presupuestaria	LOC_NC
+# dolor de cabeza	LOC_NC
+domiciliación bancaria	NCFS000
+domicilio legal	NCMS000
+domicilio social	NCMS000
+dotación presupuestaria	NCFS000
 do ut des	LOC_ADV
 dpto.	Y
 D. P.	Y
 Dr.	NCMS000
 Dr.ª	NCFS000
 Dra.	NCFS000
-droga ilícita	LOC_NC
+droga ilícita	NCFS000
 dto.	Y
 dupdo.	Y
-duración del contrato	LOC_NCFS000
+duración del contrato	NCFS000
 duty free	LOC_ADJ
 duty free	LOC_AQ0CN0
 d/v	Y
 D.	Y
 Dña.	NCFS000
-eclipse total	LOC_NC
-economía aplicada	LOC_NCFS000
-economía de escala	LOC_NC
-economía de la salud	LOC_NCFS000
-economía doméstica	LOC_NCFS000
-economía española	LOC_NCFS000
-economía familiar	LOC_NCFS000
-economía general	LOC_NCFS000
-economía informal	LOC_NCFS000
-economía internacional	LOC_NCFS000
-economía mixta	LOC_NCFS000
-economía mundial	LOC_NCFS000
-economía nacional	LOC_NCFS000
-economía política	LOC_NCFS000
-economía regional	LOC_NCFS000
-economía social	LOC_NCFS000
+# eclipse total	LOC_NC
+economía aplicada	NCFS000
+economía de escala	NCFS000
+economía de la salud	NCFS000
+economía doméstica	NCFS000
+economía española	NCFS000
+economía familiar	NCFS000
+economía general	NCFS000
+economía informal	NCFS000
+economía internacional	NCFS000
+economía mixta	NCFS000
+economía mundial	NCFS000
+economía nacional	NCFS000
+economía política	NCFS000
+economía regional	NCFS000
+economía social	NCFS000
 e/c	Y
 e. c.	Y
-edad adulta	LOC_NCFS000
-edad de jubilación	LOC_NCFS000
-edad de oro	LOC_NCFS000
-edad escolar	LOC_NCFS000
-edad media	LOC_NC
-edición limitada	LOC_NC
-edificio central	LOC_NC
-edificio principal	LOC_NC
+edad adulta	NCFS000
+edad de jubilación	NCFS000
+edad de oro	NCFS000
+edad escolar	NCFS000
+edad media	NCFS000
+edición limitada	NCFS000
+edificio central	NCMS000
+edificio principal	NCMS000
 edit.	Y
 edo.	Y
-educación ambiental	LOC_NCFS000
-educación artística	LOC_NCFS000
-educación de adultos	LOC_NCFS000
-educación escolar	LOC_NCFS000
-educación formal	LOC_NCFS000
-educación general básica	LOC_NCFS000
-educación infantil	LOC_NCFS000
-educación infantil y primaria	LOC_NCFS000
-educación intercultural	LOC_NCFS000
-educación obligatoria	LOC_NCFS000
-educación para el desarrollo	LOC_NCFS000
-educación para la salud	LOC_NCFS000
-educación preescolar	LOC_NCFS000
-educación primaria	LOC_NCFS000
-educación religiosa	LOC_NCFS000
-educación sanitaria	LOC_NCFS000
-educación secundaria	LOC_NCFS000
-educación secundaria obligatoria	LOC_NCFS000
-educación sexual	LOC_NCFS000
-educación vial	LOC_NCFS000
+educación ambiental	NCFS000
+educación artística	NCFS000
+educación de adultos	NCFS000
+educación escolar	NCFS000
+educación formal	NCFS000
+educación general básica	NCFS000
+educación infantil	NCFS000
+educación infantil y primaria	NCFS000
+educación intercultural	NCFS000
+educación obligatoria	NCFS000
+educación para el desarrollo	NCFS000
+educación para la salud	NCFS000
+educación preescolar	NCFS000
+educación primaria	NCFS000
+educación religiosa	NCFS000
+educación sanitaria	NCFS000
+educación secundaria	NCFS000
+educación secundaria obligatoria	NCFS000
+educación sexual	NCFS000
+educación vial	NCFS000
 ed.	Y
 EE. UU.	NPMPG00
-efecto directo	LOC_NC
-efecto especial	LOC_NC
+efecto directo	NCMS000
+efecto especial	NCMS000
 ef.	Y
-ejecución de sentencia	LOC_NCFS000
-eje principal	LOC_NC
-ejercicio económico	LOC_NC
-ejercicio físico	LOC_NC
-ejército de liberación	LOC_NCMS000
-ejército de liberación nacional	LOC_NCMS000
-ejército de tierra	LOC_NCMS000
-ejército nacional	LOC_NCMS000
-ejército popular	LOC_NCMS000
-ejército zapatista de liberación nacional	LOC_NCMS000
-eje y	LOC_NCMS000
+ejecución de sentencia	NCFS000
+# eje principal	LOC_NC
+ejercicio económico	NCMS000
+ejercicio físico	NCMS000
+ejército de liberación	NCMS000
+ejército de liberación nacional	NCMS000
+ejército de tierra	NCMS000
+ejército nacional	NCMS000
+ejército popular	NCMS000
+ejército zapatista de liberación nacional	NCMS000
+eje y	NCMS000
 ej.	Y
 el acabose	NCMS000
-elecciones al parlamento europeo	LOC_NCFP000
-elecciones libres	LOC_NCFP000
-elecciones parlamentarias	LOC_NCFP000
-elección presidencial	LOC_NCFS000
+elecciones al parlamento europeo	NCFP000
+elecciones libres	NCFP000
+elecciones parlamentarias	NCFP000
+elección presidencial	NCFS000
 El Escorial	NPMSG00
-eliminación de residuos	LOC_NCFS000
+eliminación de residuos	NCFS000
 Em.ª	Y
-emergencia social	LOC_NC
-emisión de bonos	LOC_NC
-emisión de gases	LOC_NC
+emergencia social	NCFS000
+emisión de bonos	NCFS000
+emisión de gases	NCFS000
 Emmo.	Y
-empleo estable	LOC_NC
-empresa comercial	LOC_NC
-empresa constructora	LOC_NC
-empresa de servicios	LOC_NC
-empresa de transporte	LOC_NC
-empresa estatal	LOC_NC
-empresa familiar	LOC_NC
-empresa industrial	LOC_NC
-empresa multinacional	LOC_NC
-empresa privada	LOC_NC
-empresa pública	LOC_NC
+empleo estable	NCMS000
+empresa comercial	NCFS000
+empresa constructora	NCFS000
+empresa de servicios	NCFS000
+empresa de transporte	NCFS000
+empresa estatal	NCFS000
+empresa familiar	NCFS000
+empresa industrial	NCFS000
+empresa multinacional	NCFS000
+empresa privada	NCFS000
+empresa pública	NCFS000
 en agraz	LOC_ADV
 en aquel entonces	LOC_ADV
 en aras de	LOC_PREP
@@ -2188,7 +2188,7 @@ en calidad de	LOC_PREP
 en cambio de	LOC_PREP
 en caso de	LOC_PREP
 en caso de que	LOC_CS
-encefalopatía espongiforme bovina	LOC_NCFS000
+encefalopatía espongiforme bovina	NCFS000
 en cierto modo	LOC_ADV
 encima de	LOC_PREP
 en círculo	LOC_ADV
@@ -2204,7 +2204,7 @@ en cuanto a	LOC_PREP
 en cuanto que	LOC_CS
 en cuclillas	LOC_ADV
 en cuerpo y alma	LOC_ADV
-encuesta de opinión	LOC_NC
+encuesta de opinión	NCFS000
 en cuestión de	LOC_PREP
 en defecto de	LOC_PREP
 en demanda de	LOC_PREP
@@ -2218,7 +2218,7 @@ en detalle	LOC_ADV
 en diferido	LOC_ADV
 en Dios y en conciencia	LOC_ADV
 en dirección a	LOC_PREP
-endocrinología y nutrición	LOC_NCFS000
+endocrinología y nutrición	NCFS000
 en el centro de	LOC_PREP
 en el entorno de	LOC_PREP
 en el interior de	LOC_PREP
@@ -2227,14 +2227,14 @@ en el plazo de	LOC_PREP
 en el puesto de	LOC_PREP
 en el supuesto que	LOC_CS
 en entredicho	LOC_ADV
-energía eólica	LOC_NCFS000
-energía térmica	LOC_NCFS000
+energía eólica	NCFS000
+energía térmica	NCFS000
 en espera de	LOC_PREP
 en este mismo instante	LOC_ADV
 en evitación de	LOC_PREP
 en favor de	LOC_PREP
-enfermedad grave	LOC_NC
-enfermedad profesional	LOC_NC
+enfermedad grave	NCFS000
+enfermedad profesional	NCFS000
 en fiado	LOC_ADV
 en fila india	LOC_ADV
 en fin de cuentas	LOC_ADV
@@ -2307,19 +2307,19 @@ en representación de	LOC_PREP
 en resumidas cuentas	LOC_ADV
 en ristre	LOC_ADV
 en salvo	LOC_ADV
-ensayo clínico	LOC_NC
+ensayo clínico	NCMS000
 en seguida	LOC_ADV
 en señal de	LOC_PREP
-enseñanza básica	LOC_NCFS000
-enseñanza de idiomas	LOC_NCFS000
-enseñanza media	LOC_NCFS000
+enseñanza básica	NCFS000
+enseñanza de idiomas	NCFS000
+enseñanza media	NCFS000
 en sordina	LOC_ADV
 en su defecto	LOC_ADV
 en tándem	LOC_ADV
 en tanto que	LOC_CS
-ente público	LOC_NCFS000
-entidad gestora	LOC_NCFS000
-entidad pública	LOC_NCFS000
+ente público	NCFS000
+entidad gestora	NCFS000
+entidad pública	NCFS000
 en tiempo de	LOC_PREP
 en tiempo diferido	LOC_ADV
 en tiempo real	LOC_ADV
@@ -2333,14 +2333,14 @@ en todo caso	LOC_ADV
 en todo lo descubierto	LOC_ADV
 en torno a	LOC_PREP
 en torno de	LOC_PREP
-entorno de red	LOC_NCMS000
-entorno social	LOC_NCMS000
+entorno de red	NCMS000
+entorno social	NCMS000
 en touche	LOC_ADV
-entrada gratuita	LOC_NCFS000
-entrega de premios	LOC_NC
+entrada gratuita	NCFS000
+entrega de premios	NCFS000
 entre la espada y la pared	LOC_ADV
 entre la vida y la muerte	LOC_ADV
-entrenamiento físico	LOC_NCMS000
+entrenamiento físico	NCMS000
 entre pecho y espalda	LOC_ADV
 entre que	LOC_CS
 entre tanto que	LOC_CS
@@ -2362,64 +2362,64 @@ en volandas	LOC_ADV
 en zigzag	LOC_ADV
 e. p. d.	Y
 e. p. m.	Y
-equilibrio ecológico	LOC_NCMS000
-equipo de fútbol	LOC_NC
-equipo de protección	LOC_NC
-equipo de sonido	LOC_NC
-equipo directivo	LOC_NC
-equipo docente	LOC_NC
-equipo informático	LOC_NC
-equipo nacional	LOC_NC
-erario público	LOC_NCMS000
-escala de valores	LOC_NC
-esclerosis múltiple	LOC_NCMS000
-escuela de arte	LOC_NC
-escuela de bellas artes	LOC_NC
-escuela de música	LOC_NC
-escuela oficial de idiomas	LOC_NCFS000
-escuela rural	LOC_NC
-escuela taller	LOC_NC
+equilibrio ecológico	NCMS000
+equipo de fútbol	NCMS000
+equipo de protección	NCMS000
+equipo de sonido	NCMS000
+equipo directivo	NCMS000
+equipo docente	NCMS000
+equipo informático	NCMS000
+equipo nacional	NCMS000
+erario público	NCMS000
+escala de valores	NCFS000
+esclerosis múltiple	NCMS000
+escuela de arte	NCFS000
+escuela de bellas artes	NCFS000
+escuela de música	NCFS000
+escuela oficial de idiomas	NCFS000
+escuela rural	NCFS000
+escuela taller	NCFS000
 es hablar por demás	LOC_ADV
 e. s. m.	Y
-espacio económico europeo	LOC_NCMS000
-espacio en blanco	LOC_NC
-especie humana	LOC_NCFS000
+espacio económico europeo	NCMS000
+espacio en blanco	NCMS000
+especie humana	NCFS000
 esperando a	LOC_PREP
-estabilidad económica	LOC_NCFS000
-estabilidad política	LOC_NCFS000
-estación de autobús	LOC_NC
-estación de ferrocarril	LOC_NC
-estación de tren	LOC_NC
-estación meteorológica	LOC_NC
-estadio olímpico	LOC_NC
-estadística descriptiva	LOC_NCFS000
-estado anímico	LOC_NCMS000
-estado del bienestar	LOC_NCMS000
-estado democrático	LOC_NC
-estado de salud	LOC_NCMS000
-estado emocional	LOC_NCMS000
-estado federal	LOC_NC
-estado independiente	LOC_NC
-estado miembro de la unión europea	LOC_NC
-estado nacional	LOC_NC
-estado sólido	LOC_NCMS000
-estatutos sociales	LOC_NCMP000
-estructura de datos	LOC_NC
-estructura económica	LOC_NCFS000
-estructura familiar	LOC_NC
-estructura jerárquica	LOC_NCFS000
-estructura social	LOC_NCFS000
-estudio de grabación	LOC_NC
-estudio de impacto	LOC_NC
-estudio económico	LOC_NC
-estudios empresariales	LOC_NCMP000
+estabilidad económica	NCFS000
+estabilidad política	NCFS000
+estación de autobús	NCFS000
+estación de ferrocarril	NCFS000
+estación de tren	NCFS000
+estación meteorológica	NCFS000
+estadio olímpico	NCMS000
+estadística descriptiva	NCFS000
+estado anímico	NCMS000
+estado del bienestar	NCMS000
+estado democrático	NCMS000
+estado de salud	NCMS000
+estado emocional	NCMS000
+estado federal	NCMS000
+estado independiente	NCMS000
+estado miembro de la unión europea	NCMS000
+estado nacional	NCMS000
+estado sólido	NCMS000
+estatutos sociales	NCMP000
+estructura de datos	NCFS000
+estructura económica	NCFS000
+estructura familiar	NCFS000
+estructura jerárquica	NCFS000
+estructura social	NCFS000
+estudio de grabación	NCMS000
+estudio de impacto	NCMS000
+estudio económico	NCMS000
+estudios empresariales	NCMP000
 et ál.	Y
 etc.	Y
-evaluación continua	LOC_NC
-evaluación del impacto ambiental	LOC_NC
-evaluación del riesgo	LOC_NC
-evaluación externa	LOC_NC
-evidencia científica	LOC_NC
+evaluación continua	NCFS000
+evaluación del impacto ambiental	NCFS000
+evaluación del riesgo	NCFS000
+evaluación externa	NCFS000
+evidencia científica	NCFS000
 ex abrupto	LOC_ADV
 ex aequo	LOC_ADV
 ex ante	LOC_ADV
@@ -2430,359 +2430,359 @@ ex cáthedra	LOC_ADV
 Exc.ª	Y
 exceptio veritatis	LOC_ADV
 excepto que	LOC_CS
-exceso de velocidad	LOC_NC
+exceso de velocidad	NCMS000
 excl.	Y
 Excma.	Y
 Excmo.	Y
-expansión económica	LOC_NCFS000
-expediente disciplinario	LOC_NC
-explotación agrícola	LOC_NC
-exposición itinerante	LOC_NC
-exposición permanente	LOC_NC
+expansión económica	NCFS000
+# expediente disciplinario	LOC_NC
+explotación agrícola	NCFS000
+exposición itinerante	NCFS000
+exposición permanente	NCFS000
 ex post	LOC_ADV
 ex post	LOC_AQ0CN0
-expresión artística	LOC_NCFS000
-expresión escrita	LOC_NCFS000
-expresión oral	LOC_NCFS000
-expresión plástica	LOC_NCFS000
+expresión artística	NCFS000
+expresión escrita	NCFS000
+expresión oral	NCFS000
+expresión plástica	NCFS000
 ex profeso	LOC_ADV
 ex testamento	LOC_ADV
-extrema derecha	LOC_NCFS000
+extrema derecha	NCFS000
 e/	Y
-factor ambiental	LOC_NC
-factor de riesgo	LOC_NC
-facultad de bellas artes	LOC_NCFS000
-facultad de derecho	LOC_NCFS000
-facultad de psicología	LOC_NCFS000
-fal Fh s	LOC_NCFS000
-falso testimonio	LOC_NC
-farmacología clínica	LOC_NCFS000
+# factor ambiental	LOC_NC
+# factor de riesgo	LOC_NC
+facultad de bellas artes	NCFS000
+facultad de derecho	NCFS000
+facultad de psicología	NCFS000
+fal Fh s	NCFS000
+falso testimonio	NCMS000
+farmacología clínica	NCFS000
 fasc.	Y
 fata morgana	NCFS000
-fauna marina	LOC_NCFS000
+fauna marina	NCFS000
 f.ª	Y
 fca.	Y
 F. C.	Y
 Fdo.	Y
-fecha de cierre	LOC_NC
-fecha de emisión	LOC_NC
-fecha de solicitud	LOC_NC
-fecha límite	LOC_NC
-fecha tope	LOC_NC
-fe cristiana	LOC_NCFS000
+fecha de cierre	NCFS000
+fecha de emisión	NCFS000
+fecha de solicitud	NCFS000
+fecha límite	NCFS000
+fecha tope	NCFS000
+fe cristiana	NCFS000
 féc.	Y
-federación nacional	LOC_NC
+federación nacional	NCFS000
 FF. AA.	Y
-ficha técnica	LOC_NC
-fichero de datos	LOC_NC
-figura jurídica	LOC_NC
+ficha técnica	NCFS000
+fichero de datos	NCMS000
+figura jurídica	NCFS000
 fig.	Y
-filología clásica	LOC_NCFS000
-filosofía de la ciencia	LOC_NCFS000
-filosofía del derecho	LOC_NCFS000
-filosofía política	LOC_NCFS000
-final feliz	LOC_NC
-fiscal jefe	LOC_NC
-física aplicada	LOC_NCFS000
-física nuclear	LOC_NCFS000
-física teórica	LOC_NCFS000
-flujo de aire	LOC_NCFS000
-flujo de caja	LOC_NCFS000
-flujo de datos	LOC_NCFS000
-flujo de fondos	LOC_NCFS000
-flujo de información	LOC_NCFS000
+filología clásica	NCFS000
+filosofía de la ciencia	NCFS000
+filosofía del derecho	NCFS000
+filosofía política	NCFS000
+# final feliz	LOC_NC
+# fiscal jefe	LOC_NC
+física aplicada	NCFS000
+física nuclear	NCFS000
+física teórica	NCFS000
+flujo de aire	NCFS000
+flujo de caja	NCFS000
+flujo de datos	NCFS000
+flujo de fondos	NCFS000
+flujo de información	NCFS000
 foie gras	NCMS000
 fol.	Y
-fondo de garantía	LOC_NC
-fondo de pensiones	LOC_NC
-fondo documental	LOC_NC
-fondo europeo de desarrollo	LOC_NCMS000
-fondo monetario internacional	LOC_NCMS000
-fondo social europeo	LOC_NCMS000
-formación humana	LOC_NCFS000
-formación ocupacional	LOC_NCFS000
-formación profesional específica	LOC_NCFS000
-formación profesional ocupacional	LOC_NCFS000
-forma gráfica	LOC_NC
-formato html	LOC_NCFS000
-fosa nasal	LOC_NC
-fotografía aérea	LOC_NCFS000
+fondo de garantía	NCMS000
+fondo de pensiones	NCMS000
+fondo documental	NCMS000
+fondo europeo de desarrollo	NCMS000
+fondo monetario internacional	NCMS000
+fondo social europeo	NCMS000
+formación humana	NCFS000
+formación ocupacional	NCFS000
+formación profesional específica	NCFS000
+formación profesional ocupacional	NCFS000
+forma gráfica	NCFS000
+formato html	NCFS000
+fosa nasal	NCFS000
+fotografía aérea	NCFS000
 fox terrier	NCMN000
 f.º	Y
-frame relay	LOC_NCFS000
+frame relay	NCFS000
 fra.	Y
-frecuencia cardiaca	LOC_NC
+frecuencia cardiaca	NCFS000
 free lance	NCMN000
-frente nacional	LOC_NCFS000
-frente popular	LOC_NCFS000
-fruta fresca	LOC_NCFS000
-fruto seco	LOC_NC
+frente nacional	NCFS000
+frente popular	NCFS000
+fruta fresca	NCFS000
+fruto seco	NCMS000
 Fr.	Y
-ft3 Fh min	LOC_NCFS000
-ft3 Fh s	LOC_NCFS000
-ft Fh h	LOC_NCFS000
-ft Fh min	LOC_NCFS000
-ft Fh s2	LOC_NCFS000
-ft Fh s	LOC_NCFS000
-fuente de alimentación	LOC_NC
-fuente de datos	LOC_NC
-fuente de energía	LOC_NC
-fuente de financiación	LOC_NC
-fuente de luz	LOC_NC
+ft3 Fh min	NCFS000
+ft3 Fh s	NCFS000
+ft Fh h	NCFS000
+ft Fh min	NCFS000
+ft Fh s2	NCFS000
+ft Fh s	NCFS000
+fuente de alimentación	NCFS000
+fuente de datos	NCFS000
+fuente de energía	NCFS000
+fuente de financiación	NCFS000
+fuente de luz	NCFS000
 fuera de que	LOC_CS
-fuerza física	LOC_NCFS000
-fuerza militar	LOC_NCFS000
-fuerzas de ocupación	LOC_NCFP000
-fuerzas de seguridad	LOC_NCFP000
-fuerzas y cuerpos de seguridad	LOC_NCFP000
-fuga de capitales	LOC_NCFS000
+fuerza física	NCFS000
+fuerza militar	NCFS000
+fuerzas de ocupación	NCFP000
+fuerzas de seguridad	NCFP000
+fuerzas y cuerpos de seguridad	NCFP000
+fuga de capitales	NCFS000
 full time	LOC_ADV
 full time	LOC_AQ0CN0
-función administrativa	LOC_NC
-fundamento jurídico	LOC_NC
-fundamentos de derecho	LOC_NCMP000
-fútbol base	LOC_NCMS000
+función administrativa	NCFS000
+fundamento jurídico	NCMS000
+fundamentos de derecho	NCMP000
+fútbol base	NCMS000
 f.	Y
-gabinete técnico	LOC_NC
-galería comercial	LOC_NC
-gal Fh ac Fh d	LOC_NCFS000
-gal Fh cap Fh d	LOC_NCFS000
-gal Fh d	LOC_NCFS000
-gal Fh ft2 d	LOC_NCFS000
-gal Fh ft2 Fh min	LOC_NCFS000
-gal Fh ft2	LOC_NCFS000
-gal Fh h	LOC_NCFS000
-gal Fh min	LOC_NCFS000
-galón acre Fh día	LOC_NC
-galón acre por día	LOC_NC
-galón cápita Fh día	LOC_NC
-galón cápita por día	LOC_NC
-galón día	LOC_NC
-galón Fh acre día	LOC_NC
-galón Fh acre Fh día	LOC_NC
-galón Fh acre por día	LOC_NC
-galón Fh cápita día	LOC_NC
-galón Fh cápita Fh día	LOC_NC
-galón Fh cápita por día	LOC_NC
-galón Fh día	LOC_NC
-galón Fh hora	LOC_NC
-galón Fh minuto	LOC_NC
-galón Fh pie cuadrado día	LOC_NC
-galón Fh pie cuadrado Fh día	LOC_NC
-galón Fh pie cuadrado Fh minuto	LOC_NC
-galón Fh pie cuadrado	LOC_NC
-galón Fh pie cuadrado minuto	LOC_NC
-galón Fh pie cuadrado por día	LOC_NC
-galón Fh pie cuadrado por minuto	LOC_NC
-galón Fh segundo	LOC_NC
-galón hora	LOC_NC
-galón minuto	LOC_NC
-galón per cápita día	LOC_NC
-galón per cápita Fh día	LOC_NC
-galón per cápita por día	LOC_NC
-galón pie cuadrado Fh día	LOC_NC
-galón pie cuadrado Fh minuto	LOC_NC
-galón pie cuadrado por día	LOC_NC
-galón pie cuadrado por minuto	LOC_NC
-galón por acre día	LOC_NC
-galón por acre Fh día	LOC_NC
-galón por acre por día	LOC_NC
-galón por acre y día	LOC_NC
-galón por cápita día	LOC_NC
-galón por cápita Fh día	LOC_NC
-galón por cápita por día	LOC_NC
-galón por día	LOC_NC
-galón por hora	LOC_NC
-galón por minuto	LOC_NC
-galón por pie cuadrado día	LOC_NC
-galón por pie cuadrado Fh día	LOC_NC
-galón por pie cuadrado Fh minuto	LOC_NC
-galón por pie cuadrado	LOC_NC
-galón por pie cuadrado minuto	LOC_NC
-galón por pie cuadrado por día	LOC_NC
-galón por pie cuadrado por minuto	LOC_NC
-galón por pie cuadrado y día	LOC_NC
-galón por pie cuadrado y minuto	LOC_NC
-galón por segundo	LOC_NC
-galón segundo	LOC_NC
-gama de productos	LOC_NC
-ganancia neta	LOC_NC
-garantía constitucional	LOC_NCFS000
-garantía hipotecaria	LOC_NCFS000
-gastos corrientes	LOC_NCMP000
-gastos de administración	LOC_NCMP000
-gastos de capital	LOC_NCMP000
-gastos de funcionamiento	LOC_NCMP000
-gastos de gestión	LOC_NCMP000
-gastos de mantenimiento	LOC_NCMP000
-gastos de personal	LOC_NCMP000
-gastos de transporte	LOC_NCMP000
-gastos de viaje	LOC_NCMP000
-gastos fijos	LOC_NCMP000
-gastos financieros	LOC_NCMP000
-gastos públicos	LOC_NCMP000
-gastos sociales	LOC_NCMP000
+# gabinete técnico	LOC_NC
+galería comercial	NCFS000
+gal Fh ac Fh d	NCFS000
+gal Fh cap Fh d	NCFS000
+gal Fh d	NCFS000
+gal Fh ft2 d	NCFS000
+gal Fh ft2 Fh min	NCFS000
+gal Fh ft2	NCFS000
+gal Fh h	NCFS000
+gal Fh min	NCFS000
+galón acre Fh día	NCMS000
+galón acre por día	NCMS000
+galón cápita Fh día	NCMS000
+galón cápita por día	NCMS000
+galón día	NCMS000
+galón Fh acre día	NCMS000
+galón Fh acre Fh día	NCMS000
+galón Fh acre por día	NCMS000
+galón Fh cápita día	NCMS000
+galón Fh cápita Fh día	NCMS000
+galón Fh cápita por día	NCMS000
+galón Fh día	NCMS000
+galón Fh hora	NCMS000
+galón Fh minuto	NCMS000
+galón Fh pie cuadrado día	NCMS000
+galón Fh pie cuadrado Fh día	NCMS000
+galón Fh pie cuadrado Fh minuto	NCMS000
+galón Fh pie cuadrado	NCMS000
+galón Fh pie cuadrado minuto	NCMS000
+galón Fh pie cuadrado por día	NCMS000
+galón Fh pie cuadrado por minuto	NCMS000
+galón Fh segundo	NCMS000
+galón hora	NCMS000
+galón minuto	NCMS000
+galón per cápita día	NCMS000
+galón per cápita Fh día	NCMS000
+galón per cápita por día	NCMS000
+galón pie cuadrado Fh día	NCMS000
+galón pie cuadrado Fh minuto	NCMS000
+galón pie cuadrado por día	NCMS000
+galón pie cuadrado por minuto	NCMS000
+galón por acre día	NCMS000
+galón por acre Fh día	NCMS000
+galón por acre por día	NCMS000
+galón por acre y día	NCMS000
+galón por cápita día	NCMS000
+galón por cápita Fh día	NCMS000
+galón por cápita por día	NCMS000
+galón por día	NCMS000
+galón por hora	NCMS000
+galón por minuto	NCMS000
+galón por pie cuadrado día	NCMS000
+galón por pie cuadrado Fh día	NCMS000
+galón por pie cuadrado Fh minuto	NCMS000
+galón por pie cuadrado	NCMS000
+galón por pie cuadrado minuto	NCMS000
+galón por pie cuadrado por día	NCMS000
+galón por pie cuadrado por minuto	NCMS000
+galón por pie cuadrado y día	NCMS000
+galón por pie cuadrado y minuto	NCMS000
+galón por segundo	NCMS000
+galón segundo	NCMS000
+gama de productos	NCFS000
+ganancia neta	NCFS000
+garantía constitucional	NCFS000
+garantía hipotecaria	NCFS000
+gastos corrientes	NCMP000
+gastos de administración	NCMP000
+gastos de capital	NCMP000
+gastos de funcionamiento	NCMP000
+gastos de gestión	NCMP000
+gastos de mantenimiento	NCMP000
+gastos de personal	NCMP000
+gastos de transporte	NCMP000
+gastos de viaje	NCMP000
+gastos fijos	NCMP000
+gastos financieros	NCMP000
+gastos públicos	NCMP000
+gastos sociales	NCMP000
 Gdor.ª	Y
 Gdora.	Y
 Gdor.	Y
-género literario	LOC_NC
+género literario	NCMS000
 Gengis Kan	NPMNSP0
-geografía física	LOC_NCFS000
-geografía humana	LOC_NCFS000
-geometría analítica	LOC_NCFS000
-gestión administrativa	LOC_NCFS000
-gestión clínica	LOC_NCFS000
-gestión de datos	LOC_NCFS000
-gestión de la empresa	LOC_NCFS000
-gestión de personal	LOC_NCFS000
-gestión económica	LOC_NCFS000
-gestión educativa	LOC_NCFS000
-gestión empresarial	LOC_NCFS000
-gestión interna	LOC_NCFS000
-gestión medioambiental	LOC_NCFS000
-gestión sanitaria	LOC_NCFS000
-gestión urbanística	LOC_NCFS000
-g Fh l	LOC_NCMP000
-g Fh m3	LOC_NCMP000
-gimnasia artística	LOC_NCFS000
-giro postal	LOC_NC
-globalización de la economía	LOC_NCFS000
+geografía física	NCFS000
+geografía humana	NCFS000
+geometría analítica	NCFS000
+gestión administrativa	NCFS000
+gestión clínica	NCFS000
+gestión de datos	NCFS000
+gestión de la empresa	NCFS000
+gestión de personal	NCFS000
+gestión económica	NCFS000
+gestión educativa	NCFS000
+gestión empresarial	NCFS000
+gestión interna	NCFS000
+gestión medioambiental	NCFS000
+gestión sanitaria	NCFS000
+gestión urbanística	NCFS000
+g Fh l	NCMP000
+g Fh m3	NCMP000
+gimnasia artística	NCFS000
+giro postal	NCMS000
+globalización de la economía	NCFS000
 Gloria Patri	NCMN000
-gobierno central	LOC_NCMS000
-gobierno civil	LOC_NCMS000
-gobierno constitucional	LOC_NCMS000
-gobierno federal	LOC_NCMS000
-gobierno local	LOC_NCMS000
-gobierno militar	LOC_NCMS000
-gobierno provisional	LOC_NCMS000
-gobierno revolucionario	LOC_NCMS000
+gobierno central	NCMS000
+gobierno civil	NCMS000
+gobierno constitucional	NCMS000
+gobierno federal	NCMS000
+gobierno local	NCMS000
+gobierno militar	NCMS000
+gobierno provisional	NCMS000
+gobierno revolucionario	NCMS000
 Gob.	Y
-golpe militar	LOC_NC
+# golpe militar	LOC_NC
 g/p	Y
 g. p.	Y
-gracia de dios	LOC_NCFS000
+gracia de dios	NCFS000
 gracias a	LOC_PREP
 gracias al que	LOC_CS
 gracias a que	LOC_CS
-grado celsius	LOC_NC
-grado centígrado	LOC_NC
-grado de madurez	LOC_NCMS000
-grado farenheit	LOC_NC
-grado kelvin	LOC_NC
+grado celsius	NCMS000
+grado centígrado	NCMS000
+grado de madurez	NCMS000
+grado farenheit	NCMS000
+grado kelvin	NCMS000
 Gral.	Y
-gramo Fh litro	LOC_NC
-gramo Fh metro cúbico	LOC_NC
-gramo por litro	LOC_NC
-gramo por metro cúbico	LOC_NC
+gramo Fh litro	NCMS000
+gramo Fh metro cúbico	NCMS000
+gramo por litro	NCMS000
+gramo por metro cúbico	NCMS000
 gratis et amore	LOC_ADV
-gripe aviar	LOC_NCFS000
+gripe aviar	NCFS000
 grosso modo	LOC_ADV
-grupo de edad	LOC_NC
-grupo de empresas	LOC_NC
-grupo de noticias	LOC_NC
-grupo de trabajo	LOC_NC
-grupo social	LOC_NC
-guardería infantil	LOC_NC
-guardia civil	LOC_NC
-guardia nacional	LOC_NC
-guerra civil española	LOC_NCFS000
-guerra fría	LOC_NC
-guerra mundial	LOC_NC
-guía de turismo	LOC_NC
-guía didáctica	LOC_NC
+grupo de edad	NCMS000
+grupo de empresas	NCMS000
+grupo de noticias	NCMS000
+grupo de trabajo	NCMS000
+grupo social	NCMS000
+guardería infantil	NCFS000
+guardia civil	NCFS000
+guardia nacional	NCFS000
+guerra civil española	NCFS000
+guerra fría	NCFS000
+guerra mundial	NCFS000
+guía de turismo	NCFS000
+guía didáctica	NCFS000
 g. v.	Y
 habeas corpus	NCMN000
-hab Fh km	LOC_NCFS000
-habitación doble	LOC_NC
-habitación individual	LOC_NC
-habitante Fh km2	LOC_NC
-habitante Fh kms2	LOC_NC
-habitante por kilómetro cuadrado	LOC_NC
-habitante por km2	LOC_NC
-hábito alimentario	LOC_NC
+hab Fh km	NCFS000
+habitación doble	NCFS000
+habitación individual	NCFS000
+habitante Fh km2	NCMS000
+habitante Fh kms2	NCMS000
+habitante por kilómetro cuadrado	NCMS000
+habitante por km2	NCMS000
+hábito alimentario	NCMS000
 hacia mediados de	LOC_PREP
-hacienda pública	LOC_NCFS000
+hacienda pública	NCFS000
 hasta cierto punto	LOC_ADV
 hasta cuando	LOC_CS
 hasta más ver	LOC_ADV
 hasta tanto que	LOC_CS
 heavy metal	AQ0CN0
-hecho imponible	LOC_NCMS000
-hechos de los apóstoles	LOC_NCMP000
-herramientas de gestión	LOC_NCFP000
+hecho imponible	NCMS000
+hechos de los apóstoles	NCMP000
+herramientas de gestión	NCFP000
 hic et nunc	LOC_ADV
 high tech	LOC_ADJ
 high tech	LOC_AQ0CN0
-higiene bucal	LOC_NCFP000
-hijo pródigo	LOC_NC
-hipótesis de trabajo	LOC_NCFN000
-historia clínica	LOC_NC
-historia de la educación	LOC_NCFS000
-historia de la filosofía	LOC_NCFS000
-historia del arte	LOC_NCFS000
-historia económica	LOC_NCFS000
+higiene bucal	NCFP000
+hijo pródigo	NCMS000
+hipótesis de trabajo	NCFN000
+historia clínica	NCFS000
+historia de la educación	NCFS000
+historia de la filosofía	NCFS000
+historia del arte	NCFS000
+historia económica	NCFS000
 Hna.	Y
 Hno.	Y
-hoja de papel	LOC_NC
-hoja informativa	LOC_NC
+hoja de papel	NCFS000
+hoja informativa	NCFS000
 Hong Kong	NPCSG00
 honoris causa	LOC_ADJ
 honoris causa	LOC_AQ0CN0
-horario de atención al público	LOC_NCMS000
-horario de clases	LOC_NCMS000
-horario de mañana	LOC_NCMS000
-horario de verano	LOC_NCMS000
-horario laboral	LOC_NCMS000
-horas de oficina	LOC_NCFP000
-horas de sol	LOC_NCFP000
-horas hábiles	LOC_NCFP000
-horno microondas	LOC_NC
+horario de atención al público	NCMS000
+horario de clases	NCMS000
+horario de mañana	NCMS000
+horario de verano	NCMS000
+horario laboral	NCMS000
+horas de oficina	NCFP000
+horas de sol	NCFP000
+horas hábiles	NCFP000
+horno microondas	NCMS000
 horror vacui	NCMS000
-hospital general	LOC_NCMS000
-hospital infantil	LOC_NC
-huella digital	LOC_NC
-humanidades y ciencias sociales	LOC_NCFP000
-humedad relativa	LOC_NCFS000
+hospital general	NCMS000
+# hospital infantil	LOC_NC
+huella digital	NCFS000
+humanidades y ciencias sociales	NCFP000
+humedad relativa	NCFS000
 H.	Y
 ibíd.	Y
 ib.	Y
-id. de usuario	LOC_NCMS000
+id. de usuario	NCMS000
 ídem de ídem	LOC_ADV
-identidad nacional	LOC_NC
-identidad sexual	LOC_NCFS000
+# identidad nacional	LOC_NC
+identidad sexual	NCFS000
 íd.	Y
 i. e.	Y
 igl.ª	Y
-iglesia anglicana	LOC_NCFS000
-iglesia católica	LOC_NCFS000
-iglesia evangélica	LOC_NCFS000
-iglesia ortodoxa	LOC_NCFS000
-iglesia universal	LOC_NCFS000
-igualdad de derechos	LOC_NCFS000
-igualdad de oportunidades	LOC_NCFS000
-igualdad entre hombres y mujeres	LOC_NCFS000
-igualdad social	LOC_NCFS000
+iglesia anglicana	NCFS000
+iglesia católica	NCFS000
+iglesia evangélica	NCFS000
+iglesia ortodoxa	NCFS000
+iglesia universal	NCFS000
+igualdad de derechos	NCFS000
+igualdad de oportunidades	NCFS000
+igualdad entre hombres y mujeres	NCFS000
+igualdad social	NCFS000
 Ilma.	Y
 Ilmo.	Y
 Iltre.	Y
 Il.	Y
-imagen de marca	LOC_NCFS000
-imagen personal	LOC_NCFS000
-impacto ambiental	LOC_NC
-impacto medioambiental	LOC_NC
-impacto visual	LOC_NC
-imperio de la ley	LOC_NCMS000
-impreso de solicitud	LOC_NC
+imagen de marca	NCFS000
+imagen personal	NCFS000
+impacto ambiental	NCMS000
+impacto medioambiental	NCMS000
+impacto visual	NCMS000
+imperio de la ley	NCMS000
+impreso de solicitud	NCMS000
 impr.	Y
 impto.	Y
-impuesto de sociedades	LOC_NCMS000
-impuesto sobre actividades económicas	LOC_NCMS000
-impuesto sobre bienes inmuebles	LOC_NCMS000
-impuesto sobre el valor añadido	LOC_NCMS000
-impuesto sobre la renta de las personas físicas	LOC_NCMS000
-impuesto sobre la renta	LOC_NCMS000
-impuesto sobre sociedades	LOC_NCMS000
-impuesto sobre transmisiones patrimoniales	LOC_NCMS000
+impuesto de sociedades	NCMS000
+impuesto sobre actividades económicas	NCMS000
+impuesto sobre bienes inmuebles	NCMS000
+impuesto sobre el valor añadido	NCMS000
+impuesto sobre la renta de las personas físicas	NCMS000
+impuesto sobre la renta	NCMS000
+impuesto sobre sociedades	NCMS000
+impuesto sobre transmisiones patrimoniales	NCMS000
 imp.	Y
 in absentia	LOC_ADV
 in aeternum	LOC_ADV
@@ -2791,38 +2791,38 @@ in anima vili	LOC_ADV
 in ánima vili	LOC_ADV
 in articulo mortis	LOC_ADV
 in artículo mortis	LOC_ADV
-incapacidad laboral	LOC_NCFS000
-incapacidad permanente	LOC_NCFS000
-incapacidad temporal	LOC_NCFS000
+incapacidad laboral	NCFS000
+incapacidad permanente	NCFS000
+incapacidad temporal	NCFS000
 incl.	Y
-incontinencia urinaria	LOC_NCFS000
-incremento salarial	LOC_NC
+incontinencia urinaria	NCFS000
+incremento salarial	NCMS000
 in crescendo	LOC_ADV
-índice de desarrollo humano	LOC_NCMS000
-índice de precios al consumo	LOC_NCMS000
-industria nacional	LOC_NCFS000
-industria química	LOC_NCFS000
+índice de desarrollo humano	NCMS000
+índice de precios al consumo	NCMS000
+industria nacional	NCFS000
+industria química	NCFS000
 in extenso	LOC_ADV
 in extremis	LOC_ADV
-in Fh s2	LOC_NCFS000
+in Fh s2	NCFS000
 in fieri	LOC_ADV
-influencia política	LOC_NCFS000
-información adicional	LOC_NCFS000
-información general	LOC_NCFS000
-información genética	LOC_NCFS000
-información tecnológica	LOC_NCFS000
-información turística	LOC_NCFS000
-informática de gestión	LOC_NCFS000
-informe de auditoría	LOC_NC
-informe de evaluación	LOC_NC
-informe de gestión	LOC_NC
+influencia política	NCFS000
+información adicional	NCFS000
+información general	NCFS000
+información genética	NCFS000
+información tecnológica	NCFS000
+información turística	NCFS000
+informática de gestión	NCFS000
+informe de auditoría	NCMS000
+informe de evaluación	NCMS000
+informe de gestión	NCMS000
 in fraganti	LOC_ADV
-ingeniería química	LOC_NCMS000
-ingeniero agrónomo	LOC_NC
-ingeniero químico	LOC_NC
-ingeniero técnico agrícola	LOC_NC
+ingeniería química	NCMS000
+ingeniero agrónomo	NCMS000
+ingeniero químico	NCMS000
+ingeniero técnico agrícola	NCMS000
 Ing.	Y
-iniciativa legislativa	LOC_NC
+iniciativa legislativa	NCFS000
 in illo tempore	LOC_ADV
 in illo témpore	LOC_ADV
 inmediatamente después de	LOC_PREP
@@ -2837,27 +2837,27 @@ in promptu	LOC_ADV
 in púribus	LOC_ADV
 in situ	LOC_ADV
 in sólidum	LOC_ADV
-inspector general	LOC_NC
-instituto nacional de empleo	LOC_NCMS000
-instituto nacional de la salud	LOC_NCMS000
-instituto nacional de la seguridad social	LOC_NCMS000
-instituto nacional de meteorología	LOC_NCMS000
-instrucciones de uso	LOC_NCFP000
-instrumento musical	LOC_NC
+# inspector general	LOC_NC
+instituto nacional de empleo	NCMS000
+instituto nacional de la salud	NCMS000
+instituto nacional de la seguridad social	NCMS000
+instituto nacional de meteorología	NCMS000
+instrucciones de uso	NCFP000
+instrumento musical	NCMS000
 Inst.	Y
-integración económica	LOC_NCFS000
-integración social	LOC_NCFS000
-inteligencia humana	LOC_NCFS000
-interacción social	LOC_NCFS000
-intercambio de datos	LOC_NCMS000
-interés social	LOC_NCMS000
-interfaz de usuario	LOC_NC
+integración económica	NCFS000
+integración social	NCFS000
+inteligencia humana	NCFS000
+interacción social	NCFS000
+intercambio de datos	NCMS000
+interés social	NCMS000
+# interfaz de usuario	LOC_NC
 inter nos	LOC_ADV
 interposita persona	LOC_ADV
-intervalo de tiempo	LOC_NC
-intervención quirúrgica	LOC_NC
+intervalo de tiempo	NCMS000
+intervención quirúrgica	NCFS000
 inter vivos	LOC_ADV
-investigación clínica	LOC_NCFS000
+investigación clínica	NCFS000
 invita Minerva	LOC_ADV
 in vitro	LOC_ADV
 in vitro	LOC_AQ0CN0
@@ -2878,189 +2878,189 @@ izq.	Y
 jamás de los jamases	LOC_ADV
 jamás por jamás	LOC_ADV
 J. C.	Y
-jefe de gabinete	LOC_NC
-jefe de proyecto	LOC_NC
-jefe de seguridad	LOC_NC
-jefe de unidad	LOC_NC
-jefe militar	LOC_NC
+jefe de gabinete	NCCS000
+jefe de proyecto	NCCS000
+jefe de seguridad	NCCS000
+jefe de unidad	NCCS000
+jefe militar	NCCS000
 jet lag	NCMS000
 jet set	NCFS000
-J Fh K	LOC_NCFS000
+J Fh K	NCFS000
 Jhs.	Y
 JJ. OO.	Y
-joule Fh grado kelvin	LOC_NC
-joule Fh kelvin	LOC_NC
-joule Fh K	LOC_NC
-joule por grado kelvin	LOC_NC
-joule por kelvin	LOC_NC
-jubilación anticipada	LOC_NC
-juego de mesa	LOC_NC
-juegos olímpicos	LOC_NCMP000
-juicio oral	LOC_NC
-junta general de accionistas	LOC_NCFS000
-junta militar	LOC_NCFS000
+joule Fh grado kelvin	NCMS000
+joule Fh kelvin	NCMS000
+joule Fh K	NCMS000
+joule por grado kelvin	NCMS000
+joule por kelvin	NCMS000
+jubilación anticipada	NCFS000
+juego de mesa	NCMS000
+juegos olímpicos	NCMP000
+juicio oral	NCMS000
+junta general de accionistas	NCFS000
+junta militar	NCFS000
 junto a	LOC_PREP
 junto con	LOC_PREP
-jurisdicción contencioso-administrativa	LOC_NCFS000
-jurisdicción ordinaria	LOC_NCFS000
-jurisdicción penal	LOC_NCFS000
+jurisdicción contencioso-administrativa	NCFS000
+jurisdicción ordinaria	NCFS000
+jurisdicción penal	NCFS000
 juro a bríos	LOC_ADV
-justicia ordinaria	LOC_NCFS000
-justicia social	LOC_NCFS000
-kg Fh cm2	LOC_NCMP000
-kg Fh m2	LOC_NCMP000
-kg Fh m3	LOC_NCMP000
-kg Fh s	LOC_NCFS000
-kilogramo Fh centímetro cuadrado	LOC_NC
-kilogramo Fh metro cuadrado	LOC_NC
-kilogramo Fh metro cúbico	LOC_NC
-kilogramo Fh segundo	LOC_NC
-kilogramo por centímetro cuadrado	LOC_NC
-kilogramo por metro cuadrado	LOC_NC
-kilogramo por metro cúbico	LOC_NC
-kilogramo por segundo	LOC_NC
-kilómetro cuadrado	LOC_NC
-kilómetro Fh h Fh s	LOC_NC
-kilómetro Fh h	LOC_NC
-kilómetro Fh hora Fh segundo	LOC_NC
-kilómetro Fh hora	LOC_NC
-kilómetro Fh hora por segundo	LOC_NC
-kilómetro Fh hora segundo	LOC_NC
-kilómetro Fh segundo	LOC_NC
-kilómetro Fh s	LOC_NC
-kilómetro hora Fh segundo	LOC_NC
-kilómetro hora por segundo	LOC_NC
-kilómetro hora segundo	LOC_NC
-kilómetro por hora Fh segundo	LOC_NC
-kilómetro por hora	LOC_NC
-kilómetro por hora por segundo	LOC_NC
-kilómetro por segundo	LOC_NC
-kilómetro segundo	LOC_NC
-km Fh h Fh s	LOC_NCFS000
-km Fh h	LOC_NCFS000
-kn Fh s	LOC_NCFS000
+justicia ordinaria	NCFS000
+justicia social	NCFS000
+kg Fh cm2	NCMP000
+kg Fh m2	NCMP000
+kg Fh m3	NCMP000
+kg Fh s	NCFS000
+kilogramo Fh centímetro cuadrado	NCMS000
+kilogramo Fh metro cuadrado	NCMS000
+kilogramo Fh metro cúbico	NCMS000
+kilogramo Fh segundo	NCMS000
+kilogramo por centímetro cuadrado	NCMS000
+kilogramo por metro cuadrado	NCMS000
+kilogramo por metro cúbico	NCMS000
+kilogramo por segundo	NCMS000
+kilómetro cuadrado	NCMS000
+kilómetro Fh h Fh s	NCMS000
+kilómetro Fh h	NCMS000
+kilómetro Fh hora Fh segundo	NCMS000
+kilómetro Fh hora	NCMS000
+kilómetro Fh hora por segundo	NCMS000
+kilómetro Fh hora segundo	NCMS000
+kilómetro Fh segundo	NCMS000
+kilómetro Fh s	NCMS000
+kilómetro hora Fh segundo	NCMS000
+kilómetro hora por segundo	NCMS000
+kilómetro hora segundo	NCMS000
+kilómetro por hora Fh segundo	NCMS000
+kilómetro por hora	NCMS000
+kilómetro por hora por segundo	NCMS000
+kilómetro por segundo	NCMS000
+kilómetro segundo	NCMS000
+km Fh h Fh s	NCFS000
+km Fh h	NCFS000
+kn Fh s	NCFS000
 k. o.	Y
 Kublai Kan	NPMNSP0
-laboratorio clínico	LOC_NC
-labor docente	LOC_NCFS000
-lactancia materna	LOC_NCFS000
+laboratorio clínico	NCMS000
+labor docente	NCFS000
+lactancia materna	NCFS000
 laissez faire	NCMS000
-la madre tierra	LOC_NCMS000
+la madre tierra	NCMS000
 lapsus calami	NCMN000
 lapsus linguae	NCMN000
 lato sensu	LOC_ADV
-laudo arbitral	LOC_NCFS000
+laudo arbitral	NCFS000
 laus Deo	LOC_ADV
-lb Fh ft2	LOC_NCFP000
-lb Fh ft3	LOC_NCFP000
-lb Fh in2	LOC_NCFP000
-lb Fh milgal	LOC_NCFP000
+lb Fh ft2	NCFP000
+lb Fh ft3	NCFP000
+lb Fh in2	NCFP000
+lb Fh milgal	NCFP000
 Lcda.	Y
 Lcdo.	Y
 l. c.	Y
 Lda.	Y
 Ldo.	Y
-leche de vaca	LOC_NCFS000
-lector de cd	LOC_NC
-legislación autonómica	LOC_NC
-legislación nacional	LOC_NC
-legislación vigente	LOC_NC
-legítima defensa	LOC_NCFS000
+leche de vaca	NCFS000
+# lector de cd	LOC_NC
+legislación autonómica	NCFS000
+legislación nacional	NCFS000
+legislación vigente	NCFS000
+legítima defensa	NCFS000
 lejos de	LOC_PREP
 lengua de oc	NCFS000
 lengua de oíl	NCFS000
-lengua extranjera	LOC_NC
-lengua internacional	LOC_NC
-lenguaje corporal	LOC_NCMS000
-lenguaje de programación	LOC_NC
-lenguaje escrito	LOC_NCMS000
-lenguaje oral	LOC_NCMS000
-lengua oficial	LOC_NC
+lengua extranjera	NCFS000
+lengua internacional	NCFS000
+lenguaje corporal	NCMS000
+# lenguaje de programación	LOC_NC
+lenguaje escrito	NCMS000
+lenguaje oral	NCMS000
+lengua oficial	NCFS000
 lenguas de oc	NCFP000
 lenguas de oíl	NCFP000
-ley del suelo	LOC_NCFS000
-ley de procedimiento administrativo	LOC_NCFS000
-ley fundamental	LOC_NCFS000
-ley general de educación	LOC_NCFS000
-ley general	LOC_NCFS000
-ley general presupuestaria	LOC_NCFS000
-ley general tributaria	LOC_NCFS000
-ley marco	LOC_NCFS000
-ley orgánica del poder judicial	LOC_NCFS000
-ley vigente	LOC_NC
-l Fh día	LOC_NCFS000
-l Fh d	LOC_NCFS000
-l Fh m2 Fh d	LOC_NCFS000
-l Fh m2 Fh min	LOC_NCFS000
-l Fh m2 Fh s	LOC_NCFS000
-l Fh m2	LOC_NCFS000
-l Fh min	LOC_NCFS000
-l Fh s	LOC_NCFS000
-libertad de asociación	LOC_NCFS000
-libertad de expresión	LOC_NCFS000
-libertad de opinión	LOC_NCFS000
-libertad de pensamiento	LOC_NCFS000
-libertad de prensa	LOC_NCFS000
-libertades fundamentales	LOC_NCFP000
-libertad religiosa	LOC_NCFS000
-libra Fh milgalón	LOC_NC
-libra Fh pie cuadrado	LOC_NC
-libra Fh pie cúbico	LOC_NC
-libra Fh pulgada cuadrada	LOC_NC
-libra fuerza	LOC_NC
-libra milgalón	LOC_NC
-libra por milgalón	LOC_NC
-libra por pie cuadrado	LOC_NC
-libra por pie cúbico	LOC_NC
-libra por pulgada cuadrada	LOC_NC
-licencia de obras	LOC_NC
+ley del suelo	NCFS000
+ley de procedimiento administrativo	NCFS000
+ley fundamental	NCFS000
+ley general de educación	NCFS000
+ley general	NCFS000
+ley general presupuestaria	NCFS000
+ley general tributaria	NCFS000
+ley marco	NCFS000
+ley orgánica del poder judicial	NCFS000
+# ley vigente	LOC_NC
+l Fh día	NCFS000
+l Fh d	NCFS000
+l Fh m2 Fh d	NCFS000
+l Fh m2 Fh min	NCFS000
+l Fh m2 Fh s	NCFS000
+l Fh m2	NCFS000
+l Fh min	NCFS000
+l Fh s	NCFS000
+libertad de asociación	NCFS000
+libertad de expresión	NCFS000
+libertad de opinión	NCFS000
+libertad de pensamiento	NCFS000
+libertad de prensa	NCFS000
+libertades fundamentales	NCFP000
+libertad religiosa	NCFS000
+libra Fh milgalón	NCFS000
+libra Fh pie cuadrado	NCFS000
+libra Fh pie cúbico	NCFS000
+libra Fh pulgada cuadrada	NCFS000
+libra fuerza	NCFS000
+libra milgalón	NCFS000
+libra por milgalón	NCFS000
+libra por pie cuadrado	NCFS000
+libra por pie cúbico	NCFS000
+libra por pulgada cuadrada	NCFS000
+licencia de obras	NCFS000
 Lic.	Y
-liga árabe	LOC_NCFS000
+liga árabe	NCFS000
 lignum crucis	LOC_ADV
 Lincoln Lincoln	NPCNSP0
-línea de acción	LOC_NC
-línea eléctrica	LOC_NC
-línea fija	LOC_NCFS000
-literatura juvenil	LOC_NCFS000
-litro día cápita	LOC_NC
-litro día per cápita	LOC_NC
-litro día por cápita	LOC_NC
-litro Fh día Fh cápita	LOC_NC
-litro Fh día por cápita	LOC_NC
-litro Fh metro cuadrado Fh dia	LOC_NC
-litro Fh metro cuadrado Fh minuto	LOC_NC
-litro Fh metro cuadrado Fh segundo	LOC_NC
-litro Fh metro cuadrado	LOC_NC
-litro Fh metro cuadrado por dia	LOC_NC
-litro Fh metro cuadrado por minuto	LOC_NC
-litro Fh metro cuadrado por segundo	LOC_NC
-litro Fh minuto	LOC_NC
-litro Fh segundo	LOC_NC
-litro metro cuadrado por día	LOC_NC
-litro metro cuadrado por minuto	LOC_NC
-litro metro cuadrado por segundo	LOC_NC
-litro por día cápita	LOC_NC
-litro por día Fh cápita	LOC_NC
-litro por día	LOC_NC
-litro por día per cápita	LOC_NC
-litro por día por cápita	LOC_NC
-litro por metro cuadrado día	LOC_NC
-litro por metro cuadrado Fh dia	LOC_NC
-litro por metro cuadrado Fh minuto	LOC_NC
-litro por metro cuadrado Fh segundo	LOC_NC
-litro por metro cuadrado	LOC_NC
-litro por metro cuadrado minuto	LOC_NC
-litro por metro cuadrado por dia	LOC_NC
-litro por metro cuadrado por minuto	LOC_NC
-litro por metro cuadrado por segundo	LOC_NC
-litro por metro cuadrado segundo	LOC_NC
-litro por metro cuadrado y día	LOC_NC
-litro por metro cuadrado y minuto	LOC_NC
-litro por metro cuadrado y segundo	LOC_NC
-litro por minuto	LOC_NC
-litro por segundo	LOC_NC
-lluvia torrencial	LOC_NC
-local comercial	LOC_NC
+línea de acción	NCFS000
+línea eléctrica	NCFS000
+línea fija	NCFS000
+literatura juvenil	NCFS000
+litro día cápita	NCMS000
+litro día per cápita	NCMS000
+litro día por cápita	NCMS000
+litro Fh día Fh cápita	NCMS000
+litro Fh día por cápita	NCMS000
+litro Fh metro cuadrado Fh dia	NCMS000
+litro Fh metro cuadrado Fh minuto	NCMS000
+litro Fh metro cuadrado Fh segundo	NCMS000
+litro Fh metro cuadrado	NCMS000
+litro Fh metro cuadrado por dia	NCMS000
+litro Fh metro cuadrado por minuto	NCMS000
+litro Fh metro cuadrado por segundo	NCMS000
+litro Fh minuto	NCMS000
+litro Fh segundo	NCMS000
+litro metro cuadrado por día	NCMS000
+litro metro cuadrado por minuto	NCMS000
+litro metro cuadrado por segundo	NCMS000
+litro por día cápita	NCMS000
+litro por día Fh cápita	NCMS000
+litro por día	NCMS000
+litro por día per cápita	NCMS000
+litro por día por cápita	NCMS000
+litro por metro cuadrado día	NCMS000
+litro por metro cuadrado Fh dia	NCMS000
+litro por metro cuadrado Fh minuto	NCMS000
+litro por metro cuadrado Fh segundo	NCMS000
+litro por metro cuadrado	NCMS000
+litro por metro cuadrado minuto	NCMS000
+litro por metro cuadrado por dia	NCMS000
+litro por metro cuadrado por minuto	NCMS000
+litro por metro cuadrado por segundo	NCMS000
+litro por metro cuadrado segundo	NCMS000
+litro por metro cuadrado y día	NCMS000
+litro por metro cuadrado y minuto	NCMS000
+litro por metro cuadrado y segundo	NCMS000
+litro por minuto	NCMS000
+litro por segundo	NCMS000
+lluvia torrencial	NCFS000
+# local comercial	LOC_NC
 loc. cit.	Y
 loco citato	LOC_ADV
 lo de menos	LOC_ADV
@@ -3069,28 +3069,28 @@ lo uno por lo otro	LOC_ADV
 Ltda.	Y
 Ltdo.	Y
 Ltd.	Y
-lt Fh d per càpita	LOC_NCFS000
-lt Fh d por càpita	LOC_NCFS000
-lt Fh m2 Fh d	LOC_NCFS000
-lt Fh m2 Fh min	LOC_NCFS000
-lt Fh m2 Fh s	LOC_NCFS000
-lt Fh m2	LOC_NCFS000
-lucha armada	LOC_NCFS000
-lucha por el poder	LOC_NCFS000
-lucro cesante	LOC_NCMS000
+lt Fh d per càpita	NCFS000
+lt Fh d por càpita	NCFS000
+lt Fh m2 Fh d	NCFS000
+lt Fh m2 Fh min	NCFS000
+lt Fh m2 Fh s	NCFS000
+lt Fh m2	NCFS000
+lucha armada	NCFS000
+lucha por el poder	NCFS000
+lucro cesante	NCMS000
 luego que	LOC_CS
-lugar de nacimiento	LOC_NC
-luz blanca	LOC_NC
+# lugar de nacimiento	LOC_NC
+# luz blanca	LOC_NC
 L/	Y
-m3 Fh ha Fh d	LOC_NCFS000
-m3 Fh h	LOC_NCFS000
-m3 Fh hora	LOC_NCFS000
-m3 Fh m2 Fh d	LOC_NCFS000
-m3 Fh m2 Fh h	LOC_NCFS000
-m3 Fh seg	LOC_NCFS000
-m3 Fh s	LOC_NCFS000
-madre naturaleza	LOC_NCFS000
-madre soltera	LOC_NC
+m3 Fh ha Fh d	NCFS000
+m3 Fh h	NCFS000
+m3 Fh hora	NCFS000
+m3 Fh m2 Fh d	NCFS000
+m3 Fh m2 Fh h	NCFS000
+m3 Fh seg	NCFS000
+m3 Fh s	NCFS000
+madre naturaleza	NCFS000
+# madre soltera	LOC_NC
 Magallanes Magallanes	NPCNSP0
 Magfca.	Y
 Magfco.	Y
@@ -3098,160 +3098,160 @@ magister dixit	LOC_ADV
 maguer que	LOC_CS
 mal a mal	LOC_ADV
 manu militari	LOC_ADV
-mapa topográfico	LOC_NC
-máquina virtual	LOC_NC
-marco de referencia	LOC_NC
-marco general	LOC_NCMS000
+mapa topográfico	NCFS000
+máquina virtual	NCFS000
+marco de referencia	NCMS000
+marco general	NCMS000
 Mare Nostrum	NPMSG00
-margen bruto	LOC_NCCS000
+margen bruto	NCCS000
 más allá de	LOC_PREP
 más de la cuenta	LOC_ADV
 mass media	NCMN000
 mass media	NCMP000
 más valiera	LOC_ADV
-matemática aplicada	LOC_NC
-material complementario	LOC_NC
-material de oficina	LOC_NCMS000
-material eléctrico	LOC_NCMS000
-material escrito	LOC_NCMS000
-material plástico	LOC_NCMS000
-matrimonio civil	LOC_NC
+matemática aplicada	NCFS000
+# material complementario	LOC_NC
+material de oficina	NCMS000
+material eléctrico	NCMS000
+material escrito	NCMS000
+material plástico	NCMS000
+matrimonio civil	NCMS000
 máx.	Y
 mea culpa	NCMN000
-mecánica cuántica	LOC_NCFS000
-mecánica de fluidos	LOC_NCFS000
-medalla de bronce	LOC_NC
-medalla de oro	LOC_NC
-medalla de plata	LOC_NC
-media jornada	LOC_NCFS000
-mediana empresa	LOC_NCFS000
-medicina de urgencias	LOC_NCFS000
-medicina general	LOC_NCFS000
-medicina interna	LOC_NCFS000
-medicina natural	LOC_NCFS000
-medicina nuclear	LOC_NCFS000
-médico general	LOC_NC
-médicos sin fronteras	LOC_NCMP000
-medida de seguridad	LOC_NC
-medio ambiente	LOC_NCMS000
+mecánica cuántica	NCFS000
+mecánica de fluidos	NCFS000
+medalla de bronce	NCFS000
+medalla de oro	NCFS000
+medalla de plata	NCFS000
+media jornada	NCFS000
+mediana empresa	NCFS000
+medicina de urgencias	NCFS000
+medicina general	NCFS000
+medicina interna	NCFS000
+medicina natural	NCFS000
+medicina nuclear	NCFS000
+médico general	NCMS000
+médicos sin fronteras	NCMP000
+medida de seguridad	NCFS000
 medio ambiente	NCMS000
-medio de transporte	LOC_NC
-medio natural	LOC_NCMS000
-medio rural	LOC_NCMS000
-medios de comunicación de masas	LOC_NCMP000
-medios de comunicación	LOC_NCMP000
-medios económicos	LOC_NCMP000
-medio urbano	LOC_NCMS000
-memoria anual	LOC_NCFS000
-memoria ram	LOC_NCFS000
-memoria virtual	LOC_NCFS000
-mensaje de correo electrónico	LOC_NC
-mensaje de error	LOC_NC
-mensaje electrónico	LOC_NC
-mercado abierto	LOC_NCMS000
-mercado bursátil	LOC_NC
-mercado secundario	LOC_NCMS000
+medio ambiente	NCMS000
+medio de transporte	NCMS000
+medio natural	NCMS000
+medio rural	NCMS000
+medios de comunicación de masas	NCMP000
+medios de comunicación	NCMP000
+medios económicos	NCMP000
+medio urbano	NCMS000
+memoria anual	NCFS000
+memoria ram	NCFS000
+memoria virtual	NCFS000
+mensaje de correo electrónico	NCMS000
+mensaje de error	NCMS000
+mensaje electrónico	NCMS000
+mercado abierto	NCMS000
+mercado bursátil	NCMS000
+mercado secundario	NCMS000
 merced a que	LOC_CS
-mesa de negociación	LOC_NC
-método científico	LOC_NC
-metro cuadrado	LOC_NC
-metro cúbico Fh hora	LOC_NC
-metro cúbico Fh segundo	LOC_NC
-metro cúbico por hora	LOC_NC
-metro cúbico por segundo	LOC_NC
-metro Fh segundo	LOC_NC
-metro Fh s	LOC_NC
-metro por segundo	LOC_NC
-metro segundo	LOC_NC
-m Fh s	LOC_NCFS000
-miembro del consejo	LOC_NC
-miembro del partido	LOC_NC
-miembro titular	LOC_NC
+mesa de negociación	NCFS000
+método científico	NCMS000
+metro cuadrado	NCMS000
+metro cúbico Fh hora	NCMS000
+metro cúbico Fh segundo	NCMS000
+metro cúbico por hora	NCMS000
+metro cúbico por segundo	NCMS000
+metro Fh segundo	NCMS000
+metro Fh s	NCMS000
+metro por segundo	NCMS000
+metro segundo	NCMS000
+m Fh s	NCFS000
+miembro del consejo	NCMS000
+miembro del partido	NCMS000
+miembro titular	NCMS000
 mientras que	LOC_CS
-mi Fh h	LOC_NCFS000
-milímetro cuadrado	LOC_NC
-milímetro cúbico	LOC_NC
-milímetro de hg	LOC_NC
-milímetro de mercurio	LOC_NC
-milla cuadrado	LOC_NC
-milla Fh hora	LOC_NC
-milla por hora	LOC_NC
-ministerio de asuntos exteriores	LOC_NCMS000
-ministerio de educación y ciencia	LOC_NCMS000
-ministerio de hacienda	LOC_NCMS000
-ministerio de justicia	LOC_NCMS000
-ministro de asuntos exteriores	LOC_NC
-ministro de hacienda	LOC_NC
-ministro de obras públicas	LOC_NC
+mi Fh h	NCFS000
+milímetro cuadrado	NCMS000
+milímetro cúbico	NCMS000
+milímetro de hg	NCMS000
+milímetro de mercurio	NCMS000
+milla cuadrado	NCFS000
+milla Fh hora	NCFS000
+milla por hora	NCFS000
+ministerio de asuntos exteriores	NCMS000
+ministerio de educación y ciencia	NCMS000
+ministerio de hacienda	NCMS000
+ministerio de justicia	NCMS000
+ministro de asuntos exteriores	NCMS000
+ministro de hacienda	NCMS000
+ministro de obras públicas	NCMS000
 mín.	Y
 mirando a	LOC_PREP
 mirando hacia	LOC_PREP
-misión comercial	LOC_NCFS000
+misión comercial	NCFS000
 mixti fori	LOC_ADV
-ml Fh d	LOC_NCFS000
-mlt Fh d	LOC_NCFS000
+ml Fh d	NCFS000
+mlt Fh d	NCFS000
 m. n.	Y
-mobiliario urbano	LOC_NCFS000
-modelo conceptual	LOC_NC
-modelo de gestión	LOC_NC
-modelo económico	LOC_NC
-modelo matemático	LOC_NC
-modelo oficial	LOC_NC
-modelo teórico	LOC_NC
-modificación de datos	LOC_NC
+mobiliario urbano	NCFS000
+modelo conceptual	NCMS000
+modelo de gestión	NCMS000
+modelo económico	NCMS000
+modelo matemático	NCMS000
+modelo oficial	NCMS000
+modelo teórico	NCMS000
+modificación de datos	NCFS000
 modus operandi	NCMN000
 modus vivendi	NCMN000
 moliente y corriente	AQ0CS0
-moneda nacional	LOC_NCFS000
-moneda única	LOC_NCFS000
-monóxido de carbono	LOC_NCFS000
+moneda nacional	NCFS000
+moneda única	NCFS000
+monóxido de carbono	NCFS000
 Mons.	Y
-mortalidad infantil	LOC_NCFS000
+mortalidad infantil	NCFS000
 mortis causa	LOC_ADV
-motor de búsqueda	LOC_NC
-motor eléctrico	LOC_NC
+motor de búsqueda	NCMS000
+motor eléctrico	NCMS000
 motu proprio	LOC_ADV
 motu proprio	LOC_AQ0CN0
-movilidad geográfica	LOC_NCFS000
-movimiento de resistencia	LOC_NCMS000
-movimiento internacional	LOC_NCMS000
-movimiento nacional	LOC_NCMS000
-movimiento obrero	LOC_NCMS000
-movimiento revolucionario	LOC_NCMS000
+movilidad geográfica	NCFS000
+movimiento de resistencia	NCMS000
+movimiento internacional	NCMS000
+movimiento nacional	NCMS000
+movimiento obrero	NCMS000
+movimiento revolucionario	NCMS000
 mr.	Y
 ms.	Y
-muerte violenta	LOC_NC
-muestra representativa	LOC_NCFS000
-mundo material	LOC_NCMS000
-música de cámara	LOC_NCFS000
-música electrónica	LOC_NCFS000
-música moderna	LOC_NCFS000
-música popular	LOC_NCFS000
-música religiosa	LOC_NCFS000
+# muerte violenta	LOC_NC
+muestra representativa	NCFS000
+mundo material	NCMS000
+música de cámara	NCFS000
+música electrónica	NCFS000
+música moderna	NCFS000
+música popular	NCFS000
+música religiosa	NCFS000
 mutatis mutandis	LOC_ADV
 muy de mañana	LOC_ADV
 muy muy	LOC_ADV
 M.	Y
 m.	Y
-naciones unidas	LOC_NCFP000
+naciones unidas	NCFP000
 nada más y nada menos	LOC_ADV
 N.ª S.ª	Y
-naturaleza humana	LOC_NCFS000
-naturaleza jurídica	LOC_NCFS000
-navegación aérea	LOC_NCFS000
-navegación marítima	LOC_NCFS000
+naturaleza humana	NCFS000
+naturaleza jurídica	NCFS000
+navegación aérea	NCFS000
+navegación marítima	NCFS000
 N. B.	Y
 N. del T.	Y
 Nebrija Nebrija	NPCNSP0
-necesidad básica	LOC_NC
-necesidades educativas especiales	LOC_NCFP000
-negociación colectiva	LOC_NCFS000
+# necesidad básica	LOC_NC
+necesidades educativas especiales	NCFP000
+negociación colectiva	NCFS000
 nemine discrepante	LOC_ADV
 new look	LOC_AQ0CN0
 new look	NCMS000
-newton Fh metro cuadrado	LOC_NC
-newton por metro cuadrado	LOC_NC
-N Fh m2	LOC_NCMP000
+# newton Fh metro cuadrado	LOC_NC
+# newton por metro cuadrado	LOC_NC
+N Fh m2	NCMP000
 ni a la de tres	LOC_ADV
 ni a tiros	LOC_ADV
 ni aún	LOC_ADV
@@ -3270,167 +3270,167 @@ ni tan sólo	LOC_ADV
 ni tanto así	LOC_ADV
 ni tanto ni tan calvo	LOC_ADV
 ni tanto ni tan poco	LOC_ADV
-nivel de calidad	LOC_NC
-nivel de confianza	LOC_NC
-nivel de empleo	LOC_NCMS000
-nivel de estudios	LOC_NCMS000
-nivel de exigencia	LOC_NCMS000
-nivel de precios	LOC_NCMS000
-nivel de seguridad	LOC_NC
-nivel de vida	LOC_NCMS000
-nivel educativo	LOC_NCMS000
-nivel técnico	LOC_NCMS000
+# nivel de calidad	LOC_NC
+# nivel de confianza	LOC_NC
+nivel de empleo	NCMS000
+nivel de estudios	NCMS000
+nivel de exigencia	NCMS000
+nivel de precios	NCMS000
+# nivel de seguridad	LOC_NC
+nivel de vida	NCMS000
+nivel educativo	NCMS000
+nivel técnico	NCMS000
 no ha lugar	LOC_ADV
 noli me tangere	LOC_ADV
-nombre comercial	LOC_NC
-nombre del archivo	LOC_NC
-nombre de usuario	LOC_NC
+nombre comercial	NCMS000
+nombre del archivo	NCMS000
+nombre de usuario	NCMS000
 non bis in idem	LOC_ADV
 non plus ultra	LOC_ADV
 no obstante	LOC_ADV
 no obstante	LOC_CC
 nora en tal	LOC_ADV
 nora tal	LOC_ADV
-norma básica	LOC_NC
-norma jurídica	LOC_NC
-normalización lingüística	LOC_NCFS000
-normas de aplicación	LOC_NCFP000
-normas de seguridad	LOC_NCFP000
-normas sociales	LOC_NCFP000
-normativa vigente	LOC_NCFS000
+norma básica	NCFS000
+norma jurídica	NCFS000
+normalización lingüística	NCFS000
+normas de aplicación	NCFP000
+normas de seguridad	NCFP000
+normas sociales	NCFP000
+normativa vigente	NCFS000
 no sea que	LOC_CS
 nota bene	NCMN000
-nota media	LOC_NC
-nota simple	LOC_NCFS000
+nota media	NCFS000
+nota simple	NCFS000
 n.º	Y
 nro.	Y
 N. S. J. C.	Y
 N. S.	Y
 Ntr.ª Sr.ª	Y
 Ntra. Sra.	Y
-núcleo familiar	LOC_NC
+núcleo familiar	NCMS000
 nueces moscadas	NCFP000
-nueva economía	LOC_NCFS000
+nueva economía	NCFS000
 Nueva Zelanda	NPFSG00
 nuez moscada	NCFS000
-número de alumnos	LOC_NCMS000
-número de cuenta	LOC_NCMS000
-número de identificación fiscal	LOC_NCMS000
-número de identificación	LOC_NCMS000
-número de profesores	LOC_NCMS000
-números rojos	LOC_NCMP000
+número de alumnos	NCMS000
+número de cuenta	NCMS000
+número de identificación fiscal	NCMS000
+número de identificación	NCMS000
+número de profesores	NCMS000
+números rojos	NCMP000
 numerus clausus	NCMN000
 núm.	Y
 n.	Y
 ob. cit.	Y
-obispo auxiliar	LOC_NC
+obispo auxiliar	NCMS000
 obiter dictum	LOC_ADV
-obra de teatro	LOC_NC
-obra nueva	LOC_NCFS000
-obras de infraestructura	LOC_NCFP000
-obra social	LOC_NC
-observatorio astronómico	LOC_NC
+obra de teatro	NCFS000
+obra nueva	NCFS000
+obras de infraestructura	NCFP000
+obra social	NCFS000
+observatorio astronómico	NCMS000
 Ob.	Y
-ocupación militar	LOC_NCFS000
-oferta educativa	LOC_NCFS000
+ocupación militar	NCFS000
+oferta educativa	NCFS000
 off line	LOC_ADV
-oficina central	LOC_NCFS000
-oficina de empleo	LOC_NC
-oficina de información	LOC_NC
-oficina principal	LOC_NCFS000
-oficina técnica	LOC_NC
+oficina central	NCFS000
+oficina de empleo	NCFS000
+oficina de información	NCFS000
+oficina principal	NCFS000
+oficina técnica	NCFS000
 O. F. M.	Y
-ola de calor	LOC_NCFS000
-ola de frío	LOC_NCFS000
-óleo sobre lienzo	LOC_NC
+ola de calor	NCFS000
+ola de frío	NCFS000
+óleo sobre lienzo	NCMS000
 O. M.	Y
-oncología médica	LOC_NCFS000
+oncología médica	NCFS000
 on line	LOC_ADV
-onza fluido	LOC_NC
-opción de compra	LOC_NC
+onza fluido	NCFS000
+opción de compra	NCFS000
 óp. cit.	Y
-operación comercial	LOC_NC
-operación militar	LOC_NC
-operador o	LOC_NCFS000
-operador y	LOC_NCFS000
+operación comercial	NCFS000
+operación militar	NCFS000
+operador o	NCFS000
+operador y	NCFS000
 ópera prima	NCFS000
 O. P.	Y
-ordenación general del sistema educativo	LOC_NCFS000
-ordenación urbana	LOC_NCFS000
-ordenamiento jurídico	LOC_NCMS000
-ordenanza fiscal	LOC_NC
-ordenanza municipal	LOC_NC
-orden constitucional	LOC_NCFS000
-orden de prioridad	LOC_NCFS000
-orden establecido	LOC_NCFS000
-orden jurídico	LOC_NCFS000
-orden jurisdiccional	LOC_NCFS000
-orden ministerial	LOC_NCFS000
-organismo oficial	LOC_NC
-organización de empresas	LOC_NC
-organización de las naciones unidas	LOC_NCFS000
-organización de las naciones unidas para la agricultura y la alimentación	LOC_NCFS000
-organización de las naciones unidas para la educación, la ciencia y la cultura	LOC_NCFS000
-organización de los estados americanos	LOC_NCFS000
-organización sin fines de lucro	LOC_NC
-organización social	LOC_NC
-órgano consultivo	LOC_NC
-órgano de gobierno	LOC_NC
-orientación educativa	LOC_NCFS000
+ordenación general del sistema educativo	NCFS000
+ordenación urbana	NCFS000
+ordenamiento jurídico	NCMS000
+ordenanza fiscal	NCFS000
+ordenanza municipal	NCFS000
+orden constitucional	NCFS000
+orden de prioridad	NCFS000
+orden establecido	NCFS000
+orden jurídico	NCFS000
+orden jurisdiccional	NCFS000
+orden ministerial	NCFS000
+organismo oficial	NCMS000
+organización de empresas	NCFS000
+organización de las naciones unidas	NCFS000
+organización de las naciones unidas para la agricultura y la alimentación	NCFS000
+organización de las naciones unidas para la educación, la ciencia y la cultura	NCFS000
+organización de los estados americanos	NCFS000
+organización sin fines de lucro	NCFS000
+organización social	NCFS000
+órgano consultivo	NCMS000
+órgano de gobierno	NCMS000
+orientación educativa	NCFS000
 O. S. A.	Y
 o sea	LOC_CC
-oso hormiguero	LOC_NC
-óxido nítrico	LOC_NCFS000
-pacto social	LOC_NCMS000
-padrón municipal	LOC_NCMS000
-página personal	LOC_NC
-página web	LOC_NC
-página web personal	LOC_NC
-pago anticipado	LOC_NCMS000
-pago en efectivo	LOC_NCMS000
+oso hormiguero	NCMS000
+óxido nítrico	NCFS000
+pacto social	NCMS000
+padrón municipal	NCMS000
+página personal	NCFS000
+página web	NCFS000
+página web personal	NCFS000
+pago anticipado	NCMS000
+pago en efectivo	NCMS000
 pág.	Y
-paisaje natural	LOC_NCMS000
-paisaje urbano	LOC_NCMS000
-país en desarrollo	LOC_NC
-palacio de justicia	LOC_NCMS000
-palacio de los deportes	LOC_NCMS000
+paisaje natural	NCMS000
+paisaje urbano	NCMS000
+# país en desarrollo	LOC_NC
+palacio de justicia	NCMS000
+palacio de los deportes	NCMS000
 pane lucrando	LOC_ADV
 panem et circenses	LOC_ADV
 Pange lingua	LOC_ADV
-pantalla de cristal liquido	LOC_NC
-pantalla de cristal líquido	LOC_NC
-papel continuo	LOC_NCMS000
+pantalla de cristal liquido	NCFS000
+pantalla de cristal líquido	NCFS000
+papel continuo	NCMS000
 para colmo	LOC_ADV
 para dar y tomar	LOC_ADV
-parálisis cerebral	LOC_NC
+# parálisis cerebral	LOC_NC
 para más inri	LOC_ADV
 # para que	LOC_CS # see QUE Pare que sirve?
 para rato	LOC_ADV
 para remate	LOC_ADV
 para todo trote	LOC_ADV
 parecido a	LOC_PREP
-parlamento europeo	LOC_NCMS000
-parlamento vasco	LOC_NCMS000
-parque de bomberos	LOC_NC
-parque eólico	LOC_NC
+parlamento europeo	NCMS000
+parlamento vasco	NCMS000
+# parque de bomberos	LOC_NC
+# parque eólico	LOC_NC
 párr.	Y
-parte contratante	LOC_NC
-partida de nacimiento	LOC_NC
-partido amistoso	LOC_NC
-partido comunista	LOC_NCMS000
-partido conservador	LOC_NCMS000
-partido de ida	LOC_NC
-partido de vuelta	LOC_NC
-partido liberal	LOC_NCMS000
-partido oficial	LOC_NCMS000
-partido político	LOC_NC
-partido socialista obrero español	LOC_NCMS000
+# parte contratante	LOC_NC
+partida de nacimiento	NCFS000
+partido amistoso	NCMS000
+partido comunista	NCMS000
+partido conservador	NCMS000
+partido de ida	NCMS000
+partido de vuelta	NCMS000
+partido liberal	NCMS000
+partido oficial	NCMS000
+partido político	NCMS000
+partido socialista obrero español	NCMS000
 pasado mañana	LOC_ADV
-pasión de cristo	LOC_NCFS000
-patata frita	LOC_NC
-patrimonio artístico	LOC_NC
-patrimonio cultural	LOC_NC
-patrimonio histórico-artístico	LOC_NC
+pasión de cristo	NCFS000
+patata frita	NCFS000
+patrimonio artístico	NCMS000
+patrimonio cultural	NCMS000
+patrimonio histórico-artístico	NCMS000
 Pat.	Y
 p. a.	Y
 Pbro.	Y
@@ -3443,28 +3443,28 @@ peccata minuta	LOC_ADV
 peccata minuta	LOC_AQ0CN0
 peccata minuta	NCFS000
 p. ej.	Y
-pensamiento filosófico	LOC_NCMS000
-pensión de jubilación	LOC_NC
-pequeña empresa	LOC_NC
-pequeñas y medianas empresas	LOC_NCFP000
+pensamiento filosófico	NCMS000
+pensión de jubilación	NCFS000
+pequeña empresa	NCFS000
+pequeñas y medianas empresas	NCFP000
 per accidens	LOC_ADV
 per cápita	AQ0CN0
 Per cápita	LOC_AQ0CN0
-período de vacaciones	LOC_NC
-período de validez	LOC_NCMS000
-período de vigencia	LOC_NCMS000
-permiso de conducir	LOC_NC
-permiso de residencia	LOC_NC
+período de vacaciones	NCMS000
+período de validez	NCMS000
+período de vigencia	NCMS000
+permiso de conducir	NCMS000
+permiso de residencia	NCMS000
 per se	LOC_ADV
-persona de edad avanzada	LOC_NC
-personal administrativo	LOC_NCMS000
-personal docente	LOC_NCMS000
-personalidad jurídica	LOC_NCFS000
-personalidad jurídica propia	LOC_NCFS000
+persona de edad avanzada	NCFS000
+personal administrativo	NCMS000
+personal docente	NCMS000
+personalidad jurídica	NCFS000
+personalidad jurídica propia	NCFS000
 persona non grata	NCFS000
-perspectiva histórica	LOC_NCFS000
-perspectivas económicas	LOC_NCFP000
-pescado fresco	LOC_NCMS000
+perspectiva histórica	NCFS000
+perspectivas económicas	NCFP000
+pescado fresco	NCMS000
 #pese a	LOC_PREP
 pese a que	LOC_CS
 Petrus in cunctis	LOC_ADV
@@ -3472,48 +3472,48 @@ pg.	Y
 pian pianito	LOC_ADV
 pian pian	LOC_ADV
 pian piano	LOC_ADV
-pie cuadrado	LOC_NC
-pie cúbico Fh minuto	LOC_NC
-pie cúbico Fh segundo	LOC_NC
-pie cúbico	LOC_NC
-pie cúbico por minuto	LOC_NC
-pie cúbico por segundo	LOC_NC
-pie de agua	LOC_NC
-pie Fh hora	LOC_NC
-pie Fh minuto	LOC_NC
-pie Fh segundo Fh segundo	LOC_NC
-pie Fh segundo	LOC_NC
-pie Fh segundo por segundo	LOC_NC
-pie Fh segundo segundo	LOC_NC
-pie hora	LOC_NC
-pie minuto	LOC_NC
-pie por hora	LOC_NC
-pie por minuto	LOC_NC
-pie por segundo al cuadrado	LOC_NC
-pie por segundo cuadrado	LOC_NC
-pie por segundo Fh segundo	LOC_NC
-pie por segundo	LOC_NC
-pie por segundo por segundo	LOC_NC
-pie por segundo segundo	LOC_NC
-pie segundo Fh segundo	LOC_NC
-pie segundo	LOC_NC
-pie segundo por segundo	LOC_NC
-pie segundo segundo	LOC_NC
-piscina cubierta	LOC_NC
+pie cuadrado	NCMS000
+pie cúbico Fh minuto	NCMS000
+pie cúbico Fh segundo	NCMS000
+pie cúbico	NCMS000
+pie cúbico por minuto	NCMS000
+pie cúbico por segundo	NCMS000
+pie de agua	NCMS000
+pie Fh hora	NCMS000
+pie Fh minuto	NCMS000
+pie Fh segundo Fh segundo	NCMS000
+pie Fh segundo	NCMS000
+pie Fh segundo por segundo	NCMS000
+pie Fh segundo segundo	NCMS000
+pie hora	NCMS000
+pie minuto	NCMS000
+pie por hora	NCMS000
+pie por minuto	NCMS000
+pie por segundo al cuadrado	NCMS000
+pie por segundo cuadrado	NCMS000
+pie por segundo Fh segundo	NCMS000
+pie por segundo	NCMS000
+pie por segundo por segundo	NCMS000
+pie por segundo segundo	NCMS000
+pie segundo Fh segundo	NCMS000
+pie segundo	NCMS000
+pie segundo por segundo	NCMS000
+pie segundo segundo	NCMS000
+piscina cubierta	NCFS000
 p. k.	Y
-plan de emergencia	LOC_NC
-plan de gestión	LOC_NC
-plan general de contabilidad	LOC_NCMS000
-planificación económica	LOC_NCFS000
-planificación familiar	LOC_NCFS000
-plano de situación	LOC_NCMS000
+plan de emergencia	NCMS000
+plan de gestión	NCMS000
+plan general de contabilidad	NCMS000
+planificación económica	NCFS000
+planificación familiar	NCFS000
+plano de situación	NCMS000
 play back	NCMN000
 play boy	NCMS000
 play boys	NCMP000
-plazo de admisión	LOC_NC
-pleno del ayuntamiento	LOC_NC
-pleno empleo	LOC_NCMS000
-pleno municipal	LOC_NC
+plazo de admisión	NCMS000
+pleno del ayuntamiento	NCMS000
+pleno empleo	NCMS000
+pleno municipal	NCMS000
 plis plas	NCMS000
 pluralia tantum	LOC_ADV
 plus minusve	LOC_ADV
@@ -3523,14 +3523,14 @@ plza.	Y
 P. M.	Y
 p. m.	Y
 Pnt.	Y
-población objetivo	LOC_NCFS000
+población objetivo	NCFS000
 poco a poco	LOC_ADV
-policía judicial	LOC_NCCS000
-polígono industrial	LOC_NC
-política ambiental	LOC_NC
-política de defensa	LOC_NC
-política de empleo	LOC_NC
-política económica	LOC_NC
+policía judicial	NCCS000
+polígono industrial	NCMS000
+política ambiental	NCFS000
+política de defensa	NCFS000
+política de empleo	NCFS000
+política económica	NCFS000
 pop art	AQ0CN0
 por adarmes	LOC_ADV
 por al lado de	LOC_PREP
@@ -3618,125 +3618,125 @@ por virtud de	LOC_PREP
 post meridiem	LOC_ADV
 post mortem	LOC_ADV
 post scriptum	LOC_ADV
-potencia de salida	LOC_NCFS000
-potestad sancionadora	LOC_NCFS000
+potencia de salida	NCFS000
+potestad sancionadora	NCFS000
 p/o	Y
 p. o.	Y
 P. O.	Y
 p.º	Y
 ppal.	Y
 p. p.	Y
-práctica clínica	LOC_NC
+práctica clínica	NCFS000
 prae manibus	LOC_ADV
 pral.	Y
-precio de mercado	LOC_NCMS000
-precio máximo	LOC_NCMS000
-precio mínimo	LOC_NCMS000
-precio único	LOC_NCMS000
-precio unitario	LOC_NCMS000
-predicción del tiempo	LOC_NC
-predicción meteorológica	LOC_NC
-preparador físico	LOC_NC
+precio de mercado	NCMS000
+precio máximo	NCMS000
+precio mínimo	NCMS000
+precio único	NCMS000
+precio unitario	NCMS000
+predicción del tiempo	NCFS000
+predicción meteorológica	NCFS000
+# preparador físico	LOC_NC
 Presb.	Y
-presidencia del gobierno	LOC_NCFS000
-presidente del consejo de administración	LOC_NC
-presidente del parlamento	LOC_NCMS000
-presión sanguínea	LOC_NCFS000
-préstamo hipotecario	LOC_NC
-presupuesto aprobado	LOC_NC
-presupuesto nacional	LOC_NC
-prevención de riesgos laborales	LOC_NCFS000
-prevención de riesgos	LOC_NCFS000
+presidencia del gobierno	NCFS000
+# presidente del consejo de administración	LOC_NC
+presidente del parlamento	NCMS000
+presión sanguínea	NCFS000
+préstamo hipotecario	NCMS000
+presupuesto aprobado	NCMS000
+presupuesto nacional	NCMS000
+prevención de riesgos laborales	NCFS000
+prevención de riesgos	NCFS000
 prima donna	NCFN000
 prima facie	LOC_ADV
-primera comunión	LOC_NCFS000
-primera guerra mundial	LOC_NCFS000
-primer ministro	LOC_NC
-primero de mayo	LOC_NCMS000
-primeros auxilios	LOC_NCMP000
+primera comunión	NCFS000
+primera guerra mundial	NCFS000
+# primer ministro	LOC_NC
+primero de mayo	NCMS000
+primeros auxilios	NCMP000
 primus inter pares	NCMS000
-principio de igualdad	LOC_NCMS000
-principio de legalidad	LOC_NCMS000
-principios generales del derecho	LOC_NCMP000
-procedimiento administrativo	LOC_NC
-procedimiento de evaluación	LOC_NC
-procedimiento judicial	LOC_NC
-procesamiento de la información	LOC_NCMP000
-proceso administrativo	LOC_NC
-proceso de datos	LOC_NCMS000
-proceso de desarrollo	LOC_NCMS000
-proceso de fabricación	LOC_NCMS000
-proceso de integración	LOC_NCMS000
-proceso de socialización	LOC_NCMS000
-proceso educativo	LOC_NCMS000
+principio de igualdad	NCMS000
+principio de legalidad	NCMS000
+principios generales del derecho	NCMP000
+procedimiento administrativo	NCMS000
+procedimiento de evaluación	NCMS000
+procedimiento judicial	NCMS000
+procesamiento de la información	NCMP000
+proceso administrativo	NCMS000
+proceso de datos	NCMS000
+proceso de desarrollo	NCMS000
+proceso de fabricación	NCMS000
+proceso de integración	NCMS000
+proceso de socialización	NCMS000
+proceso educativo	NCMS000
 pro domo sua	LOC_ADV
-producción agrícola	LOC_NC
-producción cinematográfica	LOC_NC
-producción editorial	LOC_NC
-producción editorial	LOC_NCFS000
-producto bruto	LOC_NCMS000
-producto nacional	LOC_NC
-producto químico	LOC_NC
+producción agrícola	NCFS000
+producción cinematográfica	NCFS000
+producción editorial	NCFS000
+producción editorial	NCFS000
+producto bruto	NCMS000
+producto nacional	NCMS000
+producto químico	NCMS000
 Prof.ª	Y
-profesor emérito	LOC_NC
-profesor titular	LOC_NC
+profesor emérito	NCMS000
+profesor titular	NCMS000
 pro forma	LOC_ADV
 Prof.	Y
-programación general	LOC_NCMS000
-programa de las naciones unidas para el medio ambiente	LOC_NCMS000
-programa gratuito	LOC_NC
-progreso económico	LOC_NCMS000
+programación general	NCMS000
+programa de las naciones unidas para el medio ambiente	NCMS000
+programa gratuito	NCFS000
+progreso económico	NCMS000
 pról.	Y
-promoción del empleo	LOC_NCFS000
-promulgación de la ley	LOC_NCFS000
-propiedad urbana	LOC_NCFS000
-proposición de ley	LOC_NCFS000
-proposición no de ley	LOC_NCFS000
+promoción del empleo	NCFS000
+promulgación de la ley	NCFS000
+propiedad urbana	NCFS000
+proposición de ley	NCFS000
+proposición no de ley	NCFS000
 propter nuptias	LOC_ADV
-prosperidad económica	LOC_NCFS000
-protocolo de kioto	LOC_NCMS000
-protocolo tcp-ip	LOC_NCFS000
-protocolo tcp/ip	LOC_NCFS000
+prosperidad económica	NCFS000
+protocolo de kioto	NCMS000
+protocolo tcp-ip	NCFS000
+protocolo tcp/ip	NCFS000
 prov.	Y
-proyecto de ley	LOC_NC
-proyecto empresarial	LOC_NC
-prueba documental	LOC_NC
-psicología aplicada	LOC_NCFS000
-psicología clínica	LOC_NCFS000
-psicología cognitiva	LOC_NCFS000
-psicología evolutiva	LOC_NCFS000
-psicología general	LOC_NCFS000
-psicología social	LOC_NCFS000
+proyecto de ley	NCMS000
+proyecto empresarial	NCMS000
+prueba documental	NCFS000
+psicología aplicada	NCFS000
+psicología clínica	NCFS000
+psicología cognitiva	NCFS000
+psicología evolutiva	NCFS000
+psicología general	NCFS000
+psicología social	NCFS000
 P. S.	Y
-publicidad comercial	LOC_NCFS000
+publicidad comercial	NCFS000
 pues bien	LOC_ADV
 pues sí que	LOC_CS
 pues sí que	LOC_I
-puesta en servicio	LOC_NCFS000
-pulgada agua	LOC_NC
-pulgada cuadrado	LOC_NC
-pulgada cúbico	LOC_NC
-pulgada de agua	LOC_NC
-pulgada de hg	LOC_NC
-pulgada Fh segundo Fh segundo	LOC_NC
-pulgada Fh segundo por segundo	LOC_NC
-pulgada Fh segundo segundo	LOC_NC
-pulgada hg	LOC_NC
-pulgada por segundo al cuadrado	LOC_NC
-pulgada por segundo cuadrado	LOC_NC
-pulgada por segundo Fh segundo	LOC_NC
-pulgada por segundo por segundo	LOC_NC
-pulgada por segundo segundo	LOC_NC
-pulgada segundo Fh segundo	LOC_NC
-pulgada segundo por segundo	LOC_NC
-pulgada segundo segundo	LOC_NC
-punto crítico	LOC_NC
-punto de cruz	LOC_NCMS000
-punto de equilibrio	LOC_NCMS000
-punto de partida	LOC_NCMS000
-punto de referencia	LOC_NCMS000
-punto focal	LOC_NCMS000
-puntuación media	LOC_NCMS000
+puesta en servicio	NCFS000
+pulgada agua	NCFS000
+pulgada cuadrado	NCFS000
+pulgada cúbico	NCFS000
+pulgada de agua	NCFS000
+pulgada de hg	NCFS000
+pulgada Fh segundo Fh segundo	NCFS000
+pulgada Fh segundo por segundo	NCFS000
+pulgada Fh segundo segundo	NCFS000
+pulgada hg	NCFS000
+pulgada por segundo al cuadrado	NCFS000
+pulgada por segundo cuadrado	NCFS000
+pulgada por segundo Fh segundo	NCFS000
+pulgada por segundo por segundo	NCFS000
+pulgada por segundo segundo	NCFS000
+pulgada segundo Fh segundo	NCFS000
+pulgada segundo por segundo	NCFS000
+pulgada segundo segundo	NCFS000
+punto crítico	NCMS000
+punto de cruz	NCMS000
+punto de equilibrio	NCMS000
+punto de partida	NCMS000
+punto de referencia	NCMS000
+punto focal	NCMS000
+puntuación media	NCMS000
 P. V. P.	Y
 p. v.	Y
 P.	Y
@@ -3754,119 +3754,119 @@ que ni hecho de encargo	LOC_ADV
 que ni pintado	LOC_ADV
 que pela	LOC_ADV
 que si tal que si cual	LOC_ADV
-queso fresco	LOC_NC
+queso fresco	NCMS000
 quid divinum	LOC_ADV
 quid pro quo	LOC_ADV
 quiera que no	LOC_ADV
 quieras que no	LOC_ADV
-química ambiental	LOC_NCFS000
-química general	LOC_NCMS000
-química industrial	LOC_NCMS000
+química ambiental	NCFS000
+química general	NCMS000
+química industrial	NCMS000
 rabassa morta	LOC_ADV
-rad Fh s	LOC_NCFS000
-radiación solar	LOC_NC
-radiación ultravioleta	LOC_NC
-radián Fh segundo	LOC_NC
-radián por segundo	LOC_NC
-ramo de flores	LOC_NC
+rad Fh s	NCFS000
+radiación solar	NCFS000
+radiación ultravioleta	NCFS000
+# radián Fh segundo	LOC_NC
+# radián por segundo	LOC_NC
+ramo de flores	NCMS000
 rara avis	NCCN000
 rara vez	LOC_ADV
 rata parte	LOC_ADV
-rayos x	LOC_NCMP000
+rayos x	NCMP000
 Rda.	Y
 Rdo.	Y
 R. D.	Y
-reacción química	LOC_NC
-real decreto ley	LOC_NCMS000
+reacción química	NCFS000
+real decreto ley	NCMS000
 reales decretos leyes	NCMS000
 reality show	NCMS000
 reality shows	NCMP000
-recaudación de impuestos	LOC_NCMS000
-reconocimiento de voz	LOC_NCMS000
-recurso administrativo	LOC_NC
-recursos hídricos	LOC_NCMP000
-recursos públicos	LOC_NCMP000
-red de datos	LOC_NCFS000
-red de relaciones	LOC_NCFS000
-red ethernet	LOC_NCFS000
-red informática	LOC_NCFS000
-red privada	LOC_NCFS000
-red pública	LOC_NCFS000
-red telefónica	LOC_NCFS000
-reducción de jornada	LOC_NCFS000
-reducción de la jornada	LOC_NCFS000
-reforma constitucional	LOC_NC
-reforma tributaria	LOC_NC
-régimen capitalista	LOC_NCMS000
-régimen democrático	LOC_NCMS000
-régimen disciplinario	LOC_NCMS000
-régimen económico	LOC_NCMS000
-régimen general de la seguridad social	LOC_NCMS000
-régimen jurídico	LOC_NCMS000
-régimen político	LOC_NCMS000
-régimen tributario	LOC_NCMS000
-registro de datos	LOC_NC
-regla de oro	LOC_NC
-regresión lineal	LOC_NCFS000
+recaudación de impuestos	NCMS000
+reconocimiento de voz	NCMS000
+recurso administrativo	NCMS000
+recursos hídricos	NCMP000
+recursos públicos	NCMP000
+red de datos	NCFS000
+red de relaciones	NCFS000
+red ethernet	NCFS000
+red informática	NCFS000
+red privada	NCFS000
+red pública	NCFS000
+red telefónica	NCFS000
+reducción de jornada	NCFS000
+reducción de la jornada	NCFS000
+reforma constitucional	NCFS000
+reforma tributaria	NCFS000
+régimen capitalista	NCMS000
+régimen democrático	NCMS000
+régimen disciplinario	NCMS000
+régimen económico	NCMS000
+régimen general de la seguridad social	NCMS000
+régimen jurídico	NCMS000
+régimen político	NCMS000
+régimen tributario	NCMS000
+registro de datos	NCMS000
+regla de oro	NCFS000
+regresión lineal	NCFS000
 reg.	Y
-reino animal	LOC_NCMS000
-reinserción social	LOC_NCMS000
-relación bilateral	LOC_NCFS000
-relación de dependencia	LOC_NCFS000
-relaciones de producción	LOC_NCFP000
-relaciones diplomáticas	LOC_NCFP000
-relaciones humanas	LOC_NCFP000
-relación jurídica	LOC_NCFS000
-relación personal	LOC_NC
+reino animal	NCMS000
+reinserción social	NCMS000
+relación bilateral	NCFS000
+relación de dependencia	NCFS000
+relaciones de producción	NCFP000
+relaciones diplomáticas	NCFP000
+relaciones humanas	NCFP000
+relación jurídica	NCFS000
+relación personal	NCFS000
 relata refero	LOC_ADV
 relata réfero	LOC_ADV
-rendimiento escolar	LOC_NCMS000
-rentabilidad económica	LOC_NC
-renta variable	LOC_NC
-representación diplomática	LOC_NC
-representación gráfica	LOC_NC
-representación legal	LOC_NC
-representación proporcional	LOC_NCFS000
-representante del gobierno	LOC_NC
-reproducción asistida	LOC_NCFS000
-reproductor de dvd	LOC_NC
-república federal	LOC_NCFS000
+rendimiento escolar	NCMS000
+# rentabilidad económica	LOC_NC
+renta variable	NCFS000
+representación diplomática	NCFS000
+representación gráfica	NCFS000
+representación legal	NCFS000
+representación proporcional	NCFS000
+# representante del gobierno	LOC_NC
+reproducción asistida	NCFS000
+# reproductor de dvd	LOC_NC
+república federal	NCFS000
 Rep.	Y
 requiescat in pace	LOC_ADV
-reserva de la biosfera	LOC_NC
-reserva legal	LOC_NCFS000
-residencia habitual	LOC_NCFS000
-residencia oficial	LOC_NC
-resistencia de materiales	LOC_NCFS000
-resolución administrativa	LOC_NC
-resolución impugnada	LOC_NC
+reserva de la biosfera	NCFS000
+reserva legal	NCFS000
+residencia habitual	NCFS000
+residencia oficial	NCFS000
+resistencia de materiales	NCFS000
+resolución administrativa	NCFS000
+resolución impugnada	NCFS000
 respecto a	LOC_PREP
 respecto a que	LOC_CS
 respecto de	LOC_PREP
-responsabilidad administrativa	LOC_NC
-responsabilidad civil	LOC_NC
-resultado oficial	LOC_NC
-retraso mental	LOC_NCMS000
-revolución cultural	LOC_NCFS000
-revolución francesa	LOC_NCFS000
-revolución socialista	LOC_NCFS000
+# responsabilidad administrativa	LOC_NC
+# responsabilidad civil	LOC_NC
+resultado oficial	NCMS000
+retraso mental	NCMS000
+revolución cultural	NCFS000
+revolución francesa	NCFS000
+revolución socialista	NCFS000
 Rev.	Y
-riesgo social	LOC_NC
-rigor científico	LOC_NCMS000
+riesgo social	NCMS000
+rigor científico	NCMS000
 rigor mortis	NCMN000
 río abajo	LOC_ADV
 río arriba	LOC_ADV
 Río de Janeiro	NPCSG00
 R. I. P.	Y
-ritmo cardiaco	LOC_NCMS000
-ritmo de trabajo	LOC_NCMS000
-rock and roll	LOC_NCMS000
+ritmo cardiaco	NCMS000
+ritmo de trabajo	NCMS000
+rock and roll	NCMS000
 rock and roll	NCMS000
 rock 'n' roll	NCMS000
 rock'n'roll	NCMS000
 rock & roll	NCMS000
 rock&roll	NCMS000
-role playing	LOC_NCMS000
+role playing	NCMS000
 roll on	LOC_AQ0CN0
 R. O.	Y
 r.º	Y
@@ -3881,26 +3881,26 @@ Rvdmo.	Y
 Rvdo.	Y
 Rvd.	Y
 R.	Y
-sábado santo	LOC_NCMS000
-sagrada familia	LOC_NCMS000
+sábado santo	NCMS000
+sagrada familia	NCMS000
 S. A. I.	Y
-sala de prensa	LOC_NC
-salario base	LOC_NC
-salario mínimo	LOC_NC
+sala de prensa	NCFS000
+salario base	NCMS000
+salario mínimo	NCMS000
 salga lo que salga	LOC_ADV
-salón de plenos	LOC_NC
-salsa de tomate	LOC_NC
-salud ambiental	LOC_NCFS000
-salud bucodental	LOC_NCFS000
+# salón de plenos	LOC_NC
+salsa de tomate	NCFS000
+salud ambiental	NCFS000
+salud bucodental	NCFS000
 San Cristóbal y Nieves	NPCSG00
-santa misa	LOC_NCFS000
+santa misa	NCFS000
 Sant Cugat del Vallès	NPCSG00
 Sant Cugat	NPCSG00
-santísima trinidad	LOC_NCMS000
-santísimo sacramento	LOC_NCMS000
+santísima trinidad	NCMS000
+santísimo sacramento	NCMS000
 Sant Joan Despí	NPCSG00
-santo oficio	LOC_NCMS000
-santo sepulcro	LOC_NCMS000
+santo oficio	NCMS000
+santo sepulcro	NCMS000
 S. A. R.	Y
 S. A. S.	Y
 s/a	Y
@@ -3914,59 +3914,59 @@ S. D. M.	Y
 s. d.	Y
 sea cual fuere	LOC_ADV
 sea lo que fuere	LOC_ADV
-secretaría de estado	LOC_NCFS000
-secretaría de gobierno	LOC_NCFS000
-secretaría general	LOC_NCFS000
-sector agrario	LOC_NCMS000
-sector agrícola	LOC_NCMS000
-sector económico	LOC_NCMS000
-sector turístico	LOC_NCMS000
+secretaría de estado	NCFS000
+secretaría de gobierno	NCFS000
+secretaría general	NCFS000
+sector agrario	NCMS000
+sector agrícola	NCMS000
+sector económico	NCMS000
+sector turístico	NCMS000
 según como	LOC_ADV
-segunda guerra mundial	LOC_NCFS000
-segunda lengua	LOC_NC
+segunda guerra mundial	NCFS000
+segunda lengua	NCFS000
 según el decir de	LOC_PREP
 según que	LOC_CS
-seguridad del estado	LOC_NCFS000
-seguridad e higiene	LOC_NCFS000
-seguridad internacional	LOC_NCFS000
-seguridad jurídica	LOC_NCFS000
-seguridad personal	LOC_NCFS000
-seguro de accidentes	LOC_NC
-seguro de vida	LOC_NC
-seguro obligatorio	LOC_NC
-seguro social	LOC_NC
-selección nacional	LOC_NC
-selección natural	LOC_NCFS000
-selva tropical	LOC_NC
+seguridad del estado	NCFS000
+seguridad e higiene	NCFS000
+seguridad internacional	NCFS000
+seguridad jurídica	NCFS000
+seguridad personal	NCFS000
+seguro de accidentes	NCMS000
+seguro de vida	NCMS000
+seguro obligatorio	NCMS000
+seguro social	NCMS000
+selección nacional	NCFS000
+selección natural	NCFS000
+selva tropical	NCFS000
 semejante a	LOC_PREP
 sensu lato	LOC_ADV
 sensu stricto	LOC_ADV
-sentencia firme	LOC_NCFS000
-sentido contrario	LOC_NCMS000
-sentido crítico	LOC_NCMS000
-sentido del humor	LOC_NCMS000
-sentido de responsabilidad	LOC_NCMS000
-sentido literal	LOC_NCMS000
-sentimiento de culpa	LOC_NC
-separación de poderes	LOC_NCFS000
-servicio asistencial	LOC_NC
-servicio de apoyo	LOC_NC
-servicio de atención al cliente	LOC_NC
-servicio de información	LOC_NC
-servicio de urgencias	LOC_NC
-servicio educativo	LOC_NC
-servicio jurídico	LOC_NC
-servicio meteorológico	LOC_NC
-servicio público	LOC_NC
-servicios funerarios	LOC_NCMP000
-servicios sociales	LOC_NCMP000
-servicios urbanos	LOC_NCMP000
-servicio turístico	LOC_NC
-servidor dns	LOC_NC
-servidor proxy	LOC_NC
-servidor web	LOC_NC
-sesión continua	LOC_NC
-sesión plenaria	LOC_NC
+sentencia firme	NCFS000
+sentido contrario	NCMS000
+sentido crítico	NCMS000
+sentido del humor	NCMS000
+sentido de responsabilidad	NCMS000
+sentido literal	NCMS000
+sentimiento de culpa	NCMS000
+separación de poderes	NCFS000
+servicio asistencial	NCMS000
+servicio de apoyo	NCMS000
+servicio de atención al cliente	NCMS000
+servicio de información	NCMS000
+servicio de urgencias	NCMS000
+servicio educativo	NCMS000
+servicio jurídico	NCMS000
+servicio meteorológico	NCMS000
+servicio público	NCMS000
+servicios funerarios	NCMP000
+servicios sociales	NCMP000
+servicios urbanos	NCMP000
+servicio turístico	NCMS000
+servidor dns	NCMS000
+servidor proxy	NCMS000
+servidor web	NCMS000
+sesión continua	NCFS000
+sesión plenaria	NCFS000
 s. e. u o.	Y
 sex appeal	NCMS000
 sex shop	NCMS000
@@ -3984,14 +3984,14 @@ si bien se mira	LOC_ADV
 siempre y cuando	LOC_CS
 # siendo así	LOC_ADV # QUE[5]
 sig.	Y
-silencio administrativo	LOC_NCMS000
+silencio administrativo	NCMS000
 similar a	LOC_PREP
 sin ambages	LOC_ADV
 sin chistar ni mistar	LOC_ADV
 sin comerlo ni beberlo	LOC_ADV
 sin contar con	LOC_PREP
 sin contar con que	LOC_CS
-síndrome de down	LOC_NCMS000
+síndrome de down	NCMS000
 sin duda alguna	LOC_ADV
 sine die	LOC_ADV
 sine qua non	LOC_ADV
@@ -4010,40 +4010,40 @@ sin qué ni para qué	LOC_ADV
 sin ton ni son	LOC_ADV
 sin trastes	LOC_ADV
 sin venir a pelo	LOC_ADV
-sistema abierto	LOC_NCMS000
-sistema de clasificación	LOC_NC
-sistema de comunicación	LOC_NC
-sistema de correo	LOC_NC
-sistema de defensa	LOC_NC
-sistema de ficheros	LOC_NC
-sistema de gestión	LOC_NC
-sistema de gobierno	LOC_NC
-sistema de información geográfica	LOC_NC
-sistema de juego	LOC_NC
-sistema de medición	LOC_NC
-sistema democrático	LOC_NC
-sistema de partidos	LOC_NC
-sistema de producción	LOC_NC
-sistema de seguridad	LOC_NC
-sistema económico	LOC_NC
-sistema educativo	LOC_NC
-sistema electoral	LOC_NC
-sistema electrónico	LOC_NC
-sistema federal	LOC_NC
-sistema fiscal	LOC_NC
-sistema informático	LOC_NC
-sistema métrico	LOC_NCMS000
-sistema nacional de salud	LOC_NCMS000
-sistema nervioso central	LOC_NCMS000
-sistema nervioso	LOC_NCMS000
-sistema social	LOC_NCMS000
-sistema tributario	LOC_NCMS000
-sitio web	LOC_NC
-situación administrativa	LOC_NCFS000
-situación de emergencia	LOC_NC
-situación económica	LOC_NCFS000
-situación financiera	LOC_NCFS000
-situación jurídica	LOC_NCFS000
+sistema abierto	NCMS000
+sistema de clasificación	NCFS000
+sistema de comunicación	NCFS000
+sistema de correo	NCFS000
+sistema de defensa	NCFS000
+sistema de ficheros	NCFS000
+sistema de gestión	NCFS000
+sistema de gobierno	NCFS000
+sistema de información geográfica	NCFS000
+sistema de juego	NCFS000
+sistema de medición	NCFS000
+sistema democrático	NCFS000
+sistema de partidos	NCFS000
+sistema de producción	NCFS000
+sistema de seguridad	NCFS000
+sistema económico	NCFS000
+sistema educativo	NCFS000
+sistema electoral	NCFS000
+sistema electrónico	NCFS000
+sistema federal	NCFS000
+sistema fiscal	NCFS000
+sistema informático	NCFS000
+sistema métrico	NCMS000
+sistema nacional de salud	NCMS000
+sistema nervioso central	NCMS000
+sistema nervioso	NCMS000
+sistema social	NCMS000
+sistema tributario	NCMS000
+sitio web	NCMS000
+situación administrativa	NCFS000
+situación de emergencia	NCFS000
+situación económica	NCFS000
+situación financiera	NCFS000
+situación jurídica	NCFS000
 S. I.	Y
 S. J.	Y
 s/l	Y
@@ -4054,20 +4054,20 @@ snack bar	NCMS000
 snack bars	NCMP000
 s/n	Y
 s. n.	Y
-soberanía nacional	LOC_NCFS000
-soberanía popular	LOC_NCFS000
+soberanía nacional	NCFS000
+soberanía popular	NCFS000
 sobre manera	LOC_ADV
 sobre seguro	LOC_ADV
-sociedad capitalista	LOC_NC
-sociedad financiera	LOC_NC
-socio fundador	LOC_NC
-sociología política	LOC_NCFS000
+sociedad capitalista	NCFS000
+sociedad financiera	NCFS000
+socio fundador	NCMS000
+sociología política	NCFS000
 Soc.	Y
-software educativo	LOC_NC
-solidaridad internacional	LOC_NCFS000
+# software educativo	LOC_NC
+solidaridad internacional	NCFS000
 so pena de que	LOC_CS
 so pena que	LOC_CS
-soporte físico	LOC_NC
+# soporte físico	LOC_NC
 sotto voce	LOC_ADV
 # Spanish multiwords file used for chunking
 S. P.	Y
@@ -4088,17 +4088,17 @@ Sto.	Y
 stricto sensu	LOC_ADV
 sub iudice	LOC_ADV
 sub judice	LOC_ADV
-subsecretario de estado	LOC_NC
+subsecretario de estado	NCMS000
 sub voce	LOC_ADV
-suelo no urbanizable	LOC_NCMS000
-suelo urbanizable	LOC_NCMS000
+suelo no urbanizable	NCMS000
+suelo urbanizable	NCMS000
 sui géneris	LOC_ADV
-suministro de energía eléctrica	LOC_NC
-súper 8	LOC_NCFS000
-superficie plana	LOC_NC
-superficie útil	LOC_NCFS000
+suministro de energía eléctrica	NCMS000
+súper 8	NCFS000
+# superficie plana	LOC_NC
+superficie útil	NCFS000
 supuesto que	LOC_CS
-sustancia química	LOC_NC
+sustancia química	NCFS000
 s/v	Y
 s. v.	Y
 S.	Y
@@ -4107,11 +4107,11 @@ tabula gratulatoria	NCFS000
 tabula rasa	NCFS000
 tal como	LOC_CS
 tal cual	LOC_ADV
-taller mecánico	LOC_NC
+# taller mecánico	LOC_NC
 tal vez	LOC_ADV
 tal y como	LOC_CS
-tamaño de la población	LOC_NCMS000
-tamaño natural	LOC_NCMS000
+tamaño de la población	NCMS000
+tamaño natural	NCMS000
 tan pronto como	LOC_CS
 tan siquiera	LOC_ADV
 tanto más que	LOC_CS
@@ -4120,117 +4120,117 @@ tanto peor	LOC_ADV
 tanto por ciento	LOC_ADV
 tanto por tanto	LOC_ADV
 Tantum ergo	NCMS000
-tarjeta de identificación	LOC_NC
-tarjeta de red	LOC_NC
-tarjeta de sonido	LOC_NC
-tarjeta de vídeo	LOC_NC
-tarjeta gráfica	LOC_NC
-tarjeta pcmcia	LOC_NC
-tarjeta roja	LOC_NC
-tasa de cambio	LOC_NC
-tasa de crecimiento	LOC_NC
-tasa de desempleo	LOC_NC
-tasa de inflación	LOC_NC
-tasa de paro	LOC_NC
-taza de café	LOC_NC
-técnica de evaluación	LOC_NC
-técnica mixta	LOC_NC
-técnico auxiliar	LOC_NC
-técnico económico	LOC_NC
-tecnología avanzada	LOC_NCFS000
-tecnología educativa	LOC_NCFS000
-tejido adiposo	LOC_NCMS000
-tejido conectivo	LOC_NCMS000
-telefonía ip	LOC_NCMS000
+tarjeta de identificación	NCFS000
+tarjeta de red	NCFS000
+tarjeta de sonido	NCFS000
+tarjeta de vídeo	NCFS000
+tarjeta gráfica	NCFS000
+tarjeta pcmcia	NCFS000
+tarjeta roja	NCFS000
+tasa de cambio	NCFS000
+tasa de crecimiento	NCFS000
+tasa de desempleo	NCFS000
+tasa de inflación	NCFS000
+tasa de paro	NCFS000
+taza de café	NCFS000
+técnica de evaluación	NCFS000
+técnica mixta	NCFS000
+técnico auxiliar	NCMS000
+técnico económico	NCMS000
+tecnología avanzada	NCFS000
+tecnología educativa	NCFS000
+tejido adiposo	NCMS000
+tejido conectivo	NCMS000
+telefonía ip	NCMS000
 teléf.	Y
-televisión educativa	LOC_NCFS000
+televisión educativa	NCFS000
 tel.	Y
-tema de investigación	LOC_NC
-temperatura del agua	LOC_NCFS000
-temperatura extrema	LOC_NC
-tensión arterial	LOC_NCFS000
-teoría crítica	LOC_NCFS000
-teoría de la comunicación	LOC_NCFS000
-teoría de la relatividad	LOC_NCFS000
-teoría económica	LOC_NC
-teoría política	LOC_NC
-terapia física	LOC_NCFS000
-terapia ocupacional	LOC_NCFS000
-tercera división	LOC_NCFS000
-tercera edad	LOC_NCFS000
-terreno de juego	LOC_NC
-territorio nacional	LOC_NCMS000
-tesis doctoral	LOC_NC
-testigo de jehová	LOC_NC
+tema de investigación	NCFS000
+temperatura del agua	NCFS000
+temperatura extrema	NCFS000
+tensión arterial	NCFS000
+teoría crítica	NCFS000
+teoría de la comunicación	NCFS000
+teoría de la relatividad	NCFS000
+teoría económica	NCFS000
+teoría política	NCFS000
+terapia física	NCFS000
+terapia ocupacional	NCFS000
+tercera división	NCFS000
+tercera edad	NCFS000
+terreno de juego	NCMS000
+territorio nacional	NCMS000
+# tesis doctoral	LOC_NC
+testigo de jehová	NCMS000
 test.º	Y
-té verde	LOC_NCMS000
-texto legal	LOC_NC
-texto original	LOC_NC
+té verde	NCMS000
+texto legal	NCMS000
+texto original	NCMS000
 tfno.	Y
 tie break	NCMS000
 tie breaks	NCMP000
-tiempo de exposición	LOC_NCMS000
-tiempo de servicio	LOC_NCMS000
-tienda especializada	LOC_NC
+tiempo de exposición	NCMS000
+tiempo de servicio	NCMS000
+tienda especializada	NCFS000
 tierra adentro	LOC_ADV
-tipo de cambio	LOC_NC
-tipo de datos	LOC_NC
-tipo de trabajo	LOC_NC
-tipo de vegetación	LOC_NC
-tira cómica	LOC_NC
-tiro libre	LOC_NCMS000
-titulación académica	LOC_NC
-título académico	LOC_NC
-título de bachiller	LOC_NC
-título de propiedad	LOC_NC
-título oneroso	LOC_NCMS000
-título preliminar	LOC_NCMS000
-título profesional	LOC_NC
-título superior	LOC_NCMS000
+tipo de cambio	NCMS000
+tipo de datos	NCMS000
+tipo de trabajo	NCMS000
+tipo de vegetación	NCMS000
+tira cómica	NCFS000
+tiro libre	NCMS000
+titulación académica	NCFS000
+título académico	NCMS000
+título de bachiller	NCMS000
+título de propiedad	NCMS000
+título oneroso	NCMS000
+título preliminar	NCMS000
+título profesional	NCMS000
+título superior	NCMS000
 tít.	Y
 todo lo contrario	LOC_ADV
 todo lo contrario	LOC_I
 todo oídos	LOC_ADV
 todo quisque	NCMS000
 toga picta	LOC_ADV
-toma de decisiones	LOC_NCFS000
-tonelada métrico	LOC_NC
-tono de voz	LOC_NC
-tono muscular	LOC_NCMS000
+toma de decisiones	NCFS000
+tonelada métrico	NCFS000
+tono de voz	NCMS000
+tono muscular	NCMS000
 top model	NCCS000
 top models	NCCP000
 totum revolutum	NCMS000
 tour de force	NCMS000
-trabajo asalariado	LOC_NCMS000
-trabajo de campo	LOC_NC
-trabajo doméstico	LOC_NC
-trabajo en grupo	LOC_NC
-trabajo grupal	LOC_NCMS000
-trabajo nocturno	LOC_NC
-trabajos forzados	LOC_NCMP000
-tracto gastrointestinal	LOC_NCMS000
-traducción automática	LOC_NCFS000
+trabajo asalariado	NCMS000
+trabajo de campo	NCMS000
+trabajo doméstico	NCMS000
+trabajo en grupo	NCMS000
+trabajo grupal	NCMS000
+trabajo nocturno	NCMS000
+trabajos forzados	NCMP000
+tracto gastrointestinal	NCMS000
+traducción automática	NCFS000
 trad.	Y
-tráfico de drogas	LOC_NCMS000
-transacción comercial	LOC_NC
-transferencia de datos	LOC_NC
-transferencia de información	LOC_NCFS000
-transmisión de datos	LOC_NC
-transporte aéreo	LOC_NC
-transporte de viajeros	LOC_NCMS000
-transporte público	LOC_NCMS000
-tratado de la unión europea	LOC_NCMS000
-tratado de paz	LOC_NC
-tratamiento de aguas residuales	LOC_NCMS000
-tratamiento de datos	LOC_NCMS000
-tratamiento de imágenes	LOC_NCMS000
-tratamiento térmico	LOC_NCMS000
-tribunal de apelación	LOC_NC
-tribunal superior de justicia	LOC_NCMS000
+tráfico de drogas	NCMS000
+transacción comercial	NCFS000
+transferencia de datos	NCFS000
+transferencia de información	NCFS000
+transmisión de datos	NCFS000
+# transporte aéreo	LOC_NC
+transporte de viajeros	NCMS000
+transporte público	NCMS000
+tratado de la unión europea	NCMS000
+tratado de paz	NCMS000
+tratamiento de aguas residuales	NCMS000
+tratamiento de datos	NCMS000
+tratamiento de imágenes	NCMS000
+tratamiento térmico	NCMS000
+# tribunal de apelación	LOC_NC
+tribunal superior de justicia	NCMS000
 Trinidad y Tobago	NPCSG00
 Tte.	Y
-tumor cerebral	LOC_NC
-turismo activo	LOC_NCMS000
+# tumor cerebral	LOC_NC
+turismo activo	NCMS000
 tutti quanti	LOC_ADV
 t.	Y
 Uds.	Y
@@ -4239,55 +4239,55 @@ una vez que	LOC_CS
 una y no más	LOC_ADV
 un día u otro	LOC_ADV
 un día y otro	LOC_ADV
-unidad administrativa	LOC_NC
-unidad de control	LOC_NC
-unidad de cuidados intensivos	LOC_NCFS000
-unidad de gestión	LOC_NC
-unidad de información	LOC_NC
-unidad de masa atómica	LOC_NC
-unidad de medida	LOC_NC
-unidad de producción	LOC_NC
-unidad de tiempo	LOC_NC
-unidad didáctica	LOC_NC
-unidad familiar	LOC_NCFS000
-unión aduanera	LOC_NCFS000
-unión económica	LOC_NCFS000
-unión económica y monetaria	LOC_NCFS000
-unión europea	LOC_NCFS000
-unión general de trabajadores	LOC_NCFS000
-universidad del país vasco	LOC_NCFS000
-universidad nacional de educación a distancia	LOC_NCFS000
+unidad administrativa	NCFS000
+unidad de control	NCFS000
+unidad de cuidados intensivos	NCFS000
+unidad de gestión	NCFS000
+unidad de información	NCFS000
+unidad de masa atómica	NCFS000
+unidad de medida	NCFS000
+unidad de producción	NCFS000
+unidad de tiempo	NCFS000
+unidad didáctica	NCFS000
+unidad familiar	NCFS000
+unión aduanera	NCFS000
+unión económica	NCFS000
+unión económica y monetaria	NCFS000
+unión europea	NCFS000
+unión general de trabajadores	NCFS000
+universidad del país vasco	NCFS000
+universidad nacional de educación a distancia	NCFS000
 Univ.	Y
 uno por uno	LOC_ADV
 un poco tarde	LOC_ADV
 urbi et orbi	LOC_ADV
 urbi et orbi	LOC_AQ0CN0
-uso privado	LOC_NCMS000
-uso residencial	LOC_NCMS000
-usuario registrado	LOC_NC
-utilidad pública	LOC_NCFS000
+uso privado	NCMS000
+uso residencial	NCMS000
+usuario registrado	NCMS000
+utilidad pública	NCFS000
 ut retro	LOC_ADV
 ut supra	LOC_ADV
 U.	Y
 vade retro	LOC_ADV
 vae victis	LOC_ADV
 Valmte.	Y
-valor absoluto	LOC_NC
-valor artístico	LOC_NCMS000
-valor de mercado	LOC_NC
-valor económico	LOC_NCMS000
-valores mobiliarios	LOC_NCMP000
-valor estimado	LOC_NCMS000
-valor inicial	LOC_NC
-valor medio	LOC_NCMS000
-valor nominal	LOC_NCMS000
-valor numérico	LOC_NCMS000
-valor probatorio	LOC_NCMS000
-valor social	LOC_NCMS000
-vapor de agua	LOC_NCMS000
-varita mágica	LOC_NC
+valor absoluto	NCMS000
+valor artístico	NCMS000
+valor de mercado	NCMS000
+valor económico	NCMS000
+valores mobiliarios	NCMP000
+valor estimado	NCMS000
+valor inicial	NCMS000
+valor medio	NCMS000
+valor nominal	NCMS000
+valor numérico	NCMS000
+valor probatorio	NCMS000
+valor social	NCMS000
+vapor de agua	NCMS000
+varita mágica	NCFS000
 V. A. R.	Y
-vaso de vino	LOC_NC
+vaso de vino	NCMS000
 V. A.	Y
 vaya por dios	LOC_I
 vaya por Dios	LOC_I
@@ -4297,52 +4297,52 @@ Vdo.	Y
 Vds.	Y
 Vd.	Y
 velis nolis	LOC_ADV
-velocidad de la luz	LOC_NCFS000
-velocidad del viento	LOC_NCFS000
-velocidad de transferencia	LOC_NCFS000
-velocidad de transmisión	LOC_NCFS000
-velocidad máxima	LOC_NCFS000
-venta de acciones	LOC_NC
-venta directa	LOC_NC
+velocidad de la luz	NCFS000
+velocidad del viento	NCFS000
+velocidad de transferencia	NCFS000
+velocidad de transmisión	NCFS000
+velocidad máxima	NCFS000
+venta de acciones	NCFS000
+venta directa	NCFS000
 vera effigies	LOC_ADV
 verbi gratia	LOC_ADV
 V. E.	Y
-v Fh m	LOC_NCFS000
+v Fh m	NCFS000
 v. gr.	Y
 v. g.	Y
-viabilidad económica	LOC_NCFS000
+viabilidad económica	NCFS000
 vía crucis	NCMN000
-vía férrea	LOC_NC
-viaje de ida	LOC_NC
-vía respiratoria	LOC_NC
-vicario general	LOC_NC
-vida en sociedad	LOC_NCFS000
-vida profesional	LOC_NCFS000
-vídeo vhs	LOC_NCMS000
+vía férrea	NCFS000
+# viaje de ida	LOC_NC
+vía respiratoria	NCFS000
+vicario general	NCMS000
+vida en sociedad	NCFS000
+vida profesional	NCFS000
+vídeo vhs	NCMS000
 vid.	Y
-villa olímpica	LOC_NCFS000
-violencia doméstica	LOC_NCFS000
-violencia familiar	LOC_NCFS000
-virus de la inmunodeficiencia humana	LOC_NCMN000
-vitamina a	LOC_NCFS000
-vitamina c	LOC_NCFS000
-vitamina d	LOC_NCFS000
-vitamina e	LOC_NCFS000
+villa olímpica	NCFS000
+violencia doméstica	NCFS000
+violencia familiar	NCFS000
+virus de la inmunodeficiencia humana	NCMN000
+vitamina a	NCFS000
+vitamina c	NCFS000
+vitamina d	NCFS000
+vitamina e	NCFS000
 viva voce	LOC_ADV
-vivienda habitual	LOC_NCFS000
-vivienda social	LOC_NCFS000
+vivienda habitual	NCFS000
+vivienda social	NCFS000
 V. I.	Y
 V. M.	Y
 V.º B.º	Y
-volt Fh metro	LOC_NC
-volt por metro	LOC_NC
-volumen de negocios	LOC_NCMS000
-volumen de trabajo	LOC_NCMS000
-voluntariado social	LOC_NCMS000
+# volt Fh metro	LOC_NC
+# volt por metro	LOC_NC
+volumen de negocios	NCMS000
+volumen de trabajo	NCMS000
+voluntariado social	NCMS000
 vol.	Y
 V. O. S.	Y
 voto a bríos	LOC_ADV
-voto particular	LOC_NCMS000
+voto particular	NCMS000
 vox populi	LOC_ADV
 vox populi	NCFS000
 V. O.	Y
@@ -4358,37 +4358,37 @@ VV. AA.	Y
 v/	Y
 v.	Y
 V.	Y
-watt Fh estereoradián	LOC_NC
-watt Fh metro Fh grado kelvin	LOC_NC
-watt Fh metro Fh kelvin	LOC_NC
-watt Fh metro por grado kelvin	LOC_NC
-watt Fh metro por kelvin	LOC_NC
-watt por estereoradián	LOC_NC
-watt por metro Fh grado kelvin	LOC_NC
-watt por metro Fh kelvin	LOC_NC
-watt por metro por grado kelvin	LOC_NC
-watt por metro por kelvin	LOC_NC
+# watt Fh estereoradián	LOC_NC
+# watt Fh metro Fh grado kelvin	LOC_NC
+# watt Fh metro Fh kelvin	LOC_NC
+# watt Fh metro por grado kelvin	LOC_NC
+# watt Fh metro por kelvin	LOC_NC
+# watt por estereoradián	LOC_NC
+# watt por metro Fh grado kelvin	LOC_NC
+# watt por metro Fh kelvin	LOC_NC
+# watt por metro por grado kelvin	LOC_NC
+# watt por metro por kelvin	LOC_NC
 W. C.	Y
-w Fh m K	LOC_NCFS000
-w Fh srad	LOC_NCFS000
+w Fh m K	NCFS000
+w Fh srad	NCFS000
 wi fi	NCMN000
 wind surfing	NCMS000
 wind surf	NCMS000
 Xto.	Y
 ya es mucho decir	LOC_ADV
 ya que	LOC_CS
-yarda cuadrado	LOC_NC
-yarda cúbico	LOC_NC
+yarda cuadrado	NCFS000
+yarda cúbico	NCFS000
 ya será menos	LOC_ADV
-zona arqueológica	LOC_NC
-zona comercial	LOC_NC
-zona de descanso	LOC_NC
-zona de libre comercio	LOC_NCFS000
-zona de trabajo	LOC_NC
-zona franca	LOC_NCFS000
-zona horaria	LOC_NCFS000
-zona privada	LOC_NC
-zona residencial	LOC_NC
-zona restringida	LOC_NC
-zona turística	LOC_NC
+zona arqueológica	NCFS000
+zona comercial	NCFS000
+zona de descanso	NCFS000
+zona de libre comercio	NCFS000
+zona de trabajo	NCFS000
+zona franca	NCFS000
+zona horaria	NCFS000
+zona privada	NCFS000
+zona residencial	NCFS000
+zona restringida	NCFS000
+zona turística	NCFS000
 
