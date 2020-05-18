@@ -65,7 +65,13 @@ public class Asturian extends Language {
             new GenericUnpairedBracketsRule(messages),
             new MorfologikAsturianSpellerRule(messages, this, userConfig, altLanguages),
             new UppercaseSentenceStartRule(messages, this),
-            new MultipleWhitespaceRule(messages, this)
+            new MultipleWhitespaceRule(messages, this),
+            new SentenceWhitespaceRule(messages),
+            new WhiteSpaceBeforeParagraphEnd(messages, this),
+            new WhiteSpaceAtBeginOfParagraph(messages),
+            new EmptyLineRule(messages, this),
+            new ParagraphRepeatBeginningRule(messages, this),
+            new PunctuationMarkAtParagraphEnd(messages, this, true)
     );
   }
 
