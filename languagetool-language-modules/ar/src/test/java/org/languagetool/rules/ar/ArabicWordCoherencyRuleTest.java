@@ -46,20 +46,11 @@ public class ArabicWordCoherencyRuleTest {
 
   @Test
   public void testRule() throws IOException {
-    // correct sentences:
-
     // errors:
     assertError("أنا أظن أن هذا ممكن لكنني أضن أنني كنت مخطئا");
     assertError("أنا أحب الرياضيات وأنت تحب الرياضات");
   }
-
-  private void assertGood(String s) throws IOException {
-    ArabicWordCoherencyRule rule = new ArabicWordCoherencyRule(TestTools.getEnglishMessages());
-    List<AnalyzedSentence> analyzedSentences = lt.analyzeText(s);
-    assertEquals(0, rule.match(analyzedSentences).length);
-  }
-
-
+  
   private void assertError(String s) throws IOException {
     ArabicWordCoherencyRule rule = new ArabicWordCoherencyRule(TestTools.getEnglishMessages());
     List<AnalyzedSentence> analyzedSentences = lt.analyzeText(s);
