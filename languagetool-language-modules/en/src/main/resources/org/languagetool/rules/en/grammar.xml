@@ -36165,6 +36165,12 @@ USA
                     <token chunk="E-NP-plural" postag_regexp="yes" postag="NN(:UN?)?"/>
                 </antipattern>
                 ?>
+                <antipattern><!-- XXX dealt by next rule -->
+                    <token regexp="yes">t?here</token>
+                    <token>is</token>
+                    <token regexp="yes">an?|the</token>
+                    <token regexp="yes">.+s$</token>
+                </antipattern>
                 <pattern>
                     <token regexp="yes">t?here<exception scope="previous" postag="IN"/></token>
                     <token>is</token>
@@ -36183,6 +36189,28 @@ USA
                 <example>... and here is a logs test for reference.</example><!-- #2922 -->
                 <example>I think there is a books club in the town.</example><!-- #2922 -->
                 ?>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp="yes">t?here<exception scope="previous" postag="IN"/></token>
+                    <token>is</token>
+                    <token regexp="yes">an?|the</token>
+                    <token postag="NNP?S" postag_regexp="yes" regexp="yes">.+s$
+                      <exception scope='next' regexp='yes' spacebefore='no'>&apostrophe;</exception>
+                      <exception postag="NN:.*|NNP?|DT" postag_regexp="yes"/></token>
+                </pattern>
+                <message>Possible agreement error. If you are using the possessive, you need to add an apostrophre.</message>
+                   <suggestion>\1 \2 \3 \4'</suggestion>
+                   <suggestion>\1 \2 \3 <match no='4' postag='(NNP?)(S)' postag_replace='$1' postag_regexp='yes'/></suggestion>
+                <short>Possible agreement error</short>
+                <example correction="There is a logs'|There is a log"><marker>There is a logs</marker> folder.</example><!-- #2922 -->
+                <example correction="here is a logs'|here is a log">... and <marker>here is a logs</marker> test for reference.</example><!-- #2922 -->
+                <example correction="there is a books'|there is a book">I think <marker>there is a books</marker> club in the town.</example><!-- #2922 -->
+                <example correction="There is a problems'|There is a problem"><marker>There is a problems</marker> in Iraq.</example>
+                <example type="correct"><marker>There is a men</marker> sitting in the room.</example><!-- XXX dealt by general agreement rules -->
+                <example type="correct"><marker>Here is a men</marker> sitting in the room.</example><!-- XXX dealt by general agreement rules -->
+                <example>There are many problems in Iraq.</example>
+                <example>The house closest to here is two miles away.</example>
             </rule>
         </rulegroup>
 
