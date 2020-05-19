@@ -528,32 +528,17 @@ title="Easy editing stylesheet" ?>
       <url>https://pt.wikipedia.org/wiki/Portugu%C3%AAs_brasileiro#Artigo_definido_antes_do_possessivo</url>
     <rule>
       <antipattern>
-          <token postag='N.FS.+' postag_regexp='yes'>
+          <unify>
+            <feature id="gender"/>
+            <feature id="number"/>
+          <token postag='N.+' postag_regexp='yes'>
             <exception negate_pos='yes' postag='[AN].+' postag_regexp='yes'/></token>
+          <unify-ignore>
           <token postag='R.+' postag_regexp='yes' min='0'>
             <exception negate_pos='yes' postag='R.+' postag_regexp='yes'/></token>
-          <token postag='DP.FS.+' postag_regexp='yes'/>
-      </antipattern>
-      <antipattern>
-          <token postag='N.FP.+' postag_regexp='yes'>
-            <exception negate_pos='yes' postag='[AN].+' postag_regexp='yes'/></token>
-          <token postag='R.+' postag_regexp='yes' min='0'>
-            <exception negate_pos='yes' postag='R.+' postag_regexp='yes'/></token>
-          <token postag='DP.FP.+' postag_regexp='yes'/>
-      </antipattern>
-      <antipattern>
-          <token postag='N.MS.+' postag_regexp='yes'>
-            <exception negate_pos='yes' postag='[AN].+' postag_regexp='yes'/></token>
-          <token postag='R.+' postag_regexp='yes' min='0'>
-            <exception negate_pos='yes' postag='R.+' postag_regexp='yes'/></token>
-          <token postag='DP.MS.+' postag_regexp='yes'/>
-      </antipattern>
-      <antipattern>
-          <token postag='N.MP.+' postag_regexp='yes'>
-            <exception negate_pos='yes' postag='[AN].+' postag_regexp='yes'/></token>
-          <token postag='R.+' postag_regexp='yes' min='0'>
-            <exception negate_pos='yes' postag='R.+' postag_regexp='yes'/></token>
-          <token postag='DP.MP.+' postag_regexp='yes'/>
+          </unify-ignore>
+          <token postag='DP.+' postag_regexp='yes'/>
+        </unify>
       </antipattern>
       <antipattern>
           <token inflected="yes">ser</token>
