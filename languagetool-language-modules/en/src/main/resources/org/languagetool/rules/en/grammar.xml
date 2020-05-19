@@ -36157,12 +36157,14 @@ USA
                 <example>There is lots of competition.</example>
             </rule>
             <rule>
+                <?ignore #2949
                 <antipattern><!-- #2922 There is a logs folder -->
                     <token>is</token>
                     <token regexp="yes">an?</token>
                     <token chunk="I-NP-plural" postag="NNS"/>
                     <token chunk="E-NP-plural" postag_regexp="yes" postag="NN(:UN?)?"/>
                 </antipattern>
+                ?>
                 <pattern>
                     <token regexp="yes">t?here<exception scope="previous" postag="IN"/></token>
                     <token>is</token>
@@ -36176,9 +36178,11 @@ USA
                 <example correction="Here are 5 men"><marker>Here is 5 men</marker> sitting in the room.</example>
                 <example>There are many problems in Iraq.</example>
                 <example>The house closest to here is two miles away.</example>
+                <?ignore #2949
                 <example>There is a logs folder.</example><!-- #2922 -->
                 <example>... and here is a logs test for reference.</example><!-- #2922 -->
                 <example>I think there is a books club in the town.</example><!-- #2922 -->
+                ?>
             </rule>
         </rulegroup>
 
