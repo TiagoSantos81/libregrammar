@@ -20,8 +20,6 @@ package org.languagetool.server;
 
 import com.sun.net.httpserver.HttpServer;
 import org.languagetool.JLanguageTool;
-import org.languagetool.RuleLoggerManager;
-import org.languagetool.SlowRuleLogger;
 import org.languagetool.tools.Tools;
 
 import javax.management.ObjectName;
