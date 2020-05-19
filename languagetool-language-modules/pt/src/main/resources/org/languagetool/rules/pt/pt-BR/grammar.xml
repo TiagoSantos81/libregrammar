@@ -632,26 +632,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 			<example correction="consiste em">A seleção <marker>consiste de</marker> cinco etapas.</example>
 		</rule>
 	
-		<!-- FIM CONSISTE EM POR CONSISTE DE -->
-		<!-- ********************************************************** -->
-		<!-- CONFUNDIR DAQUI A COM DAQUI -->
-		
-		<rule id="REGÊNCIA_DAQUI" name="Daqui a">
-		<!-- Created by Matheus Polleto, 2016-XX-XX -->
-			<pattern>
-				<marker>
-					<token>daqui</token>
-				</marker>
-				<token negate="yes">a</token>
-			</pattern>
-			<message>O advérbio daqui é usado para indicar lugar ou tempo e pede a preposição a. Substitua «daqui» por <suggestion>daqui a</suggestion>.</message>
-			<example correction="daqui a">Farei o pagamento <marker>daqui</marker> 5 dias.</example>
-		</rule>
-	
-		<!-- FIM DAQUI A COM DAQUI -->
-		<!-- ********************************************************** -->
-		<!-- CONFUNDIR QUANTO ANTES COM O QUANTO ANTES  -->
-		
 		<rule id="O_QUANTO_ANTES_BR" name="Quanto antes">
 		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>

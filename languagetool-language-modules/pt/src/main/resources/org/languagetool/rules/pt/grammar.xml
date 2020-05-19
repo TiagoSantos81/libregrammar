@@ -4184,6 +4184,19 @@ title="Easy editing stylesheet" ?>
         <suggestion>\1 a</suggestion>
       <example correction='sobrepôs a'>Ele <marker>sobrepôs sobre</marker>…</example>
     </rule>
+		<rule id="REGENCIA_DAQUI" name="Regência adverbial: Daqui a">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
+			<pattern>
+					<token>daqui</token>
+				<token>
+				  <exception postag_regexp='yes' postag='SENT_START|_PUNCT'/>
+				  <exception>a</exception></token>
+			</pattern>
+			<message>O advérbio daqui  rege-se com a preposição “a”.</message>
+			  <suggestion>daqui a \2</suggestion>
+			<example correction="daqui a 5">Farei o pagamento <marker>daqui 5</marker> dias.</example>
+			<example>...agora o meu reino não é daqui.</example>
+		</rule>
   </rulegroup>
 
   <rulegroup id='PHRASAL_VERB_A' name='Regência verbal: VERBO + a'>
