@@ -11,6 +11,12 @@
   * add support of ngram data ([languagetool-tools-ar](https://github.com/sohaibafifi/languagetool-tools-ar))
   * add Darja, Diacritics, Redundancy, WrongWordInContext, Wordiness and WordCoherency rules.
 
+#### Asturian
+  * generic Java rules added
+    - `SentenceWhitespaceRule`, `WhiteSpaceBeforeParagraphEnd`,
+    `WhiteSpaceAtBeginOfParagraph`, `EmptyLineRule`, `ParagraphRepeatBeginningRule`,
+    `PunctuationMarkAtParagraphEnd`
+
 #### Dutch
   * restored 256 word confusion rules (ff74bea)
 
@@ -31,7 +37,12 @@
 
 #### Papamiento
   * initial support added thanks to [Manuel Ortega](https://github.com/ortegacmanuel)
-    - only spellchecking support added
+    - spellchecking support added
+    - generic Java rules added, including `CommaWhitespaceRule`, `DoublePunctuationRule`,
+    `GenericUnpairedBracketsRule`, `MorfologikAsturianSpellerRule`,
+    `UppercaseSentenceStartRule`, `MultipleWhitespaceRule`, `SentenceWhitespaceRule`,
+    `WhiteSpaceBeforeParagraphEnd`, `WhiteSpaceAtBeginOfParagraph`, `EmptyLineRule`,
+    `ParagraphRepeatBeginningRule`, `PunctuationMarkAtParagraphEnd`
 
 #### Portuguese
   * added and improved rules
