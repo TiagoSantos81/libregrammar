@@ -812,13 +812,31 @@
       <disambig action="replace"><wd pos="RM"/><wd pos="RM"/><wd pos="RM"/></disambig>
     </rule>
 
+    <rule id="ORDINAL_NOUN_AGREEMENT" name="Ordinal sem acordo">
+    <!-- Created by Tiago F. Santos, Portuguese rule, 2020-05-18  -->
+      <pattern>
+          <token postag="SENT_START|D.+" postag_regexp="yes"/>
+        <marker>
+        <and>
+          <token postag="AO.+" postag_regexp="yes"/>
+          <token postag="RG" postag_regexp="yes"/>
+        </and>
+        </marker>
+          <token min='0' postag="A.+" postag_regexp="yes">
+            <exception postag='V.+' postag_regexp='yes'/></token>
+          <token postag="N.+" postag_regexp="yes"/>
+      </pattern>
+      <disambig action="filter" postag='A.+'/>
+    </rule>
+
   <rulegroup id="D_R_N" name="Det + Adv + Nom">
     <!-- 		Based on Spanish disambiguation.xml by Tiago F. Santos		-->
     <rule>
       <pattern>
           <token postag="D.+" postag_regexp="yes"/>
         <marker>
-          <token postag="R.+" postag_regexp="yes"/>
+          <token postag="R.+" postag_regexp="yes">
+            <exception postag='AO.+' postag_regexp='yes'/></token>
         </marker>
           <token postag="N.+" postag_regexp="yes">
             <exception>são</exception>

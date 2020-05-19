@@ -6135,7 +6135,7 @@ title="Easy editing stylesheet" ?>
           <token postag="RM" regexp="yes">.+mente</token><!-- XXX RG and UNKNOWN are included in the disambiguation step -->
         </marker>
           <token>
-            <exception postag="AQ.[CF][SN].|V.P..SF." postag_regexp="yes"/></token>
+            <exception postag="A..[CF][SN].|V.P..SF." postag_regexp="yes"/></token>
       </pattern>
       <message>Construção incorreta.</message>
         <suggestion>\3</suggestion>
@@ -7812,7 +7812,7 @@ title="Easy editing stylesheet" ?>
     <!-- Created by Marco A.G. Pinto, Portuguese rule -->
       <pattern>
           <token>uma</token>
-          <token min='0' postag='AQ0CS0|AQ0FS0' postag_regexp='yes'> </token>
+          <token min='0' postag='A..[FC]S.' postag_regexp='yes'/>
         <marker>
           <token>massajem</token>
         </marker>
@@ -8662,7 +8662,7 @@ title="Easy editing stylesheet" ?>
           <token>em</token>
         </marker>
         <or>
-          <token postag="AQ0MS0"/>
+          <token postag="AQ.MS.+" postag_regexp='yes'/>
           <token>Latim</token>
         </or>
       </pattern>
@@ -10260,7 +10260,7 @@ title="Easy editing stylesheet" ?>
       </pattern>
       <message>Se está a expressar uma condição, deve separar as orações por vírgulas.</message>
         <suggestion>\3, \4</suggestion>
-      <example correction="viver, verá">Quem <marker>viver verá</marker> possa sair.</example>
+      <example correction="viver, verá">Quem <marker>viver verá</marker>.</example>
       <example correction="trabalha, vence">Quem <marker>trabalha vence</marker>.</example>
     </rule>
   </rulegroup>
@@ -30177,8 +30177,8 @@ TODO Write better examples
           <token regexp='yes' spacebefore='no' min='0'>araripe|chumbo</token>
       </antipattern>
       <pattern>
-          <token postag_regexp='yes' postag='AQC.+|N.....[AD]'>
-            <exception negate_pos='yes' postag_regexp='yes' postag='AQC.+|N.....[AD]'/>
+          <token postag_regexp='yes' postag='A.C.+|N.....[AD]'>
+            <exception negate_pos='yes' postag_regexp='yes' postag='A.C.+|N.....[AD]'/>
             <exception regexp='yes'>(?:burrito|ca(?:pita|[mn]arinh[ao])|finit[ao]|p(?:erita|intainho)|r(?:etinha|atinho)|sozinh[ao]|tainha)s?</exception></token>
     <!-- TODO Improve tagger so that it recognizes missing aumentatives and diminutives -->
       </pattern>
