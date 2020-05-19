@@ -23,6 +23,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 
 -->
 <rules lang="pt-BR" xsi:noNamespaceSchemaLocation="../rules.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 
 	<category id="MISC" name="Gramática Geral">
 
@@ -41,6 +42,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- CONFUNDIR A GENTE POR AGENTE -->
 
 		<rule id="AGENTE_BR" name="a gente">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<token regexp="yes">com|como|quanto|mais|mas</token>
 				<marker>
@@ -56,6 +58,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- CONFUNDIR FAÇO POR FASSO -->
 
 		<rule id="FASSO_BR" name="faço">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<marker>
 					<token>fasso</token>
@@ -70,6 +73,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- CONFUNDIR MAIS(QUANTIDADE) POR MAS(CONJUNÇÃO) -->
 
 		<rule id="MAS_BR" name="mais">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<token regexp="yes">quanto|quero</token>
 				<marker>
@@ -81,6 +85,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		</rule>
 
 		<rule id="QUERO_MAS_BR" name="quero mais">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<token>quero</token>
 				<token>mas</token>
@@ -96,6 +101,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- CONFUNDIR ABENÇOE POR ABENÇÕE -->
 
 		<rule id="ABENCOE_BR" name="abençoe">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<marker>
 					<token>abençõe</token>
@@ -110,6 +116,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- CONFUNDIR ME POR MIM ANTES DE VERBO -->
 
 		<rule id="MIM_BR" name="me">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<marker>
 					<token>mim</token>
@@ -128,6 +135,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- CONFUNDIR COM CERTEZA POR COMCERTEZA/CONCERTEZA -->
 
 		<rule id="COMCERTEZA_BR" name="com certeza">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<marker>
 					<token>comcerteza</token>
@@ -138,6 +146,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		</rule>
 
 		<rule id="CONCERTEZA_BR" name="com certeza">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<marker>
 					<token>concerteza</token>
@@ -152,6 +161,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- CONFUNDIR MENOS POR MENAS -->
 
 		<rule id="MENAS_BR" name="menos">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<marker>
 					<token>menas</token>
@@ -167,6 +177,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- CONFUNDIR ÀS VEZES POR AS VEZES || AS VESES -->
 
 		<rule id="AS_VEZES_BR" name="às vezes">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<marker>
 					<token>as</token>
@@ -178,6 +189,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		</rule>
 
 		<rule id="AS_VESES_BR" name="às vezes">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<marker>
 					<token>as</token>
@@ -193,6 +205,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- CONFUNDIR NADA A VER POR NADA HAVER -->
 
 		<rule id="NADA_HAVER_BR" name="nada a ver">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<marker>
 					<token>nada</token>
@@ -208,6 +221,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- CONFUNDIR DE REPENTE POR DERREPENTE || DEREPENTE -->
 
 		<rule id="DERREPENTE_BR" name="de repente">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<marker>
 					<token>derrepente</token>
@@ -218,6 +232,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		</rule>
 
 		<rule id="DEREPENTE_BR" name="de repente">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<marker>
 					<token>derepente</token>
@@ -232,6 +247,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- CONFUNDIR ÀS|À POR AS|A ANTES DA INDICAÇÃO PONTUAL DE HORAS|TERRA FIRME -->
 
 		<rule id="AS_PONTUAL_BR" name="Usar às pontual">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<marker>
 					<token>As</token>
@@ -243,6 +259,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		</rule>
 
 		<rule id="A_TERRA_FIRME_BR" name="Usar à terra firme">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<marker>
 					<token>a</token>
@@ -258,6 +275,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- CONFUNDIR QUER SE POR QUER -->
 
 		<rule id="QUER_SE_BR" name="Quer">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<token>quer</token>
 				<token>se</token>
@@ -271,6 +289,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- CONFUNDIR DORMIU NO POR DORMIU AO -->
 
 		<rule id="DORMIU_NO_BR" name="Dormiu ao">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<token>dormiu</token>
 				<token>no</token>
@@ -284,6 +303,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- CONFUNDIR PARASITO|S POR PARASITA|S QUANDO FOR PESSOA|ANIMAL -->
 
 		<rule id="PARASITO_BR" name="Parasita">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<token regexp="yes">um|autêntico|uma|de</token>
 				<marker>
@@ -296,6 +316,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 
 
 		<rule id="PARASITOS_BR" name="Parasita">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<token regexp="yes">um|autênticos|uma|de</token>
 				<marker>
@@ -311,6 +332,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- CONFUNDIR ALERTA POR ALERTAS -->
 
 		<rule id="ALERTAS_BR" name="Alerta">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<marker>
 					<token>alertas</token>
@@ -326,6 +348,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- CONFUNDIR MENOR DE IDADE POR MENOR -->
 
 		<rule id="MENOR_IDADE_BR" name="Menor de idade">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<token>de</token>
 				<token>menor</token>
@@ -340,6 +363,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- CONFUNDIR O|A 3o, 4o, 5o por Os|As -->
 
 		<rule id="OS_PARAGRAFOS_BR" name="Usar o">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<marker>
 					<token>os</token>
@@ -351,6 +375,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		</rule>
 
 		<rule id="AS_PARAGRAFOS_BR" name="Usar a">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<marker>
 					<token>as</token>
@@ -366,6 +391,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- CONFUNDIR MIL POR UM MIL -->
 
 		<rule id="UM_MIL_BR" name="Mil">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<token>um</token>
 				<token>mil</token>
@@ -379,6 +405,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- CONFUNDIR TODA A AGUARDENTE POR TODO O -->
 
 		<rule id="O_AGUARDENTE_BR" name="A aguardente">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<token>todo</token>
 				<token>o</token>
@@ -393,6 +420,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- CONFUNDIR NÃO É ADEQUEADO POR ÁDEQUA -->
 
 		<rule id="ADEQUA_BR" name="Não é adequado">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<token>não</token>
 				<token>se</token>
@@ -407,6 +435,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- CONFUNDIR CHEGAMOS A POR CHEGAMOS EM -->
 
 		<rule id="CHEGAMOS_EM_BR" name="Chegamos a">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<token>chegamos</token>
 				<token>em</token>
@@ -420,6 +449,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- CONFUNDIR ONDE POR AONDE -->
 
 		<rule id="AONDE_BR" name="Onde">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<token>aonde</token>
 				<token>você</token>
@@ -433,6 +463,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- CONFUNDIR ANEXOS POR ANEXO QUANDO É PLURAL -->
 	
 		<rule id="ANEXO_P_BR" name="Anexos">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<token>anexo</token>
 				<token>os</token>
@@ -446,6 +477,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- CONFUNDIR ESTÁ QUITE COM ESTÁ QUITES SINGULAR -->
 		
 		<rule id="QUITE_P_BR" name="está quite">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<token>está</token>
 				<token>quites</token>
@@ -459,6 +491,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- CONFUNDIR A MEU VER COM AO MEU VER -->
 		
 		<rule id="AO_MEU_VER_BR" name="A meu ver">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<token>Ao</token>
 				<token>meu</token>
@@ -473,6 +506,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- CONFUNDIR SOMOS COM SOMOS EM -->
 		
 		<rule id="SOMOS_EM_BR" name="Somos">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<token>Somos</token>
 				<token>em</token>
@@ -486,6 +520,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- CONFUNDIR CHEGARAM A POR CHEGARAM EM (VERBO DE MOVIMENTO EXIGE A) -->
 		
 		<rule id="CHEGARAM_EM_BR" name="Chegaram a">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<token>chegaram</token>
 				<token>em</token>
@@ -499,6 +534,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- CONFUNDIR EXISTEM (VARIOS) COM EXISTE (UM) -->
 		
 		<rule id="EXISTE_VARIOS_BR" name="Existem varios">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 					<marker>
 						<token>existe</token>
@@ -514,6 +550,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- CONFUNDIR ASSISTIU AO (SENTIDO DE VER) ASSISTIU O -->
 		
 		<rule id="ASSISTIU_O_BR" name="Assistiu ao">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 					<token>assistiu</token>
 					<token>o</token>
@@ -527,6 +564,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- CONFUNDIR ENTRAR COM ENTRAR DENTRO -->
 		
 		<rule id="ENTRAR_DENTRO_BR" name="Entrar">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 					<token>entrar</token>
 					<token>dentro</token>
@@ -540,6 +578,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- CONFUNDIR HAVIA MUITAS COM HAVIAM MUITAS -->
 		
 		<rule id="HAVIAM_MUITAS_BR" name="Havia muitas">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 					<token>haviam</token>
 					<token>muitas</token>
@@ -553,6 +592,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- CONFUNDIR NA RUA COM À RUA -->
 		
 		<rule id="A_RUA_BR" name="Na rua">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 					<token regexp="yes">residente|vive|estabelecido</token>
 					<marker>
@@ -569,6 +609,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- CONFUNDIR CAIU (AUMENTAR E DIMINUIR) COM CAIU EM -->
 		
 		<rule id="CAIU_EM_BR" name="Caiu">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 					<token>caiu</token>
 					<token>em</token>
@@ -582,6 +623,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- CONFUNDIR CONSISTE EM POR CONSISTE DE -->
 		
 		<rule id="CONSISTE_DE_BR" name="Consiste em">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 					<token>consiste</token>
 					<token>de</token>
@@ -594,7 +636,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- ********************************************************** -->
 		<!-- CONFUNDIR DAQUI A COM DAQUI -->
 		
-		<rule id="DAQUI_BR" name="Daqui a">
+		<rule id="REGÊNCIA_DAQUI" name="Daqui a">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<marker>
 					<token>daqui</token>
@@ -610,6 +653,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- CONFUNDIR QUANTO ANTES COM O QUANTO ANTES  -->
 		
 		<rule id="O_QUANTO_ANTES_BR" name="Quanto antes">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 					<token>o</token>
 					<token>quanto</token>
@@ -624,6 +668,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- CONFUNDIR MAIS INFORMAÇÕES COM MAIORES INFORMAÇÕES  -->
 		
 		<rule id="MAIORES_INFORMACOES_BR" name="Mais informações">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 					<token>maiores</token>
 					<token>informações</token>
@@ -637,6 +682,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- CONFUNDIR AVISO PRÉVIO COM AVISO BREVE -->
 		
 		<rule id="AVISO_BREVE" name="Aviso_previo">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 					<token>aviso</token>
 					<token>breve</token>
@@ -650,6 +696,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- CONFUNDIR DUZENTOS GRAMAS NUMERAL COM DUZENTAS GRAMAS -->
 		
 		<rule id="DUZENTAS_GRAMAS_NUMERAL" name="Duzentos gramas">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 					<token>duzentas</token>
 					<token>gramas</token>
@@ -663,6 +710,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- VERBO FAZER SENTIDO TEMPORAL É IMPESSOAL-->
 		
 		<rule id="FAZEM_TEMPO" name="Faz tempo">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 					<marker>
 						<token>Fazem</token>
@@ -679,6 +727,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- REDUNDÂNCIA EXPORTOU PARA FORA -->
 		
 		<rule id="EXPORTOU_PARA_FORA" name="Exportou ">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 				<pattern>
 					<marker>
 						<token regexp="yes">exporto|exportou|exportava|exportei|exportarei|exporte</token>
@@ -695,6 +744,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- REDUNDÂNCIA ENCAROU DE FRENTE -->
 		
 		<rule id="ENCAROU_DE_FRENTE" name="Encarou ">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<marker>
 					<token regexp="yes">encarou|encaramos|encarei</token>
@@ -711,6 +761,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- REDUNDANCIA GELO GELADO -->
 
 		<rule id="GELO_GELADO" name="Gelo ">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<marker>
 					<token>gelo</token>
@@ -726,6 +777,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- REDUNDANCIA GANHAR GRÁTIS -->
 
 		<rule id="GANHAR_Gratis" name="Ganhar ">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<marker>
 					<token>ganhar</token>
@@ -741,6 +793,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- REDUNDANCIA REPETIR DE NOVO -->
 
 		<rule id="REPETIR_De_Novo" name="Repetir ">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<marker>
 					<token>repetir</token>
@@ -757,6 +810,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- REDUNDANCIA PLANEJAR ANTECIPADAMENTE -->
 		
 		<rule id="PLANEJAR_Antecipadamente" name="Planejar ">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<marker>
 					<token>planejar</token>
@@ -772,6 +826,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- REDUNDANCIA PEQUENOS DETALHES -->
 		
 		<rule id="PEQUENOS_Detalhes" name="Pequenos ">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<marker>
 					<token>pequenos</token>
@@ -787,6 +842,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- REDUNDANCIA ELO DE LIGAÇÃO -->
 		
 		<rule id="ELO_De_Ligacao" name="Elo ">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<marker>
 					<token>elo</token>
@@ -803,6 +859,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- REDUNDANCIA ANTECIPAR PARA ANTES -->
 		
 		<rule id="ANTECIPAR_Para_Antes" name="Antecipar ">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<marker>
 					<token>antecipar</token>
@@ -820,6 +877,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		<!-- REGRA PARA EVITAR REDUNDANCIA - SUBIR PARA CIMA -->
 		
 		<rule id="SUBIR_para_cima" name="Subir ">
+		<!-- Created by Matheus Polleto, 2016-XX-XX -->
 			<pattern>
 				<marker>
 					<token>subir</token>
