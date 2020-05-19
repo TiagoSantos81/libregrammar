@@ -104,6 +104,10 @@
 #### LibreOffice / Apache OpenOffice Integration
   * now the add-on has a toolbar, thanks to Fred Kruse.
 
+#### General
+  * server logging functions removed
+    - revert 553ee42 to re-enable them
+
 ## 4.9 (released 2020-04-24)
 
 ### This fork differences
