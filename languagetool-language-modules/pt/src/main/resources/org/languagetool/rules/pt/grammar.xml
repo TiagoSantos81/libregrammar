@@ -89,6 +89,7 @@ title="Easy editing stylesheet" ?>
     <!ENTITY verbos_auxiliares_modais "(?:dever|poder|querer|conseguir|pretender|tentar|chegar)">
     <!ENTITY verbos_de_ligacao "(?:andar|continuar|estar|ficar|p(?:arecer|ermanecer)|assemelhar|s(?:emelhar|er)|v(?:irar|viver))">
     <!ENTITY verbos_transitivos_diretos "(?:abandonar|abençoar|aborrecer|abraçar|acompanhar|acusar|admirar|adorar|alegrar|ameaçar|amolar|amparar|auxiliar|castigar|condenar|conhecer|conservar|convidar|defender|eleger|estimar|humilhar|namorar|ouvir|prejudicar|prezar|proteger|respeitar|socorrer|suportar|ver|visitar)">
+    <!ENTITY verbos_reflexivos "a(?:bster|covardar|piedar|pressar|rrepender|rrogar|ssemelhar|trever)|c(?:ontorcer|ondoer)|d(?:esbocarignar)|embebedar|escapulir|queixar|suicidar|transvestir|vangloriar|zangar">
     <!ENTITY haver_impessoal "(?:h(?:á|avia|ouve|ouvera|averá|averia|aja|ouvesse|ouver))">
 
     <!ENTITY adj_nomes_paronimos_a "(?:(?:p(?:á(?:(?:gin|sco|ri)a|(?:bul|li)o|ti(?:na|o))|r(?:(?:e(?:sság|fác)|ontuár)io|átic[ao])|lá(?:ci(?:d[ao]|to)|gio)|ará(?:grafo|lise)|erdulári[ao]|sicanálise|osfácio)|á(?:(?:t(?:rop|ic)|f(?:ric|i)|bson)[ao]|r(?:i(?:c[ao]|a)|bitr[ao]|vore)|c(?:(?:er|id)[ao]|aro)|(?:s(?:cu|i)|[vx]il)a|g(?:raf[ao]|ua)|(?:lvidr|dit)o|pod[aeo])|c(?:á(?:(?:l(?:cul|am)|dmi)o|r(?:(?:cer|i)e|dia)|(?:ps|b)ula)|o(?:nt(?:rári[ao]|ágio)|missári[ao])|a(?:tál(?:ise|ogo)|ntárid[ae]))|a(?:n(?:iversário|álise)|má(?:si[ao]|lgama)|(?:lgáli|záfam)a|(?:pan|d)ágio|cárid[ao])|g(?:á(?:(?:strul|bi|zu)a|lic[ao]|rrulo)|(?:r(?:amátic|ávid)|inástic)[ao]|ládio)|s(?:(?:e(?:cretári|lvátic)|u(?:bsecret|m)ári)[ao]|á(?:(?:tur|bi)a|culo)|alário)|l(?:á(?:(?:ce|za)r[ao]|(?:gr|st)ima|pid[ae]|tego)|arápi[ao])|e(?:(?:pigramátic|mpresári)[ao]|(?:ficá|nxár)cia|stá[dg]io)|r(?:á(?:b(?:i(?:d[ao]|a)|ano|ula)|dio|fia)|essábio|ipária)|má(?:(?:scar|cul|fi)a|g(?:ic[ao]|oa)|t(?:ico|ria))|v(?:á(?:lid[ao]|ria)|oluntári[ao]|iático)|h(?:emodiálise|ilári[ao]|á[bl]ito)|d(?:i(?:cionário|álise)|ádiva)|t(?:ráf(?:eg[ao]|ico)|ábula)|in(?:flacionária|ventário)|bá(?:scul[ao]|lsamo|tega)|f(?:áb(?:ric|ul)|aláci)a|jáculo))s?">
@@ -2561,6 +2562,66 @@ title="Easy editing stylesheet" ?>
       <example correction='aproximasse'>Caso <marker>aproxima-se</marker> as suas observações às mais correntes, o estudo já teria sido publicado.</example>
       <example>Este caso aproxima-se da sua conclusão.</example>
       <example>Neste caso, aproxima-se da sua conclusão.</example>
+    </rule>
+  </rulegroup>
+
+  <rulegroup id='VERBOS_REFLEXIVOS' name='Pronomes: Verbos reflexivos'>
+    <!-- Created by Tiago F. Santos, 2020-05-20 -->
+    <rule>
+      <antipattern>
+          <token inflected='yes' regexp='yes'>&verbos_reflexivos;</token>
+          <token regexp='yes' spacebefore='no'>&hifen;</token>
+          <token regexp='yes' spacebefore='no'>&pronomes_nao_ambiguos;|&pronomes_ambiguos;</token>
+      </antipattern>
+      <antipattern>
+          <token regexp='yes'>[mst]e|[nv]os</token><!-- TODO make rule for wrong pronouns when using proclisis -->
+          <token inflected='yes' regexp='yes'>&verbos_reflexivos;</token>
+      </antipattern>
+      <!-- XXX test without this first 
+      <antipattern>
+          <token regexp='yes'>&pronomes_nao_ambiguos;|&pronomes_ambiguos;</token>
+          <token postag='R.' postag_regexp='yes' max='2'/>
+          <token inflected='yes' regexp='yes'>&verbos_reflexivos;</token>
+      </antipattern>
+      -->
+      <pattern>
+          <token postag='V.+' postag_regexp='yes' inflected='yes' regexp='yes'>&verbos_reflexivos;
+            <exception postag='V.P.+' postag_regexp='yes'/>
+            <exception postag='V.+' postag_regexp='yes' negate_pos='yes'/></token>
+      </pattern>
+      <message>Este verbo é reflexivo obrigatório. Provavelmente falta um pronome</message>
+      <example correction=''>Depois disso, ela começou a <marker>queixar</marker> dos vizinhos.</example>
+      <example correction=''>Depois disso, ela <marker>queixou</marker> dos vizinhos.</example>
+      <example correction=''>Melhor <marker>abster</marker> nessa votação.</example>
+      <example>Depois disso, ela começou a <marker>queixar-se</marker> dos vizinhos.</example>
+      <example>Ainda não se queixou.</example>
+      <example>Me queixei ainda mais.</example>
+      <example type='correct'>Depois disso, ela <marker>queixou-nos</marker> dos vizinhos.</example><!-- XXX wrong use, dealt by next rule -->
+    </rule>
+    <rule>
+      <antipattern>
+          <token regexp='yes'>[mst]e|[nv]os</token>
+          <token inflected='yes' regexp='yes'>&verbos_reflexivos;</token>
+      </antipattern>
+      <antipattern>
+          <token inflected='yes' regexp='yes'>&verbos_reflexivos;</token>
+          <token regexp='yes' spacebefore='no'>&hifen;</token>
+          <token regexp='yes' spacebefore='no'>[mst]e|[nv]os</token>
+      </antipattern>
+      <pattern>
+          <token postag='V.+' postag_regexp='yes' inflected='yes' regexp='yes'>&verbos_reflexivos;
+            <exception postag='V.P.+' postag_regexp='yes'/>
+            <exception postag='V.+' postag_regexp='yes' negate_pos='yes'/></token>
+          <token regexp='yes' spacebefore='no'>&hifen;</token>
+          <token regexp='yes' spacebefore='no'>
+            <exception regexp='yes'>[mst]e|[nv]os</exception></token>
+      </pattern>
+      <message>Este verbo é reflexivo obrigatório. reveja o pronome utilizado.</message>
+        <!--<suggestion>\1\2<match no='3' postag='V...(.)(.).+' postag_replace='PP$1C$2\000'/></suggestion>-->
+      <example correction=''>Depois disso, ela <marker>queixou-lhe</marker> dos vizinhos.</example>
+      <example>Depois disso, ela começou a <marker>queixar-se</marker> dos vizinhos.</example>
+      <example>Ainda não se queixou.</example>
+      <example>Me queixei ainda mais.</example>
     </rule>
   </rulegroup>
 
