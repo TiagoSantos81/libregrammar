@@ -47,8 +47,56 @@ public class UpperCaseRule extends Rule {
   private static final AhoCorasickDoubleArrayTrie<String> exceptionTrie = new AhoCorasickDoubleArrayTrie<>();
   private static final List<List<PatternToken>> ANTI_PATTERNS = Arrays.asList(
     Arrays.asList(
+      token("Hugs"), token("and"), token("Kisses")
+    ),
+    Arrays.asList(
+      tokenRegex("[A-Z].+"),  // e.g. "Top 10% Lunch Deals"
+      tokenRegex("\\d+%?"),
+      tokenRegex("[A-Z].+")
+    ),
+    Arrays.asList(
+      tokenRegex("[0-9]+"),  // e.g. "6) Have a beer"
+      tokenRegex("[)\\]]"),
+      tokenRegex("[A-Z].+")
+    ),
+    Arrays.asList(
+      tokenRegex("[A-Z].+"),  // e.g. "Freelance 2.0"
+      tokenRegex("[0-9]+"),
+      tokenRegex("."),
+      tokenRegex("[0-9]+")
+    ),
+    Arrays.asList(
+      tokenRegex("[A-Z].+"),  // e.g. "You Don't Know"
+      tokenRegex("['’`´‘]"),
+      token("t"),
+      tokenRegex("[A-Z].+")
+    ),
+    Arrays.asList(
+      tokenRegex("[A-Z].+"),  // e.g. Kuiper’s Belt
+      tokenRegex("['’`´‘]"),
+      token("s"),
+      tokenRegex("[A-Z].+")
+    ),
+    Arrays.asList(
+      tokenRegex("[A-Z].+"),  // e.g. "Culture, People , Nature", probably a title
+      token(","),
+      tokenRegex("[A-Z].+"),
+      token(","),
+      tokenRegex("[A-Z].+")
+    ),
+    Arrays.asList(
+      tokenRegex("The"),  // e.g. "The Sea is Watching", probably a title
+      tokenRegex("[A-Z].+"),
+      token("is"),
+      tokenRegex("[A-Z].+")
+    ),
+    Arrays.asList(
       token("Professor"),
       tokenRegex("[A-Z].+")
+    ),
+    Arrays.asList(
+      token("Time"),
+      token("magazine")
     )
   );
 
