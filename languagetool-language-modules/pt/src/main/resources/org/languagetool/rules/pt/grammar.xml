@@ -10221,17 +10221,12 @@ title="Easy editing stylesheet" ?>
       <antipattern>
           <token negate_pos='yes' postag_regexp='yes' postag='[CV].+'/>
           <token postag_regexp='yes' postag="_PUNCT|SENT_START"/>
-          <token regexp="yes">aliás|entretanto|outrossim|pois|porém|portanto|contudo</token>
-      </antipattern>
-      <antipattern><!-- interjection -->
-          <token>pois</token>
-          <token>é</token>
-          <token postag_regexp='yes' postag="_PUNCT|SENT_END"/>
+          <token regexp="yes">aliás|entretanto|outrossim|porém|portanto|contudo</token>
       </antipattern>
       <pattern>
           <token postag_regexp='yes' postag="_PUNCT|SENT_START"/>
         <marker>
-          <token regexp="yes">aliás|entretanto|outrossim|pois|porém|portanto|contudo</token>
+          <token regexp="yes">aliás|entretanto|outrossim|porém|portanto|contudo</token>
           <token>
             <exception postag_regexp='yes' postag="_PUNCT|''"/></token>
         </marker>
@@ -10242,6 +10237,30 @@ title="Easy editing stylesheet" ?>
       <example correction="portanto, bem">Foi feito com distinção, está, <marker>portanto bem</marker> feito.</example>
       <example>Foi feito com distinção, <marker>outrossim que</marker> está bem feito.</example>
       <example correction="aliás, está">Foi feito com distinção e, <marker>aliás está</marker> bem feito.</example>
+    </rule>
+    <rule>
+      <antipattern>
+          <token negate_pos='yes' postag_regexp='yes' postag='[CV].+'/>
+          <token postag_regexp='yes' postag="_PUNCT|SENT_START"/>
+          <token>pois</token>
+      </antipattern>
+      <antipattern><!-- interjection -->
+          <token>pois</token>
+          <token>é</token>
+          <token postag_regexp='yes' postag="_PUNCT|SENT_END"/>
+      </antipattern>
+      <pattern>
+          <token postag_regexp='yes' postag="_PUNCT|SENT_START"/>
+        <marker>
+          <token>pois</token>
+          <token>
+            <exception postag_regexp='yes' postag="_PUNCT|''"/></token>
+        </marker>
+      </pattern>
+      <message>Esta conjugação deve ser separada por vírgulas, excepto se estiver a utilizá-la como 'porque' (conjunção explicativa).</message>
+        <suggestion>\2, \3</suggestion>
+      <example correction="pois, que">Terminei a prova com antecedência, não me digas, <marker>pois que</marker> não posso sair.</example>
+      <!-- <example type='incorrect'>Hoje vou poder relaxar, <marker>pois posso</marker> sair mais cedo.</example>< XXX this is a false alarm but it is ok, since it is explained in the message -->
     </rule>
   </rulegroup>
 
