@@ -222,10 +222,10 @@ title="Easy editing stylesheet" ?>
 
   <unification feature="gender">
     <equivalence type="masc">
-          <token postag="(?:[NZ].|[ADP]..|V.....)[MC].+" postag_regexp="yes"/>
+          <token postag="(?:[NZ].|[ADP]..|V.....)[MC].*" postag_regexp="yes"/>
     </equivalence>
     <equivalence type="fem">
-          <token postag="(?:[NZ].|[ADP]..|V.....)[FC].+" postag_regexp="yes"/>
+          <token postag="(?:[NZ].|[ADP]..|V.....)[FC].*" postag_regexp="yes"/>
     </equivalence>
   </unification>
 
@@ -868,6 +868,48 @@ title="Easy editing stylesheet" ?>
       <example>…pelo ato", o que inspiraria trabalhadores como um todo a se revoltar e coletivizar forçadamente os meios d…</example>
       <example>Idealizou-o este barão de Jaraguá, contribuindo dessa forma para o…</example>
       <example>A este nível, estas metas incluem, entre outros assuntos…</example>
+    </rule>
+  </rulegroup>
+
+  <rulegroup id='PASSIVE_VOICE_GENDER_AGREEMENT' name="Concordância de género: Voz passiva">
+    <!--      Created by Tiago F. Santos rule, Portuguese rule 2020-05-20     -->
+    <rule>
+      <pattern>
+          <token inflected='yes'>ser</token>
+          <token postag='RG' min='0'/>
+        <marker>
+          <unify negate='yes'>
+            <feature id='gender'/>
+          <token postag='V.P..[SN].+' postag_regexp='yes'/>
+          <token postag='D.+' postag_regexp='yes'>
+            <exception>a</exception></token>
+          <token postag='NC.+' postag_regexp='yes'/><!-- XXX Proper names excepted -->
+          </unify>
+        </marker>
+      </pattern>
+      <message>&MSG_ECG;</message>
+        <suggestion suppress_misspelled='yes'><match no='3' postag='(V.P..[SN])(.+)' postag_replace='$1M' postag_regexp='yes'/> <match no='4' postag='(D..)(.)([SN].+)' postag_replace='$1M$3' postag_regexp='yes'/> <match no='5' postag='(NC)(.)([SN].+)' postag_replace='$1M$3' postag_regexp='yes'/></suggestion>
+        <suggestion suppress_misspelled='yes'><match no='3' postag='(V.P..[SN])(.+)' postag_replace='$1F' postag_regexp='yes'/> <match no='4' postag='(D..)(.)([SN].+)' postag_replace='$1F$3' postag_regexp='yes'/> <match no='5' postag='(NC)(.)([SN].+)' postag_replace='$1F$3' postag_regexp='yes'/></suggestion>
+      <example correction='promovido um ambiente'>Desta forma é <marker>promovida um ambiente</marker> de trabalho saudável.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token inflected='yes'>ser</token>
+          <token postag='RG' min='0'/>
+        <marker>
+          <unify negate='yes'><!-- XXX Proper names exception -->
+            <feature id='gender'/>
+          <token postag='V.P..[PN].+' postag_regexp='yes'/>
+          <token postag='D.+' postag_regexp='yes'>
+            <exception>a</exception></token>
+          <token postag='NC.+' postag_regexp='yes'/>
+          </unify>
+        </marker>
+      </pattern>
+      <message>&MSG_ECG;</message>
+        <suggestion suppress_misspelled='yes'><match no='3' postag='(V.P..[PN])(.+)' postag_replace='$1M' postag_regexp='yes'/> <match no='4' postag='(D..)(.)([PN].+)' postag_replace='$1M$3' postag_regexp='yes'/> <match no='5' postag='(NC)(.)([PN].+)' postag_replace='$1M$3' postag_regexp='yes'/></suggestion>
+        <suggestion suppress_misspelled='yes'><match no='3' postag='(V.P..[PN])(.+)' postag_replace='$1F' postag_regexp='yes'/> <match no='4' postag='(D..)(.)([PN].+)' postag_replace='$1F$3' postag_regexp='yes'/> <match no='5' postag='(NC)(.)([PN].+)' postag_replace='$1F$3' postag_regexp='yes'/></suggestion>
+      <example correction='promovidas umas férias'>Desta forma são <marker>promovidos umas férias</marker> melhores.</example>
     </rule>
   </rulegroup>
 
@@ -1728,6 +1770,29 @@ title="Easy editing stylesheet" ?>
         <suggestion><match no='1' postag='D(...).(.+)' postag_replace='D$1P$2' postag_regexp='yes'/> <match no='2' postag='D(...).(.+)' postag_replace='D$1P$2' postag_regexp='yes'/></suggestion>
       <example correction="A nossa|As nossas"><marker>As nossa</marker> equipa de operações está muito focada nos campos de verão..</example>
       <example>[Medidas] Bem adotadas por aquelas a quem se destinam.</example>
+    </rule>
+  </rulegroup>
+
+  <rulegroup id='PASSIVE_VOICE_NUMBER_AGREEMENT' name="Concordância de número: Voz passiva">
+    <!--      Created by Tiago F. Santos rule, Portuguese rule 2020-05-20     -->
+    <rule>
+      <pattern>
+          <token inflected='yes'>ser</token>
+          <token postag='RG' min='0'/>
+        <marker>
+          <unify negate='yes'>
+            <feature id='number'/>
+          <token postag='V.P.+' postag_regexp='yes'/>
+          <token postag='D.+' postag_regexp='yes'>
+            <exception>a</exception></token>
+          <token postag='NC.+' postag_regexp='yes'/><!-- XXX Proper names excepted -->
+          </unify>
+        </marker>
+      </pattern>
+      <message>&MSG_ECG;</message>
+        <suggestion suppress_misspelled='yes'><match no='3' postag='(V.P..)(.)(.+)' postag_replace='$1S$3' postag_regexp='yes'/> <match no='4' postag='(D...)(.)(.+)' postag_replace='$1S$3' postag_regexp='yes'/> <match no='5' postag='(NC.)(.)(.+)' postag_replace='$1S$3' postag_regexp='yes'/></suggestion>
+        <suggestion suppress_misspelled='yes'><match no='3' postag='(V.P..)(.)(.+)' postag_replace='$1P$3' postag_regexp='yes'/> <match no='4' postag='(D...)(.)(.+)' postag_replace='$1P$3' postag_regexp='yes'/> <match no='5' postag='(NC.)(.)(.+)' postag_replace='$1P$3' postag_regexp='yes'/></suggestion>
+      <example correction='promovido um ambiente|promovidos uns ambientes'>Desta forma é <marker>promovidos um ambiente</marker> de trabalho saudável.</example>
     </rule>
   </rulegroup>
 
@@ -2616,7 +2681,7 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes' spacebefore='no'>
             <exception regexp='yes'>[mst]e|[nv]os</exception></token>
       </pattern>
-      <message>Este verbo é reflexivo obrigatório. reveja o pronome utilizado.</message>
+      <message>Este verbo é reflexivo obrigatório. Reveja o pronome utilizado.</message>
         <!--<suggestion>\1\2<match no='3' postag='V...(.)(.).+' postag_replace='PP$1C$2\000'/></suggestion>-->
       <example correction=''>Depois disso, ela <marker>queixou-lhe</marker> dos vizinhos.</example>
       <example>Depois disso, ela começou a <marker>queixar-se</marker> dos vizinhos.</example>
