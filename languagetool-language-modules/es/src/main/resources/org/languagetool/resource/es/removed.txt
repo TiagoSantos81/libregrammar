@@ -2,6 +2,7 @@
 # Useful to remove incorrect readings from the binary dictionary without rebuilding it.
 # File Encoding: UTF-8
 # Format: fullform baseform postags (tab separated)
+Booking	Booking	NPCSO00
 Buendía	Buendía	NPMSSP0
 Colúmbia	Colúmbia	NPCNG00
 Dénia	Dénia	NPCNG00
@@ -70,12 +71,16 @@ granulo	granulo	NCMS000
 granulos	granulo	NCMP000
 hemangioma	hemangioma	NCFS000
 hemangiomas	hemangioma	NCFP000
+hidroclorotiazida	hidroclorotiazida	NCMS000
+hidroclorotiazidas	hidroclorotiazida	NCMP000
 ilota	ilota	NCMS000
 ilotas	ilota	NCMP000
 intima	intima	NCFS000
 intimas	intima	NCFP000
 lame	lame	NCMS000
 lames	lame	NCMP000
+logopeda	logopeda	NCFS000
+logopedas	logopeda	NCFP000
 mesénquima	mesénquima	NCFS000
 mesénquimas	mesénquima	NCFP000
 motonave	motonave	NCMS000
@@ -83,12 +88,16 @@ motonaves	motonave	NCMP000
 mui	mui	NCFS000
 muis	mui	NCFP000
 naide	nadie	PI0CS000
+omega	omega	NCFS000
+omegas	omega	NCFP000
 oscar	oscar	NCMS000
 oscars	oscar	NCMP000
 papiloma	papiloma	NCFS000
 papilomas	papiloma	NCFP000
 purpura	purpura	NCFS000
 purpuras	purpura	NCFP000
+píxide	píxide	NCMS000
+píxides	píxide	NCMP000
 quemodectoma	quemodectoma	NCFS000
 quemodectomas	quemodectoma	NCFP000
 servia	servio	AQ0FS0

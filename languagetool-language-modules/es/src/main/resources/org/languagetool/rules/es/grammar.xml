@@ -43,6 +43,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 <!ENTITY unidades_tiempo "segundo|minuto|hora|día|semana|quincena|mes|bimestre|trimestre|cuatrimestre|semestre|año|lustro|década|siglo|centuria|milenio">
 <!ENTITY expresiones_tiempo "ahora|hoy|ayer|antaño|hogaño|temporada|curso"> <!-- to add manually when needed: mañana-->
 <!ENTITY nombres_colectivos "mayoría|par|gente|grupo|parte|familia|docena|centena|millar">
+<!ENTITY common_english_nouns_feminine "Society|League|Corporation|Association|Gallery|Navy|Area|Cup|Foundation">
+<!ENTITY common_english_nouns_masculine "Club|TM|UD|UE|SD|Team|Day|Center|Centre">
 
     <!ENTITY tabla_periodica "(?:[UVW]|C[adeflmnorsu]?|N[abdehiop]?|P[abdmortu]?|S[bcegimnr]?|T[abcehilms]|A[cglmrstu]|R[abefghnu]|B[aehikr]?|H[efgos]?|M[cdgnot]|F[elmr]?|L[airuv]|D[bsy]|E[rsu]|G[ade]|I[nr]?|O[gs]?|Z[nr]|Kr?|Yb?|Xe|[₁₂₃₄₅₆₇₈₉₀])">
     <!ENTITY hyphen "(?:[-‑])">
@@ -159,7 +161,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <marker>
                     <token regexp="yes">&dias_semana_may;</token>
                 </marker>
-                <token negate="yes">Santo</token>
             </pattern>
             <message>Los días de la semana se escriben en minúsculas.</message>
             <suggestion><match case_conversion="alllower" no="2"/></suggestion>
@@ -4756,7 +4757,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     </marker>
                     <token postag="N..P.*|AQ..P.|V.P..P." postag_regexp="yes"><exception postag="V.[SI].*" postag_regexp="yes"/></token>
                 </pattern>
-                <message>Posible error de concordancia. Concordancia de número dudosa.</message>
+                <message>Posible error de concordancia.</message>
                 <suggestion>los</suggestion>
                 <example correction="los">a favor de <marker>lo</marker> acreedores.</example>
                 <example correction="los">a favor de <marker>lo</marker> azulados.</example>
@@ -4877,8 +4878,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                         <token>los</token>
                     </marker>
                 </pattern>
-                <message>Concordancia de género dudosa en la forma distributiva cada... de... Posible falta de concordancia de género entre «\3» y «\5».</message>
-                <short>Concordancia de género dudosa.</short>
+                <message>Posible falta de concordancia.</message>
                 <example correction=""><marker>Cada una de los</marker> caballeros está ocupado.</example>
                 <example>Cada uno de los caballeros está ocupado.</example>
             </rule>
@@ -4893,8 +4893,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                         <token>las</token>
                     </marker>
                 </pattern>
-                <message>Concordancia de género dudosa en la forma distributiva cada... de... Posible falta de concordancia de género entre «\3» y «\5».</message>
-                <short>Concordancia de género dudosa.</short>
+                <message>Posible falta de concordancia.</message>
                 <example correction=""><marker>Cada uno de las</marker> damas está ocupada.</example>
                 <example>Cada una de las damas está ocupada.</example>
             </rule>
@@ -5133,7 +5132,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>Estados Unidos había sido rico en recursos naturales.</example>
             </rule>
         </rulegroup>
-        <rulegroup id="AGRREMENT_SUBJECT_PREDICATE" name="Concordancia de sujeto y predicado" default="on">
+        <rulegroup id="AGRREMENT_SUBJECT_PREDICATE" name="Concordancia de sujeto y predicado" default="off">
             <rule id="SUJ_PRED_ATRIB_SINGULAR" name="Concordancia de sujeto y predicado en singular en oraciones atributivas">
                 <pattern case_sensitive="yes">
                     <token postag="N.{2}S.*|P.{3}S.*" postag_regexp="yes" skip="1"><exception scope="previous">del|al</exception><exception postag="SP.*|C.*" postag_regexp="yes" scope="previous"/><exception postag="PP.C.[DO0]00|R.*|C.*|SP.*" postag_regexp="yes"/><exception regexp="yes"
@@ -5893,321 +5892,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>En 1950 TV3 no existía.</example>
             </rule>
         </rulegroup>
-
-  <rulegroup id='HYPOTHESIS_TYPOGRAPHY' name='Tipografía de hipótesis'>
-    <!-- Localised from Portuguese by Tiago F. Santos, 2019-12-17 -->
-    <rule>
-      <pattern case_sensitive='yes'>
-          <token>H0</token>
-      </pattern>
-      <message>Reemplazar por el símbolo tipográfico.</message>
-        <suggestion>H₀</suggestion>
-      <example correction='H₀'><marker>H0</marker>: No hay efectos significativos.</example>
-    </rule>
-    <rule>
-      <pattern case_sensitive='yes'>
-          <token>H1</token>
-      </pattern>
-      <message>Reemplazar por el símbolo tipográfico.</message>
-        <suggestion>H₁</suggestion>
-      <example correction='H₁'><marker>H1</marker>: El compuesto A tiene efectos significativos.</example>
-    </rule>
-    <rule>
-      <pattern case_sensitive='yes'>
-          <token>H2</token>
-      </pattern>
-      <message>Reemplazar por el símbolo tipográfico.</message>
-        <suggestion>H₂</suggestion>
-      <example correction='H₂'><marker>H2</marker>: El compuesto B tiene efectos significativos.</example>
-    </rule>
-    <rule>
-      <pattern case_sensitive='yes'>
-          <token>H3</token>
-      </pattern>
-      <message>Reemplazar por el símbolo tipográfico.</message>
-        <suggestion>H₃</suggestion>
-      <example correction='H₃'><marker>H3</marker>: El compuesto A combinado con el compuesto B tiene efectos significativos.</example>
-    </rule>
-    <rule>
-      <pattern case_sensitive='yes'>
-          <token>H4</token>
-      </pattern>
-      <message>Reemplazar por el símbolo tipográfico.</message>
-        <suggestion>H₄</suggestion>
-      <example correction='H₄'><marker>H4</marker>: Hay efectos significativos en ausencia del compuesto C.</example>
-    </rule>
-    <rule>
-      <pattern case_sensitive='yes'>
-          <token>H5</token>
-      </pattern>
-      <message>Reemplazar por el símbolo tipográfico.</message>
-        <suggestion>H₅</suggestion>
-      <example correction='H₅'><marker>H5</marker>: El compuesto C tiene efectos significativos.</example>
-    </rule>
-    <rule>
-      <pattern case_sensitive='yes'>
-          <token>H6</token>
-      </pattern>
-      <message>Reemplazar por el símbolo tipográfico.</message>
-        <suggestion>H₆</suggestion>
-      <example correction='H₆'><marker>H6</marker>: El compuesto D tiene efectos significativos.</example>
-    </rule>
-    <rule>
-      <pattern case_sensitive='yes'>
-          <token>H7</token>
-      </pattern>
-      <message>Reemplazar por el símbolo tipográfico.</message>
-        <suggestion>H₇</suggestion>
-      <example correction='H₇'><marker>H7</marker>: El compuesto E tiene efectos significativos.</example>
-    </rule>
-    <rule>
-      <pattern case_sensitive='yes'>
-          <token>H8</token>
-      </pattern>
-      <message>Reemplazar por el símbolo tipográfico.</message>
-        <suggestion>H₈</suggestion>
-      <example correction='H₈'><marker>H8</marker>: El compuesto F tiene efectos significativos.</example>
-    </rule>
-    <rule>
-      <pattern case_sensitive='yes'>
-          <token>H9</token>
-      </pattern>
-      <message>Reemplazar por el símbolo tipográfico.</message>
-        <suggestion>H₉</suggestion>
-      <example correction='H₉'><marker>H9</marker>: El compuesto G tiene efectos significativos.</example>
-    </rule>
-  </rulegroup>
-
-  <rulegroup id='MULTIPLICATION_SIGN' name="Matemática: Multiplicación: x - ×">
-    <!-- Localised from Portuguese by Tiago F. Santos, 2019-12-17  -->
-    <rule>
-      <antipattern>
-          <token regexp='yes'>x|\*</token>
-          <token regexp='yes'>[,;]|and</token>
-      </antipattern>
-      <antipattern>
-          <token regexp='yes'>[,;]|an|the</token>
-          <token regexp='yes'>x|\*</token>
-      </antipattern>
-      <antipattern>
-          <token regexp='yes' skip='2'>versions?|series?|v</token>
-          <token regexp='yes'>\d+</token>
-          <token spacebefore='no'>.</token>
-          <token spacebefore='no'>x</token>
-      </antipattern>
-      <antipattern>
-          <token regexp='yes'>\p{Lu}</token>
-          <token spacebefore='no'>.</token>
-          <token regexp='yes' spacebefore='yes'>\p{Lu}</token>
-      </antipattern>
-      <pattern>
-          <token regexp="yes">[a-z]|[\d\.,⁻¹²³⁴⁵⁶⁷⁸⁹⁰]+?[a-z]{0,1}</token>
-        <marker>
-          <token regexp='yes'>[x\*]</token>
-        </marker>
-          <token regexp="yes">[a-z]|[\d\.,⁻¹²³⁴⁵⁶⁷⁸⁹⁰]+?[a-z]{0,1}</token>
-      </pattern>
-      <message>Reemplazar por el símbolo tipográfico.</message>
-        <suggestion>×</suggestion>
-        <suggestion>·</suggestion>
-      <example correction="×|·">h = 6,626 <marker>x</marker> 10⁻³⁴ J.s</example>
-      <example correction="×|·">h = 6.626 <marker>x</marker> 10⁻³⁴ J.s</example>
-      <example correction="×|·">5 <marker>*</marker> 2 = 10</example>
-      <example correction="×|·">a = 5 <marker>*</marker> x + 7</example>
-      <example correction="×|·">a = 5x <marker>*</marker> 5 + 7</example>
-      <example correction="×|·">a <marker>*</marker> b</example>
-      <example>a = 2 · x² + 5</example>
-      <example>4,5 × 2,5 = 11,25</example>
-      <example>Rodrigues Fernandes, X. L.</example>
-    </rule>
-    <rule>
-      <regexp>(?&lt;!([a-vyz]|[a-vyz]\d|[a-vyz]\d{2}|[a-vyz]\d{3}|[a-vyz]\d{4}|[a-vyz]\d{5}))((?!(?:[,;\(\.][x\*]([\d\.,⁻¹²³⁴⁵⁶⁷⁸⁹⁰]+?)|(?:[\d\.,⁻¹²³⁴⁵⁶⁷⁸⁹⁰]+?)[x\*][,;\.\)\!\?]))([\d\.,⁻¹²³⁴⁵⁶⁷⁸⁹⁰]+?)[x\*]([\d\.,⁻¹²³⁴⁵⁶⁷⁸⁹⁰]+))</regexp>
-      <message>Reemplazar por el símbolo tipográfico.</message>
-        <suggestion>\4×\5</suggestion>
-        <suggestion>\4·\5</suggestion>
-      <example correction='2,998×10⁸|2,998·10⁸'>c=<marker>2,998x10⁸</marker> m/s</example>
-      <example correction="6.626×10⁻³⁴|6.626·10⁻³⁴">h = <marker>6.626x10⁻³⁴</marker> J.s</example>
-      <example correction="5×2|5·2"><marker>5*2</marker> = 10</example>
-      <example>a=2·x²+5</example>
-      <example>4,5×2,5=11,25</example>
-      <example>AmVIO2X2, AmVO2X, AmIVOX2, AmIIIOX.</example>
-      <example>1Z1141X30370035113</example>
-    </rule>
-    <rule>
-      <regexp>([a-z]|[\d\.,⁻¹²³⁴⁵⁶⁷⁸⁹⁰]+?[a-z]{0,1})\*([a-z]|[\d\.,⁻¹²³⁴⁵⁶⁷⁸⁹⁰]+?[a-z]{0,1})</regexp>
-      <message>Reemplazar por el símbolo tipográfico.</message>
-        <suggestion>\1×\2</suggestion>
-        <suggestion>\1·\2</suggestion>
-      <example correction="5×x|5·x">a=<marker>5*x</marker>+7</example>
-      <example correction="5x×5|5x·5">a=<marker>5x*5</marker>+7</example>
-      <example correction="5x×5|5x·5">a=7+<marker>5x*5</marker></example>
-      <example correction="a×b|a·b"><marker>a*b</marker></example>
-      <example>a=2·x²+5</example>
-      <example>4,5×2,5=11,25</example>
-      <example>Number 1Z1141X30370035113</example>
-    </rule>
-  </rulegroup>
-
-  <rulegroup id='PLUS_MINUS' name="Matemática: +- - ± ">
-    <!-- Localised from Portuguese by Tiago F. Santos, 2019-12-17 -->
-    <rule>
-      <pattern>
-          <token>+</token>
-          <token regexp='yes' spacebefore='no'>&hyphen;</token>
-      </pattern>
-      <message>Reemplazar por el símbolo tipográfico.</message>
-        <suggestion>±</suggestion>
-      <example correction='±'>m = 75,5 <marker>+-</marker> 0,1 g</example>
-    </rule>
-    <rule>
-      <pattern>
-          <token regexp='yes'>&hyphen;</token>
-          <token spacebefore='no'>+</token>
-      </pattern>
-      <message>Reemplazar por el símbolo tipográfico.</message>
-        <suggestion>±</suggestion>
-      <example correction='±'>m = 75,5 <marker>-+</marker> 0,1 g</example>
-    </rule>
-  </rulegroup>
-
-   <rulegroup id='CHEMICAL_FORMULAS_TYPOGRAPHY' name='Tipografía: fórmulas químicas'>
-    <!-- Localized from Portuguese, Tiago F. Santos, 2019-12-11 -->
-    <rule>
-      <pattern case_sensitive='yes'>
-          <token regexp='yes'>(?:\d+)(?:&tabla_periodica;)+(?:[₁₂₃₄₅₆₇₈₉]+)((&tabla_periodica;)+)?</token>
-      </pattern>
-      <message>Los multiplicadores de las fórmulas químicas deben estar separados.</message>
-        <suggestion><match no='1' regexp_match='(\d+)((&tabla_periodica;)+)([₁₂₃₄₅₆₇₈₉₀]+)(((&tabla_periodica;)+)?)' regexp_replace='$1 $2$4$5'/></suggestion>
-      <example correction='4 H₂O'><marker>4H₂O</marker></example>
-    </rule>
-    <rule>
-      <pattern case_sensitive='yes'>
-          <token regexp='yes'>(?:\d+)?(?:&tabla_periodica;)+2((?:&tabla_periodica;)+)?
-            <exception regexp='yes'>(?:U|PS)2</exception></token>
-      </pattern>
-      <message>Los números de las fórmulas químicas deben escribirse en subíndice.</message>
-        <suggestion><match no='1' regexp_match='((&tabla_periodica;)+)2(((&tabla_periodica;)+)?)' regexp_replace='$1₂$3'/></suggestion>
-      <example correction='O₂'><marker>O2</marker></example>
-      <example correction='4H₂O'><marker>4H2O</marker></example>
-      <example>U2</example>
-    </rule>
-    <rule>
-      <pattern case_sensitive='yes'>
-          <token regexp='yes'>(?:\d+)?(?:&tabla_periodica;)+3((?:&tabla_periodica;)+)?
-            <exception>PS3</exception></token>
-      </pattern>
-      <message>Los números de las fórmulas químicas deben escribirse en subíndice.</message>
-        <suggestion><match no='1' regexp_match='((&tabla_periodica;)+)3(((&tabla_periodica;)+)?)' regexp_replace='$1₃$3'/></suggestion>
-      <example correction='2S₃'><marker>2S3</marker></example>
-      <example>PS3</example>
-    </rule>
-    <rule>
-      <pattern case_sensitive='yes'>
-          <token regexp='yes'>(?:\d+)?(?:&tabla_periodica;)+4((?:&tabla_periodica;)+)?
-            <exception>PS4</exception></token>
-      </pattern>
-      <message>Los números de las fórmulas químicas deben escribirse en subíndice.</message>
-        <suggestion><match no='1' regexp_match='((&tabla_periodica;)+)4(((&tabla_periodica;)+)?)' regexp_replace='$1₄$3'/></suggestion>
-      <example correction='CH₄'><marker>CH4</marker></example>
-      <example correction='H₄Si'><marker>H4Si</marker></example>
-    </rule>
-    <rule>
-      <pattern case_sensitive='yes'>
-          <token regexp='yes'>(?:\d+)?(?:&tabla_periodica;)+2((?:&tabla_periodica;)+)?2((?:&tabla_periodica;)+)?</token>
-      </pattern>
-      <message>Los números de las fórmulas químicas deben escribirse en subíndice.</message>
-        <suggestion><match no='1' regexp_match='((&tabla_periodica;)+)2(((&tabla_periodica;)+)?)2(((&tabla_periodica;)+)?)' regexp_replace='$1₂$3₂$6'/></suggestion>
-      <example correction='H₂O₂'><marker>H2O2</marker></example>
-      <example correction='H₂NO₂Al'><marker>H2NO2Al</marker></example>
-    </rule>
-    <rule>
-      <pattern case_sensitive='yes'>
-          <token regexp='yes'>(?:\d+)?(?:&tabla_periodica;)+2((?:&tabla_periodica;)+)?3((?:&tabla_periodica;)+)?</token>
-      </pattern>
-      <message>Los números de las fórmulas químicas deben escribirse en subíndice.</message>
-        <suggestion><match no='1' regexp_match='((&tabla_periodica;)+)2(((&tabla_periodica;)+)?)3(((&tabla_periodica;)+)?)' regexp_replace='$1₂$3₃$6'/></suggestion>
-      <example correction='K₂HPO₃'><marker>K2HPO3</marker></example>
-    </rule>
-    <rule>
-      <pattern case_sensitive='yes'>
-          <token regexp='yes'>(?:\d+)?(?:&tabla_periodica;)+3((?:&tabla_periodica;)+)?2((?:&tabla_periodica;)+)?</token>
-      </pattern>
-      <message>Los números de las fórmulas químicas deben escribirse en subíndice.</message>
-        <suggestion><match no='1' regexp_match='((&tabla_periodica;)+)3(((&tabla_periodica;)+)?)2(((&tabla_periodica;)+)?)' regexp_replace='$1₃$3₂$6'/></suggestion>
-      <example correction='CH₃CH₂OH'><marker>CH3CH2OH</marker></example>
-    </rule>
-    <rule>
-      <pattern case_sensitive='yes'>
-          <token regexp='yes'>(?:\d+)?(?:&tabla_periodica;)+3((?:&tabla_periodica;)+)?3((?:&tabla_periodica;)+)?</token>
-      </pattern>
-      <message>Los números de las fórmulas químicas deben escribirse en subíndice.</message>
-        <suggestion><match no='1' regexp_match='((&tabla_periodica;)+)3(((&tabla_periodica;)+)?)3(((&tabla_periodica;)+)?)' regexp_replace='$1₃$3₃$6'/></suggestion>
-      <example correction='CH₃CH₃'><marker>CH3CH3</marker></example>
-    </rule>
-    <rule>
-      <pattern case_sensitive='yes'>
-          <token regexp='yes'>(?:\d+)?(?:&tabla_periodica;)+2((?:&tabla_periodica;)+)?4((?:&tabla_periodica;)+)?</token>
-      </pattern>
-      <message>Los números de las fórmulas químicas deben escribirse en subíndice.</message>
-        <suggestion><match no='1' regexp_match='((&tabla_periodica;)+)2(((&tabla_periodica;)+)?)4(((&tabla_periodica;)+)?)' regexp_replace='$1₂$3₄$6'/></suggestion>
-      <example correction='H₂SO₄'><marker>H2SO4</marker></example>
-    </rule>
-    <rule>
-      <pattern case_sensitive='yes'>
-          <token regexp='yes'>(?:\d+)?(?:&tabla_periodica;)+2((?:&tabla_periodica;)+)?5((?:&tabla_periodica;)+)?</token>
-      </pattern>
-      <message>Los números de las fórmulas químicas deben escribirse en subíndice.</message>
-        <suggestion><match no='1' regexp_match='((&tabla_periodica;)+)2(((&tabla_periodica;)+)?)5(((&tabla_periodica;)+)?)' regexp_replace='$1₂$3₅$6'/></suggestion>
-      <example correction='C₂H₅OH'><marker>C2H5OH</marker></example>
-    </rule>
-    <rule>
-      <pattern case_sensitive='yes'>
-          <token regexp='yes'>(?:\d+)?(?:&tabla_periodica;)+2((?:&tabla_periodica;)+)?6((?:&tabla_periodica;)+)?</token>
-      </pattern>
-      <message>Los números de las fórmulas químicas deben escribirse en subíndice.</message>
-        <suggestion><match no='1' regexp_match='((&tabla_periodica;)+)2(((&tabla_periodica;)+)?)6(((&tabla_periodica;)+)?)' regexp_replace='$1₂$3₆$6'/></suggestion>
-      <example correction='C₂H₆'><marker>C2H6</marker></example>
-    </rule>
-    <rule>
-      <pattern case_sensitive='yes'>
-          <token regexp='yes'>(?:\d+)?(?:&tabla_periodica;)+7((?:&tabla_periodica;)+)?
-            <exception>V7</exception></token>
-      </pattern>
-      <message>Los números de las fórmulas químicas deben escribirse en subíndice.</message>
-        <suggestion><match no='1' regexp_match='((&tabla_periodica;)+)7(((&tabla_periodica;)+)?)' regexp_replace='$1₇$3'/></suggestion>
-      <example correction='C₇H₁₆'><marker>C7H₁₆</marker></example>
-    </rule>
-    <rule>
-      <pattern case_sensitive='yes'>
-          <token regexp='yes'>(?:\d+)?(?:&tabla_periodica;)+8((?:&tabla_periodica;)+)?
-            <exception>V8</exception></token>
-      </pattern>
-      <message>Los números de las fórmulas químicas deben escribirse en subíndice.</message>
-        <suggestion><match no='1' regexp_match='((&tabla_periodica;)+)8(((&tabla_periodica;)+)?)' regexp_replace='$1₈$3'/></suggestion>
-      <example correction='C₈H₁₈'><marker>C8H₁₈</marker></example>
-      <example>Lola T70 Chevy V8</example>
-    </rule>
-    <rule>
-      <pattern case_sensitive='yes'>
-          <token regexp='yes'>(?:\d+)?(?:&tabla_periodica;)+9((?:&tabla_periodica;)+)?
-            <exception>V9</exception></token>
-      </pattern>
-      <message>Los números de las fórmulas químicas deben escribirse en subíndice.</message>
-        <suggestion><match no='1' regexp_match='((&tabla_periodica;)+)9(((&tabla_periodica;)+)?)' regexp_replace='$1₉$3'/></suggestion>
-      <example correction='C₉H₂₀'><marker>C9H₂₀</marker></example>
-      <example>Lola T70 Chevy V9</example>
-    </rule>
-    <rule>
-      <pattern case_sensitive='yes'>
-          <token regexp='yes'>(?:\d+)?(?:&tabla_periodica;)+0((?:&tabla_periodica;)+)?
-            <exception>V0</exception></token>
-      </pattern>
-      <message>Los números de las fórmulas químicas deben escribirse en subíndice.</message>
-        <suggestion><match no='1' regexp_match='((&tabla_periodica;)+)0(((&tabla_periodica;)+)?)' regexp_replace='$1₀$3'/></suggestion>
-      <example correction='C₉H₂₀'><marker>C₉H₂0</marker></example>
-    </rule>
-  </rulegroup>
-
         <rulegroup id="PUNTO_EN_ABREVIATURAS" name="Punto en abreviaturas: pág., núm., etc." default="on">
             <url>https://www.rae.es/dpd/ayuda/abreviaturas</url>
             <antipattern>
@@ -6510,30 +6194,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>Frankfurt <marker>am</marker> Main</example>
             </rule>
         </rulegroup>
-  <rulegroup id="EQUAL_OR_X" name="Matemático: &gt;= (≥)">
-    <!-- Localized from German grammar.xml, by Tiago F. Santos, 2019-10-27 -->
-    <rule>
-      <regexp>&gt;=</regexp>
-      <message>Prefiere el símbolo tipográfico.</message>
-        <suggestion>≥</suggestion>
-        <suggestion>≧</suggestion>
-      <example>1 = 1</example>
-      <example correction="≥|≧">1 <marker>&gt;=</marker> 0</example>
-    </rule>
-    <rule>
-      <pattern>
-        <marker>
-          <token>&lt;</token>
-          <token>=</token>
-        </marker>
-          <token negate="yes">></token>
-      </pattern>
-      <message>Prefiere el símbolo tipográfico.</message>
-        <suggestion>≤</suggestion>
-        <suggestion>≦</suggestion>
-      <example correction="≤|≦">1 <marker>&lt;=</marker> 3</example>
-    </rule>
-  </rulegroup>
         <rulegroup id="ARROWS" name="Flechas: -&gt; (→)">
             <!-- Localized from German grammar.xml, by Tiago F. Santos, 2017-07-07 -->
             <rule>
