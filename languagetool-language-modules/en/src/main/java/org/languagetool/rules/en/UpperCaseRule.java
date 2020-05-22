@@ -172,7 +172,7 @@ public class UpperCaseRule extends Rule {
       token("magazine")
     ),
     Arrays.asList(
-      tokenRegex("Google|Microsoft") // Microsoft Teams / Google Maps (not tagged as NNP)
+      tokenRegex("Google|Microsoft"), // Microsoft Teams / Google Maps (not tagged as NNP)
       tokenRegex("Teams|Maps")
     )
   );
