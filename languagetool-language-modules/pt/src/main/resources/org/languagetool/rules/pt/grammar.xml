@@ -427,25 +427,6 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes' min='0'>&adverbios_de_intensidade;</token>
           <token postag='(?:[NZ].|A..)F[NP].+' postag_regexp='yes'/>
       </antipattern>
-<!-- MARCOAGPINTO 2020-05-22 *START* -->
-<!-- "O prémio confere ao Brasil expressiva potencialidade." -->
-<!-- "O prémio confere ao Marco expressiva potencialidade." -->
-      <antipattern>
-		  <token postag='NPMS[G0]00' postag_regexp='yes'/>
-		  <token postag='AQ0FS0' postag_regexp='no'/>
-		  <token postag='NCFS000' postag_regexp='no'/>  		  
-      </antipattern>	
-<!-- MARCOAGPINTO 2020-05-22 *END* -->
-<!-- MARCOAGPINTO 2020-05-22 *START* -->
-<!-- "Edificações erguidas por arquitetos índios centenas de anos antes da conquista europeia." -->
-<!-- "Surgiram no reino centenas de pequenas habitações." -->
-      <antipattern>
-		  <token postag='NCM[SP]000' postag_regexp='yes'/>
-		  <token postag='Z0FP0' postag_regexp='no'/>
-		  <token postag='SPS00' postag_regexp='no'/>	  		  
-      </antipattern>	
-<!-- MARCOAGPINTO 2020-05-22 *END* -->
-
       <pattern>
           <token negate='yes' regexp='yes'>&hifen;</token>
         <marker>
@@ -481,6 +462,12 @@ title="Easy editing stylesheet" ?>
       <example correction="(pai) inúmeras|pai inúmero|pai, inúmeras">O meu <marker>pai inúmeras</marker> vezes dá o exemplo.</example>
       <example>O meu pai — inúmeras vezes — dá o exemplo.</example><!-- parenthetical phrase -->
       <example>O meu pai dá inúmeras vezes o exemplo.</example><!-- adverb -->
+      <example type='triggers_error'>O prémio confere ao Brasil expressiva potencialidade.</example><!-- XXX ellipsis case. allowing this artistic causes too many false negatives -->
+      <example>O prémio confere ao Brasil [uma] expressiva potencialidade.</example>
+      <example type='triggers_error'>Surgiram no reino centenas de pequenas habitações.</example><!-- XXX subject and verb in reverse order -->
+      <example>Centenas de pequenas habitações surgiram no reino.</example>
+      <example>Surgiram, no reino, centenas de pequenas habitações.</example>
+      <example>Surgiram centenas de pequenas habitações no reino.</example>
     </rule>
     <rule>
       <pattern>
@@ -552,15 +539,6 @@ title="Easy editing stylesheet" ?>
     <!--token min='0' postag='(?:A..|Z.)C.+' postag_regexp='yes'-->
           <token postag='(?:[NZ].|A..)F.+' postag_regexp='yes'/>
       </antipattern>
-<!-- MARCOAGPINTO 2020-05-22 *START* -->
-<!-- "Edificações erguidas por arquitetos índios centenas de anos antes da conquista europeia." -->
-<!-- "Surgiram no reino centenas de pequenas habitações." -->
-      <antipattern>
-		  <token postag='NCM[SP]000' postag_regexp='yes'/>
-		  <token postag='Z0FP0' postag_regexp='no'/>
-		  <token postag='SPS00' postag_regexp='no'/>	  		  
-      </antipattern>	
-<!-- MARCOAGPINTO 2020-05-22 *END* -->
       <pattern>
           <token negate='yes' regexp='yes'>&hifen;</token>
         <marker>
@@ -592,6 +570,8 @@ title="Easy editing stylesheet" ?>
       <example>Cento e oitenta línguas indígenas são faladas em áreas remotas e diversas…</example>
       <example type='triggers_error'>...gicos exibem a notável similaridade de unidades e processos discutida na secção anterior.</example>
       <example>A soma não dá valores ordenados sequenciais crescentes.</example>
+      <example type='triggers_error'>Edificações erguidas por arquitetos índios centenas de anos antes da conquista europeia.</example><!-- passive voice and ellipsis -->
+      <example>Edificações [foram] erguidas por arquitetos índios, centenas de anos antes da conquista europeia.</example>
     </rule>
     <rule>
       <pattern>
