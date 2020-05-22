@@ -818,7 +818,8 @@
           <token postag="SENT_START|D.+" postag_regexp="yes"/>
         <marker>
         <and>
-          <token postag="AO.+" postag_regexp="yes"/>
+          <token postag="AO.+" postag_regexp="yes">
+            <exception>segundo</exception></token>
           <token postag="RG" postag_regexp="yes"/>
         </and>
         </marker>
@@ -1517,6 +1518,8 @@
       <marker>
         <token>qual</token>
       </marker>
+        <token>
+          <exception case_sensitive='yes' regexp='yes'>\p{Lu}.+</exception></token>
       </pattern>
       <disambig action="replace"><wd pos="PR0MS000"/></disambig>
     </rule>
@@ -1526,6 +1529,8 @@
       <marker>
         <token>quais</token>
       </marker>
+        <token>
+          <exception case_sensitive='yes' regexp='yes'>\p{Lu}.+</exception></token>
       </pattern>
       <disambig action="replace"><wd pos="PR0MP000"/></disambig>
     </rule>
@@ -1535,6 +1540,8 @@
       <marker>
         <token>qual</token>
       </marker>
+        <token>
+          <exception case_sensitive='yes' regexp='yes'>\p{Lu}.+</exception></token>
       </pattern>
       <disambig action="replace"><wd pos="PR0FS000"/></disambig>
     </rule>
@@ -1544,6 +1551,8 @@
       <marker>
         <token>quais</token>
       </marker>
+        <token>
+          <exception case_sensitive='yes' regexp='yes'>\p{Lu}.+</exception></token>
       </pattern>
       <disambig action="replace"><wd pos="PR0FP000"/></disambig>
     </rule>
@@ -2276,6 +2285,34 @@
           <token postag_regexp="yes" postag='Z0F[SPN]0'/>
       </pattern>
       <disambig action="replace"><wd pos="Z0FP0"/><wd pos="Z0FP0"/><wd pos="Z0FP0"/></disambig>
+    </rule>
+  </rulegroup>
+
+  <rulegroup id="NUMBERS_AGREEMENT" name="Concordância de multiplicadores">
+    <!-- Created by Tiago F. Santos, Portuguese rule, 2016-11-15  	-->
+    <rule>
+      <pattern>
+        <marker>
+        <and>
+          <token postag_regexp="yes" postag='N.M.+'/>
+          <token postag_regexp="yes" postag='Z.CP.+'/>
+        </and>
+        </marker>
+          <token postag_regexp="yes" postag='(?:A..|N.)F.+'/>
+      </pattern>
+      <disambig action='filter' postag="Z.+"/>
+    </rule>
+    <rule>
+      <pattern>
+        <marker>
+        <and>
+          <token postag_regexp="yes" postag='N.F.+'/>
+          <token postag_regexp="yes" postag='Z.CP.+'/>
+        </and>
+        </marker>
+          <token postag_regexp="yes" postag='(?:A..|N.)M.+'/>
+      </pattern>
+      <disambig action='filter' postag="Z.+"/>
     </rule>
   </rulegroup>
 
