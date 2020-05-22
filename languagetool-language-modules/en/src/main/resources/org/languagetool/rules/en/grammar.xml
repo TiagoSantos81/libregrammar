@@ -17946,6 +17946,8 @@ USA
         </rule>
         <rule id="ESSENTIAL_ESSENTIALLY" name="essentially">
             <pattern>
+                <token>
+                  <exception>how</exception></token>
                 <marker>
                     <token>essential</token>
                 </marker>
