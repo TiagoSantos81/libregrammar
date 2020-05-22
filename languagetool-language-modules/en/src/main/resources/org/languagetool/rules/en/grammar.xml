@@ -34523,6 +34523,11 @@ USA
                     <token regexp="yes">subject|responses?|attention|addition|due|alternatives?|exposure|similar|comparable|access</token>
                     <token>to</token>
                 </antipattern>
+                <antipattern>
+                    <token>with</token>
+                    <token>regard</token>
+                    <token>to</token>
+                </antipattern>
                 <pattern>
                     <token>
                         to
