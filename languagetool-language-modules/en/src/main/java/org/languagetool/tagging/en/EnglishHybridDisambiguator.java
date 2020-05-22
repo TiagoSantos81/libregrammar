@@ -80,10 +80,9 @@ public class EnglishHybridDisambiguator extends AbstractDisambiguator {
           if (POSTag.startsWith("NN")) {
             nextPOSTag = POSTag;
             POSTag = "JJ";
-          } else {
+          } else { */
             nextPOSTag = POSTag;
-          }
-          */
+          // }
         }
       }
       i++;
