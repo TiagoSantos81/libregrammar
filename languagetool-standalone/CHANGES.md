@@ -45,7 +45,8 @@
     `ParagraphRepeatBeginningRule`, `PunctuationMarkAtParagraphEnd`
 
 #### Portuguese
-  * added and improved rules
+  * added and improved rules, including:
+    - new agreement rules.
   * add URLs explaining most single word suggestions
 
 #### Russian
@@ -222,10 +223,7 @@
   * rules added and improved
 
 #### Spanish
-  * rules added and improved, thanks to Jaume Órtola
-
-#### Spanish
-  * added and improved rules, including:
+  * added and improved rules, thanks to Jaume Órtola, including:
     - SimpleReplaceRule;
     - SimpleReplaceVerbsRule;
     --SimpleReplaceAnglicismRule.
