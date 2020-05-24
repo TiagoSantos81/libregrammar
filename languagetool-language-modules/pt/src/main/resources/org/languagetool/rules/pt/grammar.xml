@@ -3188,6 +3188,58 @@ title="Easy editing stylesheet" ?>
       <example correction='eu quem fez|eu quem fê'>Fui <marker>eu quem fiz</marker> isto.</example>
     </rule>
 
+  <rulegroup id='REVERSE_ORDER_VERBAL_AGREEMENT' name="Concordância Verbal: Ordem inversa (verbo + sujeito)">
+    <!-- Created by Tiago F. Santos, Portuguese rule, 2020-05-22 -->
+      <url>https://duvidas.dicio.com.br/fui-eu-ou-foi-eu/</url>
+    <rule>
+      <pattern>
+        <marker>
+          <unify negate='yes'>
+            <feature id="person_123"/><feature id="person_number"/>
+          <token postag_regexp='yes' postag='V.+'>
+            <exception negate_pos='yes' postag_regexp='yes' postag='V.+'/></token>
+          <unify-ignore>
+          <token min="0" max="3" postag='R.+' postag_regexp='yes'>
+            <exception negate_pos='yes' postag_regexp='yes' postag='R.+'/></token>
+          </unify-ignore>
+          <token postag_regexp='yes' postag='PP.+' regexp='yes'>&pronomes_retos;
+            <exception negate_pos='yes' postag_regexp='yes' postag='P.+'/></token>
+          </unify>
+        </marker>
+          <token>
+            <exception postag_regexp='yes' postag='V.+'/></token>
+      </pattern>
+      <message>&MSG_ECV;</message>
+      <url>https://duvidas.dicio.com.br/fui-eu-ou-foi-eu/</url>
+      <example type='incorrect'><marker>Foi eu</marker> que fiz.</example>
+      <example><marker>Fui eu</marker> que fiz.</example>
+      <example type='incorrect'><marker>Foi tu</marker> que​ fizeste.</example>
+      <example><marker>Foste tu</marker> que​ fizeste.</example>
+      <example type='incorrect'><marker>Fui ele</marker> que fez.</example>
+      <example><marker>Foi ele</marker> que fez.</example>
+      <!--example type='incorrect'><marker>Foi nós</marker> que fizemos.</example--><!-- XXX caught by next rule -->
+    </rule>
+    <rule>
+      <pattern>
+        <marker>
+          <token postag_regexp='yes' postag='V.+'>
+            <exception postag_regexp='yes' postag='V...1P.+'/>
+            <exception negate_pos='yes' postag_regexp='yes' postag='V.+'/></token>
+          <token min="0" max="3" postag='R.+' postag_regexp='yes'>
+            <exception negate_pos='yes' postag_regexp='yes' postag='R.+'/></token>
+          <token>nós</token>
+        </marker>
+          <token>
+            <exception postag_regexp='yes' postag='V.+'/></token>
+      </pattern>
+      <message>Se não se refere ao fruto seco ('nós') existe um problema de concordância verbal.</message>
+        <suggestion><match no='1' include_skipped='all' postag='(V...)(..)(.+)' postag_replace='$1\1P$3' postag_regexp='yes'/> <match no='2' include_skipped='all'/> nós</suggestion>
+        <!--suggestion><match no='1' include_skipped='all'/> <match no='2' include_skipped='all'/>, <match no='3'/></suggestion--><!-- FIXME bug on synthesizer. A POS is being injected in match no='3' aven though there is no code for that -->
+      <example correction='Fomo nós|Fomos nós'><marker>Foi nós</marker> que fizemos.</example>
+      <example>Fomos nós que fizemos.</example>
+    </rule>
+  </rulegroup>
+  
     <rule id='A_MAIORIA_SINGULAR' name='Concordância verbal: A maioria + plural'>
     <!--      Created by Tiago F. Santos, Portuguese rule, 2017-04-10      -->
       <antipattern>
