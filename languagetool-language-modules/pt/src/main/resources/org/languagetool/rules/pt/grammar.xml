@@ -3171,6 +3171,23 @@ title="Easy editing stylesheet" ?>
       <example>Cão e gato são animais.</example>
     </rule>
 
+    <rule id='QUEM_VERB_AGREEMENT' name="Concordância Verbal: Quem + 3.ª pessoa">
+    <!-- Created by Tiago F. Santos, Portuguese rule, 2020-05-23 -->
+      <pattern>
+          <token regexp="yes">&pronomes_retos;</token>
+          <token>quem</token>
+          <token min="0" max="3" postag='R.+' postag_regexp='yes'>
+            <exception scope='next'>,</exception></token>
+          <token postag='V.[CIS].([12]S|[123]P).' postag_regexp='yes'>
+            <exception postag='V.[CIS].3S0' postag_regexp='yes'/>
+            <exception>como</exception></token>
+      </pattern>
+      <message>A concordância verbal com o pronome relativo 'quem' é feita na terceira pessoa do singular, independentemente do pronome anterior.</message>
+        <suggestion><match no='1' include_skipped='all'/> <match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all' postag='(V.[CIS].)..(.)' postag_replace='$1\3S$2' postag_regexp='yes'/></suggestion>
+      <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/concordancia-verbal-quem/4044</url>
+      <example correction='eu quem fez|eu quem fê'>Fui <marker>eu quem fiz</marker> isto.</example>
+    </rule>
+
     <rule id='A_MAIORIA_SINGULAR' name='Concordância verbal: A maioria + plural'>
     <!--      Created by Tiago F. Santos, Portuguese rule, 2017-04-10      -->
       <antipattern>
