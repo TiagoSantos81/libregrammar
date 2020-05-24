@@ -1507,10 +1507,19 @@
     <!-- 		Created by Tiago F. Santos, 2020-05-26		-->
     <rule>
       <pattern>
-        <token regexp='yes'>de|a|com|eu|tu|el[ea]s?|[nv]ós</token>
+        <token regexp='yes'>de|a|com</token>
         <token regexp='yes'>quem?|qual</token>
       </pattern>
       <disambig action="replace"><wd pos="PR0CN000"/><wd pos="PR0CN000"/></disambig>
+    </rule>
+    <rule>
+      <pattern>
+        <token regexp='yes'>eu|tu|el[ea]s?|[nv]ós</token>
+      <marker>
+        <token regexp='yes'>quem?|qual</token>
+      </marker>
+      </pattern>
+      <disambig action="replace"><wd pos="PR0CN000"/></disambig>
     </rule>
     <rule>
       <pattern>
