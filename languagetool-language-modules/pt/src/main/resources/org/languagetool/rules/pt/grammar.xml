@@ -3209,6 +3209,7 @@ title="Easy editing stylesheet" ?>
           <unify negate='yes'>
             <feature id="person_123"/><feature id="person_number"/>
           <token postag_regexp='yes' postag='V.+'>
+            <exception postag='VMG0000'/>
             <exception negate_pos='yes' postag_regexp='yes' postag='V.+'/></token>
           <unify-ignore>
           <token min="0" max="3" postag='R.+' postag_regexp='yes'>
@@ -4594,7 +4595,7 @@ title="Easy editing stylesheet" ?>
       </pattern>
       <message>Possível confusão de termos. Pretende dizer:</message>
         <suggestion>porquê\2</suggestion>
-        <suggestion>por quê\2</suggestion>
+        <suggestion>por quê\2</suggestion><!-- XXX pt-BR only -->
       <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/porque-por-que-e-porque/243</url>
       <example correction="Porquê?|Por quê?"><marker>Porque?</marker></example>
     </rule>
@@ -4606,9 +4607,44 @@ title="Easy editing stylesheet" ?>
       </pattern>
       <message>'Por que' pode ser substituído por 'pelo qual'. Será que pretende dizer:</message>
         <suggestion>porquê\3</suggestion>
-        <suggestion>por quê\3</suggestion>
+        <suggestion>por quê\3</suggestion><!-- XXX pt-BR only -->
       <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/porque-por-que-e-porque/243</url>
       <example correction="porquê?|por quê?">Fizeste isso <marker>por que?</marker></example>
+    </rule>
+    <rule>
+      <pattern>
+          <token postag='SENT_START'/>
+        <marker>
+          <token>por</token>
+          <token>quê</token>
+          <token skip='-1'/>
+          <token>?</token>
+        </marker>
+      </pattern>
+      <message>'Por quê' só deve ser utilizado no final da questão, e que pode ser substituída por 'por qual motivo'.</message>
+        <suggestion>Porque <match no='4' include_skipped='all'/>?</suggestion>
+        <suggestion><match no='4' case_conversion='startupper' include_skipped='all'/>, porquê?</suggestion>
+        <suggestion><match no='4' case_conversion='startupper' include_skipped='all'/>, por quê?</suggestion><!-- XXX pt-BR only -->
+      <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/porque-por-que-e-porque/243</url>
+      <example correction="Porque você vai embora?|Você vai embora, porquê?|Você vai embora, por quê?"><marker>Por quê você vai embora?</marker></example>
+      <example>Porque você vai embora?</example><!-- TODO this is incorrect in pt-BR only. Needs another rule in that module -->
+      <example>Porque nenhum pirata conseguiu esse tesouro?</example><!-- TODO this is incorrect in pt-BR only. Needs another rule there -->
+    </rule>
+    <rule>
+      <pattern>
+          <token postag='SENT_START'/>
+        <marker>
+          <token>porquê</token>
+          <token skip='-1'/>
+          <token>?</token>
+        </marker>
+      </pattern>
+      <message>'Por quê' só deve ser utilizado no final da questão, e que pode ser substituída por 'por qual motivo'.</message>
+        <suggestion>Porque <match no='3' include_skipped='all'/>?</suggestion>
+        <suggestion><match no='3' case_conversion='startupper' include_skipped='all'/>, porquê?</suggestion>
+      <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/porque-por-que-e-porque/243</url>
+      <example correction="Porque você vai embora?|Você vai embora, porquê?"><marker>Porquê você vai embora?</marker></example>
+      <example>Porque você vai embora?</example><!-- TODO this is incorrect in pt-BR. Needs another rule there -->
     </rule>
     <rule>
       <pattern>
@@ -10511,6 +10547,7 @@ title="Easy editing stylesheet" ?>
       <pattern>
         <marker>
           <token>
+            <exception inflected='yes' regexp='yes'>perguntar|inquirir|especular</exception>
             <exception regexp="yes">“|«|&separadores_de_oracoes;</exception>
             <exception postag='SENT_START|(?:[CD]|SP).+|A...P.+' postag_regexp='yes'/></token>
           <token regexp="yes">caso|se</token>
@@ -25564,7 +25601,7 @@ TODO Write better examples
     </rule>
     <rule>
       <pattern>
-          <token regexp='yes'>(?:À|a(?:lguma|pós|presenta|presentam|presentar|presentaram|presente|presentem|presentou|pura|purando|purar|quela|purou|ssunto)?|c(?:lara|com|onfirma|onfirmam|onforme|ovarde|uja)|da|d(?:ar|as|e|esmente|esmentem|esmentiu|essa|uma)|É|e(?:m|ncaminha|ncaminham|ncaminhou|ngolir|specífica|ssa|sta|xista|xistiu|xistindo)|falsa|f(?:ormaliza|ormalizando|ormalizaram|ormalizou|ormulada)|g(?:rande|rave)|h(?:á|avia|ouve|ouver)|i(?:nexplicada|ngênua|nvestiga|nvestigam|nvestigar|nvestigava)|j(?:ulga|ulgam|ulgou)|levar|m(?:as|ediante|eia|uita)|n(?:a|enhuma|ova|uma)|oferece|o(?:ferecer|fereceu|u|utra)|p(?:ela|or|osível|reciosa|resente|rimeira)|qualquer|r(?:ecebe|eceberam|eceberem|ecebeu)|s(?:egunda|egundo|imples|obre|ua)|tem|t(?:errível|oda|remenda)|uma|velada)s?</token>
+          <token regexp='yes'>(?:À|a(?:lguma|pós|presenta|presentam|presentar|presentaram|presente|presentem|presentou|pura|purando|purar|quela|purou|ssunto)?|c(?:lara|com|onfirma|onfirmam|onforme|ovarde|uja)|da|d(?:ar|as|e|esmente|esmentem|esmentiu|essa|uma)|É|e(?:m|ncaminha|ncaminham|ncaminhou|ngolir|specífica|ssa|sta|xista|xistiu|xistindo)|falsa|f(?:ormaliza|ormalizando|ormalizaram|ormalizou|ormulada)|g(?:rande|rave)|h(?:á|avia|ouve|ouver)|i(?:nexplicada|ngênua|nvestiga|nvestigam|nvestigar|nvestigava)|j(?:ulga|ulgam|ulgou)|levar|m(?:as|ediante|eia|uita)|n(?:a|enhuma|ova|uma)|oferece|o(?:ferecer|fereceu|utra)|p(?:ela|or|osível|reciosa|resente|rimeira)|qualquer|r(?:ecebe|eceberam|eceberem|ecebeu)|s(?:egunda|egundo|imples|obre|ua)|tem|t(?:errível|oda|remenda)|uma|velada)s?</token>
         <marker>
           <token regexp='yes'>denuncias?</token>
         </marker>
