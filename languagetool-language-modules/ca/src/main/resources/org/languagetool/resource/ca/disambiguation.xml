@@ -18,8 +18,8 @@ Copyright (C) 2012 Jaume Ortolà i Font
     <!ENTITY mesos_any "gener|febrer|març|abril|maig|juny|juliol|agost|setembre|octubre|novembre|desembre">
     <!ENTITY dies_setmana "dilluns|dimarts|dimecres|dijous|divendres|dissabte|diumenge">
     <!ENTITY parts_dia "matinada|matí|migdia|tarda|vesprada|horabaixa|vespre|capvespre|nit1|mitjanit">
-    <!ENTITY elements_perifrasis_verbals "estar|anar|haver|pensar|intentar|soler|deure|poder|voler|tornar|començar|acabar|a|de|pas|tenir|prou|amb|en|deixar|parar|mirar|tractar|continuar|seguir|prosseguir|venir">
-    <!ENTITY elements_perifrasis_verbals2 "decidir|proposar|suggerir|semblar|parèixer|aconseguir|recomanar|procurar">
+    <!ENTITY elements_perifrasis_verbals "a|acabar|amb|anar|aplegar|arribar|començar|continuar|de|deixar|deure|en|estar|haver|intentar|mirar|parar|pas|pensar|poder|provar|prosseguir|prou|seguir|soler|tenir|tornar|tractar|venir|voler">
+    <!ENTITY elements_perifrasis_verbals2 "decidir|proposar|suggerir|semblar|parèixer|aconseguir|recomanar|procurar|tendir|acordar|optar|disposar|resistir|evitar|tardar|trigar|afanyar">
 
     <!ENTITY extensoes_de_ficheiros "aspx?|avi|bak|bat|bmp|cab|cfg|cgi|com|css|csv|dat|db|dbf|dll|docx?|eps|exe|flv|gif|html?|ibooks|ico|ini|jar|jpe?g|js|jsp|lnk|md|mdb|mid|mov|mp3|mp4|mpa|mpg|o[dt][tspfg]|pdf|php|pl|png|pps|pptx?|ps|psd|py|rss|sh|sql|svg|sys|tar|tif|tiff|tmp|txt|wav|wma|xhtml|xlsx?|xsl|xml|zipx?|7z">
     <!ENTITY dominios_internet "(?:cat|ae|ar|asia|at|au|be|bid|biz|br|ca|cc|cf|ch|cl|club|cn|co|com|cz|de|dk|edu|es|eu|fi|fr|ga|gdn|gov|gq|gr|hk|hu|id|ie|il|in|info|int|io|ir|it|jp|kiwi|kr|kz|life|link|loan|lt|me|men|mil|ml|mobi|mx|my|name|net|nl|no|nu|nz|online|org|party|pl|pro|pt|pw|racing|ro|ru|se|sg|shop|site|sk|space|store|su|tech|tk|top|tr|trade|tv|tw|ua|uk|us|vip|vn|wang|website|win|ws|xin|xyz|za)"><!-- the 100 most used + cat -->
@@ -14094,6 +14094,45 @@ Copyright (C) 2012 Jaume Ortolà i Font
         </rule>
         <rule>
             <pattern>
+                <token regexp="yes">ho|'l|'ls|la|les|'n</token>
+                <marker>
+                    <and>
+                        <token postag="V.[SI].1S.." postag_regexp="yes" inflected="yes" regexp="yes">portar|dur<exception postag="VMIP1S0V"/></token>
+                        <token postag="V.[SI].3S.." postag_regexp="yes"/>
+                    </and>
+                </marker>
+            </pattern>
+            <disambig action="remove" postag="V.[SI].1S.."/>
+        </rule>
+        <rule>
+            <pattern>
+                <token postag="V...1S.." postag_regexp="yes" skip="4"/>
+                <token>que</token>
+                <token>em</token>
+                <marker>
+                    <and>
+                        <token postag="V.[SI].1S.." postag_regexp="yes" inflected="yes" regexp="yes">portar|dur<exception postag="VMIP1S0V"/></token>
+                        <token postag="V.[SI].3S.." postag_regexp="yes"/>
+                    </and>
+                </marker>
+            </pattern>
+            <disambig action="remove" postag="V.[SI].1S.."/>
+        </rule>
+        <rule>
+            <pattern>
+                <token regexp="yes">ho|'l|'ls|la|les|'n|l'|els</token>
+                <marker>
+                    <and>
+                        <token postag="V.[SI].1S.." postag_regexp="yes"><exception postag="VMIP1S0V"/></token>
+                        <token postag="V.[SI].3S.." postag_regexp="yes"/>
+                    </and>
+                </marker>
+                <token inflected="yes" regexp="yes">portar|dur</token>
+            </pattern>
+            <disambig action="remove" postag="V.[SI].1S.."/>
+        </rule>
+        <rule>
+            <pattern>
                 <token regexp="yes">algú|algun|jo|mi|ella?|vostè|vosté|vós</token>
                 <token min="0" max="3" postag="&pronom_feble;|R.*" postag_regexp="yes"/>
                 <and>
@@ -14176,14 +14215,34 @@ Copyright (C) 2012 Jaume Ortolà i Font
                 <wd pos="_reflexiu"/>
             </disambig>
         </rule>
+        <rule>
+            <!-- fugiren emportant-se-->
+            <pattern>
+                <unify>
+                    <feature id="nombre"/>
+                    <feature id="persona"/>
+                    <token postag="V.[SIM].*" postag_regexp="yes"/>
+                    <token min="0" postag="V.[NP].*" postag_regexp="yes"/>
+                    <unify-ignore>
+                        <marker>
+                            <token regexp="yes">emportant|enduent</token>
+                        </marker>
+                    </unify-ignore>
+                    <token postag="P0.0.*" postag_regexp="yes" spacebefore="no"/>
+                </unify>
+            </pattern>
+            <disambig action="add">
+                <wd pos="_reflexiu"/>
+            </disambig>
+        </rule>
     </rulegroup>
     <rulegroup id="verb_reflexiu" name="verb acompanyat de pronom reflexiu">
         <antipattern>
             <token inflected="yes">haver</token>
-            <token><exception inflected="yes">de</exception><exception postag="V.P.*" postag_regexp="yes"/></token>
+            <token><exception inflected="yes" regexp="yes">de|pas</exception><exception postag="V.P.*" postag_regexp="yes"/></token>
         </antipattern>
         <antipattern>
-            <token inflected="yes">tornar</token>
+            <token inflected="yes" regexp="yes">tornar|tendir|arribar|aplegar</token>
             <token><exception>a</exception></token>
         </antipattern>
         <antipattern>
@@ -14200,7 +14259,7 @@ Copyright (C) 2012 Jaume Ortolà i Font
         </antipattern>
         <antipattern>
             <token regexp="yes" inflected="yes">&elements_perifrasis_verbals2;|agradar|encatar|encisar</token>
-            <token><exception postag_regexp="yes" postag="V.N.*|RG|LOC_ADV"/></token>
+            <token><exception postag_regexp="yes" postag="V.N.*|RG|LOC_ADV"/><exception inflected="yes" regexp="yes">de|a|per</exception></token>
         </antipattern>
         <antipattern>
             <token>prou</token>
@@ -14232,7 +14291,7 @@ Copyright (C) 2012 Jaume Ortolà i Font
                     </unify-ignore>
                     <token postag="V.[SI].*" postag_regexp="yes" inflected="yes" regexp="yes">&elements_perifrasis_verbals;</token>
                 </unify>
-                <token postag="V.[NP].*|SPS00|R.|PP3.*|LOC_ADV" postag_regexp="yes" min="0" max="6"><exception postag="V.[NGP].*" postag_regexp="yes" negate="yes" inflected="yes" regexp="yes">&elements_perifrasis_verbals;|ser</exception></token>
+                <token postag="V.[NP].*|SPS00|R.|PP3.*|LOC_ADV" postag_regexp="yes" min="0" max="7"><exception postag="V.[NGP].*" postag_regexp="yes" negate="yes" inflected="yes" regexp="yes">&elements_perifrasis_verbals;|ser</exception></token>
                 <marker>
                     <token postag="V.[NGP].*" postag_regexp="yes"><exception regexp="yes" inflected="yes">&elements_perifrasis_verbals;</exception></token>
                 </marker>
@@ -14270,7 +14329,7 @@ Copyright (C) 2012 Jaume Ortolà i Font
                     <unify-ignore>
                         <token postag="V.[NP].*|SPS00|LOC_ADV|R.|PP3.*" postag_regexp="yes" min="0" max="5"/>
                     </unify-ignore>
-                    <token postag="P0.0.*" postag_regexp="yes" spacebefore="no" skip="2"/>
+                    <token postag="P0.0.*" postag_regexp="yes" spacebefore="no" skip="2"><exception scope="next" postag="PP.*|V.N.*" postag_regexp="yes" negate_pos="yes"/></token>
                 </unify>
                 <marker>
                     <token postag="V.N.*" postag_regexp="yes"/>
@@ -14378,8 +14437,8 @@ Copyright (C) 2012 Jaume Ortolà i Font
             <!--Els animem a queixar-se.-->
             <pattern>
                 <token regexp="yes" skip="1">els|la|l'|les|el</token>
-                <token inflected="yes" regexp="yes" skip="4">animar|impulsar|obligar</token>
-                <token postag="SPS00">a</token>
+                <token inflected="yes" regexp="yes" skip="4">animar|impulsar|obligar|impel·lir|induir|acusar|conduir|portar|dur|menar|guiar</token>
+                <token postag="SPS00" regexp="yes" inflected="yes">a|de</token>
                 <marker>
                     <token postag="V.N.*" postag_regexp="yes"/>
                 </marker>
@@ -14393,8 +14452,8 @@ Copyright (C) 2012 Jaume Ortolà i Font
             <!--L'animo a continuar esforçant-se.-->
             <pattern>
                 <token regexp="yes" skip="1">els|la|l'|les|el</token>
-                <token inflected="yes" regexp="yes" skip="4">animar|impulsar|obligar</token>
-                <token postag="SPS00">a</token>
+                <token inflected="yes" regexp="yes" skip="4">animar|impulsar|obligar|impel·lir|induir|acusar|conduir|portar|dur|menar|guiar</token>
+                <token postag="SPS00" regexp="yes" inflected="yes">a|de</token>
                 <token postag="V.N.*" postag_regexp="yes"/>
                 <marker>
                     <token postag="V.G.*" postag_regexp="yes"/>
@@ -14414,8 +14473,8 @@ Copyright (C) 2012 Jaume Ortolà i Font
                     <token postag="P0[12]0.*" postag_regexp="yes"/>
                     <unify-ignore>
                         <token min="0" postag="VA.*" postag_regexp="yes"/>
-                        <token inflected="yes" regexp="yes" skip="4">animar|impulsar|obligar</token>
-                        <token postag="SPS00" skip="1">a</token>
+                        <token inflected="yes" regexp="yes" skip="4">animar|impulsar|obligar|impel·lir|induir|acusar|conduir|portar|dur|menar|guiar</token>
+                        <token postag="SPS00" regexp="yes" inflected="yes" skip="1">a|de</token>
                         <marker>
                             <token postag="V.[NG].*" postag_regexp="yes"><exception inflected="yes" regexp="yes">continuar|seguir|prosseguir|acabar</exception></token>
                         </marker>
@@ -14467,7 +14526,7 @@ Copyright (C) 2012 Jaume Ortolà i Font
                 <unify>
                     <feature id="nombre"/>
                     <feature id="persona"/>
-                    <token postag="P0.0.*" postag_regexp="yes"/>
+                    <token postag="P0.0.*" postag_regexp="yes"><exception regexp="yes">[-'].*</exception></token>
                     <unify-ignore>
                         <token min="0" postag_regexp="yes" postag="&pronom_feble;"/>
                     </unify-ignore>
