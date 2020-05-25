@@ -1522,6 +1522,15 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes' min='0'>&adverbios_de_intensidade;</token>
           <token postag='(?:D[ADIP].|NC|A..|Z.)[FC]P.+' postag_regexp='yes'/>
       </antipattern>
+<!-- MARCOAGPINTO 2020-05-25 *START* -->
+<!-- "Esculturas em argila colocadas sobre tumbas." -->
+<!-- "Esculturas em cimento colocados sobre tumbas." -->
+      <antipattern>
+		<token postag='NC[FMC]S000' postag_regexp='yes'/>
+		<token postag='VMP00P[FM]' postag_regexp='yes'/>
+		<token postag='SPS00' postag_regexp='no'/>
+      </antipattern>  
+<!-- MARCOAGPINTO 2020-05-25 *END* -->
       <pattern>
           <token negate='yes' regexp='yes'>e|ou|&hifen;</token>
         <marker>
@@ -1623,6 +1632,41 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes' min='0'>&adverbios_de_intensidade;</token>
           <token postag='(?:D[ADIP].|NC|A..|Z.)[FC]P.+' postag_regexp='yes'/>
       </antipattern>
+<!-- MARCOAGPINTO 2020-05-25 *START* -->
+<!-- "A vantagem de permitir a um país melhores faixas climáticas." -->	  
+      <antipattern>
+		<token postag='NC[CM]S000' postag_regexp='yes'/>
+		<token postag='AQ0CP0' postag_regexp='no'/>
+		<token postag='NCFP000' postag_regexp='no'/>
+      </antipattern>  
+<!-- MARCOAGPINTO 2020-05-25 *END* -->
+<!-- MARCOAGPINTO 2020-05-25 *START* -->
+<!-- "De tal maneira densas que até a luz do Sol tem dificuldade em atravessá-las." -->	  
+      <antipattern>
+		<token postag='AQ0FS0' postag_regexp='no'/>
+		<token postag='AQ0FP0' postag_regexp='no'/>
+		<token postag='CS' postag_regexp='no'/>
+      </antipattern>  
+<!-- MARCOAGPINTO 2020-05-25 *END* -->
+<!-- MARCOAGPINTO 2020-05-25 *START* -->
+<!-- "Esculturas em argila colocadas sobre tumbas." -->
+<!-- "Esculturas em cimento colocados sobre tumbas." -->
+      <antipattern>
+		<token postag='NC[FMC]S000' postag_regexp='yes'/>
+		<token postag='VMP00P[FM]' postag_regexp='yes'/>
+		<token postag='SPS00' postag_regexp='no'/>
+      </antipattern>  
+<!-- MARCOAGPINTO 2020-05-25 *END* -->
+<!-- MARCOAGPINTO 2020-05-25 *START* -->
+<!-- "A medicina ocidental foi ensinada pela primeira vez a estudantes japoneses no país." -->
+<!-- "A medicina ocidental foi ensinada pela primeira vez a alunos japoneses no país." -->
+<!-- "A medicina ocidental foi ensinada pela primeira vez a alunas japonesas no país." -->
+      <antipattern>
+	    <token>a</token>
+		<token postag='NC[FMC]P000' postag_regexp='yes'/>
+		<token postag='NC[FM]P000' postag_regexp='yes'/>
+      </antipattern>  
+<!-- MARCOAGPINTO 2020-05-25 *END* -->
       <pattern>
           <token negate='yes' regexp='yes'>e|ou|&hifen;</token>
         <marker>
@@ -1784,6 +1828,18 @@ title="Easy editing stylesheet" ?>
           <token>a</token>
           <token regexp='yes'>ambos|est[ea]s|tod[ao]s</token>
       </antipattern>
+<!-- MARCOAGPINTO 2020-05-24 *START* -->
+<!-- "Enquanto em outras a fertilidade é favorecida pela presença do solo." --> 
+<!-- "Enquanto em outros a fertilidade é favorecida pela presença do solo." -->
+<!-- "Enquanto em outras o carro é bonito." -->
+<!-- "Enquanto em outros o carro é bonito." -->
+      <antipattern>
+		<token postag='SPS00' postag_regexp='no'/>
+		<token postag='DI0[FM]P0' postag_regexp='yes'/>
+		<token postag='DA0[FM]S0' postag_regexp='yes'/>
+		<token postag='NC[FM]S000' postag_regexp='yes'/>
+      </antipattern>  
+<!-- MARCOAGPINTO 2020-05-24 *END* -->
       <pattern>
           <unify negate="yes">
             <feature id="number"/>
