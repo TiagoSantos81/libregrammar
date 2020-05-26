@@ -260,6 +260,7 @@ title="Easy editing stylesheet" ?>
   </unification>
 
   <phrases>
+
     <phrase id="CITATION">
           <token postag="SENT_START"/>
           <token regexp="yes">[«“]|&quot;</token>
@@ -314,13 +315,18 @@ title="Easy editing stylesheet" ?>
       </includephrases>
     </phrase>
 
-    <phrase id="YESTERDAYS">
-          <token regexp="yes">(?i)(?:ante)?ontem</token>
+    <phrase id="PAST_WORDS">
+          <token regexp="yes">(?i)(?:ante)?ontem|outrora|dantes|antigamente</token>
     </phrase>
     <phrase id="PAST_EXPRESSIONS">
           <token regexp='yes'>(?i)n?[ao]s?</token>
           <token regexp='yes'>&expressoes_de_tempo;|estaç(?:ão|ões)</token>
           <token regexp='yes'>(?:passad|recordad|lembrad)[ao]s?</token>
+    </phrase>
+    <phrase id="PAST_EXPRESSIONS_2">
+          <token regexp='yes'>(?i)há</token>
+          <token postag_regexp='yes' postag='RG|Z.+'/>
+          <token regexp='yes'>&expressoes_de_tempo;</token>
     </phrase>
     <phrase id="INVERTED_PAST_EXPRESSIONS">
           <token regexp='yes'>(?i)n[ao]s?</token>
@@ -335,15 +341,48 @@ title="Easy editing stylesheet" ?>
     </phrase>
     <phrase id="ALL_PAST_EXPRESSIONS"><!-- FIXME handling references of variable token size is not done in suggestions -->
       <includephrases>
-          <phraseref idref="YESTERDAYS"/>
+          <phraseref idref="PAST_WORDS"/>
           <phraseref idref="PAST_EXPRESSIONS"/>
+          <phraseref idref="PAST_EXPRESSIONS_2"/>
           <phraseref idref="INVERTED_PAST_EXPRESSIONS"/>
           <phraseref idref="PAST_THAT_HAS_PAST_EXPRESSIONS"/>
       </includephrases>
     </phrase>
 
-    <phrase id="TOMORROW">
-          <token regexp="yes">(?i)amanhã</token><!-- XXX Includes 'Depois de amanhã' -->
+    <phrase id="PRESENT_WORDS">
+          <token regexp="yes">(?i)(?:a(?:gora|c?tualmente)|hoje|imediatamente|já|presentemente)</token>
+    </phrase>
+    <phrase id="PRESENT_EXPRESSIONS_2">
+          <token regexp='yes'>(?i)nest[ae]</token>
+          <token regexp='yes'>(?i)(?:hora|instante|momento|ocasião)</token>
+    </phrase>
+    <phrase id="PRESENT_EXPRESSIONS_2_1">
+          <token>no</token>
+          <token>presente</token>
+    </phrase>
+    <phrase id="PRESENT_EXPRESSIONS_3_1">
+          <token regexp='yes'>(?i)n[ao]s?</token>
+          <token regexp='yes'>(?i)presentes?</token>
+          <token regexp='yes'>(?i)(?:hora|instante|momento|ocasião)s?</token>
+    </phrase>
+    <phrase id="PRESENT_EXPRESSIONS_3_2">
+          <token regexp='yes'>(?i)nos</token>
+          <token regexp='yes'>(?i)dias</token>
+          <token regexp='yes'>(?i)de</token>
+          <token regexp='yes'>(?i)hoje</token>
+    </phrase>
+    <phrase id="ALL_PRESENT_EXPRESSIONS"><!-- FIXME handling references of variable token size is not done in suggestions -->
+      <includephrases>
+          <phraseref idref="PRESENT_WORDS"/>
+          <phraseref idref="PRESENT_EXPRESSIONS_2"/>
+          <phraseref idref="PRESENT_EXPRESSIONS_2_1"/>
+          <phraseref idref="PRESENT_EXPRESSIONS_3_1"/>
+          <phraseref idref="PRESENT_EXPRESSIONS_3_2"/>
+      </includephrases>
+    </phrase>
+
+    <phrase id="FUTURE_WORDS">
+          <token regexp="yes">(?i)amanhã|doravante</token><!-- XXX Includes 'Depois de amanhã' -->
     </phrase>
     <phrase id="IN_THE_FUTURE_EXPRESSION">
           <token regexp='yes'>(?i)no</token>
@@ -360,6 +399,39 @@ title="Easy editing stylesheet" ?>
           <token>que</token>
           <token>vem</token>
     </phrase>
+    <phrase id="COMING_FUTURE_EXPRESSION_2">
+          <token>daqui</token>
+          <token regexp='yes'>em|para</token>
+          <token>diante</token>
+    </phrase>
+    <phrase id="COMING_FUTURE_EXPRESSION_3">
+          <token>daqui</token>
+          <token>para</token>
+          <token>o</token>
+          <token>futuro</token>
+    </phrase>
+    <phrase id="COMING_FUTURE_EXPRESSION_4">
+          <token>a</token>
+          <token>partir</token>
+          <token regexp='yes'>de(?:ste)?</token>
+          <token regexp='yes'>agora|momento</token>
+    </phrase>
+    <phrase id="COMING_FUTURE_EXPRESSION_5">
+          <token>de</token>
+          <token regexp='yes'>(?i)(?:ag)?ora|hoje|amanhã</token>
+          <token>em</token>
+          <token>diante</token>
+    </phrase>
+    <!--phrase id="COMING_FUTURE_EXPRESSION_6">
+          <token>depois</token>
+          <token regexp='yes'>dis[st]o</token>
+    </phrase-->
+    <phrase id="COMING_FUTURE_EXPRESSION_7">
+          <token>em</token>
+          <token>direção</token>
+          <token>ao</token>
+          <token>futuro</token>
+    </phrase>
     <phrase id="NEXT_FUTURE_EXPRESSIONS">
           <token regexp='yes'>(?i)[dn][ao]s?</token>
           <token regexp='yes'>próxim[ao]s?</token>
@@ -367,10 +439,16 @@ title="Easy editing stylesheet" ?>
     </phrase>
     <phrase id="ALL_FUTURE_EXPRESSIONS"><!-- FIXME handling references of variable token size is not done in suggestions -->
       <includephrases>
-          <phraseref idref="TOMORROW"/>
+          <phraseref idref="FUTURE_WORDS"/>
           <phraseref idref="IN_THE_FUTURE_EXPRESSION"/>
           <phraseref idref="FROM_NOW_TO_FUTURE_EXPRESSION"/>
           <phraseref idref="COMING_FUTURE_EXPRESSION"/>
+          <phraseref idref="COMING_FUTURE_EXPRESSION_2"/>
+          <phraseref idref="COMING_FUTURE_EXPRESSION_3"/>
+          <phraseref idref="COMING_FUTURE_EXPRESSION_4"/>
+          <phraseref idref="COMING_FUTURE_EXPRESSION_5"/>
+          <!--phraseref idref="COMING_FUTURE_EXPRESSION_6"/-->
+          <phraseref idref="COMING_FUTURE_EXPRESSION_7"/>
           <phraseref idref="NEXT_FUTURE_EXPRESSIONS"/>
       </includephrases>
     </phrase>
@@ -3208,7 +3286,6 @@ title="Easy editing stylesheet" ?>
       <url>https://duvidas.dicio.com.br/fui-eu-ou-foi-eu/</url>
     <rule>
       <pattern>
-        <marker>
           <unify negate='yes'>
             <feature id="person_123"/><feature id="person_number"/>
           <token postag_regexp='yes' postag='V.+'>
@@ -3218,12 +3295,8 @@ title="Easy editing stylesheet" ?>
           <token min="0" max="3" postag='R.+' postag_regexp='yes'>
             <exception negate_pos='yes' postag_regexp='yes' postag='R.+'/></token>
           </unify-ignore>
-          <token postag_regexp='yes' postag='PP.+' regexp='yes'>&pronomes_retos;
-            <exception negate_pos='yes' postag_regexp='yes' postag='P.+'/></token>
+          <token regexp='yes'>&pronomes_retos;</token>
           </unify>
-        </marker>
-          <token>
-            <exception postag_regexp='yes' postag='V.+'/></token>
       </pattern>
       <message>&MSG_ECV;</message>
       <url>https://duvidas.dicio.com.br/fui-eu-ou-foi-eu/</url>
@@ -3233,25 +3306,7 @@ title="Easy editing stylesheet" ?>
       <example><marker>Foste tu</marker> que​ fizeste.</example>
       <example type='incorrect'><marker>Fui ele</marker> que fez.</example>
       <example><marker>Foi ele</marker> que fez.</example>
-      <!--example type='incorrect'><marker>Foi nós</marker> que fizemos.</example--><!-- XXX caught by next rule -->
-    </rule>
-    <rule>
-      <pattern>
-        <marker>
-          <token postag_regexp='yes' postag='V.+'>
-            <exception postag_regexp='yes' postag='V...1P.+'/>
-            <exception negate_pos='yes' postag_regexp='yes' postag='V.+'/></token>
-          <token min="0" max="3" postag='R.+' postag_regexp='yes'>
-            <exception negate_pos='yes' postag_regexp='yes' postag='R.+'/></token>
-          <token>nós</token>
-        </marker>
-          <token>
-            <exception postag_regexp='yes' postag='V.+'/></token>
-      </pattern>
-      <message>Se não se refere ao fruto seco ('nós') existe um problema de concordância verbal.</message>
-        <suggestion><match no='1' include_skipped='all' postag='(V...)(..)(.+)' postag_replace='$1\1P$3' postag_regexp='yes'/> <match no='2' include_skipped='all'/> nós</suggestion>
-        <!--suggestion><match no='1' include_skipped='all'/> <match no='2' include_skipped='all'/>, <match no='3'/></suggestion--><!-- FIXME bug on synthesizer. A POS is being injected in match no='3' aven though there is no code for that -->
-      <example correction='Fomo nós|Fomos nós'><marker>Foi nós</marker> que fizemos.</example>
+      <example type='incorrect'><marker>Foi nós</marker> que fizemos.</example>
       <example>Fomos nós que fizemos.</example>
     </rule>
   </rulegroup>
@@ -3681,6 +3736,7 @@ title="Easy editing stylesheet" ?>
   <rulegroup id="FUTURE_PAST_CONFUSION" name="Confusão de sufixos: 3P - ouviram (passado) /ouvirão (futuro)">
     <!-- Created by Tiago F. Santos, Portuguese rule, 2017-08-11 -->
     <!--short>Tempo verbal incorreto.</short-->
+    <url>https://www.infopedia.pt/dicionarios/verbos-portugueses/</url>
     <rule>
       <pattern>
           <phraseref idref="ALL_PAST_EXPRESSIONS"/>
@@ -3778,6 +3834,7 @@ title="Easy editing stylesheet" ?>
   <rulegroup id="PAST_FUTURE_CONFUSION" name="Confusão de sufixos: 3P - ouviram (passado) /ouvirão (futuro)">
     <!-- Created by Tiago F. Santos, Portuguese rule, 2017-08-11 -->
     <!--short>Tempo verbal incorreto.</short-->
+    <url>https://www.infopedia.pt/dicionarios/verbos-portugueses/</url>
     <rule>
       <pattern>
           <phraseref idref="ALL_FUTURE_EXPRESSIONS"/>
@@ -6555,19 +6612,19 @@ title="Easy editing stylesheet" ?>
       <antipattern><!-- Acronyms explained in reverse order, unrecognized proper names, titles -->
           <token>,</token>
           <token spacebefore="yes" case_sensitive="yes" regexp="yes">\p{Lu}\p{Ll}+</token>
-          <token spacebefore="yes" case_sensitive="yes" regexp="yes">\p{Lu}\p{Ll}+</token>
+          <token spacebefore="yes" case_sensitive="yes" regexp="yes">\p{Lu}\p{L}+</token>
       </antipattern>
       <antipattern><!-- Acronyms explained in reverse order, unrecognized proper names, titles -->
           <token>,</token>
           <token spacebefore="yes" case_sensitive="yes" regexp="yes">\p{Lu}\p{Ll}+</token>
           <token regexp='yes'>d?[aeo]s?</token>
-          <token spacebefore="yes" case_sensitive="yes" regexp="yes">\p{Lu}\p{Ll}+</token>
+          <token spacebefore="yes" case_sensitive="yes" regexp="yes">\p{Lu}\p{L}+</token>
       </antipattern>
       <antipattern><!-- Unrecognized proper names, titles -->
           <token>,</token>
           <token spacebefore="yes" case_sensitive="yes" regexp="yes">\p{Lu}\p{Ll}+</token>
           <token regexp='yes'>[dn]?[aeo]s?</token>
-          <token spacebefore="yes" case_sensitive="yes" regexp="yes">\p{Lu}\p{Ll}+</token>
+          <token spacebefore="yes" case_sensitive="yes" regexp="yes">\p{Lu}\p{L}+</token>
       </antipattern>
     <!--antipattern>< Isolated unrecognized names. E.g. Outro romano, Tácito, ... XXX Either a rule for this or for the other situation>
           <token regexp='yes'>[\,\;\:]</token>
@@ -6589,7 +6646,7 @@ title="Easy editing stylesheet" ?>
       </antipattern>
       <antipattern><!-- Dialogs and fields -->
           <token postag='SENT_START'/>
-          <token regexp='yes'>\p{Lu}\p{Ll}*</token>
+          <token regexp='yes'>\p{Lu}\p{L}*</token>
           <token min='0'>.</token>
           <token>:</token>
       </antipattern>
@@ -6605,6 +6662,13 @@ title="Easy editing stylesheet" ?>
             <exception regexp='yes'>[,;e]</exception></token>
           <token>
             <exception regexp='yes'>[,;]</exception></token>
+      </antipattern>
+      <antipattern><!-- Proper noun lists -->
+          <token regexp='yes'>\p{Lu}\p{L}+</token>
+          <token>,</token>
+          <token regexp='yes'>\p{Lu}\p{Ll}+</token>
+          <token regexp='yes'>,|e</token>
+          <token regexp='yes'>\p{Lu}\p{L}+</token>
       </antipattern>
       <pattern>
           <token regexp='yes'>[\,\;\:]
@@ -6627,6 +6691,7 @@ title="Easy editing stylesheet" ?>
       <example>Sendo liberal, é natural que tenha lido, entre outros, Adam Smith, Bastiat, Böhm-Bawerk, Schumpeter, Mises, Hayek, Friedman, Sowell. No entanto, também li Saint-Simon, Proudhon, Bakunin, Marx, Lassale, Lénin, Trotsky, Gramsci e Nikolai Berdyaev que, em 1923,…</example>
       <example>Ele define os números no triângulo por recursão: Chame o número na (m+1)-ésima linha e na (n+1)-ésima co…</example>
       <example>…desse adversário, Lula, acabou de sair…</example>
+      <example>Esta terça-feira nova ronda, desta vez com CDS, Iniciativa Liberal, PSD, Chega e PS.</example>
     </rule>
 
   <rulegroup id='COMPOUND_PROPER_NOUNS_CASING' name="Capitalizar nomes próprios compostos...">
@@ -11963,7 +12028,7 @@ title="Easy editing stylesheet" ?>
 
  <category id='REPETITIONS' name='Repetições' type='grammar'>
 
-    <rule id='CONJUNCTION_REPETITION' name="Repetição de conjunções" default='on'>
+    <rule id='CONJUNCTION_REPETITION' name="Repetição de conjunções">
     <!-- Created by Tiago F. Santos, Portuguese rule, 2016-12-03	-->
       <pattern>
           <token regexp="yes" skip='6'>ademais|além|conforme|contudo|demais|embora|entanto|entretanto|logo|mas|obstante|porém|portanto|seja|senão|também|todavia
@@ -29788,7 +29853,7 @@ TODO Write better examples
 
  </category>
 
- <category id='STYLE' name="Estilo" type="style">
+ <category id='STYLE' name='Estilo' type='style'>
 
     <rule id='MULTIPLE_VERBS_IN_A_ROW' name='Uso excessivo de verbos consecutivos' default='off'> <!-- TODO re-enable when pseudo-chunker is implemented -->
     <!-- Created by Tiago F. Santos , Portuguese rule, 2017-01-20 	-->
@@ -30050,6 +30115,7 @@ TODO Write better examples
 
   <rulegroup id='EU_NÓS_REMOVAL' name="Omitir pronome pessoal eu/nós" type='style'>
     <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
+    <short>Pronome redundante</short>
     <rule>
       <pattern>
           <token>eu</token>
