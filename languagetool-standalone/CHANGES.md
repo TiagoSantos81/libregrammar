@@ -60,7 +60,8 @@
      `ParagraphRepeatBeginningRule`, `PunctuationMarkAtParagraphEnd`.
 
 #### General
-  * commented out all new remote code commits, so they become inactive (e.g. https://github.com/TiagoSantos81/languagetool/commit/ac960f9b24a41b53ec245ee6fab3aad2c454b020)
+  * removed unused dependencies and commented out all new remote code
+    commits, so they become inactive (e.g. https://github.com/TiagoSantos81/languagetool/commit/ac960f9b24a41b53ec245ee6fab3aad2c454b020)
 
 ### Other changes common to both projects
 
@@ -106,7 +107,9 @@
   * spelling and POS improvements
 
 #### LibreOffice / Apache OpenOffice Integration
-  * now the add-on has a toolbar, thanks to Fred Kruse.
+  * add-on toolbar added, thanks to Fred Kruse
+  * custom spellings added to `spelling.txt` are now also ignored by LibreOffice
+    spellchecking service, thanks to Fred Kruse
 
 #### General
   * added `replace_custom.txt` for several languages so users can have their 
