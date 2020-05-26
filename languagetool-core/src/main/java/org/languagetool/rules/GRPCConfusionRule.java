@@ -17,7 +17,7 @@
  *  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301
  *  * USA
  *
- */
+ *
 
 package org.languagetool.rules;
 
@@ -51,4 +51,4 @@ public class GRPCConfusionRule extends GRPCRule {
   public String getDescription() {
     return messages.getString("confpairs_rule_description");
   }
-}
+}*/
