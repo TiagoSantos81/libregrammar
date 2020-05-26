@@ -66,26 +66,25 @@ title="Easy editing stylesheet" ?>
 
 <rules lang="pt" xsi:noNamespaceSchemaLocation="../rules.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-    <!-- Unification rules retrieved from galician grammar.xml - START-->
   <unification feature="number">
     <equivalence type="singular">
-          <token postag="(?:[NZ]..|[ADP]...|V....)S.+" postag_regexp="yes"/>
+          <token postag="(?:[NZ]..|[ADP]...|V....)[NS].+" postag_regexp="yes"/>
     </equivalence>
     <equivalence type="plural">
-          <token postag="(?:[NZ]..|[ADP]...|V....)P.+" postag_regexp="yes"/>
+          <token postag="(?:[NZ]..|[ADP]...|V....)[NP].+" postag_regexp="yes"/>
     </equivalence>
   </unification>
 
   <unification feature="gender">
     <equivalence type="masc">
-          <token postag="(?:[NZ].|[ADP]..|V.....)[MC].+" postag_regexp="yes"/>
+          <token postag="(?:[NZ].|[ADP]..|V.....)[MC].*" postag_regexp="yes"/>
     </equivalence>
     <equivalence type="fem">
-          <token postag="(?:[NZ].|[ADP]..|V.....)[FC].+" postag_regexp="yes"/>
+          <token postag="(?:[NZ].|[ADP]..|V.....)[FC].*" postag_regexp="yes"/>
     </equivalence>
   </unification>
 
-  <unification feature="person">
+  <unification feature="person_123">
     <equivalence type="first">
           <token postag="(?:V...|PP)1.+" postag_regexp="yes"/>
     </equivalence>
@@ -96,9 +95,143 @@ title="Easy editing stylesheet" ?>
           <token postag="(?:V...|PP)3.+" postag_regexp="yes"/>
     </equivalence>
   </unification>
-    <!-- Unification rules retrieved from galician grammar.xml - END  -->
+  
+  <unification feature="person_gender">
+    <equivalence type="male">
+          <token postag="(?:V....|PP).[CM].*" postag_regexp="yes"/>
+    </equivalence>
+    <equivalence type="female">
+          <token postag="(?:V....|PP).[CF].*" postag_regexp="yes"/>
+    </equivalence>
+  </unification>
+
+  <unification feature="person_number">
+    <equivalence type="sing">
+          <token postag="(?:V..|PP)..S.+" postag_regexp="yes"/>
+    </equivalence>
+    <equivalence type="plur">
+          <token postag="(?:V..|PP)..P.+" postag_regexp="yes"/>
+    </equivalence>
+  </unification>
+
+  <phrases>
+
+    <phrase id="PAST_WORDS">
+          <token regexp="yes">(?i)(?:ante)?ontem|outrora|dantes|antigamente</token>
+    </phrase>
+    <phrase id="PAST_EXPRESSIONS">
+          <token regexp='yes'>(?i)n?[ao]s?</token>
+          <token regexp='yes'>&expressoes_de_tempo;|estaç(?:ão|ões)</token>
+          <token regexp='yes'>(?:passad|recordad|lembrad)[ao]s?</token>
+    </phrase>
+    <phrase id="PAST_EXPRESSIONS_2">
+          <token regexp='yes'>(?i)há</token>
+          <token postag_regexp='yes' postag='RG|Z.+'/>
+          <token regexp='yes'>&expressoes_de_tempo;</token>
+    </phrase>
+    <phrase id="INVERTED_PAST_EXPRESSIONS">
+          <token regexp='yes'>(?i)n[ao]s?</token>
+          <token regexp='yes'>(?:passad|recordad|lembrad)[ao]s?</token>
+          <token regexp='yes'>&expressoes_de_tempo;|estaç(?:ão|ões)</token>
+    </phrase>
+    <phrase id="PAST_THAT_HAS_PAST_EXPRESSIONS">
+          <token regexp='yes'>(?i)n[ao]s?</token>
+          <token regexp='yes'>&expressoes_de_tempo;|estaç(?:ão|ões)</token>
+          <token>que</token>
+          <token>passou</token>
+    </phrase>
+    <phrase id="ALL_PAST_EXPRESSIONS"><!-- FIXME handling references of variable token size is not done in suggestions -->
+      <includephrases>
+          <phraseref idref="PAST_WORDS"/>
+          <phraseref idref="PAST_EXPRESSIONS"/>
+          <phraseref idref="PAST_EXPRESSIONS_2"/>
+          <phraseref idref="INVERTED_PAST_EXPRESSIONS"/>
+          <phraseref idref="PAST_THAT_HAS_PAST_EXPRESSIONS"/>
+      </includephrases>
+    </phrase>
+
+    <phrase id="PRESENT_WORDS">
+          <token regexp="yes">(?i)(?:a(?:gora|c?tualmente)|hoje|imediatamente|já|presentemente)</token>
+    </phrase>
+    <phrase id="PRESENT_EXPRESSIONS_2">
+          <token regexp='yes'>(?i)nest[ae]</token>
+          <token regexp='yes'>(?i)(?:hora|instante|momento|ocasião)</token>
+    </phrase>
+    <phrase id="PRESENT_EXPRESSIONS_2_1">
+          <token>no</token>
+          <token>presente</token>
+    </phrase>
+    <phrase id="PRESENT_EXPRESSIONS_3_1">
+          <token regexp='yes'>(?i)n[ao]s?</token>
+          <token regexp='yes'>(?i)presentes?</token>
+          <token regexp='yes'>(?i)(?:hora|instante|momento|ocasião)s?</token>
+    </phrase>
+    <phrase id="PRESENT_EXPRESSIONS_3_2">
+          <token regexp='yes'>(?i)nos</token>
+          <token regexp='yes'>(?i)dias</token>
+          <token regexp='yes'>(?i)de</token>
+          <token regexp='yes'>(?i)hoje</token>
+    </phrase>
+    <phrase id="ALL_PRESENT_EXPRESSIONS"><!-- FIXME handling references of variable token size is not done in suggestions -->
+      <includephrases>
+          <phraseref idref="PRESENT_WORDS"/>
+          <phraseref idref="PRESENT_EXPRESSIONS_2"/>
+          <phraseref idref="PRESENT_EXPRESSIONS_2_1"/>
+          <phraseref idref="PRESENT_EXPRESSIONS_3_1"/>
+          <phraseref idref="PRESENT_EXPRESSIONS_3_2"/>
+      </includephrases>
+    </phrase>
+
+  </phrases>
 
  <category id="EUROPEAN_PORTUGUESE" name="Português de Portugal">
+
+  <rulegroup id="PRESENT_PAST_CONFUSION" name="Confusão de sufixos: 1.ª Pessoa do Pret. Perfeito - (p.ex. informamos /informámos )">
+    <!-- Created by Tiago F. Santos, Portuguese rule, 2020-05-25 -->
+    <!--short>Tempo verbal incorreto.</short-->
+    <url>https://www.infopedia.pt/dicionarios/verbos-portugueses/</url>
+    <rule>
+      <pattern>
+          <phraseref idref="ALL_PAST_EXPRESSIONS"/>
+          <token min='0' skip='4'/>
+          <token postag="V.IP1P.+" postag_regexp="yes" regexp="yes">.+?amos</token>
+      </pattern>
+      <message>Esta inflexão refere-se ao presente. Se pretende referir-se ao passado, substitua '-amos' por '-ámos'.</message>
+      <example correction=""><marker>Anteontem, enviamos</marker> os livros antes do fecho.</example>
+    <!-- FIXME token index doesn't work with variable size phrases -->
+      <example correction=""><marker>A semana passada, enviamos</marker> os livros antes do fecho.</example>
+      <example correction=""><marker>Na passada semana nós enviamos</marker> os livros antes do fecho.</example>
+      <example>Na passada semana enviámos os livros antes do fecho.</example>
+    </rule>
+    <rule>
+      <pattern>
+        <marker>
+          <token postag="V.IP1P.+" postag_regexp="yes" regexp="yes">.+?amos</token>
+        </marker>
+          <token min='0'>,</token>
+    <!--token min='0' max='3'/-->
+          <phraseref idref="ALL_PAST_EXPRESSIONS"/>
+      </pattern>
+      <message>Esta inflexão refere-se ao presente. Se pretende referir-se ao passado, substitua '-amos' por '-ámos'.</message>
+        <suggestion><match no='1' regexp_match='(.+?)(amos)' regexp_replace='$1ámos'/></suggestion>
+      <example correction="Enviámos"><marker>Enviamos</marker> ontem os livros.</example>
+      <example>Na semana passada enviámos os livros antes do fecho.</example>
+    </rule>
+    <!--rule>
+               FIXME Caused by: java.lang.IndexOutOfBoundsException: Index: 3, Size: 3
+               skip followed by phraseref
+      <pattern>
+          <token postag="V.IP1P.+" postag_regexp="yes" regexp="yes">.+?amos</token>
+          <token skip='4'/>
+          <phraseref idref="ALL_PAST_EXPRESSIONS"/>
+      </pattern>
+      <message>Esta inflexão refere-se ao presente. Se pretende referir-se ao passado, substitua '-amos' por '-ámos'.</message>
+      <example correction=""><marker>Enviarão os livros anteontem</marker>, antes do fecho.</example>
+      <example correction=""><marker>os editores enviarão, a semana passada, </marker> os livros antes do fecho.</example>
+      <example correction=""><marker>Enviarão os livros na passada semana</marker>, antes do fecho.</example>
+      <example>Envirão os livros na próxima semana, antes do fecho.</example>
+            </rule-->
+  </rulegroup>
 
     <rule id="ZERO_MEDIDA_SINGULAR" name="Concordância de número: 'zero grau'">
     <!-- Created by Tiago F. Santos, Portuguese rule, 2017-09-23 -->
@@ -647,6 +780,23 @@ title="Easy editing stylesheet" ?>
     </rule>
   </rulegroup>
 
+    <rule id="POR_QUEH_PORQUE" name="Confusão: 'Por quê' e 'Porque'">
+    <!-- Created by Tiago F. Santos, Portuguese rule, 2017-XX-XX -->
+      <pattern>
+          <token>por</token>
+          <token>quê</token>
+      </pattern>
+      <message>Em Português Europeu a expressão é sempre justaposta.</message>
+        <suggestion>porquê</suggestion>
+      <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/o-porque-e-o-por-que-e-o-portugues-europeu/30017</url>
+      <short>Brasileirismo</short>
+      <example correction="porquê">Fizeste isso <marker>por quê</marker>?</example>
+    </rule>
+
+ </category>
+
+ <category id='EUROPEAN_PORTUGUESE_STYLE' name='Português Europeu (Regras de Estilo)' type='style'>
+
   <rulegroup id='AVOID_GERUND' name='Evitar o Gerúndio (perifrásico)' default='on' type='style'>
     <!-- Created by Tiago F. Santos , Portuguese rule, 2016-11-24 -->
       <url>https://pt.wikipedia.org/wiki/Gerundismo</url>
@@ -712,19 +862,6 @@ title="Easy editing stylesheet" ?>
       <url>https://pt.wikipedia.org/wiki/Gerundismo</url>
       <example correction='a soprar'>...ventos do oeste, está <marker>soprando</marker> por cima das águas…</example>
       <example correction='a acender'>As luzes iam-se <marker>acendendo</marker> à medida que ela passava.</example>
-    </rule>
-
-    <rule id="POR_QUEH_PORQUE" name="Confusão: 'Por quê' e 'Porque'">
-    <!-- Created by Tiago F. Santos, Portuguese rule, 2017-XX-XX -->
-      <pattern>
-          <token>por</token>
-          <token>quê</token>
-      </pattern>
-      <message>Em Português Europeu a expressão é sempre justaposta.</message>
-        <suggestion>porquê</suggestion>
-      <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/o-porque-e-o-por-que-e-o-portugues-europeu/30017</url>
-      <short>Brasileirismo</short>
-      <example correction="porquê">Fizeste isso <marker>por quê</marker>?</example>
     </rule>
 
  </category>
