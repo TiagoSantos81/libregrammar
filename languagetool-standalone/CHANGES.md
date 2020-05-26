@@ -83,6 +83,7 @@
 
 #### German
   * added and improved rules
+  * rules that apply to de-DE and de-AT (but not de-CH) can now be placed in `de/de-DE-AT/grammar.xml` 
   * spelling and POS improvements
 
 #### Russian
@@ -97,6 +98,8 @@
 #### Spanish
   * added and improved rules
   * spelling and POS improvements
+    - new tagger dictionary by Jaume Ortolà, LGPL, source: 
+    https://github.com/jaumeortola/spanish-dict-tools
 
 #### Ukranian
   * added and improved rules
@@ -106,6 +109,9 @@
   * now the add-on has a toolbar, thanks to Fred Kruse.
 
 #### General
+  * added `replace_custom.txt` for several languages so users can have their 
+    own very simple replace rules without worrying about updates (they still
+    need to copy the file to the new LT version, though).
   * server logging functions removed
     - revert 553ee42 to re-enable them
 
