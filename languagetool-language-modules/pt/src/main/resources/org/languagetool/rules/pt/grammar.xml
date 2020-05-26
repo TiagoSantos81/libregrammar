@@ -698,17 +698,6 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>língua|linguagem</token>
           <token regexp='yes'>esperanto|ido</token>
       </antipattern>
-    <!-- Added by Marco A.G.Pinto - 2020-05-08 ***END***-->
-<!-- MARCOAGPINTO 2020-05-26 *START* -->
-<!-- "Cerca de 500 pessoas foram executadas em Paris, na maioria nobres." -->
-<!-- "Cerca de 500 pessoas foram executadas em Paris, na maioria senhores." -->
-<!-- "Cerca de 500 pessoas foram executadas em Paris, na maioria senhoras." -->
-      <antipattern>
-	    <token>na</token>
-		<token postag='NCFS000' postag_regexp='no'/>
-		<token postag='AQ0CP0|NC[FMC]P000' postag_regexp='yes'/>
-      </antipattern>  
-<!-- MARCOAGPINTO 2020-05-26 *END* -->
       <pattern>
           <token negate='yes' regexp='yes'>e|&hifen;</token>
         <marker>
@@ -742,6 +731,7 @@ title="Easy editing stylesheet" ?>
       <example>O ADN pode ser observado numa estrutura chamada cromossoma durante a metáfase.</example>
       <example>…il, nos moldes da recém ocorrida revolução cubana ocorrida anos antes.</example>
       <example>É uma vantagem saber operar um computador.</example>
+      <example>Cerca de 500 pessoas foram executadas em Paris, na maioria nobres.</example>
     </rule>
     <rule>
       <antipattern>
@@ -1633,16 +1623,6 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes' min='0'>&adverbios_de_intensidade;</token>
           <token postag='(?:D[ADIP].|NC|A..|Z.)[FC]P.+' postag_regexp='yes'/>
       </antipattern>
-<!-- MARCOAGPINTO 2020-05-26 *START* -->
-<!-- "Cerca de 500 pessoas foram executadas em Paris, na maioria nobres." -->
-<!-- "Cerca de 500 pessoas foram executadas em Paris, na maioria senhores." -->
-<!-- "Cerca de 500 pessoas foram executadas em Paris, na maioria senhoras." -->
-      <antipattern>
-	    <token>na</token>
-		<token postag='NCFS000' postag_regexp='no'/>
-		<token postag='AQ0CP0|NC[FMC]P000' postag_regexp='yes'/>
-      </antipattern>  
-<!-- MARCOAGPINTO 2020-05-26 *END* -->
       <pattern>
           <token negate='yes' regexp='yes'>e|ou|&hifen;</token>
         <marker>
@@ -1673,6 +1653,7 @@ title="Easy editing stylesheet" ?>
       <example>…omo o maior grupo religioso do país; outro estudo estima protestantes de todas as raças em 30-35%.</example>
       <example>A pneumonia causa dificuldades respiratórias.</example>
       <example type='triggers_error'>...ções da torre, e a lama em ebulição que o rodeia, liberta grandes quantidades de gases, incluindo monóxido de carbo…</example>
+      <example>Cerca de 500 pessoas foram executadas em Paris, na maioria nobres.</example>
     </rule>
     <rule>
       <antipattern>
@@ -1739,6 +1720,14 @@ title="Easy editing stylesheet" ?>
           <token postag='(?:D[ADIP].|NC|A..|Z.)[FC]P.+' postag_regexp='yes'/>
           <token>possível</token>
       </antipattern>
+      <antipattern>
+          <token postag='N.[FC]P.+' postag_regexp='yes'/>
+          <token postag='A..[FC]S.+' postag_regexp='yes'/>
+          <token>,</token>
+          <token postag='A..[FC]S.+' postag_regexp='yes'/>
+          <token regexp='yes'>e|,</token>
+          <token postag='A..[FC]S.+' postag_regexp='yes'/>
+      </antipattern>
       <pattern>
           <token negate='yes' regexp='yes'>&hifen;</token>
         <marker>
@@ -1766,6 +1755,8 @@ title="Easy editing stylesheet" ?>
       <example>Pega na chave das <marker>fechaduras grande</marker>.</example>
       <example>As respostas têm de ser o mais amplas possível para serem efectivos.</example>
       <example>Os modos de pensar modesto são desejados.</example>
+      <example type='triggers_error'>Ele exerceu desde os tempos coloniais uma notável influência intelectual em toda a América.</example>
+       <example>Ele exerceu, desde os tempos coloniais, uma notável influência intelectual em toda a América.</example>
     </rule>
     <rule>
       <antipattern>
