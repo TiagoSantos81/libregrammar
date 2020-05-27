@@ -102,6 +102,10 @@ public class EnglishAdjectiveNounConfusionRule extends Rule {
       regex("zones?")
     ),
     Arrays.asList(
+      token("death"),
+      regex("rates?")
+    ),
+    Arrays.asList(
       token("guilt"),
       regex("trips?")
     ),
