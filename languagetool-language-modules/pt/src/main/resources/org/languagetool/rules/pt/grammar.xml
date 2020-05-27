@@ -45,8 +45,8 @@ title="Easy editing stylesheet" ?>
     <!ENTITY outros_toponimos_com_artigo "(?:Europa|A(?:lgarve|madora)|C(?:airo|aldas|ovilhã)|Figueira|Furadouro|Guarda|Porto|A(?:lameda|venida)|Largo|Pr(?:raça|aceta)|Rua|Terreiro)"><!-- TODO praça cause mismatched article. verify --><!-- |Rondônia -->
     <!ENTITY toponimos_sem_artigo "(?:A(?:lagoas|ngola|ragão)|B(?:raga|urma)|C(?:astela|oimbra|uba)|Espanha|F(?:aro|rança)|Goiás|Havana|I(?:nglaterra|tália)|Lisboa|M(?:adagáscar|arrocos|oçambique)|P(?:aris|ernambuco|ortugal)|Roraima|Sergipe|T(?:ai[uw]an|aiuã|imor)|M(?:ercúrio|arte)|Vénus|Júpiter|Saturno|Urano|Neptuno|Plutão)">
 
-    <!ENTITY requer_crase "(?:a(?:cesso|(?:cessíve|gradáve)(l|is)|comodadad[ao]|costumad[ao]|nálog[ao])|benéfic[ao]|c(?:ontrári|ontígu[ao])|d(?:aqui|estinad[ao])|e(?:quivalente|xpost[ao])|f(ace|avoráv|i(?:el|éis))|h(?:abituad[ao]|omenage(m|ns)|orror)|i(?:dêntic[ao]|(?:gua|nsens[ií]ve)(l|is)|nferior(es)?)|n(?:ecessári[ao]|ociv[ao])|o(?:bediência|bediente)|p(?:(?:aralel|ropíci|róxim)[ao]|(?:refer[ií]ve|rejudicia)(l|is)|restes)|r(?:(?:elativ|estrit)[ao])|s(?:emelhante|ens[ií]ve(l|is)|entad[ao]|ubmiss[ao]|uperior(es)?)|visita)s?">
-    <!ENTITY requer_crase_verbos "(?:a(?:derir|gradar|ssistir)|comparecer|des(?:agradar|obedecer)|equivaler|ir|p(?:ertencer|roceder)|obedecer|re(?:agir|correr|sponder)|suceder)"><!-- accepts crase: avisar|limitar -->
+    <!ENTITY requer_crase "(?:a(?:cesso|(?:cessíve|gradáve)(l|is)|comodadad[ao]|costumad[ao]|nálog[ao])|benéfic[ao]|c(?:omparaç(?:ão|ões)|omparáve(?:l|is)|ontrári[ao]|ontígu[ao])|d(?:aqui|estinad[ao])|e(?:quivalente|xpost[ao])|f(ace|avoráv|i(?:el|éis))|h(?:abituad[ao]|omenage(m|ns)|orror)|i(?:dêntic[ao]|(?:gua|nsens[ií]ve)(l|is)|nferior(es)?)|n(?:ecessári[ao]|ociv[ao])|o(?:bediência|bediente)|p(?:(?:aralel|ertencente|ropíci|róxim)[ao]|(?:refer[ií]ve|rejudicia)(l|is)|restes)|r(?:(?:elativ|estrit)[ao])|s(?:emelhante|ens[ií]ve(l|is)|entad[ao]|uperior(es)?)|visita|vis[ií]ve(?:l|is))s?">
+    <!ENTITY requer_crase_verbos "(?:a(?:derir|gradar|ssistir|visar)|comparecer|des(?:agradar|obedecer)|equivaler|ir|p(?:ertencer|roceder)|obedecer|re(?:agir|correr|meter|sponder)|suceder)"><!-- accepts crase: avisar|limitar -->
 
     <!ENTITY expressoes_invariaveis "(?:algema|afazere|alvíssara|anai|antolho|apetrecho|arra|arredore|boda|brócol[io]|cã|calça|calenda|ceroula|cócega|condolência|confin|endoença|esponsai|esposório|exéquia|fasto|féria|feze|finança|hemorróida|mane|matina|nádega|núpcia|óculo|olheira|pantalona|parabén|pêsame|petrecho|pi[ck]le|primícia|reticência|suspensório|treva|víscera|vívere)">
 
@@ -77,6 +77,8 @@ title="Easy editing stylesheet" ?>
     <!ENTITY naipes "(?:o[iu]ros|copas|espadas|paus|trunfos?)">
 
     <!ENTITY pronomes_retos "(?:eu|tu|el[ea]s?|nós|v(?:ós|ocês?))">
+    <!ENTITY pronomes_obliquos_atonos "[mt]e|lhes?|[nv]os">
+    <!ENTITY pronomes_obliquos_tonicos "mim|ti|nós|vós">
     <!ENTITY pronomes_de_tratamento "(?:Alteza|Beatitude|Divindade|E(?:minência|xcelência)|Graça|M(?:agnificência|ajestade)|Paternidade|R(?:ealeza|everência|everendíssim[ao])|Santidade|Senhoria)s?">
     <!ENTITY pronomes_ambiguos "(?:[ao]s?|mas|nos|se)">
     <!ENTITY pronomes_nao_ambiguos "(?:m(?:a|e|os?)|t(?:a|e|o)s?|lh?[aeo]s?|vos)">
@@ -968,10 +970,12 @@ title="Easy editing stylesheet" ?>
       <message>&MSG_ECG;</message>
         <suggestion suppress_misspelled='yes'><match no='1' postag='D(..).(.+)' postag_replace='D$1M$2' postag_regexp='yes'/> <match no='2' postag='D(..).(.+)' postag_replace='D$1M$2' postag_regexp='yes'/></suggestion>
         <suggestion suppress_misspelled='yes'><match no='1' postag='D(..).(.+)' postag_replace='D$1F$2' postag_regexp='yes'/> <match no='2' postag='D(..).(.+)' postag_replace='D$1F$2' postag_regexp='yes'/></suggestion>
-      <example correction="O nosso|A nossa"><marker>O nossa</marker> equipa de operações está muito focada nos campos de verão..</example>
+        <suggestion>\1, \2</suggestion>
+      <example correction="O nosso|A nossa|O, nossa"><marker>O nossa</marker> equipa de operações está muito focada nos campos de verão..</example>
       <example>…pelo ato", o que inspiraria trabalhadores como um todo a se revoltar e coletivizar forçadamente os meios d…</example>
       <example>Idealizou-o este barão de Jaraguá, contribuindo dessa forma para o…</example>
       <example>A este nível, estas metas incluem, entre outros assuntos…</example>
+      <example correction="outros o|outras a|outras, o">Enquanto em <marker>outras o</marker> carro é bonito.</example>
     </rule>
   </rulegroup>
 
@@ -1019,6 +1023,13 @@ title="Easy editing stylesheet" ?>
 
     <rule id='ADVERB_AGREEMENT' name="Concordância de género: Advérbios">
     <!--      Created by Tiago F. Santos rule, Portuguese rule 2020-04-16     -->
+      <antipattern>
+          <token postag='V.[^P].+' postag_regexp='yes'/>
+        <marker>
+          <token postag='RG'/>
+          <token postag='RG'/>
+        </marker>
+      </antipattern>
       <pattern>
           <token postag_regexp='yes' postag="V.[^P].+">
             <exception postag_regexp='yes' postag="V.+" negate_pos='yes'/></token>
@@ -1033,6 +1044,7 @@ title="Easy editing stylesheet" ?>
       <url>https://guiadoestudante.abril.com.br/estudo/esclarecemos-detalhes-em-flexoes-de-adverbios/</url>
       <short>&MSG_ECG; </short>
       <example correction='demasiado tarde'>É <marker>demasiada tarde</marker> para isso.</example>
+      <example>É <marker>muitas vezes</marker> notabilizado pelos críticos.</example>
     </rule>
 
   <?ignore superseeded by EMPHATIC_PRONOUN_AGREEMENT
@@ -1302,11 +1314,19 @@ title="Easy editing stylesheet" ?>
       </antipattern>
       <antipattern>
           <token>há</token>
-          <token postag_regexp='yes' postag="Z.+"/>
+          <token postag_regexp='yes' postag="Z.+|CC|SPS00" max='5'/>
+          <token regexp='yes'>&expressoes_de_tempo;</token>
       </antipattern>
       <antipattern>
           <token>há</token>
           <token min='0' postag_regexp='yes' postag="[DR].+"/>
+          <token regexp='yes'>&expressoes_de_tempo;</token>
+       </antipattern>
+      <antipattern>
+          <token>há</token>
+          <token postag_regexp='yes' postag="[ZDR].+"/>
+          <token regexp='yes'>de|e</token>
+          <token postag_regexp='yes' postag="Z.+"/>
           <token regexp='yes'>&expressoes_de_tempo;</token>
       </antipattern>
       <antipattern>
@@ -1324,9 +1344,9 @@ title="Easy editing stylesheet" ?>
             <exception negate_pos='yes' postag_regexp="yes" postag="V.+"/></token>
       </pattern>
       <message>Verbos auxiliares devem ser seguidos de formas verbais no infinitivo ou no gerúndio.</message>
-        <suggestion>\1 <match no='2' postag='VMN0000'/></suggestion>
-        <suggestion>\1 a <match no='2' postag='VMN0000'/></suggestion>
-        <suggestion>\1 <match no='2' postag='VMG0000'/></suggestion>
+        <suggestion suppress_misspelled='yes'>\1 <match no='2' postag='VMN0000'/></suggestion>
+        <suggestion suppress_misspelled='yes'>\1 a <match no='2' postag='VMN0000'/></suggestion>
+        <suggestion suppress_misspelled='yes'>\1 <match no='2' postag='VMG0000'/></suggestion>
         <suggestion>\1, \2</suggestion>
       <example correction="vão dormir|vão a dormir|vão dormindo|vão, dormi">Elas <marker>vão dormi</marker> agora.</example>
       <example correction="continua dormir|continua a dormir|continua dormindo|continua, dormi">Ele <marker>continua dormi</marker> na cama.</example>
@@ -1336,9 +1356,10 @@ title="Easy editing stylesheet" ?>
       <example>Ela tentou persuadi-lo a ir com ela.</example>
       <example>Ele começou há seis anos.</example>
       <example>Não podem é impor que alguém seja forçado a trabalhar.</example>
-      <example correction="vem i|vem ir|vem irar|vem a i|vem a ir|vem a irar|vem indo|vem irando|vem, irei">Na semana que <marker>vem irei</marker> trabalhar em Tóquio.</example><!-- XXX i as contracted infinitive -->
+      <example correction="vem ir|vem irar|vem a ir|vem a irar|vem indo|vem irando|vem, irei">Na semana que <marker>vem irei</marker> trabalhar em Tóquio.</example><!-- TODO rebuild synthesizer to fix i as infinitive -->
       <example>Na semana que vem, irei trabalhar em Tóquio.</example>
       <example>Quem quiser, pode ficar. </example>
+      <example>Chegou há cerca de 10 dias.</example>
     </rule>
     <rule>
       <pattern>
@@ -1865,18 +1886,6 @@ title="Easy editing stylesheet" ?>
           <token>a</token>
           <token regexp='yes'>ambos|est[ea]s|tod[ao]s</token>
       </antipattern>
-<!-- MARCOAGPINTO 2020-05-24 *START* -->
-<!-- "Enquanto em outras a fertilidade é favorecida pela presença do solo." --> 
-<!-- "Enquanto em outros a fertilidade é favorecida pela presença do solo." -->
-<!-- "Enquanto em outras o carro é bonito." -->
-<!-- "Enquanto em outros o carro é bonito." -->
-      <antipattern>
-		<token postag='SPS00' postag_regexp='no'/>
-		<token postag='DI0[FM]P0' postag_regexp='yes'/>
-		<token postag='DA0[FM]S0' postag_regexp='yes'/>
-		<token postag='NC[FM]S000' postag_regexp='yes'/>
-      </antipattern>  
-<!-- MARCOAGPINTO 2020-05-24 *END* -->
       <pattern>
           <unify negate="yes">
             <feature id="number"/>
@@ -1889,9 +1898,19 @@ title="Easy editing stylesheet" ?>
       <message>&MSG_ECN;</message>
         <suggestion><match no='1' postag='D(...).(.+)' postag_replace='D$1S$2' postag_regexp='yes'/> <match no='2' postag='D(...).(.+)' postag_replace='D$1S$2' postag_regexp='yes'/></suggestion>
         <suggestion><match no='1' postag='D(...).(.+)' postag_replace='D$1P$2' postag_regexp='yes'/> <match no='2' postag='D(...).(.+)' postag_replace='D$1P$2' postag_regexp='yes'/></suggestion>
-      <example correction="A nossa|As nossas"><marker>As nossa</marker> equipa de operações está muito focada nos campos de verão..</example>
+        <suggestion>\1, \2</suggestion>
+      <example correction="A nossa|As nossas|As, nossa"><marker>As nossa</marker> equipa de operações está muito focada nos campos de verão..</example>
+      <example correction="outra a|outras as|outras, a">Enquanto em <marker>outras a</marker> fertilidade é favorecida pela presença do solo.</example>
+      <example>Enquanto, em outras, a fertilidade é favorecida pela presença do solo.</example>
       <example>[Medidas] Bem adotadas por aquelas a quem se destinam.</example>
       <example>Temos carros pertencentes a poucas famílias.</example>
+      <example>...período colonial: grandes propriedades, pertencentes a poucas famílias,...</example>
+      <example>...alta receptividade e, em comparação a outras abordagens, conta com relação...</example>
+      <example>O artigo está criado e visível a outras pessoas.</example>
+      <example>...o mundo para festas, comparável a outras cidades como Dubai e Montreal...</example>
+      <example type='triggers_error'>Enquanto em outras o carro é bonito.</example>
+      <example>Enquanto em outras, o carro é bonito.</example>
+      <example>Consequentemente, eles opunham-se a muitas inovações desenvolvidas desde esse tempo.</example>
     </rule>
   </rulegroup>
 
@@ -2680,8 +2699,13 @@ title="Easy editing stylesheet" ?>
           <token postag_regexp='yes' postag='VMSI.+' regexp='yes'>.+sse</token>
       </antipattern>
       <antipattern>
-          <token regexp='yes' skip='-1'>se|caso|embora</token>
           <token postag_regexp='yes' postag='VMSI.+' regexp='yes'>.+sse</token>
+          <token regexp='yes' spacebefore='no'>&hifen;</token>
+          <token regexp='yes' spacebefore='no'>[ao]s?|[mts]e|[nv]os|lhes?</token>
+      </antipattern>
+      <antipattern>
+          <token regexp='yes' skip='-1'>se|caso|embora</token>
+          <token postag='SENT_END'/>
       </antipattern>
       <antipattern>
           <token inflected='yes'>haver</token>
@@ -2718,8 +2742,10 @@ title="Easy editing stylesheet" ?>
       <message>O conjuntivo é utilizado em condicionais ('se ...'). Será que pretende utilizar a forma reflexiva?</message>
         <suggestion><match no='2' regexp_match='(.+)sse' regexp_replace='$1-se'/></suggestion>
       <example correction='chega-se'>A cada palavra, ela <marker>chegasse</marker> mais perto.</example>
+      <example>Como se a cada palavra, ela <marker>chegasse</marker> mais perto.</example>
       <example>António, havia quem os acompanhasse?</example>
       <example>Se, a cada desculpa, ela <marker>fizesse</marker> mais por si mesma.</example>
+      <example>...feito de pêlo –  como se alguém tivesse atropelado uma família de roedores e depois <marker>usasse</marker> para troféu.</example>
     </rule>
   </rulegroup>
 
@@ -4653,9 +4679,7 @@ title="Easy editing stylesheet" ?>
           <token>porque</token>
           <token regexp='yes'>[\.\?!;]</token>
       </pattern>
-      <message>Possível confusão de termos. Pretende dizer:</message>
-        <suggestion>porquê\2</suggestion>
-        <suggestion>por quê\2</suggestion><!-- XXX pt-BR only -->
+      <message>Possível confusão de termos. Será que pretende dizer <suggestion>porquê\2</suggestion> ou <suggestion>por quê\2</suggestion> (Brasil)?</message>
       <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/porque-por-que-e-porque/243</url>
       <example correction="Porquê?|Por quê?"><marker>Porque?</marker></example>
     </rule>
@@ -4665,9 +4689,7 @@ title="Easy editing stylesheet" ?>
           <token>que</token>
           <token regexp='yes'>[\.\?!;]</token>
       </pattern>
-      <message>'Por que' pode ser substituído por 'pelo qual'. Será que pretende dizer:</message>
-        <suggestion>porquê\3</suggestion>
-        <suggestion>por quê\3</suggestion><!-- XXX pt-BR only -->
+      <message>'Por que' pode ser substituído por 'pelo qual'. Será que pretende dizer <suggestion>porquê\3</suggestion> ou <suggestion>por quê\3</suggestion> (Brasil)?</message>
       <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/porque-por-que-e-porque/243</url>
       <example correction="porquê?|por quê?">Fizeste isso <marker>por que?</marker></example>
     </rule>
@@ -4681,7 +4703,7 @@ title="Easy editing stylesheet" ?>
           <token>?</token>
         </marker>
       </pattern>
-      <message>'Por quê' só deve ser utilizado no final da questão, e que pode ser substituída por 'por qual motivo'.</message>
+      <message>'Por quê' só deve ser utilizado no final da questão, e somente quando pode ser substituída por 'por qual motivo'.</message>
         <suggestion>Porque <match no='4' include_skipped='all'/>?</suggestion>
         <suggestion><match no='4' case_conversion='startupper' include_skipped='all'/>, porquê?</suggestion>
         <suggestion><match no='4' case_conversion='startupper' include_skipped='all'/>, por quê?</suggestion><!-- XXX pt-BR only -->
@@ -4699,7 +4721,7 @@ title="Easy editing stylesheet" ?>
           <token>?</token>
         </marker>
       </pattern>
-      <message>'Por quê' só deve ser utilizado no final da questão, e que pode ser substituída por 'por qual motivo'.</message>
+      <message>'Por quê' só deve ser utilizado no final da questão, e somente quando pode ser substituída por 'por qual motivo'.</message>
         <suggestion>Porque <match no='3' include_skipped='all'/>?</suggestion>
         <suggestion><match no='3' case_conversion='startupper' include_skipped='all'/>, porquê?</suggestion>
       <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/porque-por-que-e-porque/243</url>
@@ -4714,8 +4736,7 @@ title="Easy editing stylesheet" ?>
           <token postag_regexp='yes' postag='D.+'>
             <exception negate_pos='yes' postag_regexp='yes' postag='D.+'/></token>
       </pattern>
-      <message>'Por \2' pode ser substituído por 'pelo qual'. Será que pretende dizer:</message>
-        <suggestion>porque \3</suggestion>
+      <message>'Por \2' pode ser substituído por 'pelo qual'. Será que pretende dizer <suggestion>porque \3</suggestion>?</message>
       <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/porque-por-que-e-porque/243</url>
       <example correction="porque o">Isto <marker>por que o</marker> Raul tinha saído.</example>
       <example>…motivo por que muitos chineses desejam que o país se torne…</example>
@@ -4726,10 +4747,23 @@ title="Easy editing stylesheet" ?>
           <token>porque</token>
           <token regexp='yes'>d(?:a|e|o|isso|este|esta|ess[ea]|isto|aquilo|aquela|aquele)s?</token>
       </pattern>
-      <message>Possível confusão de termos. Pretende dizer:</message>
-        <suggestion>\1 porquê \3</suggestion>
+      <message>Possível confusão de termos. Pretende dizer <suggestion>\1 porquê \3</suggestion>?</message>
       <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/porque-por-que-e-porque/243</url>
       <example correction="o porquê dessa">Preciso de saber <marker>o porque dessa</marker> decisão.</example>
+    </rule>
+    <rule>
+      <antipattern>
+          <token regexp='yes' spacebefore='no'>&hifen;</token>
+          <token regexp='yes' spacebefore='no'>os?</token>
+      </antipattern>
+      <pattern>
+          <token regexp='yes'>&art_detecao_M;</token>
+          <token regexp='yes'>porques?</token>
+      </pattern>
+      <message>Possível confusão de termos. Pretende dizer <suggestion>\1 porquê</suggestion>?</message>
+      <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/porque-por-que-e-porque/243</url>
+      <example correction="Do porquê"><marker>Do porque</marker> dessa decisão, vem a questão seguinte.</example>
+      <example>Procuro-os porque quero saber.</example>
     </rule>
     <rule>
       <pattern>
@@ -4738,10 +4772,24 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>qu[eê]</token>
           <token regexp='yes'>d(?:a|e|o|isso|este|esta|ess[ea]|isto|aquilo|aquela|aquele)s?</token>
       </pattern>
-      <message>'Por \3' pode ser substituído por 'pelo qual'. Será que pretende dizer:</message>
-        <suggestion>\1 porquê \4</suggestion>
+      <message>'Por \3' pode ser substituído por 'pelo qual'. Será que pretende dizer <suggestion>\1 porquê \4</suggestion>?</message>
       <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/porque-por-que-e-porque/243</url>
       <example correction="o porquê dessa">Preciso de saber <marker>o por quê dessa</marker> decisão.</example>
+    </rule>
+    <rule>
+      <antipattern>
+          <token regexp='yes' spacebefore='no'>&hifen;</token>
+          <token regexp='yes' spacebefore='no'>os?</token>
+      </antipattern>
+      <pattern>
+          <token regexp='yes'>&art_detecao_M;</token>
+          <token>por</token>
+          <token regexp='yes'>ques?</token>
+      </pattern>
+      <message>Possível confusão de termos. Pretende dizer <suggestion>\1 porquê</suggestion>?</message>
+      <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/porque-por-que-e-porque/243</url>
+      <example correction="Do porquê"><marker>Do por que</marker> dessa decisão, vem a questão seguinte.</example>
+      <example>Procuro-os porque quero saber.</example>
     </rule>
     <rule>
       <pattern>
@@ -4755,8 +4803,7 @@ title="Easy editing stylesheet" ?>
           <token>,</token>
         </or>
       </pattern>
-      <message>'Por \3' pode ser substituído por 'pelo qual'. Será que pretende dizer:</message>
-        <suggestion>\1 porque</suggestion>
+      <message>'Por \3' pode ser substituído por 'pelo qual'. Será que pretende dizer <suggestion>\1 porque</suggestion>?</message>
       <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/porque-por-que-e-porque/243</url>
       <example correction="até porque">Não é bem assim, <marker>até por que</marker> uma reparação deste tipo não é dispendiosa.</example>
     </rule>
@@ -4769,8 +4816,7 @@ title="Easy editing stylesheet" ?>
         </marker>
           <token regexp='yes'>[ao]s?|não|eu|tu|[vn]ós|el[ea]s?</token>
       </pattern>
-      <message>'Por \3' pode ser substituído por 'pelo qual'. Será que pretende dizer:</message>
-        <suggestion>\1 porque</suggestion>
+      <message>'Por \3' pode ser substituído por 'pelo qual'. Será que pretende dizer <suggestion>\1 porque</suggestion>?</message>
       <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/porque-por-que-e-porque/243</url>
       <example correction="é porque">Isto <marker>é por que</marker> a atitude não agrada.</example>
     </rule>
@@ -4783,8 +4829,7 @@ title="Easy editing stylesheet" ?>
         </marker>
           <token regexp='yes'>[ao]s?|não|eu|tu|[vn]ós|el[ea]s?</token>
       </pattern>
-      <message>'Por \3' pode ser substituído por 'pelo qual'. Será que pretende dizer:</message>
-        <suggestion>\1 porque</suggestion>
+      <message>'Por \3' pode ser substituído por 'pelo qual'. Será que pretende dizer <suggestion>\1 porque</suggestion>?</message>
       <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/porque-por-que-e-porque/243</url>
       <example correction="Só porque"><marker>Só por que</marker> as casas estão vazias, não quer dizer que não tenham dono.</example>
     </rule>
@@ -32397,10 +32442,8 @@ TODO Write better examples
       </pattern>
       <message>Linguagem informal. Pondere usar uma expressão alternativa.</message>
         <suggestion><match no='1' postag='V.+'>ir</match> embora</suggestion>
-        <suggestion>embora</suggestion>
-      <example correction="foi embora|embora">Ele <marker>deu à sola</marker>?</example>
-      <example correction="i embora|ir embora|embora">Posso <marker>dar à sola</marker>?</example>
-      <example>Posso <marker>ir embora</marker>?</example>
+      <example correction="foi embora">Ele <marker>deu à sola</marker>?</example>
+      <example correction="ir embora">Posso <marker>dar à sola</marker>?</example>
     </rule>
 
     <rule id='DE_ALMA_E_CORAÇÃO' name="De alma e coração">
