@@ -17,6 +17,13 @@
  * USA
  */
 
+/**
+ * A rule that filters irregular passive participles
+ *
+ * @author Jaume Ortola
+ * @since 5.0
+ */
+
 package org.languagetool.rules.pt;
 
 import java.io.IOException;
@@ -101,7 +108,7 @@ public class RegularIrregularParticipleFilter extends RuleFilter {
     return null;
   }
 
-  boolean isRegular(String p) {
+  private boolean isRegular(String p) {
     String lp = p.toLowerCase();
     return lp.endsWith("do") || lp.endsWith("dos") || lp.endsWith("da") || lp.endsWith("das");
 
