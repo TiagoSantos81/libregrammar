@@ -30175,6 +30175,93 @@ TODO Write better examples
       <example correction="Pessoas"><marker>Homens e mulheres</marker> saíram à rua.</example>
       <example correction="As pessoas"><marker>Os homens e mulheres</marker> saíram à rua.</example>
     </rule>
+
+  <rulegroup id='REDUNDANT_PRONOUNS' name="Redundância: Pronomes" type='style'>
+    <!--      Created by Tiago F. Santos, 2020-05-26      -->
+    <short>Pronome redundante</short>
+    <rule>
+      <pattern>
+          <token regexp='yes' spacebefore='no'>&hifen;</token>
+        <marker>
+          <unify>
+            <feature id="gender"/><feature id="number"/>
+          <token regexp='yes' spacebefore='no'>&pronomes_obliquos_atonos;</token>
+          <unify-ignore>
+          <token>a</token>
+          </unify-ignore>
+          <token regexp='yes'>&pronomes_obliquos_tonicos;</token>
+          </unify>
+        </marker>
+      </pattern>
+      <message>Para melhorar o estilo de escrita, pode omitir o pronome pessoal.</message>
+        <suggestion>\2</suggestion>
+        <suggestion>\3 \4</suggestion>
+      <example correction="me|a mim">Ela deu-<marker>me a mim</marker> este anel.</example>
+      <example correction="vos|a vós">Ela deu-<marker>vos a vós</marker> este anel.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token>a</token>
+          <unify>
+            <feature id="gender"/><feature id="number"/>
+          <token regexp='yes'>&pronomes_obliquos_tonicos;</token>
+          <unify-ignore>
+          <token min='0'>,</token>
+          <token>
+            <exception>,</exception></token>
+          <token regexp='yes' spacebefore='no'>&hifen;</token>
+          </unify-ignore>
+          <token regexp='yes' spacebefore='no'>&pronomes_obliquos_atonos;</token>
+          </unify>
+      </pattern>
+      <message>Para melhorar o estilo de escrita, pode omitir o pronome pessoal.</message>
+        <suggestion>\1 <match no='2' include_skipped='all'/><match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/></suggestion>
+        <suggestion>\4\5\6</suggestion>
+      <example correction="A mim falou|Falou-me"><marker>A mim falou-me</marker> outra coisa.</example>
+      <example correction="A mim, falou|Falou-me"><marker>A mim, falou-me</marker> outra coisa.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token>eu</token>
+          <token postag_regexp="yes" postag="V...1S.+">
+            <exception negate_pos='yes' postag_regexp="yes" postag="V...1S.+"/></token>
+      </pattern>
+      <message>Para melhorar o estilo de escrita, pode omitir o pronome pessoal.</message>
+        <suggestion>\2</suggestion>
+      <example correction="quero">O que <marker>eu quero</marker> é casar.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token>tu</token>
+          <token postag_regexp="yes" postag="V...2S.+">
+            <exception negate_pos='yes' postag_regexp="yes" postag="V...2S.+"/></token>
+      </pattern>
+      <message>Para melhorar o estilo de escrita, pode omitir o pronome pessoal.</message>
+        <suggestion>\2</suggestion>
+      <example correction="queres">O que <marker>tu queres</marker> é casar.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token>nós</token>
+          <token postag_regexp="yes" postag="V...1P.+">
+            <exception negate_pos='yes' postag_regexp="yes" postag="V...1P.+"/></token>
+      </pattern>
+      <message>Para melhorar o estilo de escrita, pode omitir o pronome pessoal: <suggestion>\2</suggestion>.</message>
+      <example correction="queremos">O que <marker>nós queremos</marker> é casar.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token>vós</token>
+          <token postag_regexp="yes" postag="V...2P.+">
+            <exception negate_pos='yes' postag_regexp="yes" postag="V...2P.+"/></token>
+      </pattern>
+      <message>Para melhorar o estilo de escrita, pode omitir o pronome pessoal.</message>
+        <suggestion>\2</suggestion>
+      <example correction="quereis">O que <marker>vós quereis</marker> é casar.</example>
+    </rule>
+  </rulegroup>
+
+  <?ignore superseeded
   <rulegroup id='EU_NÓS_REMOVAL' name="Omitir pronome pessoal eu/nós" type='style'>
     <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
     <short>Pronome redundante</short>
@@ -30197,6 +30284,7 @@ TODO Write better examples
       <example correction="queremos">O que <marker>nós queremos</marker> é casar.</example>
     </rule>
   </rulegroup>
+  ?>
 
   <rulegroup id='GRAMMATICAL_DOUBLE_NEGATIVES' name="Duplas negativas" type='style'>
     <!--      Created by Tiago F. Santos, 2017-07-07      -->
