@@ -46,7 +46,7 @@ public class PortugalPortuguese extends Portuguese {
     rules.add(new PostReformPortugueseDashRule(messages));
     rules.add(new PortugalPortugueseReplaceRule(messages));
     rules.add(new PortuguesePosAgreementReplaceRule(messages));
-    rules.add(new PortugueseBarbarismsRule(messages, "/pt/barbarisms-pt-PT.txt"));
+    // rules.add(new PortugueseBarbarismsRule(messages, "/pt/barbarisms-pt-PT.txt"));
     return rules;
   }
 
