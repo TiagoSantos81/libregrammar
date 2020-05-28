@@ -200,6 +200,9 @@ public abstract class AbstractSimpleReplaceRule2 extends Rule {
     /*
     List<Map<String, SuggestionWithMessage>> wrongWords = getWrongWords();
      */
+    if (wrongWords.size() == 0) {
+      return toRuleMatchArray(ruleMatches);
+    }
     Queue<AnalyzedTokenReadings> prevTokens = new ArrayBlockingQueue<>(wrongWords.size());
 
     for (int i = 1; i < tokens.length; i++) {
