@@ -95,7 +95,7 @@ title="Easy editing stylesheet" ?>
     <!ENTITY haver_impessoal "(?:h(?:á|avia|ouve|ouvera|averá|averia|aja|ouvesse|ouver))">
 
     <!ENTITY adj_nomes_paronimos_a "(?:(?:p(?:á(?:(?:gin|sco|ri)a|(?:bul|li)o|ti(?:na|o))|r(?:(?:e(?:sság|fác)|ontuár)io|átic[ao])|lá(?:ci(?:d[ao]|to)|gio)|ará(?:grafo|lise)|erdulári[ao]|sicanálise|osfácio)|á(?:(?:t(?:rop|ic)|f(?:ric|i)|bson)[ao]|r(?:i(?:c[ao]|a)|bitr[ao]|vore)|c(?:(?:er|id)[ao]|aro)|(?:s(?:cu|i)|[vx]il)a|g(?:raf[ao]|ua)|(?:lvidr|dit)o|pod[aeo])|c(?:á(?:(?:l(?:cul|am)|dmi)o|r(?:(?:cer|i)e|dia)|(?:ps|b)ula)|o(?:nt(?:rári[ao]|ágio)|missári[ao])|a(?:tál(?:ise|ogo)|ntárid[ae]))|a(?:n(?:iversário|álise)|má(?:si[ao]|lgama)|(?:lgáli|záfam)a|(?:pan|d)ágio|cárid[ao])|g(?:á(?:(?:strul|bi|zu)a|lic[ao]|rrulo)|(?:r(?:amátic|ávid)|inástic)[ao]|ládio)|s(?:(?:e(?:cretári|lvátic)|u(?:bsecret|m)ári)[ao]|á(?:(?:tur|bi)a|culo)|alário)|l(?:á(?:(?:ce|za)r[ao]|(?:gr|st)ima|pid[ae]|tego)|arápi[ao])|e(?:(?:pigramátic|mpresári)[ao]|(?:ficá|nxár)cia|stá[dg]io)|r(?:á(?:b(?:i(?:d[ao]|a)|ano|ula)|dio|fia)|essábio|ipária)|má(?:(?:scar|cul|fi)a|g(?:ic[ao]|oa)|t(?:ico|ria))|v(?:á(?:lid[ao]|ria)|oluntári[ao]|iático)|h(?:emodiálise|ilári[ao]|á[bl]ito)|d(?:i(?:cionário|álise)|ádiva)|t(?:ráf(?:eg[ao]|ico)|ábula)|in(?:flacionária|ventário)|bá(?:scul[ao]|lsamo|tega)|f(?:áb(?:ric|ul)|aláci)a|jáculo))s?">
-    <!ENTITY adj_nomes_paronimos_a_2 "(?:hábito|mágic[ao])s?">
+    <!ENTITY adj_nomes_paronimos_a_2 "(?:hábito|mágic[ao]|parágrafo)s?">
     <!ENTITY adj_nomes_paronimos_e "(?:(?:p(?:r(?:é(?:(?:dic|vi)a|lio)|ivilégio)|(?:ér(?:ol|vi)|ilhéri)a|erpétu[ao])|t(?:r(?:ép(?:id[ao]|lica|ano)|agédia)|ér(?:ci[ao]|ebra|mino)|elégrafo)|r(?:é(?:(?:c(?:it|ov)|plic|mor)a|g(?:ulo|ia))|e(?:mémor[ao]|vérbero))|d(?:é(?:c(?:upl|im)[ao]|bito)|e(?:crépit[ao]|scrédito)|oméstic[ao])|a(?:(?:(?:cé(?:qu|d)|mnés)i|lméceg)a|(?:(?:dvérb|sséd)i|préstam)o)|e(?:s(?:tr(?:atégia|épito)|péc(?:ulo|ie))|xército)|v(?:é(?:(?:get|ner)[ao]|(?:rmin|sti)a)|enéfic[ao])|(?:(?:f(?:acéc|ér)|inérc|hérn|lér)i|névo)a|sé(?:r(?:i[aeo]|via)|c(?:i[ao]|ulo))|c(?:omé(?:rcio|dia)|élebre|rédito)|g(?:a(?:ldéri[ao]|udério)|émula)|é(?:mul[ao]|dito)|médic?[ao]))s?">
     <!ENTITY adj_nomes_paronimos_eh "(?:(?:(?:p(?:r(?:(?:ovi|u)d|efer)|e(?:n(?:it|d)|stil)|ot)|i(?:n(?:(?:teli|dul)g|flu)|mpertin|rrever)|re(?:(?:minis|ti)c|[fv]er|sid)|(?:(?:neg|di)li|a)g|qu(?:intess|er)|t(?:ang|end)|minud|ger)ência|c(?:o(?:n(?:f(?:er|id)|ting)ência|mpêndio)|(?:(?:re|a)d|lem)ência)|e(?:(?:xperi|min|vid)ência|stipêndio)|vi(?:lipêndio|vência)|silêncio))s?">
     <!ENTITY adj_nomes_paronimos_eh_2 "incêndio">
@@ -123,7 +123,7 @@ title="Easy editing stylesheet" ?>
     <!ENTITY barbarismos3 "applets?|backbones?|bluetooth|bullying|carjacking|crackers?|cracking|führers?|tablets?|tags?">
 
     <!ENTITY infantil "(?:b[aá]bá|bichano|bilau|bobalhão|bumbum|caca|cachorrês|cocó|cocô|cuti|dodói|escapulir|flango|formiguês|lelé|mamã|maminha|miau|mimir|nananinanão|nana[rs]|oba|oiê|ohoh|olhinho|papá|Papai|pap(?:ar|ei|aste|ou)|peixa|pepeta|pipi|piu|pum|susu|titi[ao]|totó|totô|vovô|xixi)">
-    <!ENTITY informal "chaval[ao]s?|porreiros?|(?:a(?:bafar|dultescente|ham|nh.+)|b(?:abado|adalhoc[ao]|adalo|adamec[ao]|adana|agarai|agunça|aita|aixinh[ao]|alof[ao]|ate-papo|atelada|eiço|ejeca|elê|ichan[ao]|ichinh[ao]|iscate|itaite|js|lablablá|ófia|orrachão|otequeir[ao]|razuca|reaco|rega)|c(?:abaço|acilda|adê|adé|alhamaço|apar|arago|arango|asinha|asório|Dcê|ertinh[ao]|hantar|huninha|huto|obrão|ocó|ocô|oisar|opião|ornear|utucar)|d(?:anad[ao]|anar|aonde|esmiolad[ao]|ocinh[ao]|oíd[ao])|e(?:spertalh(?:ão|ona)|spigadote|strilho|strovenga)|f(?:ilar|ixe|loripa|of[ao]|uxicar|uxiqueir[ao])|g(?:agá|aj[ao]|alera|atunar|elô|oró|osma|ranel|uit[ao]|una|urizada)|herman[ao]|irad[ao]|j(?:avardice|ola)|l(?:aivo|aracha|elé|ogar|ulopetismo)|m(?:acarrone|agrel[ao]|amaã|anda-chuva|ânfi[ao]|an[ao]|atraca|eia-boca|itra|oçada|oina|orcão|otoqueir[oa]|uvuca)|n(?:intendinho|op|ovat[ao])|o(?:i|iê|lhômetro|lh[ôó]metro)|p(?:andeiro|apão|apo|atada|eixão|ejada|elar|epeta|erua|etiz|indaíba|ixulé|ixuleco|orn[oô]|orrad[ao]|orre|r[aáoó]|romo|rum|ruma|runs|uto)|q(?:uebra-galho|ueca)|r(?:acha|anho|apaziada|emexer|emexida|icardão|olê)|s(?:acana|ave|elinho|úper)|surripi.+|t(?:abefe|antã|ascar|ime|ótil|rampar|rampo|ransar|reta|rocentos|rouxa|rucid.+|uga.+)|v(?:acil.+|aquinha|egetar|elhot[ae]|ó|ô)|x(?:i|ixi)|z(?:en|i[il]h(ão|ões)))">
+    <!ENTITY informal "chaval[ao]s?|porreiros?|(?:a(?:bafar|dultescente|ham|nh.+)|b(?:abado|adalhoc[ao]|adalo|adamec[ao]|adana|agarai|agunça|aita|aixinh[ao]|alof[ao]|ate-papo|atelada|eiço|ejeca|elê|ichan[ao]|ichinh[ao]|iscate|itaite|js|lablablá|ófia|orrachão|otequeir[ao]|razuca|reaco|rega)|c(?:abaço|acilda|adê|adé|alhamaço|apar|arago|arango|asinha|asório|Dcê|ertinh[ao]|hantar|huninha|huto|obrão|ocó|ocô|oisar|opião|ornear|utucar)|d(?:anad[ao]|anar|aonde|esmiolad[ao]|ocinh[ao]|oíd[ao])|e(?:spertalh(?:ão|ona)|spigadote|strilho|strovenga)|f(?:ilar|ixe|loripa|of[ao]|uxicar|uxiqueir[ao])|g(?:agá|aj[ao]|alera|atunar|elô|oró|osma|ranel|uit[ao]|una|urizada)|herman[ao]|irad[ao]|j(?:avardice|ola)|l(?:aivo|aracha|elé|ogar|ulopetismo)|m(?:acarrone|agrel[ao]|amaã|anda-chuva|ânfi[ao]|an[ao]|atraca|eia-boca|itra|oçada|oina|orcão|otoqueir[oa]|uvuca)|n(?:intendinho|op|ovat[ao])|o(?:i|iê|lhômetro|lh[ôó]metro)|p(?:andeiro|apão|apo|atada|eixão|ejada|elar|epeta|erua|etiz|indaíba|ixulé|ixuleco|orn[oô]|orrad[ao]|orre|r[aáoó]|romo|rum|ruma|runs|uto)|q(?:uebra-galho|ueca)|r(?:acha|anho|apaziada|emexer|emexida|icardão|olê)|s(?:acana|andes|ave|elinho|úper)|surripi.+|t(?:abefe|antã|ascar|ime|ótil|rampar|rampo|ransar|reta|rocentos|rouxa|rucid.+|uga.+)|v(?:acil.+|aquinha|egetar|elhot[ae]|ó|ô)|x(?:i|ixi)|z(?:en|i[il]h(ão|ões)))">
     <!ENTITY obscenidades "(?:b(?:abaca|acanal|acorinha|acurinha|adalo|adamerda|aranga|ardamerda|edamerda|eita|enga|erdamerda|ichana|ilha|imba|imbada|oceta|oiola|olagato|roche|ruaca|uceta)|c(?:[uú]|abaço|abrão|abrões|acete|achorra|adela|agada|agalh(ão|ões)|agar|aralhada|aralho|atatau|atraia|havasca|huchu|huleta|hupeta|omua|ona|onaça|onanas|onsolo|oxanga|rica|roquete|unete|uzão)|f(?:iote|od.+|orunf.+|uampa|ufa|urico|urunf.+)|g(?:aita|relo|rutinha|ulosa)|j(?:eba|umento)|l(?:angonha|ola)|m(?:amado|angalho|armelar|einha|erda|erdeiro|essalina|inete|oca)|nhonhoca|p(?:andeiro|aneleiro|assaralho|atolar|eid.+|ene|entelho|iça|ind?oc.+|intudo|iroca|irrola|ito|iupiu|ixa|otranca|unheta|unheteiro|uta|utada|utaria|utedo|utice|uto)|q(?:ueca|uenga|uirica)|(qui|co)lh(ão|ões)|r(?:abeta|acha|apidinha|ata)|s(?:apatão|apatona|iririca|uruba|urubandê)|t(?:abaca|anajura|esão|esud[ao]|eta|oba|repada|roca-troca)|x(?:ana|arifa|arol[ao]|ereca|ibungo|imbica|iranha|iri|o(?:xo)ta))|peidas?|cagueiros?">
 
     <!ENTITY saudacoes_formais "(?:Car|E(?:stimad|x(?:celentissm|m))|Prezad)[ao]s?">
@@ -1135,6 +1135,11 @@ title="Easy editing stylesheet" ?>
       <antipattern>
           <token regexp='yes' spacebefore='no'>&hifen;</token>
           <token>a</token>
+      </antipattern>
+      <antipattern>
+          <token>a</token>
+          <token>meu</token>
+          <token>ver</token>
       </antipattern>
     <rule>
       <pattern>
@@ -4527,7 +4532,7 @@ title="Easy editing stylesheet" ?>
       <pattern>
           <token>daqui</token>
           <token>
-            <exception postag_regexp='yes' postag='SENT_START|_PUNCT'/>
+            <exception postag_regexp='yes' postag='SENT_START|_PUNCT|V.+'/>
             <exception>a</exception></token>
       </pattern>
       <message>O advérbio daqui  rege-se com a preposição “a”.</message>
@@ -25292,6 +25297,17 @@ TODO Write better examples
       <url>https://pt.wiktionary.org/wiki/hábito</url>
       <example correction='um hábito'>É <marker>um habito</marker>.</example>
     </rule>
+    <rule id='PARONYM_PARAGRAFO_618' name='Parónimo: parágrafo'>
+      <pattern>
+          <token regexp='yes'>&art_detecao_paronimos;</token>
+          <token min='0' postag='A.+' postag_regexp='yes'/>
+          <token>paragrafo</token>
+      </pattern>
+      <message>Esta palavra é um verbo. Se pretende referir-se a um nome, deve utilizar a forma acentuada.</message>
+        <suggestion><match no='1' include_skipped='all'/> <match no='2' include_skipped='all'/> <match no='3' regexp_match='arag' regexp_replace='arág'/></suggestion>
+      <url>https://pt.wiktionary.org/wiki/hábito</url>
+      <example correction='um parágrafo'>É <marker>um paragrafo</marker>.</example>
+    </rule>
   </rulegroup>
 
   <rulegroup id='LP_PARONYMS' name='Paranónimos especiais'>
@@ -30159,7 +30175,6 @@ TODO Write better examples
       <example correction="Pessoas"><marker>Homens e mulheres</marker> saíram à rua.</example>
       <example correction="As pessoas"><marker>Os homens e mulheres</marker> saíram à rua.</example>
     </rule>
-
   <rulegroup id='EU_NÓS_REMOVAL' name="Omitir pronome pessoal eu/nós" type='style'>
     <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
     <short>Pronome redundante</short>
@@ -30616,10 +30631,15 @@ TODO Write better examples
           <token regexp='yes' spacebefore='no' min='0'>&hifen;</token>
           <token regexp='yes' spacebefore='no' min='0'>araripe|chumbo</token>
       </antipattern>
+      <antipattern>
+          <token regexp='yes'>revistas?</token>
+          <token regexp='yes'>aos?</token>
+          <token>quadradinhos</token>
+      </antipattern>
       <pattern>
           <token postag_regexp='yes' postag='A.C.+|N.....[AD]'>
             <exception negate_pos='yes' postag_regexp='yes' postag='A.C.+|N.....[AD]'/>
-            <exception regexp='yes'>(?:burrito|ca(?:pita|[mn]arinh[ao])|finit[ao]|p(?:erita|intainho)|r(?:etinha|atinho)|sozinh[ao]|tainha)s?</exception></token>
+            <exception regexp='yes'>(?:burrito|c(?:a(?:pita|[mn]arinh[ao])|ovinha)|finit[ao]|p(?:erita|intainho)|r(?:etinha|atinho)|sozinh[ao]|tainha)s?</exception></token>
     <!-- TODO Improve tagger so that it recognizes missing aumentatives and diminutives -->
       </pattern>
       <message>Linguagem informal. Considere as alternativas.</message>
