@@ -12120,6 +12120,35 @@ title="Easy editing stylesheet" ?>
       <example>Seja por vergonha, seja por timidez.</example>
     </rule>
 
+  <rulegroup id='PRONOUN_REPETITION' name="Repetição de pronomes">
+    <!--      Created by Tiago F. Santos, 2020-05-26      -->
+      <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/redundancia-e-reforco-de-pronomes-pessoais/32338</url>
+    <rule>
+      <pattern>
+          <token regexp='yes'>&pronomes_obliquos_atonos;
+            <exception>se</exception></token>
+          <token/>
+          <token spacebefore='no' regexp='yes'>&hifen;</token>
+          <token spacebefore='no'><match no='0'/></token>
+      </pattern>
+      <message>Repetição gramaticalmente incorreta.</message>
+        <suggestion>\1 \2</suggestion>
+        <suggestion>\2\3\4</suggestion>
+      <example correction="te falei|falei-te">Já <marker>te falei-te</marker> deste anel.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token regexp='yes'>&pronomes_obliquos_atonos;</token>
+          <token/>
+          <token><match no='0'/></token>
+      </pattern>
+      <message>Repetição gramaticalmente incorreta.</message>
+        <suggestion>\1 \2</suggestion>
+        <suggestion>\2-\3</suggestion>
+      <example correction="te falei|falei-te">Já <marker>te falei te</marker> deste anel.</example>
+    </rule>
+  </rulegroup>
+
   <rulegroup id='PHRASE_REPETITION' name="Duplicação de palavras (por ali por ali)">
     <!--    Localized and improved by Tiago F. Santos, from English grammar.xml, 2016-11-30    -->
       <short>Segmento duplicado</short>
