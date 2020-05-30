@@ -77,15 +77,16 @@
     - `UpperCaseNgramRule`, a stricter version of `UpperCaseRule` that
     requires n-gram data
   * spelling and POS improvements
-  * updated en_GB spellchecker dictionary from https://github.com/marcoagpinto/aoo-mozilla-en-dict (Version 2.83 - 2020-04-01)
-
+  * updated en_GB spellchecker dictionary from https://github.com/marcoagpinto/aoo-mozilla-en-dict (Version 2.85 - 2020-06-01)
 #### French
   * added and improved rules, thanks to Rigaut Theótime (vkyfox)
 
 #### German
   * added and improved rules
-  * rules that apply to de-DE and de-AT (but not de-CH) can now be placed in `de/de-DE-AT/grammar.xml` 
+  * rules that apply to de-DE and de-AT (but not de-CH) can now be placed in `de/de-DE-AT/grammar.xml`
   * spelling and POS improvements
+  * Updated the German part-of-speech dictionary (https://github.com/languagetool-org/german-pos-dict)
+    to version 1.2.
 
 #### Russian
   * added and improved rules, including:
