@@ -487,6 +487,19 @@
       <disambig action="filter" postag="V.P.+"/>
       <example inputform="recordado[recordado/AQ0MS0,recordar/VMP00SM]" outputform="recordado[recordar/VMP00SM]" type="ambiguous">Todos tinham-se <marker>recordado</marker> do sucedido.</example>
     </rule>
+    <rule>
+      <antipattern>
+          <token inflected='yes' regexp='yes' skip='-1'>&verbos_auxiliares_part_passado;</token>
+          <token postag="V.P.+" postag_regexp="yes"/>
+      </antipattern>
+      <pattern>
+        <and>
+          <token postag="[^V].+" postag_regexp="yes"/>
+          <token postag="V.P.+" postag_regexp="yes"/>
+        </and>
+      </pattern>
+      <disambig action="remove" postag="V.P.+"/>
+    </rule>
   </rulegroup>
 
   <rulegroup id="FUTURO_PERIFRASICO" name="Filtrar futuro perifrásico">
