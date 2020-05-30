@@ -43,6 +43,20 @@
     </developers>
     
     <build>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <excludes>
+                    <exclude>org/languagetool/rules/pt/barbarisms-pt-BR.txt</exclude>
+                    <exclude>org/languagetool/rules/pt/barbarisms-pt-PT.txt</exclude>
+                    <exclude>org/languagetool/rules/pt/tagset_PT.txt</exclude>
+                    <exclude>org/languagetool/resource/pt/tagset_PT.txt</exclude>
+                    <exclude>%regex[org/languagetool/.+\.orig$]</exclude>
+                </excludes>
+            </resource>
+        </resources>
+
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
