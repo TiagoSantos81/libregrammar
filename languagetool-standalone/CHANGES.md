@@ -46,8 +46,11 @@
 
 #### Portuguese
   * added and improved rules, including:
-    - new agreement rules.
-  * add URLs explaining most single word suggestions
+    - new agreement rules;
+    - removal of many crippling changes made upstream;
+    - URLs added to explain most single word suggestions.
+  * disambiguation improvements
+  * POS and spelling improvements
 
 #### Russian
   * activated generic Java rules, including:
@@ -60,8 +63,8 @@
      `ParagraphRepeatBeginningRule`, `PunctuationMarkAtParagraphEnd`.
 
 #### General
-  * removed unused dependencies and commented out all new remote code
-    commits, so they become inactive (e.g. https://github.com/TiagoSantos81/languagetool/commit/ac960f9b24a41b53ec245ee6fab3aad2c454b020)
+  * commented out all new remote code commits, so they become inactive (e.g., [ac960f9](https://github.com/TiagoSantos81/languagetool/commit/ac960f9b24a41b53ec245ee6fab3aad2c454b020))
+    and [removed unused dependencies](https://github.com/TiagoSantos81/languagetool/commit/68105705732c95cfc358e55598580627bd66063c)
 
 ### Other changes common to both projects
 
