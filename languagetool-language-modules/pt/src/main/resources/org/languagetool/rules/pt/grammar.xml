@@ -1627,30 +1627,6 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes' min='0'>&adverbios_de_intensidade;</token>
           <token postag='(?:D[ADIP].|NC|A..|Z.)[FC]P.+' postag_regexp='yes'/>
       </antipattern>
-<!-- MARCOAGPINTO 2020-05-29 *START* -->
-<!-- "Com início 1 metro abaixo da superfície." -->
-<!-- "Com início 90 metros abaixo da superfície." -->  
-      <antipattern>
-          <token postag='NCMS000' postag_regexp='no'/>
-          <token>1</token>
-		  <token postag='NCMS000' postag_regexp='no'/>
-      </antipattern>	  
-      <antipattern>
-          <token postag='NCMS000' postag_regexp='no'/>
-          <token postag='Z0CN0' postag_regexp='no'>
-		  <exception>1</exception></token>
-		  <token postag='NCMP000' postag_regexp='no'/>
-      </antipattern>	  
-<!-- MARCOAGPINTO 2020-05-29 *END* -->
-<!-- MARCOAGPINTO 2020-05-29 *START* -->
-<!-- "Fomos ao porto catar pedregulhos." -->
-<!-- "Fomos ao porto catar pedras." -->
-<!-- "Fomos ao porto catar colegas." -->
-      <antipattern>
-          <token postag='VMN0000' postag_regexp='no'/>
-		  <token postag='NC[CFM]P000' postag_regexp='yes'/>
-      </antipattern>	  
-<!-- MARCOAGPINTO 2020-05-29 *END* -->
       <pattern>
           <token negate='yes' regexp='yes'>e|ou|&hifen;</token>
         <marker>
@@ -1684,6 +1660,12 @@ title="Easy editing stylesheet" ?>
       <example>Ele todos os dias lê romances.</example>
       <example type='triggers_error'>A justiça é responsável pelo julgamento das matérias de direito <marker>público relativos</marker> aos órgãos da administração pública do estado.</example><!-- XXX does not provide the correct suugestions but flags area correctly --> 
       <example>A justiça é responsável pelo julgamento das <marker>matérias de direito público relativas</marker> aos órgãos da administração pública do estado.</example>
+      <example>Com <marker>início 1</marker> metro abaixo da superfície.</example><!-- TODO add rule to catch the missing 'a' -->
+      <example>Com início a 1 metro abaixo da superfície.</example>
+      <example type='triggers_error'>Com início 90 metros abaixo da superfície.</example>
+      <example>Com início a 90 metros abaixo da superfície.</example>
+      <example>Fomos ao porto catar pedregulhos.</example>
+      <example>Fomos ao porto catar pedras.</example>
     </rule>
     <rule>
       <antipattern>
@@ -2737,7 +2719,12 @@ title="Easy editing stylesheet" ?>
       </antipattern>
       <antipattern>
           <token regexp='yes' skip='-1'>se|caso|embora</token>
-          <token postag='SENT_END'/>
+          <token postag_regexp='yes' postag='VMSI.+' regexp='yes'>.+sse</token>
+      </antipattern>
+      <antipattern>
+          <token regexp='yes' skip='-1'>se|caso|embora</token>
+          <token postag_regexp='yes' postag='VMSI.+' regexp='yes' skip='-1'>.+sse</token>
+          <token postag_regexp='yes' postag='VMSI.+' regexp='yes'>.+sse</token>
       </antipattern>
       <antipattern>
           <token inflected='yes'>haver</token>
@@ -3448,8 +3435,8 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes' inflected='yes'>ser|estar|ficar|permanecer|parecer
             <exception>seres</exception></token>
           <token min="0" max="3" postag_regexp='yes' postag='R.'/>
-          <token regexp='yes'>(?:a(?:ceitad|ntepagad|prisionad|ssentad)|d(?:espertad|ispersad)|e(?:ntregad|nxugad|xaurid|xpelid|xpressad|xpulsad|xtinguid)|f(?:indad|ixad|rigid|ritad)|g(?:anhad|astad)|i(?:ncurrid|sentad)|limpad|m(?:algastad|alquerid|anifestad|atad|orrido)|p(?:agad|asmad)|r(?:epelid|evolvid|ompid)|s(?:alvad|egurad|oltad|ujad|ujeitad|uspendid)|v(?:agad|olvid))[ao]s?</token>
-    <!-- XXX Removidos: absorvido|acendido|anexado|concluído|cultivado|defendido|desenvolvido|dissolvido|distinguido|envolvido|erigido|incluído|inserido|ocultado|pegado|sepultado|suprimido|tingido
+          <token regexp='yes'>(?:a(?:ceitad|ntepagad|ssentad)|d(?:espertad|ispersad)|e(?:ntregad|nxugad|xaurid|xpelid|xpressad|xpulsad|xtinguid)|f(?:indad|ixad|rigid|ritad)|g(?:anhad|astad)|i(?:ncurrid|sentad)|limpad|m(?:algastad|alquerid|anifestad|atad|orrido)|p(?:agad|asmad)|r(?:epelid|evolvid)|s(?:alvad|egurad|oltad|ujad|ujeitad|uspendid)|v(?:agad|olvid))[ao]s?</token>
+    <!-- XXX Removidos: absorvido|acendido|anexado|aprisionado|concluído|cultivado|defendido|desenvolvido|dissolvido|distinguido|envolvido|erigido|incluído|inserido|ocultado|pegado|ompid|sepultado|suprimido|tingido
            Formas não reconhecidas como verbo abuntante por todos os dicionários, em desuso, ou com significados distintos.  -->
       </pattern>
       <message>Com o verbo '<match no='1' postag='VMN0000'/>' deve utilizar-se o particípio passado irregular.</message>
@@ -3463,6 +3450,7 @@ title="Easy editing stylesheet" ?>
       <example>Sinto muito, mas acho que o livro não está ao alcance do entendimento dele.</example>
       <example>A estação fica ao oeste do hotel.</example>
       <example>O chá é muito cultivado na Índia.</example>
+      <example correction='foram dispersos'>Partidários de Antônio Carlos <marker>foram dispersados</marker> a tiros por prestistas, havendo vários feridos.</example>
     </rule>
     <rule>
       <pattern>
@@ -3477,6 +3465,18 @@ title="Easy editing stylesheet" ?>
       <example correction='foi aceite'>O projeto <marker>foi aceito</marker>.</example>
       <example correction='foi aceite'>A China <marker>foi aceita</marker> na Organização Mundial do Comércio.</example>
       <example correction='serem aceites'>Que ser de um certo tamanho e qualidade antes de <marker>serem aceitas</marker> pelos praticantes da MTC e consumidores.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token regexp='yes' inflected='yes'>ser|estar|ficar|permanecer|parecer
+            <exception>seres</exception></token>
+          <token min="0" max="3" postag_regexp='yes' postag='R.'/>
+          <token regexp='yes'>descobrid[ao]s?</token>
+      </pattern>
+      <message>A forma correta deste particípio é <match no='3' regexp_match='(.+)(brid)([ao]s?)' regexp_replace='$1bert$3'/>.</message>
+        <suggestion>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)(brid)([ao]s?)' regexp_replace='$1bert$3'/></suggestion>
+    <!--suggestion suppress_misspelled='yes'>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)ad([ao]s?)' regexp_replace='$1ue'/></suggestion-->
+      <example correction='foi descoberta'>A fraude <marker>foi descobrida</marker> por investigadores de outra área.</example>
     </rule>
     <rule>
       <pattern>
@@ -3502,6 +3502,18 @@ title="Easy editing stylesheet" ?>
         <suggestion suppress_misspelled='yes'>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)gid([ao]s?)' regexp_replace='$1it$2'/></suggestion>
     <!--suggestion suppress_misspelled='yes'>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)ad([ao]s?)' regexp_replace='$1ue'/></suggestion-->
       <example correction='foi eleito'>O presidente <marker>foi elegido</marker> o mês passado.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token regexp='yes' inflected='yes'>ser|estar|ficar|permanecer|parecer
+            <exception>seres</exception></token>
+          <token min="0" max="3" postag_regexp='yes' postag='R.'/>
+          <token regexp='yes'>(?:re)?erigid[ao]s?</token>
+      </pattern>
+      <message>Com o verbo '<match no='1' postag='VMN0000'/>' deve utilizar-se o particípio passado irregular.</message>
+        <suggestion suppress_misspelled='yes'>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)igid([ao]s?)' regexp_replace='$1et$2'/></suggestion>
+    <!--suggestion suppress_misspelled='yes'>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)ad([ao]s?)' regexp_replace='$1ue'/></suggestion-->
+      <example correction='foi ereto'>O monumento <marker>foi erigido</marker> o mês passado.</example>
     </rule>
     <rule>
       <pattern>
@@ -3571,13 +3583,36 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes' inflected='yes'>ser|estar|ficar|permanecer|parecer
             <exception>seres</exception></token>
           <token min="0" max="3" postag_regexp='yes' postag='R.'/>
-          <token regexp='yes'>surpreendid[o]s?</token><!-- XXX feminine forms are ambiguous -->
+          <token regexp='yes'>rompid[ao]s?</token>
+      </pattern>
+      <message>Com o verbo '<match no='1' postag='VMN0000'/>' deve utilizar-se o particípio passado irregular.</message>
+        <suggestion suppress_misspelled='yes'>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)(mpid)([ao]s?)' regexp_replace='$1t$3'/></suggestion>
+    <!--suggestion suppress_misspelled='yes'>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)ad([ao]s?)' regexp_replace='$1ue'/></suggestion-->
+      <example correction='ficará rota'>A válvula <marker>ficará rompida</marker> pela pressão de água.</example>
+    </rule>
+    <!--rule>
+      <pattern>
+          <token regexp='yes' inflected='yes'>ser|estar|ficar|permanecer|parecer
+            <exception>seres</exception></token>
+          <token min="0" max="3" postag_regexp='yes' postag='R.'/>
+          <token regexp='yes'>repelid[ao]s?</token>
+      </pattern>
+      <message>Com o verbo '<match no='1' postag='VMN0000'/>' deve utilizar-se o particípio passado irregular.</message>
+        <suggestion suppress_misspelled='yes'>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)elid([ao]s?)' regexp_replace='$1uls$3'/></suggestion>
+      <example correction='foi repulsa'>A alteração <marker>foi repelida</marker> rapidamente.</example>
+    </rule-->
+    <rule>
+      <pattern>
+          <token regexp='yes' inflected='yes'>ser|estar|ficar|permanecer|parecer
+            <exception>seres</exception></token>
+          <token min="0" max="3" postag_regexp='yes' postag='R.'/>
+          <token regexp='yes'>surpreendidos?</token><!-- XXX feminine forms are ambiguous -->
       </pattern>
       <message>Com o verbo '<match no='1' postag='VMN0000'/>' deve utilizar-se o particípio passado irregular.</message>
         <suggestion suppress_misspelled='yes'>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)(eendid)([ao]s?)' regexp_replace='$1es$3'/></suggestion>
     <!--suggestion suppress_misspelled='yes'>\1 <match no='2' include_skipped='all'/> <match no='3' regexp_match='(.+)ad([ao]s?)' regexp_replace='$1ue'/></suggestion-->
       <example correction='Parece surpreso'><marker>Parece surpreendido</marker>.</example>
-      <example> As pessoas podem ficar surpreendidas com o que se avizinha.</example>
+      <example>As pessoas podem ficar surpreendidas com o que se avizinha.</example>
     </rule>
   </rulegroup>
 
@@ -5268,6 +5303,19 @@ title="Easy editing stylesheet" ?>
       <example>…viços de TV paga não se tornaram populares ou bem sucedidos enquanto as redes de televisão públicas ZDF e ARD oferecem um…</example>
     </rule>
     <rule>
+      <pattern>
+          <token>com</token>
+          <token regexp='yes'>c(?:omeço|onclusão|riação)|estreia|i(?:nício|nauguração)|f(?:echo|im|inal)|limite|t(?:ermo|érmino)</token>
+          <token>
+            <exception regexp="yes">a|às?|aos?|em</exception></token>
+      </pattern>
+      <message>A expressão '\1 \2' requer regência em 'a' ou 'em'.</message>
+        <suggestion>\1 \2 a \3</suggestion>
+        <suggestion>\1 \2 em \3</suggestion>
+      <example correction='Com início a 1|Com início em 1'><marker>Com início 1</marker> metro abaixo da superfície.</example>
+      <example correction='Com início a 90|Com início em 90'><marker>Com início 90</marker> metros abaixo da superfície.</example>
+    </rule>
+    <rule>
       <antipattern>
           <token spacebefore='no' regexp='yes'>&hifen;</token>
           <token inflected='yes' spacebefore='no'>ir</token>
@@ -6120,6 +6168,15 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>[.!?]</token>
         </marker>
       </antipattern>
+      <antipattern><!-- two word greetings -->
+          <token postag="SENT_START"/>
+          <token max='2'>
+            <exception>,</exception></token>
+          <token min='0'>,</token>
+          <token>por</token>
+          <token>favor</token>
+          <token regexp='yes'>[.!?]</token>
+      </antipattern>
       <pattern>
           <token postag='SENT_START'/>
         <marker>
@@ -6180,6 +6237,9 @@ title="Easy editing stylesheet" ?>
       <example>O estudo de métodos de redução de dados</example><!-- correct. no verbs here but this looks like a title, it has no punctuation -->
       <example type='triggers_error'>Duração das batalhas até 10 horas.</example><!-- correct. it is a sentence since it has punctuation and it has no verbs here. -->
       <example>Duração das batalhas até 10 horas</example><!-- correct. no verbs here but this looks like a title, it has no punctuation -->
+      <example>Vinho tinto, por favor.</example>
+      <example type="incorrect"><marker>Éteres de glicol: Solvente para vernizes e tintas.</marker></example><!-- Titles should not be punctuatuates -->
+      <example type='triggers_error'>Mais uma semana cheia à frente.</example><!-- FP but it is a holophrase-->
     </rule>
 
   <rulegroup id='FRAGMENT_TWO_ARTICLES' name='Fragmento: dois artigos seguidos' default='on'>
@@ -12138,6 +12198,13 @@ title="Easy editing stylesheet" ?>
       <example correction="te falei|falei-te">Já <marker>te falei-te</marker> deste anel.</example>
     </rule>
     <rule>
+      <antipattern>
+          <token>se</token>
+          <token min='0' postag_regexp='yes' postag='D.+'/>
+          <token postag_regexp='yes' postag='N.+'/>
+          <token><match no='0'/></token>
+          <token postag_regexp='yes' postag='V...3.+'/>
+      </antipattern>
       <pattern>
           <token regexp='yes'>&pronomes_obliquos_atonos;</token>
           <token/>
@@ -12147,6 +12214,7 @@ title="Easy editing stylesheet" ?>
         <suggestion>\1 \2</suggestion>
         <suggestion>\2-\3</suggestion>
       <example correction="te falei|falei-te">Já <marker>te falei te</marker> deste anel.</example>
+      <example>Precisamos de saber se o João se terá lembrado.</example>
     </rule>
   </rulegroup>
 
@@ -16016,10 +16084,10 @@ tokenizer spreadsheet in the forum	     -->
           <token>dentes</token>
       </pattern>
       <message>Frase-feita. Procure alternativas.</message>
-        <suggestion>exageradamente <match no='1' postag='V.+' postag_regexp='yes'>armar</match></suggestion>
-        <suggestion><match no='1' postag='V.+' postag_regexp='yes'>preparar</match> para uma situação</suggestion>
-      <example correction='exageradamente armar|preparar para uma situação'><marker>armar-se até aos dentes</marker>.</example>
-      <example correction='exageradamente armado|preparado para uma situação'><marker>armado até aos dentes</marker>.</example>
+        <suggestion><match no='1' postag='V.+' postag_regexp='yes'>armar</match><match no='2' include_skipped='all'/><match no='3' include_skipped='all'/> exageradamente</suggestion>
+        <suggestion><match no='1' postag='V.+' postag_regexp='yes'>preparar</match><match no='2' include_skipped='all'/><match no='3' include_skipped='all'/> para uma situação</suggestion>
+      <example correction='armar-se exageradamente|preparar-se para uma situação'>Foi <marker>armar-se até aos dentes</marker>.</example>
+      <example correction='armado exageradamente|preparado para uma situação'>Ele está <marker>armado até aos dentes</marker>.</example>
     </rule>
     <rule id='CLICHE_242_ARREBENTAR' name='Clichê: Arrebentar a boca do balão'>
       <pattern>
@@ -30773,8 +30841,8 @@ TODO Write better examples
           <token regexp='yes' spacebefore='no' min='0'>araripe|chumbo</token>
       </antipattern>
       <antipattern>
-          <token regexp='yes'>revistas?</token>
-          <token regexp='yes'>aos?</token>
+          <token regexp='yes'>histórias?|personagem|revistas?</token>
+          <token regexp='yes'>aos?|em</token>
           <token>quadradinhos</token>
       </antipattern>
       <pattern>
@@ -31085,7 +31153,7 @@ TODO Write better examples
       </pattern>
       <message>Linguagem informal. Considere as alternativas.</message>
         <suggestion>\1 apressadamente</suggestion>
-      <example correction='feito apressadamente'><marker>feito nas coxas</marker>.</example>
+      <example correction='feito apressadamente'>Parece que esse trabalho foi <marker>feito nas coxas</marker>.</example>
     </rule>
     <rule>
       <pattern>
@@ -36511,7 +36579,7 @@ TODO Write better examples
       </pattern>
       <message>Evite a voz passiva.</message>
       <url>https://portugues-fcr.blogspot.pt/2010/12/funcoes-sintacticas-complemento-agente.html</url>
-      <example type='incorrect'>Caso <marker>conhecido</marker> de todos.</example>
+      <example type='incorrect'>O caso é <marker>conhecido</marker> de todos.</example>
       <example>Todos <marker>conhecem</marker> o caso.</example>
     </rule>
   </rulegroup>

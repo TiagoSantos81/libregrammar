@@ -32,7 +32,7 @@
 # emitir/imitir
 (?i)emiti[rs]?	(?i)imiti[rs]?	emi	imi	(?i)(informaç|opin)(ão|ões)|parecer(es)?	(?i)(porta|entrada|convidado)s?	expressar, transmitir	fazer entrar
 # enformar/informar
-(?i)enform.+	(?i)inform.+	enf	inf	(?i)chapéus|fôrmas?|moldes?|sapatos?	(?i)avisos?|cartas?|correios?|direc?tivas?|telefon.+|contac?at.+	meter em fôrma	avisar
+(?i)enform.[^l]*	(?i)inform.[^l]*	enf	inf	(?i)chapéus|fôrmas?|moldes?|sapatos?	(?i)avisos?|cartas?|correios?|direc?tivas?|telefon.+|contac?at.+	meter em fôrma	avisar
 # enfestar/infestar
 (?i)enfest.+	(?i)infest.+	enf	inf	(?i)(calça|camisa|toalha|camisola|roupa|tabuleiro|guardanapo|lenço)s?|lenç(ol|ois)	(?i)(barata|fungo|parasita|daninha|larva|rato|insec?to)s?	dobrar ao meio	assolar
 # entender/intender
