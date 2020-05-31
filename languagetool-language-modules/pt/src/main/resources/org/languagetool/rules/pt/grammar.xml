@@ -1000,6 +1000,7 @@ title="Easy editing stylesheet" ?>
         <suggestion suppress_misspelled='yes'><match no='3' postag='(V.P..[SN])(.+)' postag_replace='$1M' postag_regexp='yes'/> <match no='4' postag='(D..)(.)([SN].+)' postag_replace='$1M$3' postag_regexp='yes'/> <match no='5' postag='(NC)(.)([SN].+)' postag_replace='$1M$3' postag_regexp='yes'/></suggestion>
         <suggestion suppress_misspelled='yes'><match no='3' postag='(V.P..[SN])(.+)' postag_replace='$1F' postag_regexp='yes'/> <match no='4' postag='(D..)(.)([SN].+)' postag_replace='$1F$3' postag_regexp='yes'/> <match no='5' postag='(NC)(.)([SN].+)' postag_replace='$1F$3' postag_regexp='yes'/></suggestion>
       <example correction='promovido um ambiente'>Desta forma é <marker>promovida um ambiente</marker> de trabalho saudável.</example>
+      <example>O programa foi lançado alguns meses antes.</example>
     </rule>
     <rule>
       <pattern>
