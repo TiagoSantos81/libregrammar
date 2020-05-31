@@ -113,7 +113,7 @@ public class SentenceSourceChecker {
     options.addOption(Option.builder().longOpt("languagemodel").argName("indexDir").hasArg()
             .desc("directory with a '3grams' sub directory that contains an ngram index").build());
     options.addOption(Option.builder().longOpt("neuralnetworkmodel").argName("baseDir").hasArg()
-            .desc("base directory for saved neural network models").build());
+            .desc("base directory for saved neural network models (deprecated)").build());
     options.addOption(Option.builder().longOpt("filter").argName("regex").hasArg()
             .desc("Consider only sentences that contain this regular expression (for speed up)").build());
     options.addOption(Option.builder().longOpt("spelling")

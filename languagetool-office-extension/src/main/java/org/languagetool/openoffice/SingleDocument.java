@@ -70,7 +70,6 @@ class SingleDocument {
    */
   
   private static final int PARA_CHECK_DEFAULT = 50;  //  Factor for parameter checked at once at iteration (no text change)
-  private static final int MAX_SUGGESTIONS = 15;
 
   private static int debugMode;               //  should be 0 except for testing; 1 = low level; 2 = advanced level
   
@@ -947,21 +946,23 @@ class SingleDocument {
    * get the next queue entry which is the next empty cache entry
    */
   public QueueEntry getNextQueueEntry(int nPara, int nCache) {
-    for(int i = nPara + 1; i < docCache.textSize(); i++) {
-      if(paragraphsCache.get(nCache).getEntryByParagraph(i) == null) {
-        return createQueueEntry(i, nCache);
+    if (docCache != null) {
+      for(int i = nPara + 1; i < docCache.textSize(); i++) {
+        if(paragraphsCache.get(nCache).getEntryByParagraph(i) == null) {
+          return createQueueEntry(i, nCache);
+        }
       }
-    }
-    for(int i = 0; i < nPara; i++) {
-      if(paragraphsCache.get(nCache).getEntryByParagraph(i) == null) {
-        return createQueueEntry(i, nCache);
+      for(int i = 0; i < nPara; i++) {
+        if(paragraphsCache.get(nCache).getEntryByParagraph(i) == null) {
+          return createQueueEntry(i, nCache);
+        }
       }
-    }
-    for(int n = 0; n < minToCheckPara.size(); n++) {
-      if(n != nCache && minToCheckPara.get(n) != 0) {
-        for(int i = 0; i < docCache.textSize(); i++) {
-          if(paragraphsCache.get(n).getEntryByParagraph(i) == null) {
-            return createQueueEntry(i, n);
+      for(int n = 0; n < minToCheckPara.size(); n++) {
+        if(n != nCache && minToCheckPara.get(n) != 0) {
+          for(int i = 0; i < docCache.textSize(); i++) {
+            if(paragraphsCache.get(n).getEntryByParagraph(i) == null) {
+              return createQueueEntry(i, n);
+            }
           }
         }
       }
@@ -1279,18 +1280,18 @@ class SingleDocument {
     //  needed because of error in dialog
     if (lastChar == '.' && (ruleMatch.getToPos() + startIndex) == sentencesLength) {
       int i = 0;
-      while (i < numSuggestions && i < MAX_SUGGESTIONS
+      while (i < numSuggestions && i < OfficeTools.MAX_SUGGESTIONS
           && allSuggestions[i].length() > 0 && allSuggestions[i].charAt(allSuggestions[i].length()-1) == '.') {
         i++;
       }
-      if (i < numSuggestions && i < MAX_SUGGESTIONS) {
+      if (i < numSuggestions && i < OfficeTools.MAX_SUGGESTIONS) {
       numSuggestions = 0;
       allSuggestions = new String[0];
       }
     }
     //  End of Filter
-    if (numSuggestions > MAX_SUGGESTIONS) {
-      aError.aSuggestions = Arrays.copyOfRange(allSuggestions, 0, MAX_SUGGESTIONS);
+    if (numSuggestions > OfficeTools.MAX_SUGGESTIONS) {
+      aError.aSuggestions = Arrays.copyOfRange(allSuggestions, 0, OfficeTools.MAX_SUGGESTIONS);
     } else {
       aError.aSuggestions = allSuggestions;
     }

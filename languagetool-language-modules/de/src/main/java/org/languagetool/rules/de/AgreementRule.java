@@ -91,13 +91,18 @@ public class AgreementRule extends Rule {
       token("der")
     ),
     Arrays.asList(
+      token("einem"),
+      token("kalte"),
+      token("Schauer")
+    ),
+    Arrays.asList(
       regex("die|der"),  // "die Querwild GmbH"
       posRegex("SUB:.*"),
       token("GmbH")
     ),
     Arrays.asList(
-      regex("Die"),
-      regex("Waltons")
+      token("Die"),
+      regex("Waltons|Einen")
     ),
     Arrays.asList(
       regex("Große[sn]?"),
