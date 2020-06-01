@@ -68,12 +68,12 @@ import com.sun.star.uno.XComponentContext;
  */
 public class MultiDocumentsHandler {
 
-  private static final String VENDOR_ID = "languagetool.org";
-  private static final String APPLICATION_ID = "LanguageTool";
+  private static final String VENDOR_ID = "LibreGrammar";
+  private static final String APPLICATION_ID = "LibreGrammar";
   private static final String OFFICE_EXTENSION_ID = "LibreOffice";
-  private static final String CONFIG_FILE = "Languagetool.cfg";
-  private static final String OLD_CONFIG_FILE = ".languagetool-ooo.cfg";
-  private static final String LOG_FILE = "LanguageTool.log";
+  private static final String CONFIG_FILE = "libregrammar.cfg";
+  private static final String OLD_CONFIG_FILE = ".libregrammar-ooo.cfg";
+  private static final String LOG_FILE = "LibreGrammar.log";
   // LibreOffice (since 4.2.0) special tag for locale with variant 
   // e.g. language ="qlt" country="ES" variant="ca-ES-valencia":
   private static final String LIBREOFFICE_SPECIAL_LANGUAGE_TAG = "qlt";
@@ -1032,13 +1032,20 @@ public class MultiDocumentsHandler {
       } else if ("deactivateRule".equals(sEvent)) {
         deactivateRule();
         resetDocument();
+    /* if by merge error isRemote can become 'true'
+     * it will show on the context menu.
+     * this code is kept to double check if isRemote is false.
+     * isRemote variable was kept as an assurance even though
+     * the remaining code was deleted or commented out.
+     */
       } else if ("remoteHint".equals(sEvent)) {
+      /*
         if(getConfiguration().useOtherServer()) {
           MessageHandler.showMessage(MessageFormat.format(messages.getString("loRemoteInfoOtherServer"), 
               getConfiguration().getServerUrl()));
         } else {
+        */
           MessageHandler.showMessage(messages.getString("loRemoteInfoDefaultServer"));
-        }
       } else {
         MessageHandler.printToLogFile("Sorry, don't know what to do, sEvent = " + sEvent);
       }
@@ -1054,7 +1061,7 @@ public class MultiDocumentsHandler {
             || version.startsWith("1.2") || version.startsWith("1.3")
             || version.startsWith("1.4") || version.startsWith("1.5")
             || version.startsWith("1.6") || version.startsWith("1.7"))) {
-      MessageHandler.showMessage("Error: LanguageTool requires Java 8 or later. Current version: " + version);
+      MessageHandler.showMessage("Error: LibreGrammar requires Java 8 or later. Current version: " + version);
       return false;
     }
     try {
@@ -1195,7 +1202,7 @@ public class MultiDocumentsHandler {
   }
 
   public String getServiceDisplayName(Locale locale) {
-    return "LanguageTool";
+    return "LibreGrammar";
   }
 
   /**
