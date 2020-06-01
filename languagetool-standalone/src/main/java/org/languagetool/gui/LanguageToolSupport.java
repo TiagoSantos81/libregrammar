@@ -888,7 +888,7 @@ class LanguageToolSupport {
 
   private static class Span {
 
-    private static final int MAX_SUGGESTIONS = 5;
+    private static final int MAX_SUGGESTIONS = 10;
     
     private int start;
     private int end;
