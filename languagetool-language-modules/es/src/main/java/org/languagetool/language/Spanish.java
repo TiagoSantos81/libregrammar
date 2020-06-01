@@ -115,6 +115,8 @@ public class Spanish extends Language implements AutoCloseable{
             new SentenceWhitespaceRule(messages),
             new WhiteSpaceAtBeginOfParagraph(messages),
             new EmptyLineRule(messages, this),
+            new LongSentenceRule(messages, userConfig, -1, true),
+            new LongParagraphRule(messages, this, userConfig),
             new ParagraphRepeatBeginningRule(messages, this),
             new PunctuationMarkAtParagraphEnd(messages, this, true),
             //Specific to Spanish:
