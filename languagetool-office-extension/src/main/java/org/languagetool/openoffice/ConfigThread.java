@@ -41,43 +41,26 @@ class ConfigThread extends Thread {
 
   private final Language docLanguage;
   private final Configuration config;
-  private final Main mainThread;
+  private final MultiDocumentsHandler documents;
   private final ConfigurationDialog cfgDialog;
   
-  ConfigThread(Language docLanguage, Configuration config, Main main) {
+  ConfigThread(Language docLanguage, Configuration config, MultiDocumentsHandler documents) {
     if (config.getDefaultLanguage() == null) {
       this.docLanguage = docLanguage;
     } else {
       this.docLanguage = config.getDefaultLanguage();
     }
     this.config = config;
-    this.mainThread = main; 
+    this.documents = documents; 
     cfgDialog = new ConfigurationDialog(null, true, config);
   }
 
   @Override
   public void run() {
     try {
-      XComponentContext xContext = mainThread.getContext();
-      LinguisticServices linguServices = null;
-      if(xContext != null) {
-        linguServices = new LinguisticServices(xContext);
-      }
-      JLanguageTool langTool = new JLanguageTool(docLanguage, config.getMotherTongue(), null, 
-          new UserConfig(config.getConfigurableValues(), linguServices));
-      List<Rule> allRules = langTool.getAllRules();
-      for (Rule rule : allRules) {
-        if (rule.isOfficeDefaultOn()) {
-          rule.setDefaultOn();
-        } else if(rule.isOfficeDefaultOff()) {
-          rule.setDefaultOff();
-        }
-      }
-      Set<String> disabledRulesUI = null;
-      if (mainThread != null) {
-        disabledRulesUI = mainThread.getDisabledRules();
-        config.addDisabledRuleIds(disabledRulesUI);
-      }
+      List<Rule> allRules = documents.getLanguageTool().getAllRules();
+      Set<String> disabledRulesUI = documents.getDisabledRules();
+      config.addDisabledRuleIds(disabledRulesUI);
       boolean configChanged = cfgDialog.show(allRules);
       if (configChanged) {
         Set<String> disabledRules = config.getDisabledRuleIds();
@@ -86,12 +69,12 @@ class ConfigThread extends Thread {
             disabledRulesUI.remove(ruleId);
           }
         }
-        mainThread.setDisabledRules(disabledRulesUI);
+        documents.setDisabledRules(disabledRulesUI);
         config.removeDisabledRuleIds(disabledRulesUI);
         config.saveConfiguration(docLanguage);
-        mainThread.resetDocument();
+        documents.resetDocument();
       } else {
-        config.removeDisabledRuleIds(mainThread.getDisabledRules());
+        config.removeDisabledRuleIds(documents.getDisabledRules());
       }
     } catch (Throwable e) {
       MessageHandler.showError(e);
