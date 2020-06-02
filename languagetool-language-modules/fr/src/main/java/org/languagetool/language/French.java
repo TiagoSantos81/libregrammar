@@ -177,6 +177,7 @@ public class French extends Language implements AutoCloseable {
       case "FRENCH_WHITESPACE": return 0;
       case "ELISION": return 0; // should be lower in priority than spell checker
       case "JE_SUI": return 1;  // needs higher priority than spell checker
+      case "STYLE_REPEATED_WORD_RULE_FR": return -1000;  // style rules do not take priority
     }
     if (id.startsWith("grammalecte_")) {
       return -1;
