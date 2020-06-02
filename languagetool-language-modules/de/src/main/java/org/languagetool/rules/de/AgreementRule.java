@@ -85,6 +85,11 @@ public class AgreementRule extends Rule {
 
   private static final List<List<PatternToken>> ANTI_PATTERNS = Arrays.asList(
     Arrays.asList(
+      tokenRegex("der|die|das"),   // "Lieber jemanden, der einem Tipps gibt."
+      token("einem"),
+      posRegex("SUB:.*:PLU:.*")
+    ),
+    Arrays.asList(
       tokenRegex("der|des"),   // "Die dauerhafte Abgrenzung des später Niedersachsen genannten Gebietes"
       posRegex("ADJ:.*"),
       posRegex("EIG:.*"),
@@ -242,6 +247,10 @@ public class AgreementRule extends Rule {
       token("Chaos"),
       token("Computer"),
       token("Club")
+    ),
+    Arrays.asList(  // "der Echo Show" (Amazon device)
+      token("Echo"),
+      tokenRegex("Show|Dot")
     ),
     Arrays.asList(  // "In einem App Store"
       tokenRegex("App|Play"),
@@ -1184,6 +1193,9 @@ public class AgreementRule extends Rule {
       RuleMatch compoundMatch = getCompoundError(token1, token2, token3, tokenPos, sentence);
       if (compoundMatch != null) {
         return compoundMatch;
+      }
+      if (token3.hasPartialPosTag("ABK")) {
+        return null;
       }
       String msg = "Möglicherweise fehlende grammatische Übereinstimmung " +
             "von Kasus, Numerus oder Genus. Beispiel: 'mein kleiner Haus' " +

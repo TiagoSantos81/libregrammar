@@ -728,11 +728,15 @@ anticoagulating	anticoagulate	VBG
 anticoagulatory	anticoagulatory	JJ
 anti-constitutional	anti-constitutional	JJ
 antiemetic	antiemetic	JJ
+Antifa	Antifa	NNP
 anti-emetic	anti-emetic	JJ
 anti-government	anti-government	JJ
 antihermitian	antihermitian	JJ
 antihypertensive	antihypertensive	JJ
 antilinear	antilinear	JJ
+antiracist	antiracist	JJ
+anti-racist	anti-racist	NN
+anti-racists	anti-racist	NNS
 antireflux	antireflux	JJ
 anti-reflux	anti-reflux	JJ
 antiretroviral	antiretroviral	JJ
@@ -1915,6 +1919,7 @@ bursectomy	bursectomy	NN
 Buscemi	Buscemi	NNP
 bushido	bushido	NN:U
 bushland	bushland	NN:U
+Businessweek	Businessweek	NNP
 buspirone	buspirone	NN:U
 bustling	bustling	JJ
 Buttigieg	Buttigieg	NNP
@@ -6891,6 +6896,7 @@ googled	google	VBN
 Googlers	Googlers	NNPS
 googles	google	VBZ
 googling	google	VBG
+Googleplex	Googleplex	NNP
 googol	googol	CD
 googolplex	googolplex	CD
 GoPro	GoPro	NNP
@@ -7641,6 +7647,7 @@ HuffPost	HuffPost	NNP
 HughesNet	HughesNet	NNP
 Hulu	Hulu	NNP
 Humalog	Humalog	NNP
+humanhood	humanhood	NN:U
 humanisers	humaniser	NNS
 humorise	humorise	VB
 humorise	humorise	VBP
@@ -8947,6 +8954,7 @@ Latinizer	Latinizer	NN
 Latinizers	Latinizer	NNS
 Lauderdale	Lauderdale	NNP
 Lavazza	Lavazza	NNP
+lawfare	lawfare	NN:U
 Lawson	Lawson	NNP
 LAX	LAX	NNP
 laymanise	laymanise	VB
@@ -14956,6 +14964,12 @@ reinformed	reinform	VBN
 reinforming	reinform	VBG
 reinforms	reinform	VBZ
 Reinna	Reinna	NNP
+reinitiate	reinitiate	VB
+reinitiate	reinitiate	VBP
+reinitiated	reinitiate	VBD
+reinitiated	reinitiate	VBN
+reinitiates	reinitiate	VBZ
+reinitiating	reinitiate	VBG
 reinstitute	reinstitute	VB
 reinstitute	reinstitute	VBP
 reinstituted	reinstitute	VBD
@@ -15664,6 +15678,8 @@ roadmapping	roadmap	VBG
 roadmaps	roadmap	VBZ
 roam	roam	NN:U
 Roblox	Roblox	NNP
+robocop	robocop	NN
+robocops	robocop	NNS
 robotic	robotic	JJ
 robotisation	robotisation	NN:UN
 robotisations	robotisation	NNS
@@ -16581,6 +16597,9 @@ sloganized	sloganize	VBD
 sloganized	sloganize	VBN
 sloganizes	sloganize	VBZ
 sloganizing	sloganize	VBG
+slo-mo	slo-mo	JJ
+slo-mo	slo-mo	NN:UN
+slo-mos	slo-mo	NNS
 slosh	slosh	NN
 sloshes	slosh	NNS
 Slytherin	Slytherin	NNP
@@ -16992,6 +17011,8 @@ subcategorized	subcategorize	VBD
 subcategorized	subcategorize	VBN
 subcategorizes	subcategorize	VBZ
 subcategorizing	subcategorize	VBG
+subdomain	subdomain	NN
+subdomains	subdomain	NNS
 subduct	subduct	VB
 subduct	subduct	VBP
 subducted	subduct	VBD
@@ -17440,6 +17461,7 @@ taquerías	taquería	NNS
 Tarek	Tarek	NNP
 Targaryen	Targaryen	NNP
 Targaryen	Targaryen	NNPS
+Target	Target	NNP
 Tariq	Tariq	NNP
 tartanry	tartanry	NN:U
 tartarisation	tartarisation	NN:UN
@@ -19710,6 +19732,7 @@ Zürich	Zürich	NNP
 Z-Wave	Z-Wave	NNP
 Zweihänder	Zweihänder	NN
 Zweihänders	Zweihänder	NNS
+Zynga	Zynga	NNP
 AABBs	AABB	NNS
 AABB	AABB	NN
 AAPTs	AAPT	NNS

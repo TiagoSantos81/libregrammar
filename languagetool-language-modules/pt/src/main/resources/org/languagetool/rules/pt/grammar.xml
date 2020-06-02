@@ -1533,6 +1533,14 @@ title="Easy editing stylesheet" ?>
     <!--token min='0' postag='(?:A..|Z.)C.+' postag_regexp='yes'-->
           <token postag='(?:[NZ].|A..)MS.+' postag_regexp='yes'/>
       </antipattern>
+<!-- MARCOAGPINTO 2020-06-02 *START* -->
+<!-- "Foram substituídos em posteriores textos ecológicos um texto posterior." -->
+      <antipattern>
+		  <token postag='AQ0[CFM]P0' postag_regexp='yes'/>	
+		  <token postag='DI0MS0' postag_regexp='no'/>		  
+		  <token postag='NC[CM]S000' postag_regexp='yes'/>
+      </antipattern>
+<!-- MARCOAGPINTO 2020-06-02 *END* -->
       <pattern>
           <token negate='yes' regexp='yes'>&hifen;</token>
         <marker>
@@ -1628,6 +1636,23 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes' min='0'>&adverbios_de_intensidade;</token>
           <token postag='(?:D[ADIP].|NC|A..|Z.)[FC]P.+' postag_regexp='yes'/>
       </antipattern>
+<!-- MARCOAGPINTO 2020-06-01 *START* -->
+<!-- "Desejo bons êxitos." -->
+      <antipattern>
+		  <token postag='VMI[PS][13][PS]0' postag_regexp='yes'/>	 
+		  <token postag='AQ0[CM]P0' postag_regexp='yes'/>	 		  
+		  <token postag='NC[CM]P000' postag_regexp='yes'/>	
+      </antipattern>
+<!-- MARCOAGPINTO 2020-06-01 *END* -->
+<!-- MARCOAGPINTO 2020-06-02 *START* -->
+<!-- "O desenvolvimento de vários fatores culturais no Japão foram neste período evidentes na arquitetura." -->
+      <antipattern>
+		  <token postag='VMI[MS]3P0' postag_regexp='yes'/>	
+		  <token regexp='yes'>neste|nesse|naquele.</token>
+		  <token postag='NCMS000' postag_regexp='no'/>	
+		  <token postag='AQ0[CFM]P0' postag_regexp='yes'/>	
+      </antipattern>
+<!-- MARCOAGPINTO 2020-06-02 *END* -->
       <pattern>
           <token negate='yes' regexp='yes'>e|ou|&hifen;</token>
         <marker>
@@ -1737,6 +1762,39 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes' min='0'>&adverbios_de_intensidade;</token>
           <token postag='(?:D[ADIP].|NC|A..|Z.)[FC]P.+' postag_regexp='yes'/>
       </antipattern>
+<!-- MARCOAGPINTO 2020-06-01 *START* -->
+<!-- "Assim como a agentes stressantes abióticos." -->
+      <antipattern>
+		  <token postag='DA0FS0' postag_regexp='no'/>	 
+		  <token postag='NC[CFM]P000' postag_regexp='yes'/>	
+		  <token postag='AQ0[CFM]P0' postag_regexp='yes'/>
+      </antipattern>
+<!-- MARCOAGPINTO 2020-06-01 *END* -->
+<!-- MARCOAGPINTO 2020-06-01 *START* -->
+<!-- "Foi acusado de manipular informações." -->
+<!-- "Foi acusado de manipular agentes." -->
+<!-- "Foi acusado de manipular bilhetes." -->
+      <antipattern>
+		  <token postag='VMN0000' postag_regexp='no'/>	 	 		  
+		  <token postag='NC[CFM]P000' postag_regexp='yes'/>	
+      </antipattern>
+<!-- MARCOAGPINTO 2020-06-01 *END* -->
+<!-- MARCOAGPINTO 2020-06-02 *START* -->
+<!-- "São em sua maioria capitais estaduais." -->
+      <antipattern>
+		  <token postag='DP3FSS' postag_regexp='no'/>	
+		  <token postag='NCFS000' postag_regexp='no'/>			  
+		  <token postag='NC[CFM]P000' postag_regexp='yes'/>	
+      </antipattern>
+<!-- MARCOAGPINTO 2020-06-02 *END* -->
+<!-- MARCOAGPINTO 2020-06-02 *START* -->
+<!-- "A casa encontra-se a cinquenta metros da praia." -->
+      <antipattern>
+		  <token postag='DA0FS0' postag_regexp='no'/>
+		  <token postag='Z0CP0' postag_regexp='no'/>		  
+		  <token postag='NC[CFM]P000' postag_regexp='yes'/>
+      </antipattern>
+<!-- MARCOAGPINTO 2020-06-02 *END* -->
       <pattern>
           <token negate='yes' regexp='yes'>e|ou|&hifen;</token>
         <marker>
@@ -1842,6 +1900,14 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>e|,</token>
           <token postag='A..[FC]S.+' postag_regexp='yes'/>
       </antipattern>
+<!-- MARCOAGPINTO 2020-06-01 *START* -->
+<!-- "A que horas parte o próximo comboio para Tóquio?" -->
+      <antipattern>
+		  <token postag='NCFP000' postag_regexp='no'/>	 
+		  <token postag='VMIP3S0|VMM02S0' postag_regexp='yes'/>	
+          <token postag='DA0[FM]S0' postag_regexp='yes'/>
+      </antipattern>
+<!-- MARCOAGPINTO 2020-06-01 *END* -->
       <pattern>
           <token negate='yes' regexp='yes'>&hifen;</token>
         <marker>

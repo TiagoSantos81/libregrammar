@@ -68,7 +68,7 @@ public class AgreementRuleTest {
   @Test
   public void testDetNounRule() throws IOException {
     // correct sentences:
-	assertGood("Die Einen sagen dies, die Anderen das.");
+	  assertGood("Die Einen sagen dies, die Anderen das.");
     assertGood("So ist es in den USA.");
     assertGood("Das ist der Tisch.");
     assertGood("Das ist das Haus.");
@@ -144,6 +144,7 @@ public class AgreementRuleTest {
     assertGood("Andere formale Systeme, deren Semantiken jeweils...");
     assertGood("Gesetz zur Änderung des Kündigungsrechts und anderer arbeitsrechtlicher Vorschriften");
     assertGood("Die dauerhafte Abgrenzung des später Niedersachsen genannten Gebietes von Westfalen begann im 12. Jahrhundert.");
+    assertGood("Lieber jemanden, der einem Tipps gibt.");
     //assertGood("... der zu dieser Zeit aber ohnehin schon allen Einfluss verloren hatte.");
 
     assertGood("Wir machen das Januar.");
@@ -368,6 +369,7 @@ public class AgreementRuleTest {
     assertGood("Dann wird das Konsequenzen haben.");
     assertGood("Dann hat das Konsequenzen.");
     assertGood("Sollte das Konsequenzen nach sich ziehen?");
+    assertGood("Der Echo Show von Amazon");
 
     assertBad("Hier steht Ihre Text.");
     assertBad("Hier steht ihre Text.");
@@ -442,6 +444,7 @@ public class AgreementRuleTest {
     assertGood("Der riesigen Tische wegen.");
     assertGood("An der roten Ampel.");
     assertGood("Dann hat das natürlich Nachteile.");
+    assertGood("Ihre erste Nr. 1");
 
     // incorrect sentences:
     assertBad("Es sind die riesigen Tisch.");
