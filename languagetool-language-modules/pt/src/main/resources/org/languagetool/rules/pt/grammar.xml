@@ -4848,12 +4848,17 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes' spacebefore='no'>&hifen;</token>
           <token regexp='yes' spacebefore='no'>os?</token>
       </antipattern>
+      <antipattern>
+          <token regexp='yes'>.+s$</token>
+          <token regexp='yes'>porque</token>
+      </antipattern>
+      <antipattern>
+          <token regexp='yes'>.+[^s]$</token>
+          <token regexp='yes'>porques</token>
+      </antipattern>
       <pattern>
-        <unify>
-          <feature id='number'/>
           <token regexp='yes'>&art_detecao_M;</token>
           <token regexp='yes'>porques?</token>
-        </unify>
       </pattern>
       <message>Possível confusão de termos. Pretende dizer <suggestion>\1 porquê</suggestion>?</message>
       <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/porque-por-que-e-porque/243</url>
@@ -33740,7 +33745,7 @@ TODO Write better examples
     <rule>
       <pattern>
           <token regexp='yes'>n|ñ|pq?|q(?:nd|ts)?|lol|vc|b(jos?|lz)|kk+|tbm?
-            <exception case_sensitive='yes'>N|T[Bb]</exception></token>
+            <exception case_sensitive='yes' regexp='yes'>N|T[Bb]</exception></token>
       </pattern>
       <message>Linguagem de Internet. Escreva por extenso.</message>
       <example type="incorrect"><marker>ñ</marker></example>
