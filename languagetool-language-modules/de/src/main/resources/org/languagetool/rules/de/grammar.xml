@@ -2284,12 +2284,13 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <marker>
                         <token>eignen</token>
                     </marker>
-                    <token postag="SUB:NOM:PLU:.*" postag_regexp="yes"/>
+                    <token postag="SUB:NOM:PLU:.+|SUB:DAT:PLU:FEM" postag_regexp="yes"/>
                 </pattern>
                 <message>Meinten Sie <suggestion>eigenen</suggestion>?</message>
                 <example correction="eigenen">Seine <marker>eignen</marker> Leute haben ihn ermordet.</example>
                 <example correction="eigenen">Diese sind in 2 <marker>eignen</marker> Klassen umgesetzt.</example>
                 <example correction="eigenen">Dies ist in einer <marker>eignen</marker> Klassen umgesetzt.</example>
+                <example correction="eigenen">Alle Äußerungen basieren auf meinen <marker>eignen</marker> Erfahrungen.</example>
             </rule>
             <rule>
                 <pattern>
@@ -13614,6 +13615,21 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>Wenn aus dem Morgen ich ins Gestern blicke, bin ich auch schlau.</example>
             </rule>
             <rule>
+                <antipattern>
+                    <token postag="VER:.*:PRÄ.*" postag_regexp="yes"/>
+                    <token skip="-1" min="0"></token>
+                    <token regexp="yes">noch|wieder|diesmal|mal|nun</token>
+                </antipattern>
+                <antipattern>
+                     <token postag="VER:.*:PRÄ.*" postag_regexp="yes"/>
+                     <token postag="PA2:.+|VER:AUX:.+|VER:MOD:.+" postag_regexp="yes"/>
+                </antipattern>
+                <antipattern>
+                    <token regexp="yes">aus|noch|wie</token>
+                    <token min="0"/>
+                     <token regexp="yes">(vor)?letzte[ns]?|voriges?</token>
+                     <token regexp="yes">&wochentage;|Woche|Wochenende|Monat|Jahr</token>
+                </antipattern>
                 <pattern>
                     <token postag="SENT_START" skip="-1">
                         <exception postag_regexp="yes" postag="VER:(AUX|MOD):.*" scope="next"/>
@@ -13632,6 +13648,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token>
                         <exception inflected="yes">haben</exception>
                         <exception inflected="yes">sein</exception>
+                        <exception>(</exception>
                     </token>
                 </pattern>
                 <message>Falsche Zeitform? Meinten Sie <suggestion><match no="2"/> <match no="3"/> <match no="4" postag_regexp="yes" postag="(.*):PRÄ:(.*)" postag_replace="$1:PRT:$2"/></suggestion>?</message>
@@ -13642,6 +13659,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>Rate mal, wer mich <marker>letzten Mittwoch besucht</marker> hat.</example>
                 <example>Yoko ging <marker>vorletzte Woche einkaufen</marker>.</example>
                 <example>Seit dem <marker>letzten Montag arbeitet</marker> er wieder.</example>
+                <example>Das schwere Spiel vom letzten Wochenende sitzt der Mannschaft noch in den Knochen.</example>
+                <example>Gehe dorthin spazieren, wohin er in der letzten Woche spazieren gegangen ist.</example>
+                <example>Genau wie im letzen Jahr gibt es nun auch wieder eine Bühne.</example>
+                <example>Der Fehler tritt auf, nachdem die Updates der letzten Woche installiert wurden.</example>
+                <example>Ich habe das Programm noch letzte Woche benutzt.</example>
             </rule>
         </rulegroup>
         <rulegroup id="HUMANEXPERIMENT" name="Mehrdeutigkeit: menschliche Experimente (Humanexperimente)">
@@ -18140,11 +18162,21 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rulegroup>
         <rulegroup id="DAS_BESTE_AM" name="'das beste (Beste) am' etc.">
             <rule>
+                <antipattern>
+                    <token>das</token>
+                    <token postag="ADJ:NOM:SIN:NEU:(GRU|SUP):DEF" postag_regexp="yes"/>
+                    <token>in</token>
+                    <token postag="ART:.+" postag_regexp="yes" min="0"/>
+                    <token postag="SUB:.+" postag_regexp="yes"/>
+                    <token postag="PA2:.+" postag_regexp="yes"/>
+                    <token postag="SUB:.+" postag_regexp="yes"/>
+                </antipattern>
                 <pattern>
                     <token>das</token>
                     <marker>
                         <token postag="ADJ:NOM:SIN:NEU:(GRU|SUP):DEF" postag_regexp="yes" regexp="yes" case_sensitive="yes">[a-zäöü]+e
                             <exception>andere</exception>
+                            <exception postag="ADJ:PRD:GRU"></exception>
                         </token>
                     </marker>
                     <token regexp="yes" case_sensitive="yes">[ai][mn]|daran</token>
@@ -18153,6 +18185,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <short>&prgk;.</short>
                 <example correction="Gute">Sie hat den Glauben an das <marker>gute</marker> im Menschen verloren.</example>
                 <example correction="Schlechteste">Dies ruft das <marker>schlechteste</marker> im Menschen hervor.</example>
+                <example>1938 starb das letzte in einem Zoo gehaltene Exemplar.</example>
+                <example>Deshalb kämen auch andere Préludes, z. B. das sechste in h-Moll, als Regentropfen-Prélude in Frage.</example>
             </rule>
         </rulegroup>
         <rulegroup id="DOPPELPUNKT_GROSS" name="Großschreibung nach Doppelpunkt">
@@ -34865,11 +34899,30 @@ Andere Projekte</example>
                 <token postag="SUB:NOM:SIN:FEM:ADJ"/>
                 <token postag='VER:1:PLU:PRÄ.*' postag_regexp='yes'/>
             </antipattern>
+            <antipattern>
+                <token postag='SUB:NOM:SIN:(MAS|FEM|NEU)' postag_regexp='yes'/>
+                <token postag='VER:1:PLU:PRÄ.*' postag_regexp='yes'/>
+                <token postag="VER:.+|KON:.+" postag_regexp="yes">
+                    <exception postag="SUB:.+" postag_regexp="yes"/>
+                </token>
+            </antipattern>
+            <antipattern>
+                   <token postag='SUB:NOM:SIN:(MAS|FEM|NEU)' postag_regexp='yes'/>
+                <token postag='VER:1:PLU:PRÄ.*' postag_regexp='yes'/>
+                <token postag="SUB:.+:PLU:.+|PRO:PER:.+:PLU:.+"  postag_regexp="yes">
+                    <exception postag="VER:.+" postag_regexp="yes"/>
+                </token>
+            </antipattern>
+             <antipattern>
+                 <token postag='SUB:NOM:SIN:(MAS|FEM|NEU)' postag_regexp='yes'/>
+                <token postag='VER:1:PLU:PRÄ.*' postag_regexp='yes'/>
+                <token case_sensitive="yes">Sie</token>
+            </antipattern>
             <pattern>
                 <token postag="SENT_START"/>
                 <marker>
                     <token postag='SUB:NOM:SIN:(MAS|FEM|NEU)' postag_regexp='yes'>
-                        <exception postag_regexp="yes" postag="SUB:NOM:PLU:(MAS|FEM|NEU)|ADJ:(PRD:GRU|NOM:PLU:...:GRU:SOL)"/>
+                        <exception postag_regexp="yes" postag="ZAL|PRP:.+|ADV|ADV:.+|VER:.+|PRO:DEM|SUB:NOM:PLU:(MAS|FEM|NEU)|ADJ:(PRD:GRU|NOM:PLU:...:GRU:SOL)"/>
                         <exception regexp="yes">Datum|Entweder|Bitte|Mal|Laut|Wein|Angst|Glück|Gewicht|Geld|Vorzugsweise|.+tag|Wasser|Können</exception><!--TODO: alle unzählbaren Nomen-->
                         <exception regexp="yes">&sprachadj1;</exception>
                         <exception regexp="yes">&wochentage;</exception>
@@ -34899,6 +34952,13 @@ Andere Projekte</example>
             <example>Reich werden in China</example>
             <example>Junge bleiben bei Einkommen in der EU zurück.</example>
             <example>Datum füllen wir dann aus.</example>
+            <example>Drei leben friedlich, wenn zwei nicht daheim sind.</example>
+            <example>Selbst essen macht satt.</example>
+            <example>Daheim werden sie nicht geschätzt.</example>
+            <example>Klappe halten!</example>
+            <example>Zeit haben wir genug.</example>
+            <example>Bambus essen Gorillas sehr gern.</example>
+            <example>Langeweile haben wir dennoch nicht.</example>
         </rule>
         <rule id="SENT_START_PLU_SIN" name="Nomen plural + Verb singular am Satzanfang">
             <antipattern>
@@ -34937,16 +34997,25 @@ Andere Projekte</example>
             <example correction="mir">Ich kann <marker>mich</marker> nicht vorstellen, dass das klappt.</example>
         </rule>
         <rule id="EINES_GENITIV" name="Nomen + eines/einer + Genitiv">
+            <antipattern>
+                <token>studium</token>
+                <token>generale</token>
+            </antipattern>
             <pattern>
                 <token postag='SUB:.+' postag_regexp='yes'/>
                 <token regexp="yes">eines|einer</token>
                 <marker>
-                    <token postag='SUB:.+' postag_regexp='yes'><exception postag='SUB:GEN:.+' postag_regexp='yes'/><exception>Diabetes</exception></token>
+                    <token postag='SUB:.+' postag_regexp='yes'>
+                        <exception postag='SUB:GEN:.+' postag_regexp='yes'/>
+                        <exception>Diabetes</exception>
+                        <exception scope="next" postag="SUB:.+|UNKNOWN" postag_regexp="yes"/>
+                    </token>
                 </marker>
             </pattern>
             <message>Hier sollte vermutlich der Genitiv benutzt werden.</message>
             <suggestion><match no="3" postag_regexp="yes" postag="SUB:.*?:(.*?):(.*?)" postag_replace="SUB:GEN:$1:$2"/></suggestion>
             <example correction='Kriteriums'>…zur Erstellung eines <marker>Kriterium</marker>.</example>
+            <example>Diese Lampe ist sehr gut für die Aufzucht einer Cannabispflanze geeignet.</example>
         </rule>
         <rule id="ZU_KOMMA_ALS" name="zu, als dass">
             <pattern>
@@ -36976,6 +37045,13 @@ Andere Projekte</example>
                     <token postag="SUB:.+:SIN:.+" postag_regexp="yes"/>
                     <token postag="PA1:.+" postag_regexp="yes"/>
                 </antipattern>
+                <antipattern>
+                      <token postag="PRP:.+CAU:DAT" postag_regexp="yes"/>
+                      <token regexp="yes">d(ies)?en|jenen|[dkms]?einen|ihren</token>
+                      <token postag="ADJ:.+:SIN:.+" postag_regexp="yes" min="0"/>
+                      <token postag="SUB:.+:SIN:.+" postag_regexp="yes"/>
+                      <token postag="UNKNOWN|SUB:.+" postag_regexp="yes"/>
+                </antipattern>
                 <pattern>
                     <token postag="PRP:.+CAU:DAT" postag_regexp="yes"/>
                     <marker><token regexp="yes">d(ies)?en|jenen|[dkms]?einen|ihren</token></marker>
@@ -36996,6 +37072,9 @@ Andere Projekte</example>
                 <example>Er dehnte nach und nach seinen Einfluss aus.</example>
                 <example>Die US-Regierung will meiner Ansicht nach keinen militärischen Konflikt.</example>
                 <example>Es sorgt für ständigen Nachschub aus den Bernstein führenden Schichten.</example>
+                <example>Bei den Teen Choice Awards wurde sie für ihre Darbietung ausgezeichnet.</example>
+                <example>Er ist eine beliebte Figur aus den Wildwestfilmen.</example>
+                <example>Sie glauben an die Offenbarung mit den Zehn Geboten und der Erneuerung des Bundes.</example>
             </rule>
             <rule>
                 <pattern>
@@ -39428,14 +39507,36 @@ Andere Projekte</example>
                     <token postag="VER:INF:.*" postag_regexp="yes"/>
                     <token>,</token>
                     <token postag="VER:AUX:.*" postag_regexp="yes"/>
-                 </antipattern>
+                </antipattern>
+                <antipattern>
+                    <token postag="VER:.*" postag_regexp="yes"/>
+                    <token skip="-1"/>
+                    <token min="0" postag="PA2:.+" postag_regexp="yes"/>
+                    <token>,</token>
+                    <token postag="VER:.*" postag_regexp="yes"/>
+                </antipattern>
+                <antipattern>
+                    <token regexp="yes">ist|bist</token>
+                    <token min="0"/>
+                    <token inflected="yes">kein</token>
+                    <token postag="SUB:.+" postag_regexp="yes"/>
+                    <token>.</token>
+                </antipattern>
+                <antipattern>
+                    <token postag="VER:.*" postag_regexp="yes"/>
+                    <token skip="-1"/>
+                    <token>,</token>
+                   <token postag="ART:.+" postag_regexp="yes"/>
+                    <token postag="SUB:.+" postag_regexp="yes"/>
+                    <token postag="VER:(1|2|3):.+" postag_regexp="yes"/>
+                </antipattern>
                 <pattern>
                     <token postag="SENT_START"/>
                     <token min="0" max="1" regexp="yes">„|»|«|"</token>
                     <token regexp="yes">ist|bist</token>
                     <token skip="-1" postag="PRO:.*|SUB:.*|EIG:.*|ADJ:.*" postag_regexp="yes">
                         <exception scope="next" regexp="yes">\?|!|:|“|»|«|"</exception>
-                        <exception>wohl</exception>
+                        <exception regexp="yes">wohl|eben|natürlich|mir</exception>
                     </token>
                     <token skip="-1" postag="SUB:.*|EIG:.*|PRO:(PER|IND):.*" postag_regexp="yes">
                         <exception scope="next" regexp="yes">\?|!|:|“|»|«|"</exception>
@@ -39450,6 +39551,9 @@ Andere Projekte</example>
                 <example correction="?">"Ist er schon nach Hause gegangen<marker>.</marker></example>
                 <example>Mach es bitte ein zweites Mal.</example>
                 <example>Sollte das Add-on fälschlich aktiv sein, würden Sie das bemerken.</example>
+                <example>Ist Adenosin gebunden, ist das ein Signal für die Zelle, etwas weniger zu arbeiten.</example>
+                <example>Ist dein Feind auch eine Ameise, betrachte ihn als Elefanten.</example>
+                <example>Ist die Lüge noch so schnell, die Wahrheit holt sie doch ein.</example>
             </rule>
             <rule>
                 <antipattern>
@@ -42711,6 +42815,15 @@ Andere Projekte</example>
                     <token inflected="yes">sein</token>
                     <token>das</token>
                     <token>richtig</token>
+                    <token min="0">so</token>
+                    <token>?</token>
+                </antipattern>
+                 <antipattern>
+                    <token inflected="yes">machen</token>
+                    <token postag="PRO:PER:NOM:.+" postag_regexp="yes"/>
+                    <token regexp="yes">das|es</token>
+                    <token min="0">so</token>
+                    <token>richtig</token>
                     <token>?</token>
                 </antipattern>
                 <antipattern>
@@ -42722,13 +42835,13 @@ Andere Projekte</example>
                 <antipattern>
                     <token regexp="yes">,|;|:|-|–</token>
                     <token inflected="yes">sein</token>
-                    <token>das</token>
+                    <token regexp="yes">das|es|alles</token>
                     <token>richtig</token>
                     <token>?</token>
                 </antipattern>
                 <antipattern>
-                    <token inflected="yes" skip="2">liegen</token>
-                    <token>da</token>
+                    <token inflected="yes" skip="2" regexp="yes">liegen</token>
+                    <token regexp="yes">da</token>
                     <token>richtig</token>
                     <token>?</token>
                 </antipattern>
@@ -42738,23 +42851,24 @@ Andere Projekte</example>
                     <token>?</token>
                 </antipattern>
                 <antipattern>
-                    <token postag="SENT_START"/>
-                    <token min="0" max="1" regexp="yes">„|»|«|"</token>
-                    <token skip="-1" postag="VER:.*" postag_regexp="yes"/>
+                    <token>ein</token>
+                    <token regexp="yes">ja|nein</token>
+                </antipattern>
+                <antipattern>
+                    <token inflected="yes">sein</token>
+                    <token regexp="yes">das|es|alles</token>
+                    <token>richtig</token>
                     <token>?</token>
                 </antipattern>
                 <antipattern>
-                    <token regexp="yes">,|;|:|-|–</token>
-                    <token min="0" max="1" regexp="yes">„|»|«|"</token>
-                    <token skip="-1" postag="VER:.*" postag_regexp="yes">
-                        <exception regexp="yes">,|;|:|-|–</exception>
-                    </token>
-                    <token>?</token>
+                    <token inflected="yes">sein</token>
+                    <token skip="-1"></token>
+                    <token>richtig</token>
                 </antipattern>
                 <pattern>
                     <marker>
                     <token>
-                        <exception regexp="yes">,|-|–|„|»|«|"|;|…|\(</exception>
+                        <exception regexp="yes">,|-|–|„|»|«|"|;|…|\(|:|=|\(</exception>
                         <exception postag="SENT_START"/>
                     </token>
                     <token  regexp="yes">ja|nein|oder|richtig</token>
@@ -42765,6 +42879,7 @@ Andere Projekte</example>
             <suggestion>\1, \2</suggestion>
             <example correction='morgen, oder'>Du kommst <marker>morgen oder</marker>?</example>
             <example correction='melden, richtig'>Eine Kündigung muss ich bis 31. Januar 2021 bei dir <marker>melden richtig</marker>?</example>
+            <example correction='blöd, oder'>Gar nicht so <marker>blöd oder</marker>?</example>
             <example>Ja oder nein?</example>
             <example>Welches ist richtig?</example>
             <example>Tickst du noch ganz richtig?</example>
