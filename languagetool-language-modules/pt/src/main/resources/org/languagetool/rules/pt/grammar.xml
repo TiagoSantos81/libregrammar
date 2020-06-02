@@ -90,6 +90,7 @@ title="Easy editing stylesheet" ?>
     <!ENTITY verbos_auxiliares_aspectuais "(?:andar|ir|vir|começar|continuar|tornar|voltar|costumar|acabar|deixar)">
     <!ENTITY verbos_auxiliares_modais "(?:dever|poder|querer|conseguir|pretender|tentar|chegar)">
     <!ENTITY verbos_de_ligacao "(?:andar|continuar|estar|ficar|p(?:arecer|ermanecer)|assemelhar|s(?:emelhar|er)|v(?:irar|viver))">
+    <!ENTITY verbo_nao_copulativos "(?:apresentar|criar|matar|sugerir)">
     <!ENTITY verbos_transitivos_diretos "(?:abandonar|abençoar|aborrecer|abraçar|acompanhar|acusar|admirar|adorar|alegrar|ameaçar|amolar|amparar|auxiliar|castigar|condenar|conhecer|conservar|convidar|defender|eleger|estimar|humilhar|namorar|ouvir|prejudicar|prezar|proteger|respeitar|socorrer|suportar|ver|visitar)">
     <!ENTITY verbos_reflexivos "a(?:bster|covardar|piedar|pressar|rrepender|rrogar|ssemelhar|trever)|c(?:ontorcer|ondoer)|d(?:esbocarignar)|embebedar|escapulir|queixar|suicidar|transvestir|vangloriar|zangar">
     <!ENTITY haver_impessoal "(?:h(?:á|avia|ouve|ouvera|averá|averia|aja|ouvesse|ouver))">
@@ -1251,7 +1252,7 @@ title="Easy editing stylesheet" ?>
           <token postag='(?:[NZ].|A..)FS.+' postag_regexp='yes'>
             <exception regexp='yes'>uma|e</exception></token>
           <token postag="V...3S.+" postag_regexp='yes'>
-            <exception inflected='yes' regexp='yes'>criar|matar|sugerir</exception></token>
+            <exception inflected='yes' regexp='yes'>&verbo_nao_copulativos;</exception></token>
           <token postag='A..M.+' postag_regexp='yes'>
             <exception>medo</exception>
             <exception postag="R.+" postag_regexp='yes'/></token>
@@ -1266,7 +1267,7 @@ title="Easy editing stylesheet" ?>
           <token postag='(?:[NZ].|A..)MS.+' postag_regexp='yes'>
             <exception regexp='yes'>um|e|ser|nome|termo</exception></token>
           <token postag="V...3S.+" postag_regexp='yes'>
-            <exception inflected='yes' regexp='yes'>criar|matar|sugerir</exception></token>
+            <exception inflected='yes' regexp='yes'>&verbo_nao_copulativos;</exception></token>
           <token postag='A..F.+' postag_regexp='yes'>
             <exception postag="R.+" postag_regexp='yes'/></token>
       </pattern>
@@ -1285,7 +1286,7 @@ title="Easy editing stylesheet" ?>
           <token postag='(?:[NZ].|A..)FP.+' postag_regexp='yes'>
             <exception regexp='yes'>uma|e</exception></token>
           <token postag="V...3P.+" postag_regexp='yes'>
-            <exception inflected='yes' regexp='yes'>criar|matar|sugerir</exception></token>
+            <exception inflected='yes' regexp='yes'>&verbo_nao_copulativos;</exception></token>
           <token postag='A..M.+' postag_regexp='yes'>
             <exception>medo</exception>
             <exception postag="R.+" postag_regexp='yes'/></token>
@@ -1301,7 +1302,7 @@ title="Easy editing stylesheet" ?>
           <token postag='D..MP.+' postag_regexp='yes'/>
           <token postag='(?:[NZ].|A..)MP.+' postag_regexp='yes'/>
           <token postag="V...3P.+" postag_regexp='yes'>
-            <exception inflected='yes' regexp='yes'>criar|matar|sugerir</exception></token>
+            <exception inflected='yes' regexp='yes'>&verbo_nao_copulativos;</exception></token>
           <token postag='A..F.+' postag_regexp='yes'>
             <exception postag="R.+" postag_regexp='yes'/></token>
       </pattern>
@@ -2215,6 +2216,12 @@ title="Easy editing stylesheet" ?>
       <example correction="Por exemplo"><marker>Por exemplos</marker>, cães, gatos e ratos.</example>
     </rule>
     <rule>
+      <antipattern>
+          <token>por</token>
+          <token>meios</token>
+          <token>de</token>
+          <token>comunicação</token>
+      </antipattern>
       <pattern>
           <token>por</token>
           <token regexp='yes'>(?:causa|cima|conta|iniciativa|meio|parte|via|volta)s</token>
@@ -3647,7 +3654,7 @@ title="Easy editing stylesheet" ?>
       </antipattern>
       <pattern>
           <token postag_regexp='yes' postag='V....S.+'>
-            <exception inflected='yes'>concentrar</exception>
+            <exception inflected='yes' regexp='yes'>concentrar|manifestar|saber</exception>
             <exception negate_pos='yes' postag_regexp='yes' postag='V....S.+'/></token>
           <token regexp='yes' spacebefore='no'>&hifen;</token>
           <token>se</token>
@@ -3666,7 +3673,7 @@ title="Easy editing stylesheet" ?>
     </rule>
     <rule>
       <antipattern>
-          <token regexp='yes'>dizem|escrevem|l[eê]em</token>
+          <token postag_regexp='yes' postag='V....P.+' inflected='yes' regexp='yes'>dizer|escrever|ler</token>
           <token regexp='yes' spacebefore='no'>&hifen;</token>
           <token spacebefore='no'>se</token>
           <token min="0" max="3" postag_regexp='yes' postag='R.'/>
@@ -3685,7 +3692,7 @@ title="Easy editing stylesheet" ?>
       <pattern>
         <marker>
           <token postag_regexp='yes' postag='V....P.+'>
-            <exception inflected='yes' regexp='yes'>concentrar|manifestar</exception>
+            <exception inflected='yes' regexp='yes'>concentrar|manifestar|saber</exception>
             <exception negate_pos='yes' postag_regexp='yes' postag='V....P.+'/></token>
           <token regexp='yes' spacebefore='no'>&hifen;</token>
           <token>se</token>
@@ -4737,7 +4744,7 @@ title="Easy editing stylesheet" ?>
             <exception negate_pos='yes' postag_regexp='yes' postag='N.+'/></token>
           <token postag_regexp='yes' postag='V.+'>
             <exception postag_regexp='yes' postag='V.[NX].+'/></token>
-          <token regexp='yes' spacebefore='no'>&tracos_de_separacao;</token>
+          <token regexp='yes' spacebefore='no'>&hifen;</token>
           <token regexp='yes' spacebefore='no'>&pronomes_ambiguos;|&pronomes_nao_ambiguos;
             <exception regexp='yes'>l[ao]s?</exception></token>
       </pattern>
@@ -4842,13 +4849,17 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes' spacebefore='no'>os?</token>
       </antipattern>
       <pattern>
+        <unify>
+          <feature id='number'/>
           <token regexp='yes'>&art_detecao_M;</token>
           <token regexp='yes'>porques?</token>
+        </unify>
       </pattern>
       <message>Possível confusão de termos. Pretende dizer <suggestion>\1 porquê</suggestion>?</message>
       <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/porque-por-que-e-porque/243</url>
       <example correction="Do porquê"><marker>Do porque</marker> dessa decisão, vem a questão seguinte.</example>
       <example>Procuro-os porque quero saber.</example>
+      <example>Uns porque Gay A não é mulher, os outros por preferem mulheres.</example>
     </rule>
     <rule>
       <pattern>
@@ -10728,6 +10739,10 @@ title="Easy editing stylesheet" ?>
           <token>se</token>
       </antipattern>
       <antipattern>
+          <token>caso</token>
+          <token regexp='yes'>de|d[ao]s?</token>
+      </antipattern>
+      <antipattern>
           <token regexp='yes'>como|que|salvo|só</token>
           <token>se</token>
       </antipattern>
@@ -10760,6 +10775,11 @@ title="Easy editing stylesheet" ?>
           <token postag='R.+' postag_regexp='yes' min='0'/>
           <token postag='V.M.+' postag_regexp='yes'/>
       </antipattern>
+      <antipattern><!-- adverb on conjunction -->
+          <token regexp='yes'>[,—–‒\-\(]</token>
+          <token postag='R.+' postag_regexp='yes'/>
+          <token>se</token>
+      </antipattern>
       <antipattern><!-- proclisis required -->
           <token regexp='yes' skip='-1'>&introduz_proclise;
             <exception scope='next' regexp='yes'>[\.,!\?—–‒\-\(]</exception></token>
@@ -10770,7 +10790,7 @@ title="Easy editing stylesheet" ?>
       <pattern>
         <marker>
           <token>
-            <exception inflected='yes' regexp='yes'>perguntar|inquirir|especular</exception>
+            <exception inflected='yes' regexp='yes'>decidir|especular|inquirir|perguntar</exception>
             <exception regexp="yes">“|«|&separadores_de_oracoes;</exception>
             <exception postag='SENT_START|(?:[CD]|SP).+|A...P.+' postag_regexp='yes'/></token>
           <token regexp="yes">caso|se</token>
@@ -11214,7 +11234,10 @@ title="Easy editing stylesheet" ?>
           <token min='0'>Um</token>
           <token min='0' regexp='yes'>Muito|grande</token>
           <token regexp="yes">Atenciosamente|Atentamente|Cordialmente|Obrigad[ao]|Agradecido|Grat[ao]s?|Abraços?|Cumprimentos</token>
-          <token postag="SENT_END">,</token>
+          <token min='0' regexp='yes'>cordia(?:l|is)</token>
+          <token min='0'>pela</token>
+          <token min='0'>atenção</token>
+          <token min='0' regexp='yes'>disponibilizada|prestada</token>
       </antipattern>
       <antipattern>
           <token postag="SENT_START"/>
@@ -11497,7 +11520,7 @@ title="Easy editing stylesheet" ?>
           <token min='0'>cordiais</token>
           <token min='0'>pela</token>
           <token min='0'>atenção</token>
-          <token min='0'>prestada</token>
+          <token min='0' regexp='yes'>disponibilizada|prestada</token>
         <marker>
           <token regexp="yes" postag='SENT_END'>\.|:|\!|;</token>
         </marker>
@@ -12186,7 +12209,7 @@ title="Easy editing stylesheet" ?>
     <rule id='CONJUNCTION_REPETITION' name="Repetição de conjunções">
     <!-- Created by Tiago F. Santos, Portuguese rule, 2016-12-03	-->
       <pattern>
-          <token regexp="yes" skip='6'>ademais|além|conforme|contudo|demais|embora|entanto|entretanto|logo|mas|obstante|porém|portanto|seja|senão|também|todavia
+          <token regexp="yes" skip='-1'>ademais|além|conforme|contudo|demais|embora|entanto|entretanto|logo|mas|obstante|porém|portanto|seja|senão|também|todavia
             <exception scope='next' postag_regexp='yes' postag="_PUNCT|''"/></token>
         <marker>
           <token><match no='0'/></token>
@@ -12197,6 +12220,8 @@ title="Easy editing stylesheet" ?>
       <example correction="">Também escreveu <marker>também</marker> para um jornal nacional.</example>
       <example correction="">Embora não é <marker>embora</marker> definitivo.</example>
       <example>Seja por vergonha, seja por timidez.</example>
+      <example correction="">Queremos um cão que seja dócil e que <marker>seja</marker> divertido.</example>
+      <example>Queremos um cão que seja dócil e divertido.</example>
     </rule>
 
   <rulegroup id='PRONOUN_REPETITION' name="Repetição de pronomes">
@@ -27748,6 +27773,13 @@ TODO Write better examples
           <token regexp="yes" spacebefore='no'>–|&hifen;</token>
           <token regexp="yes" spacebefore='no'>\d{2}|\d{4}</token>
       </antipattern>
+      <antipattern><!-- XXX subtractions or soccer scores -->
+          <token>(</token>
+          <token regexp='yes'>\d</token>
+          <token>-</token>
+          <token regexp='yes'>\d</token>
+          <token>)</token>
+      </antipattern>
       <pattern>
           <token regexp='yes'>\d+|&meses_ano;|&meses_ano_abrev;|&dias_semana;|&dias_semana_abrev;</token>
           <token regexp="yes">—|&hifen;</token>
@@ -33708,7 +33740,7 @@ TODO Write better examples
     <rule>
       <pattern>
           <token regexp='yes'>n|ñ|pq?|q(?:nd|ts)?|lol|vc|b(jos?|lz)|kk+|tbm?
-            <exception case_sensitive='yes'>N</exception></token>
+            <exception case_sensitive='yes'>N|T[Bb]</exception></token>
       </pattern>
       <message>Linguagem de Internet. Escreva por extenso.</message>
       <example type="incorrect"><marker>ñ</marker></example>
