@@ -92,6 +92,37 @@ public class UpperCaseRule extends Rule {
       tokenRegex("[A-Z].+")
     ),
     Arrays.asList(
+      pos("SENT_START"), // Markdowm headline # Show some
+      token("#"),
+      tokenRegex("[A-Z].+")
+    ),
+    Arrays.asList(
+      pos("SENT_START"), // Markdowm headline ## Show some
+      token("#"),
+      token("#"),
+      tokenRegex("[A-Z].+")
+    ),
+    Arrays.asList(
+      pos("SENT_START"), // Markdowm headline ## Show some
+      token("#"),
+      token("#"),
+      token("#"),
+      tokenRegex("[A-Z].+")
+    ),
+    Arrays.asList( // Scene 4, Lines 93-96
+      tokenRegex("[A-Z].+"),
+      tokenRegex("\\d+"),
+      tokenRegex("-|–|,"),
+      tokenRegex("[A-Z].+"),
+      tokenRegex("\\d+")
+    ),
+    Arrays.asList( // 1.- Sign up for ...
+      tokenRegex("\\d+"),
+      token("."),
+      tokenRegex("-|–"),
+      tokenRegex("[A-Z].+")
+    ),
+    Arrays.asList(
       pos("SENT_START"), // Lesson #1 - Learn the alphabet.
       tokenRegex(".*\\w.*"),
       token("#"),
@@ -216,7 +247,7 @@ public class UpperCaseRule extends Rule {
     ),
     Arrays.asList(
       tokenRegex("Google|Microsoft"), // Microsoft Teams / Google Maps (not tagged as NNP)
-      tokenRegex("Teams|Maps")
+      tokenRegex("Teams|Maps|Canvas")
     )
   );
 
