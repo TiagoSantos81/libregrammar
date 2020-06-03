@@ -202,6 +202,11 @@ public class AdverbFilter extends RuleFilter {
     put("heavily", "heavy");
     put("authentically", "authentic");
     put("honestly", "honest");
+    put("voluntarily", "voluntary");
+    put("desperately", "desperate");
+    put("immensely", "immense");
+    put("apparently", "apparent");
+    put("straightforwardly", "straightforward");
 
     // TODO: add more or maybe use https://github.com/simplenlg/simplenlg?
     //put("", "");

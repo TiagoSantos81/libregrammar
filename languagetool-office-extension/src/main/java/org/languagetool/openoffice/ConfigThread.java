@@ -57,6 +57,9 @@ class ConfigThread extends Thread {
 
   @Override
   public void run() {
+    if(!documents.javaVersionOkay()) {
+      return;
+    }
     try {
       List<Rule> allRules = documents.getLanguageTool().getAllRules();
       Set<String> disabledRulesUI = documents.getDisabledRules();

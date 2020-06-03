@@ -34,6 +34,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.regex.Pattern;
 import java.util.Properties;
 import java.util.Set;
 
@@ -962,6 +963,16 @@ public class Configuration {
     this.switchOff = switchOff;
     saveConfiguration(lang);
   }
+  
+  /**
+   * Test if http-server URL is correct
+   */
+  public boolean isValidServerUrl(String url) {
+    if (url.endsWith("/") || url.endsWith("/v2") || !Pattern.matches("http://.+:\\d+.*", url)) {
+      return false;
+    }
+    return true;
+  }
 
   private void loadConfiguration() throws IOException {
     loadConfiguration(null);
@@ -1103,7 +1114,22 @@ public class Configuration {
       if (isMultiThreadString != null) {
         isMultiThreadLO = Boolean.parseBoolean(isMultiThreadString);
       }
-
+      /*
+      String doRemoteCheckString = (String) props.get(prefix + DO_REMOTE_CHECK_KEY);
+      if (doRemoteCheckString != null) {
+        doRemoteCheck = Boolean.parseBoolean(doRemoteCheckString);
+      }
+      
+      String useOtherServerString = (String) props.get(prefix + USE_OTHER_SERVER_KEY);
+      if (useOtherServerString != null) {
+        useOtherServer = Boolean.parseBoolean(useOtherServerString);
+      }
+      
+      otherServerUrl = (String) props.get(prefix + OTHER_SERVER_URL_KEY);
+      if (otherServerUrl != null && !isValidServerUrl(otherServerUrl)) {
+        otherServerUrl = null;
+      }
+      */
       String markSingleCharBoldString = (String) props.get(prefix + MARK_SINGLE_CHAR_BOLD_KEY);
       if (markSingleCharBoldString != null) {
         markSingleCharBold = Boolean.parseBoolean(markSingleCharBoldString);
@@ -1305,10 +1331,10 @@ public class Configuration {
         if(useDocLanguage != DEFAULT_USE_DOC_LANGUAGE) {
           props.setProperty(prefix + USE_DOC_LANG_KEY, Boolean.toString(useDocLanguage));
         }
-/*
         if(isMultiThreadLO != DEFAULT_MULTI_THREAD) {
           props.setProperty(prefix + IS_MULTI_THREAD_LO_KEY, Boolean.toString(isMultiThreadLO));
         }
+/*
         if(doRemoteCheck != DEFAULT_DO_REMOTE_CHECK) {
           props.setProperty(prefix + DO_REMOTE_CHECK_KEY, Boolean.toString(doRemoteCheck));
         }
@@ -1326,7 +1352,7 @@ public class Configuration {
           props.setProperty(prefix + LT_SWITCHED_OFF_KEY, Boolean.toString(switchOff));
         }
 /*
-        if (otherServerUrl != null) {
+        if (otherServerUrl != null && isValidServerUrl(otherServerUrl)) {
           props.setProperty(prefix + OTHER_SERVER_URL_KEY, otherServerUrl);
         }
 */
