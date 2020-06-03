@@ -295,9 +295,6 @@ public class MultiDocumentsHandler {
   Configuration getConfiguration() {
     try {
       if (config == null || recheck) {
-        if(xContext != null) {
-          linguServices = new LinguisticServices(xContext);
-        }
         if(docLanguage == null) {
           docLanguage = getLanguage();
         }
@@ -550,8 +547,10 @@ public class MultiDocumentsHandler {
   SwJLanguageTool initLanguageTool(Language currentLanguage) {
     SwJLanguageTool langTool = null;
     try {
-      linguServices = new LinguisticServices(xContext);
-      config = new Configuration(configDir, configFile, oldConfigFile, docLanguage, linguServices);
+      config = new Configuration(configDir, configFile, oldConfigFile, docLanguage);
+      if (linguServices == null) {
+        linguServices = new LinguisticServices(xContext, config.noSynonymsAsSuggestions());
+      }
       if (this.langTool == null) {
         OfficeTools.setLogLevel(config.getlogLevel());
         debugMode = OfficeTools.DEBUG_MODE_MD;
@@ -693,7 +692,7 @@ public class MultiDocumentsHandler {
       docLanguage = getLanguage();
     }
     if (config == null) {
-      config = new Configuration(configDir, configFile, oldConfigFile, docLanguage, linguServices);
+      config = new Configuration(configDir, configFile, oldConfigFile, docLanguage);
     }
     switchOff = !switchOff;
     if(!switchOff && textLevelQueue != null) {
@@ -745,7 +744,7 @@ public class MultiDocumentsHandler {
         String ruleId = document.deactivateRule();
         if (ruleId != null) {
           try {
-            Configuration confg = new Configuration(configDir, configFile, oldConfigFile, docLanguage, linguServices);
+            Configuration confg = new Configuration(configDir, configFile, oldConfigFile, docLanguage);
             Set<String> ruleIds = new HashSet<>();
             ruleIds.add(ruleId);
             confg.addDisabledRuleIds(ruleIds);
@@ -995,6 +994,14 @@ public class MultiDocumentsHandler {
       return true;
     }
     return false;
+  }
+
+  /**
+   * Configuration has be changed
+   */
+  void resetConfiguration() {
+    linguServices = null;
+    resetDocument();
   }
 
   /**
