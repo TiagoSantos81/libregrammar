@@ -187,6 +187,13 @@ public class UpperCaseRule extends Rule {
       token(":")
     ),
     Arrays.asList(
+      pos("SENT_START"), // Easy to Use: (short headlines with colon)
+      tokenRegex("[A-Z].+"),
+      tokenRegex("[a-z].+"),
+      tokenRegex("[A-Z].+"),
+      token(":")
+    ),
+    Arrays.asList(
       tokenRegex("[A-Z].+"),  // e.g. "Top 10% Lunch Deals"
       tokenRegex("\\d+%?"),
       tokenRegex("[A-Z].+")
@@ -213,15 +220,9 @@ public class UpperCaseRule extends Rule {
       tokenRegex("[0-9]+")
     ),
     Arrays.asList(
-      tokenRegex("[A-Z].+"),  // e.g. "You Don't Know"
+      tokenRegex("[A-Z].+"),  // e.g. "You Don't Know" or "Kuiper’s Belt"
       tokenRegex("['’`´‘]"),
-      token("t"),
-      tokenRegex("[A-Z].+")
-    ),
-    Arrays.asList(
-      tokenRegex("[A-Z].+"),  // e.g. Kuiper’s Belt
-      tokenRegex("['’`´‘]"),
-      token("s"),
+      tokenRegex("t|d|ve|s|re|m|ll"),
       tokenRegex("[A-Z].+")
     ),
     Arrays.asList(
