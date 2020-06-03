@@ -72,7 +72,7 @@ public class Configuration {
   static final boolean DEFAULT_USE_OTHER_SERVER = false;
   static final boolean DEFAULT_MARK_SINGLE_CHAR_BOLD = false;
   static final boolean DEFAULT_USE_LT_DICTIONARY = true;
-  static final boolean DEFAULT_NO_SYNONYMS_AS_SUGGESTIONS = true;
+  static final boolean DEFAULT_NO_SYNONYMS_AS_SUGGESTIONS = false;
 
   static final Color STYLE_COLOR = new Color(0, 175, 0);
   static final Color TYPOGRAPHY_COLOR = new Color(0, 175, 175);
