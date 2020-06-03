@@ -38,6 +38,7 @@ import org.languagetool.rules.Example;
  * Only substantive, verbs and adjectives are checked.
  * This rule detects no grammar error but a stylistic problem
  * @author Fred Kruse
+ * @since 4.9
  * Localized from German by Tiago F. Santos
  */
 public class SpanishStyleRepeatedWordRule extends AbstractStyleRepeatedWordRule {
