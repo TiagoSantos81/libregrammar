@@ -1,5 +1,7 @@
 # English multiwords file used for EnglishHybridDisambiguator
 #
+account information	NN:UN
+Account information	NN:UN
 ahead of	IN
 Ahead of	IN
 as far as	IN
@@ -14,6 +16,18 @@ because of	IN
 Because of	IN
 by means of	IN
 By means of	IN
+cost reductions	NN:UN
+Cost reductions	NN:UN
+cost reductions	NNS
+Cost reductions	NNS
+deal date	NN
+Deal date	NN
+deal dates	NNS
+Deal dates	NNS
+end date	NN
+End date	NN
+end dates	NNS
+End dates	NNS
 even less	RB
 Even less	RB
 even more	RB
@@ -44,6 +58,10 @@ instead of	IN
 Instead of	IN
 just a bit	RB
 Just a bit	RB
+license key	NN
+License key	NN
+license keys	NNS
+License keys	NNS
 next to	IN
 Next to	IN
 no longer	RB
@@ -60,13 +78,30 @@ prior to	IN
 Prior to	IN
 regardless of	IN
 Regardless of	IN
+read access	NN:UN
+Read access	NN:UN
+read permission	NN:UN
+Read permission	NN:UN
+read permissions	NNS
+Read permissions	NNS
 right here	RB
 Right here	RB
 right now	RB
 Right now	RB
 right there	RB
 Right there	RB
+start date	NN
+Start date	NN
+start dates	NNS
+Start dates	NNS
 with regard to	IN
+write access	NN:UN
+Write access	NN:UN
+write permission	NN:UN
+Write permission	NN:UN
+write permissions	NNS
+Write permissions	NNS
+#
 ####################################################
 ###            Latim expressions                 ###
 ####################################################
