@@ -48,19 +48,6 @@ public class SpanishStyleRepeatedWordRule extends AbstractStyleRepeatedWordRule 
   public SpanishStyleRepeatedWordRule(ResourceBundle messages, Language lang, UserConfig userConfig) {
     super(messages, lang, userConfig);
     super.setCategory(Categories.STYLE.getCategory(messages));
-    // addExamplePair(Example.wrong("I go to the supermarket, then I <marker>go</marker> home."), 
-    //                Example.fixed("I go to the supermarket, then I drive home."));
-    /* FIXME
-[INFO] Results:
-[INFO] 
-[ERROR] Failures: 
-[ERROR]   RuleTest.testJavaRules:58->testExamples:84->testIncorrectExamples:106 Did not get the expected rule match for the incorrect example sentence:
-Text: I go to the supermarket, then I go home.
-Rule: STYLE_REPEATED_WORD_RULE_EN
-Matches: [STYLE_REPEATED_WORD_RULE_EN:2-4:Possible style problem: The word is already used in the same sentence., STYLE_REPEATED_WORD_RULE_EN:32-34:Possible style problem: The word is already used in the same sentence.] expected:<1> but was:<2>
-[INFO] 
-[INFO] LanguageTool stand-alone GUI ....................... FAILURE [ 43.762 s] */
-
   }
 
   @Override
@@ -123,7 +110,7 @@ Matches: [STYLE_REPEATED_WORD_RULE_EN:2-4:Possible style problem: The word is al
         return true;
       }
     } else {
-      if ((tokens[n].hasPosTagStartingWith("N") && tokens[n+1].hasPosTagStartingWith("P")
+      if ((tokens[n].hasPosTagStartingWith("N") && tokens[n+1].hasPosTagStartingWith("SP")
               && tokens[n+2].hasPosTagStartingWith("N"))
          // || (!tokens[n].getToken().equals("hand") && !tokens[n-1].getToken().equals("in") && !tokens[n + 2].getToken().equals("hand"))
          ) {

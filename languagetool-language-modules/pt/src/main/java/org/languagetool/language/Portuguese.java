@@ -151,7 +151,9 @@ public class Portuguese extends Language implements AutoCloseable {
             new PortugueseWordCoherencyRule(messages),
             new PortugueseUnitConversionRule(messages),
             new PortugueseReadabilityRule(messages, this, userConfig, true),
-            new PortugueseReadabilityRule(messages, this, userConfig, false)
+            new PortugueseReadabilityRule(messages, this, userConfig, false),
+            new PortugueseStyleRepeatedWordRule(messages, this, userConfig)
+            // new PortugueseUpperCaseRule(messages, this)
     );
   }
 
@@ -231,7 +233,8 @@ public class Portuguese extends Language implements AutoCloseable {
       case "EU_NÓS_REMOVAL":            return -90;
       case "T-V_DISTINCTION":           return -100;
       case "T-V_DISTINCTION_ALL":       return -101;
-      case "REPEATED_WORDS":            return -210;
+      case "STYLE_REPEATED_WORD_RULE_PT":      return -209;
+      case "REPEATED_WORDS":            return -210; // deprecated
       case "REPEATED_WORDS_3X":         return -211;
       case "PT_WIKIPEDIA_COMMON_ERRORS":return -500;
       case "FILLER_WORDS_PT":           return -990;
