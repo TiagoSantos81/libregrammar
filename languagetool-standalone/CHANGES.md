@@ -6,39 +6,47 @@
 
 #### Arabic
   * added and improved rules (https://github.com/linuxscout/languagetool and PR #2848)
-  * updated POS dictionary (Arramooz [#e33794e](https://github.com/linuxscout/arramooz/commit/e33794e787d56e7c185c0e281fd8e6d6274f3fdc))
+  * updated POS dictionary (Arramooz [e33794e](https://github.com/linuxscout/arramooz/commit/e33794e787d56e7c185c0e281fd8e6d6274f3fdc))
   * remove the Algerian variant (ar-DZ)
   * add support of ngram data ([languagetool-tools-ar](https://github.com/sohaibafifi/languagetool-tools-ar))
   * add Darja, Diacritics, Redundancy, WrongWordInContext, Wordiness and WordCoherency rules.
 
 #### Asturian
-  * generic Java rules added
-    - `SentenceWhitespaceRule`, `WhiteSpaceBeforeParagraphEnd`,
-    `WhiteSpaceAtBeginOfParagraph`, `EmptyLineRule`, `ParagraphRepeatBeginningRule`,
+  * activated generic Java rules, including: `SentenceWhitespaceRule`,
+    `WhiteSpaceBeforeParagraphEnd`, `WhiteSpaceAtBeginOfParagraph`, `EmptyLineRule`,
+    `LongSentenceRule`, `LongParagraphRule`, `ParagraphRepeatBeginningRule`,
     `PunctuationMarkAtParagraphEnd`
 
+#### Catalan
+  * activated generic Java rules, including: `SentenceWhitespaceRule`,
+    `WhiteSpaceBeforeParagraphEnd`, `WhiteSpaceAtBeginOfParagraph`, `EmptyLineRule`,
+    `LongParagraphRule`, `ParagraphRepeatBeginningRule`, `PunctuationMarkAtParagraphEnd`
+
 #### Dutch
-  * restored 256 word confusion rules (ff74bea)
+  * restored 256 word confusion rules ([ff74bea](https://github.com/TiagoSantos81/languagetool/commit/ff74bea))
 
 #### Esperanto
-  * add URLs explaining most single word suggestions
+  * added URLs explaining most single word suggestions
 
 #### English
-  * added and improved rules, incluing:
+  * added and improved rules, including:
     - archaic language detection;
     - explanation URLs added to ~600 rules.
   * use `UpperCaseRule` instead of `UpperCaseNgramRule` by default.
 
+#### French
+  * added `FrenchStyleRepeatedWordRule`
+
 #### Galician
-  * add URLs explaining most single word suggestions
+  * added URLs explaining most single word suggestions
 
 #### Italian
-  * add URLs explaining most single word suggestions
+  * added URLs explaining most single word suggestions
 
 #### Papamiento
   * initial support added thanks to [Manuel Ortega](https://github.com/ortegacmanuel)
     - spellchecking support added
-    - generic Java rules added, including `CommaWhitespaceRule`, `DoublePunctuationRule`,
+    - generic Java rules added, including: `CommaWhitespaceRule`, `DoublePunctuationRule`,
     `GenericUnpairedBracketsRule`, `MorfologikAsturianSpellerRule`,
     `UppercaseSentenceStartRule`, `MultipleWhitespaceRule`, `SentenceWhitespaceRule`,
     `WhiteSpaceBeforeParagraphEnd`, `WhiteSpaceAtBeginOfParagraph`, `EmptyLineRule`,
@@ -49,12 +57,17 @@
     - new agreement rules;
     - removal of many crippling changes made upstream;
     - URLs added to explain most single word suggestions.
+    - style rule regarding repeated words now also suggests alternative words on LibreOffice
   * disambiguation improvements
   * POS and spelling improvements
 
 #### Russian
   * activated generic Java rules, including:
      - `WhiteSpaceBeforeParagraphEnd`, `EmptyLineRule`, `PunctuationMarkAtParagraphEnd`.
+
+#### Spanish
+  * generic Java rules added
+    - `LongSentenceRule`, `LongParagraphRule`
 
 #### Ukranian
   * activated generic Java rules, including:
@@ -65,9 +78,12 @@
 #### LibreOffice / Apache OpenOffice Integration
   * style review rules show synonyms by default
 
+#### Standalone Tool
+  * suggestions limit increased to 10 results
+
 #### General
   * commented out all new remote code commits, so they become inactive (e.g., [ac960f9](https://github.com/TiagoSantos81/languagetool/commit/ac960f9b24a41b53ec245ee6fab3aad2c454b020))
-    and [removed unused dependencies](https://github.com/TiagoSantos81/languagetool/commit/68105705732c95cfc358e55598580627bd66063c)
+  * [removed unused dependencies](https://github.com/TiagoSantos81/languagetool/commit/68105705732c95cfc358e55598580627bd66063c)
 
 ### Other changes common to both projects
 
@@ -83,7 +99,7 @@
     - `UpperCaseNgramRule`, a stricter version of `UpperCaseRule` that
     requires n-gram data
   * spelling and POS improvements
-  * updated en_GB spellchecker dictionary from https://github.com/marcoagpinto/aoo-mozilla-en-dict (Version 2.85 - 2020-06-01)
+
 #### French
   * added and improved rules, thanks to Rigaut Theótime (vkyfox)
 
@@ -167,7 +183,7 @@
   * added and improved rules
 
 #### Spanish
-  * add `SpanishStyleRepeatedWordRule`,
+  * added `SpanishStyleRepeatedWordRule`
 
 #### General
   * 1547 species taxa entries added to `spelling_global.txt`.
