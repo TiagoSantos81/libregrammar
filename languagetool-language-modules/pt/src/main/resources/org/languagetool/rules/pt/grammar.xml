@@ -1160,14 +1160,6 @@ title="Easy editing stylesheet" ?>
       <example>Isto influencia muito negativamente a segurança.</example>
     </rule>
     <rule>
-<!-- MARCOAGPINTO 2020-06-04 *START* -->
-<!-- "Curiosamente, o Cabo Verde que dá nome ao país não se situa nele, mas a centenas de quilómetros a leste, perto de Dacar, no Senegal." -->
-      <antipattern>
-		  <token postag='DA0FS0' postag_regexp='no'/>
-		  <token postag='Z0FP0' postag_regexp='no'/>
-		  <token postag='SPS00' postag_regexp='no'/>		  
-      </antipattern>
-<!-- MARCOAGPINTO 2020-06-04 *END* -->
       <pattern>
           <token>a
             <exception negate_pos='yes' postag_regexp='yes' postag='D.+'/></token>
@@ -1181,6 +1173,7 @@ title="Easy editing stylesheet" ?>
       <example correction="as proteções|a proteção">...financiamento de projetos para <marker>a proteções</marker> da floresta…</example>
       <example>São em diferentes graus de intensidade a diversas outras áreas do saber.</example>
       <example>Levará seguramente a sucessivas alterações da estrutura classificativa.</example>
+      <example>Curiosamente, o Cabo Verde que dá nome ao país não se situa nele, mas a centenas de quilómetros a leste, perto de Dacar, no Senegal.</example>
     </rule>
   </rulegroup>
 
@@ -1640,22 +1633,6 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes' min='0'>&adverbios_de_intensidade;</token>
           <token postag='(?:D[ADIP].|NC|A..|Z.)[FC]P.+' postag_regexp='yes'/>
       </antipattern>
-<!-- MARCOAGPINTO 2020-06-04 *START* -->
-<!-- "Quase nunca tomo produtos lácteos." -->
-      <antipattern>
-		  <token postag='VMIP1S0' postag_regexp='no'/>
-		  <token postag='NC[CFM]P000' postag_regexp='yes'/>		  		  
-		  <token postag='AQ0[CFM]P0' postag_regexp='yes'/>
-      </antipattern>
-<!-- MARCOAGPINTO 2020-06-04 *END* -->
-<!-- MARCOAGPINTO 2020-06-04 *START* -->
-<!-- "O balonete interno, que até então só havia lhe causado problemas, foi dispensado." -->
-      <antipattern>
-		  <token negate_pos='yes' postag_regexp='yes' postag='SPS00|DA0FS0|PD0FS000|PP3FSA00|RG'></token>
-		  <token postag='VMP00SM' postag_regexp='no'/>
-		  <token postag='NC[CFM]P000' postag_regexp='yes'/>		  		  
-      </antipattern>
-<!-- MARCOAGPINTO 2020-06-04 *END* -->
       <pattern>
           <token negate='yes' regexp='yes'>e|ou|&hifen;</token>
         <marker>
@@ -1696,6 +1673,8 @@ title="Easy editing stylesheet" ?>
       <example>Fomos ao porto catar pedregulhos.</example>
       <example>Fomos ao porto catar pedras.</example>
       <example correction='período evidente|períodos evidentes|período, evidentes'>O desenvolvimento de vários fatores culturais no Japão foram neste <marker>período evidentes</marker> na arquitetura.</example><!-- missing punctuation -->
+      <example>O balonete interno, que até então só havia-lhe causado problemas, foi dispensado.</example>
+      <example>O balonete interno, que até então só lhe havia causado problemas, foi dispensado.</example>
     </rule>
     <rule>
       <antipattern>
@@ -1766,14 +1745,6 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes' min='0'>&adverbios_de_intensidade;</token>
           <token postag='(?:D[ADIP].|NC|A..|Z.)[FC]P.+' postag_regexp='yes'/>
       </antipattern>
-<!-- MARCOAGPINTO 2020-06-04 *START* -->
-<!-- "Curiosamente, o Cabo Verde que dá nome ao país não se situa nele, mas a centenas de quilómetros a leste, perto de Dacar, no Senegal." -->
-      <antipattern>
-		  <token postag='DA0FS0' postag_regexp='no'/>
-		  <token postag='Z0FP0' postag_regexp='no'/>
-		  <token postag='SPS00' postag_regexp='no'/>		  
-      </antipattern>
-<!-- MARCOAGPINTO 2020-06-04 *END* -->
       <pattern>
           <token negate='yes' regexp='yes'>e|ou|&hifen;</token>
         <marker>
@@ -1814,6 +1785,7 @@ title="Easy editing stylesheet" ?>
       <example>São em diferentes graus de intensidade a diversas outras áreas do saber.</example>
       <example>Levará seguramente a sucessivas alterações da estrutura classificativa.</example>
       <example>De valor diferenciado por terem, como origem, fontes imparciais e isentas.</example>
+      <example>Curiosamente, o Cabo Verde que dá nome ao país não se situa nele, mas a centenas de quilómetros a leste, perto de Dacar, no Senegal.</example>
     </rule>
     <rule>
       <antipattern>
