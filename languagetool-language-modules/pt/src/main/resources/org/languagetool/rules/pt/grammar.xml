@@ -53,7 +53,6 @@ title="Easy editing stylesheet" ?>
     <!ENTITY legendas "(?:revis|vers|resolu|sec?ç)(?:ão|ões)|(?:decreto|lei|capítulo|apartado|partida|tabela|imagem|fotografia|gráfico|foto|mapa|ponto|artigo|ver|figura)s?">
     <!ENTITY precede_nome_proprio_F "(?:a(?:gência|ssociação|venida)|balneário|c(?:anção|o(?:lec?ção|ligação|meta|ndecoração|pa))|d(?:esignadas?|istribuição|upla)|e(?:ditora|s(?:cola|tação))|f(?:amília|ragata|undação)|g(?:aleria|eração)|herdade|i(?:lha|niciativa|intitulada)|l(?:agoa|ei)|marca|novela|o(?:bra|rquestra)|praça|quinta|r(?:evista|ua)|s(?:aga|erra|érie|onda)|t(?:aça|empestade)|universidade|versão)">
     <!ENTITY precede_nome_proprio_M "(?:bairro|c(?:afé|oncurso|urso)|d(?:esigna(?:ção|dos?))|estilo|f(?:estival|ilme|undo|uracão)|g(?:alardão|énero|rupo)|hospital|i(?:mpério|nstituto|ntitulado)|jornal|l(?:ago|iceu|ivro)|m(?:onte|useu)|na(?:u|vio)|p(?:artido|r(?:|émio|ojec?to|ograma))|r(?:egistr?o|eino|elatório|io)|t(?:ema|ipo|eatro))">
-    <!ENTITY divisas "(?:bol[ií]vares|c(?:êntimos|oroas)|d(?:inares|ólares)|euros|f(?:rancos|lorins)|i(?:uanes|enes)|kwanzas|libras|meticais|p(?:atacas|esos)|r(?:andes|ublos|rupias)|zlótis|[€£¥$₽])">
 
     <!ENTITY separadores_de_oracoes "(?:[,;:…–—\(«“]|\-|\[)">
     <!ENTITY hifen "(?:[-‑])">
@@ -73,6 +72,7 @@ title="Easy editing stylesheet" ?>
     <!ENTITY operadores_matematicos "[-x\.·\*\/\^\|~¬±×÷ϐϑϒϕϰϱϴϵ϶؆؇‖′″‴⁀⁄⁒⁺⁻⁼⁽⁾₊₋₌₍₎∀∁∂∃∄∅∆∇∈∉∊∋∌∍∎∏∐∑−∓∔∕∖∗∘∙√∛∜∝∞∟∠∡∢∣∤∥∦∧∨∩∪∫∬∭∮∯∰∱∲∳∴∵∶∷∸∹∺∻∼∽∾∿≀≁≂≃≄≅≆≇≈≉≊≋≌≍≎≏≐≑≒≓≔≕≖≗≘≙≚≛≜≝≞≟≠≡≢≣≤≥≦≧≨≩≪≫≬≭≮≯≰≱≲≳≴≵≶≷≸≹≺≻≼≽≾≿⊀⊁⊂⊃⊄⊅⊆⊇⊈⊉⊊⊋⊌⊍⊎⊏⊐⊑⊒⊓⊔⊕⊖⊗⊘⊙⊚⊛⊜⊝⊞⊟⊠⊡⊢⊣⊤⊥⊦⊧⊨⊩⊪⊫⊬⊭⊮⊯⊰⊱⊲⊳⊴⊵⊶⊷⊸⊹⊺⊻⊼⊽⊾⊿⋀⋁⋂⋃⋄⋅⋆⋇⋈⋉⋊⋋⋌⋍⋎⋏⋐⋑⋒⋓⋔⋕⋖⋗⋘⋙⋚⋛⋜⋝⋞⋟⋠⋡⋢⋣⋤⋥⋦⋧⋨⋩⋪⋫⋬⋭⋮⋯⋰⋱⋲⋳⋴⋵⋶⋷⋸⋹⋺⋻⋼⋽⋾⋿]|\=|\+">
     <!ENTITY unidades_de_medida "(?:(?:[khdcmnµfYZEPTGM]|da)?(?:[gmlsJNWCVSFTHΩ]|Hz|cd|lm|mol|Pa|Wb|rad|sr|lx|Bq|Gy|Sv|kat|Np|eV)(?:⁻)?[23¹²³]?|º[CFK]|cv|k?cal|mmHg|atm|bpm|ton|kWh|GWa|MWd|MWh|mAh|min|ha)">
     <!ENTITY unidades_de_medida_por_extenso "(?:quil[oó]|dec[ií]|cent[ií]|mil[ií]|micr[oó])?(grama|metro|litro|segundo)s?|hectar(es)?|(grau|milha|(quilo)?tonelada)s?">
+    <!ENTITY divisas "(?:bol[ií]vares|c(?:êntimos|oroas)|d(?:inares|ólares)|euros|f(?:rancos|lorins)|i(?:uanes|enes)|kwanzas|libras|meticais|p(?:atacas|esos)|r(?:andes|ublos|rupias)|zlótis|[€£¥$₽])">
     <!ENTITY tabela_periodica "(?:[UVW]|C[adeflmnorsu]?|N[abdehiop]?|P[abdmortu]?|S[bcegimnr]?|T[abcehilms]|A[cglmrstu]|R[abefghnu]|B[aehikr]?|H[efgos]?|M[cdgnot]|F[elmr]?|L[airuv]|D[bsy]|E[rsu]|G[ade]|I[nr]?|O[gs]?|Z[nr]|Kr?|Yb?|Xe|[₁₂₃₄₅₆₇₈₉₀])">
     <!ENTITY naipes "(?:o[iu]ros|copas|espadas|paus|trunfos?)">
 
@@ -1541,7 +1541,7 @@ title="Easy editing stylesheet" ?>
           <token negate='yes' regexp='yes'>&hifen;</token>
         <marker>
           <token postag='(?:D[ADIP].|NC|A..|P[^IDP].|Z.)[MC]P.+' postag_regexp='yes'>
-            <exception postag='(?:D[ADIP].|N.|A..|P..|Z.)[MC][NS].+|(C|R).+|SPS00' postag_regexp='yes'/>
+            <exception postag='(?:D[ADIP].|N.|A..|P..|Z.)[MC][NS].+|(C|R).+|SPS00.*' postag_regexp='yes'/>
             <exception regexp='yes'>.+[°′″]</exception></token>
           <token regexp='yes' min='0'>&adverbios_de_intensidade;</token><!-- XXX use POS after disambiguation improvements -->
           <token min='0' postag='(?:A..|Z.)C.+' postag_regexp='yes'>
@@ -1570,7 +1570,7 @@ title="Easy editing stylesheet" ?>
       <example>Haja entendimento nos domínios económico, académico e cultural.</example>
       <example type='triggers_error'>A todos os supermercados desejo um natal feliz.</example>
       <example>A todos os supermercados, desejo um natal feliz.</example>
-      <example type='triggers_error'>Foram substituídos em posteriores textos ecológicos um texto posterior</example><!-- non-sensical sentence but it seems to need punctuation -->
+      <example>Foram substituídos em posteriores textos ecológicos um texto posterior</example>
     </rule>
     <rule>
       <antipattern>
@@ -1587,7 +1587,7 @@ title="Easy editing stylesheet" ?>
           <token min='0' postag='(?:A..|Z.)C.+' postag_regexp='yes'>
             <exception negate_pos='yes' postag_regexp='yes' postag='(?:[NZ].|A..)C.+'/></token>
           <token postag='(?:[NZ].|A..|DP.)[MC]S.+' postag_regexp='yes'>
-            <exception postag='(?:[NZ].|A..|DP.)[MC][NP].+|NPMS.+|P[ID].[CFM].+|(C|R).+|SPS00|VMG0000' postag_regexp='yes'/>
+            <exception postag='(?:[NZ].|A..|DP.)[MC][NP].+|NPMS.+|P[ID].[CFM].+|(C|R).+|SPS00.*|VMG0000' postag_regexp='yes'/>
             <exception regexp="yes">[dlv]ê|devido|m[éí]dia|há|haver|são|ser(?:ão)?</exception>
             <exception scope='next' postag_regexp='yes' postag='[^Z].+' spacebefore='no' regexp='yes'>&hifen;</exception>
             <exception scope='next' postag_regexp='yes' postag='[^Z].+'>e</exception></token>
@@ -1637,7 +1637,7 @@ title="Easy editing stylesheet" ?>
           <token negate='yes' regexp='yes'>e|ou|&hifen;</token>
         <marker>
           <token postag='(?:D[ADIP].|NC|A..|P[^IDP].|Z.)[MC]S.+' postag_regexp='yes'>
-            <exception postag='(?:D[ADIP].|N.|A..|Z.)[MC][NP].+|(C|R).+|SPS00|VMG0000' postag_regexp='yes'/>
+            <exception postag='(?:D[ADIP].|N.|A..|Z.)[MC][NP].+|(C|R).+|SPS00.*|VMG0000' postag_regexp='yes'/>
             <exception>ás</exception><!-- XXX Dealt by HOMOPHONE_AS_CARD -->
             <exception regexp="yes">comer|há|haver|são|ser(?:ão)?|vão|uso|n</exception>
             <exception regexp='yes'>.+[°′″]</exception></token>
@@ -1745,11 +1745,16 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes' min='0'>&adverbios_de_intensidade;</token>
           <token postag='(?:D[ADIP].|NC|A..|Z.)[FC]P.+' postag_regexp='yes'/>
       </antipattern>
+      <antipattern>
+          <token regexp='yes'>a
+            <exception postag_regexp='yes' postag='[ND].+'/></token>
+          <token postag='(?:D[ADIP].|NC|A..|Z.)[FC]P.+' postag_regexp='yes'/>
+      </antipattern>
       <pattern>
           <token negate='yes' regexp='yes'>e|ou|&hifen;</token>
         <marker>
           <token postag='(?:D[ADIP].|NC|A..|P[^IDP].|Z.)[FC]S.+' postag_regexp='yes'>
-            <exception postag='(?:D[ADIP].|N.|A..|Z.)[FC][NP].+|C.|R.' postag_regexp='yes'/>
+            <exception postag='(?:D[ADIP].|N.|A..|Z.)[FC][NP].+|[CR].+' postag_regexp='yes'/>
             <exception regexp='yes'>.+[°′″]|leva|continha|mediante</exception></token>
           <token regexp='yes' min='0'>&adverbios_de_intensidade;</token><!-- XXX use POS after disambiguation improvements -->
           <token min='0' postag='(?:A..|Z.)C.+' postag_regexp='yes'>
@@ -1781,7 +1786,7 @@ title="Easy editing stylesheet" ?>
       <example>Foi acusado de manipular agentes.</example>
       <example>Foi acusado de manipular bilhetes.</example>
       <example>São em sua maioria capitais estaduais.</example>
-      <example type='triggers_error'>A casa encontra-se a cinquenta metros da praia.</example><!-- removing this FP will cause too many FN -->
+      <example>A casa encontra-se a cinquenta metros da praia.</example>
       <example>São em diferentes graus de intensidade a diversas outras áreas do saber.</example>
       <example>Levará seguramente a sucessivas alterações da estrutura classificativa.</example>
       <example>De valor diferenciado por terem, como origem, fontes imparciais e isentas.</example>
@@ -1860,19 +1865,11 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>e|,</token>
           <token postag='A..[FC]S.+' postag_regexp='yes'/>
       </antipattern>
-<!-- MARCOAGPINTO 2020-06-01 *START* -->
-<!-- "A que horas parte o próximo comboio para Tóquio?" -->
-      <antipattern>
-		  <token postag='NCFP000' postag_regexp='no'/>	 
-		  <token postag='VMIP3S0|VMM02S0' postag_regexp='yes'/>	
-          <token postag='DA0[FM]S0' postag_regexp='yes'/>
-      </antipattern>
-<!-- MARCOAGPINTO 2020-06-01 *END* -->
       <pattern>
           <token negate='yes' regexp='yes'>&hifen;</token>
         <marker>
           <token postag='(?:D[ADIP].|NC|A..|P[^IDP].|Z.)[FC]P.+' postag_regexp='yes'>
-            <exception postag='(?:D[ADIP].|N.|A..|Z.)[FC][NS].+|(C|R).+|SPS00' postag_regexp='yes'/>
+            <exception postag='(?:D[ADIP].|N.|A..|Z.)[FC][NS].+|(C|R).+|SPS00.*' postag_regexp='yes'/>
             <exception regexp='yes'>.+[°′″]|levas|vezes</exception></token>
           <token regexp='yes' min='0'>&adverbios_de_intensidade;</token><!-- XXX use POS after disambiguation improvements -->
           <token min='0' postag='(?:A..|Z.)C.+' postag_regexp='yes'>
@@ -1895,8 +1892,9 @@ title="Easy editing stylesheet" ?>
       <example>Pega na chave das <marker>fechaduras grande</marker>.</example>
       <example>As respostas têm de ser o mais amplas possível para serem efectivos.</example>
       <example>Os modos de pensar modesto são desejados.</example>
-      <example type='triggers_error'>Ele exerceu desde os tempos coloniais uma notável influência intelectual em toda a América.</example>
+      <example>Ele exerceu desde os tempos coloniais uma notável influência intelectual em toda a América.</example>
        <example>Ele exerceu, desde os tempos coloniais, uma notável influência intelectual em toda a América.</example>
+       <example>A que horas parte o próximo comboio para Tóquio?</example>
     </rule>
     <rule>
       <antipattern>
@@ -2298,7 +2296,7 @@ title="Easy editing stylesheet" ?>
           <token>pós</token>
           <token>
             <exception regexp="yes">[-,.!?\(\)]</exception>
-            <exception postag="C.|R.|SP.+" postag_regexp="yes"/></token>
+            <exception postag="[CR].+|SP.+" postag_regexp="yes"/></token>
       </antipattern>
       <pattern case_sensitive='yes'>
           <token>
@@ -4867,11 +4865,7 @@ title="Easy editing stylesheet" ?>
       </antipattern>
       <antipattern>
           <token regexp='yes'>.+s$</token>
-          <token regexp='yes'>porque</token>
-      </antipattern>
-      <antipattern>
-          <token regexp='yes'>.+[^s]$</token>
-          <token regexp='yes'>porques</token>
+          <token>porque</token>
       </antipattern>
       <pattern>
           <token regexp='yes'>&art_detecao_M;</token>
@@ -6519,13 +6513,13 @@ title="Easy editing stylesheet" ?>
     <!-- XXX Activate later after the remaining rules have proper regression testing -->
       <antipattern>
           <token postag='SENT_START'/>
-          <token postag='C.|R.' postag_regexp='yes'/>
+          <token postag='[CR].+' postag_regexp='yes'/>
           <token skip='-1'/>
           <token regexp='yes'>[,;:!\?]</token>
       </antipattern>
       <antipattern>
           <token postag='SENT_START'/>
-          <token postag='C.|R.' postag_regexp='yes'/>
+          <token postag='[CR].+' postag_regexp='yes'/>
           <token skip='-1'/>
           <token postag='CC'/>
       </antipattern>
@@ -6559,14 +6553,14 @@ title="Easy editing stylesheet" ?>
           <token postag='SENT_START'/>
           <token regexp='yes'>Mesmo|Então|Portanto</token>
           <token regexp='yes' min='0'>[,:]</token>
-          <token postag='C.|R.' postag_regexp='yes' skip='-1'/>
+          <token postag='[CR].+' postag_regexp='yes' skip='-1'/>
           <token regexp='yes'>[,;:!\?]</token>
       </antipattern>
       <antipattern>
           <token postag='SENT_START'/>
           <token regexp='yes'>Mesmo|Então|Portanto</token>
           <token regexp='yes' min='0'>[,:]</token>
-          <token postag='C.|R.' postag_regexp='yes' skip='-1'/>
+          <token postag='[CR].+' postag_regexp='yes' skip='-1'/>
           <token postag='CC'/>
       </antipattern>
       <pattern>
@@ -6574,7 +6568,7 @@ title="Easy editing stylesheet" ?>
         <marker>
           <token regexp='yes'>Mesmo|Então|Portanto</token>
           <token regexp='yes' min='0'>[,:]</token>
-          <token postag='C.|R.' postag_regexp='yes' skip='-1'>
+          <token postag='[CR].+' postag_regexp='yes' skip='-1'>
           </token>
         </marker>
           <token postag='SENT_END'/>
@@ -12336,9 +12330,9 @@ title="Easy editing stylesheet" ?>
 
  <category id='REPETITIONS_STYLE' name='Repetições (estilo)' type='duplication'>
 
-    <rule id='REPEATED_WORDS' name="Palavras repetidas (2x)" default='on'>
+    <rule id='REPEATED_WORDS' name="Palavras repetidas (2x)" default='off'>
+    <!-- deprecated on 2020-06-03 in favour of STYLE_REPEATED_WORD_RULE_PT -->
     <!-- Created by Tiago F. Santos , Portuguese rule, 2016-12-03 		-->
-    <!-- XXX If the user finds this rule too intrusive, they will disable it and use REPEATED_WORDS_3X as a fallback		 	-->
       <antipattern>
           <token regexp='yes'>cara|dia|face|frente|passo|porta|tempos?|terra|t[éê]te</token>
           <token min='0' regexp='yes' spacebefore='no'>&hifen;</token>
