@@ -765,11 +765,12 @@ public class ConfigurationDialog implements ActionListener {
     cons.gridy++;
     portPanel.add(serverPanel, cons);
 
+*/
     cons.insets = new Insets(0, 4, 0, 0);
     cons.gridx = 0;
     cons.gridy++;
-    JLabel dummyLabel4 = new JLabel(" ");
-    portPanel.add(dummyLabel4, cons);
+    JLabel dummyLabel4a = new JLabel(" ");
+    portPanel.add(dummyLabel4a, cons);
     JCheckBox useLtDictionaryBox = new JCheckBox(Tools.getLabel(messages.getString("guiUseLtDictionary")));
     useLtDictionaryBox.setSelected(config.useLtDictionary());
     useLtDictionaryBox.addItemListener(e -> {
@@ -784,8 +785,14 @@ public class ConfigurationDialog implements ActionListener {
       config.setNoSynonymsAsSuggestions(noSynonymsAsSuggestionsBox.isSelected());
     });
     cons.gridy++;
+    JLabel dummyLabel4b = new JLabel(" ");
+    portPanel.add(dummyLabel4b, cons);
+    cons.gridy++;
     portPanel.add(noSynonymsAsSuggestionsBox, cons);
     
+    /*
+     * XXX keep this code commented out for easier merging
+     *
   }
   
   private int showRemoteServerHint(Component component, boolean otherServer) {
