@@ -103,7 +103,7 @@ public class EnglishAdjectiveNounConfusionRule extends Rule {
     ),
     Arrays.asList(
       token("death"),
-      regex("rates?")
+      regex("(?:rate|certificat(?:e|ion)|statistic)s?")
     ),
     Arrays.asList(
       token("guilt"),

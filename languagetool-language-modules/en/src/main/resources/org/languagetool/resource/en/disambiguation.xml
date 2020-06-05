@@ -197,6 +197,14 @@
         <example type="ambiguous" inputform="six[six/CD,six/JJ,six/NN]" outputform="six[six/CD]">It's ten past <marker>six</marker>.</example>
     </rule>
 
+    <rule id="lost_opportunity" name="Disambiguate 'lost opportunity'">
+        <pattern>
+                <token postag="JJ">lost</token>
+                <token postag="NN.*" postag_regexp='yes' regexp="yes">opportunit(?:y|ies)</token>
+        </pattern>
+        <disambig action="filterall"/>
+    </rule>
+
     <rule id="half_past_CD" name="Disambiguate time no. 2">
         <pattern>
             <marker>
