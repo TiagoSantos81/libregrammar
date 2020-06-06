@@ -41,6 +41,16 @@
   * added URLs explaining most single word suggestions
 
 #### Italian
+  * [re-enable rules](https://github.com/languagetool-org/languagetool/commit/0176b6cb378ed39f3e7e39ef25cab026362d947b):
+    - determiner agreement rules;
+    - adverb instead of adjective rules;
+    - start of sentence with conjunction (style rule);
+    - verb form agreement rulegroup;
+    - repetitions rulegroup (style);
+    - agreement rules;
+    - several loose word confusion rules.
+  * enable by default:
+    - verbose small number (style);
   * added URLs explaining most single word suggestions
 
 #### Papamiento
@@ -64,8 +74,8 @@
   * added and improved rules, including:
     - new agreement rules;
     - removal of many crippling changes made upstream;
-    - URLs added to explain most single word suggestions.
-    - style rule regarding repeated words now also suggests alternative words on LibreOffice
+    - URLs added to explain most single word suggestions;
+    - style rule regarding repeated words now also suggests alternative words on LibreOffice.
   * disambiguation improvements
   * POS and spelling improvements
 
@@ -78,7 +88,7 @@
     - `LongSentenceRule`, `LongParagraphRule`
 
 #### Slovak
-  * [improve and re-enable rules](https://github.com/TiagoSantos81/languagetool/commit/3f9277466c3a42c790cefecc71b160b39f2305eb):
+  * [improve and re-enable rules](https://github.com/TiagoSantos81/languagetool/commit/9acbaa5e4358da17f4f4f269d2853ce30bb5a486):
     - five adjective-noun agreement rulegroups (83 rules).
 
 #### Ukranian
@@ -111,6 +121,7 @@
     - `UpperCaseNgramRule`, a stricter version of `UpperCaseRule` that
     requires n-gram data
   * spelling and POS improvements
+  * updated en_GB spellchecker dictionary from https://github.com/marcoagpinto/aoo-mozilla-en-dict (Version 2.85 - 2020-06-01)
 
 #### French
   * added and improved rules, thanks to Rigaut Theótime (vkyfox)
