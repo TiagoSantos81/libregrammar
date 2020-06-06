@@ -566,6 +566,22 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example correction="ménage à trois"><marker>ménagé-â-trois</marker>.</example>
             <example>ménage à trois</example>
         </rule>
+        <rule id="PEARL_HARBOR" name="Pearl Harbor">
+            <antipattern case_sensitive="yes">
+                <token>Pearl</token>
+                <token>Harbor</token>
+            </antipattern>
+            <pattern>
+                <token regexp="yes">pearl|perl|pel</token>
+                <token min="0">-</token>
+                <token regexp="yes">harbo?u?rt?</token>
+            </pattern>
+            <message>Error ortográfico.</message>
+            <suggestion>Pearl Harbor</suggestion>
+            <example correction="Pearl Harbor">El ataque a <marker>Perl Harbor</marker>.</example>
+            <example correction="Pearl Harbor">El ataque a <marker>pearl harbor</marker>.</example>
+            <example>Pearl Harbor</example>
+        </rule>
         <rule id="DEJA_VU" name="déjà-vu">
             <antipattern>
                 <token>déjà</token>
@@ -767,7 +783,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                         <token><exception postag="D.*|V.N.*|[NA].*|V.P.*" postag_regexp="yes"/></token>
                     </marker>
                 </pattern>
-                <filter class="org.languagetool.rules.es.ConfusionCheckFilter" args="form:\2 postag:NC.* gendernumber_from:1"/>
+                <filter class="org.languagetool.rules.es.ConfusionCheckFilter" args="form:\2 postag:(NC|AQ).* gendernumber_from:1"/>
                 <message>Si es adjetivo o nombre, se escribe con tilde.</message>
                 <suggestion>el {suggestion}</suggestion>
                 <example correction="El término"><marker>El termino</marker>.</example>
@@ -780,6 +796,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="el crítico"><marker>el critico</marker> más conocido</example>
                 <example correction="El árbitro"><marker>El arbitro</marker> se equivocó.</example>
                 <example correction="El público"><marker>El publico</marker> deberá tener.</example>
+                <example correction="el auténtico">Se puede observar <marker>el autentico</marker> y sincero compromiso.</example>
                 <example>Indíqueme el camino hasta la estación.</example>
             </rule>
             <rule>
@@ -3261,6 +3278,16 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example correction="curriculum vitae|currículums|currículos">Los <marker>currículums vitae</marker>.</example>
         </rule>
         <rulegroup id="NO_SEPARADO" name="palabras no separadas">
+            <rule default="temp_off">
+                <pattern>
+                    <token>medio</token>
+                    <token min="0">-</token>
+                    <token regexp="yes" inflected="yes">ambiental|carpiano|clavicular|pensionista|tarsiano|ambientalista|campo|campista|centro</token>
+                </pattern>
+                <message>Probablemente se escribe junto.</message>
+                <suggestion><match no="3" regexp_match="(.+)" regexp_replace="medio$1" case_conversion="alllower"/></suggestion>
+                <example correction="medioambientales">Cuestiones <marker>medio ambientales</marker>.</example>
+            </rule>
             <rule>
                 <pattern>
                     <token>social</token>
