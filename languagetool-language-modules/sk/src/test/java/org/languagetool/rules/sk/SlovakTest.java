@@ -29,8 +29,11 @@ public class SlovakTest extends LanguageSpecificTest {
   @Test
   public void testLanguage() throws IOException {
     // NOTE: this text needs to be kept in sync with WelcomeController.php's getDefaultDemoTexts():
-    //String s = "Toto je ukážkový vstup, na predvedenie funkčnosti LanguageTool. Pamätajte si si, že neobsahuje \"kontrolu\" preklepo."; -- commented out, as it's outdated
+    String s = "Toto je ukážkový vstup, na predvedenie funkčnosti LanguageTool. Pamätajte si si, že neobsahuje \"kontrolu\" preklepo.";
     Slovak lang = new Slovak();
+    testDemoText(lang, s,
+      Arrays.asList("MUZSKY_ROD", "WORD_REPEAT_RULE", "POCITACOVE_UVODZOVKY", "POCITACOVE_UVODZOVKY", "MORFOLOGIK_RULE_SK_SK")
+    );
     runTests(lang);
   }
 }

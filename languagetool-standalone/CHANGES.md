@@ -52,6 +52,14 @@
     `WhiteSpaceBeforeParagraphEnd`, `WhiteSpaceAtBeginOfParagraph`, `EmptyLineRule`,
     `ParagraphRepeatBeginningRule`, `PunctuationMarkAtParagraphEnd`
 
+#### Persian
+  * [re-enable rules](https://github.com/TiagoSantos81/languagetool/commit/3f9277466c3a42c790cefecc71b160b39f2305eb), including:
+    - `Complex_Past_Verbs` rulegroup;
+    - `Complex_Present_Verbs` rulegroup;
+    - `PluralFix` rulegroup;
+    - `PersianCommaWhitespaceRule`;
+    - `PersianSpaceBeforeRule`.
+
 #### Portuguese
   * added and improved rules, including:
     - new agreement rules;
@@ -68,6 +76,10 @@
 #### Spanish
   * generic Java rules added
     - `LongSentenceRule`, `LongParagraphRule`
+
+#### Slovak
+  * [improve and re-enable rules](https://github.com/TiagoSantos81/languagetool/commit/3f9277466c3a42c790cefecc71b160b39f2305eb):
+    - five adjective-noun agreement rulegroups (83 rules).
 
 #### Ukranian
   * activated generic Java rules, including:

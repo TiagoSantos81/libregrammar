@@ -176,8 +176,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 </message>
 
                 <short>Možná gramatická chyba. Zámeno 'koho' možno treba nahradiť zámenom 'čí'</short>
-                <example correction="čí dom" type="incorrect"> Nevedel, <marker>koho dom</marker> kúpil.  </example>
-                <example type="correct"> Nevedel, čí dom kúpil.  </example>
+                <example correction="čí dom" type="incorrect">Nevedel, <marker>koho dom</marker> kúpil.  </example>
+                <example type="correct">Nevedel, čí dom kúpil.  </example>
             </rule>
 
 	    <!-- Rozšírené pravidlo: 'koho + prídavné meno + ... + podstatné meno' -->
@@ -194,8 +194,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 </message>
 
                 <short>Možná gramatická chyba. Zámeno 'koho' možno treba nahradiť zámenom 'čí'</short>
-                <example correction="čí nový vysoký dom" type="incorrect"> Nevedel, <marker>koho nový vysoký dom</marker> kúpil.  </example>
-                <example type="correct"> Nevedel, čí nový vysoký dom kúpil.  </example>
+                <example correction="čí nový vysoký dom" type="incorrect">Nevedel, <marker>koho nový vysoký dom</marker> kúpil.  </example>
+                <example type="correct">Nevedel, čí nový vysoký dom kúpil.  </example>
             </rule>
 
 	    <!-- Rozšírené pravidlo: 'koho + byť (skloňované) + ... + podstatné meno' -->
@@ -211,1969 +211,1754 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 </message>
 
                 <short>Možná gramatická chyba. Zámeno 'koho' možno treba nahradiť zámenom 'čí'</short>
-                <example correction="čí bol ten vysoký dom" type="incorrect"> Nevedel, <marker>koho bol ten vysoký dom</marker>.  </example>
-                <example type="correct"> Nevedel, čí bol ten vysoký dom.  </example>
+                <example correction="čí bol ten vysoký dom" type="incorrect">Nevedel, <marker>koho bol ten vysoký dom</marker>.  </example>
+                <example type="correct">Nevedel, čí bol ten vysoký dom.  </example>
             </rule>
         </rulegroup>
     </category>
   
     <category id="PODSTATNE_A_PRIDAVNE_MENA" name="tvar podstatnych a pridanych mien">
-      <rulegroup id="MUZSKY_ROD" name="podstane mena v muzkom rode" default="off">
+
+      <rulegroup id="MUZSKY_ROD" name="podstane mena v muzkom rode">
         
     <!-- Neživotné podstatné meno nominatív singulár' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)is1." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSis1"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAis1x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAis1x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="pekný" type="incorrect"> Aha, aký <marker>peknému</marker> strom.  </example>
-          <example type="correct"> Aha, aký pekný strom.  </example>
+          <example correction="pekný strom" type="incorrect">Aha, aký <marker>peknému strom</marker>.  </example>
+          <example type="correct">Aha, aký pekný strom.  </example>
         </rule>
         
     <!-- Neživotné prídavné meno nominatív singulár' -->
         <rule>
           <pattern>
               <token postag="A(A|f)is1." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSis1"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSis1"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSis1"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="strom" type="incorrect"> Aha, aký pekný <marker>stromu</marker>.  </example>
-          <example type="correct"> Aha, aký pekný strom.  </example>
+          <example correction="pekný strom" type="incorrect">Aha, aký <marker>pekný stromu</marker>.  </example>
+          <example type="correct">Aha, aký pekný strom.  </example>
         </rule>
       
     <!-- Neživotné podstatné meno genitív singulár' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)is2." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSis2"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAis2x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAis2x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="pekného" type="incorrect"> Zaťal do <marker>peknému</marker> stromu.  </example>
-          <example type="correct"> Zaťal do pekného stromu.  </example>
+          <example correction="pekného stromu" type="incorrect">Zaťal do <marker>peknému stromu</marker>.</example>
+          <example type="correct">Zaťal do pekného stromu.  </example>
         </rule>
         
     <!-- Neživotné prídavné meno genitív singulár' -->
         <rule>
           <pattern>
               <token postag="A(A|f)is2." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSis2" /></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSis2"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSis2"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="stromu" type="incorrect"> Zaťal do pekného <marker>strom</marker>.  </example>
-          <example type="correct"> Zaťal do pekného stromu.  </example>
+          <example correction="pekného stromu" type="incorrect">Zaťal do <marker>pekného strom</marker>.  </example>
+          <example type="correct">Zaťal do pekného stromu.  </example>
         </rule>
         
     <!-- Neživotné podstatné meno datív singulár' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)is3." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSis3"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAis3x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAis3x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="peknému" type="incorrect"> Potešil sa <marker>pekný</marker> stromu.  </example>
-          <example type="correct"> Poteśil sa peknému stromu.  </example>
+          <example correction="peknému stromu" type="incorrect">Potešil sa <marker>pekný stromu</marker>.  </example>
+          <example type="correct">Poteśil sa peknému stromu.  </example>
         </rule>
         
     <!-- Neživotné prídavné meno datív singulár' -->
         <rule>
           <pattern>
               <token postag="A(A|f)is3." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSis3" /></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSis3"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSis3"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="stromu" type="incorrect"> Potešil sa peknému <marker>strom</marker>.  </example>
-          <example type="correct"> Potešil sa peknému stromu.  </example>
+          <example correction="peknému stromu" type="incorrect">Potešil sa <marker>peknému strom</marker>.  </example>
+          <example type="correct">Potešil sa peknému stromu.  </example>
         </rule>
         
     <!-- Neživotné podstatné meno akuzatív singulár' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)is4." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSis4"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAis4x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAis4x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="pekný" type="incorrect"> Kúpil som <marker>peknému</marker> strom.  </example>
-          <example type="correct"> Kúpil som pekný strom.  </example>
+          <example correction="pekný strom" type="incorrect">Kúpil som <marker>peknému strom</marker>.  </example>
+          <example type="correct">Kúpil som pekný strom.  </example>
         </rule>
         
     <!-- Neživotné prídavné meno akuzatív singulár' -->
         <rule>
           <pattern>
               <token postag="A(A|f)is4." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSis4" /></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSis4"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSis4"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="strom" type="incorrect"> Kúpil som pekný <marker>stromu</marker>.  </example>
-          <example type="correct"> Kúpil som pekný strom.  </example>
+          <example correction="pekný strom" type="incorrect">Kúpil som <marker>pekný stromu</marker>.  </example>
+          <example type="correct">Kúpil som pekný strom.  </example>
         </rule>
         
     <!-- Neživotné podstatné meno lokál singulár' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)is6." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSis6"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAis6x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAis6x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="peknom" type="incorrect"> Hovoril o <marker>peknému</marker> strome.  </example>
-          <example type="correct"> Hovoril o peknom strome.  </example>
+          <example correction="peknom strome" type="incorrect">Hovoril o <marker>peknému strome</marker>.  </example>
+          <example type="correct">Hovoril o peknom strome.  </example>
         </rule>
         
     <!-- Neživotné prídavné meno lokál singulár' -->
         <rule>
           <pattern>
               <token postag="A(A|f)is6." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSis6" /></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSis6"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSis6"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="strome" type="incorrect"> Hovoril o peknom <marker>stromu</marker>.  </example>
-          <example type="correct"> Hovoril o peknom strome.  </example>
+          <example correction="peknom strome" type="incorrect">Hovoril o <marker>peknom stromu</marker>.  </example>
+          <example type="correct">Hovoril o peknom strome.  </example>
         </rule>
         
     <!-- Neživotné podstatné meno inštrumentál singulár' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)is7." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSis7"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAis7x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAis7x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="pekným" type="incorrect"> Dom s <marker>peknému</marker> stromom.  </example>
-          <example type="correct"> Dom s pekným stromom.  </example>
+          <example correction="pekným stromom" type="incorrect">Dom s <marker>peknému stromom</marker>.  </example>
+          <example type="correct">Dom s pekným stromom.  </example>
         </rule>
         
     <!-- Neživotné prídavné meno inštrumentál singulár' -->
         <rule>
           <pattern>
               <token postag="A(A|f)is7." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSis7" /></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSis7"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSis7"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="stromom" type="incorrect"> Dom s pekným <marker>stromu</marker>.  </example>
-          <example type="correct"> Dom s pekným stromom.  </example>
+          <example correction="pekným stromom" type="incorrect">Dom s <marker>pekným stromu</marker>.  </example>
+          <example type="correct">Dom s pekným stromom.  </example>
         </rule>
         
     <!-- Životné podstatné meno nominatív singulár' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)ms1." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSms1"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAms1x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAms1x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="pekný" type="incorrect"> Aha, aký <marker>peknému</marker> chlap.  </example>
-          <example type="correct"> Aha, aký pekný chlap.  </example>
+          <example correction="pekný chlap" type="incorrect">Aha, aký <marker>peknému chlap</marker>.  </example>
+          <example type="correct">Aha, aký pekný chlap.  </example>
         </rule>
         
     <!-- Životné prídavné meno nominatív singulár' -->
         <rule>
           <pattern>
               <token postag="A(A|f)ms1." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSms1"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSms1"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSms1"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="chlap" type="incorrect"> Aha, aký pekný <marker>chlapa</marker>.  </example>
-          <example type="correct"> Aha, aký pekný chlap.  </example>
+          <example correction="pekný chlap" type="incorrect">Aha, aký <marker>pekný chlapa</marker>.  </example>
+          <example type="correct">Aha, aký pekný chlap.  </example>
         </rule>
       
     <!-- Životné podstatné meno genitív singulár' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)ms2." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSms2"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAms2x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAms2x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="pekného" type="incorrect"> Zamilovala sa do <marker>peknému</marker> chlapa.  </example>
-          <example type="correct"> Zamilovala sa do pekného chlapa.  </example>
+          <example correction="pekného chlapa" type="incorrect">Zamilovala sa do <marker>peknému chlapa</marker>.  </example>
+          <example type="correct">Zamilovala sa do pekného chlapa.  </example>
         </rule>
         
     <!-- Životné prídavné meno genitív singulár' -->
         <rule>
           <pattern>
               <token postag="A(A|f)ms2." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSms2"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSms2"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSms2"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="chlapa" type="incorrect"> Zamilovalasa do pekného <marker>chlap</marker>.  </example>
-          <example type="correct"> Zamilovala sa do pekného chlapa..  </example>
+          <example correction="pekného chlapa" type="incorrect">Zamilovalasa do <marker>pekného chlap</marker>.  </example>
+          <example type="correct">Zamilovala sa do pekného chlapa.  </example>
         </rule>
         
     <!-- Životné podstatné meno datív singulár' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)ms3." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSms3"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAms3x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAms3x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="peknému" type="incorrect"> Potešil sa <marker>pekný</marker> chlapovi.  </example>
-          <example type="correct"> Poteśil sa peknému chlapovi.  </example>
+          <example correction="peknému chlapovi" type="incorrect">Potešil sa <marker>pekný chlapovi</marker>.  </example>
+          <example type="correct">Poteśil sa peknému chlapovi.  </example>
         </rule>
         
     <!-- Životné prídavné meno nominatív singulár' -->
         <rule>
           <pattern>
               <token postag="A(A|f)ms3." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSms3"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSms3"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSms3"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="chlapovi" type="incorrect"> Potešil sa peknému <marker>chlapa</marker>.  </example>
-          <example type="correct"> Potešil sa peknému chlapovi.  </example>
+          <example correction="peknému chlapovi" type="incorrect">Potešil sa <marker>peknému chlapa</marker>.  </example>
+          <example type="correct">Potešil sa peknému chlapovi.  </example>
         </rule>
         
     <!-- Životné podstatné meno akuzatív singulár' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)ms4." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSms4"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAms4x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAms4x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="pekného" type="incorrect"> Zbadala <marker>peknému</marker> chlapa.  </example>
-          <example type="correct"> Zbadala pekného chlapa.  </example>
+          <example correction="pekného chlapa" type="incorrect">Zbadala <marker>peknému chlapa</marker>.  </example>
+          <example type="correct">Zbadala pekného chlapa.  </example>
         </rule>
         
     <!-- Životné prídavné meno nominatív singulár' -->
         <rule>
           <pattern>
               <token postag="A(A|f)ms4." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSms4"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSms4"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSms4"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="chlapa" type="incorrect"> Zbadala pekného <marker>chlap</marker>.  </example>
-          <example type="correct"> Zbadala pekného chlapa.  </example>
+          <example correction="pekného chlapa" type="incorrect">Zbadala <marker>pekného chlap</marker>.  </example>
+          <example type="correct">Zbadala pekného chlapa.  </example>
         </rule>
         
     <!-- Životné podstatné meno lokál singulár' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)ms6." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSms6"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAms6x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAms6x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="peknom" type="incorrect"> Hovoril o <marker>peknému</marker> chlapovi.  </example>
-          <example type="correct"> Hovoril o peknom chlapovi.  </example>
+          <example correction="peknom chlapovi" type="incorrect">Hovoril o <marker>peknému chlapovi</marker>.  </example>
+          <example type="correct">Hovoril o peknom chlapovi.  </example>
         </rule>
         
     <!-- Životné prídavné meno nominatív singulár' -->
         <rule>
           <pattern>
               <token postag="A(A|f)ms6." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSms6"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSms6"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSms6"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="chlapovi" type="incorrect"> Hovoril o peknom <marker>chlapa</marker>.  </example>
-          <example type="correct"> Hovoril o peknom chlapovi.  </example>
+          <example correction="peknom chlapovi" type="incorrect">Hovoril o <marker>peknom chlapa</marker>.  </example>
+          <example type="correct">Hovoril o peknom chlapovi.  </example>
         </rule>
         
     <!-- Životné podstatné meno inštrumentál singulár' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)ms7." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSms7"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAms7x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAms7x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="pekným" type="incorrect"> Dom s <marker>peknému</marker> chlapom.  </example>
-          <example type="correct"> Dom s pekným chlapom.  </example>
+          <example correction="pekným chlapom" type="incorrect">Dom s <marker>peknému chlapom</marker>.  </example>
+          <example type="correct">Dom s pekným chlapom.  </example>
         </rule>
         
     <!-- Životné prídavné meno nominatív singulár' -->
         <rule>
           <pattern>
               <token postag="A(A|f)ms7." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSms7"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSms7"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSms7"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="chlapom" type="incorrect"> Dom s pekným <marker>chlapa</marker>.  </example>
-          <example type="correct"> Dom s pekným chlapom.  </example>
+          <example correction="pekným chlapom" type="incorrect">Dom s <marker>pekným chlapa</marker>.  </example>
+          <example type="correct">Dom s pekným chlapom.  </example>
         </rule>
         
     <!-- Neživotné podstatné meno nominatív plurál' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)ip1." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSip1"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAip1x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAip1x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="pekné" type="incorrect"> Aha, aký <marker>peknému</marker> stromy.  </example>
-          <example type="correct"> Aha, aký pekné stromy.  </example>
+          <example correction="pekné stromy" type="incorrect">Aha, aký <marker>peknému stromy</marker>.  </example>
+          <example type="correct">Aha, aký pekné stromy.  </example>
         </rule>
-      
+
     <!-- Neživotné prídavné meno nominatív plurál' -->
         <rule>
           <pattern>
               <token postag="A(A|f)ip1." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSip1"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSip1"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSip1"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="stromy" type="incorrect"> Aha, aké pekné <marker>strom</marker>.  </example>
-          <example type="correct"> Aha, aké pekné stromy.  </example>
+          <example correction="pekné stromy" type="incorrect">Aha, aké <marker>pekné strom</marker>.  </example>
+          <example type="correct">Aha, aké pekné stromy.  </example>
         </rule>
         
     <!-- Neživotné podstatné meno genitív plurál' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)ip2." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSip2"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAip2x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAip2x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="pekných" type="incorrect"> Zaťal do <marker>peknému</marker> stromov.  </example>
-          <example type="correct"> Zaťal do pekných stromov.  </example>
+          <example correction="pekných stromov" type="incorrect">Zaťal do <marker>peknému stromov</marker>.  </example>
+          <example type="correct">Zaťal do pekných stromov.  </example>
         </rule>
         
     <!-- Neživotné prídavné meno genitív plurál' -->
         <rule>
           <pattern>
               <token postag="A(A|f)ip2." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSip2"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSip2"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSip2"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="stromov" type="incorrect"> Zaťal do pekných <marker>strom</marker>.  </example>
-          <example type="correct"> Zaťal do pekných stromov.  </example>
+          <example correction="pekných stromov" type="incorrect">Zaťal do <marker>pekných strom</marker>.  </example>
+          <example type="correct">Zaťal do pekných stromov.  </example>
         </rule>
         
     <!-- Neživotné podstatné meno datív plurál' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)ip3." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSip3"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAip3x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAip3x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="pekným" type="incorrect"> Potešil sa <marker>pekný</marker> stromom.  </example>
-          <example type="correct"> Poteśil sa pekným stromom.  </example>
+          <example correction="pekným stromom" type="incorrect">Potešil sa <marker>pekný stromom</marker>.  </example>
+          <example type="correct">Poteśil sa pekným stromom.  </example>
         </rule>
         
     <!-- Neživotné prídavné meno datív plurál' -->
         <rule>
           <pattern>
               <token postag="A(A|f)ip3." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSip3"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSip3"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSip3"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="stromom" type="incorrect"> Potešil sa pekným <marker>strom</marker>.  </example>
-          <example type="correct"> Potešil sa pekným stromom.  </example>
+          <example correction="pekným stromom" type="incorrect">Potešil sa <marker>pekným strom</marker>.  </example>
+          <example type="correct">Potešil sa pekným stromom.  </example>
         </rule>
         
     <!-- Neživotné podstatné meno akuzatív plurál' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)ip4." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSip4"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAip4x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAip4x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="pekné" type="incorrect"> Kúpil som <marker>peknému</marker> stromy.  </example>
-          <example type="correct"> Kúpil som pekné stromy.  </example>
+          <example correction="pekné stromy" type="incorrect">Kúpil som <marker>peknému stromy</marker>.  </example>
+          <example type="correct">Kúpil som pekné stromy.  </example>
         </rule>
         
     <!-- Neživotné prídavné meno akuzatív plurál' -->
         <rule>
           <pattern>
               <token postag="A(A|f)ip4." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSip4"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSip4"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSip4"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="stromy" type="incorrect"> Kúpil som pekné <marker>strom</marker>.  </example>
-          <example type="correct"> Kúpil som pekné stromy.  </example>
+          <example correction="pekné stromy" type="incorrect">Kúpil som <marker>pekné strom</marker>.  </example>
+          <example type="correct">Kúpil som pekné stromy.  </example>
         </rule>
         
     <!-- Neživotné podstatné meno lokál plurál' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)ip6." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSip6"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAip6x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAip6x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="pekných" type="incorrect"> Hovoril o <marker>peknému</marker> stromoch.  </example>
-          <example type="correct"> Hovoril o pekných stromoch.  </example>
+          <example correction="pekných stromoch" type="incorrect">Hovoril o <marker>peknému stromoch</marker>.  </example>
+          <example type="correct">Hovoril o pekných stromoch.  </example>
         </rule>
         
     <!-- Neživotné prídavné meno lokál plurál' -->
         <rule>
           <pattern>
               <token postag="A(A|f)ip6." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSip6"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSip6"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSip6"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="stromoch" type="incorrect"> Hovoril o pekných <marker>strom</marker>.  </example>
-          <example type="correct"> Hovoril o pekných stromoch.  </example>
+          <example correction="pekných stromoch" type="incorrect">Hovoril o <marker>pekných strom</marker>.  </example>
+          <example type="correct">Hovoril o pekných stromoch.  </example>
         </rule>
         
     <!-- Neživotné podstatné meno inštrumentál plurál' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)ip7." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSip7"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAip7x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAip7x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="peknými" type="incorrect"> Dom s <marker>peknému</marker> stromami.  </example>
-          <example type="correct"> Dom s peknými stromami.  </example>
+          <example correction="peknými stromami" type="incorrect">Dom s <marker>peknému stromami</marker>.  </example>
+          <example type="correct">Dom s peknými stromami.  </example>
         </rule>
         
     <!-- Neživotné prídavné meno inštrumentál plurál' -->
         <rule>
           <pattern>
               <token postag="A(A|f)ip7." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSip7"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSip7"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSip7"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="stromami" type="incorrect"> Dom s peknými <marker>strom</marker>.  </example>
-          <example type="correct"> Dom s peknými stromami.  </example>
+          <example correction="peknými stromami" type="incorrect">Dom s <marker>peknými strom</marker>.  </example>
+          <example type="correct">Dom s peknými stromami.  </example>
         </rule>
         
     <!-- Životné podstatné meno nominatív plurál' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)mp1." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSmp1"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAmp1x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAmp1x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="pekní" type="incorrect"> Aha, aký <marker>peknému</marker> Chlapi.  </example>
-          <example type="correct"> Aha, aký pekní chlapi.  </example>
+          <example correction="pekní Chlapi" type="incorrect">Aha, aký <marker>peknému Chlapi</marker>.  </example>
+          <example type="correct">Aha, aký pekní chlapi.  </example>
         </rule>
       
     <!-- Životné prídavné meno nominatív plurál' -->
         <rule>
           <pattern>
               <token postag="A(A|f)mp1." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSmp1"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSmp1"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSmp1"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="chlapi" type="incorrect"> Aha, aký pekní <marker>chlap</marker>.  </example>
-          <example type="correct"> Aha, aký pekní chlapi.  </example>
+          <example correction="pekní chlapi" type="incorrect">Aha, aký <marker>pekní chlap</marker>.  </example>
+          <example type="correct">Aha, aký pekní chlapi.  </example>
         </rule>
         
     <!-- Životné podstatné meno genitív plurál' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)mp2." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSmp2"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAmp2x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAmp2x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="pekných" type="incorrect"> Zamilovala sa do <marker>peknému</marker> chlapov.  </example>
-          <example type="correct"> Zamilovala sa do pekných chlapov.  </example>
+          <example correction="pekných chlapov" type="incorrect">Zamilovala sa do <marker>peknému chlapov</marker>.  </example>
+          <example type="correct">Zamilovala sa do pekných chlapov.  </example>
         </rule>
         
     <!-- Životné prídavné meno genitív plurál' -->
         <rule>
           <pattern>
               <token postag="A(A|f)mp2." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSmp2"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSmp2"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSmp2"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="chlapov" type="incorrect"> Zamilovala sado pekných <marker>chlap</marker>.  </example>
-          <example type="correct"> Zamilovala sa do pekných chlapov.  </example>
+          <example correction="pekných chlapov" type="incorrect">Zamilovala sado <marker>pekných chlap</marker>.  </example>
+          <example type="correct">Zamilovala sa do pekných chlapov.  </example>
         </rule>
         
     <!-- Životné podstatné meno datív plurál' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)mp3." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSmp3"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAmp3x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAmp3x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="pekným" type="incorrect"> Potešil sa <marker>pekný</marker> chlapom.  </example>
-          <example type="correct"> Poteśil sa pekným chlapom.  </example>
+          <example correction="pekným chlapom" type="incorrect">Potešil sa <marker>pekný chlapom</marker>.  </example>
+          <example type="correct">Poteśil sa pekným chlapom.  </example>
         </rule>
         
     <!-- Životné prídavné meno datív plurál' -->
         <rule>
           <pattern>
               <token postag="A(A|f)mp3." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSmp3"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSmp3"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSmp3"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="chlapom" type="incorrect"> Potešil sa pekným <marker>chlap</marker>.  </example>
-          <example type="correct"> Potešil sa pekným chlapom.  </example>
+          <example correction="pekným chlapom" type="incorrect">Potešil sa <marker>pekným chlap</marker>.  </example>
+          <example type="correct">Potešil sa pekným chlapom.  </example>
         </rule>
         
     <!-- Životné podstatné meno akuzatív plurál' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)mp4." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSmp4"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAmp4x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAmp4x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="pekných" type="incorrect"> Zbadala <marker>peknému</marker> chlapov.  </example>
-          <example type="correct"> Zbadala pekných chlapov.  </example>
+          <example correction="pekných chlapov" type="incorrect">Zbadala <marker>peknému chlapov</marker>.  </example>
+          <example type="correct">Zbadala pekných chlapov.  </example>
         </rule>
         
     <!-- Životné prídavné meno akuzatív plurál' -->
         <rule>
           <pattern>
               <token postag="A(A|f)mp4." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSmp4"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSmp4"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSmp4"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="chlapov" type="incorrect"> Zbadala pekných <marker>chlap</marker>.  </example>
-          <example type="correct"> Zbadala pekných chlapov.  </example>
+          <example correction="pekných chlapov" type="incorrect">Zbadala <marker>pekných chlap</marker>.  </example>
+          <example type="correct">Zbadala pekných chlapov.  </example>
         </rule>
         
     <!-- Životné podstatné meno lokál plurál' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)mp6." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSmp6"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAmp6x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAmp6x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="pekných" type="incorrect"> Hovoril o <marker>peknému</marker> chlapoch.  </example>
-          <example type="correct"> Hovoril o pekných chlapoch.  </example>
+          <example correction="pekných chlapoch" type="incorrect">Hovoril o <marker>peknému chlapoch</marker>.  </example>
+          <example type="correct">Hovoril o pekných chlapoch.  </example>
         </rule>
         
     <!-- Životné prídavné meno lokál plurál' -->
         <rule>
           <pattern>
               <token postag="A(A|f)mp6." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSmp6"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSmp6"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSmp6"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="chlapoch" type="incorrect"> Hovoril o pekných <marker>chlap</marker>.  </example>
-          <example type="correct"> Hovoril o pekných chlapoch.  </example>
+          <example correction="pekných chlapoch" type="incorrect">Hovoril o <marker>pekných chlap</marker>.  </example>
+          <example type="correct">Hovoril o pekných chlapoch.  </example>
         </rule>
         
     <!-- Životné podstatné meno inštrumentál plurál' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)mp7." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSmp7"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAmp7x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAmp7x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="peknými" type="incorrect"> Dom s <marker>peknému</marker> chlapmi.  </example>
-          <example type="correct"> Dom s peknými chlapmi.  </example>
+          <example correction="peknými chlapmi" type="incorrect">Dom s <marker>peknému chlapmi</marker>.  </example>
+          <example type="correct">Dom s peknými chlapmi.  </example>
         </rule>
       
     <!-- Životné prídavné meno nominatív plurál' -->
         <rule>
           <pattern>
               <token postag="A(A|f)mp7." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSmp7"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSmp7"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSmp7"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="chlapmi" type="incorrect"> Dom s peknými <marker>chlap</marker>.  </example>
-          <example type="correct"> Dom s peknými chlapmi.  </example>
+          <example correction="peknými chlapmi" type="incorrect">Dom s <marker>peknými chlap</marker>.  </example>
+          <example type="correct">Dom s peknými chlapmi.  </example>
         </rule>
       
       </rulegroup>
     
-    <rulegroup id="ZENSKY_ROD" name="podstatne mena v zenskom rode" default="off">
+    <rulegroup id="ZENSKY_ROD" name="podstatne mena v zenskom rode">
       
     <!-- podstatné meno nominatív singulár' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)fs1." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSfs1"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAfs1x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAfs1x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="pekná" type="incorrect"> Aha, aký <marker>peknému</marker> žena.  </example>
-          <example type="correct"> Aha, aký pekná žena.  </example>
+          <example correction="pekná žena" type="incorrect">Aha, aký <marker>peknému žena</marker>.  </example>
+          <example type="correct">Aha, aký pekná žena.  </example>
         </rule>
       
     <!-- prídavné meno nominatív singulár' -->
         <rule>
           <pattern>
               <token postag="A(A|f)fs1." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSfs1"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSfs1"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSfs1"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="žena" type="incorrect"> Aha, aká pekná <marker>žene</marker>.  </example>
-          <example type="correct"> Aha, aká pekná žena.  </example>
+          <example correction="pekná žena" type="incorrect">Aha, aká <marker>pekná žene</marker>.  </example>
+          <example type="correct">Aha, aká pekná žena.  </example>
         </rule>
       
     <!-- podstatné meno genitív singulár' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)fs2." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSfs2"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAfs2x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAfs2x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="peknej" type="incorrect"> Zamiloval sa do <marker>peknému</marker> ženy.  </example>
-          <example type="correct"> Zamiloval sa do peknej ženy.  </example>
+          <example correction="peknej ženy" type="incorrect">Zamiloval sa do <marker>peknému ženy</marker>.  </example>
+          <example type="correct">Zamiloval sa do peknej ženy.  </example>
         </rule>
         
     <!-- prídavné meno genitív singulár' -->
         <rule>
           <pattern>
               <token postag="A(A|f)fs2." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSfs2"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSfs2"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSfs2"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="ženy" type="incorrect"> Zamiloval sa do peknej <marker>žene</marker>.  </example>
-          <example type="correct"> Zamiloval sa do poknej ženy.  </example>
+          <example correction="peknej ženy" type="incorrect">Zamiloval sa do <marker>peknej žene</marker>.  </example>
+          <example type="correct">Zamiloval sa do poknej ženy.  </example>
         </rule>
       
     <!-- podstatné meno datív singulár' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)fs3." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSfs3"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAfs3x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAfs3x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="peknej" type="incorrect"> Potešil sa <marker>peknému</marker> žene.  </example>
-          <example type="correct"> Poteśil sa peknej žene.  </example>
+          <example correction="peknej žene" type="incorrect">Potešil sa <marker>peknému žene</marker>.  </example>
+          <example type="correct">Poteśil sa peknej žene.  </example>
         </rule>
         
     <!-- prídavné meno datív singulár' -->
         <rule>
           <pattern>
               <token postag="A(A|f)fs3." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSfs3"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSfs3"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSfs3"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="žene" type="incorrect"> Potešil sa peknej <marker>žena</marker>.  </example>
-          <example type="correct"> Potešil sa peknej žene.  </example>
+          <example correction="peknej žene" type="incorrect">Potešil sa <marker>peknej žena</marker>.  </example>
+          <example type="correct">Potešil sa peknej žene.  </example>
         </rule>
       
     <!-- podstatné meno akuzatív singulár' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)fs4." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSfs4"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAfs4x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAfs4x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="peknú" type="incorrect"> Zbadal <marker>peknému</marker> ženu.  </example>
-          <example type="correct"> Zbadal peknú ženu.  </example>
+          <example correction="peknú ženu" type="incorrect">Zbadal <marker>peknému ženu</marker>.  </example>
+          <example type="correct">Zbadal peknú ženu.  </example>
         </rule>
         
     <!-- prídavné meno akuzatív singulár' -->
         <rule>
           <pattern>
               <token postag="A(A|f)fs4." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSfs4"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSfs4"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSfs4"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="ženu" type="incorrect"> Zbadal peknú <marker>žene</marker>.  </example>
-          <example type="correct"> Zbadal peknú ženu.  </example>
+          <example correction="peknú ženu" type="incorrect">Zbadal <marker>peknú žene</marker>.  </example>
+          <example type="correct">Zbadal peknú ženu.  </example>
         </rule>
       
     <!-- podstatné meno lokál singulár' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)fs6." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSfs6"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAfs6x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAfs6x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="peknej" type="incorrect"> Hovoril o <marker>peknému</marker> žene.  </example>
-          <example type="correct"> Hovoril o peknej žene.  </example>
+          <example correction="peknej žene" type="incorrect">Hovoril o <marker>peknému žene</marker>.  </example>
+          <example type="correct">Hovoril o peknej žene.  </example>
         </rule>
         
     <!-- prídavné meno lokál singulár' -->
         <rule>
           <pattern>
               <token postag="A(A|f)fs6." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSfs6"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSfs6"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSfs6"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="žene" type="incorrect"> Hovoril o peknej <marker>žena</marker>.  </example>
-          <example type="correct"> Hovoril o peknej žene.  </example>
+          <example correction="peknej žene" type="incorrect">Hovoril o <marker>peknej žena</marker>.  </example>
+          <example type="correct">Hovoril o peknej žene.  </example>
         </rule>
       
     <!-- podstatné meno inštrumentál singulár' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)fs7." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSfs7"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAfs7x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAfs7x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="peknou" type="incorrect"> Dom s <marker>peknému</marker> ženou.  </example>
-          <example type="correct"> Dom s peknou ženou.  </example>
+          <example correction="peknou ženou" type="incorrect">Dom s <marker>peknému ženou</marker>.  </example>
+          <example type="correct">Dom s peknou ženou.  </example>
         </rule>
       
     <!-- prídavné meno inštrumentál singulár' -->
         <rule>
           <pattern>
               <token postag="A(A|f)fs7." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSfs7"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSfs7"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSfs7"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="ženou" type="incorrect"> Dom s peknou <marker>žene</marker>.  </example>
-          <example type="correct"> Dom s peknou ženou.  </example>
+          <example correction="peknou ženou" type="incorrect">Dom s <marker>peknou žene</marker>.  </example>
+          <example type="correct">Dom s peknou ženou.  </example>
         </rule>
       
     <!-- podstatné meno nominatív plurál' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)fp1." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSfp1"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAfp1x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAfp1x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="pekné" type="incorrect"> Aha, aký <marker>peknému</marker> ženy.  </example>
-          <example type="correct"> Aha, aké pekné ženy.  </example>
+          <example correction="pekné ženy" type="incorrect">Aha, aký <marker>peknému ženy</marker>.  </example>
+          <example type="correct">Aha, aké pekné ženy.  </example>
         </rule>
       
     <!-- prídavné meno nominatív plurál' -->
         <rule>
           <pattern>
               <token postag="A(A|f)fp1." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSfp1"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSfp1"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSfp1"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="ženy" type="incorrect"> Aha, aké pekné <marker>žene</marker>.  </example>
-          <example type="correct"> Aha, aká pekné ženy.  </example>
+          <example correction="pekné ženy" type="incorrect">Aha, aké <marker>pekné žene</marker>.  </example>
+          <example type="correct">Aha, aká pekné ženy.  </example>
         </rule>
       
     <!-- podstatné meno genitív plurál' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)fp2." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSfp2"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAfp2x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAfp2x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="pekných" type="incorrect"> Zamiloval sa do <marker>peknému</marker> žien.  </example>
-          <example type="correct"> Zamiloval sa do pekných žien.  </example>
+          <example correction="pekných žien" type="incorrect">Zamiloval sa do <marker>peknému žien</marker>.  </example>
+          <example type="correct">Zamiloval sa do pekných žien.  </example>
         </rule>
         
     <!-- prídavné meno genitív plurál' -->
         <rule>
           <pattern>
               <token postag="A(A|f)fp2." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSfp2"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSfp2"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSfp2"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="žien" type="incorrect"> Zamiloval sa do pekných <marker>žene</marker>.  </example>
-          <example type="correct"> Zamiloval sa do pekných žien.  </example>
+          <example correction="pekných žien" type="incorrect">Zamiloval sa do <marker>pekných žene</marker>.  </example>
+          <example type="correct">Zamiloval sa do pekných žien.  </example>
         </rule>
       
     <!-- podstatné meno datív plurál' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)fp3." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSfp3"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAfp3x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAfp3x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="pekným" type="incorrect"> Potešil sa <marker>peknému</marker> ženám.  </example>
-          <example type="correct"> Poteśil sa pekným ženám.  </example>
+          <example correction="pekným ženám" type="incorrect">Potešil sa <marker>peknému ženám</marker>.  </example>
+          <example type="correct">Poteśil sa pekným ženám.  </example>
         </rule>
         
     <!-- prídavné meno datív plurál' -->
         <rule>
           <pattern>
               <token postag="A(A|f)fp3." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSfp3"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSfp3"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSfp3"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="ženám" type="incorrect"> Potešil sa pekným <marker>žene</marker>.  </example>
-          <example type="correct"> Potešil sa pekným ženám.  </example>
+          <example correction="pekným ženám" type="incorrect">Potešil sa <marker>pekným žene</marker>.  </example>
+          <example type="correct">Potešil sa pekným ženám.  </example>
         </rule>
       
     <!-- podstatné meno akuzatív plurál' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)fp4." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSfp4"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAfp4x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAfp4x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="pekné" type="incorrect"> Zbadal <marker>peknému</marker> ženy.  </example>
-          <example type="correct"> Zbadal pekné ženy.  </example>
+          <example correction="pekné ženy" type="incorrect">Zbadal <marker>peknému ženy</marker>.  </example>
+          <example type="correct">Zbadal pekné ženy.  </example>
         </rule>
         
     <!-- prídavné meno akuzatív plurál' -->
         <rule>
           <pattern>
               <token postag="A(A|f)fp4." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSfp4"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSfp4"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSfp4"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="ženy" type="incorrect"> Zbadal pekné <marker>žene</marker>.  </example>
-          <example type="correct"> Zbadal pekné ženy.  </example>
+          <example correction="pekné ženy" type="incorrect">Zbadal <marker>pekné žene</marker>.  </example>
+          <example type="correct">Zbadal pekné ženy.  </example>
         </rule>
       
     <!-- podstatné meno lokál plurál' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)fp6." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSfp6"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAfp6x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAfp6x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="pekných" type="incorrect"> Hovoril o <marker>peknému</marker> ženách.  </example>
-          <example type="correct"> Hovoril o pekných ženách.  </example>
+          <example correction="pekných ženách" type="incorrect">Hovoril o <marker>peknému ženách</marker>.  </example>
+          <example type="correct">Hovoril o pekných ženách.  </example>
         </rule>
         
     <!-- prídavné meno lokál plurál' -->
         <rule>
           <pattern>
               <token postag="A(A|f)fp6." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSfp6"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSfp6"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSfp6"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="ženách" type="incorrect"> Hovoril o pekných <marker>žene</marker>.  </example>
-          <example type="correct"> Hovoril o pekných ženách.  </example>
+          <example correction="pekných ženách" type="incorrect">Hovoril o <marker>pekných žene</marker>.  </example>
+          <example type="correct">Hovoril o pekných ženách.  </example>
         </rule>
       
     <!-- podstatné meno inštrumentál plurál' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)fp7." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSfp7"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAfp7x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAfp7x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="peknými" type="incorrect"> Dom s <marker>peknému</marker> ženami.  </example>
-          <example type="correct"> Dom s peknými ženami.  </example>
+          <example correction="peknými ženami" type="incorrect">Dom s <marker>peknému ženami</marker>.  </example>
+          <example type="correct">Dom s peknými ženami.  </example>
         </rule>
     
     <!-- prídavné meno inštrumentál plurál' -->
         <rule>
           <pattern>
               <token postag="A(A|f)fp7." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSfp7"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSfp7"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSfp7"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="ženami" type="incorrect"> Dom s peknými <marker>žene</marker>.  </example>
-          <example type="correct"> Dom s peknýni ženami.  </example>
+          <example correction="peknými ženami" type="incorrect">Dom s <marker>peknými žene</marker>.  </example>
+          <example type="correct">Dom s peknýni ženami.  </example>
         </rule>
       
     </rulegroup>
     
-    <rulegroup id="STREDNY_ROD" name="podstatnemena v strednom rode" default="off">
+    <rulegroup id="STREDNY_ROD" name="podstatnemena v strednom rode">
     
     <!-- podstatné meno nominatív singulár' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)ns1." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSns1"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAns1x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAns1x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="pekné" type="incorrect"> Aha, aké <marker>peknému</marker> dievča.  </example>
-          <example type="correct"> Aha, aký pekné dievča.  </example>
+          <example correction="pekné dievča" type="incorrect">Aha, aké <marker>peknému dievča</marker>.  </example>
+          <example type="correct">Aha, aký pekné dievča.  </example>
         </rule>
       
     <!-- prídavné meno nominatív singulár' -->
         <rule>
           <pattern>
               <token postag="A(A|f)ns1." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSns1"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSns1"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSns1"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="dievča" type="incorrect"> Aha, aké pekné <marker>dievčaťu</marker>.  </example>
-          <example type="correct"> Aha, aká pekné dievča.  </example>
+          <example correction="pekné dievča" type="incorrect">Aha, aké <marker>pekné dievčaťu</marker>.  </example>
+          <example type="correct">Aha, aká pekné dievča.  </example>
         </rule>
       
     <!-- podstatné meno genitív singulár' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)ns2." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSns2"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAns2x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAns2x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="pekného" type="incorrect"> Zamiloval sa do <marker>peknému</marker> dievčaťa.  </example>
-          <example type="correct"> Zamiloval sa do pekného dievčaťa.  </example>
+          <example correction="pekného dievčaťa" type="incorrect">Zamiloval sa do <marker>peknému dievčaťa</marker>.  </example>
+          <example type="correct">Zamiloval sa do pekného dievčaťa.  </example>
         </rule>
         
     <!-- prídavné meno genitív singulár' -->
         <rule>
           <pattern>
               <token postag="A(A|f)ns2." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSns2"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSns2"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSns2"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="dievčaťa" type="incorrect"> Zamiloval sa dp pekného <marker>dievčaťu</marker>.  </example>
-          <example type="correct"> Zamiloval sa do pekného dievčaťa.  </example>
+          <example correction="pekného dievčaťa" type="incorrect">Zamiloval sa dp <marker>pekného dievčaťu</marker>.  </example>
+          <example type="correct">Zamiloval sa do pekného dievčaťa.  </example>
         </rule>
       
     <!-- podstatné meno datív singulár' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)ns3." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSns3"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAns3x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAns3x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="peknému" type="incorrect"> Potešil sa <marker>pekný</marker> dievčaťu.  </example>
-          <example type="correct"> Poteśil sa peknému dievčaťu.  </example>
+          <example correction="peknému dievčaťu" type="incorrect">Potešil sa <marker>pekný dievčaťu</marker>.  </example>
+          <example type="correct">Poteśil sa peknému dievčaťu.  </example>
         </rule>
         
     <!-- prídavné meno datív singulár' -->
         <rule>
           <pattern>
               <token postag="A(A|f)ns3." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSns3"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSns3"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSns3"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="dievčaťu" type="incorrect"> Potešil sa peknému <marker>dievča</marker>.  </example>
-          <example type="correct"> Potešil sa peknému dievčaťu.  </example>
+          <example correction="peknému dievčaťu" type="incorrect">Potešil sa <marker>peknému dievča</marker>.  </example>
+          <example type="correct">Potešil sa peknému dievčaťu.  </example>
         </rule>
       
     <!-- podstatné meno akuzatív singulár' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)ns4." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSns4"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAns4x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAns4x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="pekné" type="incorrect"> Zbadal <marker>peknému</marker> dievča.  </example>
-          <example type="correct"> Zbadal pekné dievča.  </example>
+          <example correction="pekné dievča" type="incorrect">Zbadal <marker>peknému dievča</marker>.  </example>
+          <example type="correct">Zbadal pekné dievča.  </example>
         </rule>
         
     <!-- prídavné meno akuzatív singulár' -->
         <rule>
           <pattern>
               <token postag="A(A|f)ns4." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSns4"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSns4"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSns4"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="dievča" type="incorrect"> Zbadal pekné <marker>dievčaťu</marker>.  </example>
-          <example type="correct"> Zbadal pekné dievča.  </example>
+          <example correction="pekné dievča" type="incorrect">Zbadal <marker>pekné dievčaťu</marker>.  </example>
+          <example type="correct">Zbadal pekné dievča.  </example>
         </rule>
       
     <!-- podstatné meno lokál singulár' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)ns6." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSns6"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAns6x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAns6x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="peknom" type="incorrect"> Hovoril o <marker>peknému</marker> dievčati.  </example>
-          <example type="correct"> Hovoril o peknom dievčati.  </example>
+          <example correction="peknom dievčati" type="incorrect">Hovoril o <marker>peknému dievčati</marker>.  </example>
+          <example type="correct">Hovoril o peknom dievčati.  </example>
         </rule>
         
     <!-- prídavné meno lokál singulár' -->
         <rule>
           <pattern>
               <token postag="A(A|f)ns6." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSns6"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSns6"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSns6"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="dievčati" type="incorrect"> Hovoril o peknom <marker>dievčaťu</marker>.  </example>
-          <example type="correct"> Hovoril o peknom dievčati.  </example>
+          <example correction="peknom dievčati" type="incorrect">Hovoril o <marker>peknom dievčaťu</marker>.  </example>
+          <example type="correct">Hovoril o peknom dievčati.  </example>
         </rule>
       
     <!-- podstatné meno inštrumentál singulár' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)ns7." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSns7"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAns7x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAns7x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="pekným" type="incorrect"> Dom s <marker>peknému</marker> dievčaťom.  </example>
-          <example type="correct"> Dom s pekným dievčaťom.  </example>
+          <example correction="pekným dievčaťom" type="incorrect">Dom s <marker>peknému dievčaťom</marker>.  </example>
+          <example type="correct">Dom s pekným dievčaťom.  </example>
         </rule>
       
     <!-- prídavné meno inštrumentál singulár' -->
         <rule>
           <pattern>
               <token postag="A(A|f)ns7." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSns7"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSns7"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSns7"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="dievčaťom" type="incorrect"> Dom s pekným <marker>dievčaťu</marker>.  </example>
-          <example type="correct"> Dom s pekným dievčaťom.  </example>
+          <example correction="pekným dievčaťom" type="incorrect">Dom s <marker>pekným dievčaťu</marker>.  </example>
+          <example type="correct">Dom s pekným dievčaťom.  </example>
         </rule>
       
     <!-- podstatné meno nominatív plurál' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)np1." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSnp1"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAnp1x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAnp1x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="pekné" type="incorrect"> Aha, aké <marker>peknému</marker> dievčatá.  </example>
-          <example type="correct"> Aha, aké pekné dievčatá.  </example>
+          <example correction="pekné dievčatá" type="incorrect">Aha, aké <marker>peknému dievčatá</marker>.  </example>
+          <example type="correct">Aha, aké pekné dievčatá.  </example>
         </rule>
       
     <!-- prídavné meno nominatív plurál' -->
         <rule>
           <pattern>
               <token postag="A(A|f)np1." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSnp1"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSnp1"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSnp1"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="dievčatá|dievčence" type="incorrect"> Aha, aké pekné <marker>dievčaťu</marker>.  </example>
-          <example type="correct"> Aha, aká pekné dievčatá.  </example>
+          <example correction="pekné dievčatá|pekné dievčence" type="incorrect">Aha, aké <marker>pekné dievčaťu</marker>.  </example>
+          <example type="correct">Aha, aká pekné dievčatá.  </example>
         </rule> 
      
     <!-- podstatné meno genitív plurál' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)np2." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSnp2"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAnp2x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAnp2x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="pekných" type="incorrect"> Zamiloval sa do <marker>peknému</marker> dievčat.  </example>
-          <example type="correct"> Zamiloval sa do pekných dievčat.  </example>
+          <example correction="pekných dievčat" type="incorrect">Zamiloval sa do <marker>peknému dievčat</marker>.  </example>
+          <example type="correct">Zamiloval sa do pekných dievčat.  </example>
         </rule>
         
     <!-- prídavné meno genitív plurál' -->
         <rule>
           <pattern>
               <token postag="A(A|f)np2." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSnp2"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSnp2"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSnp2"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="dievčat|dievčeniec" type="incorrect"> Zamiloval sa do pekných <marker>dievčaťu</marker>.  </example>
-          <example type="correct"> Zamiloval sa do pekných dievčat.  </example>
+          <example correction="pekných dievčat|pekných dievčeniec" type="incorrect">Zamiloval sa do <marker>pekných dievčaťu</marker>.  </example>
+          <example type="correct">Zamiloval sa do pekných dievčat.  </example>
         </rule> 
       
     <!-- podstatné meno datív plurál' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)np3." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSnp3"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAnp3x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAnp3x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="pekným" type="incorrect"> Potešil sa <marker>pekný</marker> dievčatám.  </example>
-          <example type="correct"> Poteśil sa pekným dievčatám.  </example>
+          <example correction="pekným dievčatám" type="incorrect">Potešil sa <marker>pekný dievčatám</marker>.  </example>
+          <example type="correct">Poteśil sa pekným dievčatám.  </example>
         </rule>
         
     <!-- prídavné meno datív plurál' -->
         <rule>
           <pattern>
               <token postag="A(A|f)np3." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSnp3"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSnp3"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSnp3"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="dievčatám|dievčencom" type="incorrect"> Potešil sa pekným <marker>dievčaťu</marker>.  </example>
-          <example type="correct"> Potešil sa pekným dievčatám.  </example>
+          <example correction="pekným dievčatám|pekným dievčencom" type="incorrect">Potešil sa <marker>pekným dievčaťu</marker>.  </example>
+          <example type="correct">Potešil sa pekným dievčatám.  </example>
         </rule> 
       
     <!-- podstatné meno akuzatív plurál' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)np4." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSnp4"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAnp4x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAnp4x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="pekné" type="incorrect"> Zbadal <marker>peknému</marker> dievčatá.  </example>
-          <example type="correct"> Zbadal pekné dievčatá.  </example>
+          <example correction="pekné dievčatá" type="incorrect">Zbadal <marker>peknému dievčatá</marker>.  </example>
+          <example type="correct">Zbadal pekné dievčatá.  </example>
         </rule>
         
     <!-- prídavné meno akuzatív plurál' -->
         <rule>
           <pattern>
               <token postag="A(A|f)np4." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSnp4"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSnp4"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSnp4"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="dievčatá|dievčence" type="incorrect"> Zbadal pekné <marker>dievčaťu</marker>.  </example>
-          <example type="correct"> Zbadal pekné dievčatá.  </example>
+          <example correction="pekné dievčatá|pekné dievčence" type="incorrect">Zbadal <marker>pekné dievčaťu</marker>.  </example>
+          <example type="correct">Zbadal pekné dievčatá.  </example>
         </rule> 
       
     <!-- podstatné meno lokál plurál' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)np6." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSnp6"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAnp6x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAnp6x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="pekných" type="incorrect"> Hovoril o <marker>peknému</marker> dievčatách.  </example>
-          <example type="correct"> Hovoril o pekných dievčatách.  </example>
+          <example correction="pekných dievčatách" type="incorrect">Hovoril o <marker>peknému dievčatách</marker>.  </example>
+          <example type="correct">Hovoril o pekných dievčatách.  </example>
         </rule>
       
     <!-- prídavné meno lokál plurál' -->
         <rule>
           <pattern>
               <token postag="A(A|f)np6." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSnp6"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSnp6"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSnp6"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="dievčatách|dievčencoch" type="incorrect"> Hovoril o pekných <marker>dievčaťu</marker>.  </example>
-          <example type="correct"> Hovoril o pekných dievčatách.  </example>
+          <example correction="pekných dievčatách|pekných dievčencoch" type="incorrect">Hovoril o <marker>pekných dievčaťu</marker>.  </example>
+          <example type="correct">Hovoril o pekných dievčatách.  </example>
         </rule> 
       
     <!-- podstatné meno inštrumentál plurál' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="A(A|f)np7." postag_regexp="yes"/></token>
-            </marker>
               <token postag="SSnp7"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAnp7x"/></suggestion>
+            <suggestion><match no="1" postag="AA.*" postag_regexp="yes" postag_replace="AAnp7x"/> \2</suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="peknými" type="incorrect"> Dom s <marker>peknému</marker> dievčatami.  </example>
-          <example type="correct"> Dom s peknými dievčatami.  </example>
+          <example correction="peknými dievčatami" type="incorrect">Dom s <marker>peknému dievčatami</marker>.  </example>
+          <example type="correct">Dom s peknými dievčatami.  </example>
         </rule>
     
     <!-- prídavné meno inštrumentál plurál' -->
         <rule>
           <pattern>
               <token postag="A(A|f)np7." postag_regexp="yes"/>
-            <marker>
               <token postag="S.*" postag_regexp="yes"><exception postag="SSnp7"/></token>
-            </marker>
           </pattern>
           <message>
             Nespravny tvar podstatného mena (<match no="2"/>)
-            <suggestion><match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSnp7"/></suggestion>
+            <suggestion>\1 <match no="2" postag="S.*" postag_regexp="yes" postag_replace="SSnp7"/></suggestion>
           </message>
 
           <short>Pridavne meno je v inom páde ako podstatné meno</short>
-          <example correction="dievčatami|dievčencami" type="incorrect"> Dom s peknými <marker>dievčaťu</marker>.  </example>
-          <example type="correct"> Dom s peknými dievčatami.  </example>
+          <example correction="peknými dievčatami|peknými dievčencami" type="incorrect">Dom s <marker>peknými dievčaťu</marker>.  </example>
+          <example type="correct">Dom s peknými dievčatami.  </example>
         </rule> 
       
     </rulegroup>
 
-    <rulegroup id="MUZSKY_ROD_A" name="pridavne mena v muzkom rode" default="off">
+    <rulegroup id="MUZSKY_ROD_A" name="pridavne mena v muzkom rode">
       
     <!-- mužský rod singulár nominatív' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="AAms1x" /></token>
-            </marker>
               <token postag="AAms1x"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="A.*" postag_regexp="yes" postag_replace="AAms1x"/></suggestion>
+            <suggestion><match no="1" postag="A.*" postag_regexp="yes" postag_replace="AAms1x"/> \2</suggestion>
           </message>
 
           <short>Pridavné mená by mali byť v rovnakom tvare</short>
-          <example correction="pekný" type="incorrect"> Aký <marker>pekné</marker> inteligentný chlap.  </example>
-          <example type="correct"> Aký pekný inteligentný chlap. </example>
+          <example correction="pekný inteligentný" type="incorrect">Aký <marker>pekné inteligentný</marker> chlap.  </example>
+          <example type="correct">Aký pekný inteligentný chlap. </example>
         </rule>
       
     <!-- mužský rod singulár genitív' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="AAms2x" /></token>
-            </marker>
               <token postag="AAms2x"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="A.*" postag_regexp="yes" postag_replace="AAms2x"/></suggestion>
+            <suggestion><match no="1" postag="A.*" postag_regexp="yes" postag_replace="AAms2x"/> \2</suggestion>
           </message>
 
           <short>Pridavné mená by mali byť v rovnakom tvare</short>
-          <example correction="pekného" type="incorrect"> Zamilovala sa do <marker>pekné</marker> inteligentného chlapa.  </example>
-          <example type="correct"> Zamilovala sa do pekného inteligentného chlap. </example>
+          <example correction="pekného inteligentného" type="incorrect">Zamilovala sa do <marker>pekné inteligentného</marker> chlapa.  </example>
+          <example type="correct">Zamilovala sa do pekného inteligentného chlap. </example>
         </rule>
       
     <!-- mužský rod singulár datív' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="AAms3x" /></token>
-            </marker>
               <token postag="AAms3x"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="A.*" postag_regexp="yes" postag_replace="AAms3x"/></suggestion>
+            <suggestion><match no="1" postag="A.*" postag_regexp="yes" postag_replace="AAms3x"/> \2</suggestion>
           </message>
 
           <short>Pridavné mená by mali byť v rovnakom tvare</short>
-          <example correction="peknému" type="incorrect"> Dám <marker>pekné</marker> inteligentnému chlapovi.  </example>
-          <example type="correct"> Dám peknému inteligentnému chlapovi. </example>
+          <example correction="peknému inteligentnému" type="incorrect">Dám <marker>pekné inteligentnému</marker> chlapovi.  </example>
+          <example type="correct">Dám peknému inteligentnému chlapovi. </example>
         </rule>
       
     <!-- mužský rod singulár akuzatív' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="AAms4x" /></token>
-            </marker>
               <token postag="AAms4x"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="A.*" postag_regexp="yes" postag_replace="AAms4x"/></suggestion>
+            <suggestion><match no="1" postag="A.*" postag_regexp="yes" postag_replace="AAms4x"/> \2</suggestion>
           </message>
 
           <short>Pridavné mená by mali byť v rovnakom tvare</short>
-          <example correction="pekného" type="incorrect"> Vidím <marker>pekné</marker> inteligentného chlapa.  </example>
-          <example type="correct"> Vidím pekného inteligentného chlapa. </example>
+          <example correction="pekného inteligentného" type="incorrect">Vidím <marker>pekné inteligentného</marker> chlapa.  </example>
+          <example type="correct">Vidím pekného inteligentného chlapa. </example>
         </rule>
       
     <!-- mužský rod singulár lokál' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="AAms6x" /></token>
-            </marker>
               <token postag="AAms6x"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="A.*" postag_regexp="yes" postag_replace="AAms6x"/></suggestion>
+            <suggestion><match no="1" postag="A.*" postag_regexp="yes" postag_replace="AAms6x"/> \2</suggestion>
           </message>
 
           <short>Pridavné mená by mali byť v rovnakom tvare</short>
-          <example correction="peknom" type="incorrect"> O <marker>pekné</marker> inteligentnom chlapovi.  </example>
-          <example type="correct"> O peknom inteligentnom chlapovi. </example>
+          <example correction="peknom inteligentnom" type="incorrect">O <marker>pekné inteligentnom</marker> chlapovi.  </example>
+          <example type="correct">O peknom inteligentnom chlapovi. </example>
         </rule>
       
     <!-- mužský rod singulár inštrumentál' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="AAms7x" /></token>
-            </marker>
               <token postag="AAms7x"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="A.*" postag_regexp="yes" postag_replace="AAms7x"/></suggestion>
+            <suggestion><match no="1" postag="A.*" postag_regexp="yes" postag_replace="AAms7x"/> \2</suggestion>
           </message>
 
           <short>Pridavné mená by mali byť v rovnakom tvare</short>
-          <example correction="pekným" type="incorrect"> S <marker>pekné</marker> inteligentným chlapom.  </example>
-          <example type="correct"> S pekným inteligentným chlapom. </example>
+          <example correction="pekným inteligentným" type="incorrect">S <marker>pekné inteligentným</marker> chlapom.  </example>
+          <example type="correct">S pekným inteligentným chlapom. </example>
         </rule>
       
     <!-- mužský rod plurál nominatív' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="AAmp1x" /></token>
-            </marker>
               <token postag="AAmp1x"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="A.*" postag_regexp="yes" postag_replace="AAmp1x"/></suggestion>
+            <suggestion><match no="1" postag="A.*" postag_regexp="yes" postag_replace="AAmp1x"/> \2</suggestion>
           </message>
 
           <short>Pridavné mená by mali byť v rovnakom tvare</short>
-          <example correction="pekní" type="incorrect"> Aký <marker>pekné</marker> inteligentní chlapi.  </example>
-          <example type="correct"> Aký pekní inteligentní chlapi. </example>
+          <example correction="pekní inteligentní" type="incorrect">Aký <marker>pekné inteligentní</marker> chlapi.  </example>
+          <example type="correct">Aký pekní inteligentní chlapi. </example>
         </rule>
       
     <!-- mužský rod plurál genitív' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="AAmp2x" /></token>
-            </marker>
               <token postag="AAmp2x"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="A.*" postag_regexp="yes" postag_replace="AAmp2x"/></suggestion>
+            <suggestion><match no="1" postag="A.*" postag_regexp="yes" postag_replace="AAmp2x"/> \2</suggestion>
           </message>
 
           <short>Pridavné mená by mali byť v rovnakom tvare</short>
-          <example correction="pekných" type="incorrect"> Zamilovala sa do <marker>pekné</marker> inteligentných chlapov.  </example>
-          <example type="correct"> Zamilovala sa do peknéých inteligentných chlapov. </example>
+          <example correction="pekných inteligentných" type="incorrect">Zamilovala sa do <marker>pekné inteligentných</marker> chlapov.  </example>
+          <example type="correct">Zamilovala sa do peknéých inteligentných chlapov. </example>
         </rule>
       
     <!-- mužský rod plurál datív' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="AAmp3x" /></token>
-            </marker>
               <token postag="AAmp3x"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="A.*" postag_regexp="yes" postag_replace="AAmp3x"/></suggestion>
+            <suggestion><match no="1" postag="A.*" postag_regexp="yes" postag_replace="AAmp3x"/> \2</suggestion>
           </message>
 
           <short>Pridavné mená by mali byť v rovnakom tvare</short>
-          <example correction="pekným" type="incorrect"> Dám <marker>pekné</marker> inteligentným chlapom.  </example>
-          <example type="correct"> Dám pekným inteligentným chlapom. </example>
+          <example correction="pekným inteligentným" type="incorrect">Dám <marker>pekné inteligentným</marker> chlapom.  </example>
+          <example type="correct">Dám pekným inteligentným chlapom. </example>
         </rule>
       
     <!-- mužský rod plurál akuzatív' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="AAmp4x" /></token>
-            </marker>
               <token postag="AAmp4x"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="A.*" postag_regexp="yes" postag_replace="AAmp4x"/></suggestion>
+            <suggestion><match no="1" postag="A.*" postag_regexp="yes" postag_replace="AAmp4x"/> \2</suggestion>
           </message>
 
           <short>Pridavné mená by mali byť v rovnakom tvare</short>
-          <example correction="pekných" type="incorrect"> Vidím <marker>pekné</marker> inteligentných chlapov.  </example>
-          <example type="correct"> Vidím pekných inteligentných chlapov. </example>
+          <example correction="pekných inteligentných" type="incorrect">Vidím <marker>pekné inteligentných</marker> chlapov.  </example>
+          <example type="correct">Vidím pekných inteligentných chlapov. </example>
         </rule>
       
     <!-- mužský rod plurál lokál' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="AAmp6x" /></token>
-            </marker>
               <token postag="AAmp6x"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="A.*" postag_regexp="yes" postag_replace="AAmp6x"/></suggestion>
+            <suggestion><match no="1" postag="A.*" postag_regexp="yes" postag_replace="AAmp6x"/> \2</suggestion>
           </message>
 
           <short>Pridavné mená by mali byť v rovnakom tvare</short>
-          <example correction="pekných" type="incorrect"> O <marker>pekné</marker> inteligentných chlapoch.  </example>
-          <example type="correct"> O pekných inteligentných chlapoch. </example>
+          <example correction="pekných inteligentných" type="incorrect">O <marker>pekné inteligentných</marker> chlapoch.  </example>
+          <example type="correct">O pekných inteligentných chlapoch. </example>
         </rule>
       
     <!-- mužský rod plurál inštrumentál' -->
         <rule>
           <pattern>
-            <marker>
               <token postag="A.*" postag_regexp="yes"><exception postag="AAmp7x" /></token>
-            </marker>
               <token postag="AAmp7x"/>
           </pattern>
           <message>
             Nespravny tvar prídavného mena (<match no="1"/>)
-            <suggestion><match no="1" postag="A.*" postag_regexp="yes" postag_replace="AAmp7x"/></suggestion>
+            <suggestion><match no="1" postag="A.*" postag_regexp="yes" postag_replace="AAmp7x"/> \2</suggestion>
           </message>
 
           <short>Pridavné mená by mali byť v rovnakom tvare</short>
-          <example correction="peknými" type="incorrect"> S <marker>pekné</marker> inteligentnými chlapmi.  </example>
-          <example type="correct"> S peknými inteligentnými chlapmi. </example>
+          <example correction="peknými inteligentnými" type="incorrect">S <marker>pekné inteligentnými</marker> chlapmi.  </example>
+          <example type="correct">S peknými inteligentnými chlapmi. </example>
         </rule>
     
     </rulegroup>
@@ -2199,7 +1984,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <example correction="pekný" type="incorrect">
             Aký <marker>pekné</marker> inteligentný dub.
           </example>
-          <example type="correct"> Aký pekný inteligentný dub. </example>
+          <example type="correct">Aký pekný inteligentný dub. </example>
         </rule>
 
         <!-- mužský rod singulár genitív' -->
@@ -2221,7 +2006,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <example correction="pekného" type="incorrect">
             Zamilovala sa do <marker>pekné</marker> inteligentného duba.
           </example>
-          <example type="correct"> Zamilovala sa do pekného inteligentného duba. </example>
+          <example type="correct">Zamilovala sa do pekného inteligentného duba. </example>
         </rule>
 
         <!-- mužský rod singulár datív' -->
@@ -2243,7 +2028,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <example correction="peknému" type="incorrect">
             Dám <marker>pekné</marker> inteligentnému dubu.
           </example>
-          <example type="correct"> Dám peknému inteligentnému dubu. </example>
+          <example type="correct">Dám peknému inteligentnému dubu. </example>
         </rule>
 
         <!-- mužský rod singulár akuzatív' -->
@@ -2265,7 +2050,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <example correction="pekný" type="incorrect">
             Vidím <marker>pekné</marker> inteligentný dub.
           </example>
-          <example type="correct"> Vidím pekný inteligentný dub. </example>
+          <example type="correct">Vidím pekný inteligentný dub. </example>
         </rule>
 
         <!-- mužský rod singulár lokál' -->
@@ -2287,7 +2072,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <example correction="peknom" type="incorrect">
             O <marker>pekné</marker> inteligentnom dube.
           </example>
-          <example type="correct"> O peknom inteligentnom dube. </example>
+          <example type="correct">O peknom inteligentnom dube. </example>
         </rule>
 
         <!-- mužský rod singulár inštrumentál' -->
@@ -2309,7 +2094,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <example correction="pekným" type="incorrect">
             S <marker>pekné</marker> inteligentným dubom.
           </example>
-          <example type="correct"> S pekným inteligentným dubom. </example>
+          <example type="correct">S pekným inteligentným dubom. </example>
         </rule>
 
         <!-- mužský rod plurál nominatív' -->
@@ -2331,7 +2116,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <example correction="pekné" type="incorrect">
             Aký <marker>pekný</marker> inteligentné duby.
           </example>
-          <example type="correct"> Aký pekné inteligentné duby. </example>
+          <example type="correct">Aký pekné inteligentné duby. </example>
         </rule>
 
         <!-- mužský rod plurál genitív' -->
@@ -2353,7 +2138,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <example correction="pekných" type="incorrect">
             Zamilovala sa do <marker>pekné</marker> inteligentných dubov.
           </example>
-          <example type="correct"> Zamilovala sa do peknéých inteligentných dubov. </example>
+          <example type="correct">Zamilovala sa do peknéých inteligentných dubov. </example>
         </rule>
 
         <!-- mužský rod plurál datív' -->
@@ -2375,7 +2160,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <example correction="pekným" type="incorrect">
             Dám <marker>pekné</marker> inteligentným dubom.
           </example>
-          <example type="correct"> Dám pekným inteligentným dubom. </example>
+          <example type="correct">Dám pekným inteligentným dubom. </example>
         </rule>
 
         <!-- mužský rod plurál akuzatív' -->
@@ -2397,7 +2182,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <example correction="pekné" type="incorrect">
             Vidím <marker>pekný</marker> inteligentné duby.
           </example>
-          <example type="correct"> Vidím pekné inteligentné duby. </example>
+          <example type="correct">Vidím pekné inteligentné duby. </example>
         </rule>
 
         <!-- mužský rod plurál lokál' -->
@@ -2419,7 +2204,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <example correction="pekných" type="incorrect">
             O <marker>pekné</marker> inteligentných duboch.
           </example>
-          <example type="correct"> O pekných inteligentných duboch. </example>
+          <example type="correct">O pekných inteligentných duboch. </example>
         </rule>
 
         <!-- mužský rod plurál inštrumentál' -->
@@ -2441,7 +2226,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <example correction="peknými" type="incorrect">
             S <marker>pekné</marker> inteligentnými dubmi.
           </example>
-          <example type="correct"> S peknými inteligentnými dubmi. </example>
+          <example type="correct">S peknými inteligentnými dubmi. </example>
         </rule>
       
     </rulegroup>
@@ -2467,7 +2252,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <example correction="pekná" type="incorrect">
             Aká <marker>pekné</marker> inteligentná žena.
           </example>
-          <example type="correct"> Aká pekná inteligentná žena. </example>
+          <example type="correct">Aká pekná inteligentná žena. </example>
         </rule>
 
         <!-- ženský rod singulár genitív' -->
@@ -2489,7 +2274,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <example correction="peknej" type="incorrect">
             Zamilovala sa do <marker>pekné</marker> inteligentnej ženy.
           </example>
-          <example type="correct"> Zamilovala sa do peknej inteligentnej ženy. </example>
+          <example type="correct">Zamilovala sa do peknej inteligentnej ženy. </example>
         </rule>
 
         <!-- ženský rod singulár datív' -->
@@ -2511,7 +2296,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <example correction="peknej" type="incorrect">
             Dám <marker>pekné</marker> inteligentnej žene.
           </example>
-          <example type="correct"> Dám peknej inteligentnej žene. </example>
+          <example type="correct">Dám peknej inteligentnej žene. </example>
         </rule>
 
         <!-- ženský rod singulár akuzatív' -->
@@ -2533,7 +2318,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <example correction="peknú" type="incorrect">
             Vidím <marker>pekné</marker> inteligentnú ženu.
           </example>
-          <example type="correct"> Vidím peknú inteligentnú ženu. </example>
+          <example type="correct">Vidím peknú inteligentnú ženu. </example>
         </rule>
 
         <!-- ženský rod singulár lokál' -->
@@ -2555,7 +2340,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <example correction="peknej" type="incorrect">
             O <marker>pekné</marker> inteligentnej žene.
           </example>
-          <example type="correct"> O peknej inteligentnej žene. </example>
+          <example type="correct">O peknej inteligentnej žene. </example>
         </rule>
 
         <!-- ženský rod singulár inštrumentál' -->
@@ -2577,7 +2362,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <example correction="peknou" type="incorrect">
             S <marker>pekné</marker> inteligentnou ženou.
           </example>
-          <example type="correct"> S peknou inteligentnou ženou. </example>
+          <example type="correct">S peknou inteligentnou ženou. </example>
         </rule>
 
         <!-- ženský rod plurál nominatív' -->
@@ -2599,7 +2384,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <example correction="pekné" type="incorrect">
             Aké <marker>pekný</marker> inteligentné ženy.
           </example>
-          <example type="correct"> Aké pekné inteligentné zeny. </example>
+          <example type="correct">Aké pekné inteligentné zeny. </example>
         </rule>
 
         <!-- ženský rod plurál genitív' -->
@@ -2621,7 +2406,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <example correction="pekných" type="incorrect">
             Zamilovala sa do <marker>pekné</marker> inteligentných žien.
           </example>
-          <example type="correct"> Zamilovala sa do pekných inteligentných žien. </example>
+          <example type="correct">Zamilovala sa do pekných inteligentných žien. </example>
         </rule>
 
         <!-- mužský rod plurál datív' -->
@@ -2643,7 +2428,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <example correction="pekným" type="incorrect">
             Dám <marker>pekné</marker> inteligentným ženám.
           </example>
-          <example type="correct"> Dám pekným inteligentným ženám. </example>
+          <example type="correct">Dám pekným inteligentným ženám. </example>
         </rule>
 
         <!-- mužský rod plurál akuzatív' -->
@@ -2665,7 +2450,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <example correction="pekné" type="incorrect">
             Vidím <marker>pekný</marker> inteligentné ženy.
           </example>
-          <example type="correct"> Vidím pekné inteligentné ženy. </example>
+          <example type="correct">Vidím pekné inteligentné ženy. </example>
         </rule>
 
         <!-- mužský rod plurál lokál' -->
@@ -2687,7 +2472,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <example correction="pekných" type="incorrect">
             O <marker>pekné</marker> inteligentných ženách.
           </example>
-          <example type="correct"> O pekných inteligentných ženách. </example>
+          <example type="correct">O pekných inteligentných ženách. </example>
         </rule>
 
         <!-- mužský rod plurál inštrumentál' -->
@@ -2709,7 +2494,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <example correction="peknými" type="incorrect">
             S <marker>pekné</marker> inteligentnými ženami.
           </example>
-          <example type="correct"> S peknými inteligentnými ženami. </example>
+          <example type="correct">S peknými inteligentnými ženami. </example>
         </rule>
       
     </rulegroup>
@@ -2735,7 +2520,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <example correction="pekné" type="incorrect">
             Aké <marker>pekný</marker> inteligentné dievča.
           </example>
-          <example type="correct"> Aké pekné inteligentné dievča. </example>
+          <example type="correct">Aké pekné inteligentné dievča. </example>
         </rule>
 
         <!-- stredný rod singulár genitív' -->
@@ -2757,7 +2542,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <example correction="pekného" type="incorrect">
             Zamilovala sa do <marker>pekné</marker> inteligentného dievčaťa.
           </example>
-          <example type="correct"> Zamilovala sa do pekného inteligentného dievčaťa. </example>
+          <example type="correct">Zamilovala sa do pekného inteligentného dievčaťa. </example>
         </rule>
 
         <!-- stredný rod singulár datív' -->
@@ -2779,7 +2564,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <example correction="peknému" type="incorrect">
             Dám <marker>pekné</marker> inteligentnému dievčaťu.
           </example>
-          <example type="correct"> Dám peknému inteligentnému dievčaťu. </example>
+          <example type="correct">Dám peknému inteligentnému dievčaťu. </example>
         </rule>
 
         <!-- stredný rod singulár akuzatív' -->
@@ -2801,7 +2586,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <example correction="pekné" type="incorrect">
             Vidím <marker>pekný</marker> inteligentné dievča.
           </example>
-          <example type="correct"> Vidím pekné inteligentné dievča. </example>
+          <example type="correct">Vidím pekné inteligentné dievča. </example>
         </rule>
 
         <!-- stredný rod singulár lokál' -->
@@ -2823,7 +2608,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <example correction="peknom" type="incorrect">
             O <marker>pekné</marker> inteligentnom dievčati.
           </example>
-          <example type="correct"> O peknom inteligentnom dievčati. </example>
+          <example type="correct">O peknom inteligentnom dievčati. </example>
         </rule>
 
         <!-- stredný rod singulár inštrumentál' -->
@@ -2845,7 +2630,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <example correction="pekným" type="incorrect">
             S <marker>pekné</marker> inteligentným dievčaťom.
           </example>
-          <example type="correct"> S pekným inteligentným dievčaťom. </example>
+          <example type="correct">S pekným inteligentným dievčaťom. </example>
         </rule>
 
         <!-- stredný rod plurál nominatív' -->
@@ -2867,7 +2652,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <example correction="pekné" type="incorrect">
             Aké <marker>pekný</marker> inteligentné dievčatá.
           </example>
-          <example type="correct"> Aké pekné inteligentné dievčatá. </example>
+          <example type="correct">Aké pekné inteligentné dievčatá. </example>
         </rule>
 
         <!-- stredný rod plurál genitív' -->
@@ -2889,7 +2674,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <example correction="pekných" type="incorrect">
             Zamilovala sa do <marker>pekné</marker> inteligentných dievčat.
           </example>
-          <example type="correct"> Zamilovala sa do peknéých inteligentných dievčat. </example>
+          <example type="correct">Zamilovala sa do peknéých inteligentných dievčat. </example>
         </rule>
 
         <!-- stredný rod plurál datív' -->
@@ -2911,7 +2696,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <example correction="pekným" type="incorrect">
             Dám <marker>pekné</marker> inteligentným dievčatám.
           </example>
-          <example type="correct"> Dám pekným inteligentným dievčatám. </example>
+          <example type="correct">Dám pekným inteligentným dievčatám. </example>
         </rule>
 
         <!-- stredný rod plurál akuzatív' -->
@@ -2933,7 +2718,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <example correction="pekné" type="incorrect">
             Vidím <marker>pekný</marker> inteligentné dievčatá.
           </example>
-          <example type="correct"> Vidím pekné inteligentné dievčatá. </example>
+          <example type="correct">Vidím pekné inteligentné dievčatá. </example>
         </rule>
 
         <!-- stredný rod plurál lokál' -->
@@ -2955,7 +2740,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <example correction="pekných" type="incorrect">
             O <marker>pekné</marker> inteligentných dievčatách.
           </example>
-          <example type="correct"> O pekných inteligentných dievčatách. </example>
+          <example type="correct">O pekných inteligentných dievčatách. </example>
         </rule>
 
         <!-- stredný rod plurál inštrumentál' -->
@@ -2977,7 +2762,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
           <example correction="peknými" type="incorrect">
             S <marker>pekné</marker> inteligentnými dievčatami.
           </example>
-          <example type="correct"> S peknými inteligentnými dievčatami. </example>
+          <example type="correct">S peknými inteligentnými dievčatami. </example>
         </rule>
       
     </rulegroup>
