@@ -129,7 +129,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 
     <!-- GRAMMATICA AGGETTIVI - GR_01 -->
     <category id="CAT1" name="Grammatica - Aggettivi">
-        <rulegroup name="uso corretto" id="GR_01_001" default="temp_off">
+        <rulegroup name="uso corretto" id="GR_01_001">
             <!-- PB003 + -->
             <!-- meglio -->
             <rule>
@@ -172,7 +172,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 
     <!-- GRAMMATICA ARTICOLI - GR_02 -->
     <category id="CAT2" name="Grammatica - Articoli">
-        <rulegroup name="uso corretto" id="GR_02_001" default="temp_off">
+        <rulegroup name="uso corretto" id="GR_02_001">
             <!-- la -->
             <rule>
                 <pattern>
@@ -400,7 +400,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
     <category id="CAT4" name="Grammatica - Frase">
         <!-- TO DO	<rulegroup name="altri elementi" id="GR_05_001">
             </rulegroup> -->
-        <rulegroup name="struttura" id="GR_05_002" default="temp_off">
+        <rulegroup name="struttura" id="GR_05_002">
             <!-- non iniziare la frase con una congiunzione -->
             <rule>
                 <pattern>
@@ -839,7 +839,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example correction=''>non <marker>sono vengono</marker> preparate con le tecnologie e le infrastrutture adatte</example>
         </rule>
         
-	<rulegroup name="concordanza tempi delle coordinate" id="GR_10_001" default="temp_off">
+	<rulegroup name="concordanza tempi delle coordinate" id="GR_10_001">
 <!-- PB007 + -->	    
             <!-- IND PRESENTE -->
 	    <rule>
@@ -1480,7 +1480,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>Puoi vederlo ogni mattina <marker>od ogni</marker> sera.</example>
             </rule>
         </rulegroup>
-        <rulegroup name="ripetizioni" id="ST_03_002" default="temp_off">
+        <rulegroup name="ripetizioni" id="ST_03_002">
             <rule>
                 <pattern>
 <!-- PB001 + -->
@@ -1681,7 +1681,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>Dovrebbe andare a messa più spesso.</example>
                 <example>Esperienze diverse portano a scelte diverse.</example>
             </rule>
-            <rule default="temp_off">
+            <rule>
                 <!-- "a" + un sostantivo plurale -->
                 <pattern>
                     <token>a</token>
@@ -1693,7 +1693,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>Di esempi ce ne sono a volontà.</example>
                 <example correction="ha piedi" type="triggers_error" reason="to be fixed!">Preferirei andare <marker>a piedi</marker> che stare qua ad aspettare il bus.</example>
             </rule>
-            <rule default="temp_off" name="suggerisci sempre lo scambio di 'a' con 'ha'" id="ER_01_001a">
+            <rule default="off" name="suggerisci sempre lo scambio di 'a' con 'ha'" id="ER_01_001a">
                 <pattern>
                     <token>a</token>
                 </pattern>
@@ -1757,7 +1757,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="Hanno fatto"><marker>Anno fatto</marker> i compiti?</example>
                 <example>Non conoscevo Tom l' anno scorso.</example>
             </rule>
-            <rule default="off">
+            <rule>
                 <!-- "anno" + articolo -->
                 <pattern>
                     <token>anno</token>
@@ -1769,7 +1769,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <!--In che anno sei nato?-->
             </rule>
         </rulegroup>
-        <rule name="scambio di 'o' ed 'ho'" id="ER_01_004" default="off">
+        <rule name="scambio di 'o' ed 'ho'" id="ER_01_004">
             <!-- "o" + un participio passato -->
             <pattern>
                 <token>o</token>
@@ -1808,7 +1808,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="alla mia mamma">Ho dato un bacio <marker>ala mia mamma</marker>.</example>
             </rule>
         </rulegroup>
-        <rulegroup name="scambio di 'la' e 'al'" id="ER_02_002" default="temp_off">
+        <rulegroup name="scambio di 'la' e 'al'" id="ER_02_002">
             <rule>
                 <!-- "la" + sostantivo maschile -->
                 <pattern>
@@ -1866,7 +1866,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="la tua">Ho mangiato <marker>al tua</marker> merenda.</example>
             </rule>
         </rulegroup>
-        <rulegroup name="scambio di 'li' e 'il'" id="ER_02_003" default="temp_off">
+        <rulegroup name="scambio di 'li' e 'il'" id="ER_02_003">
             <rule>
                 <!-- "li" + sostantivo maschile -->
                 <pattern>
