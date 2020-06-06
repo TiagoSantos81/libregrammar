@@ -1637,7 +1637,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="nove"><marker>9</marker> volte</example>
             </rule>
         </rulegroup>
-        <rulegroup name="in cifre se minori di 100" id="ST_04_002" default="off"><!-- too picky -->
+        <rulegroup name="in cifre se minori di 100" id="ST_04_002" default="on"><!-- too picky -->
             <antipattern>
                 <token regexp="yes">\d+</token>
                 <token regexp="yes">[:\.]</token>
@@ -1650,7 +1650,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 					<token><exception regexp="yes">Gennaio|Febbario|Aprile|Marzo|Maggio|Giugno|Luglio|Agosto|Settembre|Ottobre|Novembre|Dicembre|/</exception></token>
 <!-- 3610360 - -->
                 </pattern>
-                <message>Cambiare con il corrispondente in cifre</message>
+                <message>I numeri inferiori a 100 devono essere scritti per intero.</message>
+                <short>Cambiare con il corrispondente in cifre</short>
                 <example correction=""><marker>99</marker> volte</example>
                 <example><marker>novantanove</marker> volte</example>
                 <example>7:30</example>
@@ -1697,7 +1698,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <pattern>
                     <token>a</token>
                 </pattern>
-                <message>Forse volevi dire <suggestion>ha</suggestion>?</message>
+                <message>Conferma che vuoi dire <suggestion>ha</suggestion>.</message>
                 <example correction="ha">Piero <marker>a</marker> un cane.</example>
                 <example>Piero <marker>ha</marker> un cane.</example>
             </rule>
@@ -1740,7 +1741,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <pattern>
                     <token>ai</token>
                 </pattern>
-                <message>Forse volevi dire <suggestion>hai</suggestion>?</message>
+                <message>Conferma che vuoi dire <suggestion>hai</suggestion>.</message>
                 <url>https://it.wiktionary.org/wiki/hai</url>
                 <example correction="hai">Piero, tu <marker>ai</marker> un cane?</example>
                 <example>Piero, tu <marker>hai</marker> un cane?</example>

@@ -40037,27 +40037,6 @@ steenwijk;Steenwijk
 				<message>Schrijf liever: <suggestion><match no="2" regexp_match="representanten$" regexp_replace="representantes"/></suggestion> Of laat \1 achterwege.</message>
 				<example correction="representantes">We spreken de <marker>vrouwelijke representanten</marker>.</example>
 			</rule>
-
-		<rulegroup id="GAAT_GISTEREN" name="verkeerde werkwoordvorm" default="on">
-		<!-- reversal of f5e0909 and improvement-->
-			<antipattern><token postag="SENT_START" skip="-1"/><token postag="WKW:VTD:ONV"/></antipattern>
-			<rule>
-				<pattern>
-						<token postag_regexp="yes" postag="WKW:TGW:[13]EP.*"><exception postag_regexp="yes" postag="WKW:VLT.*"/></token>
-					<token regexp="yes">eergisteren|gisteren</token>
-				</pattern>
-				<message>U bedoelt vast <suggestion><match no="1" postag_regexp="yes" postag="WKW:VLT:1EP.*"/> \2</suggestion>.</message>
-				<example correction="verruilde gisteren">Dominee <marker>verruilt gisteren</marker> zijn kerk.</example>
-			</rule>
-			<rule>
-				<pattern>
-						<token postag_regexp="yes" postag="WKW:TGW:INF.*"><exception postag_regexp="yes" postag="WKW:VLT:INF.*"/></token>
-					<token regexp="yes">eergisteren|gisteren</token>
-				</pattern>
-				<message>U bedoelt vast <suggestion><match no="1" postag_regexp="yes" postag="WKW:VLT:INF.*"/> \2</suggestion>.</message>
-				<example correction="verruilden gisteren">Dominees <marker>verruilen gisteren</marker> hun kerk.</example>
-			</rule>
-		</rulegroup>
 	
 			<rule>
 				<pattern><token inflected="yes">vrouwelijk</token><token regexp="yes" postag_regexp="yes" postag="ZNW:.*">.*laborant</token></pattern>
@@ -40361,6 +40340,27 @@ steenwijk;Steenwijk
 		
 		</rulegroup>
 		
+		<rulegroup id="GAAT_GISTEREN" name="verkeerde werkwoordvorm" default="on">
+		<!-- reversal of f5e0909 and improvement-->
+			<antipattern><token postag="SENT_START" skip="-1"/><token postag="WKW:VTD:ONV"/></antipattern>
+			<rule>
+				<pattern>
+						<token postag_regexp="yes" postag="WKW:TGW:[13]EP.*"><exception postag_regexp="yes" postag="WKW:VLT.*"/></token>
+					<token regexp="yes">eergisteren|gisteren</token>
+				</pattern>
+				<message>U bedoelt vast <suggestion><match no="1" postag_regexp="yes" postag="WKW:VLT:1EP.*"/> \2</suggestion>.</message>
+				<example correction="verruilde gisteren">Dominee <marker>verruilt gisteren</marker> zijn kerk.</example>
+			</rule>
+			<rule>
+				<pattern>
+						<token postag_regexp="yes" postag="WKW:TGW:INF.*"><exception postag_regexp="yes" postag="WKW:VLT:INF.*"/></token>
+					<token regexp="yes">eergisteren|gisteren</token>
+				</pattern>
+				<message>U bedoelt vast <suggestion><match no="1" postag_regexp="yes" postag="WKW:VLT:INF.*"/> \2</suggestion>.</message>
+				<example correction="verruilden gisteren">Dominees <marker>verruilen gisteren</marker> hun kerk.</example>
+			</rule>
+		</rulegroup>
+
 		<rulegroup id="SEKSE_LIJK" name="Overbodig gebruik van mannelijk of vrouwelijk">
 			<rule>
 				<pattern>
