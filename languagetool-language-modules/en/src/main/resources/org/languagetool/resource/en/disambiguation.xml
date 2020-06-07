@@ -197,6 +197,36 @@
         <example type="ambiguous" inputform="six[six/CD,six/JJ,six/NN]" outputform="six[six/CD]">It's ten past <marker>six</marker>.</example>
     </rule>
 
+  <rulegroup id="MD_VB_PRP" name="Verb after modal verb">
+    <!-- Created by Tiago F. Santos, 2020-06-07 -->
+    <rule>
+        <pattern>
+                <token postag="MD"/>
+              <marker>
+              <and>
+                <token postag="V.+" postag_regexp='yes'/>
+                <token postag="N.+" postag_regexp='yes'/>
+              </and>
+              </marker>
+                <token regexp='yes'>me|you|h(?:im|er)|it|us|them</token>
+        </pattern>
+        <disambig action="filter" postag="V.+"/>
+    </rule>
+    <rule>
+        <pattern>
+                <token regexp='yes'>am|is|are|w(?:as|ere)|d(?:id|o(?:es)?)|ha(?:s|ve|d)</token>
+              <marker>
+              <and>
+                <token postag="V.+" postag_regexp='yes'/>
+                <token postag="N.+" postag_regexp='yes'/>
+              </and>
+              </marker>
+                <token regexp='yes'>me|you|h(?:im|er)|it|us|them</token>
+        </pattern>
+        <disambig action="filter" postag="V.+"/>
+    </rule>
+  </rulegroup>
+
     <rule id="lost_opportunity" name="Disambiguate 'lost opportunity'">
         <pattern>
                 <token postag="JJ">lost</token>
@@ -4596,7 +4626,13 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <example type="untouched">... and her will featured regularly in the lawyers' debates.</example>
         <example type="ambiguous" inputform="might[might/MD,might/NN:U]" outputform="might[might/MD]">... and we <marker>might</marker> do this soon.</example>
     </rule>
-    <rule name="PDT/DT -&gt; DT" id="PDT_DT">
+  <rulegroup name="PDT/DT -&gt; DT" id="PDT_DT">
+    <rule>
+        <antipattern>
+            <token postag="MD"/>
+            <token>all</token>
+            <token postag_regexp="yes" postag="V.+"/>
+        </antipattern>
         <pattern>
             <marker>
                 <and>
@@ -4611,6 +4647,17 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <example type="untouched">All the people.</example>
         <example type="untouched">Incorrect grammar. …and put <marker>the all</marker> effort on the other tasks.</example>
     </rule>
+    <rule>
+        <pattern>
+            <token postag="MD"/>
+          <marker>
+            <token>all</token>
+          </marker>
+            <token postag_regexp="yes" postag="V.+"/>
+        </pattern>
+        <disambig postag="PDT"/>
+    </rule>
+  </rulegroup>
     <rule name="PDT/DT -&gt; PDT" id="PDT_PDT">
         <pattern>
             <marker>
