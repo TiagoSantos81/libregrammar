@@ -51,7 +51,7 @@ public class PortugalPortuguese extends Portuguese {
   }
 
   @Override
-  public int getPriorityForId(String id) {
+  protected int getPriorityForId(String id) {
     switch (id) {
       case "PT_COMPOUNDS_POST_REFORM":              return  1;
       case "PORTUGUESE_POS_AGREEMENT_REPLACE_RULE": return -8;

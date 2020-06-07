@@ -1537,6 +1537,15 @@ title="Easy editing stylesheet" ?>
     <!--token min='0' postag='(?:A..|Z.)C.+' postag_regexp='yes'-->
           <token postag='(?:[NZ].|A..)MS.+' postag_regexp='yes'/>
       </antipattern>
+<!-- MARCOAGPINTO 2020-06-06 *START* -->
+<!-- "Somente no meio da década de 1990 é que o tecido 100% poliéster começou a ser utilizado." -->
+<!-- "Não esquecer o genocídio arménio e os seus 1,5 milhão de mortos." -->
+      <antipattern>
+		  <token negate="yes" regexp="yes">seus|teus|vossos|nossos|os|aos|dos</token>	  
+		  <token regexp='yes'>\d.+</token>	  
+		  <token postag='NCMS000' postag_regexp='no'/>		  
+      </antipattern>
+<!-- MARCOAGPINTO 2020-06-06 *END* -->
       <pattern>
           <token negate='yes' regexp='yes'>&hifen;</token>
         <marker>
@@ -1633,6 +1642,26 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes' min='0'>&adverbios_de_intensidade;</token>
           <token postag='(?:D[ADIP].|NC|A..|Z.)[FC]P.+' postag_regexp='yes'/>
       </antipattern>
+<!-- MARCOAGPINTO 2020-06-06 *START* -->
+<!-- "5 aceitaram a proposta australiana e 3 prefeririam o paralelo 35° Sul." -->
+      <antipattern>
+		  <token postag='DA0MS0' postag_regexp='no'/>
+		  <token postag='NCMS000' postag_regexp='no'/>		  
+		  <token regexp='yes'>\d.+</token>
+      </antipattern>
+<!-- MARCOAGPINTO 2020-06-06 *END* -->
+<!-- MARCOAGPINTO 2020-06-06 *START* -->
+<!-- "Para saber mais comandos de IRC, consulte o artigo sobre IRC." -->
+<!-- "Para saber menos comandos de IRC, consulte o artigo sobre IRC." -->
+<!-- "Para saber mais regras de IRC, consulte o artigo sobre IRC." -->
+<!-- "Para saber menos regras de IRC, consulte o artigo sobre IRC." -->
+      <antipattern>
+		  <token postag='CC|SPS00' postag_regexp='yes'/>		  
+		  <token postag='NCM[SP]000' postag_regexp='yes'/>
+		  <token postag='RG|NCMN000' postag_regexp='yes'/>		  
+		  <token postag='NC[CFM]P000' postag_regexp='yes'/>		  
+      </antipattern>
+<!-- MARCOAGPINTO 2020-06-06 *END* -->
       <pattern>
           <token negate='yes' regexp='yes'>e|ou|&hifen;</token>
         <marker>
@@ -1933,6 +1962,14 @@ title="Easy editing stylesheet" ?>
 		  <token postag='NCMS000' postag_regexp='no'/>
       </antipattern>
 <!-- MARCOAGPINTO 2020-06-03 *END* -->
+<!-- MARCOAGPINTO 2020-06-06 *START* -->
+<!-- "Não façais aos outros o que não quereis que façam convosco." -->
+      <antipattern>
+		  <token regexp='yes'>aos|os|a|e</token>
+		  <token postag='DI0MP0' postag_regexp='no'/>		  
+		  <token postag='DA0MS0' postag_regexp='no'/>		  	  
+      </antipattern>
+<!-- MARCOAGPINTO 2020-06-06 *END* -->
       <pattern>
           <unify negate="yes">
             <feature id="number"/>
@@ -12373,6 +12410,14 @@ title="Easy editing stylesheet" ?>
           <token>.</token>
           <token><match no='0'/></token>
       </antipattern>
+<!-- MARCOAGPINTO 2020-06-07 *START* -->
+<!-- "Homo sapiens sapiens" -->
+      <antipattern>
+		  <token>Homo</token>
+          <token>sapiens</token>
+          <token>sapiens</token>	  	  
+      </antipattern>
+<!-- MARCOAGPINTO 2020-06-07 *END* -->	  
       <pattern>
           <token>
             <exception regexp='yes'>&hifen;</exception></token>
@@ -30453,6 +30498,20 @@ TODO Write better examples
     <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
     <short>Pronome redundante</short>
     <rule>
+<!-- MARCOAGPINTO 2020-06-07 *START* -->
+<!-- ! or ? or . at the end -->
+      <antipattern>
+          <token>eu</token>
+          <token postag_regexp="yes" postag="V...1S.+"/>	  
+		  <token regexp='yes'>\.|!|\?</token>
+      </antipattern>
+<!-- after a , -->
+      <antipattern>
+		  <token>,</token>
+          <token spacebefore='yes'>eu</token>
+          <token postag_regexp="yes" postag="V...1S.+"/>	  		  
+      </antipattern>
+<!-- MARCOAGPINTO 2020-06-07 *END* -->
       <pattern>
           <token>eu</token>
           <token postag_regexp="yes" postag="V...1S.+">
@@ -30462,6 +30521,20 @@ TODO Write better examples
       <example correction="quero">O que <marker>eu quero</marker> é casar.</example>
     </rule>
     <rule>
+<!-- MARCOAGPINTO 2020-06-07 *START* -->
+<!-- ! or ? or . at the end -->
+      <antipattern>
+          <token>nós</token>
+          <token postag_regexp="yes" postag="V...1P.+"/>	  
+		  <token regexp='yes'>\.|!|\?</token>
+      </antipattern>
+<!-- after a , -->
+      <antipattern>
+		  <token>,</token>
+          <token spacebefore='yes'>nós</token>
+          <token postag_regexp="yes" postag="V...1P.+"/>	  		  
+      </antipattern>
+<!-- MARCOAGPINTO 2020-06-07 *END* -->
       <pattern>
           <token>nós</token>
           <token postag_regexp="yes" postag="V...1P.+">
@@ -32295,7 +32368,9 @@ TODO Write better examples
       <message>Linguagem informal. Considere as alternativas.</message>
         <suggestion><match no='1' postag='V.+' postag_regexp='yes'>pensar</match> que</suggestion>
         <suggestion><match no='1' postag='V.+' postag_regexp='yes'>julgar</match> que</suggestion>
-      <example correction='penso que|julgo que'>Eu <marker>acho que</marker> devemos vencer.</example>
+        <suggestion><match no='1' postag='V.+' postag_regexp='yes'>acreditar</match> que</suggestion>
+		<suggestion><match no='1' postag='V.+' postag_regexp='yes'>supor</match> que</suggestion>
+      <example correction='penso que|julgo que|acredito que|suponho que'>Eu <marker>acho que</marker> devemos vencer.</example>
     </rule>
     <rule id='BASEIA-SE_EM' name="Tem por base" default='off'>
     <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
