@@ -12410,14 +12410,6 @@ title="Easy editing stylesheet" ?>
           <token>.</token>
           <token><match no='0'/></token>
       </antipattern>
-<!-- MARCOAGPINTO 2020-06-07 *START* -->
-<!-- "Homo sapiens sapiens" -->
-      <antipattern>
-		  <token>Homo</token>
-          <token>sapiens</token>
-          <token>sapiens</token>	  	  
-      </antipattern>
-<!-- MARCOAGPINTO 2020-06-07 *END* -->	  
       <pattern>
           <token>
             <exception regexp='yes'>&hifen;</exception></token>
@@ -12456,6 +12448,8 @@ title="Easy editing stylesheet" ?>
       <example>Bateu o recorde na prova dos cem metros, muito antes de ter considerado competir nos quatrocentos metros barreiras.</example>
       <example>Trabalho é trabalho, conhaque é conhaque.</example>
       <example>Vamos analisar, facto por facto.</example>
+      <example>Homo sapiens sapiens</example>
+      <example>A espécie de hominideo a que a humanindade pertence é a Homo sapiens sapiens</example>
     </rule>
 
     <rule id='REPEATED_WORDS_3X' name="Palavras repetidas (3x)" default='on'>
