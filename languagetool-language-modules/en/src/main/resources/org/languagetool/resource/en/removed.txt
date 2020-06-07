@@ -87,6 +87,10 @@ configuration	configuration	NN
 consensus	consensus	NN
 controlling	controlling	NNS
 controllership	controllership	NN
+# cop as verb is also informal but unusual
+cop	cop	VB
+cop	cop	VBP
+cops	cop	VBZ
 coud	coud	JJ
 counselling	counselling	NNS
 course	course	JJ
@@ -173,6 +177,7 @@ hammer	ham	JJR
 handling	handling	NNS
 hatchling	hatchling	NNS
 header	head	JJR
+helps	help	VB
 high-quality	high-quality	NN:UN
 hilly	hilly	RB
 hip-hop	hip-hop	NN
@@ -449,6 +454,9 @@ weaselly	weaselly	RB
 weeds	weeds	NN
 went	wend	VBD
 went	wend	VBN
+while	while	VB
+while	while	VBP
+whiles	while	VBZ
 wiggly	wiggly	RB
 wired	wired	NN
 wireds	wired	NNS
@@ -456,6 +464,11 @@ word	word	NN:UN
 wordly	wordly	RB
 worker	work	JJR
 workwear	workwear	NN
+worst	worst	VB
+worst	worst	VBP
+worsts	worst	VBP
+worsted	worst	VBD
+worsted	worst	VBN
 wot	wit	VBG
 wrapper	wrap	JJR
 wrought	work	VBD
