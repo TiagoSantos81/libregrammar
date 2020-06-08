@@ -114,12 +114,20 @@ public class EnglishAdjectiveNounConfusionRule extends Rule {
       regex("shots?")
     ),
     Arrays.asList(
+      token("intelligence"),
+      regex("(operator|officer)s?")
+    ),
+    Arrays.asList(
       token("pain"),
       regex("treatments?")
     ),
     Arrays.asList(
       token("truth"),
       regex("(movement|teller)s?")
+    ),
+    Arrays.asList(
+      token("violence"),
+      regex("problems?")
     )
   );
 

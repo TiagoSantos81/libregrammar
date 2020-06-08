@@ -84,6 +84,11 @@ public class EnglishVerbNounConfusionRule extends Rule {
       regex("code|gift")
     ),
     Arrays.asList(
+      token("wh(?:at|en|ere|ich|o|y)"),
+      regex("can(?:not)?|[wc]ould|should|m(?:ight|ust|ay)|did|will|It?|[Yy]ou|[Ss][Hh]e|[Tt]hey|[Ww]e"),
+      posRegex("N.+")
+    ),
+    Arrays.asList(
       regex("write|read"),
       regex("access|protection")
     ),
