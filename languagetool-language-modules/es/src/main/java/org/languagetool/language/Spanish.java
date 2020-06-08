@@ -102,15 +102,19 @@ public class Spanish extends Language implements AutoCloseable{
   @Override
   public List<Rule> getRelevantRules(ResourceBundle messages, UserConfig userConfig, Language motherTongue, List<Language> altLanguages) throws IOException {
     return Arrays.asList(
-            new CommaWhitespaceRule(messages),
+            new CommaWhitespaceRule(messages,
+                Example.wrong("En su opinión<marker> ,</marker> no era verdad."),
+                Example.fixed("En su opinión<marker>,</marker> no era verdad.")),
             new DoublePunctuationRule(messages),
             new SpanishUnpairedBracketsRule(messages),
             new QuestionMarkRule(messages),
             new LongSentenceRule(messages, userConfig, -1, true),
             new LongParagraphRule(messages, this, userConfig),
             new MorfologikSpanishSpellerRule(messages, this, userConfig, altLanguages),
-            new UppercaseSentenceStartRule(messages, this),
-            new WordRepeatRule(messages, this),
+            new UppercaseSentenceStartRule(messages, this, 
+                Example.wrong("Venta al público. <marker>ha</marker> subido mucho."),
+                Example.fixed("Venta al público. <marker>Ha</marker> subido mucho.")),
+            new SpanishWordRepeatRule(messages, this),
             new MultipleWhitespaceRule(messages, this),
             new SentenceWhitespaceRule(messages),
             new WhiteSpaceAtBeginOfParagraph(messages),
@@ -172,9 +176,10 @@ public class Spanish extends Language implements AutoCloseable{
       case "TYPOGRAPHY": return 10;
       case "HALLA_HAYA": return 10;
       case "VALLA_VAYA": return 10;
+      case "ES_SIMPLE_REPLACE": return 10;
       case "ES_WIKIPEDIA_COMMON_ERRORS": return -10;
       case "EL_TILDE": return -10;
-      case "PREPOSICION_VERBO": return -20;
+      case "PREP_VERB": return -20;
       case "SUBJUNTIVO_FUTURO": return -30;
       case "SUBJUNTIVO_PASADO": return -30;
       case "SUBJUNTIVO_PASADO2": return -30;
