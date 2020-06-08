@@ -21,7 +21,7 @@ License along with this library; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 -->
 <!DOCTYPE rules [
-<!ENTITY apostrophe "['’]">
+<!ENTITY apostrophe "['’´]">
 <!ENTITY hyphen "(?:[-‑])">
 <!ENTITY tabla_periodica "(?:[UVW]|C[adeflmnorsu]?|N[abdehiop]?|P[abdmortu]?|S[bcegimnr]?|T[abcehilms]|A[cglmrstu]|R[abefghnu]|B[aehikr]?|H[efgos]?|M[cdgnot]|F[elmr]?|L[airuv]|D[bsy]|E[rsu]|G[ade]|I[nr]?|O[gs]?|Z[nr]|Kr?|Yb?|Xe|[₁₂₃₄₅₆₇₈₉₀])">
 <!ENTITY adverbio_lugar "detr&#225;s|delante|debajo|encima|cerca">
@@ -35,7 +35,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 <!ENTITY meses_ano_may "Enero|Febrero|Marzo|Abril|Mayo|Junio|Julio|Agosto|Sep?tiembre|Octubre|Noviembre|Diciembre">
 <!ENTITY meses_ano "enero|febrero|marzo|abril|mayo|junio|julio|agosto|sep?tiembre|octubre|noviembre|diciembre">
 <!ENTITY estaciones_ano "primavera|verano|otoño|invierno">
-<!ENTITY unidades "AM|PM|am|pm|mm|cm|dm|m|km|h|min|s|seg|g|kg|Hz|[kM]Hz|°[FC]|pts|ptes|[£€$]|(mm|cm|dm|m|km)[23²³]">
+<!ENTITY unidades "AM|PM|am|pm|m?[lL]|mm|cm|dm|m|km|h|min|s|seg|g|kg|Hz|[kM]Hz|°[FC]|pts|ptes|[£€$]|(mm|cm|dm|m|km)[23²³]">
+<!--TODO: check case of abbreviations-->
 <!ENTITY abreviaturas "Dir|Dr|Dra|Abg|acept|adm|admón|afma|afmo|Alfz|Almte|ap|apdo|aprox|Arq|art|Arz|atta|atte|atto|av|avd|avda|Barna|Bco|Bibl|Bma|Bmo|Bo|Brig|Bta|Bto|caj|cap|Cdad|cent|cf|cfr|cgo|cje|cl|Cmdt|Cmte|Cnel|col|Comod|Comp|Comte|Contralmte|coord|cp|crec|cta|Cte|cts|ctv|ctvo|cént|Cía|cód|cónf|cónfr|dcha|dcho|depto|diag|dicc|doc|dpto|dto|dupdo|ed|edit|edo|ef|ej|Emmo|entlo|etc|excl|Excma|Excmo|fasc|fca|Fdo|fig|fol|Fr|fra|féc|Gdor|Gdora|Gob|Gral|Hna|Hno|ib|ibíd|Il|Ilma|Ilmo|Iltre|imp|impr|impto|incl|Ing|Inst|izda|izdo|izq|izqda|izqdo|Jhs|Lcda|Lcdo|Lda|Ldo|Lic|Ltd|Ltda|Ltdo|Magfca|Magfco|Mons|mr|ms|máx|mín|nro|núm|Ob|Pat|Pbro|pdo|Pdta|Pdte|pg|pl|plza|Pnt|ppal|pral|Presb|Prof|prov|pról|pza|pág|párr|Rda|Rdo|reg|Rep|Rev|Rte|Rvd|Rvda|Rvdma|Rvdmo|Rvdo|Sdad|Sgto|sig|Soc|Sr|Sra|Srs|Sres|Sras|Srta|Sta|Sto|tel|teléf|tfno|trad|Tte|tít|Ud|Uds|Univ|Valmte|Vd|Vda|Vdo|Vds|vid|vol|vs|vta|vto|Xto|íd">
 <!ENTITY context_te "abedul|alpiste|arroz|banana|boldo|buganvilia|burbujas|burro|calidad|campana|canela|castaño|clavo|compost|congorosa|damiana|diente|epazote|equinácea|eucalipto|fenogreco|flor|fourche|frambuesa|frutas|frutos|ginkgo|herbalife|hibisco|hierbabuena|hierbas|hinojo|hums|jamaica|jazmín|jengibre|jesuitas|kava|kombucha|laurel|lavanda|lechuga|limón|lino|manzana|manzanilla|matcha|melisa|menta|montaña|naranja|navidad|neem|nuez|níspero|oolong|ortiga|orégano|pasiflora|perejil|piña|quina|roca|romero|rooibos|rosas|ruda|sabor|sabores|salón|sauco|semilla|suerte|tilo|tomillo|toronjil|uva|vainilla|valeriana|verbena|walamo|wereke|yerba|yerbabuena|yuja|zacate|zanahoria|zapote|zarzaparrilla|zen|zorrillo">
 <!ENTITY exceptions_Paris "flecha|arco|Filoctetes|Heracles|Héracles|Hércules|Apolo|talón|Aquiles|Aquileo|Homero|Ifigenia|Aulis|mitológico|mitología|mito|argivo|Afrodita|Helena|Elena|Menelao|Héctor|Troya|Atena|Atenea|Atenas|Esparta|príncipe|troyano|Himeneo|juicio">
@@ -866,6 +867,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="línea">Le espera en <marker>linea</marker></example>
                 <example correction="sólido">De vapor a <marker>solido</marker>.</example>
                 <example correction="rayas">Con <marker>rallas</marker> blancas.</example>
+                <example correction="París">Nos vamos a <marker>parís</marker>.</example>
                 <example>El grupo PPE-DE solicita que se retire.</example>
                 <example>Vivió en Echo Park.</example>
             </rule>
@@ -1021,7 +1023,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <pattern>
                     <token postag="NCMS.*" postag_regexp="yes"/>
                     <marker>
-                        <token><exception regexp="yes">solicito|indico|vienes</exception></token>
+                        <token><exception regexp="yes">solicito|indico|vienes|verifico</exception></token>
                     </marker>
                 </pattern>
                 <filter class="org.languagetool.rules.es.ConfusionCheckFilter" args="form:\2 postag:A.* gendernumber_from:1"/>
@@ -1034,6 +1036,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>Pero al mismo tiempo indico que no puede ser</example>
                 <example>En su lugar decimos esto.</example>
                 <example>El semáforo indica la luz amarilla.</example>
+                <example>Con gusto verifico su informe.</example>
             </rule>
             <rule>
                 <!-- de forma integra -->
@@ -1112,7 +1115,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <rule>
                 <!-- ha sido más explicito -->
                 <pattern>
-                    <token inflected="yes" regexp="yes">estar|ser|hacer</token>
+                    <token inflected="yes" regexp="yes">estar|ser|hacer<exception postag="_GN_MS"/></token>
                     <token min="0" max="4" postag="RG|LOC_ADV" postag_regexp="yes"/>
                     <marker>
                         <token><exception postag="RG|LOC_ADV|[NA].*" postag_regexp="yes"/></token>
@@ -1125,6 +1128,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="explícito">Fue <marker>explicito</marker>.</example>
                 <example correction="explícito">Fue mucho más <marker>explicito</marker>.</example>
                 <example>Ella es demasiado baja.</example>
+                <example>En el estado opera el nepotismo.</example>
             </rule>
         </rulegroup>
         <rule id="DIACRITICS_CONDICIONAL" name="secundaria/secundaría">
@@ -1367,7 +1371,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <marker>
                         <and>
                             <token postag="VMIP1S0" regexp="yes">.+o<exception postag="V...3.*|C.*|SP.*|V.G.*|[ANCR].*" postag_regexp="yes"/></token>
-                            <token inflected="yes" regexp="yes">.+ar</token>
+                            <token inflected="yes" regexp="yes">.+ar<exception inflected="yes" regexp="yes">.+ir</exception></token>
                         </and>
                     </marker>
                 </pattern>
@@ -1379,6 +1383,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>El jueves hablo con él.</example>
                 <example>Mañana hablo con ella.</example>
                 <example>El objetivo creo que ha quedado claro.</example>
+                <example>Un grande gozo siento en mí.</example>
             </rule>
         </rulegroup>
         <rulegroup id="SE_FIE" name="confusión: se fie/fíe" default="temp_off">
@@ -1465,7 +1470,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <!-- error in the next word -->
                     <token>se</token>
                     <token regexp="yes" min="0">&pronombre_personal_atono;</token>
-                    <token regexp="yes">rió|frió|dió|continua|este|esta|estan|esten|a</token>
+                    <token regexp="yes">rió|frió|dió|continua|este|esta|estan|esten|a|hacia</token>
                 </antipattern>
                 <pattern>
                     <marker>
@@ -1502,6 +1507,14 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>¡Oh! Se me ha quemado la tostada.</example>
                 <example>En el extremo SE del país.</example>
                 <example reason="trigger another rule">Se les hecha.</example>
+                <example correction="sé">Qué <marker>se</marker> yo.</example>
+                <example correction="sé">Pero <marker>se</marker> quién fue.</example>
+                <example>Ella se fue.</example>
+                <example>Ella se lo dijo.</example>
+                <example>A las decisiones se las llama también posicionales.</example>
+                <example>Que a los menos importantes se los nombre primero.</example>
+                <example>Está mal que no se lo perdones.</example>
+                <example>Dime si se lo vas a dar o no.</example>
             </rule>
             <rule>
                 <pattern>
@@ -1956,7 +1969,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <antipattern>
                 <token>Dios</token>
                 <token regexp="yes">te|me|nos|os|le|lo|la</token>
-                <token regexp="yes">salve|libre|perdone</token>
+                <token regexp="yes">salve|libre|perdone|pague</token>
             </antipattern>
             <antipattern>
                 <token regexp="yes">te|me|nos|os|le|lo|la</token>
@@ -1979,6 +1992,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <antipattern>
                 <token inflected="yes" skip="2">cuanto</token>
                 <token>desee</token>
+            </antipattern>
+            <antipattern>
+                <token>gracias</token>
+                <token postag="CC|_PUNCT.*" postag_regexp="yes" min="1" max="2"/>
+                <token postag="VMSP[13]S0" postag_regexp="yes"/>
             </antipattern>
             <pattern>
                 <and>
@@ -2071,6 +2089,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example>Una vez termine de cargar, pulse Enter.</example>
             <example>Le guste a uno la expresión o no.</example>
             <example>En tanto el planteamiento ocasione más ineficacia.</example>
+            <example>Entre en el menú y seleccione el segundo apartado.</example>
+            <example>Muchas gracias y disculpe las molestias.</example>
             <!--<example>Cada uno exprese su opinión.</example>
                 ambigous: ¡Sí! ¡Gane dos veces seguidas! -->
         </rule>
@@ -2549,7 +2569,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 </antipattern>
                 <antipattern>
                     <token>el</token>
-                    <token>/</token>
+                    <token regexp="yes">/|o|y</token>
                     <token regexp="yes">la|los</token>
                 </antipattern>
                 <antipattern>
@@ -3127,28 +3147,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example reason="triggers another rule">El te lo quería explicar.</example>
             </rule>
         </rulegroup>
-        <rule id="SE_SABER_SER" name="Se delante de ciertas palabas" type="misspelling" default="off">
-            <antipattern>
-                <token>se</token>
-                <token postag="(PP...0|V.[^NP]).+" postag_regexp="yes"/>
-            </antipattern>
-            <pattern>
-                <marker>
-                    <token>se</token>
-                </marker>
-                <token postag="(P....[^AD]|[DRS]|V.[NP]).+" postag_regexp="yes"><exception postag="SENT_END"/><exception>hacia</exception></token>
-            </pattern>
-            <message>Si es del verbo "saber", lleva tilde.</message>
-            <suggestion>sé</suggestion>
-            <example correction="sé">Qué <marker>se</marker> yo.</example>
-            <example correction="sé">Pero <marker>se</marker> quién fue.</example>
-            <example>Ella se fue.</example>
-            <example>Ella se lo dijo.</example>
-            <example>A las decisiones se las llama también posicionales.</example>
-            <example>Que a los menos importantes se los nombre primero.</example>
-            <example>Está mal que no se lo perdones.</example>
-            <example>Dime si se lo vas a dar o no.</example>
-        </rule>
         <rule id="SE_HACIA" name="Se + hacia / hacía" type="misspelling">
             <antipattern>
                 <token>lo</token>
@@ -3156,16 +3154,16 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token regexp="yes">arriba|abajo|adentro|afuera</token>
             </antipattern>
             <pattern>
-                <token regexp="yes">[stm]e|l[aeo]s?|nos|os</token>
                 <marker>
+                    <token regexp="yes">[stm]e|l[aeo]s?|nos|os</token>
                     <token>hacia</token>
                 </marker>
             </pattern>
             <message>Si es del verbo "hacer", lleva tilde.</message>
-            <suggestion>hacía</suggestion>
-            <example correction="hacía">Eso se <marker>hacia</marker> mal.</example>
-            <example correction="hacía">Eso le <marker>hacia</marker> mal.</example>
-            <example correction="hacía">Esa bota la <marker>hacia</marker> otra compañía.</example>
+            <suggestion>\1 hacía</suggestion>
+            <example correction="se hacía">Eso <marker>se hacia</marker> mal.</example>
+            <example correction="le hacía">Eso <marker>le hacia</marker> mal.</example>
+            <example correction="la hacía">Esa bota <marker>la hacia</marker> otra compañía.</example>
             <example>Depende de lo hacia abajo que apuntes.</example>
         </rule>
         <rule id="MAS" name="mas/más">
@@ -3450,6 +3448,26 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example correction="curriculum vitae|currículums|currículos">Los <marker>currículums vitae</marker>.</example>
         </rule>
         <rulegroup id="NO_SEPARADO" name="palabras no separadas">
+            <rule>
+                <pattern>
+                    <token>sub</token>
+                    <token min="0">-</token>
+                    <token>prime</token>
+                </pattern>
+                <message>Se escribe junto.</message>
+                <suggestion>subprime</suggestion>
+                <example correction="subprime">Hipotecas <marker>sub prime</marker>.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token>cara</token>
+                    <token min="0">-</token>
+                    <token>duras</token>
+                </pattern>
+                <message>Se escribe junto.</message>
+                <suggestion>caraduras</suggestion>
+                <example correction="caraduras">Son unos <marker>cara duras</marker>.</example>
+            </rule>
             <rule>
                 <pattern>
                     <token>medio</token>
@@ -4866,6 +4884,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>A convence a B.</example>
                 <example>Un vasito de vino con la comida.</example>
                 <example>Se remonta a hace 1,3 o 1,2 millones de años.</example>
+                <example>Y salvo serás.</example>
             </rule>
         </rulegroup>
         <rule id="SURGIR_EFECTO" name="*surgir/surtir efecto">
@@ -6405,7 +6424,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <rule>
                 <pattern>
                     <marker>
-                        <token regexp="yes">num</token>
+                        <token>num</token>
                         <token>.</token>
                     </marker>
                 </pattern>
@@ -6635,6 +6654,18 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 </pattern>
                 <message>¿Quería decir <suggestion>vez</suggestion>?</message>
                 <example correction="vez">Aquella <marker>ves</marker> que lo vi.</example>
+                <example>¿La ves ahí?</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token postag="SPS00|LOC_PREP" postag_regexp="yes"/>
+                    <token postag="D..FS." postag_regexp="yes"/>
+                    <marker>
+                        <token>ves</token>
+                    </marker>
+                </pattern>
+                <message>¿Quería decir <suggestion>vez</suggestion>?</message>
+                <example correction="vez">Lo haremos a la <marker>ves</marker>.</example>
                 <example>¿La ves ahí?</example>
             </rule>
         </rulegroup>
@@ -7459,7 +7490,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token spacebefore="no">-</token>
             </antipattern>
             <rule>
-                <pattern case_sensitive="no">
+                <pattern case_sensitive="yes">
                     <marker>
                         <token regexp="yes" postag="UNKNOWN">&abreviaturas;<exception regexp="yes">(?-i)dC|[A-Z][A-Z]+</exception></token>
                         <token spacebefore="yes">.</token>
@@ -7470,7 +7501,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="núm.">Vive en el <marker>núm .</marker> 25 de la calle.</example>
             </rule>
             <rule>
-                <pattern case_sensitive="no">
+                <pattern case_sensitive="yes">
                     <marker>
                         <token regexp="yes" postag="UNKNOWN">&abreviaturas;<exception regexp="yes">(?-i)dC|DJ|CF|AP|CT|AG|GR|CPT|DG|DOC</exception></token>
                     </marker>
@@ -7489,8 +7520,20 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>The Art of Computer Science.</example>
                 <example>Roquebrune-Cap-Martin</example>
                 <example>Metropolitan Museum of Art</example>
+                <example>Vive en Tel Aviv.</example>
+                <example>de Google Doc</example>
             </rule>
         </rulegroup>
+        <rule id="WRONG_DASH" name="Carácter de guión incorrecto (u+2500)" default="temp_off">
+            <pattern case_sensitive="no">
+                <marker>
+                    <token regexp="yes">.*─.*</token>
+                </marker>
+            </pattern>
+            <message>Carácter de guión incorrecto.</message>
+            <suggestion><match no="1" regexp_match="(.*)─(.*)" regexp_replace="$1—$2"/></suggestion>
+            <example correction="—dijo">Es él <marker>─dijo</marker>.</example>
+        </rule>
         <rulegroup id="ABREV_HORA" name="abreviatura de horas, gramos" default="on">
             <rule>
                 <pattern>
@@ -7520,11 +7563,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             </rule>
             <rule>
                 <pattern>
-                    <token regexp="yes">\d(hrs|hr|hs)</token>
+                    <token regexp="yes">\d+(hrs|hr|hs)</token>
                 </pattern>
                 <message>Para indicar 'horas' se usa el símbolo h, en minúscula y sin punto.</message>
                 <suggestion><match no="1" regexp_match="(\d+)h.*" regexp_replace="$1 h"/></suggestion>
                 <example correction="5 h">A las <marker>5hs</marker>.</example>
+                <example correction="48 h">A las <marker>48hrs</marker>.</example>
             </rule>
             <rule>
                 <pattern>

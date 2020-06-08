@@ -3951,4 +3951,12 @@ Copyright © 2013 Markus Brenneis, Daniel Naber, Jan Schreiber
         </pattern>
         <disambig action="ignore_spelling"/>
     </rule>
+
+    <rule id="ILKAY_GUNDOGAN" name="ignore spelling of multiple 'İlkay Gündoğan'">
+        <pattern case_sensitive="yes">
+            <token>İlkay</token>
+            <token regexp="yes">Gündoğans?</token>
+        </pattern>
+        <disambig action="ignore_spelling"/>
+    </rule>
 </rules>
