@@ -1367,44 +1367,34 @@ title="Easy editing stylesheet" ?>
       <example>"<marker>Garanto-te</marker> que foi mesmo assim."</example>
     </rule>
     <rule>
-<!-- MARCOAGPINTO 2020-06-07 *START* -->
-<!-- "Isso dá-me uma sensação de paz." -->
-<!-- "Isso dá-nos uma sensação de paz." -->
-<!-- "O local dá-me uma sensação de paz." -->
-<!-- "A loja dá-nos uma sensação de paz." -->
-<!-- "Eu muito estranho falares-me desse modo." -->
-<!-- "Por favor envia-me uma resposta assim que receber esta carta." -->
       <antipattern>
-	      <token negate="yes" regexp='yes'>muito|pouco|por</token>
-		  <token postag="PD0NN000|NC[CFM]S000" postag_regexp='yes'/>
-		  <token postag="V...2.+" postag_regexp='yes'/>
-		  <token regexp='yes' spacebefore='no'>&hifen;</token>
-		  <token regexp='yes'>me|nos</token>
+          <token postag="SENT_START|_PUNCT" postag_regexp='yes'/>
+          <token postag="D.+" postag_regexp='yes'/>
+          <token postag="N.+" postag_regexp='yes'/>
+          <token postag="V...3.+" postag_regexp='yes'/>
+          <token regexp='yes' spacebefore='no'>&hifen;</token>
+          <token spacebefore='no'/>
       </antipattern>
-<!-- MARCOAGPINTO 2020-06-07 *END* -->
-<!-- MARCOAGPINTO 2020-06-07 *START* -->
-<!-- "Cabe-lhe assinar e mandar publicar os decretos da Assembleia e do Governo Regional." -->
       <antipattern>
-		  <token postag="V...3.+" postag_regexp='yes'/>
-		  <token regexp='yes' spacebefore='no'>&hifen;</token>
-		  <token regexp='yes'>lhe|lhes</token>
-		  <token postag="VMN0000" postag_regexp='no'/>
+          <token postag="SENT_START|_PUNCT" postag_regexp='yes'/>
+          <token regexp='yes'>is[st]o|es[st][ae]</token>
+          <token postag="V...3.+" postag_regexp='yes'/>
+          <token regexp='yes' spacebefore='no'>&hifen;</token>
+          <token spacebefore='no'/>
       </antipattern>
-<!-- "Falta-lhe talento para ser ator." -->
       <antipattern>
-		  <token postag="NCFS000" postag_regexp='no'/>
-		  <token regexp='yes' spacebefore='no'>&hifen;</token>
-		  <token regexp='yes'>lhe|lhes</token>
-		  <token postag="VMN0000|NC[CFM]S000" postag_regexp='yes'/>
-      </antipattern>	  
-<!-- MARCOAGPINTO 2020-06-07 *END* -->
+          <token postag="SENT_START|_PUNCT" postag_regexp='yes'/>
+          <token postag="V...3.+" postag_regexp='yes'/>
+          <token regexp='yes' spacebefore='no'>&hifen;</token>
+          <token regexp='yes' spacebefore='no'>lhes?</token>
+      </antipattern>
       <pattern>
           <token min='0' regexp='yes'>tu|vós</token>
           <token postag="V...2.+" postag_regexp='yes'>
             <exception>parece</exception>
             <exception postag="V..[^P]3.+" postag_regexp='yes'/></token>
           <token regexp='yes' spacebefore='no'>&hifen;</token>
-          <token regexp='yes'>me|te|lhe|nos|vos|lhes</token>
+          <token regexp='yes'>me|te|nos|vos|lhes?</token>
       </pattern>
       <message>Confirme se esta forma de tratamento informal é apropriada.</message>
         <suggestion><match no="2" postag="(V...)2(.+)" postag_replace='$13$2' postag_regexp="yes"/>-\4</suggestion>
@@ -1412,6 +1402,12 @@ title="Easy editing stylesheet" ?>
       <example correction="Diga-me"><marker>Diz-me</marker> que foi mesmo assim?</example>
       <example correction="Diga-me"><marker>Tu diz-me</marker> que foi mesmo assim?</example>
       <example correction="confira-me">Por favor, <marker>confere-me</marker> o valor do talão.</example>
+      <example>Isso dá-me uma sensação de paz.</example>
+      <example>O local dá-me uma sensação de paz.</example>
+      <example correction="falar-me">Eu acho que é muito estranho <marker>falares-me</marker> desse modo.</example>
+      <example correction="envie-me">Por favor, <marker>envia-me</marker> uma resposta assim que receber esta carta.</example>
+      <example>Cabe-lhe assinar e mandar publicar os decretos da Assembleia e do Governo Regional.</example>
+      <example>Falta-lhe talento para ser ator.</example>
     </rule>
     <!--    <rule>
       <antipattern>
