@@ -47,7 +47,7 @@
     <!ENTITY requer_crase_verbos "(?:a(?:derir|gradar|ssistir|visar)|comparecer|des(?:agradar|obedecer)|equivaler|ir|p(?:ertencer|roceder)|obedecer|re(?:agir|correr|meter|sponder)|suceder)"><!-- accepts crase: avisar|limitar -->
     <!ENTITY verbos_auxiliares_part_passado "(?:ser|estar|ter|haver|ficar)">
 
-    <!ENTITY pontos_cardeais "norte|sul|este|oeste|ocidente|oriente|nascente|poente|nordeste|sudeste|noroeste|sudoeste">
+    <!ENTITY pontos_cardeais "(?:n(?:ascente|or(?:te|[do]este))|su(?:l|[do]este)|este|o(?:este|cidente|riente)|poente)">
     <!ENTITY numero_por_extenso_CP "zero|três|quatro|cinco|seis|sete|oito|nove|dez|onze|doze|treze|catorze|quinze|dez[ae]sseis|dez[ae]ssete|dezoito|dezanove|vinte|trinta|quarenta|cinquenta|sessenta|setenta|oitenta|noventa|cem|mil">
     <!ENTITY numero_por_extenso_MS "um|(mi|bi|tri|quadri)lh?ião">
     <!ENTITY numero_por_extenso_FS "uma|dezena">
@@ -2635,6 +2635,70 @@
       <disambig action="replace"><wd pos="NCFP000"/></disambig>
     </rule>
   </rulegroup>
+
+  <rulegroup id="GEOGRAPHIC_COORDINATES_DIGITS" name="p.ex. paralelo 35º">
+    <rule>
+      <pattern>
+          <token>paralelo</token>
+          <token regexp='yes'>\d{1,3}[ºo°]</token>
+      </pattern>
+      <disambig action="replace"><wd pos="NCMS000"/><wd pos="NCMS000"/></disambig>
+    </rule>
+    <rule>
+      <pattern>
+          <token>paralelo</token>
+          <token regexp='yes'>\d{1,3}[ºo°]</token>
+          <token regexp='yes'>&pontos_cardeais;</token>
+      </pattern>
+      <disambig action="replace"><wd pos="NCMS000"/><wd pos="NCMS000"/><wd pos="NCMS000"/></disambig>
+    </rule>
+    <rule>
+      <pattern>
+          <token regexp='yes'>l(?:atitude|ongitude)</token>
+          <token regexp='yes'>\d{1,3}[ºo°]</token>
+      </pattern>
+      <disambig action="replace"><wd pos="NCFS000"/><wd pos="NCFS000"/></disambig>
+    </rule>
+    <rule>
+      <pattern>
+          <token regexp='yes'>l(?:atitude|ongitude)</token>
+          <token regexp='yes'>\d{1,3}[ºo°]</token>
+          <token regexp='yes'>&pontos_cardeais;</token>
+      </pattern>
+      <disambig action="replace"><wd pos="NCFS000"/><wd pos="NCFS000"/><wd pos="NCFS000"/></disambig>
+    </rule>
+    <rule>
+      <pattern>
+          <token regexp='yes'>l(?:atitude|ongitude)s</token>
+          <token regexp='yes'>\d{1,3}[ºo°]</token>
+          <token regexp='yes'>e|ou</token>
+          <token regexp='yes'>\d{1,3}[ºo°]</token>
+      </pattern>
+      <disambig action="replace"><wd pos="NCFP000"/><wd pos="NCFP000"/><wd pos="CC"/><wd pos="NCFP000"/></disambig>
+    </rule>
+    <rule>
+      <pattern>
+          <token regexp='yes'>l(?:atitude|ongitude)s</token>
+          <token regexp='yes'>\d{1,3}[ºo°]</token>
+          <token regexp='yes'>&pontos_cardeais;</token>
+          <token regexp='yes'>e|ou</token>
+          <token regexp='yes'>\d{1,3}[ºo°]</token>
+          <token regexp='yes'>&pontos_cardeais;</token>
+      </pattern>
+      <disambig action="replace"><wd pos="NCFP000"/><wd pos="NCFP000"/><wd pos="NCFP000"/><wd pos="CC"/><wd pos="NCFP000"/><wd pos="NCFP000"/></disambig>
+    </rule>
+  </rulegroup>
+
+  <rulegroup id="CLOTH_COMPOSITION_DIGITS" name="Tecido">
+    <rule>
+      <pattern>
+          <token regexp='yes'>\d{1,3}\s?\%</token>
+          <token regexp='yes'>a(?:cetato|crílico|lgodão)|l(?:ã|inho)|poli(?:éster|amida)|seda|viscose</token>
+      </pattern>
+      <disambig action="replace"><wd pos="AQ0CN0"/><wd pos="AQ0CN0"/></disambig>
+    </rule>
+  </rulegroup>
+
   <rulegroup id="FILTER_PROPER_NAMES" name="Nomes próprios portugueses">
     <!-- Created by Tiago F. Santos, Portuguese rule, 2018-11-23  	-->
     <rule>
