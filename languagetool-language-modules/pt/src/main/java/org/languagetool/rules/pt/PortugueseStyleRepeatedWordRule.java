@@ -99,7 +99,7 @@ public class PortugueseStyleRepeatedWordRule extends AbstractStyleRepeatedWordRu
   protected boolean isTokenToCheck(AnalyzedTokenReadings token) {
     return (!token.matchesPosTagRegex("(?:C|D|NP|P|SP|Z).+|R[GN].*|_PUNCT|_GN_|UNKNOWN")
         && !StringUtils.equalsAny(token.getToken(), "mais", "menos", "e", "ou", "são", "n", "x", "e", "-")
-        && !StringUtils.equalsAny(getLemma(token), "ser", "estar", "ter", "haver", "ficar") // passive voice auxiliaries
+        && !StringUtils.equalsAny(getLemma(token), "ser", "ir", "estar", "ter", "haver", "ficar") // common auxiliaries
         && !StringUtils.contains(getLemma(token), ' ') // multiwords
         && !UNIDADES_DE_MEDIDA.matcher(token.getToken()).matches()
         && !UNIDADES_DE_MEDIDA_EXTENSO.matcher(token.getToken()).matches()

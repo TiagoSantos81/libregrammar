@@ -121,7 +121,7 @@ title="Easy editing stylesheet" ?>
     <!ENTITY barbarismosE
 	"bullying|manuals?">
     -->
-    <!ENTITY barbarismos3 "applets?|backbones?|bluetooth|bullying|carjacking|crackers?|cracking|führers?|tablets?|tags?">
+    <!ENTITY barbarismos3 "applets?|b(?:ackbones?|luetooth|ullying|urnouts?)|c(?:arjacking|yberbullying|rackers?|racking)|führers?|h(?:omebanking|omepages?|osts?)|i(?:dem|ibidem)|m(?:aydays?|ilkshakes?)|newsgroups?|overflows?|t(?:ablets?|ags?|weeters?)">
 
     <!ENTITY infantil "(?:b[aá]bá|bichano|bilau|bobalhão|bumbum|caca|cachorrês|cocó|cocô|cuti|dodói|escapulir|flango|formiguês|lelé|mamã|maminha|miau|mimir|nananinanão|nana[rs]|oba|oiê|ohoh|olhinho|papá|Papai|pap(?:ar|ei|aste|ou)|peixa|pepeta|pipi|piu|pum|susu|titi[ao]|totó|totô|vovô|xixi)">
     <!ENTITY informal "chaval[ao]s?|porreiros?|(?:a(?:bafar|dultescente|ham|nh.+)|b(?:abado|adalhoc[ao]|adalo|adamec[ao]|adana|agarai|agunça|aita|aixinh[ao]|alof[ao]|ate-papo|atelada|eiço|ejeca|elê|ichan[ao]|ichinh[ao]|iscate|itaite|js|lablablá|ófia|orrachão|otequeir[ao]|razuca|reaco|rega)|c(?:abaço|acilda|adê|adé|alhamaço|apar|arago|arango|asinha|asório|Dcê|ertinh[ao]|hantar|huninha|huto|obrão|ocó|ocô|oisar|opião|ornear|utucar)|d(?:anad[ao]|anar|aonde|esmiolad[ao]|ocinh[ao]|oíd[ao])|e(?:spertalh(?:ão|ona)|spigadote|strilho|strovenga)|f(?:ilar|ixe|loripa|of[ao]|uxicar|uxiqueir[ao])|g(?:agá|aj[ao]|alera|atunar|elô|oró|osma|ranel|uit[ao]|una|urizada)|herman[ao]|irad[ao]|j(?:avardice|ola)|l(?:aivo|aracha|elé|ogar|ulopetismo)|m(?:acarrone|agrel[ao]|amaã|anda-chuva|ânfi[ao]|an[ao]|atraca|eia-boca|itra|oçada|oina|orcão|otoqueir[oa]|uvuca)|n(?:intendinho|op|ovat[ao])|o(?:i|iê|lhômetro|lh[ôó]metro)|p(?:andeiro|apão|apo|atada|eixão|ejada|elar|epeta|erua|etiz|indaíba|ixulé|ixuleco|orn[oô]|orrad[ao]|orre|r[aáoó]|romo|rum|ruma|runs|uto)|q(?:uebra-galho|ueca)|r(?:acha|anho|apaziada|emexer|emexida|icardão|olê)|s(?:acana|andes|ave|elinho|úper)|surripi.+|t(?:abefe|antã|ascar|ime|ótil|rampar|rampo|ransar|reta|rocentos|rouxa|rucid.+|uga.+)|v(?:acil.+|aquinha|egetar|elhot[ae]|ó|ô)|x(?:i|ixi)|z(?:en|i[il]h(ão|ões)))">
@@ -587,9 +587,9 @@ title="Easy editing stylesheet" ?>
         </marker>
       </pattern>
       <message>&MSG_ECG;</message>
-        <suggestion><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' postag="(N.|[AD]..)F.(.+)" postag_replace='$1MS$2' postag_regexp="yes"/></suggestion>
-      <example correction='no (hora)'>Foi resolvido <marker>no hora</marker> certa.</example>
-      <example>Foi resolvido <marker>na hora</marker> certa.</example>
+        <suggestion suppress_misspelled='yes'><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' postag="(N.|[AD]..)F.(.+)" postag_replace='$1MS$2' postag_regexp="yes"/></suggestion>
+        <suggestion suppress_misspelled='yes'><match no='2' include_skipped='all' regexp_match='(.+?)(o?)$' regexp_replace='$1a'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5'/></suggestion>
+      <example correction='na hora'>Foi resolvido <marker>no hora</marker> certa.</example>
     </rule>
     <rule>
       <antipattern>
@@ -692,11 +692,12 @@ title="Easy editing stylesheet" ?>
       </pattern>
       <message>&MSG_ECG;</message>
         <suggestion suppress_misspelled='yes'><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' postag="(N.|[AD]..)F.(.+)" postag_replace='$1MP$2' postag_regexp="yes"/></suggestion>
-      <example correction=''><marker>Alguns frases</marker> tem erros gramaticais.</example>
-      <example><marker>Algumas frases</marker> tem erros gramaticais.</example>
-      <example correction=''><marker>Nos mil</marker> e uma noites.</example>
+        <suggestion suppress_misspelled='yes'><match no='2' include_skipped='all' regexp_match='(.+?)(os)?$' regexp_replace='$1as'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5'/></suggestion>
+        <suggestion suppress_misspelled='yes'><match no='2' include_skipped='all' regexp_match='(.+?)(ns)?$' regexp_replace='$1mas'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5'/></suggestion>
+      <example correction='Algumas frases'><marker>Alguns frases</marker> tem erros gramaticais.</example>
+      <example correction=''><marker>Nos mil</marker> e uma noites.</example><!-- FIXME  suggestion engine bug. triggers rule but not the 2nd suggestion -->
       <example>A água é-nos trazida até à porta.</example>
-      <example correction='nos trazidos'>A água é <marker>nos trazida</marker> até à porta.</example><!-- XXX  correctly flagged but wrong suggestion
+      <example correction='nos trazidos|nas trazida'>A água é <marker>nos trazida</marker> até à porta.</example><!-- XXX  correctly flagged but wrong suggestion
                      TODO create rule for missing hiphen before 'nos' -->
     </rule>
     <rule>
@@ -838,7 +839,9 @@ title="Easy editing stylesheet" ?>
       </pattern>
       <message>&MSG_ECG;</message>
         <suggestion suppress_misspelled='yes'><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' postag="(N.|[AD]..|Z.)M.(.+)" postag_replace='$1FS$2' postag_regexp="yes"/></suggestion>
-      <example correction='Alguma vaca'><marker>Alguma boi</marker> está no pasto.</example>
+        <suggestion suppress_misspelled='yes'><match no='2' include_skipped='all' regexp_match='(.+?)(a)' regexp_replace='$1'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5'/></suggestion>
+        <suggestion suppress_misspelled='yes'><match no='2' include_skipped='all' regexp_match='(.+?)(a)?$' regexp_replace='$1o'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5'/></suggestion>
+      <example correction='Alguma vaca|Algum boi'><marker>Alguma boi</marker> está no pasto.</example>
       <example>Leonardo da Vinci e Rafael mostraram grande interesse sobre a estru…</example>
       <example>Bacalhau à lagareiro</example>
       <example>Tomou posse como Presidente da República interino.</example>
@@ -946,8 +949,10 @@ title="Easy editing stylesheet" ?>
         </marker>
       </pattern>
       <message>&MSG_ECG;</message>
-        <suggestion suppress_misspelled='yes'><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' postag="(N.|[AD]..|Z.)M.(.+)" postag_replace='$1FP$2' postag_regexp="yes"/></suggestion>
-      <example correction="das grandes descobertas">A maioria <marker>das grandes descobertos</marker> científicas são nada menos que a descoberta do ób…</example>
+        <suggestion suppress_misspelled='yes'><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' postag="(N.|[AD]..|Z.)M(.)(.+)" postag_replace='$1FP$3' postag_regexp="yes"/></suggestion>
+        <suggestion suppress_misspelled='yes'><match no='2' include_skipped='all' regexp_match='(.+?)(as)' regexp_replace='$1os'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5'/></suggestion>
+        <!--suggestion suppress_misspelled='yes'><match no='2' include_skipped='all' regexp_match='(.+?)(mas)?$' regexp_replace='$ns'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5'/></suggestion--><!-- FIXME suggestion engine bug -->
+      <example correction="das grandes descobertas|dos grandes descobertos">A maioria <marker>das grandes descobertos</marker> científicas são nada menos que a descoberta do ób…</example>
       <example correction='Algumas vacas'><marker>Algumas bois</marker> estão no pasto.</example>
       <example>…ouvir os partidos nelas representados e o …</example>
       <example>nas coordenadas 20.00ºN, 20.00ºW</example>
@@ -1537,15 +1542,6 @@ title="Easy editing stylesheet" ?>
     <!--token min='0' postag='(?:A..|Z.)C.+' postag_regexp='yes'-->
           <token postag='(?:[NZ].|A..)MS.+' postag_regexp='yes'/>
       </antipattern>
-<!-- MARCOAGPINTO 2020-06-06 *START* -->
-<!-- "Somente no meio da década de 1990 é que o tecido 100% poliéster começou a ser utilizado." -->
-<!-- "Não esquecer o genocídio arménio e os seus 1,5 milhão de mortos." -->
-      <antipattern>
-		  <token negate="yes" regexp="yes">seus|teus|vossos|nossos|os|aos|dos</token>	  
-		  <token regexp='yes'>\d.+</token>	  
-		  <token postag='NCMS000' postag_regexp='no'/>		  
-      </antipattern>
-<!-- MARCOAGPINTO 2020-06-06 *END* -->
       <pattern>
           <token negate='yes' regexp='yes'>&hifen;</token>
         <marker>
@@ -1580,6 +1576,9 @@ title="Easy editing stylesheet" ?>
       <example type='triggers_error'>A todos os supermercados desejo um natal feliz.</example>
       <example>A todos os supermercados, desejo um natal feliz.</example>
       <example>Foram substituídos em posteriores textos ecológicos um texto posterior</example>
+      <example>Somente no meio da década de 1990 é que o tecido 100% poliéster começou a ser utilizado.</example>
+      <example type='triggers_error'>Não esquecer o genocídio arménio e os <marker>seus 1,5 milhão</marker> de mortos.</example><!-- correctly flagged but tests have a bug in correction attribute -->
+      <example>Não esquecer o genocídio arménio e os <marker>seus 1,5 milhões</marker> de mortos.</example>
     </rule>
     <rule>
       <antipattern>
@@ -1603,10 +1602,11 @@ title="Easy editing stylesheet" ?>
         </marker>
       </pattern>
       <message>&MSG_ECN;</message>
-        <suggestion><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' postag="(N.|[AD]..|Z.)[MC]S(.+)" postag_replace='$1[MC]P$2' postag_regexp="yes"/></suggestion>
-      <example correction='dos pais'>É o orgulho <marker>dos pai</marker>.</example>
+        <suggestion suppress_misspelled='yes'><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' postag="(N.|[AD]..|Z.)[MC]S(.+)" postag_replace='$1[MC]P$2' postag_regexp="yes"/></suggestion>
+        <suggestion suppress_misspelled='yes'><match no='2' include_skipped='all' regexp_match='(.+?)(s)' regexp_replace='$1'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5'/></suggestion>
+      <example correction='dos pais|do pai'>É o orgulho <marker>dos pai</marker>.</example>
       <example>O vinho é-nos trazido até à porta.</example>
-      <example correction='nos trazidos'>O vinho é <marker>nos trazido</marker> até à porta.</example><!-- XXX  correctly flagged but wrong suggestion
+      <example correction='nos trazidos|no trazido'>O vinho é <marker>nos trazido</marker> até à porta.</example><!-- XXX  correctly flagged but wrong suggestion
                      TODO create rule for missing hiphen before 'nos' -->
     </rule>
     <rule>
@@ -1624,7 +1624,7 @@ title="Easy editing stylesheet" ?>
       </antipattern>
       <antipattern>
           <token>o</token>
-          <token regexp='yes'>mais|menor|maior|pior|melhor</token>
+          <token regexp='yes'>m(?:ais|enor|aior|elhor)|pior</token>
           <token postag='(?:D[ADIP].|NC|A..|Z.)[MC]P.+' postag_regexp='yes'/>
           <token>possível</token>
       </antipattern>
@@ -1642,26 +1642,13 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes' min='0'>&adverbios_de_intensidade;</token>
           <token postag='(?:D[ADIP].|NC|A..|Z.)[FC]P.+' postag_regexp='yes'/>
       </antipattern>
-<!-- MARCOAGPINTO 2020-06-06 *START* -->
-<!-- "5 aceitaram a proposta australiana e 3 prefeririam o paralelo 35° Sul." -->
       <antipattern>
-		  <token postag='DA0MS0' postag_regexp='no'/>
-		  <token postag='NCMS000' postag_regexp='no'/>		  
-		  <token regexp='yes'>\d.+</token>
+          <token postag='SENT_START|_PUNCT' postag_regexp='yes'/>
+          <token>para</token>
+          <token postag='VMN0000' regexp='yes'>.+r$</token>
+          <token regexp='yes' min='0'>m(?:ais|enos)</token>
+          <token postag='N..P.+' postag_regexp='yes'/>
       </antipattern>
-<!-- MARCOAGPINTO 2020-06-06 *END* -->
-<!-- MARCOAGPINTO 2020-06-06 *START* -->
-<!-- "Para saber mais comandos de IRC, consulte o artigo sobre IRC." -->
-<!-- "Para saber menos comandos de IRC, consulte o artigo sobre IRC." -->
-<!-- "Para saber mais regras de IRC, consulte o artigo sobre IRC." -->
-<!-- "Para saber menos regras de IRC, consulte o artigo sobre IRC." -->
-      <antipattern>
-		  <token postag='CC|SPS00' postag_regexp='yes'/>		  
-		  <token postag='NCM[SP]000' postag_regexp='yes'/>
-		  <token postag='RG|NCMN000' postag_regexp='yes'/>		  
-		  <token postag='NC[CFM]P000' postag_regexp='yes'/>		  
-      </antipattern>
-<!-- MARCOAGPINTO 2020-06-06 *END* -->
       <pattern>
           <token negate='yes' regexp='yes'>e|ou|&hifen;</token>
         <marker>
@@ -1704,6 +1691,8 @@ title="Easy editing stylesheet" ?>
       <example correction='período evidente|períodos evidentes|período, evidentes'>O desenvolvimento de vários fatores culturais no Japão foram neste <marker>período evidentes</marker> na arquitetura.</example><!-- missing punctuation -->
       <example>O balonete interno, que até então só havia-lhe causado problemas, foi dispensado.</example>
       <example>O balonete interno, que até então só lhe havia causado problemas, foi dispensado.</example>
+      <example>Cinco já aceitaram a proposta australiana, três prefeririam o paralelo 35° Sul.</example>
+      <example>Para saber mais comandos de IRC, consulte o artigo sobre IRC.</example>
     </rule>
     <rule>
       <antipattern>
@@ -1737,7 +1726,7 @@ title="Easy editing stylesheet" ?>
       </pattern>
       <message>&MSG_ECN;</message>
         <suggestion><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' postag="(N.|[AD]..|Z.)[MC]P(.+)" postag_replace='$1[MC]S$2' postag_regexp="yes"/></suggestion>
-        <suggestion>\2s <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' include_skipped='all'/></suggestion>
+        <suggestion suppress_misspelled='yes'>\2s <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' include_skipped='all'/></suggestion>
       <example correction='pelo meio|pelos meios'>Conseguiram combater o fogo <marker>pelo meios</marker> de todos os revezes.</example>
       <example correction='do pai|dos pais'>É o orgulho <marker>do pais</marker>.</example>
       <example>Pelo menos nós terminamos o trabalho pesado.</example>
@@ -1842,7 +1831,7 @@ title="Easy editing stylesheet" ?>
       </pattern>
       <message>&MSG_ECN;</message>
         <suggestion><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' postag="(N.|[AD]..|Z.)[FC]P(.+)" postag_replace='$1[FC]S$2' postag_regexp="yes"/></suggestion>
-        <suggestion>\2s <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' include_skipped='all'/></suggestion>
+        <suggestion suppress_misspelled='yes'>\2s <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' include_skipped='all'/></suggestion>
       <example correction='numa espécie|numas espécies'>Valor contido <marker>numa espécies</marker> por descobrir.</example>
       <example correction='pela política|pelas políticas'>...cesso no setor artístico-cultural, principalmente <marker>pela políticas</marker> públicas e privadas de estímulo desse setor, como…</example>
       <example>Há pouco tempo quatro ex-presidentes da República jantaram na companhia.</example>
@@ -1947,7 +1936,8 @@ title="Easy editing stylesheet" ?>
       </pattern>
       <message>&MSG_ECN;</message>
         <suggestion><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' postag="(N.|[AD]..|Z.)[FC]S(.+)" postag_replace='$1[FC]P$2' postag_regexp="yes"/></suggestion>
-      <example correction='numas espécies'>Valor contido <marker>numas espécie</marker> por descobrir.</example>
+        <suggestion suppress_misspelled='yes'><match no='2' include_skipped='all' regexp_match='(.+?)(s)' regexp_replace='$1'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5'/></suggestion>
+      <example correction='numas espécies|numa espécie'>Valor contido <marker>numas espécie</marker> por descobrir.</example>
     </rule>
     <rule>
       <antipattern>
@@ -1992,7 +1982,7 @@ title="Easy editing stylesheet" ?>
       <example>...alta receptividade e, em comparação a outras abordagens, conta com relação...</example>
       <example>O artigo está criado e visível a outras pessoas.</example>
       <example>...o mundo para festas, comparável a outras cidades como Dubai e Montreal...</example>
-      <example type='triggers_error'>Enquanto em outras o carro é bonito.</example>
+      <example type='triggers_error'>Enquanto em outras o carro é bonito.</example><!-- missing punctuation -->
       <example>Enquanto em outras, o carro é bonito.</example>
       <example>Consequentemente, eles opunham-se a muitas inovações desenvolvidas desde esse tempo.</example>
       <example>Os dados anteriores a essas viagens são escassos.</example>
@@ -2815,10 +2805,11 @@ title="Easy editing stylesheet" ?>
             <exception scope='next' regexp='yes'>&introduz_conjuntivo;</exception></token>
         <marker>
           <token postag_regexp='yes' postag='VMSI.+' regexp='yes'>.+sse
+            <exception regexp='yes'>fizesse|pudesse|tivesse|viesse</exception>
             <exception negate_pos='yes' postag_regexp='yes' postag='VMSI.+'/></token>
         </marker>
       </pattern>
-      <message>O conjuntivo é utilizado em condicionais ('se ...'). Será que pretende utilizar a forma reflexiva?</message>
+      <message>O conjuntivo no pretérito imperfeito é utilizada em condicionais do tipo: 'se + PASSADO + então ...'. Confirme se esta é uma dessas situações.</message>
         <suggestion><match no='2' regexp_match='(.+)sse' regexp_replace='$1-se'/></suggestion>
       <example correction='chega-se'>Ela <marker>chegasse</marker> mais perto, a cada palavra.</example>
       <example>Havia quem os acompanhasse.</example>
@@ -2831,11 +2822,11 @@ title="Easy editing stylesheet" ?>
             <exception scope='next' regexp='yes'>&introduz_conjuntivo;</exception></token>
         <marker>
           <token postag_regexp='yes' postag='VMSI.+' regexp='yes'>.+sse
-            <exception regexp='yes'>fizesse|pudesse|tivesse</exception>
+            <exception regexp='yes'>fizesse|pudesse|tivesse|viesse</exception>
             <exception negate_pos='yes' postag_regexp='yes' postag='VMSI.+'/></token>
         </marker>
       </pattern>
-      <message>O conjuntivo é utilizado em condicionais ('se ...'). Será que pretende utilizar a forma reflexiva?</message>
+      <message>O conjuntivo no pretérito imperfeito é utilizada em condicionais do tipo: 'se + PASSADO + então ...'. Confirme se esta é uma dessas situações.</message>
         <suggestion><match no='2' regexp_match='(.+)sse' regexp_replace='$1-se'/></suggestion>
       <example correction='chega-se'>A cada palavra, ela <marker>chegasse</marker> mais perto.</example>
       <example>Como se a cada palavra, ela <marker>chegasse</marker> mais perto.</example>
@@ -2865,7 +2856,7 @@ title="Easy editing stylesheet" ?>
         </marker>
       </pattern>
       <message>O conjuntivo no pretérito imperfeito é utilizada em condicionais do tipo: 'se PASSADO então ...'. Considere se esta não é uma dessas situações.</message>
-        <suggestion>\2sse</suggestion>
+        <suggestion suppress_misspelled='yes'><match no='2' regexp_match='(.+)$' regexp_replace='$1sse'/></suggestion>
       <example correction='lavasse'>Se <marker>lava-se</marker> os pratos, é que era bom.</example>
       <example correction='trabalhasse'>Embora Tchecov  <marker>trabalha-se</marker> como médico, enriqueceu a sua escrita com…</example>
       <example correction='aproximasse'>Caso <marker>aproxima-se</marker> as suas observações às mais correntes, o estudo já teria sido publicado.</example>
@@ -3706,7 +3697,7 @@ title="Easy editing stylesheet" ?>
       </antipattern>
       <pattern>
           <token postag_regexp='yes' postag='V....S.+'>
-            <exception inflected='yes' regexp='yes'>concentrar|manifestar|saber</exception>
+            <exception inflected='yes' regexp='yes'>concentrar|manifestar|realizar|saber</exception>
             <exception negate_pos='yes' postag_regexp='yes' postag='V....S.+'/></token>
           <token regexp='yes' spacebefore='no'>&hifen;</token>
           <token>se</token>
@@ -3744,7 +3735,7 @@ title="Easy editing stylesheet" ?>
       <pattern>
         <marker>
           <token postag_regexp='yes' postag='V....P.+'>
-            <exception inflected='yes' regexp='yes'>concentrar|manifestar|saber</exception>
+            <exception inflected='yes' regexp='yes'>concentrar|manifestar|realizar|saber</exception>
             <exception negate_pos='yes' postag_regexp='yes' postag='V....P.+'/></token>
           <token regexp='yes' spacebefore='no'>&hifen;</token>
           <token>se</token>
@@ -11881,6 +11872,18 @@ title="Easy editing stylesheet" ?>
     <!--  Created by Tiago F. Santos, 20-07-2017 -->
       <url>https://ciberduvidas.iscte-iul.pt/artigos/rubricas/idioma/ainda-sobre-a-abreviatura-do-numeral-ordinal-com-ou-sem-o-sobrescrito-sublinhado/2680</url>
     <rule>
+      <antipattern>
+          <token postag='SENT_START' skip='-1'/>
+          <token regexp='yes' skip='-1'>(?:\d+)[ºo]</token>
+          <token regexp='yes' case_sensitive='yes' skip='-1'>latitudes?|longitudes|[Nn]or(?:deste|oeste|te)|[Ss]u(?:deste|doeste|l)|Este|[Oo]este</token>
+          <token postag='SENT_END'/>
+      </antipattern>
+      <antipattern>
+          <token postag='SENT_START' skip='-1'/>
+          <token regexp='yes' case_sensitive='yes' skip='-1'>latitudes?|longitudes|[Nn]or(?:[do]este|te)|[Ss]u(?:do?este|l)|Este|[Oo]este</token>
+          <token regexp='yes' skip='-1'>(?:\d+)[ºo]</token>
+          <token postag='SENT_END'/>
+      </antipattern>
       <pattern>
           <token regexp='yes'>(?:\d+)[ºo]\.?([sˢ]?)
             <exception>360º</exception>
@@ -11890,6 +11893,7 @@ title="Easy editing stylesheet" ?>
       <message>A abreviatura deste ordinal é: <suggestion><match no='1' regexp_match='(\d+)[ºo]\.?([sˢ]?)\.?' regexp_replace='$1.º$2'/></suggestion>. Note que graus não são ordinais.</message>
       <example correction="12.º">O premiado é o <marker>12o</marker> da lista.</example>
       <example>Temperatura máxima prevista de 38º C.</example><!-- formatting of degrees done by DEGREE_SYMBOL -->
+      <example>O arquipélago situa-se no nordeste do oceano Atlântico entre os 36º e 43º de latitude Norte e os 25º e 31º de longitude Oeste.</example><!-- caught by DEGREES_MINUTES_SECONDS -->
     </rule>
     <rule>
       <pattern>
@@ -28279,7 +28283,7 @@ TODO Write better examples
       <example correction=" K|&#8239;K">A 30<marker> º K</marker>.</example>
     </rule>
 
-  <rulegroup id='DEGREE_MINUTES_SECONDS' name="Matemático: Tipografia de graus, minutos e segundos: 50°45′ 20″">
+  <rulegroup id='DEGREES_MINUTES_SECONDS' name="Matemático: Tipografia de graus, minutos e segundos: 50°45′ 20″">
     <!-- Localized and improved by Tiago F. Santos, Portuguese rule, 2016-10-27 -->
     <rule>
       <regexp>\b([\d., ]*\d)\s*[º°]\s*([\d., ]*\d)\s*[”"'’′`]\s*([\d., ]*\d)\s*[”"'’′`]</regexp>
@@ -28316,6 +28320,35 @@ TODO Write better examples
       <example correction="29′ 49″|29′&#8239;49″"><marker>29 ' 49'</marker>.</example>
       <example correction="29′ 49″|29′&#8239;49″"><marker>29’49”</marker>  N.</example>
       <example>29′ 34″</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token postag='SENT_START' skip='-1'/>
+          <token regexp='yes' case_sensitive='yes' skip='-1'>latitudes?|longitudes|[Nn]or(?:deste|oeste|te)|[Ss]u(?:deste|doeste|l)|Este|[Oo]este|[CFNSEW]|[Gg]raus?</token>
+        <marker>
+          <token regexp='yes' skip='-1'>(?:\d+)[ºo]
+            <exception>360º</exception></token>
+        </marker>
+          <token postag='SENT_END'/>
+      </pattern>
+      <message>Utilize os símbolos de minutos e segundos.</message>
+        <suggestion><match no='3' regexp_match='(\d+)[ºo]' regexp_replace='$1°'/></suggestion>
+      <example correction="36°">O arquipélago situa-se no nordeste do oceano Atlântico entre os <marker>36º</marker> e ...</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token postag='SENT_START' skip='-1'/>
+        <marker>
+          <token regexp='yes' skip='-1'>(?:\d+)[ºo]
+            <exception>360º</exception></token>
+        </marker>
+          <token regexp='yes' case_sensitive='yes' skip='-1'>latitudes?|longitudes|[Nn]or(?:[do]este|oeste|te)|[Ss]u(?:do?este|l)|Este|[Oo]este|[CFNSEW]|[Gg]raus?</token>
+          <token postag='SENT_END'/>
+      </pattern>
+      <message>Utilize os símbolos de minutos e segundos.</message>
+        <suggestion><match no='2' regexp_match='(\d+)[ºo]' regexp_replace='$1°'/></suggestion>
+      <example correction="43°"><marker>43º</marker> de latitude Norte e os...</example>
+      <example correction="31°">... e <marker>31º</marker> de longitude Oeste.</example>
     </rule>
   </rulegroup>
 
@@ -28737,12 +28770,13 @@ TODO Write better examples
       <pattern>
           <token regexp='yes'>0\d</token>
           <token min='0'>de</token>
-          <token regexp='yes'>&meses_ano;|&meses_ano_abrev;</token>
+          <token regexp='yes'>&meses_ano;</token>
       </pattern>
       <message>A convenção padrão não utiliza o zero no dia do mês em datas escritas por extenso.</message>
         <suggestion><match no='1' include_skipped='all' regexp_match='0(.)' regexp_replace='$1'/> <match no='2' include_skipped='all'/> \3</suggestion>
       <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/datas-grafia/13231</url>
       <example correction="3 de agosto">A peça estreia na sexta-feira, <marker>03 de agosto</marker>.</example>
+      <example>05 Jun 2020</example>
     </rule>
 
     <rule id='APOSTROPHE_IN_DATES' name="Datas: Apóstrofe em datas">
@@ -31149,6 +31183,15 @@ TODO Write better examples
         <suggestion>bilhete de identidade</suggestion>
       <example correction='bilhete de identidade'><marker>cartão do cidadão</marker>.</example>
     </rule-->
+    <rule>
+      <pattern>
+          <token>chico</token>
+          <token regexp='yes'>&hifen;</token>
+          <token regexp='yes'>espertos?</token>
+      </pattern>
+      <message>Linguagem informal. Considere as alternativas.</message>
+      <example correction=''><marker>chico-esperto</marker>.</example>
+    </rule>
     <rule>
       <pattern>
           <token>coisa</token>
