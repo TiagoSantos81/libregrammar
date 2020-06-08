@@ -3,6 +3,7 @@
 ## 5.0-SNAPSHOT (release planned for 2020-06-26)
 
 ### This fork differences
+####(new comparisons only)
 
 #### Arabic
   * added and improved rules (https://github.com/linuxscout/languagetool and PR #2848)
@@ -30,9 +31,11 @@
 
 #### English
   * added and improved rules, including:
+    - several agreement rules added or significantly improved;
     - archaic language detection;
     - explanation URLs added to ~600 rules.
-  * use `UpperCaseRule` instead of `UpperCaseNgramRule` by default.
+  * disambiguation improvements
+  * use `UpperCaseRule` instead of `UpperCaseNgramRule` by default
 
 #### French
   * added `FrenchStyleRepeatedWordRule`
@@ -41,7 +44,7 @@
   * added URLs explaining most single word suggestions
 
 #### Italian
-  * [re-enable rules](https://github.com/languagetool-org/languagetool/commit/0176b6cb378ed39f3e7e39ef25cab026362d947b):
+  * [re-enable rules](https://github.com/TiagoSantos81/languagetool/commit/0176b6cb378ed39f3e7e39ef25cab026362d947b):
     - determiner agreement rules;
     - adverb instead of adjective rules;
     - start of sentence with conjunction (style rule);
@@ -50,7 +53,7 @@
     - agreement rules;
     - several loose word confusion rules.
   * enable by default:
-    - verbose small number (style);
+    - verbose small number (style).
   * added URLs explaining most single word suggestions
 
 #### Papamiento
@@ -118,6 +121,7 @@
 
 #### English
   * added and improved rules, including:
+    - `Use 'to' before the base form of a verb` now also activated upstream
     - `UpperCaseNgramRule`, a stricter version of `UpperCaseRule` that
     requires n-gram data
   * spelling and POS improvements
@@ -156,6 +160,7 @@
   * add-on toolbar added, thanks to Fred Kruse
   * custom spellings added to `spelling.txt` are now also ignored by LibreOffice
     spellchecking service, thanks to Fred Kruse
+  * new performance settings added to the options panel, thanks to Fred Kruse
 
 #### General
   * added `replace_custom.txt` for several languages so users can have their 
@@ -167,6 +172,7 @@
 ## 4.9 (released 2020-04-24)
 
 ### This fork differences
+####(new comparisons only)
 
 #### Breton
   * activated generic Java rules, including:
