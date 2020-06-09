@@ -5750,7 +5750,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <!--<example correction="La ratio|Las ratios"><marker>El ratio</marker> es de 50.</example>-->
                 <example correction="La casa|Las casas"><marker>Las casa</marker> de la colina.</example>
                 <example correction="una baguette|unas baguettes">Compré <marker>un baguette</marker>.</example>
-                <example correction="otra oportunidad|otras oportunidades" type="triggers_error" reason="ambiguous, missimg comma">Algunos los llaman problemas y <marker>otros oportunidades</marker> de crecimiento.</example>
+                <example correction="otra oportunidad|otras oportunidades" type="triggers_error" reason="ambiguous, missing comma">Algunos los llaman problemas y <marker>otros oportunidades</marker> de crecimiento.</example>
                 <!--y para otros dolor.-->
                 <example correction="nuestra revista|nuestras revistas">Suscribiendote a <marker>nuestras revista</marker> te regalamos un secador</example>
                 <example correction="la cosa|las cosas">De <marker>la cosas</marker>.</example>
