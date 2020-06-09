@@ -3,7 +3,7 @@
 ## 5.0-SNAPSHOT (release planned for 2020-06-26)
 
 ### This fork differences
-####(new comparisons only)
+#### (new comparisons only)
 
 #### Arabic
   * added and improved rules (https://github.com/linuxscout/languagetool and PR #2848)
@@ -172,7 +172,7 @@
 ## 4.9 (released 2020-04-24)
 
 ### This fork differences
-####(new comparisons only)
+#### (new comparisons only)
 
 #### Breton
   * activated generic Java rules, including:

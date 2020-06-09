@@ -6860,19 +6860,6 @@ title="Easy editing stylesheet" ?>
           <token min='0'>.</token>
           <token>:</token>
       </antipattern>
-<!-- MARCOAGPINTO 2020-06-08 + 2020-06-09 *START* -->
-      <antipattern>
-		  <token regexp='yes'>universidade|faculdade</token>	  
-		  <token min="0" max="1" regexp="yes">federal|estadual|estatal</token>
-		  <token min="0" max="1" regexp='yes'>das?|de|dos?</token>
-		  <token postag="NP[CFM][SP]000|NP[CFM][SP]G00" postag_regexp='yes'/>
-      </antipattern>
-      <antipattern>
-		  <token regexp='yes'>república|editora</token>	  
-		  <token min="0" max="1" regexp='yes'>das?|de|dos?</token>
-		  <token postag="NP[CFM][SP]000|NP[CFM][SP]G00|AQ0FS0" postag_regexp='yes'/>
-      </antipattern>	  
-<!-- MARCOAGPINTO 2020-06-08 + 2020-06-09 *END* -->
       <antipattern><!-- vocative -->
           <token>
             <exception regexp='yes'>[,;\:]</exception></token>
@@ -6892,6 +6879,13 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>\p{Lu}\p{Ll}+</token>
           <token regexp='yes'>,|e</token>
           <token regexp='yes'>\p{Lu}\p{L}+</token>
+      </antipattern>
+      <antipattern>
+          <token regexp='yes'>[\,\;\:]</token>
+          <token case_sensitive='yes' regexp='yes'>Departamento|E(?:ditora|scola)|Instituto|Faculdade|Universidade|República</token>
+          <token case_sensitive='yes' regexp='yes' min='0'>Democrática|Esta(?:dual|tal)|Federal|Municipal|Popular</token>
+          <token regexp='yes' min='0'>d[ao]s?|de</token>
+          <token regexp='yes' case_sensitive='yes'>\p{Lu}\p{L}+</token>
       </antipattern>
       <pattern>
           <token regexp='yes'>[\,\;\:]
@@ -11903,7 +11897,7 @@ title="Easy editing stylesheet" ?>
             <exception scope='next' regexp='yes' case_sensitive='yes'>[CFNSEW]|[Gg]raus?|[\d,. ]+[′''][CFKNSEWO]?</exception></token>
     <!--token min='0' spacebefore='no'>.</token-->
       </pattern>
-      <message>A abreviatura deste ordinal é: <suggestion><match no='1' regexp_match='(\d+)[ºo]\.?([sˢ]?)\.?' regexp_replace='$1.º$2'/></suggestion>. Note que graus não são ordinais.</message>
+      <message>A abreviatura deste ordinal é <suggestion><match no='1' regexp_match='(\d+)[ºo]\.?([sˢ]?)\.?' regexp_replace='$1.º$2'/></suggestion>. Note que graus não são ordinais.</message>
       <example correction="12.º">O premiado é o <marker>12o</marker> da lista.</example>
       <example>Temperatura máxima prevista de 38º C.</example><!-- formatting of degrees done by DEGREE_SYMBOL -->
       <example>O arquipélago situa-se no nordeste do oceano Atlântico entre os 36º e 43º de latitude Norte e os 25º e 31º de longitude Oeste.</example><!-- caught by DEGREES_MINUTES_SECONDS -->
@@ -11914,7 +11908,7 @@ title="Easy editing stylesheet" ?>
             <exception scope='next' regexp='yes' case_sensitive='yes'>[CFNSEW]|[Gg]raus?|[\d,. ]+[′''][CFKNSEWO]?</exception></token>
     <!--token min='0' spacebefore='no'>.</token-->
       </pattern>
-      <message>A abreviatura de '360 graus' <suggestion>360°</suggestion>.Caso se esteja a referir-se ao ordinal, pontue a abreviatura.</message>
+      <message>A abreviatura de '360 graus' é <suggestion>360°</suggestion>.Caso se esteja a referir-se ao ordinal, pontue a abreviatura.</message>
         <suggestion>360.º</suggestion>
       <example correction="360°|360.º">Deu uma volta de <marker>360º</marker>.</example>
     </rule>
@@ -11923,7 +11917,7 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes' case_sensitive='yes'>(?:\d+)\.o(?:[sˢ]?)</token>
     <!--token min='0' spacebefore='no'>.</token-->
       </pattern>
-      <message>A abreviatura deste ordinal é: <suggestion><match no='1' regexp_match='(\d+)\.o([sˢ]?)\.?' regexp_replace='$1.º$2'/></suggestion>.</message>
+      <message>A abreviatura deste ordinal é <suggestion><match no='1' regexp_match='(\d+)\.o([sˢ]?)\.?' regexp_replace='$1.º$2'/></suggestion>.</message>
       <example correction="12.º">A entrada é a <marker>12.o</marker> da lista.</example>
       <example correction="12.º">A entrada é a <marker>12.o</marker>. da lista.</example>
       <example correction="12.ºs">A entrada é a <marker>12.os</marker>. da lista.</example>
@@ -11933,7 +11927,7 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes' case_sensitive='yes'>(?:\d+)[ªa]\.?([sˢ]?)</token>
     <!--token min='0' spacebefore='no'>.</token-->
       </pattern>
-      <message>A abreviatura deste ordinal é: <suggestion><match no='1' regexp_match='(\d+)[ªa]\.?([sˢ]?)\.?' regexp_replace='$1.ª$2'/></suggestion>.</message>
+      <message>A abreviatura deste ordinal é <suggestion><match no='1' regexp_match='(\d+)[ªa]\.?([sˢ]?)\.?' regexp_replace='$1.ª$2'/></suggestion>.</message>
       <example correction="12.ª">A entrada é a <marker>12ª</marker> da lista.</example>
       <example correction="12.ª">A entrada é a <marker>12a</marker>. da lista.</example>
       <example correction="12.ªs">A entrada é a <marker>12as</marker> da lista.</example>
@@ -11943,7 +11937,7 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes' case_sensitive='yes'>(?:\d+)\.a(?:[sˢ]?)</token>
     <!--token min='0' spacebefore='no'>.</token-->
       </pattern>
-      <message>A abreviatura deste ordinal é: <suggestion><match no='1' regexp_match='(\d+)\.a([sˢ]?)\.?' regexp_replace='$1.ª$2'/></suggestion>.</message>
+      <message>A abreviatura deste ordinal é <suggestion><match no='1' regexp_match='(\d+)\.a([sˢ]?)\.?' regexp_replace='$1.ª$2'/></suggestion>.</message>
       <example correction="12.ª">A entrada é a <marker>12.a</marker> da lista.</example>
       <example correction="12.ª">A entrada é a <marker>12.a</marker>. da lista.</example>
       <example correction="12.ªs">A entrada é a <marker>12.as</marker>. da lista.</example>
@@ -11952,7 +11946,7 @@ title="Easy editing stylesheet" ?>
       <pattern>
           <token regexp='yes' case_sensitive='yes'>(?:\d+\.[aoªº])s</token>
       </pattern>
-      <message>A abreviatura deste ordinal é: <suggestion><match no='1' regexp_match='s' regexp_replace='ˢ'/></suggestion>.</message>
+      <message>A abreviatura deste ordinal é <suggestion><match no='1' regexp_match='s' regexp_replace='ˢ'/></suggestion>.</message>
       <example correction="12.ªˢ">A entrada é a <marker>12.ªs</marker> da lista.</example>
     </rule>
     <rule>
@@ -11963,7 +11957,7 @@ title="Easy editing stylesheet" ?>
         </marker>
           <token regexp='yes' case_sensitive='yes'>\p{Ll}+|[,;]</token>
       </pattern>
-      <message>A abreviatura deste ordinal é: <suggestion>\1</suggestion>.</message>
+      <message>A abreviatura deste ordinal é <suggestion>\1</suggestion>.</message>
       <example correction="12o">O premiado é o <marker>12o.</marker> da lista.</example>
     </rule>
   </rulegroup>
@@ -12071,13 +12065,12 @@ title="Easy editing stylesheet" ?>
     </rule>
   </rulegroup>
 
-    <rule id='UNLIKELY_OPENING_PUNCTUATION' name="Sinal de pontuação perdidos">
+    <rule id='UNLIKELY_OPENING_PUNCTUATION' name="Sinal de pontuação isolado">
     <!-- Created by Tiago F. Santos, 2018-07-14 -->
-      <antipattern>
-    <!-- smiley -->
+      <antipattern><!-- smiley -->
           <token regexp="yes">[:;]</token>
           <token spacebefore="no" min='0'>-</token>
-          <token spacebefore="no" regexp="yes">[()\/DPS]</token>
+          <token spacebefore="no" regexp="yes">[()\\\/DPS]</token>
       </antipattern>
       <pattern>
           <token postag='SENT_START'/>
