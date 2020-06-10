@@ -6264,13 +6264,13 @@ title="Easy editing stylesheet" ?>
         </and>
         </marker>
       </pattern>
-      <message>Esta frase não tem verbo. Confirme que não é uma holófrase.</message>
+      <message>Esta frase não tem verbo. Confirme que a falta de verbo é intencional.</message>
       <url>https://letratura.blogspot.pt/2007/03/apostila-ao-ciberdvidas-frase-sem-verbo.html</url><!--_XXX_artigo_do_Ciberdúvidas_está_offline_-->
       <short>Frase sem verbo</short>
       <example type="incorrect"><marker>Isto um exemplo.</marker></example>
-    <!--example type="incorrect"><marker>Isto um exemplo!</marker></example-->
+    <!--example type="incorrect"><marker>Isto um exemplo!</marker></example XXX false negative -->
       <example><marker>Isto é um exemplo.</marker></example>
-      <example><marker>Isto -  Um exemplo</marker></example><!-- XXX Possível título -->
+      <example><marker>Isto -  Um exemplo</marker></example><!-- XXX Possible title -->
       <example>Tem marcação com o Dr. Mário?</example>
       <example type="incorrect"><marker>Não marcação com o Dr. Mário.</marker></example>
       <example>Não tem marcação com o Dr. Mário.</example>
@@ -6280,14 +6280,15 @@ title="Easy editing stylesheet" ?>
       <example>Basta!</example>
       <example>Ó Meu Deus!</example>
       <example>Ó Deus do Céu!</example>
+      <example type='incorrect'>Este exemplo está correto. Este segundo também. <marker>Este terceiro exemplo não.</marker></example>
       <example type="incorrect"><marker>Este exemplo também.</marker></example>
+      <example type='incorrect'><marker>Este terceiro exemplo não.</marker></example>
       <example><marker>Este exemplo também está.</marker></example>
       <example>Tu tinhas um bocado de tempo.</example>
       <example>Quem compra este tipo de arte?</example>
       <example>Esses dois campos representam a união de disciplinas de astronomia e química.</example>
       <example>Não vale a pena.</example>
       <example>Certo, isto está bem. Este exemplo está correto. Certo que este também.</example>
-    <!-- <example type='incorrect'>Este exemplo está correto. Este segundo também. <marker>Este terceiro exemplo não.</marker></example> FIXME after ed04b08 this test should trigger correctly, but it doesn't -->
       <example>Os melhores cumprimentos,</example>
       <example><marker>A.1.</marker> Primeiro Anexo</example>
       <example><marker>9.7.1.</marker> Subcapítulo</example>
@@ -6311,7 +6312,7 @@ title="Easy editing stylesheet" ?>
       <example type='triggers_error'>Duração das batalhas até 10 horas.</example><!-- correct. it is a sentence since it has punctuation and it has no verbs here. -->
       <example>Duração das batalhas até 10 horas</example><!-- correct. no verbs here but this looks like a title, it has no punctuation -->
       <example>Vinho tinto, por favor.</example>
-      <example type="incorrect"><marker>Éteres de glicol: Solvente para vernizes e tintas.</marker></example><!-- Titles should not be punctuatuates -->
+      <example type="incorrect"><marker>Éteres de glicol: Solvente para vernizes e tintas.</marker></example><!-- Titles should not be punctuated -->
       <example type='triggers_error'>Mais uma semana cheia à frente.</example><!-- FP but it is a holophrase-->
     </rule>
 
