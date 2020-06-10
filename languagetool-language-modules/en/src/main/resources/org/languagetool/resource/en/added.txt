@@ -1514,7 +1514,6 @@ beclomethasone	beclomethasone	NN:U
 Bedford	Bedford	NNP
 Będzin	Będzin	NNP
 Beetlejuice	Beetlejuice	NNP
-before	before	CC
 before	before	RB
 befuddled	befuddled	JJ
 beggarly	beggarly	JJ
@@ -2411,6 +2410,7 @@ Chevelle	Chevelle	NNP
 chèvre	chèvre	NN:U
 Chewbacca	Chewbacca	NNP
 Chhattisgarh	Chhattisgarh	NNP
+Chiapas	Chiapas	NNP
 Chiara	Chiara	NNP
 Chick-fil-A	Chick-fil-A	NNP
 chikungunya	chikungunya	NN:U
@@ -2521,6 +2521,7 @@ Cipollone	Cipollone	NNP
 CircleCI	CircleCI	NNP
 circumcision	circumcision	NN:U
 ciré	ciré	NN:U
+cis	cis	JJ
 CIS	CIS	NN
 CIS	CIS	NNP
 CISes	CIS	NNS
@@ -4993,7 +4994,6 @@ domesticated	domesticated	JJ
 Domínguez	Domínguez	NNP
 Dominika	Dominika	NNP
 Domremy	Domremy	NNP
-don	don	VB
 donné	donné	NN
 donnée	donnée	NN
 données	donnée	NNS
@@ -8001,6 +8001,7 @@ illiberalized	illiberalize	VBD
 illiberalized	illiberalize	VBN
 illiberalizes	illiberalize	VBZ
 illiberalizing	illiberalize	VBG
+Illustrator	Illustrator	NNP
 ILS	ILS	NNP
 IM	IM	NN
 iMac	iMac	NN
@@ -9040,6 +9041,7 @@ LCBO	LCBO	NNP
 Léa	Léa	NNP
 leach	leach	NN
 leaches	leach	NNS
+Leaflet	Leaflet	NNP
 LeBron	LeBron	NNP
 Leclerc	Leclerc	NNP
 LED	LED	NN
@@ -10025,6 +10027,7 @@ micellisation	micellisation	NN:U
 micellization	micellization	NN:U
 Michał	Michał	NNP
 Michelin	Michelin	NNP
+Michoacán	Michoacán	NNP
 microbecquerel	microbecquerel	NN
 microbecquerels	microbecquerel	NNS
 microbiota	microbiota	NN:U
@@ -12884,6 +12887,7 @@ pinealectomizing	pinealectomize	VBG
 Pinellas	Pinellas	NNP
 Pineville	Pineville	NNP
 pingable	pingable	JJ
+Pink	Pink	NNP
 Pinterest	Pinterest	NNP
 Pioneer	Pioneer	NNP
 Pipedrive	Pipedrive	NNP
@@ -14056,6 +14060,7 @@ pricelessly	pricelessly	RB
 prickly	prickly	JJ
 Prilosec	Prilosec	NNP
 primaquine	primaquine	NN:U
+Primark	Primark	NNP
 primidone	primidone	NN:U
 prims	prim	VBZ
 Pringles	Pringles	NNP
@@ -17958,6 +17963,7 @@ theologized	theologize	VBN
 theologizes	theologize	VBZ
 theologizing	theologize	VBG
 theophylline	theophylline	NN:U
+Théotime	Théotime	NNP
 Theranos	Theranos	NNP
 therapise	therapise	VB
 therapise	therapise	VBP
@@ -18033,7 +18039,6 @@ tiddlywinks	tiddlywinks	NN:U
 Tiguan	Tiguan	NNP
 TikTok	TikTok	NNP
 TikToks	TikTok	NNPS
-till	till	CC
 Tillerson	Tillerson	NNP
 Timberwolves	Timberwolves	NNPS
 time-lapse	time-lapse	JJ
@@ -18592,7 +18597,6 @@ UNIVAC	UNIVAC	NNP
 universalisability	universalisability	NN:U
 universalizability	universalizability	NN:U
 Univision	Univision	NNP
-unless	unless	CC
 # unlike	unlike	VB
 # unlike	unlike	VBP
 # unliked	unlike	VBD
@@ -25461,3 +25465,9 @@ subgrouping	subgrouping	NN
 subgroupings	subgrouping	NNS
 SUV	SUV	NN
 SUVs	SUV	NNS
+Colima	Colima	NNP
+Morelos	Morelos	NNP
+Nayarit	Nayarit	NNP
+Sinaloa	Sinaloa	NNP
+Veracruz	Veracruz	NNP
+Aguascalientes	Aguascalientes	NNP

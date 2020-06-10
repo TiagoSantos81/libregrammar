@@ -9237,6 +9237,44 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
     <!-- Siehe auch ../../resource/de/compounds.txt -->
     <!-- ====================================================================== -->
     <category id="COMPOUNDING" name="Getrennt- und Zusammenschreibung">
+        <rule id="TOP_GROSS_SUB" name="Top Model (Top-Model|Topmodel|top Model)">
+            <antipattern>
+                <token>top</token>
+                <token regexp="yes">teams?</token>
+                <token regexp="yes">cups?</token>
+            </antipattern>
+            <antipattern>
+                <token>tennessee</token>
+                <token>flat</token>
+                <token>top</token>
+                <token>box</token>
+            </antipattern>
+            <pattern>
+                <token>
+                    <exception regexp="yes">&anf;|next</exception>
+                    <exception postag="SENT_START" />
+                </token>
+                <marker>
+                    <token case_sensitive="yes">
+                        Top
+                    </token>
+                    <token postag="SUB.*" postag_regexp="yes">
+                        <exception postag="SUB.*ADJ" postag_regexp="yes"/>
+                        <exception scope="next" regexp="yes">&anf;</exception>
+                        <exception>Speed</exception><!-- Eigenname "Top Speed" -->
+                    </token>
+                </marker>
+            </pattern>
+            <message>Wenn es sich hierbei um ein zusammengesetztes Nomen handelt, wird es zusammengeschrieben. Handelt es sich bei 'top' um ein Adjektiv, wird es kleingeschrieben.</message>
+            <suggestion>\2-\3</suggestion>
+            <suggestion>\2<match no="3" case_conversion="startlower"/></suggestion>
+            <suggestion><match no="2" case_conversion="startlower"/> \3</suggestion>        
+            <example>Germany’s Next Top Model</example>
+            <example>Lösche oder benenne “Top Sites”</example>
+            <example>Unser Ziel ist eine Top Moderne Infrastruktur.</example>
+            <example>Top Model!</example>
+            <example correction="Top-Model|Topmodel|top Model">Sie ist ein <marker>Top Model</marker>.</example>
+        </rule>
         <rule id="DURCH_WACHSEN" name="durch wachsen (durchwachsen)">
             <pattern>
                 <token>durch</token>
@@ -44418,12 +44456,16 @@ Andere Projekte</example>
                 <antipattern>
                     <token regexp="yes">.*photograph.*|.*photon|.*photonen.*|.*phono.*|.*phone[mt].*|symphoni.*|(.+)?Smartphone.*|Al­lo­phon.*</token>
                 </antipattern>
+                <antipattern>
+                    <token regexp="yes">https?.*|www.*</token>
+                </antipattern>
                 <pattern>
                     <token regexp="yes" case_sensitive="yes">.*pho(to|n).*</token>
                 </pattern>
                 <message>Möchten Sie die modernere Schreibweise <suggestion><match no="1" regexp_match="(.*)pho(.*)" regexp_replace="$1fo$2"/></suggestion> verwenden?</message>
                 <url>https://www.duden.de/rechtschreibung/Fotograf</url>
                 <example correction="Familienfotos">Ihr gelangen immer wieder wundervolle <marker>Familienphotos</marker>.</example>
+                <example>https://unsplash.com/photos/xxxxx</example>
             </rule>
         </rulegroup>
         <rulegroup id="PH_ANSTATT_F" name="Worte mit Ph anstatt F">
