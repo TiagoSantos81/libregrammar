@@ -362,6 +362,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="¿Cómo estáis,">"<marker>Como estais</marker> amigos?</example>
                 <example correction="¿Cómo estás,"><marker>¿Cómo estas</marker> Jorge?</example>
                 <example correction="¿Cómo está,"><marker>¿Cómo esta,</marker> Jorge?</example>
+                <example>¿Cómo está hecho?</example>
+                <example>¿Cómo está diseñado?</example>
             </rule>
             <rule>
                 <pattern>
@@ -1594,13 +1596,28 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <pattern>
                     <token regexp="yes">&pronombre_personal_atono;<exception>la</exception></token>
                     <marker>
-                        <token>continua</token>
+                        <token regexp="yes">continua|perpetua</token>
                     </marker>
                 </pattern>
                 <message>Si es un verbo, lleva tilde.</message>
-                <suggestion>continúa</suggestion>
+                <suggestion><match no="2" regexp_match="(?iu)ua" regexp_replace="úa"/></suggestion>
                 <example correction="continúa">Se <marker>continua</marker> igual.</example>
+                <example correction="perpetúa">Se <marker>perpetua</marker> igual.</example>
                 <example correction="continúa">Él lo <marker>continua</marker>.</example>
+                <example>La continua tensión.</example>
+            </rule>
+            <rule default="temp_off">
+                <pattern>
+                    <marker>
+                        <token regexp="yes">continuas?|perpetuas?</token>
+                    </marker>
+                    <token postag="D.*" postag_regexp="yes"/>
+                </pattern>
+                <message>Si es un verbo, lleva tilde.</message>
+                <suggestion><match no="1" regexp_match="(?iu)ua" regexp_replace="úa"/></suggestion>
+                <example correction="continúa">Él <marker>continua</marker> la tradición.</example>
+                <example correction="continúas">Tú <marker>continuas</marker> la tradición.</example>
+                <example correction="perpetúa">La enseñanza <marker>perpetua</marker> las desigualdades.</example>
                 <example>La continua tensión.</example>
             </rule>
         </rulegroup>
@@ -7148,6 +7165,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rule>
         <!--TODO: idem with ", pues"-->
         <rule id="COMMA_REPETITION" name="coma en repeticiones">
+            <antipattern>
+                <token>no</token>
+                <token spacebefore="no">-</token>
+            </antipattern>
             <pattern>
                 <marker>
                     <token regexp="yes">sí|no<exception postag="_allow_repeat"/></token>
@@ -7158,6 +7179,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <suggestion>\1, \2</suggestion>
             <example correction="Sí, sí"><marker>Sí sí</marker>, tienes que venir.</example>
             <example>Si lo hecho me lo dices clarito, y si no no me hagas perder el tiempo.</example>
+            <example>O si no no funciona.</example>
         </rule>
     </category>
     <category id="TYPOGRAPHY" name="Tipografía" type="typographical">

@@ -135,7 +135,7 @@
   * rules that apply to de-DE and de-AT (but not de-CH) can now be placed in `de/de-DE-AT/grammar.xml`
   * spelling and POS improvements
   * Updated the German part-of-speech dictionary (https://github.com/languagetool-org/german-pos-dict)
-    to version 1.2.
+    to version 1.2.1.
 
 #### Russian
   * added and improved rules, including:
