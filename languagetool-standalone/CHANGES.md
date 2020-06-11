@@ -39,6 +39,7 @@
 
 #### French
   * added `FrenchStyleRepeatedWordRule`
+  * 17 n-gram confusion pairs added
 
 #### Galician
   * added URLs explaining most single word suggestions
