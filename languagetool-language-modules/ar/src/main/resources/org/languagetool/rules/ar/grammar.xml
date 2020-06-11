@@ -309,12 +309,12 @@ USA
         <message>
 تعبير "القيام بـ" ركيك يستحسن تجن البه إلى تصريف المصدر الموالي، قل ضربت بدلا من القيام بالضرب.
 
-        <suggestion><match no="2" regexp_match="^ب" regexp_replace=""/></suggestion>?
+        <suggestion>الفعل من (<match no="2" regexp_match="^ب" regexp_replace=""/>)</suggestion>?
                 </message>
-        <example correction="الضرب">
+        <example correction="الفعل من (الضرب)">
           <marker>القيام بالضرب</marker>
         </example>
-        <example correction="شرب"><marker>قمت بشرب</marker> الماء </example>
+        <example correction="الفعل من (شرب)" type="incorrect"><marker>قمت بشرب</marker> الماء </example>
       </rule>
     </rulegroup>
 <!--
@@ -6834,6 +6834,10 @@ END RULEGROUP Masdar errors
   </rule>
 <!-- trans_382_AjAb_Ela أجاب على -->
   <rule id="trans_382_AjAb_Ela" name="أجاب على">
+    <antipattern>
+      <token regexp="yes">تجب|يجب</token>
+      <token regexp="yes">&forms_3ala;</token>
+    </antipattern>
     <pattern>
       <token inflected="yes" skip="1">أَجَابَ</token>
       <marker>
@@ -6846,6 +6850,7 @@ END RULEGROUP Masdar errors
 </message>
     <example correction="عن|إلى" type="incorrect">أجاب <marker>على</marker> السؤال </example>
     <example type="correct"> أجاب عن السؤال </example>
+    <example type="correct"> يجب عليه السؤال </example>
   </rule>
  <!-- trans_385_AkhtlfwA_Ela اخْتَلَفُوا على -->
   <rule id="trans_385_AkhtlfwA_Ela" name="اختلفوا على">
