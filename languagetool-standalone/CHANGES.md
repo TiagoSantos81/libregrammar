@@ -5,6 +5,12 @@
 ### This fork differences
 #### (new comparisons only)
 
+#### Arabic
+  * work based mostly on [Tara Zerrouki](https://github.com/linuxscout/languagetool)
+  * 69 rules re-added (probably lost on upstream merge project management)
+  * 88 diacritic rules re-added (probably lost on upstream merge project management)
+  * homophones rules check lemmas
+
 #### Asturian
   * activated generic Java rules, including: `SentenceWhitespaceRule`,
     `WhiteSpaceBeforeParagraphEnd`, `WhiteSpaceAtBeginOfParagraph`, `EmptyLineRule`,
