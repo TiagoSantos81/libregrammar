@@ -309,12 +309,12 @@ USA
         <message>
 تعبير "القيام بـ" ركيك يستحسن تجن البه إلى تصريف المصدر الموالي، قل ضربت بدلا من القيام بالضرب.
 
-        <suggestion>الفعل من (<match no="2" regexp_match="^ب" regexp_replace=""/>)</suggestion>?
+        <suggestion><match no="2" regexp_match="^ب" regexp_replace=""/></suggestion>?
                 </message>
-        <example correction="الفعل من (الضرب)">
+        <example correction="الضرب">
           <marker>القيام بالضرب</marker>
         </example>
-        <example correction="الفعل من (شرب)" type="incorrect"><marker>قمت بشرب</marker> الماء </example>
+        <example correction="شرب"><marker>قمت بشرب</marker> الماء </example>
       </rule>
     </rulegroup>
 <!--
@@ -1962,8 +1962,8 @@ USA
         <token regexp="yes">&forms_3ala;</token>
     </pattern>
     <message>(ناف الشيءُ): علا وارتفع وأشرَف 
-	<suggestion><match no="1" regexp_match="ينوف" regexp_replace="يُنِيفُ"/></suggestion>
-	<suggestion><match no="1" regexp_match="ينوف" regexp_replace="يُنَيِّفُ"/></suggestion>
+    <suggestion><match no="1" regexp_match="ينوف" regexp_replace="يُنِيفُ"/></suggestion>
+    <suggestion><match no="1" regexp_match="ينوف" regexp_replace="يُنَيِّفُ"/></suggestion>
  </message>
     <example correction="يُنِيفُ|يُنَيِّفُ" type="incorrect"><marker>ينوف</marker> العدد على كذا  </example>
     <example type="correct"> يُنِيفُ / يُنَيِّفُ العددُ على كذا </example>
@@ -2058,7 +2058,7 @@ USA
       
         <token inflected="yes" skip="1">أَلْقَى</token>
         <token regexp="yes" min="0">&forms_3alayh;</token>
-		<marker>
+        <marker>
         <token inflected="yes" postag="N.*;--." postag_regexp="yes">خطاب</token>
       </marker>
     </pattern>
@@ -2073,7 +2073,7 @@ USA
   <rule id="exp_526_rAa_mnAmA" name="رأى مناما">
     <pattern>
         <token inflected="yes" skip="1">رَأَى</token>
-		<marker>
+        <marker>
         <token inflected="yes" postag="N.*;--." postag_regexp="yes">منام</token>
       </marker>
     </pattern>
@@ -2245,7 +2245,7 @@ USA
 
         <token inflected="yes" skip="1">أَصَابَ</token>
       <marker>
-		<token inflected="yes" postag="N.*;--." postag_regexp="yes">كلل</token>
+        <token inflected="yes" postag="N.*;--." postag_regexp="yes">كلل</token>
       </marker>
     </pattern>
     <message>(الكَلَل): الحالة. يقال: مات بكَلَلِ سوءٍ 
@@ -6767,7 +6767,7 @@ END RULEGROUP Masdar errors
   <rule id="trans_398_ATAH_b" name="أطاح ب">
     <pattern>
        <marker>
-		<token inflected="yes" skip="1">أَطَاحَ</token>
+        <token inflected="yes" skip="1">أَطَاحَ</token>
         <token regexp="yes">&forms_bih;</token>
       </marker>
     </pattern>
@@ -6782,7 +6782,7 @@ END RULEGROUP Masdar errors
   <rule id="trans_398_ATAH_b_2" name="أطاح ب">
     <pattern>
        <marker>
-		<token inflected="yes" skip="1">أَطَاحَ</token>
+        <token inflected="yes" skip="1">أَطَاحَ</token>
         <token postag="N.*;.B." postag_regexp="yes"/>
       </marker>
     </pattern>
@@ -6828,7 +6828,7 @@ END RULEGROUP Masdar errors
   <rule id="trans_402_AEln_En" name="أعلن عن">
     <pattern>
       <marker>
-		<token inflected="yes" skip="1" postag="V.*a.;..-" postag_regexp="yes">أَعْلَنَ</token>      
+        <token inflected="yes" skip="1" postag="V.*a.;..-" postag_regexp="yes">أَعْلَنَ</token>      
         <token regexp="yes">&forms_3anh;</token>
       </marker>
     </pattern>
@@ -6845,7 +6845,7 @@ END RULEGROUP Masdar errors
   <rule id="trans_402_AEln_En_2" name="أعلن عن">
     <pattern>
       <marker>
-		<token inflected="yes" skip="1" postag="V.*a.;..-" postag_regexp="yes">أَعْلَنَ</token>      
+        <token inflected="yes" skip="1" postag="V.*a.;..-" postag_regexp="yes">أَعْلَنَ</token>      
         <token>عن</token>
       </marker>
     </pattern>

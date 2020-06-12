@@ -12,8 +12,8 @@
     <!ENTITY object_pronouns "me|you|him|her|it|us|them|one">
     <!ENTITY hispanic_nnp "Ciudad|Playa|Casa|Puerto|Avenida|Santiago|Municipio|Paseo|Calle|Días|Di?os|Nacional|Villas|Cinco|Rancho|Cerro|Universidad|Copa|Academia|Plaza|Facultad|Torre|Camino|Club|Tapas|Palma">
     <!ENTITY plural_adjectival_nouns "angry|blind|deaf|destitute|dead|dying|elderly|faithful|homeless|injured|insane|jobless|old|poor|rich|sick|squeamish|wealthy|wicked|wounded|young"><!-- One-word terms only, only after the word 'the': www.oxfordlearnersdictionaries.com/definition/english/rich, www.englishgrammar.org/adjectives-nouns/ -->
+    <!ENTITY subordinating_conjunctions "after|although|as|because|before|if|lest|like|once|since|than|that|though|unless|until|whenever|where|whereas|wherever|whether|while|why"><!-- #2988 -->
     <!ENTITY browser_protocols "(?:a(?:aas?|bout|cap|cct|cr|diumxtra|fp|fs|im|mss|pt|ttachment|w)|b(?:arion|eshare|itcoin|lob|olo)|c(?:allto|ap|hrome|id|oaps?|ontent|rid|vs)|da(?:b|ta|av)|d(?:ict|ns|ntp|rm|tn|vb)|e(?:d2k|xamples?)|fa(?:cetime|x)|f(?:eed|ile(?:system)?|i(?:nger|sh)|m|tp)|g(?:(?:eo|g)|i(?:t|zmoproject)|o(?:pher)?|talk)|h(?:323|cp|ttps?)|i(?:ax|cap|con|m(?:ap)?|nfo|otdisco|pn|pps?|ir(?:6?|cs|is|tms)|j(?:a(?:bber|r)|ms)|keyparc|l(?:astfm|daps?)|ma(?:gnet|ilserver|ilto|kes|ps|rket)|m(?:essage|id|ms|odem|snim|srps?|tqp|umble|update|vn)|n(?:ews|fs|i(?:h)?|ntp|otes)|obsolete|o(?:id|paquelocktoken)|pa(?:ck|lm|parazzi)|p(?:kcs11|latform|op|res|ro(?:spero|xy)|syc)|query|re(?:diss?|load|s(?:ource)?)|r(?:mi|sync|tmfp|t(?:mp|sp))|se(?:condlife|rvice|ssion)|s(?:ftp|gn|http|ieve|ips?|kype|mb|ms|n(?:ews|mp)|oldat|potify|sh|team|tuns?|vn)|t(?:ag|eamspeak|el(?:net)?|ftp|hings|hismessage|ip|n3270|urns?|v)|u(?:dp|nreal|rn|t2004)|v(?:e(?:mmi|ntrilo)|ideotex|nc))|w(?:ais|ebcal|ss?|tai|yciwyg)|x(?:con|fire|mpp|ri)|ymsgr)">
-
 ]>
 <rules lang="en" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:noNamespaceSchemaLocation="../../../../../../../../../languagetool-core/src/main/resources/org/languagetool/resource/disambiguation.xsd">
@@ -84,6 +84,13 @@
             <example type="ambiguous" inputform="3-warning[3-warning]" outputform="3-warning[3-warning/JJ]">There is a <marker>3-warning</marker> rule, which means that after 3 warnings, you will be dismissed.</example><!-- warning/NN:UN -->
         </rule>
         <rule>
+            <antipattern><!-- 3.3.3-GB -->
+                <token regexp="yes">[0-9]+</token>
+                <token spacebefore="no">.</token>
+                <token spacebefore="no" regexp="yes">[0-9]+</token>
+                <token spacebefore="no">.</token>
+                <token spacebefore="no" regexp="yes" case_sensitive="yes">[0-9]+-(KB|MB|GB)<exception postag="JJ"/></token>
+            </antipattern>
             <pattern>
                 <token regexp="yes" case_sensitive="yes">[0-9]+-(KB|MB|GB)<exception postag="JJ"/></token>
             </pattern>
@@ -91,7 +98,7 @@
             <example type="untouched">The file is <marker>30 GB</marker>.</example>
             <example type="untouched">A <marker>30-Gb</marker> file is too large.</example>
             <example type="untouched">A <marker>3-5-GB</marker> file is too large.</example>
-<!--            <example type="untouched">A <marker>3.3.3-GB</marker> file is too large.</example>-->
+            <example type="untouched">A <marker>3.3.3-GB</marker> file is too large.</example>
             <example type="ambiguous" inputform="30-GB[30-GB]" outputform="30-GB[30-GB/JJ]">A <marker>30-GB</marker> file is too large.</example>
             <example type="ambiguous" inputform="5-GB[5-GB]" outputform="5-GB[5-GB/JJ]">A 55.<marker>5-GB</marker> file is too large.</example>
             <example type="ambiguous" inputform="5-GB[5-GB]" outputform="5-GB[5-GB/JJ]">2.<marker>5-GB</marker> files and larger can ...</example>
@@ -113,7 +120,7 @@
                 </token>
             </pattern>
             <filter class="org.languagetool.rules.en.NoDisambiguationEnglishPartialPosTagFilter"
-                args="no:1 regexp:(?:pre|post)-([A-Z]?[a-z]+) postag_regexp:NN(P|:UN?)?"/><!-- The filter is case-sensitive -->
+                args="no:1 regexp:(?:pre|post)-([A-Z]?[a-z]+) postag_regexp:NN(P|:UN?)?|VB[PGN]"/><!-- The filter is case-sensitive -->
             <disambig action="add"><wd pos="JJ"/></disambig>
             <example type="untouched">When you <marker>pre-the</marker> test, be careful.</example>
             <example type="untouched">Can you <marker>pre-quickly</marker> this?</example>
@@ -138,6 +145,10 @@
             <example type="ambiguous" inputform="post-metre[post-metre]" outputform="post-metre[post-metre/JJ]">Ignore the spelling for this <marker>post-metre</marker> example.</example>
             <example type="ambiguous" inputform="pre-Fukushima[pre-Fukushima]" outputform="pre-Fukushima[pre-Fukushima/JJ]">Make sure that this unusual <marker>pre-Fukushima</marker> test is satisfactory.</example>
             <example type="ambiguous" inputform="pre-Computer[pre-Computer]" outputform="pre-Computer[pre-Computer/JJ]">This <marker>pre-Computer</marker> term is permitted.</example><!-- If this typography is not permitted for common nouns, then make an antipattern. An AP is much simpler alternative to special rules for proper nouns. -->
+            <example type="ambiguous" inputform="pre-baked[pre-baked]" outputform="pre-baked[pre-baked/JJ]">This <marker>pre-baked</marker> loaf of bread is delicious.</example>
+            <example type="ambiguous" inputform="pre-eat[pre-eat]" outputform="pre-eat[pre-eat/JJ]">Although a <marker>pre-eat</marker> session is unlikely, it is grammatical.</example>
+            <example type="ambiguous" inputform="pre-eaten[pre-eaten]" outputform="pre-eaten[pre-eaten/JJ]">Did you see that bird give its chick a <marker>pre-eaten</marker> worm?</example>
+            <example type="ambiguous" inputform="pre-cooling[pre-cooling]" outputform="pre-cooling[pre-cooling/JJ]">If the <marker>pre-cooling</marker> device is broken, discard it.</example>
         </rule>
 
         <rule><!-- disambiguation, plural noun phrase, chunk="I-NP-plural -->
@@ -148,7 +159,7 @@
             <token chunk="E-NP-plural" postag="NNS"/>
             </pattern>
             <filter class="org.languagetool.rules.en.NoDisambiguationEnglishPartialPosTagFilter"
-                args="no:1 regexp:(?:[Pp]re|[Pp]ost)-([A-Z]?[a-z]+) postag_regexp:NN(P|:UN?)?"/>
+                args="no:1 regexp:(?:[Pp]re|[Pp]ost)-([A-Z]?[a-z]+) postag_regexp:NN(P|:UN?)?|VB[PGN]"/>
             <disambig action="add"><wd pos="JJ"/></disambig>
             <example type="untouched">Whose <marker>pre-match</marker> speech was rubbish?</example>
             <example type="untouched">Actually, <marker>pre-TEST</marker> terms like this are not allowed.</example>
@@ -160,6 +171,7 @@
             <example type="ambiguous" inputform="pre-disambiguation[pre-disambiguation]" outputform="pre-disambiguation[pre-disambiguation/JJ]">My <marker>pre-disambiguation</marker> tests are OK.</example>
             <example type="ambiguous" inputform="pre-industrialisation[pre-industrialisation]" outputform="pre-industrialisation[pre-industrialisation/JJ]">The <marker>pre-industrialisation</marker> processes were noted.</example>
             <example type="ambiguous" inputform="pre-Fukushima[pre-Fukushima]" outputform="pre-Fukushima[pre-Fukushima/JJ]">All new <marker>pre-Fukushima</marker> tests must be done carefully.</example>
+            <example type="ambiguous" inputform="pre-baked[pre-baked]" outputform="pre-baked[pre-baked/JJ]">Which supermarket's <marker>pre-baked</marker> potatoes did you buy?</example>
         </rule>
 
         <rule><!-- disambiguation, plural common nouns, chunk="B-NP-plural -->
@@ -170,12 +182,16 @@
             <token chunk="E-NP-plural" postag="NNS"/>
             </pattern>
             <filter class="org.languagetool.rules.en.NoDisambiguationEnglishPartialPosTagFilter"
-                args="no:1 regexp:(?:[Pp]re|[Pp]ost)-([A-Z]?[a-z]+) postag_regexp:NN(P|:UN?)?"/>
+                args="no:1 regexp:(?:[Pp]re|[Pp]ost)-([A-Z]?[a-z]+) postag_regexp:NN(P|:UN?)?|VB[PGN]"/>
             <disambig action="add"><wd pos="JJ"/></disambig>
             <example type="ambiguous" inputform="Pre-disambiguation[Pre-disambiguation]" outputform="Pre-disambiguation[Pre-disambiguation/JJ]"><marker>Pre-disambiguation</marker> checks were not necessary.</example>
             <example type="ambiguous" inputform="pre-industrialisation[pre-industrialisation]" outputform="pre-industrialisation[pre-industrialisation/JJ]">The problems of <marker>pre-industrialisation</marker> processes were noted.</example>
             <example type="ambiguous" inputform="Pre-Fukushima[Pre-Fukushima]" outputform="Pre-Fukushima[Pre-Fukushima/JJ]"><marker>Pre-Fukushima</marker> tests must be done immediately.</example>
             <example type="ambiguous" inputform="Pre-Computer[Pre-Computer]" outputform="Pre-Computer[Pre-Computer/JJ]"><marker>Pre-Computer</marker> terms are permitted.</example><!-- If this typography is not permitted for common nouns, then make an antipattern. An AP is much simpler alternative to special rules for proper nouns. -->
+            <example type="ambiguous" inputform="Pre-baked[Pre-baked]" outputform="Pre-baked[Pre-baked/JJ]"><marker>Pre-baked</marker> potatoes are a great invention.</example>
+            <example type="ambiguous" inputform="Pre-eat[Pre-eat]" outputform="Pre-eat[Pre-eat/JJ]"><marker>Pre-eat</marker> sessions are permitted only with approval from management.</example>
+            <example type="ambiguous" inputform="Pre-eaten[Pre-eaten]" outputform="Pre-eaten[Pre-eaten/JJ]"><marker>Pre-eaten</marker> worms are gross!</example>
+            <example type="ambiguous" inputform="Pre-cooling[Pre-cooling]" outputform="Pre-cooling[Pre-cooling/JJ]"><marker>Pre-cooling</marker> devices prevent the cooler itself from becoming too hot.</example>
         </rule>
 
         <rule><!-- ignore spelling -->
@@ -190,7 +206,7 @@
             <token postag_regexp="yes" postag="NN.*"/>
             </pattern>
             <filter class="org.languagetool.rules.en.NoDisambiguationEnglishPartialPosTagFilter"
-                args="no:1 regexp:(?:[Pp]re|[Pp]ost)-([A-Z]?[a-z]+) postag_regexp:NN(P|:UN?)?"/><!-- The filter makes sure that this term is the one to which the postag was applied. -->
+                args="no:1 regexp:(?:[Pp]re|[Pp]ost)-([A-Z]?[a-z]+) postag_regexp:NN(P|:UN?)?|VB[PGN]"/><!-- The filter makes sure that this term is the one to which the postag was applied. -->
             <disambig action="ignore_spelling"/>
         </rule>
 
@@ -1825,8 +1841,13 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
 
     <!-- useful for this/these rule, e.g., in this circumstances -->
     <rule name="preposition + 'this' + verb 3sg/NNS -&gt; nns" id="IN_VBZ_NNS">
+        <antipattern><!-- #3071 unless this causes -->
+            <token regexp="yes">&subordinating_conjunctions;</token>
+            <token>this</token>
+            <token postag="VBZ"/>
+        </antipattern>
         <pattern>
-            <token postag="IN"><exception regexp="yes">as|like</exception></token>
+            <token postag="IN"/>
             <token regexp="yes">th(is|ese)</token>
             <marker>
                 <and>
@@ -1836,6 +1857,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             </marker>
         </pattern>
         <disambig postag="NNS"/>
+      <example type="untouched">Add "short" between "product" and "description", unless this causes a problem.</example>
     </rule>
 
     <rule id="DURING_VBZ_NNS" name="during + verb 3sg.NNS =>NNS">
@@ -7679,18 +7701,6 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
       <disambig action="replace"><wd pos="NNP"/><wd pos="NNP"/></disambig>
     </rule>
 
-    <rule name="Proper noun: All Saints Sisters of the Poor" id="ALL_SAINTS_SISTERS_OF_THE_POOR"><!-- www.allsaintssistersofthepoor.org.uk -->
-      <pattern case_sensitive="yes">
-        <token>All</token>
-        <token>Saints</token>
-        <token>Sisters</token>
-        <token>of</token>
-        <token>the</token>
-        <token>Poor</token>
-      </pattern>
-      <disambig action="replace"><wd pos="NNP"/><wd pos="NNP"/><wd pos="NNP"/><wd pos="NNP"/><wd pos="NNP"/><wd pos="NNP"/></disambig>
-    </rule>
-
     <rule name="Proper noun: Alpha Centauri" id="ALPHA_CENTAURI">
       <pattern case_sensitive="yes">
         <token>Alpha</token>
@@ -7725,46 +7735,12 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <disambig action="replace"><wd pos="NNP"/><wd pos="NNP"/></disambig>
     </rule>
 
-    <rule name="Proper noun: Moulin Rouge" id="MOULIN_ROUGE">
-      <pattern case_sensitive="yes">
-        <token>Moulin</token>
-        <token>Rouge</token>
-      </pattern>
-      <disambig action="replace"><wd pos="NNP"/><wd pos="NNP"/></disambig>
-    </rule>
-
-    <rule name="Proper noun: Taj Mahal" id="TAJ_MAHAL">
-      <pattern case_sensitive="yes">
-        <token>Taj</token>
-        <token>Mahal</token>
-      </pattern>
-      <disambig action="replace"><wd pos="NNP"/><wd pos="NNP"/></disambig>
-    </rule>
-
-    <rule name="Proper noun: Yom Kippur" id="YOM_KIPPUR">
-      <pattern case_sensitive="yes">
-        <token>Yom</token>
-        <token>Kippur</token>
-      </pattern>
-      <disambig action="replace"><wd pos="NNP"/><wd pos="NNP"/></disambig>
-    </rule>
-
     <rule name="Proper noun: Conference of Specialised Ministers" id="CONFERENCE_OF_SPECIALISED_MINISTERS"><!-- www.coe.int/en/web/cm/iguide-chapter6. Used as a test in en-GB OXFORD_SPELLING_Z_NOT_S -->
       <pattern case_sensitive="yes">
         <token>Conference</token>
         <token>of</token>
         <token>Specialised</token>
         <token>Ministers</token>
-      </pattern>
-      <disambig action="replace"><wd pos="NNP"/><wd pos="NNP"/><wd pos="NNP"/><wd pos="NNP"/></disambig>
-    </rule>
-
-    <rule name="Proper noun: Organisation of Islamic Cooperation" id="ORGANISATION_OF_ISLAMIC_COOPERATION"><!--  www.oic-oci.org/home/?lan=en. Used as a test in en-GB OXFORD_SPELLING_Z_NOT_S -->
-      <pattern case_sensitive="yes">
-          <token>Organisation</token>
-          <token>of</token>
-          <token>Islamic</token>
-          <token>Cooperation</token>
       </pattern>
       <disambig action="replace"><wd pos="NNP"/><wd pos="NNP"/><wd pos="NNP"/><wd pos="NNP"/></disambig>
     </rule>
@@ -9163,15 +9139,6 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <disambig action="add"><wd pos="NN:U"/><wd pos="NN:U"/></disambig>
         </rule>
 
-        <!--<rule id="MÉNAGE_À_TROIS" name="ménage à trois">
-            <pattern>
-                <token>ménage</token>
-                <token>à</token>
-                <token>trois</token>
-            </pattern>
-            <disambig action="replace"><wd pos="NN"/><wd pos="NN"/><wd pos="NN"/></disambig>
-        </rule>-->
-
         <rule id="MISE_EN_SCÈNE" name="mise en scène">
             <pattern>
                 <token>mise</token>
@@ -10309,32 +10276,6 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             </pattern>
             <disambig action="replace"><wd pos="NN:U"/><wd pos="NN:U"/></disambig>
         </rule>
-
-        <!--<rule id="QUID_PRO_QUO" name="quid pro quo">
-            <pattern>
-                <token>quid</token>
-                <token>pro</token>
-                <token>quo</token>
-            </pattern>
-            <disambig action="replace"><wd pos="NN"/><wd pos="NN"/><wd pos="NN"/></disambig>
-        </rule>
-        <rule id="QUID_PRO_QUOS" name="quid pro quos">
-            <pattern>
-                <token>quid</token>
-                <token>pro</token>
-                <token>quos</token>
-            </pattern>
-            <disambig action="replace"><wd pos="NNS"/><wd pos="NNS"/><wd pos="NNS"/></disambig>
-        </rule>
-
-        <rule id="QUID_PRO_QUO_SPELLING" name="quid pro quo">
-            <pattern>
-                <token>quid</token>
-                <token>pro</token>
-                <token regexp="yes">quos?</token>
-            </pattern>
-            <disambig action="ignore_spelling" />
-        </rule>-->
 
         <rule id="QUOD_ERAT_DEMONSTRANDUM" name="quod erat demonstrandum">
             <pattern>

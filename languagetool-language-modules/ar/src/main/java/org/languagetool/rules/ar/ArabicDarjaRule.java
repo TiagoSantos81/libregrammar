@@ -71,8 +71,8 @@ public class ArabicDarjaRule extends AbstractSimpleReplaceRule2 {
 
   @Override
   public String getSuggestion() {
-    return "الكلمة عامية  أو أجنبية يفضل أن يقال $suggestions";
-    }
+    return "الكلمة عامية يفضل أن يقال $suggestions";
+  }
 
   @Override
   public String getSuggestionsSeparator() {

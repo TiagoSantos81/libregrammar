@@ -59,7 +59,6 @@ public class ArabicTagManager {
   private static final int VERB_FLAG_POS_PRONOUN = 14;
 
   public ArabicTagManager() {
-
   }
 
   public String modifyPosTag(String postag, List<String> tags) {
@@ -75,57 +74,63 @@ public class ArabicTagManager {
   /* Add the flag to an encoded tag */
   public String addTag(String postag, String flag) {
     StringBuilder tmp = new StringBuilder(postag);
-    if (flag.equals("W")) {
-      tmp.setCharAt(postag.length() - 3, 'W');
-    } else if (flag.equals("K")) {
-      if (postag.startsWith("N")) {
-        // the noun must be majrour
-        if (isMajrour(postag))
-          tmp.setCharAt(postag.length() - 2, 'K');
-          // a prefix K but non majrour
-        else return null;
+    switch (flag) {
+      case "W":
+        tmp.setCharAt(postag.length() - 3, 'W');
+        break;
+      case "K":
+        if (postag.startsWith("N")) {
+          // the noun must be majrour
+          if (isMajrour(postag))
+            tmp.setCharAt(postag.length() - 2, 'K');
+            // a prefix K but non majrour
+          else return null;
 
-      } else return null;
-    } else if (flag.equals("B")) {
-      if (postag.startsWith("N")) {
-        // the noun must be majrour
-        if (isMajrour(postag))
-          tmp.setCharAt(postag.length() - 2, 'B');
-          // a prefix B but non majrour
-        else return null;
+        } else return null;
+        break;
+      case "B":
+        if (postag.startsWith("N")) {
+          // the noun must be majrour
+          if (isMajrour(postag))
+            tmp.setCharAt(postag.length() - 2, 'B');
+            // a prefix B but non majrour
+          else return null;
 
-      } else return null;
-    } else if (flag.equals("L")) {
-      if (isNoun(postag)) {
-        // the noun must be majrour
-        if (isMajrour(postag))
+        } else return null;
+        break;
+      case "L":
+        if (isNoun(postag)) {
+          // the noun must be majrour
+          if (isMajrour(postag))
+            tmp.setCharAt(postag.length() - 2, 'L');
+            // a prefix Lam but non majrour
+          else return null;
+
+        } else {// verb case
           tmp.setCharAt(postag.length() - 2, 'L');
+        }
+        break;
+      case "D":
+        // the noun must be not attached
+        if (isUnAttachedNoun(postag))
+          tmp.setCharAt(postag.length() - 1, 'L');
           // a prefix Lam but non majrour
         else return null;
-
-      } else {// verb case
-        tmp.setCharAt(postag.length() - 2, 'L');
-      }
-    } else if (flag.equals("D")) {
-      // the noun must be not attached
-      if (isUnAttachedNoun(postag))
-        tmp.setCharAt(postag.length() - 1, 'L');
-        // a prefix Lam but non majrour
-      else return null;
-    } else if (flag.equals("S")) {
-      // َAdd S flag
-      // if postag contains a future tag, TODO with regex
-      if (isFutureTense(postag)) {
-        tmp.setCharAt(postag.length() - 2, 'S');
-      } else
-        // a prefix Seen but non verb or future
-        return null;
+        break;
+      case "S":
+        // َAdd S flag
+        // if postag contains a future tag, TODO with regex
+        if (isFutureTense(postag)) {
+          tmp.setCharAt(postag.length() - 2, 'S');
+        } else
+          // a prefix Seen but non verb or future
+          return null;
+        break;
     }
     return tmp.toString();
   }
 
   /**
-   * @param postag
    * @return true if have flag majrour
    */
   public boolean isMajrour(String postag) {
@@ -133,8 +138,6 @@ public class ArabicTagManager {
   }
 
   /**
-   * @param postag
-   * @param jar
    * @return add jar flag to noun
    */
   public String setJar(String postag, String jar) {
@@ -156,8 +159,6 @@ public class ArabicTagManager {
   }
 
   /**
-   * @param postag
-   * @param flag
    * @return add definite flag to noun
    */
   public String setDefinite(String postag, String flag) {
@@ -179,8 +180,6 @@ public class ArabicTagManager {
   }
 
   /**
-   * @param postag
-   * @param flag
    * @return add conjuction flag to noun
    */
   public String setConjunction(String postag, String flag) {
@@ -205,9 +204,7 @@ public class ArabicTagManager {
   }
 
   /**
-   * @param postag
-   * @param flag
-   * @return add conjuction flag to noun
+   * @return add conjunction flag to noun
    */
   public String setPronoun(String postag, String flag) {
     StringBuilder tmp = new StringBuilder(postag);
@@ -222,13 +219,11 @@ public class ArabicTagManager {
       } else if (isVerb(postag)) {
         tmp.setCharAt(VERB_FLAG_POS_PRONOUN, myflag);
       }
-
     }
     return tmp.toString();
   }
 
   /**
-   * @param postag
    * @return true if have flag future
    */
   public boolean isFutureTense(String postag) {
@@ -236,7 +231,6 @@ public class ArabicTagManager {
   }
 
   /**
-   * @param postag
    * @return true if have flag is noun and has attached pronoun
    */
   public boolean isUnAttachedNoun(String postag) {
@@ -244,7 +238,6 @@ public class ArabicTagManager {
   }
 
   /**
-   * @param postag
    * @return true if have flag is noun/verb and has attached pronoun
    */
   public boolean isAttached(String postag) {
@@ -253,7 +246,6 @@ public class ArabicTagManager {
   }
 
   /**
-   * @param postag
    * @return test if word has stopword tagging
    */
   public boolean isStopWord(String postag) {
@@ -261,7 +253,6 @@ public class ArabicTagManager {
   }
 
   /**
-   * @param postag
    * @return true if have flag noun
    */
   public boolean isNoun(String postag) {
@@ -269,7 +260,6 @@ public class ArabicTagManager {
   }
 
   /**
-   * @param postag
    * @return true if have flag verb
    */
   public boolean isVerb(String postag) {
@@ -277,35 +267,28 @@ public class ArabicTagManager {
   }
 
   /**
-   * @param postag
    * @return true if have flag is noun and definite
    */
   public boolean isDefinite(String postag) {
-
     return isNoun(postag) && (postag.charAt(NOUN_FLAG_POS_PRONOUN) == 'L');
   }
 
   /**
-   * @param postag
    * @return true if the postag has a Jar
    */
   public boolean hasJar(String postag) {
-
     return isNoun(postag) && (postag.charAt(NOUN_FLAG_POS_JAR) != '-');
   }
 
   /**
-   * @param postag
    * @return true if the postag has a conjuction
    */
   public boolean hasConjunction(String postag) {
-
     return (isNoun(postag) && (postag.charAt(NOUN_FLAG_POS_CONJ) != '-'))
       || (isVerb(postag) && (postag.charAt(VERB_FLAG_POS_CONJ) != '-'));
   }
 
   /**
-   * @param postag
    * @return if have a flag which is a noun and definite, return the prefix letter for this case
    */
   public String getDefinitePrefix(String postag) {
@@ -320,11 +303,9 @@ public class ArabicTagManager {
   }
 
   /**
-   * @param postag
    * @return the Jar prefix letter
    */
   public String getJarPrefix(String postag) {
-
     if (postag.isEmpty())
       return "";
     if (isNoun(postag)) {
@@ -339,7 +320,6 @@ public class ArabicTagManager {
   }
 
   /**
-   * @param postag
    * @return the Conjunction prefix letter
    */
   public String getConjunctionPrefix(String postag) {

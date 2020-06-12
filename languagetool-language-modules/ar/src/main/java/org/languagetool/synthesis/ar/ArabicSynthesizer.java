@@ -26,7 +26,6 @@ import org.languagetool.synthesis.BaseSynthesizer;
 import org.languagetool.tagging.ar.ArabicTagManager;
 
 import java.io.IOException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -44,15 +43,13 @@ import java.util.regex.Pattern;
  * </ol>
  *
  * @author Taha Zerrouki
- * @since 4.8
+ * @since 4.9
  */
 public class ArabicSynthesizer extends BaseSynthesizer {
 
   private static final String RESOURCE_FILENAME = "/ar/arabic_synth.dict";
   private static final String TAGS_FILE_NAME = "/ar/arabic_tags.txt";
 
-  // A special tag to remove pronouns properly
-  private static final String REMOVE_PRONOUN = "(\\+RP)?";
   private final ArabicTagManager tagmanager = new ArabicTagManager();
 
   public ArabicSynthesizer(Language lang) {
@@ -68,7 +65,7 @@ public class ArabicSynthesizer extends BaseSynthesizer {
    * @return String value - inflected word.
    */
   @Override
-  public String[] synthesize(AnalyzedToken token, String posTag) throws IOException {
+  public String[] synthesize(AnalyzedToken token, String posTag) {
     IStemmer synthesizer = createStemmer();
     List<WordData> wordData = synthesizer.lookup(token.getLemma() + "|" + posTag);
     List<String> wordForms = new ArrayList<>();

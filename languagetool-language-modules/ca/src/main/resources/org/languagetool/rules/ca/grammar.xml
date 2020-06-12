@@ -13163,6 +13163,16 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rulegroup>
     </category>
     <category id="CONFUSIONS" name="Z1) Confusions" type="grammar">
+        <rule id="ENA_EN" name="ena / en" default="temp_off">
+            <pattern>
+                <marker>
+                    <token>ena</token>
+                </marker>
+                <token inflected="yes" regexp="yes">aquest|altre|aquell|aqueix</token>
+            </pattern>
+            <message>¿Volíeu dir <suggestion>en</suggestion>?</message>
+            <example correction="en">Ha passat <marker>ena</marker> altres indrets.</example>
+        </rule>
         <rulegroup id="EL_LA_EN_LA" name="*el/en la">
             <antipattern>
                 <token skip="2">la</token>
@@ -26403,6 +26413,15 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <message>Massa pronoms febles!</message>
                 <example correction="">Portar-<marker>se-me-la'n</marker>.</example>
             </rule>
+            <rule>
+                <pattern>
+                    <token regexp="yes" spacebefore="no">-vos|-us</token>
+                    <token spacebefore="no">-me</token>
+                </pattern>
+                <message>Forma de pronom feble incorrecta en aquesta posició.</message>
+                <suggestion>\1-em</suggestion>
+                <example correction="-vos-em">Gràcies per donar<marker>-vos-me</marker>.</example>
+            </rule>
         </rulegroup>
         <rulegroup id="PRONOMS_FEBLES_LIS" name="Formes incorrectes: *lis">
             <antipattern>
@@ -29949,16 +29968,37 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>(1934).</example>
             </rule>
         </rulegroup>
-        <rule id="TELEFON" name="abreviatura de telèfon: tel.">
-            <pattern>
-                <token regexp="yes">telf|tlf</token>
+        <rulegroup id="TELEFON" name="abreviatura de telèfon: tel.">
+            <antipattern>
+                <token>tel</token>
                 <token spacebefore="no">.</token>
-            </pattern>
-            <message>Abreviatura de telèfon.</message>
-            <suggestion>tel.</suggestion>
-            <suggestion>telèfon</suggestion>
-            <example correction="tel.|telèfon">Truqueu al <marker>telf.</marker> 666666.</example>
-        </rule>
+            </antipattern>
+            <rule>
+                <pattern>
+                    <token regexp="yes">telf|tlf|tel</token>
+                    <token spacebefore="no" regexp="yes">[\.:]</token>
+                </pattern>
+                <message>Abreviatura de telèfon.</message>
+                <suggestion>tel.</suggestion>
+                <suggestion>telèfon</suggestion>
+                <example correction="tel.|telèfon">Truqueu al <marker>telf.</marker> 666666.</example>
+                <example correction="Tel.|Telèfon"><marker>Tlf:</marker> 666666.</example>
+                <example>Truqueu al tel. 44444444.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <marker>
+                        <token regexp="yes">telf|tlf|tel</token>
+                    </marker>
+                    <token><exception spacebefore="no" regexp="yes">[\.:]</exception></token>
+                </pattern>
+                <message>Abreviatura de telèfon.</message>
+                <suggestion>tel.</suggestion>
+                <suggestion>telèfon</suggestion>
+                <example correction="tel.|telèfon">Truqueu al <marker>tlf</marker> 666666.</example>
+                <example>Truqueu al tel. 44444444.</example>
+            </rule>
+        </rulegroup>
         <rule id="NO_NUM" name="abreviatura de número: núm.">
             <pattern>
                 <token regexp="yes">n[ºª]\d+</token>
@@ -46106,18 +46146,19 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rule>
         <rulegroup id="COLOR" name="amor, color, sabor... (normalment en masculí)">
             <antipattern>
-                <marker>
-                    <token regexp="yes" inflected="yes">pel·lícula|història</token>
-                    <token inflected="yes">de</token>
-                    <token regexp="yes">terror|amor</token>
-                </marker>
+                <token regexp="yes" inflected="yes">pel·lícula|història</token>
+                <token inflected="yes">de</token>
+                <token regexp="yes">terror|amor</token>
             </antipattern>
             <antipattern>
-                <marker>
-                    <token>legió</token>
-                    <token>d'</token>
-                    <token>honor</token>
-                </marker>
+                <token>legió</token>
+                <token>d'</token>
+                <token>honor</token>
+            </antipattern>
+            <antipattern>
+                <token>temperatura</token>
+                <token>de</token>
+                <token>color</token>
             </antipattern>
             <rule>
                 <pattern>

@@ -5,13 +5,6 @@
 ### This fork differences
 #### (new comparisons only)
 
-#### Arabic
-  * added and improved rules (https://github.com/linuxscout/languagetool and PR #2848)
-  * updated POS dictionary (Arramooz [e33794e](https://github.com/linuxscout/arramooz/commit/e33794e787d56e7c185c0e281fd8e6d6274f3fdc))
-  * remove the Algerian variant (ar-DZ)
-  * add support of ngram data ([languagetool-tools-ar](https://github.com/sohaibafifi/languagetool-tools-ar))
-  * add Darja, Diacritics, Redundancy, WrongWordInContext, Wordiness, Homophones and WordCoherency rules.
-
 #### Asturian
   * activated generic Java rules, including: `SentenceWhitespaceRule`,
     `WhiteSpaceBeforeParagraphEnd`, `WhiteSpaceAtBeginOfParagraph`, `EmptyLineRule`,
@@ -112,6 +105,13 @@
   * [removed unused dependencies](https://github.com/TiagoSantos81/languagetool/commit/68105705732c95cfc358e55598580627bd66063c)
 
 ### Other changes common to both projects
+
+#### Arabic
+  * added and improved rules (https://github.com/linuxscout/languagetool and PR #2848)
+  * updated POS dictionary (Arramooz [e33794e](https://github.com/linuxscout/arramooz/commit/e33794e787d56e7c185c0e281fd8e6d6274f3fdc))
+  * remove the Algerian variant (ar-DZ)
+  * add support of ngram data ([languagetool-tools-ar](https://github.com/sohaibafifi/languagetool-tools-ar))
+  * add Darja, Diacritics, Redundancy, WrongWordInContext, Wordiness, Homophones and WordCoherency rules.
 
 #### Catalan
   * added and improved rules

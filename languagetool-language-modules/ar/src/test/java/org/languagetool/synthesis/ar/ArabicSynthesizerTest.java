@@ -23,7 +23,6 @@ import org.junit.Test;
 import org.languagetool.AnalyzedToken;
 import org.languagetool.language.Arabic;
 
-import java.io.IOException;
 import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
@@ -34,13 +33,10 @@ public class ArabicSynthesizerTest {
   public final void testSynthesizeStringString() {
     ArabicSynthesizer synth = new ArabicSynthesizer(new Arabic());
 
-  /* XXX synth working fine. tags seem to be updated. uncomment when tests are adapted
-  
     assertEquals(Arrays.toString(synth.synthesize(dummyToken("خيار"), "NJ-;F2--;---")), "[خيارتان, خياريتان]");
 
     assertEquals(Arrays.toString(synth.synthesize(dummyToken("بلاد"), "NJ-;F3A-;--H")),
-      "[بلادت, بلادتي, بلاد, بلادي]");  
-      // assertEquals(Arrays.toString(synth.synthesize(dummyToken("بلاد"), "NJ-;F3A-;--H\\+RP", true)),
+      "[بلادت, بلادتي, بلاد, بلادي]");   // assertEquals(Arrays.toString(synth.synthesize(dummyToken("بلاد"), "NJ-;F3A-;--H\\+RP", true)),
 
     // an example with specific postag with regex flag enabled
     assertEquals(Arrays.toString(synth.synthesize(dummyToken("اِسْتَعْمَلَ"), "V61;M3Y-pa-;--H")),
@@ -54,7 +50,6 @@ public class ArabicSynthesizerTest {
     assertEquals(Arrays.toString(synth.synthesize(dummyToken("اِسْتَمَعَ"), "V51;M3Y-pa-;---")),
       "[استمعتم]");
 
-*/
   }
 
   private AnalyzedToken dummyToken(String tokenStr) {
