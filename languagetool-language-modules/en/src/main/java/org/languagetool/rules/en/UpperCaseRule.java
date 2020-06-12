@@ -64,7 +64,7 @@ public class UpperCaseRule extends Rule {
       tokenRegex("[A-Z].+"),
       token(","),
       tokenRegex("[A-Z].+"),
-      tokenRegex("[Aa]nd|[Oo]r|&"),
+      tokenRegex("[Aa]nd|[Oo]r|&|,"),
       tokenRegex("[A-Z].+")
     ),
     Arrays.asList(
@@ -279,6 +279,16 @@ public class UpperCaseRule extends Rule {
       tokenRegex("The"),  // e.g. "The Sea is Watching", probably a title
       tokenRegex("[A-Z].+"),
       token("is"),
+      tokenRegex("[A-Z].+")
+    ),
+    Arrays.asList( // My name is Gentle.
+      token("name"),
+      token("is"),
+      tokenRegex("[A-Z].+")
+    ),
+    Arrays.asList( // They called it Greet.
+      tokenRegex("call|calls|called"),
+      token("it"),
       tokenRegex("[A-Z].+")
     ),
     Arrays.asList(
