@@ -39,23 +39,23 @@ import org.languagetool.tagging.disambiguation.rules.XmlRuleDisambiguator;
  */
 public class EnglishHybridDisambiguator extends AbstractDisambiguator {
 
-  private final Disambiguator chunker = new MultiWordChunker("/en/multiwords.txt");
+  private final Disambiguator chunker = new MultiWordChunker("/en/multiwords.txt", true);
   private final Disambiguator disambiguator = new XmlRuleDisambiguator(new English());
 
   /**
    * Calls two disambiguator classes: (1) a chunker; (2) a rule-based
    * disambiguator.
+   * 
+   * Put the results of the MultiWordChunker in a more appropriate and useful way.
+   *   <NN></NN> becomes NN NN
+   *   The individual original tags are removed. 
+   *   Add spell ignore
    */
   @Override
   public final AnalyzedSentence disambiguate(AnalyzedSentence input)
       throws IOException {
     AnalyzedSentence analyzedSentence = chunker.disambiguate(input);
-
-    /* Put the results of the MultiWordChunker in a more appropriate and useful way
-      <NP..></NP..> becomes NP.. NP..
-      <NCMS000></NCMS000> becomes NCMS000 AQ0MS0
-      The individual original tags are removed */
-
+           
     AnalyzedTokenReadings[] aTokens = analyzedSentence.getTokens();
     int i=0;
     String POSTag = "";
@@ -63,26 +63,22 @@ public class EnglishHybridDisambiguator extends AbstractDisambiguator {
     String nextPOSTag = "";
     AnalyzedToken analyzedToken = null;
     while (i < aTokens.length) {
-      if (!aTokens[i].isWhitespace()) {
+      if (!aTokens[i].isWhitespace()) {  
         if (!nextPOSTag.isEmpty()) {
           AnalyzedToken newAnalyzedToken = new AnalyzedToken(aTokens[i].getToken(), nextPOSTag, lemma);
           if (aTokens[i].hasPosTagAndLemma("</" + POSTag + ">", lemma)) {
             nextPOSTag = "";
             lemma = "";
           }
-          aTokens[i] = new AnalyzedTokenReadings(aTokens[i], Arrays.asList(newAnalyzedToken), "EN_HYBRID_DISAMB_END");
+          aTokens[i] = new AnalyzedTokenReadings(aTokens[i], Arrays.asList(newAnalyzedToken), "EN_HybridDisambiguator");
+          aTokens[i].ignoreSpelling();
         } else if ((analyzedToken = getMultiWordAnalyzedToken(aTokens, i)) != null) {
           POSTag = analyzedToken.getPOSTag().substring(1, analyzedToken.getPOSTag().length() - 1);
           lemma = analyzedToken.getLemma();
           AnalyzedToken newAnalyzedToken = new AnalyzedToken(analyzedToken.getToken(), POSTag, lemma);
-          aTokens[i] = new AnalyzedTokenReadings(aTokens[i], Arrays.asList(newAnalyzedToken), "EN_HYBRID_DISAMB_START");
-          /* TODO test with a full database then uncomment
-          if (POSTag.startsWith("NN")) {
-            nextPOSTag = POSTag;
-            POSTag = "JJ";
-          } else { */
-            nextPOSTag = POSTag;
-          // }
+          aTokens[i] = new AnalyzedTokenReadings(aTokens[i], Arrays.asList(newAnalyzedToken), "EN_HybridDisambiguator");
+          aTokens[i].ignoreSpelling();
+          nextPOSTag = POSTag;
         }
       }
       i++;
@@ -90,7 +86,7 @@ public class EnglishHybridDisambiguator extends AbstractDisambiguator {
 
     return disambiguator.disambiguate(new AnalyzedSentence(aTokens));
   }
-
+  
   private AnalyzedToken getMultiWordAnalyzedToken(AnalyzedTokenReadings[] aTokens, Integer i) {
     List<AnalyzedToken> l = new ArrayList<AnalyzedToken>();
     for (AnalyzedToken reading : aTokens[i]) {
@@ -102,7 +98,7 @@ public class EnglishHybridDisambiguator extends AbstractDisambiguator {
       }
     }
     // choose the longest one
-    if (l.size() > 0) {
+    if (l.size() > 0) { 
       AnalyzedToken selectedAT = null;
       int maxDistance = 0;
       for (AnalyzedToken at : l) {
@@ -123,7 +119,6 @@ public class EnglishHybridDisambiguator extends AbstractDisambiguator {
       return selectedAT;
     }
     return null;
-
   }
 
 }

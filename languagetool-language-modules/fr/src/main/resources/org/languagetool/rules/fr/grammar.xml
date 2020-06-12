@@ -9715,7 +9715,7 @@ though, and has since been slightly modified)-->
           </marker>
         </pattern>
         <message>« \1 » et « \3 » ne semblent pas bien accordés en genre.</message>
-        <suggestion><match no="3" postag="(J|N|Z) f (.*)" postag_regexp="yes" postag_replace="$1 m $2"/></suggestion>
+        <suggestion suppress_misspelled="yes"><match no="3" postag="(J|N|Z) f (.*)" postag_regexp="yes" postag_replace="$1 m $2"/></suggestion>
         <example>Comme il le fait depuis son élection.</example>
         <example>Une <marker>jolie</marker> femme.</example>
         <example correction="joli">Un très <marker>jolie</marker> garçon.</example>
@@ -9817,7 +9817,7 @@ though, and has since been slightly modified)-->
           </marker>
         </pattern>
         <message>« \1 » et « \3 » ne semblent pas bien accordés en genre.</message>
-        <suggestion><match no="3" postag="(J|V ppa) f (.*)" postag_regexp="yes" postag_replace="$1 m $2"/></suggestion>
+        <suggestion suppress_misspelled="yes"><match no="3" postag="(J|V ppa) f (.*)" postag_regexp="yes" postag_replace="$1 m $2"/></suggestion>
         <example correction="tropical">Un climat <marker>tropicale</marker>.</example>
         <example>Un <marker>climat tropical</marker>.</example>
         <example correction="tropical">Un climat très <marker>tropicale</marker>.</example>
@@ -9906,7 +9906,7 @@ though, and has since been slightly modified)-->
         </marker>
         </pattern>
         <message>« \1 » et « \2 » ne semblent pas bien accordés en genre.</message>
-        <suggestion><match no="2" postag="(J|N|Z) m (.*)" postag_regexp="yes" postag_replace="$1 f $2"/></suggestion>
+        <suggestion suppress_misspelled="yes"><match no="2" postag="(J|N|Z) m (.*)" postag_regexp="yes" postag_replace="$1 f $2"/></suggestion>
         <example><marker>Une fleur</marker>.</example>
         <example correction="grande">Une très <marker>grand</marker> chienne.</example>
         <example><marker>Un très grand</marker> chien.</example>
@@ -10015,7 +10015,7 @@ though, and has since been slightly modified)-->
         </marker>
         </pattern>
         <message>« \1 » et « \3 » ne semblent pas bien accordés en genre.</message>
-        <suggestion><match no="3" postag="(J|V ppa) m (.*)" postag_regexp="yes" postag_replace="$1 f $2"/></suggestion>
+        <suggestion suppress_misspelled="yes"><match no="3" postag="(J|V ppa) m (.*)" postag_regexp="yes" postag_replace="$1 f $2"/></suggestion>
         <example correction="tropicale">Une forêt <marker>tropical</marker>.</example>
         <example>Une <marker>forêt tropicale</marker>.</example>
         <example correction="grande">Une forêt très <marker>grand</marker>.</example>
@@ -18143,7 +18143,7 @@ though, and has since been slightly modified)-->
     </rule>
   </category>
   <category id="CAT_ANGLICISMES" name="Anglicismes (calques, emprunts directs, etc.)" type="style">
-    <rule  id="BECAUSE" name="Anglicisme : because" default="temp_off">
+    <rule  id="BECAUSE" name="Anglicisme : because">
       <pattern>
         <token>because</token>
       </pattern>
@@ -29711,7 +29711,7 @@ though, and has since been slightly modified)-->
         <example correction="ex æquo">Il y a beaucoup de candidats <marker>ex-æquo</marker>.</example>
         <example correction="ex abrupto"> Il a abordé <marker>ex-abrupto</marker> cette question déliquate</example>
       </rule>
-      <rule default="temp_off">
+      <rule>
         <pattern>
           <token>entre</token>
           <token>-</token>
@@ -29721,7 +29721,7 @@ though, and has since been slightly modified)-->
         <url>http://bdl.oqlf.gouv.qc.ca/bdl/gabarit_bdl.asp?id=1732</url>
         <example correction="entre eux">Lequel d'<marker>entre-eux</marker> était-ce ?</example>
       </rule>
-      <rule default="temp_off">
+      <rule>
         <pattern>
           <token regexp="yes">entre|vous</token>
           <token regexp="yes">-(nous|vous|moi|toi)</token>
@@ -29731,7 +29731,7 @@ though, and has since been slightly modified)-->
         <example correction="entre vous">Lequel d'<marker>entre-vous</marker> était-ce ?</example>
         <example correction="Vous vous"><marker>Vous-vous</marker> rapellez ?</example>
       </rule>
-      <rule default="temp_off">
+      <rule>
         <pattern>
           <token>derrière</token>
           <token regexp="yes">-(lui|elles|nous|vous)</token>
@@ -32173,7 +32173,7 @@ though, and has since been slightly modified)-->
       <example correction="x86">Le jeu d’instruction <marker>X86</marker>.</example>
       <example correction="x86_64">Le jeu d’instruction <marker>X86_64</marker>.</example>
     </rule>
-    <rulegroup id="COVID_19" name="COVID-19" default="temp_off">
+    <rulegroup id="COVID_19" name="COVID-19">
         <url>https://fr.wikipedia.org/wiki/Maladie_%C3%A0_coronavirus_2019</url>
         <rule>
             <pattern>
@@ -32208,7 +32208,7 @@ though, and has since been slightly modified)-->
             <example correction="coronavirus">La COVID-19 est la maladie infectieuse causée par le dernier <marker>corona-virus</marker> qui a été découvert.</example>
         </rule>
     </rulegroup>
-    <rule id="WHATS_APP" name="WhatsApp" default="temp_off">
+    <rule id="WHATS_APP" name="WhatsApp">
         <pattern>
             <token>whats</token>
             <token>app</token>
@@ -32217,7 +32217,7 @@ though, and has since been slightly modified)-->
         <url>https://fr.wikipedia.org/wiki/WhatsApp</url>
         <example correction="WhatsApp"><marker>Whats App</marker> est une application mobile.</example>
     </rule>
-    <rulegroup id="BLACK_LIVES_MATTER" name="Black Lives Matter" default="temp_off">
+    <rulegroup id="BLACK_LIVES_MATTER" name="Black Lives Matter">
         <url>https://fr.wikipedia.org/wiki/Black_Lives_Matter</url>
         <antipattern case_sensitive="yes">
             <token regexp="yes">Black|BLACK</token>
@@ -32237,7 +32237,7 @@ though, and has since been slightly modified)-->
             <example correction="Black Lives Matter"><marker>Black Lifes Matter</marker> est un mouvement.</example>
         </rule>
     </rulegroup>
-    <rule id="JAVA_SCRIPT" name="JavaScript" default="temp_off">
+    <rule id="JAVA_SCRIPT" name="JavaScript">
         <pattern>
             <token>java</token>
             <token>script</token>
@@ -32246,7 +32246,7 @@ though, and has since been slightly modified)-->
         <url>https://fr.wikipedia.org/wiki/JavaScript</url>
         <example correction="JavaScript"><marker>Java Script</marker> est un langage de programmation</example>
     </rule>
-    <rule id="YOU_TUBE" name="YouTube" default="temp_off">
+    <rule id="YOU_TUBE" name="YouTube">
         <pattern>
             <token>You</token>
             <token>Tube</token>
@@ -32255,7 +32255,7 @@ though, and has since been slightly modified)-->
         <url>https://fr.wikipedia.org/wiki/YouTube</url>
         <example correction="YouTube"><marker>You tube</marker> est un site web d’hébergement de vidéos.</example>
     </rule>
-    <rule id="PAY_PAL" name="PayPal" default="temp_off">
+    <rule id="PAY_PAL" name="PayPal">
         <pattern>
             <token>Pay</token>
             <token>Pal</token>

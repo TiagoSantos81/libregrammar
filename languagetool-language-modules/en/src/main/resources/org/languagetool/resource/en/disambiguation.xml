@@ -7961,6 +7961,30 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
       <disambig action="ignore_spelling"/>
     </rule>
 
+    <rulegroup name="Noun: cram school" id="POS_CRAM_SCHOOL"><!-- www.lexico.com/definition/cram_school -->
+        <rule>
+            <pattern>
+                <marker>
+                    <token chunk="I-NP-singular">cram</token>
+                    <token chunk="E-NP-singular">school</token>
+                </marker>
+            </pattern>
+            <disambig action="replace"><wd pos="NN"/><wd pos="NN"/></disambig>
+            <example type="untouched">How many times have I told you not to cram school bags with dead frogs?</example>
+            <example type="ambiguous" inputform="cram[cram/VB,cram/VBP]" outputform="cram[cram/NN]">He studies at a <marker>cram</marker> school.</example>
+        </rule>
+        <rule>
+            <pattern>
+                <marker>
+                    <token>cram</token>
+                    <token chunk="E-NP-plural">schools</token>
+                </marker>
+            </pattern>
+            <disambig action="replace"><wd pos="NNS"/><wd pos="NNS"/></disambig>
+            <example type="ambiguous" inputform="cram[cram/VB,cram/VBP]" outputform="cram[cram/NNS]">These <marker>cram</marker> schools are terrible.</example>
+        </rule>
+    </rulegroup>
+
     <rule name="KETO" id="SPELLING_KETO">
       <pattern>
           <marker>
@@ -9139,14 +9163,14 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <disambig action="add"><wd pos="NN:U"/><wd pos="NN:U"/></disambig>
         </rule>
 
-        <rule id="MÉNAGE_À_TROIS" name="ménage à trois">
+        <!--<rule id="MÉNAGE_À_TROIS" name="ménage à trois">
             <pattern>
                 <token>ménage</token>
                 <token>à</token>
                 <token>trois</token>
             </pattern>
             <disambig action="replace"><wd pos="NN"/><wd pos="NN"/><wd pos="NN"/></disambig>
-        </rule>
+        </rule>-->
 
         <rule id="MISE_EN_SCÈNE" name="mise en scène">
             <pattern>
@@ -10286,7 +10310,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <disambig action="replace"><wd pos="NN:U"/><wd pos="NN:U"/></disambig>
         </rule>
 
-        <rule id="QUID_PRO_QUO" name="quid pro quo">
+        <!--<rule id="QUID_PRO_QUO" name="quid pro quo">
             <pattern>
                 <token>quid</token>
                 <token>pro</token>
@@ -10310,7 +10334,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
                 <token regexp="yes">quos?</token>
             </pattern>
             <disambig action="ignore_spelling" />
-        </rule>
+        </rule>-->
 
         <rule id="QUOD_ERAT_DEMONSTRANDUM" name="quod erat demonstrandum">
             <pattern>
@@ -11129,6 +11153,15 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
     <rule id="TILDE_SPELLING" name="Ignore spelling of '~'">
         <pattern>
             <token regexp="yes">[~]+</token>
+        </pattern>
+        <disambig action="ignore_spelling"/>
+    </rule>
+
+    <rule id="TLDR_SPELLING" name="Ignore spelling of 'tl;dr'">
+        <pattern>
+            <token>tl</token>
+            <token spacebefore="no">;</token>
+            <token spacebefore="no">dr</token>
         </pattern>
         <disambig action="ignore_spelling"/>
     </rule>
