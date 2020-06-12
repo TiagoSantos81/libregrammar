@@ -1,5 +1,4 @@
-/*
- * LanguageTool, a natural language style checker
+/* LanguageTool, a natural language style checker
  * Copyright (C) 2019 Sohaib Afifi, Taha Zerrouki
  *
  * This library is free software; you can redistribute it and/or
@@ -17,20 +16,18 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301
  * USA
  */
-package org.languagetool.rules.ar;
+package org.languagetool.language;
 
-import org.junit.Test;
-import org.languagetool.Languages;
-import org.languagetool.TestTools;
-import org.languagetool.rules.ngrams.FakeLanguageModel;
+public class AlgerianArabic extends Arabic {
 
-public class ArabicConfusionProbabilityRuleTest {
-
-  @SuppressWarnings("ResultOfObjectAllocationIgnored")
-  @Test
-  public void testConstructor() {
-    new ArabicConfusionProbabilityRule(TestTools.getEnglishMessages(), new FakeLanguageModel(), Languages.getLanguageForShortCode("ar"));
+  @Override
+  public String getName() {
+    return "Arabic (Algeria)";
   }
-  
-}
 
+  @Override
+  public String[] getCountries() {
+    return new String[]{"DZ"};
+  }
+
+}

@@ -103,8 +103,7 @@ public class ArabicSynthesizer extends BaseSynthesizer {
         Matcher m = p.matcher(tag);
         if (m.matches() && token.getLemma() != null) {
           // local result
-          List<String> result_one = new ArrayList<>();
-          result_one.addAll(lookup(token.getLemma(), tag));
+          List<String> result_one = lookup(token.getLemma(), tag);
           for (String wd : result_one) {
             // adjust some stems according to original postag
             stem = correctStem(wd, posTag);
