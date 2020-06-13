@@ -6,9 +6,9 @@
 #### (new comparisons only)
 
 #### Arabic
-  * work based mostly on [Tara Zerrouki](https://github.com/linuxscout/languagetool)
-  * 69 rules re-added (probably lost on upstream merge project management)
-  * 88 diacritic rules re-added (probably lost on upstream merge project management)
+  * mostly work from [Tara Zerrouki](https://github.com/linuxscout/languagetool)
+  * 69 rules re-added (probably lost on upstream merge)
+  * 88 diacritic rules re-added (probably lost on upstream merge)
   * homophones rules check lemmas
 
 #### Asturian
@@ -23,7 +23,7 @@
     `LongParagraphRule`, `ParagraphRepeatBeginningRule`, `PunctuationMarkAtParagraphEnd`
 
 #### Dutch
-  * restored 256 word confusion rules ([ff74bea](https://github.com/TiagoSantos81/languagetool/commit/ff74bea))
+  * [restored 256 word confusion rules](https://github.com/TiagoSantos81/languagetool/commit/ff74bea))
 
 #### Esperanto
   * added URLs explaining most single word suggestions
@@ -113,11 +113,11 @@
 ### Other changes common to both projects
 
 #### Arabic
-  * added and improved rules (https://github.com/linuxscout/languagetool and PR #2848)
-  * updated POS dictionary (Arramooz [e33794e](https://github.com/linuxscout/arramooz/commit/e33794e787d56e7c185c0e281fd8e6d6274f3fdc))
+  * [added and improved rules](https://github.com/linuxscout/languagetool)
+  * updated POS dictionary ([Arramooz](https://github.com/linuxscout/arramooz/commit/e33794e787d56e7c185c0e281fd8e6d6274f3fdc))
   * remove the Algerian variant (ar-DZ)
-  * add support of ngram data ([languagetool-tools-ar](https://github.com/sohaibafifi/languagetool-tools-ar))
-  * add Darja, Diacritics, Redundancy, WrongWordInContext, Wordiness, Homophones and WordCoherency rules.
+  * [add support of ngram data](https://github.com/sohaibafifi/languagetool-tools-ar), thanks to Sohaib Afifi.
+  * add Darja, Diacritics, Redundancy, WrongWordInContext, Wordiness, Homophones and WordCoherency rules, thanks to Sohaib Afifi.
 
 #### Catalan
   * added and improved rules
