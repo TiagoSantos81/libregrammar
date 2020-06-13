@@ -121,12 +121,12 @@ display_help() {
 }
 
 install() {
-    echo "Removing any old copy of Original LanguageTool Stable in this directory"
+    echo "Removing any old copy of LanguageTool Stable in this directory"
     rm LanguageTool-stable.zip # maybe switch with 2> /dev/null XXX here removals should be verbose
 
     detect_unzip
 
-    echo "Installing Original LanguageTools Stable"
+    echo "Installing LanguageTool Stable"
     version=stable
     RELEASE_URL="https://languagetool.org/download/LanguageTool-stable.zip"
     curl -l $RELEASE_URL -o LanguageTool-stable.zip
@@ -146,13 +146,13 @@ install() {
 }
 
 install_quiet() {
-    # Removing any old copy of Original LanguageTools Stable in this directory
+    # Removing any old copy of LanguageTool Stable in this directory
     rm LanguageTool-stable.zip &>/dev/null
 
     # Detecting unzip
     detect_unzip
 
-    # Installing Original LanguageTools Stable
+    # Installing LanguageTool Stable
     version=stable
     RELEASE_URL="https://languagetool.org/download/LanguageTool-stable.zip"
     curl -s -l $RELEASE_URL -o LanguageTool-stable.zip
