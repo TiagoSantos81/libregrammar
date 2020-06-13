@@ -841,7 +841,7 @@ public class JLanguageTool {
       remoteRuleTasks = allRules.stream()
         .filter(rule -> rule instanceof RemoteRule)
         .filter(rule -> !ignoreRule(rule))
-        .map(rule -> ((RemoteRule) rule).run(analyzedSentences))
+        .map(rule -> ((RemoteRule) rule).run(analyzedSentences, annotatedText))
         .collect(Collectors.toList());
       remoteRuleTasks.forEach(remoteRulesThreadPool::submit);
     }
