@@ -41,7 +41,7 @@ import org.languagetool.tagging.disambiguation.rules.XmlRuleDisambiguator;
  */
 public class PortugueseHybridDisambiguator extends AbstractDisambiguator {
 
-    private final Disambiguator chunker = new MultiWordChunker("/pt/multiwords.txt");
+    private final Disambiguator chunker = new MultiWordChunker("/pt/multiwords.txt", true, true);
     private final Disambiguator disambiguator = new XmlRuleDisambiguator(new Portuguese());
 
   /**
