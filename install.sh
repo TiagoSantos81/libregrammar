@@ -91,29 +91,29 @@ done
 display_help() {
     echo
     echo "Script version $VERSION"
-    echo 'A tool for installing or building LanguageTool fork.'
+    echo 'A tool for installing or building LibreGrammar.'
     echo 'Usage: install.sh <option> <package>'
     echo 'Options:'
     echo '   -h --help                   Show help'
-    echo '   -b --build                  Builds packages from the bleeding edge development copy of LanguageTool fork'
-    echo '   -c --command <command>      Specifies post-installation command to run (default gui when screen is detected)'
-    echo '   -q --quiet                  Shut up LanguageTool fork installer! Only tell me important stuff!'
-    echo '   -t --text <file>            Specifies what text to be spellchecked by LanguageTool fork command line (default spellcheck.txt)'
-    echo '   -d --depth <value>          Specifies the depth to clone when building LanguageTool fork yourself (default 1).'
-    echo '   -p --package <package>      Specifies package to install when building (default all)'
+    echo '   -b --build                  Build packages from the bleeding edge development copy of LibreGrammar'
+    echo '   -c --command <command>      Specify post-installation command to run (default gui when screen is detected)'
+    echo '   -q --quiet                  Silence LibreGrammar installer. Only displays important information.'
+    echo '   -t --text <file>            Specify what text to be spellchecked by LibreGrammar command line (default spellcheck.txt)'
+    echo '   -d --depth <value>          Specify the depth to clone when building LibreGrammar yourself (default 1).'
+    echo '   -p --package <package>      Specify package to install when building (default all)'
     echo '   -o --override <OS>          Override automatic OS detection with <OS>'
     echo '   -a --accept                 Agree to all downloading and installing prompts.'
-    echo '   -r --remove <all/partial>   Removes LanguageTool fork install. <all> uninstalls the dependencies that were auto-installed. (default partial)'
+    echo '   -r --remove <all/partial>   Remove LibreGrammar install. <all> uninstalls the dependencies that were auto-installed. (default partial)'
     echo
     echo 'Packages(only if -b is specified):'
-    echo '   standalone                  Installs standalone package'
-    echo '   wikipedia                   Installs Wikipedia package'
-    echo '   office-extension            Installs the LibreOffice/OpenOffice extension package'
+    echo '   standalone                  Install standalone package'
+    echo '   wikipedia                   Install Wikipedia package'
+    echo '   office-extension            Install the LibreOffice/OpenOffice extension package'
     echo
     echo 'Commands:'
-    echo '   GUI                         Runs GUI version of LanguageTool fork'
-    echo '   commandline                 Runs command line version of LanguageTool fork'
-    echo '   server                      Runs server version of LanguageTool fork'
+    echo '   GUI                         Run GUI version of LibreGrammar'
+    echo '   commandline                 Run command line version of LibreGrammar'
+    echo '   server                      Run server version of LibreGrammar'
     echo
     echo 'Submit a GitHub issue if you are encountering problems or want to suggest new features'
     echo
@@ -121,7 +121,7 @@ display_help() {
 }
 
 install() {
-    echo "Removing any old copy of Original LanguageTools Stable in this directory"
+    echo "Removing any old copy of Original LanguageTool Stable in this directory"
     rm LanguageTool-stable.zip # maybe switch with 2> /dev/null XXX here removals should be verbose
 
     detect_unzip
@@ -229,7 +229,7 @@ uninstall_loud () {
         bash /etc/languagetool/uninstall.sh
         rm /etc/languagetool/uninstall.sh
     fi
-    echo "LanguageTool fork uninstalled!"
+    echo "LibreGrammar uninstalled!"
     exit
 }
 
