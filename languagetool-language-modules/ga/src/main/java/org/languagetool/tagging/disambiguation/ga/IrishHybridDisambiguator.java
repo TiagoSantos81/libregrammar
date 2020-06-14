@@ -36,7 +36,7 @@ import org.languagetool.tagging.disambiguation.rules.XmlRuleDisambiguator;
 
 public class IrishHybridDisambiguator extends AbstractDisambiguator {
 
-  private final Disambiguator chunker = new MultiWordChunker("/ga/multiwords.txt");
+  private final Disambiguator chunker = new MultiWordChunker("/ga/multiwords.txt", true, true);
   private final Disambiguator disambiguator = new XmlRuleDisambiguator(new Irish());
 
   /**
