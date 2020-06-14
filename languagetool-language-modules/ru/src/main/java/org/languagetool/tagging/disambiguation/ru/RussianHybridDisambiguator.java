@@ -36,7 +36,7 @@ import org.languagetool.tagging.disambiguation.rules.XmlRuleDisambiguator;
 
 public class RussianHybridDisambiguator extends AbstractDisambiguator {
 
-  private final Disambiguator chunker = new MultiWordChunker("/ru/multiwords.txt");
+  private final Disambiguator chunker = new MultiWordChunker("/ru/multiwords.txt", true, true);
   private final Disambiguator disambiguator = new XmlRuleDisambiguator(new Russian());
 
   /**
