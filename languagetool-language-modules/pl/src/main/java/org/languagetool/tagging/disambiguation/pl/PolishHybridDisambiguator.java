@@ -35,7 +35,7 @@ import org.languagetool.tagging.disambiguation.rules.XmlRuleDisambiguator;
 
 public class PolishHybridDisambiguator extends AbstractDisambiguator {
 
-  private final Disambiguator chunker = new MultiWordChunker("/pl/multiwords.txt");
+  private final Disambiguator chunker = new MultiWordChunker("/pl/multiwords.txt", true, true);
   private final Disambiguator disambiguator = new XmlRuleDisambiguator(new Polish());
 
   /**
