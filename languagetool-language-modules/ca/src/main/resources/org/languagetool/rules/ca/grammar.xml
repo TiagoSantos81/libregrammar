@@ -20462,6 +20462,24 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>Sols és blanc, i sols és negre.</example>
                 <example>Només per vergonya, només per timidesa</example>
             </rule>
+            <rule default="temp_off">
+                <antipattern>
+                    <token>no</token>
+                    <token regexp="yes">sols|només|solament|únicament</token>
+                </antipattern>
+                <pattern>
+                    <token skip="2">no<exception scope="next" postag="_PUNCT.*|C.*" postag_regexp="yes"/></token>
+                    <token><match no="0"/></token>
+                </pattern>
+                <message>Repetició probablement incorrecta.</message>
+                <suggestion><match no="1" include_skipped="all"/></suggestion>
+                <suggestion><match no="1" include_skipped="following"/> <match no="2"/></suggestion>
+                <example correction="no jo|jo no">Això <marker>no jo no</marker> ho faria.</example>
+                <example>No sols no m'agrada, em repugna.</example>
+                <example>No, no m'agrada.</example>
+                <example>No i no: aquesta és la resposta.</example>
+                <example>No que no pogués ser.</example>
+            </rule>
         </rulegroup>
         <rule id="REPETICIO_INFINITIU" name="infinitiu repetit">
             <pattern>
@@ -30115,6 +30133,19 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rulegroup>
     </category>
     <category id="INCORRECT_EXPRESSIONS" name="Expressions incorrectes" type="grammar">
+        <rule id="DOBLE_RASER" name="*doble raser">
+            <pattern>
+                <token>doble</token>
+                <token>raser</token>
+            </pattern>
+            <message>Expressió incorrecta.</message>
+            <suggestion>doble moral</suggestion>
+            <suggestion>tractament desigual</suggestion>
+            <suggestion>llei de l'embut</suggestion>
+            <suggestion>dues vares de mesura</suggestion>
+            <suggestion>fer parts i quarts</suggestion>
+            <example correction="doble moral|tractament desigual|llei de l'embut|dues vares de mesura|fer parts i quarts">El <marker>doble raser</marker> del jutge.</example>
+        </rule>
         <rulegroup id="PELOTON" name="pelotón">
             <url>https://esadir.cat/entrades/fitxa/node/ciclisme</url>
             <rule>
