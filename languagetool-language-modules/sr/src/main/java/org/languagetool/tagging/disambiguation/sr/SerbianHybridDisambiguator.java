@@ -37,7 +37,7 @@ import java.io.IOException;
 
 public class SerbianHybridDisambiguator extends AbstractDisambiguator {
 
-  private final Disambiguator chunker = new MultiWordChunker("/sr/multiwords.txt");
+  private final Disambiguator chunker = new MultiWordChunker("/sr/multiwords.txt", true, true);
   private final Disambiguator disambiguator = new XmlRuleDisambiguator(new Serbian());
 
   /**
