@@ -781,16 +781,7 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>língua|linguagem</token>
           <token regexp='yes'>esperanto|ido</token>
       </antipattern>
-<!-- MARCOAGPINTO 2020-06-14 *START* -->
-<!-- "A ocupação soviética resultou na morte de afegãos, a maioria civis." -->
-<!-- "A ocupação soviética resultou na morte de afegãos, a maioria homens." -->
-<!-- "A ocupação soviética resultou na morte de afegãos, a maioria mulheres." -->
-      <antipattern>
-	      <token regexp='yes'>a|na</token>
-		  <token regexp='no'>maioria</token>
-		  <token postag='NC[CFM]P000' postag_regexp='yes'/>
-      </antipattern>
-<!-- MARCOAGPINTO 2020-06-14 *END* -->
+    <!-- Added by Marco A.G.Pinto - 2020-05-08 ***END***-->
       <pattern>
           <token negate='yes' regexp='yes'>e|&hifen;</token>
         <marker>
@@ -825,6 +816,7 @@ title="Easy editing stylesheet" ?>
       <example>…il, nos moldes da recém ocorrida revolução cubana ocorrida anos antes.</example>
       <example>É uma vantagem saber operar um computador.</example>
       <example>Cerca de 500 pessoas foram executadas em Paris, na maioria nobres.</example>
+      <example>A ocupação soviética resultou na morte de afegãos, a maioria civis.</example>
     </rule>
     <rule>
       <antipattern>
@@ -1659,15 +1651,6 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes' min='0'>m(?:ais|enos)</token>
           <token postag='N..P.+' postag_regexp='yes'/>
       </antipattern>
-<!-- MARCOAGPINTO 2020-06-14 *START* -->
-<!-- "Algumas medidas revelaram-se de tal modo eficazes que persistiram nos diversos regulamentos." -->
-      <antipattern>
-	      <token postag='NC[CFM]S000' postag_regexp='yes'/>
-		  <token postag='AQ0[CFM]P0' postag_regexp='yes'/>
-		  <token postag='CS|P[ERT]0CN000' postag_regexp='yes'/>
-		  <token postag='VMIM3P0|VMIS3P0' postag_regexp='yes'/>
-      </antipattern>
-<!-- MARCOAGPINTO 2020-06-14 *END* -->
       <pattern>
           <token negate='yes' regexp='yes'>e|ou|&hifen;</token>
         <marker>
@@ -1712,6 +1695,7 @@ title="Easy editing stylesheet" ?>
       <example>O balonete interno, que até então só lhe havia causado problemas, foi dispensado.</example>
       <example>Cinco já aceitaram a proposta australiana, três prefeririam o paralelo 35° Sul.</example>
       <example>Para saber mais comandos de IRC, consulte o artigo sobre IRC.</example>
+      <example>Algumas medidas revelaram-se de tal modo eficazes que persistiram nos diversos regulamentos.</example>
     </rule>
     <rule>
       <antipattern>
@@ -1787,25 +1771,6 @@ title="Easy editing stylesheet" ?>
             <exception postag_regexp='yes' postag='[ND].+'/></token>
           <token postag='(?:D[ADIP].|NC|A..|Z.)[FC]P.+' postag_regexp='yes'/>
       </antipattern>
-<!-- MARCOAGPINTO 2020-06-14 *START* -->
-<!-- "A ocupação soviética resultou na morte de afegãos, a maioria civis." -->
-<!-- "A ocupação soviética resultou na morte de afegãos, a maioria homens." -->
-<!-- "A ocupação soviética resultou na morte de afegãos, a maioria mulheres." -->
-      <antipattern>
-	      <token regexp='yes'>a|na</token>
-		  <token regexp='no'>maioria</token>
-		  <token postag='NC[CFM]P000' postag_regexp='yes'/>
-      </antipattern>
-<!-- MARCOAGPINTO 2020-06-14 *END* -->
-<!-- MARCOAGPINTO 2020-06-14 *START* -->
-<!-- "Os remanescentes do regime derrubado juntaram-se a diferentes grupos." -->
-<!-- "Os remanescentes do regime derrubado juntaram-se a diferentes organizações." -->
-      <antipattern>
-	      <token regexp='yes'>a|de|em|nos|nas</token>
-		  <token postag='AQ0[CFM]P0' postag_regexp='yes'/>
-		  <token postag='NC[CFM]P000' postag_regexp='yes'/>
-      </antipattern>
-<!-- MARCOAGPINTO 2020-06-14 *END* -->
       <pattern>
           <token negate='yes' regexp='yes'>e|ou|&hifen;</token>
         <marker>
@@ -1847,6 +1812,8 @@ title="Easy editing stylesheet" ?>
       <example>Levará seguramente a sucessivas alterações da estrutura classificativa.</example>
       <example>De valor diferenciado por terem, como origem, fontes imparciais e isentas.</example>
       <example>Curiosamente, o Cabo Verde que dá nome ao país não se situa nele, mas a centenas de quilómetros a leste, perto de Dacar, no Senegal.</example>
+      <example>A ocupação soviética resultou na morte de afegãos, a maioria civis.</example>
+      <example type='triggers_error'>Os remanescentes do regime derrubado juntaram-se a diferentes grupos.</example>
     </rule>
     <rule>
       <antipattern>
@@ -1982,22 +1949,6 @@ title="Easy editing stylesheet" ?>
           <token>a</token>
           <token regexp='yes'>ambos|est[ea]s|tod[ao]s</token>
       </antipattern>
-<!-- MARCOAGPINTO 2020-06-03 *START* -->
-<!-- "Pode-se acrescentar a esses o critério da espontaneidade." -->
-      <antipattern>
-		  <token postag='DD0MP0' postag_regexp='no'/>
-		  <token postag='DA0MS0' postag_regexp='no'/>		  
-		  <token postag='NCMS000' postag_regexp='no'/>
-      </antipattern>
-<!-- MARCOAGPINTO 2020-06-03 *END* -->
-<!-- MARCOAGPINTO 2020-06-06 *START* -->
-<!-- "Não façais aos outros o que não quereis que façam convosco." -->
-      <antipattern>
-		  <token regexp='yes'>aos|os|a|e</token>
-		  <token postag='DI0MP0' postag_regexp='no'/>		  
-		  <token postag='DA0MS0' postag_regexp='no'/>		  	  
-      </antipattern>
-<!-- MARCOAGPINTO 2020-06-06 *END* -->
       <pattern>
           <unify negate="yes">
             <feature id="number"/>
@@ -2024,6 +1975,9 @@ title="Easy editing stylesheet" ?>
       <example>Enquanto em outras, o carro é bonito.</example>
       <example>Consequentemente, eles opunham-se a muitas inovações desenvolvidas desde esse tempo.</example>
       <example>Os dados anteriores a essas viagens são escassos.</example>
+      <example type='triggers_error'>Pode-se acrescentar a esses o critério da espontaneidade.</example><!-- missing punctuation -->
+      <example>Pode-se acrescentar a esses, o critério da espontaneidade.</example>
+      <example type='triggers_error'>Não façais aos outros o que não quereis que façam convosco.</example>
     </rule>
   </rulegroup>
 
