@@ -28,10 +28,10 @@
     <!ENTITY dias_semana "segunda|terça|quarta|quinta|sexta|sábado|domingo">
     <!ENTITY expressoes_de_tempo "(?:minuto|hora|dia|se(?:gundo|mana|mestre)|(?:bi|tri|quadri)mestre|ano|d(?:écada|ecénio)|mil[éê]nio|temp(?:o|orada)|época)s?|m(?:ês|eses)">
 
-    <!ENTITY contracoes_MS "ao|do|dum|dele|deste|desse|daquele|disto|disso|daquilo|doutro|no|num|nele|nesse|neste|naquele|nisto|nisso|naquilo|noutro|pelo|algum|mo|to|lho">
-    <!ENTITY contracoes_FS "à|da|duma|dela|desta|dessa|daquela|doutra|na|numa|nela|nessa|nesta|naquela|noutra|pela|alguma|ma|ta|lha">
-    <!ENTITY contracoes_MP "aos|dos|duns|deles|destes|desses|daqueles|doutros|nos|nuns|neles|nesses|nestes|naqueles|noutros|pelos|alguns|mos|tos|lhos">
-    <!ENTITY contracoes_FP "às|das|dumas|delas|destas|dessas|daquelas|doutras|nas|numas|nelas|nessas|nestas|naquelas|noutras|pelas|algumas|mas|tas|lhas">
+    <!ENTITY contracoes_MS "(?:ao|d(?:o|um|ele|es[st]e|aquele|is[st]o|aquilo|outro)|n(?:o|um|ele|es[st]e|aquele|is[st]o|aquilo|outro)|pelo|algum|mo|to|lho)">
+    <!ENTITY contracoes_FS "(?:à|d(?:a|uma|ela|es[st]a|aquela|outra)|n(?:a|uma|ela|nes[st]a|aquela|outra)|pela|alguma|ma|ta|lha)">
+    <!ENTITY contracoes_MP "(?:aos|d(?:os|uns|eles|es[st]es|aqueles|outros)|n(?:os|uns|eles|es[st]es|aqueles|outros)|pelos|alguns|mos|tos|lhos)">
+    <!ENTITY contracoes_FP "(?:às|d(?:as|umas|elas|es[st]as|aquelas|outras)|n(?:as|umas|elas|es[st]as|aquelas|outras)|pelas|algumas|mas|tas|lhas)">
 
     <!ENTITY apostrofe "['’`´‘]">
     <!ENTITY hifen "[-‑]">
@@ -119,7 +119,17 @@
       </pattern>
       <disambig action="replace"><wd pos="I"/><wd pos="I"/></disambig>
     </rule>
-    
+
+    <rule id="A_MAIORIA" name="maioria">
+      <pattern>
+              <token regexp='yes'>a|&contracoes_FS;</token>
+            <marker>
+              <token regexp='yes'>m(?:aioria|inoria)</token>
+            </marker>
+      </pattern>
+      <disambig action="replace"><wd pos="NCFN000"/></disambig>
+    </rule>
+
   <rulegroup id="PELO_NOUN" name="pelo como contração">
     <rule>
       <pattern>
