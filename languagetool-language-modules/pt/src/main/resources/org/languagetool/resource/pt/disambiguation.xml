@@ -503,6 +503,12 @@
           <token inflected='yes' regexp='yes' skip='-1'>&verbos_auxiliares_part_passado;</token>
           <token postag="V.P.+" postag_regexp="yes"/>
       </antipattern>
+      <antipattern>
+          <token postag="V.+" postag_regexp="yes"/>
+          <token>em</token>
+          <token postag="N.+" postag_regexp="yes"/>
+          <token postag="V.P.+" postag_regexp="yes"/>
+      </antipattern>
       <pattern>
         <and>
           <token postag="[^V].+" postag_regexp="yes"/>
@@ -510,6 +516,32 @@
         </and>
       </pattern>
       <disambig action="remove" postag="V.P.+"/>
+    </rule>
+  </rulegroup>
+
+  <rulegroup id="EM_ADVERBIAL_PHRASES" name="Locuções adverbiais de modo começadas em 'em'">
+    <!-- Created by Tiago F. Santos, Portuguese rule, 2020-06-15  	-->
+    <rule>
+      <pattern>
+          <token postag="V.[^P]..P.+" postag_regexp='yes'/>
+        <marker>
+          <token>em</token>
+          <token postag="N.+" postag_regexp="yes"/>
+        </marker>
+          <token postag="(?:A..|N.|V.P.).P.+" postag_regexp='yes'/>
+      </pattern>
+      <disambig action="replace"><wd pos="RG"/><wd pos="RG"/></disambig>
+    </rule>
+    <rule>
+      <pattern>
+          <token postag="V.[^P]..S.+" postag_regexp='yes'/>
+        <marker>
+          <token>em</token>
+          <token postag="N.+" postag_regexp="yes"/>
+        </marker>
+          <token postag="(?:A..|N.|V.P.).S.+" postag_regexp='yes'/>
+      </pattern>
+      <disambig action="replace"><wd pos="RG"/><wd pos="RG"/></disambig>
     </rule>
   </rulegroup>
 
