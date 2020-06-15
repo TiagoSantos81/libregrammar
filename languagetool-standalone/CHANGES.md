@@ -20,10 +20,11 @@
 #### Catalan
   * activated generic Java rules, including: `SentenceWhitespaceRule`,
     `WhiteSpaceBeforeParagraphEnd`, `WhiteSpaceAtBeginOfParagraph`, `EmptyLineRule`,
-    `LongParagraphRule`, `ParagraphRepeatBeginningRule`, `PunctuationMarkAtParagraphEnd`
+    `LongParagraphRule`, `ParagraphRepeatBeginningRule`, `PunctuationMarkAtParagraphEnd`.
+  * added `CatalanStyleRepeatedWordRule`
 
 #### Dutch
-  * [restored 256 word confusion rules](https://github.com/TiagoSantos81/languagetool/commit/ff74bea))
+  * [restored 256 word confusion rules](https://github.com/TiagoSantos81/languagetool/commit/ff74bea)
 
 #### Esperanto
   * added URLs explaining most single word suggestions
@@ -132,7 +133,7 @@
     - `UpperCaseNgramRule`, a stricter version of `UpperCaseRule` that
     requires n-gram data
   * spelling and POS improvements
-  * updated en_GB spellchecker dictionary from https://github.com/marcoagpinto/aoo-mozilla-en-dict (Version 2.85 - 2020-06-01)
+  * [updated en_GB spellchecker dictionary by Marco A.G. Pinto](https://github.com/marcoagpinto/aoo-mozilla-en-dict) (Version 2.85 - 2020-06-01)
 
 #### French
   * added and improved rules, thanks to Rigaut Theótime (vkyfox)
@@ -141,8 +142,7 @@
   * added and improved rules
   * rules that apply to de-DE and de-AT (but not de-CH) can now be placed in `de/de-DE-AT/grammar.xml`
   * spelling and POS improvements
-  * Updated the German part-of-speech dictionary (https://github.com/languagetool-org/german-pos-dict)
-    to version 1.2.1.
+  * Updated the [German part-of-speech dictionary](https://github.com/languagetool-org/german-pos-dict) to version 1.2.1.
 
 #### Russian
   * added and improved rules, including:
@@ -156,18 +156,18 @@
 #### Spanish
   * added and improved rules
   * spelling and POS improvements
-    - new tagger dictionary by Jaume Ortolà, LGPL, source: 
-    https://github.com/jaumeortola/spanish-dict-tools
+    - [new tagger dictionary by Jaume Ortolà, LGPL](https://github.com/jaumeortola/spanish-dict-tools)
 
 #### Ukranian
   * added and improved rules
   * spelling and POS improvements
 
 #### LibreOffice / Apache OpenOffice Integration
-  * add-on toolbar added, thanks to Fred Kruse
-  * custom spellings added to `spelling.txt` are now also ignored by LibreOffice
-    spellchecking service, thanks to Fred Kruse
-  * new performance settings added to the options panel, thanks to Fred Kruse
+  * most work done by [Fred Kruse](https://github.com/languagetool-org/languagetool/commits?author=fredkruse), including:
+    - add-on toolbar added
+    - custom spellings added to `spelling.txt` are now also ignored by LibreOffice
+    spellchecking service
+    - new performance settings added to the options panel
 
 #### General
   * added `replace_custom.txt` for several languages so users can have their 
@@ -199,7 +199,7 @@
   n-grams.
   * disambiguation improvements
   * POS and spelling improvements
-     - updated en_GB spellchecker dictionary from https://github.com/marcoagpinto/aoo-mozilla-en-dict (Version 2.83 - 2020-04-01)
+     - [updated en_GB spellchecker dictionary by Marco A.G. Pinto](https://github.com/marcoagpinto/aoo-mozilla-en-dict) (Version 2.83 - 2020-04-01)
      - scientific nomenclature POS support added
 
 #### Esperanto
@@ -260,7 +260,7 @@
     - EnglishForFrenchFalseFriendRule false friends n-gram based rule;
   * disambiguation improvements
   * POS and spelling improvements, including:
-    - updated en_GB spellchecker dictionary from https://github.com/marcoagpinto/aoo-mozilla-en-dict (Version 2.82 - 2020-03-01)
+    - [updated en_GB spellchecker dictionary Marco A.G. Pinto](https://github.com/marcoagpinto/aoo-mozilla-en-dict) (Version 2.82 - 2020-03-01)
     - new part-of-speech tag `ORD` for ordinal numbers (e.g., first, second, twenty-third etc.)
 
 #### Esperanto
@@ -535,7 +535,7 @@
   * multiwords support added
   * disambiguation improvements
   * POS and spelling improvements, including:
-   - updated en_GB spellchecker dictionary from https://github.com/marcoagpinto/aoo-mozilla-en-dict (Version 2.79 - 2019-12-01)
+   - [updated en_GB spellchecker dictionary by Marco A.G. Pinto](https://github.com/marcoagpinto/aoo-mozilla-en-dict) (Version 2.79 - 2019-12-01)
    - updated en_US spellchecker dictionary from http://wordlist.aspell.net (Version 2019.10.06)
    - updated en_CA spellchecker dictionary from http://wordlist.aspell.net (Version 2019.10.06)
    - updated en_AU spellchecker dictionary from http://wordlist.aspell.net (Version 2019.10.06)

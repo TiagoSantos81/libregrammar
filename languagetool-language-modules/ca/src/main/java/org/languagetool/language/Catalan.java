@@ -101,7 +101,8 @@ public class Catalan extends Language {
             new SimpleReplaceDiacriticsIEC(messages),
             new SimpleReplaceDiacriticsTraditional(messages),
             new SimpleReplaceAnglicism(messages), 
-            new PronomFebleDuplicateRule(messages)
+            new PronomFebleDuplicateRule(messages),
+            new CatalanStyleRepeatedWordRule(messages, this, userConfig)
             //REMEMBER TO ADD RULES TO ValencianCatalan!!
     );
   }
@@ -158,6 +159,7 @@ public class Catalan extends Language {
       case "FALTA_ELEMENT_ENTRE_VERBS": return -200;
       case "NOMBRES_ROMANS": return -400;
       case "UPPERCASE_SENTENCE_START": return -500;
+      case "STYLE_REPEATED_WORD_RULE_CA": return -1000;  // style rules do not take priority
     }
     return super.getPriorityForId(id);
   }

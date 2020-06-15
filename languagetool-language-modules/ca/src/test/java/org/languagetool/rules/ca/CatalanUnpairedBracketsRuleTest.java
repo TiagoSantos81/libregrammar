@@ -131,6 +131,7 @@ public class CatalanUnpairedBracketsRuleTest {
   public void testMultipleSentences() throws IOException {
     final JLanguageTool tool = new JLanguageTool(new Catalan());
     tool.enableRule("CA_UNPAIRED_BRACKETS");
+    tool.disableRule("STYLE_REPEATED_WORD_RULE_CA");
 
     List<RuleMatch> matches;
     matches = tool
