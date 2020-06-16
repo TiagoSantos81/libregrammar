@@ -26,33 +26,10 @@ import java.util.ResourceBundle;
 
 import org.languagetool.Language;
 import org.languagetool.UserConfig;
-import org.languagetool.rules.CommaWhitespaceRule;
-import org.languagetool.rules.DoublePunctuationRule;
-import org.languagetool.rules.Example;
-import org.languagetool.rules.LongSentenceRule;
-import org.languagetool.rules.MultipleWhitespaceRule;
+import org.languagetool.rules.*;
 import org.languagetool.rules.Rule;
 import org.languagetool.rules.UppercaseSentenceStartRule;
-import org.languagetool.rules.ca.AccentuationCheckRule;
-import org.languagetool.rules.ca.CatalanUnpairedBracketsRule;
-import org.languagetool.rules.ca.CatalanUnpairedExclamationMarksRule;
-import org.languagetool.rules.ca.CatalanUnpairedQuestionMarksRule;
-import org.languagetool.rules.ca.CatalanWordRepeatRule;
-import org.languagetool.rules.ca.CatalanWrongWordInContextDiacriticsRule;
-import org.languagetool.rules.ca.CatalanWrongWordInContextRule;
-import org.languagetool.rules.ca.ComplexAdjectiveConcordanceRule;
-import org.languagetool.rules.ca.MorfologikCatalanSpellerRule;
-import org.languagetool.rules.ca.PronomFebleDuplicateRule;
-import org.languagetool.rules.ca.ReplaceOperationNamesRule;
-import org.languagetool.rules.ca.SimpleReplaceAnglicism;
-import org.languagetool.rules.ca.SimpleReplaceBalearicRule;
-import org.languagetool.rules.ca.SimpleReplaceDNVColloquialRule;
-import org.languagetool.rules.ca.SimpleReplaceDNVRule;
-import org.languagetool.rules.ca.SimpleReplaceDNVSecondaryRule;
-import org.languagetool.rules.ca.SimpleReplaceDiacriticsIEC;
-import org.languagetool.rules.ca.SimpleReplaceDiacriticsTraditional;
-import org.languagetool.rules.ca.SimpleReplaceRule;
-import org.languagetool.rules.ca.SimpleReplaceVerbsRule;
+import org.languagetool.rules.ca.*;
 
 public class ValencianCatalan extends Catalan {
 
@@ -75,15 +52,22 @@ public class ValencianCatalan extends Catalan {
   public List<Rule> getRelevantRules(ResourceBundle messages, UserConfig userConfig, Language motherTongue, List<Language> altLanguages) throws IOException {
     return Arrays.asList(
             new CommaWhitespaceRule(messages, 
-                Example.wrong("A parer seu<marker> ,</marker> no era veritat."),
-                Example.fixed("A parer seu<marker>,</marker> no era veritat.")),
+            		Example.wrong("A parer seu<marker> ,</marker> no era veritat."),
+            		Example.fixed("A parer seu<marker>,</marker> no era veritat.")),
             new DoublePunctuationRule(messages),
             new CatalanUnpairedBracketsRule(messages, this),
             new UppercaseSentenceStartRule(messages, this,
-                Example.wrong("Preus de venda al públic. <marker>han</marker> pujat molt."),
-                Example.fixed("Preus de venda al públic. <marker>Han</marker> pujat molt.")),
+            		Example.wrong("Preus de venda al públic. <marker>han</marker> pujat molt."),
+            		Example.fixed("Preus de venda al públic. <marker>Han</marker> pujat molt.")),
             new MultipleWhitespaceRule(messages, this),
-            new LongSentenceRule(messages, userConfig),
+            new SentenceWhitespaceRule(messages),
+            new WhiteSpaceBeforeParagraphEnd(messages, this),
+            new WhiteSpaceAtBeginOfParagraph(messages),
+            new EmptyLineRule(messages, this),
+            new LongSentenceRule(messages, userConfig, -1, true),
+            new LongParagraphRule(messages, this, userConfig),
+            new PunctuationMarkAtParagraphEnd(messages, this),
+            new PunctuationMarkAtParagraphEnd2(messages, this),
             // specific to Catalan:
             new CatalanWordRepeatRule(messages, this),
             new MorfologikCatalanSpellerRule(messages, this, userConfig, altLanguages),
@@ -104,7 +88,8 @@ public class ValencianCatalan extends Catalan {
             new SimpleReplaceDiacriticsIEC(messages),
             new SimpleReplaceDiacriticsTraditional(messages),
             new SimpleReplaceAnglicism(messages),
-            new PronomFebleDuplicateRule(messages)
+            new PronomFebleDuplicateRule(messages),
+            new CatalanStyleRepeatedWordRule(messages, this, userConfig)
     );
   }
 
@@ -122,4 +107,28 @@ public class ValencianCatalan extends Catalan {
     return Collections.unmodifiableList(rules);
   }
   
+  @Override
+  protected int getPriorityForId(String id) {
+    switch (id) {
+      case "CA_SIMPLE_REPLACE_BALEARIC": return 100;
+      case "INCORRECT_EXPRESSIONS": return 50;
+      case "MOTS_NO_SEPARATS": return 40;
+      case "CONCORDANCES_CASOS_PARTICULARS": return 30;
+      case "CONFUSIONS_ACCENT": return 20;
+      case "DIACRITICS": return 20;
+      case "ACCENTUATION_CHECK": return 10;
+      case "HAVER_SENSE_HAC": return 10;
+      case "CONCORDANCES_DET_NOM": return 5;
+      case "REGIONAL_VERBS": return -10;
+      case "FALTA_COMA_FRASE_CONDICIONAL": return -20;
+      case "SUBSTANTIUS_JUNTS": return -25;
+      case "MUNDAR": return -50;
+      case "MORFOLOGIK_RULE_CA_ES": return -100;
+      case "FALTA_ELEMENT_ENTRE_VERBS": return -200;
+      case "NOMBRES_ROMANS": return -400;
+      case "UPPERCASE_SENTENCE_START": return -500;
+      case "STYLE_REPEATED_WORD_RULE_CA": return -1000;  // style rules do not take priority
+    }
+    return super.getPriorityForId(id);
+  }  
 }
