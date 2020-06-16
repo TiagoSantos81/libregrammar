@@ -7832,6 +7832,25 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="Coronavirus">Das <marker>Corona Virus</marker> hat 2020 eine Pandemie ausgelöst.</example>
             </rule>
         </rulegroup>
+        <rulegroup id="SOVIEL" name="so viel (soviel)">
+            <rule>
+                <pattern>
+                    <marker><token>soviel</token></marker>
+                    <token>wie</token>
+                </pattern>
+                <message>Meinten Sie <suggestion>so viel</suggestion>?</message>
+                <example correction="so viel">Er verdient <marker>soviel</marker> wie ich.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <marker><token>soviel</token></marker>
+                    <token postag="PA2.+" postag_regexp="yes"></token>
+                </pattern>
+                <message>Meinten Sie <suggestion>so viel</suggestion>?</message>
+                <example correction="so viel">Er hat <marker>soviel</marker> gewonnen, dass er aufhören sollte.</example>
+                <example correction="so viel">Er hat schon <marker>soviel</marker> gesehen.</example>
+            </rule>
+        </rulegroup>
         <rule id="FRANK_WALTER_STEINMEIER" name="Frank-Walter Steinmeier">
             <pattern>
                 <token>Frank</token>
@@ -38569,13 +38588,25 @@ Andere Projekte</example>
                 <pattern>
                     <token>alles</token>
                     <marker>
-                        <token case_sensitive="yes">mögliche</token>
+                        <token postag="ADJ:(AKK|NOM):PLU:NEU:...:SOL" postag_regexp="yes" case_sensitive="yes" regexp="yes">[a-züöä].+e
+                            <exception>andere</exception>
+                            <exception scope="previous" inflected="yes">sein</exception>
+                            <exception postag="VER.+|ADJ:PRD:GRU" postag_regexp="yes"></exception>
+                        </token>
                     </marker>
+                    <token><exception case_sensitive="yes" regexp="yes">[A-ZÄÖÜ].+|„|»|›|'|‘|“|‹|«</exception></token>
                 </pattern>
                 <message>Schreiben Sie dieses als Nomen gebrauchte Adjektiv groß.</message>
-                <suggestion>Mögliche</suggestion>
+                <suggestion><match no="2" case_conversion="startupper"/></suggestion>
                 <short>&prgk;.</short>
                 <example correction="Mögliche">Er tat alles <marker>mögliche</marker>, um ihr zu helfen.</example>
+                <example correction="Übrige">Er tat alles <marker>übrige</marker>.</example>
+                <example correction="Weitere">Er tat alles <marker>weitere</marker>.</example>
+                <example>Das sind alles <marker>weitere</marker> Bruchstücke derselben Vase.</example>
+                <example>Ich liebe sie; alles <marker>andere</marker> ist egal.</example>
+                <example>Er stellte fest, dass der Klimawandel alles irdische Leben ausgelöscht hatte.</example>
+                <example>Das ist alles zwangsweise eine Sache der Erziehung.</example>
+                <example>Du siehst so aus wie jemand, dem ich gleich sagen werde, dass ich ihn über alles liebe!</example>
             </rule>
             <rule>
                 <pattern>
@@ -44312,6 +44343,13 @@ Andere Projekte</example>
                     <token>,</token>
                     <token postag="KON:.+" postag_regexp="yes"/>
                 </antipattern>
+                <antipattern>
+                    <token>laut</token>
+                    <token skip="3"/>
+                    <token postag="NEG"/>
+                    <token>,</token>
+                    <token postag="VER:IMP:.+" postag_regexp="yes"/>
+                </antipattern>
                 <pattern>
                     <token skip="-1" postag="SENT_START">
                         <exception scope="next" postag="VER:.*|UNKNOWN" postag_regexp="yes"/>
@@ -44339,6 +44377,7 @@ Andere Projekte</example>
                 <example>Nicht nur in Deutschland, auch in Nachbarländern verbreitet sich die schlechte Nachricht.</example>
                 <example>Hauptartikel: Geschichte Kaliforniens, siehe auch: Kalifornien (historische Landschaft).</example>
                 <example>Kenntnisse in Python, PHP und MySQL sind gerne gesehen.</example>
+                <example>Laut dem Thomas nicht, vergleiche das Haus dort mal mit der Villa.</example>
             </rule>
         </rulegroup>
         <rulegroup id="KOMMA_VOR_INFINITIVGRUPPEN_OPT" name="Optional: Komma vor Infinitivgruppen" default="off">
@@ -45344,4 +45383,3 @@ Andere Projekte</example>
         </rule>
     </category>
 </rules>
-
