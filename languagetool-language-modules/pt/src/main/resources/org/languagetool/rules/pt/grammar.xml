@@ -6974,39 +6974,6 @@ title="Easy editing stylesheet" ?>
         <suggestion><match no='1' case_conversion="startupper"/> <match no='2' case_conversion="startupper"/> <match no='3' case_conversion="startupper"/></suggestion>
       <example correction="Segunda Guerra Mundial">Quantas pessoas morreram na <marker>segunda guerra mundial</marker>?</example>
     </rule>
-<!-- MARCOAGPINTO 2020-06-15 *START* -->
-<!-- "Homo sapiens" -->
-    <rule>
-      <antipattern case_sensitive="yes">
-          <token>Homo</token>
-          <token>sapiens</token>
-      </antipattern>
-      <pattern>
-	      <marker>
-			<token>Homo</token>
-			<token>sapiens</token>
-		  </marker>
-      </pattern>
-      <message>Capitalize esta denominação científica.</message>
-        <suggestion><match no='1' case_conversion="startupper"/> <match no='2' case_conversion="startlower"/></suggestion>
-      <example correction="Homo sapiens">O <marker>Homo Sapiens</marker> é inteligente.</example>
-    </rule>
-    <rule>
-      <antipattern case_sensitive="yes">
-          <token>Homo</token>
-          <token>sapiens</token>
-          <token>sapiens</token>
-      </antipattern>
-      <pattern>
-          <token>Homo</token>
-          <token>sapiens</token>
-          <token>sapiens</token>
-      </pattern>
-      <message>Capitalize esta denominação científica.</message>
-        <suggestion><match no='1' case_conversion="startupper"/> <match no='2' case_conversion="startlower"/> <match no='3' case_conversion="startlower"/></suggestion>
-      <example correction="Homo sapiens sapiens">O <marker>Homo Sapiens Sapiens</marker> é inteligente.</example>
-    </rule>
-<!-- MARCOAGPINTO 2020-06-15 *END* -->
   </rulegroup>
 
   <rulegroup id="ABREVIATIONS" name="Abreviaturas: p.ex. sr. -> Sr.">
