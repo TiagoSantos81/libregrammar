@@ -33,6 +33,7 @@
   * added and improved rules, including:
     - several agreement rules added or significantly improved;
     - archaic language detection;
+    - revert several crippling changes;
     - explanation URLs added to ~600 rules.
   * disambiguation improvements
   * use `UpperCaseRule` instead of `UpperCaseNgramRule` by default
@@ -43,6 +44,9 @@
 
 #### Galician
   * added URLs explaining most single word suggestions
+
+#### German
+  * archaisms detection
 
 #### Italian
   * [re-enable rules](https://github.com/TiagoSantos81/languagetool/commit/0176b6cb378ed39f3e7e39ef25cab026362d947b):
