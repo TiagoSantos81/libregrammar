@@ -9187,9 +9187,8 @@ though, and has since been slightly modified)-->
             <exception scope="next" regexp="yes">beaucoup|mille fois</exception>
           </token>
           <marker>
-          <token postag="N .* s" postag_regexp="yes"> <!-- removed: J -->
+          <token postag="[JN] .* s" postag_regexp="yes">
             <exception regexp="yes">allée|avenue|balade|boulevard|chaussée|chemin|cour|impasse|place|route|rue|ruelle|quai|sentier|square|janvier|février|avril|mai|juin|juillet|ao[uû]t|septembre|octobre|novembre|décembre|vendémiaire|brumaire|frimaire|nivôse|pluviôse|ventôse|germinal|floréal|prairial|messidor|thermidor|fructidor|min</exception>
-            <exception postag="V.* (sub|ind) .*" postag_regexp="yes"/>
           </token>
         </marker>
         </pattern>
