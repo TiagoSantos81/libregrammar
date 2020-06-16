@@ -44,6 +44,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
     <!ENTITY klam "&klamauf;|&klamzu;">
     <!ENTITY alnum "&lsqb;0-9A-ZÄÖÜa-zäöüßáàâêéèëíìîïòóôõûçñšž&rsqb;">
 
+    <!ENTITY archaismen "a(?:dhärieren|ffabel|llerenden|llgemach|llzuhauf|r­bi­t­rie­ren)|b(?:allaballa|ärbeißig|edungen|ot­mä­ßig)|deteriorieren|f(?:atigant|ickfacken)|ge­har­nischt|h(?:arangieren|ärmen|asardieren|aselieren|erumgondeln)|i(?:mbezil|ngleichen|tzo)|j(?:emine|ottwede|ustament)|k(?:norke|nüselig|ommodieren|oram|reißen)|m(?:agnifik|ajorenn|aledeien|alochen|esmerisieren|inorenn|ittenmang)|o(?:blong|utrieren)|p(?:ap­per­la­papp|on­de­ra­bel|riapeisch|urgieren)|r(?:atzig|e­as­su­mie­ren)|s(?:charwenzeln|chlankerhand|chrinnen|elbander|elbandern|elbdritt|en­su­a­lis­tisch|po­li­ie­ren|trullen|uppletorisch|uszeptibel)|t(?:attern|raun)|unkommod|v(?:ergackeiern|erganten|erhohnepipeln|er­ka­mi­so­len|ermaledeien|erplembern|ertobaken|if|olvieren)|w(?:ohlan|onniglich|undermild)|A(?:dnex|dnote|ffenschaukeln|ffiche|nfurt|ufkunft)|Ärar|B(?:arras|emme|illigheimer|leuel|ohei|regen|rowserkrieg|udicker|urgeoisie)|C(?:harivari|hemisette|ochonnerie|onnaisseur)|D(?:aus|iarium|rang­sal)|E(?:idam|iderdaus|skamoteur)|F(?:al­li­ment|eldscher|ettlebe|ierant|limmerkiste|lokati|ritze|üsillade|uzzi)|G(?:auch|egenfüßler|ellerettli|emächt|erödel|espons|latzenschneider|limpf|ülte|ummihopse)|H(?:aderlump|alodri|artung|ektograph|istrione|itlersäge|ornochse|udel|yetograph)|Insurgent|K(?:abache|almäuser|amisol|aputtnik|avent|a­vents­mann|awenzmann|emnate|lanke|ledage|leppermantel|linkenputzen|lugscheißer|oben|öhlerglaube|onzinnität|rammetser|rankfurt|ujon)|L(?:ambrequin|eukoplastbomber|orbas|orbass|öw|ude|umpazius|unatiker)|M(?:ago|alefiz|alesche|amihlapinatapai|aulschelle|elodei|etök|oppelkotze|osaismus|ugge|uggesäggele|uhme|unizipium|usaget|uschkote|uselman|üßiggänger)|N(?:achtmahr|eidkopf|estelband|ympholepsie)|O(?:chsenpfotenfett|ffizin)|P(?:achulke|agelun|arapluie|ardauz|edell|erfektibilismus|eterspfennig|eterwagen|fisterei|ipapo|isspottschnitt|lempe|önale|ossenreißer|oussierstängel|usemuckel)|Quasselstrippe|R(?:abauke|abulist|adebrech|atzefummel|emmidemmi|idikül)|S(?:aufaus|aumstein|charteke|cheese|chermesser|cherzkeks|chmagadutsche|chultheiß|chwoof|ilentium|kaphander|ou|pringinsfeld|uffragette|zission)|T(?:abatiere|andaradei|au­send­sas­sa|ingeltangel|ranfunzel|rulle|rutschel|rutz|ütensuppe)|U(?:nband|nglimpf|nserdeutsch)|V(?:agant|elozipedist|ideothekar)|W(?:acke|ackerstein|angenstreich|aschblau|uchtbrumme)|Yggdrasil|Z(?:appeldisco|eidler|etermordio|ossen|ückerli|wistel)"><!-- https://de.wikipedia.org/wiki/Archaismus -->
+
     <!-- Error messages -->
     <!ENTITY gla "Bitte verwenden Sie in Abkürzungen umbruchgeschützte Leerzeichen.">
     <!ENTITY glalong "Innerhalb von Abkürzungen, die aus mehreren Buchstaben bestehen, sollten (außer bei Schriftarten mit fester Breite) in der Regel geschützte Leerzeichen verwendet werden: ">
@@ -7702,6 +7704,37 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rulegroup>
     </category>
 
+    <!-- ====================================================================== -->
+    <!-- Formale Sprache -->
+    <!-- ====================================================================== -->
+    <category id='FORMAL_SPEECH' name='Formale Sprache' type='style'>
+
+  <rulegroup id='ARCHAISMS' name='Archaismen (Wörter, die nicht mehr gebraucht werden)' type='style'>
+    <!--      Created by Tiago F. Santos, German rule, 2020-06-15      -->
+      <url>https://de.wikipedia.org/wiki/Archaismus</url>
+      <short>Archaismus</short>
+    <rule>
+      <pattern case_sensitive='yes'>
+          <token regexp='yes' inflected='yes'>&archaismen;</token>
+      </pattern>
+      <message>Dieses Wort ist ein altes deutsches Wort. Suchen Sie nach einer Alternative.</message>
+      <example type='incorrect'>Ich gehe nicht in diese <marker>Kabache</marker>.</example>
+      <example>Ich gehe nicht in diese <marker>Kneipe</marker>.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token postag='SENT_START'/>
+        <marker>
+          <token regexp='yes' inflected='yes'>&archaismen;</token>
+        </marker>
+      </pattern>
+      <message>Dieses Wort ist ein altes deutsches Wort. Suchen Sie nach einer Alternative.</message>
+      <example type='incorrect'><marker>Magnifik</marker>!</example>
+      <example><marker>Grandios</marker>!</example>
+    </rule>
+  </rulegroup>
+
+    </category>
     <!-- ====================================================================== -->
     <!-- Eigennamen -->
     <!-- ====================================================================== -->
