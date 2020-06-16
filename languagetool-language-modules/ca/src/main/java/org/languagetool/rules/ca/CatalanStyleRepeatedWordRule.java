@@ -24,6 +24,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.apache.commons.lang3.StringUtils;
 import org.languagetool.AnalyzedToken;
 import org.languagetool.AnalyzedTokenReadings;
@@ -44,7 +47,12 @@ import org.languagetool.rules.Example;
 public class CatalanStyleRepeatedWordRule extends AbstractStyleRepeatedWordRule {
   
   private static final String SYNONYMS_URL = "https://www.softcatala.org/diccionari-de-sinonims/paraula/";
-  
+
+  private static final Pattern UNITATS_DE_MESURA = Pattern.compile("(?:(?:[khdcmnµfYZEPTGM]|da)?(?:[gmlsJNWCVSFTHΩ]|Hz|cd|lm|mol|Pa|Wb|rad|sr|lx|Bq|Gy|Sv|kat|Np|eV)(?:⁻)?[23¹²³]?|º[CFK]|cv|k?cal|mmHg|atm|bpm|ton|kWh|GWa|MWd|MWh|mAh|min|ha)");
+  private static final Pattern UNITATS_DE_MESURA_EXTENS = Pattern.compile("(?:quil[oó]|dec[ií]|cent[ií]|mil·?l[ií]|micr[oó])?(grama?|metre|litre|segon)s?|hectar(es)?|(grau|milla|(quilo)?tona)s?");
+  private static final Pattern DIVISES = Pattern.compile("(?:bol[ií]vars|c(?:èntims|orones)|d(?:inars|òlars)|euros|f(?:rancs|lorins)|[iy](?:uans|ens)|kwanzas|liures|meticals|p(?:ataces|esos)|r(?:andes|ubles|upies)|zlótis|[€£¥$₽])");
+  private static final Pattern MESURES = Pattern.compile("[\\d,. ]*['\\\"/\\|%º°′″‴]*(?:(?:[khdcmnµfYZEPTGM]|da)?(?:[gmlsJNWCVSFTHΩ]|Hz|cd|lm|mol|Pa|Wb|rad|sr|lx|Bq|Gy|Sv|kat|Np|eV)(?:⁻)?[23¹²³]?|º[CFK]|cv|k?cal|mmHg|atm|bpm|ton|kWh|GWa|MWd|MWh|mAh|min|ha){0,1}");
+
   public CatalanStyleRepeatedWordRule(ResourceBundle messages, Language lang, UserConfig userConfig) {
     super(messages, lang, userConfig);
     super.setCategory(Categories.STYLE.getCategory(messages));
@@ -88,6 +96,10 @@ public class CatalanStyleRepeatedWordRule extends AbstractStyleRepeatedWordRule 
   protected boolean isTokenToCheck(AnalyzedTokenReadings token) {
     return (token.matchesPosTagRegex("[VNAR].+") 
         && !token.matchesPosTagRegex("(NP|VA|SP|D|C|P).+")
+        && !UNITATS_DE_MESURA.matcher(token.getToken()).matches()
+        && !UNITATS_DE_MESURA_EXTENS.matcher(token.getToken()).matches()
+        && !MESURES.matcher(token.getToken()).matches()
+        && !DIVISES.matcher(token.getToken()).matches()
         && !StringUtils.equalsAny(token.getToken(),
            "més", "menys",
            "dia", "dies", "setmana", "setmanes", "mes", "mesos", "any", "anys", "hora", "hores", "minut", "minuts", "segon ", "segons",
