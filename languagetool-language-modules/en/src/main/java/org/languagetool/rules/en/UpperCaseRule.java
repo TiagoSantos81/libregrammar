@@ -299,9 +299,29 @@ public class UpperCaseRule extends Rule {
       token("Time"),
       token("magazine")
     ),
+    Arrays.asList( // What is Foreshadowing?
+      tokenRegex("Who|What"),
+      tokenRegex("is|are|was|were"),
+      tokenRegex("[A-Z].+"),
+      token("?")
+    ),
+    Arrays.asList( // His name is Carp.
+      token("name"),
+      tokenRegex("is|was"),
+      tokenRegex("[A-Z].+")
+    ),
+    Arrays.asList( // FDM Group
+      tokenRegex("[A-Z].*"),
+      token("Group")
+    ),
+    Arrays.asList( // Victor or Rabbit as everyone calls him.
+      pos("NNP"),
+      tokenRegex("or|and|&"),
+      tokenRegex("[A-Z].*")
+    ),
     Arrays.asList(
       tokenRegex("Google|Microsoft"), // Microsoft Teams / Google Maps (not tagged as NNP)
-      tokenRegex("Teams|Maps|Canvas")
+      tokenRegex("Teams|Maps|Canvas|Remind|Switch|Gems?") 
     )
   );
 
