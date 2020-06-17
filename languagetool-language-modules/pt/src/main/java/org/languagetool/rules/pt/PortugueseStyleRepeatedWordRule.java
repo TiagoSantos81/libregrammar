@@ -50,7 +50,7 @@ public class PortugueseStyleRepeatedWordRule extends AbstractStyleRepeatedWordRu
 
   private static final Pattern UNIDADES_DE_MEDIDA = Pattern.compile("(?:(?:[khdcmnµfYZEPTGM]|da)?(?:[gmlsJNWCVSFTHΩ]|Hz|cd|lm|mol|Pa|Wb|rad|sr|lx|Bq|Gy|Sv|kat|Np|eV)(?:⁻)?[23¹²³]?|º[CFK]|cv|k?cal|mmHg|atm|bpm|ton|kWh|GWa|MWd|MWh|mAh|min|ha)");
   private static final Pattern UNIDADES_DE_MEDIDA_EXTENSO = Pattern.compile("(?:quil[oó]|dec[ií]|cent[ií]|mil[ií]|micr[oó])?(grama|metro|litro|segundo)s?|hectar(es)?|(grau|milha|(quilo)?tonelada)s?");
-  private static final Pattern DIVISAS = Pattern.compile("(?:bol[ií]vares|c(?:êntimos|oroas)|d(?:inares|ólares)|euros|f(?:rancos|lorins)|i(?:uanes|enes)|kwanzas|libras|meticais|p(?:atacas|esos)|r(?:andes|ublos|rupias)|zlótis|[€£¥$₽])");
+  private static final Pattern DIVISAS = Pattern.compile("(?:bol[ií]vares|c(?:êntimos|oroas)|d(?:inares|ólares)|euros|f(?:rancos|lorins)|i(?:uanes|enes)|kwanzas|libras|meticais|p(?:atacas|esos)|r(?:andes|ublos|upias)|zlótis|[€£¥$₽])");
   private static final Pattern EXPRESSOES_DE_TEMPO = Pattern.compile("(?:minuto|hora|dia|se(?:gundo|mana|mestre)|(?:bi|tri|quadri)mestre|ano|d(?:écada|ecénio)|mil[éê]nio|temp(?:o|orada)|época)s?|m(?:ês|eses)");
   private static final Pattern MEDIDAS = Pattern.compile("[\\d,. ]*['\\\"/\\|%º°′″‴]*(?:(?:[khdcmnµfYZEPTGM]|da)?(?:[gmlsJNWCVSFTHΩ]|Hz|cd|lm|mol|Pa|Wb|rad|sr|lx|Bq|Gy|Sv|kat|Np|eV)(?:⁻)?[23¹²³]?|º[CFK]|cv|k?cal|mmHg|atm|bpm|ton|kWh|GWa|MWd|MWh|mAh|min|ha){0,1}");
   private static final Pattern ANTI_1_1 = Pattern.compile("cara|dia|face|frente|passo|porta|tempos?|terra|t[éê]te"); 
