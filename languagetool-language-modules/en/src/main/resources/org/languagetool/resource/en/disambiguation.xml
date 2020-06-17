@@ -8329,6 +8329,14 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
           </pattern>
           <disambig action="replace"><wd pos="RB"/><wd pos="RB"/><wd pos="RB"/><wd pos="RB"/></disambig>
         </rule>
+        <rule><!-- e.g. 'as quickly as' -->
+          <pattern>
+              <token>as</token>
+              <token postag='RB'/>
+              <token>as</token>
+          </pattern>
+          <disambig action="replace"><wd pos="RB"/><wd pos="RB"/><wd pos="RB"/></disambig>
+        </rule>
         <rule>
           <pattern>
               <token>At</token>
@@ -8513,7 +8521,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
                     <token postag="CD"/>
                     <token>times</token>
                 </marker>
-                <token postag_regexp="yes" postag="SENT_END|DT"/>
+                <token postag_regexp="yes" postag="SENT_END|DT|RB"/>
             </pattern>
             <disambig action="replace"><wd pos="RB"/><wd pos="RB"/></disambig>
             <example type="ambiguous" inputform="times[time/NNS]" outputform="times[times/RB]">They did it three <marker>times</marker>.</example>
@@ -8522,7 +8530,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <example type="untouched">If the 3 times are all the same, stop the test.</example><!-- #3111 -->
             <example type="untouched">If the 3 times (as shown in the Test Time column) are the same, stop the test.</example><!-- #3111 -->
             <example type="untouched">Five times is not sufficient; do more testing.</example><!-- #3111 -->
-            <example type="untouched">They did it four times as quickly as the other team.</example><!-- #3111 I am not sure about this -->
+            <example type="ambiguous" inputform="times[time/NNS,time/VBZ,times/CC]" outputform="times[times/RB]">They did it four <marker>times</marker> as quickly as the other team.</example><!-- #3111 I am not sure about this -->
         </rule>
     </rulegroup>
 
