@@ -29679,6 +29679,29 @@ TODO Write better examples
     </rule-->
   </rulegroup>
 
+      <rulegroup id="VALID_HOUR_CHECKER" name="Hora Inválida">
+    <!-- Localized from French grammar.xml by Tiago F. Santos, 2020-06-17 -->
+        <rule>
+            <antipattern>
+                <token inflected='yes' skip='-1'>demorar</token>
+                <token regexp="yes">([3-9]\d+|25|26|27|28|29)[hH:](.+)?</token>
+            </antipattern>
+            <pattern>
+                <token regexp="yes">([3-9]\d+|25|26|27|28|29)[hH:](.+)?</token>
+            </pattern>
+            <message>Esta hora é inválida.</message>
+            <example correction="">São <marker>26h30</marker>.</example>
+            <example>O vôo demorou 27h25.</example>
+        </rule>
+        <rule>
+            <pattern>
+                <token regexp="yes">(1[0-9]|2[01234])[hH:](6[1-9]|[789]\d|\d\d\d+)</token><!-- invalid minutes -->
+            </pattern>
+            <message>Esta hora é inválida.</message>
+            <example correction="">São <marker>24h301</marker>.</example>
+        </rule>
+    </rulegroup>
+
   <rulegroup id="DATE_WEEKDAY_WITHOUT_YEAR" name="Data Incorreta: Dia da Semana Errado em Data Incompleta">
     <!-- Localized from English grammar.xml by Tiago F. Santos, 2018-07-19 -->
       <antipattern>
