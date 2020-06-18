@@ -7751,7 +7751,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
       <regexp>(?-i)\b&schimpfwort;\b</regexp>
       <message>Dieses Wort ist ein Schimpfwort. Suchen Sie nach einer Alternative.</message>
         <suggestion>#¿$?%!¡</suggestion>
-      <example correction='#¿$?%!¡'>Du ist ein <marker>Kackbratze</marker>.</example>
+      <example correction='#¿$?%!¡'>Du bist ein <marker>Kackbratze</marker>.</example>
     </rule>
     <rule>
       <pattern>
