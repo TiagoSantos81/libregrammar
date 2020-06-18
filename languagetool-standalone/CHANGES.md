@@ -161,11 +161,11 @@
    * new variant (only yo "ё") spellchecker dictionary and new java rule for it
 
 #### Spanish
-  * added and significantly improved rules, including:
+  * added and significantly improved rules, thanks to [Jaume Ortolà, LGPL](https://github.com/jaumeortola/spanish-dict-tools), including:
     - semantic rules;
     - several typography rules;
     - word-confusion rules;
-    - puctuation rules.
+    - punctuation rules.
   * spelling and POS improvements
     - [new tagger dictionary by Jaume Ortolà, LGPL](https://github.com/jaumeortola/spanish-dict-tools)
 
