@@ -1423,27 +1423,6 @@
     </rule>
   </rulegroup>
 
-    <rule id="P_V" name="Pronome + Verbo">
-    <!--P_V Quando está a frente de um verbo, trata-se de um pronome-->
-    <!-- 		l18n from Spanish disambiguation.xml by Tiago F. Santos		-->
-      <pattern>
-        <marker>
-        <and>
-          <token postag="D.+" postag_regexp="yes"/>
-          <token postag="[PN].+" postag_regexp="yes">
-            <exception postag="R.+" postag_regexp="yes"/></token>
-        </and>
-        </marker>
-          <token postag="V.+" postag_regexp="yes">
-            <exception negate_pos='yes' postag="V.+" postag_regexp="yes"/></token>
-      </pattern>
-      <disambig action="filter" postag="P.+|N.+"/>
-      <example type="untouched">Muito obrigada por esta viagem maravilhosa.</example>
-      <example type="untouched">Escreva seu endereço aqui.</example>
-      <example type="untouched">Durante seu reinado, os Durrani consolidaram em uma só nação.</example>
-      <example type="untouched">A inflexibilidade corretiva pouco acrescentou.</example>
-    </rule>
-
   <rulegroup id="NOUN_VERB_DISAMBIGUATION" name="Nome ou Verbo">
     <!-- 		Created by Tiago F. Santos, 2019-12-11		-->
     <rule>
@@ -1964,20 +1943,21 @@
     <!--Example: seu irmão-->
     </rule>
 
-  <rulegroup id="PV" name="PP + VERBO ">
+  <rulegroup id="P_V" name="PP + VERBO ">
     <!-- 		Created by Tiago F. Santos, 2019-03-16		-->
     <rule>
       <pattern>
-          <token regexp='yes'>eu|tu|el[ea]s?|[nv]ós|vocês?</token>
-        <marker>
-        <and>
-          <token postag="N.+" postag_regexp="yes"/>
+          <unify>
+            <feature id="person"/>
+            <feature id="number"/>
+          <token postag='PP.+' postag_regexp='yes' regexp='yes'>eu|tu|el[ea]s?|[nv]ós|vocês?</token>
+        <unify-ignore>
+          <token postag='RG' min='0'/>
+        </unify-ignore>
           <token postag="V.+" postag_regexp="yes"/>
-        </and>
-        </marker>
+        </unify>
       </pattern>
-      <disambig action="filter" postag="V.+"/>
-    <!--Example: Ele casa -->
+      <disambig action="filterall"/>
     </rule>
     <rule>
       <pattern>
@@ -1990,7 +1970,24 @@
         </marker>
       </pattern>
       <disambig action="filter" postag="V.+"/>
-    <!--Example: Ele casa -->
+    </rule>
+    <rule>
+      <pattern>
+        <marker>
+        <and>
+          <token postag="D.+" postag_regexp="yes"/>
+          <token postag="[PN].+" postag_regexp="yes">
+            <exception postag="R.+" postag_regexp="yes"/></token>
+        </and>
+        </marker>
+          <token postag="V.+" postag_regexp="yes">
+            <exception negate_pos='yes' postag="V.+" postag_regexp="yes"/></token>
+      </pattern>
+      <disambig action="filter" postag="P.+|N.+"/>
+      <example type="untouched">Muito obrigada por esta viagem maravilhosa.</example>
+      <example type="untouched">Escreva seu endereço aqui.</example>
+      <example type="untouched">Durante seu reinado, os Durrani consolidaram em uma só nação.</example>
+      <example type="untouched">A inflexibilidade corretiva pouco acrescentou.</example>
     </rule>
   </rulegroup>
 

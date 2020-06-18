@@ -1651,15 +1651,6 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes' min='0'>m(?:ais|enos)</token>
           <token postag='N..P.+' postag_regexp='yes'/>
       </antipattern>
-<!-- MARCOAGPINTO 2020-06-18 *START* -->
-<!-- "No verão nós conseguimos ver muitas estrelas à noite." -->
-<!-- "No verão nós conseguiremos ver muitas estrelas à noite." -->
-      <antipattern>
-		  <token postag='NCMS000' postag_regexp='no'/>
-		  <token postag='PP1CP000' postag_regexp='no'/>
-		  <token postag='VMI[FPS]1P0' postag_regexp='yes'/>
-      </antipattern>
-<!-- MARCOAGPINTO 2020-06-18 *END* -->
       <pattern>
           <token negate='yes' regexp='yes'>e|ou|&hifen;</token>
         <marker>
@@ -1707,6 +1698,7 @@ title="Easy editing stylesheet" ?>
       <example>Algumas medidas revelaram-se de tal modo eficazes que persistiram nos diversos regulamentos.</example>
       <example>As ciências exatas são em princípio capazes de fornecer resultados com elevado grau de precisão.</example>
       <example>Fogem em pânico perseguidos pelos revoltosos.</example>
+      <example>No verão nós conseguimos ver muitas estrelas à noite.</example>
     </rule>
     <rule>
       <antipattern>
@@ -1782,14 +1774,6 @@ title="Easy editing stylesheet" ?>
             <exception postag_regexp='yes' postag='[ND].+'/></token>
           <token postag='(?:D[ADIP].|NC|A..|Z.)[FC]P.+' postag_regexp='yes'/>
       </antipattern>
-<!-- MARCOAGPINTO 2020-06-18 *START* -->
-<!-- "O vento carrega sementes por longas distâncias." -->
-      <antipattern>
-		  <token postag='NC[CFM]S000|AQ0[CFM]S0' postag_regexp='yes'/>
-		  <token postag='VMIP3S0|VMM02S0' postag_regexp='yes'/>
-		  <token postag='NC[CFM]P000' postag_regexp='yes'/>
-      </antipattern>
-<!-- MARCOAGPINTO 2020-06-18 *END* -->
       <pattern>
           <token negate='yes' regexp='yes'>e|ou|&hifen;</token>
         <marker>
