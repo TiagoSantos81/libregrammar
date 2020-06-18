@@ -46,7 +46,9 @@
   * added URLs explaining most single word suggestions
 
 #### German
-  * archaisms detection
+  * formal speech rules, including:
+    - archaisms detection;
+    - profanity detection.
 
 #### Italian
   * [re-enable rules](https://github.com/TiagoSantos81/languagetool/commit/0176b6cb378ed39f3e7e39ef25cab026362d947b):
@@ -140,7 +142,8 @@
   * [updated en_GB spellchecker dictionary by Marco A.G. Pinto](https://github.com/marcoagpinto/aoo-mozilla-en-dict) (Version 2.85 - 2020-06-01)
 
 #### French
-  * added and improved rules, thanks to Rigaut Theótime (vkyfox)
+  * added and improved rules, thanks to [Rigaut Theótime](https://github.com/vkyfox) and [Jaume Ortolà, LGPL](https://github.com/jaumeortola/spanish-dict-tools)
+  * spelling improvements
 
 #### German
   * added and improved rules
@@ -158,7 +161,11 @@
    * new variant (only yo "ё") spellchecker dictionary and new java rule for it
 
 #### Spanish
-  * added and improved rules
+  * added and significantly improved rules, including:
+    - semantic rules;
+    - several typography rules;
+    - word-confusion rules;
+    - puctuation rules.
   * spelling and POS improvements
     - [new tagger dictionary by Jaume Ortolà, LGPL](https://github.com/jaumeortola/spanish-dict-tools)
 
