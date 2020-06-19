@@ -90,7 +90,7 @@ public class Catalan extends Language {
             new CatalanUnpairedQuestionMarksRule(messages, this),
             new CatalanUnpairedExclamationMarksRule(messages, this),
             new AccentuationCheckRule(messages),
-            new ComplexAdjectiveConcordanceRule(messages),
+            new PostponedAdjectiveConcordanceRule(messages),
             new CatalanWrongWordInContextRule(messages),
             new CatalanWrongWordInContextDiacriticsRule(messages),
             new SimpleReplaceVerbsRule(messages, this),

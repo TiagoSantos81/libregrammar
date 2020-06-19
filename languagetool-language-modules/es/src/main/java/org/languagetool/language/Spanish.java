@@ -129,7 +129,8 @@ public class Spanish extends Language implements AutoCloseable{
             new SpanishWrongWordInContextRule(messages),
             new SimpleReplaceRule(messages),
             new SimpleReplaceVerbsRule(messages, this),
-            new SimpleReplaceAnglicismRule(messages)
+            new SimpleReplaceAnglicismRule(messages),
+            new PostponedAdjectiveConcordanceRule(messages)
     );
   }
 
@@ -177,6 +178,7 @@ public class Spanish extends Language implements AutoCloseable{
       case "HALLA_HAYA": return 10;
       case "VALLA_VAYA": return 10;
       case "ES_SIMPLE_REPLACE": return 10;
+      case "MORFOLOGIK_RULE_ES": return -1;
       case "ES_WIKIPEDIA_COMMON_ERRORS": return -10;
       case "EL_TILDE": return -10;
       case "PREP_VERB": return -20;

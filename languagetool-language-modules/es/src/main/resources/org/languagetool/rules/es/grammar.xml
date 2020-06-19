@@ -3723,6 +3723,18 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <url>https://www.fundeu.es/recomendacion/curriculo-o-curriculum-con-tilde-pero-curriculum-vitae/</url>
             <example correction="curriculum vitae|currículums|currículos">Los <marker>currículums vitae</marker>.</example>
         </rule>
+        <rule id="SEPARADO" name="palabras que se escriben separadas" default="temp_off">
+            <!-- if added to spelling rule, we could make suggestions for the word -->
+            <pattern>
+                <token regexp="yes">[\d\.,]+\p{L}\p{L}\p{L}\p{L}+</token>
+            </pattern>
+            <message>Probablemente falta un espacio.</message>
+            <suggestion><match no="1" regexp_match="([\d\.,]+)([a-záéíóúüñ]+)" regexp_replace="$1 $2"/></suggestion>
+            <example correction="2000 euros">Son <marker>2000euros</marker>.</example>
+            <example correction="5000 habitantes">Es un pueblo de <marker>5000habitantes</marker>.</example>
+            <example>A las 5hrs</example>
+            <example>Mide 5cm.</example>
+        </rule>
         <rulegroup id="NO_SEPARADO" name="palabras no separadas">
             <rule>
                 <pattern>
@@ -4182,6 +4194,18 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="sambenito">Tuvo que cargar con el <marker>san benito</marker>.</example>
                 <example correction="sambenito">Le pusieron el <marker>san benito</marker>.</example>
                 <example correction="sambenito">Le pusieron aquel <marker>san benito</marker>.</example>
+            </rule>
+            <rule default="temp_off">
+                <pattern>
+                    <token>micro</token>
+                    <token min="0">-</token>
+                    <token postag="[NAV].*" postag_regexp="yes"/>
+                </pattern>
+                <message suppress_misspelled="yes">Se escribe junto.</message>
+                <suggestion><match no="3" regexp_match="(?iu)(.+)" regexp_replace="micro$1" case_conversion="alllower"/></suggestion>
+                <suggestion><match no="3" regexp_match="(?iu)(.+)" regexp_replace="micror$1" case_conversion="alllower"/></suggestion>
+                <example correction="microrracismo">Eran situaciones de <marker>micro-racismo</marker>.</example>
+                <example correction="microbiología">Era un estudio de <marker>micro biología</marker>.</example>
             </rule>
         </rulegroup>
         <rule id="ALREDEDOR" name="*(a) alrededor">
