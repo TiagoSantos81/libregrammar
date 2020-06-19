@@ -48,7 +48,8 @@
 #### German
   * formal speech rules, including:
     - archaisms detection;
-    - profanity detection.
+    - profanity detection;
+    - T-V distinction rules.
 
 #### Italian
   * [re-enable rules](https://github.com/TiagoSantos81/languagetool/commit/0176b6cb378ed39f3e7e39ef25cab026362d947b):
@@ -151,6 +152,9 @@
   * spelling and POS improvements
   * Updated the [German part-of-speech dictionary](https://github.com/languagetool-org/german-pos-dict) to version 1.2.1.
 
+#### Italian
+  * added and improved rules
+
 #### Russian
   * added and improved rules, including:
     - `WhiteSpaceAtBeginOfParagraph`, `LongSentenceRule`, `LongParagraphRule`
@@ -162,6 +166,7 @@
 
 #### Spanish
   * added and significantly improved rules, thanks to [Jaume Ortolà, LGPL](https://github.com/jaumeortola/spanish-dict-tools), including:
+    - [agreement rules](https://github.com/languagetool-org/languagetool/commit/d197a2de6d7703ecf33c5a9bbcac5e38fead7276);
     - semantic rules;
     - several typography rules;
     - word-confusion rules;
