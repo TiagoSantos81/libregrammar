@@ -11303,4 +11303,51 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         </pattern>
         <disambig action="ignore_spelling"/>
     </rule>
+
+    <rulegroup id="ADVERB_E_EN" name="Adverb: e'en"><!-- www.lexico.com/definition/e'en --><!-- Cannot add a word that contains a quote in multiwords.txt. -->
+        <rule><!-- POS -->
+            <pattern>
+                <marker>
+                    <token>e</token>
+                    <token spacebefore="no" regexp="yes">['’]</token>
+                    <token spacebefore="no">en</token>
+                </marker>
+            </pattern>
+            <disambig action="replace"><wd pos="RB"/><wd pos="RB"/><wd pos="RB"/></disambig>
+        </rule>
+        <rule><!-- Spelling -->
+            <pattern>
+                <marker>
+                    <token>e</token>
+                    <token spacebefore="no" regexp="yes">['’]</token>
+                    <token spacebefore="no">en</token>
+                </marker>
+            </pattern>
+            <disambig action="ignore_spelling"></disambig>
+        </rule>
+    </rulegroup>
+
+    <rulegroup id="PROPER_NOUN_HALLOWE_EN" name="Proper noun: Hallowe'en"><!-- www.lexico.com/definition/halloween -->
+        <rule><!-- POS -->
+            <pattern>
+                <marker>
+                    <token case_sensitive="yes">Hallowe</token>
+                    <token spacebefore="no" regexp="yes">['’]</token>
+                    <token spacebefore="no">en</token>
+                </marker>
+            </pattern>
+            <disambig action="replace"><wd pos="NNP"/><wd pos="NNP"/><wd pos="NNP"/></disambig>
+        </rule>
+        <rule><!-- Spelling -->
+            <pattern>
+                <marker>
+                    <token case_sensitive="yes">Hallowe</token>
+                    <token spacebefore="no" regexp="yes">['’]</token>
+                    <token spacebefore="no">en</token>
+                </marker>
+            </pattern>
+            <disambig action="ignore_spelling"></disambig>
+        </rule>
+    </rulegroup>
+
 </rules>

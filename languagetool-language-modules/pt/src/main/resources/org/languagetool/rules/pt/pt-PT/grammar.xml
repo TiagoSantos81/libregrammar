@@ -833,6 +833,16 @@ title="Easy editing stylesheet" ?>
       <url>https://pt.wikipedia.org/wiki/Gerundismo</url>
       <short>Possível gerundismo.</short>
     <rule>
+<!-- MARCOAGPINTO 2020-06-19 *START* -->
+<!-- "Com efeito, vinham-se acumulando estudos e testemunhos." -->
+      <antipattern>
+<!--	      <token negate_pos="yes" postag='CS|RG|PP3[FM][SP]A00' postag_regexp='yes'/> -->
+          <token inflected='yes' regexp='yes'>ir|vir|criar</token>
+		  <token regexp='yes' spacebefore='no'>&hifen;</token>
+		   <token regexp='no'>se</token>
+          <token regexp='yes'>sendo|ficando|saindo|crescendo|permitindo|progredindo|emergindo|acumulando|beneficiando|usando|propagando|ganhando|desaparecendo|perdendo|levantando|caindo|decrescendo|surgindo</token>
+      </antipattern>
+<!-- MARCOAGPINTO 2020-06-19 *END* -->	
       <pattern>
           <token inflected='yes' regexp='yes'>estar|andar|ir|vir</token><!-- TODO Review all cases and confirm it can be safely expanded to more cases-->
           <token regexp='yes' spacebefore='no'>&hifen;</token>

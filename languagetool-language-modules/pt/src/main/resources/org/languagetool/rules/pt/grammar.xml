@@ -12387,11 +12387,11 @@ title="Easy editing stylesheet" ?>
     <!-- deprecated on 2020-06-03 in favour of STYLE_REPEATED_WORD_RULE_PT -->
     <!-- Created by Tiago F. Santos , Portuguese rule, 2016-12-03 		-->
       <antipattern>
-          <token regexp='yes'>cara|dia|face|frente|passo|porta|tempos?|terra|t[éê]te</token>
+          <token regexp='yes'>cara|dia|face|frente|passo|porta|tempos?|terra|t[éê]te|pessoa</token> <!-- MARCOAGPINTO 2020-06-19 - Improved -->
           <token min='0' regexp='yes' spacebefore='no'>&hifen;</token>
           <token regexp='yes'>[àa]o?</token>
           <token min='0' regexp='yes' spacebefore='no'>&hifen;</token>
-          <token regexp='yes'>cara|dia|face|frente|passo|porta|tempos?|terra|t[éê]te</token>
+          <token regexp='yes'>cara|dia|face|frente|passo|porta|tempos?|terra|t[éê]te|pessoa</token> <!-- MARCOAGPINTO 2020-06-19 - Improved -->
       </antipattern>
       <antipattern>
           <token/>
