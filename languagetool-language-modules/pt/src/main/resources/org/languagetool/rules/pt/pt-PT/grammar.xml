@@ -826,33 +826,26 @@ title="Easy editing stylesheet" ?>
 
  </category>
 
- <category id='EUROPEAN_PORTUGUESE_STYLE' name='Português Europeu (Regras de Estilo)' type='style'>
+ <category id='EUROPEAN_PORTUGUESE_STYLE' name='Português Europeu' type='style'>
  
-  <rulegroup id='AVOID_GERUND' name='Evitar o Gerúndio (perifrásico)'>
+  <rulegroup id='AVOID_GERUND' name='Gerúndio: Evitar o Gerúndio Perifrásico'>
     <!-- Created by Tiago F. Santos , Portuguese rule, 2016-11-24 -->
       <url>https://pt.wikipedia.org/wiki/Gerundismo</url>
       <short>Possível gerundismo.</short>
     <rule>
-<!-- MARCOAGPINTO 2020-06-19 *START* -->
-<!-- "Com efeito, vinham-se acumulando estudos e testemunhos." -->
-      <antipattern>
-<!--	      <token negate_pos="yes" postag='CS|RG|PP3[FM][SP]A00' postag_regexp='yes'/> -->
-          <token inflected='yes' regexp='yes'>ir|vir|criar</token>
-		  <token regexp='yes' spacebefore='no'>&hifen;</token>
-		   <token regexp='no'>se</token>
-          <token regexp='yes'>sendo|ficando|saindo|crescendo|permitindo|progredindo|emergindo|acumulando|beneficiando|usando|propagando|ganhando|desaparecendo|perdendo|levantando|caindo|decrescendo|surgindo</token>
-      </antipattern>
-<!-- MARCOAGPINTO 2020-06-19 *END* -->	
       <pattern>
           <token inflected='yes' regexp='yes'>estar|andar|ir|vir</token><!-- TODO Review all cases and confirm it can be safely expanded to more cases-->
           <token regexp='yes' spacebefore='no'>&hifen;</token>
-          <token postag='PP.*' postag_regexp='yes'/>
+          <token postag='PP.+' spacebefore='no' postag_regexp='yes'>
+            <exception>se</exception></token>
           <token postag='V.G0+' postag_regexp='yes'>
             <exception postag='V.G0+' postag_regexp='yes' negate_pos='yes'/></token>
       </pattern>
       <message>Se possível, evite o gerúndio.</message>
         <suggestion>\1\2\3 a <match no='4' postag='VMN0000' case_conversion="alllower"/></suggestion>
-      <example correction='iam-se a acender'>As luzes <marker>iam-se acendendo</marker> à medida que ela passava.</example>
+      <example correction='vi-te a acender'>Ontem, <marker>vi-te acendendo</marker> as luzes à medida que passavas pos elas.</example>
+      <example>As luzes <marker>iam-se acendendo</marker> à medida que ela passava.</example>
+      <example>Com efeito, vinham-se acumulando estudos e testemunhos.</example>
     </rule>
     <rule>
       <antipattern>
@@ -891,9 +884,8 @@ title="Easy editing stylesheet" ?>
     </rule>
   </rulegroup>
 
-    <!-- EVITAR O GERÚNDIO Evitar o gerúndio em pt-PT	       -->
+    <rule id='AVOID_ALL_GERUND' name='Gerúndio: Evitar o Todo o Gerúndio' default='off'>
     <!-- Created by Tiago F. Santos , Portuguese rule, 2016-11-24 -->
-    <rule id='AVOID_ALL_GERUND' name='Evitar o Gerúndio (completo)' default='off'>
       <pattern>
           <token postag='V.G0+' postag_regexp='yes'>
             <exception postag='V.G0+' postag_regexp='yes' negate_pos='yes'/></token>
