@@ -1353,7 +1353,7 @@ Copyright © 2013 Markus Brenneis, Daniel Naber, Jan Schreiber
     </rule>
     <rule>
       <pattern>
-          <token regexp='yes'>vitaminas?</token>
+          <token regexp='yes'>vitamine?</token>
         <marker>
           <token case_sensitive='yes' regexp='yes'>B(?:[1235679]|12)|D3</token>
         </marker>
