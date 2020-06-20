@@ -2407,8 +2407,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>Города Ростов и Таганрог, слобода Батайск.</example>
                 <example>По отзывам современников, он был сухощав, имел высокий рост и хорошее телосложение.</example>
             </rule>
-        </rulegroup>
-        <rulegroup id="ROST2" name="«Рост» 2" default="on"> 
             <rule>
                 <antipattern>
                     <token postag="NN:Inanim:.*:Nom" postag_regexp="yes" skip="1"><exception inflected="yes" regexp="yes" >&rost;</exception></token>
@@ -2732,7 +2730,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             </rule>
           </rulegroup>
           
-          <rulegroup default="off" id="Prep_i_2" name="Пропущена запятая перед «и», «как» в сложном предложении 2">
+          <rulegroup default="off" id="Prep_i_2" name="Пропущена запятая перед «и», «как» в сложном предложении (2)">
             <!--           NN:.*   VB:.*  и    VB:.*   NN:.*  (много ложных срабатываний, если есть обобщающее слово)  default="temp_off" -->    
             <rule>   
                <antipattern>
@@ -2783,7 +2781,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="Мама мыла раму, и готовила дочка"><marker>Мама мыла раму и готовила дочка</marker> обед.</example>
             </rule>
         </rulegroup>
-        <rule  id="PNN_Kak_Noun" name="Знаки препинания в предложении «Местоимение/существительное + как + существительное-сказуемое»">  
+        <rule  id="PNN_Kak_Noun" name="Знаки препинания в предложении «местоимение или существительное + как + существительное-сказуемое»">  
             <pattern>          <!-- see KAK_PRAVILO -->   
                 <marker>
                     <or>
@@ -3226,7 +3224,27 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>Она говорила мало, но толково.</example>
                 <example correction="мало, но">Она говорила <marker>мало но</marker> толково.</example>
             </rule>
-        </rulegroup>
+        </rulegroup>       
+        <rulegroup default="temp_off" id="CHTO_COMMA" name="Союз: «что»">
+            <rule>
+                <antipattern case_sensitive="yes">
+                    <token negate="yes" regexp="yes">&pnct;<exception postag="SENT_START"></exception></token>
+                    <token skip="-1">что</token>
+                    <token>что</token>
+                </antipattern>                     
+                <pattern case_sensitive="yes">
+                    <token negate="yes" regexp="yes">&pnct;<exception postag="SENT_START"></exception><exception postag_regexp="yes"  postag="CONJ|PARTICLE|PREP|ADV|VB:.*|PNN.*|UNKNOWN"></exception></token>
+                    <token>что<exception scope="next" regexp="yes">&pnct;</exception><exception scope="next" >угодно</exception></token>
+                </pattern>
+                <message>Пропущена запятая: <suggestion>\1, \2</suggestion>.</message>
+                
+                <short>Пропущена запятая</short>
+                <example>Известно, что на улице красивый вид.</example>
+                <example>Слепой лошади что кивай, что подмигивай.</example>
+                <example>Говорите что угодно.</example>
+                <example correction="Известно, что"><marker>Известно что</marker> на улице красивый вид.</example>
+            </rule>
+        </rulegroup>       
         <rulegroup id="i_and_i_and_i" name="Союзы: «и» + «и» + «и»" default="on">
             <rule>  <!--  add unification for noun - done. -->
                 <pattern>
@@ -3276,7 +3294,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
               <example correction="и бегал, и прыгал, и скакал">Он <marker>и бегал и прыгал и скакал</marker>  в вагоне.</example>
             </rule>       
         </rulegroup>
-        <rulegroup default="off" id="PUNKT_KOTORIJ1" name="Пунктуация перед союзами «который», ...(1)">
+        <rulegroup default="off" id="PUNKT_KOTORIJ1" name="Пунктуация перед союзами «который», ... (2)">
         <!-- TODO: Need improve -->    
             <rule>
                 <antipattern>
@@ -5299,6 +5317,18 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example correction=""><marker>Чтобы полететь на луну нужен</marker> корабль.</example>
             <example>Чтобы полететь на луну, нужен корабль.</example>
             <example>Чтобы закончить раньше (если вы не хотите).</example>
+        </rule>
+             
+        <rule id="PUNCT_OBR" name="Запятая при обращении" default="temp_off">
+            <pattern>
+                <token postag="NN:(Name|Patr):.*" postag_regexp="yes"></token>
+                <token postag="VB:IMP:TRANS:PFV:.*:P2" postag_regexp="yes"></token>
+            </pattern>
+            <message>Запятая при обращении: <suggestion>\1, \2</suggestion></message>
+            <short>Запятая при обращении</short>
+            <example correction="Иван, принесите"><marker>Иван принесите</marker> ведёрко.</example>
+            <example correction="Иван, принеси"><marker>Иван принеси</marker> ведёрко.</example>
+            <example>Иван, принеси ведёрко.</example>
         </rule>
     </category>
     <category id="TYPOGRAPHY" name="Типографика">     
@@ -7460,7 +7490,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="неплохо, но">Работа выполнена <marker>не плохо, но</marker> медленно.</example>
         </rule>
         </rulegroup>            
-        <rule  id="Ne_narech2" name="«Не» с наречиями 2" default="off">
+        <rule  id="Ne_narech2" name="«Не» с наречиями (2)" default="temp_off">
             <!-- TODO set on after release default="temp_off"-->
             <!-- слитное написание частицы не:
                отсутствует противопоставление, отсутствуют слова  «отнюдь, вовсе, далеко», отсутствует местоимение или наречие с «ни»
@@ -7574,7 +7604,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             </rule>
         </rulegroup>
             
-        <rule default="temp_off" id="Ne_pril_prich1" name="«Не» с прилагательными и причастиями 1"> 
+        <rule default="temp_off" id="Ne_pril_prich1" name="«Не» с прилагательными и причастиями (2)"> 
                 <!-- Его походка медлительна, неуверенна. Это краткое прилагательное, слитное написание НЕ, две буквы НН, зависимых слов нет -->
              <antipattern>   
                     <marker>
@@ -10540,7 +10570,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             </rule>
         </rulegroup>
         
-        <rule id="Style_imeet_vid" name="Стиль: «имеет вид/получается в виде»">
+        <rule id="Style_imeet_vid" name="Стиль: «имеет вид» или «получается в виде»">
             <pattern>
                 <token>получается</token>
                 <token>в</token>

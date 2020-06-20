@@ -100,15 +100,15 @@ public class PostponedAdjectiveConcordanceRule extends Rule {
   private static final Pattern COORDINACIO = Pattern.compile(",|y|e|o|u");
   private static final Pattern COORDINACIO_IONI = Pattern.compile("y|e|o|u|ni");
   private static final Pattern KEEP_COUNT = Pattern.compile("A.*|N.*|D[NAIDP].*|SPS.*|SP\\+DA|.*LOC_ADV.*|V.P.*|_PUNCT.*|.*LOC_ADJ.*|PX.*");
-  private static final Pattern KEEP_COUNT2 = Pattern.compile(",|i|o|ni"); // |\\d+%?|%
+  private static final Pattern KEEP_COUNT2 = Pattern.compile(",|y|o|ni"); // |\\d+%?|%
   private static final Pattern STOP_COUNT = Pattern.compile(";");
   private static final Pattern PREPOSICIONS = Pattern.compile("SPS.*");
   private static final Pattern PREPOSICIO_CANVI_NIVELL = Pattern.compile("de|del|en|sobre|a|entre|por|com|sin|contra");
   private static final Pattern VERB = Pattern.compile("V.[^P].*|_GV_");
   private static final Pattern GV = Pattern.compile("_GV_");
-  private static final Pattern EXCEPCIONS_PARTICIPI = Pattern.compile("atès|atés|atesa|atesos|ateses|donat|donats|donada|donades");
+  private static final Pattern EXCEPCIONS_PARTICIPI = Pattern.compile("incluso");
   private static final Pattern EXCEPCIONS_PREVIA = Pattern.compile("términos?|palabras?|vocablos?|expresión|expresiones|nombres?|tipps?|denominación|denominaciones");
-  private static final Pattern EXCEPCIONS_PREVIA_POSTAG = Pattern.compile("_loc_meitat");
+  private static final Pattern EXCEPCIONS_PREVIA_POSTAG = Pattern.compile("_loc_meitat|_complement_cada");
   private static final Pattern TOPONIM = Pattern.compile("NP..G..");
   private static final Pattern ORDINAL = Pattern.compile("AO.*");
 
@@ -124,6 +124,7 @@ public class PostponedAdjectiveConcordanceRule extends Rule {
                    Example.fixed("Análisis <marker>clínicos</marker>."));
     addExamplePair(Example.wrong("Tengo dos mesas <marker>blancos</marker>."),
                    Example.fixed("Tengo dos mesas <marker>blancas</marker>."));
+    this.setDefaultTempOff();
   }
 
   @Override
@@ -170,6 +171,9 @@ public class PostponedAdjectiveConcordanceRule extends Rule {
         /* SOME EXCEPTIONS */
         // per molt lleuger
         if (prevPrevToken.equals("por") && prevToken.equals("muy")) {
+          continue goToNextToken;
+        }
+        if (token.equals("debido") && nextToken.equals("a")) {
           continue goToNextToken;
         }
         // esquerra-dreta
@@ -223,7 +227,7 @@ public class PostponedAdjectiveConcordanceRule extends Rule {
           continue goToNextToken;
         }
         // exceptions: un cop, una volta, una vegada...
-        if (prevPrevToken.equals("otra") && prevToken.equals("vez")) {
+        if ((prevPrevToken.equals("otra") || prevPrevToken.equals("cada")) && prevToken.equals("vez")) {
           continue goToNextToken;
         }
         // exceptions: per primera vegada...
@@ -472,7 +476,7 @@ public class PostponedAdjectiveConcordanceRule extends Rule {
             if (!matchPostagRegexp(tokens[i - j], _GN_)
                 && matchPostagRegexp(tokens[i - j], NOM_DET)
                 && matchPostagRegexp(tokens[i - j], substPattern)) {
-              continue goToNextToken; 
+              continue goToNextToken;
             // there is a previous agreeing adjective (in a nominal group) 
             } else if ( matchPostagRegexp(tokens[i - j], gnPattern)) {
               continue goToNextToken;
