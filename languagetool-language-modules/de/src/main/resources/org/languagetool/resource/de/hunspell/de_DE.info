@@ -8,6 +8,7 @@ fsa.dict.speller.replacement-pairs=ß ss, ss ß, B ß, β ß, β ss, s ß, ß s,
 #fsa.dict.speller.runon-words=false
 # ignore-diacritics=false speeds up building the suggestions by a factor of about 2:
 fsa.dict.speller.ignore-diacritics=false
+fsa.dict.speller.ignore-numbers=false
 fsa.dict.frequency-included=true
 
 fsa.dict.encoder=SUFFIX
