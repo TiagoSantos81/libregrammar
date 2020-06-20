@@ -14,3 +14,4 @@ fsa.dict.speller.replacement-pairs=ph f, f ph, gh f, ff ugh, uf ough, uff ough, 
 fsa.dict.frequency-included=true
 fsa.dict.speller.ignore-all-uppercase=false
 fsa.dict.speller.ignore-camel-case=false
+fsa.dict.speller.ignore-numbers=false

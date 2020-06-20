@@ -10832,6 +10832,34 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
     </rule>
   </rulegroup>
 
+    <rule id="ignore_numbers" name="pomijanie liczb w sprawdzaniu pisowni">
+    <!-- from Polish disambiguation.xml -->
+        <pattern>
+            <token regexp="yes">\d+</token>
+        </pattern>
+        <disambig action="ignore_spelling"/>
+    </rule>
+
+  <rulegroup id='WORDS_WITH_NUMBERS' name='Palavras com números ou símbolos'>
+    <!-- Created by Tiago F. Santos, Portuguese rule, 2017-10-10  	-->
+    <rule>
+    <!-- XXX TV dimensions|3D|networks|4Chan|G20|G7|hypothesis|intel CPUs|P2P|number of rooms|programming languages -->
+      <pattern>
+          <token case_sensitive='yes' regexp='yes'>[248]K|[2345][DG]|[48]Chan|G(1|7|20)|H[₁₂₃₄₅₆₇₈₉₀]|i[3579]|P2P|R0|T[1234560]|[CJ](?:#|\+\+)|U2|CRISPR-Cas9</token>
+      </pattern>
+      <disambig action="ignore_spelling"/>
+    </rule>
+    <rule>
+      <pattern>
+          <token regexp='yes'>vitaminas?</token>
+        <marker>
+          <token case_sensitive='yes' regexp='yes'>B(?:[1235679]|12)|D3</token>
+        </marker>
+      </pattern>
+      <disambig action="ignore_spelling"/>
+    </rule>
+  </rulegroup>
+
   <?ignore 
   <!-- XXX entries copied to spelling_global.txt, so now this is redundant -->
   
