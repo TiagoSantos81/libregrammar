@@ -117,6 +117,7 @@
 #### General
   * commented out all new remote code commits, so they become inactive (e.g., [ac960f9](https://github.com/TiagoSantos81/languagetool/commit/ac960f9b24a41b53ec245ee6fab3aad2c454b020))
   * [removed unused dependencies](https://github.com/TiagoSantos81/languagetool/commit/68105705732c95cfc358e55598580627bd66063c)
+  * spellchecking now checks words with numbers in all languages
 
 ### Other changes common to both projects
 

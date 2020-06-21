@@ -12,8 +12,8 @@ seem to have been partially addressed since LibreGrammar's inception.
 This fork intends to be a **pure free and open-source software** 'editor', developed for [end users](https://en.wikipedia.org/wiki/End_user), so, 
 it enables several rules not allowed to be enabled by default in the open-source component, reverts commits in the main branch that degrade the work previously done, and adds rules 
 that could be disabled on the grounds of being 'too picky' by some elements of the former team.
-In addition, this project has reverted all remote access connections code input in the LibreOffice 
-extension, updated dependencies that have known security vulnerabilities, and removed Freemium bindings.
+In addition, this project has reverted all remote access connections code, updated dependencies 
+that have known security vulnerabilities, and removed Freemium bindings.
 
 Future work may also involve making the add-ons work entirely offline, and replacing n-gram rules by faster and lighter XML 
 or [word2vec](https://github.com/gulp21/languagetool-neural-network) alternatives that can be shipped with the main package.
