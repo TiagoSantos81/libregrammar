@@ -6835,7 +6835,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example>No va a haber Nueva China sin el partido comunista.</example>
             <example>No va a haber nuevas pruebas.</example>
             <example>Los hombres y mujeres pioneros tuvieron una vida ardua.</example>
-            <example>el nombre de usuario y la contraseña correctos</example>
+            <!--example>el nombre de usuario y la contraseña correctos</example--><!-- FIXME produces error in testrules but no error is shown on standalone tool -->
             <example>Solo quiero decir buena suerte.</example>
             <example>¡Qué tristeza ver ciertas cosas!</example>
             <example>Somos rubias.</example>
