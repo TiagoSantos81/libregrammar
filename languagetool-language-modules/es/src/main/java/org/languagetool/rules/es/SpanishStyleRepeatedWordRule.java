@@ -95,6 +95,7 @@ public class SpanishStyleRepeatedWordRule extends AbstractStyleRepeatedWordRule 
            "ciento",
            "metro", "metros", "gramo", "gramos", "litro", "litro", "litros", "litros",
            "libras", "dólares", "euros", "yenes"))
+        && !StringUtils.contains(getLemma(token), ' ') // multiwords
         || isUnknownWord(token);
   }
 

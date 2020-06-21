@@ -159,19 +159,6 @@ public class PortugueseStyleRepeatedWordRule extends AbstractStyleRepeatedWordRu
     return false;
   }
 
-  private String getLemma(AnalyzedTokenReadings token) {
-    if (token != null) {
-      List<AnalyzedToken> readings = token.getReadings();
-      for (AnalyzedToken reading : readings) {
-        String lemma = reading.getLemma();
-        if (lemma != null) {
-          return lemma;
-        }
-      }
-    }
-    return null;
-  }
-
   /* 
    *  set an URL to the Portuguese Thesaurus
    */

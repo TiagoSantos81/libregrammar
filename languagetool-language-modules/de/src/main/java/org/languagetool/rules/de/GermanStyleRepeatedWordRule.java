@@ -88,6 +88,7 @@ public class GermanStyleRepeatedWordRule extends AbstractStyleRepeatedWordRule {
   protected boolean isTokenToCheck(AnalyzedTokenReadings token) {
     return ((token.matchesPosTagRegex("(SUB|EIG|VER|ADJ):.*") 
         && !token.matchesPosTagRegex("(PRO|A(RT|DV)|VER:(AUX|MOD)):.*")
+        && !StringUtils.contains(getLemma(token), ' ') // multiwords
         || isUnknownWord(token))
         && !StringUtils.equalsAny(token.getToken(), "sicher", "weit", "Sie", "Ich", "Euch", "Eure"));
   }

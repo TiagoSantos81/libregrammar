@@ -252,6 +252,19 @@ public abstract class AbstractStyleRepeatedWordRule  extends TextLevelRule {
     return false;
   }
 
+  public String getLemma(AnalyzedTokenReadings token) {
+    if (token != null) {
+      List<AnalyzedToken> readings = token.getReadings();
+      for (AnalyzedToken reading : readings) {
+        String lemma = reading.getLemma();
+        if (lemma != null) {
+          return lemma;
+        }
+      }
+    }
+    return null;
+  }
+
   @Override
   public RuleMatch[] match(List<AnalyzedSentence> sentences) throws IOException {
     List<RuleMatch> ruleMatches = new ArrayList<>();

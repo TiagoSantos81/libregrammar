@@ -95,6 +95,7 @@ public class FrenchStyleRepeatedWordRule extends AbstractStyleRepeatedWordRule {
            "cent",
            "mètre", "mètres", "gramme", "grammes", "litre", "litre", "litres", "litres",
            "livres", "dollars", "euros", "yenes"))
+        && !StringUtils.contains(getLemma(token), ' ') // multiwords
         || isUnknownWord(token);
   }
 

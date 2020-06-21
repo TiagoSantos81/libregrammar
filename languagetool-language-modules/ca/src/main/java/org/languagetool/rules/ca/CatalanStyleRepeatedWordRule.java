@@ -107,6 +107,7 @@ public class CatalanStyleRepeatedWordRule extends AbstractStyleRepeatedWordRule 
            "cent",
            "metre", "metres", "gram", "grams", "litre", "litre", "litres", "litres",
            "lliures", "dòlars", "euros", "iens"))
+        && !StringUtils.contains(getLemma(token), ' ') // multiwords
         || isUnknownWord(token);
   }
 

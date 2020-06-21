@@ -114,6 +114,7 @@ Matches: [STYLE_REPEATED_WORD_RULE_EN:2-4:Possible style problem: The word is al
            "percent",
            "meter", "meters", "gram", "grams", "liter", "litre", "liters", "litres",
            "pounds", "dollars", "euros", "yenes"))
+        && !StringUtils.contains(getLemma(token), ' ') // multiwords
         || isUnknownWord(token);
   }
 
