@@ -26,7 +26,7 @@
     <!ENTITY meses_ano "janeiro|fevereiro|março|abril|maio|junho|julho|agosto|setembro|outubro|novembro|dezembro">
     <!ENTITY dias_semana_abrev "seg|ter|qua|qui|sex|sáb|dom">
     <!ENTITY dias_semana "segunda|terça|quarta|quinta|sexta|sábado|domingo">
-    <!ENTITY expressoes_de_tempo "(?:minuto|hora|dia|se(?:gundo|mana|mestre)|(?:bi|tri|quadri)mestre|ano|d(?:écada|ecénio)|mil[éê]nio|temp(?:o|orada)|época)s?|m(?:ês|eses)">
+    <!ENTITY expressoes_de_tempo "(?:minuto|hora|dia|se(?:gundo|mana|mestre)|(?:bi|tri|quadri)mestre|ano|d(?:écada|ecénio)|mil[éê]nio|temp(?:o|orada)|época)s?|m(?:ês|eses)|momentos?">
 
     <!ENTITY contracoes_MS "(?:ao|d(?:o|um|ele|es[st]e|aquele|is[st]o|aquilo|outro)|n(?:o|um|ele|es[st]e|aquele|is[st]o|aquilo|outro)|pelo|algum|mo|to|lho)">
     <!ENTITY contracoes_FS "(?:à|d(?:a|uma|ela|es[st]a|aquela|outra)|n(?:a|uma|ela|nes[st]a|aquela|outra)|pela|alguma|ma|ta|lha)">
@@ -544,6 +544,15 @@
       <disambig action="replace"><wd pos="RG"/><wd pos="RG"/></disambig>
     </rule>
   </rulegroup>
+
+    <rule id="TEMPORAL_ADVERBIAL_PHRASES" name="Locuções adverbiais de tempo">
+    <!-- Created by Tiago F. Santos, Portuguese rule, 2020-06-21  	-->
+      <pattern>
+          <token regexp='yes'>&expressoes_de_tempo;</token>
+          <token regexp='yes'>antes|depois</token>
+      </pattern>
+      <disambig action="replace"><wd pos="RG"/><wd pos="RG"/></disambig>
+    </rule>
 
   <rulegroup id="FUTURO_PERIFRASICO" name="Filtrar futuro perifrásico">
     <!-- Created by Tiago F. Santos, Portuguese rule, 2017-09-25  -->
