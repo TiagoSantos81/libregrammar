@@ -146,6 +146,19 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
     <!-- Tippfehler -->
     <!-- ====================================================================== -->
     <category id="TYPOS" name="Mögliche Tippfehler">
+        <rule id="GESETZT_GESETZ" name="Gesetzt (Gesetz)" default="temp_off">
+            <antipattern>
+                <token postag="SENT_START" />
+                <token regexp="yes" min="0">\p{P}|\></token>
+                <token>Gesetzt</token>
+            </antipattern>
+            <pattern>
+                <token case_sensitive="yes">Gesetzt</token>
+            </pattern>
+            <message>Meinten Sie das Nomen <suggestion>Gesetz</suggestion>?</message>
+            <example correction="Gesetz">Er wurde beschuldigt, das <marker>Gesetzt</marker> gebrochen zu haben.</example>
+            <example>- Gesetzt wird damit:</example>
+        </rule>
         <rule id="ENTSCHEIDEN_ENTSCHEIDEND" name="entscheiden(d)">
             <pattern case_sensitive="yes">
                 <token inflected="yes" skip="1">sein<exception scope="next">zu</exception><exception postag="PKT" scope="next"/></token>
@@ -4854,6 +4867,18 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
     <!-- Verwechslungen -->
     <!-- ====================================================================== -->
     <category id="CONFUSED_WORDS" name="Leicht zu verwechselnde Wörter">
+        <rule id="SICH_AUSDRUCKEN" name="sich ausdrucken (ausdrücken)">
+            <pattern>
+                <token postag="PRO:REF:AKK.*" postag_regexp="yes" />
+                <token postag="ADJ:PRD:GRU.*" postag_regexp="yes" />
+                <marker>
+                    <token inflected="yes">ausdrucken</token>
+                </marker>
+            </pattern>
+            <message>Meinten Sie <suggestion><match no="3" regexp_match="dru" regexp_replace="drü" /></suggestion>?</message>
+            <example correction="ausgedrückt">Da habe ich mich ungeschickt <marker>ausgedruckt</marker>.</example>
+            <example>Das habe ich mir sofort <marker>ausgedruckt</marker>.</example>
+        </rule>
         <rule id="IT-Girl" name="IT-Girl">
             <pattern>
                 <token regexp="yes" case_sensitive="yes">IT-Girls?</token>
@@ -7931,13 +7956,26 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             </rule>
         </rulegroup>
         <rulegroup id="SOVIEL" name="so viel (soviel)">
+            <url>https://www.korrekturen.de/wortliste/soviel.shtml</url>
             <rule>
+                <antipattern>
+                    <token>soviel</token>
+                    <token skip="6">wie</token>
+                    <token regexp="yes">bedeute(t|n)|hei(ß|ss)(t|en)</token>
+                </antipattern>
+                <antipattern>
+                    <token regexp="yes" skip="1">bedeutet|hei(ß|ss)t</token>
+                    <token>soviel</token>
+                    <token>wie</token>
+                </antipattern>
                 <pattern>
                     <marker><token>soviel</token></marker>
                     <token>wie</token>
                 </pattern>
                 <message>Meinten Sie <suggestion>so viel</suggestion>?</message>
                 <example correction="so viel">Er verdient <marker>soviel</marker> wie ich.</example>
+                <example>Der Name bedeutet soviel wie „Brunnen an der Esche“.</example>
+                <example>Einer Auffassung zufolge soll die erste Silbe aus dem mittelniederdeutschen „kurren, korren“ gebildet worden sein, was soviel wie das Murmeln eines Baches bedeutet.</example>
             </rule>
             <rule>
                 <pattern>

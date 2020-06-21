@@ -160,9 +160,14 @@
     - `WhiteSpaceAtBeginOfParagraph`, `LongSentenceRule`, `LongParagraphRule`
     `ParagraphRepeatBeginningRule`, `RussianFillerWordsRule`,
     `MorfologikRussianYOSpellerRule`.
-   * added new Java rules
-   * rebuilded and improved main spellchecker dictionary
-   * new variant (only yo "ё") spellchecker dictionary and new java rule for it
+  * added new Java rules
+  * rebuilt and improved main spellchecker dictionary, added many new words
+  * new variant (only yo "ё") spellchecker dictionary and new java rule for it (set off by default)
+  * new filter's arguments: prefix and suffix to be used for matching the part-of-speech of parts of words 
+    with prefix and suffix added to original token, e.g.:
+```xml
+       <filter class="org.languagetool.rules.ru.RussianPartialPosTagFilter" 
+                args="no:2 regexp:(.*) postag_regexp:(ADV) prefix:не suffix:  "/>  
 
 #### Spanish
   * added and significantly improved rules, thanks to [Jaume Ortolà, LGPL](https://github.com/jaumeortola/spanish-dict-tools), including:
@@ -174,9 +179,13 @@
   * spelling and POS improvements
     - [new tagger dictionary by Jaume Ortolà, LGPL](https://github.com/jaumeortola/spanish-dict-tools)
 
-#### Ukranian
-  * added and improved rules
-  * spelling and POS improvements
+#### Ukrainian
+  * dictionary update, including many rare and slang words
+  * new rules, including:
+    - archaisms detection;
+    - vulgar language detection.
+  * tokenization and tagging improvements
+  * disambiguation improvements
 
 #### LibreOffice / Apache OpenOffice Integration
   * most work done by [Fred Kruse](https://github.com/languagetool-org/languagetool/commits?author=fredkruse), including:
