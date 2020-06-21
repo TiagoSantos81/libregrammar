@@ -25,7 +25,6 @@ import org.languagetool.rules.*;
 import org.languagetool.rules.en.translation.BeoLingusTranslator;
 import org.languagetool.rules.spelling.morfologik.MorfologikSpellerRule;
 import org.languagetool.rules.translation.Translator;
-import org.languagetool.synthesis.en.EnglishSynthesizer;
 import org.languagetool.tools.StringTools;
 
 import java.io.IOException;
@@ -35,7 +34,8 @@ import java.util.stream.Collectors;
 @SuppressWarnings("ArraysAsListWithZeroOrOneArgument")
 public abstract class AbstractEnglishSpellerRule extends MorfologikSpellerRule {
 
-  private static final EnglishSynthesizer synthesizer = (EnglishSynthesizer) Languages.getLanguageForShortCode("en").getSynthesizer();
+  //private static Logger logger = LoggerFactory.getLogger(AbstractEnglishSpellerRule.class);
+  //private static final EnglishSynthesizer synthesizer = (EnglishSynthesizer) Languages.getLanguageForShortCode("en").getSynthesizer();
 
   private final BeoLingusTranslator translator;
 
@@ -609,10 +609,7 @@ public abstract class AbstractEnglishSpellerRule extends MorfologikSpellerRule {
    */
   @Override
   protected List<SuggestedReplacement> getAdditionalTopSuggestions(List<SuggestedReplacement> suggestions, String word) throws IOException {
-
-
-    /* XXX no logging needed on LibreGrammar
-    if (word.length() < 20 && word.matches("[a-zA-Z-]+.?")) {
+    /*if (word.length() < 20 && word.matches("[a-zA-Z-]+.?")) {
       List<String> prefixes = Arrays.asList("inter", "pre");
       for (String prefix : prefixes) {
         if (word.startsWith(prefix)) {
@@ -624,9 +621,7 @@ public abstract class AbstractEnglishSpellerRule extends MorfologikSpellerRule {
           }
         }
       }
-    }
-    */
-
+    }*/
     List<String> curatedSuggestions = new ArrayList<>();
     curatedSuggestions.addAll(topSuggestions.getOrDefault(word, Collections.emptyList()));
     curatedSuggestions.addAll(topSuggestionsIgnoreCase.getOrDefault(word.toLowerCase(), Collections.emptyList()));
