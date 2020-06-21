@@ -120,7 +120,79 @@ Copyright © 2013 Markus Brenneis, Daniel Naber, Jan Schreiber
       <disambig action="ignore_spelling"/>
     </rule>
   </rulegroup>
- 
+
+    <rule id="ignore_numbers_compounds" name="pomijanie liczb w sprawdzaniu pisowni wyrazów złożonych">
+    <!-- from Polish disambiguation -->
+        <pattern>
+            <token regexp="yes">\d+-\p{L}+</token>
+        </pattern>
+        <disambig action="ignore_spelling"/>
+    </rule>
+
+  <rulegroup id='WORDS_WITH_NUMBERS' name='Palavras com números ou símbolos'>
+    <!-- Created by Tiago F. Santos, Portuguese rule, 2017-10-10  	-->
+    <rule>
+    <!-- XXX TV dimensions|3D|networks|4Chan|G20|G7|hypothesis|intel CPUs|P2P|number of rooms|programming languages -->
+      <pattern>
+          <token case_sensitive='yes' regexp='yes'>[248]K|[2345][DG]|[48]Chan|G(1|7|20)|H[₁₂₃₄₅₆₇₈₉₀]|i[3579]|P2P|R0|T[1234560]|[CJ](?:#|\+\+)|U2|CRISPR-Cas9</token>
+      </pattern>
+      <disambig action="ignore_spelling"/>
+    </rule>
+    <!--rule>
+      <pattern>
+          <token regexp='yes'>vitaminas?</token>
+        <marker>
+          <token case_sensitive='yes' regexp='yes'>B(?:[1235679]|12)|D3</token>
+        </marker>
+      </pattern>
+      <disambig action="ignore_spelling"/>
+    </rule-->
+  </rulegroup>
+
+    <rulegroup name="Ignore spelling numbers " id="IGNORE_NUMBERS">
+    <!-- from Spanish disambiguation -->
+        <rule>
+            <!-- style rules can be suggested for these abbreviations -->
+            <pattern>
+                <token regexp="yes">([012][0-9][\.,])?[0-6]?[0-9]</token>
+                <token regexp="yes" case_sensitive="yes">pm|am|PM|AM|GMT|CEST|UTC|EST</token>
+            </pattern>
+            <disambig action="ignore_spelling"/>
+        </rule>
+        <rule>
+            <pattern>
+                <token regexp="yes">[\d ,\.]+x[\d ,\.]+</token>
+            </pattern>
+            <disambig action="ignore_spelling"/>
+        </rule>
+        <!--rule>
+            <pattern>
+                <token regexp="yes" case_sensitive="yes">[A-Z0-9]+</token>
+                <token spacebefore="no">-</token>
+                <token spacebefore="no" regexp="yes" case_sensitive="yes">[A-Z0-9]+</token>
+            </pattern>
+            <disambig action="ignore_spelling"/>
+        </rule>
+        <rule>
+            <pattern>
+                <token regexp="yes" case_sensitive="yes">[A-Z]+\d+</token>
+            </pattern>
+            <disambig action="ignore_spelling"/>
+        </rule-->
+        <rule>
+            <pattern>
+                <token regexp="yes">([01]?\d|2[0-3])h[0-5]?\d(min|m)([0-5]?\ds)?</token>
+            </pattern>
+            <disambig action="ignore_spelling"/>
+        </rule>
+        <rule>
+            <pattern>
+                <token regexp="yes">[0-5]?\d(min|m)[0-5]?\ds</token>
+            </pattern>
+            <disambig action="ignore_spelling"/>
+        </rule>
+    </rulegroup>
+
      <rule name="Ignore spelling of domain names" id="IGNORE_DOMAIN_NAMES">
       <pattern case_sensitive="yes">
           <token regexp="yes">[A-Za-z0-9\-]+</token>
