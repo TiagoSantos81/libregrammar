@@ -2642,7 +2642,7 @@ Copyright (C) 2011 Juan Martorell
             </pattern>
             <disambig action="ignore_spelling"/>
         </rule>
-        <rule>
+        <!--rule>
             <pattern>
                 <token regexp="yes" case_sensitive="yes">[A-Z0-9]+</token>
                 <token spacebefore="no">-</token>
@@ -2655,7 +2655,7 @@ Copyright (C) 2011 Juan Martorell
                 <token regexp="yes" case_sensitive="yes">[A-Z]+\d+</token>
             </pattern>
             <disambig action="ignore_spelling"/>
-        </rule>
+        </rule-->
         <rule>
             <pattern>
                 <token regexp="yes">([01]?\d|2[0-3])h[0-5]?\d(min|m)([0-5]?\ds)?</token>
@@ -2669,6 +2669,25 @@ Copyright (C) 2011 Juan Martorell
             <disambig action="ignore_spelling"/>
         </rule>
     </rulegroup>
+  <rulegroup id='WORDS_WITH_NUMBERS' name='Palavras com números ou símbolos'>
+    <!-- Created by Tiago F. Santos, Portuguese rule, 2017-10-10  	-->
+    <rule>
+    <!-- XXX TV dimensions|3D|networks|4Chan|G20|G7|hypothesis|intel CPUs|P2P|number of rooms|programming languages -->
+      <pattern>
+          <token case_sensitive='yes' regexp='yes'>[248]K|[2345][DG]|[48]Chan|G(1|7|20)|H[₁₂₃₄₅₆₇₈₉₀]|i[3579]|P2P|R0|T[1234560]|[CJ](?:#|\+\+)|U2|CRISPR-Cas9</token>
+      </pattern>
+      <disambig action="ignore_spelling"/>
+    </rule>
+    <rule>
+      <pattern>
+          <token regexp='yes'>vitaminas?</token>
+        <marker>
+          <token case_sensitive='yes' regexp='yes'>B(?:[1235679]|12)|D3</token>
+        </marker>
+      </pattern>
+      <disambig action="ignore_spelling"/>
+    </rule>
+  </rulegroup>
         <rule name="Ignore spelling of url protocols" id="URI_PROTOCOL">
                 <pattern><!-- chrome://, ftp://, file:// -->
                     <marker>
