@@ -10860,6 +10860,50 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
     </rule>
   </rulegroup>
 
+    <rulegroup name="Ignore spelling numbers " id="IGNORE_NUMBERS">
+    <!-- from Spanish disambiguation -->
+        <rule>
+            <!-- style rules can be suggested for these abbreviations -->
+            <pattern>
+                <token regexp="yes">([012][0-9][\.,])?[0-6]?[0-9]</token>
+                <token regexp="yes" case_sensitive="yes">pm|am|PM|AM|GMT|CEST|UTC|EST</token>
+            </pattern>
+            <disambig action="ignore_spelling"/>
+        </rule>
+        <rule>
+            <pattern>
+                <token regexp="yes">[\d ,\.]+x[\d ,\.]+</token>
+            </pattern>
+            <disambig action="ignore_spelling"/>
+        </rule>
+        <!--rule>
+            <pattern>
+                <token regexp="yes" case_sensitive="yes">[A-Z0-9]+</token>
+                <token spacebefore="no">-</token>
+                <token spacebefore="no" regexp="yes" case_sensitive="yes">[A-Z0-9]+</token>
+            </pattern>
+            <disambig action="ignore_spelling"/>
+        </rule>
+        <rule>
+            <pattern>
+                <token regexp="yes" case_sensitive="yes">[A-Z]+\d+</token>
+            </pattern>
+            <disambig action="ignore_spelling"/>
+        </rule-->
+        <rule>
+            <pattern>
+                <token regexp="yes">([01]?\d|2[0-3])h[0-5]?\d(min|m)([0-5]?\ds)?</token>
+            </pattern>
+            <disambig action="ignore_spelling"/>
+        </rule>
+        <rule>
+            <pattern>
+                <token regexp="yes">[0-5]?\d(min|m)[0-5]?\ds</token>
+            </pattern>
+            <disambig action="ignore_spelling"/>
+        </rule>
+    </rulegroup>
+
   <?ignore 
   <!-- XXX entries copied to spelling_global.txt, so now this is redundant -->
   
