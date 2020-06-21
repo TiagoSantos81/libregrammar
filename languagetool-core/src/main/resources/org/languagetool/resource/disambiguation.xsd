@@ -101,9 +101,9 @@
 		<xs:complexType>
 			<xs:choice minOccurs="1" maxOccurs="unbounded">
 				<xs:element ref="token" />
+				<xs:element ref="unify" />
 				<!-- commented out, as these are not tested:
 				<xs:element ref="and" />
-				<xs:element ref="unify" />
 				<xs:element ref="marker" />
 				-->
 			</xs:choice>
