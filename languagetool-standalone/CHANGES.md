@@ -122,7 +122,7 @@
 ### Other changes common to both projects
 
 #### Arabic
-  * [added and improved rules](https://github.com/linuxscout/languagetool)
+  * [added many rules and improved existing rules](https://github.com/linuxscout/languagetool)
   * updated POS dictionary ([Arramooz](https://github.com/linuxscout/arramooz/commit/e33794e787d56e7c185c0e281fd8e6d6274f3fdc))
   * remove the Algerian variant (ar-DZ)
   * [add support of ngram data](https://github.com/sohaibafifi/languagetool-tools-ar), thanks to Sohaib Afifi.
@@ -136,7 +136,7 @@
   * added and improved rules
 
 #### English
-  * added and improved rules, including:
+  * added and significantly improved rules, including:
     - `Use 'to' before the base form of a verb` now also activated upstream
     - `UpperCaseNgramRule`, a stricter version of `UpperCaseRule` that
     requires n-gram data
@@ -144,7 +144,7 @@
   * [updated en_GB spellchecker dictionary by Marco A.G. Pinto](https://github.com/marcoagpinto/aoo-mozilla-en-dict) (Version 2.85 - 2020-06-01)
 
 #### French
-  * added and improved rules, thanks to [Rigaut Theótime](https://github.com/vkyfox) and [Jaume Ortolà, LGPL](https://github.com/jaumeortola/spanish-dict-tools)
+  * added and improved rules, thanks to [Rigaut Theótime](https://github.com/vkyfox) and [Jaume Ortolà](https://github.com/jaumeortola/spanish-dict-tools)
   * spelling improvements
 
 #### German
@@ -168,10 +168,11 @@
     with prefix and suffix added to original token, e.g.:
 ```xml
        <filter class="org.languagetool.rules.ru.RussianPartialPosTagFilter" 
-                args="no:2 regexp:(.*) postag_regexp:(ADV) prefix:не suffix:  "/>  
+                args="no:2 regexp:(.*) postag_regexp:(ADV) prefix:не suffix:  "/>
+```
 
 #### Spanish
-  * added and significantly improved rules, thanks to [Jaume Ortolà, LGPL](https://github.com/jaumeortola/spanish-dict-tools), including:
+  * added many rules and significantly improved existing ones, thanks to [Jaume Ortolà](https://github.com/jaumeortola/spanish-dict-tools), including:
     - [agreement rules](https://github.com/languagetool-org/languagetool/commit/d197a2de6d7703ecf33c5a9bbcac5e38fead7276);
     - semantic rules;
     - several typography rules;

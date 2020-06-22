@@ -1453,6 +1453,15 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
       </pattern>
       <disambig action="ignore_spelling"/>
     </rule-->
+    <rule><!-- e.g. Airbus A380, BMW M3 -->
+      <pattern>
+          <token regexp='yes' case_sensitive='yes'>\p{Lu}\p{L}+</token>
+        <marker>
+          <token case_sensitive='yes' regexp='yes'>\p{Lu}+\d+</token>
+        </marker>
+      </pattern>
+      <disambig action="ignore_spelling"/>
+    </rule>
   </rulegroup>
 
     <rulegroup name="Ignore spelling numbers " id="IGNORE_NUMBERS">

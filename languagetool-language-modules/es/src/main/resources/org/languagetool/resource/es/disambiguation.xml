@@ -2900,6 +2900,13 @@ Copyright (C) 2011 Juan Martorell
       </pattern>
       <disambig action="ignore_spelling"/>
     </rule>
+    <rule><!-- e.g. Airbus A380, BMW M3 -->
+      <pattern>
+          <token postag='NP.+' postag_regexp='yes'/>
+          <token case_sensitive='yes' regexp='yes'>\p{Lu}+\d+</token>
+      </pattern>
+      <disambig action="ignore_spelling"/>
+    </rule>
   </rulegroup>
         <rule name="Ignore spelling of url protocols" id="URI_PROTOCOL">
                 <pattern><!-- chrome://, ftp://, file:// -->

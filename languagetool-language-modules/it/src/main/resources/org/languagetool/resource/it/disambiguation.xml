@@ -147,6 +147,13 @@ Copyright © 2013 Markus Brenneis, Daniel Naber, Jan Schreiber
       </pattern>
       <disambig action="ignore_spelling"/>
     </rule-->
+    <rule><!-- e.g. Airbus A380, BMW M3 -->
+      <pattern>
+          <token postag='NP.+' postag_regexp='yes'/>
+          <token case_sensitive='yes' regexp='yes'>\p{Lu}+\d+</token>
+      </pattern>
+      <disambig action="ignore_spelling"/>
+    </rule>
   </rulegroup>
 
     <rulegroup name="Ignore spelling numbers " id="IGNORE_NUMBERS">
