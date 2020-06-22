@@ -177,7 +177,7 @@ public class Spanish extends Language implements AutoCloseable{
       case "HALLA_HAYA": return 10;
       case "VALLA_VAYA": return 10;
       case "ES_SIMPLE_REPLACE": return 10;
-      case "SEPARADO": return 0;
+      case "SEPARADO": return 1;
       case "MORFOLOGIK_RULE_ES": return -1;
       case "ES_WIKIPEDIA_COMMON_ERRORS": return -10;
       case "EL_TILDE": return -10;
