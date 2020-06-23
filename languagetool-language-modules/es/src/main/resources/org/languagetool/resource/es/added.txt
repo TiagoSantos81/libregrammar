@@ -5,8 +5,11 @@
 ACNUR	ACNUR	NPMSO00
 Acayucan	Acayucan	NPCSG00
 Aguachica	Aguachica	NPCSG00
+Amparo	Amparo	NPCSSP0
 Belgrano	Belgrano	NPCNSP0
 Benavente	Benavente	NPCNSP0
+Benz	Benz	NPCNO00
+Berlusconi	Berlusconi	NPCNSP0
 Berthold	Berthold	NPCNSP0
 Betty	Betty	NPFSSP0
 Bismarck	Bismarck	NPCNSP0
@@ -43,6 +46,7 @@ DG	DG	NCFN000
 Daewoo	Daewoo	NPCNO00
 Danilo	Danilo	NPMSSP0
 Dayana	Dayana	NPFSSP0
+Debussy	Debussy	NPCNSP0
 Delany	Delany	NPCNSP0
 Denysse	Denysse	NPCNSP0
 Dostoyevski	Dostoyevski	NPCNSP0
@@ -73,6 +77,7 @@ Gyumri	Gyumri	NPCSG00
 Hades	Hades	NPMSSP0
 Hammurabi	Hammurabi	NPCNSP0
 Hamás	Hamás	NPCSO00
+Hanói	Hanói	NPCNG00
 Helen	Helen	NPFSSP0
 Hipona	Hipona	NPCNSP0
 Hofmann	Hofmann	NPCNSP0
@@ -90,10 +95,13 @@ Jonatán	Jonatán	NPMSSP0
 Jose	Jose	NPMSSP0
 Judas	Judas	NPMNSP0
 Katherine	Katherine	NPFSSP0
+Kent	Kent	NPCNSP0
 Kimberly	Kimberly	NPCNSP0
 Knéset	Knéset	NPFSO00
 Laia	Laia	NPFSSP0
 Likud	Likud	NPMSO00
+Lirio	Lirio	NPMSSP0
+Lirios	Lirios	NPMPSP0
 London	London	NPCNSP0
 London	London	NPCSG00
 Ludivina	Ludivina	NPFSSP0
@@ -116,7 +124,9 @@ Nezahualcóyotl	Nezahualcóyotl	NPMSSP0
 Nietzsche	Nietzsche	NPCNSP0
 Novalis	Novalis	NPMSSP0
 OLAF	OLAF	NPFSO00
+Oliva	Oliva	NPCNSP0
 Ordóñez	Ordóñez	NPCNSP0
+Orión	Orión	NPMSSP0
 Pablito	Pablito	NPMSSP0
 Palmolive	Palmolive	NPCNO00
 Pasquali	Pasquali	NPCNO00
@@ -125,7 +135,9 @@ Pedroza	Pedroa	NPCNSP0
 Peraza	Peraza	NPCNSP0
 Peñafiel	Peñafiel	NPCNSP0
 Piura	Piura	NPCSG00
+Presley	Presley	NPCNSP0
 Prestige	Prestige	NPMSO00
+Putin	Putin	NPCNSP0
 ROI	ROI	NCMN000
 RSI	RSI	NCMN000
 Rasputín	Rasputín	NPMSSP0
@@ -138,6 +150,7 @@ Rubik	Rubik	NPCNSP0
 Ryanair	Ryanair	NPCNO00
 SER	SER	NPCSO00
 SIGGRAPH	SIGGRAPH	NPCNO00
+Saint-Exupéry	Saint-Exupéry	NPCNSP0
 Samaria	Samaria	NPFSG00
 Sanabria	Sanabria	NPFSG00
 Sanz	Sanz	NPCNSP0
@@ -150,6 +163,7 @@ Strauss-Kahn	Strauss-Kahn	NPCNSP0
 Stuart	Stuart	NPCNSP0
 Supercopa	Supercopa	NCFS000
 Supercopas	Supercopa	NCFP000
+Superman	Superman	NPMSSP0
 Sáenz	Sáenz	NPCNSP0
 TDT	TDT	NCFN000
 TEDAX	TEDAX	NCMN000
@@ -163,6 +177,7 @@ Trentino	Trentino	NPMSG00
 Trento	Trento	NPCSG00
 Treviño	Treviño	NPCNSP0
 Tunja	Tunja	NPCSG00
+Támesis	Támesis	NPMSG00
 UOC	UOC	NPFSO00
 UPC	UPC	NPFSO00
 Unicef	Unicef	NPMSO00
@@ -218,6 +233,8 @@ antiafrodisíaco	antiafrodisíaco	AQ0MS0
 antiafrodisíacos	antiafrodisíaco	AQ0MP0
 antiedad	antiedad	AQ0CN0
 antivacunas	antivacunas	AQ0CN0
+ardillita	ardillita	NCFS000
+ardillitas	ardillita	NCFP000
 asistencialismo	asistencialismo	NCMS000
 asistencialismos	asistencialismo	NCMP000
 besito	besito	NCMS000
@@ -248,6 +265,10 @@ cicládica	cicládico	AQ0FS0
 cicládicas	cicládico	AQ0FP0
 cicládico	cicládico	AQ0MS0
 cicládicos	cicládico	AQ0MP0
+cierta	cierto	DI0FS0
+ciertas	cierto	DI0FP0
+cierto	cierto	DI0MS0
+ciertos	cierto	DI0MP0
 cinestésica	cinestésico	AQ0FS0
 cinestésicas	cinestésico	AQ0FP0
 cinestésico	cinestésico	AQ0MS0
@@ -505,6 +526,8 @@ hipomaniaca	hipomaniaco	AQ0FS0
 hipomaniacas	hipomaniaco	AQ0FP0
 hipomaniaco	hipomaniaco	AQ0MS0
 hipomaniacos	hipomaniaco	AQ0MP0
+hombrecito	hombrecito	NCMS000
+hombrecitos	hombrecito	NCMP000
 híperpigmentaciones	híperpigmentación	NCFP000
 híperpigmentación	híperpigmentación	NCFS000
 igualita	igualito	AQ0FS0
@@ -532,6 +555,9 @@ loquita	loquito	AQ0FS0
 loquitas	loquito	AQ0FP0
 loquito	loquito	AQ0MS0
 loquitos	loquito	AQ0MP0
+macho	macho	AQ0CN0
+mamacita	mamacita	NCFS000
+mamacitas	mamacita	NCFP000
 mantenible	mantenible	AQ0CS0
 mantenibles	mantenible	AQ0CP0
 medioambiente	medioambiente	NCMS000
@@ -556,6 +582,8 @@ millennial	millennial	NCCS000
 millennials	millennial	NCCP000
 minibanderilla	minibanderilla	NCFS000
 minibanderillas	minibanderilla	NCFP000
+momentito	momentito	NCMS000
+momentitos	momentito	NCMP000
 mordedera	mordedera	NCFS000
 mordederas	mordedera	NCFP000
 multiverso	multiverso	NCMS000
@@ -589,6 +617,10 @@ niñita	niñito	NCFS000
 niñitas	niñito	NCFP000
 niñito	niñito	NCMS000
 niñitos	niñito	NCMP000
+osita	osito	NCFS000
+ositas	osito	NCFP000
+osito	osito	NCMS000
+ositos	osito	NCMP000
 oxímetro	oxímetro	NCMS000
 oxímetros	oxímetro	NCMP000
 paguita	paguita	NCFS000
@@ -597,6 +629,8 @@ pastorcilla	pastorcillo	NCFS000
 pastorcillas	pastorcillo	NCFP000
 pastorcillo	pastorcillo	NCMS000
 pastorcillos	pastorcillo	NCMP000
+patita	patita	NCFS000
+patitas	patita	NCFP000
 piñatería	piñatería	NCFS000
 piñaterías	piñatería	NCFP000
 povidona	povidona	NCFS000
@@ -626,6 +660,8 @@ psicográfico	psicográfico	AQ0MS0
 psicográficos	psicográfico	AQ0MP0
 quemagrasas	quemagrasas	AQ0CN0
 quemagrasas	quemagrasas	NCMN000
+recalendarizaciones	recalendarización	NCFP000
+recalendarización	recalendarización	NCFS000
 reinvenciones	reinvención	NCFP000
 reinvención	reinvención	NCFS000
 renuncio	renuncio	NCMS000
@@ -817,6 +853,8 @@ supercontagiador	supercontagiador	AQ0MS0
 supercontagiadora	supercontagiador	AQ0FS0
 supercontagiadoras	supercontagiador	AQ0FP0
 supercontagiadores	supercontagiador	AQ0MP0
+supermujer	supermujer	NCFS000
+supermujeres	supermujer	NCFP000
 suprarreciclaje	suprarreciclaje	NCMS000
 suprarreciclajes	suprarreciclaje	NCMP000
 telemarketing	telemarketing	NCMS000
@@ -843,6 +881,10 @@ videocharla	videocharla	NCFS000
 videocharlas	videocharla	NCFP000
 videochat	videochat	NCMS000
 videochats	videochat	NCMP000
+viejita	viejito	AQ0FS0
+viejitas	viejito	AQ0FP0
+viejito	viejito	AQ0MS0
+viejitos	viejito	AQ0MP0
 viejísima	viejísimo	AQAFS0
 viejísimas	viejísimo	AQAFP0
 viejísimo	viejísimo	AQAMS0

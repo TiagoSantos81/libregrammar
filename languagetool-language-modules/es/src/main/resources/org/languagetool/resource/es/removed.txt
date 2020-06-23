@@ -2,9 +2,12 @@
 # Useful to remove incorrect readings from the binary dictionary without rebuilding it.
 # File Encoding: UTF-8
 # Format: fullform baseform postags (tab separated)
+Amparo	Amparo	NPFSSP0
 Covid	Covid	NCCS000
 Covid-19	Covid-19	NCCS000
+Hanoi	Hanoi	NPCNG00
 Judas	Judas	NPMSSP0
+Oliva	Oliva	NPFSSP0
 Trento	Trento	NPCNG00
 antiafrodisíaco	antiafrodisíaco	NCMS000
 antiafrodisíacos	antiafrodisíaco	NCMP000
@@ -20,8 +23,14 @@ jeda	jeda	AQ0CS0
 jedas	jeda	AQ0CP0
 jerifalte	jerifalte	NCMS000
 jerifaltes	jerifalte	NCMP000
+macho	macho	AQ0MS0
+machos	macho	AQ0MP0
 mediocampo	mediocampo	NCMS000
 mediocampos	mediocampo	NCMP000
+minuta	minuto	AQ0FS0
+minutas	minuto	AQ0FP0
+minuto	minuto	AQ0MS0
+minutos	minuto	AQ0MP0
 musca	musco	AQ0FS0
 muscas	musco	AQ0FP0
 musco	musco	AQ0MS0
@@ -30,6 +39,10 @@ musga	musgo	AQ0FS0
 musgas	musgo	AQ0FP0
 musgo	musgo	AQ0MS0
 musgos	musgo	AQ0MP0
+poca	poco	AQ0FS0
+pocas	poco	AQ0FP0
+poco	poco	AQ0MS0
+pocos	poco	AQ0MP0
 somo	somo	NCMS000
 somos	somo	NCMP000
 vas	vas	NCMS000
