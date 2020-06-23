@@ -2082,15 +2082,13 @@ RB => Règles Brutes
   </rule>
 
   <rulegroup name="Ignore spelling of numbers" id="IGNORE_SPELLING_OF_NUMBERS">
-    <!--
-        In English, Spanish, German and many other languages, we simply allow numbers and letters next to each other
-        In French almost any number + any letter is marked as spelling error. The following rules allow some specific cases
-
-        TODO:
-        * 10hrs
-        * 90m3
-        * 10m2
-    -->
+    <rule>
+    <!-- XXX TV dimensions|3D|networks|4Chan|G20|G7|hypothesis|intel CPUs|P2P|number of rooms|highways|programming languages -->
+      <pattern>
+          <token case_sensitive='yes' regexp='yes'>[248]K|[2345][DG]|[48]Chan|G(1|7|20)|H[₁₂₃₄₅₆₇₈₉₀]|i[3579]|P2P|R0|T[1234560]|(?:A|E?N|IC)\d{1,3}|[CJ](?:#|\+\+)|U2|CRISPR-Cas9</token>
+      </pattern>
+      <disambig action="ignore_spelling"/>
+    </rule>
     <rule>
       <pattern>
         <token regexp="yes">([01]?\d|2[0-3])h[0-5]?\d(min|m)([0-5]?\ds)?</token>
