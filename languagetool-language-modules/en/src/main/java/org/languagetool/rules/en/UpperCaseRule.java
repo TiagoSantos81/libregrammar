@@ -224,6 +224,13 @@ public class UpperCaseRule extends Rule {
       tokenRegex("[A-Z].+")
     ),
     Arrays.asList(
+      pos("SENT_START"), // Stop & Jot: (short headlines with colon)
+      tokenRegex("[A-Z].+"),
+      token("&"),
+      tokenRegex("[A-Z].+"),
+      token(":")
+    ),
+    Arrays.asList(
       pos("SENT_START"), // The Story: (short headlines with colon)
       tokenRegex("[A-Z].+"),
       tokenRegex("[A-Z].+"),
@@ -263,7 +270,7 @@ public class UpperCaseRule extends Rule {
       tokenRegex("[0-9]+")
     ),
     Arrays.asList(
-      tokenRegex("[A-Z].+"),  // e.g. "You Don't Know" or "Kuiper’s Belt"
+      tokenRegex("[A-Z].*"),  // e.g. "You Don't Know" or "Kuiper’s Belt"
       tokenRegex("['’`´‘]"),
       tokenRegex("t|d|ve|s|re|m|ll"),
       tokenRegex("[A-Z].+")
