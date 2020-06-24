@@ -8763,6 +8763,13 @@ though, and has since been slightly modified)-->
           <message>Vouliez-vous dire <suggestion>et ça</suggestion> ?</message>
           <example correction="et ça">J'en ai pris un <marker>et ca</marker> suffisait pas.</example>
       </rule>
+      <rule id="CEST" name="typo : cest" default="temp_off">
+        <pattern>
+          <token case_sensitive="yes" regexp="yes">[Cc]est</token>
+        </pattern>
+        <message>Vouliez-vous dire <suggestion>c'est</suggestion> ?</message>
+        <example correction="C'est"><marker>Cest</marker> la vie.</example>
+      </rule>
       <rule id="LA_JOURNE" name="typo : la journé">
           <pattern>
               <token regexp="yes">la|une</token>
