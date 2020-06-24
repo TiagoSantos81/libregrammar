@@ -33,7 +33,7 @@ import static org.junit.Assert.*;
 public class UpperCaseRuleTest {
 
   private final Language lang = Languages.getLanguageForShortCode("en");
-  private final UpperCaseRule rule = new UpperCaseRule(TestTools.getEnglishMessages(), lang);
+  private final UpperCaseRule rule = new UpperCaseRule(TestTools.getEnglishMessages(), lang, null);
   private final JLanguageTool lt = new JLanguageTool(lang);
 
   @Test

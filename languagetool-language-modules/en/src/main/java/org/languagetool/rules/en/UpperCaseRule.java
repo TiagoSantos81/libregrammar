@@ -22,6 +22,8 @@ import com.hankcs.algorithm.AhoCorasickDoubleArrayTrie;
 import org.languagetool.AnalyzedSentence;
 import org.languagetool.AnalyzedTokenReadings;
 import org.languagetool.Language;
+import org.languagetool.LinguServices;
+import org.languagetool.UserConfig;
 import org.languagetool.rules.*;
 import org.languagetool.rules.patterns.PatternToken;
 import org.languagetool.rules.spelling.CachingWordListLoader;
@@ -40,6 +42,7 @@ import static org.languagetool.rules.patterns.PatternRuleBuilderHelper.*;
 public class UpperCaseRule extends Rule {
 
   private static MorfologikAmericanSpellerRule spellerRule;
+  private static LinguServices linguServices = null;
   private static Set<String> exceptions = new HashSet<>(Arrays.asList(
     "Bin", "Spot",  // names
     "French", "Roman", "Hawking", "Square", "Japan", "Premier"
@@ -334,20 +337,26 @@ public class UpperCaseRule extends Rule {
 
   private final Language lang;
 
-  public UpperCaseRule(ResourceBundle messages, Language lang) {
+  public UpperCaseRule(ResourceBundle messages, Language lang, UserConfig userConfig) {
     super(messages);
     super.setCategory(Categories.CASING.getCategory(messages));
     this.lang = lang;
-    setDefaultTempOff();
     setLocQualityIssueType(ITSIssueType.Misspelling);
     addExamplePair(Example.wrong("I really <marker>Like</marker> spaghetti."),
                    Example.fixed("I really <marker>like</marker> spaghetti"));
-    if (spellerRule == null) {
-      initTrie();
-      try {
-        spellerRule = new MorfologikAmericanSpellerRule(messages, lang);
-      } catch (IOException e) {
-        throw new RuntimeException(e);
+    if (userConfig != null) {
+      if (linguServices == null) {
+        linguServices = userConfig.getLinguServices();
+        initTrie();
+      }
+    } else {
+      if (spellerRule == null) {
+        initTrie();
+        try {
+          spellerRule = new MorfologikAmericanSpellerRule(messages, lang);
+        } catch (IOException e) {
+          throw new RuntimeException(e);
+        }
       }
     }
   }
@@ -411,7 +420,7 @@ public class UpperCaseRule extends Rule {
           && !nextIsOneOfThenUppercase(tokens, i, Arrays.asList("of"))
           && !tokenStr.matches("I")
           && !exceptions.contains(tokenStr)
-          && !spellerRule.isMisspelled(StringTools.lowercaseFirstChar(tokenStr))    // e.g. "German" is correct, "german" isn't
+          && !isMisspelled(StringTools.lowercaseFirstChar(tokenStr))    // e.g. "German" is correct, "german" isn't
           && !trieMatches(sentence.getText(), token)
       ) {
         String msg = "Only proper nouns start with an uppercase character (there are exceptions for headlines).";
@@ -452,6 +461,10 @@ public class UpperCaseRule extends Rule {
 
   private boolean nextIsUpperCase(AnalyzedTokenReadings[] tokens, int i) {
     return i + 1 < tokens.length && StringTools.startsWithUppercase(tokens[i+1].getToken());
+  }
+
+  boolean isMisspelled(String word) throws IOException {
+    return (linguServices == null ? spellerRule.isMisspelled(word) : !linguServices.isCorrectSpell(word, lang));
   }
 
   private boolean isSentence(AnalyzedTokenReadings[] tokens) {
