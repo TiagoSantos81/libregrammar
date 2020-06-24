@@ -9474,6 +9474,14 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
     <!-- Siehe auch ../../resource/de/compounds.txt -->
     <!-- ====================================================================== -->
     <category id="COMPOUNDING" name="Getrennt- und Zusammenschreibung">
+        <rule id="FEST_COMPOUNDS" name="fest genommen (festgenommen)" default="temp_off">
+            <pattern>
+                <token>fest</token>
+                <token inflected="yes" regexp="yes">nehmen|halten</token>
+            </pattern>
+            <message>Das Verb <suggestion>fest<match no="2" case_conversion="alllower" /></suggestion> wird zusammengeschrieben.</message>
+            <example correction="festgenommen">Der Dieb wurde auf der Flucht von der Polizei <marker>fest genommen</marker>.</example>
+        </rule>
         <rulegroup id="NO_GO" name="No-Go">
             <rule>
                 <pattern>
@@ -37374,7 +37382,9 @@ Andere Projekte</example>
             <rule>
                 <pattern case_sensitive="yes">
                     <token postag="VER:AUX.+" postag_regexp="yes" inflected="yes" skip="4">haben<exception scope="next" postag="SENT_END"/></token>
-                    <token postag="VER:INF:.+" postag_regexp="yes" regexp="yes">[a-zöäü].*</token>
+                    <token postag="VER:INF:.+" postag_regexp="yes" regexp="yes">[a-zöäü].*
+                        <exception postag="ART:.+" postag_regexp="yes"/>
+                    </token>
                     <marker>
                         <token regexp="yes">ge(seh|lass)en</token>
                     </marker>
@@ -37388,6 +37398,7 @@ Andere Projekte</example>
                 <example correction="sehen">Ich habe es ja kommen <marker>gesehen</marker>.</example>
                 <example correction="lassen">Ich habe dich am ausgestreckten Arm verhungern <marker>gelassen</marker>.</example>
                 <example correction="lassen">Du hast ihn kommen <marker>gelassen</marker>.</example>
+                <example>Ich habe noch nie einen gesehen.</example>
             </rule>
             <!-- FIXME: replacement doesn't work, as discussed on the mailing list around May 11, 2012
             <rule>

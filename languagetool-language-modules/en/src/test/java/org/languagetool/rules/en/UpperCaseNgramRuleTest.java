@@ -83,7 +83,7 @@ public class UpperCaseNgramRuleTest {
     //URL ngramUrl = JLanguageTool.getDataBroker().getFromResourceDirAsUrl("/yy/ngram-index");
     LanguageModel lm = new FakeLanguageModel();
     //try (LuceneLanguageModel lm = new LuceneLanguageModel(new File(ngramUrl.toURI()))) {
-    UpperCaseNgramRule rule = new UpperCaseNgramRule(TestTools.getEnglishMessages(), lm, lang);
+    UpperCaseNgramRule rule = new UpperCaseNgramRule(TestTools.getEnglishMessages(), lm, lang, null);
 
     AnalyzedTokenReadings[] tokens1 = lt.getAnalyzedSentence("As with Lifeboat and Rope, the principal characters were ...").getTokens();
     // left:

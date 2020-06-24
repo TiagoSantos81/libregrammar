@@ -2937,14 +2937,13 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <marker>
                         <token>seria<exception postag="_GN_FS"/></token>
                     </marker>
-                    <token postag="[AD].*|RG" postag_regexp="yes"/>
+                    <token postag="[AD].*" postag_regexp="yes"/>
                 </pattern>
                 <message>Si es del v. 'ser', se escribe con tilde. Correcto como adjetivo.</message>
                 <suggestion>sería</suggestion>
                 <example correction="sería">Y <marker>seria</marker> bueno que pasara.</example>
                 <example correction="sería">Y <marker>seria</marker> lo mejor.</example>
                 <example correction="sería">Una persona española <marker>seria</marker> hispana.</example>
-                <example correction="sería">Creo que <marker>seria</marker> mejor utilizar otra cosa.</example>
                 <example>Es una persona seria la que buscamos.</example>
                 <example>Se puso seria otra vez.</example>
                 <example>Estaba seria a menudo.</example>
@@ -2955,7 +2954,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <marker>
                         <token>serias<exception postag="_GN_FP"/></token>
                     </marker>
-                    <token postag="[AD].*|RG" postag_regexp="yes"/>
+                    <token postag="[AD].*" postag_regexp="yes"/>
                 </pattern>
                 <message>Si es del v. 'ser', se escribe con tilde. Correcto como adjetivo.</message>
                 <suggestion>serías</suggestion>
@@ -2963,6 +2962,24 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="serías">Y <marker>serias</marker> el mejor.</example>
                 <example>Son personas serias las que vienen aquí.</example>
                 <example>Se pusieron serias otra vez.</example>
+            </rule>
+            <rule>
+                <antipattern>
+                    <token>seria</token>
+                    <token postag="RG|LOC_ADV" postag_regexp="yes" max="3"/>
+                    <token postag="&pronombre_personal_atono_POS;" postag_regexp="yes" min="0" max="2"/>
+                    <token postag="V.[SI].*" postag_regexp="yes"/>
+                </antipattern>
+                <pattern>
+                    <marker>
+                        <token>seria<exception postag="_GN_FS"/></token>
+                    </marker>
+                    <token postag="RG|LOC_ADV" postag_regexp="yes"/>
+                </pattern>
+                <message>Si es del v. 'ser', se escribe con tilde. Correcto como adjetivo.</message>
+                <suggestion>sería</suggestion>
+                <example correction="sería">Creo que <marker>seria</marker> mejor utilizar otra cosa.</example>
+                <example>Una institución lingüística seria jamás censuraría</example>
             </rule>
         </rulegroup>
         <rulegroup id="PARIS" name="Paris/París" default="on">
@@ -3148,10 +3165,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="tú">Cuando <marker>tu</marker> no nos lo indicas.</example>
                 <example correction="tú">Esto queda entre <marker>tu</marker> y yo.</example>
                 <example correction="tú">Tu hermana es como <marker>tu</marker>.</example>
+                <example correction="tú">¿Construiste eso <marker>tu</marker> solo?</example>
                 <example>Me alegra tu feliz vuelta al trabajo.</example>
                 <example>Me alegra tu vuelta al trabajo.</example>
                 <example>Es tu hermosa gente trabajadora.</example>
                 <example>¿Cómo vas a explicar la razón de tu no asistencia?</example>
+                <example>¡Espero que hayas practicado tu solo de flauta!</example>
             </rule>
             <rule id="MI_TILDE" name="mi/mí">
                 <antipattern>
@@ -6163,6 +6182,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="si no">¿Qué podía hacer <marker>sino</marker> quería resignarme?</example>
                 <example>No es así, sino de otra manera.</example>
                 <example>No hace un siglo, sino hace escasamente dos meses.</example>
+                <example>No implica contacto sino falta de cooperación.</example>
             </rule>
             <rule>
                 <pattern>
@@ -6910,6 +6930,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token postag="AQ.*|V.P.*|PX.*" postag_regexp="yes"/>
             </antipattern>
             <antipattern>
+                <token inflected="yes">medio</token>
+                <token regexp="yes" inflected="yes">vez|&unidades_tiempo;</token>
+                <token min="0" max="3" postag="RG|LOC_ADV" postag_regexp="yes"/>
+                <token postag="AQ.*|V.P.*|PX.*" postag_regexp="yes"/>
+            </antipattern>
+            <antipattern>
                 <token regexp="yes">debido|junto|justo</token>
                 <token regexp="yes">a|al</token>
             </antipattern>
@@ -6920,6 +6946,16 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <antipattern>
                 <token regexp="yes">seguro|mayor|menor|puesto</token>
                 <token>que</token>
+            </antipattern>
+            <antipattern>
+                <token regexp="yes">más|menos</token>
+                <token regexp="yes">grande|alto|bajo|pequeño</token>
+                <token>que</token>
+            </antipattern>
+            <antipattern>
+                <token regexp="yes">.*%</token>
+                <token regexp="yes">más|menos</token>
+                <token postag="AQ.*|V.P.*|PX.*" postag_regexp="yes"/>
             </antipattern>
             <antipattern>
                 <token postag="RG|LOC_ADV|NP..G.*" postag_regexp="yes"/>
@@ -7086,6 +7122,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example>lo terrestre era imperfecto</example>
             <example>El chándal le parece a Silvia un poco caro.</example>
             <example>Dado que resulta un poco más complejo.</example>
+            <example>Se dice que el alcalde acepta sobornos.</example>
+            <example>Es un 58% más dura.</example>
+            <example>Son un 58% más duras.</example>
+            <example>El hechizo sólo dura hasta medianoche.</example>
+            <example>El hechizo solo dura hasta medianoche.</example>
             <!-- 
                 Ella fue al concierto acompañada de una amiga.
                 Soy cualquier cosa menos mentiroso. 
@@ -7097,6 +7138,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 A menos que tomes una decisión rápido,
                 Escribí la composición apurado,
                 Mis parlantes son un juguete comparados con los tuyos.
+                 producidos por la aceleración y desaceleración lineal y angular repetitivas.
                 -->
         </rule>
     </category>
