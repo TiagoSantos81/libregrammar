@@ -7035,7 +7035,7 @@ onwaarschijnlijk
 				<pattern>
 					<token inflected="yes">uitwijden</token>
 				</pattern>
-				<message>Hier is een taaladvies over. Bekijk de 'Toelichting'.</message>
+				<message>Hier is een taaladvies over. Bekijk de 'Uitleg'.</message>
 				<url>https://taaladvies.net/taal/advies/vraag/824</url>
 				<example type="incorrect">Ga er hier niet <marker>uitwijden</marker>, maar je zal wel begrijpen dat het ernstig is.</example>
 			</rule>
@@ -16613,14 +16613,18 @@ steenwijk;Steenwijk
 		</rulegroup>
 		<rulegroup id="LANG_HL" name="Lang woord in hoofdletters">
 			<rule>
+				<antipattern>
+					<token postag="SENT_START"/>
+					<token regexp="yes" case_sensitive="yes">[A-Z]{5,79}<exception regexp="yes">[0-9a-f]{6}</exception></token>
+					<token spacebefore="yes" regexp="yes">-|—</token>
+				</antipattern>
 				<pattern case_sensitive="yes">
-					<token><exception postag="SENT_START"/><exception>#</exception></token>
 					<marker>
 						<token regexp="yes" case_sensitive="yes">[A-Z]{5,79}<exception regexp="yes">[0-9a-f]{6}</exception></token>
 						<!-- uitzondering voor hex kleuren tbv Wikipedia check -->
 					</marker>
 				</pattern>
-				<message>Het helemaal in hoofdletters schrijven van woorden met meer dan 4 letters wordt afgeraden; schrijf liever <suggestion><match no="2" case_conversion="alllower"/></suggestion>.</message>
+				<message>Het helemaal in hoofdletters schrijven van woorden met meer dan 4 letters wordt afgeraden; schrijf liever <suggestion><match no="1" case_conversion="alllower"/></suggestion>.</message>
 				<short>Lelijk</short>
 				<example correction="altijd">Das echt <marker>ALTIJD</marker>.</example>
 			</rule>
@@ -17803,6 +17807,8 @@ steenwijk;Steenwijk
 		</rulegroup>
 		<rulegroup id="SPATIE_VOOR" name="spatie na ; of :">
 			<rule>
+				<!-- common in some sources -->
+				<antipattern><token>[</token><token spacebefore="no">…</token><token spacebefore="no">]</token></antipattern>
 				<pattern>
 					<token><exception>(</exception></token>
 					<token spacebefore="no">…</token>
@@ -20534,10 +20540,10 @@ steenwijk;Steenwijk
 		</rulegroup>
 		<rulegroup id="AD_HOC" name="ad hoc">
 			<rule>
-				<pattern>
-					<token>ad</token>
+				<pattern case_sensitive="yes">
+					<token regexp="yes">[Aa]d</token>
 					<token>hoc</token>
-					<token postag=".*ZNW.*" postag_regexp="yes"><exception regexp="yes">is|moeten|kan|kunnen|over</exception><exception postag_regexp="yes" postag="BNW:.*"/></token>
+					<token postag=".*ZNW.*" postag_regexp="yes"><exception regexp="yes">is|moeten|kan|kunnen|over|willwn</exception><exception postag_regexp="yes" postag="BNW:.*"/></token>
 				</pattern>
 				<message>De kans is groot dat hier <suggestion><match no="1"/>-<match no="2"/><match no="3"/></suggestion> moet staan.</message>
 				<url>http://woordenlijst.org/#/?q=ad-hocactie</url>
@@ -20549,8 +20555,9 @@ steenwijk;Steenwijk
 				<example correction="ad-hocaanpak">Precies die structurele initiatieven maken het verschil met de <marker>ad hoc aanpak</marker> uit het verleden.</example>
 			</rule>
 			<rule>
-				<pattern>
-					<token>ad</token><token>hoc</token>
+				<pattern case_sensitive="yes">
+					<token regexp="yes">[Aa]d</token>
+					<token>hoc</token>
 				</pattern>
 				<message>De tekst wordt vlotter als u deze herschrijft met <suggestion>direct</suggestion> of <suggestion>plaatselijk</suggestion> of <suggestion>tijdelijk</suggestion>.</message>
 				<url>https://onzetaal.nl/taaladvies/ouderwets-taalgebruik</url>
@@ -34012,6 +34019,7 @@ steenwijk;Steenwijk
 		</rulegroup>
 		<rulegroup id="DEN" name="Waarschuwen voor 'den' buiten staande uitdrukkingen">
 			<rule>
+				<antipattern case_sensitive="yes"><token/><token/><token>Den</token></antipattern>
 				<antipattern><token>in</token><token>den</token><token>eeuwigheid</token></antipattern>
 				<antipattern><token>in</token><token>den</token><token>beginne</token></antipattern>
 				<antipattern><token>in</token><token>den</token><token>blinde</token></antipattern>
@@ -34032,9 +34040,8 @@ steenwijk;Steenwijk
 				<antipattern><token/><token>den</token><token regexp="yes" case_sensitive="yes">[A-Z].*</token></antipattern> <!-- eigennamen -->
 				<!-- TODO Afraden van al deze ouderwetsigheid -->
 				<pattern>
-					<token/>
 					<marker>
-						<token>den</token>
+						<token case_sensitive="yes" regexp="yes">[Dd]en</token>
 					</marker>
 					<token/>
 				</pattern>

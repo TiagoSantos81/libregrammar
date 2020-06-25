@@ -1274,7 +1274,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>Si prestramos atentos oídos.</example>
                 <example>Es necesario que domines ciertos temas.</example>
             </rule>
-            <rule default="temp_off">
+            <rule>
                 <pattern>
                     <token inflected="yes">tener</token>
                     <token postag="RG_before|LOC_ADV" postag_regexp="yes" min="0" max="4"/>
@@ -1788,7 +1788,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 </antipattern>
                 <pattern>
                     <marker>
-                        <token>se<exception postag="_possible_NP"/></token>
+                        <token>se<exception postag="_possible_NP|LOC_ADV" postag_regexp="yes"/></token>
                     </marker>
                 </pattern>
                 <message>Si es del v. 'saber' o 'ser' se escribe con tilde.</message>
@@ -1830,6 +1830,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>Está mal que no se lo perdones.</example>
                 <example>Dime si se lo vas a dar o no.</example>
                 <example>Hoy es el día en que se casa Ken.</example>
+                <example>El objetivo per se no importa.</example>
             </rule>
             <rule>
                 <pattern>
@@ -2933,6 +2934,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token regexp="yes">serias?</token>
             </antipattern>
             <rule>
+                <antipattern>
+                    <token>poco</token>
+                    <token>seria</token>
+                </antipattern>
                 <pattern>
                     <marker>
                         <token>seria<exception postag="_GN_FS"/></token>
@@ -2948,6 +2953,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>Se puso seria otra vez.</example>
                 <example>Estaba seria a menudo.</example>
                 <example>Estaba seria frecuentemente.</example>
+                <example>con una poco seria tercera persona omnisciente</example>
             </rule>
             <rule>
                 <pattern>
@@ -2980,6 +2986,20 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <suggestion>sería</suggestion>
                 <example correction="sería">Creo que <marker>seria</marker> mejor utilizar otra cosa.</example>
                 <example>Una institución lingüística seria jamás censuraría</example>
+            </rule>
+            <rule default="temp_off">
+                <pattern>
+                    <marker>
+                        <token>serias<exception postag="_GN_FP"/></token>
+                    </marker>
+                    <token postag="RG|LOC_ADV" postag_regexp="yes" min="1" max="3"/>
+                    <token postag="A.*" postag_regexp="yes"/>
+                </pattern>
+                <message>Si es del v. 'ser', se escribe con tilde. Correcto como adjetivo.</message>
+                <suggestion>serías</suggestion>
+                <example correction="Serías">¿<marker>Serias</marker> tan amable de recordarme qué pasó?</example>
+                <example>Son personas serias las que vienen aquí.</example>
+                <example>Se pusieron serias otra vez.</example>
             </rule>
         </rulegroup>
         <rulegroup id="PARIS" name="Paris/París" default="on">
@@ -3498,7 +3518,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="esté">Cuando <marker>este</marker> disponible.</example>
                 <example correction="esté">Que <marker>este</marker> muy bonito.</example>
                 <example correction="esté">que <marker>este</marker> preciosa.</example>
-                <!-- ambiguous <example correction="esté">Cuando tu cuenta <marker>este</marker> vacía.</example>-->
+                <example correction="esté">Cuando tu cuenta <marker>este</marker> vacía.</example>
+                <example correction="esté">Cuando tu compra <marker>este</marker> lista.</example>
                 <example>se cree que este mismo papa estuvo interesado</example>
                 <example>Te miras al espejo, no te agrada lo que este refleja.</example>
             </rule>
@@ -8454,6 +8475,16 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rulegroup>
     </category>
     <category id="PUNCTUATION" name="Puntuación">
+        <rule id="POR_CIERTO" name="por cierto(,)" default="temp_off">
+            <pattern>
+                <token>por</token>
+                <token>cierto</token>
+                <token postag="N.FS.*|A..FS." postag_regexp="yes"/>
+            </pattern>
+            <message>Probablemente falta una coma.</message>
+            <suggestion>\1 \2, \3</suggestion>
+            <example correction="Por cierto, Valeria"><marker>Por cierto Valeria</marker> está preciosa.</example>
+        </rule>
         <rulegroup id="COMA_SUJETO_PREDICADO" name="coma incorrecta entre sujeto y predicado">
         <!-- 20200618 too many FPs - do not re-activate -->
             <antipattern>
