@@ -25,6 +25,77 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 -->
 <rules lang="zh" xsi:noNamespaceSchemaLocation="../../../../../../../../../languagetool-core/src/main/resources/org/languagetool/rules/rules.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
+	<category id="MISCELLANEOUS" name="雜">
+	
+		<!-- Created by zhaoyuan98 (#3155), Chinese rule, 2020-06-24 -->
+<rule id="KETANG" name="颗与棵">
+ <pattern>
+  <token>棵</token>
+  <token>糖</token>
+ </pattern>
+ <message>量词“棵”不能修饰“糖”</message>
+   <suggestion>颗\2</suggestion>
+ <example correction='颗糖'>一<marker>棵糖</marker></example>
+ <example>一颗糖</example>
+</rule>
+
+<!-- Created by zhaoyuan98 (#3155), Chinese rule, 2020-06-24 -->
+<rule id="ZHI_ONLY" name="只与支">
+ <pattern>
+     <token>只</token>
+     <token regexp='yes'>笔|铅笔|钢笔|水笔|毛笔|蜡笔|水彩笔</token>
+ </pattern>
+ <message>量词“只”不能修饰“\2”</message>
+ <example correction=''>一<marker>只笔</marker></example>
+ <example>一支笔</example>
+</rule>
+
+<!-- Created by zhaoyuan98 (#3155), Chinese rule, 2020-06-24 -->
+<rule id="WRONG_BAI" name="批与群">
+ <pattern>
+  <token>批</token>
+  <token regexp='yes'>羊|山羊|绵羊|公羊|牧羊|母羊|牡羊</token>
+ </pattern>
+ <message>量词“\1”不能修饰“\2”</message>
+ <example correction=''>一<marker>批羊</marker></example>
+ <example>一群羊</example>
+</rule>
+
+<!-- Created by zhaoyuan98 (#3155), Chinese rule, 2020-06-24 -->
+<rule id="WRONG_DUI" name="堆与群">
+ <pattern>
+  <token>堆</token>
+  <token regexp='yes'>人|男人|女人|中国人|外国人|美国人|英国人|法国人</token>
+ </pattern>
+ <message>量词“\1”不能形容“\2”</message>
+ <example correction=''>一<marker>堆人</marker></example>
+ <example>一群人</example>
+</rule>
+
+<!-- Created by zhaoyuan98 (#3155), Chinese rule, 2020-06-24 -->
+<rule id="WRONG_GE" name="个与片">
+ <pattern>
+  <token>一个</token>
+  <token regexp='yes'>森林|人们</token>
+ </pattern>
+ <message>量词“个”不适宜修饰“\2”</message>
+ <example correction=''><marker>一个人们</marker></example>
+ <example>一群人</example>
+</rule>
+
+<!-- Created by zhaoyuan98 (#3155), Chinese rule, 2020-06-24 -->
+<rule id="WRONG_GE_2" name="个与条">
+ <pattern>
+  <token>个</token>
+  <token>河</token>
+ </pattern>
+ <message>量词“个”不适宜修饰“\2”</message>
+ <example correction=''>两<marker>个河</marker></example>
+ <example>两条河</example>
+</rule>
+
+</category>
+
 	<!-- ====================================================================== -->
 	<!-- 拼写： 词语错误 -->
 	<!-- ====================================================================== -->
