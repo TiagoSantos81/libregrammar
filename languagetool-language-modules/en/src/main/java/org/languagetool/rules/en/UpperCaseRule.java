@@ -344,19 +344,16 @@ public class UpperCaseRule extends Rule {
     setLocQualityIssueType(ITSIssueType.Misspelling);
     addExamplePair(Example.wrong("I really <marker>Like</marker> spaghetti."),
                    Example.fixed("I really <marker>like</marker> spaghetti"));
-    if (userConfig != null) {
-      if (linguServices == null) {
-        linguServices = userConfig.getLinguServices();
-        initTrie();
-      }
-    } else {
-      if (spellerRule == null) {
-        initTrie();
-        try {
-          spellerRule = new MorfologikAmericanSpellerRule(messages, lang);
-        } catch (IOException e) {
-          throw new RuntimeException(e);
-        }
+    if (userConfig != null && linguServices == null) {
+      linguServices = userConfig.getLinguServices();
+      initTrie();
+    }
+    if (spellerRule == null) {
+      initTrie();
+      try {
+        spellerRule = new MorfologikAmericanSpellerRule(messages, lang);
+      } catch (IOException e) {
+        throw new RuntimeException(e);
       }
     }
   }
