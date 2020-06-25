@@ -24,6 +24,7 @@ License along with this library; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 -->
 <rules lang="zh" xsi:noNamespaceSchemaLocation="../../../../../../../../../languagetool-core/src/main/resources/org/languagetool/rules/rules.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
 	<!-- ====================================================================== -->
 	<!-- 拼写： 词语错误 -->
 	<!-- ====================================================================== -->
@@ -20373,12 +20374,21 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 		</rule>
 		<rule id="BU_YOU_MEI_YOU" name="不有/没有" type="grammar">
 		<!-- Created by Tiago F. Santos, 2019-11-21 -->
+			<antipattern>
+					<token>无</token><!-- #2163 -->
+					<token regexp='yes'>奇|所</token>
+					<token>不</token>
+					<token>有</token>
+			</antipattern>
 			<pattern>
 					<token>不</token>
 					<token>有</token>
 			</pattern>
 			<message>搭配错误： 应将 “不有” 改为 <suggestion>没有</suggestion>。</message>
+			<url>https://www.zdic.net/hans/%E4%B8%8D%E6%9C%89</url>
 			<example correction="没有">医生<marker>不有</marker>误解病人的病历。</example>
+			<example>无奇不有</example>
+			<example>无所不有</example>
 		</rule>
 		<rule id="ZH3" name="搭配不当_执行+责任">
 			<pattern>
