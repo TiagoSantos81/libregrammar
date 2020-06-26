@@ -49,7 +49,7 @@ public class MorfologikSpanishSpellerRule extends MorfologikSpellerRule {
   @Override
   // Use this rule in LO/OO extension despite being a spelling rule
   public boolean useInOffice() {
-    return true;
+    return false;
   }
  
 
