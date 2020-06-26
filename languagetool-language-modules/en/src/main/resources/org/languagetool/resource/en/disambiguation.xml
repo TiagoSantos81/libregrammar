@@ -1207,7 +1207,20 @@
         <example type="untouched">But do not <marker>Peter's</marker> parents agree with you?</example>
         <example type="ambiguous" inputform="notice[notice/NN:UN,notice/VB,notice/VBP]" outputform="notice[notice/VB]">I did not <marker>notice</marker> what you said.</example>
     </rule>
+
+        <rule id="DOES_NNS" name="Does as noun">
+        <!-- Created by Tiago F. Santos, 2020-06-26 -->
+          <pattern>
+            <token regexp='yes'>the(?:se)?|those</token>
+            <marker>
+               <token>does</token>
+            </marker>
+          </pattern>
+        <disambig action="replace"><wd pos="NNS"/></disambig>
+        </rule>
+
     <rule id="DOES_not" name="does + not = verb">
+    <!-- XXX consider removal -->
         <pattern>
             <marker>
                 <token postag="VBZ">does</token>
@@ -1216,8 +1229,9 @@
             </marker>
         </pattern>
         <disambig action="filterall"/>
-        <example type="ambiguous" inputform="does[do/VBZ,doe/NNS]" outputform="does[do/VBZ]">This <marker>does</marker> not happen.</example>
+        <!--example type="ambiguous" inputform="does[do/VBZ,doe/NNS]" outputform="does[do/VBZ]">This <marker>does</marker> not happen.</example-->
     </rule>
+
     <rule id="DONT_VBNN_VB" name="don't/didn't/doesn't + verb/noun -> VB">
       <pattern>
         <token regexp="yes">don|didn|doesn</token>
@@ -1448,7 +1462,8 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <example type="untouched">One are of land.</example>
         <example type="ambiguous" inputform="Are[are/NN,be/VBP]" outputform="Are[be/VBP]"><marker>Are</marker> people happy?</example>
     </rule>
-    <rule name="Does...?" id="SENT_START_DOES">
+    <!--rule name="Does...?" id="SENT_START_DOES">
+    XXX does removed on 2020-06-26 see DOES_NNS
         <pattern>
             <token postag="SENT_START"/>
             <marker><token case_sensitive="yes">Does</token></marker>
@@ -1456,7 +1471,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <disambig postag="VBZ"/>
         <example type="untouched">One are of land.</example>
         <example type="ambiguous" inputform="Does[do/VBZ,doe/NNS]" outputform="Does[do/VBZ]"><marker>Does</marker> he like me?</example>
-    </rule>
+    </rule-->
     <rule name="NNS|EX + are (noun/verb) -&gt; are (verb)" id="NNS_ARE">
         <pattern>
             <token postag_regexp="yes" postag="EX|NNS|WP"/>
@@ -1540,7 +1555,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <token regexp="yes">weren?|aren?|couldn?|might|may|shouldn?|haven?|don?|wouldn?</token>
         </pattern>
         <disambig postag="VBZ"/>
-        <example type="ambiguous" inputform="does[do/VBZ,doe/NNS]" outputform="does[do/VBZ]">Information about what this <marker>does</marker> would be nice.</example>
+        <!--example type="ambiguous" inputform="does[do/VBZ,doe/NNS]" outputform="does[do/VBZ]">Information about what this <marker>does</marker> would be nice.</example--><!-- XXX NNS removedpreviously and re-added by DOES_NNS if needed-->
         <example type="ambiguous" inputform="tries[try/NNS,try/VBZ]" outputform="tries[try/VBZ]">... but data about whoever each <marker>tries</marker> should tell us whether these judges are corrupt.</example>
     </rule>
     <rule name="are + we|you -&gt; are (verb)" id="ARE_PRP">

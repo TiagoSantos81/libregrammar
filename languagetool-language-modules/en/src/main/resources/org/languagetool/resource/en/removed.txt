@@ -66,6 +66,9 @@ by	by	NN
 cabling	cabling	NNS
 cancelling	cancelling	NNS
 cars	cars	NN
+# cat usage as verb is too rare to consider useful
+cat	cat	VBP
+cats	cat	VBZ
 cen	cen	NN
 cfd	cfd	NN
 channelling	channelling	NNS
@@ -126,6 +129,8 @@ divers	divers	DT
 DO	DO	NNP
 doe	doe	JJ
 doer	doe	JJR
+# does existes a NNS but it is not useful
+does	doe	NNS
 doest	doe	JJS
 doit	doit	NN
 doubler	double	JJR
