@@ -1,6 +1,6 @@
 # LibreGrammar Change Log
 
-## 5.0-SNAPSHOT (release planned for 2020-06-26)
+## 5.0-SNAPSHOT (release planned for 2020-07-01)
 
 ### This fork differences
 #### (new comparisons only)
@@ -87,6 +87,7 @@
     - removal of many crippling changes made upstream;
     - URLs added to explain most single word suggestions;
     - style rule regarding repeated words now also suggests alternative words on LibreOffice.
+  * [rules disabled up-stream are still active in LibreGrammar](https://github.com/languagetool-org/languagetool/issues/3158)
   * disambiguation improvements
   * POS and spelling improvements
 
