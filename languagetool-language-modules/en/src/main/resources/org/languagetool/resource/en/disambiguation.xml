@@ -1208,6 +1208,17 @@
         <example type="ambiguous" inputform="notice[notice/NN:UN,notice/VB,notice/VBP]" outputform="notice[notice/VB]">I did not <marker>notice</marker> what you said.</example>
     </rule>
 
+        <rule id="ARE_NN" name="Does as noun">
+        <!-- Created by Tiago F. Santos, 2020-06-26 -->
+          <pattern>
+            <token regexp='yes'>an|the|one</token>
+            <marker>
+               <token>are</token>
+            </marker>
+          </pattern>
+        <disambig action="replace"><wd pos="NN"/></disambig>
+        </rule>
+        
         <rule id="DOES_NNS" name="Does as noun">
         <!-- Created by Tiago F. Santos, 2020-06-26 -->
           <pattern>
@@ -1436,7 +1447,8 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
       <example type="untouched">I AM HAPPY.</example>
       <example type="ambiguous" inputform="AM[AM/NNP,be/VBP]" outputform="AM[AM/NNP]"><marker>AM</marker> was the earliest modulation method.</example>
     </rule>
-    <rule name="are (noun/verb)  + adjective/gerund/preposition -&gt; are (verb)" id="ARE_JJ_VBG">
+    <!--rule name="are (noun/verb)  + adjective/gerund/preposition -&gt; are (verb)" id="ARE_JJ_VBG">
+    XXX no longer required since ARE_NN 2020-06-26
         <antipattern>
             <token postag="DT"/>
             <token>are</token>
@@ -1452,8 +1464,9 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <example type="untouched">Noun. The <marker>are</marker> used to be a common unit of measurement (www.lexico.com/en/definition/are).</example>
         <example type="untouched">Noun. An <marker>are</marker> is a historical unit.</example>
         <example type="ambiguous" inputform="are[are/NN,be/VBP]" outputform="are[be/VBP]">What follows <marker>are</marker> the terms used by the Aikikai Foundation</example>
-    </rule>
-    <rule name="Are...?" id="SENT_START_ARE">
+    </rule-->
+    <!--rule name="Are...?" id="SENT_START_ARE">
+    XXX no longer required since ARE_NN 2020-06-26
         <pattern>
         <token postag="SENT_START"/>
         <marker><token>are</token></marker>
@@ -1461,7 +1474,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <disambig postag="VBP"/>
         <example type="untouched">One are of land.</example>
         <example type="ambiguous" inputform="Are[are/NN,be/VBP]" outputform="Are[be/VBP]"><marker>Are</marker> people happy?</example>
-    </rule>
+    </rule-->
     <!--rule name="Does...?" id="SENT_START_DOES">
     XXX does removed on 2020-06-26 see DOES_NNS
         <pattern>
@@ -1558,7 +1571,8 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <!--example type="ambiguous" inputform="does[do/VBZ,doe/NNS]" outputform="does[do/VBZ]">Information about what this <marker>does</marker> would be nice.</example--><!-- XXX NNS removedpreviously and re-added by DOES_NNS if needed-->
         <example type="ambiguous" inputform="tries[try/NNS,try/VBZ]" outputform="tries[try/VBZ]">... but data about whoever each <marker>tries</marker> should tell us whether these judges are corrupt.</example>
     </rule>
-    <rule name="are + we|you -&gt; are (verb)" id="ARE_PRP">
+    <!--rule name="are + we|you -&gt; are (verb)" id="ARE_PRP">
+    XXX no longer required since ARE_NN 
         <pattern>
             <marker>
                 <token>are</token>
@@ -1575,7 +1589,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         </pattern>
         <disambig postag="VBP"/>
         <example type="ambiguous" inputform="are[are/NN,be/VBP]" outputform="are[be/VBP]">Among the things that AI needs to represent <marker>are</marker>: objects, properties, categories and relations.</example>
-    </rule>
+    </rule-->
     <rule name="committee/jury/class + VBP => NNS" id="NN_are_NNS">
       <antipattern><!-- statements in this class -->
         <token postag="NNS"/>
