@@ -96,7 +96,7 @@ public class SuggestionReplacerTest {
 
   @Test
   public void testErrorAtParagraphBeginning() throws Exception {
-    String markup = "X\n\nA hour ago.\n";
+    String markup = "I\n\nA hour ago.\n";
     applySuggestion(englishLangTool, filter, markup, markup.replace("A", "<s>An</s>"));
   }
 

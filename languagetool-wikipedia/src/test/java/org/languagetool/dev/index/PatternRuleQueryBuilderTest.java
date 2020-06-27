@@ -187,7 +187,7 @@ public class PatternRuleQueryBuilderTest extends LuceneTestCase {
 
   public void testInflectedAndRegex() throws Exception {
     assertMatches(makeRule("<token inflected='yes' regexp='yes'>foo|bar</token>"), 0);
-    assertMatches(makeRule("<token inflected='yes' regexp='yes'>walk|be</token>"), 1);
+    // assertMatches(makeRule("<token inflected='yes' regexp='yes'>walk|be</token>"), 1); 'are be NN' removed on 20200626
     assertMatches(makeRule("<token inflected='yes' regexp='yes'>somefoo|wonderful</token>"), 1);
     assertMatches(makeRule("<token inflected='yes' regexp='yes'>somefoo|wonderf.l</token>"), 1);
     assertMatches(makeRule("<token inflected='yes' regexp='yes'>somefoo|wonderX.l</token>"), 0);
