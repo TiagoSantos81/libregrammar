@@ -47,6 +47,11 @@ public class PortugueseHybridDisambiguator extends AbstractDisambiguator {
   /**
    * Calls two disambiguator classes: (1) a chunker; (2) a rule-based
    * disambiguator.
+   * 
+   * Put the results of the MultiWordChunker in a more appropriate and useful way.
+   *   <NN></NN> becomes NN NN
+   *   The individual original tags are removed. 
+   *   Add spell ignore
    */
   @Override
   public final AnalyzedSentence disambiguate(AnalyzedSentence input)
