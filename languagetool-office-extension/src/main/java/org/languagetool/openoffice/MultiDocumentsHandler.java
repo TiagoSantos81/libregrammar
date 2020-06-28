@@ -90,6 +90,7 @@ public class MultiDocumentsHandler {
   private Language docLanguage = null;
   private Language fixedLanguage = null;
   private Language langForShortName;
+  private Locale locale;
   private final XEventListener xEventListener;
   private final XProofreader xProofreader;
   private final File configDir;
@@ -187,6 +188,7 @@ public class MultiDocumentsHandler {
         boolean initDocs = langTool == null || recheck;
         if (!isSameLanguage) {
           docLanguage = langForShortName;
+          this.locale = locale;
 /*
           extraRemoteRules.clear();
 */
@@ -219,6 +221,19 @@ public class MultiDocumentsHandler {
     return paRes;
   }
 
+  /**
+   *  Get the current used document
+   */
+  public SingleDocument getCurrentDocument() {
+    XComponent xComponent = OfficeTools.getCurrentComponent(xContext);
+    for (SingleDocument document : documents) {
+      if(xComponent.equals(document.getXComponent())) {
+        return document;
+      }
+    }
+    return null;
+  }
+  
   /**
    *  Set all documents to be checked again
    */
@@ -593,9 +608,10 @@ public class MultiDocumentsHandler {
       for (Rule rule : langTool.getAllActiveOfficeRules()) {
         if (rule.isDictionaryBasedSpellingRule()) {
           langTool.disableRule(rule.getId());
-        }
-        if (rule.useInOffice()) {
-          langTool.enableRule(rule.getId());
+          if (rule.useInOffice()) {
+            // set default off so it can be re-enabled by user configuration
+            rule.setDefaultOff();
+          }
         }
       }
       recheck = false;
@@ -666,6 +682,13 @@ public class MultiDocumentsHandler {
         textLevelQueue.setReset();
       }
     }
+  }
+
+  /**
+   * Get current locale language
+   */
+  public Locale getLocale() {
+    return locale;
   }
 
   /**
@@ -1037,8 +1060,13 @@ public class MultiDocumentsHandler {
         resetDocument();
       } else if ("checkDialog".equals(sEvent)) {
         if (OfficeTools.DEVELOP_MODE) {
-          SpellAndGrammarCheckDialog checkDialog = new SpellAndGrammarCheckDialog(xContext);
+          SpellAndGrammarCheckDialog checkDialog = new SpellAndGrammarCheckDialog(xContext, this);
           checkDialog.start();
+        }
+      } else if ("nextError".equals(sEvent)) {
+        if (OfficeTools.DEVELOP_MODE) {
+          SpellAndGrammarCheckDialog checkDialog = new SpellAndGrammarCheckDialog(xContext, this);
+          checkDialog.nextError();
         }
     /* if by merge error isRemote can become 'true'
      * it will show on the context menu.

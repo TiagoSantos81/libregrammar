@@ -210,7 +210,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rule>
     </category>
     <category id="INCORRECT_EXPRESSIONS" name="Expresiones incorrectas" type="grammar">
-        <rule id="A_CONTRAPIE" name="*a contra pie/a contrapié" default="temp_off">
+        <rule id="A_CONTRAPIE" name="*a contra pie/a contrapié">
             <pattern>
                 <token>a</token>
                 <token>contra</token>
@@ -2673,7 +2673,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token regexp="yes">paginas?</token>
                 </pattern>
                 <message>Si es sustantivo, lleva tilde. Correcto si es del verbo 'paginar'.</message>
-                <suggestion><match no="1" regexp_match="(?iu)(.)a(.*)" regexp_replace="$1á$2"/></suggestion>
+                <suggestion><match no="1" regexp_match="(?iu)(.)a(.*)" regexp_replace="$1á$2" case_conversion="preserve"/></suggestion>
                 <example correction="páginas">Copia las <marker>paginas</marker> 3 y 4.</example>
                 <example correction="Página"><marker>Pagina</marker> 34.</example>
                 <example>Este libro lo pagina con el programa de edición.</example>
@@ -2692,11 +2692,28 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token regexp="yes">liquidas?|liquido</token>
                 </pattern>
                 <message>Si es sustantivo o adjetivo, lleva tilde. Correcto si es del v. 'liquidar'.</message>
-                <suggestion><match no="1" regexp_match="(?iu)(l)i(.*)" regexp_replace="$1í$2"/></suggestion>
+                <suggestion><match no="1" regexp_match="(?iu)(l)i(.*)" regexp_replace="$1í$2" case_conversion="preserve"/></suggestion>
                 <example correction="Líquida"><marker>Liquida</marker> quiere decir cuantificable.</example>
                 <example correction="líquido">Eso quiere decir <marker>liquido</marker>.</example>
                 <example>Ahora liquido la deuda.</example>
                 <example>Le liquidas las deudas.</example>
+            </rule>
+            <rule id="GRAFICO" name="grafico/gráfico">
+                <antipattern>
+                    <token postag="P.*" postag_regexp="yes"/>
+                    <token regexp="yes">graficas?|grafico</token>
+                </antipattern>
+                <antipattern>
+                    <token regexp="yes">graficas?|grafico</token>
+                    <token postag="D.*" postag_regexp="yes"/>
+                </antipattern>
+                <pattern>
+                    <token regexp="yes">graficas?|grafico</token>
+                </pattern>
+                <message>Si es sustantivo o adjetivo, lleva tilde. Correcto si es del v. 'graficar'.</message>
+                <suggestion><match no="1" regexp_match="(?iu)(gr)a(.*)" regexp_replace="$1á$2" case_conversion="preserve"/></suggestion>
+                <example correction="gráfica">La tarjeta <marker>grafica</marker>.</example>
+                <example>Se grafica con un ordenador.</example>
             </rule>
             <rule id="NUMERO" name="numero/número">
                 <antipattern>
@@ -6668,12 +6685,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>Lo aburridos que son.</example>
                 <example>Cuando menos te lo esperas te deja.</example>
             </rule>
-            <rule default="temp_off">
+            <rule>
                 <pattern>
                     <marker>
                         <token>los</token>
                         <token postag="RG"/>
-                        <token postag="AQ.[CM]S.|V.P..SM" postag_regexp="yes"><exception postag="V.[SI].*" postag_regexp="yes"/></token>
+                        <token postag="AQ.[CM]S.|V.P..SM" postag_regexp="yes"><exception postag="V.[SI].*|N.*" postag_regexp="yes"/></token>
                     </marker>
                 </pattern>
                 <message>Posible error de concordancia.</message>
@@ -6686,24 +6703,25 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>Lo aburridos que son.</example>
                 <example>Cuando menos te lo esperas te deja.</example>
             </rule>
-            <rule default="temp_off">
+            <rule>
                 <pattern>
                     <marker>
                         <token>los</token>
-                        <token postag="AQ.[CM]S.|V.P..SM" postag_regexp="yes"><exception postag="V.[SI].*" postag_regexp="yes"/></token>
+                        <token postag="AQ.[CM]S.|V.P..SM" postag_regexp="yes"><exception postag="V.[SI].*|N.*" postag_regexp="yes"/></token>
                     </marker>
                 </pattern>
                 <message>Posible error de concordancia.</message>
-                <suggestion>lo <match no="2" postag="A..[MC][SN].|V.P..SM" postag_regexp="yes" case_conversion="preserve"/></suggestion>
                 <suggestion>los <match no="2" postag="A..[MC][PN].|V.P..PM" postag_regexp="yes" case_conversion="preserve"/></suggestion>
-                <example correction="Lo mismo|Los mismos"><marker>Los mismo</marker> ocurre con esto.</example>
+                <suggestion>lo <match no="2" postag="A..[MC][SN].|V.P..SM" postag_regexp="yes" case_conversion="preserve"/></suggestion>
+                <suggestion>el <match no="2" postag="A..[MC][SN].|V.P..SM" postag_regexp="yes" case_conversion="preserve"/></suggestion>
+                <example correction="Los mismos|Lo mismo|El mismo"><marker>Los mismo</marker> ocurre con esto.</example>
                 <example>¿Por qué los preguntas?</example>
                 <example>Lo eres tú.</example>
                 <example>Lo pequeños que son.</example>
                 <example>Lo aburridos que son.</example>
                 <example>Cuando menos te lo esperas te deja.</example>
             </rule>
-            <rule default="temp_off">
+            <rule>
                 <pattern>
                     <marker>
                         <token>lo</token>
@@ -6713,8 +6731,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 </pattern>
                 <message>Posible error de concordancia.</message>
                 <suggestion>los \2 <match no="3" postag="A..[MC][PN].|V.P..PM" postag_regexp="yes" case_conversion="preserve"/></suggestion>
-                <suggestion>lo \2 <match no="3" postag="A..[MC][SN].|V.P..SM" postag_regexp="yes" case_conversion="preserve"/></suggestion>
+                <suggestion>lo \2 <match no="3" postag="A..[MC][PN].|V.P..PM" postag_regexp="yes" postag_replace="A..[MC][SN].|V.P..SM"  case_conversion="preserve"/></suggestion>
                 <example correction="los más seguros|lo más seguro">Pero <marker>lo más seguros</marker> es que no.</example>
+                <!-- bug?: why originado? -->
+                <example correction="los más originales|lo más originado|lo más original">Son de <marker>lo más originales</marker>.</example>
                 <example>Son lo suficientemente seguros.</example>
             </rule>
         </rulegroup>
@@ -8302,7 +8322,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <message>¿Quería decir <suggestion>este</suggestion>?</message>
             <example correction="este">En <marker>esto</marker> campo es el mejor.</example>
         </rule>-->
-        <rule id="A_FINALES" name="*al/a finales" default="temp_off">
+        <rule id="A_FINALES" name="*al/a finales">
             <pattern>
                 <token>al</token>
                 <token>finales</token>
@@ -8947,7 +8967,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rulegroup>
     </category>
     <category id="PUNCTUATION" name="Puntuación">
-        <rule id="POR_CIERTO" name="por cierto(,)" default="temp_off">
+        <rule id="POR_CIERTO" name="por cierto(,)">
             <pattern>
                 <token>por</token>
                 <token>cierto</token>

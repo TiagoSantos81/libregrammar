@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 -->
 <!--suppress CheckTagEmptyBody -->
 <!DOCTYPE rules [
-<!ENTITY weekdays "понедельник|вторник|среда|четверг|пятница|суббота|воскресенье">
+<!ENTITY weekdays "понедельник|вторник|среда|среду|четверг|пятница|пятницу|суббота|субботу|воскресенье|пн|вт|ср|чт|пт|сб|вс|вск">
 <!ENTITY months "январь|февраль|март|апрель|май|июнь|июль|август|сентябрь|октябрь|ноябрь|декабрь|января|февраля|марта|апреля|мая|июня|июля|августа|сентября|октября|ноября|декабря">
 <!ENTITY abbrevMonths "янв|фев|мар|апр|ин|ил|авг|сен|окт|ноя|дек">
 <!ENTITY color "черн.*|чёрн.*|бел.*|красн.*|син.*|желт.*|жёлт.*|зелен.*|зелён.*"> <!-- цвет -->
@@ -201,9 +201,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token regexp="yes">\d\d\d\d</token>
                 </pattern>
                 <filter class="org.languagetool.rules.ru.DateCheckFilter" args="year:\5 month:\4 day:\3 weekDay:\1"/>
-                <message>Днём недели \3 \4 \5 является не \1, а {realDay}.</message>
+                <message>Днём недели \3 \4 \5 года является {realDay}.</message>
                 <example correction="">Конференция состоится в <marker>понедельник, 7 октября 2014</marker> г.</example>
                 <example correction="">Конференция состоится в <marker>понедельник 7 октября 2014</marker> г.</example>
+                <example correction="">Конференция состоится в <marker>пятницу 7 октября 2014</marker> г.</example>
                 <example correction="">Конференция состоится в <marker>понедельник, 7 окт 2014</marker> г.</example>
                 <example>Конференция состоится во <marker>вторник, 7 октября 2014</marker> г.</example>
                 <example>Конференция состоится во <marker>вторник, 7 окт 2014</marker> г.</example>
@@ -3060,7 +3061,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rulegroup>
         
         
-        <rulegroup default="off" id="PO_MERE_TOGO_KAK" name="Запятые в оборотах: «по мере того как…», …">
+        <rulegroup default="temp_off" id="PO_MERE_TOGO_KAK" name="Запятые в оборотах: «по мере того как…», …"> <!-- default="off" -->
 <!--   («с того времени как…», «с той поры как…», «по мере того как…»)     -->
             <rule>
                 <pattern case_sensitive="yes">
@@ -5348,7 +5349,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
     </category>
     <category id="TYPOGRAPHY" name="Типографика">     
         
-        <rulegroup default="on" id="DOUBL_KAVITCHKI" name="Двойные кавычки">  <!-- default="off" -->
+        <rulegroup default="on" id="DOUBL_KAVITCHKI" name="Двойные кавычки">
             <rule>
                <pattern>
                 <token>«</token>
@@ -6835,7 +6836,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <unify negate="yes">
                         <feature id="number"/>          
                         <token  postag="NN:.*:Nom" postag_regexp="yes"><exception negate_pos="yes" postag_regexp="yes" postag="NN:.*"></exception></token>
-                        <token  postag="VB:(Past|Real):.*"  postag_regexp="yes"><exception negate_pos="yes" postag_regexp="yes" postag="VB:(Past|Real):.*" /><exception  postag_regexp="yes" postag="VB:(Past|Real):TRANS:.*|VB:(Past|Real):bezl:IMPFV" /><exception scope="next" postag_regexp="yes" postag="NN:.*:Nom"></exception></token>                            
+                        <token  postag="VB:(Past|Real):.*"  postag_regexp="yes"><exception negate_pos="yes" postag_regexp="yes" postag="VB:(Past|Real):.*" /><exception  postag_regexp="yes" postag="VB:(Past|Real):TRANS:.*|VB:(Past|Real):bezl:IMPFV" /><exception scope="next" postag_regexp="yes" postag="NN:.*:Nom|UNKNOWN"></exception></token>                            
                     </unify>
                     </marker>
                 </pattern>
@@ -6848,7 +6849,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>Сыр и сливочное масло делаются из молока.</example>
                 <example>Учащиеся всё время сидели неподвижно.</example>
                 <example>Эти легенды следует передать нашим потомкам.</example> 
-                <example>Вода превращается в лёд.</example>  
+                <example>Вода превращается в лёд.</example>
+                <example>Для работы программы требуется Java.</example>  
                 <example>Матч отменили из-за дождя.</example> <!-- Пропущено слово, управление  -->
                 <example>В 1448 году упоминаются городские волнения против строительства замка.</example>
                 <example correction=""><marker>Блюдо готовились</marker> на сковородке.</example>
@@ -7636,7 +7638,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
     <!--     Ne_pril_prich -->
     
             <antipattern>
-                <token regexp="yes">очень|весьма|крайне|совершенно|вполне|почти|отчасти|совсем|чрезвычайно|далеко|отнюдь|вовсе|ничуть|нисколько</token>   
+                <token regexp="yes">очень|весьма|крайне|совершенно|вполне|почти|отчасти|совсем|чрезвычайно|далеко|отнюдь|вовсе|ничуть|нисколько|вообще</token>   <!-- + вообще-->
                 <marker>
                     <token>не</token>
                     <token postag="ADJ:Short:.*" postag_regexp="yes">
@@ -7677,6 +7679,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>Река неглубокая, но холодная.</example>   <!-- противопоставление без отрицания, слитно -->
                 <example>Река неглубока, но холодна.</example>   <!-- противопоставление без отрицания, слитно -->
                 <example>Человек не виновен в вымирании мамонтов.</example>
+                <example>Эта доставка либо слишком дорога, либо вообще не доступна.</example>
                 <example>Я никогда не бывал в Нью-Йорке, и моя сестра тоже не бывала там.</example>
                 <example correction="неуверенна">Его походка медлительна, <marker>не уверенна</marker>.</example>
         </rule>
@@ -9120,7 +9123,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
            <example correction="относится">Проблема может возникнуть при наличии собственных резонансов в модели, что <marker>относиться</marker> и к нашему случаю, где частота падающей волны приходится на максимум дипольного отклика частицы.</example>
         </rule>        
         </rulegroup>                
-        <rule id="Verb_INF_OR_3P_2" default="off" name="Инфинитив вместо личной формы глагола">
+        <rule id="Verb_INF_OR_3P_2" default="temp_off" name="Инфинитив вместо личной формы глагола">
             <antipattern>
                  <token postag="SENT_START" skip="-1" />
                  <token postag="VB:.*" skip="-1" postag_regexp="yes" ><exception   postag="VB:.*"  postag_regexp="yes"  negate_pos="yes"    /></token>
@@ -11262,7 +11265,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             
         </rulegroup>
         
-        <rulegroup default="off" id="kosvennaja_rech" name="Косвенная речь и кавычки">
+        <rulegroup default="temp_off" id="kosvennaja_rech" name="Косвенная речь и кавычки">
           <rule>
             <pattern>
                 <token>что</token>
