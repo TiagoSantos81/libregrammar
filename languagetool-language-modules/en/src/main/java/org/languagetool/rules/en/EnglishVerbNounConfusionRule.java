@@ -276,18 +276,19 @@ public class EnglishVerbNounConfusionRule extends Rule {
       }
       if (precedesNegativeVerb(tokens[i])) {
         shortmsg = "verb";
-        if (isApostrophe(tokens[i + 1])
-                      || tokens[i + 2].equals("t")) { // FIXME && would make sense but it fails to trigger the rule here. Why?
-          if (isNoun(tokens[i + 3])
-          &&       !(tokens[i + 3].isImmunized())) {
-            markEnd = i + 3;
-            if (replacement == null) {
-              replacement = getVerbReplacements().get(tokens[i + 3].getToken());
-              if (msg == null) {
-                msg = "Notice ‘" + tokens[i + 3].getToken() + "’ is a noun. If you are referring to the related verb, you probably should use <suggestion>" + tokens[i].getToken() + tokens[i + 1].getToken() + tokens[i + 2].getToken() + " " + replacement + "</suggestion> instead.";
+        if (isApostrophe(tokens[i + 1])) {
+          // if (tokens[i + 2].equals("t")) { // FIXME exception thrown with odd mix of typos, that does not happen when followed by adverb (line 292)
+            if (isNoun(tokens[i + 3])
+            &&       !(tokens[i + 3].isImmunized())) {
+              markEnd = i + 3;
+              if (replacement == null) {
+                replacement = getVerbReplacements().get(tokens[i + 3].getToken());
+                if (msg == null) {
+                  msg = "Notice ‘" + tokens[i + 3].getToken() + "’ is a noun. If you are referring to the related verb, you probably should use <suggestion>" + tokens[i].getToken() + tokens[i + 1].getToken() + tokens[i + 2].getToken() + " " + replacement + "</suggestion> instead.";
+                }
               }
             }
-          }
+          // }
           if ((isAdverb(tokens[i + 3]))
              && (isNoun(tokens[i + 4]))
                    && !(tokens[i + 4].isImmunized())) {
