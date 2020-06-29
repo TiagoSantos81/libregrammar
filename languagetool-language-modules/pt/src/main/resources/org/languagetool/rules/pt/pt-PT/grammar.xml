@@ -315,6 +315,11 @@ title="Easy editing stylesheet" ?>
             <exception postag_regexp='yes' postag='(?:N|A).+'/></token>
       </antipattern>
       <antipattern>
+          <token>o</token>
+          <token>todo</token>
+          <token postag_regexp='yes' postag='(?:N.|A..)[CM]S.+'/>
+      </antipattern>
+      <antipattern>
           <token regexp='yes' postag_regexp='yes' postag='V...3P.+' inflected='yes'>&verbos_de_ligacao;</token>
           <token regexp='yes'>tod[ao]</token>
           <token/>
