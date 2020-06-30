@@ -10837,6 +10837,31 @@ title="Easy editing stylesheet" ?>
       <example correction="pois, que">Terminei a prova com antecedência, não me digas, <marker>pois que</marker> não posso sair.</example>
     <!-- <example type='incorrect'>Hoje vou poder relaxar, <marker>pois posso</marker> sair mais cedo.</example>< XXX this is a false alarm but it is ok, since it is explained in the message -->
     </rule>
+    <rule>
+      <pattern>
+        <marker>
+          <token>conforme</token>
+          <token min='0'>o</token>
+          <token>solicitado</token>
+        </marker>
+          <token postag_regexp='yes' postag="V.+"/>
+      </pattern>
+      <message>Esta locução deve ser separada por vírgulas.</message>
+        <suggestion><match no='1' include_skipped='yes'/> <match no='2' include_skipped='yes'/> \3,</suggestion>
+      <example correction="Conforme solicitado,"><marker>Conforme solicitado</marker> contactei a minha inquilina...</example>
+    </rule>
+    <rule>
+      <pattern>
+        <marker>
+          <token>pelo</token>
+          <token>exposto</token>
+        </marker>
+          <token postag_regexp='yes' postag="V.+"/>
+      </pattern>
+      <message>Esta locução deve ser separada por vírgulas.</message>
+        <suggestion>\1 \2,</suggestion>
+      <example correction="Pelo exposto,"><marker>Pelo exposto</marker> parece-me prudente uma efetiva articulação...</example>
+    </rule>
   </rulegroup>
 
   <rulegroup id='CONDITIONAL_CLAUSE_PUNCTUATION' name="Pontuação: oração condicional">
