@@ -64,6 +64,7 @@ title="Easy editing stylesheet" ?>
     <!ENTITY naipes "(?:o[iu]ros|copas|espadas|paus|trunfos?)">
 
   <?ignore not used in LibreGrammar
+	<!ENTITY gerundio_verbos "acabar|afundar|criar|fazer|ir|ser|vir">
 	<!ENTITY gerundio_excecoes "abandonando|acumulando|beneficiando|caindo|crescendo|decrescendo|desaparecendo|emergindo|ficando|ganhando|levantando|originando|perdendo|permitindo|progredindo|propagando|saindo|sendo|surgindo|usando">
   ?>
 

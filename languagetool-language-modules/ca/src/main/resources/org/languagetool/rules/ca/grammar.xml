@@ -22519,6 +22519,16 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <suggestion suppress_misspelled="yes"><match no="3" regexp_match="(.+)" regexp_replace="post$1"/></suggestion>
                 <example correction="postcapitalista">L'economia <marker>post capitalista</marker>.</example>
             </rule>
+            <rule>
+                <pattern>
+                    <token>nacional</token>
+                    <token min="0">-</token>
+                    <token inflected="yes" regexp="yes">populisme|populista|catòlic|socialisme|catolicisme|sindicalisme|sindicalista</token>
+                </pattern>
+                <message suppress_misspelled="yes">S'escriu junt.</message>
+                <suggestion><match no="3" regexp_match="(?iu)(.+)" regexp_replace="nacional$1" case_conversion="alllower"/></suggestion>
+                <example correction="nacionalpopulista">És un govern <marker>nacional-populista</marker>.</example>
+            </rule>
         </rulegroup>
         <rulegroup id="CONTRACCIONS" name="contraccions">
             <antipattern>
@@ -28729,6 +28739,25 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rule>
     </category>
     <category id="CASING" name="E) Majúscules i minúscules" type="typographical">
+        <rule id="BRAILLE" name="braille">
+            <pattern>
+                <token regexp="yes">en|idioma|llengua|el|llenguatge</token>
+                <marker>
+                    <token case_sensitive="yes">Braille</token>
+                </marker>
+            </pattern>
+            <message>El sistema d'escriptura per a cecs inventat per Louis Braille s'escriu en minúscula.</message>
+            <suggestion><match no="2" case_conversion="alllower"></match></suggestion>
+            <example correction="braille">Fitxes escrites en <marker>Braille</marker>.</example>
+        </rule>
+        <rule id="MEDICAMENTS" name="medicaments en minúscula">
+            <pattern>
+                <token regexp="yes" case_sensitive="yes">Paracetamol|Acetaminofèn|Favipiravir|Fenetil·lina|Amoxicil·lina|Povidona|Clorazepat|Almagat<exception scope="previous" postag="SENT_START"/></token>
+            </pattern>
+            <message>Els noms dels principis actius de les medicines s'escriuen en minúscula.</message>
+            <suggestion><match no="1" case_conversion="alllower"/></suggestion>
+            <example correction="paracetamol">He comprat <marker>Paracetamol</marker>.</example>
+        </rule>
         <rule id="HOMO" name="homo/Homo">
             <pattern>
                 <marker>
@@ -41064,7 +41093,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                         <token inflected="yes">plànol</token>
                     </marker>
                     <token min="0" inflected="yes">de</token>
-                    <token inflected="yes" regexp="yes">seqüència|mediàtic|.*econòmic|.*social|.*polític|abstracte|personal|professional|vertical|horitzontal|perpendicular|oblic|teòric|pràctic|igualtat|superior|inferior</token>
+                    <token inflected="yes" regexp="yes">seqüència|mediàtic|.*econòmic|.*social|.*polític|abstracte|personal|professional|vertical|horitzontal|perpendicular|oblic|teòric|pràctic|igualtat|superior|inferior|simbòlic</token>
                 </pattern>
                 <message>¿Volíeu dir <suggestion><match no="1" postag="(NC.*)" postag_regexp="yes" postag_replace="$1">pla</match></suggestion>? Exemples d'ús correcte: un plànol de Xàtiva, un plànol del castell.</message>
                 <short>Possible confusió</short>
