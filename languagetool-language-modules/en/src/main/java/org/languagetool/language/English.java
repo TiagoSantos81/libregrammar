@@ -368,6 +368,7 @@ public class English extends Language implements AutoCloseable {
       case "MORFOLOGIK_RULE_EN_ZA":     return -10;  // more specific rules (e.g. L2 rules) have priority
       case "MORFOLOGIK_RULE_EN_NZ":     return -10;  // more specific rules (e.g. L2 rules) have priority
       case "MORFOLOGIK_RULE_EN_AU":     return -10;  // more specific rules (e.g. L2 rules) have priority
+      case "ISOLATED_LETTER":           return -13;  // prefer spell checker for multiword word corrections
       case "TWO_CONNECTED_MODAL_VERBS": return -15;
       case "CONFUSION_RULE":            return -20;
       case "SENTENCE_FRAGMENT":         return -50; // prefer other more important sentence start corrections.
