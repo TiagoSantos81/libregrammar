@@ -10847,8 +10847,9 @@ title="Easy editing stylesheet" ?>
           <token postag_regexp='yes' postag="V.+"/>
       </pattern>
       <message>Esta locução deve ser separada por vírgulas.</message>
-        <suggestion><match no='1' include_skipped='yes'/> <match no='2' include_skipped='yes'/> \3,</suggestion>
+        <suggestion><match no='1' include_skipped='all'/> <match no='2' include_skipped='all'/> \3,</suggestion>
       <example correction="Conforme solicitado,"><marker>Conforme solicitado</marker> contactei a minha inquilina...</example>
+      <example correction="Conforme o solicitado,"><marker>Conforme o solicitado</marker> contactei a minha inquilina...</example>
     </rule>
     <rule>
       <pattern>
