@@ -2410,7 +2410,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>Martedì 27 novembre 1922</example>
             </rule>
         </rulegroup>
-        <rulegroup  id="NUMBER_DAYS_MONTH" name="giorni massimi del mese (28, 29, 30, 31)" default="temp_off">
+        <rulegroup  id="NUMBER_DAYS_MONTH" name="giorni massimi del mese (28, 29, 30, 31)" default="on">
+        <!-- XXX activated 2020-06-30 -->
             <rule>
                 <pattern>
                     <marker>
