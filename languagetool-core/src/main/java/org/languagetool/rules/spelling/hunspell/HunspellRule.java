@@ -29,6 +29,8 @@ import org.languagetool.rules.RuleMatch;
 import org.languagetool.rules.SuggestedReplacement;
 import org.languagetool.rules.spelling.SpellingCheckRule;
 import org.languagetool.tools.StringTools;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.net.URISyntaxException;
@@ -59,12 +61,13 @@ public class HunspellRule extends SpellingCheckRule {
   protected Hunspell hunspell = null;
 
   private static final ConcurrentLinkedQueue<String> activeChecks = new ConcurrentLinkedQueue<>();
+  private static Logger logger = LoggerFactory.getLogger(HunspellRule.class);
   private static final String NON_ALPHABETIC = "[^\\p{L}]";
 
   private final boolean monitorRules;
   
   //200 most common French words. They are used to avoid wrong split suggestions
-  private final List<String> commonFrenchWords = Arrays.asList(new String[]{"qu'il", "qu'ils", "bon", "bonne", "bons", "bonnes", "a", "acte", "aider", "air", "ajouter", "aller", "allé", "animal", "année", "appel", "après", "arrière", "aucun", "aussi", "autre", "avant", "avec", "avoir", "bas", "beaucoup", "besoin", "bien", "bon", "boîte", "cause", "ce", "certains", "ces", "changement", "chaque", "chaud", "chose", "comme", "comment", "construire", "côté", "dans", "de", "dehors", "deux", "différer", "dire", "dit", "donner", "droit", "déménagement", "eau", "elle", "encore", "ensemble", "essayer", "est", "et", "eu", "fabriqué", "faible", "faire", "fait", "faut", "fin", "forme", "garçon", "genre", "grand", "haut", "homme", "hommes", "ici", "il", "ils", "image", "interroger", "je", "jouer", "jour", "jusqu’à", "juste", "la", "le", "les", "leur", "lieu", "ligne", "lire", "long", "lui", "lumière", "là", "ma", "main", "maintenant", "mais", "maison", "manière", "mettre", "moi", "monde", "montrer", "mot", "mère", "même", "ne", "nom", "nombre", "notre", "nous", "nouveau", "obtenir", "ou", "où", "par", "partie", "penser", "personnes", "petit", "peu", "peut", "phrase", "plus", "point", "port", "pour", "pourquoi", "pourrait", "première", "prendre", "près", "puis", "père", "quand", "que", "qui", "regarder", "savoir", "seulement", "si", "signifier", "soi", "son", "sont", "sous", "suivre", "sur", "tel", "temps", "terre", "tour", "tous", "tout", "travail", "trois", "trop", "trouver", "très", "tête", "un", "utiliser", "venir", "venu", "vers", "vieux", "vivre", "voir", "volonté", "votre", "voudrais", "vouloir", "vous", "à", "écrire", "épeler", "étaient", "était", "été", "être"});
+  private final List<String> commonFrenchWords = Arrays.asList("qu'il", "qu'ils", "bon", "bonne", "bons", "bonnes", "a", "acte", "aider", "air", "ajouter", "aller", "allé", "animal", "année", "appel", "après", "arrière", "aucun", "aussi", "autre", "avant", "avec", "avoir", "bas", "beaucoup", "besoin", "bien", "bon", "boîte", "cause", "ce", "certains", "ces", "changement", "chaque", "chaud", "chose", "comme", "comment", "construire", "côté", "dans", "de", "dehors", "deux", "différer", "dire", "dit", "donner", "droit", "déménagement", "eau", "elle", "encore", "ensemble", "essayer", "est", "et", "eu", "fabriqué", "faible", "faire", "fait", "faut", "fin", "forme", "garçon", "genre", "grand", "haut", "homme", "hommes", "ici", "il", "ils", "image", "interroger", "je", "jouer", "jour", "jusqu’à", "juste", "la", "le", "les", "leur", "lieu", "ligne", "lire", "long", "lui", "lumière", "là", "ma", "main", "maintenant", "mais", "maison", "manière", "mettre", "moi", "monde", "montrer", "mot", "mère", "même", "ne", "nom", "nombre", "notre", "nous", "nouveau", "obtenir", "ou", "où", "par", "partie", "penser", "personnes", "petit", "peu", "peut", "phrase", "plus", "point", "port", "pour", "pourquoi", "pourrait", "première", "prendre", "près", "puis", "père", "quand", "que", "qui", "regarder", "savoir", "seulement", "si", "signifier", "soi", "son", "sont", "sous", "suivre", "sur", "tel", "temps", "terre", "tour", "tous", "tout", "travail", "trois", "trop", "trouver", "très", "tête", "un", "utiliser", "venir", "venu", "vers", "vieux", "vivre", "voir", "volonté", "votre", "voudrais", "vouloir", "vous", "à", "écrire", "épeler", "étaient", "était", "été", "être");
 
   public static Queue<String> getActiveChecks() {
     return activeChecks;
@@ -229,7 +232,7 @@ public class HunspellRule extends SpellingCheckRule {
             // Find potentially missing compounds with privacy-friendly logging: we only log a single unknown word with no
             // meta data and only if it's made up of two valid words, similar to the "UNKNOWN" logging in
             // GermanSpellerRule:
-            if (language.getShortCode().equals("de")) {
+            /*if (language.getShortCode().equals("de")) {
               String covered = sentence.getText().substring(len, len + cleanWord.length());
               if (suggestions.stream().anyMatch(
                     k -> k.getReplacement().contains(" ") &&
@@ -237,9 +240,9 @@ public class HunspellRule extends SpellingCheckRule {
                     k.getReplacement().length() > 6 && k.getReplacement().length() < 25 &&
                     k.getReplacement().matches("[a-zA-ZÖÄÜöäüß -]+")
                   )) {
-                System.out.println("COMPOUND: " + covered);
+                logger.info("COMPOUND: " + covered);
               }
-            }
+            }*/
             // TODO user suggestions
             addSuggestionsToRuleMatch(cleanWord, Collections.emptyList(), suggestions, null, ruleMatch);
           } else {
