@@ -7604,7 +7604,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>He tenido una buena tarde.</example>
             </rule>
         </rulegroup>
-        <rule id="AGREEMENT_POSTPONED_ADJ" name="concordancia de adjetivo pospuesto a sustantivos" default="temp_off">
+        <rule id="AGREEMENT_POSTPONED_ADJ" name="concordancia de adjetivo pospuesto a sustantivos">
             <antipattern>
                 <token>por</token>
                 <token>muy</token>
@@ -7843,7 +7843,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                  producidos por la aceleración y desaceleración lineal y angular repetitivas.
                 -->
         </rule>
-        <rulegroup id="AGREEMENT_ADJ_NOUN" name="Concordancias adjetivo y nombre" default="temp_off">
+        <rulegroup id="AGREEMENT_ADJ_NOUN" name="Concordancias adjetivo y nombre">
             <antipattern>
                 <marker>
                     <token postag="SPS00"/>
@@ -7932,7 +7932,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="antiguo aeronauta|antiguos aeronautas|antigua aeronauta|antiguas aeronautas|antigua, aeronautas">Eran <marker>antigua aeronautas</marker>.</example>
             </rule>
         </rulegroup>
-        <rulegroup id="AGREEMENT_PARTICIPLE_NOUN" name="concordancias participio y nombre" default="temp_off">
+        <rulegroup id="AGREEMENT_PARTICIPLE_NOUN" name="concordancias participio y nombre">
             <antipattern>
                 <token regexp="yes">ab[ií](a|as|an|amos|ais)|as|emos|e|an<exception regexp="yes">\p{Lu}+</exception><exception postag="_GN_MS"/></token>
                 <token postag="V.P..SM" postag_regexp="yes"/>
@@ -9247,7 +9247,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rule>
     </category>
     <category id="PREPOSITIONS" name="Preposiciones">
-        <rule id="DEPENDER_DE" name="depender *en/de" default="temp_off">
+        <rule id="DEPENDER_DE" name="depender *en/de">
             <pattern>
                 <token inflected="yes">depender</token>
                 <marker>
