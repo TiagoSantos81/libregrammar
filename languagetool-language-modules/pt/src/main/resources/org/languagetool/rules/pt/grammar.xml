@@ -18663,13 +18663,12 @@ o tomate'>
 
     <rule id='QUE_QUÊ' name="Confusão: que - quê" default="temp_off">
     <!--      Created by Marco A.G.Pinto, Portuguese rule - 2020-07-02 (2-JUL-2020+) -->
-      <pattern>		
-        <marker>
+      <pattern>	
           <token>que</token>
-        </marker>
-		<token regexp='yes'>[!?]</token>
+		  <token regexp='yes'>[!?]</token>
       </pattern>
-      <message>Substitua por <suggestion>quê</suggestion>.</message>
+      <message>Substitua por <suggestion>quê\2</suggestion>.</message>
+      <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/do-que-e-de-que-ii/34595</url>
       <example correction="quê">Mas o <marker>que</marker>?</example>
 	</rule>
 
