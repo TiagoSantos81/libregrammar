@@ -118,18 +118,15 @@ public class MultiDocumentsHandler {
 
 
   MultiDocumentsHandler(XComponentContext xContext, XProofreader xProofreader, XEventListener xEventListener) {
-//  MultiDocumentsHandler(XComponentContext xContext) {
     this.xContext = xContext;
-    this.configFile = CONFIG_FILE;
     this.xEventListener = xEventListener;
     this.xProofreader = xProofreader;
-//    this.xEventListener = null;
-//    this.xProofreader = null;
     xEventListeners = new ArrayList<>();
+    configFile = CONFIG_FILE;
     File homeDir = getHomeDir();
-    this.configDir = getLOConfigDir();
+    configDir = getLOConfigDir();
     String configDirName = configDir == null ? "." : configDir.toString();
-    this.oldConfigFile = homeDir == null ? null : new File(homeDir, OLD_CONFIG_FILE);
+    oldConfigFile = homeDir == null ? null : new File(homeDir, OLD_CONFIG_FILE);
     MessageHandler.init(configDirName, LOG_FILE);
     documents = new ArrayList<>();
     disabledRulesUI = new HashSet<>();
@@ -1063,10 +1060,8 @@ public class MultiDocumentsHandler {
           checkDialog.start();
         }
       } else if ("nextError".equals(sEvent)) {
-        if (OfficeTools.DEVELOP_MODE) {
-          SpellAndGrammarCheckDialog checkDialog = new SpellAndGrammarCheckDialog(xContext, this);
-          checkDialog.nextError();
-        }
+        SpellAndGrammarCheckDialog checkDialog = new SpellAndGrammarCheckDialog(xContext, this);
+        checkDialog.nextError();
     /* if by merge error isRemote can become 'true'
      * it will show on the context menu.
      * this code is kept to double check if isRemote is false.

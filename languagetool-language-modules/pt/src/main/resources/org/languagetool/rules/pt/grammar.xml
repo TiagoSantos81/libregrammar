@@ -2155,7 +2155,7 @@ title="Easy editing stylesheet" ?>
             <exception negate_pos='yes' postag='[DR].' postag_regexp='yes'/></token>
           <token postag_regexp='yes' postag='(?:NC|A..|V.P.).S.+'>
             <exception negate_pos='yes' postag_regexp='yes' postag='(?:NC|A..|V.P.).S.+'/>
-            <exception regexp='yes'>alvo|concorrência|demasiado|m(?:aioria|inoria)|propriedade|verdade</exception></token>
+            <exception regexp='yes'>alvo|concorrência|demasiado|m(?:aioria|inoria|oda)|propriedade|patrim[óô]nio|verdade</exception></token>
         </marker>
           <token>
             <exception regexp='yes'>e|&hifen;</exception></token>
@@ -18660,6 +18660,18 @@ o tomate'>
       <example correction="pôr">Vou <marker>por</marker> termo a tudo.</example>
 	 </rule>	 
     </rulegroup>
+
+    <rule id='QUE_QUÊ' name="Confusão: que - quê" default="temp_off">
+    <!--      Created by Marco A.G.Pinto, Portuguese rule - 2020-07-02 (2-JUL-2020+) -->
+      <pattern>		
+        <marker>
+          <token>que</token>
+        </marker>
+		<token regexp='yes'>[!?]</token>
+      </pattern>
+      <message>Substitua por <suggestion>quê</suggestion>.</message>
+      <example correction="quê">Mas o <marker>que</marker>?</example>
+	</rule>
 
     <!--          Tiago F. Santos Rules Start         ****START**** -->
     <!-- ********************************************************** -->
