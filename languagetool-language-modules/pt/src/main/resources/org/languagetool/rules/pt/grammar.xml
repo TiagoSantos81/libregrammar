@@ -18661,7 +18661,7 @@ o tomate'>
 	 </rule>	 
     </rulegroup>
 
-    <rule id='QUE_QUÊ' name="Confusão: que - quê" default="temp_off">
+    <rule id='QUE_QUÊ' name="Confusão: que - quê">
     <!--      Created by Marco A.G.Pinto, Portuguese rule - 2020-07-02 (2-JUL-2020+) -->
       <pattern>	
           <token>que</token>
@@ -18669,7 +18669,7 @@ o tomate'>
       </pattern>
       <message>Substitua por <suggestion>quê\2</suggestion>.</message>
       <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/do-que-e-de-que-ii/34595</url>
-      <example correction="quê">Mas o <marker>que</marker>?</example>
+      <example correction="quê">Mas o <marker>que?</marker></example>
 	</rule>
 
     <!--          Tiago F. Santos Rules Start         ****START**** -->
