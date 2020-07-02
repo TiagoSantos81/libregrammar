@@ -167,10 +167,14 @@ public class SwJLanguageTool {
   }
 
   public AnalyzedSentence getAnalyzedSentence(String sentence) throws IOException {
+  
+    /* no active remote code on LibreGrammar
     if(isRemote) {
       return lt.getAnalyzedSentence(sentence);   // This is only a dummy; don't use it for call of remote server
     } else if(isMultiThread) {
-        return mlt.getAnalyzedSentence(sentence); 
+    */
+    if(isMultiThread) {
+      return mlt.getAnalyzedSentence(sentence); 
     } else {
       return lt.getAnalyzedSentence(sentence); 
     }
