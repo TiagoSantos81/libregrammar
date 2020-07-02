@@ -332,6 +332,13 @@ public class UpperCaseRule extends Rule {
     Arrays.asList(
       tokenRegex("Google|Microsoft"), // Microsoft Teams / Google Maps (not tagged as NNP)
       tokenRegex("Teams|Maps|Canvas|Remind|Switch|Gems?") 
+    ),
+    Arrays.asList(
+      pos("SENT_START"), // Music and Concepts.
+      tokenRegex("[A-Z].*"),
+      tokenRegex("or|and|&"),
+      tokenRegex("[A-Z].*"),
+      pos("SENT_END")
     )
   );
 
