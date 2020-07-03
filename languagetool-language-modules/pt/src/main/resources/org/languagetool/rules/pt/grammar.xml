@@ -1999,7 +1999,7 @@ title="Easy editing stylesheet" ?>
     <!--      Created by Tiago F. Santos rule, Portuguese rule 2020-05-20     -->
       <antipattern>
           <token regexp='yes'>[dn]?est[ae]s?</token>
-          <token regexp='yes'>&expressoes_de_tempo:;</token>
+          <token regexp='yes'>&expressoes_de_tempo;</token>
       </antipattern>
     <rule>
       <pattern>
