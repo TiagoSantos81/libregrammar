@@ -8620,7 +8620,7 @@ though, and has since been slightly modified)-->
                   </token>
               </marker>
           </pattern>
-          <message>Did you mean <suggestion>CEST</suggestion> ?</message>
+          <message>Vouliez-vous dire <suggestion>CEST</suggestion> ?</message>
           <example correction="CEST">La présentation commence à 15:00 <marker>cest</marker>.</example>
           <example>Tu penses que cest bon ?</example>
       </rule>
@@ -29549,7 +29549,7 @@ though, and has since been slightly modified)-->
               <exception case_sensitive="yes">CEST</exception>
           </token>
       </pattern>
-      <message>Did you mean <suggestion>c'est</suggestion> ?</message>
+      <message>Vouliez-vous dire <suggestion>c'est</suggestion> ?</message>
       <example correction="c'est">Tu penses que <marker>cest</marker> bon ?</example>
       <example>La présentation commence à 15:00 CEST</example>
       <example>La présentation commence à 15:00 cest</example>
