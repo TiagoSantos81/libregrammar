@@ -10916,6 +10916,18 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
       </pattern>
       <disambig action="ignore_spelling"/>
     </rule>
+    <rule>
+      <pattern>
+          <token regexp="yes">[\d,. ]*[º°′″‴][CFKNSEWO]</token>
+      </pattern>
+      <disambig action="ignore_spelling"/>
+    </rule>
+    <rule>
+      <pattern>
+          <token regexp="yes">[\d.,]+[%‰‱]</token>
+      </pattern>
+      <disambig action="ignore_spelling"/>
+    </rule>
   </rulegroup>
 
     <rulegroup name="Ignore spelling numbers " id="IGNORE_NUMBERS">
