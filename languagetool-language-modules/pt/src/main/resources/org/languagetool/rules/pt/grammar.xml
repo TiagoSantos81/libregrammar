@@ -90,7 +90,7 @@ title="Easy editing stylesheet" ?>
     <!ENTITY verbos_auxiliares_aspectuais "(?:andar|ir|vir|começar|continuar|tornar|voltar|costumar|acabar|deixar)">
     <!ENTITY verbos_auxiliares_modais "(?:dever|poder|querer|conseguir|pretender|tentar|chegar)">
     <!ENTITY verbos_de_ligacao "(?:andar|continuar|estar|ficar|p(?:arecer|ermanecer)|assemelhar|s(?:emelhar|er)|v(?:irar|viver))">
-    <!ENTITY verbo_nao_copulativos "(?:apresentar|criar|matar|sugerir)">
+    <!ENTITY verbo_nao_copulativos "(?:apresentar|criar|dar|matar|sugerir)">
     <!ENTITY verbos_transitivos_diretos "(?:abandonar|abençoar|aborrecer|abraçar|acompanhar|acusar|admirar|adorar|alegrar|ameaçar|amolar|amparar|auxiliar|castigar|condenar|conhecer|conservar|convidar|defender|eleger|estimar|humilhar|namorar|ouvir|prejudicar|prezar|proteger|respeitar|socorrer|suportar|ver|visitar)">
     <!ENTITY verbos_reflexivos "a(?:bster|covardar|piedar|pressar|rrepender|rrogar|ssemelhar|trever)|c(?:ontorcer|ondoer)|d(?:esbocarignar)|embebedar|escapulir|queixar|suicidar|transvestir|vangloriar|zangar">
     <!ENTITY haver_impessoal "(?:h(?:á|avia|ouve|ouvera|averá|averia|aja|ouvesse|ouver))">
@@ -1997,6 +1997,10 @@ title="Easy editing stylesheet" ?>
 
   <rulegroup id='PASSIVE_VOICE_NUMBER_AGREEMENT' name="Concordância de número: Voz passiva">
     <!--      Created by Tiago F. Santos rule, Portuguese rule 2020-05-20     -->
+      <antipattern>
+          <token regexp='yes'>[dn]?est[ae]s?</token>
+          <token regexp='yes'>&expressoes_de_tempo:;</token>
+      </antipattern>
     <rule>
       <pattern>
           <token inflected='yes'>ser</token>
@@ -2881,6 +2885,7 @@ title="Easy editing stylesheet" ?>
       </antipattern>
       <antipattern>
           <token regexp='yes'>[mst]e|[nv]os</token><!-- TODO make rule for wrong pronouns when using proclisis -->
+          <token postag_regexp='yes' postag='V.+' min='0'/>
           <token inflected='yes' regexp='yes'>&verbos_reflexivos;</token>
       </antipattern>
     <!-- XXX test without this first
@@ -2903,10 +2908,12 @@ title="Easy editing stylesheet" ?>
       <example>Ainda não se queixou.</example>
       <example>Me queixei ainda mais.</example>
       <example>Depois disso, ela <marker>queixou-nos</marker> dos vizinhos.</example><!-- XXX wrong use, dealt by next rule -->
+      <example>Não me posso queixar.</example>
     </rule>
     <rule>
       <antipattern>
           <token regexp='yes'>[mst]e|[nv]os</token>
+          <token postag_regexp='yes' postag='V.+' min='0'/>
           <token inflected='yes' regexp='yes'>&verbos_reflexivos;</token>
       </antipattern>
       <antipattern>
@@ -3418,14 +3425,16 @@ title="Easy editing stylesheet" ?>
           </unify>
       </pattern>
       <message>&MSG_ECV;</message>
+        <suggestion><match no='1' include_skipped='all'/> <match no='2' include_skipped='all'/>, \3</suggestion>
       <url>https://duvidas.dicio.com.br/fui-eu-ou-foi-eu/</url>
-      <example type='incorrect'><marker>Foi eu</marker> que fiz.</example>
+      <example correction='encontramos, ele'>Quando nos <marker>encontramos ele</marker> chorou.</example>
+      <example correction='Foi, eu'><marker>Foi eu</marker> que fiz.</example>
       <example><marker>Fui eu</marker> que fiz.</example>
-      <example type='incorrect'><marker>Foi tu</marker> que​ fizeste.</example>
+      <example correction='Foi, tu'><marker>Foi tu</marker> que​ fizeste.</example>
       <example><marker>Foste tu</marker> que​ fizeste.</example>
-      <example type='incorrect'><marker>Fui ele</marker> que fez.</example>
+      <example correction='Fui, ele'><marker>Fui ele</marker> que fez.</example>
       <example><marker>Foi ele</marker> que fez.</example>
-      <example type='incorrect'><marker>Foi nós</marker> que fizemos.</example>
+      <example correction='Foi, nós'><marker>Foi nós</marker> que fizemos.</example>
       <example>Fomos nós que fizemos.</example>
     </rule>
   </rulegroup>
@@ -6203,20 +6212,20 @@ title="Easy editing stylesheet" ?>
       <antipattern><!-- long holophrases -->
           <token postag='SENT_START'/>
           <token max='2'/>
-          <token regexp='yes'>[.!?]</token>
+          <token regexp='yes'>[\.!\?]</token>
       </antipattern>
       <antipattern><!-- long holophrases -->
           <token postag='SENT_START'/>
           <token postag_regexp='yes' postag="_PUNCT|''"/>
           <token max='3'/>
-          <token regexp='yes'>[.!?]</token>
+          <token regexp='yes'>[\.!\?]</token>
       </antipattern>
       <antipattern><!-- long holophrases -->
           <token postag='SENT_START'/>
           <token/>
           <token postag_regexp='yes' postag="_PUNCT|''"/>
           <token max='2'/>
-          <token regexp='yes'>[.!?]</token>
+          <token regexp='yes'>[\.!\?]</token>
       </antipattern>
       <antipattern><!-- simple holophrases -->
           <token postag='SENT_START'/>
@@ -6224,12 +6233,26 @@ title="Easy editing stylesheet" ?>
           <token/>
           <token postag_regexp='yes' postag="_PUNCT|''"/>
           <token max='2'/>
-          <token regexp='yes'>[.!?]</token>
+          <token regexp='yes'>[\.!\?]</token>
       </antipattern>
       <antipattern><!-- long holophrases -->
           <token postag='SENT_START'/>
           <token max='4'/>
           <token>!</token>
+      </antipattern>
+      <antipattern><!-- long holophrases -->
+          <token postag='SENT_START'/>
+          <token max='2'/>
+          <token>,</token>
+          <token regexp='yes'>sim|não</token>
+          <token regexp='yes'>[\.!\?]</token>
+      </antipattern>
+      <antipattern><!-- Short questions e.g. Porque não Las Vegas? -->
+          <token postag='SENT_START'/>
+          <token>Porque</token>
+          <token regexp='yes'>sim|não</token>
+          <token max='2'/>
+          <token>?</token>
       </antipattern>
       <antipattern><!-- Short questions e.g. A querida Maria? -->
           <token postag='SENT_START'/>
@@ -6245,7 +6268,7 @@ title="Easy editing stylesheet" ?>
           <token min='0'>,</token>
           <token max='2'>
             <exception>,</exception></token>
-          <token regexp='yes'>[.!?]</token>
+          <token regexp='yes'>[\.!\?]</token>
       </antipattern>
       <antipattern><!-- two word greetings -->
           <token postag="SENT_START"/>
@@ -6254,7 +6277,7 @@ title="Easy editing stylesheet" ?>
           <token min='0'>,</token>
           <token max='2'>
             <exception>,</exception></token>
-          <token regexp='yes'>[.!?]</token>
+          <token regexp='yes'>[\.!\?]</token>
       </antipattern>
       <antipattern><!-- two word greetings -->
           <token postag="SENT_START"/>
@@ -6263,7 +6286,7 @@ title="Easy editing stylesheet" ?>
           <token min='0'>,</token>
           <token max='2'>
             <exception>,</exception></token>
-          <token regexp='yes'>[.!?]</token>
+          <token regexp='yes'>[\.!\?]</token>
       </antipattern>
       <antipattern><!-- two word greetings 2 -->
           <token postag="SENT_START"/>
@@ -6272,7 +6295,7 @@ title="Easy editing stylesheet" ?>
           <token min='0'>,</token>
           <token max='2'>
             <exception>,</exception></token>
-          <token regexp='yes'>[.!?]</token>
+          <token regexp='yes'>[\.!\?]</token>
       </antipattern>
       <antipattern><!-- XXX LibreOffice specific antipattern -->
     <!-- TODO Libreoffice plug-in tokenizes enumerations differently, so, it triggers an error that does not exist in the LT-server, nor LT-standalone. Verify. -->
@@ -6281,7 +6304,7 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>\d{1,2}|\p{L}</token>
           <token regexp='yes'>[\.\)]</token>
           <token max='3'/>
-          <token regexp='yes'>[.!?]</token>
+          <token regexp='yes'>[\.!\?]</token>
         </marker>
       </antipattern>
       <antipattern><!-- two word greetings -->
@@ -6291,7 +6314,7 @@ title="Easy editing stylesheet" ?>
           <token min='0'>,</token>
           <token>por</token>
           <token>favor</token>
-          <token regexp='yes'>[.!?]</token>
+          <token regexp='yes'>[\.!\?]</token>
       </antipattern>
       <pattern>
           <token postag='SENT_START'/>
@@ -7629,7 +7652,7 @@ title="Easy editing stylesheet" ?>
           <token>à</token>
           <token regexp='yes'>muito|pouco</token>
       </pattern>
-      <message>Substitua por <suggestion>há muito</suggestion>.</message>
+      <message>Substitua por <suggestion>há \2</suggestion>.</message>
       <example correction="há muito">Ainda <marker>à muito</marker> a fazer.</example>
     </rule>
 
@@ -10386,7 +10409,7 @@ title="Easy editing stylesheet" ?>
       </antipattern>
       <antipattern>
           <token>fundo</token>
-          <token regexp='yes'>[.!?]</token>
+          <token regexp='yes'>[\.!\?]</token>
       </antipattern>
       <pattern>
           <token postag_regexp='yes' postag='[CR].+'/>
@@ -12399,6 +12422,13 @@ title="Easy editing stylesheet" ?>
           <token><match no='0'/></token>
           <token postag_regexp='yes' postag='V...3.+'/>
       </antipattern>
+      <antipattern>
+          <token regexp='yes' spacebefore='no'>&hifen;</token>
+          <token regexp='yes' spacebefore='no'>&pronomes_obliquos_atonos;</token>
+          <token regexp='yes'>que|se</token>
+          <token><match no='1'/></token>
+          <token postag_regexp='yes' postag='V.+'/>
+      </antipattern>
       <pattern>
           <token regexp='yes'>&pronomes_obliquos_atonos;</token>
           <token/>
@@ -12409,6 +12439,7 @@ title="Easy editing stylesheet" ?>
         <suggestion>\2-\3</suggestion>
       <example correction="te falei|falei-te">Já <marker>te falei te</marker> deste anel.</example>
       <example>Precisamos de saber se o João se terá lembrado.</example>
+      <example>Lembro-me que me ofereceram...</example>
     </rule>
   </rulegroup>
 
@@ -18669,7 +18700,7 @@ o tomate'>
       </pattern>
       <message>Substitua por <suggestion>quê\2</suggestion>.</message>
       <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/do-que-e-de-que-ii/34595</url>
-      <example correction="quê">Mas o <marker>que?</marker></example>
+      <example correction="quê?">Mas o <marker>que?</marker></example>
 	</rule>
 
     <!--          Tiago F. Santos Rules Start         ****START**** -->
