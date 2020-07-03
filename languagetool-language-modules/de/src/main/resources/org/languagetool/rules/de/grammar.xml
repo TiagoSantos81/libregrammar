@@ -44351,6 +44351,7 @@ Andere Projekte</example>
                         <exception postag="VER:(INF:|PA2).*|VER:MOD:INF.*|PA[12]:.*|SUB:.*|EIG:.*|ADJ:.*|ART:.*|PRO:.*|ADV.*|PRP:.*|NEG:.*|ABK:.*|ZUS.*|ZAL.*" postag_regexp="yes"/>
                         <exception inflected="yes" regexp="yes">bleiben|lassen|sieben|achten</exception>   <!-- siebte, achte werden nicht als Zahlwort erkannt  -->
                         <exception regexp="yes">bitte|halt|mindere|lichte|sog|rauf</exception>
+                        <exception postag="VER:IMP:SIN:NON" />
                         <exception regexp="yes" scope="previous">,|\.|:|\?|!|;|-|–|—|\)|\(|„|“|»|«|"|und|oder|da|weil|ob(wohl|gleich)?|damit|sodass|dass|indem|wenn|falls|sofern|während|bevor|nachdem|seitdem|so(bald|lange)|was|als|wie|bis|wer|wo|wohin</exception>
                         <exception scope="next">,</exception>
                     </token>
@@ -44417,6 +44418,7 @@ Andere Projekte</example>
                 <example>Daniel Schöpf hat sie ins Studio begleitet.</example>
                 <example>Wir fuhren rauf und runter mit dem Fahrstuhl.</example>
                 <example>Geringfügige Verunreinigungen der Rohstoffe, die mit den normalen Qualitätsanforderungen an das Gebrauchsglas vereinbar sind, stellen ebenfalls Quellen für weitere (unbeabsichtigte) Glasbestandteile dar.</example>
+                <example>Du hast doch den Link zu web.de eingesetzt.</example>
             </rule>
         </rulegroup>
         <rulegroup id="FEHLERHAFTES_KOMMA_ALLG" name="Fehlerhaftes Komma">

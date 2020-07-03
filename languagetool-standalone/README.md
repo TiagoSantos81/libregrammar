@@ -3,7 +3,7 @@
 **A proof-reading tool for Catalan, Dutch, English, French, German,
 Polish, Portuguese, Russian, and [29 more languages](https://github.com/TiagoSantos81/languagetool/tree/master/languagetool-language-modules)**
 
-Version 4.9, 2019-12-28
+Version 5.1-SNAPSHOT, 2020-xx-xx  
 Copyright (C) 2019- the LibreGrammar community and Tiago F. Santos
 Copyright (C) 2005-2019 the LanguageTool community and Daniel Naber (www.danielnaber.de)  
 https://www.languagetool.org
