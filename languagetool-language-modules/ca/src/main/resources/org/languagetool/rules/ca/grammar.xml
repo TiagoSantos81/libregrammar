@@ -2369,6 +2369,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <antipattern>
                     <token>las</token>
                 </antipattern>
+                <antipattern>
+                    <token regexp="yes">1r|2n|3r|4t</token>
+                    <token>ESO</token>
+                </antipattern>
                 <pattern>
                     <unify negate="yes">
                         <feature id="nombre"/>
@@ -2403,6 +2407,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>que es va escapar corrent escales amunt.</example>
                 <example>són mínimes atesa la seva gran extensió</example>
                 <example>dels beduïns rudes i malcarats</example>
+                <example>1r ESO, 2n ESO, 3r ESO, 4t ESO.</example>
                 <!-- <example>i el Club Esportiu Lleida Basquetbol</example>
                     a les actuals Cambodja i Cotxinxina-->
             </rule>
@@ -15151,6 +15156,17 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <message>Si és un nom castellà, duu accent.</message>
                 <suggestion>María</suggestion>
                 <example correction="María">José <marker>Maria</marker></example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp="yes">José|Pedro|Antonio|Juan</token>
+                    <marker>
+                        <token>Luís</token>
+                    </marker>
+                </pattern>
+                <message>Si és un nom castellà, no duu accent.</message>
+                <suggestion>Luis</suggestion>
+                <example correction="Luis">José <marker>Luís</marker></example>
             </rule>
             <rule>
                 <pattern>
@@ -29053,7 +29069,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         <rule id="MAJ_DESPRES_INTERROGANT" name="Majúscula després d'interrogant">
             <pattern>
                 <token regexp="yes">[?!]</token>
-                <token regexp="yes">\p{Ll}.*</token>
+                <token regexp="yes">\p{Ll}.*<exception postag="IS_URL"></exception></token>
             </pattern>
             <message>Possible error de puntuació.</message>
             <suggestion><match no="1"/>, <match no="2"/></suggestion>

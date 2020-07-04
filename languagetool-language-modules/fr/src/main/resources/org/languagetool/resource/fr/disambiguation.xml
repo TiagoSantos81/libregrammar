@@ -71,7 +71,8 @@ RB => Règles Brutes
   <rulegroup id="ROMAN_NUMBER" name="roman number">
     <rule>
     <pattern>
-      <token regexp="yes" case_sensitive="yes">(?=[MDCLXVI])M*(C[MD]|D?C*)(X[CL]|L?X*)(I[XV]|V?I*)
+      <!--(?=[MDCLXVI])M*(C[MD]|D?C*)(X[CL]|L?X*)(I[XV]|V?I*)-->
+      <token regexp="yes" case_sensitive="yes">(?=.)M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})
         <exception scope="next" regexp="yes">&apostrophe;</exception>
       </token>
     </pattern>
@@ -151,7 +152,7 @@ RB => Règles Brutes
   <rule id="PREFIXES" name="prefixes">
     <pattern>
       <marker>
-        <token regexp="yes">pré|nord|sud|néo|méga|ultra|pro|inter|micro|macro|sous|haut|auto|ré|super|vice|hyper|proto|grand|pseudo</token>
+        <token regexp="yes">anti|pré|nord|sud|néo|méga|ultra|pro|inter|micro|macro|sous|haut|auto|ré|super|vice|hyper|proto|grand|pseudo|multi</token>
       </marker>
       <token spacebefore="no">-</token>
       <token spacebefore="no"/>
@@ -1227,7 +1228,7 @@ RB => Règles Brutes
       <pattern>
         <token postag="N.*" postag_regexp="yes"/>
         <marker>
-          <token regexp="yes">que|qu</token>
+          <token regexp="yes">que|qu'</token>
         </marker>
       </pattern>
       <disambig postag="R rel e sp"/>
@@ -1236,7 +1237,7 @@ RB => Règles Brutes
       <pattern>
         <token postag="V.*|A" postag_regexp="yes"/>
         <marker>
-          <token regexp="yes">que|qu</token>
+          <token regexp="yes">que|qu'</token>
         </marker>
       </pattern>
       <disambig postag="C sub"/>
@@ -2188,8 +2189,47 @@ RB => Règles Brutes
     <rule>
       <pattern>
         <marker>
-          <token>-</token>
           <token regexp="yes">[\d+\.,]</token>
+        </marker>
+      </pattern>
+      <disambig action="ignore_spelling"/>
+    </rule>
+    <rule>
+      <pattern>
+        <marker>
+          <token regexp="yes">[\d\., ]+[%$€£º°]?</token>
+        </marker>
+      </pattern>
+      <disambig action="ignore_spelling"/>
+    </rule>
+    <rule>
+      <pattern>
+        <marker>
+          <token regexp="yes">[\d\., ]+⁄[\d\., ]+</token>
+        </marker>
+      </pattern>
+      <disambig action="ignore_spelling"/>
+    </rule>
+    <rule>
+      <pattern>
+        <marker>
+          <token regexp="yes">[12][0-9]([\.,][0-5][0-9])?(h|hr|hrs)?</token> <!-- TODO: rules suggesting proper formatting -->
+        </marker>
+      </pattern>
+      <disambig action="ignore_spelling"/>
+    </rule>
+    <rule>
+      <pattern>
+        <marker>
+          <token regexp="yes">[$€£][\d\., ]+</token> <!-- TODO: create rule suggesting another format -->
+        </marker>
+      </pattern>
+      <disambig action="ignore_spelling"/>
+    </rule>
+    <rule>
+      <pattern>
+        <marker>
+          <token regexp="yes">[\d\., ]+[º°][CF]</token>
         </marker>
       </pattern>
       <disambig action="ignore_spelling"/>
