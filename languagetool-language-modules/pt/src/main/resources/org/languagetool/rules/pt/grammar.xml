@@ -528,7 +528,7 @@ title="Easy editing stylesheet" ?>
       </antipattern>
       <antipattern>
           <token regexp='yes'>eu|tu|você|ele</token>
-          <token regexp='yes'>(?:própri|mesm)os</token>
+          <token regexp='yes'>(?:própri|mesm)o</token>
           <token postag='N.F.+' postag_regexp='yes'/>
       </antipattern>
       <pattern>
