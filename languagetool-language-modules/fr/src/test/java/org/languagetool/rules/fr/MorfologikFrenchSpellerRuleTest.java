@@ -32,6 +32,7 @@ import static org.junit.Assert.assertEquals;
 
 public class MorfologikFrenchSpellerRuleTest {
 
+  /* XXX do not lose time testing in LibreGrammar, since it is not used 
   @Test
   public void testMorfologikSpeller() throws IOException {
     MorfologikFrenchSpellerRule rule = new MorfologikFrenchSpellerRule(TestTools.getMessages("fr"), new French(), null,
@@ -172,4 +173,5 @@ public class MorfologikFrenchSpellerRuleTest {
     }
     
   }
+  */
 }
