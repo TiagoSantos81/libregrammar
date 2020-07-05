@@ -18613,7 +18613,7 @@ o tomate'>
       <example correction="e mais tarde">As mulheres engravidam menos <marker>e mas tarde</marker>.</example>
     </rule>
 
-    <rule id='O_AO' name="Confusão: o - ao" >
+    <rule id='O_AO' name="Confusão: o - ao" default="off">
     <!--      Created by Marco A.G.Pinto, Portuguese rule - 2020-07-04 (2-JUL-2020+) -->
       <pattern>
           <token postag='V.+' postag_regexp='yes'/>
@@ -18631,19 +18631,33 @@ o tomate'>
     <!--      Created by Marco A.G.Pinto, Portuguese rule - 2020-06-29 + 2020-06-30  -->
     <rule>
       <pattern>
-          <token postag='VMI[SM]3P0|VMI[SP]1S0|VMM01P0|VM[IS]P1P0|VMIF[13]P0|SENT_START' postag_regexp='yes'/>
         <marker>
+          <token postag='V.+' postag_regexp='yes'>
+            <exception negate_pos='yes' postag='V.+' postag_regexp='yes'/></token>
           <token>por</token>
+          <token postag='[NA].+' postag_regexp='yes'>
+            <exception negate_pos='yes' postag_regexp='yes' postag='[NA].+'/></token>
         </marker>
-          <token postag='NC[CM]S000|AQ0CN0' postag_regexp='yes'>
-
-            <exception postag_regexp='yes' postag='V.+'/></token>
           <token regexp='yes'>aos?|às?</token>
       </pattern>
-      <message>Substitua por <suggestion>pôr</suggestion>.</message>
-      <example correction="pôr">Vou <marker>por</marker> termo ao contrato.</example>
+      <message>O verbo é acentuado.</message>
+        <suggestion>\1 pôr \3</suggestion>
+      <example correction="Vou pôr termo"><marker>Vou por termo</marker> ao contrato.</example>
     </rule>
     <rule>
+      <pattern>
+        <marker>
+          <token inflected='yes'>ir</token>
+          <token>por</token>
+          <token regexp='yes'>termo|fim</token>
+        </marker>
+          <token>a</token>
+      </pattern>
+      <message>O verbo é acentuado.</message>
+        <suggestion>\1 pôr \3</suggestion>
+      <example correction="Vou pôr termo"><marker>Vou por termo</marker> a tudo.</example>
+    </rule>
+    <!--rule>
       <antipattern>
           <token postag_regexp='yes' postag='V.+'/>
           <token regexp='yes' spacebefore='no'>&hifen;</token>
@@ -18677,7 +18691,7 @@ o tomate'>
       </pattern>
       <message>Substitua por <suggestion>pôr</suggestion>.</message>
       <example correction="pôr">Vou <marker>por</marker> termo a tudo.</example>
-    </rule>
+    </rule-->
   </rulegroup>
 
     <rule id='QUE_QUÊ' name="Confusão: que - quê">
