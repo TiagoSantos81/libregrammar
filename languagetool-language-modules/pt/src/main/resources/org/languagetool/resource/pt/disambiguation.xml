@@ -1885,12 +1885,30 @@
     </rule>
     <rule>
       <pattern>
+          <token postag='Z.+|D..[MC]P.+' postag_regexp='yes'/>
+        <marker>
+          <token>garantes</token>
+        </marker>
+      </pattern>
+      <disambig action="filter" postag='N.+'/>
+    </rule>
+    <rule>
+      <pattern>
           <token postag='(?:N|A.).(M.|.P).+' postag_regexp='yes'/>
         <marker>
           <token>era</token>
         </marker>
       </pattern>
       <disambig action="filter" postag='V.+'/>
+    </rule>
+    <rule>
+      <pattern>
+          <token postag='Z.+|D..[FC]P.+' postag_regexp='yes'/>
+        <marker>
+          <token>eras</token>
+        </marker>
+      </pattern>
+      <disambig action="filter" postag='N.+'/>
     </rule>
   </rulegroup>
 

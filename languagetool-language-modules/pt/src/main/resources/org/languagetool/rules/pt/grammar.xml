@@ -1672,39 +1672,6 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes' min='0'>m(?:ais|enos)</token>
           <token postag='N..P.+' postag_regexp='yes'/>
       </antipattern>
-<!-- MARCOAGPINTO 2020-07-06 (2-JUL-2020+) *START* -->
-<!-- "Com coeficientes de rácio de atrito constantes e simétricos." -->
-      <antipattern>
-   	      <token postag='NC[CFM]S000|CC|V.+' postag_regexp='yes'/>
-	      <token regexp='yes'>a|de|em|o</token>
-		  <token postag='NC[CFM]S000' postag_regexp='yes'/>	
-		  <token postag='AQ0[CFM]P0' postag_regexp='yes'/>
-		  <token regexp='yes'>e|ou</token>
-		  <token postag='AQ0[CFM]P0' postag_regexp='yes'/>		  
-      </antipattern>  	  
-	  <!-- "Aceita-se o grupo aves não como Classe." -->
-      <antipattern>
-	      <token regexp='yes'>ao|o</token>
-		  <token postag='NC[CFM]S000' postag_regexp='yes'/>	
-		  <token postag='AQ0[CFM]P0|NC[CFM]P000' postag_regexp='yes'/>
-		  <token regexp='yes'>da|não</token>		  
-      </antipattern>  	  
-	  <!-- "Veículos a motor registados no território nacional." -->
-      <antipattern>
-   	      <token postag='NC[CFM]P000|V.+' postag_regexp='yes'/>
-	      <token regexp='yes'>a|ao|de|do|este|muito|na|no|o|um</token>
-		  <token postag='NC[CFM]S000' postag_regexp='yes'/>	
-		  <token postag='VMP00PM|AQ0[CFM]P0' postag_regexp='yes'/>
-		  <token negate_pos="yes" postag='VMIP3P0|VMM03P0|VMSP3P0|CC|SPS00' postag_regexp='yes'/>		  
-      </antipattern>  	  
-	  <!-- "Em Angola chamados mestiços." -->
-      <antipattern>
-	      <token regexp='yes'>em|o</token>
-		  <token postag='NC[CFM]S000' postag_regexp='yes'/>	
-		  <token postag='VMP00PM|AQ0[CFM]P0' postag_regexp='yes'/>	  
-		  <token postag='AQ0[CFM]P0|NC[CFM]P000' postag_regexp='yes'/>
-      </antipattern>  	  	    
-<!-- MARCOAGPINTO 2020-07-06 (2-JUL-2020+) *END* -->
       <pattern>
           <token negate='yes' regexp='yes'>e|ou|&hifen;</token>
         <marker>
@@ -1754,6 +1721,9 @@ title="Easy editing stylesheet" ?>
       <example>Fogem em pânico perseguidos pelos revoltosos.</example>
       <example>No verão nós conseguimos ver muitas estrelas à noite.</example>
       <example>A mulher sentiu-se tímida em relação ao padre momentos antes de se confessar.</example>
+      <example>Aceita-se o grupo Aves não como Classe.</example>
+      <example>Veículos a motor registados no território nacional.</example>
+      <example>Em Angola, chamados mestiços.</example>
     </rule>
     <rule>
       <antipattern>
@@ -2201,17 +2171,9 @@ title="Easy editing stylesheet" ?>
       <example>Eles têm sido bons vizinhos até hoje.</example>
       <example>Nós devemos aprender a viver juntos como irmãos, ou vamos morrer juntos como tolos.</example>
       <example>O nosso País foi sempre dependente das importações dos países vizinhos.</example>
+      <example>Esta é agrupada em cinco eras principais.</example>
     </rule>
     <rule>
-<!-- MARCOAGPINTO 2020-07-06 (2-JUL-2020+) *START* -->
-<!-- "Os nossos sonhos viraram realidade." -->
-<!-- "Os nossos sonhos virarão realidade." -->
-      <antipattern>
-	      <token postag='NC[CFM]P000' postag_regexp='yes'/>
-		  <token postag='VMI[FMS]3P0' postag_regexp='yes'/>	
-		  <token postag='NC[CFM]S000' postag_regexp='yes'/>
-      </antipattern>  	  
-<!-- MARCOAGPINTO 2020-07-06 (2-JUL-2020+) *END* -->
       <pattern case_sensitive='yes'>
         <marker>
           <token inflected='yes' postag_regexp='yes' postag='V....P.+' regexp='yes'>&verbos_de_ligacao;
@@ -2222,7 +2184,7 @@ title="Easy editing stylesheet" ?>
             <exception negate_pos='yes' postag='[DR].' postag_regexp='yes'/></token>
           <token postag_regexp='yes' postag='(?:NC|A..|V.P.).S.+'>
             <exception negate_pos='yes' postag_regexp='yes' postag='(?:NC|A..|V.P.).S.+'/>
-            <exception regexp='yes'>alvo|concorrência|demasiado|m(?:aioria|inoria|oda)|propriedade|patrim[óô]nio|verdade</exception></token>
+            <exception regexp='yes'>alvo|concorrência|demasiado|m(?:aioria|inoria|oda)|propriedade|patrim[óô]nio|realidade|verdade</exception></token>
         </marker>
           <token>
             <exception regexp='yes'>e|&hifen;</exception></token>
