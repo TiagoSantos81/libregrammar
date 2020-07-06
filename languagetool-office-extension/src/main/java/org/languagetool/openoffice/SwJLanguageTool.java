@@ -54,7 +54,7 @@ public class SwJLanguageTool {
   public SwJLanguageTool(Language language, Language motherTongue, UserConfig userConfig, boolean isMulti) {
     isMultiThread = isMulti;
     doReset = false;
-    if(isMultiThread) {
+    if (isMultiThread) {
       mlt = new MultiThreadedJLanguageTool(language, motherTongue, userConfig); 
     } else {
       lt = new JLanguageTool(language, motherTongue, null, userConfig); 
@@ -70,7 +70,7 @@ public class SwJLanguageTool {
   }
 
   public List<Rule> getAllRules() {
-    if(isMultiThread) {
+    if (isMultiThread) {
       return mlt.getAllRules(); 
     } else {
       return lt.getAllRules(); 
@@ -78,7 +78,7 @@ public class SwJLanguageTool {
   }
 
   public List<Rule> getAllActiveOfficeRules() {
-    if(isMultiThread) {
+    if (isMultiThread) {
       return mlt.getAllActiveOfficeRules(); 
     } else {
       return lt.getAllActiveOfficeRules(); 
@@ -86,7 +86,7 @@ public class SwJLanguageTool {
   }
 
   public void enableRule(String ruleId) {
-    if(isMultiThread) {
+    if (isMultiThread) {
       mlt.enableRule(ruleId); 
     } else {
       lt.enableRule(ruleId); 
@@ -94,7 +94,7 @@ public class SwJLanguageTool {
   }
 
   public void disableRule(String ruleId) {
-    if(isMultiThread) {
+    if (isMultiThread) {
       mlt.disableRule(ruleId); 
     } else {
       lt.disableRule(ruleId); 
@@ -102,7 +102,7 @@ public class SwJLanguageTool {
   }
 
   public Set<String> getDisabledRules() {
-    if(isMultiThread) {
+    if (isMultiThread) {
       return mlt.getDisabledRules(); 
     } else {
       return lt.getDisabledRules(); 
@@ -110,7 +110,7 @@ public class SwJLanguageTool {
   }
 
   public void disableCategory(CategoryId id) {
-    if(isMultiThread) {
+    if (isMultiThread) {
       mlt.disableCategory(id); 
     } else {
       lt.disableCategory(id); 
@@ -118,7 +118,7 @@ public class SwJLanguageTool {
   }
 
   public void activateLanguageModelRules(File indexDir) throws IOException {
-    if(isMultiThread) {
+    if (isMultiThread) {
       mlt.activateLanguageModelRules(indexDir); 
     } else {
       lt.activateLanguageModelRules(indexDir); 
@@ -127,9 +127,9 @@ public class SwJLanguageTool {
 
   public void activateWord2VecModelRules(File indexDir) throws IOException {
     /*
-    if(!isRemote) {
+    if (!isRemote) {
     */
-      if(isMultiThread) {
+      if (isMultiThread) {
         mlt.activateWord2VecModelRules(indexDir); 
       } else {
         lt.activateWord2VecModelRules(indexDir); 
@@ -140,7 +140,7 @@ public class SwJLanguageTool {
   }
 
   public List<RuleMatch> check(String text, boolean tokenizeText, ParagraphHandling paraMode) throws IOException {
-    if(isMultiThread) {
+    if (isMultiThread) {
       return mlt.check(text, tokenizeText, paraMode); 
     } else {
       return lt.check(text, tokenizeText, paraMode); 
@@ -149,7 +149,7 @@ public class SwJLanguageTool {
 
   public List<RuleMatch> check(AnnotatedText annotatedText, boolean tokenizeText, ParagraphHandling paraMode) throws IOException {
         doReset = true;
-    if(isMultiThread) {
+    if (isMultiThread) {
       synchronized(mlt) {
         return mlt.check(annotatedText, tokenizeText, paraMode);
       }
@@ -159,7 +159,7 @@ public class SwJLanguageTool {
   }
 
   public List<String> sentenceTokenize(String text) {
-    if(isMultiThread) {
+    if (isMultiThread) {
       return mlt.sentenceTokenize(text); 
     } else {
       return lt.sentenceTokenize(text); 
@@ -169,11 +169,11 @@ public class SwJLanguageTool {
   public AnalyzedSentence getAnalyzedSentence(String sentence) throws IOException {
   
     /* no active remote code on LibreGrammar
-    if(isRemote) {
+    if (isRemote) {
       return lt.getAnalyzedSentence(sentence);   // This is only a dummy; don't use it for call of remote server
-    } else if(isMultiThread) {
+    } else if (isMultiThread) {
     */
-    if(isMultiThread) {
+    if (isMultiThread) {
       return mlt.getAnalyzedSentence(sentence); 
     } else {
       return lt.getAnalyzedSentence(sentence); 
@@ -181,7 +181,7 @@ public class SwJLanguageTool {
   }
 
   public Language getLanguage() {
-    if(isMultiThread) {
+    if (isMultiThread) {
       return mlt.getLanguage(); 
     } else {
       return lt.getLanguage(); 

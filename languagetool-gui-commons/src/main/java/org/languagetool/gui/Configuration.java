@@ -148,9 +148,9 @@ public class Configuration {
   private Set<String> enabledRuleIds = new HashSet<>();
   private Set<String> disabledCategoryNames = new HashSet<>();
   private Set<String> enabledCategoryNames = new HashSet<>();
-  private List<String> definedProfiles = new ArrayList<String>();
-  private List<String> allProfileKeys = new ArrayList<String>();
-  private List<String> allProfileLangKeys = new ArrayList<String>();
+  private List<String> definedProfiles = new ArrayList<>();
+  private List<String> allProfileKeys = new ArrayList<>();
+  private List<String> allProfileLangKeys = new ArrayList<>();
 
   // Add new option default parameters to initOptions
   private Language lang;
@@ -420,7 +420,7 @@ public class Configuration {
   }
 
   public Language getDefaultLanguage() {
-    if(useDocLanguage) {
+    if (useDocLanguage) {
       return null;
     }
     return motherTongue;
@@ -831,7 +831,7 @@ public class Configuration {
     for (Map.Entry<String, String> entry : specialTabCategories.entrySet()) {
       tabNames.add(entry.getValue());
     }
-    return tabNames.toArray(new String[tabNames.size()]);
+    return tabNames.toArray(new String[0]);
   }
 
   /**
@@ -934,9 +934,9 @@ public class Configuration {
   }
 
   /**
-   * @since 4.2
    * Get the configurable value of a rule by ruleID
    * returns -1 if no value is set by configuration
+   * @since 4.2
    */
   public int getConfigurableValue(String ruleID) {
     if (configurableRuleValues.containsKey(ruleID)) {
@@ -946,26 +946,25 @@ public class Configuration {
   }
 
   /**
-   * @since 4.2
    * Set the value for a rule with ruleID
+   * @since 4.2
    */
   public void setConfigurableValue(String ruleID, int value) {
     configurableRuleValues.put(ruleID, value);
   }
 
   /**
-   * @since 4.4
    * if true: LT is switched Off, else: LT is switched On
+   * @since 4.4
    */
   public boolean isSwitchedOff() {
     return switchOff;
   }
 
   /**
-   * @throws IOException 
-   * @since 4.4
    * Set LT is switched Off or On
    * save configuration
+   * @since 4.4
    */
   public void setSwitchedOff(boolean switchOff, Language lang) throws IOException {
     this.switchOff = switchOff;
@@ -976,7 +975,7 @@ public class Configuration {
    * Test if http-server URL is correct
    */
   public boolean isValidServerUrl(String url) {
-    if (url.endsWith("/") || url.endsWith("/v2") || !Pattern.matches("http://.+:\\d+.*", url)) {
+    if (url.endsWith("/") || url.endsWith("/v2") || !Pattern.matches("https?://.+(:\\d+)?.*", url)) {
       return false;
     }
     return true;
@@ -987,12 +986,10 @@ public class Configuration {
   }
 
   public void loadConfiguration(String profile) throws IOException {
-
-
     String qualifier = getQualifier(lang);
     
     File cfgFile;
-    if(configFile.exists() || oldConfigFile == null) {
+    if (configFile.exists() || oldConfigFile == null) {
       cfgFile = configFile;
     } else {
       cfgFile = oldConfigFile;
@@ -1003,7 +1000,7 @@ public class Configuration {
       Properties props = new Properties();
       props.load(fis);
       
-      if(profile == null) {
+      if (profile == null) {
         String curProfileStr = (String) props.get(CURRENT_PROFILE_KEY);
         if (curProfileStr != null) {
           currentProfile = curProfileStr;
@@ -1015,15 +1012,15 @@ public class Configuration {
       
       logLevel = (String) props.get(LOG_LEVEL_KEY);
       
-      storeConfigforAllProfiles(props);
+      storeConfigForAllProfiles(props);
       
       String prefix;
-      if(currentProfile == null) {
+      if (currentProfile == null) {
         prefix = "";
       } else {
         prefix = currentProfile;
       }
-      if(!prefix.isEmpty()) {
+      if (!prefix.isEmpty()) {
         prefix = prefix.replaceAll(BLANK, BLANK_REPLACE);
         prefix += PROFILE_DELIMITER;
       }
@@ -1036,7 +1033,7 @@ public class Configuration {
       if (motherTongueStr != null && !motherTongueStr.equals("xx")) {
         motherTongue = Languages.getLanguageForShortCode(motherTongueStr);
       }
-      if(!useDocLanguage && motherTongue != null) {
+      if (!useDocLanguage && motherTongue != null) {
         qualifier = getQualifier(motherTongue);
       }
 
@@ -1091,7 +1088,7 @@ public class Configuration {
       }
 
       String paraCheckString = (String) props.get(prefix + NO_DEFAULT_CHECK_KEY);
-      if(paraCheckString != null && Boolean.parseBoolean(paraCheckString)) {
+      if (Boolean.parseBoolean(paraCheckString)) {
         paraCheckString = (String) props.get(prefix + PARA_CHECK_KEY);
         if (paraCheckString != null) {
           numParasToCheck = Integer.parseInt(paraCheckString);
@@ -1154,7 +1151,7 @@ public class Configuration {
       }
       
       String rulesValuesString = (String) props.get(prefix + CONFIGURABLE_RULE_VALUES_KEY + qualifier);
-      if(rulesValuesString == null) {
+      if (rulesValuesString == null) {
         rulesValuesString = (String) props.get(prefix + CONFIGURABLE_RULE_VALUES_KEY);
       }
       parseConfigurableRuleValues(rulesValuesString);
@@ -1272,15 +1269,15 @@ public class Configuration {
     Properties props = new Properties();
     String qualifier = getQualifier(lang);
 
-    if(currentProfile != null && !currentProfile.isEmpty()) {
+    if (currentProfile != null && !currentProfile.isEmpty()) {
       props.setProperty(CURRENT_PROFILE_KEY, currentProfile);
     }
     
-    if(!definedProfiles.isEmpty()) {
+    if (!definedProfiles.isEmpty()) {
       props.setProperty(DEFINED_PROFILES_KEY, String.join(DELIMITER, definedProfiles));
     }
     
-    if(logLevel != null) {
+    if (logLevel != null) {
       props.setProperty(LOG_LEVEL_KEY, logLevel);
     }
     
@@ -1288,9 +1285,9 @@ public class Configuration {
       props.store(fos, "LanguageTool configuration (" + JLanguageTool.VERSION + "/" + JLanguageTool.BUILD_DATE + ")");
     }
 
-    List<String> prefixes = new ArrayList<String>();
+    List<String> prefixes = new ArrayList<>();
     prefixes.add("");
-    for(String profile : definedProfiles) {
+    for (String profile : definedProfiles) {
       String prefix = profile;
       prefixes.add(prefix.replaceAll(BLANK, BLANK_REPLACE) + PROFILE_DELIMITER);
     }
@@ -1300,13 +1297,13 @@ public class Configuration {
     } else {
       currentPrefix = currentProfile;
     }
-    if(!currentPrefix.isEmpty()) {
+    if (!currentPrefix.isEmpty()) {
       currentPrefix = currentPrefix.replaceAll(BLANK, BLANK_REPLACE);
       currentPrefix += PROFILE_DELIMITER;
     }
-    for(String prefix : prefixes) {
+    for (String prefix : prefixes) {
       props = new Properties();
-      if(currentPrefix.equals(prefix)) {
+      if (currentPrefix.equals(prefix)) {
         addListToProperties(props, prefix + DISABLED_RULES_KEY + qualifier, disabledRuleIds);
         addListToProperties(props, prefix + ENABLED_RULES_KEY + qualifier, enabledRuleIds);
         addListToProperties(props, prefix + DISABLED_CATEGORIES_KEY + qualifier, disabledCategoryNames);
@@ -1328,43 +1325,43 @@ public class Configuration {
         props.setProperty(prefix + USE_GUI_KEY, Boolean.toString(guiConfig));
         props.setProperty(prefix + SERVER_RUN_KEY, Boolean.toString(runServer));
         props.setProperty(prefix + SERVER_PORT_KEY, Integer.toString(serverPort));
-        if(numParasToCheck != DEFAULT_NUM_CHECK_PARAS) {
+        if (numParasToCheck != DEFAULT_NUM_CHECK_PARAS) {
           props.setProperty(prefix + NO_DEFAULT_CHECK_KEY, Boolean.toString(true));
           props.setProperty(prefix + PARA_CHECK_KEY, Integer.toString(numParasToCheck));
         }
-        if(doResetCheck != DEFAULT_DO_RESET) {
+        if (doResetCheck != DEFAULT_DO_RESET) {
           props.setProperty(prefix + RESET_CHECK_KEY, Boolean.toString(doResetCheck));
         }
-        if(useTextLevelQueue != DEFAULT_USE_QUEUE) {
+        if (useTextLevelQueue != DEFAULT_USE_QUEUE) {
           props.setProperty(prefix + USE_QUEUE_KEY, Boolean.toString(useTextLevelQueue));
         }
-        if(doFullCheckAtFirst != DEFAULT_FULL_CHECK_FIRST) {
+        if (doFullCheckAtFirst != DEFAULT_FULL_CHECK_FIRST) {
           props.setProperty(prefix + DO_FULL_CHECK_AT_FIRST_KEY, Boolean.toString(doFullCheckAtFirst));
         }
-        if(useDocLanguage != DEFAULT_USE_DOC_LANGUAGE) {
+        if (useDocLanguage != DEFAULT_USE_DOC_LANGUAGE) {
           props.setProperty(prefix + USE_DOC_LANG_KEY, Boolean.toString(useDocLanguage));
         }
-        if(isMultiThreadLO != DEFAULT_MULTI_THREAD) {
+        if (isMultiThreadLO != DEFAULT_MULTI_THREAD) {
           props.setProperty(prefix + IS_MULTI_THREAD_LO_KEY, Boolean.toString(isMultiThreadLO));
         }
 /*
-        if(doRemoteCheck != DEFAULT_DO_REMOTE_CHECK) {
+        if (doRemoteCheck != DEFAULT_DO_REMOTE_CHECK) {
           props.setProperty(prefix + DO_REMOTE_CHECK_KEY, Boolean.toString(doRemoteCheck));
         }
-        if(useOtherServer != DEFAULT_USE_OTHER_SERVER) {
+        if (useOtherServer != DEFAULT_USE_OTHER_SERVER) {
           props.setProperty(prefix + USE_OTHER_SERVER_KEY, Boolean.toString(useOtherServer));
         }
 */
-        if(markSingleCharBold != DEFAULT_MARK_SINGLE_CHAR_BOLD) {
+        if (markSingleCharBold != DEFAULT_MARK_SINGLE_CHAR_BOLD) {
           props.setProperty(prefix + MARK_SINGLE_CHAR_BOLD_KEY, Boolean.toString(markSingleCharBold));
         }
-        if(useLtDictionary != DEFAULT_USE_LT_DICTIONARY) {
+        if (useLtDictionary != DEFAULT_USE_LT_DICTIONARY) {
           props.setProperty(prefix + USE_LT_DICTIONARY_KEY, Boolean.toString(useLtDictionary));
         }
-        if(noSynonymsAsSuggestions != DEFAULT_NO_SYNONYMS_AS_SUGGESTIONS) {
+        if (noSynonymsAsSuggestions != DEFAULT_NO_SYNONYMS_AS_SUGGESTIONS) {
           props.setProperty(prefix + NO_SYNONYMS_AS_SUGGESTIONS_KEY, Boolean.toString(noSynonymsAsSuggestions));
         }
-        if(switchOff) {
+        if (switchOff) {
           props.setProperty(prefix + LT_SWITCHED_OFF_KEY, Boolean.toString(switchOff));
         }
 /*
@@ -1387,14 +1384,14 @@ public class Configuration {
         if (externalRuleDirectory != null) {
           props.setProperty(prefix + EXTERNAL_RULE_DIRECTORY, externalRuleDirectory);
         }
-        if(!configurableRuleValues.isEmpty()) {
+        if (!configurableRuleValues.isEmpty()) {
           StringBuilder sbRV = new StringBuilder();
           for (Map.Entry<String, Integer> entry : configurableRuleValues.entrySet()) {
             sbRV.append(entry.getKey()).append(':').append(entry.getValue()).append(", ");
           }
           props.setProperty(prefix + CONFIGURABLE_RULE_VALUES_KEY + qualifier, sbRV.toString());
         }
-        if(!errorColors.isEmpty()) {
+        if (!errorColors.isEmpty()) {
           StringBuilder sb = new StringBuilder();
           for (Map.Entry<ITSIssueType, Color> entry : errorColors.entrySet()) {
             String rgb = Integer.toHexString(entry.getValue().getRGB());
@@ -1403,7 +1400,7 @@ public class Configuration {
           }
           props.setProperty(prefix + ERROR_COLORS_KEY, sb.toString());
         }
-        if(!underlineColors.isEmpty()) {
+        if (!underlineColors.isEmpty()) {
           StringBuilder sbUC = new StringBuilder();
           for (Map.Entry<String, Color> entry : underlineColors.entrySet()) {
             String rgb = Integer.toHexString(entry.getValue().getRGB());
@@ -1412,7 +1409,7 @@ public class Configuration {
           }
           props.setProperty(prefix + UNDERLINE_COLORS_KEY, sbUC.toString());
         }
-        if(!underlineTypes.isEmpty()) {
+        if (!underlineTypes.isEmpty()) {
           StringBuilder sbUT = new StringBuilder();
           for (Map.Entry<String, Short> entry : underlineTypes.entrySet()) {
             sbUT.append(entry.getKey()).append(':').append(entry.getValue()).append(", ");
@@ -1423,7 +1420,7 @@ public class Configuration {
           props.setProperty(key, configForOtherLanguages.get(key));
         }
       } else {
-        saveConfigforProfile(props, prefix);
+        saveConfigForProfile(props, prefix);
       }
 
       try (FileOutputStream fos = new FileOutputStream(configFile, true)) {
@@ -1431,7 +1428,7 @@ public class Configuration {
       }
     }
     
-    if(oldConfigFile != null && oldConfigFile.exists()) {
+    if (oldConfigFile != null && oldConfigFile.exists()) {
       oldConfigFile.delete();
     }
   }
@@ -1481,15 +1478,15 @@ public class Configuration {
     allProfileLangKeys.add(CONFIGURABLE_RULE_VALUES_KEY);
   }
   
-  private void storeConfigforAllProfiles(Properties props) {
-    List<String> prefix = new ArrayList<String>();
+  private void storeConfigForAllProfiles(Properties props) {
+    List<String> prefix = new ArrayList<>();
     prefix.add("");
-    for(String profile : definedProfiles) {
+    for (String profile : definedProfiles) {
       String sPrefix = profile;
       prefix.add(sPrefix.replaceAll(BLANK, BLANK_REPLACE) + PROFILE_DELIMITER);
     }
-    for(String sPrefix : prefix) {
-      for(String key : allProfileLangKeys) {
+    for (String sPrefix : prefix) {
+      for (String key : allProfileLangKeys) {
         for (Language lang : Languages.get()) {
           String preKey = sPrefix + key + "." + lang.getShortCodeWithCountryAndVariant();
           if (props.containsKey(preKey)) {
@@ -1498,8 +1495,8 @@ public class Configuration {
         }
       }
     }
-    for(String sPrefix : prefix) {
-      for(String key : allProfileKeys) {
+    for (String sPrefix : prefix) {
+      for (String key : allProfileKeys) {
         String preKey = sPrefix + key;
         if (props.containsKey(preKey)) {
           configForOtherProfiles.put(preKey, props.getProperty(preKey));
@@ -1508,8 +1505,8 @@ public class Configuration {
     }
   }
 
-  private void saveConfigforProfile(Properties props, String prefix) {
-    for(String key : allProfileLangKeys) {
+  private void saveConfigForProfile(Properties props, String prefix) {
+    for (String key : allProfileLangKeys) {
       for (Language lang : Languages.get()) {
         String preKey = prefix + key + "." + lang.getShortCodeWithCountryAndVariant();
         if (configForOtherProfiles.containsKey(preKey)) {
@@ -1517,7 +1514,7 @@ public class Configuration {
         }
       }
     }
-    for(String key : allProfileKeys) {
+    for (String key : allProfileKeys) {
       String preKey = prefix + key;
       if (configForOtherProfiles.containsKey(preKey)) {
         props.setProperty(preKey, configForOtherProfiles.get(preKey));
