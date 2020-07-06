@@ -1,8 +1,24 @@
 # LibreGrammar Change Log
 
-## 5.1-SNAPSHOT (release planned for 2020-09-25)
+## 5.1-SNAPSHOT (release planned for 2020-10-01)
 
-...
+### This fork differences
+#### (new comparisons only)
+
+#### English
+  * added and improved rules
+  * POS and spelling improvements
+
+#### Portuguese
+  * added and improved rules
+  * POS and spelling improvements
+
+
+### Other changes common to both projects
+
+#### French
+  * rules improvements
+  * [spell checking now uses Morfologik instead of Hunspell](https://github.com/languagetool-org/languagetool/commit/d7b866b)
 
 
 ## 5.0 ( 2020-10-01)
