@@ -6541,12 +6541,8 @@ title="Easy editing stylesheet" ?>
   </rulegroup>
 
   <rulegroup id='FRAGMENT_TWO_PREPOSITIONS' name="Fragmento: duas preposições seguidas">
-    <rule>
     <!-- Created by Tiago F. Santos, Portuguese rule, 2017-07-15	-->
-      <antipattern><!-- XXX Better handled by CONFUSION_POR rule -->
-          <token>de</token>
-          <token>por</token>
-      </antipattern>
+    <rule>
       <antipattern>
           <token>por</token><!-- por->pôr e.g. p.ex. -->
           <token>de</token>
@@ -6579,7 +6575,7 @@ title="Easy editing stylesheet" ?>
           <token postag='SPS00'>
             <exception negate_pos='yes' postag_regexp='yes' postag='SP.+'/></token>
           <token postag='SPS00'>
-            <exception regexp='yes' case_sensitive='yes'>a|A|De|Sem|['’]</exception>
+            <exception regexp='yes' case_sensitive='yes'>a|A|De|Sem|['’]|por</exception>
             <exception negate_pos='yes' postag_regexp='yes' postag='SP.+'/></token>
       </pattern>
       <message>Duas preposição seguidas. Verifique.</message>
@@ -18636,10 +18632,9 @@ o tomate'>
     <rule>
       <pattern>
         <marker>
-          <token postag='V.+' postag_regexp='yes'>
-            <exception negate_pos='yes' postag='V.+' postag_regexp='yes'/></token>
+          <token inflected='yes'>ir</token>
           <token>por</token>
-          <token postag='[NA].+' postag_regexp='yes'>
+          <token postag='(?:N.|A..).S.+' postag_regexp='yes'>
             <exception negate_pos='yes' postag_regexp='yes' postag='[NA].+'/></token>
         </marker>
           <token regexp='yes'>aos?|às?</token>
@@ -18653,9 +18648,9 @@ o tomate'>
         <marker>
           <token inflected='yes'>ir</token>
           <token>por</token>
-          <token regexp='yes'>termo|fim</token>
+          <token>termo</token>
         </marker>
-          <token>a</token>
+          <token regexp='yes'>a|aos?|às?</token>
       </pattern>
       <message>O verbo é acentuado.</message>
         <suggestion>\1 pôr \3</suggestion>
@@ -27558,6 +27553,22 @@ TODO Write better examples
     <!-- ********************************************************** -->
 
   <rulegroup id='CONFUSION_POR' name="Confusão: por - pôr">
+    <rule>
+      <antipattern>
+          <token regexp='yes' spacebefore='no'>&hifen;</token>
+          <token postag='SPS00' spacebefore='no'/>
+      </antipattern>
+      <pattern>
+          <token postag='SPS00'>
+            <exception negate_pos='yes' postag_regexp='yes' postag='SP.+'/></token>
+          <token>por</token>
+      </pattern>
+      <message>Duas preposição seguidas. Verifique.</message>
+        <suggestion>\1 pôr</suggestion>
+        <suggestion>\1</suggestion>
+        <suggestion>\2</suggestion>
+      <example correction="a pôr|a|por">Continua <marker>a por</marker> ovos todos os dias.</example>
+    </rule>
     <!--      Created by Marco A.G.Pinto, 2017-07-08      -->
     <rule>
       <antipattern>
@@ -27571,7 +27582,9 @@ TODO Write better examples
             <exception scope='next'>quão</exception></token>
       </pattern>
       <message>Se se refere ao verbo, substitua por <suggestion>de pôr</suggestion>.</message>
-      <example correction="de pôr">Temos <marker>de por</marker> os pratos na mesa!</example>
+        <suggestion>de</suggestion>
+        <suggestion>por</suggestion>
+      <example correction="de pôr|de|por">Temos <marker>de por</marker> os pratos na mesa!</example>
       <example>A sua importância é atestada pelo facto de por lá passar uma das vias romanas.</example>
       <example>…compreender de por quão pouco as pessoas se desentendem.</example>
     </rule>
@@ -27580,9 +27593,13 @@ TODO Write better examples
           <token>por</token>
           <token>em</token>
       </pattern>
-      <message>Substitua por <suggestion>pôr em</suggestion> ou <suggestion>porém</suggestion>.</message>
+      <message>Duas preposição seguidas. Verifique.</message>
+        <suggestion>pôr em</suggestion>
+        <suggestion>porém</suggestion>
+        <suggestion>por</suggestion>
+        <suggestion>em</suggestion>
       <url>https://pt.wiktionary.org/wiki/porém</url>
-      <example correction="pôr em|porém">Temos de <marker>por em</marker> prática tudo o que aprendemos!</example>
+      <example correction="pôr em|porém|por|em">Temos de <marker>por em</marker> prática tudo o que aprendemos!</example>
     </rule>
   </rulegroup>
 
