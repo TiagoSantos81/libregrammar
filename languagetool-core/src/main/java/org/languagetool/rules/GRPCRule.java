@@ -72,7 +72,7 @@ public abstract class GRPCRule extends RemoteRule {
 
   /**
    * Internal rule to create rule matches with IDs based on Match Sub-IDs
-   */
+   *
   protected class GRPCSubRule extends Rule {
     private final String subId;
 
@@ -265,7 +265,7 @@ public abstract class GRPCRule extends RemoteRule {
    * @param description rule description
    * @param messagesByID mapping match.sub_id to RuleMatch's message
    * @return instance of RemoteMLRule
-   */
+   *
   public static GRPCRule create(RemoteRuleConfig config,
                                 String id, String description, Map<String, String> messagesByID) {
     return new GRPCRule(JLanguageTool.getMessageBundle(), config) {
