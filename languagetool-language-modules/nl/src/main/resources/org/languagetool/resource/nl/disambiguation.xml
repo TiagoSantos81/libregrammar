@@ -1122,6 +1122,7 @@ Copyright (C) 2008-2018 Ruud Baars, TaalTik
 		<disambig action="add"><wd pos="NAME_PART"/><wd pos="NAME_PART"/></disambig>
 	</rule>
 
+    <?ignore possible false matches with any real gain
     <!-- meld geen spelfouten als er () in een woord staat -->
 	<rule id="HAAKJES_IN_WOORD_1" name="">
 		<pattern case_sensitive="yes">
@@ -1157,6 +1158,7 @@ Copyright (C) 2008-2018 Ruud Baars, TaalTik
         </pattern>
 		<disambig action="ignore_spelling"/>
 	</rule>
+	?>
     
 	<!-- aanhalingstekens openen 
 	<rule id="AANHAAL_OPN_1" name="">
