@@ -32,6 +32,7 @@ import io.grpc.netty.shaded.io.grpc.netty.NettyChannelBuilder;
 import io.grpc.netty.shaded.io.netty.handler.ssl.SslContextBuilder;
 import org.jetbrains.annotations.Nullable;
 import org.languagetool.AnalyzedSentence;
+import org.languagetool.JLanguageTool;
 import org.languagetool.markup.AnnotatedText;
 import org.languagetool.rules.ml.MLServerGrpc;
 import org.languagetool.rules.ml.MLServerProto;
@@ -40,6 +41,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.net.ssl.SSLException;
 import java.io.File;
+import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.Callable;
 import java.util.function.Function;
@@ -67,6 +69,33 @@ import java.util.stream.Collectors;
  *
 public abstract class GRPCRule extends RemoteRule {
   private static final Logger logger = LoggerFactory.getLogger(GRPCRule.class);
+
+  /**
+   * Internal rule to create rule matches with IDs based on Match Sub-IDs
+   */
+  protected class GRPCSubRule extends Rule {
+    private final String subId;
+
+    GRPCSubRule(String subId) {
+      this.subId = subId;
+    }
+
+    @Override
+    public String getId() {
+      return GRPCRule.this.getId() + "_" + subId;
+    }
+
+    @Override
+    public String getDescription() {
+      return GRPCRule.this.getDescription();
+    }
+
+    @Override
+    public RuleMatch[] match(AnalyzedSentence sentence) throws IOException {
+      throw new UnsupportedOperationException();
+    }
+
+  }
 
   static class Connection {
     final ManagedChannel channel;
@@ -175,7 +204,8 @@ public abstract class GRPCRule extends RemoteRule {
       List<RuleMatch> matches = Streams.zip(response.getSentenceMatchesList().stream(), req.sentences.stream(), (matchList, sentence) ->
         matchList.getMatchesList().stream().map(match -> {
             int relativeOffset = offsets.get(sentence);
-            RuleMatch m = new RuleMatch(this, sentence,
+            GRPCSubRule subRule = new GRPCSubRule(match.getSubId());
+            RuleMatch m = new RuleMatch(subRule, sentence,
               relativeOffset + match.getOffset(),
               relativeOffset + match.getOffset() + match.getLength(),
               getMessage(match, sentence));
@@ -221,6 +251,34 @@ public abstract class GRPCRule extends RemoteRule {
       @Override
       public String getDescription() {
         return messages.getString(descriptionKey);
+      }
+    };
+  }
+
+  /**
+   * Helper method to create instances of RemoteMLRule
+   * @param config configuration for remote rule server;
+   *               options: secure, clientKey, clientCertificate, rootCertificate
+                   use RemoteRuleConfig.getRelevantConfig(id, configs)
+                   to load this in Language::getRelevantRemoteRules
+   * @param id ID of rule
+   * @param description rule description
+   * @param messagesByID mapping match.sub_id to RuleMatch's message
+   * @return instance of RemoteMLRule
+   */
+  public static GRPCRule create(RemoteRuleConfig config,
+                                String id, String description, Map<String, String> messagesByID) {
+    return new GRPCRule(JLanguageTool.getMessageBundle(), config) {
+
+
+      @Override
+      protected String getMessage(MLServerProto.Match match, AnalyzedSentence sentence) {
+        return messagesByID.get(match.getSubId());
+      }
+
+      @Override
+      public String getDescription() {
+        return description;
       }
     };
   }

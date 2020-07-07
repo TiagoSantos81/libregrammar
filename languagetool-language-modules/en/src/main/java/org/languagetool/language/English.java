@@ -285,6 +285,7 @@ public class English extends Language implements AutoCloseable {
       case "EN_COMPOUNDS":              return 2;
       case "ABBREVIATION_PUNCTUATION":  return 2;
       case "COVID_19":                  return 1;
+      case "FEDEX":                     return 1;   // higher prio than PLEASE_VB
       case "DON_T_AREN_T":              return 1;   // higher prio than DID_BASEFORM
       case "MONEY_BACK_HYPHEN":         return 1;   // higher prio than A_UNCOUNTABLE
       case "WORLDS_BEST":               return 1;   // higher prio than THE_SUPERLATIVE
@@ -319,6 +320,7 @@ public class English extends Language implements AutoCloseable {
       case "THAN_THANK":                return 1;   // prefer over THAN_THEN
       case "CD_NN_APOSTROPHE_S":        return 1;   // prefer over CD_NN and LOWERCASE_NAME_APOSTROPHE_S
       case "IT_IF":                     return 1;   // needs higher prio than PRP_COMMA
+      case "FOR_NOUN_SAKE":             return -4;   // prefer over PROFANITY (e.g. "for fuck sake")
       case "PROFANITY":                 return -5;  // prefer over spell checker
       case "RUDE_SARCASTIC":            return -6;  // prefer over spell checker
       case "CHILDISH_LANGUAGE":         return -8;  // prefer over spell checker
@@ -328,7 +330,7 @@ public class English extends Language implements AutoCloseable {
       case "A_LOT_OF_NN":               return -1;
       case "IT_VBZ":                    return -1;
       case "IT_IS_2":                   return -1;
-      case "A_RB_NN":                   return -1;  // prefer other more specific rules (e.g. QUIET_QUITE)
+      case "A_RB_NN":                   return -1;  // prefer other more specific rules (e.g. QUIET_QUITE, A_QUITE_WHILE)
       case "PLURAL_VERB_AFTER_THIS":    return -1;  // prefer other more specific rules (e.g. COMMA_TAG_QUESTION)
       case "BE_RB_BE":                  return -1;  // prefer other more specific rules
       case "IT_ITS":                    return -1;  // prefer other more specific rules
@@ -408,23 +410,24 @@ public class English extends Language implements AutoCloseable {
       messageBundle, configs, globalConfig, userConfig, motherTongue, altLanguages));
     String theInsertionID = "AI_THE_INS_RULE";
     RemoteRuleConfig theInsertionConfig = RemoteRuleConfig.getRelevantConfig(theInsertionID, configs);
+    final String missingTheDescription = "This rule identifies whether the article 'the' is missing in a sentence, as well as checking if every instance of 'the' in the sentence is correct.";
+    final String delMessage = "This article might not be necessary here.";
+    final String insMessage = "You might be missing an article here.";
     if (theInsertionConfig != null) {
       Map<String, String> theInsertionMessages = new HashMap<>();
-      theInsertionMessages.put("THE_INS", "the_ins_rule_del_the");
-      theInsertionMessages.put("INS_THE", "the_ins_rule_ins_the");
-      Rule theInsertionRule = GRPCRule.create(messageBundle,
-        theInsertionConfig,
-        theInsertionID, "the_ins_rule_description", theInsertionMessages);
+      theInsertionMessages.put("THE_INS", delMessage);
+      theInsertionMessages.put("INS_THE", insMessage);
+      Rule theInsertionRule = GRPCRule.create(theInsertionConfig, theInsertionID,
+                                              missingTheDescription, theInsertionMessages);
       rules.add(theInsertionRule);
     }
     String missingTheID = "AI_MISSING_THE";
     RemoteRuleConfig missingTheConfig = RemoteRuleConfig.getRelevantConfig(missingTheID, configs);
     if (missingTheConfig != null) {
       Map<String, String> missingTheMessages = new HashMap<>();
-      missingTheMessages.put("MISSING_THE", "the_ins_rule_ins_the");
-      Rule missingTheRule = GRPCRule.create(messageBundle,
-        missingTheConfig,
-        missingTheID, "the_ins_rule_description", missingTheMessages);
+      missingTheMessages.put("MISSING_THE", insMessage);
+      Rule missingTheRule = GRPCRule.create(missingTheConfig, missingTheID,
+                                            missingTheDescription, missingTheMessages);
       rules.add(missingTheRule);
     }
     List<String> confpairRules = Arrays.asList("AI_CONFPAIRS_EN_GPT2", "AI_CONFPAIRS_EN_GPT2_L", "AI_CONFPAIRS_EN_GPT2_XL");

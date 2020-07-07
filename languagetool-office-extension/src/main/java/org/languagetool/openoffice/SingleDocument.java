@@ -176,24 +176,23 @@ class SingleDocument {
     
     int paraNum = -1;
     try {
-      if (docReset) {
+      if(docReset) {
         numLastVCPara = 0;
         ignoredMatches = new HashMap<>();
       }
       SingleProofreadingError[] sErrors = null;
       paraNum = getParaPos(nPara, paraText, paRes.nStartOfSentencePosition);
-      if (nPara < 0) {
-        this.paraNum = paraNum;
-      } else {
+      this.paraNum = paraNum;
+      if (nPara >= 0) {
         isDialogRequest.add(paraNum);
       }
       // Don't use Cache for check in single paragraph mode
-      if (numParasToCheck != 0 && paraNum >= 0) {
+      if(numParasToCheck != 0 && paraNum >= 0) {
         //  test real flat paragraph rather then the one given by Proofreader - it could be changed meanwhile
         paraText = docCache.getTextParagraph(paraNum);
         sErrors = sentencesCache.getMatches(paraNum, paRes.nStartOfSentencePosition);
         // return Cache result if available
-        if (sErrors != null) {
+        if(sErrors != null) {
           paRes.nStartOfNextSentencePosition = sentencesCache.getNextSentencePosition(paraNum, paRes.nStartOfSentencePosition);
           paRes.nBehindEndOfSentencePosition = paRes.nStartOfNextSentencePosition;
         }
@@ -204,8 +203,8 @@ class SingleDocument {
             + ", sErrors: " + (sErrors == null ? 0 : sErrors.length) + OfficeTools.LOG_LINE_BREAK);
       }
       String text = null;
-      if (sErrors == null) {
-        if (!langTool.isRemote()) {
+      if(sErrors == null) {
+        if(!langTool.isRemote()) {
           SentenceFromPara sfp = new SentenceFromPara(paraText, paRes.nStartOfSentencePosition, langTool);
           text = sfp.getSentence();
           paRes.nStartOfSentencePosition = sfp.getPosition();
@@ -221,7 +220,7 @@ class SingleDocument {
       List<SingleProofreadingError[]> pErrors = checkTextRules(paraText, paraNum, paRes.nStartOfSentencePosition,
           paRes.nStartOfNextSentencePosition, langTool);
 
-      if (sErrors == null) {
+      if(sErrors == null) {
         sErrors = checkSentence(text, paRes.nStartOfSentencePosition, paRes.nStartOfNextSentencePosition, 
             paraNum, footnotePositions, langTool);
       }
@@ -230,12 +229,12 @@ class SingleDocument {
       if (debugMode > 1) {
         MessageHandler.printToLogFile("paRes.aErrors.length: " + paRes.aErrors.length + "; docID: " + docID + OfficeTools.LOG_LINE_BREAK);
       }
-      if (resetCheck.contains(paraNum) && paRes.nStartOfNextSentencePosition >= paraText.length()) {
-        if (numParasToCheck != 0 && paraNum >= 0) {
+      if(resetCheck.contains(paraNum) && paRes.nStartOfNextSentencePosition >= paraText.length()) {
+        if(numParasToCheck != 0 && paraNum >= 0) {
           if (docCursor == null) {
             docCursor = new DocumentCursorTools(xComponent);
           }
-          if (useQueue && !isDialogRequest.contains(paraNum) && paragraphsCache.get(1).getEntryByParagraph(paraNum) != null) {
+          if(useQueue && !isDialogRequest.contains(paraNum) && paragraphsCache.get(1).getEntryByParagraph(paraNum) != null) {
             List<Integer> changedParas = new ArrayList<Integer>();
             changedParas.add(paraNum);
             remarkChangedParagraphs(changedParas, docCursor.getParagraphCursor(), flatPara);
@@ -276,7 +275,7 @@ class SingleDocument {
         }
       }
     }
-    if (footnotePositions == null) {
+    if(footnotePositions == null) {
       footnotePositions = new int[]{};  // e.g. for LO/OO < 4.3 and the 'FootnotePositions' property
     }
   }
@@ -288,19 +287,19 @@ class SingleDocument {
     this.config = config;
     numParasToCheck = config.getNumParasToCheck();
     defaultParaCheck = PARA_CHECK_DEFAULT;
-    if (numParasToCheck == 0) {
+    if(numParasToCheck == 0) {
       useQueue = false;
     } else {
       useQueue = mDocHandler.isTestMode() ? false : config.useTextLevelQueue();
     }
-    if (useQueue || numParasToCheck == 0) {
+    if(useQueue || numParasToCheck == 0) {
       doFullCheckAtFirst = false;
     } else {
       doFullCheckAtFirst = config.doFullCheckAtFirst();
     }
     changedParas = new ArrayList<Integer>();
     firstCheckIsDone = false;
-    if (ltMenus != null) {
+    if(ltMenus != null) {
       ltMenus.setConfigValues(config);
     }
   }
@@ -406,14 +405,14 @@ class SingleDocument {
       paragraphsCache.get(i).removeAll();
     }
     numParasReset = numParasToCheck;
-    if ((doFullCheckAtFirst || numParasToCheck < 0 || useQueue) && mDocHandler != null) {
+    if((doFullCheckAtFirst || numParasToCheck < 0 || useQueue) && mDocHandler != null) {
       minToCheckPara = mDocHandler.getNumMinToCheckParas();
-      if (minToCheckPara == null) {
+      if(minToCheckPara == null) {
         return;
       }
-      if (numParasReset < 0) {
+      if(numParasReset < 0) {
         for(int minPara : minToCheckPara) {
-          if (minPara > numParasReset) {
+          if(minPara > numParasReset) {
             numParasReset = minPara;
           }
         }
@@ -458,7 +457,7 @@ class SingleDocument {
     // Initialization 
     
     docCursor = null;
-    if (flatPara != null) {
+    if(flatPara != null) {
       flatPara.init();
     }
 
@@ -484,7 +483,7 @@ class SingleDocument {
       MessageHandler.printToLogFile("proofInfo = " + proofInfo);
     }
     
-    if (proofInfo == OfficeTools.PROOFINFO_GET_PROOFRESULT) {
+    if(proofInfo == OfficeTools.PROOFINFO_GET_PROOFRESULT) {
       return getParaFromViewCursorOrDialog(chPara);
     }
     else {
@@ -514,7 +513,7 @@ class SingleDocument {
     // number of paragraphs has changed? --> Update the internal information
     nParas = changesInNumberOfParagraph(true);
     
-    if (proofInfo == OfficeTools.PROOFINFO_MARK_PARAGRAPH && nParas < 0) {
+    if(proofInfo == OfficeTools.PROOFINFO_MARK_PARAGRAPH && nParas < 0) {
       if (debugMode > 0) {
         MessageHandler.printToLogFile("changes In Number of Paragraph: nParas: " + nParas + OfficeTools.LOG_LINE_BREAK);
       }
@@ -535,7 +534,7 @@ class SingleDocument {
     }
 
     //  test real flat paragraph rather then the one given by Proofreader - it could be changed meanwhile
-    if (curFlatParaText != null) {
+    if(curFlatParaText != null) {
       chPara = curFlatParaText;
     }
 
@@ -551,7 +550,7 @@ class SingleDocument {
     changesInNumberOfParagraph(false);
     int numParas = docCache.size();
     if (numParas <= 0) {
-      if (debugMode > 1) {
+      if(debugMode > 1) {
         MessageHandler.printToLogFile("Internal request: docCache error!");
       }
       return -1;
@@ -559,14 +558,14 @@ class SingleDocument {
     resetCheck.add(nPara);
     textIsChanged.add(nPara);
     if (nOldParas != numParas) {
-      if (debugMode > 1) {
+      if(debugMode > 1) {
         MessageHandler.printToLogFile("Internal request: Number of Paragraphs has changed: o:" +
             nOldParas + ", n:" + numParas);
       }
       return nPara;
     }
     if (!chPara.equals(docCache.getTextParagraph(nPara))) {
-      if (debugMode > 1) {
+      if(debugMode > 1) {
         MessageHandler.printToLogFile("Internal request: Paragraph has changed:\no:" 
             + chPara + "\nn:" + docCache.getTextParagraph(nPara));
       }
@@ -602,7 +601,7 @@ class SingleDocument {
       return nParas;
     }
     // try to get next position from last ViewCursor position (proof per dialog box)
-    if (numLastVCPara >= docCache.textSize()) {
+    if(numLastVCPara >= docCache.textSize()) {
       numLastVCPara = 0;
     }
     for(int i = numLastVCPara; i < docCache.textSize(); i++) {
@@ -647,12 +646,12 @@ class SingleDocument {
     int nParas = 0;
     if (getCurNum) {
       nParas = flatPara.getCurNumFlatParagraph();
-      if (nParas < 0) {
+      if(nParas < 0) {
         return -1;
       }
     }
     int nFParas = flatPara.getNumberOfAllFlatPara();
-    if (nFParas == docCache.size()) {
+    if(nFParas == docCache.size()) {
       return nParas;
     }
     if (debugMode > 0) {
@@ -660,7 +659,7 @@ class SingleDocument {
               + ", docID: " + docID + OfficeTools.LOG_LINE_BREAK);
     }
     DocumentCache oldDocCache = docCache;
-    if (useQueue) {
+    if(useQueue) {
       mDocHandler.getTextLevelCheckQueue().interruptCheck(docID);
     }
     if (docCursor == null) {
@@ -685,16 +684,16 @@ class SingleDocument {
     }
     to = docCache.textSize() - to;
     resetTo = to + numParasReset;
-    if (!ignoredMatches.isEmpty()) {
+    if(!ignoredMatches.isEmpty()) {
       Map<Integer, List<Integer>> tmpIgnoredMatches = new HashMap<>();
       for (int i = 0; i < from; i++) {
-        if (ignoredMatches.containsKey(i)) {
+        if(ignoredMatches.containsKey(i)) {
           tmpIgnoredMatches.put(i, ignoredMatches.get(i));
         }
       }
       for (int i = to + 1; i < oldDocCache.textSize(); i++) {
         int n = i + docCache.textSize() - oldDocCache.textSize();
-        if (ignoredMatches.containsKey(i)) {
+        if(ignoredMatches.containsKey(i)) {
           tmpIgnoredMatches.put(n, ignoredMatches.get(i));
         }
       }
@@ -705,9 +704,9 @@ class SingleDocument {
     }
     resetTo++;
     sentencesCache.removeAndShift(from, to, docCache.textSize() - oldDocCache.textSize());
-    if (useQueue) {
+    if(useQueue) {
       for (int i = 0; i < minToCheckPara.size(); i++) {
-        if (minToCheckPara.get(i) != 0) {
+        if(minToCheckPara.get(i) != 0) {
           for (int n = from; n <= to; n++) {
             addQueueEntry(n, i, minToCheckPara.get(i), docID, true);
           }
@@ -754,9 +753,9 @@ class SingleDocument {
       if (nParas >= 0) {
         resetCheck.add(nParas);
         sentencesCache.remove(nParas);
-        if (useQueue) {
+        if(useQueue) {
           for (int i = 0; i < minToCheckPara.size(); i++) {
-            if (minToCheckPara.get(i) == 0) {
+            if(minToCheckPara.get(i) == 0) {
               paragraphsCache.get(i).remove(nParas);
             } else {
               addQueueEntry(nParas, i, minToCheckPara.get(i), docID, true);
@@ -843,7 +842,7 @@ class SingleDocument {
     }
     if (pErrors != null) {
       for(SingleProofreadingError[] pError : pErrors) {
-        if (pError != null) {
+        if(pError != null) {
           errorCount += pError.length;
         }
       }
@@ -859,7 +858,7 @@ class SingleDocument {
     }
     if (pErrors != null) {
       for(SingleProofreadingError[] pError : pErrors) {
-        if (pError != null) {
+        if(pError != null) {
           arraycopy(pError, 0, errorArray, sErrorCount, pError.length);
           sErrorCount += pError.length;
         }
@@ -873,21 +872,24 @@ class SingleDocument {
    * Filter ignored errors (from ignore once)
    */
   private SingleProofreadingError[] filterIgnoredMatches (SingleProofreadingError[] unFilteredErrors, int nPara) {
-    if (!ignoredMatches.isEmpty() && ignoredMatches.containsKey(nPara)) {
+//    MessageHandler.printToLogFile("Num ignored matches for Para " + nPara + ": " + (ignoredMatches.containsKey(nPara) ? ignoredMatches.get(nPara).size() : 0));
+    if(!ignoredMatches.isEmpty() && ignoredMatches.containsKey(nPara)) {
       List<Integer> xIgnoredMatches = ignoredMatches.get(nPara);
       List<SingleProofreadingError> filteredErrors = new ArrayList<>();
       for (SingleProofreadingError error : unFilteredErrors) {
         boolean noFilter = true;
         for (int nIgnore : xIgnoredMatches) {
-          if (error.nErrorStart <= nIgnore && error.nErrorStart + error.nErrorLength > nIgnore) {
+          if(error.nErrorStart <= nIgnore && error.nErrorStart + error.nErrorLength > nIgnore) {
             noFilter = false;
             break;
           }
+//          MessageHandler.printToLogFile("ErrorStart: " + error.nErrorStart + ", ErrorLength: " + error.nErrorLength + ", Ignore: " + nIgnore);
         }
         if (noFilter) {
           filteredErrors.add(error);
         }
       }
+//      MessageHandler.printToLogFile("Unfiltered: " + unFilteredErrors.length + ", Filtered: " + filteredErrors.size());
       return filteredErrors.toArray(new SingleProofreadingError[0]);
     }
     return unFilteredErrors;
@@ -902,24 +904,24 @@ class SingleDocument {
       int startSentencePos, int endSentencePos, SwJLanguageTool langTool) {
     List<SingleProofreadingError[]> pErrors = new ArrayList<>();
 
-    if (paraNum < 0 || (numParasToCheck >= 0 && !doFullCheckAtFirst && !useQueue)) {
+    if(paraNum < 0 || (numParasToCheck >= 0 && !doFullCheckAtFirst && !useQueue)) {
       pErrors.add(checkParaRules(paraText, paraNum, startSentencePos, endSentencePos, langTool, 0, numParasToCheck));
-      if (resetCheck.contains(paraNum)) {
+      if(resetCheck.contains(paraNum)) {
         addChangedParas();
       }
     } else {
       //  Real full text check / numParas < 0
       ResultCache oldCache = null;
       List<Integer> tmpChangedParas;
-      if (resetCheck.contains(paraNum)) {
+      if(resetCheck.contains(paraNum)) {
         changedParas = new ArrayList<>();
       }
       for(int i = 0; i < minToCheckPara.size(); i++) {
         int parasToCheck = minToCheckPara.get(i);
-        if (!firstCheckIsDone && numParasToCheck >= 0 && parasToCheck < 0) {
+        if(!firstCheckIsDone && numParasToCheck >= 0 && parasToCheck < 0) {
           parasToCheck = -2;
         }
-        if (firstCheckIsDone && numParasToCheck >= 0 && (parasToCheck < 0 || numParasToCheck < parasToCheck)) {
+        if(firstCheckIsDone && numParasToCheck >= 0 && (parasToCheck < 0 || numParasToCheck < parasToCheck)) {
           parasToCheck = numParasToCheck;
         }
         defaultParaCheck = PARA_CHECK_DEFAULT;
@@ -928,27 +930,27 @@ class SingleDocument {
           MessageHandler.printToLogFile("ParaCeck: Index: " + i + "/" + minToCheckPara.size() 
             + "; numParasToCheck: " + numParasToCheck + OfficeTools.LOG_LINE_BREAK);
         }
-        if (resetCheck.contains(paraNum) && parasToCheck < 0 && !useQueue) {
+        if(resetCheck.contains(paraNum) && parasToCheck < 0 && !useQueue) {
           oldCache = paragraphsCache.get(i);
-          if (parasToCheck < -1) {
+          if(parasToCheck < -1) {
             paragraphsCache.set(i, new ResultCache());
           } else {
             paragraphsCache.set(i, new ResultCache(oldCache));
           }
         }
         pErrors.add(checkParaRules(paraText, paraNum, startSentencePos, endSentencePos, langTool, i, parasToCheck));
-        if (resetCheck.contains(paraNum) && !useQueue) {
-          if (parasToCheck < 0) {
+        if(resetCheck.contains(paraNum) && !useQueue) {
+          if(parasToCheck < 0) {
             tmpChangedParas = paragraphsCache.get(i).differenceInCaches(oldCache);
-            if (changedParas == null) {
+            if(changedParas == null) {
               changedParas = new ArrayList<>();
             }
             for(int chPara : tmpChangedParas) {
-              if (!changedParas.contains(chPara)) {
+              if(!changedParas.contains(chPara)) {
                 changedParas.add(chPara);
               }
             }
-            if (!changedParas.contains(paraNum)) {
+            if(!changedParas.contains(paraNum)) {
               changedParas.add(paraNum);
             }
           } else {
@@ -957,18 +959,18 @@ class SingleDocument {
         }
       }
 /*
-      if (resetCheck && useQueue) {
+      if(resetCheck && useQueue) {
         int cacheNum = 1;
         tmpChangedParas = paragraphsCache.get(cacheNum).differenceInCaches(oldCache);
         changedParas = new ArrayList<>();
         for(int n : tmpChangedParas) {
-          if (paragraphsCache.get(cacheNum).getEntryByParagraph(n) != null) {
+          if(paragraphsCache.get(cacheNum).getEntryByParagraph(n) != null) {
             changedParas.add(n);
           }
         }
       }
 */
-      if (!firstCheckIsDone) {
+      if(!firstCheckIsDone) {
         firstCheckIsDone = true;
       }
       oldCache = null;
@@ -989,11 +991,11 @@ class SingleDocument {
     if (lastPara > docCache.textSize()) {
       lastPara = docCache.textSize();
     }
-    if (changedParas == null) {
+    if(changedParas == null) {
       changedParas = new ArrayList<>();
     }
     for (int n = firstPara; n < lastPara; n++) {
-      if (!changedParas.contains(n)) {
+      if(!changedParas.contains(n)) {
         changedParas.add(n);
       }
     }
@@ -1003,7 +1005,7 @@ class SingleDocument {
    * Add an new entry to text level queue
    */
   public void addQueueEntry(int nPara, int nCache, int nCheck, String docId, boolean overrideRunning) {
-    if (mDocHandler.isSortedRuleForIndex(nCache)) {
+    if(mDocHandler.isSortedRuleForIndex(nCache)) {
       int nStart = docCache.getStartOfParaCheck(nPara, nCheck, textIsChanged.contains(nPara));
       int nEnd = docCache.getEndOfParaCheck(nPara, nCheck, textIsChanged.contains(nPara));
       mDocHandler.getTextLevelCheckQueue().addQueueEntry(nStart, nEnd, nCache, nCheck, docId, overrideRunning);
@@ -1027,19 +1029,19 @@ class SingleDocument {
   public QueueEntry getNextQueueEntry(int nPara, int nCache) {
     if (docCache != null) {
       for(int i = nPara + 1; i < docCache.textSize(); i++) {
-        if (paragraphsCache.get(nCache).getEntryByParagraph(i) == null) {
+        if(paragraphsCache.get(nCache).getEntryByParagraph(i) == null) {
           return createQueueEntry(i, nCache);
         }
       }
       for(int i = 0; i < nPara; i++) {
-        if (paragraphsCache.get(nCache).getEntryByParagraph(i) == null) {
+        if(paragraphsCache.get(nCache).getEntryByParagraph(i) == null) {
           return createQueueEntry(i, nCache);
         }
       }
       for(int n = 0; n < minToCheckPara.size(); n++) {
-        if (n != nCache && minToCheckPara.get(n) != 0) {
+        if(n != nCache && minToCheckPara.get(n) != 0) {
           for(int i = 0; i < docCache.textSize(); i++) {
-            if (paragraphsCache.get(n).getEntryByParagraph(i) == null) {
+            if(paragraphsCache.get(n).getEntryByParagraph(i) == null) {
               return createQueueEntry(i, n);
             }
           }
@@ -1067,7 +1069,7 @@ class SingleDocument {
     SingleProofreadingError[] pErrors = null;
     try {
       // use Cache for check in single paragraph mode only after the first call of paragraph
-      if (paraNum >= 0) {
+      if(paraNum >= 0) {
         pErrors = paragraphsCache.get(cacheNum).getFromPara(paraNum, startSentencePos, endSentencePos);
         if (debugMode > 1 && pErrors != null) {
           MessageHandler.printToLogFile("Check Para Rules: pErrors from cache: " + pErrors.length);
@@ -1076,13 +1078,13 @@ class SingleDocument {
         if (startSentencePos > 0 && lastSinglePara != null && lastSinglePara.equals(paraText)) {
           pErrors = singleParaCache.getFromPara(0, startSentencePos, endSentencePos);
           return pErrors;
-        } else if (startSentencePos == 0) {
+        } else if(startSentencePos == 0) {
           lastSinglePara = paraText;
         }
       }
       // return Cache result if available / for right mouse click or Dialog only use cache
-      if (paraNum >= 0 && (pErrors != null || (useQueue && !isDialogRequest.contains(paraNum) && parasToCheck != 0))) {
-        if (useQueue && pErrors == null && parasToCheck != 0) {
+      if(paraNum >= 0 && (pErrors != null || (useQueue && !isDialogRequest.contains(paraNum) && parasToCheck != 0))) {
+        if(useQueue && pErrors == null && parasToCheck != 0) {
           addQueueEntry(paraNum, cacheNum, parasToCheck, docID, false);
         }
         return pErrors;
@@ -1090,14 +1092,14 @@ class SingleDocument {
       
       String textToCheck;
       //  One paragraph check (set by options or proof of footnote, etc.)
-      if (paraNum < 0 || parasToCheck == 0) {
+      if(paraNum < 0 || parasToCheck == 0) {
         textToCheck = DocumentCache.fixLinebreak(paraText);
-        if (mDocHandler.isSortedRuleForIndex(cacheNum)) {
+        if(mDocHandler.isSortedRuleForIndex(cacheNum)) {
           paragraphMatches = langTool.check(textToCheck, true, JLanguageTool.ParagraphHandling.ONLYPARA);
         } else {
           paragraphMatches = null;
         }
-        if (paragraphMatches == null || paragraphMatches.isEmpty()) {
+        if(paragraphMatches == null || paragraphMatches.isEmpty()) {
           if (paraNum < 0) {
             singleParaCache.put(0, new SingleProofreadingError[0]);
           } else {
@@ -1111,7 +1113,7 @@ class SingleDocument {
           List<SingleProofreadingError> errorList = new ArrayList<>();
           for (RuleMatch myRuleMatch : paragraphMatches) {
             int toPos = myRuleMatch.getToPos();
-            if (toPos > paraText.length()) {
+            if(toPos > paraText.length()) {
               toPos = paraText.length();
             }
             errorList.add(createOOoError(myRuleMatch, 0, toPos, paraText.charAt(toPos-1)));
@@ -1174,9 +1176,9 @@ class SingleDocument {
     try {
 
       ResultCache oldCache = null;
-      if (useQueue && !isDialogRequest.contains(paraNum)) {
+      if(useQueue && !isDialogRequest.contains(paraNum)) {
         oldCache = paragraphsCache.get(cacheNum);
-        if (parasToCheck < -1) {
+        if(parasToCheck < -1) {
           paragraphsCache.set(cacheNum, new ResultCache());
         } else {
           paragraphsCache.set(cacheNum, new ResultCache(oldCache));
@@ -1185,7 +1187,7 @@ class SingleDocument {
 
       String textToCheck = docCache.getDocAsString(paraNum, parasToCheck, textIsChanged);
       List<RuleMatch> paragraphMatches = null;
-      if (mDocHandler.isSortedRuleForIndex(cacheNum)) {
+      if(mDocHandler.isSortedRuleForIndex(cacheNum)) {
         paragraphMatches = langTool.check(textToCheck, true, JLanguageTool.ParagraphHandling.ONLYPARA);
       }
       
@@ -1194,15 +1196,15 @@ class SingleDocument {
       int startPos = docCache.getStartOfParagraph(startPara, paraNum, parasToCheck, textIsChanged);
       int endPos;
       for (int i = startPara; i < endPara; i++) {
-        if (useQueue && !isDialogRequest.contains(paraNum) && mDH.getTextLevelCheckQueue().isInterrupted()) {
+        if(useQueue && !isDialogRequest.contains(paraNum) && mDH.getTextLevelCheckQueue().isInterrupted()) {
           return;
         }
-        if (i < endPara - 1) {
+        if(i < endPara - 1) {
           endPos = docCache.getStartOfParagraph(i + 1, paraNum, parasToCheck, textIsChanged);
         } else {
           endPos = textToCheck.length();
         }
-        if (paragraphMatches == null || paragraphMatches.isEmpty()) {
+        if(paragraphMatches == null || paragraphMatches.isEmpty()) {
           paragraphsCache.get(cacheNum).put(i, new SingleProofreadingError[0]);
           if (debugMode > 1) {
             MessageHandler.printToLogFile("--> Enter to para cache(" + cacheNum + "): Paragraph: " + docCache.getTextParagraph(i) 
@@ -1216,7 +1218,7 @@ class SingleDocument {
             int startErrPos = myRuleMatch.getFromPos();
             if (startErrPos >= startPos && startErrPos < endPos) {
               int toPos = docCache.getTextParagraph(i).length();
-              if (toPos > 0) {
+              if(toPos > 0) {
                 errorList.add(createOOoError(myRuleMatch, -textPos, toPos, docCache.getTextParagraph(i).charAt(toPos-1)));
               }
             }
@@ -1237,8 +1239,8 @@ class SingleDocument {
         }
         startPos = endPos;
       }
-      if (useQueue && !isDialogRequest.contains(paraNum)) {
-        if (mDH.getTextLevelCheckQueue().isInterrupted()) {
+      if(useQueue && !isDialogRequest.contains(paraNum)) {
+        if(mDH.getTextLevelCheckQueue().isInterrupted()) {
           return;
         }
         if (docCursor == null) {
@@ -1247,7 +1249,7 @@ class SingleDocument {
         if (flatPara == null) {
           flatPara = new FlatParagraphTools(xComponent);
         }
-        if (override) {
+        if(override) {
           if (debugMode > 0) {
             MessageHandler.printToLogFile("Do Reset (useQueue == true)");
           }
@@ -1255,11 +1257,11 @@ class SingleDocument {
           tmpChangedParas = paragraphsCache.get(cacheNum).differenceInCaches(oldCache);
           List<Integer> changedParas = new ArrayList<>();
           for(int n : tmpChangedParas) {
-            if (sentencesCache.getEntryByParagraph(n) != null) {
+            if(sentencesCache.getEntryByParagraph(n) != null) {
               changedParas.add(n);
             }
           }
-          if (!changedParas.isEmpty()) {
+          if(!changedParas.isEmpty()) {
             remarkChangedParagraphs(changedParas, docCursor.getParagraphCursor(), flatPara);
           }
         } else {
@@ -1271,15 +1273,15 @@ class SingleDocument {
           List<Integer> changedParas = new ArrayList<>();
           for(int n = startPara; n < endPara; n++) {
             SingleProofreadingError[] errors = paragraphsCache.get(cacheNum).getMatches(n, 0);
-            if (errors != null && errors.length != 0) {
+            if(errors != null && errors.length != 0) {
               SingleProofreadingError[] filteredErrors = filterIgnoredMatches(errors, n);
-              if (sentencesCache.getEntryByParagraph(n) != null && filteredErrors != null && filteredErrors.length != 0) {
+              if(sentencesCache.getEntryByParagraph(n) != null && filteredErrors != null && filteredErrors.length != 0) {
 //                changedParasMap.put(n, filteredErrors);
                 changedParas.add(n);
               }
             }
           }
-          if (!changedParas.isEmpty()) {
+          if(!changedParas.isEmpty()) {
             remarkChangedParagraphs(changedParas, docCursor.getParagraphCursor(), flatPara);
           }
 //          flatPara.markParagraphs(changedParasMap, docCache, false, docCursor.getParagraphCursor());
@@ -1301,7 +1303,7 @@ class SingleDocument {
         errorArray = new SingleProofreadingError[0];
       } else {
         List<RuleMatch> ruleMatches;
-        if (!langTool.isRemote()) {
+        if(!langTool.isRemote()) {
           AnnotatedText annotatedText = getAnnotatedText(sentence, footnotePositions, startPos);
           ruleMatches = langTool.check(annotatedText, false, JLanguageTool.ParagraphHandling.ONLYNONPARA);
         } else {
@@ -1319,7 +1321,7 @@ class SingleDocument {
           errorArray = new SingleProofreadingError[0];
         }
       }
-      if (numParasToCheck != 0 && numCurPara >= 0) {
+      if(numParasToCheck != 0 && numCurPara >= 0) {
         if (debugMode > 1) {
           MessageHandler.printToLogFile("--> Enter to sentences cache: numCurPara: " + numCurPara 
               + "; startPos: " + startPos + "; Sentence: " + sentence 
@@ -1388,30 +1390,30 @@ class SingleDocument {
       url = ruleMatch.getRule().getUrl();
     }
     int nDim = 0;
-    if (url != null) {
+    if(url != null) {
       nDim++;
     }
-    if (underlineColor != Color.blue) {
+    if(underlineColor != Color.blue) {
       nDim++;
     }
-    if (underlineType != Configuration.UNDERLINE_WAVE || (config.markSingleCharBold() && aError.nErrorLength == 1)) {
+    if(underlineType != Configuration.UNDERLINE_WAVE || (config.markSingleCharBold() && aError.nErrorLength == 1)) {
       nDim++;
     }
-    if (nDim > 0) {
+    if(nDim > 0) {
       PropertyValue[] propertyValues = new PropertyValue[nDim];
       int n = 0;
-      if (url != null) {
+      if(url != null) {
         propertyValues[n] = new PropertyValue("FullCommentURL", -1, url.toString(), PropertyState.DIRECT_VALUE);
         n++;
       }
-      if (underlineColor != Color.blue) {
+      if(underlineColor != Color.blue) {
         int ucolor = underlineColor.getRGB() & 0xFFFFFF;
         propertyValues[n] = new PropertyValue("LineColor", -1, ucolor, PropertyState.DIRECT_VALUE);
         n++;
       }
-      if (underlineType != Configuration.UNDERLINE_WAVE) {
+      if(underlineType != Configuration.UNDERLINE_WAVE) {
         propertyValues[n] = new PropertyValue("LineType", -1, underlineType, PropertyState.DIRECT_VALUE);
-      } else if (config.markSingleCharBold() && aError.nErrorLength == 1) {
+      } else if(config.markSingleCharBold() && aError.nErrorLength == 1) {
         propertyValues[n] = new PropertyValue("LineType", -1, Configuration.UNDERLINE_BOLDWAVE, PropertyState.DIRECT_VALUE);
       }
       aError.aProperties = propertyValues;
@@ -1471,8 +1473,14 @@ class SingleDocument {
    */
   public String ignoreOnce() {
     ViewCursorTools viewCursor = new ViewCursorTools(xContext);
-    int x = viewCursor.getViewCursorCharacter();
     int y = viewCursor.getViewCursorParagraph();
+    int x = viewCursor.getViewCursorCharacter();
+    setIgnoredMatch (x, y);
+    return docID;
+  }
+  
+  public void setIgnoredMatch(int x, int y) {
+    MessageHandler.printToLogFile("Set ignore match: x = " + x + ", y = " + y);
     if (ignoredMatches.containsKey(y)) {
       List<Integer> charNums = ignoredMatches.get(y);
       charNums.add(x);
@@ -1482,7 +1490,7 @@ class SingleDocument {
       charNums.add(x);
       ignoredMatches.put(y, charNums);
     }
-    if (numParasToCheck != 0) {
+    if(numParasToCheck != 0) {
       List<Integer> changedParas = new ArrayList<>();
       changedParas.add(y);
       if (docCursor == null) {
@@ -1493,7 +1501,6 @@ class SingleDocument {
     if (debugMode > 0) {
       MessageHandler.printToLogFile("Ignore Match added at: paragraph: " + y + "; character: " + x);
     }
-    return docID;
   }
   
   /**
@@ -1504,14 +1511,14 @@ class SingleDocument {
     SingleProofreadingError error = sentencesCache.getErrorAtPosition(nPara, nChar);
     for(ResultCache paraCache : paragraphsCache) {
       SingleProofreadingError err = paraCache.getErrorAtPosition(nPara, nChar);
-      if (err != null) {
-        if (error == null || error.nErrorStart < err.nErrorStart
+      if(err != null) {
+        if(error == null || error.nErrorStart < err.nErrorStart
             || (error.nErrorStart == err.nErrorStart && error.nErrorLength > err.nErrorLength)) {
           error = err;
         } 
       }
     }
-    if (error != null) {
+    if(error != null) {
       return error.aRuleIdentifier;
     } else {
       return null;
