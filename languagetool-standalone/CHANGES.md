@@ -20,6 +20,8 @@
   * rules improvements
   * [spell checking now uses Morfologik instead of Hunspell](https://github.com/languagetool-org/languagetool/commit/d7b866b)
 
+#### German
+  * POS and spelling improvements
 
 ## 5.0 ( 2020-10-01)
 
