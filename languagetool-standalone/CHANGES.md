@@ -23,6 +23,9 @@
 #### German
   * POS and spelling improvements
 
+#### Russian
+  * added and improved rules
+
 ## 5.0 ( 2020-10-01)
 
 ### This fork differences

@@ -155,8 +155,8 @@ public class MultiThreadedJLanguageTool extends JLanguageTool {
   
   @Override
   protected List<RuleMatch> performCheck(List<AnalyzedSentence> analyzedSentences, List<String> sentences,
-       List<Rule> allRules, ParagraphHandling paraMode, 
-       AnnotatedText annotatedText, RuleMatchListener listener, Mode mode) {
+                                         List<Rule> allRules, ParagraphHandling paraMode,
+                                         AnnotatedText annotatedText, RuleMatchListener listener, Mode mode, Level level) {
     int charCount = 0;
     int lineCount = 0;
     int columnCount = 1;
@@ -166,7 +166,7 @@ public class MultiThreadedJLanguageTool extends JLanguageTool {
     ExecutorService executorService = getExecutorService();
     try {
       List<Callable<List<RuleMatch>>> callables =
-              createTextCheckCallables(paraMode, annotatedText, analyzedSentences, sentences, allRules, charCount, lineCount, columnCount, listener, mode);
+              createTextCheckCallables(paraMode, annotatedText, analyzedSentences, sentences, allRules, charCount, lineCount, columnCount, listener, mode, level);
       List<Future<List<RuleMatch>>> futures = executorService.invokeAll(callables);
       for (Future<List<RuleMatch>> future : futures) {
         ruleMatches.addAll(future.get());
@@ -180,13 +180,13 @@ public class MultiThreadedJLanguageTool extends JLanguageTool {
 
   private List<Callable<List<RuleMatch>>> createTextCheckCallables(ParagraphHandling paraMode,
        AnnotatedText annotatedText, List<AnalyzedSentence> analyzedSentences, List<String> sentences, 
-       List<Rule> allRules, int charCount, int lineCount, int columnCount, RuleMatchListener listener, Mode mode) {
+       List<Rule> allRules, int charCount, int lineCount, int columnCount, RuleMatchListener listener, Mode mode, Level level) {
 
     List<Callable<List<RuleMatch>>> callables = new ArrayList<>();
  
     for (Rule rule: allRules) {
       callables.add(new TextCheckCallable(Arrays.asList(rule), sentences, analyzedSentences, paraMode, 
-          annotatedText, charCount, lineCount, columnCount, listener, mode));
+          annotatedText, charCount, lineCount, columnCount, listener, mode, level));
     }
 
     return callables;
