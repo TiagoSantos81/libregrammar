@@ -18885,7 +18885,7 @@ though, and has since been slightly modified)-->
         <example correction="prises de courant|prises électrique|fiches|publicités gratuite|publicités dissimulée"><marker>plogues</marker></example>
       <example><marker>prise de courant</marker></example>
     </rule>
-    <rule id="PIMENT_FORT" name="piment fort" default="off" tags="picky">
+    <rule id="PIMENT_FORT" name="piment fort" tags="picky">
       <pattern>
         <token regexp="yes">piments?</token>
         <token regexp="yes">forts?</token>
@@ -18930,7 +18930,7 @@ though, and has since been slightly modified)-->
       <example correction="cirage"><marker>poli à chaussures</marker></example>
         <example correction="cirages"><marker>polis à chaussures</marker></example>
     </rule>
-    <rule id="PIMENT_DOUX" name="piment doux" default="off" tags="picky">
+    <rule id="PIMENT_DOUX" name="piment doux" tags="picky">
       <pattern>
         <token regexp="yes">piments?</token>
         <token>doux</token>
@@ -18946,7 +18946,7 @@ though, and has since been slightly modified)-->
       <example correction="cacahuète|cacahouète|beurre de cacahuète|beurre de cacahouète|beurre d’arachide|bagatelle|vétille|pour deux fois rien|pour des prunes|pour des cacahouètes|tout à trac|tout d’un coup|à fond de train|à toute vitesse"><marker>pinotte</marker></example>
       <example><marker>cacahuète</marker></example>
     </rule>
-    <rule id="LAISSEZ_MOI_VOUS_DIRE_QUE" name="laisse-moi te dire que" default="off" tags="picky">
+    <rule id="LAISSEZ_MOI_VOUS_DIRE_QUE" name="laisse-moi te dire que"><!--  tags="picky" -->
       <pattern>
         <token>laisse</token>
         <token>-moi</token>
@@ -19194,7 +19194,7 @@ though, and has since been slightly modified)-->
       <message>« Fournaise à (l’)huile » est un anglicisme (oil furnace). Employez <suggestion>chaudière à mazout</suggestion>.</message>
       <example correction="chaudière à mazout"><marker>fournaise à l’huile</marker></example>
     </rule>
-    <rule id="LAISSEZ-MOI_VOUS_DIRE_QUE" name="laissez-moi vous dire que" default="off" tags="picky">
+    <rule id="LAISSEZ-MOI_VOUS_DIRE_QUE" name="laissez-moi vous dire que"><!--  tags="picky" -->
       <pattern>
         <token>laissez</token>
         <token>-moi</token>
@@ -19206,7 +19206,7 @@ though, and has since been slightly modified)-->
       <example correction="je vous assure que|croyez-moi, vous|il faut dire que vous"><marker>laissez-moi vous dire que</marker></example>
       <example><marker>il faut dire que</marker></example>
     </rule>
-    <rule id="LAISSEZ_MOI_TE_DIRE_QUE" name="laisse-moi te dire que" default="off" tags="picky">
+    <rule id="LAISSEZ_MOI_TE_DIRE_QUE" name="laisse-moi te dire que"><!--  tags="picky" -->
       <pattern>
         <token>laisse</token>
         <token>-moi</token>
