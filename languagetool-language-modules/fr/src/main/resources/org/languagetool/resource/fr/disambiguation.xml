@@ -2316,14 +2316,4 @@ RB => Règles Brutes
     </pattern>
     <disambig action="ignore_spelling"/>
   </rule>
-
-  <rule name="Ignore number strings" id="IGNORE_NUMBERS">
-    <pattern>
-      <token regexp="yes">
-        [\dA-z\.\,éèëöïîôêàçœæÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒ]+\d[\dA-z\.\,éèëöïîôêàçœæÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒ]+
-        <exception>[A-z\.\,éèëöïîôêàçœæÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒ]+\d[A-z\.\,éèëöïîôêàçœæÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒ]+</exception>
-      </token>
-    </pattern>
-    <disambig action="ignore_spelling"/>
-  </rule>
 </rules>
