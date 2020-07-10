@@ -2093,7 +2093,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <marker>
                     <token postag="ADJ:.*" postag_regexp="yes">
                         <exception postag="ADJ:PRD:(KOM|GRU)|SUB:.*" postag_regexp="yes"/>
-                        <exception regexp="yes">dehnbarer|andere|lange|höher|einige|solche|weitere|folgende[rs]?|öde|spitze|viele</exception>
+                        <exception regexp="yes">dehnbarer|andere|lange|höher|einige|solche|weitere|folgende[rs]?|öde|spitze|viele|letzter|erster</exception>
+                        <exception regexp="yes">erster|zweiter|dritter|vierter|fünfter|sechster|siebter|achter|neunter|zehnter|elfter|zwölfter</exception>
                         <exception inflected="yes">andere</exception>
                     </token>
                 </marker>
@@ -2109,6 +2110,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example>Die ersten Erdbändiger waren blinde Dachsmaulwürfe.</example>
             <example>Die Arbeit ist öde.</example>
             <example>Das Essen war spitze.</example>
+            <example>Tom war vierter.</example>
         </rule>
         <rule id="SO_SCHNELLE_WIE" name="'so schnelle (schnell) wie' etc.">
             <pattern>
@@ -7860,6 +7862,15 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <short>&getrennt;.</short>
             <example correction="WhatsApp">Wir schrieben per <marker>whats app</marker>.</example>
         </rule>
+        <rule id="POWER_SHELL" name="PowerShell">
+            <pattern>
+                <token>power</token>
+                <token>shell</token>
+            </pattern>
+            <message>Meinten Sie <suggestion>PowerShell</suggestion> (= Windows Framework)?</message>
+            <url>https://de.wikipedia.org/wiki/PowerShell</url>
+            <example correction="PowerShell"><marker>Power Shell</marker> ist ein plattformübergreifendes Framework von Microsoft zur Automatisierung, Konfiguration und Verwaltung von Systemen.</example>
+        </rule>
         <rule id="PAY_PAL" name="PayPal">
             <pattern>
                 <token>Pay</token>
@@ -9476,6 +9487,48 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
     <!-- Siehe auch ../../resource/de/compounds.txt -->
     <!-- ====================================================================== -->
     <category id="COMPOUNDING" name="Getrennt- und Zusammenschreibung">
+        <rulegroup id="GELD_ZURUECK_GARANTIE" name="Geld-zurück-Garantie">
+            <url>https://www.bpb.de/nachschlagen/lexika/lexikon-der-wirtschaft/19445/geld-zurueck-garantie</url>
+            <rule>
+                <pattern>
+                    <token regexp="yes">\d+</token>
+                    <token regexp="yes">Tage|Wochen|Monate</token>
+                    <token>Geld</token>
+                    <token>zurück</token>
+                    <token regexp="yes">Garantien?</token>
+                </pattern>
+                <message>Meinten Sie das Nomen <suggestion>\1-<match no="2" case_conversion="startupper" />-Geld-zurück-<match no="5" case_conversion="startupper" /></suggestion>?</message>
+                <example correction="14-Tage-Geld-zurück-Garantie">Der Shop bietet eine <marker>14 Tage Geld zurück Garantie</marker>.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp="yes">\d+</token>
+                    <token regexp="yes">Tage|Wochen|Monate</token>
+                    <token>Geld-zurück-Garantie</token>
+                </pattern>
+                <message>Meinten Sie das Nomen <suggestion>\1-<match no="2" case_conversion="startupper" />-\3</suggestion>?</message>
+                <example correction="14-Tage-Geld-zurück-Garantie">Der Shop bietet eine <marker>14 Tage Geld-zurück-Garantie</marker>.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp="yes">\d+\-(Tage|Wochen|Monate)</token>
+                    <token>Geld</token>
+                    <token>zurück</token>
+                    <token regexp="yes">Garantien?</token>
+                </pattern>
+                <message>Meinten Sie das Nomen <suggestion>\1-Geld-zurück-<match no="4" case_conversion="startupper" /></suggestion>?</message>
+                <example correction="14-Tage-Geld-zurück-Garantie">Der Shop bietet eine <marker>14-Tage Geld zurück Garantie</marker>.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token>Geld</token>
+                    <token>zurück</token>
+                    <token regexp="yes">Garantien?</token>
+                </pattern>
+                <message>Meinten Sie das Nomen <suggestion>Geld-zurück-<match no="3" case_conversion="startupper" /></suggestion>?</message>
+                <example correction="Geld-zurück-Garantie">Der Shop bietet eine <marker>Geld zurück Garantie</marker>.</example>
+            </rule>
+        </rulegroup>
         <rule id="FEST_COMPOUNDS" name="fest genommen (festgenommen)">
             <pattern>
                 <token>fest</token>
@@ -16283,7 +16336,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="Inmitten"><marker>Inmitten in</marker> einer intakten Landschaft.</example>
             </rule>
         </rulegroup>
-        <rulegroup id="ISBN-NUMMER" name="Verdoppelung bei Komposita: 'ISBN-Nummer (ISBN)' etc.">
+        <rulegroup id="ISBN-NUMMER" name="Verdoppelung bei Komposita: 'ISBN-Nummer (ISBN)' etc." tags="picky">
             <rule>
                 <regexp>SMS-Services?</regexp>
                 <message>&redundanz;'SMS' steht u.&nbsp;a. für 'Short Message Service' – ersetzen durch <suggestion>SMS</suggestion>?</message>
@@ -17051,6 +17104,19 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <suggestion>\1 ist \3 nicht sinnvoll</suggestion>
                 <suggestion>\1 ist sinnlos</suggestion>
                 <example correction="Das ergibt keinen Sinn|Das stiftet keinen Sinn|Das ist nicht sinnvoll|Das ist sinnlos"><marker>Das macht keinen Sinn</marker>!</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token>keinen</token>
+                    <token>Sinn</token>
+                    <token>macht</token>
+                </pattern>
+                <message>'Sinn machen' ist umgangssprachlich.</message>
+                <suggestion>\1 \2 ergibt</suggestion>
+                <suggestion>\1 \2 stiftet</suggestion>
+                <suggestion>nicht sinnvoll ist</suggestion>
+                <suggestion>sinnlos ist</suggestion>
+                <example correction="keinen Sinn ergibt|keinen Sinn stiftet|nicht sinnvoll ist|sinnlos ist">Auch, wenn das <marker>keinen Sinn macht</marker>.</example>
             </rule>
             <rule>
                 <pattern>
@@ -33638,6 +33704,41 @@ Andere Projekte</example>
     <!-- Grammatik -->
     <!-- ====================================================================== -->
     <category id="GRAMMAR" name="Grammatik">
+        <rulegroup id="MITGLIEDERINNEN" name="Mitgliederinnen" default="temp_off">
+            <url>https://www.duden.de/sprachwissen/sprachratgeber/%E2%80%9ELiebe-Mit%C2%ADglieder%C2%ADinnen-und-Mit%C2%ADglieder%E2%80%9C-%E2%80%93-Personen%C2%AD%C2%ADbezeich%C2%ADnungen</url>
+            <rule>
+                <pattern>
+                    <token>Mitgliederinnen</token>
+                    <token regexp="yes">und|oder|&amp;</token>
+                    <token>Mitglieder</token>
+                </pattern>
+                <message>Das Wort "Mitglied" ist ein Neutrum ("das Mitglied") und bezeichnet sowohl Frauen als auch Männer. <suggestion>Mitglieder</suggestion> reicht daher aus, um beide Geschlechter anzusprechen.</message>
+                <example correction="Mitglieder">Liebe <marker>Mitgliederinnen und Mitglieder</marker>, danke für eure Hilfe.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token>Mitglieder</token>
+                    <token regexp="yes">und|oder|&amp;</token>
+                    <token>Mitgliederinnen</token>
+                </pattern>
+                <message>Das Wort "Mitglied" ist ein Neutrum ("das Mitglied") und bezeichnet sowohl Frauen als auch Männer. <suggestion>Mitglieder</suggestion> reicht daher aus, um beide Geschlechter anzusprechen.</message>
+                <example correction="Mitglieder">Liebe <marker>Mitglieder und Mitgliederinnen</marker>, danke für eure Hilfe.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token>Mitgliederinnen</token>
+                </pattern>
+                <message>Das Wort "Mitglied" ist ein Neutrum ("das Mitglied") und bezeichnet sowohl Frauen als auch Männer. <suggestion>Mitglieder</suggestion> reicht daher aus, um beide Geschlechter anzusprechen.</message>
+                <example correction="Mitglieder">Ich habe die <marker>Mitgliederinnen</marker> informiert.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token>Mitgliederin</token>
+                </pattern>
+                <message>Das Wort "Mitglied" ist ein Neutrum ("das Mitglied") und bezeichnet sowohl Frauen als auch Männer. <suggestion>Mitglied</suggestion> reicht daher aus, um beide Geschlechter anzusprechen.</message>
+                <example correction="Mitglied">Ich habe die <marker>Mitgliederin</marker> informiert.</example>
+            </rule>
+        </rulegroup>
         <rule id="PERSONA_NON_GRATA" name="Persona non grata">
             <antipattern case_sensitive="yes">
                 <token>Persona</token>
@@ -38424,6 +38525,23 @@ Andere Projekte</example>
     <!-- Redewendungen -->
     <!-- ====================================================================== -->
     <category id="IDIOMS" name="Redewendungen">
+        <rule id="WIE_EH_UND_JE" name="wie eh und je">
+            <antipattern case_sensitive="yes">
+                <token regexp="yes">[Ss]chon|[Ss]eit|[Ww]ie</token>
+                <token>eh</token>
+                <token regexp="yes">und|&amp;</token>
+                <token>je</token>
+            </antipattern>
+            <pattern>
+                <token regexp="yes">schon|sei[dt]|wie</token>
+                <token regexp="yes">ee?h?</token>
+                <token regexp="yes">und|&amp;</token>
+                <token regexp="yes">[yj]eh?</token>
+            </pattern>
+            <message>Meinten Sie die Redewendung <suggestion><match no="1" regexp_match="eid" regexp_replace="eit" /> eh und je</suggestion>?</message>
+            <url>https://www.wortbedeutung.info/eh_und_je/</url>
+            <example correction="seit eh und je">Er macht das schon <marker>seit Eh und Jeh</marker> so.</example>
+        </rule>
         <rule id="WEDER_OHNE_NOCH" name="'weder' ohne 'noch'">
             <antipattern>
                 <token skip="-1">weder</token>
