@@ -15,6 +15,8 @@
     <!ENTITY subordinating_conjunctions "after|although|as|because|before|if|lest|like|once|since|than|that|though|unless|until|whenever|where|whereas|wherever|whether|while|why"><!-- #2988 -->
      <!ENTITY abbreviated_negated_verbs "ain|aren|isn|wasn|weren|can|couldn|don|doesn|didn|hasn|hadn|haven|mayn|mightn|mustn|needn|oughtn|shan|shouldn|usedn|won|wouldn">
     <!ENTITY browser_protocols "(?:a(?:aas?|bout|cap|cct|cr|diumxtra|fp|fs|im|mss|pt|ttachment|w)|b(?:arion|eshare|itcoin|lob|olo)|c(?:allto|ap|hrome|id|oaps?|ontent|rid|vs)|da(?:b|ta|av)|d(?:ict|ns|ntp|rm|tn|vb)|e(?:d2k|xamples?)|fa(?:cetime|x)|f(?:eed|ile(?:system)?|i(?:nger|sh)|m|tp)|g(?:(?:eo|g)|i(?:t|zmoproject)|o(?:pher)?|talk)|h(?:323|cp|ttps?)|i(?:ax|cap|con|m(?:ap)?|nfo|otdisco|pn|pps?|ir(?:6?|cs|is|tms)|j(?:a(?:bber|r)|ms)|keyparc|l(?:astfm|daps?)|ma(?:gnet|ilserver|ilto|kes|ps|rket)|m(?:essage|id|ms|odem|snim|srps?|tqp|umble|update|vn)|n(?:ews|fs|i(?:h)?|ntp|otes)|obsolete|o(?:id|paquelocktoken)|pa(?:ck|lm|parazzi)|p(?:kcs11|latform|op|res|ro(?:spero|xy)|syc)|query|re(?:diss?|load|s(?:ource)?)|r(?:mi|sync|tmfp|t(?:mp|sp))|se(?:condlife|rvice|ssion)|s(?:ftp|gn|http|ieve|ips?|kype|mb|ms|n(?:ews|mp)|oldat|potify|sh|team|tuns?|vn)|t(?:ag|eamspeak|el(?:net)?|ftp|hings|hismessage|ip|n3270|urns?|v)|u(?:dp|nreal|rn|t2004)|v(?:e(?:mmi|ntrilo)|ideotex|nc))|w(?:ais|ebcal|ss?|tai|yciwyg)|x(?:con|fire|mpp|ri)|ymsgr)">
+    
+    <!ENTITY units_of_measure "(?:(?:[khdcmnµfYZEPTGM]|da)?(?:[gmlsJNWCVSFTHΩ]|Hz|cd|lm|mol|Pa|Wb|rad|sr|lx|Bq|Gy|Sv|kat|Np|eV)(?:⁻)?[23¹²³]?|º[CFK]|cv|k?cal|mmHg|atm|bpm|ton|kWh|GWa|MWd|MWh|mAh|min|ha)">
 ]>
 <rules lang="en" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:noNamespaceSchemaLocation="../../../../../../../../../languagetool-core/src/main/resources/org/languagetool/resource/disambiguation.xsd">
@@ -10980,6 +10982,35 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
     <rule>
       <pattern>
           <token regexp="yes">[\d.,]+[%‰‱]</token>
+      </pattern>
+      <disambig action="ignore_spelling"/>
+    </rule>
+    <rule>
+      <pattern>
+        <marker>
+          <token regexp="yes">[\d\., ]+[%$€º°]?</token>
+        </marker>
+      </pattern>
+      <disambig action="ignore_spelling"/>
+    </rule>
+    <rule>
+      <pattern>
+        <marker>
+          <token regexp="yes">[$€£][\d\., ]+</token> <!-- TODO: create rule suggesting another format -->
+        </marker>
+      </pattern>
+      <disambig action="ignore_spelling"/>
+    </rule>
+    <rule>
+      <pattern case_sensitive="yes">
+          <token regexp="yes">\/|[\.·\/]|[\d\., ]*\d+</token>
+          <token regexp="yes">&units_of_measure;</token>
+      </pattern>
+      <disambig action="ignore_spelling"/>
+    </rule>
+    <rule>
+      <pattern case_sensitive="yes">
+          <token regexp="yes">\d[\d ]*[\.,]?\d*(&units_of_measure;)</token>
       </pattern>
       <disambig action="ignore_spelling"/>
     </rule>

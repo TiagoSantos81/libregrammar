@@ -13527,6 +13527,28 @@
       </pattern>
       <disambig action="ignore_spelling"/>
     </rule>
+    <rule>
+      <pattern>
+        <marker>
+          <token regexp="yes">[\d\., ]+[%$€º°]?</token>
+        </marker>
+      </pattern>
+      <disambig action="ignore_spelling"/>
+    </rule>
+    <rule>
+      <pattern>
+        <marker>
+          <token regexp="yes">[$€£][\d\., ]+</token> <!-- TODO: create rule suggesting another format -->
+        </marker>
+      </pattern>
+      <disambig action="ignore_spelling"/>
+    </rule>
+    <rule>
+      <pattern>
+          <token regexp="yes">[\d.,]+[%‰‱]</token>
+      </pattern>
+      <disambig action="ignore_spelling"/>
+    </rule>
   </rulegroup>
 
     <rule id="ignore_citation_years" name="pomijanie oznaczeń roku wydania pozycji w bibliografii">

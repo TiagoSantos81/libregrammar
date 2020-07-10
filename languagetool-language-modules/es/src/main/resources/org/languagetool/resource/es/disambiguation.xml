@@ -3772,6 +3772,28 @@ Copyright (C) 2011 Juan Martorell
       </pattern>
       <disambig action="ignore_spelling"/>
     </rule>
+    <rule>
+      <pattern>
+        <marker>
+          <token regexp="yes">[\d\., ]+[%$€º°]?</token>
+        </marker>
+      </pattern>
+      <disambig action="ignore_spelling"/>
+    </rule>
+    <rule>
+      <pattern>
+        <marker>
+          <token regexp="yes">[$€£][\d\., ]+</token> <!-- TODO: create rule suggesting another format -->
+        </marker>
+      </pattern>
+      <disambig action="ignore_spelling"/>
+    </rule>
+    <rule>
+      <pattern>
+          <token regexp="yes">[\d.,]+[%‰‱]</token>
+      </pattern>
+      <disambig action="ignore_spelling"/>
+    </rule>
   </rulegroup>
         <rule name="Ignore spelling of url protocols" id="URI_PROTOCOL">
                 <pattern><!-- chrome://, ftp://, file:// -->
