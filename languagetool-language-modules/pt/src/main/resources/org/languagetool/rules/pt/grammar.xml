@@ -576,6 +576,11 @@ title="Easy editing stylesheet" ?>
       <example>O Rui aprende e sugere ele mesmo mensagens como sendo verdadeiras.</example>
     </rule>
     <rule>
+      <antipattern>
+          <token inflected='yes'>fazer</token>
+          <token>disto</token>
+          <token postag_regexp='yes' postag='N.FS.+'/>
+      </antipattern>
       <pattern>
           <token negate='yes' regexp='yes'>e|de|&hifen;</token>
         <marker>
@@ -596,6 +601,7 @@ title="Easy editing stylesheet" ?>
         <suggestion suppress_misspelled='yes'><match no='2' include_skipped='all'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5' postag="(N.|[AD]..)F.(.+)" postag_replace='$1MS$2' postag_regexp="yes"/></suggestion>
         <suggestion suppress_misspelled='yes'><match no='2' include_skipped='all' regexp_match='(.+?)(o?)$' regexp_replace='$1a'/> <match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/> <match no='5'/></suggestion>
       <example correction='na hora'>Foi resolvido <marker>no hora</marker> certa.</example>
+      <example>Vamos fazer disto notícia.</example>
     </rule>
     <rule>
       <antipattern>
@@ -1399,6 +1405,7 @@ title="Easy editing stylesheet" ?>
       <example>Na semana que vem, irei trabalhar em Tóquio.</example>
       <example>Quem quiser, pode ficar. </example>
       <example>Chegou há cerca de 10 dias.</example>
+      <example correction="pode vir|pode a vir|pode vindo|pode, VIM">"Você <marker>pode VIM</marker>¨.</example><!-- XXX #3234 -->
     </rule>
     <rule>
       <pattern>
@@ -3546,7 +3553,7 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes' inflected='yes'>ter|haver</token><!-- TODO testar chegar -->
           <token min="0" max="3" postag_regexp='yes' postag='R.+'/>
           <token regexp='yes'>(?:(?:a(?:bsort|ces|nex|ntepag)|bent|ch(?:ei|go|onclus|ult)|d(?:efes|esenvolt|espert|ispers|issoluto|istint)|e(?:leit|mers|nxut|nvolt|ret|xaust|xpress|xpuls|xtint)|f(?:ind|ix|rit)|g(?:anh|ast)|i(?:mers|mpress|ncurs|nsert|sent)|limp|m(?:algast|alquist|anifest|ort)|o(?:cult|miss|press)|p(?:ag|asm|eg)|r(?:eeleit|epuls|evolt|ot)|s(?:alvo|egur|epult|olt|ubmers|uj|ujeit|upress|urpres|uspens)|v(?:ag|olt))[ao]|a(?:ceit[aoe]|ssente)|entregue)s?
-            <exception regexp='yes'>(?:aces|ganh|gast|mort|pag|salv|eleit|expuls)[ao]s?|entregues?|aceites?|oculto|(?:surpres|vag)as?</exception></token><!-- XXX significado distintos. Removidos: incluso|tinto -->
+            <exception regexp='yes'>(?:aces|ganh|gast|mort|pag|salv|eleit|expuls)[ao]s?|entregues?|aceites?|oculto|rotas?|(?:surpres|vag)as?</exception></token><!-- XXX significado distintos. Removidos: incluso|tinto -->
       </pattern>
       <message>Com o verbo '<match no='1' postag='VMN0000'/>' deve utilizar-se o particípio passado regular.</message>
     <!--suggestion suppress_misspelled='yes'>\1 <match no='2' include_skipped='all'/> <match no='3' postag_match='VMP00(.)(.)' postag_replace='VMIP1$20'/></suggestion-->
@@ -4950,6 +4957,12 @@ title="Easy editing stylesheet" ?>
       <example>Porque você vai embora?</example><!-- TODO this is incorrect in pt-BR. Needs another rule there -->
     </rule>
     <rule>
+      <antipattern>
+          <token>,</token>
+          <token>por</token>
+          <token regexp='yes' skip='-1'>qu[eê]</token>
+          <token>?</token>
+      </antipattern>
       <pattern>
           <token>por
             <exception scope='previous' regexp='yes'>raz(?:ão|ões)|motivos?|causas?</exception></token>
@@ -4961,6 +4974,24 @@ title="Easy editing stylesheet" ?>
       <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/porque-por-que-e-porque/243</url>
       <example correction="porque o">Isto <marker>por que o</marker> Raul tinha saído.</example>
       <example>…motivo por que muitos chineses desejam que o país se torne…</example>
+    </rule>
+    <rule>
+      <antipattern>
+          <token>,</token>
+          <token>por</token>
+          <token skip='-1'>que</token>
+          <token skip='-1' regexp='yes'>[,;]</token>
+          <token>?</token>
+      </antipattern>
+      <pattern>
+          <token>por</token>
+          <token regexp='yes'>que</token>
+          <token postag_regexp='yes' postag='D.+'>
+            <exception negate_pos='yes' postag_regexp='yes' postag='D.+'/></token>
+      </pattern>
+      <message>'Por \2' pode ser substituído por 'pelo qual'. Será que pretende dizer <suggestion>por quê \3</suggestion>?</message>
+      <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/porque-por-que-e-porque/243</url>
+      <example correction="por quê essa">Não existe nada sobre isso, <marker>por que essa</marker> perseguição?</example>
     </rule>
     <rule>
       <pattern>
@@ -26403,7 +26434,7 @@ TODO Write better examples
           <token>a</token>
       </antipattern>
       <pattern>
-          <token regexp='yes'>(?:à|a(?:nálise|prendizagem|quela)?|camada|conec?tividade|c(?:oreia|orente)|da|d(?:e|escarga|essa|iscursiva)|É|e(?:m|ra|ssa|scala|spera|sta|stá|strutura)|fase|f(?:oi|orma)|inconstância|l(?:eitura|ida|inha|uta)|m(?:ais|alha|aneira|archa|assa|atriz|edida|elhoria|oldagem)|n(?:a|atureza|ecessariamente|essa|uma)|parte|p(?:ela|or)|queda|r(?:ajada|eciclagem)|sai|s(?:aída|er|érie|uperfície)|tão|uma|vigilância)s?</token>
+          <token regexp='yes'>(?:à|a(?:nálise|prendizagem|quela)?|camada|conec?tividade|c(?:oreia|orente)|da|d(?:e|escarga|essa|iscursiva)|É|e(?:m|ra|ssa|scala|spera|sta|stá|strutura)|fase|f(?:oi|orma)|inconstância|l(?:eitura|ida|inha|uta)|m(?:ais|alha|aneira|archa|assa|atriz|edida|elhoria|oldagem)|n(?:a|atureza|ecessariamente|essa|uma)|p(?:ela|or)|queda|r(?:ajada|eciclagem)|sai|s(?:aída|er|érie|uperfície)|tão|uma|vigilância)s?</token>
         <marker>
           <token regexp='yes'>continuas?</token>
         </marker>
@@ -28991,7 +29022,7 @@ TODO Write better examples
 
     <rule id='LOOSE_ACCENTS' name="Acentos soltos">
     <!-- Based on Catalan grammar.xml, by Tiago F. Santos on 11-02-2017 -->
-      <regexp>[`´]</regexp>
+      <regexp>[`´¨^]</regexp>
       <message>Caratere incorreto. Utilize antes o apóstrofe ou reveja a acentuação.</message>
         <suggestion>’</suggestion>
         <suggestion/>
