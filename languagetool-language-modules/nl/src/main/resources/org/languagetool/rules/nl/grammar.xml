@@ -1472,6 +1472,7 @@ regexp case-insensitive maken : (?i)
 
 		<rulegroup id="OOR_OR" name="waarschuwing bij gebruik or i.p.v. oor">
 			<rule>
+                <antipattern><token>deal</token><token>or</token><token>no</token><token>deal</token></antipattern>
 				<antipattern><token>de</token><token>or</token></antipattern> <!-- ondernemingsraad -->
 				<antipattern><token>or</token><token>the</token></antipattern> <!-- Engels -->
 				<antipattern><token>or</token><token postag="UNKNOWN|FOREIGN" postag_regexp="yes"/></antipattern> <!-- Engels -->
@@ -4323,7 +4324,7 @@ regexp case-insensitive maken : (?i)
 				<example correction="zolderingen">Het woord <marker>solderingen</marker> kan een vergissing zijn.</example>
 			</rule>
 		</rulegroup>
-
+<!-- too many falses TODO andersom?
 		<rulegroup id="BUSSEN_BUZZEN" name="waarschuwing bij gebruik bussen i.p.v. buzzen">
 			<rule>
 				<pattern>
@@ -4333,7 +4334,7 @@ regexp case-insensitive maken : (?i)
 				<example correction="buzzen">Het woord <marker>bussen</marker> kan een vergissing zijn.</example>
 			</rule>
 		</rulegroup>
-
+        -->
         <rulegroup id="VERSWAAR_VERZWAAR" name="waarschuwing bij gebruik verswaar i.p.v. verzwaar">
 			<rule>
 				<pattern>
@@ -4346,6 +4347,7 @@ regexp case-insensitive maken : (?i)
 
 		<rulegroup id="PAUSEN_PAUZEN" name="waarschuwing bij gebruik pausen i.p.v. pauzen">
 			<rule>
+                <antipattern><token postag="SENT_START" skip="-1"/><token regexp="yes" skip="-1">Avignon|kerk|paus</token><token postag="SENT_END"/></antipattern>
 				<pattern><token>pausen</token></pattern>
 				<message>Bedoelt u wellicht <suggestion>pauzen</suggestion> (=rustmomenten)? Of toch kerkleiders?</message>
 				<example correction="pauzen">Het woord <marker>pausen</marker> kan een vergissing zijn.</example>
@@ -16631,6 +16633,11 @@ steenwijk;Steenwijk
 			</rule>
 		</rulegroup>
 		<rulegroup id="LANG_HL" name="Lang woord in hoofdletters">
+            <antipattern>
+                <!-- newspaper habit -->
+                <token postag="SENT_START"/>
+                <token postag_regexp="yes" postag="ENM.*"/>
+            </antipattern>
 			<rule>
 				<antipattern>
 					<token postag="SENT_START"/>
@@ -16639,7 +16646,7 @@ steenwijk;Steenwijk
 				</antipattern>
 				<pattern case_sensitive="yes">
 					<marker>
-						<token regexp="yes" case_sensitive="yes">[A-Z]{5,79}<exception regexp="yes">[0-9a-f]{6}</exception></token>
+                        <token regexp="yes" case_sensitive="yes">[A-Z]{5,79}<exception regexp="yes">[0-9a-f]{6}</exception><exception postag_regexp="yes" postag="ENM.*"/></token>
 						<!-- uitzondering voor hex kleuren tbv Wikipedia check -->
 					</marker>
 				</pattern>
@@ -16647,6 +16654,18 @@ steenwijk;Steenwijk
 				<short>Lelijk</short>
 				<example correction="altijd">Das echt <marker>ALTIJD</marker>.</example>
 			</rule>
+            <!--
+			<rule>
+				<pattern case_sensitive="yes">
+					<marker>
+                        <token regexp="yes" case_sensitive="yes" postag_regexp="yes" postag="ENM.*">[A-Z]{5,79}</token>
+					</marker>
+				</pattern>
+				<message>Het helemaal in hoofdletters schrijven van woorden met meer dan 4 letters wordt afgeraden; schrijf liever <suggestion><match no="1" case_conversion="alllower"/></suggestion>.</message>
+				<short>Lelijk</short>
+				<example correction="altijd">Das echt <marker>ALTIJD</marker>.</example>
+			</rule>
+            -->
 			<rule>
 				<pattern case_sensitive="yes">
 					<token postag="SENT_START"/>
@@ -16655,7 +16674,7 @@ steenwijk;Steenwijk
 						<!-- uitzondering voor hex kleuren tbv Wikipedia check -->
 					</marker>
 				</pattern>
-				<message>Het helemaal in hoofdletters schrijven van woorden met meer dan 4 letters wordt afgeraden; schrijf liever <suggestion><match no="2" case_conversion="alllower"/></suggestion>.</message>
+				<message>Het helemaal in hoofdletters schrijven van woorden met meer dan 4 letters wordt afgeraden<suggestion><match no="2" case_conversion="alllower"/></suggestion>.</message>
 				<short>Lelijk</short>
 				<example correction="altijd"><marker>ALTIJD</marker> is vreemd.</example>
 			</rule>
@@ -18109,6 +18128,7 @@ steenwijk;Steenwijk
 		<rulegroup id="CHECKEN" name="checken → controleren">
 			<!-- 2014-08-21 TaalTik -->
 			<rule>
+                <antipattern><token>in</token><token>te</token><token>checken</token></antipattern>
 				<pattern>
 					<token inflected="yes">checken</token>
 				</pattern>
@@ -27189,7 +27209,7 @@ steenwijk;Steenwijk
 				<pattern>
 					<token inflected="yes">participeren</token>
 				</pattern>
-				<message>De tekst wordt vlotter als u deze herschrijft met 'meedoen'> of 'deelnemen'.</message>
+				<message>De tekst wordt vlotter als u deze herschrijft met 'meedoen' of 'deelnemen'.</message>
 				<url>https://onzetaal.nl/taaladvies/ouderwets-taalgebruik</url>
 				<example type="incorrect">Ook Mechelen <marker>participeert</marker>.</example>
 			</rule>
