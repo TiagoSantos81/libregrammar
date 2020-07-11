@@ -6847,7 +6847,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <marker>
                 <and>
                     <token postag="NNS">
-                        <exception scope="previous" regexp="yes">is|was</exception>
+                        <exception scope="previous" regexp="yes">is|was|has</exception>
                         <exception postag_regexp="yes" postag="NNPS?"/>
                         </token>
                     <token postag="VBZ"/>
