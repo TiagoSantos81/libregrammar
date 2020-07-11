@@ -4290,7 +4290,6 @@ title="Easy editing stylesheet" ?>
       </antipattern>
       <pattern>
           <token postag='V.IP.+|V.[NG].+' postag_regexp='yes' inflected='yes' skip='4' regexp="yes">esperar|evitar
-            <exception>como</exception>
             <exception scope="next" postag="CC|N.+|DI.+|NP.+|V.[^P].*" postag_regexp="yes"/>
             <exception scope="next" regexp="yes">[;,«“”»]|&quot;</exception>
             <exception scope="previous" postag="P0[12].{5}|PP3CN000|PP3NN000|PP3..A00|PP3CP000|PP3CSD00" postag_regexp="yes"/></token>
@@ -4300,6 +4299,7 @@ title="Easy editing stylesheet" ?>
             <exception scope="previous" regexp="yes">até|o</exception></token>
         <marker>
           <token postag='V.IP.+' postag_regexp='yes'>
+            <exception>como</exception>
             <exception postag='V.S.+|N.+|V.IC.+|SP.+' postag_regexp='yes'/></token>
         </marker>
       </pattern>
