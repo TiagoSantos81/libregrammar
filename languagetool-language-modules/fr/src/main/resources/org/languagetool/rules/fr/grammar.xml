@@ -1008,7 +1008,7 @@ though, and has since been slightly modified)-->
         <message>Voulez-vous écrire <suggestion>Peut-être</suggestion> ?</message>
         <example correction="Peut-être"><marker>Peut être</marker> viendra-t-il ?</example>
       </rule>
-      <rule default="temp_off">
+      <rule>
         <!--<antipattern>
           <token>d'</token>
           <token>ici</token>
@@ -8121,7 +8121,7 @@ though, and has since been slightly modified)-->
         <example>Vous passez plus de temps ici qu'avec Mamie.</example>
       </rule>
     </rulegroup>
-    <rule id="EL_AVEC" name="Élision qu'avec, d'avec" default="temp_off">
+    <rule id="EL_AVEC" name="Élision qu'avec, d'avec">
       <pattern>
         <token regexp="yes">que|de</token>
         <token>avec</token>
@@ -8150,7 +8150,7 @@ though, and has since been slightly modified)-->
         <example>presqu'îles</example>
       </rule>
     </rulegroup>
-    <rulegroup id="EL_QUELQUE" name="Élision de quelque" default="temp_off">
+    <rulegroup id="EL_QUELQUE" name="Élision de quelque">
       <rule>
         <pattern>
           <token>quelque</token>
@@ -8514,6 +8514,11 @@ though, and has since been slightly modified)-->
             <token>nouvel</token>
             <token>an</token>
           </antipattern>
+          <antipattern>
+            <token regexp="yes">\d+</token>
+            <token>)</token>
+            <token regexp="yes">an|ans</token>
+          </antipattern>
           <pattern>
             <token>
               <exception>par</exception>
@@ -8549,6 +8554,7 @@ though, and has since been slightly modified)-->
           <example>Trois cents ans</example>
           <example>Trois-cents ans</example>
           <example>Onze cents ans</example>
+          <example>de moins de dix-huit (18) ans</example>
         </rule>
         <rule>
           <antipattern>
@@ -9140,12 +9146,22 @@ though, and has since been slightly modified)-->
     <rule id="ACCORD_CHAQUE" name="Accord chaque + nom">
       <pattern>
         <token>chaque</token>
-        <token postag="N .* p" postag_regexp="yes"/>
+        <token postag="N .* p" postag_regexp="yes"><exception postag=".* (s|sp)" postag_regexp="yes"/></token>
       </pattern>
       <message>« \1 » et « \2 » ne semblent pas bien accordés en nombre.</message>
       <suggestion>\1 <match no="2" postag="(N .* )p" postag_regexp="yes" postag_replace="$1s"/></suggestion>
       <example correction="Chaque service"><marker>Chaque services</marker></example>
       <example correction="chaque application">Chaque service et <marker>chaque applications</marker>.</example>
+      <example>Il me fallait à chaque fois corriger cette erreur.</example>
+      <example>pour chaque cours en ligne</example>
+    </rule>
+    <rule id="FOI_FOIS" name="foi -> fois" default="temp_off">
+      <pattern>
+        <token>chaque</token>
+        <token>foi</token>
+      </pattern>
+      <message>Voulez-vous dire <suggestion>\1 \2s</suggestion> ?</message>
+      <example correction="chaque fois">Tu n'as pas à te présenter à <marker>chaque foi</marker>.</example>
     </rule>
     <rulegroup id="ACCORD_NOMBRE" name="Accord en nombre">
       <antipattern>
@@ -31077,7 +31093,7 @@ though, and has since been slightly modified)-->
         <example correction="D’|D'"><marker>D′</marker>enfants.</example>
         <example>Les Humains (court métrage, 9′), 2003</example>
       </rule>
-      <rule default="temp_off">
+      <rule>
         <pattern>
           <token regexp="yes">[dljmnst]|jusqu|qu</token>
           <token spacebefore="no" regexp="yes">[´‘′`’']</token>
@@ -33188,7 +33204,7 @@ though, and has since been slightly modified)-->
       <message>« Mon dieu » est une expression fautive. Employez <suggestion>mon Dieu</suggestion>.</message>
       <example correction="Mon Dieu"><marker>Mon dieu</marker> !</example>
     </rule>
-    <rule id="DIEU" name="dieu"> <!-- TODO: too many false alarms -->
+    <rule id="DIEU" name="dieu" default="temp_off"> <!-- TODO: too many false alarms -->
       <pattern case_sensitive="yes">
         <token>dieu<exception postag="D.*" postag_regexp="yes" scope="previous"/></token>
       </pattern>
