@@ -73,6 +73,22 @@ public class EnglishAdjectiveNounConfusionRule extends Rule {
   }
 
   private static final List<List<PatternToken>> ANTI_PATTERNS = Arrays.asList(
+    Arrays.asList(/*  https://www.rotary.org/en/get-involved/interact-clubs  */
+      token("interact"),
+      regex("clubs?")
+    ),
+    Arrays.asList(/*  https://www.rotary.org/en/get-involved/interact-clubs  */
+      token("in"),
+      token("danger"),
+    ),
+    Arrays.asList(/*  brexit term  */
+      token("remain"),
+      regex("campaigns?|people|movement|party|politicians?")
+    ),
+    Arrays.asList(
+      token("redeem"),
+      regex("code|gift")
+    ),
     Arrays.asList(
       token("nature"),
       regex("c(?:onservation|risis)|magazine|polic(?:y|ies)|reserves?")
@@ -115,7 +131,7 @@ public class EnglishAdjectiveNounConfusionRule extends Rule {
     ),
     Arrays.asList(
       token("intelligence"),
-      regex("(operator|officer)s?")
+      regex("agenc(?:y|ies)|(commitee|gathering|report|operator|officer)s?")
     ),
     Arrays.asList(
       token("pain"),
