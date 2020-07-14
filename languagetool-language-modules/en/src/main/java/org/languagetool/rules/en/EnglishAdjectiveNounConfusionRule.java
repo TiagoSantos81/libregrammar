@@ -79,7 +79,7 @@ public class EnglishAdjectiveNounConfusionRule extends Rule {
     ),
     Arrays.asList(/*  https://www.rotary.org/en/get-involved/interact-clubs  */
       token("in"),
-      token("danger"),
+      token("danger")
     ),
     Arrays.asList(/*  brexit term  */
       token("remain"),
