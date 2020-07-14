@@ -1357,7 +1357,7 @@ title="Easy editing stylesheet" ?>
           <token postag_regexp='yes' postag="V.S.+"/>
           <token postag_regexp='yes' postag="V.+"/>
           <token min='0'>a</token>
-          <token postag_regexp='yes' postag="VMN0000"/>
+          <token postag="VMN0000"/>
       </antipattern>
       <antipattern>
           <token postag="VMX0000"/>
@@ -3113,7 +3113,7 @@ title="Easy editing stylesheet" ?>
       <antipattern>
           <token>de</token>
           <token>a</token>
-          <token regexp='yes'>nós</token>
+          <token>nós</token>
           <token postag='VMN0000'/>
       </antipattern>
       <pattern>
@@ -3188,7 +3188,7 @@ title="Easy editing stylesheet" ?>
       <antipattern>
           <token>de</token>
           <token>a</token>
-          <token regexp='yes'>vós</token>
+          <token>vós</token>
           <token postag='VMN0000'/>
       </antipattern>
       <pattern>
@@ -5024,7 +5024,7 @@ title="Easy editing stylesheet" ?>
       </antipattern>
       <pattern>
           <token>por</token>
-          <token regexp='yes'>que</token>
+          <token>que</token>
           <token postag_regexp='yes' postag='D.+'>
             <exception negate_pos='yes' postag_regexp='yes' postag='D.+'/></token>
       </pattern>
