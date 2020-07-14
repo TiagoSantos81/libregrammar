@@ -1353,6 +1353,13 @@ title="Easy editing stylesheet" ?>
     <!--      Created by Tiago F. Santos, 2019-03-16      -->
       <url>https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/o-conceito-de-verbo-auxiliar/24055</url>
       <antipattern>
+          <token postag_regexp='yes' postag="SENT_START|_PUNCT" skip='2'/>
+          <token postag_regexp='yes' postag="V.S.+"/>
+          <token postag_regexp='yes' postag="V.+"/>
+          <token min='0'>a</token>
+          <token postag_regexp='yes' postag="VMN0000"/>
+      </antipattern>
+      <antipattern>
           <token postag="VMX0000"/>
           <token spacebefore='no' regexp='yes'>&hifen;</token>
           <token spacebefore='no' regexp='yes'>&pronomes_nao_ambiguos;|&pronomes_ambiguos;</token>
@@ -1377,34 +1384,7 @@ title="Easy editing stylesheet" ?>
       <antipattern>
           <token case_sensitive='yes'>Podemos</token>
       </antipattern>
-<!-- MARCOAGPINTO 2020-05-03 *START* -->
-<!-- "Quem quiser pode ficar. " -->
-      <antipattern>
-          <token postag_regexp="yes" postag="VMSF[13]S0"></token>
-		  <token postag_regexp="yes" postag="VMIP3S0|VMM0[23]S0|VMSP[13]S0"></token>
-          <token postag_regexp="no" postag="VMN0000"></token>
-      </antipattern>
-<!-- MARCOAGPINTO 2020-05-03 *END* -->
     <rule>
-<!-- MARCOAGPINTO 2020-07-14 (2-JUL-2020+) *START* -->
-<!-- "Na semana que vem vou ao cinema." -->
-      <antipattern>
-		  <token postag='CS|PE0CN000|PR0CN000|PT0CN000' postag_regexp='yes'/>
-		  <token postag='VMIP3S0|VMM02S0' postag_regexp='yes'/>
-		  <token postag='V.+' postag_regexp='yes'/>		  
-      </antipattern>	  
-<!-- MARCOAGPINTO 2020-07-14 (2-JUL-2020+) *END* -->
-<!-- MARCOAGPINTO 2020-07-14 (2-JUL-2020+) *START* -->
-<!-- "O que há de vir virá." -->
-<!-- "Se você puder venha conosco." -->
-<!-- "O primeiro a chegar foi Émile Levassor." -->
-<!-- "As entrelinhas do que estava por vir estavam se amarrando entre si." -->
-      <antipattern>
-		  <token postag='CS|PE0CN000|PR0CN000|PT0CN000|SPS00|PP3CS000|PD0FS000|PP3FSA00|CC|PD0CN000' postag_regexp='yes'/>
-		  <token postag='VMN0000|VMN0[13]S0|VMSF[13]S0' postag_regexp='yes'/>
-		  <token postag='V.+' postag_regexp='yes'/>		  
-      </antipattern>	  
-<!-- MARCOAGPINTO 2020-07-14 (2-JUL-2020+) *END* -->
       <pattern>
           <token inflected="yes" regexp='yes'>&verbos_auxiliares_aspectuais;|&verbos_auxiliares_modais;
             <exception inflected='yes'>ser</exception>
@@ -1433,6 +1413,12 @@ title="Easy editing stylesheet" ?>
       <example>Quem quiser, pode ficar. </example>
       <example>Chegou há cerca de 10 dias.</example>
       <example correction="pode vir|pode a vir|pode vindo|pode, VIM">"Você <marker>pode VIM</marker>¨.</example><!-- XXX #3234 -->
+      <example>Quem quiser pode ficar.</example>
+      <example>Quem quiser, pode ficar.</example>
+      <example type='triggers_error'>Na semana que vem vou ao cinema.</example>
+      <example>Na semana que vem, vou ao cinema.</example>
+      <example type='triggers_error'>O que há de vir virá.</example>
+      <example>O que há de vir, virá.</example>
     </rule>
     <rule>
       <pattern>
