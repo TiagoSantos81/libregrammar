@@ -2617,7 +2617,7 @@ public final class MLServerProto {
      *
      * <code>string ruleDescription = 6;</code>
      * @return The ruleDescription.
-     */
+     *
     java.lang.String getRuleDescription();
     /**
      * <pre>
@@ -2626,7 +2626,7 @@ public final class MLServerProto {
      *
      * <code>string ruleDescription = 6;</code>
      * @return The bytes for ruleDescription.
-     */
+     *
     com.google.protobuf.ByteString
         getRuleDescriptionBytes();
 
@@ -2637,7 +2637,7 @@ public final class MLServerProto {
      *
      * <code>string matchDescription = 7;</code>
      * @return The matchDescription.
-     */
+     *
     java.lang.String getMatchDescription();
     /**
      * <pre>
@@ -2646,7 +2646,7 @@ public final class MLServerProto {
      *
      * <code>string matchDescription = 7;</code>
      * @return The bytes for matchDescription.
-     */
+     *
     com.google.protobuf.ByteString
         getMatchDescriptionBytes();
 
@@ -2657,7 +2657,7 @@ public final class MLServerProto {
      *
      * <code>string matchShortDescription = 8;</code>
      * @return The matchShortDescription.
-     */
+     *
     java.lang.String getMatchShortDescription();
     /**
      * <pre>
@@ -2666,7 +2666,7 @@ public final class MLServerProto {
      *
      * <code>string matchShortDescription = 8;</code>
      * @return The bytes for matchShortDescription.
-     */
+     *
     com.google.protobuf.ByteString
         getMatchShortDescriptionBytes();
   }
@@ -2966,7 +2966,7 @@ public final class MLServerProto {
      *
      * <code>string ruleDescription = 6;</code>
      * @return The ruleDescription.
-     */
+     *
     public java.lang.String getRuleDescription() {
       java.lang.Object ref = ruleDescription_;
       if (ref instanceof java.lang.String) {
@@ -2986,7 +2986,7 @@ public final class MLServerProto {
      *
      * <code>string ruleDescription = 6;</code>
      * @return The bytes for ruleDescription.
-     */
+     *
     public com.google.protobuf.ByteString
         getRuleDescriptionBytes() {
       java.lang.Object ref = ruleDescription_;
@@ -3010,7 +3010,7 @@ public final class MLServerProto {
      *
      * <code>string matchDescription = 7;</code>
      * @return The matchDescription.
-     */
+     *
     public java.lang.String getMatchDescription() {
       java.lang.Object ref = matchDescription_;
       if (ref instanceof java.lang.String) {
@@ -3030,7 +3030,7 @@ public final class MLServerProto {
      *
      * <code>string matchDescription = 7;</code>
      * @return The bytes for matchDescription.
-     */
+     *
     public com.google.protobuf.ByteString
         getMatchDescriptionBytes() {
       java.lang.Object ref = matchDescription_;
@@ -3054,7 +3054,7 @@ public final class MLServerProto {
      *
      * <code>string matchShortDescription = 8;</code>
      * @return The matchShortDescription.
-     */
+     *
     public java.lang.String getMatchShortDescription() {
       java.lang.Object ref = matchShortDescription_;
       if (ref instanceof java.lang.String) {
@@ -3074,7 +3074,7 @@ public final class MLServerProto {
      *
      * <code>string matchShortDescription = 8;</code>
      * @return The bytes for matchShortDescription.
-     */
+     *
     public com.google.protobuf.ByteString
         getMatchShortDescriptionBytes() {
       java.lang.Object ref = matchShortDescription_;
@@ -3923,7 +3923,7 @@ public final class MLServerProto {
        *
        * <code>string ruleDescription = 6;</code>
        * @return The ruleDescription.
-       */
+       *
       public java.lang.String getRuleDescription() {
         java.lang.Object ref = ruleDescription_;
         if (!(ref instanceof java.lang.String)) {
@@ -3943,7 +3943,7 @@ public final class MLServerProto {
        *
        * <code>string ruleDescription = 6;</code>
        * @return The bytes for ruleDescription.
-       */
+       *
       public com.google.protobuf.ByteString
           getRuleDescriptionBytes() {
         java.lang.Object ref = ruleDescription_;
@@ -3965,7 +3965,7 @@ public final class MLServerProto {
        * <code>string ruleDescription = 6;</code>
        * @param value The ruleDescription to set.
        * @return This builder for chaining.
-       */
+       *
       public Builder setRuleDescription(
           java.lang.String value) {
         if (value == null) {
@@ -3983,7 +3983,7 @@ public final class MLServerProto {
        *
        * <code>string ruleDescription = 6;</code>
        * @return This builder for chaining.
-       */
+       *
       public Builder clearRuleDescription() {
         
         ruleDescription_ = getDefaultInstance().getRuleDescription();
@@ -3998,7 +3998,7 @@ public final class MLServerProto {
        * <code>string ruleDescription = 6;</code>
        * @param value The bytes for ruleDescription to set.
        * @return This builder for chaining.
-       */
+       *
       public Builder setRuleDescriptionBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -4019,7 +4019,7 @@ public final class MLServerProto {
        *
        * <code>string matchDescription = 7;</code>
        * @return The matchDescription.
-       */
+       *
       public java.lang.String getMatchDescription() {
         java.lang.Object ref = matchDescription_;
         if (!(ref instanceof java.lang.String)) {
@@ -4039,7 +4039,7 @@ public final class MLServerProto {
        *
        * <code>string matchDescription = 7;</code>
        * @return The bytes for matchDescription.
-       */
+       *
       public com.google.protobuf.ByteString
           getMatchDescriptionBytes() {
         java.lang.Object ref = matchDescription_;
@@ -4061,7 +4061,7 @@ public final class MLServerProto {
        * <code>string matchDescription = 7;</code>
        * @param value The matchDescription to set.
        * @return This builder for chaining.
-       */
+       *
       public Builder setMatchDescription(
           java.lang.String value) {
         if (value == null) {
@@ -4079,7 +4079,7 @@ public final class MLServerProto {
        *
        * <code>string matchDescription = 7;</code>
        * @return This builder for chaining.
-       */
+       *
       public Builder clearMatchDescription() {
         
         matchDescription_ = getDefaultInstance().getMatchDescription();
@@ -4094,7 +4094,7 @@ public final class MLServerProto {
        * <code>string matchDescription = 7;</code>
        * @param value The bytes for matchDescription to set.
        * @return This builder for chaining.
-       */
+       *
       public Builder setMatchDescriptionBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -4115,7 +4115,7 @@ public final class MLServerProto {
        *
        * <code>string matchShortDescription = 8;</code>
        * @return The matchShortDescription.
-       */
+       *
       public java.lang.String getMatchShortDescription() {
         java.lang.Object ref = matchShortDescription_;
         if (!(ref instanceof java.lang.String)) {
@@ -4135,7 +4135,7 @@ public final class MLServerProto {
        *
        * <code>string matchShortDescription = 8;</code>
        * @return The bytes for matchShortDescription.
-       */
+       *
       public com.google.protobuf.ByteString
           getMatchShortDescriptionBytes() {
         java.lang.Object ref = matchShortDescription_;
@@ -4157,7 +4157,7 @@ public final class MLServerProto {
        * <code>string matchShortDescription = 8;</code>
        * @param value The matchShortDescription to set.
        * @return This builder for chaining.
-       */
+       *
       public Builder setMatchShortDescription(
           java.lang.String value) {
         if (value == null) {
@@ -4175,7 +4175,7 @@ public final class MLServerProto {
        *
        * <code>string matchShortDescription = 8;</code>
        * @return This builder for chaining.
-       */
+       *
       public Builder clearMatchShortDescription() {
         
         matchShortDescription_ = getDefaultInstance().getMatchShortDescription();
@@ -4190,7 +4190,7 @@ public final class MLServerProto {
        * <code>string matchShortDescription = 8;</code>
        * @param value The bytes for matchShortDescription to set.
        * @return This builder for chaining.
-       */
+       *
       public Builder setMatchShortDescriptionBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {

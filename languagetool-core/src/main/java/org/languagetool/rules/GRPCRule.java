@@ -245,7 +245,7 @@ public abstract class GRPCRule extends RemoteRule {
   /**
    * messages can be provided by the ML server or the Java client
    * fill them in here or leave this empty if the server takes care of it
-   */
+   *
   protected abstract String getMessage(MLServerProto.Match match, AnalyzedSentence sentence);
 
   @Override
