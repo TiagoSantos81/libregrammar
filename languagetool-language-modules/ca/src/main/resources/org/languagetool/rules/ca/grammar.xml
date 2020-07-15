@@ -2252,6 +2252,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>És molt fi.</example>
                 <example>Jo sóc molt dormilega.</example>
                 <example>Tant ETA com el PNB rebutjaren la Constitució espanyola.</example>
+                <example>M'agrada molt Txecoslovàquia.</example>
                 <!-- <example>influí molt Assíria</example> -->
                 <!-- <example>ser admesos com a tals Alemanya, el Japó,</example> -->
             </rule>
@@ -5923,6 +5924,20 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>No hauríeu, de cap manera, de configurar l'usuari.</example>
             </rule>
             <rule>
+                <pattern>
+                    <marker>
+                        <token>ni</token>
+                        <token postag="VA..3...?" postag_regexp="yes" inflected="yes">haver<exception postag="_perfet|_obligacio" postag_regexp="yes"/></token>
+                    </marker>
+                    <token><exception postag="V.[NG].*" postag_regexp="yes"/><exception>esment</exception></token>
+                </pattern>
+                <message>Hi falta un participi, el pronom 'hi' o la preposició 'de'.</message>
+                <suggestion>n'hi <match no="2"/></suggestion>
+                <suggestion>ni hi <match no="2"/></suggestion>
+                <example correction="N'hi havia|Ni hi havia"><marker>Ni havia</marker> quatre.</example>
+                <example>Ni havia dit això ni havia dit allò.</example>
+            </rule>
+            <rule>
                 <antipattern>
                     <marker>
                         <token>se</token>
@@ -8994,7 +9009,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>El que no ho vulgui veure així, doncs allà ell.</example>
                 <!-- Ja sé que tot això us sembla exagerat; doncs el que sentireu encara ho és més -->
             </rule>
-            <rule default="temp_off">
+            <rule>
                 <!-- In this antipatterns, probably commas are missing -->
                 <antipattern>
                     <token postag="V.[SI].*|_GV_" postag_regexp="yes"/>
@@ -13377,7 +13392,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rulegroup>
     </category>
     <category id="CONFUSIONS" name="Z1) Confusions" type="grammar">
-        <rule id="AL_VOLTANT" name="al *voltat/voltant" default="temp_off">
+        <rule id="AL_VOLTANT" name="al *voltat/voltant">
             <pattern>
                 <marker>
                     <token>a</token>
@@ -30444,6 +30459,33 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rulegroup>
     </category>
     <category id="INCORRECT_EXPRESSIONS" name="Expressions incorrectes" type="grammar">
+        <rulegroup id="ALLO_PER_LA_QUAL_COSA" name="*allò per la qual cosa">
+            <rule>
+                <pattern>
+                    <token>allò</token>
+                    <token>per</token>
+                    <token>la</token>
+                    <token>qual</token>
+                    <token>cosa</token>
+                </pattern>
+                <message>Construcció incorrecta.</message>
+                <suggestion>allò per què</suggestion>
+                <suggestion>la cosa per la qual</suggestion>
+                <example correction="allò per què|la cosa per la qual">Hem de fer <marker>allò per la qual cosa</marker> hem nascut.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token>allò</token>
+                    <token>pe</token>
+                    <token>l</token>
+                    <token>que</token>
+                </pattern>
+                <message>Construcció probablement incorrecta.</message>
+                <suggestion>allò per què</suggestion>
+                <suggestion>la cosa per la qual</suggestion>
+                <example correction="allò per què|la cosa per la qual">Hem de fer <marker>allò pel que</marker> hem nascut.</example>
+            </rule>
+        </rulegroup>
         <rule id="RIURE_UNA_MICA" name="*fer uns riures/riure una mica">
             <pattern>
                 <token inflected="yes">fer</token>
@@ -44600,6 +44642,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <rule>
                 <pattern>
                     <token inflected="yes" regexp="yes">obrir|tancar|reobrir</token>
+                    <token min="0" postag="RG"/>
                     <marker>
                         <token>les</token>
                         <token regexp="yes">seues|seves</token>
@@ -44607,8 +44650,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     </marker>
                 </pattern>
                 <message>El possessiu és redundant.</message>
-                <suggestion>\2 \4</suggestion>
+                <suggestion>\3 \5</suggestion>
                 <example correction="les portes">La botiga reobre <marker>les seves portes</marker>.</example>
+                <example correction="les portes">La botiga reobre temporalment <marker>les seves portes</marker>.</example>
             </rule>
         </rulegroup>
         <rule id="FORT_RESPECTE" name="*fort/gran respecte">
@@ -45487,7 +45531,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example>A la meitat del segle.</example>
             <example>M'ho va vendre a meitat de preu.</example>
         </rule>
-        <rule id="A_MEITATS_DE" name="a meitats de/a mitjan" default="temp_off">
+        <rule id="A_MEITATS_DE" name="a meitats de/a mitjan">
             <pattern>
                 <token>a</token>
                 <token regexp="yes">meitats|mitats</token>
@@ -51271,7 +51315,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <antipattern>
                 <token inflected="yes" regexp="yes">binomi|relació|connexió</token>
                 <token/>
-                <token regexp="yes">[/-]</token>
+                <token regexp="yes">[/-i]</token>
                 <token/>
             </antipattern>
             <antipattern>
@@ -51300,6 +51344,14 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token postag="NC.*" postag_regexp="yes"/>
                 <token postag="NC.*" postag_regexp="yes"/>
                 <token regexp="yes">[’”»'"]</token>
+            </antipattern>
+            <antipattern>
+                <token>dona</token>
+                <token postag="NCFS000"/>
+            </antipattern>
+            <antipattern>
+                <token>dones</token>
+                <token postag="NCFP000"/>
             </antipattern>
             <rule>
                 <pattern>
@@ -51347,6 +51399,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>Quan hi ha trobat problemes.</example>
                 <example>Hi ha afegit vídeos d'alta qualitat.</example>
                 <example>Probablement era el «ministre tresorer».</example>
+                <example>El binomi cultura i gestió.</example>
+                <example>Passa entre les dones músiques.</example>
             </rule>
         </rulegroup>
         <rulegroup id="FALTA_ELEMENT_ENTRE_GN" name="Falta un element entre grups nominals" default="off">
