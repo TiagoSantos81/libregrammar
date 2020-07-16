@@ -323,12 +323,7 @@ class LanguageToolHttpHandler implements HttpHandler {
     if (logStacktrace) {
       message += "Stacktrace follows:";
       String stackTrace = ExceptionUtils.getStackTrace(e);
-      if (params.getOrDefault("inputLogging", "").equals("no")) {
-        // remove text content for privacy reasons:
-        message += stackTrace.replaceAll("<sentcontent>.*</sentcontent>", "<< content removed >>");
-      } else {
-        message += stackTrace;
-      }
+      message += ServerTools.cleanUserTextFromMessage(stackTrace, params);
       logger.error(message);
     } else {
       message += "(no stacktrace logged)";
@@ -408,14 +403,14 @@ class LanguageToolHttpHandler implements HttpHandler {
       if (readBytes <= 0) {
         break;
       }
-      int generousMaxLength = maxTextLength * 3 + 1000;  // one character can be encoded as e.g. "%D8", plus space for other parameters
+      int generousMaxLength = maxTextLength * 10;  // one character can be encoded as e.g. "%D8", plus estimated space for sending data (JSON)
       if (generousMaxLength < 0) {  // might happen as it can overflow
         generousMaxLength = Integer.MAX_VALUE;
       }
       if (sb.length() > 0 && sb.length() > generousMaxLength) {
         // don't stop at maxTextLength as that's the text length, but here also other parameters
         // are included (still we need this check here so we don't OOM if someone posts a few hundred MB)...
-        throw new TextTooLongException("Your text's length exceeds this server's hard limit of " + maxTextLength + " characters.");
+        throw new TextTooLongException("Your text's length exceeds this server's hard limit of " + generousMaxLength + " characters.");
       }
       sb.append(new String(chars, 0, readBytes));
     }

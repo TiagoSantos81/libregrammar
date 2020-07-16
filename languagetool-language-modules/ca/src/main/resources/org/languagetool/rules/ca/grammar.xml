@@ -9021,13 +9021,18 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token>que</token>
                 </antipattern>
                 <antipattern>
-                    <token>que</token>
+                    <token regexp="yes">que|i</token>
                     <token>doncs</token>
                 </antipattern>
                 <antipattern>
                     <token inflected="yes" regexp="yes">semblant|semblar|parèixer|paregut|similar</token>
                     <token>doncs</token>
                     <token>a</token>
+                </antipattern>
+                <antipattern>
+                    <token postag="V.*" postag_regexp="yes"/>
+                    <token>doncs</token>
+                    <token postag="SPS00"/>
                 </antipattern>
                 <antipattern>
                     <token postag="_PUNCT.*" postag_regexp="yes"><exception>(</exception></token>
@@ -9063,6 +9068,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>El que no ho vulgui veure així doncs allà ell.</example>
                 <example>Aquest itinerari havia d'incloure doncs alguns elements clarament identificadors.</example>
                 <example>És molt semblant doncs a l'altre.</example>
+                <example>un fenomen de civilització, deslligat doncs de tot canvi ètnic</example>
                 <!-- Ja sé que tot això us sembla exagerat; doncs el que sentireu encara ho és més -->
             </rule>
         </rulegroup>
@@ -11559,7 +11565,55 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>No tenia ni idea de què significava allò.</example>
                 <example>La seguretat de què gaudeixen.</example>
             </rule>
+            <rule default="temp_off">
+                <antipattern>
+                    <token inflected="yes">saber</token>
+                    <token>a</token>
+                    <token>canvi</token>
+                    <token>de</token>
+                    <token>què</token>
+                </antipattern>
+                <pattern>
+                    <token>a</token>
+                    <token>canvi</token>
+                    <marker>
+                        <token>de</token>
+                        <token regexp="yes">què|que</token>
+                    </marker>
+                    <token min="0" max="6" postag="&pronom_feble;|RG|LOC_ADV" postag_regexp="yes"/>
+                    <!-- ambigu en el cas de subjuntiu valencià <exception postag="V.I.*" postag_regexp="yes"/>-->
+                    <token postag="V.S.*" postag_regexp="yes"></token>
+                </pattern>
+                <message>Construcció incorrecta.</message>
+                <suggestion>que</suggestion>
+                <example correction="que">Ho farà a canvi <marker>de què</marker> li esborrin la memòria.</example>
+                <example correction="que">Ho farà a canvi <marker>de què</marker> ho demanen.</example>
+                <example correction="que">Ho farà a canvi <marker>de què</marker> ho demanin.</example>
+                <example>No se sap a canvi de què.</example>
+                <example>No se sap a canvi de què ho demana.</example>
+                <example>No se sap a canvi de què ho demanen.</example>
+            </rule>
+            <rule default="temp_off">
+                <pattern>
+                    <token>a</token>
+                    <token>canvi</token>
+                    <marker>
+                        <token>de</token>
+                        <token regexp="yes">què|que</token>
+                    </marker>
+                    <token min="0" max="6" postag="&pronom_feble;|RG|LOC_ADV" postag_regexp="yes"/>
+                    <!-- ambigu en el cas de subjuntiu valencià -->
+                    <token postag="V.S.*" postag_regexp="yes"><exception postag="V.I.*" postag_regexp="yes"/></token>
+                </pattern>
+                <message>Construcció incorrecta.</message>
+                <suggestion>que</suggestion>
+                <example correction="que">Ho farà a canvi <marker>de què</marker> li esborrin la memòria.</example>
+                <example correction="que">Se sabrà a canvi <marker>de què</marker> ho demanin.</example>
+                <example>No se sap a canvi de què.</example>
+                <example>No se sap a canvi de què ho demana.</example>
+            </rule>
             <rule>
+                <!-- catch-all rule -->
                 <pattern>
                     <token negate="yes">des</token>
                     <marker>
@@ -32243,6 +32297,30 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <suggestion><match no="1" postag="(V.*)" postag_regexp="yes" postag_replace="$1">fer</match>\2 callar</suggestion>
             <example correction="tapar-nos la boca|fer-nos callar">Per a <marker>callar-nos la boca</marker>.</example>
         </rule>
+        <rulegroup id="CALLAR_NOS" name="*ens callaran" default="temp_off">
+            <url>https://esadir.cat/entrades/fitxa/id/1438</url>
+            <rule>
+                <pattern>
+                    <token regexp="yes">em|et|el|la|ens|us|els|les</token>
+                    <token postag="V.[IS].3.*" postag_regexp="yes" inflected="yes">callar</token>
+                </pattern>
+                <message>Construcció incorrecta.</message>
+                <suggestion>\1 <match no="2" postag="(V.[IS].*)" postag_regexp="yes" postag_replace="$1">fer</match> callar</suggestion>
+                <example correction="ens faran callar">No <marker>ens callaran</marker>.</example>
+                <example correction="ens farà callar">No <marker>ens callarà</marker>.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp="yes">em|et|el|la|ens|us|els|les</token>
+                    <token postag="VA[IS].3.*" postag_regexp="yes"/>
+                    <token postag="V.[NP].*" postag_regexp="yes" inflected="yes">callar</token>
+                </pattern>
+                <message>Construcció incorrecta.</message>
+                <suggestion>\1 \2 <match no="3" postag="(V.[NP].*)" postag_regexp="yes" postag_replace="$1">fer</match> callar</suggestion>
+                <example correction="ens han fet callar">No <marker>ens han callat</marker>.</example>
+                <example correction="ens van fer callar">No <marker>ens van callar</marker>.</example>
+            </rule>
+        </rulegroup>
         <rule id="AIXECAR_CAP" name="*aixecar cap/ aixecar el cap">
             <pattern>
                 <marker>
@@ -51315,7 +51393,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <antipattern>
                 <token inflected="yes" regexp="yes">binomi|relació|connexió</token>
                 <token/>
-                <token regexp="yes">[/-i]</token>
+                <token regexp="yes">[/i\-]</token>
                 <token/>
             </antipattern>
             <antipattern>

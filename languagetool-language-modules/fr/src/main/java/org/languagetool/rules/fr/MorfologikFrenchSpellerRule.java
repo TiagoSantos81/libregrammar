@@ -107,8 +107,6 @@ public final class MorfologikFrenchSpellerRule extends MorfologikSpellerRule {
       // move some split words to first place
       Matcher matcher = PARTICULA_INICIAL.matcher(suggestions.get(i).getReplacement());
       if (matcher.matches()) {
-        String newSuggestion = matcher.group(2);
-        List<AnalyzedTokenReadings> atkn = tagger.tag(Arrays.asList(newSuggestion));
         newSuggestions.add(0, suggestions.get(i));
         continue;
       }
