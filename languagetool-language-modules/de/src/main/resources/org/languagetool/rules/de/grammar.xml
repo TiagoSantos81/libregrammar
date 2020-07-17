@@ -2736,7 +2736,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="E-Mails">Er schickt mir viele <marker>e-mails</marker>.</example>
             </rule>
             <rule>
-                <regexp case_sensitive='yes'>\b(eMail|e-Mail|e-mail|E-mail|Email)-?([aA]dressen?|[aA]accounts?|[aA]nwendung(en)?|[cC]lients?|[kK]ontakte?|[kK]ont](os?|en)|[pP]ostf[aä]ch(er|es|s)?|[pP]rogramms?|[sS]oftware|[Vv]erkehrs?)</regexp>
+                <regexp case_sensitive='yes'>\b(eMail|e-Mail|e-mail|E-mail|E[Mm]ail)-?([aA]dressen?|[aA]accounts?|[aA]nwendung(en)?|[cC]lients?|[kK]ontakte?|[kK]ont](os?|en)|[pP]ostf[aä]ch(ern?|es|s)?|[pP]rogramms?|[sS]oftware|[Vv]erkehrs?)</regexp>
                 <message>Meinten Sie <suggestion><match no="0" regexp_match=".*ail(.*)" regexp_replace="E-Mail$1"/></suggestion>? (E-Mail = elektronische Post, Email = Schmelzüberzug)</message>
                 <short>Möglicher Tippfehler</short>
                 <example correction="E-Mail-Adresse">Das ist meine <marker>eMail-Adresse</marker>.</example>
@@ -2745,6 +2745,15 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="E-Mail-Kontakt">Ich werde diesen <marker>eMail-Kontakt</marker> hinzufügen.</example>
                 <example>Das ist <marker>Email</marker>.</example>
                 <example>Das Apple-Mail-Programm</example>
+            </rule>
+            <rule default="temp_off">
+                <regexp case_sensitive='yes'>\b[A-ZäÖÜ][a-zäüöß]+\-?(eMail|e-Mail|e-mail|E-mail|E[Mm]ail)(-([aA]dressen?|[aA]accounts?|[aA]nwendung(en)?|[cC]lients?|[kK]ontakte?|[kK]ont](os?|en)|[pP]ostf[aä]ch(ern?|es|s)?|[pP]rogramms?|[sS]oftware|[Vv]erkehrs?))?</regexp>
+                <message>Meinten Sie <suggestion><match no="0" regexp_match="-.*ail(.*)" regexp_replace="-E-Mail$1"/></suggestion>? (E-Mail = elektronische Post, Email = Schmelzüberzug)</message>
+                <short>Möglicher Tippfehler</short>
+                <example correction="Team-E-Mail">Das ist unsere <marker>Team-Email</marker>.</example>
+                <example correction="Team-E-Mail-Adresse">Das ist unsere <marker>Team-EMail-Adresse</marker>.</example>
+                <example>Das ist unsere <marker>Team-E-Mail</marker>.</example>
+                <example>Das ist unsere <marker>Team-E-Mail-Adresse</marker>.</example>
             </rule>
             <rule>
                 <regexp case_sensitive='yes'>E-Mailadresse</regexp>
@@ -35578,6 +35587,7 @@ Andere Projekte</example>
                 <example>Aufgrund des klugen Managements hatte das Unternehmen Erfolg.</example>
                 <example>John hat das Fenster kaputtgemacht.</example>
                 <example>Gott sei Dank ist mir dieser Riese nicht aufs Dach gekracht.</example>
+                <example>Auf verwalteten Plattformen ist eine vorinstallierte Partition verfügbar.</example>
             </rule>
             <rule>
                 <pattern>
@@ -39312,6 +39322,46 @@ Andere Projekte</example>
     <!-- Zeichensetzung -->
     <!-- ====================================================================== -->
     <category id="PUNCTUATION" name="Zeichensetzung">
+        <rulegroup id="KARAETIG_OHNE_BINDESTRICH" name="Zahl und -karätig werden mit Bindestrich verbunden">
+          <rule>
+            <!-- 20 karätig -->
+            <pattern>
+              <token regexp="yes">\d+</token>
+              <token regexp="yes">karätig(e[rnms]?)?</token>
+            </pattern>
+            <message><suggestion>\1-\2</suggestion> wird mit Bindestrich geschrieben.</message>
+            <example correction="20-karätigen" type="incorrect">Hier sehen Sie einen <marker>20 karätigen</marker> Diamanten.</example>
+          </rule>
+          <rule>
+            <!-- 20,5 karätig -->
+            <pattern>
+              <token regexp="yes">\d+</token>
+              <token>,</token>
+              <token regexp="yes">\d+</token>
+              <token regexp="yes">karätig(e[rnms]?)?</token>
+            </pattern>
+            <message><suggestion>\1\2\3-\4</suggestion> wird mit Bindestrich geschrieben.</message>
+            <example correction="20,5-karätigen" type="incorrect">Hier sehen Sie einen <marker>20,5 karätigen</marker> Diamanten.</example>
+          </rule>
+          <rule>
+            <!-- 20karätig -->
+            <pattern>
+              <token regexp="yes">\d+karätig(e[rnms]?)?</token>
+            </pattern>
+            <message><suggestion><match no="1" regexp_match="^(\d+)(karätig(e[rnms]?)?)$" regexp_replace="$1-$2"/></suggestion> wird mit Bindestrich geschrieben.</message>
+            <example correction="20-karätigen" type="incorrect">Hier sehen Sie einen <marker>20karätigen</marker> Diamanten.</example>
+          </rule>
+          <rule>
+            <!-- 20,5karätig -->
+            <pattern>
+              <token regexp="yes">\d+</token>
+              <token>,</token>
+              <token regexp="yes">\d+karätig(e[rnms]?)?</token>
+            </pattern>
+            <message><suggestion><match no="1"/><match no="2"/><match no="3" regexp_match="(\d+)(karätig(e[rnms]?)?)$" regexp_replace="$1-$2"/></suggestion> wird mit Bindestrich geschrieben.</message>
+            <example correction="20,5-karätigen" type="incorrect">Hier sehen Sie einen <marker>20,5karätigen</marker> Diamanten.</example>
+          </rule>
+        </rulegroup>
         <rulegroup id="KONJUNKTION_DASS_DAS" name="Super das (, dass) viele Autos nun elektrisch fahren.">
             <rule>
                 <pattern>
