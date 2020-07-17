@@ -7678,7 +7678,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example>Ni en la alta ni en la baja edad media.</example>
             <example>Ni en la alta ni en la baja.</example>
         </rule>
-        <rule id="AGREEMENT_DET_GN" name="concordnacia det + gn" default="off">
+        <rule id="AGREEMENT_DET_GN" name="concordnacia det + gn" default="on">
             <pattern>
                 <marker>
                     <unify negate="yes">
@@ -10021,7 +10021,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example correction="orografía">La <marker>orografía del terreno</marker> complica las tareas de extinción.</example>
         </rule>
         <!--ELLOS_ELLAS: El neutro en español se forma igual que el masculino (http://lema.rae.es/dpd/srv/search?id=Tr5x8MFOuD6DVTlDBg#21)-->
-        <rulegroup id="ELLOS_ELLAS" name="Redundancias no sexistas incorrectas" default="off">
+        <rulegroup id="ELLOS_ELLAS" name="Redundancias no sexistas incorrectas" default="on">
             <short>Redundancia. El neutro es suficiente.</short>
             <!-- TODAS_Y_TODOS : Primero ellasa y luego ellos, sin partículas-->
             <rule id="TODAS_Y_TODOS" name="Redundancia neutro - femenino + masculino">
@@ -11047,7 +11047,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="noventa">En los <marker>noventas</marker> pasaron muchas cosas.</example>
             </rule>
         </rulegroup>
-        <rulegroup id="AM_PM" name="AM/PM" default="off">
+        <rulegroup id="AM_PM" name="AM/PM" default="on">
             <rule>
                 <pattern>
                     <token regexp="yes">[\d\.\,]+</token>
