@@ -10,9 +10,14 @@
   * POS and spelling improvements
 
 #### Portuguese
-  * added and improved rules
+  * added and improved rules, including:
+    - re-activation of rules that were de-activated upstream in this realease
   * POS and spelling improvements
-
+  
+#### Spanish
+  * add and improved rules, including:
+    - formal writing category added with detection for vulgar speech and barbarisms usage
+    - re-activate some agreement rules and style rules
 
 ### Other changes common to both projects
 
