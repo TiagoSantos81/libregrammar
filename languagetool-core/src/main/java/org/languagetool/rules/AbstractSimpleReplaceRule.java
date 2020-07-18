@@ -18,13 +18,16 @@
  */
 package org.languagetool.rules;
 
+import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import org.jetbrains.annotations.Nullable;
 import org.languagetool.AnalyzedSentence;
 import org.languagetool.AnalyzedToken;
 import org.languagetool.AnalyzedTokenReadings;
 import org.languagetool.JLanguageTool;
+import org.languagetool.synthesis.Synthesizer;
 import org.languagetool.tools.StringTools;
 
 /**
@@ -111,7 +114,7 @@ public abstract class AbstractSimpleReplaceRule extends Rule {
   }
 
   @Override
-  public RuleMatch[] match(AnalyzedSentence sentence) {
+  public RuleMatch[] match(AnalyzedSentence sentence) throws IOException {
     List<RuleMatch> ruleMatches = new ArrayList<>();
     AnalyzedTokenReadings[] tokens = sentence.getTokensWithoutWhitespace();
     for (AnalyzedTokenReadings tokenReadings : tokens) {
@@ -129,7 +132,7 @@ public abstract class AbstractSimpleReplaceRule extends Rule {
     return toRuleMatchArray(ruleMatches);
   }
 
-  protected List<RuleMatch> findMatches(AnalyzedTokenReadings tokenReadings, AnalyzedSentence sentence) {
+  protected List<RuleMatch> findMatches(AnalyzedTokenReadings tokenReadings, AnalyzedSentence sentence) throws IOException {
     List<RuleMatch> ruleMatches = new ArrayList<>();
 
     String originalTokenStr = tokenReadings.getToken();
@@ -152,13 +155,23 @@ public abstract class AbstractSimpleReplaceRule extends Rule {
         }
       }
 
-      for (String lemma: lemmas) {
+      for (String lemma : lemmas) {
         List<String> replacements = getWrongWords().get(lemma);
         if (replacements != null) {
-          possibleReplacements.addAll(replacements);
+          Synthesizer synth = getSynthesizer();
+          if (synth != null) {
+            for (String replacementLemma : replacements) {
+              for (AnalyzedToken at : tokenReadings.getReadings()) {
+                AnalyzedToken newAt = new AnalyzedToken(at.getLemma(), at.getPOSTag(), replacementLemma);
+                String[] s = synth.synthesize(newAt, at.getPOSTag());
+                possibleReplacements.addAll(Arrays.asList(s));
+              }
+            }
+          } else {
+            possibleReplacements.addAll(replacements);
+          }
         }
       }
-
       possibleReplacements = possibleReplacements.stream().distinct().collect(Collectors.toList());
     }
 
@@ -216,4 +229,12 @@ public abstract class AbstractSimpleReplaceRule extends Rule {
     this.checkLemmas = checkLemmas;
   }
 
+  /**
+   * Synthesizer to generate inflected suggestions
+   * @since 5.1
+   */
+  @Nullable
+  public Synthesizer getSynthesizer() {
+    return null;
+  }
 }

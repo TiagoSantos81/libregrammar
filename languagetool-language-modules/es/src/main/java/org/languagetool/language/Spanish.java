@@ -168,6 +168,7 @@ public class Spanish extends Language implements AutoCloseable{
   protected int getPriorityForId(String id) {
     switch (id) {
       case "TE_TILDE": return 50;
+      case "PLURAL_SEPARADO": return 50;
       case "INCORRECT_EXPRESSIONS": return 40;
       case "MISSPELLING": return 40;  
       case "CONFUSIONS": return 40;
@@ -185,6 +186,7 @@ public class Spanish extends Language implements AutoCloseable{
       case "SEPARADO": return 1;
       case "MORFOLOGIK_RULE_ES": return -1;
       case "ES_WIKIPEDIA_COMMON_ERRORS": return -10;
+      case "E_EL": return -10;
       case "EL_TILDE": return -10;
       case "PREP_VERB": return -20;
       case "SUBJUNTIVO_FUTURO": return -30;

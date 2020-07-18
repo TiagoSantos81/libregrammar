@@ -238,6 +238,23 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction=""><marker>Dilluns 7 oct 2014</marker></example>
                 <example><marker>Dimarts, 7 oct 2014</marker></example>
             </rule>
+            <!-- "Lunes, 7 /7/2014" -->
+            <rule>
+                <pattern>
+                    <token regexp="yes">&dies_setmana;|&dies_setmana_abrev;</token>
+                    <token min="0">,</token>
+                    <token regexp="yes">\d\d?</token>
+                    <token regexp="yes">[/\-]</token>
+                    <token regexp="yes">\d\d?</token>
+                    <token regexp="yes">[/\-]</token>
+                    <token regexp="yes">\d\d\d\d</token>
+                </pattern>
+                <filter class="org.languagetool.rules.ca.DateCheckFilter" args="year:\7 month:\5 day:\3 weekDay:\1"/>
+                <message>Aquesta data no és un <match no="1" case_conversion="alllower"/> sinó un {realDay}.</message>
+                <example correction=""><marker>Dilluns, 7-10-2014</marker></example>
+                <example correction=""><marker>Dilluns 7/10/2014</marker></example>
+                <example><marker>Dimarts, 7-10-2014</marker></example>
+            </rule>
         </rulegroup>
         <rulegroup id="NUMBER_DAYS_MONTH" name="dia màxim del mes (28, 29, 30, 31)">
             <antipattern>
@@ -2164,6 +2181,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="els avantatges|l'avantatge">Miren <marker>les avantatges</marker> de tot.</example>
                 <example correction="El nom|Els noms"><marker>Les noms</marker>.</example>
                 <example correction="el deliri|els deliris"><marker>el deliris</marker></example>
+                <example correction="Els objectes|L'objecte"><marker>El objectes</marker> de la pantalla.</example>
                 <example>Els pisos.</example>
                 <example>Els pins.</example>
                 <example>Porta els camions.</example>
@@ -8672,6 +8690,18 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <suggestion>tant o més</suggestion>
                 <example correction="tant o més">Aquest és <marker>tan o més</marker> gran.</example>
             </rule>
+            <rule>
+                <pattern>
+                    <marker>
+                        <token>tan</token>
+                    </marker>
+                    <token skip="6">o</token>
+                    <token>més</token>
+                </pattern>
+                <message>És preferible escriure 'tant o més'.</message>
+                <suggestion>tant</suggestion>
+                <example correction="tant">Aquest és <marker>tan</marker> o, fins i tot, més gran que l'altre.</example>
+            </rule>
         </rulegroup>
         <rulegroup id="ADV_MENT" name="dos adverbis acabats en -ment">
             <url>http://esadir.cat/gramatica/sintaxi/advermanera</url>
@@ -11582,7 +11612,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     </marker>
                     <token min="0" max="6" postag="&pronom_feble;|RG|LOC_ADV" postag_regexp="yes"/>
                     <!-- ambigu en el cas de subjuntiu valencià <exception postag="V.I.*" postag_regexp="yes"/>-->
-                    <token postag="V.S.*" postag_regexp="yes"></token>
+                    <token postag="V.S.*" postag_regexp="yes"/>
                 </pattern>
                 <message>Construcció incorrecta.</message>
                 <suggestion>que</suggestion>
@@ -16287,6 +16317,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token>contes</token>
                 </marker>
             </antipattern>
+            <antipattern>
+                <token>un</token>
+                <token>conte</token>
+                <token inflected="yes">de</token>
+                <token postag="_possible_nompropi"><exception regexp="yes">Barcelona|Urgell</exception></token>
+            </antipattern>
             <pattern>
                 <marker>
                     <token inflected="yes" regexp="yes">conte|compte</token>
@@ -16303,6 +16339,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example>Un dels millors contes de Calders (Pere).</example>
             <example>La Sindicatura de Comptes de Catalunya</example>
             <example>Un llibre de contes de Ricard Garcia.</example>
+            <example>Un conte de Mercè Rodoreda.</example>
+            <example>Un conte de Bel Garcia.</example>
         </rule>
         <rulegroup id="COMTAT" name="contat/*comptat/comtat d'Urgell">
             <rule>
@@ -30513,6 +30551,16 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rulegroup>
     </category>
     <category id="INCORRECT_EXPRESSIONS" name="Expressions incorrectes" type="grammar">
+        <rule id="OUS_CARAGOLS" name="*xurres amb merines/ous amb caragols">
+            <pattern>
+                <token regexp="yes">(ch|t?x)urr[ea]s</token>
+                <token regexp="yes">i|amb</token>
+                <token regexp="yes">merin[ea]s</token>
+            </pattern>
+            <message>Expressió castellana.</message>
+            <suggestion>ous \2 caragols</suggestion>
+            <example correction="ous amb caragols">No mescleu <marker>xurres amb merines</marker></example>
+        </rule>
         <rulegroup id="ALLO_PER_LA_QUAL_COSA" name="*allò per la qual cosa">
             <rule>
                 <pattern>
@@ -33454,18 +33502,35 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example>Va de bo</example>
             <example>Va de debò</example>
         </rule>
-        <rule id="DE_MOTU_PROPIO" name="*de motu propio/motu proprio">
-            <pattern>
-                <token regexp="yes">de|per</token>
-                <token>motu</token>
-                <token regexp="yes">propr?io</token>
-            </pattern>
-            <message>Expressió incorrecta.</message>
-            <suggestion>motu proprio</suggestion>
-            <url>http://esadir.cat/entrades/fitxa/id/3355</url>
-            <example correction="motu proprio"><marker>de motu proprio</marker></example>
-            <example>motu proprio</example>
-        </rule>
+        <rulegroup id="DE_MOTU_PROPIO" name="*de motu propio/motu proprio">
+            <rule>
+                <pattern>
+                    <token regexp="yes">de|per</token>
+                    <token regexp="yes">m[ou]tu</token>
+                    <token regexp="yes">propr?io</token>
+                </pattern>
+                <message>Expressió incorrecta.</message>
+                <suggestion>motu proprio</suggestion>
+                <url>http://esadir.cat/entrades/fitxa/id/3355</url>
+                <example correction="motu proprio"><marker>de motu proprio</marker></example>
+                <example>motu proprio</example>
+            </rule>
+            <rule>
+                <antipattern>
+                    <token>motu</token>
+                    <token>proprio</token>
+                </antipattern>
+                <pattern>
+                    <token regexp="yes">m[ou]tu</token>
+                    <token regexp="yes">propr?io</token>
+                </pattern>
+                <message>Expressió incorrecta.</message>
+                <suggestion>motu proprio</suggestion>
+                <url>http://esadir.cat/entrades/fitxa/id/3355</url>
+                <example correction="motu proprio">Ho faig <marker>motu propio</marker>.</example>
+                <example>motu proprio</example>
+            </rule>
+        </rulegroup>
         <rule id="URBI_ET_ORBI" name="urbi et *orbe/orbi">
             <pattern>
                 <token>urbi</token>
