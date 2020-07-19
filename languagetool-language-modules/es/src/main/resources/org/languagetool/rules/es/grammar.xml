@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 <!ENTITY pronombre_personal_atono "me|te|se|nos|os|le|les|lo|los|la|las">
 <!ENTITY pronombre_personal_no_articulo "me|te|se|nos|os|le|les|lo|los">
 <!--aguadulce, aguasal, aguaviva-->
-<!ENTITY nombre_fem_el "Ática|abra|África|acta|afta|agua|ala|alba|alga|algia|alma|alta|alza|ama|anca|ancla|ansia|ara|arca|archa|aria|arma|arpa|arria|arte|asa|ascua|asma|aspa|asta|aula|aura|ave|aya|haba|habla|hacha|hada|hambre|hampa|haya|ágata|ágora|águila|álgebra|áncora|ánfora|ánima|área|árnica">
+<!ENTITY nombre_fem_el "Ática|abra|África|acta|afta|agua|ala|alba|alga|algia|alma|alta|alza|ama|anca|ancla|ansia|ara|arca|archa|aria|arma|harpa|arpa|arria|arte|asa|ascua|asma|aspa|asta|aula|aura|ave|aya|haba|habla|hacha|hada|hambre|hampa|haya|ágata|ágora|águila|álgebra|áncora|ánfora|ánima|área|árnica">
 <!ENTITY dias_semana_may "Lunes|Martes|Miércoles|Jueves|Viernes|Sábado|Domingo">
 <!ENTITY dias_semana "lunes|martes|miércoles|jueves|viernes|sábado|domingo">
 <!ENTITY dias_semana_abrv "lu|ma|mi|ju|vi|sa|do">
@@ -54,6 +54,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 <!ENTITY common_english_nouns_masculine "Club|TM|UD|UE|SD|Team|Day|Center|Centre|Hilton">
 <!ENTITY context_ano "anal|culo|cáncer|rectal|estómago|intestino|defecación|defecar|digestivo|sistema|tracto|hez|mierda|excremento|orificio|excretar|cagar">
 <!ENTITY denominacion "elemento|palabra|término|expresión|vocablo|nombre|tipo|denominación">
+<!ENTITY wrong_as_pron_verb "a|amplia|continua|dió|esta|estan|este|esten|frió|hacia|hecha|rió|tenia|tenias|venia|venias|vera">
+<!ENTITY wrong_as_pron_verb2 "de|e">
+<!-- also: de, e-->
 
     <!ENTITY arcaismos "">
     <!ENTITY barbarismos "(?:s(?:t(?:r(?:ip(?:tease[rs]?|per|s)?|ess.*|ogonoff|aight)|a(?:nd(?:ard|s)?|ccato|rtup|ff)|o(?:ryboard|kes|ck|p)|i(?:ck|lb)|e(?:nt|p))|p(?:r(?:int(?:er|s)?|ead|ay|ue)|in(?:naker|s)?|a[ms]?|ot)|u(?:b(?:-holding|woofer)|s(?:pense|hi)|perstar|doku|rf)|h(?:ar(?:eware|-pei)|o(?:[tw]|pping)|iatsu|ekel|unt)|a(?:(?:xhor|loo)n|mple[rs]?|shimi|vart)|c(?:herz(?:and)?o|rewball|o[np]e|at)|n(?:o(?:wboard|oker|b)|ack(?:-bar)?)|o(?:(?:cialit|ttovoc|ftwar)e|ul)|m(?:o(?:(?:kin)?g|rzando)|ash)|l(?:i(?:ck|de|p)|alom|ogan)|e(?:t(?:-point|ter)?|xy)|w(?:eat(?:shirt|er)|ing)|i(?:decar|evert|ngle|c)|fo(?:rzand|gat)o|k(?:ipper|ate)|quash)|c(?:a(?:n(?:ta(?:bile|ta)|yoning|iche)|r(?:diofitness|paccio|ré)|(?:che-sex|lzon)e|m(?:p(?:us)?|ber)|t(?:ering|gut)|sh-and-carry)|o(?:r(?:don-bleu|pus)|u(?:lomb|ntry)|(?:spla|wbo)y|(?:ck|v)er|loratura|ntinuum|okie)|h(?:a(?:r(?:leston|treuse)|ise-longue)|e(?:ong-sam|ck-in|ddar)|utney)|l(?:ear(?:ance|s)?|u(?:ster|b)|ipboard|oisonné|arke)|r(?:o(?:issan|que)t|evasse)|zar(?:s?ti|ina)|(?:élad|ân)on|u(?:mbia|p)|ódex|ent)|p(?:a(?:nach(?:és?|es?)|t(?:chouli|hos)|intball|parazzi|hoehoe|lmier|anga|rsec|ssim)|i(?:n(?:s(?:cher)?|ce-nez|g-pong|-?up)?|(?:anofort|ckl)e|ercing|dgin|xel|lé)|o(?:st(?:er(?:iori|s)|-it)|(?:odl|ch|is)e|ltergeist|t-?pourri|grom|p)|e(?:(?:tit-suiss|nc)e|restroika|corino)|r(?:i(?:ori|se)|omenade|essing|áxis)|lay(?:b(?:ack|oy)|station|maker)|hot(?:o(?:-finish|maton)|s)?|u(?:tter|zzle|nk|b))|t(?:a(?:(?:sk-forc|wni)e|l(?:k-show|iban)|ke(?:away|s)?|n(?:dem|k)|volatura|ekwondo|i-chi|blet)|u(?:t(?:(?:ilimúnd|t)i|u)|rbo-diesel|pperware|grik)|r(?:i(?:p(?:-hop|lex)|al)|a(?:velling|iler)|emolo)|i(?:me(?:-sharing|share)|e-break|ramisu|cket)|e(?:le(?:marketing|x)|(?:rylen)?e|chno|flon)|o(?:p(?:(?:les)?s)?|ner|fu|ri)|h(?:esaur(?:us|i)|ink)|(?:w(?:ee|is)|-shir)t|sunami|ópos)|b(?:a(?:by-(?:sitter|doll|grow)|(?:varois|din)e|ckup|ht|rn)|r(?:e(?:akdance|nt)|u(?:shing|nch)|ainstorming|ie)|e(?:ta-tester|nedictus|cquerel|agle|bop)|o(?:bsleigh|dyboard|nsai|xers|ate|rt)|i(?:t(?:map|s)?|odesign|g-bang|p)|u(?:ngee-jumping|lldozer)|l(?:ister|ague|ues|og)|yte)|k(?:i(?:l(?:o(?:(?:vol|wat)t|b(?:yte|it))|im|t)|t(?:chenette|s(?:ch)?)?|ckbox(?:ing|er)|n[ag]|butz|p)|a(?:r(?:a(?:oke|té)|bovanet|ting)|lash(?:nikov|s)?|mikaze|sba)|r(?:(?:ípto|emli)n|aft|ill)|wa(?:(?:ch|nz)a|shiorkor)|e(?:f(?:fieh|ir)|tchup)|un(?:g-fu|a)|oala|yat)|r(?:o(?:c(?:k(?:er|s)?|aille)|(?:entge|ll-o)n|ttweiler|quefort|aming|okie|deo)|e(?:a(?:lpolitik|dy-made)|p(?:rise|s)|dneck|ggae|m)|i(?:n(?:forzando|ggit|k)|ckettsia|tardando|ff)|a(?:l(?:lentando|enti)|p(?:per|s)?|fting|ve)|é(?:veillon|gie|tro)|öntgen|ubato)|m(?:a(?:t(?:ch-point|rioska)|r(?:keting|chand)|(?:estos|mb)o|(?:st?e|yo)r|na(?:ger|t)|gnificat|jorette|xwell|quis)|i(?:l(?:curie|ady)|s(?:erere|ter)|ndfulness|crofarad)|o(?:d(?:e(?:rato|m)|us)|hair)|e(?:morandum|dley)|u(?:sic-hall|esli)|vdol)|f(?:o(?:[bg]|x(?:-terrier|trot)?|r(?:tran|int)|ndue|yer|lk)|a(?:i(?:t-divers|r-play)|rad(?:ay|s)?|nfreluche|twa|x)|l(?:a(?:sh(?:es)?|menco|t)|i(?:p-flop|nt)|ute)|u(?:n(?:board|ky?)|gato|ton)|r(?:anchising|eeware)|ermata|itness|öhn)|a(?:n(?:ti(?:-(?:establishment|apartheid|dumping)|trust)|gström)|p(?:felstrudel|paratchik|artheid|lomb)|l(?:legr(?:ett)?o|zheimer|ibi)|c(?:celerandos?|id-jazz)|uto(?:pullman|cross)|git(?:-?prop|ato)|yurveda|mabile|irbus)|d(?:o(?:p(?:ing|pler)|wnhill|car|jo|ng)|r(?:ive(?:[rs]|-in)?|ugstore)|e(?:sign(?:er)?|ficit|bye)|i(?:s(?:cman|eur)|rham)|u(?:mping|plex|ce)|a(?:nzón|tcha))|g(?:i(?:ga(?:byte|watt)|rlsband|lbert|nseng)|o(?:(?:odwil|spe)l|belet|uda)|l(?:a(?:snost|mour)|ide)|u(?:aracha|lag)|ru(?:yèr|ng)e|a[ly]|eyser)|h(?:a(?:b(?:it(?:at|us)|anera)|(?:m-ioc-chon|shta)g|rd-rock)|i(?:p(?:p(?:ie|y)|-hop)|drospeed)|o(?:rseball|lding|mo)|eavy-metal|usky|ype)|v(?:i(?:de(?:ocl(?:ip(?:es)?|ub)|s)?|(?:t(?:rin|a)|ntag|vac)e|brato)|e(?:r(?:nissage|sus)|lcro|gan)|o(?:lt(?:e-face|s)?|yeur)|audeville)|l(?:e(?:[dk]|a(?:sing|d)|itmotiv|gato)|o(?:c(?:kout|us)|oping|ess|gin)|a(?:rghetto|ser|mé|ts)|i(?:ngerie|fting))|o(?:ff(?:s(?:hore|et)|ice-boy|line)|s(?:tpolitik|sobuco)|u(?:tsider|guiya)|verbooking|n-?line|ersted|rigami|pus)|j(?:a(?:m(?:-session|boree)|c(?:kpot|uzzi)|zz)|o(?:int-ventur|ul)e|u(?:kebox|nkie)|et-(?:lag|set)|iu-jitsu)|w(?:a(?:(?:lkie-talki|ffl)e|rrant|sp|d)|e(?:b(?:er|s)?|stern)|i(?:ld-card|ndsurf)|o(?:rkshop|n)|hist)|i(?:n(?:ter(?:f(?:eron|ace)|net)|f(?:otainment|luenza)|-octavo|s)|(?:bid|t)em|mpedimenta|ppon|d)|n(?:e(?:(?:cessair|w-ag)e|(?:tspli)?t)|o(?:menklatura|ir)|apalm|uance|ylon)|e(?:n(?:s(?:alada|emble)|tente)|r(?:satz|g)|mmenthal|cstasy|vasé|dam)|qu(?:a(?:lifying|ntum|rk)|i(?:lohertz|che))|z(?:e(?:itgeist|kel|n)|apping)|y(?:u(?:ppie|an)|ang|eti|in)|u(?:ndergroun|ploa)d)">
@@ -1850,7 +1853,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <!-- error in the next word -->
                 <token>se</token>
                 <token regexp="yes" min="0">&pronombre_personal_atono;</token>
-                <token regexp="yes">hecha|vera|rió|frió|dió|continua|este|esta|estan|esten|a|hacia|amplia<exception postag="LOC_ADV"/></token>
+                <token regexp="yes">&wrong_as_pron_verb;<exception postag="LOC_ADV"/></token>
             </antipattern>
             <antipattern>
                 <token postag="_possible_NP|LOC_ADV" postag_regexp="yes">se</token>
@@ -4336,25 +4339,43 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
     </category>
     <category id="MISSPELLING" name="Ortografía" type="misspelling">
         <rulegroup id="PLURAL_SEPARADO" name="marca de plural separada" default="temp_off">
+            <antipattern>
+                <token>los</token>
+                <token postag="A.*" postag_regexp="yes" regexp="yes">s.*</token>
+                <token>es</token>
+            </antipattern>
+            <antipattern>
+                <token>la</token>
+                <token>s</token>
+                <token regexp="yes">del?</token>
+            </antipattern>
             <rule>
-            <pattern>
-                <token postag="D...P." postag_regexp="yes"/>
-                <marker>
-                    <token postag="[AM].*S.*" postag_regexp="yes"><exception postag="[AM].*P.*" postag_regexp="yes"/></token>
-                    <token regexp="yes">es|as|s</token>
-                </marker>
-            </pattern>
-            <message suppress_misspelled="yes">Posible confusión.</message>
-            <suggestion>\2\3</suggestion>
-            <example correction="titulares">Los <marker>titular es</marker> de la cuenta.</example>
+                <pattern>
+                    <token postag="D[^N]..P." postag_regexp="yes"/>
+                    <marker>
+                        <token postag="[AM].*S.*" postag_regexp="yes"><exception postag="[AM].*P.*" postag_regexp="yes"/></token>
+                        <token regexp="yes" case_sensitive="yes">es|as|s</token>
+                    </marker>
+                    <token postag="SPS00|[ANV].*" postag_regexp="yes"/>
+                </pattern>
+                <message suppress_misspelled="yes">Posible confusión.</message>
+                <suggestion><match no="2" postag="([AM].*)S(.*)" postag_regexp="yes" postag_replace="$1P$2"/></suggestion>
+                <example correction="titulares">Los <marker>titular es</marker> de la cuenta.</example>
+                <example>La bola 8 mágica es buena.</example>
+                <example>Los sorprendente es otra cosa.</example>
+                <!-- another rule-->
             </rule>
             <rule>
                 <pattern>
-                <token regexp="yes">le|lo|la</token>
-                <token>s</token>
+                    <marker>
+                        <token regexp="yes">le|lo|la</token>
+                        <token case_sensitive="yes">s</token>
+                    </marker>
+                    <token postag="SPS00|[ANV].*" postag_regexp="yes"/>
                 </pattern>
                 <message>¿Quería decir <suggestion>\1\2</suggestion></message>
                 <example correction="Les"><marker>Le s</marker> diré lo que pienso.</example>
+                <example>En Argentina la z se pronuncia igual que la s.</example>
             </rule>
         </rulegroup>
         <rulegroup id="R_RR" name="-rr- en prefijos">
@@ -4822,18 +4843,27 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="seroprevalencias"><marker>sero-prevalencias</marker></example>
             </rule>
             <rule>
+                <antipattern>
+                    <token postag="D.*|SP.*|LOC_PREP" postag_regexp="yes"/>
+                    <token>auto</token>
+                </antipattern>
                 <pattern>
                     <token>auto</token>
                     <token min="0">-</token>
-                    <token regexp="yes">....+</token>
+                    <token regexp="yes">....+<exception postag="AQ0[MC]S0|RG|SPS00" postag_regexp="yes"/></token>
                     <!--<token regexp="yes" inflected="yes"
                         >abastecer|abastecimiento|acusación|adaptable|adaptación|adaptador|adhesivo|afirmar|afirmación|aglutinación|aglutinina|agresión|agresivo|ajustador|alimentar|alimentador|analizador|anticuerpo|antígeno|aprendizaje|arrancador|asistencia|ayuda|ayudar|banco|baño|biografía|biográfico|biográficamente|biógrafo|bomba|bombo|busero|cabeza|calentamiento|calibrador|camión|car|caravana|cargable|carril|cartera|castigo|catalítico|catálisis|censura|censurar|centrador|cerrador|choque|cine|citólisis|clave|combustión|compadecer|compasión|compensador|complacencia|complaciente|concepto|conciencia|conclusivo|conductor|confianza|configuración|configurador|consciencia|consumo|contener|control|controlar|copista|corrección|corregir|correlación|correlador|criticar|crítica|crítico|cuestionar|curación|defender|defensa|definir|definible|definición|definitorio|degradación|denominar|depurar|depuración|desarrollo|descargable|descriptivo|destrucción|destructible|destructivo|destructivamente|destruir|determinación|determinista|diagnóstico|didactismo|didáctica|didáctico|didácticamente|difusión|dinámico|dirección|disciplina|disciplinar|diseñar|documentado|dominio|ecología|edición|editar|educación|empleo|encendido|enfoque|engaño|equilibrador|erotismo|escuela|estable|estima|estéreo|evaluación|excitación|excluir|exclusión|explicativo|extintor|ferro|financiar|financiación|financiamiento|foco|formación|función|fundente|fágico|gestionar|gestión|giro|gnosis|gobierno|gol|golpe|grafía|gráfico|guardar|guiado|hemoterapia|hemólisis|heterodino|igualador|imponer|inducción|inducir|inducido|inductancia|inductivo|inflamación|infligir|injerto|inmolar|inmune|inmunidad|inmunitario|inmunización|instrucción|intoxicación|inyectable|latría|legislador|lesionar|lesión|lesivo|liquidar|liquidación|lisis|lisosoma|lote|lubricante|lubrificación|marginar|matizar|matizable|matización|medicar|medicación|mercado|moción|morfismo|motor|móvil|niveladora|nómico|nómicamente|oscilación|oscilador|oxidación|parte|pase|perpetuar|piloto|pista|plastia|polimerización|proclamar|producción|productor|programable|propulsión|propulsor|protección|proteger|pullman|regresión|regulación|representar|rizar|rizador|ría|satisfacción|saturación|seguro|servicio|soma|sostener|stop|sucesión|suficiencia|suficiente|sugestionar|sugestión|tolerancia|toque|transductor|transformador|transfusión|trasplante|trófico|vacuna|valor|valoración|vector|ventilador|volquete|vía</token>-->
                 </pattern>
-                <message suppress_misspelled="yes">Se escribe junto.</message>
+                <message suppress_misspelled="yes">Probablemente se escribe junto.</message>
                 <suggestion><match no="3" regexp_match="(.+)" regexp_replace="auto$1"/></suggestion>
                 <suggestion><match no="3" regexp_match="(.+)" regexp_replace="autor$1"/></suggestion>
                 <example correction="autoayuda"><marker>auto-ayuda</marker></example>
                 <example correction="autoconsidera">Se <marker>auto-considera</marker> el mejor.</example>
+                <example>Su auto rebasó el nuestro.</example>
+                <example>El auto chocó con el camión.</example>
+                <example>Encontré los vidrios del auto rotos.</example>
+                <example>La mantención de mi auto cuesta una fortuna.</example>
+                <example>¿Qué auto eligió Tom?</example>
             </rule>
             <rule>
                 <pattern>
@@ -5076,6 +5106,16 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <message suppress_misspelled="yes">Se escribe junto.</message>
                 <suggestion>\1\2</suggestion>
                 <example correction="email">Envíalo a mi <marker>e mail</marker>.</example>
+            </rule>
+            <rule default="temp_off">
+                <pattern>
+                    <token>mal</token>
+                    <token min="0">-</token>
+                    <token postag="[NAV].*" postag_regexp="yes"/>
+                </pattern>
+                <message suppress_misspelled="yes">Se escribe junto.</message>
+                <suggestion><match no="3" regexp_match="(?iu)(.+)" regexp_replace="mal$1" case_conversion="alllower"/></suggestion>
+                <example correction="malinterprete">No quiero que se <marker>mal interprete</marker> esto.</example>
             </rule>
         </rulegroup>
         <rule id="ALREDEDOR" name="*(a) alrededor">
@@ -9447,6 +9487,49 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rule>
     </category>
     <category id="CONFUSIONS" name="Confusiones">
+        <rulegroup id="A_VER_HABER" name="a ver/haber" default="temp_off">
+            <antipattern>
+                <token inflected="yes" regexp="yes">ir|acudir|correr</token>
+                <token>a</token>
+                <token postag="V.N.*" postag_regexp="yes" inflected="yes">ver</token>
+            </antipattern>
+            <rule>
+                <pattern>
+                    <token>a</token>
+                    <token>ber</token>
+                </pattern>
+                <message>¿Quería decir <suggestion>haber</suggestion>?</message>
+                <example correction="haber">Podría <marker>a ber</marker> sido peor.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <marker>
+                        <token>a</token>
+                        <token postag="V.N.*" postag_regexp="yes" inflected="yes">ver</token>
+                    </marker>
+                    <token postag="V.P..SM" postag_regexp="yes"/>
+                </pattern>
+                <message>¿Quería decir <suggestion><match no="2" regexp_match="(?iu)v" regexp_replace="hab"/></suggestion>?</message>
+                <example correction="haber">Podría, sin duda, <marker>a ver</marker> sido peor.</example>
+                <example correction="haberlo">Podría, sin duda, <marker>a verlo</marker> hecho peor.</example>
+                <example>Voy a verlos contento del esfuerzo.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token inflected="yes" regexp="yes">soler|poder|deber|querer|desear|tener</token>
+                    <token min="0" regexp="yes">que|de</token>
+                    <marker>
+                        <token>a</token>
+                        <token postag="V.N.*" postag_regexp="yes" inflected="yes">ver</token>
+                    </marker>
+                </pattern>
+                <message>¿Quería decir <suggestion><match no="4" regexp_match="(?iu)v" regexp_replace="hab"/></suggestion>?</message>
+                <example correction="haber">Podría <marker>a ver</marker> otros.</example>
+                <example correction="haberlos">Podría <marker>a verlos</marker>.</example>
+                <example correction="haberlos">Tenía que <marker>a verlos</marker> dicho esto.</example>
+                <example correction="habérselo">Tenía que <marker>a vérselo</marker> dicho.</example>
+            </rule>
+        </rulegroup>
         <rule id="TARTA_TRATA" name="tarta/trata">
             <!-- TODO: generalize this kind of rule -->
             <pattern>
@@ -9455,7 +9538,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token regexp="yes">tartas?</token>
                 </marker>
             </pattern>
-            <message>¿Quería decir <suggestion><match no="2" regexp_match="(?iu)tart" regexp_replace="trat"/></suggestion></message>
+            <message>¿Quería decir <suggestion><match no="2" regexp_match="(?iu)tart" regexp_replace="trat"/></suggestion>?</message>
             <example correction="trata">Se <marker>tarta</marker> de otro tema.</example>
             <example>Tarta de frambuesa.</example>
             <example>La tarta es muy buena.</example>
@@ -9485,8 +9568,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token>e</token>
                 <token postag="V.P..SM" postag_regexp="yes"/>
             </antipattern>
-            <antipattern>
-                <token regexp="yes">[a-z]</token>
+            <antipattern case_sensitive="yes">
+                <token regexp="yes">[a-z]<exception regexp="yes">y|o</exception></token>
                 <token>e</token>
             </antipattern>
             <rule>
@@ -9590,7 +9673,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <!-- trigger other rules -->
                 <token regexp="yes">&pronombre_personal_atono;</token>
                 <token min="0" regexp="yes">["«“‘]</token>
-                <token regexp="yes">e|de|rió|frió|dió|continua|este|esta|estan|esten|a|hacia|amplia|venia|venias</token>
+                <token regexp="yes">&wrong_as_pron_verb;|&wrong_as_pron_verb2;</token>
             </antipattern>
             <antipattern>
                 <!-- trigger other rules-->
@@ -9600,6 +9683,24 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <antipattern>
                 <token>le</token>
                 <token>hecho</token>
+            </antipattern>
+            <antipattern>
+                <token regexp="yes">["«“‘\-\/]</token>
+                <token regexp="yes">&pronombre_personal_atono;</token>
+            </antipattern>
+            <antipattern>
+                <token regexp="yes">&pronombre_personal_atono;</token>
+                <token regexp="yes">["»”’\-]</token>
+            </antipattern>
+            <antipattern>
+                <token regexp="yes">&pronombre_personal_atono;</token>
+                <token>.</token>
+                <token>.</token>
+                <token>.</token>
+            </antipattern>
+            <antipattern>
+                <token regexp="yes">&pronombre_personal_atono;</token>
+                <token>…</token>
             </antipattern>
             <rule>
                 <pattern>
@@ -9742,6 +9843,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <message>Posible confusión. Pronombre átono sin verbo.</message>
                 <example correction=""><marker>Nos</marker> buenos tiempos</example>
                 <example>versiones anteriores de Mac OS</example>
+                <example>Con las/os niñas/os del Centro.</example>
             </rule>
         </rulegroup>
         <rule id="MANTELO" name="mantelo/mantenlo">
