@@ -11002,7 +11002,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
     </rule>
 
   <rulegroup id='WORDS_WITH_NUMBERS' name='Palavras com números ou símbolos'>
-    <!-- Created by Tiago F. Santos, Portuguese rule, 2017-10-10  	-->
+    <!-- Created by Tiago F. Santos, 2017-10-10  	-->
     <rule>
     <!-- XXX TV dimensions|3D|networks|4Chan|G20|G7|hypothesis|intel CPUs|P2P|number of rooms|programming languages -->
       <pattern>
@@ -11064,6 +11064,13 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
     <rule>
       <pattern case_sensitive="yes">
           <token regexp="yes">\d[\d ]*[\.,]?\d*(&units_of_measure;)</token>
+      </pattern>
+      <disambig action="ignore_spelling"/>
+    </rule>
+    <rule><!-- words filtered by DIGIT_HYPHENATED_ADJECTIVES -->
+      <pattern>
+          <token regexp="yes">\d+\-.+
+            <exception postag='UNKNOWN'/></token>
       </pattern>
       <disambig action="ignore_spelling"/>
     </rule>
