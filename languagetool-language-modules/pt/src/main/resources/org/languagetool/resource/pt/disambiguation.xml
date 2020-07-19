@@ -636,6 +636,17 @@
       <disambig action="filter" postag="R.+"/>
     </rule>
 
+    <rule id="NOS_PRONOUN" name="Nós como pronome">
+    <!-- Created by Tiago F. Santos, Portuguese rule, 2020-07-19  -->
+      <pattern>
+          <token postag='SPS00'/>
+        <marker>
+          <token>nós</token>
+        </marker>
+      </pattern>
+      <disambig action="filter" postag="P.+"/>
+    </rule>
+
     <rule id="ADVERB_VERB_SINGULAR" name="Advérbio Verbo/nome Nome Singular">
     <!-- Created by Tiago F. Santos, Portuguese rule, 2017-09-27  	-->
       <pattern>
