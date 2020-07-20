@@ -28018,7 +28018,7 @@ TODO Write better examples
       <example>jbo:1901moi</example>
     </rule>
     <rule>
-      <regexp>((\-)?[0-9]+[0-9.,]{1,10}) (°[^CFK])</regexp>
+      <regexp>((\-)?[0-9]+[0-9.,]{0,10}) (°[^CFK])</regexp>
       <message>Não existe espaçamento a preceder o símbolo de grau. Utilize <suggestion>\1°</suggestion> ou adicione a unidade de medida térmica (p.ex. <suggestion>\1 °C</suggestion>).</message>
         <suggestion>\1 °C</suggestion>
       <example correction="25°|25 °C|25 °C">O ângulo é <marker>25 ° </marker></example>
@@ -28028,7 +28028,7 @@ TODO Write better examples
       <example correction="-25°|-25 °C|-25 °C">Fazem <marker>-25 ° </marker>de temperatura.</example>
     </rule>
     <rule>
-      <regexp>((\-)?[0-9]+[0-9.,]*{1,10}) (″)</regexp>
+      <regexp>((\-)?[0-9]+[0-9.,]{0,10}) (″)</regexp>
       <message>O sinal de segundos (\2) não é espaçado.</message>
         <suggestion>\1\2\3</suggestion>
       <example>3°14′ 45,54″</example>
