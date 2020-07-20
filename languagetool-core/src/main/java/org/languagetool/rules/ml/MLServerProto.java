@@ -67,7 +67,7 @@ public final class MLServerProto {
      *
      * <code>bool inputLogging = 2;</code>
      * @return The inputLogging.
-     */
+     *
     boolean getInputLogging();
   }
   /**
@@ -226,7 +226,7 @@ public final class MLServerProto {
      *
      * <code>bool inputLogging = 2;</code>
      * @return The inputLogging.
-     */
+     *
     public boolean getInputLogging() {
       return inputLogging_;
     }
@@ -724,7 +724,7 @@ public final class MLServerProto {
        *
        * <code>bool inputLogging = 2;</code>
        * @return The inputLogging.
-       */
+       *
       public boolean getInputLogging() {
         return inputLogging_;
       }
@@ -736,7 +736,7 @@ public final class MLServerProto {
        * <code>bool inputLogging = 2;</code>
        * @param value The inputLogging to set.
        * @return This builder for chaining.
-       */
+       *
       public Builder setInputLogging(boolean value) {
         
         inputLogging_ = value;
@@ -750,7 +750,7 @@ public final class MLServerProto {
        *
        * <code>bool inputLogging = 2;</code>
        * @return This builder for chaining.
-       */
+       *
       public Builder clearInputLogging() {
         
         inputLogging_ = false;
