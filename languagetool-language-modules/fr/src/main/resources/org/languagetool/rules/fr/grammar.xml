@@ -10910,7 +10910,7 @@ though, and has since been slightly modified)-->
       </rule>
       <rule>
          <pattern>
-          <token inflected="yes" regexp="yes">[mts][e']</token>
+          <token inflected="yes" regexp="yes">[mts][e’´'‛′‘]</token>
           <marker>
             <token postag="V.* ppa.*" postag_regexp="yes" regexp="yes">.*é</token>
           </marker>
@@ -11004,7 +11004,7 @@ though, and has since been slightly modified)-->
       <rule>
         <pattern>
           <token regexp="yes">je|tu|ils?|on</token>
-          <token regexp="yes">[lmst][e']|lui|leur|[nv]ous|la|le|les</token>
+          <token regexp="yes">[lmst][e’´'‛′‘]|lui|leur|[nv]ous|la|le|les</token>
           <marker>
             <token postag="(?!PARA_END)[ACKNJZP].*" postag_regexp="yes">
               <exception postag="V.*" postag_regexp="yes"/>
@@ -11049,7 +11049,7 @@ though, and has since been slightly modified)-->
         <pattern>
           <token regexp="yes">je|tu|ils?|on</token>
           <token inflected="yes">ne</token>
-          <token regexp="yes">[lmst][e']|lui|leur|[nv]ous|la|le|les</token>
+          <token regexp="yes">[lmst][e’´'‛′‘]|lui|leur|[nv]ous|la|le|les</token>
           <marker>
             <token postag="(?!PARA_END)[ACKNJZP].*" postag_regexp="yes">
               <exception postag="V.*" postag_regexp="yes"/>
@@ -13206,7 +13206,7 @@ though, and has since been slightly modified)-->
         <pattern>
           <token postag="SENT_START"/>
           <token inflected="yes">ne</token>
-          <token min="0" max="1" regexp="yes">[lmt][e']|[nv]ous|les|la|leur|lui</token>
+          <token min="0" max="1" regexp="yes">[lmt][e’´'‛′‘]|[nv]ous|les|la|leur|lui</token>
           <marker>
             <token postag_regexp="yes" postag="V.*">
               <exception postag_regexp="yes" postag="V.* (imp|ppr).*"/>
@@ -14240,7 +14240,7 @@ though, and has since been slightly modified)-->
       <rule name="m p suivi par . s">
         <antipattern>
           <token regexp="yes">voulu|souhaité</token>
-          <token min="0" max="1" regexp="yes">[mts][e']|lui|[nv]ous</token>
+          <token min="0" max="1" regexp="yes">[mts][e’´'‛′‘]|lui|[nv]ous</token>
           <token postag="V.* inf" postag_regexp="yes"/>
         </antipattern>
         <pattern>
@@ -14276,7 +14276,7 @@ though, and has since been slightly modified)-->
         <rule name="f p suivi par . s">
           <antipattern>
             <token regexp="yes">voulu|souhaité</token>
-            <token min="0" max="1" regexp="yes">[mts][e']|lui|[nv]ous</token>
+            <token min="0" max="1" regexp="yes">[mts][e’´'‛′‘]|lui|[nv]ous</token>
             <token postag="V.* inf" postag_regexp="yes"/>
           </antipattern>
           <pattern>
@@ -14692,7 +14692,7 @@ though, and has since been slightly modified)-->
           <token postag="D.*" postag_regexp="yes"/>
           <token postag="N . s" postag_regexp="yes"/>
           <token inflected="yes" min="0">ne</token>
-          <token regexp="yes">[lmt][e']|la|les|leur|lui|en|y</token>
+          <token regexp="yes">[lmt][e’´'‛′‘]|la|les|leur|lui|en|y</token>
           <marker>
             <token postag="V.*" postag_regexp="yes"><exception negate_pos="yes" postag="V.*" postag_regexp="yes"/><exception postag="V .* 3 s|V.*ppr" postag_regexp="yes"/>
             </token>
@@ -15400,7 +15400,7 @@ though, and has since been slightly modified)-->
           <token regexp="yes">moi-mêmes?</token>
         </antipattern>
         <antipattern>
-          <token regexp="yes">j[e']|t[u']|ils?|elles?|on|y|[mts]on</token>
+          <token regexp="yes">j[e’´'‛′‘]|t[u’´'‛′‘]|ils?|elles?|on|y|[mts]on</token>
           <token min="0"/>
           <token postag="V .* 1 s" postag_regexp="yes">
             <exception postag="N.*" postag_regexp="yes"/>
@@ -15410,7 +15410,7 @@ though, and has since been slightly modified)-->
           <token postag="R pers suj 1 s"/>
         </antipattern>
         <antipattern>
-          <token regexp="yes">j[e']|t[u']|ils?|elles?|on|y|[mts]on</token>
+          <token regexp="yes">j[e’´'‛′‘]|t[u’´'‛′‘]|ils?|elles?|on|y|[mts]on</token>
           <token>en</token>
           <token postag="V .* 1 s" postag_regexp="yes">
             <exception postag="N.*" postag_regexp="yes"/>
