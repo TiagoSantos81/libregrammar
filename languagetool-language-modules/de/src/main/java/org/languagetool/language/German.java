@@ -289,6 +289,7 @@ public class German extends Language implements AutoCloseable {
       case "COMMA_BEHIND_RELATIVE_CLAUSE": return -10;
       // Category ids - make sure style issues don't hide overlapping "real" errors:
       case "COLLOQUIALISMS": return -15;
+      case "COLLOQUIALISMS_FORMAL_SPEECH": return -16;
       case "STYLE": return -15;
       case "REDUNDANCY": return -15;
       case "GENDER_NEUTRALITY": return -15;
