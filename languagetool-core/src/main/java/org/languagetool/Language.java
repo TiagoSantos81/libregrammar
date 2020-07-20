@@ -201,7 +201,7 @@ public abstract class Language {
    * Can return non-remote rules (e.g. if configuration missing, or for A/B tests), will be executed normally
    *
   public List<Rule> getRelevantRemoteRules(ResourceBundle messageBundle, List<RemoteRuleConfig> configs,
-                                           GlobalConfig globalConfig, UserConfig userConfig, Language motherTongue, List<Language> altLanguages)
+                                           GlobalConfig globalConfig, UserConfig userConfig, Language motherTongue, List<Language> altLanguages, boolean inputLogging)
     throws IOException {
     return Collections.emptyList();
   }
@@ -214,7 +214,7 @@ public abstract class Language {
   @Experimental
   public Function<Rule, Rule> getRemoteEnhancedRules(
     ResourceBundle messageBundle, List<RemoteRuleConfig> configs, UserConfig userConfig,
-    Language motherTongue, List<Language> altLanguages) throws IOException {
+    Language motherTongue, List<Language> altLanguages, boolean inputLogging) throws IOException {
     return Function.identity();
   }
 */
