@@ -9,6 +9,13 @@
   * added and improved rules
   * POS and spelling improvements
 
+#### French
+  * re-actived noun number agreement rulegroup
+
+#### German
+  * formal speech rules, including:
+    - colloquialism detection.
+
 #### Portuguese
   * added and improved rules, including:
     - re-activation of rules that were de-activated upstream in this realease
@@ -21,15 +28,30 @@
 
 ### Other changes common to both projects
 
+#### Catalan
+  * added and improved rules
+  * POS and spelling improvements
+
+#### Dutch
+  * added and improved rules
+  * POS and spelling improvements
+
 #### French
-  * rules improvements
+  * added and improved rules
   * [spell checking now uses Morfologik instead of Hunspell](https://github.com/languagetool-org/languagetool/commit/d7b866b)
 
 #### German
   * POS and spelling improvements
 
+#### Portuguese
+  * POS and spelling improvements
+
 #### Russian
   * added and improved rules
+
+#### Spanish
+  * added and improved rules
+  * POS and spelling improvements
 
 ## 5.0 ( 2020-10-01)
 

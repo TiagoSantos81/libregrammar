@@ -14578,7 +14578,7 @@ though, and has since been slightly modified)-->
       <example>s'exclama-t-il</example>
       <example>Le soldat de garde se mit au garde-à-vous.</example>
     </rule>
-    <rulegroup id="ACCORD_NOM_VERBE" name="Accord" default="off">
+    <rulegroup id="ACCORD_NOM_VERBE" name="Accord">
         <!-- TODO: more work -->
       <antipattern>
         <token postag="V.*" postag_regexp="yes"/>
