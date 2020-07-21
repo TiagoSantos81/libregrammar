@@ -905,7 +905,7 @@
         <marker>
           <token postag="R.+" postag_regexp="yes">
             <exception>como</exception>
-            <exception postag='AO.+' postag_regexp='yes'/></token>
+            <exception postag='A.+' postag_regexp='yes'/></token>
         </marker>
           <token postag="N.+" postag_regexp="yes">
             <exception>são</exception>

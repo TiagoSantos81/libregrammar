@@ -27101,40 +27101,32 @@ TODO Write better examples
       <example correction='As viagens'><marker>As viajens</marker> foram longas, mas foram merecidas.</example>
     </rule>
     <rule id='HOMONYM_VIAGEM_2' name='Homófona: viagem - viajem'>
+      <antipattern><!-- Titles -->
+          <token postag='SENT_START'/>
+          <token skip='-1'>Viagem</token>
+          <token postag='SENT_END' regexp='yes'>\w+</token>
+      </antipattern>
+      <antipattern><!-- Section: Viagem -->
+          <token postag='SENT_START'/>
+          <token postag='SENT_END'/>
+      </antipattern>
       <pattern>
           <token>
-            <exception regexp='yes'>&art_detecao_paronimos;|\d+\.?ª</exception>
+            <exception regexp='yes'>&art_detecao_paronimos;|\d+\.?ª|primeira|segunda|terceira|quarta|quinta|sexta|sép?tima|oitava|nona</exception>
             <exception postag='(?:A|D|SP|V|Z).+|_PUNCT' postag_regexp='yes'/></token>
           <token>viagem</token>
       </pattern>
-      <message>Esta palavra refere-se ao ato de viajar. Se pretende referir-se à ação de viajar, deve utilizar a forma com 'j'.</message>
+      <message>Esta palavra refere-se ao ato de viajar. Se pretende referir-se ao verbo viajar, deve utilizar a forma com 'j'.</message>
         <suggestion><match no='1' include_skipped='all'/> <match no='2' regexp_match='g' regexp_replace='j'/></suggestion>
       <url>https://pt.wiktionary.org/wiki/viajar</url>
       <example correction='Viajem'><marker>Viagem</marker> tanto quanto possam.</example>
-      <example correction="viajem">Provavelmente <marker>viagem</marker> à Argentina</example> 
       <example>Uma viagem à Argentina</example>
-      <example>faz uma breve viagem</example>
-      <example>durante a sua quarta viagem</example>
+      <example>...faz uma breve viagem...</example>
+      <example>...durante a sua quarta viagem...</example>
       <example>Viagem</example>
       <example>Viagem ao centro da Terra</example>  
+      <example correction="Provavelmente viajem"><marker>Provavelmente viagem</marker> à Argentina</example><!-- XXX awkward grammar example -->
     </rule>
-      <rule id='HOMONYM_VIAGEM_3' name='Homófona: viagem - viajem'>
-          <pattern>
-              <token postag="SENT_START"/>
-              <marker>
-                <token>viagem</token>
-              </marker>
-              <token postag="RG"/>
-          </pattern>
-          <message>'Viagem' é um substantivo. Se é um verbo, deve utilizar a forma com 'j'.</message>
-          <suggestion><match no='2' regexp_match='g' regexp_replace='j'/></suggestion>
-          <url>https://pt.wiktionary.org/wiki/viajar</url>
-          <example correction='Viajem'><marker>Viagem</marker> tanto quanto possam.</example> 
-          <example>faz uma breve viagem</example>
-          <example>durante a sua quarta viagem</example>
-          <example>Viagem</example>
-          <example>Viagem ao centro da Terra</example>  
-      </rule>
     <rule id='HOMONYM_PROFETISA_3' name='Homófona: profetisa - profetiza'>
       <pattern>
           <token regexp='yes'>(?:d|n|outr|pel)?as?|(?:alg|d|n)?umas?</token>
