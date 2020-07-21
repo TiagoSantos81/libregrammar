@@ -27111,7 +27111,30 @@ TODO Write better examples
         <suggestion><match no='1' include_skipped='all'/> <match no='2' regexp_match='g' regexp_replace='j'/></suggestion>
       <url>https://pt.wiktionary.org/wiki/viajar</url>
       <example correction='Viajem'><marker>Viagem</marker> tanto quanto possam.</example>
+      <example correction="viajem">Provavelmente <marker>viagem</marker> à Argentina</example> 
+      <example>Uma viagem à Argentina</example>
+      <example>faz uma breve viagem</example>
+      <example>durante a sua quarta viagem</example>
+      <example>Viagem</example>
+      <example>Viagem ao centro da Terra</example>  
     </rule>
+      <rule id='HOMONYM_VIAGEM_3' name='Homófona: viagem - viajem'>
+          <pattern>
+              <token postag="SENT_START"/>
+              <marker>
+                <token>viagem</token>
+              </marker>
+              <token postag="RG"/>
+          </pattern>
+          <message>'Viagem' é um substantivo. Se é um verbo, deve utilizar a forma com 'j'.</message>
+          <suggestion><match no='2' regexp_match='g' regexp_replace='j'/></suggestion>
+          <url>https://pt.wiktionary.org/wiki/viajar</url>
+          <example correction='Viajem'><marker>Viagem</marker> tanto quanto possam.</example> 
+          <example>faz uma breve viagem</example>
+          <example>durante a sua quarta viagem</example>
+          <example>Viagem</example>
+          <example>Viagem ao centro da Terra</example>  
+      </rule>
     <rule id='HOMONYM_PROFETISA_3' name='Homófona: profetisa - profetiza'>
       <pattern>
           <token regexp='yes'>(?:d|n|outr|pel)?as?|(?:alg|d|n)?umas?</token>
