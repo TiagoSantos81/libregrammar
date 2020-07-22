@@ -531,24 +531,6 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>(?:própri|mesm)o</token>
           <token postag='N.F.+' postag_regexp='yes'/>
       </antipattern>
-<!-- MARCOAGPINTO 2020-07-21 (2-JUL-2020+) *START* -->
-<!-- "Os mapas estão acessíveis a todos tendo como base estudos geográficos." -->
-<!-- "Os mapas estão acessíveis a todos tendo como alicerce classes geográficas." -->
-<!-- "Os mapas estão acessíveis a todos tendo como alicerce classes humanas." -->
-<!-- "Os mapas estão acessíveis a todos tendo um alicerce classes humanas." -->
-      <antipattern>
-		  <token regexp='yes'>em|esta|nesta|nessa|numa|à|que|com|sua|uma|como|por|na</token>
-	      <token postag='NC[CF]S000' postag_regexp='yes'/>
-	      <token postag='NC[CM]P000' postag_regexp='yes'/>
-		  <token postag='NC[CM]P000|AQ0[CM]P0' postag_regexp='yes'/>
-      </antipattern>
-      <antipattern>
-		  <token regexp='yes'>em|este|neste|nesse|num|o|que|com|seu|um|como|por|no</token>
-	      <token postag='NC[CM]S000' postag_regexp='yes'/>
-	      <token postag='NC[CF]P000' postag_regexp='yes'/>
-		  <token postag='NC[CF]P000|AQ0[CF]P0' postag_regexp='yes'/>
-      </antipattern>	  
-<!-- MARCOAGPINTO 2020-07-21 (2-JUL-2020+) *END* -->
       <pattern>
           <token negate='yes' regexp='yes'>&hifen;</token>
         <marker>
@@ -823,24 +805,6 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>(?:própri|mesm)a</token>
           <token postag='N.M.+' postag_regexp='yes'/>
       </antipattern>
-<!-- MARCOAGPINTO 2020-07-21 (2-JUL-2020+) *START* -->
-<!-- "Os mapas estão acessíveis a todos tendo como base estudos geográficos." -->
-<!-- "Os mapas estão acessíveis a todos tendo como alicerce classes geográficas." -->
-<!-- "Os mapas estão acessíveis a todos tendo como alicerce classes humanas." -->
-<!-- "Os mapas estão acessíveis a todos tendo um alicerce classes humanas." -->
-      <antipattern>
-		  <token regexp='yes'>em|esta|nesta|nessa|numa|à|que|com|sua|uma|como|por|na</token>
-	      <token postag='NC[CF]S000' postag_regexp='yes'/>
-	      <token postag='NC[CM]P000' postag_regexp='yes'/>
-		  <token postag='NC[CM]P000|AQ0[CM]P0' postag_regexp='yes'/>
-      </antipattern>
-      <antipattern>
-		  <token regexp='yes'>em|este|neste|nesse|num|o|que|com|seu|um|como|por|no</token>
-	      <token postag='NC[CM]S000' postag_regexp='yes'/>
-	      <token postag='NC[CF]P000' postag_regexp='yes'/>
-		  <token postag='NC[CF]P000|AQ0[CF]P0' postag_regexp='yes'/>
-      </antipattern>	  
-<!-- MARCOAGPINTO 2020-07-21 (2-JUL-2020+) *END* -->
       <pattern>
           <token negate='yes' regexp='yes'>e|&hifen;</token>
         <marker>
@@ -3455,26 +3419,6 @@ title="Easy editing stylesheet" ?>
             <exception postag_regexp='yes' postag='(?:A..|N.).[SN].+' negate_pos='yes'/></token>
       </antipattern>
     <!-- MARCOAGPINTO 2020-04-01 *END* -->
-<!-- MARCOAGPINTO 2020-07-22 (2-JUL-2020+) *START* -->
-<!-- "À tua descendência darei esta terra." -->
-<!-- "À tua descendência darás esta terra." -->
-<!-- "À tua descendência daremos esta terra." -->
-<!-- "Ao teu legado darei esta terra." -->
-      <antipattern>
-		  <token regexp='yes'>à|ao|da|do|de</token>	  
-		  <token regexp='yes'>tua|teu|sua|seu|vossa|vosso|nossa|nosso|minha|meu</token>
-		  <token postag='NC[CFM]S000|AQ0[CFM]S0' postag_regexp='yes'/>
-	      <token postag='VMIF[12]S0|VMIF1[SP]0' postag_regexp='yes'/>		  
-      </antipattern>
-	  <!-- "O sentido do vosso bom ensinamento conservarei." -->
-      <antipattern>
-		  <token regexp='yes'>à|ao|da|do|de</token>	  
-		  <token regexp='yes'>tua|teu|sua|seu|vossa|vosso|nossa|nosso|minha|meu</token>
-		  <token postag='AQ0[CFM]S0' postag_regexp='yes'/>
-		  <token postag='NC[CFM]S000|AQ0[CFM]S0' postag_regexp='yes'/>
-	      <token postag='VMIF[12]S0|VMIF1[SP]0' postag_regexp='yes'/>		  
-      </antipattern>
-<!-- MARCOAGPINTO 2020-07-22 (2-JUL-2020+) *END* -->
       <pattern>
           <token postag_regexp='yes' postag='D...S.+'>
             <exception negate_pos='yes' postag_regexp='yes' postag='D...S.+'/></token>
