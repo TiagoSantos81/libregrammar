@@ -51,7 +51,7 @@ public class PortugueseWeaselWordsRule extends AbstractSimpleReplaceRule2 {
     return FILE_NAME;
   }
 
-  public PortugueseWeaselWordsRule(ResourceBundle messages) {
+  public PortugueseWeaselWordsRule(ResourceBundle messages) throws IOException {
     super(messages, new Portuguese());
     super.setCategory(Categories.STYLE.getCategory(messages));
     setLocQualityIssueType(ITSIssueType.Style);

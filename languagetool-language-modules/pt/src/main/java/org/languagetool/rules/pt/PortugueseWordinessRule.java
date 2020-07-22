@@ -50,7 +50,7 @@ public class PortugueseWordinessRule extends AbstractSimpleReplaceRule2 {
     return FILE_NAME;
   }
 
-  public PortugueseWordinessRule(ResourceBundle messages) {
+  public PortugueseWordinessRule(ResourceBundle messages) throws IOException {
     super(messages, new Portuguese());
     super.setCategory(Categories.REDUNDANCY.getCategory(messages));
     setLocQualityIssueType(ITSIssueType.Style);

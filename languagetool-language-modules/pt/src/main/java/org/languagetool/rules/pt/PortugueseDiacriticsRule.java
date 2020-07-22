@@ -54,7 +54,7 @@ public class PortugueseDiacriticsRule extends AbstractSimpleReplaceRule2 {
     return true;
   }
 
-  public PortugueseDiacriticsRule(ResourceBundle messages) {
+  public PortugueseDiacriticsRule(ResourceBundle messages) throws IOException {
     super(messages, new Portuguese());
     // setDefaultOff();
     super.setCategory(Categories.TYPOS.getCategory(messages));

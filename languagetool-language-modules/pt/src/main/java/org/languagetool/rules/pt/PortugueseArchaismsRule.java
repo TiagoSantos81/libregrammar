@@ -52,7 +52,7 @@ public class PortugueseArchaismsRule extends AbstractSimpleReplaceRule2 {
     return path;
   }
 
-  public PortugueseArchaismsRule(ResourceBundle messages, String path) {
+  public PortugueseArchaismsRule(ResourceBundle messages, String path) throws IOException {
     super(messages, new Portuguese());
     this.path = Objects.requireNonNull(path);
     super.setCategory(Categories.STYLE.getCategory(messages));

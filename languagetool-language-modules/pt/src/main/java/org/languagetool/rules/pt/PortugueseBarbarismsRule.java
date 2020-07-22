@@ -58,7 +58,7 @@ public class PortugueseBarbarismsRule extends AbstractSimpleReplaceRule2 {
     return true;
   }
 
-  public PortugueseBarbarismsRule(ResourceBundle messages, String path) {
+  public PortugueseBarbarismsRule(ResourceBundle messages) throws IOException {
     super(messages, new Portuguese());
     // this.path = Objects.requireNonNull(path);
     super.setCategory(Categories.STYLE.getCategory(messages));

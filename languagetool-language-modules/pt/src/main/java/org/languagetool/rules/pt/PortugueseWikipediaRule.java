@@ -52,7 +52,7 @@ public class PortugueseWikipediaRule extends AbstractSimpleReplaceRule2 {
   }
 
 
-  public PortugueseWikipediaRule(ResourceBundle messages) {
+  public PortugueseWikipediaRule(ResourceBundle messages) throws IOException {
     super(messages, new Portuguese());
     super.setCategory(Categories.WIKIPEDIA.getCategory(messages));
     setLocQualityIssueType(ITSIssueType.Grammar);

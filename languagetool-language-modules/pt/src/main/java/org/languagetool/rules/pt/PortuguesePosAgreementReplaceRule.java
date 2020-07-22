@@ -49,7 +49,7 @@ public class PortuguesePosAgreementReplaceRule extends AbstractSimpleReplaceRule
     return wrongWords;
   }
 
-  public PortugueseAgreementReplaceRule(ResourceBundle messages) {
+  public PortuguesePosAgreementReplaceRule(ResourceBundle messages) {
     super(messages);
     super.setCategory(Categories.TYPOS.getCategory(messages));
     setLocQualityIssueType(ITSIssueType.Misspelling);

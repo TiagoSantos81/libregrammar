@@ -50,7 +50,7 @@ public class PortugueseRedundancyRule extends AbstractSimpleReplaceRule2 {
     return FILE_NAME;
   }
 
-  public PortugueseRedundancyRule(ResourceBundle messages) {
+  public PortugueseRedundancyRule(ResourceBundle messages) throws IOException {
     super(messages, new Portuguese());
     super.setCategory(Categories.REDUNDANCY.getCategory(messages));
     setLocQualityIssueType(ITSIssueType.Style);
