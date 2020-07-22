@@ -49,7 +49,7 @@ public class PortuguesePosAgreementReplaceRule extends AbstractSimpleReplaceRule
     return wrongWords;
   }
 
-  public PortuguesePosAgreementReplaceRule(ResourceBundle messages) throws IOException {
+  public PortugueseAgreementReplaceRule(ResourceBundle messages) {
     super(messages);
     super.setCategory(Categories.TYPOS.getCategory(messages));
     setLocQualityIssueType(ITSIssueType.Misspelling);
@@ -59,7 +59,7 @@ public class PortuguesePosAgreementReplaceRule extends AbstractSimpleReplaceRule
   }
 
   @Override
-  public final String getId() {
+  public String getId() {
     return PORTUGUESE_POS_AGREEMENT_REPLACE_RULE;
   }
 

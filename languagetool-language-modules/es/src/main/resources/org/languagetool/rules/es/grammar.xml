@@ -3465,7 +3465,45 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>que ayuden en el día a día</example>
                 <!-- used in LatAm -->
             </rule>
-            <rule id="TU_TILDE" name="tu / tú">
+            <rule id="MI_TILDE" name="mi/mí">
+                <antipattern>
+                    <token>mi</token>
+                    <token postag="RG|LOC_ADV" postag_regexp="yes" min="0" max="4"/>
+                    <token postag="A.*|V.P.*|N.*" postag_regexp="yes"/>
+                </antipattern>
+                <pattern>
+                    <token postag="SPS00|LOC_PREP" postag_regexp="yes"><exception>con</exception></token>
+                    <marker>
+                        <token>mi</token>
+                    </marker>
+                    <token><exception postag="N.*|A.*|V.P.*|UNKNOWN|DN.*" postag_regexp="yes"/></token>
+                </pattern>
+                <message>Si es pronombre, se escribe con tilde.</message>
+                <suggestion>mí</suggestion>
+                <example correction="mí">A <marker>mi</marker> me gusta.</example>
+                <example correction="mí">Confía en <marker>mi</marker>.</example>
+                <example correction="mí">Ella estaba cerca de <marker>mi</marker>.</example>
+                <example correction="mí">Se rio a pesar de <marker>mi</marker>.</example>
+                <example correction="mí">En lo que a <marker>mi</marker> respecta.</example>
+                <example correction="mí">¿Qué significa para <marker>mi</marker> ser padre o madre?</example>
+                <example correction="mí">Me puede servir a <marker>mi</marker> u a otro.</example>
+                <example>Me voy a mi casa.</example>
+                <example>Mi gran amigo Pedro.</example>
+                <example>a mi mejor amiga</example>
+                <example>Lo utilizó en mi contra.</example>
+                <example>de mi aburrido trabajo</example>
+                <example>de mi Firefox.</example>
+                <example>en mi apretado horario</example>
+                <example>A pesar de mi poco conocimiento</example>
+                <example>el abrazo de mi nietito</example>
+                <example>Lo hizo en mi contra.</example>
+                <example>Le odio con cada fibra de mi ser.</example>
+                <example>Con mi 1,80 m.</example>
+                <example>lo que hago en mi día a día</example>
+            </rule>
+        </rulegroup>
+        <rulegroup id="TU_TILDE" name="tu / tú">
+            <rule>
                 <antipattern>
                     <token>tu</token>
                     <token min="0">,</token>
@@ -3502,41 +3540,29 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>¿Cómo vas a explicar la razón de tu no asistencia?</example>
                 <example>¡Espero que hayas practicado tu solo de flauta!</example>
             </rule>
-            <rule id="MI_TILDE" name="mi/mí">
+            <rule>
                 <antipattern>
-                    <token>mi</token>
-                    <token postag="RG|LOC_ADV" postag_regexp="yes" min="0" max="4"/>
-                    <token postag="A.*|V.P.*|N.*" postag_regexp="yes"/>
+                    <token>tu</token>
+                    <token regexp="yes">mejor|más</token>
+                    <token postag="N..[SN].*|A...[SN].|UNKNOWN|_possible_NP|V.N.*|V.P..S." postag_regexp="yes"><exception postag="V.[IS].2S." postag_regexp="yes"/><exception>mejor</exception></token>
+                </antipattern>
+                <antipattern>
+                    <token>tu</token>
+                    <token>más</token>
+                    <token>que</token>
+                    <token postag="N..[SN].*|A...[SN].|_GN_.S|DN.*|UNKNOWN|_possible_NP|V.N.*|V.P..S." postag_regexp="yes"/>
                 </antipattern>
                 <pattern>
-                    <token postag="SPS00|LOC_PREP" postag_regexp="yes"><exception>con</exception></token>
                     <marker>
-                        <token>mi</token>
+                        <token>tu<exception postag="LOC_.*" postag_regexp="yes"/></token>
                     </marker>
-                    <token><exception postag="N.*|A.*|V.P.*|UNKNOWN|DN.*" postag_regexp="yes"/></token>
+                    <token regexp="yes">mejor|más|menos</token>
                 </pattern>
-                <message>Si es pronombre, se escribe con tilde.</message>
-                <suggestion>mí</suggestion>
-                <example correction="mí">A <marker>mi</marker> me gusta.</example>
-                <example correction="mí">Confía en <marker>mi</marker>.</example>
-                <example correction="mí">Ella estaba cerca de <marker>mi</marker>.</example>
-                <example correction="mí">Se rio a pesar de <marker>mi</marker>.</example>
-                <example correction="mí">En lo que a <marker>mi</marker> respecta.</example>
-                <example correction="mí">¿Qué significa para <marker>mi</marker> ser padre o madre?</example>
-                <example correction="mí">Me puede servir a <marker>mi</marker> u a otro.</example>
-                <example>Me voy a mi casa.</example>
-                <example>Mi gran amigo Pedro.</example>
-                <example>a mi mejor amiga</example>
-                <example>Lo utilizó en mi contra.</example>
-                <example>de mi aburrido trabajo</example>
-                <example>de mi Firefox.</example>
-                <example>en mi apretado horario</example>
-                <example>A pesar de mi poco conocimiento</example>
-                <example>el abrazo de mi nietito</example>
-                <example>Lo hizo en mi contra.</example>
-                <example>Le odio con cada fibra de mi ser.</example>
-                <example>Con mi 1,80 m.</example>
-                <example>lo que hago en mi día a día</example>
+                <message>El pronombre personal <suggestion>tú</suggestion> lleva tilde.</message>
+                <example correction="Tú"><marker>Tu</marker> mejor que nadie lo sabes.</example>
+                <example correction="tú">Y <marker>tu</marker> más.</example>
+                <example>Tu mejor amigo es él.</example>
+                <example>Tu más querido amigo.</example>
             </rule>
         </rulegroup>
         <rulegroup id="ESTA_TILDE" name="*esta/está">
@@ -3605,6 +3631,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <marker>
                         <token>esta</token>
                     </marker>
+                    <token min="0">todo</token>
                     <token regexp="yes">bien|mal|en|con|entre|aquí|ahí|allí|allá|el|la|lo|un|una|uno</token>
                 </pattern>
                 <message>Si es del verbo estar, se escribe <suggestion>está</suggestion>.</message>
@@ -3613,6 +3640,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="Está"><marker>Esta</marker> en aquella.</example>
                 <example correction="está">Lo que <marker>esta</marker> aquí.</example>
                 <example correction="está">En un pequeño promontorio <marker>esta</marker> la Catedral.</example>
+                <example correction="está">Y <marker>esta</marker> todo bien.</example>
                 <example>Sustituye a esta en la jerarquía.</example>
                 <example>aunque esta en realidad no lo sea</example>
                 <example>Tras esta en 1954</example>
@@ -3664,6 +3692,49 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>La conversación que he tenido esta misma mañana.</example>
                 <example>Esta mañana temprano.</example>
                 <example>Ya que esta afecta a todos.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <marker>
+                        <token>esta</token>
+                    </marker>
+                    <token>todo</token>
+                </pattern>
+                <message>Si es del verbo estar, se escribe <suggestion>está</suggestion>.</message>
+                <example correction="Está"><marker>Esta</marker> todo muy mal.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <marker>
+                        <token>esta</token>
+                    </marker>
+                    <token postag="NPMS.*" postag_regexp="yes"/>
+                </pattern>
+                <message>Si es del verbo estar, se escribe <suggestion>está</suggestion>.</message>
+                <example correction="está">Dónde <marker>esta</marker> Daniel Centeno.</example>
+                <example>A pesar de esta Daniel se fue.</example>
+            </rule>
+            <rule>
+                <antipattern>
+                    <token>esta</token>
+                    <token postag="NC[FC][SN].*|V.P..SF" postag_regexp="yes"/>
+                </antipattern>
+                <pattern> <!-- |donde -->
+                    <token regexp="yes">cómo|dónde<exception scope="previous" postag="SPS00"/></token>
+                    <marker>
+                        <token>esta</token>
+                    </marker>
+                </pattern>
+                <message>Si es del verbo 'estar', lleva tilde.</message>
+                <suggestion>está</suggestion>
+                <example correction="está">¿Cómo <marker>esta</marker>?</example>
+                <example correction="está">¿Dónde <marker>esta</marker>, Gabriela?</example>
+                <example correction="está">¿Dónde <marker>esta</marker> Gabriela?</example>
+                <example correction="está">¿Dónde <marker>esta</marker> tu padre?</example>
+                <example>¿Como esta?</example>
+                <example>de cómo esta célula se regulan</example>
+                <example>grandes polos financieros, donde esta actividad es la principal</example>
+                <example>por debajo del lugar donde esta se divide en sus dos ramas</example>
             </rule>
         </rulegroup>
         <rulegroup id="ESTAS_TILDE" name="estas/estás">
@@ -4338,7 +4409,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rulegroup>
     </category>
     <category id="MISSPELLING" name="Ortografía" type="misspelling">
-        <rulegroup id="PLURAL_SEPARADO" name="marca de plural separada" default="temp_off">
+        <rulegroup id="PLURAL_SEPARADO" name="marca de plural separada">
             <antipattern>
                 <token>los</token>
                 <token postag="A.*" postag_regexp="yes" regexp="yes">s.*</token>
@@ -4578,6 +4649,17 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <message>Probablemente falta un espacio.</message>
                 <suggestion><match no="1" regexp_match="(?iu)(©)(\d+)" regexp_replace="$1 $2"/></suggestion>
                 <example correction="© 2020"><marker>©2020</marker>.</example>
+            </rule>
+            <rule id="INFINITIVO_LA" name="acabarla/acabar la">
+                <pattern>
+                    <marker>
+                        <token postag="V.N.*" postag_regexp="yes" regexp="yes">.*la</token>
+                    </marker>
+                    <token postag="NCFS000"/>
+                </pattern>
+                <message>Probablemente se escribe separado.</message>
+                <suggestion><match no="1" regexp_match="(?iu)la$" regexp_replace=" la"/></suggestion>
+                <example correction="acabar la">Hay que actuar y <marker>acabarla</marker> infección.</example>
             </rule>
         </rulegroup>
         <rulegroup id="NO_SEPARADO" name="palabras no separadas">
@@ -5084,7 +5166,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <suggestion>\1\2</suggestion>
                 <example correction="email">Envíalo a mi <marker>e mail</marker>.</example>
             </rule>
-            <rule default="temp_off">
+            <rule>
                 <pattern>
                     <token>mal</token>
                     <token min="0">-</token>
@@ -5095,7 +5177,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="malinterprete">No quiero que se <marker>mal interprete</marker> esto.</example>
             </rule>
         </rulegroup>
-        <rulegroup id="AUTO_NO_SEPARADO" name="prefijo auto- no separado" default="temp_off">
+        <rulegroup id="AUTO_NO_SEPARADO" name="prefijo auto- no separado">
             <rule>
                 <pattern>
                     <token>auto</token>
@@ -5103,7 +5185,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token regexp="yes" inflected="yes"
                         >abastecer|abastecimiento|acusación|adaptable|adaptación|adaptador|adhesivo|afirmar|afirmación|aglutinación|aglutinina|agresión|agresivo|ajustador|alimentar|alimentador|analizador|anticuerpo|antígeno|aprendizaje|arrancador|asistencia|ayuda|ayudar|banco|baño|biografía|biográfico|biográficamente|biógrafo|bomba|bombo|busero|cabeza|calentamiento|calibrador|camión|car|caravana|cargable|carril|cartera|castigo|catalítico|catálisis|censura|censurar|centrador|cerrador|choque|cine|citólisis|clave|combustión|compadecer|compasión|compensador|complacencia|complaciente|concepto|conciencia|conclusivo|conductor|confianza|configuración|configurador|consciencia|consumo|contener|control|controlar|copista|corrección|corregir|correlación|correlador|criticar|crítica|crítico|cuestionar|curación|defender|defensa|definir|definible|definición|definitorio|degradación|denominar|depurar|depuración|desarrollo|descargable|descriptivo|destrucción|destructible|destructivo|destructivamente|destruir|determinación|determinista|diagnóstico|didactismo|didáctica|didáctico|didácticamente|difusión|dinámico|dirección|disciplina|disciplinar|diseñar|documentado|dominio|ecología|edición|editar|educación|empleo|encendido|enfoque|engaño|equilibrador|erotismo|escuela|estable|estima|estéreo|evaluación|excitación|excluir|exclusión|explicativo|extintor|ferro|financiar|financiación|financiamiento|foco|formación|función|fundente|fágico|gestionar|gestión|giro|gnosis|gobierno|gol|golpe|grafía|gráfico|guardar|guiado|hemoterapia|hemólisis|heterodino|igualador|imponer|inducción|inducir|inducido|inductancia|inductivo|inflamación|infligir|injerto|inmolar|inmune|inmunidad|inmunitario|inmunización|instrucción|intoxicación|inyectable|latría|legislador|lesionar|lesión|lesivo|liquidar|liquidación|lisis|lisosoma|lote|lubricante|lubrificación|marginar|matizar|matizable|matización|medicar|medicación|mercado|moción|morfismo|motor|móvil|niveladora|nómico|nómicamente|oscilación|oscilador|oxidación|parte|pase|perpetuar|piloto|pista|plastia|polimerización|proclamar|producción|productor|programable|propulsión|propulsor|protección|proteger|pullman|regresión|regulación|representar|rizar|rizador|ría|satisfacción|saturación|seguro|servicio|soma|sostener|stop|sucesión|suficiencia|suficiente|sugestionar|sugestión|tolerancia|toque|transductor|transformador|transfusión|trasplante|trófico|vacuna|valor|valoración|vector|ventilador|volquete|vía</token>
                 </pattern>
-                <message suppress_misspelled="yes">Probablemente se escribe junto.</message>
+                <message suppress_misspelled="yes">Se escribe junto.</message>
                 <suggestion><match no="3" regexp_match="(.+)" regexp_replace="auto$1"/></suggestion>
                 <suggestion><match no="3" regexp_match="(.+)" regexp_replace="autor$1"/></suggestion>
                 <example correction="autocuración">Un manual de <marker>auto-curación</marker>.</example>
@@ -6327,7 +6409,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>El complemento de un conjunto A es el conjunto A∁.</example>
                 <example>Y por contra existe otra línia de pensamiento.</example>
             </rule>
-            <!--<rule default="temp_off">
+            <!--<rule>
                 <pattern>
                     <token postag="SPS00"><exception postag="CS|A.*|RG|_possible_NP" postag_regexp="yes"/></token>
                     <token postag="V.[SI].*" postag_regexp="yes" regexp="yes">[\p{Ll}]+[ns]<exception negate_pos="yes" postag="V.[MSI].*|_GV_|SENT_END" postag_regexp="yes"/></token>
@@ -7223,6 +7305,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="el Estado|los Estados">Voy a <marker>los Estado</marker> Unidos.</example>
                 <example correction="algún coche|algunos coches">Con <marker>algunos coche</marker>.</example>
                 <example correction="mi resultado|mis resultados">Estoy contenta con <marker>mi resultados</marker>.</example>
+                <example correction="mucho juguete|muchos juguetes">Tenía <marker>mucho juguetes</marker>.</example>
                 <!-- TODO: De alguna forma terminaré esta trabajo.
                 Tengo tiempo libre este tarde. -->
                 <example>También lo contrario.</example>
@@ -9505,7 +9588,37 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rule>
     </category>
     <category id="CONFUSIONS" name="Confusiones">
-        <rulegroup id="A_VER_HABER" name="a ver/haber" default="temp_off">
+        <rule id="AYA_HAYA" name="*aya/haya">
+            <pattern>
+                <token>aya</token>
+            </pattern>
+            <message>¿Quería decir <suggestion>haya</suggestion> (v. haber; árbol)? "Aya" existe como sustantivo poco usual.</message>
+            <example correction="haya">Cuando <marker>aya</marker> venido, llámala.</example>
+        </rule>
+        <rule id="VE_LE" name="*ve/le/me" default="temp_off">
+            <!-- TODO: more exceptions -->
+            <antipattern>
+                <token>ve</token>
+                <token regexp="yes">baja|chica|corta|doble|nada|abajo|como|adelante</token>
+            </antipattern>
+            <antipattern>
+                <token regexp="yes">doble|se</token>
+                <token>ve</token>
+            </antipattern>
+            <pattern>
+                <marker>
+                    <token>ve</token>
+                </marker>
+                <token postag="V.[SI].*" postag_regexp="yes"/>
+            </pattern>
+            <message>¿Quería decir <suggestion>le</suggestion>?</message>
+            <suggestion>me</suggestion>
+            <suggestion>te</suggestion>
+            <example correction="le|me|te">No <marker>ve</marker> vale este resultado.</example>
+            <example>El lago se ve com un mar.</example>
+            <example>No ve nada allá abajo.</example>
+        </rule>
+        <rulegroup id="A_VER_HABER" name="a ver/haber">
             <antipattern>
                 <token inflected="yes" regexp="yes">ir|acudir|correr</token>
                 <token>a</token>
@@ -9720,6 +9833,23 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token regexp="yes">&pronombre_personal_atono;</token>
                 <token>…</token>
             </antipattern>
+            <rule>
+                <pattern>
+                    <token postag="&pronombre_personal_atono_POS;" postag_regexp="yes"/>
+                    <token postag="V.M.*" postag_regexp="yes" regexp="yes">.*os<exception postag="V.[IS].*|_GN_.*" postag_regexp="yes"/></token>
+                </pattern>
+                <message>Combinación imposible de pronombre y verbo en imperativo.</message>
+                <suggestion>\1 <match no="2" postag="V.M.*" postag_regexp="yes" postag_replace="V.IP1P."/></suggestion>
+                <example correction="Le damos"><marker>Le daos</marker> la razón</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token postag="&pronombre_personal_atono_POS;" postag_regexp="yes"/>
+                    <token postag="V.M.*" postag_regexp="yes"><exception postag="V.[IS].*|_GN_.*" postag_regexp="yes"/><exception regexp="yes" case_sensitive="yes">[A-Z]+</exception></token>
+                </pattern>
+                <message>Combinación imposible de pronombre y verbo en imperativo.</message>
+                <example correction=""><marker>Le dadle</marker></example>
+            </rule>
             <rule>
                 <pattern>
                     <token regexp="yes">&pronombre_personal_atono;</token>

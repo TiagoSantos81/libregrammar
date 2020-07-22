@@ -930,6 +930,15 @@
       <disambig action="filter" postag="N.*"/>
     </rule>
   </rulegroup>
+    
+    <rule id="NAO_PRON_VERB" name="não + pron + verb">
+        <pattern>
+            <token postag="RN">não</token>
+            <token postag="P.*" postag_regexp="yes"/>
+            <token postag="V.[SI].*" postag_regexp="yes"/>
+        </pattern>
+        <disambig action="filterall"/>
+    </rule>
 
   <rulegroup id="DDN_U" name="Det + Nom + Adj">
     <!-- 		based on Spanish disambiguation.xml by Tiago F. Santos		-->

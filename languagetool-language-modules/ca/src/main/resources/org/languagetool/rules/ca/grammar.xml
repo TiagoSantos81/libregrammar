@@ -1317,7 +1317,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 </antipattern>
                 <antipattern>
                     <token>zero</token>
-                    <token>absolut</token>
+                    <token regexp="yes">absolut|inicial</token>
                 </antipattern>
                 <pattern>
                     <token postag="DN..P.*" postag_regexp="yes"><exception postag="A...S.*|NCF.*|.*LOC_ADV.*|AO.*" postag_regexp="yes"/><exception regexp="yes">[\d ,.]+</exception></token>
@@ -1335,6 +1335,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>de les aigües de la deu propera</example>
                 <example>Un tant per cent anual.</example>
                 <example>De zero absolut.</example>
+                <example>Amb zero inicial.</example>
                 <!--La regla de tres directa-->
             </rule>
             <rule>
@@ -4814,6 +4815,65 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rulegroup>
     </category>
     <category id="VERBS" name="Verbs" type="grammar">
+        <rulegroup id="CONTACTAR" name="contactar (intransitiu)" default="temp_off">
+            <url>https://aplicacions.llengua.gencat.cat/llc/AppJava/index.html?action=Principal&amp;method=detall&amp;input_cercar=contactar&amp;numPagina=1&amp;database=FITXES_PUB&amp;idFont=13552&amp;idHit=13552&amp;tipusFont=Fitxes+de+l%27Optimot&amp;numeroResultat=3&amp;databases_avansada=&amp;categories_avansada=&amp;clickLink=detall&amp;titol=R%E8gim+verbal+de+%3Cem%3Econtactar%3C%2Fem%3E+%2F+%3Cem%3EContacta%27ns%3C%2Fem%3E+o+%3Cem%3EContacta+amb+nosaltres%3C%2Fem%3E%3F&amp;tematica=&amp;tipusCerca=cerca.tot</url>
+            <rule>
+                <pattern>
+                    <token postag="VMM.*" postag_regexp="yes" inflected="yes">contactar</token>
+                    <token regexp="yes">-me|'m</token>
+                </pattern>
+                <message>El verb 'contactar' és intransitiu i el complement que l'acompanya s'introdueix amb la preposició 'amb'.</message>
+                <suggestion>\1 amb mi</suggestion>
+                <example correction="Contacta amb mi"><marker>Contacta'm</marker>.</example>
+                <example correction="Contacteu amb mi"><marker>Contacteu-me</marker>.</example>
+                <example>Doneu-me aigua.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token postag="VMM.*" postag_regexp="yes" inflected="yes">contactar</token>
+                    <token regexp="yes">-lo|'l|-li</token>
+                </pattern>
+                <message>El verb 'contactar' és intransitiu i el complement que l'acompanya s'introdueix amb la preposició 'amb'.</message>
+                <suggestion>\1 amb ell</suggestion>
+                <example correction="Contacta amb ell"><marker>Contacta'l</marker>.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token postag="VMM.*" postag_regexp="yes" inflected="yes">contactar</token>
+                    <token>-la</token>
+                </pattern>
+                <message>El verb 'contactar' és intransitiu i el complement que l'acompanya s'introdueix amb la preposició 'amb'.</message>
+                <suggestion>\1 amb ella</suggestion>
+                <example correction="Contacta amb ella"><marker>Contacta-la</marker>.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token postag="VMM.*" postag_regexp="yes" inflected="yes">contactar</token>
+                    <token regexp="yes">-nos|'ns</token>
+                </pattern>
+                <message>El verb 'contactar' és intransitiu i el complement que l'acompanya s'introdueix amb la preposició 'amb'.</message>
+                <suggestion>\1 amb nosaltres</suggestion>
+                <example correction="Contacteu amb nosaltres"><marker>Contacteu-nos</marker>.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token postag="VMM.*" postag_regexp="yes" inflected="yes">contactar</token>
+                    <token regexp="yes">-los|'ls</token>
+                </pattern>
+                <message>El verb 'contactar' és intransitiu i el complement que l'acompanya s'introdueix amb la preposició 'amb'.</message>
+                <suggestion>\1 amb ells</suggestion>
+                <example correction="Contacta amb ells"><marker>Contacta'ls</marker>.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token postag="VMM.*" postag_regexp="yes" inflected="yes">contactar</token>
+                    <token>-les</token>
+                </pattern>
+                <message>El verb 'contactar' és intransitiu i el complement que l'acompanya s'introdueix amb la preposició 'amb'.</message>
+                <suggestion>\1 amb elles</suggestion>
+                <example correction="Contacta amb elles"><marker>Contacta-les</marker>.</example>
+            </rule>
+        </rulegroup>
         <rulegroup id="NO_IMPERATIU" name="imperatiu incorrecte" default="off">
             <rule>
                 <pattern>
@@ -11595,7 +11655,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>No tenia ni idea de què significava allò.</example>
                 <example>La seguretat de què gaudeixen.</example>
             </rule>
-            <rule default="temp_off">
+            <rule>
                 <antipattern>
                     <token inflected="yes">saber</token>
                     <token>a</token>
@@ -11623,7 +11683,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>No se sap a canvi de què ho demana.</example>
                 <example>No se sap a canvi de què ho demanen.</example>
             </rule>
-            <rule default="temp_off">
+            <rule>
                 <pattern>
                     <token>a</token>
                     <token>canvi</token>
@@ -13476,7 +13536,16 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rulegroup>
     </category>
     <category id="CONFUSIONS" name="Z1) Confusions" type="grammar">
-        <rule id="A_VER_HAVER" name="a ver/haver" default="temp_off">
+        <rule id="BACS" name="bacs/basc">
+            <pattern>
+                <token>país</token>
+                <token>bacs</token>
+            </pattern>
+            <message>Confusió.</message>
+            <suggestion>País Basc</suggestion>
+            <example correction="País Basc">Me'n vaig al <marker>País Bacs</marker>.</example>
+        </rule>
+        <rule id="A_VER_HAVER" name="a ver/haver">
             <antipattern>
                 <!-- it can be ambiguous -->
                 <token>com</token>
@@ -19390,6 +19459,17 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>—aposta molt personal de Tony Blair—</example>
             </rule>
         </rulegroup>
+        <rule id="MOT_MOLT" name="*mot/molt">
+            <pattern>
+                <!--token postag="V.[SI].*|_GV_" postag_regexp="yes"/>-->
+                <marker>
+                    <token>mot</token>
+                </marker>
+                <token postag="A...P." postag_regexp="yes"/>
+            </pattern>
+            <message>¿Volíeu dir <suggestion>molt</suggestion></message>
+            <example correction="molt">Solien ser <marker>mot</marker> actius.</example>
+        </rule>
         <rulegroup id="MOL_MOLT" name="*mol(s)/molt(s)">
             <antipattern>
                 <marker>
@@ -30566,6 +30646,18 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rulegroup>
     </category>
     <category id="INCORRECT_EXPRESSIONS" name="Expressions incorrectes" type="grammar">
+        <rule id="BE_VE" name="be/ve">
+            <pattern>
+                <token>d'</token>
+                <token regexp="yes">aquí|ací</token>
+                <marker>
+                    <token regexp="yes">be|bé</token>
+                </marker>
+                <token>que</token>
+            </pattern>
+            <message>¿Volíeu dir <suggestion>ve</suggestion> (v. 'venir')?</message>
+            <example correction="ve">D'ací <marker>bé</marker> que siguin tan especials.</example>
+        </rule>
         <rule id="OUS_CARAGOLS" name="*xurres amb merines/ous amb caragols">
             <pattern>
                 <token regexp="yes">(ch|t?x)urr[ea]s</token>
@@ -32360,7 +32452,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <suggestion><match no="1" postag="(V.*)" postag_regexp="yes" postag_replace="$1">fer</match>\2 callar</suggestion>
             <example correction="tapar-nos la boca|fer-nos callar">Per a <marker>callar-nos la boca</marker>.</example>
         </rule>
-        <rulegroup id="CALLAR_NOS" name="*ens callaran" default="temp_off">
+        <rulegroup id="CALLAR_NOS" name="*ens callaran">
             <url>https://esadir.cat/entrades/fitxa/id/1438</url>
             <rule>
                 <pattern>

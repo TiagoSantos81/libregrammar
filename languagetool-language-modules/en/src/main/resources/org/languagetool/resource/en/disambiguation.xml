@@ -1134,7 +1134,7 @@
       </pattern>
       <disambig postag="JJS"/>
       <example type="untouched">I best my opponents.</example>
-      <example type="ambiguous" inputform="best[best/NN:U,best/VB,best/VBP,good/JJS,well/RBS]" outputform="best[good/JJS]">It's <marker>best</marker> for him.</example>
+      <example type="ambiguous" inputform="best[best/NN:U,best/VB,best/VBP,good/JJS,well/JJS,well/RBS]" outputform="best[good/JJS]">It's <marker>best</marker> for him.</example>
     </rule>
 
     <rule name="Modal verb + verb/noun -&gt; modal verb + verb" id="MD_VB">
@@ -1319,9 +1319,9 @@
         <marker><token>well</token></marker>
       </pattern>
       <disambig postag="RB"/>
-      <example type="ambiguous" inputform="well[well/NN,well/RB,well/UH,well/VB,well/VBP]" outputform="well[well/RB]">It does integrate <marker>well</marker>.</example>
+      <example type="ambiguous" inputform="well[well/JJ,well/NN,well/RB,well/UH,well/VB,well/VBP]" outputform="well[well/RB]">It does integrate <marker>well</marker>.</example>
       <example type="untouched">I have a well.</example>
-      <example type="ambiguous" inputform="well[well/NN,well/RB,well/UH,well/VB,well/VBP]" outputform="well[well/RB]">It is <marker>well</marker> for us to remember.</example>
+      <example type="ambiguous" inputform="well[well/JJ,well/NN,well/RB,well/UH,well/VB,well/VBP]" outputform="well[well/RB]">It is <marker>well</marker> for us to remember.</example><!-- TODO: isn't "well" an adjective here?-->
     </rule>
     <rulegroup name="in as noun -&gt; in as preposition" id="IN_NN_IN">
         <rule name="in as noun/preposition + the -&gt; in as preposition" id="IN_IN">
@@ -2215,28 +2215,42 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         </rule>
     </rulegroup>
 
-    <rulegroup name="haven't => verb only" id="HAVENT">
-        <rule>
-            <pattern>
-                <marker>
-                    <token regexp="yes">haven|hasn</token>
-                </marker>
-                <token regexp="yes">&apostrophe;</token>
+    <rule name="haven't => verb only" id="HAVENT">
+        <pattern>
+            <marker>
+                <token>haven</token>
+            </marker>
+            <token regexp="yes">&apostrophe;</token>
+            <token>t</token>
+        </pattern>
+        <disambig action="filter" postag="VBP" />
+        <example type="ambiguous" inputform="Haven[Haven/NNP,have/VBP,haven/NN]" outputform="Haven[have/VBP]"><marker>Haven</marker>'t we done that?</example>
+    </rule>
+
+    <rule name="hasn't => have not (RB)" id="HAVE_APOSTROPHE_NOT">
+        <pattern>
+            <token regexp="yes">hasn|hadn|haven</token>
+            <token regexp="yes">&apostrophe;</token>
+            <marker>
                 <token>t</token>
-            </pattern>
-            <disambig action="remove" postag="MD"/>
-        </rule>
-        <rule>
-            <pattern>
-                <marker>
-                    <token>haven</token>
-                </marker>
-                <token regexp="yes">&apostrophe;</token>
-                <token>t</token>
-            </pattern>
-            <disambig action="remove" postag="NN"/>
-        </rule>
-    </rulegroup>
+            </marker>
+        </pattern>
+        <disambig action="replace"><wd lemma="not" pos="RB" /></disambig>
+        <example type="ambiguous" inputform="t[t]" outputform="t[not/RB]">I haven'<marker>t</marker> done it.</example>
+    </rule>
+
+    <rule name="hadn't => VBD" id="HADNT">
+        <pattern>
+            <marker>
+                <token>hadn</token>
+            </marker>
+            <token regexp="yes">&apostrophe;</token>
+            <token>t</token>
+        </pattern>
+        <disambig action="replace"><wd lemma="have" pos="VBD" /></disambig>
+        <example type="ambiguous" inputform="hadn[hadn]" outputform="hadn[have/VBD]">I <marker>hadn</marker>'t done it.</example>
+        <example type="ambiguous" inputform="Hadn[Hadn]" outputform="Hadn[have/VBD]"><marker>Hadn</marker>'t we better be going now?</example>
+    </rule>
 
     <rule name="re -> be" id="RE_VBP">
         <pattern>
@@ -2319,18 +2333,6 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <disambig action="add"><wd pos="VBD" lemma="be"/></disambig>
         <example type="untouched">He did it.</example>
         <example type="ambiguous" inputform="weren[weren]" outputform="weren[be/VBD]">You <marker>weren</marker>'t there.</example>
-    </rule>
-    <rule name="hadn't" id="isnt">
-        <pattern>
-            <marker>
-                <token>hadn</token>
-            </marker>
-            <token regexp="yes">&apostrophe;</token>
-            <token>t</token>
-        </pattern>
-        <disambig action="add"><wd pos="VBD" lemma="have"/></disambig>
-        <example type="untouched">He did it.</example>
-        <example type="ambiguous" inputform="hadn[hadn]" outputform="hadn[have/VBD]">He <marker>hadn</marker>'t done this.</example>
     </rule>
     <rule name="won't" id="wont">
         <pattern>
@@ -2625,7 +2627,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             </antipattern>
             <antipattern><!-- Premium #1416. Passive: test was lead by -->
                 <token postag_regexp="yes" postag="NN(:UN?)?"/>
-                <token regexp="yes">is|was</token>
+                <token regexp="yes">i?s|was</token>
                 <token postag_regexp="yes" postag="VBP?"/>
                 <token>by</token>
             </antipattern>
@@ -2678,7 +2680,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <example type="ambiguous" inputform="hope[hope/NN:UN,hope/VB,hope/VBP]" outputform="hope[hope/NN:UN]">This time there was <marker>hope</marker> and expectation, and a certain symbolism.</example>
             <example type="ambiguous" inputform="hope[hope/NN:UN,hope/VB,hope/VBP]" outputform="hope[hope/NN:UN]">The new regulation came into force last week; it is <marker>hope</marker> to many people who previously....</example>
             <example type="ambiguous" inputform="hope[hope/NN:UN,hope/VB,hope/VBP]" outputform="hope[hope/NN:UN]">... for many people she truly was <marker>hope</marker> in their time of distress.</example>
-            </rule>
+        </rule>
     <!-- rule>
       <pattern>
         <token regexp="yes">are|is|was|been</token>
@@ -2829,7 +2831,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
     </pattern>
     <disambig action="filter" postag="..R"/>
     <example type="untouched">This is a well.</example>
-    <example type="ambiguous" inputform="better[better/NN,better/VB,better/VBP,good/JJR,well/RBR]" outputform="better[good/JJR,well/RBR]">It is <marker>better</marker> for us to remember.</example>
+    <example type="ambiguous" inputform="better[better/NN,better/VB,better/VBP,good/JJR,well/JJR,well/RBR]" outputform="better[good/JJR,well/JJR,well/RBR]">It is <marker>better</marker> for us to remember.</example>
     </rule>
 
     <rule name="that MD + be -> MD" id="THAT_MD_MD">
@@ -3184,7 +3186,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <token postag="SENT_END" regexp="yes">[\.\?!]</token>
         </pattern>
         <disambig action="filter" postag="JJR"/>
-      <example type="ambiguous" inputform="better[better/NN,better/VB,better/VBP,good/JJR,well/RBR]" outputform="better[good/JJR]">The sooner, the <marker>better</marker>.</example>
+      <example type="ambiguous" inputform="better[better/NN,better/VB,better/VBP,good/JJR,well/JJR,well/RBR]" outputform="better[good/JJR,well/JJR]">The sooner, the <marker>better</marker>.</example>
     </rule>
 
     <rule name="determiner + verb/NN -&gt; NN (2)" id="DT_VB_NN_SENTEND">
@@ -3204,7 +3206,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <token postag="SENT_END" regexp="yes">[\.\?!]</token>
         </pattern>
         <disambig action="filter" postag="NN.*"/>
-      <example type="ambiguous" inputform="better[better/NN,better/VB,better/VBP,good/JJR,well/RBR]" outputform="better[better/NN]">... at the casino yesterday. But, who was the <marker>better</marker>?</example>
+      <example type="ambiguous" inputform="better[better/NN,better/VB,better/VBP,good/JJR,well/JJR,well/RBR]" outputform="better[better/NN]">... at the casino yesterday. But, who was the <marker>better</marker>?</example>
       <example type="untouched">[No full stop at the end of the sentence] … to gain a much better understanding</example>
       <example type="untouched">... compared with last year, this year's crops are much better.</example>
       <example type="untouched">... on the way to the Enron Broadband/BMC agreement since we last spoke.</example>
@@ -3382,7 +3384,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <example type="untouched">On Tuesday, the rains will stop.</example>
         <example type="untouched">Be Guest Wordsmith for a week at A.Word.</example><!-- #2748 -->
         <example type="untouched">See Wikipedia for a list of TCP/UDP ports that are already used.</example><!-- #2748 -->
-        <example type="ambiguous" inputform="Best[Best/NNP,best/NN:U,best/VB,best/VBP,good/JJS,well/RBS]" outputform="Best[Best/NNP]"><marker>Best</marker> Art Direction – Set Decoration</example>
+        <example type="ambiguous" inputform="Best[Best/NNP,best/NN:U,best/VB,best/VBP,good/JJS,well/JJS,well/RBS]" outputform="Best[Best/NNP]"><marker>Best</marker> Art Direction – Set Decoration</example>
     </rule>
 
     <rule name="Uppercase word/NNP|NN -&gt; NNP" id="UPPER_NNP">
@@ -3989,16 +3991,6 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
                 <token>time</token>
                 <token postag="VBP?" postag_regexp='yes'/>
         </antipattern>
-        <antipattern><!-- #3215 Please lay down your coat -->
-            <token>please</token>
-            <token chunk="I-VP" postag="VBP"/>
-            <token postag="RP"/>
-        </antipattern>
-        <antipattern><!-- #3215 www.lexico.com/synonym/cut_something_short -->
-            <token>please</token>
-            <token>cut</token>
-            <token>short</token>
-        </antipattern>
         <pattern>
             <token postag_regexp="yes" postag="DT|JJ|PRP\$">
                 <exception postag_regexp="yes" postag="WDT|RB"/></token>
@@ -4113,6 +4105,13 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <token chunk="E-NP-singular" postag_regexp="yes" postag="NN(:UN?)?"/>
             <token chunk="B-VP" postag_regexp="yes" postag="VBP?"/>
         </antipattern>
+        <antipattern><!-- #3258 let very few get by -->
+            <token chunk="B-VP" postag_regexp="yes" postag="VB.*"/>
+            <token postag="RB"/>
+            <token>few</token><!-- Probably only 'few' as a determiner: www.lexico.com/definition/few -->
+            <token chunk="B-VP" postag_regexp="yes" postag="VBP?"/>
+            <token postag_regexp="yes" postag="RB|IN"/>
+        </antipattern>
         <pattern>
             <token postag_regexp="yes" postag="DT|JJ|PRP\$"/>
             <token postag="JJ.*|VBG" postag_regexp="yes"><exception postag="RB"/><exception regexp="yes">being|one</exception></token>
@@ -4152,6 +4151,8 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <example type="untouched">Verb: ... out of which the first four <marker>form</marker> Greater Athens, while the regional unit...</example><!-- #2815 form/I-NP-singular -->
         <example type="untouched">Verb: ... which occurs occasionally if only three leave.</example><!-- Premium #1423 -->
         <example type="untouched">This makes my skin crawl.</example><!-- #3092 -->
+        <example type="untouched">His center fielder let very few get by.</example><!-- #3258 -->
+        <example type="untouched">His goalie skills let very few into the goal.</example><!-- #3258 -->
         <example type="ambiguous" inputform="nose[nose/NN,nose/VB,nose/VBP]" outputform="nose[nose/NN]">The elephant swings its long <marker>nose</marker>.</example>
         <example type="ambiguous" inputform="stone[stone/JJ,stone/NN:UN,stone/NNS,stone/VB,stone/VBP]" outputform="stone[stone/NN:UN,stone/NNS]">A rolling <marker>stone</marker> gathers no moss.</example>
         <example type="ambiguous" inputform="make[make/NN:UN,make/VB,make/VBP]" outputform="make[make/NN:UN]">No, I mean like <marker>make</marker> or brand name, in which case no further actions are necessary.</example>
@@ -6414,6 +6415,11 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <token postag="RB"/>
             <token postag_regexp="yes" postag="VBP?"/>
         </antipattern>
+        <antipattern><!-- ma'am I got ... -->
+            <token />
+            <token regexp="yes">&apostrophe;</token>
+            <token spacebefore="no">am</token>
+        </antipattern>
         <pattern>
             <token inflected="yes" regexp="yes">be|have</token>
             <token min="0" max="2" postag="PRP|NN.*|RB" postag_regexp="yes"/>
@@ -6440,6 +6446,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <example type="ambiguous" inputform="made[make/VBD,make/VBN]" outputform="made[make/VBN]">He has <marker>made</marker> a mistake.</example>
         <example type="ambiguous" outputform="liked[like/VBN]" inputform="liked[like/VBD,like/VBN]">Have you <marker>liked</marker> Dutch jazz music?</example>
         <example type="ambiguous" inputform="considered[consider/VBD,consider/VBN,considered/JJ]" outputform="considered[consider/VBN]">... forming the negative hydride ion, and is very occasionally <marker>considered</marker> to be a halogen on that basis.</example>
+        <example type="untouched">Ma'am I got the wrong one.</example>
     </rule>
 
     <rule id="VBD_VBN" name="Past">
@@ -6698,7 +6705,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
           </pattern>
           <disambig action="filter" postag="..R"/>
           <example type="untouched">This year's profits should better last year's by a wide margin.</example>
-          <example type="ambiguous" inputform="better[better/NN,better/VB,better/VBP,good/JJR,well/RBR]" outputform="better[good/JJR,well/RBR]">She likes Hiroshima <marker>better</marker> than any other city.</example>
+          <example type="ambiguous" inputform="better[better/NN,better/VB,better/VBP,good/JJR,well/JJR,well/RBR]" outputform="better[good/JJR,well/JJR,well/RBR]">She likes Hiroshima <marker>better</marker> than any other city.</example>
         </rule>
 
         <rule id="PRPPOSS_VB_NN" name="Possessive pronoun + verb/noun =>noun">
@@ -6775,21 +6782,30 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <example type="ambiguous" inputform="selling[sell/VBG,selling/NN:U]" outputform="selling[selling/NN:U]">You want a raise? Tell me what your <marker>selling</marker> is worth!</example><!-- #2426 -->
         </rule>
 
-        <rule id="PRPPOSS_VBG_JJ_NN" name="Possessive pronoun + verb/adjective + noun sing => adjective">
-          <pattern>
+    <rule id="PRPPOSS_VBG_JJ_NN" name="Possessive pronoun + verb/adjective + noun sing => adjective">
+        <antipattern><!-- #3291 its beginning in -->
+            <token postag="PRP$"/>
+            <token chunk="E-NP-singular" postag="NN(:UN?)?" postag_regexp="yes"/>
+            <token postag="IN"/>
+        </antipattern>
+        <pattern>
             <token postag="PRP$"/>
             <marker>
-            <and>
-              <token postag="JJ"/>
-              <token postag="VBG" postag_regexp="yes"/>
-            </and>
+                <and>
+                   <token postag="JJ"/>
+                   <token postag="VBG" postag_regexp="yes"/>
+                </and>
             </marker>
             <token postag="NN"/>
-          </pattern>
-          <disambig postag="JJ"/>
-          <example type="untouched">I do what I want to.</example>
-          <example type="ambiguous" inputform="loving[love/VBG,loving/JJ,loving/NN:UN]" outputform="loving[loving/JJ]">Your <marker>loving</marker> friend</example>
-        </rule>
+        </pattern>
+        <disambig postag="JJ"/>
+        <example type="untouched">I do what I want to.</example>
+        <example type="untouched">Since its beginning in 1970, WalkAmerica has raised more than $1 billion.</example><!-- #3291 -->
+        <example type="untouched">The magazine conducts its ranking by surveying the salaries of MBAs who graduated in 1996.</example><!-- #3291 -->
+        <example type="untouched">You will have guessed its meaning by the end of the chapter.</example><!-- #3291 -->
+        <example type="untouched">... can be found at Disneyland Paris since its opening in 1992, under the name Casey's Corner.</example><!-- #3291 -->
+        <example type="ambiguous" inputform="loving[love/VBG,loving/JJ,loving/NN:UN]" outputform="loving[loving/JJ]">Your <marker>loving</marker> friend</example>
+    </rule>
 
     <rule id="PRPPOSS_JJ_NN" name="Possessive pronoun + adj/noun =>noun">
         <antipattern><!-- its home games -->
@@ -7382,7 +7398,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
           </pattern>
           <disambig postag="RBR"/>
           <example type="untouched">We need to better the lot of the suburban commuter.</example>
-          <example type="ambiguous" inputform="better[better/NN,better/VB,better/VBP,good/JJR,well/RBR]" outputform="better[well/RBR]">Later, you shall know it <marker>better</marker>.</example>
+          <example type="ambiguous" inputform="better[better/NN,better/VB,better/VBP,good/JJR,well/JJR,well/RBR]" outputform="better[well/RBR]">Later, you shall know it <marker>better</marker>.</example>
         </rule>
 
         <rule id="BY_VBG" name="by + vbg → vbg">
@@ -7537,7 +7553,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
           </pattern>
           <disambig postag="RBS"/>
           <example type="untouched">Still, I need to do a lot of things.</example>
-          <example type="ambiguous" inputform="best[best/NN:U,best/VB,best/VBP,good/JJS,well/RBS]" outputform="best[well/RBS]">This <marker>best</marker> exhibits the features of the snake oil.</example>
+          <example type="ambiguous" inputform="best[best/NN:U,best/VB,best/VBP,good/JJS,well/JJS,well/RBS]" outputform="best[well/RBS]">This <marker>best</marker> exhibits the features of the snake oil.</example>
         </rule>
 
         <rulegroup id='STEP_BY_STEP' name="Phrases of the form similar to: step by step">

@@ -73,7 +73,7 @@ public class RegularIrregularParticipleFilter extends RuleFilter {
             + "["+ desiredPostag.substring(desiredPostag.length() - 1) + "C]";
       }
       
-      String[] participles = null;
+      String[] participles;
       try {
         participles = synth.synthesize(selectedAT, desiredPostag, true);
       } catch (IOException e) {
@@ -111,6 +111,5 @@ public class RegularIrregularParticipleFilter extends RuleFilter {
   private boolean isRegular(String p) {
     String lp = p.toLowerCase();
     return lp.endsWith("do") || lp.endsWith("dos") || lp.endsWith("da") || lp.endsWith("das");
-
   }
 }

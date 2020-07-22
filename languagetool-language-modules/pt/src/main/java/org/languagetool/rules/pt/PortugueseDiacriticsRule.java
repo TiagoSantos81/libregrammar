@@ -45,7 +45,7 @@ public class PortugueseDiacriticsRule extends AbstractSimpleReplaceRule2 {
   private static final Locale PT_LOCALE = new Locale("pt");  // locale used on case-conversion
 
   @Override
-  public final String getFileName() {
+  public String getFileName() {
     return FILE_NAME;
   }
 
@@ -54,7 +54,7 @@ public class PortugueseDiacriticsRule extends AbstractSimpleReplaceRule2 {
     return true;
   }
 
-  public PortugueseDiacriticsRule(ResourceBundle messages) throws IOException {
+  public PortugueseDiacriticsRule(ResourceBundle messages) {
     super(messages, new Portuguese());
     // setDefaultOff();
     super.setCategory(Categories.TYPOS.getCategory(messages));
@@ -64,7 +64,7 @@ public class PortugueseDiacriticsRule extends AbstractSimpleReplaceRule2 {
   }
 
   @Override
-  public final String getId() {
+  public String getId() {
     return PT_DIACRITICS_REPLACE;
   }
 
