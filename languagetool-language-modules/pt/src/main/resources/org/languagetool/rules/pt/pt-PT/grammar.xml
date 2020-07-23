@@ -1302,6 +1302,7 @@ title="Easy editing stylesheet" ?>
       <example>Além das dezenas de danças regionais, estilo folclórico nacional argentino s...</example>
       <!--example>...estruturas de repetição tais como laços, ou ainda estruturas de dados adicionais tais como pilhas, para resolv...</example-->
       <example>A era nazista produziu principalmente filmes de propaganda, embora a obra de Leni Riefenstahl ...</example>
+      <example>Seriam sempre as problemáticas que definiriam e prescreveriam a organização, e não os interesses, sejam eles coletivos ou pessoais.</example>
     </rule>
     <rule>
       <pattern>
@@ -1622,6 +1623,7 @@ title="Easy editing stylesheet" ?>
       <message>Este prefixo não é hifenizado neste contexto.</message>
         <suggestion>\1<match no='3' case_conversion="startlower"/></suggestion>
       <example correction='megalítico'>O artefato encontrado provém do período <marker>mega lítico</marker> altos.</example>
+      <example correction='infraestrutura'>A <marker>infra-estrutura</marker> foi planeada durante anos.</example>
     </rule>
     <rule>
       <antipattern>

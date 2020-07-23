@@ -932,10 +932,19 @@
   </rulegroup>
     
     <rule id="NAO_PRON_VERB" name="não + pron + verb">
+    <!-- 		Created by Jaume Ortola, 2020-07-23		-->
+        <antipattern>
+          <unify>
+            <feature id="gender"/>
+            <feature id="number"/>
+            <token postag="D.+" postag_regexp="yes" regexp="yes">[ao]s?|nos</token>
+            <token postag="N.+" postag_regexp="yes"/>
+          </unify>
+        </antipattern>
         <pattern>
             <token postag="RN">não</token>
-            <token postag="P.*" postag_regexp="yes"/>
-            <token postag="V.[SI].*" postag_regexp="yes"/>
+            <token postag="P.+" postag_regexp="yes" regexp="yes">[ao]s?|[mt](?:e|[ao]s?)|se|nos|vos|lh(?:es?|[ao]s?)</token>
+            <token postag="V.[SI].+" postag_regexp="yes"/>
         </pattern>
         <disambig action="filterall"/>
     </rule>
