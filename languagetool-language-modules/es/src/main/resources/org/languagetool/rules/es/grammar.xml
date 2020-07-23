@@ -9953,6 +9953,18 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>Lo militar es otra cosa.</example>
             </rule>
             <rule>
+                <pattern>
+                    <token regexp="yes">&pronombre_personal_atono;<exception postag="_GN_.*" postag_regexp="yes"/></token>
+                    <token postag="V.N.*" postag_regexp="yes" regexp="yes">.*os</token>
+                </pattern>
+                <message>Posible confusión. Pronombre átono sin verbo.</message>
+                <suggestion>\1 <match no="2" postag="V.N.*" postag_regexp="yes" postag_replace="V.IP1P."/></suggestion>
+                <example correction="Nos acomodamos"><marker>Nos acomodarnos</marker> a todo.</example>
+                <example>El ayudar es un primer paso</example>
+                <example>En contraposición con lo solar.</example>
+                <example>Lo militar es otra cosa.</example>
+            </rule>
+            <rule>
                 <antipattern>
                     <token regexp="yes">lo|la|las</token>
                     <token postag="[AN].*" postag_regexp="yes"/>
