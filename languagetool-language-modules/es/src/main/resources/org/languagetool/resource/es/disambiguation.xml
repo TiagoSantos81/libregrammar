@@ -370,8 +370,8 @@ Copyright (C) 2011 Juan Martorell
         </rule>
     </rulegroup>
     <rule id="ADVERB_BEFORE" name="adverb before adjective">
-        <pattern>
-            <token postag="RG" regexp="yes">todavía|mal|.+mente|muy|poco|muchísimo|poquísimo|tantísimo|tanto|tan|entonces|pronto|bastante|bien|aún|casi|harto|nada|incluso|ya|nunca|demasiado|medio|mejor|más|menos|no|solo|sólo|peor|quizás?|algo|siempre|también|tampoco|todo|aun</token>
+        <pattern> <!--|todo-->
+            <token postag="RG" regexp="yes">todavía|mal|.+mente|muy|poco|muchísimo|poquísimo|tantísimo|tanto|tan|entonces|pronto|bastante|bien|aún|casi|harto|nada|incluso|ya|nunca|demasiado|medio|mejor|más|menos|no|solo|sólo|peor|quizás?|algo|siempre|también|tampoco|aun</token>
         </pattern>
         <disambig action="add">
             <wd pos="RG_before"/>
@@ -3751,6 +3751,38 @@ Copyright (C) 2011 Juan Martorell
             <wd lemma="haiga" pos="NCMS000"/>
         </disambig>
     </rule>
+    <rulegroup id="ABBREVIATIONS" name="abreviaturas">
+        <rule>
+            <pattern>
+                <marker>
+                    <token regexp="yes">p|pp</token>
+                </marker>
+                <token spacebefore="no">.</token>
+                <token regexp="yes">\d+</token>
+            </pattern>
+            <disambig action="ignore_spelling"></disambig>
+        </rule>
+        <rule>
+            <pattern case_sensitive="yes">
+                <marker>
+                    <token regexp="yes">Ctrl|CTRL|Alt|ALT|MAYÚS|Mayús</token>
+                </marker>
+                <token>+</token>
+                <!--<token regexp="yes">.|Alt|ALT|MAYÚS|Mayús|F[0-9]</token>-->
+            </pattern>
+            <disambig action="ignore_spelling"></disambig>
+        </rule>
+        <rule>
+            <pattern case_sensitive="yes">
+                <token regexp="yes">Ctrl|CTRL|Alt|ALT|MAYÚS|Mayús</token>
+                <token min="0">+</token>
+                <marker>
+                <token regexp="yes">.|Alt|ALT|MAYÚS|Mayús|F[0-9]</token>
+                </marker>
+            </pattern>
+            <disambig action="ignore_spelling"></disambig>
+        </rule>
+    </rulegroup>
     <rulegroup id="IGNORE_SOME_ANGLICISMS" name="ignore some common anglicisms if they go with unknown words">
         <rule>
             <pattern>

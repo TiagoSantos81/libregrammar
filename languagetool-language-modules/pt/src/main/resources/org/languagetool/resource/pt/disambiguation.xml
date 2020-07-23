@@ -406,10 +406,10 @@
           <token regexp='yes'>&pronomes_retos;</token>
         <marker>
           <token regexp='yes'>[nv]?[ao]s?</token>
-        </marker>
-          <token postag="V.+" postag_regexp="yes"/>
+            <token postag="V.+" postag_regexp="yes"/>
+        </marker>       
       </pattern>
-      <disambig action="filter" postag="PP.+"/>
+      <disambig action="filterall"/>
     </rule>
 
     <!--rulegroup id="SUBJUNCTIVES" name="Verbos no conjuntivo"-->
@@ -931,7 +931,7 @@
     </rule>
   </rulegroup>
     
-    <rule id="NAO_PRON_VERB" name="não + pron + verb">
+    <rulegroup id="PRON_VERB" name="não + pron + verb">
     <!-- 		Created by Jaume Ortola, 2020-07-23		-->
         <antipattern>
           <unify>
@@ -941,13 +941,23 @@
             <token postag="N.+" postag_regexp="yes"/>
           </unify>
         </antipattern>
+        <rule>
         <pattern>
-            <token postag="RN">não</token>
+                <token postag="RN|RG" postag_regexp="yes"/>
             <token postag="P.+" postag_regexp="yes" regexp="yes">[ao]s?|[mt](?:e|[ao]s?)|se|nos|vos|lh(?:es?|[ao]s?)</token>
             <token postag="V.[SI].+" postag_regexp="yes"/>
         </pattern>
         <disambig action="filterall"/>
     </rule>
+        <rule>
+            <pattern>
+                <token>nem</token>
+                <token postag="P.*" postag_regexp="yes"/>
+                <token postag="V.[SI].*" postag_regexp="yes"/>
+            </pattern>
+            <disambig action="filterall"/>
+        </rule>
+    </rulegroup>
 
   <rulegroup id="DDN_U" name="Det + Nom + Adj">
     <!-- 		based on Spanish disambiguation.xml by Tiago F. Santos		-->
