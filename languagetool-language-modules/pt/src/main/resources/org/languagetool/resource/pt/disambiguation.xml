@@ -405,9 +405,9 @@
       <pattern>
           <token regexp='yes'>&pronomes_retos;</token>
         <marker>
-          <token regexp='yes'>[nv]?[ao]s?</token>
-            <token postag="V.+" postag_regexp="yes"/>
-        </marker>       
+          <token postag="PP.+" postag_regexp="yes" regexp='yes'>[nv]?[ao]s?</token>
+          <token postag="V.+" postag_regexp="yes"/>
+        </marker>
       </pattern>
       <disambig action="filterall"/>
     </rule>
@@ -943,12 +943,13 @@
         </antipattern>
         <rule>
         <pattern>
-                <token postag="RN|RG" postag_regexp="yes"/>
+            <token postag="R.+" postag_regexp="yes"/>
             <token postag="P.+" postag_regexp="yes" regexp="yes">[ao]s?|[mt](?:e|[ao]s?)|se|nos|vos|lh(?:es?|[ao]s?)</token>
             <token postag="V.[SI].+" postag_regexp="yes"/>
         </pattern>
         <disambig action="filterall"/>
     </rule>
+    <!-- too ambigouous and masks real error detection
         <rule>
             <pattern>
                 <token>nem</token>
@@ -957,6 +958,7 @@
             </pattern>
             <disambig action="filterall"/>
         </rule>
+        -->
     </rulegroup>
 
   <rulegroup id="DDN_U" name="Det + Nom + Adj">
