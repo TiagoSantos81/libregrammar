@@ -949,7 +949,7 @@
         </pattern>
         <disambig action="filterall"/>
     </rule>
-    <!-- too ambigouous and masks real error detection
+    <!-- too ambiguous and masks real error detection
         <rule>
             <pattern>
                 <token>nem</token>
