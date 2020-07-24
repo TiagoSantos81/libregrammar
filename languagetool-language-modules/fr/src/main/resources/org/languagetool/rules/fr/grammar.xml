@@ -8656,7 +8656,7 @@ though, and has since been slightly modified)-->
             </or>
             <marker><token>années</token></marker>
           </pattern>
-          <message>Il convient d’utiliser « <suggestion>ans</suggestion> » après un nombre cardinal.</message>
+          <message>Il convient d’utiliser <suggestion>ans</suggestion> après un nombre cardinal.</message>
           <url>https://www.dictionnaire-academie.fr/article/QDL010</url>
           <example correction="ans">Quatre <marker>années</marker> après, il était toujours motivé !</example>
           <example correction="ans">Il l'a racheté douze <marker>années</marker> plus tard.</example>
@@ -8687,7 +8687,7 @@ though, and has since been slightly modified)-->
       </rulegroup>
       <rule id="SE_SUCCEDER" name="Accord de 'se succéder'">
         <pattern>
-          <token regexp="yes">succédée|succédés|succédées</token>
+          <token regexp="yes">succédé[es]{1,2}</token>
         </pattern>
         <message>Le verbe pronominal « se succéder » ne peut avoir de COD ; et ne s’accorde donc jamais.</message>
         <suggestion>succédé</suggestion>
