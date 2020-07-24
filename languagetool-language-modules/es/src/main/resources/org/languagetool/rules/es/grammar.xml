@@ -739,8 +739,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <message>Construcción incorrecta.</message>
                 <suggestion><match no="2" postag="VMM02V0.(PP.*)" postag_regexp="yes" postag_replace="VMN0000.$1"/></suggestion>
                 <example correction="compartirla">No quiere <marker>compartila</marker>.</example>
+                <example correction="registrarte">Puedes <marker>registrate</marker> en la comunidad</example>
                 <example>Así que terminala.</example>
                 <example>Solo soy un niño que comete errores.</example>
+                <example>La calidad de las cerraduras que instala.</example>
             </rule>
         </rulegroup>
         <rulegroup id="HACE_UN_MES_ATRAS" name="*hace un mes atrás">
@@ -1017,7 +1019,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rule>
     </category>
     <category id="DIACRITICS" name="Diacríticos (tilde)" type="misspelling">
-        <rule id="COMO_COMPARATIVO" name="como comparativo, sin tilde" default="temp_off">
+        <rule id="COMO_COMPARATIVO" name="como comparativo, sin tilde">
             <pattern>
                 <token postag="NC.*" postag_regexp="yes"/>
                 <marker>
@@ -9649,7 +9651,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="haya">Cuando <marker>aya</marker> venido, llámala.</example>
             </rule>
         </rulegroup>
-        <rule id="VE_LE" name="*ve/le/me" default="temp_off">
+        <rule id="VE_LE" name="*ve/le/me">
             <!-- TODO: more exceptions -->
             <antipattern>
                 <token>ve</token>
@@ -11665,6 +11667,19 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token regexp="yes">\d*0s</token>
                 <token regexp="yes">y|,</token>
                 <token regexp="yes">\d*0s</token>
+            </antipattern>
+            <antipattern>
+                <token skip="1">unicode</token>
+                <token regexp="yes">[0-9a-f]{4}</token>
+            </antipattern>
+            <antipattern>
+                <token>U</token>
+                <token>+</token>
+                <token regexp="yes">[0-9a-f]{4}</token>
+            </antipattern>
+            <antipattern case_sensitive="yes"> 
+                <!-- ambigous -->
+                <token regexp="yes">[0-9]+[A-Z]+</token>
             </antipattern>
             <rule>
                 <pattern case_sensitive="yes">
