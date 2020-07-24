@@ -15833,6 +15833,7 @@ Copyright (C) 2012 Jaume Ortolà i Font
             </pattern>
             <disambig action="ignore_spelling"/>
         </rule>
+        <?ignore LibreGrammar does not ignore a word just because it has a number
         <rule>
             <pattern>
                 <token regexp="yes" case_sensitive="yes">[A-Z0-9]+</token>
@@ -15847,6 +15848,7 @@ Copyright (C) 2012 Jaume Ortolà i Font
             </pattern>
             <disambig action="ignore_spelling"/>
         </rule>
+            ?>
         <rule>
             <pattern>
                 <token regexp="yes">([01]?\d|2[0-3])h[0-5]?\d(min|m)([0-5]?\ds)?</token>
