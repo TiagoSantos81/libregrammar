@@ -8839,7 +8839,7 @@ though, and has since been slightly modified)-->
                   </marker>
                   <token regexp="yes">mondial|régional|local</token>
               </pattern>
-              <message>Omission possible. Vouliez-vous dire <suggestion>\2ᵉ</suggestion> <suggestion>numéro \2</suggestion>?</message>
+              <message>Omission possible. Vouliez-vous dire <suggestion>\2er</suggestion> <suggestion>numéro \2</suggestion>?</message>
               <example correction="1er|numéro 1">Elle s'est ainsi classée <marker>1</marker> mondial.</example>
           </rule>
       </rulegroup>
@@ -8864,7 +8864,7 @@ though, and has since been slightly modified)-->
       <rule id="V_LA_ACCENT" name="V suivi de là">
           <pattern>
               <token postag="V.*2 p" postag_regexp="yes"/>
-              <token spacebefore='no'>&hyphen;</token>
+              <token spacebefore='no' regexp='yes'>&hyphen;</token>
               <token spacebefore='no'>là</token>
           </pattern>
           <message>Vouliez-vous dire <suggestion>\1-la</suggestion> ?</message>
