@@ -8082,7 +8082,7 @@ though, and has since been slightly modified)-->
     </rule>
   </category>
   <category id="CAT_ELISION" name="Élision">
-    <rulegroup id="PAS_D_ELISION" name="pas d'élision" default="temp_off">
+    <rulegroup id="PAS_D_ELISION" name="pas d'élision">
       <antipattern> <!-- There is no a clear solution for these words. Perhaps we need a picky rule --> 
         <token regexp="yes">handicap.*|hollywood.*|henry</token>
       </antipattern>
@@ -8831,16 +8831,16 @@ though, and has since been slightly modified)-->
           <example correction="est">Chaque service et chaque application <marker>sont</marker> unique.</example>
           <example>Chaque sport et chaque période ont leur logique et c'est difficile de prendre en compte tous ces paramètres à moins de pondre un texte très copieux.</example>
       </rule>
-      <rule id="V_LA_ACCENT" name="V suivi de là" default="temp_off">
+      <rule id="V_LA_ACCENT" name="V suivi de là">
           <pattern>
               <token postag="V.*2 p" postag_regexp="yes"/>
-              <token>-</token>
-              <token>là</token>
+              <token spacebefore='no'>&hyphen;</token>
+              <token spacebefore='no'>là</token>
           </pattern>
           <message>Vouliez-vous dire <suggestion>\1-la</suggestion> ?</message>
           <example correction="prenez-la">Je vous en prie, <marker>prenez-là</marker>.</example>
       </rule>
-      <rule id="ENVOIE_DE" name="envoi de" default="temp_off">
+      <rule id="ENVOIE_DE" name="envoi de">
           <pattern>
               <token postag="SENT_START"/>
               <marker>
@@ -8852,7 +8852,7 @@ though, and has since been slightly modified)-->
           <example correction="Envoi"><marker>Envoie</marker> de marchandises.</example>
           <example correction="Envoi"><marker>Envoie</marker> de baisers.</example>
       </rule>
-      <rule id="GARANTIR_DE" name="garentir de" default="temp_off">
+      <rule id="GARANTIR_DE" name="garentir de">
           <pattern>
               <token postag_regexp="yes" postag="V.* inf">
                   <exception>manager</exception>
@@ -18911,7 +18911,7 @@ though, and has since been slightly modified)-->
       <message>« Mère Nature » est un anglicisme (mother Nature). Employez <suggestion>dame Nature</suggestion>.</message>
       <example correction="dame Nature"><marker>mère Nature</marker></example>
     </rule>
-    <rulegroup id="PM" name="PM" default="off" tags="picky">
+    <rulegroup id="PM" name="PM"><!-- tags="picky" -->
       <rule>
         <pattern>
           <token>pm</token>
@@ -18920,7 +18920,6 @@ though, and has since been slightly modified)-->
         <example correction="De l’après-midi|Du soir"><marker>PM</marker></example>
         <example><marker>de l’après-midi</marker></example>
       </rule>
-      <!-- TODO: doesn't work due to sentence splitting
       <rule>
         <pattern>
           <token>p</token>
@@ -18932,7 +18931,16 @@ though, and has since been slightly modified)-->
         <example correction="De l’après-midi|Du soir"><marker>P.M.</marker></example>
         <example><marker>de l’après-midi</marker></example>
       </rule>
-      -->
+      <rule>
+        <pattern>
+          <token>a</token>
+          <token>.</token>
+          <token>m</token>
+          <token>.</token>
+        </pattern>
+        <message>« AM » est un anglicisme. Employez <suggestion>du matin</suggestion>.</message>
+        <example correction="Du matin">10 <marker>A.M.</marker></example>
+      </rule>
     </rulegroup>
     <rule id="GAGNER_SON_POINT" name="gagner son point">
       <pattern>
@@ -19136,7 +19144,7 @@ though, and has since been slightly modified)-->
         <example correction="prises de courant|prises électrique|fiches|publicités gratuite|publicités dissimulée"><marker>plogues</marker></example>
       <example><marker>prise de courant</marker></example>
     </rule>
-    <rule id="PIMENT_FORT" name="piment fort" tags="picky">
+    <rule id="PIMENT_FORT" name="piment fort"><!-- tags="picky" -->
       <pattern>
         <token regexp="yes">piments?</token>
         <token regexp="yes">forts?</token>
@@ -19181,7 +19189,7 @@ though, and has since been slightly modified)-->
       <example correction="cirage"><marker>poli à chaussures</marker></example>
         <example correction="cirages"><marker>polis à chaussures</marker></example>
     </rule>
-    <rule id="PIMENT_DOUX" name="piment doux" tags="picky">
+    <rule id="PIMENT_DOUX" name="piment doux"><!-- tags="picky" -->
       <pattern>
         <token regexp="yes">piments?</token>
         <token>doux</token>
@@ -26256,7 +26264,7 @@ though, and has since been slightly modified)-->
       <example correction="groupe|formation|ensemble|orchestre"><marker>band</marker></example>
       <example><marker>group</marker></example>
     </rule>
-    <rule id="COACHING" name="coaching" default="off" tags="picky"><!-- disabled because of low acceptance (3.5 %) / picky -->
+    <rule id="COACHING" name="coaching"><!-- tags="picky" --><!-- disabled because of low acceptance (3.5 %) / picky -->
       <pattern>
         <token regexp="yes">coachings?</token>
       </pattern>
@@ -28761,7 +28769,7 @@ though, and has since been slightly modified)-->
       <message>« Spam » est un anglicisme. Employez <suggestion><match no="1" regexp_match="(?i)spam" regexp_replace="pourriel" /></suggestion>.</message>
       <example correction="pourriel"><marker>spam</marker>.</example>
     </rule>
-    <rule id="EMAIL" name="email" default="off" tags="picky">
+    <rule id="EMAIL" name="email"><!-- tags="picky" -->
       <!-- comment by @vkyfox: 'Even though the French Academy prefers the use of the French word "courriel," a vast majority of people use the "email" or "e-mail" instead.' -->
       <pattern>
         <token regexp="yes">e-?mails?</token>
@@ -33662,7 +33670,7 @@ though, and has since been slightly modified)-->
       <message>« Mon dieu » est une expression fautive. Employez <suggestion>mon Dieu</suggestion>.</message>
       <example correction="Mon Dieu"><marker>Mon dieu</marker> !</example>
     </rule>
-    <rule id="DIEU" name="dieu" default="temp_off"> <!-- TODO: too many false alarms -->
+    <rule id="DIEU" name="dieu">
       <pattern case_sensitive="yes">
         <token>dieu<exception postag="D.*" postag_regexp="yes" scope="previous"/></token>
       </pattern>
