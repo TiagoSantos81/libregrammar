@@ -54702,9 +54702,30 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             </rule>
         </rulegroup>
     </category>
-    <!--
+
     <category id="PUNCTUATION" name="puntuació" type="grammar">
-        <rulegroup id="PER_FAVOR" name="per favor(,)" default="temp_off">
+    
+    <rule id='ET_AL' name="Abreviatures: et al.">
+    <!--       Localized from Portuguese, by Tiago F. Santos,  2020-05-24      -->
+      <pattern>
+        <marker>
+          <token>et</token>
+          <token min='0'>.</token>
+          <token>a</token>
+          <token regexp='yes' spacebefore='no'>ll?</token>
+        </marker>
+          <token>
+            <exception>.</exception></token>
+      </pattern>
+      <message>Error de puntuació.</message>
+        <suggestion>et al.</suggestion>
+      <url>https://ca.wikipedia.org/wiki/Et_al.</url>
+      <short>Error de puntuació</short>
+      <example correction="et al.">SANTOS, T.F. <marker>et al</marker> (2005),…</example>
+    </rule>
+
+    <!--       Created by Jaume Ortola,  2020-07-24      >
+        <rulegroup id="PER_FAVOR" name="per favor(,)">
             <rule>
                 <pattern>
                     <token postag="SENT_START"/>
@@ -54741,6 +54762,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="Si us plau,"><marker>Si us plau</marker> no doneu a ningú aquesta contrasenya.</example>
             </rule>
         </rulegroup>
+        -->
+        
     </category>
-    -->
+
 </rules>
