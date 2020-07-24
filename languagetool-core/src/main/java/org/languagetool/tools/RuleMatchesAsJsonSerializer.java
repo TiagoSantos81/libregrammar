@@ -22,6 +22,7 @@ import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
 import org.languagetool.DetectedLanguage;
 import org.languagetool.JLanguageTool;
+import org.languagetool.Language;
 import org.languagetool.markup.AnnotatedText;
 import org.languagetool.markup.AnnotatedTextBuilder;
 import org.languagetool.rules.*;
@@ -44,16 +45,25 @@ public class RuleMatchesAsJsonSerializer {
   private static final JsonFactory factory = new JsonFactory();
   
   private final int compactMode;
+  private final Language lang;
 
   public RuleMatchesAsJsonSerializer() {
-    this.compactMode = 0;
+    this(0, null);
   }
 
   /**
    * @since 4.7
    */
   public RuleMatchesAsJsonSerializer(int compactMode) {
+    this(compactMode, null);
+  }
+
+  /**
+   * @since 5.1
+   */
+  public RuleMatchesAsJsonSerializer(int compactMode, Language lang) {
     this.compactMode = compactMode;
+    this.lang = lang;
   }
 
   public String ruleMatchesToJson(List<RuleMatch> matches, String text, int contextSize, DetectedLanguage detectedLang) {
@@ -173,7 +183,11 @@ public class RuleMatchesAsJsonSerializer {
   }
 
   private String cleanSuggestion(String s) {
-    return s.replace("<suggestion>", "\"").replace("</suggestion>", "\"");
+    if (lang != null) {
+      return s.replace("<suggestion>", lang.getOpeningQuote()).replace("</suggestion>", lang.getClosingQuote());
+    } else {
+      return s.replace("<suggestion>", "\"").replace("</suggestion>", "\"");
+    }
   }
   
   private void writeReplacements(JsonGenerator g, RuleMatch match) throws IOException {

@@ -133,6 +133,16 @@ public class Catalan extends Language {
   public Tokenizer createDefaultWordTokenizer() {
     return new CatalanWordTokenizer();
   }
+  
+  /** @since 5.1 */
+  public String getOpeningQuote() {
+    return "«";
+  }
+
+  /** @since 5.1 */
+  public String getClosingQuote() {
+    return "»";
+  }
 
   @Override
   public LanguageMaintainedState getMaintainedState() {
