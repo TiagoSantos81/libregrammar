@@ -85,4 +85,14 @@ public class Persian extends Language {
     );
   }
 
+  /** @since 5.1 */
+  public String getOpeningQuote() {
+    return "«";
+  }
+
+  /** @since 5.1 */
+  public String getClosingQuote() {
+    return "»";
+  }
+
 }

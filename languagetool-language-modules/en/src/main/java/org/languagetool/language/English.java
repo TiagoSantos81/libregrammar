@@ -404,6 +404,17 @@ public class English extends Language implements AutoCloseable {
     }
     return super.getPriorityForId(id);
   }
+  
+    /** @since 5.1 */
+  public String getOpeningQuote() {
+    return "“";
+  }
+
+  /** @since 5.1 */
+  public String getClosingQuote() {
+    return "”";
+  }
+
 /*
   @Override
   public Function<Rule, Rule> getRemoteEnhancedRules(ResourceBundle messageBundle, List<RemoteRuleConfig> configs, UserConfig userConfig, Language motherTongue, List<Language> altLanguages, boolean inputLogging) throws IOException {

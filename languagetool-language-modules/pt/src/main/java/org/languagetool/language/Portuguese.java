@@ -248,4 +248,15 @@ public class Portuguese extends Language implements AutoCloseable {
     }
     return 0;
   }
+  
+  /** @since 5.1 */
+  public String getOpeningQuote() {
+    return "“";
+  }
+
+  /** @since 5.1 */
+  public String getClosingQuote() {
+    return "”";
+  }
+
 }

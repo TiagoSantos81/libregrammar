@@ -299,4 +299,14 @@ public class German extends Language implements AutoCloseable {
     return super.getPriorityForId(id);
   }
 
+  /** @since 5.1 */
+  public String getOpeningQuote() {
+    return "„";
+  }
+
+  /** @since 5.1 */
+  public String getClosingQuote() {
+    return "“";
+  }
+
 }

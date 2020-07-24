@@ -109,5 +109,15 @@ public class Chinese extends Language implements AutoCloseable {
       languageModel.close();
     }
   }
+  
+  /** @since 5.1 */
+  public String getOpeningQuote() {
+    return "「";
+  }
+
+  /** @since 5.1 */
+  public String getClosingQuote() {
+    return "」";
+  }
 
 }

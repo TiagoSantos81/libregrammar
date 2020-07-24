@@ -81,4 +81,14 @@ public class Japanese extends Language {
     return new SRXSentenceTokenizer(this);
   }
 
+  /** @since 5.1 */
+  public String getOpeningQuote() {
+    return "「";
+  }
+
+  /** @since 5.1 */
+  public String getClosingQuote() {
+    return "」";
+  }
+
 }
