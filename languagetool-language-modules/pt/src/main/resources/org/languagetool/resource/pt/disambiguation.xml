@@ -400,18 +400,30 @@
     </rule>
   </rulegroup>
 
-    <rule id="PP_D_V" name="Pronome + Pronome + Verbo">
+  <rulegroup id="PP_D_V" name="Pronome + Pronome + Verbo">
     <!-- Created by Tiago F. Santos, Portuguese rule, 2017-07-15  -->
+    <rule>
       <pattern>
           <token regexp='yes'>&pronomes_retos;</token>
         <marker>
-          <token min="0">nem</token>
           <token postag="PP.+" postag_regexp="yes" regexp='yes'>[nv]?[ao]s?</token>
           <token postag="V.+" postag_regexp="yes"/>
         </marker>
       </pattern>
       <disambig action="filterall"/>
     </rule>
+    <rule>
+      <pattern>
+          <token regexp='yes'>&pronomes_retos;</token>
+          <token>nem</token>
+        <marker>
+          <token postag="PP.+" postag_regexp="yes" regexp='yes'>[nv]?[ao]s?</token>
+          <token postag="V.+" postag_regexp="yes"/>
+        </marker>
+      </pattern>
+      <disambig action="filterall"/>
+    </rule>
+  </rulegroup>
 
     <!--rulegroup id="SUBJUNCTIVES" name="Verbos no conjuntivo"-->
     <!-- Created by Tiago F. Santos, Portuguese rule, 2019-03-24  >
@@ -944,11 +956,13 @@
         </antipattern>
         <rule>
         <pattern>
-            <token postag="R.+" postag_regexp="yes"/>
+            <token postag="R.+" postag_regexp="yes">
+              <exception postag='CS'/></token>
             <token postag="P.+" postag_regexp="yes" regexp="yes">[ao]s?|[mt](?:e|[ao]s?)|se|nos|vos|lh(?:es?|[ao]s?)</token>
             <token postag="V.[SI].+" postag_regexp="yes"/>
         </pattern>
         <disambig action="filterall"/>
+        <example type="untouched">Macacos maiores como os bugio.</example><!-- XXX agreement error caught by GENERAL_NUMBER_AGREEMENT_ERRORS -->
     </rule>
     </rulegroup>
 
