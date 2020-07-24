@@ -5188,6 +5188,10 @@
 <beforebreak>\b\p{L}\.</beforebreak>
 <afterbreak>\p{L}\.</afterbreak>
 </rule>
+<rule break="no">
+<beforebreak>\b\[AaPp]\.</beforebreak>
+<afterbreak>[Mm]\.</afterbreak>
+</rule>
 <rule break="no"><!-- Je suis (...) Chris. -->
 <beforebreak>(…|\.\.\.)\s?\)\s</beforebreak>
 <afterbreak>[^\p{P}]</afterbreak>
