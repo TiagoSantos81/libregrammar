@@ -1563,7 +1563,7 @@ title="Easy editing stylesheet" ?>
             <exception postag='C.|R.|S.+' postag_regexp='yes'/>
           </token>
       </pattern>
-      <message>Palavra provavelmente hifenizada. Pretende dizer </message>
+      <message>Palavra provavelmente hifenizada.</message>
         <suggestion>\1-\2</suggestion>
       <example correction='co-herdada'>A análise do ADN mostrou uma mutação <marker>co herdada</marker> por todos os membros da família afetados.</example>
     <!--	<example correction='sobre-humano'>Fez um esforço <marker>sobre humano</marker> para obter bons resultados.</example>-->
@@ -1576,7 +1576,7 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>h.+
             <exception postag='.+_' postag_regexp='yes'/></token>
       </pattern>
-      <message>Palavra deve ser unida. Pretende dizer </message>
+      <message>Palavra deve ser unida.</message>
         <suggestion>\1<match no='3' regexp_match='^h(.+)' regexp_replace='$1'/></suggestion>
       <example correction='desumano'>Teve um tratamento <marker>des-humano</marker>.</example>
     </rule>
@@ -1586,7 +1586,7 @@ title="Easy editing stylesheet" ?>
           <token min='0' regexp='yes' spacebefore='no'>&hifen;</token>
           <token regexp='yes' case_sensitive="yes" spacebefore='no'>[^hrs].+</token>
       </pattern>
-      <message>Este prefixo não é hifenizado neste contexto. Pretende dizer </message>
+      <message>Este prefixo não é hifenizado neste contexto.</message>
         <suggestion>\1<match no='3' case_conversion="startlower"/></suggestion>
       <example correction='codependência'>Vivem em regime de <marker>co-dependência</marker>.</example>
     </rule>
@@ -1596,7 +1596,7 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes' spacebefore='no'>&hifen;</token>
           <token/>
       </pattern>
-      <message>Este prefixo não é hifenizado neste contexto. Pretende dizer </message>
+      <message>Este prefixo não é hifenizado neste contexto.</message>
         <suggestion>\1 \3</suggestion>
       <example correction='não agressão'>O pacto de <marker>não-agressão</marker> foi a prioridade do dia.</example>
     </rule>
@@ -1625,7 +1625,7 @@ title="Easy editing stylesheet" ?>
       <message>Este prefixo não é hifenizado neste contexto.</message>
         <suggestion>\1<match no='3' case_conversion="startlower"/></suggestion>
       <example correction='megalítico'>O artefato encontrado provém do período <marker>mega lítico</marker> altos.</example>
-      <example correction='infraestrutura'>A <marker>infra-estrutura</marker> foi planeada durante anos.</example>
+      <example correction='infraestrutura'>A <marker>infra-estrutura</marker> foi planeada durante anos.</example><!-- #3203 there are about 100 hyphenated words on the POS dictionary on 2020-07-24. So, there is no need to revert 0cabbf4 and 5b14d67 and adapt rules -->
     </rule>
     <rule>
       <antipattern>
