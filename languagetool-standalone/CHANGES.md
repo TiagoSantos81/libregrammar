@@ -5,6 +5,10 @@
 ### This fork differences
 #### (new comparisons only)
 
+
+#### Catalan
+  * added a few punctuation rules
+
 #### English
   * added and improved rules
   * POS and spelling improvements
