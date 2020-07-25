@@ -413,9 +413,19 @@
       <disambig action="filterall"/>
     </rule>
     <rule>
+    <!-- FIXME see 2f52318 and parent 835bc26
+         bug in interaction between:
+           <token min='0'>nem</token>
+         and
+           <disambig action="filterall"/>
+         bug does not occur if 
+           <token postag="PP.+" postag_regexp="yes" regexp='yes'>[nv]?[ao]s?</token>
+         becomes
+           <token regexp='yes'>[nv]?[ao]s?</token>
+           -->
       <pattern>
           <token regexp='yes'>&pronomes_retos;</token>
-          <token>nem</token>
+          <token regexp='yes'>nem|nunca|jamais|tampouco</token>
         <marker>
           <token postag="PP.+" postag_regexp="yes" regexp='yes'>[nv]?[ao]s?</token>
           <token postag="V.+" postag_regexp="yes"/>
@@ -649,8 +659,9 @@
       <disambig action="filter" postag="R.+"/>
     </rule>
 
-    <rule id="NOS_PRONOUN" name="Nós como pronome">
+  <rulegroup id="NOS_PRONOUN" name="Nós como pronome">
     <!-- Created by Tiago F. Santos, Portuguese rule, 2020-07-19  -->
+    <rule>
       <pattern>
           <token postag='SPS00'/>
         <marker>
@@ -659,6 +670,16 @@
       </pattern>
       <disambig action="filter" postag="P.+"/>
     </rule>
+    <rule>
+      <pattern>
+          <token postag='D..MP.+' postag_regexp='yes'/>
+        <marker>
+          <token>nós</token>
+        </marker>
+      </pattern>
+      <disambig action="filter" postag="N.+"/>
+    </rule>
+  </rulegroup>
 
     <rule id="ADVERB_VERB_SINGULAR" name="Advérbio Verbo/nome Nome Singular">
     <!-- Created by Tiago F. Santos, Portuguese rule, 2017-09-27  	-->
