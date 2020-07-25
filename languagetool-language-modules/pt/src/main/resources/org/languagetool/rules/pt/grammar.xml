@@ -3131,7 +3131,7 @@ title="Easy editing stylesheet" ?>
           <token postag='VMN0000'/>
       </antipattern>
       <pattern>
-          <token>nós</token>
+          <token postag='PP.+' postag_regexp='yes'>nós</token>
           <token min='0'>que</token>
           <token min="0" max="3" postag='R.+' postag_regexp='yes'>
             <exception scope='next'>,</exception></token>
@@ -3146,6 +3146,7 @@ title="Easy editing stylesheet" ?>
       <example><marker>Nós ainda não passeamos</marker> na praia.</example>
       <example>Nós preocupar-nos-iamos, talvez, com esta manifestação de ignorância.</example>
       <example>Um de nós passeia na praia.</example>
+      <example>Fê-lo para ter a certeza que os nós eram difíceis de desatar.</example>
     </rule>
     <rule>
       <pattern>
@@ -10775,7 +10776,7 @@ title="Easy editing stylesheet" ?>
             <exception scope='next' case_sensitive='yes' regexp='yes'>\p{Lu}\p{Ll}+</exception></token>
         </marker>
           <token>
-            <exception regexp='yes'>d(?:[ao]|uma?|un|el[ae]|es[st][ae]|aquel[ae]|outr[ao])s?</exception>
+            <exception regexp='yes'>d(?:[aeo]|uma?|un|el[ae]|es[st][ae]|aquel[ae]|outr[ao])s?</exception>
             <exception postag_regexp='yes' postag="_PUNCT|''"/></token>
       </pattern>
       <message>Esta locução deve ser separada por vírgulas.</message>
@@ -12489,6 +12490,12 @@ title="Easy editing stylesheet" ?>
           <token><match no='1'/></token>
           <token postag_regexp='yes' postag='V.+'/>
       </antipattern>
+      <antipattern><!-- e.g. Não se admirem se... -->
+          <token regexp='yes'>&introduz_proclise;|&negacoes;</token>
+          <token>se</token>
+          <token postag_regexp='yes' postag='V...3.+'/>
+          <token>se</token>
+      </antipattern>
       <pattern>
           <token regexp='yes'>&pronomes_obliquos_atonos;</token>
           <token/>
@@ -12500,6 +12507,7 @@ title="Easy editing stylesheet" ?>
       <example correction="te falei|falei-te">Já <marker>te falei te</marker> deste anel.</example>
       <example>Precisamos de saber se o João se terá lembrado.</example>
       <example>Lembro-me que me ofereceram…</example>
+      <example>Não se admirem se…</example>
     </rule>
   </rulegroup>
 
@@ -27468,7 +27476,7 @@ TODO Write better examples
     </rule>
     <rule>
       <antipattern>
-          <token regexp='yes'>até|de|para</token>
+          <token regexp='yes'>até|de|para|por</token>
           <token>onde</token>
       </antipattern>
       <antipattern><!-- futuro perifrásico -->
@@ -27486,7 +27494,7 @@ TODO Write better examples
     </rule>
     <rule>
       <antipattern>
-          <token regexp='yes'>até|de|para</token>
+          <token regexp='yes'>até|de|para|por</token>
           <token>onde</token>
       </antipattern>
       <antipattern><!-- vir como auxiliar -->
@@ -27504,7 +27512,7 @@ TODO Write better examples
     </rule>
     <rule>
       <antipattern>
-          <token regexp='yes'>até|de|para</token>
+          <token regexp='yes'>até|de|para|por</token>
           <token>onde</token>
       </antipattern>
       <antipattern><!-- futuro perifrásico -->
