@@ -3869,12 +3869,6 @@ Copyright (C) 2011 Juan Martorell
             </pattern>
             <disambig action="ignore_spelling"/>
         </rule>
-        <rule>
-            <pattern>
-                <token regexp="yes">\d{3,}[A-Z]+</token>
-            </pattern>
-            <disambig action="ignore_spelling"/>
-        </rule>
     </rulegroup>
   <rulegroup id='WORDS_WITH_NUMBERS' name='Palavras com números ou símbolos'>
     <!-- Created by Tiago F. Santos, Portuguese rule, 2017-10-10  	-->
