@@ -2,7 +2,9 @@
 # Format: UTF-8, one entry per line in format: phrase=replacement
 # 'phrase' is what the text is searched for. 'replacement' is the suggestion shown to the user.
 # 'phrase' is searched for case-insensitively.
-# Both 'phrase' and 'replacement' can contain more than one value when separated by '|'.
+# 'replacement' can contain more than one value when separated by '|'.
 # Example:
 # incorrect=suggestion one|suggestion two
-crohns disease|chrons disease|chron's disease=Crohn's disease
+crohns disease=Crohn's disease
+chrons disease=Crohn's disease
+chron's disease=Crohn's disease
