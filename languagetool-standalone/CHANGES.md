@@ -11,6 +11,7 @@
 
 #### English
   * added and improved rules
+  * disambiguation improvements
   * POS and spelling improvements
 
 #### French
@@ -23,6 +24,7 @@
 #### Portuguese
   * added and improved rules, including:
     - re-activation of rules that were de-activated upstream in this realease
+  * disambiguation improvements
   * POS and spelling improvements
   
 #### Spanish
@@ -48,6 +50,7 @@
   * POS and spelling improvements
 
 #### Portuguese
+  * disambiguation improvements
   * POS and spelling improvements
 
 #### Russian

@@ -403,6 +403,22 @@
   <rulegroup id="PP_D_V" name="Pronome + Pronome + Verbo">
     <!-- Created by Tiago F. Santos, Portuguese rule, 2017-07-15  -->
     <rule>
+      <antipattern>
+          <token postag='SP.+' postag_regexp='yes'/>
+          <token postag='P.+' postag_regexp='yes'/>
+          <unify>
+            <feature id="gender"/>
+            <feature id="number"/>
+          <token regexp='yes'>[ao]s?</token>
+          <token postag='[NA].+' postag_regexp='yes'/>
+          </unify>
+      </antipattern>
+      <antipattern>
+          <token postag='SP.+' postag_regexp='yes'/>
+          <token postag='P.+' postag_regexp='yes'/>
+          <token>nos</token>
+          <token postag='(?:N.|A..)MP.+' postag_regexp='yes'/>
+      </antipattern>
       <pattern>
           <token regexp='yes'>&pronomes_retos;</token>
         <marker>
