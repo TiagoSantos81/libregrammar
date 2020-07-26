@@ -50,7 +50,7 @@ title="Easy editing stylesheet" ?>
     <!ENTITY pronomes_nao_ambiguos "(?:m(?:a|e|os?)|t(?:a|e|o)s?|lh[aeo]s?|vos)">
     <!ENTITY pronomes_obliquos_atonos "[mts]e|lhes?|[nv]os">
     <!ENTITY pronomes_obliquos_tonicos "mim|ti|si|vocês?|nós|vós">
-    <!ENTITY pronomes_obliquous_tonicos_nao_ambiguous "mim|ti|si">
+    <!ENTITY pronomes_obliquos_tonicos_nao_ambiguous "mim|ti|si">
 
     <!ENTITY verbos_de_ligacao "(?:andar|continuar|estar|ficar|p(?:arecer|ermanecer)|assemelhar|s(?:emelhar|er)|v(?:irar|viver))">
 
@@ -505,26 +505,11 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>[ao]s?</token>
           <token postag='V.+' postag_regexp='yes' regexp='yes'>.+(?:am|ão|õe|[rsz])$</token>
       </antipattern>
-      <antipattern>
-          <token regexp='yes'>&pronomes_retos;</token>
-          <token regexp='yes'>[ao]s?</token>
-          <token postag='[AN].+' postag_regexp='yes'/>
-      </antipattern>
-      <antipattern><!-- covers 4573e19 -->
-          <token postag='SP.+' postag_regexp='yes'/>
-          <token postag='P.+' postag_regexp='yes'/>
-          <unify>
-            <feature id="gender"/>
-            <feature id="number"/>
-          <token regexp='yes'>[ao]s?</token>
-          <token postag='[NA].+' postag_regexp='yes'/>
-          </unify>
-      </antipattern>
       <antipattern><!-- covers 4573e19 -->
           <token postag='SP.+' postag_regexp='yes'/>
           <token postag='P.+' postag_regexp='yes'/>
           <token>nos</token>
-          <token postag='(?:N.|A..)MP.+' postag_regexp='yes'/>
+          <token postag='(?:[NZ].|A..)MP.+' postag_regexp='yes'/>
       </antipattern>
       <pattern>
           <token regexp='yes'>&pronomes_retos;</token>
@@ -539,6 +524,7 @@ title="Easy editing stylesheet" ?>
       <example>O Rui suscitando em nós o poder criador.</example><!-- 4573e19 -->
       <example>O Rui suscitando em nós a força criadora.</example><!-- 4573e19 -->
       <example>O Rui suscitando em nós os poderes criadores.</example><!-- 4573e19 -->
+      <example>...em nós nos poderes criadores.</example>
       <example>O Rui suscitando em nós as forças criadoras.</example><!-- 4573e19 -->
       <example>Entre elas as chamadas 16 regras do esperanto.</example><!-- 4573e19 -->
       <example>Os vícios da mocidade, entre eles as drogas e as bebidas.</example><!-- 4573e19 -->
@@ -568,22 +554,6 @@ title="Easy editing stylesheet" ?>
       <antipattern>
           <token>a</token>
           <token postag='VMN0000'/>
-      </antipattern>
-      <antipattern><!-- covers 4573e19 -->
-          <token postag='SP.+' postag_regexp='yes'/>
-          <token postag='P.+' postag_regexp='yes'/>
-          <unify>
-            <feature id="gender"/>
-            <feature id="number"/>
-          <token regexp='yes'>[ao]s?</token>
-          <token postag='[NA].+' postag_regexp='yes'/>
-          </unify>
-      </antipattern>
-      <antipattern><!-- covers 4573e19 -->
-          <token postag='SP.+' postag_regexp='yes'/>
-          <token postag='P.+' postag_regexp='yes'/>
-          <token>nos</token>
-          <token postag='(?:N.|A..)MP.+' postag_regexp='yes'/>
       </antipattern>
       <pattern>
           <token regexp='yes'>&pronomes_retos;</token>
