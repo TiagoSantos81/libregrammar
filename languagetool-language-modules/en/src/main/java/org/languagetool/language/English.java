@@ -335,6 +335,7 @@ public class English extends Language implements AutoCloseable {
       case "FINE_TUNE_COMPOUNDS":       return 1;   // prefer over less specific rules
       case "WHAT_IS_YOU":               return 1;   // prefer over HOW_DO_I_VB
       case "SUPPOSE_TO":                return 1;   // prefer over HOW_DO_I_VB
+      case "HOE_HOW":                   return 1;   // prefer over PRAFANITY[hoes?]
       case "FOR_NOUN_SAKE":             return -4;   // prefer over PROFANITY (e.g. "for fuck sake")
       case "PROFANITY":                 return -5;  // prefer over spell checker
       case "RUDE_SARCASTIC":            return -6;  // prefer over spell checker
