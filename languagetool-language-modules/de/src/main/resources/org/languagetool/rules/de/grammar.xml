@@ -3387,6 +3387,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token>genommen</token>
                 <token>werden</token>
             </antipattern>
+            <antipattern>
+                <token>genau</token>
+                <token>genommen</token>
+            </antipattern>
             <rule>
                 <pattern>
                     <token negate="yes">zu</token>
@@ -3405,6 +3409,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>Es wurde wieder in Betrieb genommen und <marker>war</marker> noch bis 2012 in Dienst.</example>
                 <example>Sklaven konnten während der Kriege genommen werden und Sklavenhandel <marker>war</marker> üblich.</example>
                 <example>Als er in Betrieb genommen worden <marker>war</marker>.</example>
+                <example>Nun, genau genommen war die Lage schon vor der Pandemie nicht mehr die allerbeste.</example>
             </rule>
         </rulegroup>
         <rulegroup id="DAS_AMEN" name="'das Armen (Amen)'">
@@ -4923,6 +4928,41 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
     <!-- Verwechslungen -->
     <!-- ====================================================================== -->
     <category id="CONFUSED_WORDS" name="Leicht zu verwechselnde Wörter">
+        <rulegroup id="SCHUSS_SCHLUSS" name="Schuss (Schluss)" default="temp_off">
+            <rule>
+                <pattern>
+                    <marker>
+                        <token case_sensitive="yes">Schuss</token>
+                    </marker>
+                    <token skip="1">sein</token>
+                    <token inflected="yes">müssen</token>
+                </pattern>
+                <message>Meinten Sie <suggestion>Schluss</suggestion>?</message>
+                <example correction="Schluss">Es war klar, dass jetzt damit <marker>Schuss</marker> sein müsse.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token inflected="yes" skip="2">müssen</token>
+                    <marker>
+                        <token case_sensitive="yes">Schuss</token>
+                    </marker>
+                    <token>sein</token>
+                </pattern>
+                <message>Meinten Sie <suggestion>Schluss</suggestion>?</message>
+                <example correction="Schluss">Es muss jetzt <marker>Schuss</marker> sein damit.</example>
+            </rule>
+        </rulegroup>
+        <rule id="ANGANG_ANFANG" name="Angang (Anfang)" default="temp_off">
+            <antipattern>
+                <token>Angang</token>
+                <token>Steel</token>
+            </antipattern>
+            <pattern>
+                <token case_sensitive="yes">Angang</token>
+            </pattern>
+            <message>Meinten Sie <suggestion>Anfang</suggestion>?</message>
+            <example correction="Anfang">Es passierte <marker>Angang</marker> Oktober 2019.</example>
+        </rule>
         <rule id="SICH_AUSDRUCKEN" name="sich ausdrucken (ausdrücken)">
             <pattern>
                 <token postag="PRO:REF:AKK.*" postag_regexp="yes" />
@@ -9662,9 +9702,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         <rule id="FEST_COMPOUNDS" name="fest genommen (festgenommen)">
             <pattern>
                 <token>fest</token>
+                <token min="0">zu</token>
                 <token inflected="yes" regexp="yes">nehmen|halten|stellen</token>
             </pattern>
-            <message>Das Verb <suggestion>fest<match no="2" case_conversion="alllower" /></suggestion> wird zusammengeschrieben.</message>
+            <message>Das Verb <suggestion>fest<match no="2" case_conversion="alllower" /><match no="3" case_conversion="alllower" /></suggestion> wird zusammengeschrieben.</message>
             <example correction="festgenommen">Der Dieb wurde auf der Flucht von der Polizei <marker>fest genommen</marker>.</example>
         </rule>
         <rulegroup id="NO_GO" name="No-Go">
@@ -14489,6 +14530,16 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rulegroup>
         <rulegroup id="SEIT_IN_KRAFT_TRETEN" name="'ungefähr genau'">
             <rule>
+                <antipattern>
+                    <token skip="4">seit</token>
+                    <token regexp="yes" skip="4">[–\-,;]</token>
+                    <token>in</token>
+                    <token>Kraft</token>
+                </antipattern>
+                <antipattern>
+                    <token>treten</token>
+                    <token regexp="yes" inflected="yes">können|müssen|sollen</token>
+                </antipattern>
                 <pattern case_sensitive="yes">
                     <token skip="6">seit<exception scope="next" postag="PKT"/></token>
                     <token>in</token>
@@ -14500,6 +14551,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <message>&unstimmig; Bitte wählen Sie zwischen 'seit ... in Kraft' und 'zum ... in Kraft treten'.</message>
                 <suggestion>Kraft</suggestion>
                 <example correction="Kraft">Dieser Erlass ist seit letztem Samstag in <marker>Kraft getreten</marker>.</example>
+                <example>Sodass eine Erhöhung – die Erste seit 2009 – zum Jahr 2021 in Kraft treten kann.</example>
             </rule>
         </rulegroup>
         <rulegroup id="IMMER_NIE" name="'immer nie'">
@@ -19019,8 +19071,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 </marker>
                 <token postag="VER:.+|ZUS|PKT" postag_regexp="yes" regexp="yes" case_sensitive="yes">[a-zäöüß]+|\.<exception>sehr</exception></token>
             </pattern>
-            <message><suggestion><match no="2" case_conversion="startupper"/></suggestion> wird in diesem Zusammenhang vermutlich großgeschrieben.</message>
-            <short>&prgk;.</short>
+            <message>Wenn sich '\2' in diesem Fall auf ein konkretes Nomen im Satz bezieht, dann wird es in der Regel kleingeschrieben (z. B. das 'beste' Buch). Wenn es sich allerdings um eine Substantivierung handelt (z. B. Sie hat ihr Bestes getan), dann wird das Adjektiv großgeschrieben.</message>
+            <suggestion><match no="2" case_conversion="startupper"/></suggestion>
+            <url>https://www.duden.de/sprachwissen/rechtschreibregeln/Gro%C3%9F-%20und%20Kleinschreibung#D72</url>
             <example correction="Bestes">Sie hat immer ihr <marker>bestes</marker> getan.</example>
             <example correction="Bestes">Wir müssen immer unser <marker>bestes</marker> geben.</example>
             <example correction="Beste">Das <marker>beste</marker> kommt zum Schluss.</example>
@@ -39416,7 +39469,7 @@ Andere Projekte</example>
                     </marker>
                     <token>Hause</token>
                 </pattern>
-                <message>Meinten Sie <suggestion>nach</suggestion>.</message>
+                <message>Meinten Sie <suggestion>nach</suggestion>?</message>
                 <example correction="nach">Er fuhr <marker>zu</marker> Hause.</example>
                 <example correction="nach">Er fuhr <marker>mit</marker> Hause.</example>
                 <example correction="nach">Er fuhr <marker>auf</marker> Hause.</example>
@@ -39430,7 +39483,7 @@ Andere Projekte</example>
                     <token>Hause</token>
                     <token inflected="yes" regexp="yes">fahren|kommen|gehen</token>
                 </pattern>
-                <message>Meinten Sie <suggestion>nach</suggestion>.</message>
+                <message>Meinten Sie <suggestion>nach</suggestion>?</message>
                 <example correction="nach">Er ist <marker>zu</marker> Hause gefahren.</example>
                 <example correction="nach">Er ist <marker>zu</marker> Hause gekommen.</example>
                 <example correction="nach">Er ist <marker>auf</marker> Hause gegangen.</example>

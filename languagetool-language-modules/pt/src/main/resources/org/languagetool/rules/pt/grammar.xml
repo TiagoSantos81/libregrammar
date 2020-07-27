@@ -6509,6 +6509,7 @@ title="Easy editing stylesheet" ?>
       <example>Vinho tinto, por favor.</example>
       <example type="incorrect"><marker>Éteres de glicol: Solvente para vernizes e tintas.</marker></example><!-- Titles should not be punctuated -->
       <example type='triggers_error'>Mais uma semana cheia à frente.</example><!-- FP but it is a holophrase-->
+      <example>Eu o acordo às 6 horas toda manhã.</example>
     </rule>
 
   <rulegroup id='FRAGMENT_TWO_ARTICLES' name='Fragmento: dois artigos seguidos' default='on'>
