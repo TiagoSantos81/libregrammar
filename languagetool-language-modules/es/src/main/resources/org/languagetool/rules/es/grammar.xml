@@ -9897,7 +9897,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     </marker>
                 </pattern>
                 <filter class="org.languagetool.rules.es.FindSuggestionsFilter" args="WordFrom:2 DesiredPostag:V.[SI].*"/>
-                <message>Posible error ortográfico.</message>
+                <message>Combinación improbable de pronombre y verbo en imperativo.</message>
                 <example correction="sale|vale|daré|date|dañe|tale|cale|dalle|calé|salé">Le <marker>dale</marker></example>
                 <example correction="das|damos|dais|Das">Le <marker>daos</marker> esto.</example>
                 <example correction="augura|auguró|auguro|augure|auguré">Te <marker>augúr</marker> un buen resultado.</example>
