@@ -297,9 +297,14 @@ public class UpperCaseRule extends Rule {
       tokenRegex("[A-Z].+")
     ),
     Arrays.asList( // They called it Greet.
-      tokenRegex("call|calls|called"),
-      token("it"),
+      tokenRegex("calls?|called|calling|name[ds]?|naming"),
+      token("it|him|her|them|me|us|that|this"),
       tokenRegex("[A-Z].+")
+    ),
+    Arrays.asList( // It is called Ranked mode
+      csRegex("is|was|been|were|are"),
+      csRegex("calls?|called|calling|name[ds]?|naming"),
+      csRegex("[A-Z].+")
     ),
     Arrays.asList(
       token("Professor"),
