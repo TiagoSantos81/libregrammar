@@ -5937,6 +5937,12 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <token postag="JJR"/>
             <token>than</token>
         </antipattern>
+        <antipattern><!-- Could it possible taste like ... -->
+            <token postag="MD" />
+            <token postag="PRP" />
+            <token postag="JJ" />
+            <token postag="VBP?" postag_regexp="yes" />
+        </antipattern>
         <pattern>
             <marker>
                 <and>
@@ -6024,6 +6030,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <example type="untouched">Incorrect grammar: If she sneakily is talk about my secrets...</example><!-- #2544 -->
         <example type="untouched">Incorrect grammar: ... and it was talk about in the media.</example><!-- #2544 -->
         <example type="untouched">Incorrect grammar: I wouldnt text you sorry</example>
+        <example type="untouched">Incorrect grammar: Could it possible taste like milk?</example><!-- caught by ADJECTIVE_ADVERB -->
         <example type="untouched">The person i will EVER pledge to is my friend.</example><!-- #2552 -->
         <example type="untouched">The person i should ALWAYS pledge with is my friend.</example><!-- #2552 -->
         <example type="untouched">Play it quiet.</example><!-- #2570 -->
@@ -6127,6 +6134,12 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <token chunk="I-VP" postag_regexp="yes" postag="VB[DN]"/>
             <token postag_regexp="yes" postag="IN|RB"/>
         </antipattern>
+        <antipattern><!-- a 30 feet rise -->
+            <token regexp="yes">an?</token>
+            <token postag="CD" />
+            <token postag="NNS" chunk="E-NP-plural" />
+            <token postag="NN|NN:UN?" postag_regexp="yes" />
+        </antipattern>
         <pattern>
             <and>
                 <token chunk="E-NP-plural"/>
@@ -6163,6 +6176,9 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <example type="untouched">Bugs and new features can handled by the LT-team directly.</example><!-- #3251 -->
         <example type="untouched">New features can handled by the team directly.</example><!-- #3251 -->
         <example type="untouched">These problems can happened occasionally.</example><!-- #3251 -->
+        <example type="untouched">It is estimated that by 2050, a 3 feet rise in sea levels will inundate some 20 percent of the land and displace more than 30 million people.</example>
+        <example type="untouched">... has become a 68 matches grind with a 38% loss rate ...</example>
+        <example type="untouched">This is not a five minutes task to solve.</example>
     </rule>
 
     <rulegroup id="VBP_VBZ_NNS" name="VBZ/NN->VBZ">
@@ -7186,6 +7202,11 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <token chunk="E-NP-plural" postag="NNS"/>
             <token postag_regexp="yes" postag="VB[ZD]"/>
         </antipattern>
+        <antipattern><!-- #3356 the needs assessment -->
+            <token postag="DT"/>
+            <token chunk="I-NP-plural" postag="NNS"/>
+            <token chunk="E-NP-plural" postag_regexp="yes" postag="NN.*"/>
+        </antipattern>
         <pattern>
             <marker>
                 <and>
@@ -7213,8 +7234,11 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <example type="untouched">I played computer games yesterday.</example><!-- Premium #961 -->
         <example type="untouched">I will play more computer games tomorrow.</example>
         <example type="untouched">Marketing to Kids Gets More Savvy with New Technologies.</example><!-- #2536 -->
+        <example type="untouched">Here is the draft of the needs assessment for global standards.</example><!-- #3356 -->
+        <example type="untouched">Yet now the very spirit of the times demands great, courageous purity.</example><!-- #3355 -->
         <example type="ambiguous" inputform="causes[cause/NNS,cause/VBZ]" outputform="causes[cause/VBZ]">Hard work <marker>causes</marker> fitness.</example>
         <example type="ambiguous" inputform="causes[cause/NNS,cause/VBZ]" outputform="causes[cause/VBZ]">Hard work <marker>causes</marker> tomorrow's calloused hands!</example>
+        <example type="ambiguous" inputform="needs[need/NNS,need/VBZ,needs/RB]" outputform="needs[need/VBZ]">... do it first, because A <marker>needs</marker> assessment sooner than B does.</example>
     </rule>
 
     <rule id="DT_VBZ_NNU_IN"  name="determiner + noun/verb => verb + noun + preposition"><!-- #2436 -->

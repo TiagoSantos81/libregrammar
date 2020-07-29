@@ -8813,6 +8813,21 @@ though, and has since been slightly modified)-->
         <example correction="trois fois par semaine">Je joue au Softball <marker>trois fois au semaine</marker>.</example>
       </rule>
       <!-- End of additions -->
+      <rule id="COMME_ME_LE_DIRE" name="comme me le dire accord" default="temp_off">
+          <pattern>
+              <token>comme</token>
+              <token>me</token>
+              <token>le</token>
+              <marker>
+                  <token postag="V ind.*" postag_regexp="yes" inflected="yes">
+                      dire
+                      <exception postag=".*3 s" postag_regexp="yes"/>
+                  </token>
+              </marker>
+          </pattern>
+          <message>L'accord avec le sujet semble incorrect. Vouliez-vous dire <suggestion><match no="4" postag_regexp="yes" postag="(V ind.*)[123] [sp]" postag_replace="$13 s"/></suggestion> ?</message>
+          <example correction="disait">Comme me le <marker>disais</marker> Michelle.</example>
+      </rule>
       <rulegroup id="NOMBRE_MONDIAL" name="Nombre suivi de mondial, régional, local" default="temp_off">
           <rule>
               <antipattern>
@@ -8828,7 +8843,7 @@ though, and has since been slightly modified)-->
                   </marker>
                   <token regexp="yes">mondial|régional|local</token>
               </pattern>
-              <message>Omission possible. Vouliez-vous dire <suggestion>\2ᵉ</suggestion> <suggestion>numéro \2</suggestion>?</message>
+              <message>Omission possible. Vouliez-vous dire <suggestion>\2ᵉ</suggestion> <suggestion>numéro \2</suggestion> ?</message>
               <example correction="9ᵉ|numéro 9">Elle s'est ainsi classée <marker>9</marker> mondial.</example>
           </rule>
           <rule>
@@ -8839,7 +8854,7 @@ though, and has since been slightly modified)-->
                   </marker>
                   <token regexp="yes">mondial|régional|local</token>
               </pattern>
-              <message>Omission possible. Vouliez-vous dire <suggestion>\2er</suggestion> <suggestion>numéro \2</suggestion>?</message>
+              <message>Omission possible. Vouliez-vous dire <suggestion>\2er</suggestion> <suggestion>numéro \2</suggestion> ?</message>
               <example correction="1er|numéro 1">Elle s'est ainsi classée <marker>1</marker> mondial.</example>
           </rule>
       </rulegroup>
@@ -8867,7 +8882,7 @@ though, and has since been slightly modified)-->
               <token spacebefore='no' regexp='yes'>&hyphen;</token>
               <token spacebefore='no'>là</token>
           </pattern>
-          <message>Vouliez-vous dire <suggestion>\1-la</suggestion> ?</message>
+          <message>Vouliez-vous dire <suggestion>\1-la</suggestion> ?</message>
           <example correction="prenez-la">Je vous en prie, <marker>prenez-là</marker>.</example>
       </rule>
       <rule id="ENVOIE_DE" name="envoi de">
@@ -8894,7 +8909,7 @@ though, and has since been slightly modified)-->
               </marker>
               <token>proximité</token>
           </pattern>
-          <message>Vouliez-vous dire <suggestion>la</suggestion> ?</message>
+          <message>Vouliez-vous dire <suggestion>la</suggestion> ?</message>
           <example correction="la">Dans le but de garantir <marker>de</marker> proximité avec ses clients</example>
       </rule>
       <rule id="HEURE_CEST" name="heure cest">

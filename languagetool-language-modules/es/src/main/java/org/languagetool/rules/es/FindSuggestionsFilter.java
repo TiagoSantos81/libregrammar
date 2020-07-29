@@ -75,10 +75,12 @@ public class FindSuggestionsFilter extends RuleFilter {
       RuleMatch[] matches = morfologikRule.match(sentence);
       if (matches.length > 0) {
         List<String> suggestions = matches[0].getSuggestedReplacements();
+        //TODO: do not tag capitalized words with tags for lower case
         List<AnalyzedTokenReadings> analyzedSuggestions = tagger.tag(suggestions);
         for (AnalyzedTokenReadings analyzedSuggestion : analyzedSuggestions) {
           if (analyzedSuggestion.matchesPosTagRegex(desiredPostag)) {
-            if (!replacements.contains(analyzedSuggestion.getToken())) {
+            if (!replacements.contains(analyzedSuggestion.getToken())
+                && !replacements.contains(analyzedSuggestion.getToken().toLowerCase())) {
               replacements.add(analyzedSuggestion.getToken());  
             }
             if (replacements.size() >= MAX_SUGGESTIONS) {
@@ -93,8 +95,28 @@ public class FindSuggestionsFilter extends RuleFilter {
     RuleMatch ruleMatch = new RuleMatch(match.getRule(), match.getSentence(), match.getFromPos(), match.getToPos(),
         message, match.getShortMessage());
     ruleMatch.setType(match.getType());
-    if (!replacements.isEmpty()) {
-      ruleMatch.setSuggestedReplacements(replacements);
+    
+    List<String> definitiveReplacements = new ArrayList<>();
+    boolean replacementsUsed = false;
+    for (String s : match.getSuggestedReplacements()) {
+      if (s.contains("{suggestion}")) {
+        replacementsUsed = true;
+        for (String s2 : replacements) {
+          if (definitiveReplacements.size() >= MAX_SUGGESTIONS) {
+            break;
+          }
+          definitiveReplacements.add(s.replace("{suggestion}", s2));
+        }
+      } else {
+        definitiveReplacements.add(s);
+      }
+    }
+    if (!replacementsUsed) {
+      definitiveReplacements.addAll(replacements);
+    }
+    
+    if (!definitiveReplacements.isEmpty()) {
+      ruleMatch.setSuggestedReplacements(definitiveReplacements);
     }
     return ruleMatch;
   }
@@ -113,7 +135,7 @@ public class FindSuggestionsFilter extends RuleFilter {
     if (s.contains("é")) { return s.replace("é", "ë"); }
     if (s.contains("í")) { return s.replace("í", "ï"); }
     if (s.contains("ó")) { return s.replace("ó", "ö"); }
-    if (s.contains("ú")) { return s.replace("ú", "ì"); }
+    if (s.contains("ú")) { return s.replace("ú", "ù"); }
     return s + "-";
   }
 }
