@@ -741,7 +741,7 @@
           <token postag="N.+" postag_regexp='yes'>
             <exception postag="V.+" postag_regexp='yes'/></token>
         <marker>
-          <token>bastante</token>
+          <token>bastantes</token>
         </marker>
           <token>vezes</token>
       </pattern>
@@ -2505,13 +2505,13 @@
     <rule>
       <antipattern><!-- to be caught by GENERAL_GENDER_AGREEMENT_ERRORS -->
           <token postag_regexp="yes" postag="(N.|[AD]..)M.+">
-            <exception postag_regexp="yes" postag="(N.|[AD]..)[FC].+"/></token>
-          <token regexp="yes">inúmeras|muitas|tantas|várias|duas|&numero_por_extenso_CP;</token>
+            <exception postag_regexp="yes" postag="[AD]..[FC].+"/></token>
+          <token regexp="yes">inúmeras|infinitas|muitas|tantas|várias|duas|&numero_por_extenso_CP;</token>
           <token>vezes</token>
       </antipattern>
       <antipattern><!-- to be caught by GENERAL_GENDER_AGREEMENT_ERRORS -->
           <token postag_regexp="yes" postag="(N.|[AD]..).S.+">
-            <exception postag_regexp="yes" postag="(N.|[AD]..).[NP].+"/></token>
+            <exception postag_regexp="yes" postag="[AD]...[NP].+"/></token>
           <token regexp="yes">inúmeras|muitas|tantas|várias|duas|&numero_por_extenso_CP;</token>
           <token>vezes</token>
       </antipattern>
