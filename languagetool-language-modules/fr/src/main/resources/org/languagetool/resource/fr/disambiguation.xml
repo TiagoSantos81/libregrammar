@@ -2353,7 +2353,7 @@ RB => Règles Brutes
 
     <rule name="Ignore spelling of punctuation characters" id="IGNORE_SPELLING_OF_PUNCTUATION">
     <pattern>
-        <token regexp="yes">[_\^]+</token>
+        <token regexp="yes">[_\^]{2,}</token>
     </pattern>
     <disambig action="ignore_spelling"/>
   </rule>
