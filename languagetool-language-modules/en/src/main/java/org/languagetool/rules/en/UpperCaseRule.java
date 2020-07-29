@@ -298,7 +298,7 @@ public class UpperCaseRule extends Rule {
     ),
     Arrays.asList( // They called it Greet.
       tokenRegex("calls?|called|calling|name[ds]?|naming"),
-      token("it|him|her|them|me|us|that|this"),
+      tokenRegex("it|him|her|them|me|us|that|this"),
       tokenRegex("[A-Z].+")
     ),
     Arrays.asList( // It is called Ranked mode
