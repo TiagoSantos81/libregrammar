@@ -71,10 +71,10 @@ public class ResultCache {
             build();
     /*
     remoteMatchesCache = CacheBuilder.newBuilder().
-            maximumWeight(maxSize/2).weigher(new RemoteMatchesWeigher()).
-            recordStats().
-            expireAfterAccess(expireAfter, timeUnit).
-            build();
+      maximumWeight(maxSize/2).weigher(new RemoteMatchesWeigher()).
+      recordStats().
+      expireAfterAccess(expireAfter, timeUnit).
+      build();
     */
     sentenceCache = CacheBuilder.newBuilder().
             maximumWeight(maxSize/2).weigher(new SentenceWeigher()).
@@ -91,17 +91,6 @@ public class ResultCache {
       return sentence.getText().length() / 75 + matches.size();
     }
   }
-
-/*
-  class RemoteMatchesWeigher implements Weigher<InputSentence, Map<String, List<RuleMatch>>> {
-    @Override
-    public int weigh(InputSentence sentence, Map<String, List<RuleMatch>> matches) {
-      // this is just a rough guesstimate so that the cacheSize given by the user
-      // is very roughly the number of average sentences the cache can keep:
-      return sentence.getText().length() / 75;
-    }
-  }
-*/
 
   class SentenceWeigher implements Weigher<SimpleInputSentence, AnalyzedSentence> {
     @Override
@@ -144,8 +133,7 @@ public class ResultCache {
   }
 
   /** @since 5.0
-   */
-   /*
+   * @return
   public Cache<InputSentence, Map<String, List<RuleMatch>>> getRemoteMatchesCache() {
     return remoteMatchesCache;
   }

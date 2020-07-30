@@ -8921,7 +8921,7 @@ though, and has since been slightly modified)-->
             </token>
           </marker>
         </pattern>
-          <message>Vouliez-vous dire <suggestion>CEST</suggestion> ?</message>
+        <message>Vouliez-vous dire <suggestion>CEST</suggestion> ?</message>
         <example correction="CEST">La présentation commence à 15:00 <marker>cest</marker>.</example>
         <example>Tu penses que cest bon ?</example>
       </rule>
@@ -12816,17 +12816,19 @@ though, and has since been slightly modified)-->
     <rulegroup id="COND_FUTUR_AVOIR_AIMERAI" name="avoir + aimé, voulu, préféré, souhaité">
       <rule>
         <pattern>
-          <token postag="N.*|Z|R pers suj.*" postag_regexp="yes"></token>
+          <token postag="N.*|Z|R pers suj.*" postag_regexp="yes"/>
           <token min="0">n'</token>
-          <marker><token postag="V avoir ind futu.*" postag_regexp="yes"></token></marker>
+          <marker><token postag="V avoir ind futu.*" postag_regexp="yes">
+          </token></marker>
           <token min="0" max="1" regexp="yes">pas|rien</token>
           <token postag="V ppa.*" postag_regexp="yes" regexp="yes">aimé|voulu|préféré|souhaité</token>
-          <token min="0" max="1" postag="(R pers.*)" postag_regexp="yes"></token>
-          <token postag="V inf"></token>
+          <token min="0" max="1" postag="(R pers.*)" postag_regexp="yes"/>
+          <token postag="V inf"/>
         </pattern>
-        <message>Voulez-vous utiliser le conditionnel <suggestion>\3s</suggestion> au lieu du futur « \3 » pour exprimer un souhait ?</message>
+        <message>Voulez-vous utiliser le conditionnel au lieu du futur pour exprimer un souhait ?</message>
+        <suggestion><match no="3" postag="V avoir ind futu (.) (.)" postag_regexp="yes" postag_replace="V avoir con pres $1 $2"/></suggestion>
         <example correction="aurais">Bonjour, j’<marker>aurai</marker> aimé savoir si la soupe était chaude.</example>
-        <example correction="aurais">La directeur <marker>aurai</marker> aimé savoir si la soupe était chaude.</example>
+        <example correction="aurait">La directeur <marker>aura</marker> aimé savoir si la soupe était chaude.</example>
         <example >Il aurait aimé savoir si c'est bien ici.</example>
         <example >Il aura vendu sa voiture.</example>
         <example correction="aurais">Bonjour, je n'<marker>aurai</marker> pas aimé savoir si la soupe était chaude.</example>
@@ -12835,7 +12837,8 @@ though, and has since been slightly modified)-->
         <example >Il aurait aimé le savoir si c'est bien ici.</example>
         <example correction="aurais">Bonjour, je n'<marker>aurai</marker> pas aimé te connaitre.</example>
         <example >Il n'aurait pas aimé le savoir si c'est bien ici.</example>
-      </rule>
+        <example >J'aurai aimé que tu me le dises.</example>
+    </rule>
     </rulegroup>
     <rulegroup id="COND_VS_FUTUR" name="probable futur avant bientôt, demain, etc.">
       <rule>
@@ -32551,6 +32554,19 @@ though, and has since been slightly modified)-->
       <example correction="savoir"><marker>être</marker> gré</example>
       <example><marker>savoir gré</marker></example>
       <example>Le contrat est négocié de gré à gré.</example>
+    </rule>
+    <rule id="ETRE_DE_VERBE" name="être de + verbe inf" default="temp_off">
+        <pattern>
+            <token postag="V etre.*" postag_regexp="yes"></token>
+            <token postag="P">de</token>
+            <token min="0" postag_regexp="yes" postag="R.*"></token>
+            <marker><token postag="V ppa.*" postag_regexp="yes"></token></marker>
+        </pattern>
+        <message>Vous devriez utiliser l'infinitif plutôt que le participe passé.</message>
+        <suggestion><match no="4" postag="V ppa.*" postag_regexp="yes" postag_replace="V inf"/></suggestion>
+        <example correction="désactiver">La solution est de le <marker>désactivé</marker></example>
+        <example correction="désactiver">La solution est de <marker>désactivé</marker> le moteur</example>
+        <example correction="désactiver">La solution, pour contourner le problème, est de <marker>désactivé</marker> le moteur.</example>
     </rule>
     <rulegroup id="PIRE_ALLER" name="pire(-)aller">
       <rule>

@@ -42,7 +42,7 @@ public class UserConfig {
   private final boolean filterDictionaryMatches;
 
   // partially indifferent for comparing UserConfigs (e.g. in PipelinePool)
-  // provided to rules only for A/B tests ->
+  // provided to rules only for A/B tests
   private long textSessionId;
   private String abTest;
 

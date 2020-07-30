@@ -116,8 +116,6 @@ abstract class TextChecker {
 
     if (cache != null) {
       ServerMetricsCollector.getInstance().monitorCache("languagetool_matches_cache", cache.getMatchesCache());
-      // ServerMetricsCollector.getInstance().monitorCache("languagetool_remote_matches_cache", cache.getRemoteMatchesCache()); 
-      // no remote rules code on LibreGrammar
       ServerMetricsCollector.getInstance().monitorCache("languagetool_sentences_cache", cache.getSentenceCache());
     }
 
