@@ -694,6 +694,7 @@ title="Easy editing stylesheet" ?>
       <example type='correct'>Foram os textos reformados e <marker>adaptados inúmeras</marker> vezes.</example>  XXX removing this FP causes too many FN -->
       <example type='correct'>Foram os textos reformados e <marker>adaptado infinitas</marker> vezes.</example>
       <example type='correct'>Foram os textos reformados e <marker>adaptado inúmeras</marker> vezes.</example>
+      <example type='correct'>Eu vi-os <marker>juntos várias</marker> vezes e em diversos lugares.</example>
     </rule>
     <rule>
       <pattern>

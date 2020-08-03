@@ -5892,11 +5892,26 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                         <token postag="VM[^GN].*" postag_regexp="yes" regexp="yes">[\p{Ll}·]+<exception postag="[^V].*" postag_regexp="yes"/></token>
                     </marker>
                 </pattern>
-                <message>Possible error.</message>
-                <suggestion><match no="2"/> <match no="3" postag="V.N.*" postag_regexp="yes"/></suggestion>
+                <message>¿Volíeu dir <suggestion><match no="2"/> <match no="3" postag="V.N.*" postag_regexp="yes"/></suggestion>?</message>
                 <suggestion><match no="2"/> que <match no="3"/></suggestion>
                 <suggestion><match no="2"/>, <match no="3"/></suggestion>
                 <example correction="cal córrer|cal que corre|cal, corre">No <marker>cal corre</marker>.</example>
+                <example>No cal córrer.</example>
+                <example>Anem a cal Cego.</example>
+                <example>El model estàndard del Big Bang calent erra en l'objectiu</example>
+                <example>ésser tractat com cal donant llargues llistes</example>
+            </rule>
+            <rule id="CALDRE2" name="Comprova: «caldre» seguit de verb en infinitiu">
+                <!-- com l'anterior però amb verbs que també són noms -->
+                <pattern>
+                    <token><exception>com</exception></token>
+                    <marker>
+                        <token inflected="yes">caldre<exception postag="_GN_MS"/></token>
+                        <token regexp="yes" case_sensitive="yes">cerca|busca|menja</token>
+                    </marker>
+                </pattern>
+                <message>¿Volíeu dir <suggestion><match no="2"/> \3r</suggestion>?</message>
+                <example correction="cal cercar">No <marker>cal cerca</marker> una altra solució.</example>
                 <example>No cal córrer.</example>
                 <example>Anem a cal Cego.</example>
                 <example>El model estàndard del Big Bang calent erra en l'objectiu</example>
@@ -13541,7 +13556,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <marker>
                     <token>amb<exception case_sensitive="yes">AMB</exception></token>
                 </marker>
-                <token postag="V.[SI].*" postag_regexp="yes"><exception case_sensitive="yes" regexp="yes">\p{Lu}.*|handicap|cal</exception></token>
+                <token postag="V.[SI].*" postag_regexp="yes"><exception case_sensitive="yes" regexp="yes">\p{Lu}.*|cal</exception><exception postag="VMIP1S0B"/></token>
             </pattern>
             <message>¿Volíu dir <suggestion>em</suggestion> (a mi)?</message>
             <example correction="em">¿I si <marker>amb</marker> quedo amb això?</example>
@@ -16505,7 +16520,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token inflected="yes" regexp="yes">conte|compte</token>
                 </marker>
                 <token inflected="yes">de</token>
-                <token postag="NP..G.*" postag_regexp="yes"/>
+                <token regexp="yes">Barcelona|Urgell</token>
+                <!--<token postag="NP..G.*" postag_regexp="yes"/>-->
             </pattern>
             <message>¿Volíeu dir <suggestion><match no="1" postag="(NC.*)" postag_regexp="yes" postag_replace="$1">comte</match></suggestion> (=títol nobiliari)?</message>
             <short>Possible confusió</short>
@@ -38862,6 +38878,38 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
     <category id="INCORRECT_WORDS_IN_CONTEXT" name="Paraules incorrectes segons el context" type="grammar">
         <!-- #nomenar/anomenar
             (?i)nomen.+ (?i)anomen.+    nom anom    (?i)càrrecs?|senadors?|.*presidents?|diputa.*|.*conseller.*|.*ministre.*|.*director.*|capit.+|.*general.*|vicari.*|rector.*|.*bisbe.*|alcalde.*|batl?le.*|tribunals?|consell|comit[éè]s?|entrenador.*|encarrega[td].*   ddXd,6dDd3d designar per a un càrrec    donar nom -->
+        <rule id="BRUIXES_BRUGES" name="Bruixes/Bruges">
+            <antipattern>
+                <token postag="SENT_START|D..FP." postag_regexp="yes"/>
+                <token>Bruixes</token>
+            </antipattern>
+            <antipattern>
+                <token>Bruixes</token>
+                <token inflected="yes">de</token>
+            </antipattern>
+            <pattern>
+                <token case_sensitive="yes">Bruixes</token>
+            </pattern>
+            <message>¿Volíeu dir <suggestion>Bruges</suggestion> (ciutat belga)?</message>
+            <example correction="Bruges">Me'n vaig de viatge de <marker>Bruixes</marker>.</example>
+            <example>El Ball de les Bruixes de Viladrau.</example>
+            <example>Anem al restaurant Bruixes de Burriac.</example>
+            <example>Les Bruixes de Llers.</example>
+        </rule>
+        <rule id="DORADA" name="dorada/daurada">
+            <pattern>
+                <token inflected="yes">dorada</token>
+            </pattern>
+            <message>Correcte si equival a "orada" (nom d'un peix). Incorrecte si equival a l'adjectiu <suggestion><match no="1" regexp_match="(?iu)o" regexp_replace="au"/></suggestion></message>
+            <example correction="daurades">Eren <marker>dorades</marker>.</example>
+        </rule>
+        <rule id="TAULADA" name="taulada/teulada" default="temp_off">
+            <pattern>
+                <token inflected="yes">taulada</token>
+            </pattern>
+            <message>¿Volíeu dir <suggestion><match no="1" regexp_match="(?iu)au" regexp_replace="eu"/></suggestion>? Correcte en el sentit de 'persones que seuen al voltant d'una taula'.</message>
+            <example correction="teulada">No t'has de tirar pedres a la <marker>taulada</marker>.</example>
+        </rule>
         <rule id="GANYAR" name="ganyar/guanyar">
             <pattern>
                 <token inflected="yes">ganyar</token>
@@ -49462,6 +49510,14 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <suggestion><match no="1" postag="(V.+)" postag_regexp="yes" postag_replace="$1">fiançar</match></suggestion>
             <example correction="consolidà|refermà|afermà|fiançà"><marker>afiançà</marker></example>
             <example>es consolidà</example>
+        </rule>
+        <rule id="TANTEJAR" name="tantejar/temptejar">
+            <pattern>
+                <token inflected="yes">tantejar</token>
+            </pattern>
+            <message>En general és preferible usar el v. 'temptejar'. 'Tantejar' (fer ús del dret de tanteig) s'utilitza en dret civil.</message>
+            <suggestion><match no="1" postag="(V.+)" postag_regexp="yes" postag_replace="$1">temptejar</match></suggestion>
+            <example correction="temptejava">Mentrestant <marker>tantejava</marker> el terreny.</example>
         </rule>
         <rule id="AFINCAR" name="afincar">
             <pattern>
