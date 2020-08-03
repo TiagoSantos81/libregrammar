@@ -2504,13 +2504,13 @@
     </rule>
     <rule>
       <antipattern><!-- to be caught by GENERAL_GENDER_AGREEMENT_ERRORS -->
-          <token postag_regexp="yes" postag="(N.|[AD]..)M.+">
+          <token postag_regexp="yes" postag="(N.|D..)M.+">
             <exception postag_regexp="yes" postag="[AD]..[FC].+"/></token>
           <token regexp="yes">inúmeras|infinitas|muitas|tantas|várias|duas|&numero_por_extenso_CP;</token>
           <token>vezes</token>
       </antipattern>
       <antipattern><!-- to be caught by GENERAL_GENDER_AGREEMENT_ERRORS -->
-          <token postag_regexp="yes" postag="(N.|[AD]..).S.+">
+          <token postag_regexp="yes" postag="(N.|D..).S.+">
             <exception postag_regexp="yes" postag="[AD]...[NP].+"/></token>
           <token regexp="yes">inúmeras|muitas|tantas|várias|duas|&numero_por_extenso_CP;</token>
           <token>vezes</token>
