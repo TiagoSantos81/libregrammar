@@ -6742,6 +6742,23 @@ title="Easy editing stylesheet" ?>
     </rule>
   </rulegroup>
 
+    <rule id='FRAGMENT_PREP_INFLECTED_VERB' name="Preposição antes de verbo infletido">
+    <!--    Created by Tiago F. Santos, 2020-08-03      -->
+      <pattern>
+          <token postag_regexp='yes' postag='SP.+'>
+            <exception>a</exception>
+            <exception postag_regexp='yes' postag='SP.+' negate_pos='yes'/></token>
+          <token postag_regexp='yes' postag='V.+'>
+            <exception postag_regexp='yes' postag='V.+' negate_pos='yes'/>
+            <exception postag_regexp='yes' postag='V.N.+'/></token>          
+      </pattern>
+      <message>Possível fragemento. Verbo inflectidos não são precedidos de preposições. Insira a palavra em falta, ou utilize o infinitivo.</message>
+        <suggestion>\1 <match no='2' postag="V(...)(.+?)" postag_replace='VMN0$2' postag_regexp='yes'/></suggestion>
+        <suggestion>\1 <match no='2' postag='VMN0000'/></suggestion>
+      <example correction='em estarmos|em estar'>Nem sempre prestamos muita atenção <marker>em estamos</marker> escrevendo.</example>
+      <example>Nem sempre prestamos muita atenção <marker>no que estamos</marker> escrevendo.</example>
+    </rule>
+
   <rulegroup id='SENTENCE_FRAGMENT' name="Fragmentos de frases">
     <!--    Localized from English grammar.xml by Tiago F. Santos, 2016-11-29      -->
       <url>http://viva-read.com/article/tipos-de-fragmentos-de-frases</url>
