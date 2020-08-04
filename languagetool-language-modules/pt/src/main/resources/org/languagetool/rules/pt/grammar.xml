@@ -90,7 +90,7 @@ title="Easy editing stylesheet" ?>
     <!ENTITY verbos_auxiliares_aspectuais "(?:andar|ir|vir|começar|continuar|tornar|voltar|costumar|acabar|deixar)">
     <!ENTITY verbos_auxiliares_modais "(?:dever|poder|querer|conseguir|pretender|tentar|chegar)">
     <!ENTITY verbos_de_ligacao "(?:andar|continuar|estar|ficar|p(?:arecer|ermanecer)|assemelhar|s(?:emelhar|er)|v(?:irar|viver))">
-    <!ENTITY verbo_nao_copulativos "(?:apresentar|criar|dar|matar|sugerir)">
+    <!ENTITY verbo_nao_copulativos "(?:apresentar|const(?:ituir|ruir)|criar|dar|matar|sugerir)">
     <!ENTITY verbos_transitivos_diretos "(?:abandonar|abençoar|aborrecer|abraçar|acompanhar|acusar|admirar|adorar|alegrar|ameaçar|amolar|amparar|auxiliar|castigar|condenar|conhecer|conservar|convidar|defender|eleger|estimar|humilhar|namorar|ouvir|prejudicar|prezar|proteger|respeitar|socorrer|suportar|ver|visitar)">
     <!ENTITY verbos_reflexivos "a(?:bster|covardar|piedar|pressar|rrepender|rrogar|ssemelhar|trever)|c(?:ontorcer|ondoer)|d(?:esbocarignar)|embebedar|escapulir|queixar|suicidar|transvestir|vangloriar|zangar">
     <!ENTITY haver_impessoal "(?:h(?:á|avia|ouve|ouvera|averá|averia|aja|ouvesse|ouver))">
@@ -3361,10 +3361,12 @@ title="Easy editing stylesheet" ?>
     </rule>
     <rule>
       <antipattern>
-          <token regexp='yes' case_sensitive='yes'>el[ea]s?</token>
+          <token regexp='yes' case_sensitive='yes'>[Ee]l[ea]s?</token>
           <token regexp='yes' case_sensitive='yes'>e|ou</token>
           <token max='2' postag_regexp='yes' postag='D...S.+'>
             <exception negate_pos='yes' postag_regexp='yes' postag='D...S.+'/></token>
+          <token postag_regexp='yes' postag='[AN].+'>
+            <exception negate_pos='yes' postag_regexp='yes' postag='[AN].+'/></token>
       </antipattern>
       <antipattern>
           <token postag_regexp='yes' postag='[AN].+'>
@@ -3469,6 +3471,7 @@ title="Easy editing stylesheet" ?>
       <example correction='seu território existe|seu território, existem'>No <marker>seu território existem</marker> duas sub-regiões.</example><!-- needs comma -->
       <example correction='o município está|o município, estão'>Contornando <marker>o município estão</marker> as serras.</example><!-- needs comma -->
       <example>Forças como o eletromagnetismo operam apenas tridimensionalmente.</example>
+      <example>Ele e o seu irmão foram castrados.</example>
     </rule>
   </rulegroup>
 
@@ -6739,11 +6742,11 @@ title="Easy editing stylesheet" ?>
     </rule>
   </rulegroup>
 
-  <rulegroup id='SENTENCE_FRAGMENT' name="Fragmentos de frases" default="on">
+  <rulegroup id='SENTENCE_FRAGMENT' name="Fragmentos de frases">
     <!--    Localized from English grammar.xml by Tiago F. Santos, 2016-11-29      -->
       <url>http://viva-read.com/article/tipos-de-fragmentos-de-frases</url>
     <rule id='SENTENCE_FRAGMENT_ONE_WORD' name="Fragmentos de frases: Conjunções e advérbios" default="off">
-    <!-- XXX Activate later after the remaining rules have proper regression testing -->
+    <!-- XXX too many ambiguous false positives. difficult to fix. -->
       <antipattern>
           <token postag='SENT_START'/>
           <token postag='[CR].+' postag_regexp='yes'/>
