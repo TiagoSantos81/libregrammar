@@ -223,6 +223,9 @@ public abstract class AbstractSimpleReplaceRule2 extends Rule {
         sb.insert(0, prevTokensList.get(j).getToken());
         variants.add(0, sb.toString());
       }
+      if (isTokenException(tokens[i])) {
+        continue;
+      }
       int len = variants.size(); // prevTokensList and variants have now the same length
       for (int j = 0; j < len; j++) { // longest words first
         String crt = variants.get(j);
@@ -263,6 +266,10 @@ public abstract class AbstractSimpleReplaceRule2 extends Rule {
   }
 
   protected boolean isException(String matchedText) {
+    return false;
+  }
+  
+  protected boolean isTokenException(AnalyzedTokenReadings atr) {
     return false;
   }
 
