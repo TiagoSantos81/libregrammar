@@ -1,7 +1,3 @@
-package org.languagetool.rules.fr;
-
-import org.languagetool.AnalyzedTokenReadings;
-
 /* LanguageTool, a natural language style checker 
  * Copyright (C) 2020 Daniel Naber (http://www.danielnaber.de)
  * 
@@ -20,11 +16,13 @@ import org.languagetool.AnalyzedTokenReadings;
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301
  * USA
  */
+package org.languagetool.rules.fr;
 
 import org.languagetool.language.French;
 import org.languagetool.rules.AbstractSimpleReplaceRule2;
 import org.languagetool.rules.Categories;
 import org.languagetool.rules.ITSIssueType;
+import org.languagetool.AnalyzedTokenReadings;
 
 import java.io.IOException;
 import java.net.URL;
@@ -32,6 +30,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
+
 
 /**
  * A rule that matches words which should not be used and suggests correct ones
@@ -78,9 +77,10 @@ public class AnglicismReplaceRule extends AbstractSimpleReplaceRule2 {
     return FR_LOCALE;
   }
 
+
   @Override
-  public List<String> getFileNames() {
-    return Arrays.asList(FILE_NAME);
+  public final String getFileName() {
+    return FILE_NAME;
   }
 
   @Override
