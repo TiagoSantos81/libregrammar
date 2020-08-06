@@ -690,11 +690,11 @@ title="Easy editing stylesheet" ?>
       <example type='triggers_error'>Edificações erguidas por arquitetos índios centenas de anos antes da conquista europeia.</example><!-- passive voice and ellipsis -->
       <example>Edificações [foram] erguidas por arquitetos índios, centenas de anos antes da conquista europeia.</example>
       <example>De acordo com as equações por nós implementadas.</example>
-      <!--example type='correct'>Foram os textos reformados e <marker>adaptados infinitas</marker> vezes.</example> XXX removing this FP causes too many FN
-      <example type='correct'>Foram os textos reformados e <marker>adaptados inúmeras</marker> vezes.</example>  XXX removing this FP causes too many FN -->
-      <example type='correct'>Foram os textos reformados e <marker>adaptado infinitas</marker> vezes.</example>
-      <example type='correct'>Foram os textos reformados e <marker>adaptado inúmeras</marker> vezes.</example>
-      <example type='correct'>Eu vi-os <marker>juntos várias</marker> vezes e em diversos lugares.</example>
+    <!--example type='correct'>Foram os textos reformados e <marker>adaptados infinitas</marker> vezes.</example> XXX removing this FP causes too many FN
+      <example>Foram os textos reformados e <marker>adaptados inúmeras</marker> vezes.</example>  XXX removing this FP causes too many FN -->
+      <example>Foram os textos reformados e <marker>adaptado infinitas</marker> vezes.</example>
+      <example>Foram os textos reformados e <marker>adaptado inúmeras</marker> vezes.</example>
+      <example>Eu vi-os <marker>juntos várias</marker> vezes e em diversos lugares.</example>
     </rule>
     <rule>
       <pattern>
@@ -1101,51 +1101,51 @@ title="Easy editing stylesheet" ?>
 
   <?ignore superseeded by EMPHATIC_PRONOUN_AGREEMENT
   <rulegroup id='ELE_ELA_PROPRIO_PROPRIA' name="Ele(s)/Ela(s) próprio(s)/própria(s)">
-		<!--      Created by Marco A.G.Pinto, Portuguese rule - 2020-03-03   -->
-		<rule>
-			<pattern>				
-				<token>ele</token>
-				<marker>
-					<token>própria</token>
-				</marker>
-			</pattern>
-			<message>&MSG_ECG;</message>
-			<suggestion>próprio</suggestion>
-			<example correction="próprio">Ele <marker>própria</marker> escolheu.</example>
-		</rule>
-		<rule>
-			<pattern>				
-				<token>eles</token>
-				<marker>
-					<token>próprias</token>
-				</marker>
-			</pattern>
-			<message>&MSG_ECG;</message>
-			<suggestion>próprios</suggestion>
-			<example correction="próprios">Eles <marker>próprias</marker> escolheram.</example>
-		</rule>
-		<rule>
-			<pattern>				
-				<token>ela</token>
-				<marker>
-					<token>próprio</token>
-				</marker>
-			</pattern>
-			<message>&MSG_ECG;</message>
-			<suggestion>própria</suggestion>
-			<example correction="própria">Ela <marker>próprio</marker> escolheu.</example>
-		</rule>
-		<rule>
-			<pattern>				
-				<token>elas</token>
-				<marker>
-					<token>próprios</token>
-				</marker>
-			</pattern>
-			<message>&MSG_ECG;</message>
-			<suggestion>próprias</suggestion>
-			<example correction="próprias">Elas <marker>próprios</marker> escolheram.</example>
-		</rule>
+    <!--      Created by Marco A.G.Pinto, Portuguese rule - 2020-03-03   -->
+    <rule>
+      <pattern>
+          <token>ele</token>
+        <marker>
+          <token>própria</token>
+        </marker>
+      </pattern>
+      <message>&MSG_ECG;</message>
+        <suggestion>próprio</suggestion>
+      <example correction="próprio">Ele <marker>própria</marker> escolheu.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token>eles</token>
+        <marker>
+          <token>próprias</token>
+        </marker>
+      </pattern>
+      <message>&MSG_ECG;</message>
+        <suggestion>próprios</suggestion>
+      <example correction="próprios">Eles <marker>próprias</marker> escolheram.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token>ela</token>
+        <marker>
+          <token>próprio</token>
+        </marker>
+      </pattern>
+      <message>&MSG_ECG;</message>
+        <suggestion>própria</suggestion>
+      <example correction="própria">Ela <marker>próprio</marker> escolheu.</example>
+    </rule>
+    <rule>
+      <pattern>
+          <token>elas</token>
+        <marker>
+          <token>próprios</token>
+        </marker>
+      </pattern>
+      <message>&MSG_ECG;</message>
+        <suggestion>próprias</suggestion>
+      <example correction="próprias">Elas <marker>próprios</marker> escolheram.</example>
+    </rule>
   </rulegroup>
   ?>
 
@@ -3283,7 +3283,7 @@ title="Easy editing stylesheet" ?>
       <example>Agradeço a você pelo empréstimo.</example>
       <example>E entre eles, destacamos o capital.</example>
     <!--example correction='eles destacam|eles, destacamos'>E entre <marker>eles destacamos</marker> o capital.</example>< TODO add punctuation suggestion -->
-    <example>A necessidade de a eles recorrer como terapêutica.</example>
+      <example>A necessidade de a eles recorrer como terapêutica.</example>
     </rule>
     <rule>
       <antipattern>
@@ -3367,7 +3367,9 @@ title="Easy editing stylesheet" ?>
             <exception negate_pos='yes' postag_regexp='yes' postag='D...S.+'/></token>
           <token postag_regexp='yes' postag='[AN].+'>
             <exception negate_pos='yes' postag_regexp='yes' postag='[AN].+'/></token>
-		  <token postag='V...3P.+' postag_regexp='yes'/>
+          <token min="0" max="3" postag='R.+' postag_regexp='yes'>
+            <exception negate_pos='yes' postag_regexp='yes' postag='R.+'/></token>
+          <token postag='V...3P.+' postag_regexp='yes'/>
       </antipattern>
       <antipattern>
           <token postag_regexp='yes' postag='[AN].+'>
@@ -3375,7 +3377,9 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes' case_sensitive='yes'>e|ou</token>
           <token max='2' postag_regexp='yes' postag='D...S.+'>
             <exception negate_pos='yes' postag_regexp='yes' postag='D...S.+'/></token>
-		  <token postag='V...3P.+' postag_regexp='yes'/>
+          <token min="0" max="3" postag='R.+' postag_regexp='yes'>
+            <exception negate_pos='yes' postag_regexp='yes' postag='R.+'/></token>
+          <token postag='V...3P.+' postag_regexp='yes'/>
       </antipattern>
       <antipattern>
           <token postag_regexp='yes' postag='D...S.+'/>
@@ -3409,22 +3413,28 @@ title="Easy editing stylesheet" ?>
             <exception postag_regexp='yes' postag='D...[SN].+' negate_pos='yes'/></token>
           <token postag_regexp='yes' postag='N..S.+'>
             <exception postag_regexp='yes' postag='(?:A..|N.).[SN].+' negate_pos='yes'/></token>
-		  <token postag='V...3P.+' postag_regexp='yes'/>
+          <token min="0" max="3" postag='R.+' postag_regexp='yes'>
+            <exception negate_pos='yes' postag_regexp='yes' postag='R.+'/></token>
+          <token postag='V...3P.+' postag_regexp='yes'/>
       </antipattern>
       <antipattern>
           <token postag_regexp='yes' postag='D...S.+'/>
-          <token postag_regexp='yes' postag='(?:N..|A...)S.+'/>
-	      <token regexp='yes'>e|ou|nem</token>
+          <token postag_regexp='yes' postag='(?:N..|A...)S.+' max='2'/>
+          <token regexp='yes'>e|ou|nem</token>
           <token postag_regexp='yes' postag='D...S.+'/>
           <token postag_regexp='yes' postag='(?:N..|A...)S.+'/>
-		  <token postag='V...3P.+' postag_regexp='yes'/>
+          <token min="0" max="3" postag='R.+' postag_regexp='yes'>
+            <exception negate_pos='yes' postag_regexp='yes' postag='R.+'/></token>
+          <token postag='V...3P.+' postag_regexp='yes'/>
       </antipattern>
       <antipattern>
           <token postag_regexp='yes' postag='(?:N..|A...)P.+'/>
-	      <token>como</token>
+          <token>como</token>
           <token postag_regexp='yes' postag='D...S.+'/>
           <token postag_regexp='yes' postag='(?:N..|A...)S.+'/>
-		  <token postag='V...3P.+' postag_regexp='yes'/>
+          <token min="0" max="3" postag='R.+' postag_regexp='yes'>
+            <exception negate_pos='yes' postag_regexp='yes' postag='R.+'/></token>
+          <token postag='V...3P.+' postag_regexp='yes'/>
       </antipattern>
     <!-- MARCOAGPINTO 2020-04-01 *START* -->
     <!-- "Os rebeldes pouca resistência encontraram." -->
@@ -3437,6 +3447,9 @@ title="Easy editing stylesheet" ?>
             <exception postag_regexp='yes' postag='D...[SN].+' negate_pos='yes'/></token>
           <token postag_regexp='yes' postag='N..S.+'>
             <exception postag_regexp='yes' postag='(?:A..|N.).[SN].+' negate_pos='yes'/></token>
+          <token min="0" max="3" postag='R.+' postag_regexp='yes'>
+            <exception negate_pos='yes' postag_regexp='yes' postag='R.+'/></token>
+          <token postag='V...3P.+' postag_regexp='yes'/>
       </antipattern>
     <!-- MARCOAGPINTO 2020-04-01 *END* -->
       <pattern>
@@ -6761,15 +6774,15 @@ title="Easy editing stylesheet" ?>
             <exception postag_regexp='yes' postag='SP.+' negate_pos='yes'/></token>
           <token postag_regexp='yes' postag='V.+'>
             <exception postag_regexp='yes' postag='V.+' negate_pos='yes'/>
-            <exception postag_regexp='yes' postag='V.N'/></token>          
+            <exception postag_regexp='yes' postag='V.N.+'/></token>
       </pattern>
       <message>Possível fragmento. Verbo inflectidos não são precedidos de preposições. Insira a palavra em falta, ou utilize o infinitivo.</message>
         <suggestion>\1 <match no='2' postag="V(...)(.+?)" postag_replace='VMN0$2' postag_regexp='yes'/></suggestion>
         <suggestion>\1 <match no='2' postag='VMN0000'/></suggestion>
       <example correction='em estarmos|em estar'>Nem sempre prestamos muita atenção <marker>em estamos</marker> escrevendo.</example>
       <example>Nem sempre prestamos muita atenção <marker>no que estamos</marker> escrevendo.</example>
-      <example>...ao avaliarem o estatuto socioeconómico...</example>
-      <example>...após avaliarem o estatuto socioeconómico...</example>
+      <example>…ao avaliarem o estatuto socioeconómico…</example>
+      <example>…após avaliarem o estatuto socioeconómico…</example>
     </rule>
 
   <rulegroup id='SENTENCE_FRAGMENT' name="Fragmentos de frases">
@@ -18849,7 +18862,7 @@ o tomate'>
       <example correction="pôr">Vou <marker>por</marker> termo a tudo.</example>
     </rule-->
   </rulegroup>
-	
+
     <rule id='QUE_QUÊ' name="Confusão: que - quê">
     <!--      Created by Marco A.G.Pinto, Portuguese rule - 2020-07-02 (2-JUL-2020+) -->
       <pattern>
@@ -27178,10 +27191,10 @@ TODO Write better examples
       <url>https://pt.wiktionary.org/wiki/viajar</url>
       <example correction='Viajem'><marker>Viagem</marker> tanto quanto possam.</example>
       <example>Uma viagem à Argentina</example>
-      <example>...faz uma breve viagem...</example>
-      <example>...durante a sua quarta viagem...</example>
+      <example>…faz uma breve viagem…</example>
+      <example>…durante a sua quarta viagem…</example>
       <example>Viagem</example>
-      <example>Viagem ao centro da Terra</example>  
+      <example>Viagem ao centro da Terra</example>
       <example correction="Provavelmente viajem"><marker>Provavelmente viagem</marker> à Argentina</example><!-- XXX awkward grammar example -->
     </rule>
     <rule id='HOMONYM_PROFETISA_3' name='Homófona: profetisa - profetiza'>
@@ -31399,9 +31412,9 @@ TODO Write better examples
           <token postag_regexp="yes" postag="V...1S.+"/>
           <token regexp='yes'>\.|!|\?</token>
       </antipattern>
-<!-- after a "," or "e" + "de", "com" --> <!-- Improved on 2020-07-06 -->
+    <!-- after a "," or "e" + "de", "com" --> <!-- Improved on 2020-07-06 -->
       <antipattern>
-		  <token regexp='yes'>,|e|de|com</token>
+          <token regexp='yes'>,|e|de|com</token>
           <token spacebefore='yes'>eu</token>
           <token postag_regexp="yes" postag="V...1S.+"/>
       </antipattern>
@@ -31422,9 +31435,9 @@ TODO Write better examples
           <token postag_regexp="yes" postag="V...1P.+"/>
           <token regexp='yes'>\.|!|\?</token>
       </antipattern>
-<!-- after a "," or "e" + "de", "com" --> <!-- Improved on 2020-07-06 -->
+    <!-- after a "," or "e" + "de", "com" --> <!-- Improved on 2020-07-06 -->
       <antipattern>
-		  <token regexp='yes'>,|e|de|com</token>
+          <token regexp='yes'>,|e|de|com</token>
           <token spacebefore='yes'>nós</token>
           <token postag_regexp="yes" postag="V...1P.+"/>
       </antipattern>
