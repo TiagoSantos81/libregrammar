@@ -3367,6 +3367,7 @@ title="Easy editing stylesheet" ?>
             <exception negate_pos='yes' postag_regexp='yes' postag='D...S.+'/></token>
           <token postag_regexp='yes' postag='[AN].+'>
             <exception negate_pos='yes' postag_regexp='yes' postag='[AN].+'/></token>
+		  <token postag='V...3P.+' postag_regexp='yes'/>
       </antipattern>
       <antipattern>
           <token postag_regexp='yes' postag='[AN].+'>
@@ -3374,6 +3375,7 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes' case_sensitive='yes'>e|ou</token>
           <token max='2' postag_regexp='yes' postag='D...S.+'>
             <exception negate_pos='yes' postag_regexp='yes' postag='D...S.+'/></token>
+		  <token postag='V...3P.+' postag_regexp='yes'/>
       </antipattern>
       <antipattern>
           <token postag_regexp='yes' postag='D...S.+'/>
@@ -3407,6 +3409,7 @@ title="Easy editing stylesheet" ?>
             <exception postag_regexp='yes' postag='D...[SN].+' negate_pos='yes'/></token>
           <token postag_regexp='yes' postag='N..S.+'>
             <exception postag_regexp='yes' postag='(?:A..|N.).[SN].+' negate_pos='yes'/></token>
+		  <token postag='V...3P.+' postag_regexp='yes'/>
       </antipattern>
       <antipattern>
           <token postag_regexp='yes' postag='D...S.+'/>
@@ -6742,21 +6745,31 @@ title="Easy editing stylesheet" ?>
     </rule>
   </rulegroup>
 
-    <rule id='FRAGMENT_PREP_INFLECTED_VERB' name="Preposição antes de verbo infletido">
+    <rule id='FRAGMENT_PREP_INFLECTED_VERB' name="Fragmentos de frases: Preposição antes de verbo infletido">
     <!--    Created by Tiago F. Santos, 2020-08-03      -->
+      <antipattern>
+          <token postag='SPS00'/>
+          <token postag='V.SF.+' postag_regexp='yes'/>
+      </antipattern>
+      <antipattern>
+          <token>ao</token>
+          <token postag='V.SF.+' postag_regexp='yes'/>
+      </antipattern>
       <pattern>
           <token postag_regexp='yes' postag='SP.+'>
             <exception>a</exception>
             <exception postag_regexp='yes' postag='SP.+' negate_pos='yes'/></token>
           <token postag_regexp='yes' postag='V.+'>
             <exception postag_regexp='yes' postag='V.+' negate_pos='yes'/>
-            <exception postag_regexp='yes' postag='V.N.+'/></token>          
+            <exception postag_regexp='yes' postag='V.N'/></token>          
       </pattern>
-      <message>Possível fragemento. Verbo inflectidos não são precedidos de preposições. Insira a palavra em falta, ou utilize o infinitivo.</message>
+      <message>Possível fragmento. Verbo inflectidos não são precedidos de preposições. Insira a palavra em falta, ou utilize o infinitivo.</message>
         <suggestion>\1 <match no='2' postag="V(...)(.+?)" postag_replace='VMN0$2' postag_regexp='yes'/></suggestion>
         <suggestion>\1 <match no='2' postag='VMN0000'/></suggestion>
       <example correction='em estarmos|em estar'>Nem sempre prestamos muita atenção <marker>em estamos</marker> escrevendo.</example>
       <example>Nem sempre prestamos muita atenção <marker>no que estamos</marker> escrevendo.</example>
+      <example>...ao avaliarem o estatuto socioeconómico...</example>
+      <example>...após avaliarem o estatuto socioeconómico...</example>
     </rule>
 
   <rulegroup id='SENTENCE_FRAGMENT' name="Fragmentos de frases">
