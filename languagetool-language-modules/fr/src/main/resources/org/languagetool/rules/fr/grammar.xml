@@ -18775,7 +18775,7 @@ though, and has since been slightly modified)-->
       <example><marker>De toute façon</marker></example>
     </rule>
   </category>
-  <category id="CAT_ANGLICISMES_PICKY" name="Anglicismes" type="style" tags="picky">
+  <category id="CAT_ANGLICISMES_PICKY" name="Anglicismes" type="style"><!-- tags="picky"-->
     <rule id="LEAD" name="lead" default="off" tags="picky"><!-- disabled because of low acceptance (< 1%) / picky -->
       <!-- TODO: check if "prospect" should be added as a suggestion (https://fr.wiktionary.org/wiki/lead) -->
       <pattern>
