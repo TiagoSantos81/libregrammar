@@ -43,10 +43,11 @@
   * POS and spelling improvements
 
 #### French
-  * added and improved rules
+  * added and improved rules, thanks to Jaume Órtola, Rigaut Theótime and thelittlefireman
   * [spell checking now uses Morfologik instead of Hunspell](https://github.com/languagetool-org/languagetool/commit/d7b866b)
 
 #### German
+  * rules improvements, thanks to Florian Knorr
   * POS and spelling improvements
 
 #### Portuguese
