@@ -42,12 +42,16 @@
   * added and improved rules
   * POS and spelling improvements
 
+#### English
+  * added and improved rules
+  * POS and spelling improvements
+
 #### French
   * added and improved rules, thanks to Jaume Órtola, Rigaut Theótime and thelittlefireman
   * [spell checking now uses Morfologik instead of Hunspell](https://github.com/languagetool-org/languagetool/commit/d7b866b)
 
 #### German
-  * rules improvements, thanks to Florian Knorr
+  * added and improved rules, thanks to Christopher Blum and Florian Knorr
   * POS and spelling improvements
 
 #### Portuguese
@@ -60,6 +64,14 @@
 #### Spanish
   * added and improved rules
   * POS and spelling improvements
+
+#### LibreOffice / Apache OpenOffice Integration
+  * dedicated custom spellchecker dialog, that allows greater control ofLibreGrammar's functions, thanks to Fred Kruse
+
+#### General
+  * various fixes and improvements to abstract replacement rules, including:
+    - retrieve only the longest string when matches overlap;
+    - possibility of adding exceptions.
 
 ## 5.0 ( 2020-10-01)
 
