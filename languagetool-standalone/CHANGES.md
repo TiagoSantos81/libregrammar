@@ -5,6 +5,9 @@
 ### This fork differences
 #### (new comparisons only)
 
+#### General
+  * Each pair of `ConfusionProbabilityRule` has its own ID now, so it can be separately turned on/off
+
 
 #### Catalan
   * added a few punctuation rules

@@ -2466,7 +2466,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         <rulegroup id="CUAL_SIN_TILDE" name="cuál > cual">
             <rule>
                 <pattern>
-                    <token regexp="yes">el|al|del|los|la|las|lo|tal|cada</token>
+                    <token regexp="yes">el|al|del|los|la|las|lo|tal|tales|cada</token>
                     <marker>
                         <token regexp="yes">cuál(es)?</token>
                     </marker>
@@ -2517,7 +2517,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             </rule>
             <rule>
                 <antipattern>
-                    <token regexp="yes">el|al|del|los|la|las|lo|tal|cada|sea|fuera|fuese|fuere</token>
+                    <token regexp="yes">el|al|del|los|la|las|lo|tal|tales|cada|sea|fuera|fuese|fuere</token>
                     <token regexp="yes">cual(es)?</token>
                 </antipattern>
                 <antipattern>
@@ -3631,7 +3631,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>lo que hago en mi día a día</example>
             </rule>
         </rulegroup>
-        <rulegroup id="TU_SIN_TILDE" name="tú > tu" default="temp_off">
+        <rulegroup id="TU_SIN_TILDE" name="tú > tu">
             <rule>
                 <pattern>
                     <marker>
@@ -5298,6 +5298,17 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             </rule>
             <rule>
                 <pattern>
+                    <token>macro</token>
+                    <token min="0">-</token>
+                    <token postag="[NAV].*" postag_regexp="yes"/>
+                </pattern>
+                <message suppress_misspelled="yes">Se escribe junto.</message>
+                <suggestion><match no="3" regexp_match="(?iu)(.+)" regexp_replace="macro$1" case_conversion="alllower"/></suggestion>
+                <suggestion><match no="3" regexp_match="(?iu)(.+)" regexp_replace="macror$1" case_conversion="alllower"/></suggestion>
+                <example correction="macroanálisis">Hizo un <marker>macro análisis</marker>.</example>
+            </rule>
+            <rule>
+                <pattern>
                     <token>nacional<exception postag="_possible_NP"/></token>
                     <token min="0">-</token>
                     <token inflected="yes" regexp="yes">populismo|populista|católico|socialismo|catolicismo|sindicalismo|sindicalista</token>
@@ -5335,7 +5346,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <suggestion>\1\3</suggestion>
                 <example correction="tomacorriente">El <marker>toma corriente</marker>.</example>
             </rule>
-            <rule default="temp_off">
+            <rule>
                 <pattern>
                     <token postag="D.*" postag_regexp="yes"/>
                     <marker>
@@ -9807,7 +9818,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rule>
     </category>
     <category id="CONFUSIONS2" name="Confusiones (2)">
-        <rulegroup id="CUALQUIERA" name="cual quiera -&gt; cualquiera" default="temp_off">
+        <rulegroup id="CUALQUIERA" name="cual quiera -&gt; cualquiera">
             <rule>
                 <pattern>
                     <token regexp="yes">cual|cuales|cuál|cuáles</token>
@@ -10185,7 +10196,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>De estas, danos cuatro.</example>
             </rule>
         </rulegroup>
-        <rulegroup id="SPELLING_ERROR_BETTER_SUGGESTIONS" name="error ortográfico (con sugerencias mejoradas)">
+        <rulegroup id="SPELLING_ERROR_BETTER_SUGGESTIONS" name="error ortográfico (con sugerencias mejoradas)" default="off">
+            <!-- TODO: include the filtering inside the general Morfologik rule, if possible -->
             <rule>
                 <pattern>
                     <token postag="&pronombre_personal_atono_POS;" postag_regexp="yes"><exception postag="DA.*" postag_regexp="yes"/></token>
@@ -10734,7 +10746,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="vez">Lo haremos a la <marker>ves</marker>.</example>
                 <example>¿La ves ahí?</example>
             </rule>
-            <rule default="temp_off">
+            <rule>
                 <pattern>
                     <token postag="D[DI].FS." postag_regexp="yes"/>
                     <marker>
@@ -10749,7 +10761,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="vez">Una <marker>ves</marker> terminado el trabajo, nos vamos de fiesta.</example>
                 <example>¿La ves ahí?</example>
             </rule>
-            <rule default="temp_off">
+            <rule>
                 <pattern>
                     <token postag="D..FS." postag_regexp="yes"/>
                     <marker>
@@ -11124,17 +11136,28 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>Un, dos, etc.</example>
             </rule>
         </rulegroup>
-        <rule id="OROGRAFIA_DEL_TERRENO" name="redundancia: orografía del terreno">
-            <pattern>
-                <token>orografía</token>
-                <token>del</token>
-                <token>terreno</token>
-            </pattern>
-            <message>Redundancia.</message>
-            <suggestion>orografía</suggestion>
-            <url>http://www.fundeu.es/recomendacion/orografia-del-terreno-expresion-redundante-60/</url>
-            <example correction="orografía">La <marker>orografía del terreno</marker> complica las tareas de extinción.</example>
-        </rule>
+        <rulegroup id="OROGRAFIA_DEL_TERRENO" name="redundancia: orografía del terreno">
+            <rule>
+                <pattern>
+                    <token>orografía</token>
+                    <token>del</token>
+                    <token>terreno</token>
+                </pattern>
+                <message>Expresión redundante. Basta con decir <suggestion>orografía</suggestion>.</message>
+                <url>http://www.fundeu.es/recomendacion/orografia-del-terreno-expresion-redundante-60/</url>
+                <example correction="orografía">La <marker>orografía del terreno</marker> complica las tareas de extinción.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token>orografía</token>
+                    <token>montañosa</token>
+                </pattern>
+                <message>Expresión poco recomendable.</message>
+                <suggestion>terreno montañoso</suggestion>
+                <url>http://www.fundeu.es/recomendacion/orografia-del-terreno-expresion-redundante-60/</url>
+                <example correction="terreno montañoso">La <marker>orografía montañosa</marker> complica las tareas de extinción.</example>
+            </rule>
+        </rulegroup>
         <!--ELLOS_ELLAS: El neutro en español se forma igual que el masculino (http://lema.rae.es/dpd/srv/search?id=Tr5x8MFOuD6DVTlDBg#21)-->
         <rulegroup id="ELLOS_ELLAS" name="Redundancias no sexistas incorrectas" default="on">
             <short>Redundancia. El neutro es suficiente.</short>
@@ -11193,7 +11216,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rulegroup>
     </category>
     <category id="PUNCTUATION" name="Puntuación">
-        <rule id="MUCHO_NF" name="mucho + nombre femenino" default="temp_off">
+        <rule id="MUCHO_NF" name="mucho + nombre femenino">
             <pattern>
                 <token>mucho</token>
                 <token regexp="yes">tías?|señoras?|señoritas?|hermanas?|amigas?</token>

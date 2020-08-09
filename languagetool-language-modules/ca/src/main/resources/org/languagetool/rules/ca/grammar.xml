@@ -13604,7 +13604,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <rule>
                 <pattern>
                     <token postag="SPS00|LOC_PREP" postag_regexp="yes"/>
-                    <token min="0" max="2" postag="[DA].*|&pronom_feble;" postag_regexp="yes"/>
+                    <token min="0" max="1" postag="D[AID].FS.|&pronom_feble;" postag_regexp="yes"/>
                     <marker>
                         <token>pesa</token>
                     </marker>
@@ -13612,11 +13612,13 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <message>Com a substantiu, cal dir <suggestion>pes</suggestion>. Correcte si és del v. 'pesar'.</message>
                 <suggestion>peça</suggestion>
                 <example correction="pes|peça">De la <marker>pesa</marker> es va em portar la protecció.</example>
+                <example>Té tres campanes, la major de les quals pesa 250 quilos.</example>
+                <example>cadascuna de les quals pesa aproximadament 10 grams</example>
             </rule>
             <rule>
                 <pattern>
                     <token postag="SPS00|LOC_PREP" postag_regexp="yes"/>
-                    <token min="0" max="2" postag="[DA].*|&pronom_feble;" postag_regexp="yes"/>
+                    <token min="0" max="1" postag="D[AID].FP.|&pronom_feble;" postag_regexp="yes"/>
                     <marker>
                         <token>peses</token>
                     </marker>
@@ -41157,8 +41159,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <pattern>
                 <token inflected="yes">cantera</token>
             </pattern>
-            <message>¿Volíeu dir <suggestion><match no="1" postag="NCF(.*)" postag_regexp="yes" postag_replace="NCF$1">pedrera</match></suggestion>? 'Cantera' és correcte en altres sentits.</message>
-            <suggestion><match no="1" postag="NCF(.*)" postag_regexp="yes" postag_replace="NCM$1">planter</match></suggestion>
+            <message>¿Volíeu dir <suggestion><match no="1" postag="NCF(.*)" postag_regexp="yes" postag_replace="NCF$1">pedrera</match></suggestion> (lloc d'on s'extrauen pedres) o <suggestion><match no="1" postag="NCF(.*)" postag_regexp="yes" postag_replace="NCM$1">planter</match></suggestion> (lloc de formació)? 'Cantera' és correcte en el sentit de 'pedra grossa' i 'ganes de cantar'.</message>
             <example correction="pedrera|planter">És de la <marker>cantera</marker>.</example>
         </rule>
         <rule id="CONXA" name="conxa / closca">
@@ -50899,7 +50900,42 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rule>
     </category>
     <category id="STYLE_OPTIONAL" name="C2) Qüestions estilístiques opcionals" type="style">
-        <rule id="I_O" name="i/o: fórmula innecèssaria" default="temp_off">
+        <rulegroup id="AADD" name="abreviatura no aconsellable: AADD" default="temp_off">
+            <url>https://www.ub.edu/cub/criteri.php?id=372</url>
+            <rule>
+                <pattern case_sensitive="yes">
+                    <token regexp="yes">AADD|DDAA|AAVV|VVAA</token>
+                </pattern>
+                <message>L'abreviatura de 'diversos autors' és <suggestion>d. a.</suggestion>. En les bibliografies es recomana no utilitzar-la.</message>
+                <example correction="D. a."><marker>DDAA</marker> (1990). La pesca de la truita. Editorial Peixatera.</example>
+            </rule>
+            <rule>
+                <pattern case_sensitive="yes">
+                    <token>AA</token>
+                    <token>.</token>
+                    <token regexp="yes">DD|VV</token>
+                    <token>.</token>
+                </pattern>
+                <message>L'abreviatura de 'diversos autors' és <suggestion>d. a.</suggestion>. En les bibliografies es recomana no utilitzar-la.</message>
+                <example correction="D. a."><marker>AA.DD.</marker> (1990). La pesca de la truita. Editorial Peixatera.</example>
+            </rule>
+            <rule>
+                <pattern case_sensitive="yes">
+                    <token regexp="yes">DD|VV</token>
+                    <token>.</token>
+                    <token>AA</token>
+                    <token>.</token>
+                </pattern>
+                <message>L'abreviatura de 'diversos autors' és <suggestion>d. a.</suggestion>. En les bibliografies es recomana no utilitzar-la.</message>
+                <example correction="D. a."><marker>DD.AA.</marker> (1990). La pesca de la truita. Editorial Peixatera.</example>
+            </rule>
+        </rulegroup>
+        <rule id="I_O" name="i/o: fórmula innecèssaria">
+            <antipattern>
+                <token>/</token>
+                <token regexp="yes">[io]</token>
+                <token>/</token>
+            </antipattern>
             <pattern case_sensitive="yes">
                 <token>i</token>
                 <token>/</token>

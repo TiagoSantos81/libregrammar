@@ -112,6 +112,8 @@ public class French extends Language implements AutoCloseable {
             new MorfologikFrenchSpellerRule(messages, this, userConfig, altLanguages),
             new LongSentenceRule(messages, userConfig, -1, true),
             new LongParagraphRule(messages, this, userConfig),
+            // new LongSentenceRule(messages, userConfig, 35, true, true),
+            // new LongParagraphRule(messages, this, userConfig, true, Arrays.asList(Tag.picky)),
             new UppercaseSentenceStartRule(messages, this),
             new MultipleWhitespaceRule(messages, this),
             new SentenceWhitespaceRule(messages),
