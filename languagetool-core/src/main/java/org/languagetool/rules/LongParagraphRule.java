@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import org.languagetool.*;
+import org.languagetool.rules.Category.Location;
 import org.languagetool.tools.Tools;
 
 /**
@@ -36,8 +37,8 @@ public class LongParagraphRule extends TextLevelRule {
 
   public static final String RULE_ID = "TOO_LONG_PARAGRAPH";
 
-  private static final boolean DEFAULT_ACTIVATION = false;
-  private static final int DEFAULT_MAX_WORDS = 220;
+  private static final boolean DEFAULT_ACTIVATION = true;
+  private static final int DEFAULT_MAX_WORDS = 80;
 
   private final Language lang;
 
@@ -45,7 +46,8 @@ public class LongParagraphRule extends TextLevelRule {
 
   public LongParagraphRule(ResourceBundle messages, Language lang, UserConfig userConfig, int defaultWords, boolean defaultActive, List<Tag> tags) {
     super(messages);
-    super.setCategory(Categories.STYLE.getCategory(messages));
+    super.setCategory(new Category(new CategoryId("CREATIVE_WRITING"), 
+        messages.getString("category_creative_writing"), Location.INTERNAL, false));
     this.lang = lang;
     if (!defaultActive) {
       setDefaultOff();
