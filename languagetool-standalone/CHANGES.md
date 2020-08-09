@@ -66,7 +66,7 @@
   * POS and spelling improvements
 
 #### LibreOffice / Apache OpenOffice Integration
-  * dedicated custom spellchecker dialog, that allows greater control ofLibreGrammar's functions, thanks to Fred Kruse
+  * dedicated custom spellchecker dialog, that allows greater control of LibreGrammar's functions, thanks to Fred Kruse
 
 #### General
   * various fixes and improvements to abstract replacement rules, including:
