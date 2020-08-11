@@ -37166,6 +37166,19 @@ TODO Write better examples
     </rule>
     <rule>
       <pattern>
+          <token>
+            <exception postag='[AD]..MP.+' postag_regexp='yes'/></token>
+        <marker>
+          <token>falos</token>
+        </marker>
+      </pattern>
+      <message>'\1' o plural de uma parte da genitália masculina. A forma verbal escreve-se <suggestion>falas</suggestion> ou <suggestion>falo</suggestion>.</message>
+      <url>https://pt.wikipedia.org/wiki/Falo</url>
+      <example correction="falas|falo">...agora <marker>falos</marker> a mente certo.</example>
+      <example>Os falos era representados em hieróglifos.</example>
+    </rule>
+    <rule>
+      <pattern>
           <token regexp='yes'>furaç(?:ão|ões)</token>
       </pattern>
       <message>'Furação' é o ato de perfurar. O fenómeno meteorológico escreve-se <suggestion><match no='1' regexp_match='ç' regexp_replace='c'/></suggestion>.</message>
