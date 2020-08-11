@@ -24340,12 +24340,31 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                         <token regexp="yes">se|Se<exception postag=".*LOC_ADV.*|_possible_nompropi" postag_regexp="yes"/></token>
                     </marker>
                     <token postag="V.N.*|[NA].*" postag_regexp="yes"/>
+                    <token postag="&pronom_feble;" postag_regexp="yes" spacebefore="no"/>
                 </pattern>
                 <message>Si és del verb saber, s'accentua.</message>
                 <suggestion>sé</suggestion>
                 <suggestion>de</suggestion>
                 <example correction="sé|de">No <marker>se</marker> sumar-nos.</example>
-                <example correction="sé|de">És professor <marker>se</marker> matemàtiques.</example>
+            </rule>
+            <rule>
+                <antipattern>
+                    <token postag="V.N.*" postag_regexp="yes"/>
+                    <token postag="&pronom_feble;" postag_regexp="yes" spacebefore="no"/>
+                </antipattern>
+                <pattern case_sensitive="yes">
+                    <marker>
+                        <token regexp="yes">se|Se<exception postag=".*LOC_ADV.*|_possible_nompropi" postag_regexp="yes"/></token>
+                        <token postag="V.N.*|[NA].*" postag_regexp="yes"/>
+                    </marker>
+                </pattern>
+                <filter class="org.languagetool.rules.ca.FindSuggestionsFilter" args="WordFrom:2 DesiredPostag:V.[SI].3.*"/>
+                <message>Si és del verb saber, s'accentua.</message>
+                <suggestion>sé \2</suggestion>
+                <suggestion>de \2</suggestion>
+                <suggestion>\1 {suggestion}</suggestion>
+                <example correction="sé matemàtiques|de matemàtiques">És professor <marker>se matemàtiques</marker>.</example>
+                <example correction="sé sumar|de sumar|se suma|se sumarà|se sumà|se sumara|se sumàs">No <marker>se sumar</marker>.</example>
             </rule>
         </rulegroup>
         <rulegroup id="US" name="us/ús">
@@ -29479,6 +29498,14 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rule>
     </category>
     <category id="CASING" name="E) Majúscules i minúscules" type="typographical">
+        <rule id="MAJ_ABREVIATURA" name="majúscula en algunes abreviatures">
+            <pattern>
+                <token regexp="yes" case_sensitive="yes">[ds]r(a|s|es)?</token>
+            </pattern>
+            <message>Aquesta abreviatura s'escriu amb majúscula inicial.</message>
+            <suggestion><match no="1" case_conversion="startupper"></match></suggestion>
+            <example correction="Sra">Ha vingut la <marker>sra</marker>. Garcia.</example>
+        </rule>
         <rule id="BRAILLE" name="braille">
             <pattern>
                 <token regexp="yes">en|idioma|llengua|el|llenguatge</token>
@@ -30381,7 +30408,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <marker>
                     <!-- Eliminades les abreviatures d'una sola lletra. spacebefore="yes" -->
                     <token regexp="yes"
-                        >(assoc|abr|abs|acad|add|adj|adm|admdor|admdora|admtiu|admtiva|adv|ag|agl|agr|agron|agròn|aj|alim|ampl|ap|apmt|apnt|apr|aprox|apt|arq|arqueol|arquit|atm|aut|aux|batx|bda|bibl|bl|bnc|butll|bxs|calef|cartogr|catedr|catol|cf|cin|climat|col·l|constr|contr|conv|corp|corr|cpl|cpt|cra|cró|ct|cte|ctra|cts|dc|dept|desp|dg|dip|disp|distr|div|dj|Dr|Dra|drec|ds|dt|dta|dte|dupl|dv|econ|ed|Emm|entl|esp|espf|esq|etc|exc|Excm|Excma|exp|exped|ext|fac|fca|febr|gov|gr|gral|hab|Hble|Il·lm|Il·lma|Il·ltre|Im|Ima|imp|impr|impt|inc|insp|int|inv|jul|jurispr|leg|llic|loc|ltda|làm|Mgfc|Mgfca|mil·l|Mn|màx|mín|nov|nre|núm|oct|op|paq|pda|pg|pl|ppda|ppt|pral|prev|prof|progr|prov|pta|ptes|ptge|pvt|pàg|rbla|ref|rev|secr|sgt|sotsp|Sr|Sra|Sres|Srs|St|Sta|subsp|supl|supt|telegr|trad|trans|transcr|transf|tripl|trv|tt|tèc|univ|urb|veg|vid|vig|vocab|vs|àt|íd)<exception
+                        >(assoc|abr|abs|acad|add|adj|adm|admdor|admdora|admtiu|admtiva|adv|ag|agl|agr|agron|agròn|aj|alim|ampl|ap|apmt|apnt|apr|aprox|apt|arq|arqueol|arquit|atm|aut|aux|batx|bda|bibl|bl|bnc|butll|bxs|calef|cartogr|catedr|catol|cf|cin|climat|col·l|constr|contr|conv|corp|corr|cpl|cpt|cra|cró|ct|cte|ctra|cts|dc|dept|desp|dg|dip|disp|distr|div|dj|Dr|Dra|Dres|Drs|drec|ds|dt|dta|dte|dupl|dv|econ|ed|Emm|entl|esp|espf|esq|etc|exc|Excm|Excma|exp|exped|ext|fac|fca|febr|gov|gr|gral|hab|Hble|Il·lm|Il·lma|Il·ltre|Im|Ima|imp|impr|impt|inc|insp|int|inv|jul|jurispr|leg|llic|loc|ltda|làm|Mgfc|Mgfca|mil·l|Mn|màx|mín|nov|nre|núm|oct|op|paq|pda|pg|pl|ppda|ppt|pral|prev|prof|progr|prov|pta|ptes|ptge|pvt|pàg|rbla|ref|rev|secr|sgt|sotsp|Sr|Sra|Sres|Srs|St|Sta|subsp|supl|supt|telegr|trad|trans|transcr|transf|tripl|trv|tt|tèc|univ|urb|veg|vid|vig|vocab|vs|àt|íd)<exception
                         postag="NP.*" postag_regexp="yes"/><exception regexp="yes">(?-i)dC|DJ|CF|AP|CT|AG|GR|CPT|DG</exception></token>
                 </marker>
                 <token><exception>.</exception></token>
@@ -50904,7 +50931,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <url>https://www.ub.edu/cub/criteri.php?id=372</url>
             <rule>
                 <pattern case_sensitive="yes">
-                    <token regexp="yes">AADD|DDAA|AAVV|VVAA</token>
+                    <token regexp="yes">AADD|DDAA|VVAA</token>
                 </pattern>
                 <message>L'abreviatura de 'diversos autors' és <suggestion>d. a.</suggestion>. En les bibliografies es recomana no utilitzar-la.</message>
                 <example correction="D. a."><marker>DDAA</marker> (1990). La pesca de la truita. Editorial Peixatera.</example>
@@ -50913,7 +50940,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <pattern case_sensitive="yes">
                     <token>AA</token>
                     <token>.</token>
-                    <token regexp="yes">DD|VV</token>
+                    <token>DD</token>
                     <token>.</token>
                 </pattern>
                 <message>L'abreviatura de 'diversos autors' és <suggestion>d. a.</suggestion>. En les bibliografies es recomana no utilitzar-la.</message>
@@ -50928,6 +50955,25 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 </pattern>
                 <message>L'abreviatura de 'diversos autors' és <suggestion>d. a.</suggestion>. En les bibliografies es recomana no utilitzar-la.</message>
                 <example correction="D. a."><marker>DD.AA.</marker> (1990). La pesca de la truita. Editorial Peixatera.</example>
+            </rule>
+        </rulegroup>
+        <rulegroup id="AV" name="abreviatura de: associació de veïns:">
+            <rule>
+                <pattern case_sensitive="yes">
+                    <token>AAVV</token>
+                </pattern>
+                <message>L'abreviatura de 'associació de veïns' és <suggestion>AV</suggestion> tant en singular com en plural.</message>
+                <example correction="AV">Les <marker>AAVV</marker> no es van pronunciar.</example>
+            </rule>
+            <rule>
+                <pattern>
+                     <token>AA</token>
+                    <token>.</token>
+                    <token>VV</token>
+                    <token>.</token>
+                </pattern>
+                <message>L'abreviatura de 'associació de veïns' és <suggestion>AV</suggestion> tant en singular com en plural.</message>
+                <example correction="AV">Les <marker>AA.VV.</marker> no es van pronunciar.</example>
             </rule>
         </rulegroup>
         <rule id="I_O" name="i/o: fórmula innecèssaria">

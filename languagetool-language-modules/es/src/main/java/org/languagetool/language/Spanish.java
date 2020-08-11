@@ -191,7 +191,8 @@ public class Spanish extends Language implements AutoCloseable{
       case "LO_LOS": return 30;
       case "SE_CREO": return 25; // less than DIACRITICS_VERB_N_ADJ
       case "PRONOMBRE_SIN_VERBO": return 25; // inside CONFUSIONS, but less than other rules ?
-      case "MUCHO_NF": return 24; // greater than AGREEMENT_DET_NOUN
+      case "AGREEMENT_DET_ABREV": return 25; // greater than AGREEMENT_DET_NOUN
+      case "MUCHO_NF": return 25; // greater than AGREEMENT_DET_NOUN
       case "AGREEMENT_DET_NOUN": return 20;
       //case "PRONOMBRE_SIN_VERBO": return 20;
       case "AGREEMENT_DET_ADJ": return 10;
@@ -204,6 +205,7 @@ public class Spanish extends Language implements AutoCloseable{
       case "ES_WIKIPEDIA_COMMON_ERRORS": return -10;
       case "E_EL": return -10;
       case "EL_TILDE": return -10;
+      case "TOO_LONG_PARAGRAPH": return -15;
       case "PREP_VERB": return -20;
       case "SUBJUNTIVO_FUTURO": return -30;
       case "SUBJUNTIVO_PASADO": return -30;

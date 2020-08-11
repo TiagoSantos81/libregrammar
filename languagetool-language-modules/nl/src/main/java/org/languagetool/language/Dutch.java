@@ -150,6 +150,8 @@ public class Dutch extends Language {
       case LongSentenceRule.RULE_ID: return -1;
       case "KORT_1": return -5;
       case "KORT_2": return -5;  //so that spelling errors are recognized first
+      case "EINDE_ZIN_ONVERWACHT": return -5;  //so that spelling errors are recognized first
+      case "TOO_LONG_PARAGRAPH": return -15;
     }
     return super.getPriorityForId(id);
   }
