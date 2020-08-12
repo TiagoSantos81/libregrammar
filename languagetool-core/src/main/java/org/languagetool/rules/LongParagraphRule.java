@@ -20,10 +20,7 @@ package org.languagetool.rules;
 
 import java.io.IOException;
 import java.text.MessageFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 import org.languagetool.*;
 import org.languagetool.rules.Category.Location;
@@ -44,7 +41,7 @@ public class LongParagraphRule extends TextLevelRule {
 
   private int maxWords = DEFAULT_MAX_WORDS;
 
-  public LongParagraphRule(ResourceBundle messages, Language lang, UserConfig userConfig, int defaultWords, boolean defaultActive, List<Tag> tags) {
+  public LongParagraphRule(ResourceBundle messages, Language lang, UserConfig userConfig, int defaultWords, boolean defaultActive) {
     super(messages);
     super.setCategory(new Category(new CategoryId("CREATIVE_WRITING"), 
         messages.getString("category_creative_writing"), Location.INTERNAL, false));
@@ -62,21 +59,17 @@ public class LongParagraphRule extends TextLevelRule {
       }
     }
     setLocQualityIssueType(ITSIssueType.Style);
-    setTags(tags);
+    setTags(Arrays.asList(Tag.picky));
   }
 
   /** Note: will be off by default. */
   public LongParagraphRule(ResourceBundle messages, Language lang, UserConfig userConfig, int defaultWords) {
-    this(messages, lang, userConfig, defaultWords, DEFAULT_ACTIVATION, Collections.emptyList());
+    this(messages, lang, userConfig, defaultWords, DEFAULT_ACTIVATION);
   }
 
   /** Note: will be off by default. */
   public LongParagraphRule(ResourceBundle messages, Language lang, UserConfig userConfig) {
-    this(messages, lang, userConfig, -1, DEFAULT_ACTIVATION, Collections.emptyList());
-  }
-
-  public LongParagraphRule(ResourceBundle messages, Language lang, UserConfig userConfig, boolean defaultActive, List<Tag> tags) {
-    this(messages, lang, userConfig, DEFAULT_MAX_WORDS, defaultActive, tags);
+    this(messages, lang, userConfig, -1, DEFAULT_ACTIVATION);
   }
 
   @Override
