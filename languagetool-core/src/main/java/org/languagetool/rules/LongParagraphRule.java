@@ -59,7 +59,7 @@ public class LongParagraphRule extends TextLevelRule {
       }
     }
     setLocQualityIssueType(ITSIssueType.Style);
-    setTags(Arrays.asList(Tag.picky));
+    // setTags(Arrays.asList(Tag.picky)); XXX default rule in LibreGrammar
   }
 
   /** Note: will be off by default. */
