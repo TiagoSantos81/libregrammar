@@ -36,6 +36,10 @@ import org.languagetool.tagging.pt.PortugueseTagger;
 import org.languagetool.tokenizers.*;
 import org.languagetool.tokenizers.pt.PortugueseWordTokenizer;
 
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
@@ -48,6 +52,9 @@ public class Portuguese extends Language implements AutoCloseable {
   private static final Language PORTUGAL_PORTUGUESE = new PortugalPortuguese();
 
   private LanguageModel languageModel;
+
+  private static final Pattern APOSTROPHE = Pattern.compile("(\\p{L})'([\\p{L}\u202f\u00a0 !\\?,\\.;:])",
+      Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
 
   @Override
   public String getName() {
@@ -257,6 +264,45 @@ public class Portuguese extends Language implements AutoCloseable {
   /** @since 5.1 */
   public String getClosingQuote() {
     return "”";
+  }
+
+  @Override
+  public String toAdvancedTypography (String input) {
+    String output = input;
+
+    // Apostrophe and closing single quote
+    Matcher matcher = APOSTROPHE.matcher(output);
+    output = matcher.replaceAll("$1’$2");
+
+    // single quotes
+    if (output.startsWith("'")) { 
+      output = output.replaceFirst("'", "‘");
+    }
+    output = output.replaceAll("(['’ «\"])'", "$1‘");
+    if (output.endsWith("'")) { 
+      output = output.substring(0, output.length() - 1 ) + "’";
+    }
+
+    // aspas angulares
+    if (output.startsWith("«")) { 
+      output = output.replaceFirst("«", "“");
+    }
+    output = output.replaceAll(" «", " “");
+    if (output.endsWith("»")) { 
+      output = output.substring(0, output.length() - 1 ) + "”";
+    }
+
+    // guillemets
+    if (output.startsWith("\"")) { 
+      output = output.replaceFirst("\"", "“");
+    }
+    if (output.endsWith("\"")) { 
+      output = output.substring(0, output.length() - 1 ) + "”";
+    }
+    output = output.replaceAll(" \"", " “");
+    output = output.replaceAll("\"([\\u202f\\u00a0 !\\?,\\.;:])", "”$1");   
+
+    return output;
   }
 
 }
