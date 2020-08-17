@@ -16,34 +16,28 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301
  * USA
  */
-package org.languagetool.rules.es;
+package org.languagetool.rules.it;
 
-import java.util.ResourceBundle;
+import org.junit.Test;
+import org.languagetool.JLanguageTool;
+import org.languagetool.TestTools;
+import org.languagetool.language.Italian;
 
-import org.languagetool.AnalyzedTokenReadings;
-import org.languagetool.Language;
-import org.languagetool.rules.WordRepeatRule;
+import java.io.IOException;
 
-/**
- * Avoid false alarms in the word repetition rule.
- */
-public class SpanishWordRepeatRule extends WordRepeatRule {
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.is;
 
-  public SpanishWordRepeatRule(final ResourceBundle messages, final Language language) {
-    super(messages, language);
-  }
+public class ItalianWordRepeatRuleTest {
 
-  @Override
-  public String getId() {
-    return "SPANISH_WORD_REPEAT_RULE";
-  }
-
-  @Override
-  public boolean ignore(AnalyzedTokenReadings[] tokens, int position) {
-    if (position > 0 && (tokens[position].hasPosTag("_allow_repeat") || tokens[position-1].hasPosTag("_allow_repeat"))) {
-      return true;
-    }
-    return super.ignore(tokens, position);
+  @Test
+  public void testRule() throws IOException {
+    Italian lang = new Italian();
+    ItalianWordRepeatRule rule = new ItalianWordRepeatRule(TestTools.getEnglishMessages(), lang);
+    JLanguageTool lt = new JLanguageTool(lang);
+    assertThat(rule.match(lt.getAnalyzedSentence("Mi è sembrato così così")).length, is(0));
+    assertThat(rule.match(lt.getAnalyzedSentence("Duran Duran")).length, is(0));
+    assertThat(rule.match(lt.getAnalyzedSentence("Mi mi è sembrato così")).length, is(1));
   }
 
 }
