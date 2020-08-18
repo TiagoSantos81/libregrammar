@@ -2175,6 +2175,16 @@
       </pattern>
       <disambig action="replace"><wd pos="RG"/><wd pos="RG"/><wd pos="RG"/></disambig>
     </rule>
+    <rule>
+      <pattern>
+          <token postag='N.+' postag_regexp='yes'/>
+        <marker>
+          <token>a</token>
+          <token regexp='yes'>motor|gasóleo|gasolina|vapor</token>
+        </marker>
+      </pattern>
+      <disambig action="replace"><wd pos="RG"/><wd pos="RG"/></disambig>
+    </rule>
   </rulegroup>
 
     <rule id="MESMO" name="Mesmo">
