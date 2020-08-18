@@ -531,6 +531,18 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>(?:própri|mesm)o</token>
           <token postag='N.F.+' postag_regexp='yes'/>
       </antipattern>
+<!-- MARCOAGPINTO 2020-08-18 (2-JUL-2020+) *START* -->
+<!-- "Uma máquina a motor mais pesada que o ar." -->
+<!-- "Uma máquina a gasolina mais pesada que o ar." -->
+<!-- "A entrar no Império tão grande quantidade de escravos africanos." -->
+      <antipattern>
+		<token postag='V.+|NC[CFM]S000|AQ0[CFM]S0|CS|I|PT0CN000|RG' postag_regexp='yes'/>
+		<token regexp='yes'>a|ao|no|do|se|de|muito|pouco|cada|para|grande|pequeno|maior|menor</token>
+		<token postag='AQ0[CFM]S0|NC[CFM]S000' postag_regexp='yes'/>
+		<token postag='NC[CM]S000|NC[CM]N000|RG' postag_regexp='yes'/>
+		<token postag='NC[CF]S000|AQ0[CF]S0|VMP00SF' postag_regexp='yes'/>
+      </antipattern>	  
+<!-- MARCOAGPINTO 2020-08-18 (2-JUL-2020+) *END* -->
       <pattern>
           <token negate='yes' regexp='yes'>&hifen;</token>
         <marker>
@@ -574,6 +586,9 @@ title="Easy editing stylesheet" ?>
       <example>Surgiram centenas de pequenas habitações no reino.</example>
       <example>O Rui aprende e sugere ele próprio mensagens como sendo verdadeiras.</example>
       <example>O Rui aprende e sugere ele mesmo mensagens como sendo verdadeiras.</example>
+	  <example type='correct'>Uma máquina a <marker>motor mais pesada</marker> que o ar.</example>
+	  <example type='correct'>Uma máquina a <marker>gasolina mais pesada</marker> que o ar.</example>
+	  <example type='correct'>A entrar no <marker>Império tão grande quantidade</marker> de escravos africanos.</example>
     </rule>
     <rule>
       <antipattern>
@@ -9152,6 +9167,30 @@ title="Easy editing stylesheet" ?>
       <example correction="têm">Uns <marker>tem</marker> sorte no jogo.</example>
     </rule>
 
+    <rulegroup id='TIRAR_FOTOGRAFIA' name="Fotografar" default="temp_off">
+    <!--      Created by Marco A.G.Pinto, Portuguese rule - 2020-08-18     -->
+	 <rule>
+      <pattern>
+          <token inflected='yes'>tirar</token>
+		  <token min="0" regexp='yes'>umas?</token>
+		  <token regexp='yes'>fotografias?|fotos?</token>
+		  <token regexp='no'>ao</token>
+      </pattern>
+      <message>Substitua por <suggestion><match no='1' postag='V.+' postag_regexp='yes'>fotografar</match> o</suggestion></message>
+      <example correction="fotografar o">Vamos <marker>tirar uma fotografia ao</marker> Rui.</example>
+	 </rule>
+	 <rule>
+      <pattern>
+          <token inflected='yes'>tirar</token>
+		  <token min="0" regexp='yes'>umas?</token>
+		  <token regexp='yes'>fotografias?|fotos?</token>
+		  <token regexp='no'>à</token>
+      </pattern>
+      <message>Substitua por <suggestion><match no='1' postag='V.+' postag_regexp='yes'>fotografar</match> a</suggestion></message>
+      <example correction="fotografar a">Vamos <marker>tirar uma fotografia à</marker> Ana.</example>	  
+	 </rule>
+    </rulegroup>
+
     <!-- TOMARÁ LUGAR terá lugar -->
     <rule id='TOMARÁ_LUGAR' name="Terá lugar">
       <pattern>
@@ -9182,8 +9221,7 @@ title="Easy editing stylesheet" ?>
           <token>mais</token>
           <token>fácil</token>
       </pattern>
-      <message>Substitua por <match no='1' postag='V.+' postag_regexp='yes'>facilitar</match>.</message>
-        <suggestion><match no='1' postag='V.+' postag_regexp='yes'>facilitar</match></suggestion>
+      <message>Substitua por <suggestion><match no='1' postag='V.+' postag_regexp='yes'>facilitar</match></suggestion></message>
       <example correction="facilitar">As regras vão <marker>tornar mais fácil</marker> o jogo.</example>
     </rule>
 ?>

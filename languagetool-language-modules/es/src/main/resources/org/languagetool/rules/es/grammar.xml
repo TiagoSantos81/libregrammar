@@ -1100,7 +1100,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <rule>
                 <!-- Un termino -->
                 <pattern>
-                    <token postag="D[^RTEN].*" postag_regexp="yes"><exception regexp="yes">el|lo|la</exception><exception postag="PP.*" postag_regexp="yes"/> </token>
+                    <token postag="D[^RTEN].*" postag_regexp="yes"><exception regexp="yes">el|lo|la</exception><exception postag="PP.*" postag_regexp="yes"/></token>
                     <marker>
                         <token><exception postag="D.*|V.N.*|[NA].*|V.P.*" postag_regexp="yes"/></token>
                     </marker>
@@ -1128,6 +1128,19 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>Su abuela lo crio.</example>
                 <example>Para gente que no la practica.</example>
                 <!-- tu>tú-->
+            </rule>
+            <rule default="temp_off">
+                <!-- destacado interprete de -->
+                <pattern>
+                    <token postag="AQ.*|V.P.*" postag_regexp="yes"><exception regexp="yes">el|lo|la</exception><exception postag="PP.*" postag_regexp="yes"/></token>
+                    <marker>
+                        <token><exception postag="D.*|V.N.*|[NA].*|V.P.*" postag_regexp="yes"/></token>
+                    </marker>
+                </pattern>
+                <filter class="org.languagetool.rules.es.ConfusionCheckFilter" args="form:\2 postag:NC.* gendernumber_from:1"/>
+                <message>Si es adjetivo o nombre, se escribe con tilde.</message>
+                <suggestion>{suggestion}</suggestion>
+                <example correction="intérprete">Un destacado <marker>interprete</marker> de música clásica.</example>
             </rule>
             <rule>
                 <!-- La fabrica produjo -->
@@ -2808,7 +2821,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token postag="VMM.*" postag_regexp="yes"/>
             </antipattern>
             <antipattern>
-                <token regexp="yes">no|tampoco|ni|nunca</token>
+                <token regexp="yes">no|tampoco|ni|nunca|siquiera</token>
                 <token postag_regexp="yes" postag="&pronombre_personal_atono_POS;" min="0" max="2"/>
                 <token postag="VMSP[13]S0" postag_regexp="yes"/>
             </antipattern>
@@ -4090,7 +4103,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             </antipattern>
             <antipattern>
                 <token>este</token>
-                <token min="0" max="3" postag="N.*|A.*" postag_regexp="yes"/>
+                <token min="0" max="3" postag="N.[MC][SN].*|A..[MC][NS]." postag_regexp="yes"/>
                 <token postag="V.[MSI].*" postag_regexp="yes"><exception postag="V.[MSI].*|SENT_END" postag_regexp="yes" negate_pos="yes"/></token>
             </antipattern>
             <rule>
@@ -4108,6 +4121,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="esté">Cuando <marker>este</marker> muy cansado.</example>
                 <example correction="esté">Cuando <marker>este</marker> agotado.</example>
                 <example correction="esté">Aunque <marker>este</marker> cansada.</example>
+                <example correction="esté">Cuando tu orden <marker>este</marker> procesada pedimos la devolución.</example>
                 <example>Este diario es antiguo.</example>
             </rule>
             <rule>
@@ -9345,7 +9359,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             </rule>
         </rulegroup>
     </category>
-    <category id="STYLE" name="Estilo" type="style">
+    <category id="ESTILO" name="Estilo" type="style">
         <rulegroup id="MAMA" name="mama/mamá">
             <url>https://www.rae.es/dpd/mam%C3%A1</url>
             <antipattern>
@@ -10128,6 +10142,22 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rule>
     </category>
     <category id="CONFUSIONS" name="Confusiones">
+        <rule id="LAQUE" name="laque/la que" default="temp_off">
+            <antipattern>
+                <token postag="&pronombre_personal_atono_POS;" postag_regexp="yes"/>
+                <token>laque</token>
+            </antipattern>
+            <antipattern>
+                <token>laque</token>
+                <token postag="D.*" postag_regexp="yes"/>
+            </antipattern>
+            <pattern>
+                <token>laque</token>
+            </pattern>
+            <message>¿Quería decir <suggestion>la que</suggestion>? "Laque" es correcto si es del v. 'lacar'.</message>
+            <example correction="la que">Dame <marker>laque</marker> quieras.</example>
+            <example>Cuando se laque el pelo, no la reconocerás.</example>
+        </rule>
         <rulegroup id="OLA_HOLA" name="ola/hola">
             <rule>
                 <pattern>
