@@ -2185,6 +2185,18 @@
       </pattern>
       <disambig action="replace"><wd pos="RG"/><wd pos="RG"/></disambig>
     </rule>
+    <rule>
+      <pattern>
+          <token postag='N..P.+' postag_regexp='yes'/>
+        <marker>
+          <token>sem</token>
+          <token regexp='yes'>conta|fim|rumo|destino</token>
+        </marker>
+          <token>
+            <exception postag='N.FS.+' postag_regexp='yes'/></token>
+      </pattern>
+      <disambig action="replace"><wd pos="RG"/><wd pos="RG"/></disambig>
+    </rule>
   </rulegroup>
 
     <rule id="MESMO" name="Mesmo">
