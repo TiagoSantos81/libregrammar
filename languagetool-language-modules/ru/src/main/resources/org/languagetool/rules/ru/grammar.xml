@@ -3126,7 +3126,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
  
             <rule>
                 <pattern case_sensitive="yes">
-                    <token negate="yes" regexp="yes">&pnct;|к<exception postag="SENT_START"></exception></token>
+                    <token negate="yes" regexp="yes">&pnct;|к|а|но|да<exception postag="SENT_START"></exception></token>
                     <token>таким</token>
                     <token>как</token>
                 </pattern>
@@ -4157,7 +4157,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <pattern>
                     <token regexp="yes" >.*[а-яёa-z]</token>
                     <token spacebefore="no">—</token>
-                    <token regexp="yes" >[а-яёa-z].*</token>
+                    <token regexp="yes" >[а-яё].*</token>
                 </pattern>
                 <message>Перед и после тире должны быть пробелы: <suggestion>\1 \2 \3</suggestion></message>
                 <url>https://ru.wikipedia.org/wiki/%D0%A2%D0%B8%D1%80%D0%B5</url>
@@ -4169,7 +4169,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <pattern>
                     <token regexp="yes"  >.*[а-яёa-z]</token>
                     <token spacebefore="yes">—</token>
-                    <token regexp="yes" spacebefore="no" >[а-яёa-z].*</token>
+                    <token regexp="yes" spacebefore="no" >[а-яё].*</token>
                 </pattern>
                 <message>Перед и после тире должны быть пробелы: <suggestion>\1 \2 \3</suggestion></message>
                 <url>https://ru.wikipedia.org/wiki/%D0%A2%D0%B8%D1%80%D0%B5</url>
