@@ -2063,8 +2063,7 @@ though, and has since been slightly modified)-->
           <marker><token>ce</token></marker>
             <or>
               <token postag="V inf"/>
-              <!--Some verbe are recognize as noun -->
-              <token regexp="yes">placer</token>
+              <token>placer</token><!--Some verbs are recognize as nouns -->
             </or>
         </pattern>
         <message>Voulez-vous écrire <suggestion>se</suggestion> ?</message>
@@ -2088,11 +2087,11 @@ though, and has since been slightly modified)-->
       <example>C’est ma voiture.</example>
       <example>C’est ma préférée.</example>
     </rule>
-    <!-- mis en default="off" car cette règle génère des fausses alertes sur toutes les phrases avec un attribut du sujet, etc. -->
-    <rule default="off" id="SONT_SON" name="SONT au lieu de SON">
+    <rule id="SONT_SON" name="SONT au lieu de SON">
       <pattern>
         <marker><token>sont</token></marker>
-        <token postag="[NJ].*" postag_regexp="yes"/>
+        <token postag="[NJ] . s" postag_regexp="yes">
+          <exception postag="[NJ] . s?p" postag_regexp="yes"/></token>
       </pattern>
       <message>Voulez-vous écrire <suggestion>son</suggestion> ?</message>
       <example correction="son">Le problème c’est qu’apparemment elle n’a pas <marker>sont</marker> mot de passe...</example>
@@ -2190,7 +2189,7 @@ though, and has since been slightly modified)-->
       <example>La zone géographique dans laquelle je vis</example>
       <example>As-tu faim maintenant ?</example>
     </rule>
-    <rule default="off" id="CETTE_CEST" name="CETTE au lieu de C’EST">
+    <rule id="CETTE_CEST" name="CETTE au lieu de C’EST">
       <pattern>
         <marker>
           <token regexp="yes">cette|cet</token>
@@ -10643,7 +10642,7 @@ though, and has since been slightly modified)-->
         <example>Un État sans armée issu d'un processus de décolonisation.</example>
       </rule>
     </rulegroup>
-    <rulegroup id="NOM_DE_PAYS" name="Nom de pays sans majuscule" default="off">
+    <rulegroup id="NOM_DE_PAYS" name="Nom de pays sans majuscule">
       <!-- TODO: Improve, capitalization is not consistent in french -->
       <rule name="Noms de pays composés d'un token">
         <antipattern>
@@ -25675,7 +25674,7 @@ though, and has since been slightly modified)-->
       <example correction="hors champ|libre|de congé|en congé|arrêt|fermé"><marker>off</marker></example>
       <example><marker>hors champ</marker></example>
     </rule>
-    <rule id="PANEL" name="panel" default="off" tags="picky"><!-- disabled because of low acceptance (< 1%) / picky -->
+    <rule id="PANEL" name="panel" default="off"> <!--tags="picky"--><!-- disabled because of low acceptance (< 1%) / picky -->
       <pattern>
         <token regexp="yes">panels?</token>
       </pattern>
@@ -25740,7 +25739,7 @@ though, and has since been slightly modified)-->
       <example correction="incontournable|impératif|obligation|à ne pas manquer|à voir"><marker>must</marker></example>
       <example><marker>incontournable</marker></example>
     </rule>
-    <rule default="off" id="PARKING" name="parking">
+    <rule default="off" id="PARKING" name="parking"><!-- picky -->
       <pattern>
         <token regexp="yes">parkings?</token>
       </pattern>
@@ -25832,7 +25831,7 @@ though, and has since been slightly modified)-->
       <example correction="monte-charge|pont élévateur|chariot élévateur|prendre en voiture|voiturer|reconduire|ramener|déposer"><marker>lift</marker></example>
       <example><marker>monte-charge</marker></example>
     </rule>
-    <rule id="KIT" name="kit" default="off" tags="picky"><!-- disabled because of low acceptance (3%) / picky-->
+    <rule id="KIT" name="kit" default="off"><!-- tags="picky" --><!-- disabled because of low acceptance (3%) / picky-->
       <pattern>
         <token regexp="yes">kits?</token>
       </pattern>
@@ -26114,7 +26113,7 @@ though, and has since been slightly modified)-->
       <example correction="finette|pilou|flanelle de coton"><marker>flannelette</marker></example>
       <example><marker>finette</marker></example>
     </rule>
-    <rule default="off" id="FAN" name="fan">
+    <rule default="off" id="FAN" name="fan"><!-- picky -->
       <pattern>
         <token regexp="yes">fans?</token>
       </pattern>
@@ -26132,7 +26131,7 @@ though, and has since been slightly modified)-->
       <example correction="sentiment|impression"><marker>feeling</marker></example>
       <example><marker>impression</marker></example>
     </rule>
-    <rule default="off" id="FAX" name="fax">
+    <rule default="off" id="FAX" name="fax"><!-- picky -->
       <pattern>
         <token regexp="yes">faxs?|faxes</token>
       </pattern>
@@ -26158,7 +26157,7 @@ though, and has since been slightly modified)-->
       <suggestion>mélangeur</suggestion>
       <example correction="mélangeur"><marker>blender</marker></example>
     </rule>
-    <rule id="BRIEFING" name="briefing" default="off" tags="picky"><!-- disabled because of low acceptance (2 %) / picky -->
+    <rule id="BRIEFING" name="briefing" default="off"><!-- tags="picky"--><!-- disabled because of low acceptance (2 %) / picky -->
       <pattern>
         <token regexp="yes">briefings?</token>
       </pattern>
@@ -26572,7 +26571,7 @@ though, and has since been slightly modified)-->
         <example correction="clin d’aluminium"><marker>clapboard</marker></example>
       </rule>
     </rulegroup>
-    <rulegroup default="off" id="FAST_FOOD" name="fast food">
+    <rulegroup default="off" id="FAST_FOOD" name="fast food"><!-- picky -->
       <rule>
         <pattern>
           <token regexp="yes">fasts?</token>
@@ -26791,7 +26790,7 @@ though, and has since been slightly modified)-->
       <suggestion>verte</suggestion>
       <example correction="vert|verte"><marker>green</marker></example>
     </rule>
-    <rule id="BACHELOR" name="bachelor" default="off" tags="picky"><!-- disabled because of low acceptance  (1%) / picky -->
+    <rule id="BACHELOR" name="bachelor" default="off"><!-- tags="picky"--><!-- disabled because of low acceptance  (1%) / picky -->
     <antipattern>
         <token regexp="yes">bachelors?</token>
         <token regexp="yes">of|en|party|à</token>
@@ -27028,7 +27027,7 @@ though, and has since been slightly modified)-->
       <suggestion>dermabrasion</suggestion>
       <example correction="dermabrasion"><marker>peeling</marker></example>
     </rule>
-    <rule id="DRIVE" name="drive" default="off" tags="picky"><!-- disabled because of low acceptance  (1%) / picky -->
+    <rule id="DRIVE" name="drive" default="off"><!-- tags="picky"--><!-- disabled because of low acceptance  (1%) / picky -->
     <antipattern>
         <token regexp="yes">google|connected|one|rodeo|leclerc</token>
         <token>drive</token>
@@ -28374,7 +28373,7 @@ though, and has since been slightly modified)-->
       <example correction="chaîne stéréo"><marker>ghetto blaster</marker></example>
       <example><marker>chaîner stéréo</marker></example>
     </rule>
-    <rule default="off" id="MARKETING" name="marketing">
+    <rule default="off" id="MARKETING" name="marketing"><!-- picky -->
       <pattern>
         <token regexp="yes">mark[ée]tings?</token>
       </pattern>
@@ -28734,7 +28733,7 @@ though, and has since been slightly modified)-->
         <example><marker>jeu de guerre</marker></example>
       </rule>
     </rulegroup>
-    <rulegroup default="off" id="SNOWBOARD" name="snow(board)">
+    <rulegroup default="off" id="SNOWBOARD" name="snow(board)"><!-- picky -->
       <rule>
         <pattern>
           <token regexp="yes">snowboards?</token>
@@ -29560,7 +29559,7 @@ though, and has since been slightly modified)-->
       <suggestion>tueur en série</suggestion>
       <example correction="tueur en série"><marker>serial killer</marker></example>
     </rule>
-    <rule default="off" id="PODCAST" name="podcast">
+    <rule default="off" id="PODCAST" name="podcast"><!-- picky -->
       <pattern>
         <token regexp="yes">podcasts?</token>
       </pattern>
@@ -29891,7 +29890,7 @@ though, and has since been slightly modified)-->
       <suggestion>marchandisage</suggestion>
       <example correction="marchandisage"><marker>merchandising</marker></example>
     </rule>
-    <rule default="off" id="SEXY" name="sexy">
+    <rule default="off" id="SEXY" name="sexy"><!-- picky -->
       <pattern>
         <token regexp="yes">sexys?|sexies</token>
       </pattern>
@@ -29905,7 +29904,7 @@ though, and has since been slightly modified)-->
       <example correction="attrayant|séduisant|aguichant|suggestif|désirable|érotique"><marker>sexy</marker></example>
       <example><marker>attrayant</marker></example>
     </rule>
-    <rule default="off" id="SPONSOR" name="sponsor">
+    <rule default="off" id="SPONSOR" name="sponsor"><!-- picky -->
       <pattern>
         <token regexp="yes">sponsors?</token>
       </pattern>
@@ -31104,7 +31103,7 @@ though, and has since been slightly modified)-->
       <example>Le but de la Visio Karoli Grossi est clairement de légitimer la succession des Carolingiens.</example>
       <example>La Visio raconte comment le fier chevalier Tondale...</example>
     </rule>
-    <rule id="FORM" name="form" default="off">
+    <rule id="FORM" name="form" default="off"><!-- picky -->
       <pattern>
         <token regexp="yes">forms?</token>
       </pattern>
@@ -31466,18 +31465,18 @@ though, and has since been slightly modified)-->
       <example correction="8 %">Une croissance de <marker>8%</marker>.</example>
       <example correction="8,5 %">Une croissance de <marker>8,5%</marker>.</example>
     </rule>
-    <rule default="off" id="ALORS" name="alors (sans virgule après)">
+    <rule id="ALORS" name="alors (sans virgule après)"><!-- picky -->
       <pattern>
         <marker>
           <token>alors</token>
         </marker>
         <token><exception regexp="yes">[,.;!:\-?]|que|qu'</exception></token>
       </pattern>
-      <message>« Alors » (sans virgule après) peut être une faute de typographie. Employez une virgule (<suggestion>,</suggestion>) au besoin.</message>
-      <example correction=","><marker>alors</marker> il faut partir</example>
+      <message>« Alors » (sans virgule après) peut être une faute de typographie. Employez une virgule (<suggestion>\1,</suggestion>) au besoin.</message>
+      <example correction="alors,"><marker>alors</marker> il faut partir</example>
       <example><marker>alors</marker>,</example>
     </rule>
-    <rule default="off" id="DANS_CE_CAS" name="dans ce cas (sans virgule après)">
+    <rule id="DANS_CE_CAS" name="dans ce cas (sans virgule après)"><!-- picky -->
       <pattern>
         <marker>
           <token>dans</token>
@@ -31486,11 +31485,11 @@ though, and has since been slightly modified)-->
         </marker>
         <token><exception regexp="yes">[,.;!:\-?]</exception></token>
       </pattern>
-      <message>« Dans ce cas » (sans virgule après) peut être une faute de typographie. Employez une virgule (<suggestion>,</suggestion>) au besoin.</message>
-      <example correction=","><marker>dans ce cas</marker> il est certain</example>
+      <message>« Dans ce cas » (sans virgule après) peut être une faute de typographie. Employez une virgule (<suggestion>\1 \2 \3,</suggestion>) au besoin.</message>
+      <example correction="dans ce cas,"><marker>dans ce cas</marker> il est certain</example>
       <example><marker>dans ce cas</marker>, il est certain</example>
     </rule>
-    <rule default="off" id="ET_CE" name="et ce (sans virgule après)">
+    <rule id="ET_CE" name="et ce (sans virgule après)">
       <pattern>
         <marker>
           <token>et</token>
@@ -31498,8 +31497,8 @@ though, and has since been slightly modified)-->
         </marker>
         <token><exception regexp="yes">[,.;!:\-?n]</exception></token>
       </pattern>
-      <message>« Et ce » (sans virgule après) peut être une faute de typographie. Employez une virgule (<suggestion>,</suggestion>) au besoin.</message>
-      <example correction=","><marker>et ce</marker> blah blah</example>
+      <message>« Et ce » (sans virgule après) peut être une faute de typographie. Employez une virgule (<suggestion>\1 \2,</suggestion>) au besoin.</message>
+      <example correction="et ce,"><marker>et ce</marker> blah blah</example>
       <example><marker>et ce</marker>,</example>
     </rule>
     <rule id="PAR-LA" name="par-là">
@@ -31523,7 +31522,7 @@ though, and has since been slightly modified)-->
       <example correction="Au-dessus"><marker>Au dessus</marker></example>
       <example correction="par-dessus">Il est passé <marker>par dessus</marker> le mur.</example>
     </rule>
-    <rule default="off" id="EH" name="eh (sans virgule après)">
+    <rule id="EH" name="eh (sans virgule après)"><!-- picky -->
       <pattern>
         <marker>
           <token>eh</token>
@@ -31534,7 +31533,7 @@ though, and has since been slightly modified)-->
       <example correction="eh,"><marker>eh</marker> blah</example>
       <example><marker>eh</marker>,</example>
     </rule>
-    <rule default="off" id="EH_BIEN" name="eh bien (sans virgule après)">
+    <rule id="EH_BIEN" name="eh bien (sans virgule après)"><!-- picky -->
       <pattern>
         <marker>
           <token>eh</token>
@@ -32520,7 +32519,7 @@ though, and has since been slightly modified)-->
     </rule>  -->
 
     <!-- "off" par défaut car l’apostrophe ' est très courante -->
-    <rule id="APOS_TYP" name="apostrophe typographique (’)" default="off">
+    <rule id="APOS_TYP" name="apostrophe typographique (’)"><!-- picky -->
       <pattern>
         <token chunk="containsTypewriterApostrophe" regexp="yes">(.*)'(.*)<exception>'</exception></token>
       </pattern>
@@ -35144,7 +35143,7 @@ though, and has since been slightly modified)-->
       <suggestion>mon Dieu</suggestion>
       <example correction="Mon Dieu"><marker>Mon dieu</marker> !</example>
     </rule>
-    <rule id="DIEU" name="dieu" default="off"> <!-- TODO: too many false alarms -->
+    <rule id="DIEU" name="dieu"> <!-- picky -->
       <pattern case_sensitive="yes">
         <token>dieu<exception postag="D.*" postag_regexp="yes" scope="previous"/></token>
       </pattern>

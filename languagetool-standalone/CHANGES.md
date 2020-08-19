@@ -75,6 +75,11 @@
   * various fixes and improvements to abstract replacement rules, including:
     - retrieve only the longest string when matches overlap;
     - possibility of adding exceptions.
+  * back-end work to allow tagging rule as 'picky', so a subset of rules can be
+    optionally activated.
+    LibreGrammar does not use this implementation yet and activates by default a rule set
+    considered adequate for formal writing, which includes many rules tagged as 'picky'
+    in the upstream project.
 
 ## 5.0 ( 2020-10-01)
 
