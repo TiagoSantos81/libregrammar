@@ -259,6 +259,30 @@ public class English extends Language implements AutoCloseable {
   public boolean hasNGramFalseFriendRule(Language motherTongue) {
     return motherTongue != null && ("de".equals(motherTongue.getShortCode()) || "fr".equals(motherTongue.getShortCode()));
   }
+  
+  /** @since 5.1 */
+  @Override
+  public String getOpeningDoubleQuote() {
+    return "“";
+  }
+
+  /** @since 5.1 */
+  @Override
+  public String getClosingDoubleQuote() {
+    return "”";
+  }
+  
+  /** @since 5.1 */
+  @Override
+  public String getOpeningSingleQuote() {
+    return "‘";
+  }
+
+  /** @since 5.1 */
+  @Override
+  public String getClosingSingleQuote() {
+    return "’";
+  }
 
   /**
    * Closes the language model, if any. 

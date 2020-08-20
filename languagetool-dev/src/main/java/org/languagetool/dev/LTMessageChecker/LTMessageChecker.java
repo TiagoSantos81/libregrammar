@@ -16,7 +16,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301
  * USA
  */
-package org.languagetool.dev.checkLTmessages;
+package org.languagetool.dev.LTMessageChecker;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -36,15 +36,15 @@ import org.languagetool.tools.StringTools;
  * Checks LanguageTool messages, short messages and rule descriptions, using LanguageTool itself.
  */
 
-public class checkLTmessages {
+public class LTMessageChecker {
 
   public static void main(String[] args)
       throws IOException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
     if (args.length != 1) {
-      System.out.println("Usage: " + checkLTmessages.class.getSimpleName() + " <langCode> | ALL");
+      System.out.println("Usage: " + LTMessageChecker.class.getSimpleName() + " <langCode> | ALL");
       System.exit(1);
     }
-    checkLTmessages check = new checkLTmessages();
+    LTMessageChecker check = new LTMessageChecker();
     long start = System.currentTimeMillis();
     if (args[0].equalsIgnoreCase("all")) {
       for (Language lang : Languages.get()) {
@@ -73,9 +73,6 @@ public class checkLTmessages {
         // do nothing
       }
       String shortMessage = "";
-      // PatternRule pr = new PatternRule("", lang, null, "", "", "");
-      // pr.getShortMessage();
-
       try {
         Method m = r.getClass().getMethod("getShortMessage", null);
         shortMessage = (String) m.invoke(r);
@@ -83,8 +80,8 @@ public class checkLTmessages {
         // do nothing
       }
       if (!message.isEmpty()) {
-        message = message.replaceAll("<suggestion>", lang.getOpeningQuote()).replaceAll("</suggestion>",
-            lang.getClosingQuote());
+        message = message.replaceAll("<suggestion>", lang.getOpeningDoubleQuote()).replaceAll("</suggestion>",
+            lang.getClosingDoubleQuote());
         message = message.replaceAll("<[^>]+>", "");
         message = lang.toAdvancedTypography(message);
       }
