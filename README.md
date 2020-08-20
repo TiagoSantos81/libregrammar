@@ -1,4 +1,4 @@
-## [[![LibreGrammar](https://travis-ci.org/TiagoSantos81/languagetool.png)](https://travis-ci.org/TiagoSantos81/languagetool)
+## LibreGrammar[![Build Status](https://travis-ci.org/TiagoSantos81/languagetool.png)](https://travis-ci.org/TiagoSantos81/languagetool)
 
 This is a **LanguageTool** fork, an Open Source proofreading software for English, French, German,
 Polish, Portuguese, Russian, and [other 30 languages](https://github.com/TiagoSantos81/languagetool/tree/master/languagetool-language-modules).
