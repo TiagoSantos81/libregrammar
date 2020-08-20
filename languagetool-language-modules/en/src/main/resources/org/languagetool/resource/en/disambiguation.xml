@@ -3332,6 +3332,13 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <token postag="RB"/>
             <token postag="VBD"/>
         </antipattern>
+        <antipattern><!-- #3310 will doing that help? -->
+            <token postag="MD"/>
+            <token postag="VBG"/>
+            <token postag="DT"/>
+            <token postag="VBP"/>
+            <token>?</token>
+        </antipattern>
         <pattern>
             <token postag="DT"><exception postag="PDT"/><exception regexp="yes">th[eo]se|much</exception></token>
             <marker>
@@ -3347,6 +3354,8 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
       <example type="untouched">[No full stop at the end of the sentence] … to gain a much better understanding</example>
       <example type="untouched">... compared with last year, this year's crops are much better.</example>
       <example type="untouched">... on the way to the Enron Broadband/BMC agreement since we last spoke.</example>
+      <example type="untouched">Will doing that help?</example><!-- #3310 help/E-NP-singular -->
+      <example type="untouched">... but might using this work?</example><!-- #3310 -->
     </rule>
 
     <rule name="verb + pronoun + inconsistent verb > noun" id="VB_PRP_NN">
@@ -4744,6 +4753,20 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
                 <token>all</token>
                 <token>over</token>
             </antipattern>
+            <antipattern><!-- #3326 incorrect grammar: this mean its working? -->
+                <token regexp="yes">this|that</token>
+                <token postag_regexp="yes" postag="VB[PD]"/>
+                <token>its</token>
+                <token postag="VBG"/>
+                <token>?</token>
+            </antipattern>
+            <antipattern><!-- #3326 might using this work? -->
+                <token postag="MD"/>
+                <token postag="VBG"/>
+                <token postag="DT"/>
+                <token postag="VBP"/>
+                <token>?</token>
+            </antipattern>
             <pattern>
                 <token postag="DT|PRP\$" postag_regexp="yes">
                     <exception regexp="yes">th[eo]se|no|much</exception>
@@ -4777,6 +4800,8 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <example type="untouched">Our windows were dirty, but this product is excellent; it has made many cleaner.</example><!-- #3257 -->
             <example type="untouched">... which were all first produced synthetically.</example><!-- #3352 -->
             <example type="untouched">I'm sore all over.</example><!-- #3376 -->
+            <example type="untouched">Does this mean its working?</example><!-- #3326 -->
+            <example type="untouched">.... but might using this work?</example><!-- #3326 word/E-NP-singular -->
             <example type="ambiguous" inputform="work[work/JJ,work/NN:UN,work/VB,work/VBP]" outputform="work[work/NN:UN]">How about we do this <marker>work</marker>?</example>
             <example type="ambiguous" inputform="business[business/JJ,business/NN:UN]" outputform="business[business/NN:UN]">My <marker>business</marker> is great!</example>
         </rule>
@@ -8659,6 +8684,29 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
       </pattern>
       <disambig action="replace"><wd pos="NNP"/><wd pos="NNP"/></disambig>
     </rule>
+
+    <rulegroup name="Proper noun: plc" id="PLC">
+        <rule>
+            <pattern>
+                <token case_sensitive="yes" regexp="yes">
+                    [A-Z].*
+                </token>
+                <marker>
+                    <token>plc</token>
+                </marker>
+            </pattern>
+            <disambig action="add"><wd pos="NNP"/></disambig>
+        </rule>
+        <rule>
+            <pattern>
+                <token postag="NNP" />
+                <marker>
+                    <token>plc</token>
+                </marker>
+            </pattern>
+            <disambig action="add"><wd pos="NNP"/></disambig>
+        </rule>
+    </rulegroup>
 
     <rule name="Proper noun: Encyclopædia X" id="ENCYCLOPÆDIA_X"><!-- The correct spelling uses a ligature: https://corporate.britannica.com/contact/; www.iranicaonline.org.-->
       <pattern case_sensitive="yes">

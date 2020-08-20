@@ -1120,6 +1120,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="fábricas">Salía de esas <marker>fabricas</marker> a un precio bajo.</example>
                 <example correction="filósofo">Fue un <marker>filosofo</marker> estrambótico</example>
                 <example correction="título">¿Por qué le pondría ese <marker>titulo</marker>?</example>
+                <example correction="estómago">Me duele mi <marker>estomago</marker>.</example>
                 <example>una diatonica y no una tremolo</example>
                 <example>Este opera desde el domingo pasado.</example>
                 <example>¿Por qué decimos esto?</example>
@@ -1207,6 +1208,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="fórmula">La <marker>formula</marker> de inspiración.</example>
                 <example>Que nadie participe de ellos.</example>
                 <example>No puedo describir con palabras cuánto echo de menos a Tom.</example>
+                <example>Silencio o los echo de aquí.</example>
             </rule>
             <!-- adjectives -->
             <rule>
@@ -1372,10 +1374,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="lío">Tengo <marker>lio</marker> con todo esto.</example>
                 <example>Se lio con esto.</example>
             </rule>
-            <rule default="temp_off">
+            <rule>
                 <!-- destacado interprete de (only adjectives usually before the noun -->
                 <pattern>
-                    <token postag="AQ.*|V.P.*" postag_regexp="yes" inflected="yes" regexp="yes">nuevo|gran|destacado|mismo|apreciable<exception regexp="yes">el|lo|la</exception><exception postag="PP.*" postag_regexp="yes"/></token>
+                    <token postag="AQ.*|V.P.*" postag_regexp="yes" inflected="yes" regexp="yes">santo|referir|dicho|nuevo|gran|destacado|mismo|apreciable<exception regexp="yes">el|lo|la</exception><exception postag="PP.*" postag_regexp="yes"/></token>
                     <marker>
                         <token><exception postag="D.*|V.N.*|[NA].*|V.P.*" postag_regexp="yes"/></token>
                     </marker>
@@ -1385,8 +1387,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <suggestion>{suggestion}</suggestion>
                 <example correction="intérprete">Un destacado <marker>interprete</marker> de música clásica.</example>
             </rule>
-            <rule default="temp_off">
-                <!-- destacado interprete de (only adjectives usually before the noun -->
+            <rule>
+                <!-- destacados interpretes (plural) -->
                 <pattern>
                     <token postag="AQ..P.|V.P..P." postag_regexp="yes"><exception regexp="yes">el|lo|la</exception><exception postag="PP.*" postag_regexp="yes"/></token>
                     <marker>
@@ -4418,7 +4420,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token>hacia</token>
                 </marker>
             </pattern>
-            <message>Si es del verbo "hacer", lleva tilde.</message>
+            <message>Si es del v. 'hacer', lleva tilde.</message>
             <suggestion>\1 hacía</suggestion>
             <example correction="se hacía">Eso <marker>se hacia</marker> mal.</example>
             <example correction="le hacía">Eso <marker>le hacia</marker> mal.</example>
@@ -8522,7 +8524,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                         <token postag="D..MS." postag_regexp="yes"/>
                     </unify>
                 </pattern>
-                <message>Esta expresión debe concordar en ǵenero y número.</message>
+                <message>Esta expresión debe concordar en género y número.</message>
                 <suggestion><match no="3" postag_regexp="yes" postag="(V.P.*|AQ.*)" postag_replace="V.P..SM|A..MS."/></suggestion>
                 <example correction="hecho">Se da por <marker>hecha</marker> el resultado.</example>
                 <example correction="supuesto">Se da por <marker>supuesta</marker> el resultado.</example>
@@ -8540,7 +8542,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                         <token postag="D..FP." postag_regexp="yes"/>
                     </unify>
                 </pattern>
-                <message>Esta expresión debe concordar en ǵenero y número.</message>
+                <message>Esta expresión debe concordar en género y número.</message>
                 <suggestion><match no="3" postag_regexp="yes" postag="(V.P.*|AQ.*)" postag_replace="V.P..PF|A..FP."/></suggestion>
                 <example correction="hechas">Se da por <marker>hecho</marker> las crisis.</example>
                 <example correction="supuestas">Se da por <marker>supuesto</marker> las crisis.</example>
@@ -8558,7 +8560,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                         <token postag="D..MP." postag_regexp="yes"/>
                     </unify>
                 </pattern>
-                <message>Esta expresión debe concordar en ǵenero y número.</message>
+                <message>Esta expresión debe concordar en género y número.</message>
                 <suggestion><match no="3" postag_regexp="yes" postag="(V.P.*|AQ.*)" postag_replace="V.P..PM|A..MP."/></suggestion>
                 <example correction="hechos">Se da por <marker>hecho</marker> los resultados.</example>
                 <example correction="supuestos">Se da por <marker>supuesta</marker> los resultados.</example>
@@ -8584,7 +8586,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                         <token postag="D..FS." postag_regexp="yes"/>
                     </unify>
                 </pattern>
-                <message>Esta expresión debe concordar en ǵenero y número.</message>
+                <message>Esta expresión debe concordar en género y número.</message>
                 <suggestion><match no="2" postag_regexp="yes" postag="(V.P.*|AQ.*)" postag_replace="V.P..SF|A..FS."/></suggestion>
                 <example correction="prevista">Está <marker>previsto</marker> la profundización de la crisis.</example>
             </rule>
@@ -8600,7 +8602,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                         <token postag="D..MS." postag_regexp="yes"/>
                     </unify>
                 </pattern>
-                <message>Esta expresión debe concordar en ǵenero y número.</message>
+                <message>Esta expresión debe concordar en género y número.</message>
                 <suggestion><match no="2" postag_regexp="yes" postag="(V.P.*|AQ.*)" postag_replace="V.P..SM|A..MS."/></suggestion>
                 <example correction="previsto">Tenía <marker>prevista</marker> el resultado.</example>
             </rule>
@@ -8616,7 +8618,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                         <token postag="D..FP." postag_regexp="yes"/>
                     </unify>
                 </pattern>
-                <message>Esta expresión debe concordar en ǵenero y número.</message>
+                <message>Esta expresión debe concordar en género y número.</message>
                 <suggestion><match no="2" postag_regexp="yes" postag="(V.P.*|AQ.*)" postag_replace="V.P..PF|A..FP."/></suggestion>
                 <example correction="previstas">Estaban <marker>previstos</marker> las crisis.</example>
             </rule>
@@ -8632,7 +8634,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                         <token postag="D..MP." postag_regexp="yes"/>
                     </unify>
                 </pattern>
-                <message>Esta expresión debe concordar en ǵenero y número.</message>
+                <message>Esta expresión debe concordar en género y número.</message>
                 <suggestion><match no="2" postag_regexp="yes" postag="(V.P.*|AQ.*)" postag_replace="V.P..PM|A..MP."/></suggestion>
                 <example correction="previstos">Tenían <marker>previsto</marker> los resultados.</example>
                 <example>¿Tienen <marker>previsto</marker> los dioses hacerme una visita?</example>
@@ -9510,7 +9512,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token min="0">-</token>
                     <token>time</token>
                 </pattern>
-                <message>Anglicismo inecesario.</message>
+                <message>Anglicismo innecesario.</message>
                 <suggestion>media jornada</suggestion>
                 <suggestion>a medio tiempo</suggestion>
                 <example correction="media jornada|a medio tiempo"><marker>half-time</marker></example>
@@ -9521,7 +9523,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token min="0">-</token>
                     <token>time</token>
                 </pattern>
-                <message>Anglicismo inecesario.</message>
+                <message>Anglicismo innecesario.</message>
                 <suggestion>dedicación parcial</suggestion>
                 <suggestion>dedicación no exclusiva</suggestion>
                 <suggestion>a tiempo parcial</suggestion>
