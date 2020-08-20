@@ -51,10 +51,10 @@ public class AnnotatedTextTest {
   @Test
   public void testInterpretAsAfter() throws IOException {
     //"trouuvé" should be "trouvé"
-    String textToCheck = "J'ai trouuv&eacute; le livre.";
+    String textToCheck = "J’ai trouuv&eacute; le livre.";
 
     AnnotatedTextBuilder builder = new AnnotatedTextBuilder()
-      .addText("J'ai trouuv")
+      .addText("J’ai trouuv")
       .addMarkup("&eacute;", "é")
       .addText(" le livre.");
     
@@ -67,12 +67,12 @@ public class AnnotatedTextTest {
   @Test
   public void testWithSimpleMarkup() throws IOException {
     //"louper" should be "loupé"
-    String textToCheck = "J'ai louper le train.<span> Ce n'était pas dans mes habitudes.</span>";
+    String textToCheck = "J’ai louper le train.<span> Ce n’était pas dans mes habitudes.</span>";
 
     AnnotatedTextBuilder builder = new AnnotatedTextBuilder()
-      .addText("J'ai louper le train.")
+      .addText("J’ai louper le train.")
       .addMarkup("<span>")
-      .addText(" Ce n'était pas dans mes habitudes.")
+      .addText(" Ce n’était pas dans mes habitudes.")
       .addMarkup("</span>");
 
     RuleMatch match = lt.check(builder.build()).get(0);
@@ -83,12 +83,12 @@ public class AnnotatedTextTest {
   @Test
   public void testWithMultipleSimpleMarkup() throws IOException {
     //"louper" should be "loupé"
-    String textToCheck = "J'ai louper le train.<span> Ce n'était pas dans mes habitudes.</span>";
+    String textToCheck = "J’ai louper le train.<span> Ce n’était pas dans mes habitudes.</span>";
 
     AnnotatedTextBuilder builder = new AnnotatedTextBuilder()
-      .addText("J'ai louper le train.")
+      .addText("J’ai louper le train.")
       .addMarkup("<span>")
-      .addText(" Ce n'était pas dans mes habitudes.")
+      .addText(" Ce n’était pas dans mes habitudes.")
       .addMarkup("</span>")
       .addMarkup("<span>")
       .addMarkup("</span>");
@@ -120,12 +120,12 @@ public class AnnotatedTextTest {
   @Test
   public void testWithBr() throws IOException {
     //"louper" should be "loupé"
-    String textToCheck = "J'ai louper le train.<br/> Ce n'était pas dans mes habitudes.";
+    String textToCheck = "J’ai louper le train.<br/> Ce n’était pas dans mes habitudes.";
 
     AnnotatedTextBuilder builder = new AnnotatedTextBuilder()
-      .addText("J'ai louper le train.")
+      .addText("J’ai louper le train.")
       .addMarkup("<br/>", "\n")
-      .addText(" Ce n'était pas dans mes habitudes.");
+      .addText(" Ce n’était pas dans mes habitudes.");
 
     RuleMatch match = lt.check(builder.build()).get(0);
     String markedWord = textToCheck.substring(match.getFromPos(), match.getToPos());
