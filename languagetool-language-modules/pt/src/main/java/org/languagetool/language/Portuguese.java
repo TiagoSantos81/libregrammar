@@ -255,54 +255,29 @@ public class Portuguese extends Language implements AutoCloseable {
     }
     return 0;
   }
-  
+
   /** @since 5.1 */
-  public String getOpeningQuote() {
+  @Override
+  public String getOpeningDoubleQuote() {
     return "“";
   }
 
   /** @since 5.1 */
-  public String getClosingQuote() {
+  @Override
+  public String getClosingDoubleQuote() {
     return "”";
   }
-
+  
+  /** @since 5.1 */
   @Override
-  public String toAdvancedTypography (String input) {
-    String output = input;
+  public String getOpeningSingleQuote() {
+    return "‘";
+  }
 
-    // Apostrophe and closing single quote
-    Matcher matcher = APOSTROPHE.matcher(output);
-    output = matcher.replaceAll("$1’$2");
-
-    // single quotes
-    if (output.startsWith("'")) { 
-      output = output.replaceFirst("'", "‘");
-    }
-    output = output.replaceAll("(['’ «\"])'", "$1‘");
-    if (output.endsWith("'")) { 
-      output = output.substring(0, output.length() - 1 ) + "’";
-    }
-
-    // aspas angulares
-    if (output.startsWith("«")) { 
-      output = output.replaceFirst("«", "“");
-    }
-    output = output.replaceAll(" «", " “");
-    if (output.endsWith("»")) { 
-      output = output.substring(0, output.length() - 1 ) + "”";
-    }
-
-    // guillemets
-    if (output.startsWith("\"")) { 
-      output = output.replaceFirst("\"", "“");
-    }
-    if (output.endsWith("\"")) { 
-      output = output.substring(0, output.length() - 1 ) + "”";
-    }
-    output = output.replaceAll(" \"", " “");
-    output = output.replaceAll("\"([\\u202f\\u00a0 !\\?,\\.;:])", "”$1");   
-
-    return output;
+  /** @since 5.1 */
+  @Override
+  public String getClosingSingleQuote() {
+    return "’";
   }
 
 }
