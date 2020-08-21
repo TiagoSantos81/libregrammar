@@ -1720,9 +1720,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="quiénes">No sabía <marker>quienes</marker> lo hicieron.</example>
                 <example>Yo no soy quien lo ha dicho.</example>
             </rule>
-            <!--
-                The distinction quien/quién is almost irrelevant in these cases
-                <rule>
+            <rule><!-- picky -->
+            <!-- The distinction quien/quién is almost irrelevant in these cases -->
                 <pattern>
                     <token>según</token>
                     <marker>
@@ -1748,7 +1747,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="quién">Dependía de <marker>quien</marker> lo dijera.</example>
                 <example correction="quiénes">Independientemente de <marker>quienes</marker> sean, los denunciaremos.</example>
             </rule>
-             -->
         </rulegroup>
         <rulegroup id="QUE_TAL" name="que/qué tal">
             <antipattern>
