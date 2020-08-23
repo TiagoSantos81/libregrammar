@@ -52,6 +52,7 @@ import java.util.concurrent.TimeUnit;
 public abstract class AbstractSimpleReplaceRule2 extends Rule {
 
   private final Language language;
+  private boolean subRuleSpecificIds;
 
   public abstract String getFileName();
   @Override
@@ -98,6 +99,14 @@ public abstract class AbstractSimpleReplaceRule2 extends Rule {
     this.language = Objects.requireNonNull(language);
     super.setCategory(Categories.MISC.getCategory(messages));
     wrongWords = loadWords(JLanguageTool.getDataBroker().getFromRulesDirAsStream(getFileName()), isCaseSensitive());
+  }
+
+  /**
+   * If this is set, each replacement pair will have its own rule ID, making rule deactivations more specific.
+   * @since 5.1
+   */
+  public void useSubRuleSpecificIds() {
+    subRuleSpecificIds = true;
   }
 
   /**
@@ -198,6 +207,13 @@ public abstract class AbstractSimpleReplaceRule2 extends Rule {
     }
   }
 
+  /**
+   * Used if each input form the replacement file has its specific id.
+   */
+  public String getDescription(String details) {
+    return null;
+  }
+
   @Override
   public RuleMatch[] match(AnalyzedSentence sentence) {
     List<RuleMatch> ruleMatches = new ArrayList<>();
@@ -248,7 +264,14 @@ public abstract class AbstractSimpleReplaceRule2 extends Rule {
           }
           int startPos = prevTokensList.get(len - crtWordCount).getStartPos();
           int endPos = prevTokensList.get(len - 1).getEndPos();
-          RuleMatch ruleMatch = new RuleMatch(this, sentence, startPos, endPos, msg, getShort());
+          RuleMatch ruleMatch;
+          if (subRuleSpecificIds) {
+            String desc = getDescription(crt + " / " + msgSuggestions.replace("<suggestion>", "").replace("</suggestion>", ""));
+            String id = getId() + "_" + crt.toUpperCase().replace(" ", "_");
+            ruleMatch = new RuleMatch(new SpecificIdRule(id, desc, messages), sentence, startPos, endPos, msg, getShort());
+          } else {
+            ruleMatch = new RuleMatch(this, sentence, startPos, endPos, msg, getShort());
+          }
           if (!isCaseSensitive() && StringTools.startsWithUppercase(crt)) {
             for (int k = 0; k < replacements.size(); k++) {
               replacements.set(k, StringTools.uppercaseFirstChar(replacements.get(k)));
@@ -307,4 +330,27 @@ public abstract class AbstractSimpleReplaceRule2 extends Rule {
     }
   }
 */
+
+  static class SpecificIdRule extends AbstractSimpleReplaceRule {
+    private final String id;
+    private final String desc;
+    SpecificIdRule(String id, String desc, ResourceBundle messages) {
+      super(messages);
+      this.id = Objects.requireNonNull(id);
+      this.desc = desc;
+    }
+    @Override
+    protected Map<String, List<String>> getWrongWords() {
+      throw new RuntimeException("not implemented");
+    }
+    @Override
+    public String getId() {
+      return id;
+    }
+    @Override
+    public String getDescription() {
+      return desc;
+    }
+  }
+
 }

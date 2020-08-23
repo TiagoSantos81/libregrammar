@@ -47,6 +47,7 @@ public class SimpleReplaceRule extends AbstractSimpleReplaceRule2 {
 
   public SimpleReplaceRule(ResourceBundle messages) throws IOException {
     super(messages, new Dutch());
+    useSubRuleSpecificIds();
     setLocQualityIssueType(ITSIssueType.Misspelling);
     setCategory(new Category(new CategoryId("VERGISSINGEN"), "Vergissingen"));
     addExamplePair(Example.wrong("<marker>ofzo</marker>."),
@@ -66,6 +67,15 @@ public class SimpleReplaceRule extends AbstractSimpleReplaceRule2 {
   @Override
   public String getDescription() {
     return "Snelle correctie van veel voorkomende vergissingen";
+  }
+
+  @Override
+  public String getDescription(String details) {
+    if (details != null) {
+      return "Snelle correctie van veel voorkomende vergissingen: " + details;
+    } else {
+      return getDescription();
+    }
   }
 
   @Override
