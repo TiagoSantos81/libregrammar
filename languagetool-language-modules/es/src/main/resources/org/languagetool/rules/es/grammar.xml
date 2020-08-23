@@ -1724,28 +1724,23 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <!-- The distinction quien/quién is almost irrelevant in these cases -->
                 <pattern>
                     <token>según</token>
-                    <marker>
-                        <token regexp="yes">quien|quienes</token>
-                    </marker>
-                    <token regexp="yes">[,\.\?!]</token>
+                    <token regexp="yes">quien|quienes</token>
                 </pattern>
                 <message>Se escribe con tilde si equivale a 'qué persona'. Sin tilde si equivale a 'la persona que'.</message>
-                <suggestion><match no="2" regexp_match="(?iu)quien" regexp_replace="quién"/></suggestion>    
-                <example correction="quién">Según <marker>quien</marker> lo diga, le creemos o no.</example>
-                <example correction="quiénes">Según <marker>quienes</marker> sean, lo haremos o no.</example>
+                <suggestion>\1 <match no="2" regexp_match="(?iu)quien" regexp_replace="quién"/></suggestion>    
+                <example correction="Según quién"><marker>Según quien</marker> lo diga, le creemos o no.</example>
+                <example correction="Según quiénes"><marker>Según quienes</marker> sean, lo haremos o no.</example>
             </rule>
-            <rule>
+            <rule><!-- picky -->
                 <pattern>
                     <token regexp="yes" inflected="yes">depender|independientemente</token>
                     <token>de</token>
-                    <marker>
-                        <token regexp="yes">quien|quienes</token>
-                    </marker>
+                    <token regexp="yes">quien|quienes</token>
                 </pattern>
                 <message>Se escribe con tilde si equivale a 'qué persona'. Sin tilde si equivale a 'la persona que'.</message>
-                <suggestion><match no="3" regexp_match="(?iu)quien" regexp_replace="quién"/></suggestion>    
-                <example correction="quién">Dependía de <marker>quien</marker> lo dijera.</example>
-                <example correction="quiénes">Independientemente de <marker>quienes</marker> sean, los denunciaremos.</example>
+                <suggestion>\1 \2 <match no="3" regexp_match="(?iu)quien" regexp_replace="quién"/></suggestion>    
+                <example correction="Dependía de quién"><marker>Dependía de quien</marker> lo dijera.</example>
+                <example correction="Independientemente de quiénes"><marker>Independientemente de quienes</marker> sean, los denunciaremos.</example>
             </rule>
         </rulegroup>
         <rulegroup id="QUE_TAL" name="que/qué tal">
@@ -6333,7 +6328,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token>haber</token>
                     <token regexp="yes">qu[eé]</token>
                 </pattern>
-                <message>¿Quería decir <suggestion>a ver qué</suggestion>?</message>
+                <message>Posible confusión del verbo «ver» con el verbo «haber». ¿Quería decir <suggestion>a ver qué</suggestion>?</message>
                 <example correction="a ver qué">Mirad esto, <marker>haber que</marker> opináis.</example>
                 <example>Tiene en su haber el Campeonato del Mundo.</example>
             </rule>
