@@ -52,6 +52,7 @@ public class EnglishSimpleGrammarRule extends AbstractSimpleReplaceRule2 {
   public EnglishSimpleGrammarRule(ResourceBundle messages) throws IOException {
     super(messages, new English());
     super.setCategory(Categories.GRAMMAR.getCategory(messages));
+    useSubRuleSpecificIds();
     setLocQualityIssueType(ITSIssueType.Grammar);
     addExamplePair(Example.wrong("<marker>their had</marker>"),
                    Example.fixed("<marker>there had</marker>"));

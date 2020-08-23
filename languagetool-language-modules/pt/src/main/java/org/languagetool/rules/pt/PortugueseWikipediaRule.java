@@ -55,6 +55,7 @@ public class PortugueseWikipediaRule extends AbstractSimpleReplaceRule2 {
   public PortugueseWikipediaRule(ResourceBundle messages) throws IOException {
     super(messages, new Portuguese());
     super.setCategory(Categories.WIKIPEDIA.getCategory(messages));
+    useSubRuleSpecificIds();
     setLocQualityIssueType(ITSIssueType.Grammar);
     addExamplePair(Example.wrong("<marker>mais também</marker>"),
                    Example.fixed("<marker>mas também</marker>"));

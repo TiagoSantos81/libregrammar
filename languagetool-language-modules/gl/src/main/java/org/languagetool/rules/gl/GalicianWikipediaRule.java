@@ -60,6 +60,7 @@ public class GalicianWikipediaRule extends AbstractSimpleReplaceRule2 {
     super(messages, new Galician());
     super.setCategory(Categories.WIKIPEDIA.getCategory(messages));
     setLocQualityIssueType(ITSIssueType.Grammar);
+    useSubRuleSpecificIds();
     addExamplePair(Example.wrong("<marker>a efectos de</marker>"),
                    Example.fixed("<marker>para os efectos de</marker>"));
   }
