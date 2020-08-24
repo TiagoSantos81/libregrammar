@@ -9240,9 +9240,9 @@ title="Easy editing stylesheet" ?>
       <pattern>
           <token inflected='yes' regexp="yes">ser|fazer|ter</token>
           <token min="0">um</token>
-          <token>trabalho</token>
-          <token min="0" regexp="yes">não|mal</token>
         <marker>
+          <token regexp='yes'>trabalhos?</token>
+          <token min="0" regexp="yes">não|mal</token>
           <token>pago</token>
         </marker>
       </pattern>
@@ -9254,31 +9254,30 @@ title="Easy editing stylesheet" ?>
     <rule id='AMOSTRA_DE_ARTE' name="Mostra de arte">
     <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
       <pattern>
-          <token regexp='yes'>uma|a</token>
-        <marker>
-          <token>amostra</token>
-        </marker>
+          <token regexp='yes'>amostras?</token>
           <token>de</token>
           <token>arte</token>
       </pattern>
-      <message>Substitua por <suggestion>mostra</suggestion>.</message>
+      <message>Substitua por <suggestion><match no='1' regexp_match='amostra(s?)$' regexp_replace='mostra$1'/> \2 \3</suggestion>.</message>
       <url>https://pt.wiktionary.org/wiki/mostra</url>
-      <example correction="mostra">Quero ver a <marker>amostra</marker> de arte.</example>
+      <example correction="mostra de arte">Quero ver a <marker>amostra de arte</marker>.</example>
     </rule>
 
-    <rule id='SUBSTANTIVO_PLURAL_E_CHAVE' name="Substantivo-chave" default="temp_off">
+    <rule id='SUBSTANTIVO_PLURAL_E_CHAVE' name="Substantivo-chave">
     <!--      Created by Marco A.G.Pinto, Portuguese rule 2020-08-23      -->
       <pattern>
         <marker>
-          <token postag='NC[CFM]P000' postag_regexp='yes'/>
-          <token>chave</token>
+          <token postag='NC.P.+' postag_regexp='yes'>
+            <exception postag='[DV].+' postag_regexp='yes'/></token>
+          <token regexp='yes'>alvo|chave</token>
         </marker>
       </pattern>
-      <message>Utilize a forma composta.</message>
-	  <suggestion>\1-chave</suggestion>
+      <message>Esta combinação forma uma palavra composta.</message>
+	    <suggestion>\1-\2</suggestion>
       <example correction="conceitos-chave">Na tese temos vários <marker>conceitos chave</marker>.</example>
+      <example correction="públicos-alvo"><marker>públicos alvo</marker>.</example>
     </rule>
-	
+
     <rule id='VÍDEO_CONFERÊNCIA' name="Videoconferência">
     <!-- Created by Marco A.G. Pinto, Portuguese rule -->
       <pattern>

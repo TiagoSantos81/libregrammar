@@ -215,7 +215,8 @@ public class Portuguese extends Language implements AutoCloseable {
       case "HOMOPHONE_AS_CARD":         return  5;
       case "TODOS_FOLLOWED_BY_NOUN_PLURAL":    return  3;
       case "TODOS_FOLLOWED_BY_NOUN_SINGULAR":  return  2;
-      case "EMAIL":                     return  1;
+      case "EMAIL":                            return  1;
+      case "SUBSTANTIVO_PLURAL_E_CHAVE":       return  1;
       case "PASSIVE_VOICE_GENDER_AGREEMENT":   return -1;
       case "PASSIVE_VOICE_NUMBER_AGREEMENT":   return -2;
       case "UNPAIRED_BRACKETS":         return -5;
