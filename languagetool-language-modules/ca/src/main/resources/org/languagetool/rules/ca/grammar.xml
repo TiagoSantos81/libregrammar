@@ -4163,9 +4163,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token inflected="yes">ser</token>
                 <token>resultat</token>
             </antipattern>
+            <antipattern>
+                <token inflected="yes">veure<exception postag="_reflexiu"/></token>
+            </antipattern>
             <rule>
                 <pattern>
-                    <token postag="V.[SI].3P.*" postag_regexp="yes" inflected="yes" regexp="yes">ser|estar|restar|quedar|romandre</token>
+                    <token postag="V.[SI].3P.*" postag_regexp="yes" inflected="yes" regexp="yes">ser|estar|restar|quedar|romandre|veure</token>
                     <token postag="VMP.*S.." postag_regexp="yes"><exception postag="N.*" postag_regexp="yes"/></token>
                 </pattern>
                 <message>Possible error de concordança.</message>
@@ -4173,16 +4176,18 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <suggestion>\1 <match no="2" postag="(VMP.*)S(..)" postag_regexp="yes" postag_replace="$1P$2"/></suggestion>
                 <example correction="És atribuït|Són atribuïts"><marker>Són atribuït</marker>.</example>
                 <example correction="sigui atribuïda|siguin atribuïdes">Quan <marker>siguin atribuïda</marker>.</example>
+                <example correction="vegi obligada|vegin obligades">Quan es <marker>vegin obligada</marker>.</example>
                 <example>És atribuït</example>
                 <example>Són atribuïdes.</example>
                 <example>Són resultat de la seva recerca.</example>
                 <example>Eren presa fàcil.</example>
                 <example>Ja sigui mullats o eixuts.</example>
                 <example>No eren pecat</example>
+                <example>Cal que vegin obligat fer-ho.</example>
             </rule>
             <rule>
                 <pattern>
-                    <token postag="V.[SI].3S.*" postag_regexp="yes" inflected="yes" regexp="yes">ser|estar|restar|quedar|romandre<exception postag="_GN_.*" postag_regexp="yes"/></token>
+                    <token postag="V.[SI].3S.*" postag_regexp="yes" inflected="yes" regexp="yes">ser|estar|restar|quedar|romandre|veure<exception postag="_GN_.*" postag_regexp="yes"/></token>
                     <token postag="VMP.*P.." postag_regexp="yes"/>
                 </pattern>
                 <message>Possible error de concordança.</message>
@@ -4190,6 +4195,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <suggestion><match no="1" postag="(V.[SI].3)S(.*)" postag_regexp="yes" postag_replace="$1P$2"/> \2</suggestion>
                 <example correction="És atribuït|Són atribuïts"><marker>És atribuïts</marker>.</example>
                 <example correction="estigui feta|estiguin fetes">que <marker>estigui fetes</marker>.</example>
+                <example correction="vegi feta|vegin fetes">que es <marker>vegi fetes</marker>.</example>
                 <example>És atribuït</example>
                 <example>Són atribuïdes.</example>
                 <example>I la resta elegits per sufragi universal.</example>
@@ -4198,7 +4204,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <rule>
                 <pattern>
                     <token postag="V.[SI].3P.*" postag_regexp="yes" inflected="yes" regexp="yes">anar|haver</token>
-                    <token postag="V.[PN].*" postag_regexp="yes" inflected="yes" regexp="yes">ser|estar|restar|quedar|romandre</token>
+                    <token postag="V.[PN].*" postag_regexp="yes" inflected="yes" regexp="yes">ser|estar|restar|quedar|romandre|veure</token>
                     <token postag="VMP.*S.." postag_regexp="yes"><exception postag="N.*" postag_regexp="yes"/></token>
                 </pattern>
                 <message>Possible error de concordança.</message>
@@ -4211,7 +4217,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <rule>
                 <pattern>
                     <token postag="V.[SI].3S.*" postag_regexp="yes" inflected="yes" regexp="yes">anar|haver</token>
-                    <token postag="V.[PN].*" postag_regexp="yes" inflected="yes" regexp="yes">ser|estar|restar|quedar|romandre</token>
+                    <token postag="V.[PN].*" postag_regexp="yes" inflected="yes" regexp="yes">ser|estar|restar|quedar|romandre|veure</token>
                     <token postag="VMP.*P.." postag_regexp="yes"/>
                 </pattern>
                 <message>Possible error de concordança.</message>
@@ -4219,6 +4225,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <suggestion><match no="1" postag="(V.[SI].3)S(.*)" postag_regexp="yes" postag_replace="$1P$2"/> \2 \3</suggestion>
                 <example correction="Ha estat atribuït|Han estat atribuïts"><marker>Ha estat atribuïts</marker>.</example>
                 <example correction="Va ser feta|Van ser fetes|Varen ser fetes"><marker>Va ser fetes</marker>.</example>
+                <example correction="va veure obligada|van veure obligades|varen veure obligades">Es <marker>va veure obligades</marker> a fer-ho.</example>
             </rule>
         </rulegroup>
         <rulegroup id="CONCORD_SUBJECTE_VERB" name="concordança subjecte verb.">
@@ -26858,6 +26865,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>no admet que li "llegeixin la cartilla"</example>
                 <example>Hi, hi, hi</example>
                 <example>i ens en fem càrrec</example>
+                <example>No sé com ho fem.</example>
             </rule>
         </rulegroup>
         <rulegroup id="PRONOMS_FEBLES_TEMPS_VERBAL" name="Comprova temps verbal (infinitiu, gerundi, imperatiu): *diguéssim-li-ho">
@@ -28871,6 +28879,60 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
     </category>
     <category id="TYPOGRAPHY_OPTIONS" name="B) Opcions de tipografia" type="typographical">
         <!-- TODO: separador de milers: coma o espai fi -->
+        <rulegroup id="CA_INITIAL_QUESTION_MARK" name="Signes de exclamació/interrogació sense parella" default="temp_off">
+            <antipattern>
+                <token skip="-1">¿<exception scope="next">¿</exception></token>
+                <token>?</token>
+            </antipattern>
+            <antipattern>
+                <token skip="-1">¡<exception scope="next">¡</exception></token>
+                <token>!</token>
+            </antipattern>
+            <rule>
+                <pattern>
+                    <token skip="-1">¿</token>
+                    <marker>
+                        <token postag="SENT_END"><exception regexp="yes">!|\.</exception></token>
+                    </marker>
+                </pattern>
+                <message>Símbol d'interrogación sense parella.</message>
+                <suggestion>\2?</suggestion>
+                <example correction="ací?">¿Què és el que passa <marker>ací</marker></example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token skip="-1">¿</token>
+                    <marker>
+                        <token postag="SENT_END" regexp="yes">!|\.</token>
+                    </marker>
+                </pattern>
+                <message>Símbol d'interrogación sense parella.</message>
+                <suggestion>?</suggestion>
+                <example correction="?">¿Què passa aquí<marker>.</marker></example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token skip="-1">¡</token>
+                    <marker>
+                        <token postag="SENT_END"><exception regexp="yes">\?|\.</exception></token>
+                    </marker>
+                </pattern>
+                <message>Símbol d'exclamació sense parella.</message>
+                <suggestion>\2!</suggestion>
+                <example correction="bonic!">¡Que <marker>bonic</marker></example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token skip="-1">¡</token>
+                    <marker>
+                        <token postag="SENT_END" regexp="yes">\?|\.</token>
+                    </marker>
+                </pattern>
+                <message>Símbol d'exclamació sense parella.</message>
+                <suggestion>!</suggestion>
+                <example correction="!">¡Que bonic<marker>.</marker></example>
+            </rule>
+        </rulegroup>
         <rulegroup id="PUNT_EN_HORES" name="punt en les expressions d'hores" default="off">
             <url>http://esadir.cat/entrades/fitxa/node/leshores</url>
             <!--<url>https://aplicacions.llengua.gencat.cat/llc/AppJava/index.html;jsessionid=6E692BAB1070977E6DD710A6AAED2D07?action=Principal&amp;method=detall&amp;input_cercar=hores&amp;numPagina=1&amp;database=FITXES_PUB&amp;idFont=12804&amp;idHit=12804&amp;tipusFont=Fitxes+de+l%27Optimot&amp;numeroResultat=2&amp;databases_avansada=&amp;categories_avansada=&amp;clickLink=detall&amp;titol=Les+hores%3A+amb+lletres+o+amb+xifres%3F+%2F+Com+s%27escriuen+les+hores%3F&amp;tematica=&amp;tipusCerca=cerca.fitxes</url>-->

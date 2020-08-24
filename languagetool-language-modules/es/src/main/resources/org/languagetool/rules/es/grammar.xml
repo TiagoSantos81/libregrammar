@@ -6055,6 +6055,18 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example correction="huso">En el <marker>uso</marker> horario de las Canarias.</example>
             <example correction="husos">En otros <marker>usos</marker> horarios.</example>
         </rule>
+        <rule id="PARTICIPIO_MS" name="haber + participio masc. sing" default="temp_off">
+            <pattern>
+                <token inflected="yes">haber<exception>hay</exception></token>
+                <marker>
+                    <token postag="V.P...F|V.P..PM" postag_regexp="yes"><exception postag="_GN_.*" postag_regexp="yes"/></token>
+                </marker>
+            </pattern>
+            <message>¿Quería decir <suggestion><match no="2" postag="(V.P.*)" postag_regexp="yes" postag_replace="V.P..SM"/></suggestion>?</message>
+            <example correction="salpicado">El escándolo ha <marker>salpicada</marker> a todo el mundo.</example>
+            <example correction="salpicado">El escándolo ha <marker>salpicadas</marker> a todo el mundo.</example>
+            <example>Había determinadas posibilidades,</example>
+        </rule>
         <rulegroup id="AE_COMIDO" name="Tiempos compuestos 'a' o 'e' + participio">
             <rule id="A_PARTICIPIO" name="a + participio">
                 <antipattern>
@@ -10228,6 +10240,17 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rule>
     </category>
     <category id="CONFUSIONS" name="Confusiones">
+        <rule id="VEMOS_HEMOS" name="vemos/hemos" default="temp_off">
+            <pattern>
+                <marker>
+                    <token>vemos</token>
+                </marker>
+                <token postag="V.P..SM" postag_regexp="yes"/>
+            </pattern>
+            <message>¿Quería decir <suggestion>hemos</suggestion></message>
+            <example correction="hemos">Nos <marker>vemos</marker> visto obligados a hacerlo.</example>
+            <example>Nos vemos obligados a hacerlo.</example>
+        </rule>
         <rule id="LAQUE" name="laque/la que">
             <antipattern>
                 <token postag="&pronombre_personal_atono_POS;" postag_regexp="yes"/>
@@ -11978,6 +12001,60 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rule>
     </category>
     <category id="TYPOGRAPHY" name="Tipografía" type="typographical">
+        <rulegroup id="ES_INITIAL_QUESTION_MARK" name="Signos de exclamación/interrogación desparejados" default="temp_off">
+            <antipattern>
+                <token skip="-1">¿<exception scope="next">¿</exception></token>
+                <token>?</token>
+            </antipattern>
+            <antipattern>
+                <token skip="-1">¡<exception scope="next">¡</exception></token>
+                <token>!</token>
+            </antipattern>
+            <rule>
+                <pattern>
+                    <token skip="-1">¿</token>
+                    <marker>
+                        <token postag="SENT_END"><exception regexp="yes">!|\.</exception></token>
+                    </marker>
+                </pattern>
+                <message>Símbolo de interrogación desparejado.</message>
+                <suggestion>\2?</suggestion>
+                 <example correction="pasa?">¿Qué es lo que <marker>pasa</marker></example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token skip="-1">¿</token>
+                    <marker>
+                        <token postag="SENT_END" regexp="yes">!|\.</token>
+                    </marker>
+                </pattern>
+                <message>Símbolo de interrogación desparejado.</message>
+                <suggestion>?</suggestion>
+                <example correction="?">¿Qué es lo que pasa aquí<marker>.</marker></example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token skip="-1">¡</token>
+                    <marker>
+                        <token postag="SENT_END"><exception regexp="yes">\?|\.</exception></token>
+                    </marker>
+                </pattern>
+                <message>Símbolo de exclamación desparejado.</message>
+                <suggestion>\2!</suggestion>
+                <example correction="bonito!">¡Qué <marker>bonito</marker></example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token skip="-1">¡</token>
+                    <marker>
+                        <token postag="SENT_END" regexp="yes">\?|\.</token>
+                    </marker>
+                </pattern>
+                <message>Símbolo de exclamación desparejado.</message>
+                <suggestion>!</suggestion>
+                <example correction="!">¡Qué bonito<marker>.</marker></example>
+            </rule>
+        </rulegroup>
         <rulegroup id="INCORRECT_SPACES" name="espacios sobrantes">
             <rule>
                 <antipattern>
