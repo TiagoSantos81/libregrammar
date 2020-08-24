@@ -9243,12 +9243,13 @@ title="Easy editing stylesheet" ?>
         <marker>
           <token regexp='yes'>trabalhos?</token>
           <token min="0" regexp="yes">não|mal</token>
+          <token min="0" regexp="yes">&hifen;</token>
           <token>pago</token>
         </marker>
       </pattern>
       <message>Substitua por <suggestion>remunerado</suggestion>.</message>
       <url>https://pt.wiktionary.org/wiki/remunerado</url>
-      <example correction="remunerado">O Rui faz trabalho não <marker>pago</marker> de noite.</example>
+      <example correction="trabalho não remunerado">O Rui faz <marker>trabalho não pago</marker> de noite.</example>
     </rule>
 
     <rule id='AMOSTRA_DE_ARTE' name="Mostra de arte">
