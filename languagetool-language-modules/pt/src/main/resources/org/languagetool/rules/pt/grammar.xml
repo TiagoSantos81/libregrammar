@@ -9235,22 +9235,38 @@ title="Easy editing stylesheet" ?>
     </rule>
 ?>
 
-    <rule id='TRABALHO_PAGO' name="trabalho remunerado">
+  <rulegroup id='TRABALHO_PAGO' name="trabalho remunerado">
     <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
+    <rule>
       <pattern>
           <token inflected='yes' regexp="yes">ser|fazer|ter</token>
           <token min="0">um</token>
         <marker>
           <token regexp='yes'>trabalhos?</token>
           <token min="0" regexp="yes">não|mal</token>
-          <token min="0" regexp="yes" spacebefore='no'>&hifen;</token>
           <token>pago</token>
         </marker>
       </pattern>
-      <message>Substitua por <suggestion><match no='1' include_skipped='all'/> <match no='2' include_skipped='all'/><match no='3' include_skipped='all'/>remunerado</suggestion>.</message>
+      <message>Substitua por <suggestion>\3 <match no='4' include_skipped='all'/> remunerado</suggestion>.</message>
       <url>https://pt.wiktionary.org/wiki/remunerado</url>
       <example correction="trabalho não remunerado">O Rui faz <marker>trabalho não pago</marker> de noite.</example>
     </rule>
+    <rule>
+      <pattern>
+          <token inflected='yes' regexp="yes">ser|fazer|ter</token>
+          <token min="0">um</token>
+        <marker>
+          <token regexp='yes'>trabalhos?</token>
+          <token regexp="yes">não|mal</token>
+          <token regexp="yes" spacebefore='no'>&hifen;</token>
+          <token>pago</token>
+        </marker>
+      </pattern>
+      <message>Substitua por <suggestion><match no='3' include_skipped='all'/> <match no='4' include_skipped='all'/><match no='5' include_skipped='all'/>remunerado</suggestion>.</message>
+      <url>https://pt.wiktionary.org/wiki/remunerado</url>
+      <example correction="trabalho não-remunerado">O Rui faz <marker>trabalho não-pago</marker> de noite.</example>
+    </rule>
+  </rulegroup>
 
     <rule id='AMOSTRA_DE_ARTE' name="Mostra de arte">
     <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
