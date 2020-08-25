@@ -9123,7 +9123,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>dins o fora</example>
             </rule>
         </rulegroup>
-        <rulegroup id="DONCS_CAUSAL" name="*'doncs' causal">
+        <rulegroup id="DONCS_CAUSAL" name="'doncs' causal">
             <!-- La regla aprofita que és més probable que després del 'doncs' il·latiu hi hagi un verb
                 i darrere del 'doncs' causal un subjecte.
                 False alarm: que allò que no veuen, doncs simplement no existeix. -->
@@ -17003,7 +17003,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             </antipattern>
             <rule>
                 <pattern>
-                    <token spacebefore="yes">d<exception postag="_possible_nompropi|NP.*" postag_regexp="yes"/></token>
+                    <token spacebefore="yes" case_sensitive="yes">d</token>
                     <!--<token postag="N.*|A.*|V.P.*|D.*|P.*" postag_regexp="yes"/>-->
                     <token regexp="yes">h?[aeiouàèéíòóú].*<exception regexp="yes">h?[ui][aeioàèéóòu].*|hosts?|ouija|el|els|&noms_lletres;|iure|&mots_HAC_ASPIRADA;|&mots_HAC_ASPIRADA2;|oro</exception><exception postag="AO.*|hac_aspirada|mot_foraster|UNKNOWN|V.[MSI].*" postag_regexp="yes"/></token>
                 </pattern>
@@ -17012,6 +17012,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="d'altres">I <marker>d altres</marker>.</example>
                 <example>És de veritat.</example>
                 <example>Més amb B, C i D que amb les altres.</example>
+                <example>D</example>
             </rule>
             <rule>
                 <pattern>
@@ -17025,11 +17026,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <short>Possible confusió</short>
                 <example correction="D'església"><marker>D església</marker>.</example>
                 <example>La D representa el deuteri.</example>
+                <example>D</example>
             </rule>
             <rule>
                 <pattern>
-                    <token spacebefore="yes">d<exception postag="_possible_nompropi|NP.*" postag_regexp="yes"/></token>
-                    <token postag="N.*|A.*|V.P.*|D.*|P.*" postag_regexp="yes"><exception regexp="yes">el|els</exception></token>
+                    <token spacebefore="yes" case_sensitive="yes">d</token>
+                    <token postag="N.*|A.*|V.P.*|D.*|P.*" postag_regexp="yes" regexp="yes">.+<exception regexp="yes">el|els</exception></token>
                 </pattern>
                 <message>¿Volíeu dir <suggestion>de \2</suggestion>?</message>
                 <short>Possible confusió</short>
@@ -17037,19 +17039,21 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>És de veritat.</example>
                 <example>Més amb B, C i D que amb les altres.</example>
                 <example>La t i la d soles es transcriuen com a to i do respectivament.</example>
+                <example>D</example>
             </rule>
             <rule>
                 <pattern>
                     <token postag="SENT_START"/>
                     <marker>
                         <token>d</token>
-                        <token postag="N.*|A.*|V.P.*|D.*|P.*" postag_regexp="yes"><exception regexp="yes">el|els</exception></token>
+                        <token postag="N.*|A.*|V.P.*|D.*|P.*" postag_regexp="yes" regexp="yes">.+<exception regexp="yes">el|els</exception></token>
                     </marker>
                 </pattern>
                 <message>¿Volíeu dir <suggestion>de \3</suggestion>?</message>
                 <short>Possible confusió</short>
                 <example correction="De veritat"><marker>D veritat</marker>.</example>
                 <example>La D representa el deuteri.</example>
+                <example>D</example>
             </rule>
             <rule>
                 <pattern>
@@ -23412,7 +23416,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 </marker>
             </antipattern>
             <antipattern>
-                <token case_sensitive="yes">D<exception postag="SENT_START"/></token>
+                <token case_sensitive="yes">D<exception scope="previous" postag="SENT_START"/></token>
             </antipattern>
             <rule>
                 <antipattern>
@@ -23433,6 +23437,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>l'article d'El Mundo</example>
                 <example>en la madrassa d'al-Ḥallāwāya</example>
                 <example>Va ser el dia D el mes passat.</example>
+                <example>D</example>
             </rule>
             <rule>
                 <pattern>
@@ -23442,6 +23447,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <message>Cal escriure: <suggestion>dels</suggestion>.</message>
                 <example correction="dels"><marker>de els</marker> camins</example>
                 <example correction="dels"><marker>d'als</marker> voltants</example>
+                <example>D</example>
             </rule>
             <rule>
                 <pattern>
@@ -28879,13 +28885,42 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
     </category>
     <category id="TYPOGRAPHY_OPTIONS" name="B) Opcions de tipografia" type="typographical">
         <!-- TODO: separador de milers: coma o espai fi -->
-        <rulegroup id="CA_INITIAL_QUESTION_MARK" name="Signes de exclamació/interrogació sense parella" default="temp_off">
+        <rulegroup id="CA_INITIAL_QUESTION_MARK" name="Signes de exclamació/interrogació sense parella">
             <antipattern>
                 <token skip="-1">¿<exception scope="next">¿</exception></token>
                 <token>?</token>
             </antipattern>
             <antipattern>
                 <token skip="-1">¡<exception scope="next">¡</exception></token>
+                <token>!</token>
+            </antipattern>
+            <antipattern>
+                <!-- TODO: generalize -->
+                <token>¿</token>
+                <token skip="-1">¿</token>
+                <token>?</token>
+                <token>?</token>
+            </antipattern>
+            <antipattern>
+                <token>¡</token>
+                <token skip="-1">¡</token>
+                <token>!</token>
+                <token>!</token>
+            </antipattern>
+            <antipattern>
+                <token>¿</token>
+                <token>¿</token>
+                <token skip="-1">¿</token>
+                <token>?</token>
+                <token>?</token>
+                <token>?</token>
+            </antipattern>
+            <antipattern>
+                <token>¡</token>
+                <token>¡</token>
+                <token skip="-1">¡</token>
+                <token>!</token>
+                <token>!</token>
                 <token>!</token>
             </antipattern>
             <rule>
@@ -31463,7 +31498,18 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rulegroup>
     </category>
     <category id="INCORRECT_EXPRESSIONS" name="Expressions incorrectes" type="grammar">
-        <rulegroup id="PAL_A_LAIGUA" name="*no donar pal a l'aigua/no fer-ne ni brot" default="temp_off">
+        <rule id="EUA" name="sigles d'Estats Units d'Amèrica">
+            <pattern>
+                <token>EE</token>
+                <token>.</token>
+                <token>UU</token>
+                <token>.</token>
+            </pattern>
+            <message>Les sigles d'Estats Units d'Amèrica són <suggestion>EUA</suggestion>.</message>
+            <example correction="EUA">Van emigrar als <marker>EE. UU.</marker></example>
+            <example correction="EUA">Van emigrar als <marker>EE.UU.</marker></example>
+        </rule>
+        <rulegroup id="PAL_A_LAIGUA" name="*no donar pal a l'aigua/no fer-ne ni brot">
             <rule>
                 <pattern>
                     <token regexp="yes">no|sense|ni|tampoc|mai</token>
@@ -31529,7 +31575,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="No en fas mai un brot|No en fas mai ni un brot"><marker>No fots mai un pal a l'aigua</marker>.</example>
             </rule>
         </rulegroup>
-        <rule id="PER_CAMES" name="*per cames/cames ajudeu-me" default="temp_off">
+        <rule id="PER_CAMES" name="*per cames/cames ajudeu-me">
             <pattern>
                 <token>per</token>
                 <token>cames</token>
