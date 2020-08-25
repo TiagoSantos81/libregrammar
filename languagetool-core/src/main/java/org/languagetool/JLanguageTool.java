@@ -906,6 +906,7 @@ public class JLanguageTool {
     List<RuleMatch> remoteMatches = new LinkedList<>();
     List<FutureTask<RemoteRuleResult>> remoteRuleTasks = null;
     List<RemoteRule> remoteRules = new LinkedList<>();
+    long remoteRuleCheckStart = System.currentTimeMillis();
     // map by sentence index, as the same sentence can be repeated multiple times in a text
     // -> need to distinguish offsets / matches
     Map<Integer, List<RuleMatch>> cachedResults = new HashMap<>();
@@ -918,11 +919,16 @@ public class JLanguageTool {
     }
 */
 
+    long textCheckStart = System.currentTimeMillis();
     List<RuleMatch> ruleMatches = performCheck(analyzedSentences, sentences, allRules,
       paraMode, annotatedText, listener, mode, level);
+    long textCheckEnd = System.currentTimeMillis();
 
 /*
     fetchRemoteRuleResults(mode, level, analyzedSentences, remoteMatches, remoteRuleTasks, remoteRules, cachedResults, matchOffset, annotatedText);
+    long remoteRuleCheckEnd = System.currentTimeMillis();
+    logger.info("Local checks took {}ms, remote checks {}ms; waited {}ms on remote results",
+      textCheckEnd - textCheckStart, remoteRuleCheckEnd - remoteRuleCheckStart, remoteRuleCheckEnd - textCheckEnd);
 
     ruleMatches.addAll(remoteMatches)
 */
@@ -966,10 +972,10 @@ public class JLanguageTool {
                 enabledRules, enabledRuleCategories, userConfig, altLanguages, mode, level);
               Map<String, List<RuleMatch>> cacheEntry = cache.getRemoteMatchesCache().get(cacheKey, HashMap::new);
               // TODO check if result is from fallback, don't cache?
-              logger.info("Caching: Remote rule '{}'", ruleKey);
+              //logger.info("Caching: Remote rule '{}'", ruleKey);
               cacheEntry.put(ruleKey, matches);
             } else if (cache != null) {
-              logger.info("Not caching, fallback results: Remote rule '{}'", ruleKey);
+              //logger.info("Not caching, fallback results: Remote rule '{}'", ruleKey);
             }
             // adjust rule match position
             // rules check all sentences batched, but should keep position adjustment logic out of rule
@@ -1060,10 +1066,10 @@ public class JLanguageTool {
             List<RuleMatch> cachedMatches = cacheEntry.get(ruleKey);
             // mark for check or retrieve from cache
             if (cachedMatches == null) {
-              logger.info("Checking: Remote rule '{}'", ruleKey);
+              //logger.info("Checking: Remote rule '{}'", ruleKey);
               nonCachedSentences.add(sentence);
             } else {
-              logger.info("Cached: Remote rule '{}'", ruleKey);
+              //logger.info("Cached: Remote rule '{}'", ruleKey);
               cachedResults.putIfAbsent(sentenceIndex, new LinkedList<>());
               cachedResults.get(sentenceIndex).addAll(cachedMatches);
             }
