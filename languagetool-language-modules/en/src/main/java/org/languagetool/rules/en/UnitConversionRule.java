@@ -42,7 +42,7 @@ public class UnitConversionRule extends AbstractUnitConversionRule {
 
   public UnitConversionRule(ResourceBundle messages) {
     super(messages);
-    setTags(Arrays.asList(Tag.picky));
+    // setTags(Arrays.asList(Tag.picky));
     format = NumberFormat.getNumberInstance(Locale.ENGLISH);
     format.setMaximumFractionDigits(2);
     format.setRoundingMode(RoundingMode.HALF_UP);
