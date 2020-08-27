@@ -7715,7 +7715,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 </marker>
                 <token postag="AQ.[MC][PN]." postag_regexp="yes"><exception postag="N.[MC][PN].*|PI.[MC]P.*" postag_regexp="yes"/></token>
             </pattern>
-            <message>¿Volíeu dir <suggestion><match no="1" regexp_match="(?iu)(molt|poc)s" regexp_replace="$1"/></suggestion>?</message>
+            <message>¿Volíeu dir <suggestion><match no="1" regexp_match="(?iu)(molt|poc)s" regexp_replace="$1"/></suggestion> (davant d'un adjectiu)? És correcte si acompanya un nom en plural.</message>
             <example correction="molt">Estem <marker>molts</marker> contents.</example>
             <example correction="poc">Són <marker>pocs</marker> usuals.</example>
             <example>Molts grans cantants.</example>
@@ -20599,6 +20599,16 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="Agències"><marker>Agencies</marker> internacionals.</example>
             </rule>
             <rule>
+                <pattern>
+                    <marker>
+                        <token regexp="yes">binari(a|es)</token>
+                    </marker>
+                </pattern>
+                <message>Si és adjectiu, s'ha d'accentuar. Correcte si és del v. '<match no="1" case_conversion="alllower" regexp_match="(?iu)(.*ar)i(a|es)" regexp_replace="$1"/>'.</message>
+                <suggestion><match no="1" regexp_match="(?iu)(.*)ari(a|es)" regexp_replace="$1àri$2" case_conversion="preserve"/></suggestion>
+                <example correction="binària">Codificació <marker>binaria</marker>.</example>
+            </rule>
+            <rule>
                 <antipattern>
                     <marker>
                         <token regexp="yes">ultim(a|es)</token>
@@ -26017,8 +26027,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="mes"><marker>més</marker> de novembre</example>
             </rule>
             <rule>
+                <antipattern>
+                    <token>més</token>
+                    <token postag="AQ.[MC][SN].*" postag_regexp="yes"/>
+                </antipattern>
                 <pattern>
-                    <token regexp="yes">vegada|volta|cop|pic<exception postag=".*LOC_ADV.*" postag_regexp="yes"/></token>
+                    <token regexp="yes" inflected="yes">vegada|volta|cop|pic<exception postag=".*LOC_ADV.*" postag_regexp="yes"/></token>
                     <token>el</token>
                     <marker>
                         <token>més</token>
@@ -26029,10 +26043,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="mes">Ho fan un cop el <marker>més</marker>.</example>
                 <example correction="mes">Una volta el <marker>més</marker> fan vacances.</example>
                 <example>Tal vegada el més bonic</example>
+                <example>Si apareixen alguna vegada el més probable és que siguin errors.</example>
             </rule>
             <rule>
                 <pattern>
-                    <token regexp="yes">vegada|volta|cop|pic<exception postag=".*LOC_ADV.*" postag_regexp="yes"/></token>
+                    <token regexp="yes" inflected="yes">vegada|volta|cop|pic<exception postag=".*LOC_ADV.*" postag_regexp="yes"/></token>
                     <token>a</token>
                     <token>l</token>
                     <marker>
@@ -29842,7 +29857,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rule>
         <rule id="MEDICAMENTS" name="medicaments en minúscula">
             <pattern>
-                <token regexp="yes" case_sensitive="yes">Remdesivir|Paracetamol|Acetaminofèn|Favipiravir|Fenetil·lina|Amoxicil·lina|Povidona|Clorazepat|Almagat<exception scope="previous" postag="SENT_START"/></token>
+                <token regexp="yes" case_sensitive="yes">Remdesivir|Paracetamol|Acetaminofèn|Favipiravir|Fenetil·lina|Amoxicil·lina|Povidona|Clorazepat|Almagat|Dexametasona|Hidroxicloroquina<exception scope="previous" postag="SENT_START"/></token>
             </pattern>
             <message>Els noms dels principis actius de les medicines s'escriuen en minúscula.</message>
             <suggestion><match no="1" case_conversion="alllower"/></suggestion>
@@ -34459,26 +34474,40 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example>Va besar la mà de sant Josep.</example>
         </rule>
         <rulegroup id="IMESD" name="*I+D/R+D">
+            <url>http://esadir.cat/tipografia/abreviacions/sigles</url>
             <rule>
                 <pattern case_sensitive="yes">
                     <token>I</token>
-                    <token regexp="yes">[+&amp;]</token>
+                    <token>+</token>
                     <token>D</token>
                 </pattern>
-                <message>Sigles de "Recerca i desenvolupament".</message>
+                <message>Sigles de "recerca i desenvolupament".</message>
                 <suggestion>R+D</suggestion>
-                <url>http://esadir.cat/tipografia/abreviacions/sigles</url>
                 <example correction="R+D">La inversió en <marker>I+D</marker>.</example>
+                <example correction="R+D"><marker>I+D</marker></example>
+                <example>R+D</example>
+            </rule>
+            <rule>
+                <pattern case_sensitive="yes">
+                    <token regexp="yes">[RI]</token>
+                    <token>&amp;</token>
+                    <token>D</token>
+                </pattern>
+                <message>Sigles de "recerca i desenvolupament".</message>
+                <suggestion>R+D</suggestion>
+                <example correction="R+D">La inversió en <marker>R &amp; D</marker>.</example>
+                <example correction="R+D"><marker>I &amp; D</marker></example>
                 <example>R+D</example>
             </rule>
             <rule>
                 <pattern>
                     <token regexp="yes">[RI]&amp;D</token>
                 </pattern>
-                <message>Sigles de "Recerca i desenvolupament".</message>
+                <message>Sigles de "recerca i desenvolupament".</message>
                 <suggestion>R+D</suggestion>
-                <url>http://esadir.cat/tipografia/abreviacions/sigles</url>
                 <example correction="R+D">La inversió en <marker>R&amp;D</marker>.</example>
+                <example correction="R+D">La inversió en <marker>I&amp;D</marker>.</example>
+                <example correction="R+D"><marker>I&amp;D</marker></example>
                 <example>R+D</example>
             </rule>
         </rulegroup>
@@ -40057,7 +40086,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <message>¿Volíeu dir <suggestion><match no="1" postag="(V.*)" postag_regexp="yes" postag_replace="$1">moldre</match></suggestion>? "Molturar" és cobrar el dret de moltura.</message>
             <example correction="moldre">Haig de <marker>molturar</marker> el cafè.</example>
         </rule>
-        <rule id="EMBLAR" name="emblar/semblar">
+        <!--<rule id="EMBLAR" name="emblar/semblar">
             <pattern>
                 <marker>
                     <token inflected="yes">emblar</token>
@@ -40065,7 +40094,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             </pattern>
             <message>¿Volíeu dir <suggestion>s<match no="1" case_conversion="alllower"/></suggestion>? "Emblar" és un arcaisme que vol dir "furtar".</message>
             <example correction="semblava">Això no <marker>emblava</marker> possible.</example>
-        </rule>
+        </rule>-->
         <rule id="LLEGAT_LEGAT" name="llegat/legat">
             <pattern>
                 <marker>
