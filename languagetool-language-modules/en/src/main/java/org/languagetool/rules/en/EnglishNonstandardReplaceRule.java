@@ -51,6 +51,8 @@ public class EnglishNonstandardReplaceRule extends AbstractSimpleReplaceRule2 {
 
   public EnglishNonstandardReplaceRule(ResourceBundle messages) throws IOException {
     super(messages, new English());
+    super.setCategory(Categories.GRAMMAR.getCategory(messages));
+    useSubRuleSpecificIds();
     setLocQualityIssueType(ITSIssueType.LocaleViolation);
     addExamplePair(Example.wrong("<marker>If I was you</marker> I would be embarassed."),
                    Example.fixed("<marker>If I were you</marker> I would be embarassed."));
