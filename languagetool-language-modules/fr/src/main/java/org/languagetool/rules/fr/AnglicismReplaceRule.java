@@ -21,6 +21,8 @@ package org.languagetool.rules.fr;
 import org.languagetool.language.French;
 import org.languagetool.rules.AbstractSimpleReplaceRule2;
 import org.languagetool.rules.Categories;
+import org.languagetool.rules.Category;
+import org.languagetool.rules.CategoryId;
 import org.languagetool.rules.ITSIssueType;
 import org.languagetool.AnalyzedTokenReadings;
 
@@ -47,9 +49,8 @@ public class AnglicismReplaceRule extends AbstractSimpleReplaceRule2 {
 
   public AnglicismReplaceRule(final ResourceBundle messages) throws IOException {
     super(messages, new French());
-    super.setCategory(Categories.STYLE.getCategory(messages));
+    super.setCategory(new Category(new CategoryId("CAT_ANGLICISMES"), this.getDescription()));
     setLocQualityIssueType(ITSIssueType.Style);
-
   }
 
   @Override

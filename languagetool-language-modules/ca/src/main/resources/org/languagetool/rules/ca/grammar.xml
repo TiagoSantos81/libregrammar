@@ -18272,7 +18272,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rule>
         <rule id="CERO" name="cero/zero">
             <pattern>
-                <token regexp="yes">ceros?</token>
+                <token regexp="yes">ceros?<exception postag="NP.*" postag_regexp="yes"/></token>
             </pattern>
             <message>¿Volíeu dir <suggestion><match no="1" regexp_match="(?iu)cero(s?)" regexp_replace="zero$1"/></suggestion> (nombre) en lloc de "<match no="1"/>" (variant de "cérvol")?</message>
             <short>Possible confusió</short>
@@ -31539,6 +31539,19 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rulegroup>
     </category>
     <category id="INCORRECT_EXPRESSIONS" name="Expressions incorrectes" type="grammar">
+        <rule id="ESCOMBRARIA" name="escombraria">
+            <antipattern>
+                <token>escombraria</token>
+                <token regexp="yes">tothom|el|la|les|les|l'</token>
+            </antipattern>
+            <pattern>
+                <token>escombraria<exception scope="previous" regexp="yes">que|jo|ell|ella|qui|ho|m'|t'|s'|ens|us|vos|li|els</exception></token>
+            </pattern>
+            <message>Com a substantiu, només existeix en plural. Correcte si és una forma del v. 'escombrar'.</message>
+            <suggestion>escombraries</suggestion>
+            <example correction="escombraries">Era menjar <marker>escombraria</marker>.</example>
+            <example>Em va dir que escombraria ell.</example>
+        </rule>
         <rulegroup id="EUA" name="sigles dels Estats Units d'Amèrica">
             <rule>
                 <pattern>
@@ -46177,6 +46190,45 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rule>
     </category>
     <category id="PREFERABLE_EXPRESSIONS" name="C7) Expressions preferibles" default="on" type="style">
+        <rule id="MENJAR_PORQUERIA" name="menjar escombraries/porqueria">
+            <pattern>
+                <token inflected="yes" regexp="yes">mejar|televisió|contracte|feina|faena|acció|llibre|hipoteca|bo</token>
+                <marker>
+                    <token>escombraries</token>
+                </marker>
+            </pattern>
+            <message>En sentit figurat, és preferible dir <suggestion>porqueria</suggestion>.</message>
+            <url>https://aplicacions.llengua.gencat.cat/llc/AppJava/index.html?action=Principal&amp;method=detall&amp;input_cercar=comida+basura&amp;numPagina=1&amp;database=FITXES_PUB&amp;idFont=8722&amp;idHit=8722&amp;tipusFont=Fitxes+de+l%27Optimot&amp;numeroResultat=1&amp;databases_avansada=&amp;categories_avansada=&amp;clickLink=detall&amp;titol=televisi%F3+escombraria%2C+televisi%F3+escombraries+o+televisi%F3+porqueria%3F+%2F+Com+es+diu+telebasura%2C+comida+basura%2C+trabajo+basura%2C+contrato+basura+en+catal%E0%3F&amp;tematica=Comunicaci%F3.+Audiovisuals&amp;tipusCerca=cerca.fitxes</url>
+            <example correction="porqueria">No m'agrada la televisió <marker>escombraries</marker>.</example>
+        </rule>
+        <rulegroup id="SIRI" name="siri/sirià">
+            <rule>
+                <antipattern>
+                    <token><exception postag="[AN].*" postag_regexp="yes"/></token>
+                    <token case_sensitive="yes" regexp="yes">Siri|Síria</token>
+                </antipattern>
+                <pattern>
+                    <token inflected="yes">siri</token>
+                </pattern>
+                <message>Per a referir-se a la Síria moderna, és més habitual dir <suggestion><match no="1" postag="([AN].*)" postag_regexp="yes" postag_replace="$1">sirià</match></suggestion>.</message>
+                <!--<suggestion><match no="([AN].*)" postag_regexp="yes" postag_replace="$1">siríac</match></suggestion>-->
+                <example correction="sirià">El president <marker>siri</marker> no va fer declaracions.</example>
+                <example correction="Sirià">El Govern <marker>Siri</marker> no va fer declaracions.</example>
+                <example>Vaig preguntar a Siri quin temps faria demà.</example>
+                <example>El govern de Síria no es va pronunciar.</example>
+            </rule>
+            <rule>
+                <pattern case_sensitive="yes">
+                    <token regexp="yes">República|Àrab</token>
+                    <marker>
+                        <token>Síria</token>
+                    </marker>
+                </pattern>
+                <message>Per a referir-se a la Síria moderna, com a adjectiu és més habitual dir <suggestion>Siriana</suggestion>.</message>
+                <example correction="Siriana">La República <marker>Síria</marker> no va fer declaracions.</example>
+                <example correction="Siriana">La República Àrab <marker>Síria</marker> no va fer declaracions.</example>
+            </rule>
+        </rulegroup>
         <rule id="FLAC_FAVOR" name="flac favor/mal servei">
             <pattern>
                 <token>flac</token>

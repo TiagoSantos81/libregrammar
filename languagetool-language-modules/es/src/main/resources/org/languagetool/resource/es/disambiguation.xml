@@ -82,6 +82,22 @@ Copyright (C) 2011 Juan Martorell
                 <wd lemma="bueno" pos="AQ0MS0"/>
             </disambig>
         </rule>
+        <rule>
+            <pattern>
+                <token>mapuche</token>
+            </pattern>
+            <disambig action="replace">
+                <wd lemma="mapuche" pos="AQ0CN0"/>
+            </disambig>
+        </rule>
+        <rule>
+            <pattern>
+                <token>mapuche</token>
+            </pattern>
+            <disambig action="add">
+                <wd lemma="mapuche" pos="NCCN000"/>
+            </disambig>
+        </rule>
     </rulegroup>
 
 
@@ -1338,7 +1354,7 @@ Copyright (C) 2011 Juan Martorell
             <pattern>
                 <token regexp="yes">cada|esta|esa|aquella</token>
                 <marker>
-                    <token postag="N.*" postag_regexp="yes">mañana</token>
+                    <token postag="N.*" postag_regexp="yes" regexp="yes">mañana|tarde</token>
                 </marker>
             </pattern>
             <disambig action="filter" postag="N.*"/>

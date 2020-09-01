@@ -134,6 +134,7 @@ public abstract class AbstractEnglishSpellerRule extends MorfologikSpellerRule {
                      !k.getReplacement().startsWith("con ") &&
                      !k.getReplacement().startsWith("pre ") &&
                      !k.getReplacement().startsWith("inter ") &&
+                     !k.getReplacement().startsWith("anti ") &&
                      !k.getReplacement().startsWith("sub ") &&
                      !k.getReplacement().startsWith("auto ") &&
                      !k.getReplacement().startsWith("sh ") &&
@@ -728,6 +729,7 @@ public abstract class AbstractEnglishSpellerRule extends MorfologikSpellerRule {
     s.put("unencodes", Arrays.asList("decodes"));
     s.put("unencoded", Arrays.asList("decoded"));
     s.put("unencoding", Arrays.asList("decoding"));
+    s.put("cheq", Arrays.asList("check"));
 
     return s;
   }

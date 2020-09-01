@@ -606,6 +606,38 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>Hola, ¿cómo están todos?</example>
             </rule>
             <rule>
+                <antipattern>
+                    <token postag="NC[FC][PN].*|_GN_FP" postag_regexp="yes"/>
+                    <token min="0">,</token>
+                    <token>como</token>
+                    <token>estas</token>
+                </antipattern>
+                <antipattern>
+                    <token postag="NC[FC][SN].*|_GN_FS" postag_regexp="yes"/>
+                    <token min="0">,</token>
+                    <token>como</token>
+                    <token>esta</token>
+                </antipattern>
+                <pattern>
+                    <marker>
+                        <token>como</token>
+                        <token regexp="yes">estas|estás|esta|está</token>
+                    </marker>
+                    <token min="0" max="4" postag="RG|LOC_ADV" postag_regexp="yes"/>
+                    <token>?</token>
+                </pattern>
+                <message>Posible error ortográfico.</message>
+                <suggestion>cómo <match no="2" regexp_match="(?iu)esta" regexp_replace="está"/></suggestion>
+                <example correction="cómo estás">Hola amigo <marker>como estas</marker>?</example>
+                <example correction="cómo está">Hola amigo <marker>como esta</marker>?</example>
+                <example correction="cómo está">Hola amigo <marker>como esta</marker> hoy?</example>
+                <example>¿Quieres manzanas verdes como estas?</example>
+                <example>¿Quieres manzanas verdes, como estas?</example>
+                <example>¿Te gustan las naranjas como estas?</example>
+                <example>¿Quieres una manzana como esta?</example>
+                <!-- infrequent and unnatural -->
+            </rule>
+            <rule>
                 <pattern>
                     <token postag="SENT_START"/>
                     <token min="0" max="2" postag="_PUNCT.*" postag_regexp="yes"/>
@@ -1899,7 +1931,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <pattern>
                     <token postag="SENT_START"/>
                     <phraseref idref="_GN_SINGULAR"/>
-                    <token postag="_QM_OPEN|R.*|LOC_ADV" postag_regexp="yes" min="0" max="4"/> 
+                    <token postag="_QM_OPEN|R.*|LOC_ADV" postag_regexp="yes" min="0" max="4"/>
                     <marker>
                         <and>
                             <token postag="VMIP1S0" regexp="yes">.+o<exception postag="V...3.*|C.*|SP.*|V.G.*|[ANCR].*" postag_regexp="yes"/></token>
@@ -4062,7 +4094,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token>,</token>
                     <token>esta</token>
                     <token min="0" max="4" postag="RG|LOC_ADV" postag_regexp="yes"/>
-                    <token postag="A..FS." postag_regexp="yes"/>
+                    <token postag="A..FS." postag_regexp="yes"><exception>sola</exception></token>
                 </antipattern>
                 <pattern>
                     <marker>
@@ -4340,7 +4372,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <antipattern>
                     <token>este</token>
                     <token max="3" min="1" postag="A..[MC][SN].|V.P..SM|NCMS.*|CC" postag_regexp="yes"/>
-                    <token min="0" max="2" postag_regexp="yes" postag="&pronombre_personal_atono_POS;"></token>
+                    <token min="0" max="2" postag_regexp="yes" postag="&pronombre_personal_atono_POS;"/>
                     <token postag="V.[SI].*" postag_regexp="yes"/>
                 </antipattern>
                 <pattern>
@@ -6793,6 +6825,19 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="por que|por los que|por los cuales">Los motivos <marker>porque</marker> nos fuimos.</example>
                 <!--No tenéis más razón porque seáis mayores.-->
             </rule>
+            <rule default="temp_off">
+                <antipattern>
+                    <token regexp="yes">el|un|algún</token>
+                    <token>porqué</token>
+                </antipattern>
+                <pattern>
+                    <token>porqué</token>
+                </pattern>
+                <message>Solo se escribe con tilde si es un sustantivo que significa 'causa, razón o motivo'.</message>
+                <suggestion>porque</suggestion>
+                <example correction="porque">No vino <marker>porqué</marker> no pudo.</example>
+                <example>Quiero saber el porqué.</example>
+            </rule>
         </rulegroup>
         <rulegroup id="PREP_VERB" name="Combinación imposible: preposición + verbo conjugado">
             <antipattern>
@@ -7860,6 +7905,17 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <suggestion suppress_misspelled="yes"><match no="1" postag="D..[FC][SN]." postag_regexp="yes" case_conversion="preserve"/> <match no="2" postag="N.[FC][SN].*" postag_regexp="yes" case_conversion="preserve"/></suggestion>
             <suggestion suppress_misspelled="yes"><match no="1" postag="D..[FC][PN]." postag_regexp="yes" case_conversion="preserve"/> <match no="2" postag="N.[FC][PN].*" postag_regexp="yes" case_conversion="preserve"/></suggestion>
             <example correction="El Sr|Los Sres|La Sra|Las Sras"><marker>Los Sra</marker>. García</example>
+        </rule>
+        <rule id="LOS_MAPUCHE" name="los mapuche/mapuches">
+            <pattern>
+                <token postag="D[^R]..P." postag_regexp="yes"/>
+                <marker>
+                    <token>mapuche</token>
+                </marker>
+            </pattern>
+            <message>Aunque "mapuche" se usa como plural, las gramáticas recomiendan la forma <suggestion>mapuches</suggestion>.</message>
+            <url>https://www.rae.es/dpd/plural#22</url>
+            <example correction="mapuches">Algunos <marker>mapuche</marker>.</example>
         </rule>
         <rulegroup id="AGREEMENT_DET_NOUN" name="Concordancias determinante y sustantivo" default="on">
             <antipattern>
@@ -10723,7 +10779,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token postag="V.*" postag_regexp="yes" regexp="yes">.+lo</token>
             </antipattern>
             <antipattern>
-                <token postag="SENT_START|_PUNCT.*|CC" postag_regexp="yes"></token>
+                <token postag="SENT_START|_PUNCT.*|CC" postag_regexp="yes"/>
                 <token regexp="yes">con|por|en</token>
                 <token>esto</token>
                 <token regexp="yes">apoyo|deseo|cierro|cuento|pienso|recuerdo</token>
@@ -12093,6 +12149,37 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rulegroup>
     </category>
     <category id="PUNCTUATION" name="Puntuación">
+        <rulegroup id="MISSING_COMMA" name="falta de coma">
+            <rule>
+                <pattern>
+                    <marker>
+                        <token><exception postag="SENT_START|_PUNCT.*" postag_regexp="yes"/></token>
+                    </marker>
+                    <token>cómo</token>
+                    <token inflected="yes" regexp="yes">estar|ser</token>
+                    <token>?</token>
+                </pattern>
+                <message>Probablemente falta una coma</message>
+                <suggestion>\1,</suggestion>
+                <example correction="amigo,">Hola <marker>amigo</marker> cómo estás?</example>
+                <example>¿Cómo estás?</example>
+                <example>Hola, ¿amigo, cómo estás?</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token postag="SENT_START"/>
+                    <token min="0" max="3" postag="_PUNCT.*" postag_regexp="yes"/>
+                    <marker>
+                        <token>hola</token>
+                    </marker>
+                    <token><exception postag="_PUNCT.*" postag_regexp="yes"/><exception>a</exception></token>
+                </pattern>
+                <message>Probablemente falta una coma</message>
+                <suggestion>\3,</suggestion>
+                <example correction="Hola,">¡<marker>Hola</marker> amigo.</example>
+                <example>¡Hola a todos!</example>
+            </rule>
+        </rulegroup>
         <rule id="MUCHO_NF" name="mucho + nombre femenino">
             <pattern>
                 <token regexp="yes">mucho|muchísimo</token>
