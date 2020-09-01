@@ -20,6 +20,7 @@ package org.languagetool.rules.en;
 
 import org.languagetool.language.English;
 import org.languagetool.rules.AbstractSimpleReplaceRule2;
+import org.languagetool.rules.Categories;
 import org.languagetool.rules.Example;
 import org.languagetool.rules.ITSIssueType;
 
