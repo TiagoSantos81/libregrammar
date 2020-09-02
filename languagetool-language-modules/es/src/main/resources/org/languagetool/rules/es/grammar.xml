@@ -445,6 +445,13 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token postag="NP.*|N.*|A.*|D.*" postag_regexp="yes" min="1" max="4"/>
                 <token>?</token>
             </antipattern>
+            <antipattern>
+                <token>¿</token>
+                <token>cómo</token>
+                <token regexp="yes">estás|está|estáis|están</token>
+                <token postag="RG|LOC_ADV" postag_regexp="yes" min="1" max="4"/>
+                <token>?</token>
+            </antipattern>
             <rule>
                 <pattern>
                     <token regexp="yes">hola|ola</token>
@@ -474,6 +481,22 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <suggestion>Hola, ¿cómo <match no="4" regexp_match="(?iu)est[aá](i?s?n?)" regexp_replace="está$1"/>,</suggestion>
                 <example correction="Hola, ¿cómo estáis,">"<marker>Ola como estais</marker> amigos?</example>
                 <example correction="Hola, ¿cómo estás,">"<marker>Ola, ¿cómo estas</marker> Jorge?</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <marker>
+                        <token regexp="yes">hola|ola</token>
+                        <token min="0" max="2" postag="_PUNCT.*" postag_regexp="yes"/>
+                        <token regexp="yes">como|cómo</token>
+                        <token regexp="yes">estás|estas|está|esta|estáis|estais|estan|están</token>
+                    </marker>
+                    <token postag="RG|LOC_ADV" postag_regexp="yes" min="1" max="3"/>
+                    <token>?</token>
+                </pattern>
+                <message>Error de ortografía.</message>
+                <suggestion>Hola, ¿cómo <match no="4" regexp_match="(?iu)est[aá](i?s?n?)" regexp_replace="está$1"/></suggestion>
+                <example correction="Hola, ¿cómo estáis">"<marker>Ola como estais</marker> hoy?</example>
+                <example correction="Hola, ¿cómo estás">"<marker>Ola, ¿cómo estas</marker> ahora?</example>
             </rule>
             <rule>
                 <pattern>
@@ -589,23 +612,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>Hola, ¿cómo estás, Jorge?</example>
             </rule>
             <rule>
-                <pattern>
-                    <marker>
-                        <token regexp="yes">hola|ola</token>
-                        <token min="0" max="2" postag="_PUNCT.*" postag_regexp="yes"/>
-                        <token regexp="yes">como|cómo</token>
-                        <token regexp="yes">estás|estas|está|esta|estáis|estais|estan|están</token>
-                    </marker>
-                </pattern>
-                <message>Error de ortografía</message>
-                <suggestion>Hola, ¿<match no="3" regexp_match="(?iu)c[oó]mo" regexp_replace="cómo" case_conversion="preserve"/> <match no="4" regexp_match="(?iu)est[aá](i?s?n?)" regexp_replace="está$1" case_conversion="alllower"/>?</suggestion>
-                <example correction="Hola, ¿cómo estás?"><marker>ola como estas</marker></example>
-                <example correction="Hola, ¿cómo estás?"><marker>hola como estas</marker></example>
-                <example>Hola, ¿cómo estás, Pedro?</example>
-                <example>Hola, ¿cómo están ustedes?</example>
-                <example>Hola, ¿cómo están todos?</example>
-            </rule>
-            <rule>
                 <antipattern>
                     <token postag="NC[FC][PN].*|_GN_FP" postag_regexp="yes"/>
                     <token min="0">,</token>
@@ -652,6 +658,27 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="Hola">"¿<marker>Ola</marker>, quién es?"</example>
                 <example correction="Hola">¡<marker>Ola</marker>, quien va!</example>
                 <example correction="Hola">¡<marker>Ola</marker>!</example>
+            </rule>
+            <rule>
+                <antipattern>
+                    <token skip="-1" regexp="yes">estás|estas|está|esta|estáis|estais|estan|están</token>
+                    <token>?</token>
+                </antipattern>
+                <pattern>
+                    <marker>
+                        <token regexp="yes">hola|ola</token>
+                        <token min="0" max="2" postag="_PUNCT.*" postag_regexp="yes"/>
+                        <token regexp="yes">como|cómo</token>
+                        <token regexp="yes">estás|estas|está|esta|estáis|estais|estan|están</token>
+                    </marker>
+                </pattern>
+                <message>Error de ortografía</message>
+                <suggestion>Hola, ¿<match no="3" regexp_match="(?iu)c[oó]mo" regexp_replace="cómo" case_conversion="preserve"/> <match no="4" regexp_match="(?iu)est[aá](i?s?n?)" regexp_replace="está$1" case_conversion="alllower"/>?</suggestion>
+                <example correction="Hola, ¿cómo estás?"><marker>ola como estas</marker></example>
+                <example correction="Hola, ¿cómo estás?"><marker>hola como estas</marker></example>
+                <example>Hola, ¿cómo estás, Pedro?</example>
+                <example>Hola, ¿cómo están ustedes?</example>
+                <example>Hola, ¿cómo están todos?</example>
             </rule>
         </rulegroup>
         <rulegroup id="VALLA_VAYA" name="valla/vaya (ir)">
@@ -2509,12 +2536,13 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <rule>
                 <pattern>
                     <marker>
-                        <token>sera</token>
+                        <token>sera<exception postag="NP.*" postag_regexp="yes"/></token>
                     </marker>
                 </pattern>
                 <message>Si es del v. 'ser', lleva tilde. Puede ser, más raramente, un sustantivo sin tilde.</message>
                 <suggestion>será</suggestion>
                 <example correction="será">Él <marker>sera</marker> artista.</example>
+                <example>Corriere della Sera</example>
             </rule>
             <rule>
                 <pattern>
@@ -4290,6 +4318,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token>este</token>
             </antipattern>
             <antipattern>
+                <token>el</token>
+                <token>este</token>
+            </antipattern>
+            <antipattern>
                 <token postag="V.[MSI].*" postag_regexp="yes"/>
                 <token min="0" postag="V.P..SM" postag_regexp="yes"/>
                 <token>este</token>
@@ -4361,6 +4393,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="esté">Que <marker>este</marker> cerca de la guardería.</example>
                 <example>Señalando que este mal sería contrario</example>
                 <example>lo que querían, y este lo buscaba</example>
+                <example>enlazan el este con el oeste</example>
             </rule>
             <rule>
                 <!-- esté + adjetivo-->
@@ -6712,7 +6745,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                         <token>porque</token>
                     </marker>
                 </pattern>
-                <message>Como sustantivo (=causa, motivo), se escribe <suggestion>porqué</suggestion>.</message>
+                <message>Como sustantivo ('causa, motivo'), se escribe <suggestion>porqué</suggestion>.</message>
                 <example correction="porqué">Quiero saber el <marker>porque</marker>.</example>
                 <example>Lo haré porque quiero.</example>
                 <example>Es nuestro porque lo compramos nosotros.</example>
@@ -6724,7 +6757,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                         <token>qués</token>
                     </marker>
                 </pattern>
-                <message>Como sustantivo (=causas, motivos), se escribe <suggestion>porqués</suggestion>.</message>
+                <message>Como sustantivo ('causas, motivos'), se escribe <suggestion>porqués</suggestion>.</message>
                 <example correction="porqués">Quería saber los <marker>por qués</marker>.</example>
             </rule>
             <rule>
@@ -6736,7 +6769,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                         <!-- qué (?) -->
                     </marker>
                 </pattern>
-                <message>Como sustantivo (=causa, motivo), se escribe <suggestion>porqué</suggestion>.</message>
+                <message>Como sustantivo ('causa, motivo'), se escribe <suggestion>porqué</suggestion>.</message>
                 <example correction="porqué">Quiero saber el <marker>por que</marker>.</example>
                 <example>Lo haré porque quiero.</example>
                 <example>Quiero saber por qué.</example>
@@ -6749,7 +6782,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                         <token regexp="yes">porque|porqué</token>
                     </marker>
                 </pattern>
-                <message>Si significa "por qué razón", se escribe <suggestion>por qué</suggestion></message>
+                <message>Si significa 'por qué razón', se escribe <suggestion>por qué</suggestion></message>
                 <example correction="Por qué">¿<marker>Porque</marker> no viniste?</example>
                 <example correction="por qué">¿Y <marker>porqué</marker> no viniste?</example>
                 <example type="triggers_error" reason="unusual structure">¿Porque no lo hice vas a estar odiándome toda la vida?</example>
@@ -6781,15 +6814,18 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token>porque</token>
                 </antipattern>
                 <pattern>
-                    <token regexp="yes" inflected="yes">saber|preguntar|pedir|explicar|contar|decir<exception postag=".*PP...A..|_GN_.*" postag_regexp="yes"/></token>
+                    <token regexp="yes" inflected="yes">saber|preguntar|pedir|explicar|contar|decir|comprender|entender<exception postag=".*PP...A..|_GN_.*" postag_regexp="yes"/></token>
+                    <token min="0" max="3" postag="RG|LOC_ADV" postag_regexp="yes"/>
                     <marker>
                         <token regexp="yes">porque|porqué</token>
                     </marker>
                 </pattern>
-                <message>Probablemente hay que escribir <suggestion>por qué</suggestion> (=por qué motivo).</message>
+                <message>Probablemente hay que escribir <suggestion>por qué</suggestion> ('por qué motivo').</message>
                 <example correction="por qué">No se sabe <marker>porque</marker> no ha venido</example>
                 <example correction="por qué">Dime <marker>porque</marker> lo has hecho.</example>
                 <example correction="por qué">¿Podrías decirme <marker>porque</marker> lo has hecho?</example>
+                <example correction="por qué">No puedo comprender <marker>porqué</marker> él dijo eso</example>
+                <example correction="por qué">No estoy diciendo que entienda completamente <marker>porqué</marker> ha surgido este nuevo esfuerzo.</example>
                 <example>Lo sé porque lo he hecho muchas veces.</example>
                 <example>Se explicaría porque era inventado.</example>
                 <example>Lo dices porque tienes miedo.</example>
@@ -6799,15 +6835,17 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             </rule>
             <rule>
                 <pattern>
-                    <token regexp="yes" inflected="yes">saber|preguntar|pedir|explicar|contar|decir</token>
+                    <token regexp="yes" inflected="yes">saber|preguntar|pedir|explicar|contar|decir|comprender|entender</token>
+                    <token min="0" max="3" postag="RG|LOC_ADV" postag_regexp="yes"/>
                     <marker>
                         <token>por</token>
                         <token>que</token>
                     </marker>
                 </pattern>
-                <message>Probablemente hay que escribir <suggestion>por qué</suggestion> (=por qué motivo).</message>
+                <message>Probablemente hay que escribir <suggestion>por qué</suggestion> ('por qué motivo').</message>
                 <example correction="por qué">No se sabe <marker>por que</marker> no ha venido</example>
                 <example correction="por qué">Dime <marker>por que</marker> lo has hecho.</example>
+                <example correction="por qué">No estoy diciendo que entienda completamente <marker>por que</marker> ha surgido este nuevo esfuerzo.</example>
             </rule>
             <rule>
                 <pattern>
@@ -6825,7 +6863,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="por que|por los que|por los cuales">Los motivos <marker>porque</marker> nos fuimos.</example>
                 <!--No tenéis más razón porque seáis mayores.-->
             </rule>
-            <rule default="temp_off">
+            <rule>
                 <antipattern>
                     <token regexp="yes">el|un|algún</token>
                     <token>porqué</token>
@@ -6833,10 +6871,61 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <pattern>
                     <token>porqué</token>
                 </pattern>
-                <message>Solo se escribe con tilde si es un sustantivo que significa 'causa, razón o motivo'.</message>
+                <message>¿Quería decir <suggestion>por qué</suggestion> ('por qué motivo') o <suggestion>porque</suggestion> ('por razón de que')?</message>
                 <suggestion>porque</suggestion>
-                <example correction="porque">No vino <marker>porqué</marker> no pudo.</example>
+                <example correction="por qué|porque">No vino <marker>porqué</marker> no pudo.</example>
+                <example correction="por qué|porque">No puedo comprender <marker>porqué</marker> no vino.</example>
                 <example>Quiero saber el porqué.</example>
+            </rule>
+            <rule default="temp_off">
+                <pattern>
+                    <token regexp="yes">he|hete</token>
+                    <token regexp="yes">aquí|ahí</token>
+                    <marker>
+                        <token>porqué</token>
+                    </marker>
+                </pattern>
+                <message>Probablemente hay que escribir <suggestion>por qué</suggestion> ('por qué motivo').</message>
+                <example correction="por qué">He aquí <marker>porqué</marker> no ha venido</example>
+            </rule>
+            <rule default="temp_off">
+                <pattern>
+                    <token regexp="yes">he|hete</token>
+                    <token regexp="yes">aquí|ahí</token>
+                    <marker>
+                        <token>por</token>
+                        <token>que</token>
+                    </marker>
+                </pattern>
+                <message>Probablemente hay que escribir <suggestion>por qué</suggestion> ('por qué motivo').</message>
+                <example correction="por qué">He aquí <marker>por que</marker> no ha venido</example>
+            </rule>
+            <rule default="temp_off">
+                <pattern>
+                    <token>no</token>
+                    <token inflected="yes">tener</token>
+                    <marker>
+                        <token regexp="yes">porque|porqué</token>
+                    </marker>
+                    <token postag="V.N.*" postag_regexp="yes"/>
+                </pattern>
+                <message>La expresión correcta es "no tener por qué".</message>
+                <suggestion>por qué</suggestion>
+                <example correction="por qué">No tienes <marker>porque</marker> preocuparte.</example>
+            </rule>
+            <rule default="temp_off">
+                <pattern>
+                    <token>no</token>
+                    <token inflected="yes">tener</token>
+                    <marker>
+                        <token>por</token>
+                        <token>que</token>
+                    </marker>
+                    <token postag="V.N.*" postag_regexp="yes"/>
+                </pattern>
+                <message>La expresión correcta es "no tener por qué".</message>
+                <suggestion>por qué</suggestion>
+                <example correction="por qué">No tienes <marker>por que</marker> preocuparte.</example>
             </rule>
         </rulegroup>
         <rulegroup id="PREP_VERB" name="Combinación imposible: preposición + verbo conjugado">
