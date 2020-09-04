@@ -10109,7 +10109,7 @@ though, and has since been slightly modified)-->
       </antipattern>
       <antipattern>
         <token regexp="yes">[a-zéèëöïîôêàç\.,]+\b</token>
-        <token regexp="yes" case_sensitive="yes">[A-ZÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒ].*{2,5}</token>
+        <token regexp="yes" case_sensitive="yes">[A-ZÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒ].*</token>
         <token regexp="yes">[a-zéèëöïîôêàç\.,]+\b</token>
       </antipattern>
       <antipattern>
