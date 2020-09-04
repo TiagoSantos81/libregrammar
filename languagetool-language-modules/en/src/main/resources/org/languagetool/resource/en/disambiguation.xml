@@ -1130,12 +1130,23 @@
     </rule>
 
     <rule name="best as adjective" id="BEST_JJS"> <!-- very crude -->
+      <antipattern>
+        <token regexp="yes">thee?</token>
+        <token>best</token>
+      </antipattern>
+      <antipattern>
+        <token regexp="yes">thee?</token>
+        <token postag="JJ" />
+        <token>best</token>
+      </antipattern>
       <pattern>
         <token>best</token>
         <token postag="IN"/>
       </pattern>
       <disambig postag="JJS"/>
       <example type="untouched">I best my opponents.</example>
+      <example type="untouched">He brought out the best in people.</example>
+      <example type="untouched">He brought out the very best in people.</example>
       <example type="ambiguous" inputform="best[best/NN:U,best/VB,best/VBP,good/JJS,well/JJS,well/RBS]" outputform="best[good/JJS]">It's <marker>best</marker> for him.</example>
     </rule>
 
@@ -5733,6 +5744,15 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <token regexp="yes">&object_pronouns;</token>
             <token postag="NN:UN"/>
         </antipattern>
+        <antipattern>
+            <token>thee</token>
+            <token postag="NN.*" postag_regexp="yes" />
+        </antipattern>
+        <antipattern><!--She is thee mother -->
+            <token>thee</token>
+            <token postag="JJ.*" postag_regexp="yes" />
+            <token postag="NN.*" postag_regexp="yes" />
+        </antipattern>
         <pattern>
             <token postag="PRP">
                 <exception postag="RB|PRP\$" postag_regexp="yes"/>
@@ -5756,6 +5776,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <example type="untouched">Incorrect grammar. If <marker>you account is</marker> a lie, you can go to prison.</example>
         <example type="untouched">Incorrect grammar. If <marker>you account stopped</marker> working, tell the IT department.</example>
         <example type="untouched">Incorrect grammar. I have added that to <marker>me list</marker>.</example>
+        <example type="untouched">Incorrect grammar. She is thee <marker>mother</marker> of them.</example>
         <example type="untouched">Spacing the plants three feet apart allows them room to grow.</example><!-- #2919 -->
         <example type="ambiguous" inputform="claim[claim/NN:UN,claim/VB,claim/VBP]" outputform="claim[claim/VBP]">Yes, actually we <marker>claim</marker> that this is true.</example>
         <example type="ambiguous" inputform="conference[conference/NN:UN,conference/VB,conference/VBP]" outputform="conference[conference/VBP]">When you <marker>conference</marker> with the manager…</example><!-- conference/E-NP-singular -->
@@ -6215,6 +6236,16 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <token chunk="E-NP-singular" postag_regexp="yes" postag="VBP?"/>
             <token>?</token>
         </antipattern>
+        <antipattern><!-- #3524 groups for the environment and food safety question the -->
+            <token chunk="E-NP-plural" postag="NNS"/>
+            <token postag="IN"/>
+            <token chunk="B-NP-singular" postag_regexp="yes" postag="DT|PRP\$"/>
+            <token chunk="I-NP-singular"/><!-- MFU: I cannot make this work with min/max here -->
+            <token chunk="I-NP-singular">and</token>
+            <token min="1" max="3" chunk="I-NP-singular"/>
+            <token chunk="E-NP-singular" postag_regexp="yes" postag="VBP?"/>
+            <token postag_regexp="yes" postag="DT|PRP\$"/>
+        </antipattern>
         <pattern>
             <marker>
                 <and>
@@ -6349,6 +6380,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <example type="untouched">4) You digitally sign:</example><!-- #3334 -->
         <example type="untouched">... and Moss Landing #6 (739 MW) were all back at full...</example><!-- #3354 -->
         <example type="untouched">... but might using this work?</example><!-- #3354 -->
+        <example type="untouched">But activist groups for the environment and food safety question the product’s safety.</example><!-- #3524 -->
 <!-- Refer to the counter example        <example type="untouched">If any professional want to know the new practices of their field...</example>Premium #1564 -->
         <example type="ambiguous" inputform="claim[claim/NN:UN,claim/VB,claim/VBP]" outputform="claim[claim/NN:UN]">Morroco's disputed <marker>claim</marker> to portions of Algeria.</example>
         <example type="ambiguous" inputform="bark[bark/NN:UN,bark/VB,bark/VBP]" outputform="bark[bark/NN:UN]">Remove the old <marker>bark</marker> carefully.</example>
@@ -6358,6 +6390,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <example type="ambiguous" inputform="reference[reference/NN:UN,reference/VB,reference/VBP]" outputform="reference[reference/NN:UN]">The document does not show the can reference. Do you know the can <marker>reference</marker>?</example><!-- A 'can reference' is a possible technical term. -->
         <example type="ambiguous" inputform="care[care/NN:UN,care/VB,care/VBP]" outputform="care[care/NN:UN]">Does not much <marker>care</marker> for the patient also cost much money?</example><!-- #2682 -->
         <example type="ambiguous" inputform="order[order/NN:UN,order/UH,order/VB,order/VBP]" outputform="order[order/NN:UN]">  ... after he was given a court <marker>order</marker> to lend money to an incompetent applicant.</example><!-- Premium #1564 counter example -->
+        <example type="ambiguous" inputform="question[question/NN:UN,question/VB,question/VBP]" outputform="question[question/NN:UN]">But activist groups for the health and food safety <marker>question</marker> are likely to disagree.</example><!-- 3524 -->
     </rule>
 
     <rule id="E_NP_VBP" name="noun/verb after a plural NP -> verb">
@@ -8307,33 +8340,6 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
           <disambig postag="NN:U"/>
           <example type="untouched">I'm training now.</example>
           <example type="ambiguous" inputform="training[train/VBG,training/NN:U]" outputform="training[training/NN:U]">We need to to pay for <marker>training</marker> to meet national skilled manpower needs.</example>
-        </rule>
-
-        <rule id="WILL_MD" name="will as modal verb">
-          <antipattern>
-            <token>what</token>
-            <token>will</token>
-            <token skip="-1">are</token>
-            <token>?</token>
-          </antipattern>
-          <pattern>
-            <marker>
-            <and>
-              <token postag="MD">will<exception scope="previous" postag_regexp="yes" postag="POS|WP\$|DT|CC"/></token>
-              <token postag="NN:UN"/>
-            </and>
-            </marker>
-            <token postag="VB.*" postag_regexp="yes"/>
-          </pattern>
-          <disambig postag="MD"/>
-          <example type="ambiguous" inputform="will[will/MD,will/NN:UN,will/VB,will/VBP]" outputform="will[will/MD]">This road <marker>will</marker> designated.</example><!-- Although 'will designated' is not correct English, we can parse 'will' as MD. -->
-          <example type="untouched">I will do it.</example>
-          <example type="untouched">A person's will is an important document.</example>
-          <example type="untouched">I was one who did not conform, and whose will could not be broken.</example>
-          <example type="untouched">... and this will featured regularly in the lawyers' debates.</example>
-          <example type="untouched">... control of thought, feelings and will combined with openness, tolerance and flexibility.</example>
-          <example type="untouched">By the way, what will are you talking about?</example>
-          <example type="untouched">Remind me, what will are these people contesting?</example>
         </rule>
 
     <rule id="NNJJ_NN_JJ" name="noun/adj + noun => adj + noun">

@@ -1744,9 +1744,8 @@ Copyright (C) 2011 Juan Martorell
         <rule id="QM_CLOSE" name="comillas de cierre">
             <pattern>
                 <marker>
-                    <token regexp="yes" spacebefore="yes">['"]</token>
+                    <token regexp="yes" spacebefore="no">['"’”»]</token>
                 </marker>
-                <token spacebefore="no" postag="_PUNCT.*" postag_regexp="yes"/>
             </pattern>
             <disambig action="add">
                 <wd pos="_QM_CLOSE"/>
@@ -2312,6 +2311,15 @@ Copyright (C) 2011 Juan Martorell
                     <token postag="NC.*" postag_regexp="yes">serie</token>
                 </marker>
                 <token regexp="yes">de|del</token>
+            </pattern>
+            <disambig action="remove" postag="V.*"/>
+        </rule>
+        <rule id="amigo" name="amigo (not verb)">
+            <pattern>
+                <!--<token><exception regexp="yes">me|te|se</exception></token>-->
+                <marker>
+                    <token regexp="yes">amigo|amiga|amigas</token>
+                </marker>
             </pattern>
             <disambig action="remove" postag="V.*"/>
         </rule>
