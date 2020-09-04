@@ -103,6 +103,7 @@ USA
     <!-- Possible typos -->
     <!-- ====================================================================== -->
     <category id="TYPOS" name="Possible Typo" type="misspelling">
+        <?ignore covered by ARCHAISMS (/en/grammar.xml) with more general usage
         <rulegroup id="THEE" name="thee (the)" default="temp_off">
             <antipattern><!-- https://en.wikipedia.org/wiki/Megan_Thee_Stallion -->
                 <token regexp="yes">Megh?an</token>
@@ -150,6 +151,7 @@ USA
                 <example>Megan Thee Stallion is an American pop singer.</example>
             </rule>
         </rulegroup>
+        ?>
         <rule id="STREET_LIGHTS_COMPOUND" name="street light (streetlight)">
             <pattern>
                 <token>street</token>
