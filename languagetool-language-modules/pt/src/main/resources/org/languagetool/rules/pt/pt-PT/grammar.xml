@@ -780,8 +780,26 @@ title="Easy editing stylesheet" ?>
       </antipattern>
       <antipattern>
           <token postag_regexp='yes' postag='_PUNCT|SENT_START'/>
+          <token>meu</token>
+          <token>menino</token>
+          <token postag='_PUNCT'/>
+      </antipattern>
+      <antipattern>
+          <token postag_regexp='yes' postag='_PUNCT|SENT_START'/>
           <token>meus</token>
-          <token>caros</token>
+          <token>caros|senhores</token>
+          <token postag='_PUNCT'/>
+      </antipattern>
+      <antipattern>
+          <token postag_regexp='yes' postag='_PUNCT|SENT_START'/>
+          <token>minha</token>
+          <token>menina</token>
+          <token postag='_PUNCT'/>
+      </antipattern>
+      <antipattern>
+          <token postag_regexp='yes' postag='_PUNCT|SENT_START'/>
+          <token>minhas</token>
+          <token>caras|senhoras</token>
           <token postag='_PUNCT'/>
       </antipattern>
       <antipattern>
@@ -798,14 +816,14 @@ title="Easy editing stylesheet" ?>
       <example correction='Leve a sua'><marker>Leve sua</marker> irmã no carro.</example>
       <example correction='A minha'><marker>Minha</marker> prancha partiu.</example>
       <example correction='turismo a sua'>Boa parte das Antilhas, tem no <marker>turismo sua</marker> mais importante fonte de recursos</example>
-      <example type='correct'>Tudo bem, mas <marker>sua</marker> majestade está zangada.</example>
-      <example type='correct'>Tudo bem, mas <marker>vossa</marker> eminência está zangada.</example>
+      <example>Tudo bem, mas sua majestade está zangada.</example>
+      <example>Tudo bem, mas vossa eminência está zangada.</example>
       <example>e o Nuno Leitão que é meu amigo no Facebook e Skype.</example>
       <example>Apesar de reafirmar que vai prosseguir o “seu dever” no acolhimento às vagas de migrantes.</example>
     <!--        <example type='correct'>Hospital Nossa Senhora da Paz</example> -->
       <example>Isto é uma característica tipicamente sua.</example>
       <example>Sentimos muita saudade sua.</example>
-	  <example type='correct'>Isso é muito feio no desporto, <marker>meus</marker> senhores!</example>
+	  <example>Isso é muito feio no desporto, meus senhores!</example>
     </rule>
     <rule>
       <antipattern>
