@@ -787,7 +787,7 @@ title="Easy editing stylesheet" ?>
       <antipattern>
           <token postag_regexp='yes' postag='_PUNCT|SENT_START'/>
           <token>meus</token>
-          <token>caros|senhores</token>
+          <token regexp='yes'>caros|senhores</token>
           <token postag='_PUNCT'/>
       </antipattern>
       <antipattern>
@@ -799,7 +799,7 @@ title="Easy editing stylesheet" ?>
       <antipattern>
           <token postag_regexp='yes' postag='_PUNCT|SENT_START'/>
           <token>minhas</token>
-          <token>caras|senhoras</token>
+          <token regexp='yes'>caras|senhoras</token>
           <token postag='_PUNCT'/>
       </antipattern>
       <antipattern>
