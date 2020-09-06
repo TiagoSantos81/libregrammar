@@ -31,7 +31,7 @@ import java.util.stream.Collectors;
 
 /**
  * Loads {@link PatternRule}s from a false friends XML file.
- * 
+ *
  * @author Daniel Naber
  */
 public class FalseFriendRuleLoader extends DefaultHandler {

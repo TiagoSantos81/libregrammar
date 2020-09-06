@@ -3261,7 +3261,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <antipattern><!-- a simple as we -->
             <token skip="-1" postag="SENT_START">
                 <exception scope="next">as</exception>
-                </token>
+            </token>
             <token regexp="yes">an?
                 <exception scope="previous" inflected="yes">be</exception>
                 </token>
@@ -3296,6 +3296,16 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
                 </token>
             <token postag="IN"/>
         </antipattern>
+        <antipattern><!-- needed for rule AFTER_NOON to work -->
+            <token postag="JJS?" postag_regexp="yes" />
+            <token>after</token>
+            <token>noon</token>
+        </antipattern>
+        <antipattern><!-- He brought out the very best in people. -->
+            <token postag="DT" />
+            <token>best</token>
+            <token postag="IN" />
+        </antipattern>
         <pattern>
             <token postag="DT"><exception postag="PDT"/><exception regexp="yes">th[eo]se|one|much</exception></token>
             <marker>
@@ -3319,6 +3329,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <example type="untouched">Incorrect grammar. The solution is not <marker>a simple as</marker> we had hoped.</example>
         <example type="untouched">Incorrect grammar. It's not a large sheep, it's <marker>a small as</marker>!</example>
         <example type="untouched">You can either pay via credit card or via PayPal.</example>
+        <example type="untouched">He brought out the very best in people.</example>
         <example type="untouched">We can say that <marker>all</marker> in some way belong to a kind of ethnic category...</example><!-- 'That' comes before a relative clause in which 'all' is a pronoun (https://www.lexico.com/en/definition/all) -->
         <example type="untouched">Whether the effects will be that extreme for most people is yet to be seen.</example><!-- #2755 -->
     </rule>
