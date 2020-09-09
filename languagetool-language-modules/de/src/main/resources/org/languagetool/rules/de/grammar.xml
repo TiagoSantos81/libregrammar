@@ -4928,7 +4928,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
     <!-- Verwechslungen -->
     <!-- ====================================================================== -->
     <category id="CONFUSED_WORDS" name="Leicht zu verwechselnde Wörter">
-        <rulegroup id="VEREINT_VEREINIGT" name="Vereinigten Nationen (Vereinten Nationen)" default="temp_off">
+        <rulegroup id="VEREINT_VEREINIGT" name="Vereinigten Nationen (Vereinten Nationen)">
             <rule>
                 <pattern>
                     <token regexp="yes">vereinigten?</token>
@@ -9623,7 +9623,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
     <!-- Siehe auch ../../resource/de/compounds.txt -->
     <!-- ====================================================================== -->
     <category id="COMPOUNDING" name="Getrennt- und Zusammenschreibung">
-        <rulegroup id="ADD_ON" name="Add-on" default="temp_off">
+        <rulegroup id="ADD_ON" name="Add-on">
             <url>https://www.duden.de/suchen/dudenonline/Add-on</url>
             <antipattern><!-- Needs extra rule -->
                 <token>Google</token>
@@ -9663,7 +9663,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="Add-on">Er hat das <marker>Add on</marker> von LanguageTool im Browser installiert.</example>
             </rule>
         </rulegroup>
-        <rulegroup id="PLUG_IN" name="Plug-in" default="temp_off">
+        <rulegroup id="PLUG_IN" name="Plug-in">
             <url>https://www.duden.de/suchen/dudenonline/Plug-in</url>
             <antipattern><!-- Needs extra rule -->
                 <token>Google</token>
@@ -9821,10 +9821,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <pattern>
                 <token>fest</token>
                 <token min="0">zu</token>
-                <token inflected="yes" regexp="yes">nehmen|halten|stellen</token>
+                <token inflected="yes" regexp="yes">nehmen|halten|stellen|legen|gelegt|gehalten|gestellt</token>
             </pattern>
             <message>Das Verb <suggestion>fest<match no="2" case_conversion="alllower" /><match no="3" case_conversion="alllower" /></suggestion> wird zusammengeschrieben.</message>
             <example correction="festgenommen">Der Dieb wurde auf der Flucht von der Polizei <marker>fest genommen</marker>.</example>
+            <example correction="festgelegten">Es passiert zu einem <marker>fest gelegten</marker> Zeitpunkt.</example>
             <example>Und das Fest nahm seinen Lauf.</example>
         </rule>
         <rulegroup id="NO_GO" name="No-Go">
@@ -10253,10 +10254,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rule>
         <rule id="LANGUAGE_TOOL" name="Language Tool (LanguageTool)">
             <pattern case_sensitive="yes">
-                <token>Language</token>
-                <token regexp="yes">Tools?</token>
+                <token regexp="yes">Lan?gu?age</token>
+                <token regexp="yes">[Tt]ools?</token>
             </pattern>
-            <message>Meinten Sie <suggestion>\1\2</suggestion>, die Software zur Textprüfung?</message>
+            <message>Meinten Sie <suggestion>Language<match no="2" case_conversion="startupper" /></suggestion>, die Software zur Textprüfung?</message>
+            <url>https://en.wikipedia.org/wiki/LanguageTool</url>
             <example correction="LanguageTool">Sie testet <marker>Language Tool</marker>.</example>
         </rule>
         <!-- German rule contributed by forum user Ordoviz, 2018-11-01 -->
@@ -10801,7 +10803,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rulegroup>
         <rule id="ADDIS_ABEBA" name="Addis-Abeba (Addis Abeba)">
             <regexp case_sensitive='yes'>Addis-Abeba</regexp>
-            <message>Die Hauptstadt von Äthiopien wird ohne Bindestrich geschrieben</message>
+            <message>Die Hauptstadt von Äthiopien wird ohne Bindestrich geschrieben.</message>
             <suggestion>Addis Abeba</suggestion>
             <example correction="Addis Abeba"><marker>Addis-Abeba</marker> ist die Hauptstadt von Äthiopien.</example>
         </rule>
@@ -13729,7 +13731,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                         <token inflected="yes" regexp="yes">fällig|flü(cht|ss)ig|gängig|hörig|gewichtig|reich</token>
                     </marker>
                 </pattern>
-                <message>Ergibt sich durch die Zusammensetzung von 'schwer' und '\2' eine neue, idiomatisierte Gesamtbedeutung, werden die Wörter zusammengeschrieben</message>
+                <message>Ergibt sich durch die Zusammensetzung von 'schwer' und '\2' eine neue, idiomatisierte Gesamtbedeutung, werden die Wörter zusammengeschrieben.</message>
                 <suggestion>\1\2</suggestion>
                 <example correction="schwerhörige">Der <marker>schwer hörige</marker> Zeuge hat alles beobachtet.</example>
             </rule>
@@ -13771,7 +13773,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                         <token case_sensitive="yes" regexp="yes">fach(e[rsnm]?)?</token>
                     </marker>
                 </pattern>
-                <message>Mit 'Zahlwort + fach' gebildete Wörter sind zusammenzuschreiben</message>
+                <message>Mit Zahlwort + 'fach' gebildete Wörter werden zusammengeschrieben.</message>
                 <suggestion>\1\2</suggestion>
                 <short>Möglicher Tippfehler</short>
                 <example correction="zweifacher">Er ist <marker>zwei facher</marker> Weltmeister.</example>
@@ -19253,7 +19255,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token case_sensitive="yes">Rechtens</token>
                 </marker>
             </pattern>
-            <message><suggestion><match no="2" case_conversion="startlower"/></suggestion> (zu Recht; rechtmäßig) wird kleingeschrieben</message>
+            <message><suggestion><match no="2" case_conversion="startlower"/></suggestion> (zu Recht; rechtmäßig) wird kleingeschrieben.</message>
             <url>https://www.korrekturen.de/wortliste/rechtens.shtml</url>
             <example><marker>Rechtens</marker> ist das aber nicht!</example>
             <example correction="rechtens">Der Angeklagte wurde <marker>Rechtens</marker> verurteilt.</example>
@@ -26263,6 +26265,17 @@ Andere Projekte</example>
                 <token postag_regexp="yes" postag="SUB:.+"/>
             </antipattern>
             <rule>
+                <antipattern>
+                    <token>ab</token>
+                    <token regexp="yes">und|&amp;</token>
+                    <token>zu</token>
+                </antipattern>
+                <antipattern>
+                    <token>zu</token>
+                    <token regexp="yes">&sprachadj1;</token>
+                    <token postag="ADJ:.*" postag_regexp="yes" />
+                    <token postag="SUB:.*" postag_regexp="yes" />
+                </antipattern>
                 <pattern>
                     <token regexp="yes">in|auf|zu|korrekte[ms]|akzentfrei(e[snm])?|richtige[ms]|[mds]ein|euer</token>
                     <marker>
@@ -26276,8 +26289,10 @@ Andere Projekte</example>
                 <example correction="Englisch">Ist das korrektes <marker>englisch</marker>?</example>
                 <example>Er schreibt den Text auf <marker>englischem</marker> Boden.</example>
                 <example>Nach einem erfolgreichen Angriff auf <marker>türkisch</marker> besetztes Territorium.</example>
+                <example>Meine Frau und ich gehen gerne ab und zu chinesisch essen.</example>
+                <example>Sein Lehrer Elsner bestärkte Chopin in der Hinwendung zu polnisch nationaler Musik, namentlich zu den polnischen Volkstänzen und -liedern.</example>
             </rule>
-            <rule default="temp_off">
+            <rule>
                 <pattern>
                     <token>auf</token>
                     <token>gut</token>
@@ -26336,13 +26351,13 @@ Andere Projekte</example>
                         <token regexp="yes">&sprachadj1;</token>
                     </marker>
                 </pattern>
-                <message>Meinten Sie <suggestion><match no="4" case_conversion="startupper"/></suggestion> (im Sinne von '\3e Sprache')?</message>
+                <message>Meinten Sie <suggestion><match no="4" case_conversion="startupper"/></suggestion> (im Sinne von '\4e Sprache')?</message>
                 <example correction="Englisch">Er spricht <marker>englisch</marker>.</example>
                 <example correction="Englisch">Er spricht kein <marker>englisch</marker>.</example>
                 <example>Er kann kein <marker>Englisch</marker>.</example>
                 <example correction="Deutsch">Er unterrichtet <marker>deutsch</marker>.</example>
             </rule>
-            <rule default="temp_off">
+            <rule>
                 <pattern case_sensitive="yes">
                     <marker>
                         <token regexp="yes">&sprachadj1;</token>
@@ -26352,7 +26367,7 @@ Andere Projekte</example>
                     </token>
                     <token inflected="yes" regexp="yes">können|sprechen|reden|schreiben|verstehen|übersetzen|unterrichten|lernen|beibringen|entziffern|kommunizieren|korrigieren</token>
                 </pattern>
-                <message>Meinten Sie <suggestion><match no="1" case_conversion="startupper"/></suggestion> (im Sinne von '\3e Sprache')?</message>
+                <message>Meinten Sie <suggestion><match no="1" case_conversion="startupper"/></suggestion> (im Sinne von '\1e Sprache')?</message>
                 <url>https://www.duden.de/rechtschreibung/Deutsch</url>
                 <example correction="Englisch">Er kann <marker>englisch</marker> sprechen.</example>
                 <example correction="Französisch">Können wir <marker>französisch</marker> reden?</example>
@@ -27654,7 +27669,7 @@ Andere Projekte</example>
                         <token regexp="yes">Andere?m</token>
                     </marker>
                 </pattern>
-                <message>In der Kombination mit "unter" wird <suggestion><match no="2" case_conversion="alllower"/></suggestion> in der Regel kleingeschrieben</message>
+                <message>In der Kombination mit "unter" wird <suggestion><match no="2" case_conversion="alllower"/></suggestion> in der Regel kleingeschrieben.</message>
                 <url>http://www.rechtschreibtipps.de/unter-anderem.php</url>
                 <example correction="anderem">Er wollte unter <marker>Anderem</marker> ein Geschenk kaufen.</example>
                 <example correction="anderm">Er wollte unter <marker>Anderm</marker> ein Geschenk kaufen.</example>
@@ -35960,7 +35975,7 @@ Andere Projekte</example>
                             <exception postag="(VER:INF:|PA[12]:|VER:EIZ:.*).*" postag_regexp="yes"/>
                             <exception postag="ADJ:.*" postag_regexp="yes"/>
                             <exception postag="ADV:MOD.*" postag_regexp="yes"/>
-                            <exception regexp="yes">los|eine?|trotz|siebte|achte|sog|meine|äußerst|äusserst|gewesen|einst|lichte|bitte</exception>
+                            <exception regexp="yes">los|eine?|trotz|siebte|achte|sog|mein|meine|äußerst|äusserst|gewesen|einst|lichte|bitte</exception>
                         </token>
                     </marker>
                 </pattern>
@@ -35989,7 +36004,7 @@ Andere Projekte</example>
                             <exception postag="ADJ:.*" postag_regexp="yes"/>
                             <exception postag="ADV:MOD.*" postag_regexp="yes"/>
                             <exception postag="VER:MOD:INF"/>
-                            <exception regexp="yes">los|eine?|trotz|siebte|achte|sog|meine|äußerst|gewesen|einst|lichte|bitte</exception>
+                            <exception regexp="yes">los|eine?|trotz|siebte|achte|sog|mein|meine|äußerst|äusserst|gewesen|einst|lichte|bitte</exception>
                         </token>
                     </marker>
                 </pattern>
@@ -35999,6 +36014,7 @@ Andere Projekte</example>
                 <example>The Visitors ist das achte und letzte Album der Popgruppe ABBA.</example>
                 <example>Wieso soll das bitte frauenfeindlich sein?</example>
                 <example>Er sollte das können.</example>
+                <example>Aber bisher ist das mein Ersteindruck, der sich sehr schnell ändern kann.</example>
             </rule>
         </rulegroup>
         <rule id="SENT_START_SIN_PLU" name="Nomen singular + Verb plural am Satzanfang">
@@ -37145,7 +37161,7 @@ Andere Projekte</example>
                     <token regexp="yes">gehabt|gewesen</token>
                 </marker>
             </pattern>
-            <message>Das doppelte Perfekt ('\1 \2 \3') ist keine standardsprachlich zulässige Zeitform. Verwenden Sie stattdessen das Plusquamperfekt</message>
+            <message>Das doppelte Perfekt ('\1 \2 \3') ist keine standardsprachlich zulässige Zeitform. Verwenden Sie stattdessen das Plusquamperfekt.</message>
             <url>https://dict.leo.org/grammatik/deutsch/InflectionRules/FRegeln-V/Texte/Komplex-Perf.html#Anchor-Doppeltes-47857</url>
             <example correction="">Ich habe das <marker>geschrieben gehabt</marker>.</example>
             <example>Ich hatte das <marker>geschrieben</marker>.</example>
@@ -39042,7 +39058,7 @@ Andere Projekte</example>
             <pattern>
                 <token>weder</token>
             </pattern>
-            <message>Es scheint das 'noch' der Wendung 'weder A noch B' zu fehlen</message>
+            <message>Es scheint das 'noch' der Wendung 'weder A noch B' zu fehlen.</message>
             <example correction="">Das ist <marker>weder</marker> effektiv oder effizient.</example>
             <example>Das ist weder effektiv noch effizient.</example>
         </rule>
@@ -41190,7 +41206,7 @@ Andere Projekte</example>
                     <token regexp="yes">'|’|`|´|‘</token>
                     <token>s</token>
                 </pattern>
-                <message>Meinten Sie <suggestion>\1\3</suggestion> oder <suggestion>\1</suggestion>? Normalerweise wird im Deutschen vor einem Plural-s kein Apostroph gesetzt</message>
+                <message>Meinten Sie <suggestion>\1\3</suggestion> oder <suggestion>\1</suggestion>? Normalerweise wird im Deutschen vor einem Plural-s kein Apostroph gesetzt.</message>
                 <short>Normalerweise wird im Deutschen vor einem Plural-s kein Apostroph gesetzt</short>
                 <example correction="AGBs|AGB">Es gelten die <marker>AGB`s</marker>.</example>
                 <example correction="AGBs|AGB">Es gelten die <marker>AGB’s</marker>.</example>
@@ -43447,7 +43463,7 @@ Andere Projekte</example>
         <rulegroup id="PARAGRAF_LEERZEICHEN" name="Fehlendes geschütztes Leerzeichen nach '§'">
             <rule>
                 <regexp case_sensitive='yes' type="exact">§ ?(\d+[a-z]?)</regexp>
-                <message>Nach dem Paragrafenzeichen sollte ein geschütztes Leerzeichen stehen</message>
+                <message>Nach dem Paragrafenzeichen sollte ein geschütztes Leerzeichen stehen.</message>
                 <suggestion>§&nbsp;\1</suggestion>
                 <example>An dieser Kreuzung gilt §&nbsp;20.</example>
                 <example correction="§&nbsp;20">An dieser Kreuzung gilt <marker>§20</marker>.</example>

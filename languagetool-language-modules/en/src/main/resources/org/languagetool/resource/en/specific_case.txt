@@ -1,6 +1,6 @@
 # Add phrases that occur only in this upper/lowercase writing and that
 # would otherwise be accepted by the spell checker, e.g. because "potter"
-# in "Harry potter" is a valid word when not considering context. 
+# in "Harry potter" is a valid word when not considering context.
 # Used by org.languagetool.rules.en.SpecificCaseRule
 Harry Potter
 Elon Musk
@@ -68,7 +68,6 @@ United States Congress
 United States Army
 United States Navy
 United States Air Force
-United States Capitol
 Arctic Ocean
 South Africa
 South African
@@ -92,7 +91,6 @@ Central African Republic
 British Virgin Islands
 US Virgin Islands
 U.S. Virgin Islands
-United States Virgin Islands
 Virgin Islands
 Vatican City
 Dick Cheney
@@ -153,10 +151,7 @@ State Grid
 General Motors
 General Electric
 Cardinal Health
-Bank of America
-Bank of England
 Wells Fargo
-United Parcel Service
 United Technologies
 Lockheed Martin
 American Airlines
@@ -173,14 +168,12 @@ Labor Party
 Donald Duck
 Daisy Duck
 Statue of Liberty
-Green Bay Packers
 Green Bay
 Blue Origin
 Red Hot Chili Peppers
 Red Army
 Red Army Fraction
 # Black Sea
-Black Sabbath
 Milky Way
 Rex Orange County
 Orange County
@@ -202,10 +195,8 @@ Roger Stone
 Taylor Swift
 Rolling Stone Magazine
 Rolling Stones
-Roger Federer
 Keith Urban
 John Legend
-Dallas Cowboys
 People's Choice Award
 People’s Choice Award
 Chris Brown
@@ -239,11 +230,9 @@ Grand Hyatt
 Metropolitan Museum of Art
 Vanity Fair
 Madison Avenue
-Wharton School
 #German Shepherd
 #German Shepherds
 Grand Central Terminal
-Lincoln Square
 Hudson River
 Palm Beach
 Atlantic City
@@ -272,12 +261,8 @@ Mount Rushmore
 Pike Place Market
 Venice Beach
 Faneuil Hall
-Kennedy Space Center
-Great Smoky Mountains National Park
 Great Smoky Mountains
 Carlsbad Caverns
-Bryce Canyon National Park
-Bryce Canyon
 Sedona Red Rock Country
 Sedona Red Rock
 Florida Keys
@@ -297,7 +282,6 @@ United Domains
 United Internet
 United Airlines
 Toy Story
-Captain Marvel
 Fast & Furious
 # The Avengers
 Jurassic Park
@@ -347,15 +331,10 @@ Matebook X Pro
 Ford Motor Company
 Ford Mustang
 Honda Accord
-Ford Fusion
 Nissan Rogue
 Jeep Grand Cherokee
-Jeep Cherokee
-Toyota Highlander
 Chevrolet Equinox
 Jeep Wrangler
-Ford Escape
-Ford Explorer
 Toyota Corolla
 Kia Soul
 Ram Pickup
@@ -382,7 +361,6 @@ Land Rover Defender
 Rolls Royce
 Smith & Wesson
 Smith and Wesson
-South African Airways
 Eastern Airways
 Western Union
 # Southern Comfort
@@ -406,10 +384,8 @@ UC Browser
 Facebook Messenger
 Hudson City
 Jetblue Airways
-Jackson County
 Rainy River
 Cherry Creek
-Horry County
 West Hempstead
 West Chester
 Buffalo City
@@ -423,8 +399,6 @@ Canary Wharf
 Royal Tunbridge Wells
 Ellesmere Port
 Great Yarmouth
-Welwyn Garden City
-Welwyn Garden
 Port Elizabeth
 Cape Town
 Theresa May
@@ -447,14 +421,12 @@ Maroon 5
 Tiger Woods
 Boston Dynamics
 New York Post
-Bel Air
 Uncle Sam
 Route 66
 Queer Eye
 Stevie Wonder
 System of a Down
 # Dirty Dancing
-Forrest Gump
 The Silence of the Lambs
 Pulp Fiction
 #The Great Wall
@@ -464,13 +436,11 @@ Los Angeles Times
 LA Times
 L.A. Times
 Houston Chronicle
-Chicago Tribune
 Tampa Bay
 Tampa Bay Times
 Dallas Morning News
 New York Daily News
 The Denver Post
-Boston Globe
 The Seattle Times
 The Sunday Times
 Daily Mirror
@@ -502,9 +472,7 @@ Johnny Cash
 Britney Spears
 Tina Turner
 Kanye West
-Jimmy Page
 Tom Petty
-Frank Sinatra
 Neil Young
 Buddy Holly
 Backstreet Boys
@@ -516,18 +484,14 @@ Iron Maiden
 Foo Fighters
 Linkin Park
 Bank of Scotland
-Bank of China
 Bank of England
 Cayman National Bank
 Tesla Roadster
 Beverly Hills
 Capitol Hill
-Thousand Oaks
-Simi Valley
 Stinson Beach
 Redwood City
 Half Moon Bay
-Daly City
 Daly College
 Daly County
 Daly River
@@ -571,7 +535,6 @@ King Crimson
 Dolby Digital
 Iron Man
 Tony Stark
-Legend of Zelda
 Rapid City
 Woody Allen
 North Macedonia
@@ -581,7 +544,6 @@ Castle Rock
 Stephen King
 Columbia Records
 Columbia University
-Speedy Gonzales
 Fast & Furious 6
 Fast & Furious 7
 Fast & Furious 8
@@ -638,100 +600,17 @@ Grand Theft Auto
 Boxing Day
 Tesla Cybertruck
 Woodland Hills
-Sonoma County
-Lake County
 Los Angeles County
-Cook County
 Harris County
 Maricopa County
 San Diego County
 Miami Dade County
-Dallas County
-Kings County
-Riverside County
-Queens County
-King County
-Clark County
-San Bernardino County
-Tarrant County
-Bexar County
-Broward County
-Santa Clara County
-Wayne County
-Alameda County
-New York County
-Middlesex County
-Philadelphia County
-Sacramento County
-Palm Beach County
-Suffolk County
-Hillsborough County
-Bronx County
-Nassau County
-Franklin County
-Hennepin County
-Oakland County
-Travis County
-Cuyahoga County
-Allegheny County
-Salt Lake County
-Fairfax County
-Contra Costa County
-Mecklenburg County
-Wake County
-Montgomery County
-Fulton County
-Pima County
-Collin County
-St. Louis County
-Fresno County
 Honolulu County
-Pinellas County
-Westchester County
-Marion County
-Duval County
-Milwaukee County
-Fairfield County
-Bergen County
-Shelby County
-DuPage County
-Gwinnett County
-Erie County
 Prince George’s County
-Prince George's County
-Kern County
-Hartford County
-Pierce County
 San Francisco
 San Francisco County
-Macomb County
-Hidalgo County
-Denton County
-New Haven County
-Ventura County
-El Paso County
-Worcester County
-Baltimore County
-Hamilton County
-Snohomish County
-Multnomah County
-Essex County
-Oklahoma County
-Fort Bend County
-Jefferson County
-San Mateo County
-Cobb County
-DeKalb County
-Lee County
-San Joaquin County
-Monroe County
 Denver County
-Polk County
-Norfolk County
 District of Columbia
-Davidson County
-Bernalillo County
-Hudson County
 Magic Johnson
 Fat Joe
 Larry Page
@@ -772,7 +651,6 @@ Union of South American Nations
 House of Representatives
 United States Capitol
 National Mall
-Lincoln Memorial
 House of Commons
 House of Lords
 Palace of Westminster
@@ -788,7 +666,6 @@ Prince of Persia
 Duke of Sussex
 Academy Award
 Academy Awards
-Treasure Island
 Beauty and the Beast
 Lion King
 Monsters University
@@ -798,7 +675,6 @@ Pirates of the Caribbean
 South Jamaica
 Liberty Avenue
 Bloom County
-Pennsylvania Avenue
 Rodeo Drive
 Sunset Boulevard
 Michigan Avenue
@@ -843,8 +719,6 @@ Fuelcell Energy
 Liberty Global
 Arrowhead Research
 Gulfport Energy
-Procter & Gamble
-Procter and Gamble
 Johnson & Johnson
 Johnson and Johnson
 Exxon Mobil
@@ -860,7 +734,6 @@ Democratic Republic of the Congo
 True Jesus Church
 European Union
 Isaac Newton
-Washington, D.C.
 Ivory Coast
 Nelson Mandela
 Cape Verde
@@ -875,7 +748,6 @@ Saint Petersburg
 Papua New Guinea
 Charlie Chaplin
 #Solar System
-Victor Hugo
 Dominican Republic
 Mediterranean Sea
 Mark Twain
@@ -885,7 +757,6 @@ Martin Luther
 Martin Luther King
 Alexander the Great
 Hans Christian Andersen
-Mexico City
 Lord's Prayer
 Middle East
 Wikimedia:Manual of Style
@@ -893,8 +764,6 @@ Martin Luther King Jr.
 Marie Curie
 Solomon Islands
 Charles Dickens
-Jimmy Wales
-Saint Kitts and Nevis
 Saint Lucia
 Universal Declaration of Human Rights
 Elizabeth II
@@ -906,7 +775,6 @@ New Delhi
 Sung Jae-ki
 Augustine of Hippo
 Marshall Islands
-Nobel Prize
 Benedict XVI
 John Paul II
 Margaret Thatcher
@@ -924,10 +792,8 @@ Lady Gaga
 Blaise Pascal
 Catholic Church
 Mother Teresa
-Wikimedia Foundation
 Falkland Islands
 Genghis Khan
-George H. W. Bush
 Henry Ford
 Canary Islands
 Cold War
@@ -938,7 +804,6 @@ Middle Ages
 J. R. R. Tolkien
 Lech Wałęsa
 #The Holocaust
-South Ossetia
 Roman Empire
 North Rhine-Westphalia
 Joan of Arc
@@ -946,7 +811,6 @@ Dwight D. Eisenhower
 Apple Inc.
 Osama bin Laden
 #The Simpsons
-Frank Lloyd Wright
 Ottoman Empire
 John Adams
 Great Wall of China
@@ -986,7 +850,6 @@ Byzantine Empire
 Gerald Ford
 Radio Studio 54 Network
 Robin Williams
-Virgin Mary
 Old Testament
 Suez Canal
 Balearic Islands
@@ -999,7 +862,6 @@ UNESCO World Heritage Site
 Book of Genesis
 Republic of Dagestan
 Bob Marley
-J. K. Rowling
 Islamic State of Iraq and the Levant
 Great Britain
 Åland Islands
@@ -1031,13 +893,11 @@ Holy Roman Empire
 John Quincy Adams
 James Watt
 Herbert Hoover
-Panama City
 East Asia
 International Monetary Fund
 H. G. Wells
 La concha de tu mamá
 # Dead Sea # a dead sea turtle
-La Paz
 Iberian Peninsula
 James Clerk Maxwell
 Republic of Tatarstan
@@ -1058,7 +918,6 @@ Xi Jinping
 Vietnam War
 One Thousand and One Nights
 Anne Frank
-Ho Chi Minh
 Alexander Graham Bell
 Nova Scotia
 Coordinated Universal Time
@@ -1068,7 +927,6 @@ Commonwealth of Nations
 Port Louis
 German Democratic Republic
 Northern Mariana Islands
-West Bengal
 Iron Age
 Republic of Bashkortostan
 Niger River
@@ -1111,7 +969,6 @@ Berlin Wall
 #The Communist Manifesto
 Republic of Adygea
 Port Moresby
-University of Oxford
 Western Europe
 #The Little Prince
 Jean Auguste Dominique Ingres
@@ -1223,7 +1080,6 @@ Indigenous peoples of America
 South Georgia and the South Sandwich Islands
 English Channel
 Saint Paul
-Al Gore
 John Keats
 #The Walt Disney Company
 Karachay-Cherkess Republic
@@ -1231,7 +1087,6 @@ Western Australia
 Southern Africa
 ISO 3166–1: Codes for the representation of names of countries and their subdivisions—Part 1: Country codes
 Chris Pine
-Pays de la Loire
 Da Nang International Airport
 Hail Mary
 Inner Mongolia
@@ -1265,7 +1120,6 @@ Udmurt Republic
 Pol Pot
 St Louis
 St. Louis
-Nobel Prize
 Dalia Lama
 St. John's
 state of the United States
@@ -1300,7 +1154,6 @@ Cascading Style Sheets
 La Marseillaise
 Ray Bradbury
 Strait of Gibraltar
-Brothers Grimm
 European Parliament
 Republic of Mordovia
 #The Godfather
@@ -1337,17 +1190,14 @@ Spanish Civil War
 Zhu Xi
 Gabriela Mistral
 Inter Milan
-La Rioja
 Erich Maria Remarque
 Nicholas II of Russia
 George Sand
-Tour de France
 Wilhelm II
 Pius XII
 Dragon Ball
 Council of Europe
 Russian Revolution
-John Travolta
 Louis XVI of France
 Region of Murcia
 Baltic States
@@ -1419,14 +1269,12 @@ Star Trek
 York University
 Armenian Genocide
 West Germany
-Condoleezza Rice
 Barents Sea
 Charles, Prince of Wales
 October Revolution
 Jodie Foster
 Bobby Fischer
 John Dalton
-Mekong River
 Dnieper River
 Acts of the Apostles
 Henry VIII of England
@@ -1465,7 +1313,6 @@ Andromeda Galaxy
 Christopher Lee
 John von Neumann
 Marine Le Pen
-United States Constitution
 #Windows 7 # already handled by MICROSOFT_PRODUCTS
 #The New York Times
 Alice's Adventures in Wonderland
@@ -1492,10 +1339,8 @@ Ancient Celts
 Offenbach am Main
 Grey Heron
 Buzz Aldrin
-La Serena
 Carpathian Mountains
 Graham Greene
-Frank Zappa
 Gupta Empire
 Maria Sharapova
 Ayrton Senna
@@ -1511,7 +1356,6 @@ German Empire
 #Golden Eagle
 Tyrrhenian Sea
 Holy Spirit
-Yellowstone National Park
 Common Kestrel
 White Wagtail
 John Goodman
@@ -1527,7 +1371,6 @@ Dan Brown
 Manchester City F.C.
 East China Sea
 Weimar Republic
-Martin Scorsese
 American Revolutionary War
 Grace Kelly
 Key West
@@ -1559,8 +1402,6 @@ Google Tag Manager
 Facebook Graph API
 Facebook Graph Search
 Facebook F8
-Universal Music Group
-Universal Music
 Warner Music Group
 Warner Music
 Sony Music
@@ -1587,7 +1428,6 @@ Wharton School
 The Boring Company
 Chicago Tribune
 Hoover Dam
-Lake Mead
 Black Canyon
 Boulder City
 Hoover Dam Bypass
@@ -1600,7 +1440,6 @@ Illinois Institute of Technology
 University of Oxford
 University of Applied Sciences
 University of Pennsylvania
-University of Edinburgh
 University of Amsterdam
 University of Washington
 University of California
@@ -1616,11 +1455,8 @@ Silver Spring
 Capital Beltway
 Clash of Clans
 Rise of Skywalker
-Kansas City Chiefs
-Oakland Raiders
 Orange Bowl Stadium
 Los Angeles Rams
-Carolina Panthers
 East Rutherford
 New York Giants
 Pittsburgh Steelers
@@ -1629,7 +1465,6 @@ Hard Rock Stadium
 United States Marine Corps
 US Marine Corps
 U.S. Marine Corps
-New Castle County
 Ocean Beach Freeway
 Assassin's Creed
 Assassin’s Creed
@@ -1661,8 +1496,6 @@ Citi Field
 Yankee Stadium
 Yankee Doodle
 Yankee Candle
-Oakland Athletics
-Tiger Stadium
 Louisiana State University
 Munich Security Conference
 Jetstar Airways
@@ -1684,18 +1517,12 @@ Magna Carta
 Abu Dhabi
 Al Jazeera
 Alpha Centauri
-Charlie Hebdo
 Costa Rica
 El Niño
-Ho Chi Minh
-Kuala Lumpur
-Rio Grande do Sul
-Rio Grande do Norte
 Rio Grande
 São Luis
 São Paulo
 São Tomé
-São Tomé and Príncipe
 Taj Mahal
 Berkshire Hathaway
 Boston Consulting Group
@@ -1708,7 +1535,6 @@ Ernst & Young
 Ernst and Young
 Morgan Stanley
 Weight Watchers
-Wolfram Research
 Zurich Insurance
 El Cajon
 El Dorado
@@ -1718,9 +1544,7 @@ Axel Springer
 Carl Zeiss
 Yom Kippur
 Der Spiegel
-La Paz
 Quintana Roo
-Nuevo León
 Royal Canin
 Royal Air Maroc
 Addis Ababa
@@ -1732,7 +1556,6 @@ Zagros Airlines
 Zagros TV
 Coffs Harbour
 Conrad Connect
-Credit Suisse
 Machu Picchu
 Absolut Vodka
 Roger Federer
@@ -1745,7 +1568,6 @@ Adam Schiff
 PlayStation Vue
 PlayStation
 PlayStation Vita
-El Segundo
 El Monte
 El Nido
 El Paso de Robles
@@ -1768,13 +1590,11 @@ El Cenizo
 El Chaparral
 Spiegel Online
 Spiegel Magazine
-Billie Eilish
 Southern Pacific Bank
 Katy Perry
 Hagia Sophia
 Port au Prince
 Elmore County
-Richland County
 Leonardo da Vinci
 Los Angeles Dodgers
 St. Louis Cardinals
@@ -1902,7 +1722,6 @@ Liberty University
 California State University
 University of Central Florida
 University of Maryland
-Florida International University
 University of Florida
 University of Minnesota
 University of Texas
@@ -1916,7 +1735,6 @@ Cape Coral
 Cape Cod
 Cape Canaveral
 Cape Breton Island
-Brevard County
 Cape Kennedy
 British Armed Forces
 British Medical Journal
@@ -1977,7 +1795,6 @@ Sri Lanka
 St. Lucia
 Windows Admin Center
 Credit Agricole
-Crédit Agricole
 Credit Suisse
 League of Legends
 Sin City
@@ -1997,7 +1814,6 @@ Piers Morgan
 Black Wall Street
 Jeff Sessions
 Gordon Beach
-Westmoreland County
 Sierra Nevada
 Glen Ridge
 Ridge Racer
@@ -2020,7 +1836,6 @@ Knight Rider
 Silverstone
 Paul Brown Stadium
 MetLife Stadium
-Lucas Oil Stadium
 Wembley Stadium
 Toronto Blueshirts
 Canadian Tire Centre
@@ -2046,7 +1861,6 @@ Ted Kennedy
 Bugs Bunny
 Colleton County
 Yad Vashem
-Culver City
 Looney Tunes
 Deepwater Horizon
 Osage County
@@ -2093,7 +1907,6 @@ San Diego
 San Clemente
 San Dimas
 San Fernando Valley
-San Fernando
 San Francisco International Airport
 San Geronimo
 Marin County
@@ -2103,7 +1916,6 @@ San Joaquin
 San Marin
 San Pedro
 Santa Barbara
-Santa Barbara County
 Santa Clara Valley
 Santa Clara
 Santa Cruz
@@ -2119,7 +1931,6 @@ Santa Ana River
 Santa Clarita
 Garden Grove
 Santa Rosa
-Rancho Cucamonga
 Thousand Oaks
 Elk Grove
 Simi Valley
@@ -2127,7 +1938,6 @@ West Covina
 Mission Viejo
 San Leandro
 Billie Eilish
-Lil Nas X
 San Marcos
 Citrus Heights
 Buena Park
@@ -2162,7 +1972,6 @@ Rancho Mirage
 Rancho Santa Margarita
 Rancho Santa Fe
 Santa Fe
-Rancho Palos Verdes
 Rancho Peñasquitos
 Jacinto City
 Grayson County
@@ -2180,13 +1989,11 @@ Bel Group
 Eau Claire
 Campo Grande
 Loch Ness
-Angelina Jolie
 Ellicott City
 West Sussex
 East Sussex
 Holladay House
 Holladay Park
-Carleton University
 Carleton College
 Bastrop County
 Woodson County
@@ -2200,7 +2007,6 @@ Townshend State Park
 Painesville Township
 Latah County
 Latah Creek
-Spokane County
 Whitman County
 Stevens County
 Greenbrier County
@@ -2217,21 +2023,18 @@ Minden Hills
 Haliburton County
 Kearney County
 Laurens County
-Forsyth County
 Icefall Peak
 Canadian Rockies
 Canadian Rocky Mountains
 British Columbia
 Fort Victoria
 Broadview Heights
-Beachwood Canyon
 Shrewsbury Abbey
 Shrewsbury Township
 Pelham Bay Park
 Michael Bay
 Vin Diesel
 Joaquín Phoenix
-Hang Seng Index
 Hang Seng
 Sand Hill Road
 Hang Seng Index
@@ -2272,7 +2075,6 @@ Sullivan County
 Lycoming County
 Northumberland County
 Wyoming County
-Luzerne County
 Columbia County
 Rensselaer County
 Overton Park
@@ -2311,7 +2113,6 @@ Ray Charles
 Ray Lewis
 Electronic Arts
 Humpty Dumpty
-Butler County
 Renville County
 Ballon d'Or
 Ballon d’Or
@@ -2320,7 +2121,6 @@ UEFA Super Cup
 UEFA Europa League
 Serie A
 Serie B
-Pulaski County
 Albemarle County
 Nelson County
 Elkhart County
@@ -2348,15 +2148,12 @@ Winston-Salem State University
 Sauratown Mountains
 General Public License
 GNU General Public License
-Monterey County
 Dinwiddie County
 Peoria County
-Washington County
 Leelanau County
 Tuscola County
 Chippewa County
 Granville County
-Rutherford County
 Anderson County
 Gwyneth Paltrow
 Tour de France
@@ -2376,9 +2173,7 @@ St. Croix County
 Mackinac County
 Río de Janeiro
 Rio de Janeiro
-Chester County
 Latimer County
-Knox County
 LaRue County
 Corona Borealis
 Boca Juniors
@@ -2392,7 +2187,6 @@ Colorado Springs
 El Profesor
 El Reno
 Canadian County
-Arapahoe County
 Los Alamos
 Grand County
 United Colors of Benetton
@@ -2472,7 +2266,6 @@ Mira Bhayandar
 Rajpur Sonarpur
 South Dumdum
 Babylon Berlin
-Willy Wonka
 Alice in Wonderland
 Givat Ram
 Louis Vuitton
@@ -2548,7 +2341,6 @@ Galena Park
 Huffington Post
 Jeff Bezos
 Windsor Castle
-Bubba Gump
 Willy Wonka
 Hubba Bubba
 Raspberry Pi
@@ -2581,9 +2373,7 @@ Port Orange
 Coconut Creek
 Pinellas Park
 Gavin Newsom
-Miami-Dade County
 Johns Hopkins University
-Larimer County
 Fort Collins
 Ally Pally
 Garfield County
@@ -2598,8 +2388,6 @@ Hong Kong University
 Lake Mary
 Miami Beach
 Dade Boulevard
-US Census Bureau
-U.S. Census Bureau
 Kentucky Fried Chicken
 Seven Mile Beach
 Grand Cayman
@@ -2616,10 +2404,8 @@ Fannin County
 President Xi Jinping
 President Xi
 Deutsche Telekom
-Deutsche Bahn
 Deutsche Mark
 Deutsche Bank
-Deutsche Welle
 Deutsche Bundesbank
 Mill Valley
 Proxima Centauri
@@ -2636,13 +2422,10 @@ Imperial College Business School
 Imperial College of Science, Technology and Medicine
 Imperial College
 Jurupa Valley
-North Las Vegas
-Grand Rapids
 Grand Prairie
 Overland Park
 West Valley City
 Cedar Rapids
-Sterling Heights
 Ann Arbor
 West Jordan
 Costa Mesa
@@ -2681,7 +2464,6 @@ La Tortuga
 De'Longhi
 De’Longhi
 Harry Kane
-Rockland County
 Northwell Health
 Narendra Modi
 Palm Harbor
@@ -2757,8 +2539,6 @@ Ozark County
 Ozark Mountains
 Ozark Plateau
 Ouachita Mountains
-Camden County
-Douglas County
 Marcy Projects
 Marcy Ave
 Marcy Avenue
@@ -2766,7 +2546,6 @@ South African Airways
 Krusty Krab
 Pearl Harbor
 East Honolulu
-Pearl City
 Winter Olympics
 Summer Olympics
 Special Olympics
@@ -2809,7 +2588,6 @@ Air Force One
 Blue Man Group
 Manhattan Project
 Y Combinator
-Delivery Hero
 Pixel Buds
 Battlestar Galactica
 Norwegian Air
@@ -2853,7 +2631,6 @@ Coral Sea
 Greenland Sea
 Philippine Sea
 Laptev Sea
-Escambia County
 Mayo Clinic
 Jon Snow
 Mr. Robot
@@ -2871,7 +2648,6 @@ Grand Cherokee
 Subaru Outback
 Dodge Charger
 Jeep Cherokee
-Honda CR-V
 Ford Explorer
 Nissan Altima
 Chevrolet Silverado
@@ -2890,7 +2666,6 @@ Audi A6
 Audi A7
 Audi A8
 Subaru Forester
-Toyota RAV4
 Lexus RX
 Ford Fusion
 BMW 1 Series
@@ -2961,7 +2736,6 @@ Marina del Rey
 Ballona Wetlands
 Ballona Creek
 Palos Verdes
-Playa del Carmen
 Riviera Maya
 PGA Tour
 Geordie Shore
@@ -3058,7 +2832,6 @@ The Muppets
 The Muppet Show
 The Muppet Movie
 General Flynn
-General Mills
 Häagen Dazs
 iMac Pro
 Kuril Islands
@@ -3114,12 +2887,10 @@ Lois Lane
 Mark Cuban
 Mark Wahlberg
 Mark Ronson
-Solano County
 Solano Avenue
 Suisun Bay
 Sacramento River
 San Joaquin River
-Chesapeake Bay
 Abaco Islands
 Missy Elliott
 Jive Records
@@ -3129,7 +2900,6 @@ Commonwealth Games
 Draper Fisher Jurvetson
 Cape Ann
 Ottawa Valley
-Ottawa River
 Van Nuys
 George Floyd
 Nick Jonas
@@ -3183,17 +2953,14 @@ Channel Islands
 Otay Mesa
 San Ysidro
 Los Algodones
-San Luis Río Colorado
 Altar Valley
 Nogales
 Antelope Wells
 El Berrendo
 Santa Teresa
-Ciudad Juárez
 Fort Hancock
 El Porvenir
 Heath Canyon
-Piedras Negras
 Nuevo Laredo
 Presa Falcón
 Ciudad Camargo
@@ -3324,7 +3091,6 @@ Commodore 64
 West Bromwich
 East Brunswick
 Ableton Live
-Placer County
 Folsom Lake
 Fiji Islands
 Alexandria Ocasio-Cortez
@@ -3347,8 +3113,6 @@ New Jerseyans
 New Hampshireman
 Mickey Rourke
 D-Day
-Tulsa County
-Pinal County
 Eagle County
 Lucky Luke
 Trinidad and Tobago
@@ -3371,7 +3135,6 @@ Snake River
 Ohio River
 Arkansas River
 Glacier Bay
-Lake Clark
 Kenai Fjords
 Isle Royale
 North Cascades
@@ -3509,13 +3272,10 @@ El Ejido
 Talavera de la Reina
 Alcalá de Guadaíra
 Ciudad López Mateos
-Ciudad López Mateos
 Atizapán de Zaragoza
-Cuautitlán Izcalli
 Ciudad Apodaca
 General Escobedo
 Ciudad Victoria
-Ciudad Obregón
 San Nicolás de los Garza
 Tuxtla Gutiérrez
 Durango City
@@ -3570,7 +3330,6 @@ Sinaloa Cartel
 Cártel de Sinaloa
 El Al
 Puente Alto
-Viña del Mar
 San Bernardo
 La Pintana
 Puerto Montt
@@ -3605,7 +3364,6 @@ Walloon Region
 La Louvière
 Braine-l'Alleud
 Grand Est
-Centre-Val de Loire
 Pays de la Loire
 Le Havre
 Côte-d'Or
@@ -3728,7 +3486,6 @@ Kawartha Lakes
 Sault Ste. Marie
 Port Coquitlam
 Parsippany-Troy Hills
-Morris County
 Tom Ford
 Saint Germain
 Ralph Lauren
@@ -4194,7 +3951,6 @@ North American Van Lines
 Porsche Cayman
 Porsche Cayman S
 Rubicon River
-Coeur d'Alene
 Boise City
 North Little Rock
 Fort Smith
@@ -4351,3 +4107,246 @@ Oculus VR
 Oculus Rift
 Oculus Quest
 Oculus Rift S
+# Great Salt Lake
+Lake Superior
+Lake Huron
+Lake Ontario
+Yellowstone Lake
+Lake Travis
+Lake Erie
+Lake Tahoe
+Iliamna Lake
+Lake Pend Oreille
+Becharof Lake
+Lake Sakakawea
+Lake Clark
+Lake Oahe
+Lake Mead
+Lake Champlain
+Flathead Lake
+Fort Peck Lake
+Lake Chelan
+Lake Powell
+Salton Sea
+Seneca Lake
+Cayuga Lake
+Lake Shasta
+Sam Rayburn Reservoir
+Lake Oroville
+Lake Amistad
+Trinity Lake
+New Melones Lake
+Berkshire County
+Kootenai County
+Coeur d'Alene
+Coeur d’Alene
+Gunpowder Plot
+Gunpowder Treason Plot
+United States Census Bureau
+US Census Bureau
+U.S. Census Bureau
+Cook County
+Miami-Dade County
+Dallas County
+Kings County
+Riverside County
+Queens County
+King County
+San Bernardino County
+Tarrant County
+Bexar County
+Broward County
+Santa Clara County
+Wayne County
+Alameda County
+New York County
+Philadelphia County
+Sacramento County
+Palm Beach County
+Bronx County
+Nassau County
+Franklin County
+Travis County
+Hennepin County
+Oakland County
+Cuyahoga County
+Allegheny County
+Salt Lake County
+Contra Costa County
+Fairfax County
+Wake County
+Mecklenburg County
+Fulton County
+Pima County
+Collin County
+Fresno County
+St. Louis County
+Pinellas County
+Westchester County
+Duval County
+Milwaukee County
+Fairfield County
+Shelby County
+Gwinnett County
+Bergen County
+DuPage County
+Erie County
+Prince George's County
+Pierce County
+Kern County
+Hartford County
+Denton County
+Macomb County
+Hidalgo County
+New Haven County
+Ventura County
+Worcester County
+Baltimore County
+Middlesex County
+Snohomish County
+Multnomah County
+Fort Bend County
+Suffolk County
+Oklahoma County
+Essex County
+Lee County
+San Mateo County
+San Joaquin County
+Cobb County
+DeKalb County
+Monroe County
+El Paso County
+Norfolk County
+Jackson County
+Davidson County
+Will County
+Bernalillo County
+Hudson County
+Kent County
+Arapahoe County
+Tulsa County
+Providence County
+Utah County
+Bucks County
+Monmouth County
+Ocean County
+Johnson County
+Brevard County
+Washington County
+Baltimore City County
+Williamson County
+Jefferson County
+Anne Arundel County
+Delaware County
+Bristol County
+New Castle County
+Union County
+Pasco County
+Volusia County
+Stanislaus County
+Ramsey County
+Dane County
+Summit County
+Guilford County
+Kane County
+Montgomery County
+Chester County
+Greenville County
+Spokane County
+Plymouth County
+Adams County
+Sedgwick County
+Camden County
+Passaic County
+Sonoma County
+Morris County
+Polk County
+Clark County
+Ada County
+Richmond County
+Seminole County
+Washoe County
+Prince William County
+Knox County
+Hampden County
+Tulare County
+Pinal County
+Onondaga County
+York County
+Solano County
+Santa Barbara County
+Burlington County
+East Baton Rouge Parish County
+Monterey County
+Sarasota County
+Jefferson Parish County
+Dakota County
+Lucas County
+Cameron County
+Berks County
+Clackamas County
+Hillsborough County
+Richland County
+Loudoun County
+Mobile County
+Charleston County
+Genesee County
+Waukesha County
+Manatee County
+St. Charles County
+Placer County
+San Juan Municipality County
+Pulaski County
+Orleans Parish County
+Collier County
+Butler County
+Forsyth County
+Lane County
+Allen County
+Osceola County
+Brazoria County
+Madison County
+Stark County
+Lehigh County
+Washtenaw County
+Mercer County
+Lake County
+Bell County
+Nueces County
+Anoka County
+Larimer County
+Davis County
+Horry County
+Chesterfield County
+Douglas County
+Westmoreland County
+Marion County
+Galveston County
+Hamilton County
+Cumberland County
+Rutherford County
+Henrico County
+Somerset County
+St. Lucie County
+Boulder County
+Rockland County
+Howard County
+Weld County
+Fayette County
+Durham County
+Spartanburg County
+Lancaster County
+Escambia County
+Luzerne County
+Lubbock County
+Lorain County
+Rockingham County
+McHenry County
+Albany County
+Northampton County
+Lake Tohopekaliga
+Lake Toho
+Fernando de Noronha
+Ursula K. Le Guin
+Ursula Le Guin
+Marina Bay Sands

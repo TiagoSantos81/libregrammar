@@ -79,9 +79,22 @@ regexp case-insensitive maken : (?i)
 	</category>
 	<category id="GENDER_NEUTRALITY">
 	</category>
-	<category id="GRAMMAR" name="Grammaticaregels.">
-	</category>
 	-->
+	<category id="GRAMMAR" name="Grammaticaregels.">
+		<rulegroup id="AFTE" name="afte lopen/af te lopen">
+			<rule>
+				<pattern>
+					<marker>
+					   <token>afte</token>
+				   </marker>
+				   <token postag="WKW:TGW:INF"/>
+				</pattern>
+				<message>U bedoelt vast <suggestion>af te</suggestion> en geen 'aft'.</message>
+				<example correction="af te">Het hoeft nog niet <marker>afte</marker> lopen.</example>
+			</rule>
+		</rulegroup>
+	</category>
+
 	<category id="MISC" name="Overige regels die niet in de andere categorieën passen.">
 		
 		<rulegroup id="BE" name="be kan van alles zijn...">
@@ -16235,11 +16248,22 @@ steenwijk;Steenwijk
 					<token postag="SENT_START"/>
 					<token regexp="yes">[0-9]+</token>
 					<marker>
-						<token case_sensitive="yes" regexp="yes">[A-Z][a-z].*<exception postag_regexp="yes" postag="ENM.*|VLG:BHL"/></token>
+						<token case_sensitive="yes" regexp="yes" postag_regexp="yes" postag=".*MRV.*">[A-Z][a-z].*<exception postag_regexp="yes" postag="ENM.*|VLG:BHL"/></token>
 					</marker>
 				</pattern>
-				<message>Na een getal krijgt het eerste gewone woord van de zin geen hoofdletters: <suggestion><match no="3" case_conversion="alllower"/></suggestion></message>
-				<example correction="deed">2018 <marker>Deed</marker> het goed.</example>
+				<message>Na een getal (dat deel is van de zin) krijgt het eerste gewone woord van de zin geen hoofdletters: <suggestion><match no="3" case_conversion="alllower"/></suggestion></message>
+				<example correction="auto's">10 <marker>Auto's</marker> reden weg.</example>
+			</rule>
+			<rule>
+				<pattern>
+					<token postag="SENT_START"/>
+					<token regexp="yes">[0-9]{4}</token>
+					<marker>
+						<token case_sensitive="yes" regexp="yes" postag_regexp="yes" postag="WKW:TGW:3EP|WKW:VLT:1EP">[A-Z][a-z].*<exception postag_regexp="yes" postag="ENM.*|VLG:BHL"/></token>
+					</marker>
+				</pattern>
+				<message>Na een getal (dat deel is van de zin) krijgt het eerste gewone woord van de zin geen hoofdletters: <suggestion><match no="3" case_conversion="alllower"/></suggestion></message>
+				<example correction="maakte">2020 <marker>Maakte</marker> het erg bont.</example>
 			</rule>
 		</rulegroup>
 		<rulegroup id="HOOFDLETTERS_OVERBODIG" name="Woorden die ook klein geschreven mogen worden." type="misspelling" tags="picky">
@@ -17641,7 +17665,7 @@ steenwijk;Steenwijk
 		</rulegroup>
 		<rulegroup id="KOMMA_MAAR" name=", maar">
 			<rule>
-				<antipattern><token>als</token><token regexp="yes">ik|jij|je|hij|zij|ze|men|wij|we|iemand</token><token>maar</token></antipattern>
+				<antipattern><token regexp="yes">als|wanneer|indien</token><token regexp="yes">ge|ik|jij|je|hij|zij|ze|men|wij|we|iemand</token><token>maar</token></antipattern>
 				<antipattern><token postag_regexp="yes" postag="WKW.*"/><token>maar</token></antipattern>
 				<antipattern><token skip="2">,</token><token>maar</token></antipattern>
 				<antipattern><token>maar</token><token>al</token><token>te</token><token postag="BNW:STL:ONV"/></antipattern>
@@ -17660,14 +17684,14 @@ steenwijk;Steenwijk
 				<antipattern><token>maar</token><token regexp="yes">^[0-9]+$</token></antipattern>
 				<antipattern><token>maar</token><token regexp="yes">eens|liefst|even|deels|half|door|verder</token></antipattern>
 				<antipattern><token>blijven</token><token>maar</token><token postag="WKW:TGW:INF"/></antipattern>
-				<antipattern><token>dat</token><token regexp="yes">hij|ik|je|jij|we|wij</token><token>maar</token></antipattern>
+				<antipattern><token>dat</token><token regexp="yes">ge|hij|ik|je|jij|we|wij</token><token>maar</token></antipattern>
 				<antipattern><token>het</token><token regexp="yes">je|zich|me</token><token>maar</token></antipattern>
 				<antipattern><token postag_regexp="yes" postag="WKW:.*"/><token>alleen</token><token>maar</token></antipattern>
 				<antipattern><token inflected="yes">kunnen</token><token>maar</token><token>beter</token></antipattern>
 				<antipattern><token>ook</token><token>maar</token><token regexp="yes">een|één|eens|niet|genoeg</token></antipattern>
 				<antipattern><token postag="WKW:TGW:1EP"/><token>maar</token></antipattern>
 				<antipattern><token postag="WKW:TGW:1EP"/><token>mij</token><token>maar</token></antipattern>
-				<antipattern><token regexp="yes">je|ik|hij|zij|u</token><token regexp="yes">je|me|zich|u</token><token>maar</token></antipattern>
+				<antipattern><token regexp="yes">ge|je|ik|hij|zij|u</token><token regexp="yes">je|me|zich|u</token><token>maar</token></antipattern>
 				<antipattern><token regexp="yes">altijd|steeds|zelf|eerst|we|mezelf|nog|dan|alleen|enkel|zo|nu|nou|\.|-|,|\(|toch|ook|van|toe|het|dat|dit|die|er|je|hij|zij|wij|zeg|hem|haar|hen|weinig|echter</token><token>maar</token></antipattern>
 				
 				<pattern>
@@ -18450,15 +18474,37 @@ steenwijk;Steenwijk
 			</rule>
 		</rulegroup>
 
+		<rulegroup id="HET_ZNW_DE_ZNW_HET" name="het deur verhaal" default="temp_off">
+			<rule>
+				<antipattern><token regexp="yes">het|dit|dat</token><token postag_regexp="yes" postag="BNW.*"/><token postag_regexp="yes" postag="ZNW.*"/></antipattern>
+				<antipattern><token regexp="yes">het|dit|dat</token><token postag_regexp="yes" postag=".*MRV.*"/><token postag_regexp="yes" postag="BNW.*ONV"/></antipattern>
+				<antipattern><token>dat</token><token postag="ZNW.*" postag_regexp="yes"/><token postag="ZNW.*" postag_regexp="yes"/><token postag="WKW.*" postag_regexp="yes"/></antipattern>
+				<pattern>
+					<token regexp="yes">het|dit|dat</token>
+					<marker>
+						<token postag_regexp="yes" postag="ZNW:.*:DE_"><exception regexp="yes">mijn|hen|kan</exception></token>
+						<token postag_regexp="yes" postag="ZNW:.*HET"/>
+					</marker>
+				</pattern>
+				<filter class="org.languagetool.rules.nl.CompoundFilter" args="word1:\2 word2:\3"/>
+				<message>\2 is een 'de'-woord, maar \3 een het-woord. Het kan dus zijn dat u een spatie te veel hebt gezet.</message>
+				<suggestion>\2\3</suggestion>
+				<example correction="bepalingengedoe">Ik zie het <marker>bepalingen gedoe</marker>.</example>
+			</rule>
+		</rulegroup>
 		<rulegroup id="HET_ZNW_DE" name="het man / de man" default="temp_off">
 			<rule>
+				<antipattern><token postag_regexp="yes" postag="WKW:TGW:3EP|WKW:VLT:1EP"/><token>het</token></antipattern>
+				<antipattern><token>het</token><token postag_regexp="yes" postag="WKW:TGW:3EP|WKW:VLT:1EP"/></antipattern>
+				<antipattern><token>het</token><token postag_regexp="yes" postag="BNW.*ONV"/><token postag_regexp="yes" postag="BNW.*ONV"/></antipattern>
+				<antipattern><token>het</token><token regexp="yes" case_sensitive="yes">[A-Z].*</token><token regexp="yes" case_sensitive="yes">[A-Z].*</token></antipattern>
 				<antipattern><token regexp="yes">het|dit|dat</token><token postag_regexp="yes" postag="BNW.*"/></antipattern>
 				<antipattern><token regexp="yes">het|dit|dat</token><token postag_regexp="yes" postag="WKW:TGW:3EP|WKW:VLT:1EP"/></antipattern>
 				<pattern>
 					<marker>
 						<token regexp="yes">het|dit|dat</token>
 					</marker>
-					<token postag="ZNW:EKV:DE_"><exception regexp="yes">mijn|hen</exception></token>
+					<token postag="ZNW:EKV:DE_"><exception regexp="yes">zij|mijn|hen|regent|niet</exception></token>
 				</pattern>
 				<message>\2 is een 'de'-woord.</message>
 				<suggestion>de</suggestion>
@@ -18469,11 +18515,12 @@ steenwijk;Steenwijk
 		</rulegroup>
 		<rulegroup id="DE_ZNW_HET" name="de kind/het kind" default="temp_off">
 			<rule>
+				<antipattern><token regexp="yes">de|die|deze</token><token postag_regexp="yes" postag=".*VRB"/><token postag_regexp="yes" postag="ZNW:.*DE_"/></antipattern>
 				<pattern>
 					<marker>
 						<token regexp="yes">de|die|deze</token>
 					</marker>
-					<token postag_regexp="yes" postag="ZNW:.*:HET"/>
+					<token postag_regexp="yes" postag="ZNW:.*:HET"><exception regexp="yes">weer|meer|niet|ruim</exception><exception postag_regexp="yes" postag="ZNW:EKV|ZNW:.*DE_"/></token>
 				</pattern>
 				<message>\2 is een 'het'-woord.</message>
 				<suggestion>het</suggestion>
@@ -30204,7 +30251,7 @@ steenwijk;Steenwijk
 				<example type="incorrect">Ergo: die Zwitsers, dat is me een <marker>xenofoob</marker> zootje bij elkaar.</example>
 			</rule>
 		</rulegroup>
-		<rulegroup id="YELL" name="yell">
+		<rulegroup id="YELL" name="yell" tags="picky">
 			<rule>
 				<pattern>
 					<token case_sensitive="yes">yell</token><!-- het is ook een eiland en achternaam -->
@@ -30214,7 +30261,7 @@ steenwijk;Steenwijk
 				<example correction="slagzin|kreet">Dansende voeten en af en toe een <marker>yell</marker> naar de DJ.</example>
 			</rule>
 		</rulegroup>
-		<rulegroup id="YUP" name="yup">
+		<rulegroup id="YUP" name="yup" tags="picky">
 			<rule>
 				<pattern>
 					<token inflected="yes">yup</token>
@@ -37748,11 +37795,11 @@ steenwijk;Steenwijk
 				<antipattern><token postag_regexp="yes" postag="SENT_START|START"/><token spacebefore="yes">-</token></antipattern>
 				<pattern>
 					<marker>
-						<token spacebefore="yes">-</token>
+						<token spacebefore="yes" regexp="yes">[-—]</token>
 					</marker>
 					<token spacebefore="yes"><exception regexp="yes">[0-9]*</exception></token>
 				</pattern>
-				<message>Als gedachtestreepje wordt een iets langer streepje geadviseerd: <suggestion>–</suggestion></message>
+				<message>Als gedachtestreepje wordt een ander streepje geadviseerd: <suggestion>–</suggestion></message>
 				<url>https://taaladvies.net/taal/advies/vraag/312/gedachtestreepje</url>
 				<short>–</short>
 				<example correction="–">Dit is geen <marker>-</marker> gedachtestreep.</example>
@@ -40307,7 +40354,7 @@ steenwijk;Steenwijk
 				<example correction="">We spreken de <marker>mannelijke</marker> bestuurder.</example>
 			</rule>
 		</rulegroup>
-		
+
 	</category>
 
 </rules>

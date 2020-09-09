@@ -247,6 +247,11 @@ public class English extends Language implements AutoCloseable {
           new EnglishForGermansFalseFriendRule(messages, lm, motherTongue, this)
       );
     }
+    if (lm != null && motherTongue != null && "es".equals(motherTongue.getShortCode())) {
+      return Arrays.asList(
+          new EnglishForSpaniardsFalseFriendRule(messages, lm, motherTongue, this)
+      );
+    }
     if (lm != null && motherTongue != null && "nl".equals(motherTongue.getShortCode())) {
       return Arrays.asList(
           new EnglishForDutchmenFalseFriendRule(messages, lm, motherTongue, this)
@@ -260,6 +265,7 @@ public class English extends Language implements AutoCloseable {
     return motherTongue != null && (
       "de".equals(motherTongue.getShortCode()) ||
       "fr".equals(motherTongue.getShortCode()) ||
+      "es".equals(motherTongue.getShortCode()) ||
       "nl".equals(motherTongue.getShortCode()));
   }
 
@@ -366,6 +372,7 @@ public class English extends Language implements AutoCloseable {
       case "SEEM_SEEN":                 return 1;   // higher prio than HAVE_PART_AGREEMENT, PRP_HAVE_VB, MD_BASEFORM and PRP_PAST_PART
       case "BORN_IN":                   return 1;   // higher prio than PRP_PAST_PART
       case "DO_TO":                     return 1;   // higher prio than HAVE_PART_AGREEMENT
+      case "THIS_YEARS_POSSESSIVE_APOSTROPHE": return 1;    // higher prio than THIS_NNS
       case "IN_THIS_REGARDS":           return 1;   // higher prio than THIS_NNS
       case "NO_WHERE":                  return 1;   // higher prio than NOW
       case "APOSTROPHE_VS_QUOTE":       return 1;   // higher prio than EN_QUOTES
@@ -467,6 +474,9 @@ public class English extends Language implements AutoCloseable {
     }
     if (id.startsWith("CONFUSION_RULE_")) {
       return -20;
+    }
+    if (id.matches("EN_FOR_[A-Z]+_SPEAKERS_FALSE_FRIENDS.*")) {
+      return -21;
     }
     return super.getPriorityForId(id);
   }
