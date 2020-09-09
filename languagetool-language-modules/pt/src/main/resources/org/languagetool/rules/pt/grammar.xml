@@ -815,13 +815,6 @@ title="Easy editing stylesheet" ?>
           <token regexp='yes'>(?:própri|mesm)a</token>
           <token postag='N.M.+' postag_regexp='yes'/>
       </antipattern>
-<!-- MARCOAGPINTO 2020-09-08 (2-JUL-2020+) *START* -->
-<!-- "A emoção Corinthians." -->
-      <antipattern>
-	      <token postag='NC[CF]S000' postag_regexp='yes'/>
-		  <token postag='NPMS000' postag_regexp='no'/>
-	  </antipattern>	  	  
-<!-- MARCOAGPINTO 2020-09-08 (2-JUL-2020+) *END* -->
       <pattern>
           <token negate='yes' regexp='yes'>e|&hifen;</token>
         <marker>
@@ -858,7 +851,6 @@ title="Easy editing stylesheet" ?>
       <example>Cerca de 500 pessoas foram executadas em Paris, na maioria nobres.</example>
       <example>A ocupação soviética resultou na morte de afegãos, a maioria civis.</example>
 	  <example>Apenas testemunhos sem <marker>conta recebidos</marker> de todo o mundo.</example>
-	  <example type='correct'>A <marker>emoção Corinthians</marker>.</example>
     </rule>
     <rule>
       <antipattern>
@@ -7333,68 +7325,6 @@ title="Easy editing stylesheet" ?>
 
  <category id='MISC' name="Sem Categoria Definida" type="uncategorized">
 
-    <rulegroup id='À_MINHA-TUA-SUA-VOSSA_VERB' name="à + minha/tua/sua/vossa(s) + verb" >
-    <!--      Created by Marco A.G.Pinto, Portuguese rule - 2020-09-07 (2-JUL-2020+) -->
-		<rule>
-			<pattern>			    
-				<token>à</token>
-				<token postag='V.+' postag_regexp='yes'/> 
-				<token>de</token>
-				<token>mim</token>			
-			</pattern>
-			<message>Substitua por <suggestion>à minha \2</suggestion>.</message>
-			<example correction="à minha procura">Eles andaram meses <marker>à procura de mim</marker>.</example>
-			<example type='correct'>Eles andaram meses <marker>à minha procura</marker>.</example>
-		</rule>		
-		<rule>
-			<pattern>			    
-				<token>à</token>
-				<token postag='V.+' postag_regexp='yes'/> 
-				<token>de</token>
-				<token>ti</token>			
-			</pattern>
-			<message>Substitua por <suggestion>à tua \2</suggestion>.</message>
-			<example correction="à tua procura">Eles andaram meses <marker>à procura de ti</marker>.</example>
-			<example type='correct'>Eles andaram meses <marker>à tua procura</marker>.</example>
-		</rule>
-		<rule>
-			<pattern>			    
-				<token>à</token>
-				<token postag='V.+' postag_regexp='yes'/> 
-				<token>de</token>
-				<token>si</token>			
-			</pattern>
-			<message>Substitua por <suggestion>à sua \2</suggestion>.</message>
-			<example correction="à sua procura">Eles andaram meses <marker>à procura de si</marker>.</example>
-			<example type='correct'>Eles andaram meses <marker>à sua procura</marker>.</example>
-		</rule>
-		<rule>
-			<pattern>			    
-				<token>à</token>
-				<token postag='V.+' postag_regexp='yes'/> 
-				<token>de</token>
-				<token regexp='no'>você</token>			
-			</pattern>
-			<message>Substitua por </message>
-			<suggestion>à sua \2</suggestion>
-			<suggestion>à tua \2</suggestion>
-			<example correction="à sua procura|à tua procura">Eles andaram meses <marker>à procura de você</marker>.</example>
-			<example type='correct'>Eles andaram meses <marker>à sua procura</marker>.</example>
-			<example type='correct'>Eles andaram meses <marker>à tua procura</marker>.</example>
-		</rule>		
-		<rule>
-			<pattern>			    
-				<token>à</token>
-				<token postag='V.+' postag_regexp='yes'/> 
-				<token>de</token>
-				<token regexp='no'>vocês</token>			
-			</pattern>
-			<message>Substitua por <suggestion>à vossa \2</suggestion>.</message>
-			<example correction="à vossa procura">Eles andaram meses <marker>à procura de vocês</marker>.</example>
-			<example type='correct'>Eles andaram meses <marker>à vossa procura</marker>.</example>
-		</rule>
-	</rulegroup>
-
     <rule id='ABDICAR_DIREITOS_PRIVILÉGIOS' name="Abdicar de direitos/privilégios">
     <!--      Created by Marco A.G.Pinto, Portuguese rule      -->
       <pattern>
@@ -9028,19 +8958,6 @@ title="Easy editing stylesheet" ?>
       <message>Substitua por <suggestion>poder-se-iam</suggestion>.</message>
       <example correction="poder-se-iam">Assim <marker>poderiam-se</marker> escrever livros sobre o assunto.</example>
     </rule>
-
-    <!-- POR CAUSA QUE porque>
-    <rule id='POR_CAUSA_QUE' name="Confusão: por causa - porque">
-     XXX Moved to wordiness. Remove after release.
-      <pattern>
-          <token>por</token>
-          <token>causa</token>
-          <token>que</token>
-      </pattern>
-      <message>Substitua por <suggestion>porque</suggestion>.</message>
-      <url>https://pt.wiktionary.org/wiki/porque</url>
-      <example correction="porque">Fiquei contente <marker>por causa que</marker> ninguém se feriu.</example>
-    </rule -->
 
     <!-- POR DINHEIRO E PUDER por dinheiro e poder -->
     <rule id='POR_DINHEIRO_E_PUDER' name="Confusão: puder - poder">
@@ -34188,7 +34105,70 @@ TODO Write better examples
   </rulegroup>
  </category>
 
- <category id='REDACTION_TIPS' name='Dicas de redação' type='style' default='off'>
+ <category id='REDACTION_TIPS' name='Dicas de redação' type='style' default='off'><!-- picky -->
+
+    <rulegroup id='À_MINHA-TUA-SUA-VOSSA_VERB' name="à + minha/tua/sua/vossa(s) + verb" >
+    <!--      Created by Marco A.G.Pinto, Portuguese rule - 2020-09-07 (2-JUL-2020+) -->
+      <short>Pondere usar uma expressão alternativa.</short>
+		<rule>
+			<pattern>			    
+				<token>à</token>
+				<token postag='V.+' postag_regexp='yes'/> 
+				<token>de</token>
+				<token>mim</token>			
+			</pattern>
+			<message>Substitua por <suggestion>à minha \2</suggestion>.</message>
+			<example correction="à minha procura">Eles andaram meses <marker>à procura de mim</marker>.</example>
+			<example type='correct'>Eles andaram meses <marker>à minha procura</marker>.</example>
+		</rule>		
+		<rule>
+			<pattern>			    
+				<token>à</token>
+				<token postag='V.+' postag_regexp='yes'/> 
+				<token>de</token>
+				<token>ti</token>			
+			</pattern>
+			<message>Substitua por <suggestion>à tua \2</suggestion>.</message>
+			<example correction="à tua procura">Eles andaram meses <marker>à procura de ti</marker>.</example>
+			<example type='correct'>Eles andaram meses <marker>à tua procura</marker>.</example>
+		</rule>
+		<rule>
+			<pattern>			    
+				<token>à</token>
+				<token postag='V.+' postag_regexp='yes'/> 
+				<token>de</token>
+				<token>si</token>			
+			</pattern>
+			<message>Substitua por <suggestion>à sua \2</suggestion>.</message>
+			<example correction="à sua procura">Eles andaram meses <marker>à procura de si</marker>.</example>
+			<example type='correct'>Eles andaram meses <marker>à sua procura</marker>.</example>
+		</rule>
+		<rule>
+			<pattern>			    
+				<token>à</token>
+				<token postag='V.+' postag_regexp='yes'/> 
+				<token>de</token>
+				<token regexp='no'>você</token>			
+			</pattern>
+			<message>Substitua por </message>
+			<suggestion>à sua \2</suggestion>
+			<suggestion>à tua \2</suggestion>
+			<example correction="à sua procura|à tua procura">Eles andaram meses <marker>à procura de você</marker>.</example>
+			<example type='correct'>Eles andaram meses <marker>à sua procura</marker>.</example>
+			<example type='correct'>Eles andaram meses <marker>à tua procura</marker>.</example>
+		</rule>		
+		<rule>
+			<pattern>			    
+				<token>à</token>
+				<token postag='V.+' postag_regexp='yes'/> 
+				<token>de</token>
+				<token regexp='no'>vocês</token>			
+			</pattern>
+			<message>Substitua por <suggestion>à vossa \2</suggestion>.</message>
+			<example correction="à vossa procura">Eles andaram meses <marker>à procura de vocês</marker>.</example>
+			<example type='correct'>Eles andaram meses <marker>à vossa procura</marker>.</example>
+		</rule>
+	</rulegroup>
 
     <rule id='FAZER_DESPORTO' name="Praticar desporto">
     <!--      Created by Marco A.G.Pinto     -->
