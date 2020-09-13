@@ -48,6 +48,7 @@
 #### English
   * added and improved rules
   * POS and spelling improvements
+  * updated en_GB spellchecker dictionary from https://github.com/marcoagpinto/aoo-mozilla-en-dict (Version 2.82 - 2020-03-01)
 
 #### French
   * added and improved rules, thanks to Jaume Órtola, Rigaut Theótime and thelittlefireman
@@ -80,6 +81,8 @@
     LibreGrammar does not use this implementation yet and activates by default a rule set
     considered adequate for formal writing, which includes many rules tagged as 'picky'
     in the upstream project.
+  * New XML attribute `chunk_re` for `<token>`, which specifies a chunk as a regular expression
+  * removed optional AfterTheDeadline server mode
 
 ## 5.0 ( 2020-10-01)
 

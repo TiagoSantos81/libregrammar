@@ -263,6 +263,8 @@ public class English extends Language implements AutoCloseable {
   @Override
   public boolean hasNGramFalseFriendRule(Language motherTongue) {
     return motherTongue != null && (
+      // Note: extend EnglishForL2SpeakersFalseFriendRuleTest.testMessageDetailData()
+      // if you add a language here
       "de".equals(motherTongue.getShortCode()) ||
       "fr".equals(motherTongue.getShortCode()) ||
       "es".equals(motherTongue.getShortCode()) ||
@@ -331,6 +333,7 @@ public class English extends Language implements AutoCloseable {
       case "COVID_19":                  return 1;
       case "OTHER_WISE_COMPOUND":       return 1;
       case "ON_EXCEL":                  return 1;
+      case "HAVE_HAVE":                 return 1;   // higher prio than HE_D_VBD
       case "CAR_CARE":                  return 1;   // higher prio than AI_MISSING_WORD_ARTICLE_THE
       case "LUV":                       return 1;   // higher prio than spell checker
       case "DAT":                       return 1;   // higher prio than spell checker
@@ -516,6 +519,7 @@ public class English extends Language implements AutoCloseable {
     final String missingTheDescription = "This rule identifies whether the article 'the' is missing in a sentence.";
     final String missingWordDescription = "This rule identifies whether the articles 'a' or 'an' are missing in a sentence.";
     final String variantsDescription = "Identifies confusion between if, of, off and a misspelling";
+    final String hydraDescription = "This rule identifies whether an article is missing in a sentence.";
     final String delMessage = "This article might not be necessary here.";
     final String insMessage = "You might be missing an article here.";
     if (theInsertionConfig != null) {
@@ -556,6 +560,13 @@ public class English extends Language implements AutoCloseable {
       Rule variantsRule = GRPCRule.create(variantsConfig, inputLogging, variantsID,
                                           variantsDescription, Collections.emptyMap());
       rules.add(variantsRule);
+    }
+    String hydraID = "AI_HYDRA_LEO";
+    RemoteRuleConfig hydraConfig = RemoteRuleConfig.getRelevantConfig(hydraID, configs);
+    if (hydraConfig != null) {
+      Rule hydraRule = GRPCRule.create(hydraConfig, inputLogging, hydraID,
+                                          hydraDescription, Collections.emptyMap());
+      rules.add(hydraRule);
     }
     return rules;
   }

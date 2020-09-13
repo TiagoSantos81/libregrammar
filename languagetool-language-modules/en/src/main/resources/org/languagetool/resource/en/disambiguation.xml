@@ -3221,6 +3221,11 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <token postag="VBZ"/>
             <token postag_regexp="yes" postag="RB|WP|WRB"/>
         </antipattern>
+        <antipattern><!-- #3276 www.lexico.com/definition/few -->
+            <token>a</token>
+            <token>few</token>
+            <token chunk="B-VP" postag_regexp="yes" postag="VB[PD]?"/>
+        </antipattern>
         <pattern>
             <token postag="DT"><exception postag="PDT"/><exception regexp="yes">th[eo]se|one</exception><exception scope="previous">of</exception></token>
             <token postag="JJ"><exception postag="RB|NNPS?|NN:U|PRP" postag_regexp="yes"/></token>
@@ -3266,6 +3271,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <example type="untouched">About a third are women.</example><!-- #3293 -->
         <example type="untouched">The first dog bites, but the second barks happily.</example><!-- #3293 -->
         <example type="untouched">I like your examples; I think your third shows why we must be careful.</example><!-- #3293 -->
+        <example type="untouched">I told you that a few affect my rules!</example><!-- #3276 -->
 <!-- Refer to the counter examples        <example type="untouched">If any professional want to know the new practices of their field it is only a click away.</example>Premium #1564 -->
         <example type="ambiguous" inputform="dogs[dog/NNS,dog/VBZ]" outputform="dogs[dog/NNS]">Today, the black <marker>dogs</marker> barks loudly.</example>
         <example type="ambiguous" inputform="will[will/MD,will/NN:UN,will/VB,will/VBP]" outputform="will[will/NN:UN]">Undoubtedly, the general <marker>will</marker> is an important notion in Rousseau.</example>
@@ -4200,6 +4206,11 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <token chunk="B-VP" postag="VB"/>
             <token>to</token>
         </antipattern>
+        <antipattern><!-- #3546 both support ARM -->
+            <token postag="DT"/>
+            <token postag_regexp="yes" postag="VBP"/>
+            <token chunk="E-NP-singular" postag="NNP"/>
+        </antipattern>
         <pattern>
             <token postag_regexp="yes" postag="DT|JJ|PRP\$">
                 <exception postag_regexp="yes" postag="WDT|RB"/></token>
@@ -4225,6 +4236,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <example type="untouched">Please cut short your vacation and return.</example><!-- #3215 -->
         <example type="untouched">Some state want to go slow.</example><!-- Premium #1564 -->
         <example type="untouched">What will losing the war mean to us?</example><!-- #3527 -->
+        <example type="untouched">This would both support ARM and allow us to make a...</example><!-- #3546 -->
         <example type="ambiguous" inputform="exact[exact/JJ,exact/VB,exact/VBP]" outputform="exact[exact/JJ]">I stand corrected - this is the <marker>exact</marker> same issue as the old thread.</example>
     </rule>
 
@@ -4379,6 +4391,11 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <token chunk="B-VP" postag="VB"/>
             <token>to</token>
         </antipattern>
+        <antipattern><!-- #3276 www.lexico.com/definition/few -->
+            <token>a</token>
+            <token>few</token>
+            <token chunk="B-VP" postag_regexp="yes" postag="VB[PD]?"/>
+        </antipattern>
         <pattern>
             <token postag_regexp="yes" postag="DT|JJ|PRP\$"/>
             <token postag="JJ.*|VBG" postag_regexp="yes"><exception postag="RB"/><exception regexp="yes">being|one</exception></token>
@@ -4433,6 +4450,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <example type="untouched">... party are typically even more stable, as long as their...</example><!-- #3302 -->
         <example type="untouched">What will losing the war mean to us?</example><!-- #3527 -->
         <example type="untouched">What might winning the next war mean to the enemy?</example><!-- #3527 -->
+        <example type="untouched">I told you that a few affect my rules!</example><!-- #3276 -->
         <example type="ambiguous" inputform="nose[nose/NN,nose/VB,nose/VBP]" outputform="nose[nose/NN]">The elephant swings its long <marker>nose</marker>.</example>
         <example type="ambiguous" inputform="stone[stone/JJ,stone/NN:UN,stone/NNS,stone/VB,stone/VBP]" outputform="stone[stone/NN:UN,stone/NNS]">A rolling <marker>stone</marker> gathers no moss.</example>
         <example type="ambiguous" inputform="make[make/NN:UN,make/VB,make/VBP]" outputform="make[make/NN:UN]">No, I mean like <marker>make</marker> or brand name, in which case no further actions are necessary.</example>
@@ -7022,6 +7040,19 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <token postag="VBN"/>
             <token regexp="yes">are|were</token>
         </antipattern>
+        <antipattern><!-- #3263 can elected officials rage...? -->
+            <token postag="MD"/>
+            <token postag="VBN"/>
+            <token postag="NNS"/>
+            <token skip="-1" postag_regexp="yes" postag="VB|RB"/>
+            <token>?</token>
+        </antipattern>
+        <antipattern><!-- #3387 Please forward executed version -->
+            <token>Please</token>
+            <token postag_regexp="yes" postag="VBP?"/>
+            <token postag="VBN"/>
+            <token chunk="E-NP-singular" postag_regexp="yes" postag="NN(:UN?)?"/>
+        </antipattern>
         <pattern>
             <token postag="SENT_START" skip="-1"><exception scope="next" inflected="yes" regexp="yes">be|have</exception></token>
             <token postag_regexp="yes" postag="PRP|NN.*"/>
@@ -7039,6 +7070,9 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <example type="untouched">Past participle adjective. The basic <marker>installed</marker> software is not sufficient.</example>
         <example type="untouched">His proposed plan to remove the...</example>
         <example type="untouched">Also featured were two music videos ("Long...</example><!-- #3349 -->
+        <example type="untouched">How can elected officials rage about deficits?</example><!-- #3263 -->
+        <example type="untouched">Will elected officials actually do anything about the problem?</example><!-- #3263 -->
+        <example type="untouched">Please forward executed version.</example><!-- #3387 -->
     </rule>
 
     <rule id="JJ_VB" name="companies: verb to noun if preceded by adj">
@@ -9151,6 +9185,18 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <marker>
                 <token regexp="yes">[Dd]e</token>
                 <token regexp="yes" min="0">[Ll]as?|[Ll]os</token>
+            </marker>
+            <token postag="NNP|UNKNOWN" postag_regexp="yes" regexp="yes">[A-Z].+</token>
+        </pattern>
+        <disambig action="ignore_spelling"></disambig>
+    </rule>
+
+    <rule id="IGNORE_SPELLING_OF_Y_DE" name="Ignore spelling of names containing 'y de'">
+        <pattern case_sensitive="yes">
+            <token postag="NN.*|UNKNOWN" postag_regexp="yes" regexp="yes">[A-Z].+</token>
+            <marker>
+                <token>y</token>
+                <token>de</token>
             </marker>
             <token postag="NNP|UNKNOWN" postag_regexp="yes" regexp="yes">[A-Z].+</token>
         </pattern>
@@ -12403,5 +12449,15 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <disambig action="ignore_spelling"></disambig>
         </rule>
     </rulegroup>
-
+    <!-- <rule id="HE_D" name="MD for 'd'">
+        <pattern>
+            <token regexp="yes">s?he|it|you|we|they|I</token>
+            <token regexp="yes" spacebefore="no">&apostrophe;</token>
+            <marker>
+                <token spacebefore="no">d</token>
+            </marker>
+        </pattern>
+        <disambig action="replace"><wd lemma="will" pos="MD" /></disambig>
+        <example type="ambiguous" inputform="d[d]" outputform="d[will/MD]">I'<marker>d</marker> like to know if that works.</example>
+    </rule> -->
 </rules>

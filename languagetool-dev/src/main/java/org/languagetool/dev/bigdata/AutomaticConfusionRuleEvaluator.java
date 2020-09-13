@@ -26,6 +26,7 @@ import org.apache.lucene.store.FSDirectory;
 import org.languagetool.JLanguageTool;
 import org.languagetool.Language;
 import org.languagetool.Languages;
+import org.languagetool.dev.index.Lucene;
 import org.languagetool.languagemodel.LanguageModel;
 import org.languagetool.languagemodel.LuceneLanguageModel;
 import org.languagetool.rules.ConfusionPair;
@@ -44,9 +45,17 @@ import java.util.stream.Collectors;
 @SuppressWarnings({"resource", "CallToPrintStackTrace"})
 class AutomaticConfusionRuleEvaluator {
   
-  private static final int MAX_EXAMPLES = 1000;
+  private static final int MAX_EXAMPLES = 2000;
   private static final int MIN_EXAMPLES = 50;
-  private static final List<Long> EVAL_FACTORS = Arrays.asList(10L, 100L, 1_000L, 10_000L, 100_000L, 1_000_000L, 10_000_000L);
+  private static final long EVAL_FACTORS_MIN = 10;
+  private static final long EVAL_FACTORS_MAX = 10_000_000L;
+  //private static final long EVAL_FACTORS_MAX = 1_000_000_000L;
+  private static final List<Long> EVAL_FACTORS = new ArrayList<>();
+  static {
+    for (long i = EVAL_FACTORS_MIN; i < EVAL_FACTORS_MAX; i *= 10) {
+      EVAL_FACTORS.add(i);
+    }
+  }
   private static final float MIN_PRECISION = 0.95f;
   private static final float MIN_RECALL = 0.1f;
 
@@ -145,7 +154,7 @@ class AutomaticConfusionRuleEvaluator {
       System.out.println("Skipping, evalNewsSets=false and pair not known yet");
       return;
     }
-    System.out.println("Working on: " + part1 + " / " + part2 + " from line: " + line + " (" + lineCount + " of " + totalLines + ")");
+    System.out.println("Working on: '" + part1 + "' / '" + part2 + "' from line: " + line + " (" + lineCount + " of " + totalLines + ")");
     try {
       File sentencesFile = writeExampleSentencesToTempFile(new String[]{part1, part2});
       List<String> input = Arrays.asList(sentencesFile.getAbsolutePath());
@@ -196,7 +205,9 @@ class AutomaticConfusionRuleEvaluator {
     Term term = new Term(fieldName, caseInsensitive ? word.toLowerCase() : word);
     long t1 = System.currentTimeMillis();
     //TopDocs topDocs = searcher.search(new TermQuery(term), caseInsensitive ? Integer.MAX_VALUE : MAX_EXAMPLES);
-    TopDocs topDocs = searcher.search(new TermQuery(term), MAX_EXAMPLES);
+    TopDocs topDocs = searcher.search(new TermQuery(term),
+            MAX_EXAMPLES*10,  // search more, as we filter further down
+            new Sort(new SortedNumericSortField(Lucene.RANDOM_FIELD, SortField.Type.INT)));  // RELEVANCE prefers short docs (and thus colloquial style), INDEXORDER isn't random between sources :-( (like Wikipedia vs. Tatoeba)
     long t2 = System.currentTimeMillis();
     int count = 0;
     Set<String> foundSentences = new HashSet<>();
@@ -228,7 +239,8 @@ class AutomaticConfusionRuleEvaluator {
     long searchTime = t2 - t1;
     long iterateTime = t3 - t2;
     System.out.println("Found " + count + " examples for " + word +
-            " (" + searchTime + "ms, " + iterateTime + "ms), case insensitive=" + caseInsensitive + ", totalHits: " + topDocs.totalHits);
+            " (" + searchTime + "ms, " + iterateTime + "ms), case insensitive=" + caseInsensitive +
+            ", totalHits: " + topDocs.totalHits + " for term '" + term + "'");
     return count;
   }
 
@@ -256,9 +268,9 @@ class AutomaticConfusionRuleEvaluator {
     eval.run(lines, new File(args[3]));
   }
 
-  class TooFewExamples extends RuntimeException {
-    private String word;
-    private int exampleCount;
+  static class TooFewExamples extends RuntimeException {
+    private final String word;
+    private final int exampleCount;
     TooFewExamples(String word, int exampleCount) {
       this.word = word;
       this.exampleCount = exampleCount;

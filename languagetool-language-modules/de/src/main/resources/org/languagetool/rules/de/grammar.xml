@@ -9623,6 +9623,25 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
     <!-- Siehe auch ../../resource/de/compounds.txt -->
     <!-- ====================================================================== -->
     <category id="COMPOUNDING" name="Getrennt- und Zusammenschreibung">
+        <rule id="AU_PAIR" name="Au Pair (Au-pair)" default="temp_off">
+            <antipattern case_sensitive="yes">
+                <token>au</token>
+                <token>pair</token>
+            </antipattern>
+            <antipattern case_sensitive="yes">
+                <token postag="SENT_START" />
+                <token>Au</token>
+                <token>pair</token>
+            </antipattern>
+            <pattern>
+                <token>au</token>
+                <token regexp="yes">pairs?</token>
+            </pattern>
+            <message>Meinten Sie das Nomen <suggestion>Au-<match no="2" case_conversion="alllower" /></suggestion>?</message>
+            <url>https://de.wikipedia.org/wiki/Au-pair</url>
+            <example correction="Au-pair">Sie war 2010 als <marker>Au Pair</marker> für einige Zeit in Kanada.</example>
+            <example>In Paris nahm Tom au pair, also für Kost und Logis, aber ohne Lohn, eine Stelle als Hauslehrer an.</example>
+        </rule>
         <rulegroup id="ADD_ON" name="Add-on">
             <url>https://www.duden.de/suchen/dudenonline/Add-on</url>
             <antipattern><!-- Needs extra rule -->
@@ -10024,9 +10043,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <url>https://www.duden.de/rechtschreibung/Homeoffice</url>
             <example correction="Homeoffice|Home-Office">Wegen der Corona-Pandemie mussten alle Mitarbeiter aus dem <marker>Home Office</marker> arbeiten.</example>
         </rule>
-         <rule id="FUGEN_S_ZUSAMMENSCHREIBUNG" name="Wirtschafts Weisen (Wirtschschaftsweisen)" default="temp_off">
+         <rule id="FUGEN_S_ZUSAMMENSCHREIBUNG_" name="Wirtschafts Weisen (Wirtschschaftsweisen)" default="temp_off">
             <pattern case_sensitive="yes">
-                <token postag="UNKNOWN" regexp="yes">[A-ZÜÄÖ][a-zäöüß]{2,}(ung|schaft|sicht|heit|ling|keit|tum|ion|tät)s</token>
+                <token postag="UNKNOWN" regexp="yes">[A-ZÜÄÖ][a-zäöüß]{2,}(ung|schaft|sicht|heit|keit|ion|tät)s</token>
                 <token postag=".*SUB.*" postag_regexp="yes" regexp="yes">
                     [A-ZÜÄÖ][a-zäöüß]+
                     <exception>Standards</exception>
@@ -10039,6 +10058,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example correction="Regenerierungsplan|Regenerierungs-Plan">Ich habe sogar einen liebevoll ausgearbeiteten <marker>Regenerierungs Plan</marker> erhalten, der sich vielversprechend liest.</example>
             <example correction="Wirtschaftsweisen|Wirtschafts-Weisen">Die <marker>Wirtschafts Weisen</marker>.</example>
             <example>DRSC – Deutsches Rechnungslegungs Standards Committee</example>
+            <example>Wenn die Auswirkungen des Deutschtums Probleme bereiten.</example>
+            <example>Denn als Goslings Charakter bei seinem Job als Pianist in einer Bar entsprechende Festtagslieder anstimmen soll, zeigt er sich wenig angetan.</example>
         </rule>
         <rule id="NAECHSTMOEGLICH" name="nächst möglich (nächstmöglich)">
             <pattern>
@@ -13287,7 +13308,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 </antipattern>
                 <antipattern>
                     <token>unter</token>
-                    <token regexp="yes">flie(ß|ss)end</token>
+                    <token regexp="yes">flie(ß|ss)end|lachen</token>
                 </antipattern>
                 <antipattern>
                     <token>;</token>
@@ -33112,6 +33133,19 @@ Andere Projekte</example>
                 <example correction="Nähe">Er wurde aus nächster <marker>nähe</marker> erschossen.</example>
             </rule>
         </rulegroup>
+        <rulegroup id="GRUENDE" name="gründe (Gründe)">
+            <rule>
+                <pattern case_sensitive="yes">
+                    <marker><token regexp="yes">gründe|Grüne</token></marker>
+                    <token min="0">dafür</token>
+                    <token>,</token>
+                    <token postag="KON:UNT|ADV:INR " postag_regexp="yes"></token>
+                </pattern>
+                <message>&subanfang;<suggestion>Gründe</suggestion>&subende;</message>
+                <short>&prgk;.</short>
+                <example correction="Gründe">Was sind die <marker>gründe</marker> dafür, dass du das getan hast?</example>
+            </rule>
+        </rulegroup>
         <rulegroup id="GROSS_KLEIN_EINHEITEN" name="Einheiten 'KB (kB), KWh (kWh)'">
             <rule>
                 <pattern case_sensitive="yes">
@@ -35933,6 +35967,7 @@ Andere Projekte</example>
             <example>Die Dame, die <marker>offenbar</marker> gestürzt war, schrie laut.</example>
             <example>Es ist die Temperatur, die <marker>ein</marker> gleich großer schwarzer Körper haben müsste, um dieselbe Strahlungsleistung abzugeben.</example>
             <example>Falls das wider Erwarten doch nichts für Dich ist, ...</example>
+            <example>Wie ist das werte Befinden?</example>
         </rule>
         <rule id="BEI_ANDEREN_SUB" name="'bei anderen' + ohne Dativ plural">
             <pattern>
@@ -45100,6 +45135,7 @@ Andere Projekte</example>
                         <exception postag="VER:(INF|MOD):.*|VER:AUX:.*:KJ[12]|PA[12]:.*|SUB:.*|EIG:.*|ADJ:.*|ART:.*|PRO:.*|ADV.*|PRP:.*|NEG:.*|ABK:.*|ZUS.*|ZAL.*" postag_regexp="yes"/>
                         <exception inflected="yes" regexp="yes">bleiben|lassen|versuchen|bemühen|sieben|achten</exception>   <!-- siebte, achte werden nicht als Zahlwort erkannt  -->
                         <exception>bitte</exception>
+                        <exception case_sensitive="yes">Bell</exception>
                         <exception regexp="yes" scope="next">,|\.|:|\?|!|;|-|–|—|\)|\(|„|“|»|«|"|und|oder</exception>
                         <exception regexp="yes" scope="next">weil|ob(wohl|gleich)?|da(mit|ss)?|indem|wenn|falls|während|bevor|nachdem|seitdem|so(bald|dass|fern|lange)|was|als|wie|bis|wer|wo|wohin|sondern|aber</exception>
                     </token>
@@ -45175,6 +45211,7 @@ Andere Projekte</example>
                 <example>Wir fuhren rauf und runter mit dem Fahrstuhl.</example>
                 <example>Geringfügige Verunreinigungen der Rohstoffe, die mit den normalen Qualitätsanforderungen an das Gebrauchsglas vereinbar sind, stellen ebenfalls Quellen für weitere (unbeabsichtigte) Glasbestandteile dar.</example>
                 <example>Du hast doch den Link zu web.de eingesetzt.</example>
+                <example>Bell erfand das Telefon nicht alleine.</example>
             </rule>
         </rulegroup>
         <rulegroup id="FEHLERHAFTES_KOMMA_ALLG" name="Fehlerhaftes Komma">

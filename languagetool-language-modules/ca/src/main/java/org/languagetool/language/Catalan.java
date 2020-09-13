@@ -90,7 +90,6 @@ public class Catalan extends Language {
             new CatalanUnpairedQuestionMarksRule(messages, this),
             new CatalanUnpairedExclamationMarksRule(messages, this),
             new AccentuationCheckRule(messages),
-            new PostponedAdjectiveConcordanceRule(messages),
             new CatalanWrongWordInContextRule(messages),
             new CatalanWrongWordInContextDiacriticsRule(messages),
             new SimpleReplaceVerbsRule(messages, this),
@@ -206,6 +205,7 @@ public class Catalan extends Language {
       case "REGIONAL_VERBS": return -10;
       case "FALTA_COMA_FRASE_CONDICIONAL": return -20;
       case "MUNDAR": return -50;
+      case "AGREEMENT_POSTPONED_ADJ_": return -50;
       case "MORFOLOGIK_RULE_CA_ES": return -100;
       case "EXIGEIX_ACCENTUACIO_VALENCIANA": return -120;
       case "SUBSTANTIUS_JUNTS": return -150;

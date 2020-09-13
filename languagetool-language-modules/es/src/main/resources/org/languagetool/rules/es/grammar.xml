@@ -9298,11 +9298,19 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token>otras</token>
                 <token/>
             </antipattern>
+            <antipattern>
+                <token postag="V.[MI]..S." postag_regexp="yes" skip="10"/>
+                <token regexp="yes">solo|sola</token>
+            </antipattern>
+            <antipattern>
+                <token postag="V.[MI]..P." postag_regexp="yes" skip="10"/>
+                <token regexp="yes">solos|solas</token>
+            </antipattern>
             <pattern>
                 <token postag="AQ.*|V.P.*|PX.*" postag_regexp="yes"><exception postag="_GN_.*|ignore_concordance|AQ.CN.|_GV_" postag_regexp="yes"/> <exception regexp="yes">primero|juntos|juntas|dado|dada|dados|dadas|incluso</exception><exception regexp="yes">\p{Lu}.*</exception></token>
             </pattern>
             <filter class="org.languagetool.rules.es.PostponedAdjectiveConcordanceFilter" args="key:value"/>
-            <message>Revise la concordancia de la palabra «\1».</message>
+            <message>Revise la concordancia de «\1» con los nombres precedentes.</message>
             <example correction="">La casa del pueblo <marker>blancas</marker>.</example>
             <example correction="">Análisis <marker>clínica</marker>.</example>
             <example correction="">Estas son las sillas <marker>blancos</marker> de las que te hablé.</example>
@@ -9389,14 +9397,15 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example>Una patética caricatura de mi más profundo ser.</example>
             <example>El embrague falla.</example>
             <example>Según la ley, la confesión bajo tortura no es válida.</example>
+            <example>No puedo hacer el trabajo sola.</example>
+            <example>Han aprendido esta lengua solos,</example>
             <!-- 
                 Ella fue al concierto acompañada de una amiga.
                 Soy cualquier cosa menos mentiroso. 
                  siempre esperan el autobús formados en fila. 
                  Él se unió a los partisanos muy joven.
                 Él se giró hacia sus acusadores enfadado.
-                No puedo hacer el trabajo sola.
-                han aprendido esta lengua solos,
+                
                 A menos que tomes una decisión rápido,
                 Escribí la composición apurado,
                 Mis parlantes son un juguete comparados con los tuyos.
@@ -10718,7 +10727,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rule>
     </category>
     <category id="CONFUSIONS" name="Confusiones">
-        <rulegroup name="rebelar/revelar" id="REBELAR_REVELAR" default="temp_off">
+        <rulegroup name="rebelar/revelar" id="REBELAR_REVELAR">
             <rule>
                 <pattern>
                     <marker>
@@ -10739,7 +10748,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token min="0" max="4" postag="RG|LOC_ADV" postag_regexp="yes"/>
                     <token>que</token>
                 </pattern>
-                <message>¿Quería decir <suggestion><match no="1" regexp_match="(?iu)rebel" regexp_replace="revel"/></suggestion> (descubrir, desvelar) en vez de "rebelar (sublevar)?</message>
+                <message>¿Quería decir <suggestion><match no="1" regexp_match="(?iu)rebel" regexp_replace="revel"/></suggestion> (descubrir, desvelar) en vez de "rebelar" (sublevar)?</message>
                 <example correction="reveló">Se <marker>rebeló</marker> que era mentira.</example>
                 <example correction="revelar">Hay que <marker>rebelar</marker> que no es verdad.</example>
             </rule>
@@ -10751,7 +10760,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                         <token inflected="yes">rebelar</token>
                     </marker>
                 </pattern>
-                <message>¿Quería decir <suggestion><match no="3" regexp_match="(?iu)rebel" regexp_replace="revel"/></suggestion> (descubrir, desvelar) en vez de "rebelar (sublevar)?</message>
+                <message>¿Quería decir <suggestion><match no="3" regexp_match="(?iu)rebel" regexp_replace="revel"/></suggestion> (descubrir, desvelar) en vez de "rebelar" (sublevar)?</message>
                 <example correction="reveló">Según <marker>rebeló</marker> la prensa, el presidente dimitió.</example>
                 <example correction="revelado">Tal y como ha <marker>rebelado</marker> el diario, el presidente no ha dimitido.</example>
             </rule>
@@ -10762,7 +10771,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                         <token inflected="yes">rebelar</token>
                     </marker>
                 </pattern>
-                <message>¿Quería decir <suggestion><match no="2" regexp_match="(?iu)rebel" regexp_replace="revel"/></suggestion> (descubrir, desvelar) en vez de "rebelar (sublevar)?</message>
+                <message>¿Quería decir <suggestion><match no="2" regexp_match="(?iu)rebel" regexp_replace="revel"/></suggestion> (descubrir, desvelar) en vez de "rebelar" (sublevar)?</message>
                 <example correction="revelado">El misterio <marker>rebelado</marker> por el detective.</example>
                 <example correction="revelados">Los detalles <marker>rebelados</marker> por el presidente.</example>
             </rule>
@@ -10774,7 +10783,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token skip="5"/>
                     <token postag="N.*|PI.*" postag_regexp="yes" inflected="yes" regexp="yes">conspiración|final|alineación|incertidumbre|detalle|contenido|motivo|nada|nombre|plan|causa|origen|verdad|yo|secreto|misterio|propósito|intención|proyecto</token>
                 </pattern>
-                <message>¿Quería decir <suggestion><match no="1" regexp_match="(?iu)rebel" regexp_replace="revel"/></suggestion> (descubrir, desvelar) en vez de "rebelar (sublevar)?</message>
+                <message>¿Quería decir <suggestion><match no="1" regexp_match="(?iu)rebel" regexp_replace="revel"/></suggestion> (descubrir, desvelar) en vez de "rebelar" (sublevar)?</message>
                 <example correction="reveló">Se <marker>rebeló</marker> el misterio.</example>
                 <example correction="revelar">Hay que <marker>rebelar</marker> la verdad.</example>
             </rule>
