@@ -42,6 +42,7 @@ import static org.languagetool.JLanguageTool.FALSE_FRIEND_FILE;
 
 public class EnglishForL2SpeakersFalseFriendRuleTest {
 
+/*
   @Test
   public void testMessageDetailData() throws IOException {
     List<String> langs = Arrays.asList("nl", "de", "fr", "es");
@@ -85,6 +86,7 @@ public class EnglishForL2SpeakersFalseFriendRuleTest {
     }
     return patternsWithDetails;
   }
+*/
 
   @Test
   public void testRule() throws IOException {
