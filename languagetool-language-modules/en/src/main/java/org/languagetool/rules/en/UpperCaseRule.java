@@ -177,6 +177,10 @@ public class UpperCaseRule extends Rule {
       token("Culture")
     ),
     Arrays.asList(
+      token("Time"),
+      tokenRegex("magazines?")
+    ),
+    Arrays.asList(
       token("Amazon"),
       token("Live")
     ),
@@ -325,6 +329,27 @@ public class UpperCaseRule extends Rule {
       tokenRegex("is|was"),
       tokenRegex("[A-Z].+")
     ),
+    Arrays.asList( // ... to something called Faded
+      tokenRegex("some(thing|body|one)"),
+      tokenRegex("called|named"),
+      csRegex("[A-Z].+")
+    ),
+    Arrays.asList( // It is called Ranked mode
+      csRegex("is|was|been|were|are"),
+      csRegex("calls?|called|calling|name[ds]?|naming"),
+      csRegex("[A-Z].+")
+    ),
+    Arrays.asList( // What is Foreshadowing?
+      tokenRegex("Who|What"),
+      tokenRegex("is|are|was|were"),
+      tokenRegex("[A-Z].+"),
+      token("?")
+    ),
+    Arrays.asList( // His name is Carp.
+      token("name"),
+      tokenRegex("is|was"),
+      tokenRegex("[A-Z].+")
+    ),
     Arrays.asList( // FDM Group
       tokenRegex("[A-Z].*"),
       token("Group")
@@ -344,6 +369,12 @@ public class UpperCaseRule extends Rule {
       tokenRegex("or|and|&"),
       tokenRegex("[A-Z].*"),
       pos("SENT_END")
+    ),
+    Arrays.asList( // Chronicle of a Death Foretold
+      csRegex("Chronicle"),
+      token("of"),
+      tokenRegex("the|an?"),
+      tokenRegex("[A-Z].*")
     )
   );
 
