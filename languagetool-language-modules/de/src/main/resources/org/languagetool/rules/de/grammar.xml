@@ -51,7 +51,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 
     <!-- Error messages -->
     <!ENTITY gla "Bitte verwenden Sie in Abkürzungen umbruchgeschützte Leerzeichen.">
-    <!ENTITY glalong "Innerhalb von Abkürzungen, die aus mehreren Buchstaben bestehen, sollten (außer bei Schriftarten mit fester Breite) in der Regel geschützte Leerzeichen verwendet werden: ">
+    <!ENTITY glalong "Innerhalb von Abkürzungen, die aus mehreren Buchstaben bestehen, sollten (außer bei Schriftarten mit fester Breite) in der Regel geschützte Leerzeichen verwendet werden.">
     <!ENTITY prgk "Bitte überprüfen Sie die Groß-/Kleinschreibung">
     <!ENTITY namengross "Zu mehrteiligen Namen gehörende Adjektive werden großgeschrieben.">
     <!ENTITY titelgross "Titel und Ehrenbezeichnungen werden großgeschrieben.">
@@ -2923,7 +2923,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example>Die Kampagne lief ins <marker>Leere</marker>.</example>
             <example correction="Leere">Das Gefühl der inneren <marker>Lehre</marker> wurde stärker.</example>
         </rule>
-        <rule id="PREIS-LEISTUNGS-VERHAELTNIS" name="'Preis-/Leistungsverhältnis (Preis-Leistungsverhältnis)'">
+        <rule id="PREIS-LEISTUNGS-VERHAELTNIS" name="'Preis-/Leistungsverhältnis (Preis-Leistungs-Verhältnis)'">
             <pattern case_sensitive="yes">
                 <token>Preis-</token>
                 <token>/</token>
@@ -7378,7 +7378,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token>,</token>
                     <marker>
                         <token skip="-1">dass
-                           <exception postag="SUB:.*|EIG:NOM.*|PRO:.*|UNKNOWN" postag_regexp="yes" scope="next"/>
+                           <exception postag="SUB:.*|EIG:NOM.*|PRO:.*|UNKNOWN|PA2.+" postag_regexp="yes" scope="next"/>
                         </token>
                     </marker>
                     <token regexp="yes">,|\.|:|\?|!|;</token>
@@ -7392,6 +7392,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>Es gilt jedoch weiterhin, dass a äquivalent ist.</example>
                 <example>Ich kann riechen, dass hier gekocht wird.</example>
                 <example>Unter Schülern kommt es oft vor, dass überhaupt nicht gelernt wird.</example>
+                <example>Das Ende hat für sie allerdings immerhin den Vorteil, dass nun ein unverstellterer, neutraler Blick auf die Antike möglich ist.</example>
             </rule>
             <rule>
                 <pattern case_sensitive="yes">
@@ -9623,7 +9624,67 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
     <!-- Siehe auch ../../resource/de/compounds.txt -->
     <!-- ====================================================================== -->
     <category id="COMPOUNDING" name="Getrennt- und Zusammenschreibung">
-        <rule id="AU_PAIR" name="Au Pair (Au-pair)" default="temp_off">
+        <rule id="MUST_HAVE" name="Must-have">
+            <antipattern><!-- ignore English sentences -->
+                <token postag="UNKNOWN" regexp="yes">.*[a-z].*</token>
+                <token>must</token>
+                <token>have</token>
+            </antipattern>
+            <antipattern><!-- ignore English sentences -->
+                <token>must</token>
+                <token>have</token>
+                <token postag="UNKNOWN" regexp="yes">.*[a-z].*</token>
+            </antipattern>
+            <pattern>
+                <token>must</token>
+                <token regexp="yes">haves?</token>
+            </pattern>
+            <message>Das Nomen <suggestion>Must-<match no="2" case_conversion="alllower" /></suggestion> wird mit Bindestrich geschrieben.</message>
+            <url>https://www.duden.de/rechtschreibung/Must_have</url>
+            <example correction="Must-have">Dieses praktische Werkzeug ist ein <marker>Must Have</marker> für jeden.</example>
+        </rule>
+        <rule id="FUENF_PUNKTE_PLAN" name="5-Punkte-Plan">
+            <pattern>
+                <token regexp="yes">zwei|drei|vier|fünf|sechs|sieben|acht|neun|zehn|elf|zwölf|zwanzig|dreißig|dreissig|\d+</token>
+                <token>punkte</token>
+                <token regexp="yes">plans?</token>
+            </pattern>
+            <message>Das Nomen <suggestion><match no="1" case_conversion="startupper" />-<match no="2" case_conversion="startupper" />-<match no="3" case_conversion="startupper" /></suggestion> wird mit Bindestrichen geschrieben.</message>
+            <example correction="5-Punkte-Plan">Sie entwarfen einen <marker>5 Punkte Plan</marker>, um das Problem zu lösen.</example>
+        </rule>
+        <rulegroup id="FUENF_MINUTEN_TAKT" name="5-Minuten-Takt">
+            <rule>
+                <pattern>
+                    <token regexp="yes">zwei|drei|vier|fünf|sechs|sieben|acht|neun|zehn|elf|zwölf|zwanzig|dreißig|dreissig|\d+</token>
+                    <token regexp="yes">sekunden|minuten|stunden|tages|wochen|monats|jahres</token>
+                    <token regexp="yes">takt(e?s)?|intervall|rhythmus</token>
+                </pattern>
+                <message>Das Nomen <suggestion><match no="1" case_conversion="startupper" />-<match no="2" case_conversion="startupper" />-<match no="3" case_conversion="startupper" /></suggestion> wird mit Bindestrichen geschrieben.</message>
+                <example correction="5-Minuten-Takt">Die S-Bahn fährt im <marker>5 Minuten Takt</marker>.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token>im</token>
+                    <marker>
+                        <token regexp="yes">zwei|drei|vier|fünf|sechs|sieben|acht|neun|zehn|elf|zwölf|zwanzig|dreißig|dreissig|\d+</token>
+                        <token regexp="yes">sekunden|minuten|stunden|tages|wochen|monats|jahres</token>
+                        <token>abstand</token>
+                    </marker>
+                </pattern>
+                <message>Das Nomen <suggestion><match no="2" case_conversion="startupper" />-<match no="3" case_conversion="startupper" />-<match no="4" case_conversion="startupper" /></suggestion> wird mit Bindestrichen geschrieben.</message>
+                <example correction="5-Minuten-Abstand">Die S-Bahn fährt im <marker>5 Minuten Abstand</marker>.</example>
+                <example>Am besten mit 5 Minuten Abstand rodeln, sonst wird's drängelig.</example><!-- unsure -->
+            </rule>
+            <rule>
+                <pattern>
+                    <token regexp="yes">zwei|drei|vier|fünf|sechs|sieben|acht|neun|zehn|elf|zwölf|zwanzig|dreißig|dreissig|\d+</token>
+                    <token regexp="yes">(Minuten|Stunden)takt(e?s)?</token>
+                </pattern>
+                <message>Das Nomen <suggestion><match no="1" case_conversion="startupper" />-<match no="2" case_conversion="startupper" /></suggestion> wird mit Bindestrichen geschrieben.</message>
+                <example correction="5-Minutentakt">Die S-Bahn fährt im <marker>5 Minutentakt</marker>.</example>
+            </rule>
+        </rulegroup>
+        <rule id="AU_PAIR" name="Au Pair (Au-pair)">
             <antipattern case_sensitive="yes">
                 <token>au</token>
                 <token>pair</token>
@@ -10045,7 +10106,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rule>
          <rule id="FUGEN_S_ZUSAMMENSCHREIBUNG_" name="Wirtschafts Weisen (Wirtschschaftsweisen)" default="temp_off">
             <pattern case_sensitive="yes">
-                <token postag="UNKNOWN" regexp="yes">[A-ZÜÄÖ][a-zäöüß]{2,}(ung|schaft|sicht|heit|keit|ion|tät)s</token>
+                <token postag="UNKNOWN" regexp="yes">
+                    [A-ZÜÄÖ][a-zäöüß]{2,}(ung|schaft|sicht|heit|keit|ion|tät)s
+                    <exception regexp="yes">Nations|Relations|Communications|Operations|Observations|Perceptions|Situations|Conversations|Diversions|Divisions|Editions|Restrictions|Elections|Combinations|Confessions|Micronations|Solutions</exception>
+                </token>
                 <token postag=".*SUB.*" postag_regexp="yes" regexp="yes">
                     [A-ZÜÄÖ][a-zäöüß]+
                     <exception>Standards</exception>
@@ -10060,6 +10124,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example>DRSC – Deutsches Rechnungslegungs Standards Committee</example>
             <example>Wenn die Auswirkungen des Deutschtums Probleme bereiten.</example>
             <example>Denn als Goslings Charakter bei seinem Job als Pianist in einer Bar entsprechende Festtagslieder anstimmen soll, zeigt er sich wenig angetan.</example>
+            <example>Für weitere Fragen steht das International Relations Office zur Verfügung.</example>
+            <example>SNA – United Nations System of National Accounts (auch UNSNA)</example>
+            <example>Seinen Siegelring übergab er Perdikkas, der nach Hephaistions Tod sein engster Vertrauter gewesen war.</example>
+            <example>Adelungs Wörterbuch hatte einen großen Einfluss auf die deutsche Lexikographie, das genaue Ausmaß ist jedoch relativ wenig bekannt.</example>
         </rule>
         <rule id="NAECHSTMOEGLICH" name="nächst möglich (nächstmöglich)">
             <pattern>
@@ -38051,7 +38119,7 @@ Andere Projekte</example>
                 </pattern>
                 <message>Einige Verben der sinnlichen Wahrnehmung und Hilfsverben erfordern statt des Partizips mit 'ge-' den Infinitiv: <suggestion><match no="3" regexp_match="^ge" regexp_replace=""/></suggestion>.</message>
                 <!-- <message>Einige Verben der sinnlichen Wahrnehmung und Hilfsverben erfordern statt des Partizips mit 'ge-' den Infinitiv: <suggestion><match no="2" postag="PA2:PRD:GRU:VER" postag_regexp="yes" postag_replace="VER:INF:SFT"/></suggestion>.</message> -->
-                <short>Evt. Ersatzinfinitiv statt Partizip Perfekt erforderlich.</short>
+                <short>Evtl. Ersatzinfinitiv statt Partizip Perfekt erforderlich.</short>
                 <example>Ich habe es kommen <marker>sehen</marker>.</example>
                 <example>Ich habe die Übertragung im Fernsehen <marker>gesehen</marker>.</example>
                 <example correction="sehen">Ich habe es schon lange kommen <marker>gesehen</marker>.</example>
@@ -41525,7 +41593,8 @@ Andere Projekte</example>
         <rulegroup id="EINHEIT_LEERZEICHEN" name="Falsches/Fehlendes Leerzeichen zwischen Zahl und Einheit">
             <rule>
                 <regexp case_sensitive='yes'>(?&lt;![A-Z])(\-?[0-9]+[0-9,.]{0,15}(%|€|\$|¥|°C|°F|°De?|°R[éeøa]?|(Z|E|P|T|G|M|k|h|da|d|c|m|µ|n|p|f|a|z|y)?[ΩΩm]|(Z|E|P|T|G|M|k|h|da|d|c|m|µ|n|p|f|a|z|y)?N|[kKMGTPEZY]i?B|[kmµnp]g|[Mk]t|kWh|GWa|MWd|MWh)(?!\w))</regexp>
-                <message>Vor Einheitenzeichen sollte ein Leerzeichen gesetzt werden. Vorschlag: <suggestion><match no="1" regexp_match="((\-)?[0-9]+[0-9,.]*{1,})" regexp_replace="$1 "/></suggestion></message>
+                <message>Vor Einheitenzeichen sollte ein Leerzeichen gesetzt werden.</message>
+                <suggestion><match no="1" regexp_match="((\-)?[0-9]+[0-9,.]*{1,})" regexp_replace="$1 "/></suggestion>
                 <url>https://de.wikipedia.org/wiki/DIN_5008#Schriftzeichen_f.C3.BCr_W.C3.B6rter_und_Rechenzeichen_.28Abschnitte_7_und_8.29</url>
                 <example correction="25 °C">Es ist <marker>25°C</marker> warm.</example>
                 <example correction="-25 °C">Es ist <marker>-25°C</marker> warm.</example>
@@ -43372,7 +43441,8 @@ Andere Projekte</example>
             </rule>
             <rule>
                 <regexp case_sensitive='yes'>Dr\.(iur|med|oec|phil|theol)\.</regexp>
-                <message>&glalong;<suggestion>Dr.&nbsp;\1.</suggestion></message>
+                <message>&glalong;</message>
+                <suggestion>Dr.&nbsp;\1.</suggestion>
                 <short>&gla;</short>
                 <example>Dr.&nbsp;med. Hans Müller</example>
                 <example correction="Dr.&nbsp;med."><marker>Dr.med.</marker> Hans Müller</example>
@@ -43380,7 +43450,8 @@ Andere Projekte</example>
             </rule>
             <rule>
                 <regexp case_sensitive='yes'>(s|S)\.\s?(o|u)\.</regexp>
-                <message>&glalong;<suggestion>\1.&nbsp;\2.</suggestion></message>
+                <message>&glalong;</message>
+                <suggestion>\1.&nbsp;\2.</suggestion>
                 <short>&gla;</short>
                 <example>Das ist richtig, s.&nbsp;u.</example>
                 <example correction="s.&nbsp;u.">Das ist falsch, <marker>s.u.</marker></example>
@@ -43388,28 +43459,32 @@ Andere Projekte</example>
             </rule>
             <rule>
                 <regexp case_sensitive='yes'>(d|D)\.\s?h\.</regexp>
-                <message>&glalong;<suggestion>\1.&nbsp;h.</suggestion></message>
+                <message>&glalong;</message>
+                <suggestion>\1.&nbsp;h.</suggestion>
                 <short>&gla;</short>
                 <example>Das ist richtig, d.&nbsp;h. gut.</example>
                 <example correction="d.&nbsp;h.">Das ist falsch, <marker>d.h.</marker> schlecht.</example>
             </rule>
             <rule>
                 <regexp case_sensitive='yes'>(m|M)\.\s?E\.</regexp>
-                <message>&glalong;<suggestion>\1.&nbsp;E.</suggestion></message>
+                <message>&glalong;</message>
+                <suggestion>\1.&nbsp;E.</suggestion>
                 <short>&gla;</short>
                 <example>Das ist m.&nbsp;E. richtig.</example>
                 <example correction="m.&nbsp;E.">Das ist <marker>m.E.</marker> schlecht.</example>
             </rule>
             <rule>
                 <regexp case_sensitive='yes'>(B|M)\.A\.</regexp>
-                <message>&glalong;<suggestion>\1.&nbsp;A.</suggestion></message>
+                <message>&glalong;</message>
+                <suggestion>\1.&nbsp;A.</suggestion>
                 <short>&gla;</short>
                 <example>Hans Müller, M.&nbsp;A.</example>
                 <example correction="M.&nbsp;A.">Hans Müller, <marker>M.A.</marker></example>
             </rule>
             <rule>
                 <regexp case_sensitive='yes'>(z|Z)\.\s?(B|K|T|Zt|Hd?)\.</regexp>
-                <message>&glalong;<suggestion>\1.&nbsp;\2.</suggestion></message>
+                <message>&glalong;</message>
+                <suggestion>\1.&nbsp;\2.</suggestion>
                 <short>&gla;</short>
                 <example>Das ist z.&nbsp;B. richtig.</example>
                 <example correction="z.&nbsp;B.">Das ist <marker>z.B.</marker> falsch.</example>
@@ -43418,21 +43493,24 @@ Andere Projekte</example>
             </rule>
             <rule>
                 <regexp case_sensitive='yes'>(v|n)\.\s?Chr\.</regexp>
-                <message>&glalong;<suggestion>\1.&nbsp;Chr.</suggestion></message>
+                <message>&glalong;</message>
+                <suggestion>\1.&nbsp;Chr.</suggestion>
                 <short>&gla;</short>
                 <example>Das war um 100 n.&nbsp;Chr.</example>
                 <example correction="n.&nbsp;Chr.">Das war um 100 <marker>n.Chr.</marker></example>
             </rule>
             <rule>
                 <regexp case_sensitive='yes'>(c|s)\.t\.</regexp>
-                <message>&glalong;<suggestion>\1.&nbsp;t.</suggestion></message>
+                <message>&glalong;</message>
+                <suggestion>\1.&nbsp;t.</suggestion>
                 <short>&gla;</short>
                 <example>Das Seminar beginnt um 16 Uhr c.&nbsp;t.</example>
                 <example correction="c.&nbsp;t.">Das Seminar beginnt um 16 Uhr <marker>c.t.</marker></example>
             </rule>
             <rule>
                 <regexp>(u|o|i)\.\s?(ö|ä|a|dgl)\.</regexp>
-                <message>&glalong;<suggestion>\1.&nbsp;\2.</suggestion></message>
+                <message>&glalong;</message>
+                <suggestion>\1.&nbsp;\2.</suggestion>
                 <short>&gla;</short>
                 <example>Das u.&nbsp;a. ist richtig.</example>
                 <example correction="u.&nbsp;a.">Das ist <marker>u.a.</marker> falsch.</example>
@@ -43442,7 +43520,8 @@ Andere Projekte</example>
             </rule>
             <rule>
                 <regexp case_sensitive='yes'>(e|i|n)\.\s?V\.</regexp>
-                <message>&glalong;<suggestion>\1.&nbsp;V.</suggestion></message>
+                <message>&glalong;</message>
+                <suggestion>\1.&nbsp;V.</suggestion>
                 <short>&gla;</short>
                 <example>Goldene Tulpe e.&nbsp;V.</example>
                 <example correction="e.&nbsp;V.">Goldene Tulpe <marker>e.V.</marker></example>
@@ -43450,7 +43529,8 @@ Andere Projekte</example>
             </rule>
             <rule>
                 <regexp>(u)\.\s?(v)\.\s?(m|a)\.</regexp>
-                <message>&glalong;<suggestion>\1.&nbsp;\2.&nbsp;\3.</suggestion></message>
+                <message>&glalong;</message>
+                <suggestion>\1.&nbsp;\2.&nbsp;\3.</suggestion>
                 <short>&gla;</short>
                 <example>Das u.&nbsp;v.&nbsp;a. ist richtig.</example>
                 <example>Das u.&nnbsp;v.&nnbsp;m. ist richtig.</example>
@@ -43459,28 +43539,32 @@ Andere Projekte</example>
             </rule>
             <rule>
                 <regexp case_sensitive='yes'>([Ii])\.d\.R\.</regexp>
-                <message>&glalong;<suggestion>\1.&nbsp;d.&nbsp;R.</suggestion></message>
+                <message>&glalong;</message>
+                <suggestion>\1.&nbsp;d.&nbsp;R.</suggestion>
                 <short>&gla;</short>
                 <example>Das ist i.&nbsp;d.&nbsp;R. richtig.</example>
                 <example correction="i.&nbsp;d.&nbsp;R.">Das ist <marker>i.d.R.</marker> falsch.</example>
             </rule>
             <rule>
                 <regexp case_sensitive='yes'>(b|B)\.(a)\.(W)\.</regexp>
-                <message>&glalong;<suggestion>\1.&nbsp;\2.&nbsp;\3.</suggestion></message>
+                <message>&glalong;</message>
+                <suggestion>\1.&nbsp;\2.&nbsp;\3.</suggestion>
                 <short>&gla;</short>
                 <example>Das ist b.&nbsp;a.&nbsp;W. akzeptabel.</example>
                 <example correction="b.&nbsp;a.&nbsp;W.">Das ist <marker>b.a.W.</marker> inakzeptabel.</example>
             </rule>
             <rule>
                 <regexp case_sensitive='yes'>(a|A)\.a\.O\.</regexp>
-                <message>&glalong;<suggestion>\1.&nbsp;a.&nbsp;O.</suggestion></message>
+                <message>&glalong;</message>
+                <suggestion>\1.&nbsp;a.&nbsp;O.</suggestion>
                 <short>&gla;</short>
                 <example>Vgl. Radebrecher, a.&nbsp;a.&nbsp;O.</example>
                 <example correction="a.&nbsp;a.&nbsp;O.">Vgl. Radebrecher, <marker>a.a.O.</marker></example>
             </rule>
             <rule>
                 <regexp case_sensitive='yes'>Dr\.\s?med\.\s?(dent|vet)\.</regexp>
-                <message>&glalong;<suggestion>Dr.&nbsp;med.&nbsp;\1.</suggestion></message>
+                <message>&glalong;</message>
+                <suggestion>Dr.&nbsp;med.&nbsp;\1.</suggestion>
                 <short>&gla;</short>
                 <example>Dr.&nbsp;med.&nbsp;dent. Hans Müller</example>
                 <example correction="Dr.&nbsp;med.&nbsp;dent."><marker>Dr.med.dent.</marker> Hans Müller</example>
@@ -43489,7 +43573,8 @@ Andere Projekte</example>
             </rule>
             <rule>
                 <regexp case_sensitive='yes'>Dr\.\s?rer\.\s?(nat|pol)\.</regexp>
-                <message>&glalong;<suggestion>Dr.&nbsp;rer.&nbsp;\1.</suggestion></message>
+                <message>&glalong;</message>
+                <suggestion>Dr.&nbsp;rer.&nbsp;\1.</suggestion>
                 <short>&gla;</short>
                 <example>Dr.&nbsp;rer.&nbsp;pol. Hans Müller</example>
                 <example correction="Dr.&nbsp;rer.&nbsp;pol."><marker>Dr.rer.pol.</marker> Hans Müller</example>
@@ -45665,7 +45750,7 @@ Andere Projekte</example>
             </rule>
             <rule>
                 <antipattern>
-                    <token regexp="yes">.*photograph.*|.*photon|.*photonen.*|.*phono.*|.*phone[mt].*|symphoni.*|(.+)?Smartphone.*|Al­lo­phon.*</token>
+                    <token regexp="yes">.*photograph.*|.*photon|.*photonen.*|.*phono.*|.*phone[mt].*|symphoni.*|(.+)?Smartphone.*|Allophon.*</token>
                 </antipattern>
                 <antipattern>
                     <token regexp="yes">https?.*|www.*</token>

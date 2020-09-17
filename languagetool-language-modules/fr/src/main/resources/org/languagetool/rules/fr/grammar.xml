@@ -26,10 +26,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
     <!ENTITY hyphen "(?:[-‑])">
     <!ENTITY elision_regexp "h?[àâaêèéeiîoôòóöŌuœä]\D.*|à|hy\D.*|y[ptslv].*|Yonne|Xbox">
     <!ENTITY elision_regexp_PAS_D_ELISION "h?[àâaéêèeiîoôòóöŌuœäìø].*|à|hy\D.*|y[ptlsv].*|y|hbts|1[\.,]\d+&#x25;?|1[h&#x25;]?|Yonne|Xbox">
-    <!--o[ùu]|au? | héroïne | -->
     <!ENTITY exceptions_ELISION1 "onze|onzièmes?|au|ou|oui|ouistiti|ouï[-‑‐]dire|énième|Iouri|ouates?|Ouacif|Ouagadougou|Ouarzazate|Ouémo|Ouidah|one(-.*)?|(?-i)[IVXLCM]+e?|Ier|Ire|habanera|hâblerie|hâbleur|hâbleuse|hachage|hache|hachée?|hache-.*|hachement|hacher|hachette|hacheur|hachereau|hachis|hasch|hachisch|hachoir|hachure|hachurer|hackle|hadale?|hadalaux|haddock|haflinger|hafnium|hagard|haggis|haie|haillon|haillonneux|haillonneuse|haine|haineusement|haineux|haineuse|haïr|haire|haïssable|Haïtien|Haïtienne|halage|hâlage|halal|halbi|halbran|halbrenée?|halde|hâle|hâlée?|hale-bas|hale-breu|hale-croc|halefis|hâle-haut|haler|hâler|haletant|halètement|haleter|haleur|haleuse|half-track|hall|halle|hallebarde|halo|hallux|halte|halte-garderie|hamac|hamada|hamburger|hameau|hamman|hampe|hamster|hanche|hanchement|hancher|hand-?ball|handballeur|handballeuse|handicap|handicapante?|handicapée?|handicaper|handicapeur|handisport|hangar|hanneton|hanon|hanse|hanter|hantise|happement|happening|happer|happy|nd|haque|haquenée|haquet|hara-kiri|harangue|haranguer|harangueur|harangueuse|haras|harassante?|harassée?|harassement|harasser|harcelante?|harcèlement|harceler|hard|hard-.*|harde|hardé|harder|hardes|round|hardie?|hardiesse|hardiment|hardware|harem|hareng|harengade|harengaison|harengère|harenguet|harengueux|harenguier|harenguière|haret|harfang|hargne|hargneusement|hargneux|hargneuse|haricot|haridelle|harissa|harka|harki|harnachement|harnacher|harnais|harnat|harnois|haro|harouelle|harpail|harpaye|harpe|harpe-cithare|harpette|harpie|harpiste|harpe-luth|harpocéras|harpodon|harpoise|harpon|harponnage|harponnement|harponner|harponneur|harpye|harrier|hart|bas-been|hasard|hasarder|hasardeusement|hasardeux|hasardeuse|has|een|hachich|hashich|haschisch|hase|hâte|hâter|hatha-yoga|hâtier|hâtif|hâtive|hattéria|hauban|haubanage|haubaner|haubert|haussehotdog|hausse-col|haussement|hausser|hausse-repère|haussier|haussière|autain|hautaine?|aut-bar|hautbois|hautboïste|haute?|haute?-.*|hautement|hauteur|haut-fond|hautin|hauturier|hauturière|havage|havane|hâve|havée|haveneau|havenet|haver|haveur|haveuse|havre|havresac|havrit|haylage|hayon|hé|heat-set|heaume|hein|héler|hem|henné|hennin|hennir|hennissante?|hennissement|hennuyer|hep|héraut|hère|hérissée?|érissement|hérisser|hérisson|hérissonne|herniaire|hernie|herniée?|ernieux|ernieuse|héron|héronneau|héronnier|héronnière|héros|hersage|herse|herser|hersillon|hêtraie|hêtre|heu|heurt|heurter|heurtoir|hibou|hic|hickory|hideur|hideusement|hideux|hideuse|hiement|hiérarchie|hiérarchique|hiérarchiquement|hiérarchisation|hiérarchiser|hiérarque|hi-fi|high|ulk|high-tech|hilaire|hile|hindi|hip|hip-hop|hippie|hippy|hidjab|hissage|hit|hit-parade|ho|hobby|hobbyste|hobereau|hochement|hochepot|hochequeue|hocher|hochet|hockey|hockeyeur|hockeyeuse|ho!|isse!|holà|holding|hold-up|Hollande|Hollando-.*|hollandite|hollywoodien|hollywoodienne|homard|homarderie|homardier|home|home-trainer|hongre|hongrer|hongreur|hongreuse|hongroierie|hongroyage|hongroyer|hongroyeur|Hongrie|honning|honnir|honoris|honte|honteusement|honteux|honteuse|hooligan|hooliganisme|hop|hop-je|hoquet|hoqueter|hoqueton|horde|horion|hormis|hornblende|hors|horsain|horsin|hors-.*|horse|horse-.*|horst|hot|hotdog|hot-.*|hotinus|honey|hotte|hottée|hotu|hou|houache|houaiche|houage|houblon|houe|houer|houille|houiller|houillère|houle|houleux|houleuse|houligan|houliganisme|houlque|houp|houppe|houppelande|houppette|houppier|hourd|hourdage|hourder|hourdir|hourdis|houri|hourque|hourra|hourri|hourrite|hourvari|housche|houseau|house-boat|houspiller|houssage|housse|housser|housset|houssière|houst|houx|hovéa|hoyau|hoyée?|huard|huart|hublot|huche|hucher|huchier|hue|huée|huer|huerta|huguenot|huipil|huir|huis|los|huit|huitain|huitaine|huitante|huit-en-huit|huitième|huitièmement|huit-reflets|hulotte|hululation|hululement|hululer|hum|humantin|humer|hune|hunier|hunter|huppe|huppée?|uque|hurdler|hure|hurlant|hurlement|hurler|hurleur|hurleuse|huron|huronne|hurrah|hurricane|husky|hussard|hussarde|hutinet|hutte|hutteau">
     <!ENTITY exceptions_ELISION2 "haye|avec|hausse|et|hayley|hotspot|henry|hoover|hallstatt|hambourg|hollywood|house|(haute?|hache|hard|Hollando|horse?|hot|)-.+|one(-.*)?">
-    
     <!ENTITY H_ASPIRE "Hugo|Hugues|Henri|Henry|Harvard|Hess|Hezbollah|Huntington|Halley|Harlem|Herstal|Hitler|Heinrich|Howard|Habsbourg|Hamlet|heavy metal|heavy|habanera|hâbler|hâblerie|hâbleur|hache|hacher|hachereau|hachette|hachage|hacheur|hachis|hachich|hachisch|hachoir|hachure|hack|hackeur|hacquebute|haquebute|haquebutier|hadal|haddock|hadîth|hadj|hadji|HADOPI|haguais|Hague|hagard|haha|hahé|haie|haïe|haïk|haillon|haillonneux|haine|haineux|haineusement|haïr|haïssable|halage|halbran|HALDE|hâle|halecret|haler|hâler|haleter|halètement|hall|halle|hallebarde|hallebardier|hallier|hallstatien|halo|haloir|hâloir|halophile|halot|halte|halva|hamac|hamada|Hambourg|hamburger|hameau|hammal|hamal|hammam|Hammerfest|hammerless|hampe|hamster|han|hanap|hanche|hanchement|hancher|handball|handballeur|handicap|handicaper|hangar|hanneton|hannetonner|hanse|hanséatique|hanter|hantise|happe|happelourde|happer|happening|happement|happy|hacquebutier|haquenée|haquet|hara|harangue|haranguer|harangueur|haras|harassant|harasser|harassement|harceler|harcèlement|harceleur|Harald|harde|harder|hardes|hardi|hardiesse|hardiment|hardware|harem|hareng|harengère|haret|harfang|hargne|hargneux|hargneusement|haricot|haricoter|haridelle|harissa|harka|harki|harle|harlou|harnacher|harnacheur|harnachement|harnais|harnois|Harold|haro|harpailler|harpe|harper|harpie|harpiste|harpon|harponner|harponneur|harponnage|Harry|hart|hasard|hasarder|hasardeux|hasardeusement|has|haschich|hase|hast|hastaire|haste|Hastings|hâte|hâtelet|hâtelette|hâter|hâtier|hâtif|hâtiveau|hâtivement|hauban|haubanner|haubanneur|haubergeon|haubert|hausse|haussement|hausser|hausseur|hausseusement|haussier|haut|hautain|hautbois|hautement|hautesse|hauteur|hautin|hauturier|havage|havanais|havane|hâve|haveneau|havenet|haver|haveur|havir|havrais|havre|havresac|havresacs|hayon|hé|heaume|heaumier|heimatlos|héler|héleur|hèlement|hem|hum|hemloc|hemlock|henné|hennir|hennissant|hennissement|hennisseur|hep|héraut|hercheur|hère|hérissement|hérisser|hérisseur|hérisson|hérissonner|hermitique|herniaire|hernie|hernieux|héron|héronnier|herschage|herchage|herscher|hercher|herscheur|herse|herser|hertz|hertzien|Hesse|hêtraie|hêtre|heu.../heux|heulandite|heurt|heurtement|heurtequin|heurter|heurteur|heurtoir|hiatal|hibou|hic|hickory|hideur|hideusement|hideux|hie|hiement|hiéracocéphale|hiérarchie|hiérarchique|hiérarchiquement|hiérarchiser|hiérarchisation|hiératique|hiératiquement|hiératisant|hiératisé|hiératisme|hiérochromie|hiérocrate|hiérocratisme|hiérodrame|hiérogamie|hiérogamique|hiéroglyphe|hiéroglyphé|hiéroglyphie|hiéroglyphié|hiéroglyphique|hiéroglyphiquement|hiéroglyphisme|hiéroglyphite|hiérogramme|hiérogrammate|hiérogrammatisme|hiérographe|hiéromancie|hiéromoine|hiérophanie|hiéroscopie|hiéroscopique|hi|highlandais|Highlander|Highlands|high|highlifer|highlifeur|hilaire|hile|hiloire|Hilbert|Hildegarde|hindi|hindî|hip|hippie|hippy|hiragana|Hiroshima|hissage|hisser|hissement|hisseur|hit|hittite|HLM|ho|Hobart|hobby|hobereau|hobereautaille|hoberelle|hoc|hoca|hoche|hochement|hochepot|hochequeue|hochequeues|hocher|hochet|hockey|hockeyeur|hocko|hocco|hodja|hoffmannesque|hoffmannien|hognement|hogner|holà|holding|hôler|hold|hollandais|hollandaisement|hollande|hollandé|hollandiser|hollando|Hollywood|hollywoodesque|hollywoodien|homard|homarderie|homardier|home|homespun|hon|Honduras|hondurien|Hongkong|Hongkongais|hongre|hongreline|hongrer|hongreur|Hongrie|hongrois|hongroyage|hongroyer|hongroyeur|honnir|honnissement|Honshu|honte|honteux|honteusement|hooligan|hop|hoquet|hoqueter|hoquètement|hoqueton|horde|horion|hormis|hornblende|hors|horsain|horseguard|horse|horseguards|horst|hosanna|hosannière|hotdog|hot|hotdogs|hotte|hottée|hotter|hottentot|hotteur|hou|houblon|houblonner|houblonneur|houblonnière|houdan|houe|houhou|houille|houiller|houlette|hourdi|hourdis|houret|houri|hourque|hourvari|houseau|houspiller|houspilleur|houspillement|houssage|houssaie|housse|housser|houssine|houssoir|Houston|houx|hoyau|huard|hublot|huche|huchée|hucher|huchet|huchier|hue|huée|huer|huerta|huehau|hugolâtre|hugolâtrie|hugolien|hugotique|hugotisme|huguenot|huit|huitain|huitaine|huitante|huitième|Hulk|hulotte|hululation|hululer|humage|humement|humer|humeux|Hun(s)|humoter|hune|hunier|hunter|huppe|huppé|huque|hure|hurlade|hurlée|hurlement|hurler|hurleur|huro|huron|huronien|hurricane|husky|hussard|hussite|hussitisme|hutin|hutinet|hutte|hutteau|hutter|huttier">
     <!ENTITY common_english_nouns_feminine "Society|League|Corporation|Association|Gallery|Navy|Area|Cup|Foundation|Company">
     <!ENTITY common_english_nouns_masculine "Club|TM|UD|UE|SD|Team|Day|Center|Centre|Hilton|Group">
@@ -1581,6 +1579,11 @@ though, and has since been slightly modified)-->
           <token>a</token>
           <token regexp="yes">.|-t-.*</token>
       </antipattern>
+      <antipattern>
+          <token regexp="yes">«|"</token>
+          <token>à</token>
+          <token regexp="yes">»|"</token>
+      </antipattern>
       <rule>
         <antipattern>
           <token regexp="yes">\.|\/</token>
@@ -1881,6 +1884,11 @@ though, and has since been slightly modified)-->
       </rule>
     </rulegroup>
     <rulegroup id="OU" name="'Ou' au lieux de 'où'">
+        <antipattern>
+            <token regexp="yes">«|"</token>
+            <token>ou</token>
+            <token regexp="yes">»|"</token>
+        </antipattern>
       <rule>
         <antipattern>
           <token inflected="yes">être<exception>être</exception></token>
@@ -2195,6 +2203,7 @@ though, and has since been slightly modified)-->
       <example correction="">La zone géographique dans laquelle je <marker>vie</marker>.</example>
       <example>La zone géographique dans laquelle je vis</example>
       <example>As-tu faim maintenant ?</example>
+      <example>J'anime un groupe de jeunes.</example>
     </rule>
     <rule id="CETTE_CEST" name="CETTE au lieu de C’EST">
       <pattern>
@@ -8185,7 +8194,7 @@ though, and has since been slightly modified)-->
       </antipattern>
       <antipattern>
         <token regexp="yes">[dl]'</token>
-        <token case_sensitive="yes" regexp="yes">I|X|HTML|[HAEIOU][A-Z]+|H&amp;M</token> 
+        <token case_sensitive="yes" regexp="yes">I|X|HTML|[HAEIOU][A-Z]+|H&amp;M</token>
         <!-- acronyms d'I.S.R. -->
       </antipattern>
       <antipattern>
@@ -8256,7 +8265,7 @@ though, and has since been slightly modified)-->
           <token regexp="yes">[dljmnst]'|jusqu'|qu'<exception postag="Z.*" postag_regexp="yes"></exception></token>
           <token/>
         </pattern>
-        <message>Cette expression ne s’élide pas.</message>
+        <message>Cette contraction peut être considérée familière.</message>
         <suggestion><match no="1" regexp_match="'$" regexp_replace="e"/> \2</suggestion>
         <example correction="Je vais"><marker>J'vais</marker> partir.</example>
         <example>Il demandait d'« importer des experts du Zimbabwe ».</example>
@@ -8297,7 +8306,7 @@ though, and has since been slightly modified)-->
         <example>La liquidation de l’I.S.R.</example>
         <example>L'HTML</example>
         <example>L'Yonne.</example>
-        
+
       </rule>
       <rule>
         <antipattern>
@@ -9029,6 +9038,31 @@ though, and has since been slightly modified)-->
         <example correction="trois fois par semaine">Je joue au Softball <marker>trois fois au semaine</marker>.</example>
       </rule>
       <!-- End of additions -->
+        <rulegroup id="YA" name="ya" default="temp_off">
+            <rule>
+                <pattern>
+                    <token>il</token>
+                        <marker>
+                            <token>ya</token>
+                        </marker>
+                </pattern>
+                <message>Ces deux mots doivent être séparés : <suggestion>y a</suggestion>.</message>
+                <example correction="y a">Il <marker>ya</marker> douze personnes.</example>
+            </rule>
+            <rule>
+                <antipattern>
+                    <token>il</token>
+                    <token>ya</token>
+                </antipattern>
+                <pattern>
+                        <marker>
+                            <token>ya</token>
+                        </marker>
+                </pattern>
+                <message>Cette formulation est considérée familière. Vouliez-vous dire <suggestion>Il y a</suggestion> ?</message>
+                <example correction="Il y a"><marker>Ya</marker> douze personnes.</example>
+            </rule>
+        </rulegroup>
       <rule id="COMME_ME_LE_DIRE" name="comme me le dire accord">
           <pattern>
               <token>comme</token>
@@ -11531,7 +11565,7 @@ though, and has since been slightly modified)-->
     </rulegroup>
     <rule id="DU_PL_SING" name="du *pains/pain">
       <pattern>
-          <token>du</token>      
+          <token>du</token>
           <token postag="[JN] .* p" postag_regexp="yes"><exception postag=".* (sp|s)" postag_regexp="yes"/><exception case_sensitive="yes" regexp="yes">[A-Z]+</exception></token>
       </pattern>
       <message>Accord de nombre erroné.</message>
@@ -19672,7 +19706,7 @@ though, and has since been slightly modified)-->
       <suggestion><match no="1" postag="(V.*)" postag_regexp="yes" postag_replace="$1">faire</match> fonctionner</suggestion>
       <suggestion><match no="1" postag="(V.*)" postag_regexp="yes" postag_replace="$1">manœuvrer</match></suggestion>
       <example correction="conduire|faire fonctionner|manœuvrer"><marker>opérer</marker> une machine</example>
-      
+
       <example><marker>conduire une machine</marker></example>
     </rule>
     <rule id="EMETTRE_UN_COMMUNIQUE" name="émettre un communiqué">
@@ -19809,7 +19843,7 @@ though, and has since been slightly modified)-->
         </marker>
         <token>cours<exception scope="previous">en</exception></token>
       </pattern>
-      <message>« Prendre un cours » peut être considéré comme un anglicisme (to take a course). Employez <suggestion><match no="1" postag="(V.*)" postag_regexp="yes" postag_replace="$1">suivre</match></suggestion> un cours, 
+      <message>« Prendre un cours » peut être considéré comme un anglicisme (to take a course). Employez <suggestion><match no="1" postag="(V.*)" postag_regexp="yes" postag_replace="$1">suivre</match></suggestion> un cours,
       <suggestion>(s'inscrire à)</suggestion> un cours.</message>
       <example correction="suivre|(s'inscrire à)"><marker>prendre</marker> un cours</example>
       <example><marker>suivre</marker> un cours</example>
@@ -20010,9 +20044,9 @@ though, and has since been slightly modified)-->
       <suggestion><match no="1" postag="(V.*)" postag_regexp="yes" postag_replace="$1">farter</match></suggestion>
       <example correction="farter"><marker>cirer</marker> des skis</example>
     </rule>
-     
+
   <!-- checked up to here -->
-    
+
     <rule id="CONFERENCIER_INVITE" name="conférencier invité">
       <pattern>
         <token regexp="yes">conférenciers?|conférencières?</token>
@@ -33115,7 +33149,7 @@ though, and has since been slightly modified)-->
   <category id="CAT_TOURS_CRITIQUES" name="Tours critiqués divers (barbarismes, impropriétés, solécismes, etc.)">
       <rulegroup id="POUR_PAS_QUE_" name="familier : pour (ne) pas que...">
         <rule>
-            <!-- 1. R.* que ne !V.* -->
+            <!-- 1 = 1. R.* que ne !V.* -->
             <pattern>
                 <token>pour<exception scope="next">,</exception></token>
                 <token min="0">ne</token>
@@ -33125,11 +33159,11 @@ though, and has since been slightly modified)-->
                 <token postag="(R refl.*)|(R pers obj.*)" postag_regexp="yes" min="1" max="2"><exception regexp="yes">en|y</exception></token>
                 <token postag="V.*" postag_regexp="yes" regexp="yes" inflected="yes">[^aeéiouyh].*|&H_ASPIRE;</token>
             </pattern>
-            <message>Formulation familière. Voulez-vous écrire <suggestion>\1 \4 \5 ne \6 \7 \3</suggestion> ?</message>
+            <message>Cette formulation est considérée familière. Employez <suggestion>\1 \4 \5 ne \6 \7 \3</suggestion> dans un contexte plus formel.</message>
             <example correction="pour que je ne me fâche pas" type="incorrect">Il ne m'a rien dit <marker>pour pas que je me fâche</marker>.</example>
         </rule>
         <rule>
-            <!-- 1a. R.* qu' ne !V.* -->
+            <!-- 2 = 1a. R.* qu' ne !V.* -->
             <pattern>
                 <token>pour<exception scope="next">,</exception></token>
                 <token min="0">ne</token>
@@ -33139,11 +33173,11 @@ though, and has since been slightly modified)-->
                 <token postag="(R refl.*)|(R pers obj.*)" postag_regexp="yes" min="1" max="2"><exception regexp="yes">en|y</exception></token>
                 <token postag="V.*" postag_regexp="yes" regexp="yes" inflected="yes">[^aeéiouyh].*|&H_ASPIRE;</token>
             </pattern>
-            <message>Formulation familière. Voulez-vous écrire <suggestion>\1 \4\5 ne \6 \7 \3</suggestion> ?</message>
+            <message>Cette formulation est considérée familière. Employez <suggestion>\1 \4\5 ne \6 \7 \3</suggestion> dans un contexte plus formel.</message>
             <example correction="pour qu'il ne se sente pas" type="incorrect">Je vais lui rendre visite <marker>pour pas qu'il se sente</marker> seul.</example>
         </rule>
         <rule>
-            <!-- 1b. R.* que ne !V.* V[aeéiouyh] -->
+            <!-- 3 = 1b. R.* que ne !V.* V[aeéiouyh] -->
             <pattern>
                 <token>pour<exception scope="next">,</exception></token>
                 <token min="0">ne</token>
@@ -33153,11 +33187,11 @@ though, and has since been slightly modified)-->
                 <token postag="(R refl.*)|(R pers obj.*)" postag_regexp="yes" min="1" max="2"><exception regexp="yes">en|y</exception></token>
                 <token postag="V.*" postag_regexp="yes" regexp="yes">[aeéiouyh].*<exception regexp="yes" inflected="yes">&H_ASPIRE;</exception></token>
             </pattern>
-            <message>Formulation familière. Voulez-vous écrire <suggestion>\1 \4 \5 ne \6\7 \3</suggestion> ?</message>
+            <message>Cette formulation est considérée familière. Employez <suggestion>\1 \4 \5 ne \6\7 \3</suggestion> dans un contexte plus formel.</message>
             <example correction="pour que je ne m'énerve pas" type="incorrect">Il ne m'a rien dit <marker>pour pas que je m'énerve</marker>.</example>
         </rule>
         <rule>
-            <!-- 1c. R.* qu' ne !V.* V[aeéiouyh] -->
+            <!-- 4 = 1c. R.* qu' ne !V.* V[aeéiouyh] -->
             <pattern>
                 <token>pour<exception scope="next">,</exception></token>
                 <token min="0">ne</token>
@@ -33170,11 +33204,11 @@ though, and has since been slightly modified)-->
                     <exception regexp="yes" inflected="yes" postag_regexp="yes" postag="V.*">&H_ASPIRE;</exception>
                 </token>
             </pattern>
-            <message>Formulation familière. Voulez-vous écrire <suggestion>\1 \4\5 ne \6\7 \3</suggestion> ?</message>
+            <message>Cette formulation est considérée familière. Employez <suggestion>\1 \4\5 ne \6\7 \3</suggestion> dans un contexte plus formel.</message>
             <example correction="pour qu'il ne s'énerve pas" type="incorrect">Je vais le faire <marker>pour pas qu'il s'énerve</marker>.</example>
         </rule>
         <rule>
-            <!-- 2. R.* que ne V.* -->
+            <!-- 5 = 2. R.* que ne V.* -->
             <pattern>
                 <token>pour<exception scope="next">,</exception></token>
                 <token min="0">ne</token>
@@ -33183,11 +33217,11 @@ though, and has since been slightly modified)-->
                 <token postag="(R pers suj.*)|(R dem.*)" postag_regexp="yes"/>
                 <token postag="V.*" postag_regexp="yes" regexp="yes" inflected="yes">[^aeéiouyh].*|&H_ASPIRE;</token>
             </pattern>
-            <message>Formulation familière. Voulez-vous écrire <suggestion>\1 \4 \5 ne \6 \3</suggestion> ?</message>
+            <message>Cette formulation est considérée familière. Employez <suggestion>\1 \4 \5 ne \6 \3</suggestion> dans un contexte plus formel.</message>
             <example correction="pour que je ne grossisse pas" type="incorrect">Je ne mange plus de chocolat <marker>pour pas que je grossisse</marker>.</example>
         </rule>
         <rule>
-            <!-- 2a. R.* qu' ne V.* -->
+            <!-- 6 = 2a. R.* qu' ne V.* -->
             <pattern>
                 <token>pour<exception scope="next">,</exception></token>
                 <token min="0">ne</token>
@@ -33196,11 +33230,11 @@ though, and has since been slightly modified)-->
                 <token postag="(R pers suj.*)|(R dem.*)" postag_regexp="yes"/>
                 <token postag="V.*" postag_regexp="yes" regexp="yes" inflected="yes">[^aeéiouyh].*|&H_ASPIRE;</token>
             </pattern>
-            <message>Formulation familière. Voulez-vous écrire <suggestion>\1 \4\5 ne \6 \3</suggestion> ?</message>
+            <message>Cette formulation est considérée familière. Employez <suggestion>\1 \4\5 ne \6 \3</suggestion> dans un contexte plus formel.</message>
             <example correction="pour qu'il ne grossisse pas" type="incorrect">Il ne mange plus de chocolat <marker>pour pas qu'il grossisse</marker>.</example>
         </rule>
         <rule>
-            <!-- 3. que R.* n'!V.* -->
+            <!-- 7 = 3. que R.* n'!V.* -->
             <pattern>
                 <token>pour<exception scope="next">,</exception></token>
                 <token min="0">ne</token>
@@ -33210,11 +33244,11 @@ though, and has since been slightly modified)-->
                 <token regexp="yes">en|y</token>
                 <token postag="V.*" postag_regexp="yes"/>
             </pattern>
-            <message>Formulation familière. Voulez-vous écrire <suggestion>\1 \4 \5 n'\6 \7 \3</suggestion> ?</message>
+            <message>Cette formulation est considérée familière. Employez <suggestion>\1 \4 \5 n'\6 \7 \3</suggestion> dans un contexte plus formel.</message>
             <example correction="pour que tu n'y ailles pas" type="incorrect">Je t'ai averti <marker>pour pas que tu y ailles</marker> seul.</example>
         </rule>
         <rule>
-            <!-- 3a. qu' R.* n'!V.* -->
+            <!-- 8 = 3a. qu' R.* n'!V.* -->
             <pattern>
                 <token>pour<exception scope="next">,</exception></token>
                 <token min="0">ne</token>
@@ -33224,11 +33258,11 @@ though, and has since been slightly modified)-->
                 <token regexp="yes">en|y</token>
                 <token postag="V.*" postag_regexp="yes"/>
             </pattern>
-            <message>Formulation familière. Voulez-vous écrire <suggestion>\1 \4\5 n'\6 \7 \3</suggestion> ?</message>
+            <message>Cette formulation est considérée familière. Employez <suggestion>\1 \4\5 n'\6 \7 \3</suggestion> dans un contexte plus formel.</message>
             <example correction="pour qu'elle n'y aille pas" type="incorrect">Je vais lui parler <marker>pour pas qu'elle y aille</marker> seule.</example>
         </rule>
         <rule>
-            <!-- 3b. R.* n'!V.*: j'>je -->
+            <!-- 9 = 3b. R.* n'!V.*: j'>je -->
             <pattern>
                 <token>pour<exception scope="next">,</exception></token>
                 <token min="0">ne</token>
@@ -33238,11 +33272,11 @@ though, and has since been slightly modified)-->
                 <token regexp="yes">en|y</token>
                 <token postag="V.*" postag_regexp="yes"/>
             </pattern>
-            <message>Formulation familière. Voulez-vous écrire <suggestion>\1 \4 je n'\6 \7 \3</suggestion> ?</message>
+            <message>Cette formulation est considérée familière. Employez <suggestion>\1 \4 je n'\6 \7 \3</suggestion> dans un contexte plus formel.</message>
             <example correction="pour que je n'y aille pas" type="incorrect">Je t'attends <marker>pour pas que j'y aille</marker> seule.</example>
         </rule>
         <rule>
-            <!-- 3c. R.* n'!V.*: c'>ce -->
+            <!-- 10 = 3c. R.* n'!V.*: c'>ce -->
             <pattern>
                 <token>pour<exception scope="next">,</exception></token>
                 <token min="0">ne</token>
@@ -33252,11 +33286,11 @@ though, and has since been slightly modified)-->
                 <token regexp="yes">en|y</token>
                 <token postag="V.*" postag_regexp="yes"/>
             </pattern>
-            <message>Formulation familière. Voulez-vous écrire <suggestion>\1 \4 ce n'\6 \7 \3</suggestion> ?</message>
+            <message>Cette formulation est considérée familière. Employez <suggestion>\1 \4 ce n'\6 \7 \3</suggestion> dans un contexte plus formel.</message>
             <example correction="pour que ce n'en soit pas" type="incorrect">Il faut faire attention <marker>pour pas que c'en soit</marker> trop.</example>
         </rule>
         <rule>
-            <!-- 3d. que R.* ne s'en V.* -->
+            <!-- 11 = 3d. que R.* ne s'en V.* -->
             <pattern>
                 <token>pour<exception scope="next">,</exception></token>
                 <token min="0">ne</token>
@@ -33267,11 +33301,11 @@ though, and has since been slightly modified)-->
                 <token regexp="yes">en|y</token>
                 <token postag="V.*" postag_regexp="yes"/>
             </pattern>
-            <message>Formulation familière. Voulez-vous écrire <suggestion>\1 \4 \5 ne \6\7 \8 \3</suggestion> ?</message>
+            <message>Cette formulation est considérée familière. Employez <suggestion>\1 \4 \5 ne \6\7 \8 \3</suggestion> dans un contexte plus formel.</message>
             <example correction="pour que tu ne t'en ailles pas" type="incorrect">Je t'ai dit cela <marker>pour pas que tu t'en ailles</marker>.</example>
         </rule>
         <rule>
-            <!-- 3e. qu' R.* ne s'en V.* -->
+            <!-- 12 = 3e. qu' R.* ne s'en V.* -->
             <pattern>
                 <token>pour<exception scope="next">,</exception></token>
                 <token min="0">ne</token>
@@ -33282,11 +33316,11 @@ though, and has since been slightly modified)-->
                 <token regexp="yes">en|y</token>
                 <token postag="V.*" postag_regexp="yes"/>
             </pattern>
-            <message>Formulation familière. Voulez-vous écrire <suggestion>\1 \4\5 ne \6\7 \8 \3</suggestion> ?</message>
+            <message>Cette formulation est considérée familière. Employez <suggestion>\1 \4\5 ne \6\7 \8 \3</suggestion> dans un contexte plus formel.</message>
             <example correction="pour qu'il ne s'en aille pas" type="incorrect">Je vais lui parler <marker>pour pas qu'il s'en aille</marker>.</example>
         </rule>
         <rule>
-            <!-- 4. que R.* n'V.* -->
+            <!-- 13 = 4. que R.* n'V.* -->
             <pattern>
                 <token>pour<exception scope="next">,</exception></token>
                 <token min="0">ne</token>
@@ -33298,11 +33332,11 @@ though, and has since been slightly modified)-->
                     <exception regexp="yes" inflected="yes" postag="V.*" postag_regexp="yes">&H_ASPIRE;</exception>
                 </token>
             </pattern>
-            <message>Formulation familière. Voulez-vous écrire <suggestion>\1 \4 \5 n'\6 \3</suggestion> ?</message>
+            <message>Cette formulation est considérée familière. Employez <suggestion>\1 \4 \5 n'\6 \3</suggestion> dans un contexte plus formel.</message>
             <example correction="pour que nous n'oublions pas" type="incorrect">Il nous a appelé <marker>pour pas que nous oublions</marker> d'acheter un cadeau.</example>
         </rule>
         <rule>
-            <!-- 4a. R.* qu' n'V.* -->
+            <!-- 14 = 4a. R.* qu' n'V.* -->
             <pattern>
                 <token>pour<exception scope="next">,</exception></token>
                 <token min="0">ne</token>
@@ -33314,11 +33348,11 @@ though, and has since been slightly modified)-->
                     <exception regexp="yes" inflected="yes" postag="V.*" postag_regexp="yes">&H_ASPIRE;</exception>
                 </token>
             </pattern>
-            <message>Formulation familière. Voulez-vous écrire <suggestion>\1 \4\5 n'\6 \3</suggestion> ?</message>
+            <message>Cette formulation est considérée familière. Employez <suggestion>\1 \4\5 n'\6 \3</suggestion> dans un contexte plus formel.</message>
             <example correction="pour qu'elle n'oublie pas" type="incorrect">Je vais lui parler <marker>pour pas qu'elle oublie</marker> ton anniversaire.</example>
         </rule>
         <rule>
-            <!-- 4b. que R.* n'V.* j'>je -->
+            <!-- 15 = 4b. que R.* n'V.* j'>je -->
             <pattern>
                 <token>pour<exception scope="next">,</exception></token>
                 <token min="0">ne</token>
@@ -33330,11 +33364,11 @@ though, and has since been slightly modified)-->
                     <exception regexp="yes" inflected="yes" postag="V.*" postag_regexp="yes">&H_ASPIRE;</exception>
                 </token>
             </pattern>
-            <message>Formulation familière. Voulez-vous écrire <suggestion>\1 \4 je n'\6 \3</suggestion> ?</message>
+            <message>Cette formulation est considérée familière. Employez <suggestion>\1 \4 je n'\6 \3</suggestion> dans un contexte plus formel.</message>
             <example correction="pour que je n'oublie pas" type="incorrect">Il nous a appelé <marker>pour pas que j'oublie</marker> d'acheter un cadeau.</example>
         </rule>
         <rule>
-            <!-- 5. NZ que ne !V.* -->
+            <!-- 16 = 5. NZ que ne !V.* -->
             <pattern>
                 <token>pour<exception scope="next">,</exception></token>
                 <token min="0">ne</token>
@@ -33346,11 +33380,11 @@ though, and has since been slightly modified)-->
                 <token postag="(R refl.*)|(R pers obj.*)" postag_regexp="yes" min="1" max="2"><exception regexp="yes">en|y</exception></token>
                 <token postag="V.*" postag_regexp="yes" regexp="yes" inflected="yes">[^aeéiouyh].*|&H_ASPIRE;</token>
             </pattern>
-            <message>Formulation familière. Voulez-vous écrire <suggestion>\1 \4 \5 \6 \7 ne \8 \9 \3</suggestion> ?</message>
+            <message>Cette formulation est considérée familière. Employez <suggestion>\1 \4 \5 \6 \7 ne \8 \9 \3</suggestion> dans un contexte plus formel.</message>
             <example correction="pour que mon père ne se fâche pas" type="incorrect">Je ne sortirai pas ce soir <marker>pour pas que mon père se fâche</marker>.</example>
         </rule>
         <rule>
-            <!-- 5a. NZ que ne !V.* V[aeéiouyh] -->
+            <!-- 17 = 5a. NZ que ne !V.* V[aeéiouyh] -->
             <pattern>
                 <token>pour<exception scope="next">,</exception></token>
                 <token min="0">ne</token>
@@ -33365,11 +33399,11 @@ though, and has since been slightly modified)-->
                     <exception regexp="yes" inflected="yes" postag="V.*" postag_regexp="yes">&H_ASPIRE;</exception>
                 </token>
             </pattern>
-            <message>Formulation familière. Voulez-vous écrire <suggestion>\1 \4 \5 \6 \7 ne \8\9 \3</suggestion> ?</message>
+            <message>Cette formulation est considérée familière. Employez <suggestion>\1 \4 \5 \6 \7 ne \8\9 \3</suggestion> dans un contexte plus formel.</message>
             <example correction="pour que mon père ne s'énerve pas" type="incorrect">Je ne sortirai pas ce soir <marker>pour pas que mon père s'énerve</marker>.</example>
         </rule>
         <rule>
-            <!-- 6. NZ que ne V.* -->
+            <!-- 18 = 6. NZ que ne V.* -->
             <pattern>
                 <token>pour<exception scope="next">,</exception></token>
                 <token min="0">ne</token>
@@ -33380,11 +33414,11 @@ though, and has since been slightly modified)-->
                 <token postag="(N.*)|(Z.*)" postag_regexp="yes"/>
                 <token postag="V.*" postag_regexp="yes" regexp="yes" inflected="yes">[^aeéiouyh].*|&H_ASPIRE;</token>
             </pattern>
-            <message>Formulation familière. Voulez-vous écrire <suggestion>\1 \4 \5 \6 \7 ne \8 \3</suggestion> ?</message>
+            <message>Cette formulation est considérée familière. Employez <suggestion>\1 \4 \5 \6 \7 ne \8 \3</suggestion> dans un contexte plus formel.</message>
             <example correction="pour que mon père ne parte pas" type="incorrect">J'ai caché les clés de la voiture <marker>pour pas que mon père parte</marker>.</example>
         </rule>
         <rule>
-            <!-- 7. NZ n'!V.* -->
+            <!-- 19 = 7. NZ n'!V.* -->
             <pattern>
                 <token>pour<exception scope="next">,</exception></token>
                 <token min="0">ne</token>
@@ -33396,11 +33430,11 @@ though, and has since been slightly modified)-->
                 <token regexp="yes">en|y</token>
                 <token postag="V.*" postag_regexp="yes"/>
             </pattern>
-            <message>Formulation familière. Voulez-vous écrire <suggestion>\1 \4 \5 \6 \7 n'\8 \9 \3</suggestion> ?</message>
+            <message>Cette formulation est considérée familière. Employez <suggestion>\1 \4 \5 \6 \7 n'\8 \9 \3</suggestion> dans un contexte plus formel.</message>
             <example correction="pour que mon frère n'en boive pas" type="incorrect">J'ai caché le bon vin <marker>pour pas que mon frère en boive</marker>.</example>
         </rule>
         <rule>
-            <!-- 7b. NZ ne s'en V.*-->
+            <!-- 20 = 7b. NZ ne s'en V.*-->
             <pattern>
                 <token>pour<exception scope="next">,</exception></token>
                 <token min="0">ne</token>
@@ -33413,11 +33447,11 @@ though, and has since been slightly modified)-->
                 <token regexp="yes">en|y</token>
                 <token postag="V.*" postag_regexp="yes"/>
             </pattern>
-            <message>Formulation familière. Voulez-vous écrire <suggestion>\1 \4 \5 \6 \7 ne \8\9 \10 \3</suggestion> ?</message>
+            <message>Cette formulation est considérée familière. Employez <suggestion>\1 \4 \5 \6 \7 ne \8\9 \10 \3</suggestion> dans un contexte plus formel.</message>
             <example correction="pour que mon frère ne s'en aille pas" type="incorrect">J'ai dit cela <marker>pour pas que mon frère s'en aille</marker>.</example>
         </rule>
         <rule>
-            <!-- 8. NZ n'V.* -->
+            <!-- 21 = 8. NZ n'V.* -->
             <pattern>
                 <token>pour<exception scope="next">,</exception></token>
                 <token min="0">ne</token>
@@ -33431,7 +33465,7 @@ though, and has since been slightly modified)-->
                     <exception regexp="yes" inflected="yes" postag="V.*" postag_regexp="yes">&H_ASPIRE;</exception>
                 </token>
             </pattern>
-            <message>Formulation familière. Voulez-vous écrire <suggestion>\1 \4 \5 \6 \7 n'\8 \3</suggestion> ?</message>
+            <message>Cette formulation est considérée familière. Employez <suggestion>\1 \4 \5 \6 \7 n'\8 \3</suggestion> dans un contexte plus formel.</message>
             <example correction="pour que mon frère n'aille pas" type="incorrect">Ma mère m'a appelé <marker>pour pas que mon frère aille</marker> tout seul.</example>
         </rule>
       </rulegroup>

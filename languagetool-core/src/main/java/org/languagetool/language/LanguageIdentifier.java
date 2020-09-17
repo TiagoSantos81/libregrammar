@@ -99,7 +99,7 @@ public class LanguageIdentifier {
       textObjectFactory = new TextObjectFactoryBuilder()
         .maxTextLength(10000)
         // note: keep these in sync with if(fasttextEnabled) in detectLanguage:
-        .withTextFilter(UrlTextFilter.getInstance())
+        .withTextFilter(ImprovedUrlTextFilter.getInstance())
         .withTextFilter(RemoveMinorityScriptsTextFilter.forThreshold(0.3))
         .withTextFilter(new RemoveEMailSignatureFilter())
         .withTextFilter(new RemoveNonBreakingSpaces())
@@ -204,7 +204,7 @@ public class LanguageIdentifier {
       try {
         // do *not* use TextObjectFactory because of https://github.com/languagetool-org/languagetool/issues/1278
         // (using it for optimaize is okay, assuming the same strong normalization was applied during training):
-        shortText = UrlTextFilter.getInstance().filter(shortText);
+        shortText = ImprovedUrlTextFilter.getInstance().filter(shortText);
         shortText = new RemoveEMailSignatureFilter().filter(shortText);
         shortText = new RemoveNonBreakingSpaces().filter(shortText);
         shortText = shortText.replaceAll("\uFEFF+", " ");  // used by the browser add-on to filter HTML etc. (_ignoreText() in validator.js)
@@ -213,7 +213,7 @@ public class LanguageIdentifier {
         if (result.getValue().floatValue() < THRESHOLD) {
           //System.out.println(text + " ->" + result.getValue().floatValue() + " " + result.getKey());
           CommonWords commonWords = new CommonWords();
-          Map<Language, Integer> lang2Count = commonWords.getKnownWordsPerLanguage(text);
+          Map<Language, Integer> lang2Count = commonWords.getKnownWordsPerLanguage(shortText);
           //System.out.println("-> "+ lang2Count);
           for (Map.Entry<Language, Integer> entry : lang2Count.entrySet()) {
             String langCode = entry.getKey().getShortCode();
@@ -307,4 +307,19 @@ public class LanguageIdentifier {
       return text.toString().replace('\u00A0', ' ');
     }
   }
+
+  static class ImprovedUrlTextFilter implements TextFilter {
+    private static final Pattern URL_REGEX = Pattern.compile("https?://[-_.?&~;+=/#%0-9A-Za-z]+");   // '%' has been added
+    private static final Pattern MAIL_REGEX = Pattern.compile("[-_.0-9A-Za-z]+@[-_0-9A-Za-z]+[-_.0-9A-Za-z]+");
+    private static final ImprovedUrlTextFilter INSTANCE = new ImprovedUrlTextFilter();
+    static ImprovedUrlTextFilter getInstance() {
+      return INSTANCE;
+    }
+    @Override
+    public String filter(CharSequence text) {
+      String modified = URL_REGEX.matcher(text).replaceAll(" ");
+      return MAIL_REGEX.matcher(modified).replaceAll(" ");
+    }
+  }
+
 }

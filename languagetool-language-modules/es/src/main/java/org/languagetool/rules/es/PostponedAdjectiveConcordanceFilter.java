@@ -19,14 +19,19 @@
 package org.languagetool.rules.es;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.languagetool.AnalyzedToken;
 import org.languagetool.AnalyzedTokenReadings;
+import org.languagetool.language.Spanish;
 import org.languagetool.rules.*;
 import org.languagetool.rules.patterns.RuleFilter;
+import org.languagetool.synthesis.es.SpanishSynthesizer;
 
 /**
  * This rule checks if an adjective doesn't agree with the previous noun and at
@@ -66,7 +71,7 @@ public class PostponedAdjectiveConcordanceFilter extends RuleFilter {
   private static final Pattern DET_MP = Pattern.compile("D[NDA0IP]0MP0");
   private static final Pattern DET_FP = Pattern.compile("D[NDA0IP]0FP0");
 
-  private static final Pattern GN_MS = Pattern.compile("N.[MC][SN].*|A..[MC][SN].*|V.P..SM.?|PX.MS.*|D[NDA0I]0MS0");
+  private static final Pattern GN_MS = Pattern.compile("N.[MC][SN].*|A..[MC][SN].*|V.P..SM.?|PX.MS.*|D[NDA0I]0MS0|PI0MS000");
   private static final Pattern GN_FS = Pattern.compile("N.[FC][SN].*|A..[FC][SN].*|V.P..SF.?|PX.FS.*|D[NDA0I]0FS0");
   private static final Pattern GN_MP = Pattern.compile("N.[MC][PN].*|A..[MC][PN].*|V.P..PM.?|PX.MP.*|D[NDA0I]0MP0");
   private static final Pattern GN_FP = Pattern.compile("N.[FC][PN].*|A..[FC][PN].*|V.P..PF.?|PX.FP.*|D[NDA0I]0FP0");
@@ -86,18 +91,20 @@ public class PostponedAdjectiveConcordanceFilter extends RuleFilter {
   private static final Pattern ADJECTIU_P = Pattern.compile("A...[PN].*|V.P..P..?|PX..P.*");
   private static final Pattern ADVERBI = Pattern.compile("R.|.*LOC_ADV.*");
   private static final Pattern CONJUNCIO = Pattern.compile("C.|.*LOC_CONJ.*");
-  private static final Pattern PUNTUACIO = Pattern.compile("_PUNCT.*");
+  private static final Pattern PUNTUACIO = Pattern.compile("_PUNCT");
   private static final Pattern LOC_ADV = Pattern.compile(".*LOC_ADV.*");
   private static final Pattern ADVERBIS_ACCEPTATS = Pattern.compile("RG_before");
   //private static final Pattern COORDINACIO = Pattern.compile(",|y|e|o|u");
   private static final Pattern COORDINACIO_IONI = Pattern.compile("y|e|o|u|ni");
-  private static final Pattern KEEP_COUNT = Pattern.compile("A.*|N.*|D[NAIDP].*|SPS.*|SP\\+DA|.*LOC_ADV.*|V.P.*|_PUNCT.*|.*LOC_ADJ.*|PX.*");
-  private static final Pattern KEEP_COUNT2 = Pattern.compile(",|y|o|ni"); // |\\d+%?|%
+  private static final Pattern KEEP_COUNT = Pattern.compile("A.*|N.*|D[NAIDP].*|SPS.*|SP\\+DA|.*LOC_ADV.*|V.P.*|_PUNCT.*|.*LOC_ADJ.*|PX.*|UNKNOWN");
+  private static final Pattern KEEP_COUNT2 = Pattern.compile(",|y|o|ni|u"); // |\\d+%?|%
   private static final Pattern STOP_COUNT = Pattern.compile(";|lo");
   private static final Pattern PREPOSICIONS = Pattern.compile("SPS.*");
   private static final Pattern PREPOSICIO_CANVI_NIVELL = Pattern.compile("de|del|en|sobre|a|entre|por|con|sin|contra");
   private static final Pattern VERB = Pattern.compile("V.[^P].*|_GV_");
   private static final Pattern GV = Pattern.compile("_GV_");
+  
+  private static final SpanishSynthesizer synth = new SpanishSynthesizer(new Spanish());
 
   boolean adverbAppeared = false;
   boolean conjunctionAppeared = false;
@@ -108,35 +115,18 @@ public class PostponedAdjectiveConcordanceFilter extends RuleFilter {
       AnalyzedTokenReadings[] patternTokens) throws IOException {
 
     AnalyzedTokenReadings[] tokens = match.getSentence().getTokensWithoutWhitespace();
-    int i = patternTokenPos;
-    //String nextToken = "";
-    /*if (i < tokens.length - 1) {
-      nextToken = tokens[i + 1].getToken();
-    }*/
+    int i = patternTokenPos;  
     int j;
     boolean isPlural = true;
     boolean isPrevNoun = false;
     Pattern substPattern = null;
     Pattern gnPattern = null;
     Pattern adjPattern = null;
-
-    // exception: noun (or adj) plural + two or more adjectives
-    /*if (i < tokens.length - 2) {
-      Matcher pCoordina = COORDINACIO.matcher(nextToken);
-      if (pCoordina.matches()) {
-        if (((matchPostagRegexp(tokens[i - 1], NOM_MP) || matchPostagRegexp(tokens[i - 1], ADJECTIU_MP))
-            && matchPostagRegexp(tokens[i], ADJECTIU_MS) && matchPostagRegexp(tokens[i + 2], ADJECTIU_MS))
-            || ((matchPostagRegexp(tokens[i - 1], NOM_MP) || matchPostagRegexp(tokens[i - 1], ADJECTIU_MP))
-                && matchPostagRegexp(tokens[i], ADJECTIU_MP) && matchPostagRegexp(tokens[i + 2], ADJECTIU_MP))
-            || ((matchPostagRegexp(tokens[i - 1], NOM_FP) || matchPostagRegexp(tokens[i - 1], ADJECTIU_FP))
-                && matchPostagRegexp(tokens[i], ADJECTIU_FS) && matchPostagRegexp(tokens[i + 2], ADJECTIU_FS))
-            || ((matchPostagRegexp(tokens[i - 1], NOM_FP) || matchPostagRegexp(tokens[i - 1], ADJECTIU_FP))
-                && matchPostagRegexp(tokens[i], ADJECTIU_FP) && matchPostagRegexp(tokens[i + 2], ADJECTIU_FP))) {
-          return null;
-        }
-      }
-    }*/
-
+    boolean canBeMS = false;
+    boolean canBeFS = false;
+    boolean canBeMP = false;
+    boolean canBeFP = false;
+    boolean canBeP = false;
     /* Count all nouns and determiners before the adjectives */
     // Takes care of acceptable combinations.
     int maxLevels = 4;
@@ -165,32 +155,46 @@ public class PostponedAdjectiveConcordanceFilter extends RuleFilter {
             && matchPostagRegexp(tokens[i - j - 1], DET))) {
           if (matchPostagRegexp(tokens[i - j], _GN_MS)) {
             cNMS[level]++;
+            canBeMS = true;
           }
           if (matchPostagRegexp(tokens[i - j], _GN_FS)) {
             cNFS[level]++;
+            canBeFS = true;
           }
           if (matchPostagRegexp(tokens[i - j], _GN_MP)) {
             cNMP[level]++;
+            canBeMP = true;
           }
           if (matchPostagRegexp(tokens[i - j], _GN_FP)) {
             cNFP[level]++;
+            canBeFP = true;
           }
         }
         if (!matchPostagRegexp(tokens[i - j], _GN_)) {
           if (matchPostagRegexp(tokens[i - j], NOM_MS)) {
             cNMS[level]++;
+            canBeMS = true;
           } else if (matchPostagRegexp(tokens[i - j], NOM_FS)) {
             cNFS[level]++;
+            canBeFS = true;
           } else if (matchPostagRegexp(tokens[i - j], NOM_MP)) {
             cNMP[level]++;
+            canBeMP = true;
           } else if (matchPostagRegexp(tokens[i - j], NOM_MN)) {
             cNMN[level]++;
+            canBeMS = true;
+            canBeMP = true;
           } else if (matchPostagRegexp(tokens[i - j], NOM_FP)) {
             cNFP[level]++;
+            canBeFP = true;
           } else if (matchPostagRegexp(tokens[i - j], NOM_CS)) {
             cNCS[level]++;
+            canBeMS = true;
+            canBeFS = true;
           } else if (matchPostagRegexp(tokens[i - j], NOM_CP)) {
             cNCP[level]++;
+            canBeFP = true;
+            canBeMP = true;
           }
         }
       }
@@ -206,23 +210,29 @@ public class PostponedAdjectiveConcordanceFilter extends RuleFilter {
       if (matchPostagRegexp(tokens[i - j], DET_CS)) {
         if (matchPostagRegexp(tokens[i - j + 1], NOM_MS)) {
           cDMS[level]++;
+          canBeMS = true;
         }
         if (matchPostagRegexp(tokens[i - j + 1], NOM_FS)) {
           cDFS[level]++;
+          canBeFS = true;
         }
       }
       if (!matchPostagRegexp(tokens[i - j], ADVERBI)) {
         if (matchPostagRegexp(tokens[i - j], DET_MS)) {
           cDMS[level]++;
+          canBeMS = true;
         }
         if (matchPostagRegexp(tokens[i - j], DET_FS)) {
           cDFS[level]++;
+          canBeFS = true;
         }
         if (matchPostagRegexp(tokens[i - j], DET_MP)) {
           cDMP[level]++;
+          canBeMP = true;
         }
         if (matchPostagRegexp(tokens[i - j], DET_FP)) {
           cDFP[level]++;
+          canBeFP = true;
         }
       }
       if (i - j > 0) {
@@ -275,6 +285,7 @@ public class PostponedAdjectiveConcordanceFilter extends RuleFilter {
       // Adjective can't be singular
       if (cN[j] + cD[j] > 0) { // && level>1
         isPlural = isPlural && cD[j] > 1; // cN[j]>1
+        canBeP = canBeP || cN[j]>1;
       }
       j++;
     }
@@ -368,14 +379,50 @@ public class PostponedAdjectiveConcordanceFilter extends RuleFilter {
     }
 
     // The rule matches
-
-    // TODO: add suggestions
-    // RuleMatch ruleMatch = new RuleMatch(match.getRule(), match.getSentence(),
-    // match.getFromPos(), match.getToPos(),
-    // match.getMessage(), match.getShortMessage());
-    // ruleMatch.setType(match.getType());
-    // ruleMatch.setSuggestedReplacement(suggestion);
-
+    // Synthesize suggestions  
+    List<String> suggestions = new ArrayList<>();
+    AnalyzedToken at = getAnalyzedToken(tokens[patternTokenPos], ADJECTIU_CS);
+    if (at != null) {
+      suggestions.addAll(Arrays.asList(synth.synthesize(at,"A..CP.", true)));
+    }
+    if (suggestions.isEmpty()) {
+      at = getAnalyzedToken(tokens[patternTokenPos], ADJECTIU_CP);
+      if (at != null) {
+        suggestions.addAll(Arrays.asList(synth.synthesize(at,"A..CS.", true)));
+      }  
+    }
+    if (suggestions.isEmpty() && isPlural) {
+      at = getAnalyzedToken(tokens[patternTokenPos], ADJECTIU_P);
+      if (at != null) {
+        suggestions.addAll(Arrays.asList(synth.synthesize(at, "A...P.|V.P..P.|PX..P.*", true)));
+      }  
+    }
+    at = getAnalyzedToken(tokens[patternTokenPos], ADJECTIU);
+    if (at != null && suggestions.isEmpty()) {
+      if (canBeMS && !isPlural) {
+        suggestions.addAll(Arrays.asList(synth.synthesize(at, "A..MS.|V.P..SM|PX.MS.*", true)));
+      }
+      if (canBeFS && !isPlural) {
+        suggestions.addAll(Arrays.asList(synth.synthesize(at, "A..FS.|V.P..SF|PX.FS.*", true)));
+      }
+      if (canBeMP) {
+        suggestions.addAll(Arrays.asList(synth.synthesize(at, "A..MP.|V.P..PM|PX.MP.*", true)));
+      }
+      if (canBeFP) {
+        suggestions.addAll(Arrays.asList(synth.synthesize(at, "A..FP.|V.P..PF|PX.FP.*", true)));
+      }
+      if (canBeMS && (isPlural || canBeP)) {
+        suggestions.addAll(Arrays.asList(synth.synthesize(at, "A..MP.|V.P..PM|PX.MP.*", true)));
+      }
+      if (canBeFS && !canBeMS && (isPlural || canBeP)) {
+        suggestions.addAll(Arrays.asList(synth.synthesize(at, "A..FP.|V.P..PF|PX.FP.*", true)));
+      }
+    }
+    // avoid the original token as suggestion 
+    if (suggestions.contains(tokens[patternTokenPos].getToken().toLowerCase())) {
+      suggestions.remove(tokens[patternTokenPos].getToken().toLowerCase());
+    }
+    match.setSuggestedReplacements(suggestions);
     return match;
 
   }
@@ -406,7 +453,7 @@ public class PostponedAdjectiveConcordanceFilter extends RuleFilter {
     }
     adverbAppeared |= matchPostagRegexp(aTr, ADVERBI);
     conjunctionAppeared |= matchPostagRegexp(aTr, CONJUNCIO);
-    punctuationAppeared |= matchPostagRegexp(aTr, PUNTUACIO);
+    punctuationAppeared |= (matchPostagRegexp(aTr, PUNTUACIO) || aTr.getToken().equals(","));
   }
 
   /**
@@ -415,13 +462,14 @@ public class PostponedAdjectiveConcordanceFilter extends RuleFilter {
   private boolean matchPostagRegexp(AnalyzedTokenReadings aToken, Pattern pattern) {
     boolean matches = false;
     for (AnalyzedToken analyzedToken : aToken) {
-      final String posTag = analyzedToken.getPOSTag();
-      if (posTag != null) {
-        final Matcher m = pattern.matcher(posTag);
-        if (m.matches()) {
-          matches = true;
-          break;
-        }
+      String posTag = analyzedToken.getPOSTag();
+      if (posTag == null) {
+        posTag = "UNKNOWN";
+      }
+      final Matcher m = pattern.matcher(posTag);
+      if (m.matches()) {
+        matches = true;
+        break;
       }
     }
     return matches;
@@ -434,5 +482,22 @@ public class PostponedAdjectiveConcordanceFilter extends RuleFilter {
     final Matcher m = pattern.matcher(s);
     return m.matches();
   }
+  
+  private AnalyzedToken getAnalyzedToken(AnalyzedTokenReadings aToken, Pattern pattern) {
+    for (AnalyzedToken analyzedToken : aToken) {
+      String posTag = analyzedToken.getPOSTag();
+      if (posTag == null) {
+        posTag = "UNKNOWN";
+      }
+      final Matcher m = pattern.matcher(posTag);
+      if (m.matches()) {
+        return analyzedToken;
+      }
+    }
+    return null;
+  }
+
+  
+
 
 }

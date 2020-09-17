@@ -102,6 +102,19 @@ Copyright (C) 2011 Juan Martorell
 
 
     <rulegroup id="LOC_ADV" name="locuciones adverbiales">
+        <rule id="en_realidad" name="en realidad (locución adverbial)">
+            <pattern>
+                <marker>
+                    <token>en</token>
+                    <token>realidad</token>
+                </marker>
+                <token><exception regexp="yes">aumentada|virtual</exception></token>
+            </pattern>
+            <disambig action="replace">
+                <wd lemma="en realidad" pos="LOC_ADV"/>
+                <wd lemma="en realidad" pos="LOC_ADV"/>
+            </disambig>
+        </rule>
         <rule id="pese_a" name="pese a">
             <pattern>
                 <marker>
@@ -273,6 +286,20 @@ Copyright (C) 2011 Juan Martorell
                 <wd pos="NCMS000"/>
                 <wd pos="AQ0MS0"/>
             </disambig>
+        </rule>
+        <rule id="por_tant" name="por tanto">
+            <pattern>
+                <marker>
+                    <token>por</token>
+                    <token>tanto</token>
+                </marker>
+                <!--<token><exception postag="NC[MC][SN].*" postag_regexp="yes"/></token>-->
+            </pattern>
+            <disambig action="replace">
+                <wd lemma="per tant" pos="LOC_CONJ"/>
+                <wd lemma="per tant" pos="LOC_CONJ"/>
+            </disambig>
+            <!--<example type="untouched">Y <marker>por tanto</marker> honor.</example>-->
         </rule>
     </rulegroup>
     <rulegroup id="tal_como" name="tal como">
@@ -958,6 +985,17 @@ Copyright (C) 2011 Juan Martorell
             </pattern>
             <disambig action="add"><wd lemma="haber" pos="VMIP1P0"></wd></disambig>
     </rule>
+    <rule id="ser_infinitive" name="ser (infinitivo)">
+        <pattern>
+            <token><exception postag="D[^R].MS." postag_regexp="yes"/></token>
+            <marker>
+                <token>ser</token>
+            </marker>
+            <token min="0" max="3" postag="RG|LOC_ADV" postag_regexp="yes"/>
+            <token postag="A.*|PX.*|V.P.*" postag_regexp="yes"></token>
+        </pattern>
+        <disambig action="filter" postag="V.N.*"/>
+    </rule>
     <rulegroup id="COMO" name="como">
         <rule>
             <pattern>
@@ -966,6 +1004,16 @@ Copyright (C) 2011 Juan Martorell
                     <token>como</token>
                 </marker>
                 <token postag="[NA].*" postag_regexp="yes"/>
+            </pattern>
+            <disambig action="remove" postag="V.*"/>
+        </rule>
+        <rule>
+            <pattern>
+                <token postag="V.*" postag_regexp="yes"/>
+                <marker>
+                    <token>como</token>
+                </marker>
+                <token postag="[NAD].*" postag_regexp="yes"/>
             </pattern>
             <disambig action="remove" postag="V.*"/>
         </rule>
@@ -1645,6 +1693,16 @@ Copyright (C) 2011 Juan Martorell
         </pattern>
         <disambig action="filter" postag="N.*"/>
         <example type="untouched">Este sobre el otro.</example>
+    </rule>
+    <rule id="MEDIANTE" name="mediante (preposición)">
+        <pattern>
+            <token><exception>Dios</exception></token>
+            <marker>
+                <token postag="SPS00">mediante</token>
+            </marker>
+            <token postag="[DAN].*" postag_regexp="yes"/>
+        </pattern>
+        <disambig action="remove" postag="A.*"/>
     </rule>
     <!-- P_N Posesivo + nombre 
     <rule id="PN" name="Pos + Nom ">
@@ -2369,6 +2427,19 @@ Copyright (C) 2011 Juan Martorell
             <disambig action="remove" postag="V.[SIM].*"/>
         </rule>
     </rulegroup>
+    
+    <rule id="uno_pron" name="uno (pronoun)">
+        <pattern>
+            <marker>
+                <token postag="PI0MS000">uno</token>
+            </marker>
+            <token>de</token>
+            <token postag="D..MP." postag_regexp="yes"/>
+        </pattern>
+        <disambig action="filter" postag="PI0MS000"></disambig>
+    </rule>
+        
+       
 
     <rulegroup id="probably_noun" name="probably_noun">
         <rule>
@@ -2750,7 +2821,7 @@ Copyright (C) 2011 Juan Martorell
                         <feature id="numero"/>
                         <token postag="D.*" postag_regexp="yes"/>
                         <token postag="N.*" postag_regexp="yes"/>
-                        <token postag="A.*" postag_regexp="yes"><exception regexp="yes">solo|auto</exception></token>
+                        <token postag="A.*" postag_regexp="yes"><exception regexp="yes">solo|auto|queda</exception></token>
                     </unify>
                 </marker>
             </pattern>
@@ -2777,7 +2848,7 @@ Copyright (C) 2011 Juan Martorell
                 <marker>
                     <token postag="D[^R].[FC][SN0].*" postag_regexp="yes"/>
                     <token postag="N.[FC][SN0].*" postag_regexp="yes"><exception postag="DN.*" postag_regexp="yes"/></token>
-                    <token postag="A..[FC][SN0].*|V.P..SF|PX.[FC][SN0].*" postag_regexp="yes"><exception>afecta</exception></token>
+                    <token postag="A..[FC][SN0].*|V.P..SF|PX.[FC][SN0].*" postag_regexp="yes"><exception regexp="yes">afecta|queda</exception></token>
                 </marker>
             </pattern>
             <disambig action="add">
@@ -2922,6 +2993,34 @@ Copyright (C) 2011 Juan Martorell
         <disambig action="remove" postag="V.*|SPS00"/>
     </rule>
     <!-- END: nominal groups -->
+    
+    <rulegroup id="que_causa" name="no noun after relative. Ex: que causa, que busca">
+        <rule>
+            <pattern>
+                <token postag="PR.*" postag_regexp="yes"><exception>como</exception><exception scope="previous" regexp="yes">para|por</exception></token>
+                <marker>
+                    <and>
+                        <token postag="N.*" postag_regexp="yes"></token>
+                        <token postag="VM[SI].*" postag_regexp="yes"><exception postag="VMIP1S0" postag_regexp="yes"/></token>
+                    </and>
+                </marker>
+            </pattern>
+            <disambig action="remove" postag="N.*"/>
+        </rule>
+        <rule>
+            <pattern>
+                <token postag="PR.*" postag_regexp="yes"><exception>como</exception></token>
+                <token>no</token>
+                <marker>
+                    <and>
+                        <token postag="N.*" postag_regexp="yes"></token>
+                        <token postag="VM[SI].*" postag_regexp="yes"><exception postag="VMIP1S0" postag_regexp="yes"/></token>
+                    </and>
+                </marker>
+            </pattern>
+            <disambig action="remove" postag="N.*"/>
+        </rule>
+    </rulegroup>
 
     <rulegroup id="PREPOSICIONES" name="preposiciones">
         <rule>
@@ -3172,7 +3271,12 @@ Copyright (C) 2011 Juan Martorell
             </disambig>
         </rule>
     </rulegroup>
-
+    <rule id="verb_notnoun" name="verb not noun: queda">
+        <pattern>
+            <token postag="V.*" postag_regexp="yes">queda<exception postag="_GN_FS"/></token>
+        </pattern>
+        <disambig action="remove" postag="[AN].*"></disambig>
+    </rule>  
     <rulegroup id="NomAdj" name="nom + adj">
         <rule>
             <pattern>
@@ -3237,7 +3341,7 @@ Copyright (C) 2011 Juan Martorell
         <pattern>
             <marker>
                 <and>
-                    <token postag="A.*" postag_regexp="yes" regexp="yes">mal|solo|mejor<exception postag="_GN_.*" postag_regexp="yes"/></token>
+                    <token postag="A.*" postag_regexp="yes" regexp="yes">mal|solo|mejor|parejas?<exception postag="_GN_.*" postag_regexp="yes"/></token>
                     <token postag="N.*|RG" postag_regexp="yes"/>
                 </and>
             </marker>
@@ -3461,7 +3565,7 @@ Copyright (C) 2011 Juan Martorell
     <rulegroup id="Nom_AdjNotAgrees" name="nombre + adjectivo que no ha concordado">
         <rule>
             <pattern>
-                <token postag="N.*" postag_regexp="yes"><exception postag="V.*|A.*|complement.*" postag_regexp="yes"/><exception inflected="yes" regexp="yes">&denominacion;</exception></token>
+                <token postag="NC.*" postag_regexp="yes"><exception postag="V.*|A.*|complement.*" postag_regexp="yes"/><exception inflected="yes" regexp="yes">&denominacion;</exception></token>
                 <marker>
                     <and>
                         <token postag="N.*" postag_regexp="yes"><exception regexp="yes">\p{Lu}.+</exception></token>
