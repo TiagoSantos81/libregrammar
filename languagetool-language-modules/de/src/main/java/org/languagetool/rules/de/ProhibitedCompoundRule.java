@@ -98,6 +98,7 @@ public class ProhibitedCompoundRule extends Rule {
     "Gra(ph|f)it"   // Grafit/Graphit
   );
   private static final Set<String> blacklist = new HashSet<>(Arrays.asList(
+          "Kreispokal",
           "Gründertag",
           "Korrekturlösung",
           "Regelschreiber",
@@ -309,7 +310,27 @@ public class ProhibitedCompoundRule extends Rule {
           "Maskenbefreiung",
           "Lusttropfen",
           "Kundenstimme",
-          "Deichschafen"
+          "Deichschafen",
+          "Industriehefe",
+          "Freizeitschuhe",
+          "Freizeitschuhen",
+          "Trainingsschuhe",
+          "Trainingsschuhen",
+          "Schuhblatt",
+          "Nachbacken",
+          "Wassermelder",
+          "Schutzsegen",
+          "Fischversteigerung",
+          "Fischversteigerungen",
+          "Konfigurationsteile",
+          "Konfigurationsteilen",
+          "Wasserbauch",
+          "Wasserbauchs",
+          "Stadtrad",
+          "Stadtrads",
+          "Seniorenrad",
+          "Seniorenrads",
+          "versiegelbaren"
   ));
 
   // have per-class static list of these and reference that in instance

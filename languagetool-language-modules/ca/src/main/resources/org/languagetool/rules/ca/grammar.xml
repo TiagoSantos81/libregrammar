@@ -1370,9 +1370,20 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token regexp="yes" inflected="yes" skip="2">anar|venir|entrar|tornar|eixir|sortir|estar|alçar|aixecar|quedar|romandre|ser</token>
                 <token regexp="yes">a|en|de</token>
                 <token postag="DA.*" postag_regexp="yes" min="0"/>
-                <token regexp="yes">casa|llit</token>
+                <token regexp="yes">casa|llit|concert|teatre|vacances</token>
                 <token min="0" max="4" postag="RG|LOC_ADV" postag_regexp="yes"/>
                 <token postag="AQ.*|V.P.*|PX.*" postag_regexp="yes"/>
+            </antipattern>
+            <antipattern>
+                <token regexp="yes" inflected="yes" skip="4">passar|romandre|estar|ser</token>
+                <token regexp="yes" inflected="yes">vacança|vacació|&dies_setmana;|&mesos_any;|&parts_dia;|&unitats_temps;|&estacions;</token>
+                <token postag="AQ.*|V.P.*|PX.*" postag_regexp="yes"/>
+            </antipattern>
+            <antipattern>
+                <token>mes</token>
+                <token>de</token>
+                <token regexp="yes" inflected="yes">&mesos_any;</token>
+                <token postag="AQ.*|V.P.*|PX.*" postag_regexp="yes"><exception inflected="yes" regexp="yes">proppassat|propvinent|passat|següent|anterior|posterior|pròxim|proper</exception></token>
             </antipattern>
             <antipattern>
                 <token>a</token>
@@ -1588,19 +1599,19 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token postag="AQ.*|V.P.*|PX.*" postag_regexp="yes"/>
             </antipattern>-->
             <antipattern>
-                <token regexp="yes">passat|entrat|vist</token>
+                <token regexp="yes">passat|entrat|vist|arribat</token>
                 <token postag="D[AID].MS." postag_regexp="yes"/>
             </antipattern>
             <antipattern>
-                <token regexp="yes">passada|entrada|vista</token>
+                <token regexp="yes">passada|entrada|vista|arribada</token>
                 <token postag="D[AID].FS." postag_regexp="yes"/>
             </antipattern>
             <antipattern>
-                <token regexp="yes">passats|entrats|vists|vistos</token>
+                <token regexp="yes">passats|entrats|vists|vistos|arribats</token>
                 <token postag="D[AID].MP." postag_regexp="yes"/>
             </antipattern>
             <antipattern>
-                <token regexp="yes">passades|entrades|vistes</token>
+                <token regexp="yes">passades|entrades|vistes|arribades</token>
                 <token postag="D[AID].FP." postag_regexp="yes"/>
             </antipattern>
             <antipattern>
@@ -1637,6 +1648,19 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token>son<exception scope="previous" postag="D.*" postag_regexp="yes"/></token>
                 <token min="0" postag="RG"/>
                 <token postag="AQ.[FC]P.|V.P..PF." postag_regexp="yes"/>
+            </antipattern>
+            <antipattern>
+                <token>una</token>
+                <token regexp="yes">manera|forma</token>
+                <token inflected="yes">de</token>
+                <token postag="V.N.*" postag_regexp="yes"/>
+                <token min="0" max="5" postag="RG|LOC_ADV|[DNA].*|V.P.*" postag_regexp="yes"><exception postag="A..[FC][SN].|V.P..SF" postag_regexp="yes"/></token>
+                <token postag="A..[FC][SN].|V.P..SF" postag_regexp="yes"/>
+            </antipattern>
+            <antipattern>
+                <token postag="AQ.*|V.P.*|PX.*" postag_regexp="yes"/>
+                <token>com</token>
+                <token inflected="yes">ser</token>
             </antipattern>
             <pattern>
                 <token postag="AQ.*|V.P.*|PX.*" postag_regexp="yes"> <exception postag="_GN_.*|ignore_concordance|AQ.CN.|_GV_" postag_regexp="yes"/> <exception regexp="yes">primer|junts|juntes|plegats|plegades</exception> <exception regexp="yes">\p{Lu}.*</exception> <exception scope="previous"
@@ -1900,6 +1924,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example>Aquest dimecres tècnics de la Generalitat comencen a reunir-se.</example>
             <example>La població està cada dia més i més ben informada.</example>
             <example>Tant les estructures lingüístiques com el vocabulari necessaris.</example>
+            <example>Queia a la calçada tan llarg com era.</example>
 
             <!-- TODO: 
                 Els costats superior i laterals.
@@ -2971,6 +2996,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token inflected="yes">mateix</token>
                 </marker>
             </antipattern>
+            <antipattern>
+                <token regexp="yes">.*[º°]</token>
+            </antipattern>
             <rule>
                 <pattern>
                     <token postag="A.*" postag_regexp="yes" regexp="yes">bon|bones</token>
@@ -2982,6 +3010,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <short>Error de concordança</short>
                 <example correction="Bon amic|Bons amics"><marker>Bon amics</marker>.</example>
                 <example correction="bon costum|bons costums">Contrària a les <marker>bones costums</marker>.</example>
+                <example>S'ha de girar en total 360°.</example>
             </rule>
             <rule>
                 <pattern>
@@ -5885,6 +5914,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rulegroup>
         <rulegroup id="PASSAR_PEL_CAP" name="verbs no pronominals: Passar*(-se) pel cap">
             <url>http://esadir.cat/entrades/fitxa/id/1441</url>
+            <antipattern>
+                <token inflected="yes" skip="1">passar</token>
+                <token postag="DA.*" postag_regexp="yes"/>
+                <token regexp="yes">arròs|dinar|sopar|paella|macarrons</token>
+            </antipattern>
             <rule>
                 <pattern>
                     <marker>
@@ -5933,6 +5967,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="(descuidar-se de)|li ha passat per alt|li ha passat">A Joan mai no <marker>se li ha passat</marker> fer això.</example>
                 <example correction="(Descuidar-se de)|Em degué passar per alt|Em degué passar"><marker>Se'm degué passar</marker>.</example>
                 <example>No se'ls deixava passar mai.</example>
+                <example>Vigila que se't passarà l'arròs.</example>
             </rule>
         </rulegroup>
         <rulegroup id="VERBS_NO_TRANSITIUS" name="verbs no transitius">
@@ -7617,7 +7652,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <marker>
                         <token inflected="yes" skip="3" postag="V.[^M].*" postag_regexp="yes">donar<exception scope="next" postag="SPS00"/></token>
                     </marker>
-                    <token regexp="yes" inflected="yes">salt|bot|tombarella|passejada|petó|bes|besada|pessic|abraçada|goig|gir|pel·lícula|batxillerat|concert|recital|impressió|xiulit|crit</token>
+                    <token regexp="yes" inflected="yes">salt|bot|tombarella|passejada|petó|bes|besada|pessic|abraçada|goig|gir|pel·lícula|batxillerat|concert|recital|impressió|sensació|xiulit|crit</token>
                 </pattern>
                 <message>Val més usar el v. 'fer'.</message>
                 <suggestion><match no="1" postag="(V.[^M].*)." postag_regexp="yes" postag_replace="$1.">fer</match></suggestion>
@@ -43769,7 +43804,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                         <token inflected="yes">plànol</token>
                     </marker>
                     <token min="0" inflected="yes">de</token>
-                    <token inflected="yes" regexp="yes">seqüència|mediàtic|.*econòmic|.*social|.*polític|abstracte|personal|professional|vertical|horitzontal|perpendicular|oblic|teòric|pràctic|igualtat|superior|inferior|simbòlic</token>
+                    <token inflected="yes" regexp="yes">seqüència|mediàtic|.*econòmic|.*social|.*polític|abstracte|personal|professional|vertical|horitzontal|perpendicular|oblic|teòric|pràctic|igualtat|superior|inferior|simbòlic|.*acadèmic|.*filosòfic</token>
                 </pattern>
                 <message>¿Volíeu dir <suggestion><match no="1" postag="(NC.*)" postag_regexp="yes" postag_replace="$1">pla</match></suggestion>? Exemples d'ús correcte de "plànol": un plànol de Xàtiva, un plànol del castell.</message>
                 <short>Possible confusió</short>
@@ -57368,14 +57403,15 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token postag="SENT_START"/>
                     <token min="0" max="3" postag="_PUNCT.*" postag_regexp="yes"/>
                     <marker>
-                        <token regexp="yes">bon|bona</token>
-                        <token regexp="yes">dia|vespre|vesprada|tarda|nit</token>
+                        <token regexp="yes">bon|bona|bones</token>
+                        <token regexp="yes">dia|vespre|vesprada|tarda|nit|nadal|festes</token>
                     </marker>
                     <token postag="[ANV].*|_possible_nompropi" postag_regexp="yes"><exception postag="_PUNCT.*|SPS00|C.*" postag_regexp="yes"/><exception inflected="yes">tenir</exception></token>
                 </pattern>
                 <message>Probablement falta una coma darrere de "<match no="3" case_conversion="alllower"/> \4" (ex. "<match no="3" case_conversion="startupper"/> \4, Joan!").</message>
-                <suggestion>bon dia,</suggestion>
+                <suggestion>\3 \4,</suggestion>
                 <example correction="Bon dia,"><marker>Bon dia</marker> Joan.</example>
+                <example correction="Bona nit,"><marker>Bona nit</marker> Clara.</example>
                 <example>Hola a tothom.</example>
                 <example>Bon dia pel matí!</example>
                 <example>Bon dia i enhorabona</example>

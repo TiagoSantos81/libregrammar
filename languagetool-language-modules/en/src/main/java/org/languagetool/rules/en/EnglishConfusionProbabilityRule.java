@@ -394,10 +394,13 @@ public class EnglishConfusionProbabilityRule extends ConfusionProbabilityRule {
       "text my number", // vs by
       "why was he", // vs the
       "what was he", // vs the
+      "was he sick", // vs the
       "why is he", // vs the
       "what is he", // vs the
       "is he happy", // vs the
       "he kind of", // vs the
+      "logged out", // vs our
+      "signed out", // vs our
       "same seems to" // vs some
     );
 
@@ -461,6 +464,12 @@ public class EnglishConfusionProbabilityRule extends ConfusionProbabilityRule {
       posRegex("VB.*"),
       tokenRegex("[\"”“]"),
       token("us") // vs "is"
+    ),
+    Arrays.asList(
+      // Text us at (410) 4535
+      tokenRegex("message(s|d)?|text(s|ed)?"),
+      token("us"), // vs "is"
+      posRegex("PCT|IN|CC")
     ),
     Arrays.asList(
       // Clinton will pay us based on actuals.
