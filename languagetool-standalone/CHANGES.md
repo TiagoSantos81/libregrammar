@@ -69,6 +69,13 @@
   * added and improved rules
   * POS and spelling improvements
 
+#### Ukrainian
+  * dictionary update
+  * many new punctuation rules
+  * many new styling rules
+  * tokenization and tagging improvements
+  * disambiguation improvements
+
 #### LibreOffice / Apache OpenOffice Integration
   * dedicated custom spellchecker dialog, that allows greater control of LibreGrammar's functions, thanks to Fred Kruse
 
