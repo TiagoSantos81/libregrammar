@@ -5918,6 +5918,26 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="cuentacuentos">El <marker>cuenta cuentos</marker> lo hizo muy bien.</example>
                 <example>Siempre nos cuenta cuentos bonitos.</example>
             </rule>
+            <rule>
+                <pattern>
+                    <token regexp="yes">super|súper</token>
+                    <token min="0">-</token>
+                    <token postag="A.*" postag_regexp="yes"/>
+                </pattern>
+                <message suppress_misspelled="yes">Se escribe junto.</message>
+                <suggestion><match no="3" regexp_match="(?iu)(.+)" regexp_replace="super$1" case_conversion="alllower"/></suggestion>
+                <example correction="superrápida">Hay una forma de hacerlo <marker>super rápida</marker>.</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <token>hidro</token>
+                    <token min="0">-</token>
+                    <token postag="[ANV].*" postag_regexp="yes"/>
+                </pattern>
+                <message suppress_misspelled="yes">Se escribe junto.</message>
+                <suggestion><match no="3" regexp_match="(?iu)(.+)" regexp_replace="hidro$1" case_conversion="alllower"/></suggestion>
+                <example correction="hidroalcohólico">No tenían gel <marker>hidro alcohólico</marker>.</example>
+            </rule>
         </rulegroup>
         <rulegroup id="AUTO_NO_SEPARADO" name="prefijo auto- no separado">
             <rule>
@@ -8099,6 +8119,25 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rulegroup>
     </category>
     <category id="AGREEMENT_NOUNS" name="Concordancia en grupos nominales" type="inconsistency">
+        <rulegroup id="AGREEMENT_DET_DET" name="concordancias det. + det.">
+            <rule>
+                <pattern>
+                    <unify negate="yes">
+                        <feature id="numero"/>
+                        <feature id="genero"/>
+                        <token postag="DI.*" postag_regexp="yes" inflected="yes">alguno</token>
+                        <token inflected="yes">otro</token>
+                    </unify>
+                </pattern>
+                <message>Error de concordancia.</message>
+                <suggestion>algún otro</suggestion>
+                <suggestion>alguna otra</suggestion>
+                <suggestion>algunos otros</suggestion>
+                <suggestion>algunas otras</suggestion>
+                <example correction="algún otro|alguna otra|algunos otros|algunas otras">Tengo <marker>algún otra</marker> sugerencia.</example>
+                <example correction="Algún otro|Alguna otra|Algunos otros|Algunas otras"><marker>Alguna otro</marker> error de ortografía</example>
+            </rule>
+        </rulegroup>
         <rule id="AGREEMENT_DET_ABREV" name="concordancia determinante y abreviatura">
             <pattern>
                 <marker>
@@ -8941,18 +8980,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="las">Puede dar <marker>los</marker> cinco ideas nuevas.</example>
                 <example>¿Cuál de los dos eres?</example>
             </rule>
-            <rule id="ALGUNA_OTRO" name="alguna otro → alguna otra">
-                <pattern>
-                    <token>alguna</token>
-                    <marker>
-                        <token>otro</token>
-                    </marker>
-                </pattern>
-                <message>Error de concordancia.</message>
-                <suggestion>otra</suggestion>
-                <example correction="otra">Alguna <marker>otro</marker> error de ortografía</example>
-            </rule>
-            <!-- CADA_UNA_DE_LOS Concordancia (Concordancia M/F) -->
             <rule id="CADA_UNA_DE_LOS" name="Concordancia «Cada una de los»">
                 <pattern case_sensitive="no">
                     <token postag="SENT_START"/>
@@ -8968,7 +8995,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction=""><marker>Cada una de los</marker> caballeros está ocupado.</example>
                 <example>Cada uno de los caballeros está ocupado.</example>
             </rule>
-            <!-- CADA_UNO_DE_LAS Concordancia (Concordancia F/M) -->
             <rule id="CADA_UNO_DE_LAS" name="Concordancia «Cada una de las»">
                 <pattern case_sensitive="no">
                     <token postag="SENT_START"/>
@@ -9192,14 +9218,32 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rulegroup>
         <rule id="AGREEMENT_POSTPONED_ADJ_" name="concordancia de adjetivo pospuesto a sustantivos">
             <antipattern>
+                <token postag="_PUNCT.*|CC" postag_regexp="yes"/>
+                <token>en</token>
+                <token regexp="yes">cualquier|todo</token>
+                <token>caso</token>
+                <token min="0" max="3" postag="RG|LOC_ADV" postag_regexp="yes"/>
+                <token postag="AQ.*|V.P.*|PX.*" postag_regexp="yes"/>
+            </antipattern>
+            <antipattern>
+                <token inflected="yes">bueno</token>
+                <token inflected="yes" regexp="yes">ser|estar</token>
+            </antipattern>
+            <antipattern>
                 <!-- invariable adjectives -->
                 <token>estándar</token>
             </antipattern>
             <antipattern>
                 <token/>
-                <token spacebefore="no" regexp="yes">-|\+</token>
+                <token spacebefore="no" regexp="yes">-|\+|/</token>
                 <token spacebefore="no"/>
             </antipattern>
+            <antipattern>
+                    <token inflected="yes" regexp="yes">binomio|relación|conexión|ratio|asociación|aleación|concordancia|tradución|interpretación|correción|corpus|paralelo|diccionario|traductor|corrector|par|figura|pareja</token>
+                        <token postag="A.*|V.P.*" postag_regexp="yes"/>
+                    <token regexp="yes">[/yoeu-]</token>
+                    <token/>
+                </antipattern>
             <antipattern>
                 <token>por</token>
                 <token>muy</token>
@@ -9217,8 +9261,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token/>
             </antipattern>
             <antipattern>
-                <token postag="D[NID].*|AO.*" postag_regexp="yes"/>
-                <token regexp="yes" inflected="yes">vez|&unidades_tiempo;|tiempo</token>
+                <token postag="D[NIDA].*|AO.*" postag_regexp="yes"/>
+                <token regexp="yes" inflected="yes">vez|&unidades_tiempo;|tiempo|&partes_dia;</token>
                 <token min="0" max="3" postag="RG|LOC_ADV" postag_regexp="yes"/>
                 <token postag="AQ.*|V.P.*|PX.*" postag_regexp="yes"/>
             </antipattern>
@@ -9261,12 +9305,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token postag="AQ.*|V.P.*|PX.*" postag_regexp="yes"><exception regexp="yes" inflected="yes">señalar|determinar|excepcional|extraordinario</exception></token>
             </antipattern>
             <antipattern>
-                <token regexp="yes">debido|junto|directo</token>
+                <token regexp="yes">debido|junto|directo|conforme</token>
                 <token regexp="yes">a|al</token>
             </antipattern>
             <antipattern>
                 <token>justo</token>
-                <token regexp="yes">a|al|afuera|adentro|fuera|dentro</token>
+                <token regexp="yes">a|al|afuera|adentro|fuera|dentro|aquí|allí|ahí|allá</token>
             </antipattern>
             <antipattern>
                 <token regexp="yes">producto|objeto|fruto</token>
@@ -9300,15 +9344,19 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token regexp="yes">izquierda|derecha</token>
             </antipattern>
             <antipattern>
+                <token postag="AO.*" postag_regexp="yes"/>
+                <token regexp="yes">izquierda|derecha</token>
+            </antipattern>
+            <antipattern>
                 <token regexp="yes" inflected="yes">&denominacion;|denominar|llamar</token>
                 <token min="0" postag="_QM_OPEN"/>
                 <token postag="AQ.*|V.P.*|PX.*" postag_regexp="yes"/>
             </antipattern>
             <antipattern>
-                <token regexp="yes" inflected="yes">ir|venir|entrar|volver|salir|estar|levantar|quedar|permanecer|pillar|coger|llegar|pasar|reposar|descansar</token>
-                <token regexp="yes">a|en|de|al|del</token>
-                <token postag="D[AD].*" postag_regexp="yes" min="0"/>
-                <token regexp="yes">casa|cama|concierto|cine|teatro</token>
+                <token regexp="yes" inflected="yes" skip="3">cruzar|llevar|ir|venir|entrar|volver|salir|estar|levantar|quedar|permanecer|pillar|coger|llegar|pasar|reposar|descansar</token>
+                <token min="0" regexp="yes">a|en|de|al|del</token>
+                <token postag="D[ADP].*" postag_regexp="yes" min="0"/>
+                <token regexp="yes" inflected="yes">casa|cama|concierto|cine|teatro|fiesta|esquina|calle|carretera|avenida</token>
                 <token min="0" max="4" postag="RG|LOC_ADV" postag_regexp="yes"/>
                 <token postag="AQ.*|V.P.*|PX.*" postag_regexp="yes"/>
             </antipattern>
@@ -9356,6 +9404,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <antipattern>
                 <token regexp="yes">tan|muy|bastante</token>
                 <token>rápido</token>
+            </antipattern>
+            <antipattern>
+                <token regexp="yes">más|menos</token>
+                <token regexp="yes">rápido|lento</token>
+                <token>que</token>
             </antipattern>
             <antipattern>
                 <token postag="NP.*" postag_regexp="yes"/>
@@ -9416,8 +9469,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token>que</token>
             </antipattern>
             <antipattern>
-                <!-- triggers another rule -->
-                <token>mas</token>
+                <!-- trigger other rules -->
+                <token regexp="yes">mas|tenia|tenias</token>
                 <token/>
             </antipattern>
             <antipattern>
@@ -9462,22 +9515,22 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token postag="A..[FC][SN].|V.P..SF" postag_regexp="yes"/>
             </antipattern>
             <antipattern>
-                <token regexp="yes">pasado|entrado|visto|llegado|transcurrido</token>
+                <token regexp="yes">pasado|entrado|visto|llegado|transcurrido|incluido</token>
                 <token min="0" max="2" regexp="yes">más|menos|de</token>
                 <token postag="D[AID].MS." postag_regexp="yes"/>
             </antipattern>
             <antipattern>
-                <token regexp="yes">pasada|entrada|vista|llegada|transcurrida</token>
+                <token regexp="yes">pasada|entrada|vista|llegada|transcurrida|incluida</token>
                 <token min="0" max="2" regexp="yes">más|menos|de</token>
                 <token postag="D[AID].FS." postag_regexp="yes"/>
             </antipattern>
             <antipattern>
-                <token regexp="yes">pasados|entrados|vistos|llegados|transcurridos</token>
+                <token regexp="yes">pasados|entrados|vistos|llegados|transcurridos|incluidos</token>
                 <token min="0" max="2" regexp="yes">más|menos|de</token>
                 <token postag="D[AID].MP.|DN.[MC][PN]." postag_regexp="yes"/>
             </antipattern>
             <antipattern>
-                <token regexp="yes">pasadas|entradas|vistas|llegadas|transcurridas</token>
+                <token regexp="yes">pasadas|entradas|vistas|llegadas|transcurridas|incluidas</token>
                 <token min="0" max="2" regexp="yes">más|menos|de</token>
                 <token postag="D[AID].FP.|DN.[FC][PN]." postag_regexp="yes"/>
             </antipattern>
@@ -9634,6 +9687,24 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example>Cría puercos y te darán jamones.</example>
             <example>Estoy todo menos feliz con esta cuestión.</example>
             <example>¡Volveré a esta casa victorioso!</example>
+            <example>Tiene las orejas igual de grandes.</example>
+            <example>Comprendí que esa era justo la clave para la solución.</example>
+            <example>Ella está medio viva y medio muerta.</example>
+            <example>De día es demasiado caluroso allí, y de noche demasiado frío.</example>
+            <example>¿La quito o la dejo puesta?</example>
+            <example>Yo estudio matemáticas.</example>
+            <example>Estudio matemáticas.</example>
+            <example>Trescientas cajas de cartón llenas de ropa vieja preparadas para ser enviadas.</example>
+            <example>Lleva una semana en la cama enfermo.</example>
+            <example>La traducción español/inglés.</example>
+            <example>Son primitivas, y en cualquier caso bastante infantiles.</example>
+            <example>A falta de pan buenas son las tortas.</example>
+            <example>Tomo somníferos y pago impuestos.</example>
+            <example>No me gusta que él venga a mi casa tan seguido.</example>
+            <example>Vive en el tercero izquierda.</example>
+            <example>Volvieron pasada la medianoche borrachos.</example>
+            <example>Keith deja claras sus intenciones.</example>
+            <example>Algunos grupos de soldados que cruzaban las esquinas despreocupados.</example>
             <!-- 
                 La eternidad dura harto.
                 Ella fue al concierto acompañada de una amiga.
@@ -10985,6 +11056,29 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         </rule>
     </category>
     <category id="CONFUSIONS" name="Confusiones">
+        <rulegroup id="TAL_TAN" name="tal/tan" default="temp_off">
+            <rule>
+                <pattern>
+                    <marker>
+                        <token>tal</token>
+                    </marker>
+                    <token regexp="yes">mal|bien</token>
+                </pattern>
+                <message>Posible confusión. ¿Quería decir <suggestion>tan</suggestion>?</message>
+                <example correction="tan">Tampoco está <marker>tal</marker> mal</example>
+            </rule>
+            <rule>
+                <pattern>
+                    <marker>
+                        <token>tal</token>
+                    </marker>
+                    <token postag="A.*|V.*" postag_regexp="yes"/>
+                    <token>que</token>
+                </pattern>
+                <message>Posible confusión. ¿Quería decir <suggestion>tan</suggestion>?</message>
+                <example correction="tan">Está <marker>tal</marker> bueno que me lo comería todo.</example>
+            </rule>
+        </rulegroup>
         <rulegroup id="TENER_QUE_INFINITIVO" name="tener que + infinitivo">
             <antipattern>
                 <token skip="3">qué</token>
@@ -11008,10 +11102,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token inflected="yes">tener</token>
                     <token>que</token>
                     <marker>
-                        <token postag="V.*" postag_regexp="yes"><exception postag="V.N.*|V.M..V.*" postag_regexp="yes"></exception></token>
+                        <token postag="V.*" postag_regexp="yes"><exception postag="V.N.*|V.M..V.*" postag_regexp="yes"/></token>
                     </marker>
                 </pattern>
-                <message>¿Quería decir <suggestion><match no="3" postag="(V.*)" postag_regexp="yes" postag_replace="V.N...."></match></suggestion>?</message>
+                <message>¿Quería decir <suggestion><match no="3" postag="(V.*)" postag_regexp="yes" postag_replace="V.N...."/></suggestion>?</message>
                 <example correction="considerar">Tiene que <marker>considera</marker> el mejor.</example>
                 <example correction="crear|creer">Tiene que <marker>cree</marker> que es posible.</example>
                 <example>¿Qué tiene que cree que es el mejor?</example>
@@ -11204,6 +11298,16 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token>ha</token>
             </antipattern>
             <antipattern>
+                <!-- onomatopeya -->
+                <token>¡</token>
+                <token>ha</token>
+                <token postag="_PUNCT.*" postag_regexp="yes"/>
+            </antipattern>
+            <antipattern>
+                <token>ha</token>
+                <token>!</token>
+            </antipattern>
+            <antipattern>
                 <token postag="&pronombre_personal_atono_POS;" postag_regexp="yes"/>
                 <token>ha</token>
             </antipattern>
@@ -11234,6 +11338,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             <example>Este año ha llovido bastante.</example>
             <example>¿Ha usted reservado un cuarto de hotel?</example>
             <example>Años ha de aquello.</example>
+            <example>¡Ha, y ahora de pronto es "mi" idea!</example>
         </rule>
         <rulegroup id="AYA_HAYA" name="*aya/haya">
             <rule>
@@ -12262,7 +12367,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             </rule>
             <rule>
                 <pattern>
-                    <token postag="D..FS." postag_regexp="yes"/>
+                    <token postag="D..FS.|PP3FSA00" postag_regexp="yes"/>
                     <marker>
                         <token>ves</token>
                     </marker>

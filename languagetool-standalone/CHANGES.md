@@ -48,7 +48,8 @@
 #### English
   * added and improved rules
   * POS and spelling improvements
-  * updated en_GB spellchecker dictionary from https://github.com/marcoagpinto/aoo-mozilla-en-dict (Version 2.82 - 2020-03-01)
+  * updated en_GB spellchecker dictionary from https://github.com/marcoagpinto/aoo-mozilla-en-dict (Version 2.88 - 2020-09-01)
+
 
 #### French
   * added and improved rules, thanks to Jaume Órtola, Rigaut Theótime and thelittlefireman
