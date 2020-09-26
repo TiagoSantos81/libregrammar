@@ -1,13 +1,12 @@
 # LibreGrammar Change Log
 
-## 5.1 (release planned for 2020-10-01)
+## 5.1 (released 2020-09-26)
+
+  * This release is mostly a synchronization of upstream changes with minor fixes, 
+    keeping former LibreGrammar versions improvements.
 
 ### This fork differences
 #### (new comparisons only)
-
-#### General
-  * Each pair of `ConfusionProbabilityRule` has its own ID now, so it can be separately turned on/off
-
 
 #### Catalan
   * added a few punctuation rules
@@ -92,7 +91,7 @@
   * New XML attribute `chunk_re` for `<token>`, which specifies a chunk as a regular expression
   * removed optional AfterTheDeadline server mode
 
-## 5.0 ( 2020-10-01)
+## 5.0 (released 2020-10-01)
 
 ### This fork differences
 #### (new comparisons only)
