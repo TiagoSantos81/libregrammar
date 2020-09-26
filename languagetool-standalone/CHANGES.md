@@ -1,6 +1,6 @@
 # LibreGrammar Change Log
 
-## 5.1-SNAPSHOT (release planned for 2020-10-01)
+## 5.1 (release planned for 2020-10-01)
 
 ### This fork differences
 #### (new comparisons only)
