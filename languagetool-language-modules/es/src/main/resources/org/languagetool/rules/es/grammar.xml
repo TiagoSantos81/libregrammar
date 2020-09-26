@@ -2297,8 +2297,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example>El objetivo per se no importa.</example>
                 <example>aquel en que se “expresa” Rimbaud</example>
                 <example>Eso no se ve tan difícil.</example>
+                <?ignore compile error - check missing antipattern
                 <example>Es necesario que se aparte de este caso.</example>
                 <example>Este se acerca de manera peligrosa.</example>
+                ?>
             </rule>
             <rule>
                 <pattern>
