@@ -96,6 +96,10 @@ Test the result in `languagetool-office-extension/target`, rename the `*.zip` to
 
 Now you can use the bleeding edge development copy of LanguageTool `*.jar` files, be aware that it might contain regressions.
 
+## Docker image
+
+A Docker image recipe is available on https://github.com/py-crash/docker-libregrammar, with thanks to @py-crash.
+
 ### License
 
 Unless otherwise noted, this software is distributed under the LGPL, see file [COPYING.txt](https://github.com/TiagoSantos81/languagetool/blob/master/COPYING.txt).
