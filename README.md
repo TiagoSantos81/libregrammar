@@ -98,7 +98,9 @@ Now you can use the bleeding edge development copy of LanguageTool `*.jar` files
 
 ## Docker image
 
-A Docker image recipe is available on https://github.com/py-crash/docker-libregrammar, with thanks to @py-crash.
+A Docker image recipe is available on the [gitlab registry](https://gitlab.com/py_crash/docker-libregrammar/container_registry),
+with thanks to [@py-crash](https://github.com/py-crash). The Dockerfile and the Documentation about the image can be found in
+[GitLab](https://gitlab.com/py_crash/docker-libregrammar) and [GitHub](https://github.com/py-crash/docker-libregrammar)
 
 ### License
 
